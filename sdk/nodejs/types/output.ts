@@ -5,6 +5,609 @@ import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
 export namespace aws {
+    export interface BeanstalkDeploymentPreferences {
+        /**
+         * Should roll perform automatically
+         */
+        automaticRoll?: boolean;
+        /**
+         * Percent size of each batch
+         */
+        batchSizePercentage?: number;
+        /**
+         * Amount of time to wait between batches
+         */
+        gracePeriod?: number;
+        /**
+         * Strategy parameters
+         */
+        strategies?: outputs.aws.BeanstalkDeploymentPreferencesStrategy[];
+    }
+
+    export interface BeanstalkDeploymentPreferencesStrategy {
+        /**
+         * Action to take
+         */
+        action?: string;
+        /**
+         * Bool value if to wait to drain instance 
+         */
+        shouldDrainInstances?: boolean;
+    }
+
+    export interface BeanstalkManagedActions {
+        /**
+         * Platform Update parameters
+         */
+        platformUpdate?: outputs.aws.BeanstalkManagedActionsPlatformUpdate;
+    }
+
+    export interface BeanstalkManagedActionsPlatformUpdate {
+        /**
+         * Actions to perform (options: timeWindow, never)
+         */
+        performAt?: string;
+        /**
+         * Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+         */
+        timeWindow?: string;
+        /**
+         * - Level to update
+         */
+        updateLevel?: string;
+    }
+
+    export interface ElastigroupEbsBlockDevice {
+        deleteOnTermination: boolean;
+        deviceName: string;
+        encrypted: boolean;
+        iops?: number;
+        kmsKeyId?: string;
+        snapshotId?: string;
+        volumeSize?: number;
+        volumeType: string;
+    }
+
+    export interface ElastigroupEphemeralBlockDevice {
+        deviceName: string;
+        virtualName: string;
+    }
+
+    export interface ElastigroupInstanceTypesWeight {
+        /**
+         * Name of instance type (String).
+         */
+        instanceType: string;
+        /**
+         * Weight per instance type (Integer).
+         */
+        weight: number;
+    }
+
+    export interface ElastigroupIntegrationBeanstalk {
+        deploymentPreferences?: outputs.aws.ElastigroupIntegrationBeanstalkDeploymentPreferences;
+        environmentId?: string;
+        managedActions?: outputs.aws.ElastigroupIntegrationBeanstalkManagedActions;
+    }
+
+    export interface ElastigroupIntegrationBeanstalkDeploymentPreferences {
+        automaticRoll?: boolean;
+        batchSizePercentage?: number;
+        gracePeriod?: number;
+        strategy?: outputs.aws.ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy;
+    }
+
+    export interface ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
+        action?: string;
+        shouldDrainInstances?: boolean;
+    }
+
+    export interface ElastigroupIntegrationBeanstalkManagedActions {
+        platformUpdate?: outputs.aws.ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate;
+    }
+
+    export interface ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
+        /**
+         * In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+         */
+        performAt?: string;
+        timeWindow?: string;
+        updateLevel?: string;
+    }
+
+    export interface ElastigroupIntegrationCodedeploy {
+        cleanupOnFailure: boolean;
+        deploymentGroups: outputs.aws.ElastigroupIntegrationCodedeployDeploymentGroup[];
+        terminateInstanceOnFailure: boolean;
+    }
+
+    export interface ElastigroupIntegrationCodedeployDeploymentGroup {
+        applicationName: string;
+        deploymentGroupName: string;
+    }
+
+    export interface ElastigroupIntegrationDockerSwarm {
+        autoscaleCooldown?: number;
+        autoscaleDown?: outputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleDown;
+        autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom;
+        autoscaleIsEnabled?: boolean;
+        masterHost: string;
+        masterPort: number;
+    }
+
+    export interface ElastigroupIntegrationDockerSwarmAutoscaleDown {
+        evaluationPeriods?: number;
+    }
+
+    export interface ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
+        cpuPerUnit?: number;
+        memoryPerUnit?: number;
+        numOfUnits?: number;
+    }
+
+    export interface ElastigroupIntegrationEcs {
+        autoscaleAttributes?: outputs.aws.ElastigroupIntegrationEcsAutoscaleAttribute[];
+        autoscaleCooldown?: number;
+        autoscaleDown?: outputs.aws.ElastigroupIntegrationEcsAutoscaleDown;
+        autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationEcsAutoscaleHeadroom;
+        autoscaleIsAutoConfig?: boolean;
+        autoscaleIsEnabled?: boolean;
+        autoscaleScaleDownNonServiceTasks?: boolean;
+        clusterName: string;
+    }
+
+    export interface ElastigroupIntegrationEcsAutoscaleAttribute {
+        key: string;
+        value: string;
+    }
+
+    export interface ElastigroupIntegrationEcsAutoscaleDown {
+        evaluationPeriods?: number;
+        maxScaleDownPercentage?: number;
+    }
+
+    export interface ElastigroupIntegrationEcsAutoscaleHeadroom {
+        cpuPerUnit?: number;
+        memoryPerUnit?: number;
+        numOfUnits?: number;
+    }
+
+    export interface ElastigroupIntegrationGitlab {
+        runner?: outputs.aws.ElastigroupIntegrationGitlabRunner;
+    }
+
+    export interface ElastigroupIntegrationGitlabRunner {
+        isEnabled?: boolean;
+    }
+
+    export interface ElastigroupIntegrationKubernetes {
+        apiServer?: string;
+        autoscaleCooldown?: number;
+        autoscaleDown?: outputs.aws.ElastigroupIntegrationKubernetesAutoscaleDown;
+        autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationKubernetesAutoscaleHeadroom;
+        autoscaleIsAutoConfig?: boolean;
+        autoscaleIsEnabled?: boolean;
+        autoscaleLabels?: outputs.aws.ElastigroupIntegrationKubernetesAutoscaleLabel[];
+        clusterIdentifier?: string;
+        integrationMode?: string;
+        token?: string;
+    }
+
+    export interface ElastigroupIntegrationKubernetesAutoscaleDown {
+        evaluationPeriods?: number;
+    }
+
+    export interface ElastigroupIntegrationKubernetesAutoscaleHeadroom {
+        cpuPerUnit?: number;
+        memoryPerUnit?: number;
+        numOfUnits?: number;
+    }
+
+    export interface ElastigroupIntegrationKubernetesAutoscaleLabel {
+        key: string;
+        value: string;
+    }
+
+    export interface ElastigroupIntegrationMesosphere {
+        apiServer: string;
+    }
+
+    export interface ElastigroupIntegrationMultaiRuntime {
+        deploymentId: string;
+    }
+
+    export interface ElastigroupIntegrationNomad {
+        aclToken?: string;
+        autoscaleConstraints?: outputs.aws.ElastigroupIntegrationNomadAutoscaleConstraint[];
+        autoscaleCooldown?: number;
+        autoscaleDown?: outputs.aws.ElastigroupIntegrationNomadAutoscaleDown;
+        autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationNomadAutoscaleHeadroom;
+        autoscaleIsEnabled?: boolean;
+        masterHost: string;
+        masterPort: number;
+    }
+
+    export interface ElastigroupIntegrationNomadAutoscaleConstraint {
+        key: string;
+        value: string;
+    }
+
+    export interface ElastigroupIntegrationNomadAutoscaleDown {
+        evaluationPeriods?: number;
+    }
+
+    export interface ElastigroupIntegrationNomadAutoscaleHeadroom {
+        cpuPerUnit?: number;
+        memoryPerUnit?: number;
+        numOfUnits?: number;
+    }
+
+    export interface ElastigroupIntegrationRancher {
+        accessKey: string;
+        masterHost: string;
+        secretKey: string;
+        version?: string;
+    }
+
+    export interface ElastigroupIntegrationRoute53 {
+        domains: outputs.aws.ElastigroupIntegrationRoute53Domain[];
+    }
+
+    export interface ElastigroupIntegrationRoute53Domain {
+        hostedZoneId: string;
+        recordSets: outputs.aws.ElastigroupIntegrationRoute53DomainRecordSet[];
+        spotinstAcctId?: string;
+    }
+
+    export interface ElastigroupIntegrationRoute53DomainRecordSet {
+        /**
+         * The group name.
+         */
+        name: string;
+        usePublicIp?: boolean;
+    }
+
+    export interface ElastigroupMultaiTargetSet {
+        balancerId: string;
+        targetSetId: string;
+    }
+
+    export interface ElastigroupNetworkInterface {
+        associateIpv6Address?: boolean;
+        associatePublicIpAddress?: boolean;
+        deleteOnTermination: boolean;
+        /**
+         * The group description.
+         */
+        description?: string;
+        deviceIndex: string;
+        networkInterfaceId?: string;
+        privateIpAddress?: string;
+        secondaryPrivateIpAddressCount?: string;
+    }
+
+    export interface ElastigroupRevertToSpot {
+        /**
+         * In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+         */
+        performAt: string;
+        /**
+         * Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
+         */
+        timeWindows?: string[];
+    }
+
+    export interface ElastigroupScalingDownPolicy {
+        actionType?: string;
+        adjustment?: string;
+        cooldown: number;
+        dimensions?: outputs.aws.ElastigroupScalingDownPolicyDimension[];
+        evaluationPeriods: number;
+        isEnabled?: boolean;
+        maxTargetCapacity?: string;
+        maximum?: string;
+        metricName: string;
+        minTargetCapacity?: string;
+        minimum?: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        source: string;
+        statistic: string;
+        target?: string;
+        threshold: number;
+        unit: string;
+    }
+
+    export interface ElastigroupScalingDownPolicyDimension {
+        /**
+         * The group name.
+         */
+        name: string;
+        value?: string;
+    }
+
+    export interface ElastigroupScalingStrategy {
+        /**
+         * Specify whether to terminate instances at the end of each billing hour.
+         */
+        terminateAtEndOfBillingHour?: boolean;
+        /**
+         * - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `"default"`, `"newestInstance"`.
+         */
+        terminationPolicy?: string;
+    }
+
+    export interface ElastigroupScalingTargetPolicy {
+        cooldown: number;
+        dimensions?: outputs.aws.ElastigroupScalingTargetPolicyDimension[];
+        metricName: string;
+        namespace: string;
+        policyName: string;
+        predictiveMode?: string;
+        source: string;
+        statistic: string;
+        target: number;
+        unit: string;
+    }
+
+    export interface ElastigroupScalingTargetPolicyDimension {
+        /**
+         * The group name.
+         */
+        name: string;
+        value?: string;
+    }
+
+    export interface ElastigroupScalingUpPolicy {
+        actionType?: string;
+        adjustment?: string;
+        cooldown: number;
+        dimensions?: outputs.aws.ElastigroupScalingUpPolicyDimension[];
+        evaluationPeriods: number;
+        isEnabled?: boolean;
+        maxTargetCapacity?: string;
+        maximum?: string;
+        metricName: string;
+        minTargetCapacity?: string;
+        minimum?: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        source: string;
+        statistic: string;
+        target?: string;
+        threshold: number;
+        unit: string;
+    }
+
+    export interface ElastigroupScalingUpPolicyDimension {
+        /**
+         * The group name.
+         */
+        name: string;
+        value?: string;
+    }
+
+    export interface ElastigroupScheduledTask {
+        adjustment?: string;
+        adjustmentPercentage?: string;
+        batchSizePercentage?: string;
+        cronExpression?: string;
+        frequency?: string;
+        gracePeriod?: string;
+        isEnabled?: boolean;
+        maxCapacity?: string;
+        minCapacity?: string;
+        scaleMaxCapacity?: string;
+        scaleMinCapacity?: string;
+        scaleTargetCapacity?: string;
+        startTime?: string;
+        targetCapacity?: string;
+        taskType: string;
+    }
+
+    export interface ElastigroupSignal {
+        /**
+         * The group name.
+         */
+        name: string;
+        timeout?: number;
+    }
+
+    export interface ElastigroupStatefulDeallocation {
+        shouldDeleteImages?: boolean;
+        shouldDeleteNetworkInterfaces?: boolean;
+        shouldDeleteSnapshots?: boolean;
+        shouldDeleteVolumes?: boolean;
+    }
+
+    export interface ElastigroupTag {
+        key?: string;
+        value?: string;
+    }
+
+    export interface ElastigroupUpdatePolicy {
+        autoApplyTags?: boolean;
+        rollConfig?: outputs.aws.ElastigroupUpdatePolicyRollConfig;
+        shouldResumeStateful: boolean;
+        shouldRoll: boolean;
+    }
+
+    export interface ElastigroupUpdatePolicyRollConfig {
+        batchSizePercentage: number;
+        gracePeriod?: number;
+        /**
+         * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+         */
+        healthCheckType?: string;
+        strategy?: outputs.aws.ElastigroupUpdatePolicyRollConfigStrategy;
+        waitForRollPercentage?: number;
+        waitForRollTimeout?: number;
+    }
+
+    export interface ElastigroupUpdatePolicyRollConfigStrategy {
+        action: string;
+        batchMinHealthyPercentage?: number;
+        shouldDrainInstances?: boolean;
+    }
+
+    export interface MrScalarApplication {
+        args?: string[];
+        /**
+         * The MrScaler name.
+         */
+        name: string;
+        version?: string;
+    }
+
+    export interface MrScalarBootstrapActionsFile {
+        bucket: string;
+        key: string;
+    }
+
+    export interface MrScalarConfigurationsFile {
+        bucket: string;
+        key: string;
+    }
+
+    export interface MrScalarCoreEbsBlockDevice {
+        iops?: number;
+        sizeInGb: number;
+        volumeType: string;
+        volumesPerInstance?: number;
+    }
+
+    export interface MrScalarCoreScalingDownPolicy {
+        actionType?: string;
+        adjustment?: string;
+        cooldown: number;
+        dimensions?: {[key: string]: any};
+        evaluationPeriods: number;
+        maxTargetCapacity?: string;
+        maximum?: string;
+        metricName: string;
+        minTargetCapacity?: string;
+        minimum?: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        statistic: string;
+        target?: string;
+        threshold: number;
+        unit: string;
+    }
+
+    export interface MrScalarCoreScalingUpPolicy {
+        actionType?: string;
+        adjustment?: string;
+        cooldown: number;
+        dimensions?: {[key: string]: any};
+        evaluationPeriods: number;
+        maxTargetCapacity?: string;
+        maximum?: string;
+        metricName: string;
+        minTargetCapacity?: string;
+        minimum?: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        statistic: string;
+        target?: string;
+        threshold: number;
+        unit: string;
+    }
+
+    export interface MrScalarInstanceWeight {
+        instanceType: string;
+        weightedCapacity: number;
+    }
+
+    export interface MrScalarMasterEbsBlockDevice {
+        iops?: number;
+        sizeInGb: number;
+        volumeType: string;
+        volumesPerInstance?: number;
+    }
+
+    export interface MrScalarProvisioningTimeout {
+        timeout: number;
+        timeoutAction: string;
+    }
+
+    export interface MrScalarScheduledTask {
+        cron: string;
+        desiredCapacity?: string;
+        instanceGroupType: string;
+        isEnabled?: boolean;
+        maxCapacity?: string;
+        minCapacity?: string;
+        taskType: string;
+    }
+
+    export interface MrScalarStepsFile {
+        bucket: string;
+        key: string;
+    }
+
+    export interface MrScalarTag {
+        key: string;
+        value: string;
+    }
+
+    export interface MrScalarTaskEbsBlockDevice {
+        iops?: number;
+        sizeInGb: number;
+        volumeType: string;
+        volumesPerInstance?: number;
+    }
+
+    export interface MrScalarTaskScalingDownPolicy {
+        actionType?: string;
+        adjustment?: string;
+        cooldown: number;
+        dimensions?: {[key: string]: any};
+        evaluationPeriods: number;
+        maxTargetCapacity?: string;
+        maximum?: string;
+        metricName: string;
+        minTargetCapacity?: string;
+        minimum?: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        statistic: string;
+        target?: string;
+        threshold: number;
+        unit: string;
+    }
+
+    export interface MrScalarTaskScalingUpPolicy {
+        actionType?: string;
+        adjustment?: string;
+        cooldown: number;
+        dimensions?: {[key: string]: any};
+        evaluationPeriods: number;
+        maxTargetCapacity?: string;
+        maximum?: string;
+        metricName: string;
+        minTargetCapacity?: string;
+        minimum?: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        statistic: string;
+        target?: string;
+        threshold: number;
+        unit: string;
+    }
+
     export interface OceanAutoscaler {
         /**
          * Cooldown period between scaling actions.
@@ -102,5 +705,508 @@ export namespace aws {
 
     export interface OceanUpdatePolicyRollConfig {
         batchSizePercentage: number;
+    }
+}
+
+export namespace azure {
+    export interface ElastigroupHealthCheck {
+        autoHealing?: boolean;
+        gracePeriod?: number;
+        healthCheckType: string;
+    }
+
+    export interface ElastigroupImage {
+        customs?: outputs.azure.ElastigroupImageCustom[];
+        marketplaces?: outputs.azure.ElastigroupImageMarketplace[];
+    }
+
+    export interface ElastigroupImageCustom {
+        imageName: string;
+        /**
+         * The Resource Group that the user-assigned managed identity resides in.
+         */
+        resourceGroupName: string;
+    }
+
+    export interface ElastigroupImageMarketplace {
+        offer: string;
+        publisher: string;
+        sku: string;
+    }
+
+    export interface ElastigroupIntegrationKubernetes {
+        clusterIdentifier: string;
+    }
+
+    export interface ElastigroupIntegrationMultaiRuntime {
+        deploymentId: string;
+    }
+
+    export interface ElastigroupLoadBalancer {
+        autoWeight?: boolean;
+        balancerId?: string;
+        targetSetId?: string;
+        type: string;
+    }
+
+    export interface ElastigroupLogin {
+        password?: string;
+        sshPublicKey?: string;
+        userName: string;
+    }
+
+    export interface ElastigroupManagedServiceIdentity {
+        /**
+         * The name of the managed identity.
+         */
+        name: string;
+        /**
+         * The Resource Group that the user-assigned managed identity resides in.
+         */
+        resourceGroupName: string;
+    }
+
+    export interface ElastigroupNetwork {
+        additionalIpConfigs?: outputs.azure.ElastigroupNetworkAdditionalIpConfig[];
+        assignPublicIp?: boolean;
+        /**
+         * The Resource Group that the user-assigned managed identity resides in.
+         */
+        resourceGroupName: string;
+        subnetName: string;
+        virtualNetworkName: string;
+    }
+
+    export interface ElastigroupNetworkAdditionalIpConfig {
+        /**
+         * The name of the managed identity.
+         */
+        name: string;
+        privateIpVersion?: string;
+    }
+
+    export interface ElastigroupScalingDownPolicy {
+        actionType?: string;
+        adjustment?: string;
+        cooldown: number;
+        dimensions?: outputs.azure.ElastigroupScalingDownPolicyDimension[];
+        evaluationPeriods: number;
+        maxTargetCapacity?: string;
+        maximum?: string;
+        metricName: string;
+        minTargetCapacity?: string;
+        minimum?: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        statistic: string;
+        target?: string;
+        threshold: number;
+        unit?: string;
+    }
+
+    export interface ElastigroupScalingDownPolicyDimension {
+        /**
+         * The name of the managed identity.
+         */
+        name: string;
+        value?: string;
+    }
+
+    export interface ElastigroupScalingUpPolicy {
+        actionType?: string;
+        adjustment?: string;
+        cooldown: number;
+        dimensions?: outputs.azure.ElastigroupScalingUpPolicyDimension[];
+        evaluationPeriods: number;
+        maxTargetCapacity?: string;
+        maximum?: string;
+        metricName: string;
+        minTargetCapacity?: string;
+        minimum?: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        statistic: string;
+        target?: string;
+        threshold: number;
+        unit?: string;
+    }
+
+    export interface ElastigroupScalingUpPolicyDimension {
+        /**
+         * The name of the managed identity.
+         */
+        name: string;
+        value?: string;
+    }
+
+    export interface ElastigroupScheduledTask {
+        adjustment?: string;
+        adjustmentPercentage?: string;
+        batchSizePercentage?: string;
+        cronExpression: string;
+        gracePeriod?: string;
+        isEnabled?: boolean;
+        scaleMaxCapacity?: string;
+        scaleMinCapacity?: string;
+        scaleTargetCapacity?: string;
+        taskType: string;
+    }
+
+    export interface ElastigroupStrategy {
+        /**
+         * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+         */
+        drainingTimeout?: number;
+        /**
+         * Percentage of Low Priority instances to maintain. Required if `odCount` is not specified.
+         */
+        lowPriorityPercentage?: number;
+        /**
+         * Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
+         */
+        odCount?: number;
+    }
+
+    export interface ElastigroupUpdatePolicy {
+        rollConfig?: outputs.azure.ElastigroupUpdatePolicyRollConfig;
+        shouldRoll: boolean;
+    }
+
+    export interface ElastigroupUpdatePolicyRollConfig {
+        batchSizePercentage: number;
+        gracePeriod?: number;
+        healthCheckType?: string;
+    }
+}
+
+export namespace gcp {
+    export interface ElastigroupBackendService {
+        locationType?: string;
+        namedPorts?: outputs.gcp.ElastigroupBackendServiceNamedPort[];
+        scheme?: string;
+        serviceName: string;
+    }
+
+    export interface ElastigroupBackendServiceNamedPort {
+        /**
+         * The group name. 
+         */
+        name: string;
+        ports: string[];
+    }
+
+    export interface ElastigroupDisk {
+        autoDelete?: boolean;
+        boot?: boolean;
+        deviceName?: string;
+        initializeParams?: outputs.gcp.ElastigroupDiskInitializeParam[];
+        interface?: string;
+        mode?: string;
+        source?: string;
+        type?: string;
+    }
+
+    export interface ElastigroupDiskInitializeParam {
+        diskSizeGb?: string;
+        diskType?: string;
+        sourceImage: string;
+    }
+
+    export interface ElastigroupGpu {
+        count: number;
+        type: string;
+    }
+
+    export interface ElastigroupInstanceTypesCustom {
+        /**
+         * The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
+         */
+        memoryGib: number;
+        vcpu: number;
+    }
+
+    export interface ElastigroupIntegrationDockerSwarm {
+        masterHost: string;
+        masterPort: number;
+    }
+
+    export interface ElastigroupIntegrationGke {
+        autoUpdate?: boolean;
+        autoscaleCooldown?: number;
+        autoscaleDown?: outputs.gcp.ElastigroupIntegrationGkeAutoscaleDown;
+        autoscaleHeadroom?: outputs.gcp.ElastigroupIntegrationGkeAutoscaleHeadroom;
+        autoscaleIsAutoConfig?: boolean;
+        autoscaleIsEnabled?: boolean;
+        autoscaleLabels?: outputs.gcp.ElastigroupIntegrationGkeAutoscaleLabel[];
+        clusterId?: string;
+        location?: string;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleDown {
+        evaluationPeriods?: number;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleHeadroom {
+        cpuPerUnit?: number;
+        memoryPerUnit?: number;
+        numOfUnits?: number;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleLabel {
+        /**
+         * Labels key.
+         */
+        key: string;
+        /**
+         * Labels value.
+         */
+        value: string;
+    }
+
+    export interface ElastigroupLabel {
+        /**
+         * Labels key.
+         */
+        key: string;
+        /**
+         * Labels value.
+         */
+        value: string;
+    }
+
+    export interface ElastigroupMetadata {
+        /**
+         * Labels key.
+         */
+        key: string;
+        /**
+         * Labels value.
+         */
+        value: string;
+    }
+
+    export interface ElastigroupNetworkInterface {
+        accessConfigs?: outputs.gcp.ElastigroupNetworkInterfaceAccessConfig[];
+        aliasIpRanges?: outputs.gcp.ElastigroupNetworkInterfaceAliasIpRange[];
+        network: string;
+    }
+
+    export interface ElastigroupNetworkInterfaceAccessConfig {
+        /**
+         * The group name. 
+         */
+        name?: string;
+        type?: string;
+    }
+
+    export interface ElastigroupNetworkInterfaceAliasIpRange {
+        ipCidrRange: string;
+        subnetworkRangeName: string;
+    }
+
+    export interface ElastigroupScalingDownPolicy {
+        actionType?: string;
+        adjustment?: number;
+        cooldown: number;
+        dimensions?: outputs.gcp.ElastigroupScalingDownPolicyDimension[];
+        evaluationPeriods: number;
+        metricName: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        source: string;
+        statistic: string;
+        threshold: number;
+        unit: string;
+    }
+
+    export interface ElastigroupScalingDownPolicyDimension {
+        /**
+         * The group name. 
+         */
+        name: string;
+        /**
+         * Labels value.
+         */
+        value?: string;
+    }
+
+    export interface ElastigroupScalingUpPolicy {
+        actionType?: string;
+        adjustment?: number;
+        cooldown: number;
+        dimensions?: outputs.gcp.ElastigroupScalingUpPolicyDimension[];
+        evaluationPeriods: number;
+        metricName: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        source: string;
+        statistic: string;
+        threshold: number;
+        unit: string;
+    }
+
+    export interface ElastigroupScalingUpPolicyDimension {
+        /**
+         * The group name. 
+         */
+        name: string;
+        /**
+         * Labels value.
+         */
+        value?: string;
+    }
+
+    export interface ElastigroupScheduledTask {
+        cronExpression?: string;
+        isEnabled?: boolean;
+        maxCapacity?: string;
+        minCapacity?: string;
+        targetCapacity?: string;
+        taskType: string;
+    }
+
+    export interface ElastigroupSubnet {
+        /**
+         * The region for the group of subnets.
+         */
+        region: string;
+        /**
+         * The names of the subnets in the region.
+         */
+        subnetNames: string[];
+    }
+}
+
+export namespace multai {
+    export interface BalancerConnectionTimeouts {
+        /**
+         * The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
+         */
+        draining?: number;
+        /**
+         * The idle timeout value, in seconds. (range: 1 - 3600).
+         */
+        idle?: number;
+    }
+
+    export interface BalancerTag {
+        /**
+         * The tag's key.
+         */
+        key: string;
+        /**
+         * The tag's value.
+         */
+        value: string;
+    }
+
+    export interface ListenerTag {
+        /**
+         * The tag's key.
+         */
+        key: string;
+        /**
+         * The tag's value.
+         */
+        value: string;
+    }
+
+    export interface ListenerTlsConfig {
+        /**
+         * Contains one or more certificate chains to present to the other side of the connection.
+         */
+        certificateIds: string[];
+        /**
+         * List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
+         */
+        cipherSuites: string[];
+        /**
+         * MaxVersion contains the maximum SSL/TLS version that is acceptable.
+         */
+        maxVersion: string;
+        /**
+         * MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
+         */
+        minVersion: string;
+        /**
+         * Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
+         */
+        preferServerCipherSuites: boolean;
+        /**
+         * May be set to true to disable session ticket (resumption) support.
+         */
+        sessionTicketsDisabled: boolean;
+    }
+
+    export interface RoutingRuleTag {
+        /**
+         * The tag's key.
+         */
+        key: string;
+        /**
+         * The tag's value.
+         */
+        value: string;
+    }
+
+    export interface TargetSetHealthCheck {
+        /**
+         * Total number of allowed healthy Targets.
+         */
+        healthyThreshold: number;
+        /**
+         * The interval for the health check.
+         */
+        interval: number;
+        /**
+         * The path to perform the health check.
+         */
+        path: string;
+        /**
+         * The port on which the load balancer is listening.
+         */
+        port: number;
+        /**
+         * The protocol to allow connections to the target for the health check.
+         */
+        protocol: string;
+        /**
+         * The time out for the health check.
+         */
+        timeout: number;
+        /**
+         * Total number of allowed unhealthy Targets.
+         */
+        unhealthyThreshold: number;
+    }
+
+    export interface TargetSetTag {
+        /**
+         * The tag's key.
+         */
+        key: string;
+        /**
+         * The tag's value.
+         */
+        value: string;
+    }
+
+    export interface TargetTag {
+        /**
+         * The tag's key.
+         */
+        key: string;
+        /**
+         * The tag's value.
+         */
+        value: string;
     }
 }

@@ -3,7 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .elastigroup import *
-from .beanstalk import *
-from .mr_scalar import *
-from .ocean import *
+from .balancer import *
+from .deployment import *
+from .listener import *
+from .routing_rule import *
+from .target import *
+from .target_set import *

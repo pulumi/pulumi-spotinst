@@ -5,6 +5,609 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 
 export namespace aws {
+    export interface BeanstalkDeploymentPreferences {
+        /**
+         * Should roll perform automatically
+         */
+        automaticRoll?: pulumi.Input<boolean>;
+        /**
+         * Percent size of each batch
+         */
+        batchSizePercentage?: pulumi.Input<number>;
+        /**
+         * Amount of time to wait between batches
+         */
+        gracePeriod?: pulumi.Input<number>;
+        /**
+         * Strategy parameters
+         */
+        strategies?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkDeploymentPreferencesStrategy>[]>;
+    }
+
+    export interface BeanstalkDeploymentPreferencesStrategy {
+        /**
+         * Action to take
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Bool value if to wait to drain instance 
+         */
+        shouldDrainInstances?: pulumi.Input<boolean>;
+    }
+
+    export interface BeanstalkManagedActions {
+        /**
+         * Platform Update parameters
+         */
+        platformUpdate?: pulumi.Input<inputs.aws.BeanstalkManagedActionsPlatformUpdate>;
+    }
+
+    export interface BeanstalkManagedActionsPlatformUpdate {
+        /**
+         * Actions to perform (options: timeWindow, never)
+         */
+        performAt?: pulumi.Input<string>;
+        /**
+         * Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+         */
+        timeWindow?: pulumi.Input<string>;
+        /**
+         * - Level to update
+         */
+        updateLevel?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupEbsBlockDevice {
+        deleteOnTermination?: pulumi.Input<boolean>;
+        deviceName: pulumi.Input<string>;
+        encrypted?: pulumi.Input<boolean>;
+        iops?: pulumi.Input<number>;
+        kmsKeyId?: pulumi.Input<string>;
+        snapshotId?: pulumi.Input<string>;
+        volumeSize?: pulumi.Input<number>;
+        volumeType?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupEphemeralBlockDevice {
+        deviceName: pulumi.Input<string>;
+        virtualName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupInstanceTypesWeight {
+        /**
+         * Name of instance type (String).
+         */
+        instanceType: pulumi.Input<string>;
+        /**
+         * Weight per instance type (Integer).
+         */
+        weight: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationBeanstalk {
+        deploymentPreferences?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkDeploymentPreferences>;
+        environmentId?: pulumi.Input<string>;
+        managedActions?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkManagedActions>;
+    }
+
+    export interface ElastigroupIntegrationBeanstalkDeploymentPreferences {
+        automaticRoll?: pulumi.Input<boolean>;
+        batchSizePercentage?: pulumi.Input<number>;
+        gracePeriod?: pulumi.Input<number>;
+        strategy?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy>;
+    }
+
+    export interface ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
+        action?: pulumi.Input<string>;
+        shouldDrainInstances?: pulumi.Input<boolean>;
+    }
+
+    export interface ElastigroupIntegrationBeanstalkManagedActions {
+        platformUpdate?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate>;
+    }
+
+    export interface ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
+        /**
+         * In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+         */
+        performAt?: pulumi.Input<string>;
+        timeWindow?: pulumi.Input<string>;
+        updateLevel?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationCodedeploy {
+        cleanupOnFailure: pulumi.Input<boolean>;
+        deploymentGroups: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeployDeploymentGroup>[]>;
+        terminateInstanceOnFailure: pulumi.Input<boolean>;
+    }
+
+    export interface ElastigroupIntegrationCodedeployDeploymentGroup {
+        applicationName: pulumi.Input<string>;
+        deploymentGroupName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationDockerSwarm {
+        autoscaleCooldown?: pulumi.Input<number>;
+        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleDown>;
+        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom>;
+        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        masterHost: pulumi.Input<string>;
+        masterPort: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationDockerSwarmAutoscaleDown {
+        evaluationPeriods?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
+        cpuPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationEcs {
+        autoscaleAttributes?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleAttribute>[]>;
+        autoscaleCooldown?: pulumi.Input<number>;
+        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleDown>;
+        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleHeadroom>;
+        autoscaleIsAutoConfig?: pulumi.Input<boolean>;
+        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        autoscaleScaleDownNonServiceTasks?: pulumi.Input<boolean>;
+        clusterName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationEcsAutoscaleAttribute {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationEcsAutoscaleDown {
+        evaluationPeriods?: pulumi.Input<number>;
+        maxScaleDownPercentage?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationEcsAutoscaleHeadroom {
+        cpuPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationGitlab {
+        runner?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlabRunner>;
+    }
+
+    export interface ElastigroupIntegrationGitlabRunner {
+        isEnabled?: pulumi.Input<boolean>;
+    }
+
+    export interface ElastigroupIntegrationKubernetes {
+        apiServer?: pulumi.Input<string>;
+        autoscaleCooldown?: pulumi.Input<number>;
+        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleDown>;
+        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleHeadroom>;
+        autoscaleIsAutoConfig?: pulumi.Input<boolean>;
+        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleLabel>[]>;
+        clusterIdentifier?: pulumi.Input<string>;
+        integrationMode?: pulumi.Input<string>;
+        token?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationKubernetesAutoscaleDown {
+        evaluationPeriods?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationKubernetesAutoscaleHeadroom {
+        cpuPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationKubernetesAutoscaleLabel {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationMesosphere {
+        apiServer: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationMultaiRuntime {
+        deploymentId: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationNomad {
+        aclToken?: pulumi.Input<string>;
+        autoscaleConstraints?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleConstraint>[]>;
+        autoscaleCooldown?: pulumi.Input<number>;
+        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleDown>;
+        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleHeadroom>;
+        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        masterHost: pulumi.Input<string>;
+        masterPort: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationNomadAutoscaleConstraint {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationNomadAutoscaleDown {
+        evaluationPeriods?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationNomadAutoscaleHeadroom {
+        cpuPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationRancher {
+        accessKey: pulumi.Input<string>;
+        masterHost: pulumi.Input<string>;
+        secretKey: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationRoute53 {
+        domains: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53Domain>[]>;
+    }
+
+    export interface ElastigroupIntegrationRoute53Domain {
+        hostedZoneId: pulumi.Input<string>;
+        recordSets: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53DomainRecordSet>[]>;
+        spotinstAcctId?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationRoute53DomainRecordSet {
+        /**
+         * The group name.
+         */
+        name: pulumi.Input<string>;
+        usePublicIp?: pulumi.Input<boolean>;
+    }
+
+    export interface ElastigroupMultaiTargetSet {
+        balancerId: pulumi.Input<string>;
+        targetSetId: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupNetworkInterface {
+        associateIpv6Address?: pulumi.Input<boolean>;
+        associatePublicIpAddress?: pulumi.Input<boolean>;
+        deleteOnTermination?: pulumi.Input<boolean>;
+        /**
+         * The group description.
+         */
+        description?: pulumi.Input<string>;
+        deviceIndex: pulumi.Input<string>;
+        networkInterfaceId?: pulumi.Input<string>;
+        privateIpAddress?: pulumi.Input<string>;
+        secondaryPrivateIpAddressCount?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupRevertToSpot {
+        /**
+         * In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+         */
+        performAt: pulumi.Input<string>;
+        /**
+         * Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
+         */
+        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ElastigroupScalingDownPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicyDimension>[]>;
+        evaluationPeriods?: pulumi.Input<number>;
+        isEnabled?: pulumi.Input<boolean>;
+        maxTargetCapacity?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string>;
+        metricName: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        target?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingDownPolicyDimension {
+        /**
+         * The group name.
+         */
+        name: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingStrategy {
+        /**
+         * Specify whether to terminate instances at the end of each billing hour.
+         */
+        terminateAtEndOfBillingHour?: pulumi.Input<boolean>;
+        /**
+         * - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `"default"`, `"newestInstance"`.
+         */
+        terminationPolicy?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingTargetPolicy {
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicyDimension>[]>;
+        metricName: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        policyName: pulumi.Input<string>;
+        predictiveMode?: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        target: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingTargetPolicyDimension {
+        /**
+         * The group name.
+         */
+        name: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingUpPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicyDimension>[]>;
+        evaluationPeriods?: pulumi.Input<number>;
+        isEnabled?: pulumi.Input<boolean>;
+        maxTargetCapacity?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string>;
+        metricName: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        target?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingUpPolicyDimension {
+        /**
+         * The group name.
+         */
+        name: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScheduledTask {
+        adjustment?: pulumi.Input<string>;
+        adjustmentPercentage?: pulumi.Input<string>;
+        batchSizePercentage?: pulumi.Input<string>;
+        cronExpression?: pulumi.Input<string>;
+        frequency?: pulumi.Input<string>;
+        gracePeriod?: pulumi.Input<string>;
+        isEnabled?: pulumi.Input<boolean>;
+        maxCapacity?: pulumi.Input<string>;
+        minCapacity?: pulumi.Input<string>;
+        scaleMaxCapacity?: pulumi.Input<string>;
+        scaleMinCapacity?: pulumi.Input<string>;
+        scaleTargetCapacity?: pulumi.Input<string>;
+        startTime?: pulumi.Input<string>;
+        targetCapacity?: pulumi.Input<string>;
+        taskType: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupSignal {
+        /**
+         * The group name.
+         */
+        name: pulumi.Input<string>;
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupStatefulDeallocation {
+        shouldDeleteImages?: pulumi.Input<boolean>;
+        shouldDeleteNetworkInterfaces?: pulumi.Input<boolean>;
+        shouldDeleteSnapshots?: pulumi.Input<boolean>;
+        shouldDeleteVolumes?: pulumi.Input<boolean>;
+    }
+
+    export interface ElastigroupTag {
+        key?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupUpdatePolicy {
+        autoApplyTags?: pulumi.Input<boolean>;
+        rollConfig?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfig>;
+        shouldResumeStateful: pulumi.Input<boolean>;
+        shouldRoll: pulumi.Input<boolean>;
+    }
+
+    export interface ElastigroupUpdatePolicyRollConfig {
+        batchSizePercentage: pulumi.Input<number>;
+        gracePeriod?: pulumi.Input<number>;
+        /**
+         * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+         */
+        healthCheckType?: pulumi.Input<string>;
+        strategy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfigStrategy>;
+        waitForRollPercentage?: pulumi.Input<number>;
+        waitForRollTimeout?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupUpdatePolicyRollConfigStrategy {
+        action: pulumi.Input<string>;
+        batchMinHealthyPercentage?: pulumi.Input<number>;
+        shouldDrainInstances?: pulumi.Input<boolean>;
+    }
+
+    export interface MrScalarApplication {
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The MrScaler name.
+         */
+        name: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
+    }
+
+    export interface MrScalarBootstrapActionsFile {
+        bucket: pulumi.Input<string>;
+        key: pulumi.Input<string>;
+    }
+
+    export interface MrScalarConfigurationsFile {
+        bucket: pulumi.Input<string>;
+        key: pulumi.Input<string>;
+    }
+
+    export interface MrScalarCoreEbsBlockDevice {
+        iops?: pulumi.Input<number>;
+        sizeInGb: pulumi.Input<number>;
+        volumeType: pulumi.Input<string>;
+        volumesPerInstance?: pulumi.Input<number>;
+    }
+
+    export interface MrScalarCoreScalingDownPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<{[key: string]: any}>;
+        evaluationPeriods?: pulumi.Input<number>;
+        maxTargetCapacity?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string>;
+        metricName: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        target?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
+    export interface MrScalarCoreScalingUpPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<{[key: string]: any}>;
+        evaluationPeriods?: pulumi.Input<number>;
+        maxTargetCapacity?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string>;
+        metricName: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        target?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
+    export interface MrScalarInstanceWeight {
+        instanceType: pulumi.Input<string>;
+        weightedCapacity: pulumi.Input<number>;
+    }
+
+    export interface MrScalarMasterEbsBlockDevice {
+        iops?: pulumi.Input<number>;
+        sizeInGb: pulumi.Input<number>;
+        volumeType: pulumi.Input<string>;
+        volumesPerInstance?: pulumi.Input<number>;
+    }
+
+    export interface MrScalarProvisioningTimeout {
+        timeout: pulumi.Input<number>;
+        timeoutAction: pulumi.Input<string>;
+    }
+
+    export interface MrScalarScheduledTask {
+        cron: pulumi.Input<string>;
+        desiredCapacity?: pulumi.Input<string>;
+        instanceGroupType: pulumi.Input<string>;
+        isEnabled?: pulumi.Input<boolean>;
+        maxCapacity?: pulumi.Input<string>;
+        minCapacity?: pulumi.Input<string>;
+        taskType: pulumi.Input<string>;
+    }
+
+    export interface MrScalarStepsFile {
+        bucket: pulumi.Input<string>;
+        key: pulumi.Input<string>;
+    }
+
+    export interface MrScalarTag {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface MrScalarTaskEbsBlockDevice {
+        iops?: pulumi.Input<number>;
+        sizeInGb: pulumi.Input<number>;
+        volumeType: pulumi.Input<string>;
+        volumesPerInstance?: pulumi.Input<number>;
+    }
+
+    export interface MrScalarTaskScalingDownPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<{[key: string]: any}>;
+        evaluationPeriods?: pulumi.Input<number>;
+        maxTargetCapacity?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string>;
+        metricName: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        target?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
+    export interface MrScalarTaskScalingUpPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<{[key: string]: any}>;
+        evaluationPeriods?: pulumi.Input<number>;
+        maxTargetCapacity?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string>;
+        metricName: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        target?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
     export interface OceanAutoscaler {
         /**
          * Cooldown period between scaling actions.
@@ -102,5 +705,508 @@ export namespace aws {
 
     export interface OceanUpdatePolicyRollConfig {
         batchSizePercentage: pulumi.Input<number>;
+    }
+}
+
+export namespace azure {
+    export interface ElastigroupHealthCheck {
+        autoHealing?: pulumi.Input<boolean>;
+        gracePeriod?: pulumi.Input<number>;
+        healthCheckType: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupImage {
+        customs?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImageCustom>[]>;
+        marketplaces?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImageMarketplace>[]>;
+    }
+
+    export interface ElastigroupImageCustom {
+        imageName: pulumi.Input<string>;
+        /**
+         * The Resource Group that the user-assigned managed identity resides in.
+         */
+        resourceGroupName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupImageMarketplace {
+        offer: pulumi.Input<string>;
+        publisher: pulumi.Input<string>;
+        sku: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationKubernetes {
+        clusterIdentifier: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationMultaiRuntime {
+        deploymentId: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupLoadBalancer {
+        autoWeight?: pulumi.Input<boolean>;
+        balancerId?: pulumi.Input<string>;
+        targetSetId?: pulumi.Input<string>;
+        type: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupLogin {
+        password?: pulumi.Input<string>;
+        sshPublicKey?: pulumi.Input<string>;
+        userName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupManagedServiceIdentity {
+        /**
+         * The name of the managed identity.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The Resource Group that the user-assigned managed identity resides in.
+         */
+        resourceGroupName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupNetwork {
+        additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupNetworkAdditionalIpConfig>[]>;
+        assignPublicIp?: pulumi.Input<boolean>;
+        /**
+         * The Resource Group that the user-assigned managed identity resides in.
+         */
+        resourceGroupName: pulumi.Input<string>;
+        subnetName: pulumi.Input<string>;
+        virtualNetworkName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupNetworkAdditionalIpConfig {
+        /**
+         * The name of the managed identity.
+         */
+        name: pulumi.Input<string>;
+        privateIpVersion?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingDownPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicyDimension>[]>;
+        evaluationPeriods?: pulumi.Input<number>;
+        maxTargetCapacity?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string>;
+        metricName: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        target?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingDownPolicyDimension {
+        /**
+         * The name of the managed identity.
+         */
+        name: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingUpPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicyDimension>[]>;
+        evaluationPeriods?: pulumi.Input<number>;
+        maxTargetCapacity?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string>;
+        metricName: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        target?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingUpPolicyDimension {
+        /**
+         * The name of the managed identity.
+         */
+        name: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScheduledTask {
+        adjustment?: pulumi.Input<string>;
+        adjustmentPercentage?: pulumi.Input<string>;
+        batchSizePercentage?: pulumi.Input<string>;
+        cronExpression: pulumi.Input<string>;
+        gracePeriod?: pulumi.Input<string>;
+        isEnabled?: pulumi.Input<boolean>;
+        scaleMaxCapacity?: pulumi.Input<string>;
+        scaleMinCapacity?: pulumi.Input<string>;
+        scaleTargetCapacity?: pulumi.Input<string>;
+        taskType: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupStrategy {
+        /**
+         * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+         */
+        drainingTimeout?: pulumi.Input<number>;
+        /**
+         * Percentage of Low Priority instances to maintain. Required if `odCount` is not specified.
+         */
+        lowPriorityPercentage?: pulumi.Input<number>;
+        /**
+         * Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
+         */
+        odCount?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupUpdatePolicy {
+        rollConfig?: pulumi.Input<inputs.azure.ElastigroupUpdatePolicyRollConfig>;
+        shouldRoll: pulumi.Input<boolean>;
+    }
+
+    export interface ElastigroupUpdatePolicyRollConfig {
+        batchSizePercentage: pulumi.Input<number>;
+        gracePeriod?: pulumi.Input<number>;
+        healthCheckType?: pulumi.Input<string>;
+    }
+}
+
+export namespace gcp {
+    export interface ElastigroupBackendService {
+        locationType?: pulumi.Input<string>;
+        namedPorts?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendServiceNamedPort>[]>;
+        scheme?: pulumi.Input<string>;
+        serviceName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupBackendServiceNamedPort {
+        /**
+         * The group name. 
+         */
+        name: pulumi.Input<string>;
+        ports: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ElastigroupDisk {
+        autoDelete?: pulumi.Input<boolean>;
+        boot?: pulumi.Input<boolean>;
+        deviceName?: pulumi.Input<string>;
+        initializeParams?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupDiskInitializeParam>[]>;
+        interface?: pulumi.Input<string>;
+        mode?: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupDiskInitializeParam {
+        diskSizeGb?: pulumi.Input<string>;
+        diskType?: pulumi.Input<string>;
+        sourceImage: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupGpu {
+        count: pulumi.Input<number>;
+        type: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupInstanceTypesCustom {
+        /**
+         * The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
+         */
+        memoryGib: pulumi.Input<number>;
+        vcpu: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationDockerSwarm {
+        masterHost: pulumi.Input<string>;
+        masterPort: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationGke {
+        autoUpdate?: pulumi.Input<boolean>;
+        autoscaleCooldown?: pulumi.Input<number>;
+        autoscaleDown?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGkeAutoscaleDown>;
+        autoscaleHeadroom?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGkeAutoscaleHeadroom>;
+        autoscaleIsAutoConfig?: pulumi.Input<boolean>;
+        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupIntegrationGkeAutoscaleLabel>[]>;
+        clusterId?: pulumi.Input<string>;
+        location?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleDown {
+        evaluationPeriods?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleHeadroom {
+        cpuPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleLabel {
+        /**
+         * Labels key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Labels value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupLabel {
+        /**
+         * Labels key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Labels value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupMetadata {
+        /**
+         * Labels key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Labels value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupNetworkInterface {
+        accessConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterfaceAccessConfig>[]>;
+        aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterfaceAliasIpRange>[]>;
+        network: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupNetworkInterfaceAccessConfig {
+        /**
+         * The group name. 
+         */
+        name?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupNetworkInterfaceAliasIpRange {
+        ipCidrRange: pulumi.Input<string>;
+        subnetworkRangeName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingDownPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicyDimension>[]>;
+        evaluationPeriods?: pulumi.Input<number>;
+        metricName: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingDownPolicyDimension {
+        /**
+         * The group name. 
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Labels value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingUpPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicyDimension>[]>;
+        evaluationPeriods?: pulumi.Input<number>;
+        metricName: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingUpPolicyDimension {
+        /**
+         * The group name. 
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Labels value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScheduledTask {
+        cronExpression?: pulumi.Input<string>;
+        isEnabled?: pulumi.Input<boolean>;
+        maxCapacity?: pulumi.Input<string>;
+        minCapacity?: pulumi.Input<string>;
+        targetCapacity?: pulumi.Input<string>;
+        taskType: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupSubnet {
+        /**
+         * The region for the group of subnets.
+         */
+        region: pulumi.Input<string>;
+        /**
+         * The names of the subnets in the region.
+         */
+        subnetNames: pulumi.Input<pulumi.Input<string>[]>;
+    }
+}
+
+export namespace multai {
+    export interface BalancerConnectionTimeouts {
+        /**
+         * The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
+         */
+        draining?: pulumi.Input<number>;
+        /**
+         * The idle timeout value, in seconds. (range: 1 - 3600).
+         */
+        idle?: pulumi.Input<number>;
+    }
+
+    export interface BalancerTag {
+        /**
+         * The tag's key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The tag's value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ListenerTag {
+        /**
+         * The tag's key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The tag's value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ListenerTlsConfig {
+        /**
+         * Contains one or more certificate chains to present to the other side of the connection.
+         */
+        certificateIds: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
+         */
+        cipherSuites: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * MaxVersion contains the maximum SSL/TLS version that is acceptable.
+         */
+        maxVersion: pulumi.Input<string>;
+        /**
+         * MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
+         */
+        minVersion: pulumi.Input<string>;
+        /**
+         * Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
+         */
+        preferServerCipherSuites: pulumi.Input<boolean>;
+        /**
+         * May be set to true to disable session ticket (resumption) support.
+         */
+        sessionTicketsDisabled: pulumi.Input<boolean>;
+    }
+
+    export interface RoutingRuleTag {
+        /**
+         * The tag's key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The tag's value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface TargetSetHealthCheck {
+        /**
+         * Total number of allowed healthy Targets.
+         */
+        healthyThreshold: pulumi.Input<number>;
+        /**
+         * The interval for the health check.
+         */
+        interval: pulumi.Input<number>;
+        /**
+         * The path to perform the health check.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * The port on which the load balancer is listening.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The protocol to allow connections to the target for the health check.
+         */
+        protocol: pulumi.Input<string>;
+        /**
+         * The time out for the health check.
+         */
+        timeout: pulumi.Input<number>;
+        /**
+         * Total number of allowed unhealthy Targets.
+         */
+        unhealthyThreshold: pulumi.Input<number>;
+    }
+
+    export interface TargetSetTag {
+        /**
+         * The tag's key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The tag's value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface TargetTag {
+        /**
+         * The tag's key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The tag's value.
+         */
+        value: pulumi.Input<string>;
     }
 }

@@ -129,7 +129,7 @@ func Provider() tfbridge.ProviderInfo {
 					"gpu": {Name: "gpu"},
 				},
 			},
-			"spotinst_elastigroup_gke":     {Tok: makeResource(gkeMod, "Elastigroup")},
+			// "spotinst_elastigroup_gke":     {Tok: makeResource(gkeMod, "Elastigroup")},
 			"spotinst_mrscaler_aws":        {Tok: makeResource(awsMod, "MrScalar")},
 			"spotinst_multai_balancer":     {Tok: makeResource(multaiMod, "Balancer")},
 			"spotinst_multai_deployment":   {Tok: makeResource(multaiMod, "Deployment")},

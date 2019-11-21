@@ -3,9 +3,13 @@
 
 // Export members:
 export * from "./provider";
+export * from "./subscription";
 
 // Export sub-modules:
 import * as aws from "./aws/index";
+import * as azure from "./azure/index";
 import * as config from "./config/index";
+import * as gcp from "./gcp/index";
+import * as multai from "./multai/index";
 import * as types from "./types/index";
-export {aws, config, types};
+export {aws, azure, config, gcp, multai, types};
