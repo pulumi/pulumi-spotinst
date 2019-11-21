@@ -35,13 +35,13 @@ func TestMountTarget(t *testing.T) {
 
 	base := integration.ProgramTestOptions{
 		Config: map[string]string{
-			//"xyz:configPoint": configPoint,
+			//"spotinst:configPoint": configPoint,
 		},
 	}
 
 	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"@pulumi/xyz",
+			"@pulumi/spotinst",
 		},
 	})
 
@@ -49,7 +49,7 @@ func TestMountTarget(t *testing.T) {
 		// Each test runs the program referenced in Dir, and then each of EditDirs
 		// runs in turn.
 		//baseJS.With(integration.ProgramTestOptions{
-		//	Dir: path.Join(cwd, "xyz_test", "step1"),
+		//	Dir: path.Join(cwd, "spotinst_test", "step1"),
 		//	EditDirs: []integration.EditDir{
 		//		{
 		//			Dir:      "step2",
