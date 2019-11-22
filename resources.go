@@ -31,7 +31,6 @@ const (
 	mainPkg = "spotinst"
 	// modules:
 	awsMod          = "aws"
-	oceanMod        = "ocean/aws"
 	gcpMod          = "gcp"
 	gkeMod          = "gke"
 	azureMod        = "azure"
@@ -130,15 +129,19 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			// "spotinst_elastigroup_gke":     {Tok: makeResource(gkeMod, "Elastigroup")},
-			"spotinst_mrscaler_aws":        {Tok: makeResource(awsMod, "MrScalar")},
-			"spotinst_multai_balancer":     {Tok: makeResource(multaiMod, "Balancer")},
-			"spotinst_multai_deployment":   {Tok: makeResource(multaiMod, "Deployment")},
-			"spotinst_multai_listener":     {Tok: makeResource(multaiMod, "Listener")},
-			"spotinst_multai_routing_rule": {Tok: makeResource(multaiMod, "RoutingRule")},
-			"spotinst_multai_target":       {Tok: makeResource(multaiMod, "Target")},
-			"spotinst_multai_target_set":   {Tok: makeResource(multaiMod, "TargetSet")},
-			"spotinst_ocean_aws":           {Tok: makeResource(awsMod, "Ocean")},
-			"spotinst_subscription":        {Tok: makeResource(subscriptionMod, "Subscription")},
+			"spotinst_mrscaler_aws":                 {Tok: makeResource(awsMod, "MrScalar")},
+			"spotinst_multai_balancer":              {Tok: makeResource(multaiMod, "Balancer")},
+			"spotinst_multai_deployment":            {Tok: makeResource(multaiMod, "Deployment")},
+			"spotinst_multai_listener":              {Tok: makeResource(multaiMod, "Listener")},
+			"spotinst_multai_routing_rule":          {Tok: makeResource(multaiMod, "RoutingRule")},
+			"spotinst_multai_target":                {Tok: makeResource(multaiMod, "Target")},
+			"spotinst_multai_target_set":            {Tok: makeResource(multaiMod, "TargetSet")},
+			"spotinst_ocean_aws":                    {Tok: makeResource(awsMod, "Ocean")},
+			"spotinst_ocean_aws_launch_spec":        {Tok: makeResource(awsMod, "OceanLaunchSpec")},
+			"spotinst_ocean_gke_import":             {Tok: makeResource(gkeMod, "OceanImport")},
+			"spotinst_ocean_gke_launch_spec":        {Tok: makeResource(gkeMod, "OceanLaunchSpec")},
+			"spotinst_ocean_gke_launch_spec_import": {Tok: makeResource(gkeMod, "OceanLaunchSpecImport")},
+			"spotinst_subscription":                 {Tok: makeResource(subscriptionMod, "Subscription")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
