@@ -31,6 +31,7 @@ const (
 	mainPkg = "spotinst"
 	// modules:
 	awsMod          = "aws"
+	ecsMod          = "ecs"
 	gcpMod          = "gcp"
 	gkeMod          = "gke"
 	azureMod        = "azure"
@@ -143,6 +144,8 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_multai_target_set":            {Tok: makeResource(multaiMod, "TargetSet")},
 			"spotinst_ocean_aws":                    {Tok: makeResource(awsMod, "Ocean")},
 			"spotinst_ocean_aws_launch_spec":        {Tok: makeResource(awsMod, "OceanLaunchSpec")},
+			"spotinst_ocean_ecs":                    {Tok: makeResource(ecsMod, "Ocean")},
+			"spotinst_ocean_ecs_launch_spec":        {Tok: makeResource(ecsMod, "OceanLaunchSpec")},
 			"spotinst_ocean_gke_import":             {Tok: makeResource(gkeMod, "OceanImport")},
 			"spotinst_ocean_gke_launch_spec":        {Tok: makeResource(gkeMod, "OceanLaunchSpec")},
 			"spotinst_ocean_gke_launch_spec_import": {Tok: makeResource(gkeMod, "OceanLaunchSpecImport")},

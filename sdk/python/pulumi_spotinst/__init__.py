@@ -4,7 +4,7 @@
 
 import importlib
 # Make subpackages available:
-__all__ = ['aws', 'azure', 'config', 'gcp', 'multai']
+__all__ = ['aws', 'azure', 'config', 'ecs', 'gcp', 'gke', 'multai']
 for pkg in __all__:
     if pkg != 'config':
         importlib.import_module(f'{__name__}.{pkg}')

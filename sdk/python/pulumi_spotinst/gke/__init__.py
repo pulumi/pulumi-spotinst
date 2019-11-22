@@ -4,7 +4,6 @@
 
 # Export this package's modules as members:
 from .elastigroup import *
-from .beanstalk import *
-from .mr_scalar import *
-from .ocean import *
+from .ocean_import import *
 from .ocean_launch_spec import *
+from .ocean_launch_spec_import import *

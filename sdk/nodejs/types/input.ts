@@ -672,6 +672,32 @@ export namespace aws {
         maxVcpu?: pulumi.Input<number>;
     }
 
+    export interface OceanLaunchSpecLabel {
+        /**
+         * The tag key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The tag value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecTaint {
+        /**
+         * The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
+         */
+        effect: pulumi.Input<string>;
+        /**
+         * The tag key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The tag value.
+         */
+        value: pulumi.Input<string>;
+    }
+
     export interface OceanLoadBalancer {
         /**
          * Required if type is set to TARGET_GROUP
@@ -883,6 +909,99 @@ export namespace azure {
     }
 }
 
+export namespace ecs {
+    export interface OceanAutoscaler {
+        /**
+         * Cooldown period between scaling actions.
+         */
+        cooldown?: pulumi.Input<number>;
+        /**
+         * Auto Scaling scale down operations.
+         */
+        down?: pulumi.Input<inputs.ecs.OceanAutoscalerDown>;
+        /**
+         * Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+         */
+        headroom?: pulumi.Input<inputs.ecs.OceanAutoscalerHeadroom>;
+        /**
+         * Automatically configure and optimize headroom resources.
+         */
+        isAutoConfig?: pulumi.Input<boolean>;
+        /**
+         * Enable the Ocean ECS autoscaler.
+         */
+        isEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
+        resourceLimits?: pulumi.Input<inputs.ecs.OceanAutoscalerResourceLimits>;
+    }
+
+    export interface OceanAutoscalerDown {
+        /**
+         * Would represent the maximum % to scale-down. Number between 1-100
+         */
+        maxScaleDownPercentage?: pulumi.Input<number>;
+    }
+
+    export interface OceanAutoscalerHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MB) to allocate the headroom.
+         */
+        memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
+        numOfUnits?: pulumi.Input<number>;
+    }
+
+    export interface OceanAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
+        maxMemoryGib?: pulumi.Input<number>;
+        /**
+         * The maximum cpu in vCPU units that can be allocated to the cluster.
+         */
+        maxVcpu?: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecAttribute {
+        /**
+         * The label key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The label value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface OceanTag {
+        /**
+         * The tag key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The tag value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface OceanUpdatePolicy {
+        rollConfig?: pulumi.Input<inputs.ecs.OceanUpdatePolicyRollConfig>;
+        shouldRoll: pulumi.Input<boolean>;
+    }
+
+    export interface OceanUpdatePolicyRollConfig {
+        batchSizePercentage: pulumi.Input<number>;
+    }
+}
+
 export namespace gcp {
     export interface ElastigroupBackendService {
         locationType?: pulumi.Input<string>;
@@ -1082,6 +1201,192 @@ export namespace gcp {
          * The names of the subnets in the region.
          */
         subnetNames: pulumi.Input<pulumi.Input<string>[]>;
+    }
+}
+
+export namespace gke {
+    export interface ElastigroupBackendService {
+        locationType?: pulumi.Input<string>;
+        namedPorts?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendServiceNamedPort>[]>;
+        scheme?: pulumi.Input<string>;
+        serviceName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupBackendServiceNamedPort {
+        name: pulumi.Input<string>;
+        ports: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ElastigroupDisk {
+        autoDelete?: pulumi.Input<boolean>;
+        boot?: pulumi.Input<boolean>;
+        deviceName?: pulumi.Input<string>;
+        initializeParams?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDiskInitializeParam>[]>;
+        interface?: pulumi.Input<string>;
+        mode?: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupDiskInitializeParam {
+        diskSizeGb?: pulumi.Input<string>;
+        diskType?: pulumi.Input<string>;
+        sourceImage: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupGpu {
+        count: pulumi.Input<number>;
+        type: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupInstanceTypesCustom {
+        memoryGib: pulumi.Input<number>;
+        vcpu: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationDockerSwarm {
+        masterHost: pulumi.Input<string>;
+        masterPort: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationGke {
+        autoUpdate?: pulumi.Input<boolean>;
+        autoscaleCooldown?: pulumi.Input<number>;
+        autoscaleDown?: pulumi.Input<inputs.gke.ElastigroupIntegrationGkeAutoscaleDown>;
+        autoscaleHeadroom?: pulumi.Input<inputs.gke.ElastigroupIntegrationGkeAutoscaleHeadroom>;
+        autoscaleIsAutoConfig?: pulumi.Input<boolean>;
+        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupIntegrationGkeAutoscaleLabel>[]>;
+        /**
+         * The name of the GKE cluster you wish to import.
+         */
+        clusterId?: pulumi.Input<string>;
+        location?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleDown {
+        evaluationPeriods?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleHeadroom {
+        cpuPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleLabel {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupLabel {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupMetadata {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupNetworkInterface {
+        accessConfigs?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterfaceAccessConfig>[]>;
+        aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterfaceAliasIpRange>[]>;
+        network: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupNetworkInterfaceAccessConfig {
+        name?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupNetworkInterfaceAliasIpRange {
+        ipCidrRange: pulumi.Input<string>;
+        subnetworkRangeName: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingDownPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicyDimension>[]>;
+        evaluationPeriods?: pulumi.Input<number>;
+        metricName: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingDownPolicyDimension {
+        name: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingUpPolicy {
+        actionType?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicyDimension>[]>;
+        evaluationPeriods?: pulumi.Input<number>;
+        metricName: pulumi.Input<string>;
+        namespace: pulumi.Input<string>;
+        operator?: pulumi.Input<string>;
+        period?: pulumi.Input<number>;
+        policyName: pulumi.Input<string>;
+        source?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string>;
+        threshold: pulumi.Input<number>;
+        unit: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupScalingUpPolicyDimension {
+        name: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface OceanImportBackendService {
+        /**
+         * Sets which location the backend services will be active. Valid values: `regional`, `global`.
+         */
+        locationType?: pulumi.Input<string>;
+        namedPorts?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendServiceNamedPort>[]>;
+        /**
+         * Use when `locationType` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+         */
+        scheme?: pulumi.Input<string>;
+        /**
+         * The name of the backend service.
+         */
+        serviceName: pulumi.Input<string>;
+    }
+
+    export interface OceanImportBackendServiceNamedPort {
+        name: pulumi.Input<string>;
+        /**
+         * A list of ports.
+         */
+        ports: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OceanLaunchSpecLabel {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecMetadata {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecTaint {
+        effect: pulumi.Input<string>;
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
     }
 }
 

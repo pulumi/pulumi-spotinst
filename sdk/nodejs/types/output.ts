@@ -672,6 +672,32 @@ export namespace aws {
         maxVcpu?: number;
     }
 
+    export interface OceanLaunchSpecLabel {
+        /**
+         * The tag key.
+         */
+        key: string;
+        /**
+         * The tag value.
+         */
+        value: string;
+    }
+
+    export interface OceanLaunchSpecTaint {
+        /**
+         * The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
+         */
+        effect: string;
+        /**
+         * The tag key.
+         */
+        key: string;
+        /**
+         * The tag value.
+         */
+        value: string;
+    }
+
     export interface OceanLoadBalancer {
         /**
          * Required if type is set to TARGET_GROUP
@@ -883,6 +909,99 @@ export namespace azure {
     }
 }
 
+export namespace ecs {
+    export interface OceanAutoscaler {
+        /**
+         * Cooldown period between scaling actions.
+         */
+        cooldown?: number;
+        /**
+         * Auto Scaling scale down operations.
+         */
+        down?: outputs.ecs.OceanAutoscalerDown;
+        /**
+         * Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+         */
+        headroom?: outputs.ecs.OceanAutoscalerHeadroom;
+        /**
+         * Automatically configure and optimize headroom resources.
+         */
+        isAutoConfig?: boolean;
+        /**
+         * Enable the Ocean ECS autoscaler.
+         */
+        isEnabled?: boolean;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
+        resourceLimits?: outputs.ecs.OceanAutoscalerResourceLimits;
+    }
+
+    export interface OceanAutoscalerDown {
+        /**
+         * Would represent the maximum % to scale-down. Number between 1-100
+         */
+        maxScaleDownPercentage?: number;
+    }
+
+    export interface OceanAutoscalerHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: number;
+        /**
+         * Optionally configure the amount of memory (MB) to allocate the headroom.
+         */
+        memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
+        numOfUnits?: number;
+    }
+
+    export interface OceanAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
+        maxMemoryGib?: number;
+        /**
+         * The maximum cpu in vCPU units that can be allocated to the cluster.
+         */
+        maxVcpu?: number;
+    }
+
+    export interface OceanLaunchSpecAttribute {
+        /**
+         * The label key.
+         */
+        key: string;
+        /**
+         * The label value.
+         */
+        value: string;
+    }
+
+    export interface OceanTag {
+        /**
+         * The tag key.
+         */
+        key: string;
+        /**
+         * The tag value.
+         */
+        value: string;
+    }
+
+    export interface OceanUpdatePolicy {
+        rollConfig?: outputs.ecs.OceanUpdatePolicyRollConfig;
+        shouldRoll: boolean;
+    }
+
+    export interface OceanUpdatePolicyRollConfig {
+        batchSizePercentage: number;
+    }
+}
+
 export namespace gcp {
     export interface ElastigroupBackendService {
         locationType?: string;
@@ -1082,6 +1201,192 @@ export namespace gcp {
          * The names of the subnets in the region.
          */
         subnetNames: string[];
+    }
+}
+
+export namespace gke {
+    export interface ElastigroupBackendService {
+        locationType?: string;
+        namedPorts?: outputs.gke.ElastigroupBackendServiceNamedPort[];
+        scheme?: string;
+        serviceName: string;
+    }
+
+    export interface ElastigroupBackendServiceNamedPort {
+        name: string;
+        ports: string[];
+    }
+
+    export interface ElastigroupDisk {
+        autoDelete?: boolean;
+        boot?: boolean;
+        deviceName?: string;
+        initializeParams?: outputs.gke.ElastigroupDiskInitializeParam[];
+        interface?: string;
+        mode?: string;
+        source?: string;
+        type?: string;
+    }
+
+    export interface ElastigroupDiskInitializeParam {
+        diskSizeGb?: string;
+        diskType?: string;
+        sourceImage: string;
+    }
+
+    export interface ElastigroupGpu {
+        count: number;
+        type: string;
+    }
+
+    export interface ElastigroupInstanceTypesCustom {
+        memoryGib: number;
+        vcpu: number;
+    }
+
+    export interface ElastigroupIntegrationDockerSwarm {
+        masterHost: string;
+        masterPort: number;
+    }
+
+    export interface ElastigroupIntegrationGke {
+        autoUpdate?: boolean;
+        autoscaleCooldown?: number;
+        autoscaleDown?: outputs.gke.ElastigroupIntegrationGkeAutoscaleDown;
+        autoscaleHeadroom?: outputs.gke.ElastigroupIntegrationGkeAutoscaleHeadroom;
+        autoscaleIsAutoConfig?: boolean;
+        autoscaleIsEnabled?: boolean;
+        autoscaleLabels?: outputs.gke.ElastigroupIntegrationGkeAutoscaleLabel[];
+        /**
+         * The name of the GKE cluster you wish to import.
+         */
+        clusterId?: string;
+        location?: string;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleDown {
+        evaluationPeriods?: number;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleHeadroom {
+        cpuPerUnit?: number;
+        memoryPerUnit?: number;
+        numOfUnits?: number;
+    }
+
+    export interface ElastigroupIntegrationGkeAutoscaleLabel {
+        key: string;
+        value: string;
+    }
+
+    export interface ElastigroupLabel {
+        key: string;
+        value: string;
+    }
+
+    export interface ElastigroupMetadata {
+        key: string;
+        value: string;
+    }
+
+    export interface ElastigroupNetworkInterface {
+        accessConfigs?: outputs.gke.ElastigroupNetworkInterfaceAccessConfig[];
+        aliasIpRanges?: outputs.gke.ElastigroupNetworkInterfaceAliasIpRange[];
+        network: string;
+    }
+
+    export interface ElastigroupNetworkInterfaceAccessConfig {
+        name?: string;
+        type?: string;
+    }
+
+    export interface ElastigroupNetworkInterfaceAliasIpRange {
+        ipCidrRange: string;
+        subnetworkRangeName: string;
+    }
+
+    export interface ElastigroupScalingDownPolicy {
+        actionType?: string;
+        adjustment?: number;
+        cooldown: number;
+        dimensions?: outputs.gke.ElastigroupScalingDownPolicyDimension[];
+        evaluationPeriods: number;
+        metricName: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        source: string;
+        statistic: string;
+        threshold: number;
+        unit: string;
+    }
+
+    export interface ElastigroupScalingDownPolicyDimension {
+        name: string;
+        value?: string;
+    }
+
+    export interface ElastigroupScalingUpPolicy {
+        actionType?: string;
+        adjustment?: number;
+        cooldown: number;
+        dimensions?: outputs.gke.ElastigroupScalingUpPolicyDimension[];
+        evaluationPeriods: number;
+        metricName: string;
+        namespace: string;
+        operator: string;
+        period: number;
+        policyName: string;
+        source: string;
+        statistic: string;
+        threshold: number;
+        unit: string;
+    }
+
+    export interface ElastigroupScalingUpPolicyDimension {
+        name: string;
+        value?: string;
+    }
+
+    export interface OceanImportBackendService {
+        /**
+         * Sets which location the backend services will be active. Valid values: `regional`, `global`.
+         */
+        locationType?: string;
+        namedPorts?: outputs.gke.OceanImportBackendServiceNamedPort[];
+        /**
+         * Use when `locationType` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+         */
+        scheme?: string;
+        /**
+         * The name of the backend service.
+         */
+        serviceName: string;
+    }
+
+    export interface OceanImportBackendServiceNamedPort {
+        name: string;
+        /**
+         * A list of ports.
+         */
+        ports: string[];
+    }
+
+    export interface OceanLaunchSpecLabel {
+        key: string;
+        value: string;
+    }
+
+    export interface OceanLaunchSpecMetadata {
+        key: string;
+        value: string;
+    }
+
+    export interface OceanLaunchSpecTaint {
+        effect: string;
+        key: string;
+        value: string;
     }
 }
 
