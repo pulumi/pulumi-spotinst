@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/timmyers/pulumi-spotinst.svg?branch=master)](https://travis-ci.com/timmyers/pulumi-spotinst)
+[![Build Status](https://travis-ci.com/pulumi/pulumi-spotinst.svg?branch=master)](https://travis-ci.com/pulumi/pulumi-spotinst)
 
 # Spotinst Resource Provider
 
@@ -29,7 +29,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/timmyers/pulumi-spotinst/sdk/go/...
+    $ go get github.com/pulumi/pulumi-spotinst/sdk/go/...
 
 ## Configuration
 

@@ -38,7 +38,7 @@ setup(name='pulumi_spotinst',
       keywords='pulumi spotinst',
       url='https://pulumi.io',
       project_urls={
-          'Repository': 'https://github.com/timmyers/pulumi-spotinst'
+          'Repository': 'https://github.com/pulumi/pulumi-spotinst'
       },
       license='Apache-2.0',
       packages=find_packages(),

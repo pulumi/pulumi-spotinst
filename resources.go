@@ -103,7 +103,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:    []string{"pulumi", "spotinst"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/timmyers/pulumi-spotinst",
+		Repository:  "https://github.com/pulumi/pulumi-spotinst",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"account": {
 				Default: &tfbridge.DefaultInfo{

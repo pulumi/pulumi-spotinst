@@ -1,4 +1,4 @@
-module github.com/timmyers/pulumi-spotinst
+module github.com/pulumi/pulumi-spotinst
 
 go 1.12
 
