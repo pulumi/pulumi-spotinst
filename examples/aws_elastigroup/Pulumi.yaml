@@ -1,0 +1,3 @@
+name: aws_beanstalk
+runtime: nodejs
+description: An application to create an AWS Beanstalk environment

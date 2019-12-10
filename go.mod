@@ -10,7 +10,6 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.6.0
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20191202134852-87cfb4dc8ae1
-	github.com/stretchr/testify v1.4.0
 	github.com/terraform-providers/terraform-provider-spotinst v1.13.4
 )
 

@@ -3,93 +3,64 @@
 package examples
 
 import (
-	"io/ioutil"
-	"net/http"
+	"os"
+	"path"
 	"testing"
-	"time"
-
-	"github.com/stretchr/testify/assert"
 
 	"github.com/pulumi/pulumi/pkg/testing/integration"
 )
 
-func TestExamples(t *testing.T) {
-	// Ensure we have any required configuration points
-	// region := os.Getenv("AWS_REGION")
-	// if region == "" {
-	// 	t.Skipf("Skipping test due to missing AWS_REGION environment variable")
-	// }
-	// cwd, err := os.Getwd()
-	// if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
-	// 	return
-	// }
+func TestAccAwsElastiGroup(t *testing.T) {
+	getToken(t)
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "aws_elastigroup"),
+		})
 
-	// base options shared amongst all tests.
-	base := integration.ProgramTestOptions{
-		Config: map[string]string{
-			// Configuration map
-		},
-		Tracing: "https://tracing.pulumi-engineering.com/collector/api/v1/spans",
+	integration.ProgramTest(t, &test)
+}
+
+func getToken(t *testing.T) {
+	token := os.Getenv("SPOTINST_TOKEN")
+	if token == "" {
+		t.Skipf("Skipping test due to missing SPOTINST_TOKEN environment variable")
 	}
+}
+
+func getEnvRegion(t *testing.T) string {
+	envRegion := os.Getenv("AWS_REGION")
+	if envRegion == "" {
+		t.Skipf("Skipping test due to missing AWS_REGION environment variable")
+	}
+
+	return envRegion
+}
+
+func getCwd(t *testing.T) string {
+	cwd, err := os.Getwd()
+	if err != nil {
+		t.FailNow()
+	}
+
+	return cwd
+}
+
+func getBaseOptions() integration.ProgramTestOptions {
+	return integration.ProgramTestOptions{
+		ExpectRefreshChanges: true,
+	}
+}
+
+func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	base := getBaseOptions()
 	baseJS := base.With(integration.ProgramTestOptions{
+		Config: map[string]string{
+			"aws:region": getEnvRegion(t),
+		},
 		Dependencies: []string{
-			// JavaScript dependencies
+			"@pulumi/spotinst",
 		},
 	})
 
-	examples := []integration.ProgramTestOptions{
-		// List each test
-		// baseJS.With(integration.ProgramTestOptions{
-		// 	Dir: path.Join(cwd, "api"),
-		// 	ExtraRuntimeValidation: validateAPITest(func(body string) {
-		// 		assert.Equal(t, "Hello, world!", body)
-		// 	}),
-		// 	EditDirs: []integration.EditDir{{
-		// 		Dir:      "./api/step2",
-		// 		Additive: true,
-		// 		ExtraRuntimeValidation: validateAPITest(func(body string) {
-		// 			assert.Equal(t, "<h1>Hello world!</h1>", body)
-		// 		}),
-		// 	}},
-		// 	ExpectRefreshChanges: true,
-		// }),
-	}
-
-	if !testing.Short() {
-		// Append any longer running tests
-	}
-
-	for _, ex := range examples {
-		example := ex
-		t.Run(example.Dir, func(t *testing.T) {
-			integration.ProgramTest(t, &example)
-		})
-	}
-}
-
-func createEditDir(dir string) integration.EditDir {
-	return integration.EditDir{Dir: dir, ExtraRuntimeValidation: nil}
-}
-
-func validateAPITest(isValid func(body string)) func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
-	return func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
-		var resp *http.Response
-		var err error
-		url := stack.Outputs["url"].(string)
-		// Retry a couple times on 5xx
-		for i := 0; i < 2; i++ {
-			resp, err = http.Get(url + "/b")
-			if !assert.NoError(t, err) {
-				return
-			}
-			if resp.StatusCode < 500 {
-				break
-			}
-			time.Sleep(10 * time.Second)
-		}
-		defer resp.Body.Close()
-		body, err := ioutil.ReadAll(resp.Body)
-		assert.NoError(t, err)
-		isValid(string(body))
-	}
+	return baseJS
 }
