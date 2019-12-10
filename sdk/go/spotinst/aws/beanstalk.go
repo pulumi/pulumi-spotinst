@@ -98,73 +98,73 @@ func GetBeanstalk(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Beanstalk) URN() *pulumi.URNOutput {
+func (r *Beanstalk) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Beanstalk) ID() *pulumi.IDOutput {
+func (r *Beanstalk) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The id of an existing Beanstalk environment. 
-func (r *Beanstalk) BeanstalkEnvironmentId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["beanstalkEnvironmentId"])
+func (r *Beanstalk) BeanstalkEnvironmentId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["beanstalkEnvironmentId"])
 }
 
 // The name of an existing Beanstalk environment.
-func (r *Beanstalk) BeanstalkEnvironmentName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["beanstalkEnvironmentName"])
+func (r *Beanstalk) BeanstalkEnvironmentName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["beanstalkEnvironmentName"])
 }
 
 // Preferences when performing a roll
-func (r *Beanstalk) DeploymentPreferences() *pulumi.Output {
+func (r *Beanstalk) DeploymentPreferences() pulumi.Output {
 	return r.s.State["deploymentPreferences"]
 }
 
 // The desired number of instances the group should have at any time.
-func (r *Beanstalk) DesiredCapacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["desiredCapacity"])
+func (r *Beanstalk) DesiredCapacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["desiredCapacity"])
 }
 
 // One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
-func (r *Beanstalk) InstanceTypesSpots() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceTypesSpots"])
+func (r *Beanstalk) InstanceTypesSpots() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceTypesSpots"])
 }
 
-func (r *Beanstalk) Maintenance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["maintenance"])
+func (r *Beanstalk) Maintenance() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["maintenance"])
 }
 
 // Managed Actions parameters
-func (r *Beanstalk) ManagedActions() *pulumi.Output {
+func (r *Beanstalk) ManagedActions() pulumi.Output {
 	return r.s.State["managedActions"]
 }
 
 // The maximum number of instances the group should have at any time.
-func (r *Beanstalk) MaxSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxSize"])
+func (r *Beanstalk) MaxSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxSize"])
 }
 
 // The minimum number of instances the group should have at any time.
-func (r *Beanstalk) MinSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minSize"])
+func (r *Beanstalk) MinSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minSize"])
 }
 
 // The group name.
-func (r *Beanstalk) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Beanstalk) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 // For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
-func (r *Beanstalk) Product() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["product"])
+func (r *Beanstalk) Product() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["product"])
 }
 
 // The AWS region your group will be created in. Cannot be changed after the group has been created.
-func (r *Beanstalk) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Beanstalk) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Input properties used for looking up and filtering Beanstalk resources.

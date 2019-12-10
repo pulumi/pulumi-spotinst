@@ -15,12 +15,11 @@
 package spotinst
 
 import (
+	"strings"
 	"unicode"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/terraform"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
-	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-spotinst/spotinst"
 )
@@ -30,18 +29,27 @@ const (
 	// packages:
 	mainPkg = "spotinst"
 	// modules:
-	awsMod          = "aws"
-	ecsMod          = "ecs"
-	gcpMod          = "gcp"
-	gkeMod          = "gke"
-	azureMod        = "azure"
-	multaiMod       = "multai"
-	subscriptionMod = "index"
+	awsMod          = "Aws"
+	ecsMod          = "Ecs"
+	gcpMod          = "Gcp"
+	gkeMod          = "Gke"
+	azureMod        = "Azure"
+	multaiMod       = "Multai"
+	subscriptionMod = "Index"
 )
 
-// makeMember manufactures a type token for the package and the given module and type.
-func makeMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
+var namespaceMap = map[string]string{
+	"spotinst": "SpotInst",
+}
+
+// makeMember manufactures a type token for the OpenStack package and the given module and type.  It automatically
+// uses the SpotInst package and names the file by simply lower casing the resource's first character.
+func makeMember(moduleTitle string, mem string) tokens.ModuleMember {
+	moduleName := strings.ToLower(moduleTitle)
+	namespaceMap[moduleName] = moduleTitle
+	fn := string(unicode.ToLower(rune(mem[0]))) + mem[1:]
+	token := moduleName + "/" + fn
+	return tokens.ModuleMember(mainPkg + ":" + token + ":" + mem)
 }
 
 // makeType manufactures a type token for the package and the given module and type.
@@ -49,46 +57,10 @@ func makeType(mod string, typ string) tokens.Type {
 	return tokens.Type(makeMember(mod, typ))
 }
 
-// makeDataSource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the data source's
-// first character.
-func makeDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeMember(mod+"/"+fn, res)
-}
-
-// makeResource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the resource's
-// first character.
+// makeResource manufactures a standard resource token given a module and resource name.
 func makeResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeType(mod+"/"+fn, res)
+	return makeType(mod, res)
 }
-
-// boolRef returns a reference to the bool argument.
-func boolRef(b bool) *bool {
-	return &b
-}
-
-// stringValue gets a string value from a property map if present, else ""
-func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
-	val, ok := vars[prop]
-	if ok && val.IsString() {
-		return val.StringValue()
-	}
-	return ""
-}
-
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
-	return nil
-}
-
-// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
-var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
@@ -118,7 +90,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"spotinst_elastigroup_aws":           {Tok: makeResource(awsMod, "Elastigroup")},
 			"spotinst_elastigroup_aws_beanstalk": {Tok: makeResource(awsMod, "Beanstalk")},
@@ -151,11 +122,7 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_ocean_gke_launch_spec_import": {Tok: makeResource(gkeMod, "OceanLaunchSpecImport")},
 			"spotinst_subscription":                 {Tok: makeResource(subscriptionMod, "Subscription")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: makeDataSource(mainMod, "getAmi")},
-		},
+		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
@@ -175,6 +142,13 @@ func Provider() tfbridge.ProviderInfo {
 			Requires: map[string]string{
 				"pulumi": ">=1.0.0,<2.0.0",
 			},
+		},
+		CSharp: &tfbridge.CSharpInfo{
+			PackageReferences: map[string]string{
+				"Pulumi":                       "1.5.0-*",
+				"System.Collections.Immutable": "1.6.0",
+			},
+			Namespaces: namespaceMap,
 		},
 	}
 

@@ -166,132 +166,132 @@ func GetElastigroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Elastigroup) URN() *pulumi.URNOutput {
+func (r *Elastigroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Elastigroup) ID() *pulumi.IDOutput {
+func (r *Elastigroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *Elastigroup) BackendServices() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["backendServices"])
+func (r *Elastigroup) BackendServices() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["backendServices"])
 }
 
 // The name of the GKE cluster you wish to import.
-func (r *Elastigroup) ClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterId"])
+func (r *Elastigroup) ClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterId"])
 }
 
 // The zone where the cluster is hosted.
-func (r *Elastigroup) ClusterZoneName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterZoneName"])
+func (r *Elastigroup) ClusterZoneName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterZoneName"])
 }
 
-func (r *Elastigroup) DesiredCapacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["desiredCapacity"])
+func (r *Elastigroup) DesiredCapacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["desiredCapacity"])
 }
 
-func (r *Elastigroup) Disks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["disks"])
+func (r *Elastigroup) Disks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["disks"])
 }
 
-func (r *Elastigroup) DrainingTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["drainingTimeout"])
+func (r *Elastigroup) DrainingTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["drainingTimeout"])
 }
 
-func (r *Elastigroup) FallbackToOndemand() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["fallbackToOndemand"])
+func (r *Elastigroup) FallbackToOndemand() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["fallbackToOndemand"])
 }
 
-func (r *Elastigroup) Gpu() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["gpu"])
+func (r *Elastigroup) Gpu() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["gpu"])
 }
 
-func (r *Elastigroup) InstanceTypesCustoms() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceTypesCustoms"])
+func (r *Elastigroup) InstanceTypesCustoms() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceTypesCustoms"])
 }
 
-func (r *Elastigroup) InstanceTypesOndemand() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceTypesOndemand"])
+func (r *Elastigroup) InstanceTypesOndemand() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceTypesOndemand"])
 }
 
-func (r *Elastigroup) InstanceTypesPreemptibles() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceTypesPreemptibles"])
+func (r *Elastigroup) InstanceTypesPreemptibles() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceTypesPreemptibles"])
 }
 
-func (r *Elastigroup) IntegrationDockerSwarm() *pulumi.Output {
+func (r *Elastigroup) IntegrationDockerSwarm() pulumi.Output {
 	return r.s.State["integrationDockerSwarm"]
 }
 
-func (r *Elastigroup) IntegrationGke() *pulumi.Output {
+func (r *Elastigroup) IntegrationGke() pulumi.Output {
 	return r.s.State["integrationGke"]
 }
 
-func (r *Elastigroup) IpForwarding() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ipForwarding"])
+func (r *Elastigroup) IpForwarding() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ipForwarding"])
 }
 
-func (r *Elastigroup) Labels() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["labels"])
+func (r *Elastigroup) Labels() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["labels"])
 }
 
-func (r *Elastigroup) MaxSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxSize"])
+func (r *Elastigroup) MaxSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxSize"])
 }
 
-func (r *Elastigroup) Metadatas() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["metadatas"])
+func (r *Elastigroup) Metadatas() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["metadatas"])
 }
 
-func (r *Elastigroup) MinSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minSize"])
+func (r *Elastigroup) MinSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minSize"])
 }
 
-func (r *Elastigroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Elastigroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Elastigroup) NetworkInterfaces() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
+func (r *Elastigroup) NetworkInterfaces() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
 }
 
 // The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-func (r *Elastigroup) NodeImage() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nodeImage"])
+func (r *Elastigroup) NodeImage() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nodeImage"])
 }
 
-func (r *Elastigroup) OndemandCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ondemandCount"])
+func (r *Elastigroup) OndemandCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ondemandCount"])
 }
 
-func (r *Elastigroup) PreemptiblePercentage() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["preemptiblePercentage"])
+func (r *Elastigroup) PreemptiblePercentage() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["preemptiblePercentage"])
 }
 
-func (r *Elastigroup) ScalingDownPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scalingDownPolicies"])
+func (r *Elastigroup) ScalingDownPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scalingDownPolicies"])
 }
 
-func (r *Elastigroup) ScalingUpPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scalingUpPolicies"])
+func (r *Elastigroup) ScalingUpPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scalingUpPolicies"])
 }
 
-func (r *Elastigroup) ServiceAccount() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceAccount"])
+func (r *Elastigroup) ServiceAccount() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceAccount"])
 }
 
-func (r *Elastigroup) ShutdownScript() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["shutdownScript"])
+func (r *Elastigroup) ShutdownScript() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["shutdownScript"])
 }
 
-func (r *Elastigroup) StartupScript() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["startupScript"])
+func (r *Elastigroup) StartupScript() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["startupScript"])
 }
 
-func (r *Elastigroup) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Elastigroup) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Elastigroup resources.

@@ -56,23 +56,23 @@ func GetOceanLaunchSpecImport(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *OceanLaunchSpecImport) URN() *pulumi.URNOutput {
+func (r *OceanLaunchSpecImport) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *OceanLaunchSpecImport) ID() *pulumi.IDOutput {
+func (r *OceanLaunchSpecImport) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The node pool you wish to use in your launchSpec.
-func (r *OceanLaunchSpecImport) NodePoolName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nodePoolName"])
+func (r *OceanLaunchSpecImport) NodePoolName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nodePoolName"])
 }
 
 // The Ocean cluster ID required for launchSpec create. 
-func (r *OceanLaunchSpecImport) OceanId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oceanId"])
+func (r *OceanLaunchSpecImport) OceanId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oceanId"])
 }
 
 // Input properties used for looking up and filtering OceanLaunchSpecImport resources.

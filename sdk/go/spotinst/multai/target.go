@@ -77,48 +77,48 @@ func GetTarget(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Target) URN() *pulumi.URNOutput {
+func (r *Target) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Target) ID() *pulumi.IDOutput {
+func (r *Target) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of the balancer.
-func (r *Target) BalancerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["balancerId"])
+func (r *Target) BalancerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["balancerId"])
 }
 
 // The address (IP or URL) of the targets to register
-func (r *Target) Host() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["host"])
+func (r *Target) Host() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["host"])
 }
 
 // The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-func (r *Target) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Target) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The port the target will register to.
-func (r *Target) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *Target) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // A list of key:value paired tags.
-func (r *Target) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Target) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The ID of the target set.
-func (r *Target) TargetSetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["targetSetId"])
+func (r *Target) TargetSetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["targetSetId"])
 }
 
 // Defines how traffic is distributed between targets.
-func (r *Target) Weight() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["weight"])
+func (r *Target) Weight() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["weight"])
 }
 
 // Input properties used for looking up and filtering Target resources.

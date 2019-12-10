@@ -149,168 +149,168 @@ func GetElastigroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Elastigroup) URN() *pulumi.URNOutput {
+func (r *Elastigroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Elastigroup) ID() *pulumi.IDOutput {
+func (r *Elastigroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *Elastigroup) AutoHealing() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["autoHealing"])
+func (r *Elastigroup) AutoHealing() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["autoHealing"])
 }
 
 // List of availability zones for the group.
-func (r *Elastigroup) AvailabilityZones() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["availabilityZones"])
+func (r *Elastigroup) AvailabilityZones() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["availabilityZones"])
 }
 
-func (r *Elastigroup) BackendServices() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["backendServices"])
+func (r *Elastigroup) BackendServices() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["backendServices"])
 }
 
 // The region your GCP group will be created in.
-func (r *Elastigroup) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Elastigroup) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The desired number of instances the group should have at any time.
-func (r *Elastigroup) DesiredCapacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["desiredCapacity"])
+func (r *Elastigroup) DesiredCapacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["desiredCapacity"])
 }
 
-func (r *Elastigroup) Disks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["disks"])
+func (r *Elastigroup) Disks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["disks"])
 }
 
 // Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
-func (r *Elastigroup) DrainingTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["drainingTimeout"])
+func (r *Elastigroup) DrainingTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["drainingTimeout"])
 }
 
 // Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-func (r *Elastigroup) FallbackToOndemand() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["fallbackToOndemand"])
+func (r *Elastigroup) FallbackToOndemand() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["fallbackToOndemand"])
 }
 
-func (r *Elastigroup) Gpu() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["gpu"])
+func (r *Elastigroup) Gpu() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["gpu"])
 }
 
-func (r *Elastigroup) HealthCheckGracePeriod() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["healthCheckGracePeriod"])
+func (r *Elastigroup) HealthCheckGracePeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthCheckGracePeriod"])
 }
 
-func (r *Elastigroup) HealthCheckType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["healthCheckType"])
+func (r *Elastigroup) HealthCheckType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckType"])
 }
 
 // Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
-func (r *Elastigroup) InstanceTypesCustoms() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceTypesCustoms"])
+func (r *Elastigroup) InstanceTypesCustoms() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceTypesCustoms"])
 }
 
 // The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
-func (r *Elastigroup) InstanceTypesOndemand() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceTypesOndemand"])
+func (r *Elastigroup) InstanceTypesOndemand() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceTypesOndemand"])
 }
 
 // The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
-func (r *Elastigroup) InstanceTypesPreemptibles() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceTypesPreemptibles"])
+func (r *Elastigroup) InstanceTypesPreemptibles() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceTypesPreemptibles"])
 }
 
-func (r *Elastigroup) IntegrationDockerSwarm() *pulumi.Output {
+func (r *Elastigroup) IntegrationDockerSwarm() pulumi.Output {
 	return r.s.State["integrationDockerSwarm"]
 }
 
-func (r *Elastigroup) IntegrationGke() *pulumi.Output {
+func (r *Elastigroup) IntegrationGke() pulumi.Output {
 	return r.s.State["integrationGke"]
 }
 
-func (r *Elastigroup) IpForwarding() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ipForwarding"])
+func (r *Elastigroup) IpForwarding() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ipForwarding"])
 }
 
 // Array of objects with key-value pairs.
-func (r *Elastigroup) Labels() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["labels"])
+func (r *Elastigroup) Labels() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["labels"])
 }
 
 // The maximum number of instances the group should have at any time.
-func (r *Elastigroup) MaxSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxSize"])
+func (r *Elastigroup) MaxSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxSize"])
 }
 
 // Array of objects with key-value pairs.
-func (r *Elastigroup) Metadatas() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["metadatas"])
+func (r *Elastigroup) Metadatas() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["metadatas"])
 }
 
 // The minimum number of instances the group should have at any time.
-func (r *Elastigroup) MinSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minSize"])
+func (r *Elastigroup) MinSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minSize"])
 }
 
 // The group name. 
-func (r *Elastigroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Elastigroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Elastigroup) NetworkInterfaces() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
+func (r *Elastigroup) NetworkInterfaces() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
 }
 
-func (r *Elastigroup) OndemandCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ondemandCount"])
+func (r *Elastigroup) OndemandCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ondemandCount"])
 }
 
 // Percentage of Preemptible VMs to spin up from the "desiredCapacity".
-func (r *Elastigroup) PreemptiblePercentage() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["preemptiblePercentage"])
+func (r *Elastigroup) PreemptiblePercentage() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["preemptiblePercentage"])
 }
 
-func (r *Elastigroup) ScalingDownPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scalingDownPolicies"])
+func (r *Elastigroup) ScalingDownPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scalingDownPolicies"])
 }
 
-func (r *Elastigroup) ScalingUpPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scalingUpPolicies"])
+func (r *Elastigroup) ScalingUpPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scalingUpPolicies"])
 }
 
-func (r *Elastigroup) ScheduledTasks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scheduledTasks"])
+func (r *Elastigroup) ScheduledTasks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scheduledTasks"])
 }
 
 // The email of the service account in which the group instances will be launched.
-func (r *Elastigroup) ServiceAccount() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceAccount"])
+func (r *Elastigroup) ServiceAccount() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceAccount"])
 }
 
 // The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
-func (r *Elastigroup) ShutdownScript() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["shutdownScript"])
+func (r *Elastigroup) ShutdownScript() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["shutdownScript"])
 }
 
 // Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
-func (r *Elastigroup) StartupScript() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["startupScript"])
+func (r *Elastigroup) StartupScript() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["startupScript"])
 }
 
 // A list of regions and subnets.
-func (r *Elastigroup) Subnets() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["subnets"])
+func (r *Elastigroup) Subnets() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["subnets"])
 }
 
 // Tags to mark created instances.
-func (r *Elastigroup) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Elastigroup) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
-func (r *Elastigroup) UnhealthyDuration() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["unhealthyDuration"])
+func (r *Elastigroup) UnhealthyDuration() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["unhealthyDuration"])
 }
 
 // Input properties used for looking up and filtering Elastigroup resources.
