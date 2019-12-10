@@ -71,38 +71,38 @@ func GetSubscription(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Subscription) URN() *pulumi.URNOutput {
+func (r *Subscription) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Subscription) ID() *pulumi.IDOutput {
+func (r *Subscription) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The endpoint the notification will be sent to: url in case of `"http"`/`"https"`, email address in case of `"email"`/`"email-json"`, sns-topic-arn in case of `"aws-sns"`.
-func (r *Subscription) Endpoint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["endpoint"])
+func (r *Subscription) Endpoint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["endpoint"])
 }
 
 // The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`, `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`, `"GROUP_UPDATED"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EMR_PROVISION_TIMEOUT"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`. 
-func (r *Subscription) EventType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["eventType"])
+func (r *Subscription) EventType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["eventType"])
 }
 
 // The format of the notification content (JSON Format - Key+Value). Valid values: `"%instance-id%"`, `"%event%"`, `"%resource-id%"`, `"%resource-name%"`.
-func (r *Subscription) Format() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["format"])
+func (r *Subscription) Format() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["format"])
 }
 
 // The protocol to send the notification. Valid values: `"http"`, `"https"`, `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
-func (r *Subscription) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *Subscription) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // Spotinst Resource ID (Elastigroup ID).
-func (r *Subscription) ResourceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["resourceId"])
+func (r *Subscription) ResourceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceId"])
 }
 
 // Input properties used for looking up and filtering Subscription resources.

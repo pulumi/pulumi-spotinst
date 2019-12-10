@@ -119,116 +119,116 @@ func GetOcean(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Ocean) URN() *pulumi.URNOutput {
+func (r *Ocean) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Ocean) ID() *pulumi.IDOutput {
+func (r *Ocean) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Configure public IP address allocation.
-func (r *Ocean) AssociatePublicIpAddress() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["associatePublicIpAddress"])
+func (r *Ocean) AssociatePublicIpAddress() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["associatePublicIpAddress"])
 }
 
 // Describes the Ocean ECS autoscaler.
-func (r *Ocean) Autoscaler() *pulumi.Output {
+func (r *Ocean) Autoscaler() pulumi.Output {
 	return r.s.State["autoscaler"]
 }
 
 // The ocean cluster name.
-func (r *Ocean) ClusterName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterName"])
+func (r *Ocean) ClusterName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterName"])
 }
 
 // The number of instances to launch and maintain in the cluster.
-func (r *Ocean) DesiredCapacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["desiredCapacity"])
+func (r *Ocean) DesiredCapacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["desiredCapacity"])
 }
 
 // The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
-func (r *Ocean) DrainingTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["drainingTimeout"])
+func (r *Ocean) DrainingTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["drainingTimeout"])
 }
 
 // Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
-func (r *Ocean) EbsOptimized() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ebsOptimized"])
+func (r *Ocean) EbsOptimized() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ebsOptimized"])
 }
 
 // The instance profile iam role.
-func (r *Ocean) IamInstanceProfile() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["iamInstanceProfile"])
+func (r *Ocean) IamInstanceProfile() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["iamInstanceProfile"])
 }
 
 // ID of the image used to launch the instances.
-func (r *Ocean) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *Ocean) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
 // The key pair to attach the instances.
-func (r *Ocean) KeyPair() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyPair"])
+func (r *Ocean) KeyPair() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyPair"])
 }
 
 // The upper limit of instances the cluster can scale up to.
-func (r *Ocean) MaxSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxSize"])
+func (r *Ocean) MaxSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxSize"])
 }
 
 // The lower limit of instances the cluster can scale down to.
-func (r *Ocean) MinSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minSize"])
+func (r *Ocean) MinSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minSize"])
 }
 
 // Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-func (r *Ocean) Monitoring() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["monitoring"])
+func (r *Ocean) Monitoring() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["monitoring"])
 }
 
 // The Ocean cluster name.
-func (r *Ocean) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Ocean) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The region the cluster will run in.
-func (r *Ocean) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Ocean) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // One or more security group ids.
-func (r *Ocean) SecurityGroupIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
+func (r *Ocean) SecurityGroupIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
 }
 
 // A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
-func (r *Ocean) SubnetIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["subnetIds"])
+func (r *Ocean) SubnetIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["subnetIds"])
 }
 
 // Optionally adds tags to instances launched in an Ocean cluster.
-func (r *Ocean) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Ocean) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
-func (r *Ocean) UpdatePolicy() *pulumi.Output {
+func (r *Ocean) UpdatePolicy() pulumi.Output {
 	return r.s.State["updatePolicy"]
 }
 
 // Base64-encoded MIME user data to make available to the instances.
-func (r *Ocean) UserData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userData"])
+func (r *Ocean) UserData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userData"])
 }
 
-func (r *Ocean) UtilizeReservedInstances() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["utilizeReservedInstances"])
+func (r *Ocean) UtilizeReservedInstances() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["utilizeReservedInstances"])
 }
 
 // Instance types allowed in the Ocean cluster.
-func (r *Ocean) Whitelists() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["whitelists"])
+func (r *Ocean) Whitelists() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["whitelists"])
 }
 
 // Input properties used for looking up and filtering Ocean resources.

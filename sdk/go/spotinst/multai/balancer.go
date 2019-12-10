@@ -58,35 +58,35 @@ func GetBalancer(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Balancer) URN() *pulumi.URNOutput {
+func (r *Balancer) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Balancer) ID() *pulumi.IDOutput {
+func (r *Balancer) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *Balancer) ConnectionTimeouts() *pulumi.Output {
+func (r *Balancer) ConnectionTimeouts() pulumi.Output {
 	return r.s.State["connectionTimeouts"]
 }
 
-func (r *Balancer) DnsCnameAliases() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["dnsCnameAliases"])
+func (r *Balancer) DnsCnameAliases() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["dnsCnameAliases"])
 }
 
 // The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-func (r *Balancer) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Balancer) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Balancer) Scheme() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scheme"])
+func (r *Balancer) Scheme() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scheme"])
 }
 
 // A list of key:value paired tags.
-func (r *Balancer) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Balancer) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Balancer resources.

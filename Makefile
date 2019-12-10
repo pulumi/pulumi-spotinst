@@ -12,35 +12,22 @@ PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell scripts/get-version)
 PYPI_VERSION    := $(shell scripts/get-py-version)
 
+DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
+DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
+
+ifeq ($(strip ${DOTNET_SUFFIX}),)
+	DOTNET_VERSION := $(strip ${DOTNET_PREFIX})-preview
+else
+	DOTNET_VERSION := $(strip ${DOTNET_PREFIX})-preview-$(strip ${DOTNET_SUFFIX})
+endif
+
 TESTPARALLELISM := 4
-
-OS := $(shell uname)
-EMPTY_TO_AVOID_SED := ""
-
-prepare::
-	@if test -z "${NAME}"; then echo "NAME not set"; exit 1; fi
-	@if test -z "${REPOSITORY}"; then echo "REPOSITORY not set"; exit 1; fi
-	@if test ! -d "cmd/pulumi-tfgen-x${EMPTY_TO_AVOID_SED}yz"; then "Project already prepared"; exit 1; fi
-
-	mv "cmd/pulumi-tfgen-x${EMPTY_TO_AVOID_SED}yz" cmd/pulumi-tfgen-${NAME}
-	mv "cmd/pulumi-resource-x${EMPTY_TO_AVOID_SED}yz" cmd/pulumi-resource-${NAME}
-
-	if [[ "${OS}" != "Darwin" ]]; then \
-		sed -i 's,github.com/pulumi/pulumi-spotinst,${REPOSITORY},g' go.mod; \
-		find ./ ! -path './.git/*' -type f -exec sed -i 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
-	fi
-
-	# In MacOS the -i parameter needs an empty string to execute in place.
-	if [[ "${OS}" == "Darwin" ]]; then \
-		sed -i '' 's,github.com/pulumi/pulumi-spotinst,${REPOSITORY},g' go.mod; \
-		find ./ ! -path './.git/*' -type f -exec sed -i '' 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
-	fi
 
 # NOTE: Since the plugin is published using the nodejs style semver version
 # We set the PLUGIN_VERSION to be the same as the version we use when building
 # the provider (e.g. x.y.z-dev-... instead of x.y.zdev...)
 build:: tfgen provider
-	for LANGUAGE in "nodejs" "python" "go" ; do \
+	for LANGUAGE in "nodejs" "python" "go" "dotnet" ; do \
 		$(TFGEN) $$LANGUAGE --overlays overlays/$$LANGUAGE/ --out ${PACKDIR}/$$LANGUAGE/ || exit 3 ; \
 	done
 	cd ${PACKDIR}/nodejs/ && \
@@ -55,6 +42,9 @@ build:: tfgen provider
 		sed -i.bak -e "s/\$${VERSION}/$(PYPI_VERSION)/g" -e "s/\$${PLUGIN_VERSION}/$(VERSION)/g" ./bin/setup.py && \
 		rm ./bin/setup.py.bak && \
 		cd ./bin && $(PYTHON) setup.py build sdist
+	cd ${PACKDIR}/dotnet/ && \
+		echo "${VERSION:v%=%}" >version.txt && \
+		dotnet build /p:Version=${DOTNET_VERSION}
 
 tfgen::
 	go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
@@ -79,7 +69,6 @@ install::
 
 test_all::
 	PATH=$(PULUMI_BIN):$(PATH) go test -v -count=1 -cover -timeout 1h -parallel ${TESTPARALLELISM} ./examples
-	PATH=$(PULUMI_BIN):$(PATH) go test -v -count=1 -cover -timeout 1h -parallel ${TESTPARALLELISM} ./tests/...
 
 .PHONY: publish_tgz
 publish_tgz:

@@ -80,50 +80,50 @@ func GetRoutingRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RoutingRule) URN() *pulumi.URNOutput {
+func (r *RoutingRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RoutingRule) ID() *pulumi.IDOutput {
+func (r *RoutingRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of the balancer.
-func (r *RoutingRule) BalancerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["balancerId"])
+func (r *RoutingRule) BalancerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["balancerId"])
 }
 
 // The ID of the listener.
-func (r *RoutingRule) ListenerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["listenerId"])
+func (r *RoutingRule) ListenerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["listenerId"])
 }
 
-func (r *RoutingRule) MiddlewareIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["middlewareIds"])
+func (r *RoutingRule) MiddlewareIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["middlewareIds"])
 }
 
-func (r *RoutingRule) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *RoutingRule) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
 // Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path("/foo/bar") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using && operator: — Method(“POST”) && Path("/v1")
-func (r *RoutingRule) Route() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["route"])
+func (r *RoutingRule) Route() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["route"])
 }
 
 // Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.
-func (r *RoutingRule) Strategy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["strategy"])
+func (r *RoutingRule) Strategy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["strategy"])
 }
 
 // A list of key:value paired tags.
-func (r *RoutingRule) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *RoutingRule) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
-func (r *RoutingRule) TargetSetIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["targetSetIds"])
+func (r *RoutingRule) TargetSetIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["targetSetIds"])
 }
 
 // Input properties used for looking up and filtering RoutingRule resources.

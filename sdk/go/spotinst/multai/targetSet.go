@@ -83,52 +83,52 @@ func GetTargetSet(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TargetSet) URN() *pulumi.URNOutput {
+func (r *TargetSet) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TargetSet) ID() *pulumi.IDOutput {
+func (r *TargetSet) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The id of the balancer.
-func (r *TargetSet) BalancerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["balancerId"])
+func (r *TargetSet) BalancerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["balancerId"])
 }
 
 // The id of the deployment.
-func (r *TargetSet) DeploymentId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["deploymentId"])
+func (r *TargetSet) DeploymentId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["deploymentId"])
 }
 
-func (r *TargetSet) HealthCheck() *pulumi.Output {
+func (r *TargetSet) HealthCheck() pulumi.Output {
 	return r.s.State["healthCheck"]
 }
 
 // The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-func (r *TargetSet) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *TargetSet) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The port on which the load balancer is listening.
-func (r *TargetSet) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *TargetSet) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The protocol to allow connections to the target for the health check.
-func (r *TargetSet) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *TargetSet) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // A list of key:value paired tags.
-func (r *TargetSet) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *TargetSet) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Defines how traffic is distributed between the Target Set.
-func (r *TargetSet) Weight() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["weight"])
+func (r *TargetSet) Weight() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["weight"])
 }
 
 // Input properties used for looking up and filtering TargetSet resources.

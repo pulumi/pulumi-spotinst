@@ -68,37 +68,37 @@ func GetListener(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Listener) URN() *pulumi.URNOutput {
+func (r *Listener) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Listener) ID() *pulumi.IDOutput {
+func (r *Listener) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of the balancer.
-func (r *Listener) BalancerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["balancerId"])
+func (r *Listener) BalancerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["balancerId"])
 }
 
 // The port on which the load balancer is listening.
-func (r *Listener) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *Listener) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The protocol to allow connections to the load balancer.
-func (r *Listener) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *Listener) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // A list of key:value paired tags.
-func (r *Listener) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Listener) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Describes the TLSConfig configuration.
-func (r *Listener) TlsConfig() *pulumi.Output {
+func (r *Listener) TlsConfig() pulumi.Output {
 	return r.s.State["tlsConfig"]
 }
 

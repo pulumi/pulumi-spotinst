@@ -371,246 +371,246 @@ func GetMrScalar(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *MrScalar) URN() *pulumi.URNOutput {
+func (r *MrScalar) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *MrScalar) ID() *pulumi.IDOutput {
+func (r *MrScalar) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *MrScalar) AdditionalInfo() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["additionalInfo"])
+func (r *MrScalar) AdditionalInfo() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["additionalInfo"])
 }
 
-func (r *MrScalar) AdditionalPrimarySecurityGroups() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["additionalPrimarySecurityGroups"])
+func (r *MrScalar) AdditionalPrimarySecurityGroups() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["additionalPrimarySecurityGroups"])
 }
 
-func (r *MrScalar) AdditionalReplicaSecurityGroups() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["additionalReplicaSecurityGroups"])
+func (r *MrScalar) AdditionalReplicaSecurityGroups() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["additionalReplicaSecurityGroups"])
 }
 
-func (r *MrScalar) Applications() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["applications"])
+func (r *MrScalar) Applications() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["applications"])
 }
 
-func (r *MrScalar) AvailabilityZones() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["availabilityZones"])
+func (r *MrScalar) AvailabilityZones() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["availabilityZones"])
 }
 
-func (r *MrScalar) BootstrapActionsFiles() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["bootstrapActionsFiles"])
+func (r *MrScalar) BootstrapActionsFiles() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["bootstrapActionsFiles"])
 }
 
 // The MrScaler cluster id.
-func (r *MrScalar) ClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterId"])
+func (r *MrScalar) ClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterId"])
 }
 
-func (r *MrScalar) ConfigurationsFiles() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["configurationsFiles"])
+func (r *MrScalar) ConfigurationsFiles() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["configurationsFiles"])
 }
 
-func (r *MrScalar) CoreDesiredCapacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["coreDesiredCapacity"])
+func (r *MrScalar) CoreDesiredCapacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["coreDesiredCapacity"])
 }
 
-func (r *MrScalar) CoreEbsBlockDevices() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["coreEbsBlockDevices"])
+func (r *MrScalar) CoreEbsBlockDevices() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["coreEbsBlockDevices"])
 }
 
-func (r *MrScalar) CoreEbsOptimized() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["coreEbsOptimized"])
+func (r *MrScalar) CoreEbsOptimized() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["coreEbsOptimized"])
 }
 
-func (r *MrScalar) CoreInstanceTypes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["coreInstanceTypes"])
+func (r *MrScalar) CoreInstanceTypes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["coreInstanceTypes"])
 }
 
-func (r *MrScalar) CoreLifecycle() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["coreLifecycle"])
+func (r *MrScalar) CoreLifecycle() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["coreLifecycle"])
 }
 
-func (r *MrScalar) CoreMaxSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["coreMaxSize"])
+func (r *MrScalar) CoreMaxSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["coreMaxSize"])
 }
 
-func (r *MrScalar) CoreMinSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["coreMinSize"])
+func (r *MrScalar) CoreMinSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["coreMinSize"])
 }
 
-func (r *MrScalar) CoreScalingDownPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["coreScalingDownPolicies"])
+func (r *MrScalar) CoreScalingDownPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["coreScalingDownPolicies"])
 }
 
-func (r *MrScalar) CoreScalingUpPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["coreScalingUpPolicies"])
+func (r *MrScalar) CoreScalingUpPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["coreScalingUpPolicies"])
 }
 
-func (r *MrScalar) CustomAmiId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["customAmiId"])
+func (r *MrScalar) CustomAmiId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["customAmiId"])
 }
 
 // The MrScaler description.
-func (r *MrScalar) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *MrScalar) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-func (r *MrScalar) EbsRootVolumeSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ebsRootVolumeSize"])
+func (r *MrScalar) EbsRootVolumeSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ebsRootVolumeSize"])
 }
 
-func (r *MrScalar) Ec2KeyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ec2KeyName"])
+func (r *MrScalar) Ec2KeyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ec2KeyName"])
 }
 
-func (r *MrScalar) ExposeClusterId() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["exposeClusterId"])
+func (r *MrScalar) ExposeClusterId() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["exposeClusterId"])
 }
 
-func (r *MrScalar) InstanceWeights() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceWeights"])
+func (r *MrScalar) InstanceWeights() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceWeights"])
 }
 
-func (r *MrScalar) JobFlowRole() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["jobFlowRole"])
+func (r *MrScalar) JobFlowRole() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["jobFlowRole"])
 }
 
-func (r *MrScalar) KeepJobFlowAlive() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["keepJobFlowAlive"])
+func (r *MrScalar) KeepJobFlowAlive() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["keepJobFlowAlive"])
 }
 
-func (r *MrScalar) LogUri() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["logUri"])
+func (r *MrScalar) LogUri() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["logUri"])
 }
 
-func (r *MrScalar) ManagedPrimarySecurityGroup() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["managedPrimarySecurityGroup"])
+func (r *MrScalar) ManagedPrimarySecurityGroup() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["managedPrimarySecurityGroup"])
 }
 
-func (r *MrScalar) ManagedReplicaSecurityGroup() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["managedReplicaSecurityGroup"])
+func (r *MrScalar) ManagedReplicaSecurityGroup() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["managedReplicaSecurityGroup"])
 }
 
-func (r *MrScalar) MasterEbsBlockDevices() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["masterEbsBlockDevices"])
+func (r *MrScalar) MasterEbsBlockDevices() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["masterEbsBlockDevices"])
 }
 
-func (r *MrScalar) MasterEbsOptimized() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["masterEbsOptimized"])
+func (r *MrScalar) MasterEbsOptimized() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["masterEbsOptimized"])
 }
 
-func (r *MrScalar) MasterInstanceTypes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["masterInstanceTypes"])
+func (r *MrScalar) MasterInstanceTypes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["masterInstanceTypes"])
 }
 
-func (r *MrScalar) MasterLifecycle() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterLifecycle"])
+func (r *MrScalar) MasterLifecycle() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterLifecycle"])
 }
 
 // The MrScaler name.
-func (r *MrScalar) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *MrScalar) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *MrScalar) OutputClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["outputClusterId"])
+func (r *MrScalar) OutputClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["outputClusterId"])
 }
 
-func (r *MrScalar) ProvisioningTimeout() *pulumi.Output {
+func (r *MrScalar) ProvisioningTimeout() pulumi.Output {
 	return r.s.State["provisioningTimeout"]
 }
 
 // The MrScaler region.
-func (r *MrScalar) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *MrScalar) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
-func (r *MrScalar) ReleaseLabel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["releaseLabel"])
+func (r *MrScalar) ReleaseLabel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["releaseLabel"])
 }
 
-func (r *MrScalar) RepoUpgradeOnBoot() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["repoUpgradeOnBoot"])
+func (r *MrScalar) RepoUpgradeOnBoot() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["repoUpgradeOnBoot"])
 }
 
-func (r *MrScalar) Retries() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["retries"])
+func (r *MrScalar) Retries() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["retries"])
 }
 
-func (r *MrScalar) ScheduledTasks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scheduledTasks"])
+func (r *MrScalar) ScheduledTasks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scheduledTasks"])
 }
 
-func (r *MrScalar) SecurityConfig() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["securityConfig"])
+func (r *MrScalar) SecurityConfig() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityConfig"])
 }
 
-func (r *MrScalar) ServiceAccessSecurityGroup() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceAccessSecurityGroup"])
+func (r *MrScalar) ServiceAccessSecurityGroup() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceAccessSecurityGroup"])
 }
 
-func (r *MrScalar) ServiceRole() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceRole"])
+func (r *MrScalar) ServiceRole() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceRole"])
 }
 
-func (r *MrScalar) StepsFiles() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["stepsFiles"])
+func (r *MrScalar) StepsFiles() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["stepsFiles"])
 }
 
 // The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-func (r *MrScalar) Strategy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["strategy"])
+func (r *MrScalar) Strategy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["strategy"])
 }
 
-func (r *MrScalar) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *MrScalar) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
-func (r *MrScalar) TaskDesiredCapacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["taskDesiredCapacity"])
+func (r *MrScalar) TaskDesiredCapacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["taskDesiredCapacity"])
 }
 
-func (r *MrScalar) TaskEbsBlockDevices() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["taskEbsBlockDevices"])
+func (r *MrScalar) TaskEbsBlockDevices() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["taskEbsBlockDevices"])
 }
 
-func (r *MrScalar) TaskEbsOptimized() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["taskEbsOptimized"])
+func (r *MrScalar) TaskEbsOptimized() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["taskEbsOptimized"])
 }
 
-func (r *MrScalar) TaskInstanceTypes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["taskInstanceTypes"])
+func (r *MrScalar) TaskInstanceTypes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["taskInstanceTypes"])
 }
 
-func (r *MrScalar) TaskLifecycle() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["taskLifecycle"])
+func (r *MrScalar) TaskLifecycle() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["taskLifecycle"])
 }
 
-func (r *MrScalar) TaskMaxSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["taskMaxSize"])
+func (r *MrScalar) TaskMaxSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["taskMaxSize"])
 }
 
-func (r *MrScalar) TaskMinSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["taskMinSize"])
+func (r *MrScalar) TaskMinSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["taskMinSize"])
 }
 
-func (r *MrScalar) TaskScalingDownPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["taskScalingDownPolicies"])
+func (r *MrScalar) TaskScalingDownPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["taskScalingDownPolicies"])
 }
 
-func (r *MrScalar) TaskScalingUpPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["taskScalingUpPolicies"])
+func (r *MrScalar) TaskScalingUpPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["taskScalingUpPolicies"])
 }
 
-func (r *MrScalar) TerminationProtected() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["terminationProtected"])
+func (r *MrScalar) TerminationProtected() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["terminationProtected"])
 }
 
-func (r *MrScalar) VisibleToAllUsers() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["visibleToAllUsers"])
+func (r *MrScalar) VisibleToAllUsers() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["visibleToAllUsers"])
 }
 
 // Input properties used for looking up and filtering MrScalar resources.

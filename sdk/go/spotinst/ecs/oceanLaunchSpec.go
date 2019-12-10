@@ -68,48 +68,48 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *OceanLaunchSpec) URN() *pulumi.URNOutput {
+func (r *OceanLaunchSpec) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *OceanLaunchSpec) ID() *pulumi.IDOutput {
+func (r *OceanLaunchSpec) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Optionally adds labels to instances launched in an Ocean cluster.
-func (r *OceanLaunchSpec) Attributes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["attributes"])
+func (r *OceanLaunchSpec) Attributes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["attributes"])
 }
 
 // The ARN or name of an IAM instance profile to associate with launched instances.
-func (r *OceanLaunchSpec) IamInstanceProfile() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["iamInstanceProfile"])
+func (r *OceanLaunchSpec) IamInstanceProfile() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["iamInstanceProfile"])
 }
 
 // ID of the image used to launch the instances.
-func (r *OceanLaunchSpec) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *OceanLaunchSpec) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
 // The Ocean Launch Specification name. 
-func (r *OceanLaunchSpec) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *OceanLaunchSpec) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The Ocean cluster ID .
-func (r *OceanLaunchSpec) OceanId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oceanId"])
+func (r *OceanLaunchSpec) OceanId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oceanId"])
 }
 
 // One or more security group ids.
-func (r *OceanLaunchSpec) SecurityGroupIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
+func (r *OceanLaunchSpec) SecurityGroupIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
 }
 
 // Base64-encoded MIME user data to make available to the instances.
-func (r *OceanLaunchSpec) UserData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userData"])
+func (r *OceanLaunchSpec) UserData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userData"])
 }
 
 // Input properties used for looking up and filtering OceanLaunchSpec resources.

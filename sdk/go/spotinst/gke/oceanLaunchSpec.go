@@ -68,38 +68,38 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *OceanLaunchSpec) URN() *pulumi.URNOutput {
+func (r *OceanLaunchSpec) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *OceanLaunchSpec) ID() *pulumi.IDOutput {
+func (r *OceanLaunchSpec) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Cluster's labels.
-func (r *OceanLaunchSpec) Labels() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["labels"])
+func (r *OceanLaunchSpec) Labels() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["labels"])
 }
 
 // Cluster's metadata.
-func (r *OceanLaunchSpec) Metadatas() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["metadatas"])
+func (r *OceanLaunchSpec) Metadatas() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["metadatas"])
 }
 
 // The Ocean cluster ID required for launchSpec create. 
-func (r *OceanLaunchSpec) OceanId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oceanId"])
+func (r *OceanLaunchSpec) OceanId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oceanId"])
 }
 
 // Image URL.
-func (r *OceanLaunchSpec) SourceImage() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceImage"])
+func (r *OceanLaunchSpec) SourceImage() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceImage"])
 }
 
 // Cluster's taints.
-func (r *OceanLaunchSpec) Taints() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["taints"])
+func (r *OceanLaunchSpec) Taints() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["taints"])
 }
 
 // Input properties used for looking up and filtering OceanLaunchSpec resources.

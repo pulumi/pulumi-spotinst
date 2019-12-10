@@ -76,51 +76,51 @@ func GetOceanImport(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *OceanImport) URN() *pulumi.URNOutput {
+func (r *OceanImport) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *OceanImport) ID() *pulumi.IDOutput {
+func (r *OceanImport) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Describes the backend service configurations.
-func (r *OceanImport) BackendServices() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["backendServices"])
+func (r *OceanImport) BackendServices() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["backendServices"])
 }
 
-func (r *OceanImport) ClusterControllerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterControllerId"])
+func (r *OceanImport) ClusterControllerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterControllerId"])
 }
 
 // The GKE cluster name.
-func (r *OceanImport) ClusterName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterName"])
+func (r *OceanImport) ClusterName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterName"])
 }
 
 // The number of instances to launch and maintain in the cluster. 
-func (r *OceanImport) DesiredCapacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["desiredCapacity"])
+func (r *OceanImport) DesiredCapacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["desiredCapacity"])
 }
 
 // The zone the master cluster is located in. 
-func (r *OceanImport) Location() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["location"])
+func (r *OceanImport) Location() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // The upper limit of instances the cluster can scale up to.
-func (r *OceanImport) MaxSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxSize"])
+func (r *OceanImport) MaxSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxSize"])
 }
 
 // The lower limit of instances the cluster can scale down to.
-func (r *OceanImport) MinSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minSize"])
+func (r *OceanImport) MinSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minSize"])
 }
 
-func (r *OceanImport) Whitelists() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["whitelists"])
+func (r *OceanImport) Whitelists() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["whitelists"])
 }
 
 // Input properties used for looking up and filtering OceanImport resources.

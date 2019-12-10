@@ -272,339 +272,339 @@ func GetElastigroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Elastigroup) URN() *pulumi.URNOutput {
+func (r *Elastigroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Elastigroup) ID() *pulumi.IDOutput {
+func (r *Elastigroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
 // Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 // `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
-func (r *Elastigroup) AvailabilityZones() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["availabilityZones"])
+func (r *Elastigroup) AvailabilityZones() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["availabilityZones"])
 }
 
-func (r *Elastigroup) BlockDevicesMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["blockDevicesMode"])
+func (r *Elastigroup) BlockDevicesMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["blockDevicesMode"])
 }
 
 // The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
-func (r *Elastigroup) CapacityUnit() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["capacityUnit"])
+func (r *Elastigroup) CapacityUnit() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["capacityUnit"])
 }
 
 // Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
-func (r *Elastigroup) CpuCredits() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cpuCredits"])
+func (r *Elastigroup) CpuCredits() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cpuCredits"])
 }
 
 // The group description.
-func (r *Elastigroup) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Elastigroup) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The desired number of instances the group should have at any time.
-func (r *Elastigroup) DesiredCapacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["desiredCapacity"])
+func (r *Elastigroup) DesiredCapacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["desiredCapacity"])
 }
 
 // The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
-func (r *Elastigroup) DrainingTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["drainingTimeout"])
+func (r *Elastigroup) DrainingTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["drainingTimeout"])
 }
 
-func (r *Elastigroup) EbsBlockDevices() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["ebsBlockDevices"])
+func (r *Elastigroup) EbsBlockDevices() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["ebsBlockDevices"])
 }
 
 // Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
-func (r *Elastigroup) EbsOptimized() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ebsOptimized"])
+func (r *Elastigroup) EbsOptimized() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ebsOptimized"])
 }
 
 // A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-func (r *Elastigroup) ElasticIps() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["elasticIps"])
+func (r *Elastigroup) ElasticIps() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["elasticIps"])
 }
 
-func (r *Elastigroup) ElasticLoadBalancers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["elasticLoadBalancers"])
+func (r *Elastigroup) ElasticLoadBalancers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["elasticLoadBalancers"])
 }
 
 // Indicates whether monitoring is enabled for the instance.
-func (r *Elastigroup) EnableMonitoring() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableMonitoring"])
+func (r *Elastigroup) EnableMonitoring() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableMonitoring"])
 }
 
-func (r *Elastigroup) EphemeralBlockDevices() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["ephemeralBlockDevices"])
+func (r *Elastigroup) EphemeralBlockDevices() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["ephemeralBlockDevices"])
 }
 
 // In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
-func (r *Elastigroup) FallbackToOndemand() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["fallbackToOndemand"])
+func (r *Elastigroup) FallbackToOndemand() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["fallbackToOndemand"])
 }
 
 // The amount of time, in seconds, after the instance has launched to starts and check its health.
-func (r *Elastigroup) HealthCheckGracePeriod() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["healthCheckGracePeriod"])
+func (r *Elastigroup) HealthCheckGracePeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthCheckGracePeriod"])
 }
 
 // The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
-func (r *Elastigroup) HealthCheckType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["healthCheckType"])
+func (r *Elastigroup) HealthCheckType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckType"])
 }
 
 // The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
-func (r *Elastigroup) HealthCheckUnhealthyDurationBeforeReplacement() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["healthCheckUnhealthyDurationBeforeReplacement"])
+func (r *Elastigroup) HealthCheckUnhealthyDurationBeforeReplacement() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthCheckUnhealthyDurationBeforeReplacement"])
 }
 
 // The ARN or name of an IAM instance profile to associate with launched instances.
-func (r *Elastigroup) IamInstanceProfile() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["iamInstanceProfile"])
+func (r *Elastigroup) IamInstanceProfile() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["iamInstanceProfile"])
 }
 
 // The ID of the AMI used to launch the instance.
-func (r *Elastigroup) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *Elastigroup) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
 // The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
-func (r *Elastigroup) InstanceTypesOndemand() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceTypesOndemand"])
+func (r *Elastigroup) InstanceTypesOndemand() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceTypesOndemand"])
 }
 
 // Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
-func (r *Elastigroup) InstanceTypesPreferredSpots() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceTypesPreferredSpots"])
+func (r *Elastigroup) InstanceTypesPreferredSpots() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceTypesPreferredSpots"])
 }
 
 // One or more instance types.
-func (r *Elastigroup) InstanceTypesSpots() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceTypesSpots"])
+func (r *Elastigroup) InstanceTypesSpots() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceTypesSpots"])
 }
 
 // List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-func (r *Elastigroup) InstanceTypesWeights() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceTypesWeights"])
+func (r *Elastigroup) InstanceTypesWeights() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceTypesWeights"])
 }
 
-func (r *Elastigroup) IntegrationBeanstalk() *pulumi.Output {
+func (r *Elastigroup) IntegrationBeanstalk() pulumi.Output {
 	return r.s.State["integrationBeanstalk"]
 }
 
-func (r *Elastigroup) IntegrationCodedeploy() *pulumi.Output {
+func (r *Elastigroup) IntegrationCodedeploy() pulumi.Output {
 	return r.s.State["integrationCodedeploy"]
 }
 
-func (r *Elastigroup) IntegrationDockerSwarm() *pulumi.Output {
+func (r *Elastigroup) IntegrationDockerSwarm() pulumi.Output {
 	return r.s.State["integrationDockerSwarm"]
 }
 
-func (r *Elastigroup) IntegrationEcs() *pulumi.Output {
+func (r *Elastigroup) IntegrationEcs() pulumi.Output {
 	return r.s.State["integrationEcs"]
 }
 
-func (r *Elastigroup) IntegrationGitlab() *pulumi.Output {
+func (r *Elastigroup) IntegrationGitlab() pulumi.Output {
 	return r.s.State["integrationGitlab"]
 }
 
-func (r *Elastigroup) IntegrationKubernetes() *pulumi.Output {
+func (r *Elastigroup) IntegrationKubernetes() pulumi.Output {
 	return r.s.State["integrationKubernetes"]
 }
 
-func (r *Elastigroup) IntegrationMesosphere() *pulumi.Output {
+func (r *Elastigroup) IntegrationMesosphere() pulumi.Output {
 	return r.s.State["integrationMesosphere"]
 }
 
-func (r *Elastigroup) IntegrationMultaiRuntime() *pulumi.Output {
+func (r *Elastigroup) IntegrationMultaiRuntime() pulumi.Output {
 	return r.s.State["integrationMultaiRuntime"]
 }
 
-func (r *Elastigroup) IntegrationNomad() *pulumi.Output {
+func (r *Elastigroup) IntegrationNomad() pulumi.Output {
 	return r.s.State["integrationNomad"]
 }
 
-func (r *Elastigroup) IntegrationRancher() *pulumi.Output {
+func (r *Elastigroup) IntegrationRancher() pulumi.Output {
 	return r.s.State["integrationRancher"]
 }
 
-func (r *Elastigroup) IntegrationRoute53() *pulumi.Output {
+func (r *Elastigroup) IntegrationRoute53() pulumi.Output {
 	return r.s.State["integrationRoute53"]
 }
 
 // The key name that should be used for the instance.
-func (r *Elastigroup) KeyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyName"])
+func (r *Elastigroup) KeyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyName"])
 }
 
-func (r *Elastigroup) LifetimePeriod() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lifetimePeriod"])
+func (r *Elastigroup) LifetimePeriod() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lifetimePeriod"])
 }
 
 // The maximum number of instances the group should have at any time.
-func (r *Elastigroup) MaxSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxSize"])
+func (r *Elastigroup) MaxSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxSize"])
 }
 
 // The minimum number of instances the group should have at any time.
-func (r *Elastigroup) MinSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minSize"])
+func (r *Elastigroup) MinSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minSize"])
 }
 
-func (r *Elastigroup) MultaiTargetSets() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["multaiTargetSets"])
+func (r *Elastigroup) MultaiTargetSets() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["multaiTargetSets"])
 }
 
 // The group name.
-func (r *Elastigroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Elastigroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Elastigroup) NetworkInterfaces() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
+func (r *Elastigroup) NetworkInterfaces() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
 }
 
 // Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
-func (r *Elastigroup) OndemandCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ondemandCount"])
+func (r *Elastigroup) OndemandCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ondemandCount"])
 }
 
 // Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
-func (r *Elastigroup) Orientation() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["orientation"])
+func (r *Elastigroup) Orientation() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["orientation"])
 }
 
-func (r *Elastigroup) PersistBlockDevices() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["persistBlockDevices"])
+func (r *Elastigroup) PersistBlockDevices() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["persistBlockDevices"])
 }
 
-func (r *Elastigroup) PersistPrivateIp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["persistPrivateIp"])
+func (r *Elastigroup) PersistPrivateIp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["persistPrivateIp"])
 }
 
-func (r *Elastigroup) PersistRootDevice() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["persistRootDevice"])
+func (r *Elastigroup) PersistRootDevice() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["persistRootDevice"])
 }
 
 // Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
-func (r *Elastigroup) PlacementTenancy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["placementTenancy"])
+func (r *Elastigroup) PlacementTenancy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["placementTenancy"])
 }
 
 // The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
 // Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
-func (r *Elastigroup) PreferredAvailabilityZones() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["preferredAvailabilityZones"])
+func (r *Elastigroup) PreferredAvailabilityZones() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["preferredAvailabilityZones"])
 }
 
-func (r *Elastigroup) PrivateIps() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["privateIps"])
+func (r *Elastigroup) PrivateIps() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["privateIps"])
 }
 
 // Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
 // For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
-func (r *Elastigroup) Product() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["product"])
+func (r *Elastigroup) Product() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["product"])
 }
 
 // The AWS region your group will be created in.
 // Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
-func (r *Elastigroup) Region() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["region"])
+func (r *Elastigroup) Region() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
 // Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
-func (r *Elastigroup) RevertToSpot() *pulumi.Output {
+func (r *Elastigroup) RevertToSpot() pulumi.Output {
 	return r.s.State["revertToSpot"]
 }
 
-func (r *Elastigroup) ScalingDownPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scalingDownPolicies"])
+func (r *Elastigroup) ScalingDownPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scalingDownPolicies"])
 }
 
 // Set termination policy.
-func (r *Elastigroup) ScalingStrategies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scalingStrategies"])
+func (r *Elastigroup) ScalingStrategies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scalingStrategies"])
 }
 
-func (r *Elastigroup) ScalingTargetPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scalingTargetPolicies"])
+func (r *Elastigroup) ScalingTargetPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scalingTargetPolicies"])
 }
 
-func (r *Elastigroup) ScalingUpPolicies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scalingUpPolicies"])
+func (r *Elastigroup) ScalingUpPolicies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scalingUpPolicies"])
 }
 
-func (r *Elastigroup) ScheduledTasks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["scheduledTasks"])
+func (r *Elastigroup) ScheduledTasks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scheduledTasks"])
 }
 
 // A list of associated security group IDS.
-func (r *Elastigroup) SecurityGroups() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["securityGroups"])
+func (r *Elastigroup) SecurityGroups() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityGroups"])
 }
 
 // The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
-func (r *Elastigroup) ShutdownScript() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["shutdownScript"])
+func (r *Elastigroup) ShutdownScript() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["shutdownScript"])
 }
 
-func (r *Elastigroup) Signals() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["signals"])
+func (r *Elastigroup) Signals() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["signals"])
 }
 
 // The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-func (r *Elastigroup) SpotPercentage() *pulumi.Float64Output {
-	return (*pulumi.Float64Output)(r.s.State["spotPercentage"])
+func (r *Elastigroup) SpotPercentage() pulumi.Float64Output {
+	return (pulumi.Float64Output)(r.s.State["spotPercentage"])
 }
 
-func (r *Elastigroup) StatefulDeallocation() *pulumi.Output {
+func (r *Elastigroup) StatefulDeallocation() pulumi.Output {
 	return r.s.State["statefulDeallocation"]
 }
 
 // List of Strings of subnet identifiers.
 // Note: When this parameter is set, `availabilityZones` should be left unused.
-func (r *Elastigroup) SubnetIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["subnetIds"])
+func (r *Elastigroup) SubnetIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["subnetIds"])
 }
 
 // A key/value mapping of tags to assign to the resource.
-func (r *Elastigroup) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Elastigroup) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
-func (r *Elastigroup) TargetGroupArns() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["targetGroupArns"])
+func (r *Elastigroup) TargetGroupArns() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["targetGroupArns"])
 }
 
-func (r *Elastigroup) UpdatePolicy() *pulumi.Output {
+func (r *Elastigroup) UpdatePolicy() pulumi.Output {
 	return r.s.State["updatePolicy"]
 }
 
 // The user data to provide when launching the instance.
-func (r *Elastigroup) UserData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userData"])
+func (r *Elastigroup) UserData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userData"])
 }
 
 // In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
-func (r *Elastigroup) UtilizeReservedInstances() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["utilizeReservedInstances"])
+func (r *Elastigroup) UtilizeReservedInstances() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["utilizeReservedInstances"])
 }
 
 // Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
-func (r *Elastigroup) WaitForCapacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["waitForCapacity"])
+func (r *Elastigroup) WaitForCapacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["waitForCapacity"])
 }
 
 // Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
-func (r *Elastigroup) WaitForCapacityTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["waitForCapacityTimeout"])
+func (r *Elastigroup) WaitForCapacityTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["waitForCapacityTimeout"])
 }
 
 // Input properties used for looking up and filtering Elastigroup resources.
