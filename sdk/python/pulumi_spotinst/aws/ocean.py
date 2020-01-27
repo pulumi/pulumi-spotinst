@@ -22,6 +22,7 @@ class Ocean(pulumi.CustomResource):
       * `autoscaleDown` (`dict`) - Auto Scaling scale down operations.
     
         * `evaluationPeriods` (`float`) - The number of evaluation periods that should accumulate before a scale down action takes place.
+        * `maxScaleDownPercentage` (`float`) - Would represent the maximum % to scale-down. Number between 1-100.
     
       * `autoscaleHeadroom` (`dict`) - Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
     
@@ -175,6 +176,7 @@ class Ocean(pulumi.CustomResource):
           * `autoscaleDown` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
         
             * `evaluationPeriods` (`pulumi.Input[float]`) - The number of evaluation periods that should accumulate before a scale down action takes place.
+            * `maxScaleDownPercentage` (`pulumi.Input[float]`) - Would represent the maximum % to scale-down. Number between 1-100.
         
           * `autoscaleHeadroom` (`pulumi.Input[dict]`) - Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
         
@@ -305,6 +307,7 @@ class Ocean(pulumi.CustomResource):
           * `autoscaleDown` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
         
             * `evaluationPeriods` (`pulumi.Input[float]`) - The number of evaluation periods that should accumulate before a scale down action takes place.
+            * `maxScaleDownPercentage` (`pulumi.Input[float]`) - Would represent the maximum % to scale-down. Number between 1-100.
         
           * `autoscaleHeadroom` (`pulumi.Input[dict]`) - Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
         

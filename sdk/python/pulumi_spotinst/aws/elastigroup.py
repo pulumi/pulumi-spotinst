@@ -298,7 +298,7 @@ class Elastigroup(pulumi.CustomResource):
         
             * `automaticRoll` (`pulumi.Input[bool]`)
             * `batchSizePercentage` (`pulumi.Input[float]`)
-            * `gracePeriod` (`pulumi.Input[float]`)
+            * `grace_period` (`pulumi.Input[float]`)
             * `strategy` (`pulumi.Input[dict]`)
         
               * `action` (`pulumi.Input[str]`)
@@ -549,7 +549,7 @@ class Elastigroup(pulumi.CustomResource):
           * `batchSizePercentage` (`pulumi.Input[str]`)
           * `cronExpression` (`pulumi.Input[str]`)
           * `frequency` (`pulumi.Input[str]`)
-          * `gracePeriod` (`pulumi.Input[str]`)
+          * `grace_period` (`pulumi.Input[str]`)
           * `isEnabled` (`pulumi.Input[bool]`)
           * `maxCapacity` (`pulumi.Input[str]`)
           * `minCapacity` (`pulumi.Input[str]`)
@@ -583,7 +583,7 @@ class Elastigroup(pulumi.CustomResource):
           * `rollConfig` (`pulumi.Input[dict]`)
         
             * `batchSizePercentage` (`pulumi.Input[float]`)
-            * `gracePeriod` (`pulumi.Input[float]`)
+            * `grace_period` (`pulumi.Input[float]`)
             * `health_check_type` (`pulumi.Input[str]`) - The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
             * `strategy` (`pulumi.Input[dict]`)
         
@@ -787,7 +787,7 @@ class Elastigroup(pulumi.CustomResource):
         
             * `automaticRoll` (`pulumi.Input[bool]`)
             * `batchSizePercentage` (`pulumi.Input[float]`)
-            * `gracePeriod` (`pulumi.Input[float]`)
+            * `grace_period` (`pulumi.Input[float]`)
             * `strategy` (`pulumi.Input[dict]`)
         
               * `action` (`pulumi.Input[str]`)
@@ -1038,7 +1038,7 @@ class Elastigroup(pulumi.CustomResource):
           * `batchSizePercentage` (`pulumi.Input[str]`)
           * `cronExpression` (`pulumi.Input[str]`)
           * `frequency` (`pulumi.Input[str]`)
-          * `gracePeriod` (`pulumi.Input[str]`)
+          * `grace_period` (`pulumi.Input[str]`)
           * `isEnabled` (`pulumi.Input[bool]`)
           * `maxCapacity` (`pulumi.Input[str]`)
           * `minCapacity` (`pulumi.Input[str]`)
@@ -1072,7 +1072,7 @@ class Elastigroup(pulumi.CustomResource):
           * `rollConfig` (`pulumi.Input[dict]`)
         
             * `batchSizePercentage` (`pulumi.Input[float]`)
-            * `gracePeriod` (`pulumi.Input[float]`)
+            * `grace_period` (`pulumi.Input[float]`)
             * `health_check_type` (`pulumi.Input[str]`) - The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
             * `strategy` (`pulumi.Input[dict]`)
         

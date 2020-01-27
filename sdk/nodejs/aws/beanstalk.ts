@@ -46,6 +46,32 @@ import * as utilities from "../utilities";
  *     region: "us-west-2",
  * });
  * ```
+ * 
+ * ## Scheduled Tasks
+ * 
+ * Each `scheduledTask` supports the following:
+ * 
+ * * `taskType` - (Required) The task type to run. Supported task types are: `"scale"`, `"backupAmi"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
+ * * `cronExpression` - (Optional; Required if not using `frequency`) A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
+ * * `startTime` - (Optional; Format: ISO 8601) Set a start time for one time tasks.
+ * * `frequency` - (Optional; Required if not using `cronExpression`) The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
+ * * `scaleTargetCapacity` - (Optional) The desired number of instances the group should have.
+ * * `scaleMinCapacity` - (Optional) The minimum number of instances the group should have.
+ * * `scaleMaxCapacity` - (Optional) The maximum number of instances the group should have.
+ * * `isEnabled` - (Optional, Default: `true`) Setting the task to being enabled or disabled.
+ * * `targetCapacity` - (Optional; Only valid for statefulUpdateCapacity) The desired number of instances the group should have.
+ * * `minCapacity` - (Optional; Only valid for statefulUpdateCapacity) The minimum number of instances the group should have.
+ * * `maxCapacity` - (Optional; Only valid for statefulUpdateCapacity) The maximum number of instances the group should have.
+ * * `batchSizePercentage` - (Optional; Required when the `taskType` is `"roll"`.) The percentage size of each batch in the scheduled deployment roll.
+ * * `gracePeriod` - (Optional) The period of time (seconds) to wait before checking a batch's health after it's deployment.
+ * * `adjustment` - (Optional; Min 1) The number of instances to add or remove.
+ * * `adjustmentPercentage` - (Optional; Min 1) The percentage of instances to add or remove.
+ * 
+ * Usage:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_aws_beanstalk.html.markdown.
  */
@@ -122,6 +148,7 @@ export class Beanstalk extends pulumi.CustomResource {
      * The AWS region your group will be created in. Cannot be changed after the group has been created.
      */
     public readonly region!: pulumi.Output<string>;
+    public readonly scheduledTasks!: pulumi.Output<outputs.aws.BeanstalkScheduledTask[] | undefined>;
 
     /**
      * Create a Beanstalk resource with the given unique name, arguments, and options.
@@ -147,6 +174,7 @@ export class Beanstalk extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["product"] = state ? state.product : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
         } else {
             const args = argsOrState as BeanstalkArgs | undefined;
             if (!args || args.desiredCapacity === undefined) {
@@ -179,6 +207,7 @@ export class Beanstalk extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["product"] = args ? args.product : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
         }
         if (!opts) {
             opts = {}
@@ -241,6 +270,7 @@ export interface BeanstalkState {
      * The AWS region your group will be created in. Cannot be changed after the group has been created.
      */
     readonly region?: pulumi.Input<string>;
+    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkScheduledTask>[]>;
 }
 
 /**
@@ -293,4 +323,5 @@ export interface BeanstalkArgs {
      * The AWS region your group will be created in. Cannot be changed after the group has been created.
      */
     readonly region: pulumi.Input<string>;
+    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkScheduledTask>[]>;
 }

@@ -4,6 +4,7 @@
 // Export members:
 export * from "./beanstalk";
 export * from "./elastigroup";
+export * from "./managedInstance";
 export * from "./mrScalar";
 export * from "./ocean";
 export * from "./oceanLaunchSpec";

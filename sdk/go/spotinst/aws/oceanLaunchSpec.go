@@ -23,17 +23,25 @@ func NewOceanLaunchSpec(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["autoscaleHeadrooms"] = nil
 		inputs["iamInstanceProfile"] = nil
 		inputs["imageId"] = nil
 		inputs["labels"] = nil
 		inputs["oceanId"] = nil
+		inputs["rootVolumeSize"] = nil
+		inputs["securityGroups"] = nil
+		inputs["subnetIds"] = nil
 		inputs["taints"] = nil
 		inputs["userData"] = nil
 	} else {
+		inputs["autoscaleHeadrooms"] = args.AutoscaleHeadrooms
 		inputs["iamInstanceProfile"] = args.IamInstanceProfile
 		inputs["imageId"] = args.ImageId
 		inputs["labels"] = args.Labels
 		inputs["oceanId"] = args.OceanId
+		inputs["rootVolumeSize"] = args.RootVolumeSize
+		inputs["securityGroups"] = args.SecurityGroups
+		inputs["subnetIds"] = args.SubnetIds
 		inputs["taints"] = args.Taints
 		inputs["userData"] = args.UserData
 	}
@@ -50,10 +58,14 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *OceanLaunchSpecState, opts ...pulumi.ResourceOpt) (*OceanLaunchSpec, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["autoscaleHeadrooms"] = state.AutoscaleHeadrooms
 		inputs["iamInstanceProfile"] = state.IamInstanceProfile
 		inputs["imageId"] = state.ImageId
 		inputs["labels"] = state.Labels
 		inputs["oceanId"] = state.OceanId
+		inputs["rootVolumeSize"] = state.RootVolumeSize
+		inputs["securityGroups"] = state.SecurityGroups
+		inputs["subnetIds"] = state.SubnetIds
 		inputs["taints"] = state.Taints
 		inputs["userData"] = state.UserData
 	}
@@ -72,6 +84,11 @@ func (r *OceanLaunchSpec) URN() pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *OceanLaunchSpec) ID() pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Set custom headroom per launch spec. provide list of headrooms object.
+func (r *OceanLaunchSpec) AutoscaleHeadrooms() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["autoscaleHeadrooms"])
 }
 
 // The ARN or name of an IAM instance profile to associate with launched instances.
@@ -94,6 +111,21 @@ func (r *OceanLaunchSpec) OceanId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["oceanId"])
 }
 
+// Set root volume size (in GB).
+func (r *OceanLaunchSpec) RootVolumeSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["rootVolumeSize"])
+}
+
+// Optionally adds security group IDs.
+func (r *OceanLaunchSpec) SecurityGroups() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityGroups"])
+}
+
+// Set subnets in launchSpec. Each element in array should be subnet ID.
+func (r *OceanLaunchSpec) SubnetIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["subnetIds"])
+}
+
 // Optionally adds labels to instances launched in an Ocean cluster.
 func (r *OceanLaunchSpec) Taints() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["taints"])
@@ -106,6 +138,8 @@ func (r *OceanLaunchSpec) UserData() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering OceanLaunchSpec resources.
 type OceanLaunchSpecState struct {
+	// Set custom headroom per launch spec. provide list of headrooms object.
+	AutoscaleHeadrooms interface{}
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile interface{}
 	// ID of the image used to launch the instances.
@@ -114,6 +148,12 @@ type OceanLaunchSpecState struct {
 	Labels interface{}
 	// The ocean cluster you wish to 
 	OceanId interface{}
+	// Set root volume size (in GB).
+	RootVolumeSize interface{}
+	// Optionally adds security group IDs.
+	SecurityGroups interface{}
+	// Set subnets in launchSpec. Each element in array should be subnet ID.
+	SubnetIds interface{}
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints interface{}
 	// Base64-encoded MIME user data to make available to the instances.
@@ -122,6 +162,8 @@ type OceanLaunchSpecState struct {
 
 // The set of arguments for constructing a OceanLaunchSpec resource.
 type OceanLaunchSpecArgs struct {
+	// Set custom headroom per launch spec. provide list of headrooms object.
+	AutoscaleHeadrooms interface{}
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile interface{}
 	// ID of the image used to launch the instances.
@@ -130,6 +172,12 @@ type OceanLaunchSpecArgs struct {
 	Labels interface{}
 	// The ocean cluster you wish to 
 	OceanId interface{}
+	// Set root volume size (in GB).
+	RootVolumeSize interface{}
+	// Optionally adds security group IDs.
+	SecurityGroups interface{}
+	// Set subnets in launchSpec. Each element in array should be subnet ID.
+	SubnetIds interface{}
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints interface{}
 	// Base64-encoded MIME user data to make available to the instances.

@@ -62,7 +62,7 @@ export class Elastigroup extends pulumi.CustomResource {
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
-    public readonly drainingTimeout!: pulumi.Output<number | undefined>;
+    public readonly drainingTimeout!: pulumi.Output<number>;
     public readonly ebsBlockDevices!: pulumi.Output<outputs.aws.ElastigroupEbsBlockDevice[] | undefined>;
     /**
      * Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.

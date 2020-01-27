@@ -50,6 +50,7 @@ func NewBeanstalk(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["product"] = nil
 		inputs["region"] = nil
+		inputs["scheduledTasks"] = nil
 	} else {
 		inputs["beanstalkEnvironmentId"] = args.BeanstalkEnvironmentId
 		inputs["beanstalkEnvironmentName"] = args.BeanstalkEnvironmentName
@@ -63,6 +64,7 @@ func NewBeanstalk(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["product"] = args.Product
 		inputs["region"] = args.Region
+		inputs["scheduledTasks"] = args.ScheduledTasks
 	}
 	s, err := ctx.RegisterResource("spotinst:aws/beanstalk:Beanstalk", name, true, inputs, opts...)
 	if err != nil {
@@ -89,6 +91,7 @@ func GetBeanstalk(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["product"] = state.Product
 		inputs["region"] = state.Region
+		inputs["scheduledTasks"] = state.ScheduledTasks
 	}
 	s, err := ctx.ReadResource("spotinst:aws/beanstalk:Beanstalk", name, id, inputs, opts...)
 	if err != nil {
@@ -167,6 +170,10 @@ func (r *Beanstalk) Region() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["region"])
 }
 
+func (r *Beanstalk) ScheduledTasks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["scheduledTasks"])
+}
+
 // Input properties used for looking up and filtering Beanstalk resources.
 type BeanstalkState struct {
 	// The id of an existing Beanstalk environment. 
@@ -193,6 +200,7 @@ type BeanstalkState struct {
 	Product interface{}
 	// The AWS region your group will be created in. Cannot be changed after the group has been created.
 	Region interface{}
+	ScheduledTasks interface{}
 }
 
 // The set of arguments for constructing a Beanstalk resource.
@@ -221,4 +229,5 @@ type BeanstalkArgs struct {
 	Product interface{}
 	// The AWS region your group will be created in. Cannot be changed after the group has been created.
 	Region interface{}
+	ScheduledTasks interface{}
 }
