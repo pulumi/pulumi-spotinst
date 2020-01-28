@@ -13,5 +13,6 @@ require (
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	golang.org/x/sys => golang.org/x/sys v0.0.0-20200124204421-9fbb57f87de9
+	golang.org/x/crypto => golang.org/x/crypto v0.0.0-20200117160349-530e935923ad
+	golang.org/x/sys => golang.org/x/sys v0.0.0-20190412213103-97732733099d
 )
