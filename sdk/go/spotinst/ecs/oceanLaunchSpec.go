@@ -24,6 +24,7 @@ func NewOceanLaunchSpec(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["attributes"] = nil
+		inputs["autoscaleHeadrooms"] = nil
 		inputs["iamInstanceProfile"] = nil
 		inputs["imageId"] = nil
 		inputs["name"] = nil
@@ -32,6 +33,7 @@ func NewOceanLaunchSpec(ctx *pulumi.Context,
 		inputs["userData"] = nil
 	} else {
 		inputs["attributes"] = args.Attributes
+		inputs["autoscaleHeadrooms"] = args.AutoscaleHeadrooms
 		inputs["iamInstanceProfile"] = args.IamInstanceProfile
 		inputs["imageId"] = args.ImageId
 		inputs["name"] = args.Name
@@ -53,6 +55,7 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["attributes"] = state.Attributes
+		inputs["autoscaleHeadrooms"] = state.AutoscaleHeadrooms
 		inputs["iamInstanceProfile"] = state.IamInstanceProfile
 		inputs["imageId"] = state.ImageId
 		inputs["name"] = state.Name
@@ -80,6 +83,11 @@ func (r *OceanLaunchSpec) ID() pulumi.IDOutput {
 // Optionally adds labels to instances launched in an Ocean cluster.
 func (r *OceanLaunchSpec) Attributes() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["attributes"])
+}
+
+// Set custom headroom per launch spec. provide list of headrooms object.
+func (r *OceanLaunchSpec) AutoscaleHeadrooms() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["autoscaleHeadrooms"])
 }
 
 // The ARN or name of an IAM instance profile to associate with launched instances.
@@ -116,6 +124,8 @@ func (r *OceanLaunchSpec) UserData() pulumi.StringOutput {
 type OceanLaunchSpecState struct {
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Attributes interface{}
+	// Set custom headroom per launch spec. provide list of headrooms object.
+	AutoscaleHeadrooms interface{}
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile interface{}
 	// ID of the image used to launch the instances.
@@ -134,6 +144,8 @@ type OceanLaunchSpecState struct {
 type OceanLaunchSpecArgs struct {
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Attributes interface{}
+	// Set custom headroom per launch spec. provide list of headrooms object.
+	AutoscaleHeadrooms interface{}
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile interface{}
 	// ID of the image used to launch the instances.

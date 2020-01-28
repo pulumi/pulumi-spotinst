@@ -57,6 +57,30 @@ export namespace aws {
         updateLevel?: pulumi.Input<string>;
     }
 
+    export interface BeanstalkScheduledTask {
+        adjustment?: pulumi.Input<string>;
+        adjustmentPercentage?: pulumi.Input<string>;
+        /**
+         * Percent size of each batch
+         */
+        batchSizePercentage?: pulumi.Input<string>;
+        cronExpression?: pulumi.Input<string>;
+        frequency?: pulumi.Input<string>;
+        /**
+         * Amount of time to wait between batches
+         */
+        gracePeriod?: pulumi.Input<string>;
+        isEnabled?: pulumi.Input<boolean>;
+        maxCapacity?: pulumi.Input<string>;
+        minCapacity?: pulumi.Input<string>;
+        scaleMaxCapacity?: pulumi.Input<string>;
+        scaleMinCapacity?: pulumi.Input<string>;
+        scaleTargetCapacity?: pulumi.Input<string>;
+        startTime?: pulumi.Input<string>;
+        targetCapacity?: pulumi.Input<string>;
+        taskType: pulumi.Input<string>;
+    }
+
     export interface ElastigroupEbsBlockDevice {
         deleteOnTermination?: pulumi.Input<boolean>;
         deviceName: pulumi.Input<string>;
@@ -454,6 +478,70 @@ export namespace aws {
         shouldDrainInstances?: pulumi.Input<boolean>;
     }
 
+    export interface ManagedInstanceIntegrationRoute53 {
+        domains: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceIntegrationRoute53Domain>[]>;
+    }
+
+    export interface ManagedInstanceIntegrationRoute53Domain {
+        hostedZoneId: pulumi.Input<string>;
+        recordSets: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceIntegrationRoute53DomainRecordSet>[]>;
+        spotinstAcctId?: pulumi.Input<string>;
+    }
+
+    export interface ManagedInstanceIntegrationRoute53DomainRecordSet {
+        /**
+         * The ManagedInstance name.
+         */
+        name: pulumi.Input<string>;
+        usePublicIp?: pulumi.Input<boolean>;
+    }
+
+    export interface ManagedInstanceLoadBalancer {
+        arn?: pulumi.Input<string>;
+        autoWeight?: pulumi.Input<boolean>;
+        azAwareness?: pulumi.Input<boolean>;
+        balancerId?: pulumi.Input<string>;
+        /**
+         * The ManagedInstance name.
+         */
+        name?: pulumi.Input<string>;
+        targetSetId?: pulumi.Input<string>;
+        type: pulumi.Input<string>;
+    }
+
+    export interface ManagedInstanceNetworkInterface {
+        associateIpv6Address?: pulumi.Input<boolean>;
+        associatePublicIpAddress?: pulumi.Input<boolean>;
+        deviceIndex: pulumi.Input<string>;
+    }
+
+    export interface ManagedInstanceRevertToSpot {
+        /**
+         * Valid values: “always”, “never”, "timeWindow".
+         * Default `"never"`.
+         */
+        performAt: pulumi.Input<string>;
+    }
+
+    export interface ManagedInstanceScheduledTask {
+        cronExpression?: pulumi.Input<string>;
+        frequency?: pulumi.Input<string>;
+        isEnabled?: pulumi.Input<boolean>;
+        startTime?: pulumi.Input<string>;
+        taskType: pulumi.Input<string>;
+    }
+
+    export interface ManagedInstanceTag {
+        /**
+         * Tag's key.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Tag's name.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface MrScalarApplication {
         args?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -640,6 +728,10 @@ export namespace aws {
          * The number of evaluation periods that should accumulate before a scale down action takes place.
          */
         evaluationPeriods?: pulumi.Input<number>;
+        /**
+         * Would represent the maximum % to scale-down. Number between 1-100.
+         */
+        maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
@@ -670,6 +762,25 @@ export namespace aws {
          * The maximum cpu in vCPU units that can be allocated to the cluster.
          */
         maxVcpu?: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecAutoscaleHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the number of GPUS to allocate for each headroom unit.
+         */
+        gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
+        memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
+        numOfUnits: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecLabel {
@@ -979,6 +1090,21 @@ export namespace ecs {
          * The label value.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecAutoscaleHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
+         */
+        cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
+        memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
+        numOfUnits: pulumi.Input<number>;
     }
 
     export interface OceanTag {
@@ -1371,6 +1497,25 @@ export namespace gke {
          * A list of ports.
          */
         ports: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OceanLaunchSpecAutoscaleHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the number of GPUS to allocate for each headroom unit.
+         */
+        gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+         */
+        memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
+        numOfUnits: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecLabel {

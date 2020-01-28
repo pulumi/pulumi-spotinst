@@ -29,12 +29,14 @@ func NewOceanLaunchSpec(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["autoscaleHeadrooms"] = nil
 		inputs["labels"] = nil
 		inputs["metadatas"] = nil
 		inputs["oceanId"] = nil
 		inputs["sourceImage"] = nil
 		inputs["taints"] = nil
 	} else {
+		inputs["autoscaleHeadrooms"] = args.AutoscaleHeadrooms
 		inputs["labels"] = args.Labels
 		inputs["metadatas"] = args.Metadatas
 		inputs["oceanId"] = args.OceanId
@@ -54,6 +56,7 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *OceanLaunchSpecState, opts ...pulumi.ResourceOpt) (*OceanLaunchSpec, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["autoscaleHeadrooms"] = state.AutoscaleHeadrooms
 		inputs["labels"] = state.Labels
 		inputs["metadatas"] = state.Metadatas
 		inputs["oceanId"] = state.OceanId
@@ -75,6 +78,11 @@ func (r *OceanLaunchSpec) URN() pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *OceanLaunchSpec) ID() pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Set custom headroom per launch spec. provide list of headrooms object.
+func (r *OceanLaunchSpec) AutoscaleHeadrooms() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["autoscaleHeadrooms"])
 }
 
 // Cluster's labels.
@@ -104,6 +112,8 @@ func (r *OceanLaunchSpec) Taints() pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering OceanLaunchSpec resources.
 type OceanLaunchSpecState struct {
+	// Set custom headroom per launch spec. provide list of headrooms object.
+	AutoscaleHeadrooms interface{}
 	// Cluster's labels.
 	Labels interface{}
 	// Cluster's metadata.
@@ -118,6 +128,8 @@ type OceanLaunchSpecState struct {
 
 // The set of arguments for constructing a OceanLaunchSpec resource.
 type OceanLaunchSpecArgs struct {
+	// Set custom headroom per launch spec. provide list of headrooms object.
+	AutoscaleHeadrooms interface{}
 	// Cluster's labels.
 	Labels interface{}
 	// Cluster's metadata.

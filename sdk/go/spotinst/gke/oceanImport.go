@@ -24,9 +24,6 @@ func NewOceanImport(ctx *pulumi.Context,
 	if args == nil || args.Location == nil {
 		return nil, errors.New("missing required argument 'Location'")
 	}
-	if args == nil || args.Whitelists == nil {
-		return nil, errors.New("missing required argument 'Whitelists'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["backendServices"] = nil

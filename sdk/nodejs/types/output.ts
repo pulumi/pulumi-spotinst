@@ -57,6 +57,30 @@ export namespace aws {
         updateLevel?: string;
     }
 
+    export interface BeanstalkScheduledTask {
+        adjustment?: string;
+        adjustmentPercentage?: string;
+        /**
+         * Percent size of each batch
+         */
+        batchSizePercentage?: string;
+        cronExpression?: string;
+        frequency?: string;
+        /**
+         * Amount of time to wait between batches
+         */
+        gracePeriod?: string;
+        isEnabled?: boolean;
+        maxCapacity?: string;
+        minCapacity?: string;
+        scaleMaxCapacity?: string;
+        scaleMinCapacity?: string;
+        scaleTargetCapacity?: string;
+        startTime?: string;
+        targetCapacity?: string;
+        taskType: string;
+    }
+
     export interface ElastigroupEbsBlockDevice {
         deleteOnTermination: boolean;
         deviceName: string;
@@ -454,6 +478,70 @@ export namespace aws {
         shouldDrainInstances?: boolean;
     }
 
+    export interface ManagedInstanceIntegrationRoute53 {
+        domains: outputs.aws.ManagedInstanceIntegrationRoute53Domain[];
+    }
+
+    export interface ManagedInstanceIntegrationRoute53Domain {
+        hostedZoneId: string;
+        recordSets: outputs.aws.ManagedInstanceIntegrationRoute53DomainRecordSet[];
+        spotinstAcctId?: string;
+    }
+
+    export interface ManagedInstanceIntegrationRoute53DomainRecordSet {
+        /**
+         * The ManagedInstance name.
+         */
+        name: string;
+        usePublicIp?: boolean;
+    }
+
+    export interface ManagedInstanceLoadBalancer {
+        arn?: string;
+        autoWeight?: boolean;
+        azAwareness?: boolean;
+        balancerId?: string;
+        /**
+         * The ManagedInstance name.
+         */
+        name?: string;
+        targetSetId?: string;
+        type: string;
+    }
+
+    export interface ManagedInstanceNetworkInterface {
+        associateIpv6Address?: boolean;
+        associatePublicIpAddress?: boolean;
+        deviceIndex: string;
+    }
+
+    export interface ManagedInstanceRevertToSpot {
+        /**
+         * Valid values: “always”, “never”, "timeWindow".
+         * Default `"never"`.
+         */
+        performAt: string;
+    }
+
+    export interface ManagedInstanceScheduledTask {
+        cronExpression?: string;
+        frequency?: string;
+        isEnabled?: boolean;
+        startTime?: string;
+        taskType: string;
+    }
+
+    export interface ManagedInstanceTag {
+        /**
+         * Tag's key.
+         */
+        key?: string;
+        /**
+         * Tag's name.
+         */
+        value?: string;
+    }
+
     export interface MrScalarApplication {
         args?: string[];
         /**
@@ -640,6 +728,10 @@ export namespace aws {
          * The number of evaluation periods that should accumulate before a scale down action takes place.
          */
         evaluationPeriods?: number;
+        /**
+         * Would represent the maximum % to scale-down. Number between 1-100.
+         */
+        maxScaleDownPercentage?: number;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
@@ -670,6 +762,25 @@ export namespace aws {
          * The maximum cpu in vCPU units that can be allocated to the cluster.
          */
         maxVcpu?: number;
+    }
+
+    export interface OceanLaunchSpecAutoscaleHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: number;
+        /**
+         * Optionally configure the number of GPUS to allocate for each headroom unit.
+         */
+        gpuPerUnit?: number;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
+        memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
+        numOfUnits: number;
     }
 
     export interface OceanLaunchSpecLabel {
@@ -979,6 +1090,21 @@ export namespace ecs {
          * The label value.
          */
         value: string;
+    }
+
+    export interface OceanLaunchSpecAutoscaleHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
+         */
+        cpuPerUnit?: number;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
+        memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         */
+        numOfUnits: number;
     }
 
     export interface OceanTag {
@@ -1371,6 +1497,25 @@ export namespace gke {
          * A list of ports.
          */
         ports: string[];
+    }
+
+    export interface OceanLaunchSpecAutoscaleHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: number;
+        /**
+         * Optionally configure the number of GPUS to allocate for each headroom unit.
+         */
+        gpuPerUnit?: number;
+        /**
+         * Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+         */
+        memoryPerUnit?: number;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
+        numOfUnits: number;
     }
 
     export interface OceanLaunchSpecLabel {

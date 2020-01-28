@@ -98,8 +98,6 @@ class OceanImport(pulumi.CustomResource):
             __props__['location'] = location
             __props__['max_size'] = max_size
             __props__['min_size'] = min_size
-            if whitelists is None:
-                raise TypeError("Missing required property 'whitelists'")
             __props__['whitelists'] = whitelists
             __props__['cluster_controller_id'] = None
         super(OceanImport, __self__).__init__(

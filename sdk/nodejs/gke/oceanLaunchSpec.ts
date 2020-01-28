@@ -16,6 +16,12 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  * 
  * const example = new spotinst.gke.OceanLaunchSpec("example", {
+ *     autoscaleHeadrooms: [{
+ *         cpuPerUnit: 1000,
+ *         gpuPerUnit: 0,
+ *         memoryPerUnit: 2048,
+ *         numOfUnits: 5,
+ *     }],
  *     labels: [{
  *         key: "labelKey",
  *         value: "labelVal",
@@ -64,6 +70,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     }
 
     /**
+     * Set custom headroom per launch spec. provide list of headrooms object.
+     */
+    public readonly autoscaleHeadrooms!: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
+    /**
      * Cluster's labels.
      */
     public readonly labels!: pulumi.Output<outputs.gke.OceanLaunchSpecLabel[] | undefined>;
@@ -96,6 +106,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
+            inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["metadatas"] = state ? state.metadatas : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
@@ -112,6 +123,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             if (!args || args.sourceImage === undefined) {
                 throw new Error("Missing required property 'sourceImage'");
             }
+            inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["metadatas"] = args ? args.metadatas : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
@@ -133,6 +145,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OceanLaunchSpec resources.
  */
 export interface OceanLaunchSpecState {
+    /**
+     * Set custom headroom per launch spec. provide list of headrooms object.
+     */
+    readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[]>;
     /**
      * Cluster's labels.
      */
@@ -159,6 +175,10 @@ export interface OceanLaunchSpecState {
  * The set of arguments for constructing a OceanLaunchSpec resource.
  */
 export interface OceanLaunchSpecArgs {
+    /**
+     * Set custom headroom per launch spec. provide list of headrooms object.
+     */
+    readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[]>;
     /**
      * Cluster's labels.
      */

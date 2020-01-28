@@ -96,8 +96,8 @@ class Elastigroup(pulumi.CustomResource):
         
         The **health_check** object supports the following:
         
-          * `autoHealing` (`pulumi.Input[bool]`)
-          * `gracePeriod` (`pulumi.Input[float]`)
+          * `auto_healing` (`pulumi.Input[bool]`)
+          * `grace_period` (`pulumi.Input[float]`)
           * `health_check_type` (`pulumi.Input[str]`)
         
         The **images** object supports the following:
@@ -207,7 +207,7 @@ class Elastigroup(pulumi.CustomResource):
           * `adjustmentPercentage` (`pulumi.Input[str]`)
           * `batchSizePercentage` (`pulumi.Input[str]`)
           * `cronExpression` (`pulumi.Input[str]`)
-          * `gracePeriod` (`pulumi.Input[str]`)
+          * `grace_period` (`pulumi.Input[str]`)
           * `isEnabled` (`pulumi.Input[bool]`)
           * `scaleMaxCapacity` (`pulumi.Input[str]`)
           * `scaleMinCapacity` (`pulumi.Input[str]`)
@@ -225,7 +225,7 @@ class Elastigroup(pulumi.CustomResource):
           * `rollConfig` (`pulumi.Input[dict]`)
         
             * `batchSizePercentage` (`pulumi.Input[float]`)
-            * `gracePeriod` (`pulumi.Input[float]`)
+            * `grace_period` (`pulumi.Input[float]`)
             * `health_check_type` (`pulumi.Input[str]`)
         
           * `shouldRoll` (`pulumi.Input[bool]`)
@@ -318,8 +318,8 @@ class Elastigroup(pulumi.CustomResource):
         
         The **health_check** object supports the following:
         
-          * `autoHealing` (`pulumi.Input[bool]`)
-          * `gracePeriod` (`pulumi.Input[float]`)
+          * `auto_healing` (`pulumi.Input[bool]`)
+          * `grace_period` (`pulumi.Input[float]`)
           * `health_check_type` (`pulumi.Input[str]`)
         
         The **images** object supports the following:
@@ -429,7 +429,7 @@ class Elastigroup(pulumi.CustomResource):
           * `adjustmentPercentage` (`pulumi.Input[str]`)
           * `batchSizePercentage` (`pulumi.Input[str]`)
           * `cronExpression` (`pulumi.Input[str]`)
-          * `gracePeriod` (`pulumi.Input[str]`)
+          * `grace_period` (`pulumi.Input[str]`)
           * `isEnabled` (`pulumi.Input[bool]`)
           * `scaleMaxCapacity` (`pulumi.Input[str]`)
           * `scaleMinCapacity` (`pulumi.Input[str]`)
@@ -447,7 +447,7 @@ class Elastigroup(pulumi.CustomResource):
           * `rollConfig` (`pulumi.Input[dict]`)
         
             * `batchSizePercentage` (`pulumi.Input[float]`)
-            * `gracePeriod` (`pulumi.Input[float]`)
+            * `grace_period` (`pulumi.Input[float]`)
             * `health_check_type` (`pulumi.Input[str]`)
         
           * `shouldRoll` (`pulumi.Input[bool]`)

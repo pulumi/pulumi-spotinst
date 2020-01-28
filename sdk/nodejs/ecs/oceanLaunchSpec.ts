@@ -20,6 +20,11 @@ import * as utilities from "../utilities";
  *         key: "fakeKey",
  *         value: "fakeValue",
  *     }],
+ *     autoscaleHeadrooms: [{
+ *         cpuPerUnit: 1000,
+ *         memoryPerUnit: 2048,
+ *         numOfUnits: 5,
+ *     }],
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-123456",
  *     oceanId: "o-123456",
@@ -62,6 +67,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly attributes!: pulumi.Output<outputs.ecs.OceanLaunchSpecAttribute[] | undefined>;
     /**
+     * Set custom headroom per launch spec. provide list of headrooms object.
+     */
+    public readonly autoscaleHeadrooms!: pulumi.Output<outputs.ecs.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
+    /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
     public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
@@ -99,6 +108,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
             inputs["attributes"] = state ? state.attributes : undefined;
+            inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -111,6 +121,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
                 throw new Error("Missing required property 'oceanId'");
             }
             inputs["attributes"] = args ? args.attributes : undefined;
+            inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -137,6 +148,10 @@ export interface OceanLaunchSpecState {
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
     readonly attributes?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecAttribute>[]>;
+    /**
+     * Set custom headroom per launch spec. provide list of headrooms object.
+     */
+    readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecAutoscaleHeadroom>[]>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
@@ -171,6 +186,10 @@ export interface OceanLaunchSpecArgs {
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
     readonly attributes?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecAttribute>[]>;
+    /**
+     * Set custom headroom per launch spec. provide list of headrooms object.
+     */
+    readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecAutoscaleHeadroom>[]>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */

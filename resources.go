@@ -18,8 +18,8 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-spotinst/spotinst"
 )
@@ -93,6 +93,7 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"spotinst_elastigroup_aws":           {Tok: makeResource(awsMod, "Elastigroup")},
 			"spotinst_elastigroup_aws_beanstalk": {Tok: makeResource(awsMod, "Beanstalk")},
+			"spotinst_managed_instance_aws":      {Tok: makeResource(awsMod, "ManagedInstance")},
 			"spotinst_elastigroup_azure":         {Tok: makeResource(azureMod, "Elastigroup")},
 			"spotinst_elastigroup_gcp": {
 				Tok: makeResource(gcpMod, "Elastigroup"),
@@ -145,7 +146,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.5.0-*",
+				"Pulumi":                       "1.7.0-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: namespaceMap,

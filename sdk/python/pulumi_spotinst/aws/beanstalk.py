@@ -24,7 +24,7 @@ class Beanstalk(pulumi.CustomResource):
     
       * `automaticRoll` (`bool`) - Should roll perform automatically
       * `batchSizePercentage` (`float`) - Percent size of each batch
-      * `gracePeriod` (`float`) - Amount of time to wait between batches
+      * `grace_period` (`float`) - Amount of time to wait between batches
       * `strategies` (`list`) - Strategy parameters
     
         * `action` (`str`) - Action to take
@@ -70,7 +70,8 @@ class Beanstalk(pulumi.CustomResource):
     """
     The AWS region your group will be created in. Cannot be changed after the group has been created.
     """
-    def __init__(__self__, resource_name, opts=None, beanstalk_environment_id=None, beanstalk_environment_name=None, deployment_preferences=None, desired_capacity=None, instance_types_spots=None, maintenance=None, managed_actions=None, max_size=None, min_size=None, name=None, product=None, region=None, __props__=None, __name__=None, __opts__=None):
+    scheduled_tasks: pulumi.Output[list]
+    def __init__(__self__, resource_name, opts=None, beanstalk_environment_id=None, beanstalk_environment_name=None, deployment_preferences=None, desired_capacity=None, instance_types_spots=None, maintenance=None, managed_actions=None, max_size=None, min_size=None, name=None, product=None, region=None, scheduled_tasks=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst AWS group resource using Elastic Beanstalk.
         
@@ -93,7 +94,7 @@ class Beanstalk(pulumi.CustomResource):
         
           * `automaticRoll` (`pulumi.Input[bool]`) - Should roll perform automatically
           * `batchSizePercentage` (`pulumi.Input[float]`) - Percent size of each batch
-          * `gracePeriod` (`pulumi.Input[float]`) - Amount of time to wait between batches
+          * `grace_period` (`pulumi.Input[float]`) - Amount of time to wait between batches
           * `strategies` (`pulumi.Input[list]`) - Strategy parameters
         
             * `action` (`pulumi.Input[str]`) - Action to take
@@ -106,6 +107,24 @@ class Beanstalk(pulumi.CustomResource):
             * `performAt` (`pulumi.Input[str]`) - Actions to perform (options: timeWindow, never)
             * `timeWindow` (`pulumi.Input[str]`) - Time Window for when action occurs ex. Mon:23:50-Tue:00:20
             * `updateLevel` (`pulumi.Input[str]`) - - Level to update
+        
+        The **scheduled_tasks** object supports the following:
+        
+          * `adjustment` (`pulumi.Input[str]`)
+          * `adjustmentPercentage` (`pulumi.Input[str]`)
+          * `batchSizePercentage` (`pulumi.Input[str]`) - Percent size of each batch
+          * `cronExpression` (`pulumi.Input[str]`)
+          * `frequency` (`pulumi.Input[str]`)
+          * `grace_period` (`pulumi.Input[str]`) - Amount of time to wait between batches
+          * `isEnabled` (`pulumi.Input[bool]`)
+          * `maxCapacity` (`pulumi.Input[str]`)
+          * `minCapacity` (`pulumi.Input[str]`)
+          * `scaleMaxCapacity` (`pulumi.Input[str]`)
+          * `scaleMinCapacity` (`pulumi.Input[str]`)
+          * `scaleTargetCapacity` (`pulumi.Input[str]`)
+          * `startTime` (`pulumi.Input[str]`)
+          * `targetCapacity` (`pulumi.Input[str]`)
+          * `taskType` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_aws_beanstalk.html.markdown.
         """
@@ -150,6 +169,7 @@ class Beanstalk(pulumi.CustomResource):
             if region is None:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
+            __props__['scheduled_tasks'] = scheduled_tasks
         super(Beanstalk, __self__).__init__(
             'spotinst:aws/beanstalk:Beanstalk',
             resource_name,
@@ -157,7 +177,7 @@ class Beanstalk(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, beanstalk_environment_id=None, beanstalk_environment_name=None, deployment_preferences=None, desired_capacity=None, instance_types_spots=None, maintenance=None, managed_actions=None, max_size=None, min_size=None, name=None, product=None, region=None):
+    def get(resource_name, id, opts=None, beanstalk_environment_id=None, beanstalk_environment_name=None, deployment_preferences=None, desired_capacity=None, instance_types_spots=None, maintenance=None, managed_actions=None, max_size=None, min_size=None, name=None, product=None, region=None, scheduled_tasks=None):
         """
         Get an existing Beanstalk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -182,7 +202,7 @@ class Beanstalk(pulumi.CustomResource):
         
           * `automaticRoll` (`pulumi.Input[bool]`) - Should roll perform automatically
           * `batchSizePercentage` (`pulumi.Input[float]`) - Percent size of each batch
-          * `gracePeriod` (`pulumi.Input[float]`) - Amount of time to wait between batches
+          * `grace_period` (`pulumi.Input[float]`) - Amount of time to wait between batches
           * `strategies` (`pulumi.Input[list]`) - Strategy parameters
         
             * `action` (`pulumi.Input[str]`) - Action to take
@@ -195,6 +215,24 @@ class Beanstalk(pulumi.CustomResource):
             * `performAt` (`pulumi.Input[str]`) - Actions to perform (options: timeWindow, never)
             * `timeWindow` (`pulumi.Input[str]`) - Time Window for when action occurs ex. Mon:23:50-Tue:00:20
             * `updateLevel` (`pulumi.Input[str]`) - - Level to update
+        
+        The **scheduled_tasks** object supports the following:
+        
+          * `adjustment` (`pulumi.Input[str]`)
+          * `adjustmentPercentage` (`pulumi.Input[str]`)
+          * `batchSizePercentage` (`pulumi.Input[str]`) - Percent size of each batch
+          * `cronExpression` (`pulumi.Input[str]`)
+          * `frequency` (`pulumi.Input[str]`)
+          * `grace_period` (`pulumi.Input[str]`) - Amount of time to wait between batches
+          * `isEnabled` (`pulumi.Input[bool]`)
+          * `maxCapacity` (`pulumi.Input[str]`)
+          * `minCapacity` (`pulumi.Input[str]`)
+          * `scaleMaxCapacity` (`pulumi.Input[str]`)
+          * `scaleMinCapacity` (`pulumi.Input[str]`)
+          * `scaleTargetCapacity` (`pulumi.Input[str]`)
+          * `startTime` (`pulumi.Input[str]`)
+          * `targetCapacity` (`pulumi.Input[str]`)
+          * `taskType` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_aws_beanstalk.html.markdown.
         """
@@ -213,6 +251,7 @@ class Beanstalk(pulumi.CustomResource):
         __props__["name"] = name
         __props__["product"] = product
         __props__["region"] = region
+        __props__["scheduled_tasks"] = scheduled_tasks
         return Beanstalk(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

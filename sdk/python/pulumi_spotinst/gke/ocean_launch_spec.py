@@ -10,6 +10,15 @@ from typing import Union
 from .. import utilities, tables
 
 class OceanLaunchSpec(pulumi.CustomResource):
+    autoscale_headrooms: pulumi.Output[list]
+    """
+    Set custom headroom per launch spec. provide list of headrooms object.
+    
+      * `cpuPerUnit` (`float`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+      * `gpuPerUnit` (`float`) - Optionally configure the number of GPUS to allocate for each headroom unit.
+      * `memoryPerUnit` (`float`) - Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+      * `numOfUnits` (`float`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+    """
     labels: pulumi.Output[list]
     """
     Cluster's labels.
@@ -40,17 +49,25 @@ class OceanLaunchSpec(pulumi.CustomResource):
       * `key` (`str`)
       * `value` (`str`)
     """
-    def __init__(__self__, resource_name, opts=None, labels=None, metadatas=None, ocean_id=None, source_image=None, taints=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, labels=None, metadatas=None, ocean_id=None, source_image=None, taints=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a custom Spotinst Ocean GKE Launch Spec resource.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[list] labels: Cluster's labels.
         :param pulumi.Input[list] metadatas: Cluster's metadata.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create. 
         :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[list] taints: Cluster's taints.
+        
+        The **autoscale_headrooms** object supports the following:
+        
+          * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+          * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate for each headroom unit.
+          * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+          * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
         
         The **labels** object supports the following:
         
@@ -87,6 +104,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['autoscale_headrooms'] = autoscale_headrooms
             __props__['labels'] = labels
             if metadatas is None:
                 raise TypeError("Missing required property 'metadatas'")
@@ -105,7 +123,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, labels=None, metadatas=None, ocean_id=None, source_image=None, taints=None):
+    def get(resource_name, id, opts=None, autoscale_headrooms=None, labels=None, metadatas=None, ocean_id=None, source_image=None, taints=None):
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -113,11 +131,19 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[list] labels: Cluster's labels.
         :param pulumi.Input[list] metadatas: Cluster's metadata.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create. 
         :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[list] taints: Cluster's taints.
+        
+        The **autoscale_headrooms** object supports the following:
+        
+          * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+          * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate for each headroom unit.
+          * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+          * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
         
         The **labels** object supports the following:
         
@@ -140,6 +166,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["autoscale_headrooms"] = autoscale_headrooms
         __props__["labels"] = labels
         __props__["metadatas"] = metadatas
         __props__["ocean_id"] = ocean_id

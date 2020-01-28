@@ -16,6 +16,7 @@
         "aws/beanstalk.ts",
         "aws/elastigroup.ts",
         "aws/index.ts",
+        "aws/managedInstance.ts",
         "aws/mrScalar.ts",
         "aws/ocean.ts",
         "aws/oceanLaunchSpec.ts",

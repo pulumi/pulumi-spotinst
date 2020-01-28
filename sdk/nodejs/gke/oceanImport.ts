@@ -101,7 +101,7 @@ export class OceanImport extends pulumi.CustomResource {
      * The lower limit of instances the cluster can scale down to.
      */
     public readonly minSize!: pulumi.Output<number>;
-    public readonly whitelists!: pulumi.Output<string[]>;
+    public readonly whitelists!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a OceanImport resource with the given unique name, arguments, and options.
@@ -130,9 +130,6 @@ export class OceanImport extends pulumi.CustomResource {
             }
             if (!args || args.location === undefined) {
                 throw new Error("Missing required property 'location'");
-            }
-            if (!args || args.whitelists === undefined) {
-                throw new Error("Missing required property 'whitelists'");
             }
             inputs["backendServices"] = args ? args.backendServices : undefined;
             inputs["clusterName"] = args ? args.clusterName : undefined;
@@ -214,5 +211,5 @@ export interface OceanImportArgs {
      * The lower limit of instances the cluster can scale down to.
      */
     readonly minSize?: pulumi.Input<number>;
-    readonly whitelists: pulumi.Input<pulumi.Input<string>[]>;
+    readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
