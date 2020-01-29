@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to v1.14.1 of the SpotInst Terraform Provider
+* Upgrade to v1.6.4 of pulumi-terraform-bridge
 
 ---
 
