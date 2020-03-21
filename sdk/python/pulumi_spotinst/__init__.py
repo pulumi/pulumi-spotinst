@@ -10,5 +10,5 @@ for pkg in __all__:
         importlib.import_module(f'{__name__}.{pkg}')
 
 # Export this package's modules as members:
-from .subscription import *
 from .provider import *
+from .subscription import *

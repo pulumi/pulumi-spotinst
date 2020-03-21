@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Spotinst Multai Routing Rule.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_routing_rule.html.markdown.
 type RoutingRule struct {
 	pulumi.CustomResourceState

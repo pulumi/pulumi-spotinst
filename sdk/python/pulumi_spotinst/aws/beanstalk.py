@@ -21,12 +21,11 @@ class Beanstalk(pulumi.CustomResource):
     deployment_preferences: pulumi.Output[dict]
     """
     Preferences when performing a roll
-    
+
       * `automaticRoll` (`bool`) - Should roll perform automatically
       * `batchSizePercentage` (`float`) - Percent size of each batch
       * `grace_period` (`float`) - Amount of time to wait between batches
       * `strategies` (`list`) - Strategy parameters
-    
         * `action` (`str`) - Action to take
         * `shouldDrainInstances` (`bool`) - Bool value if to wait to drain instance 
     """
@@ -42,9 +41,8 @@ class Beanstalk(pulumi.CustomResource):
     managed_actions: pulumi.Output[dict]
     """
     Managed Actions parameters
-    
+
       * `platformUpdate` (`dict`) - Platform Update parameters
-    
         * `performAt` (`str`) - Actions to perform (options: timeWindow, never)
         * `timeWindow` (`str`) - Time Window for when action occurs ex. Mon:23:50-Tue:00:20
         * `updateLevel` (`str`) - - Level to update
@@ -74,7 +72,9 @@ class Beanstalk(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, beanstalk_environment_id=None, beanstalk_environment_name=None, deployment_preferences=None, desired_capacity=None, instance_types_spots=None, maintenance=None, managed_actions=None, max_size=None, min_size=None, name=None, product=None, region=None, scheduled_tasks=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst AWS group resource using Elastic Beanstalk.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_aws_beanstalk.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] beanstalk_environment_id: The id of an existing Beanstalk environment. 
@@ -89,27 +89,25 @@ class Beanstalk(pulumi.CustomResource):
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in. Cannot be changed after the group has been created.
-        
+
         The **deployment_preferences** object supports the following:
-        
+
           * `automaticRoll` (`pulumi.Input[bool]`) - Should roll perform automatically
           * `batchSizePercentage` (`pulumi.Input[float]`) - Percent size of each batch
           * `grace_period` (`pulumi.Input[float]`) - Amount of time to wait between batches
           * `strategies` (`pulumi.Input[list]`) - Strategy parameters
-        
             * `action` (`pulumi.Input[str]`) - Action to take
             * `shouldDrainInstances` (`pulumi.Input[bool]`) - Bool value if to wait to drain instance 
-        
+
         The **managed_actions** object supports the following:
-        
+
           * `platformUpdate` (`pulumi.Input[dict]`) - Platform Update parameters
-        
             * `performAt` (`pulumi.Input[str]`) - Actions to perform (options: timeWindow, never)
             * `timeWindow` (`pulumi.Input[str]`) - Time Window for when action occurs ex. Mon:23:50-Tue:00:20
             * `updateLevel` (`pulumi.Input[str]`) - - Level to update
-        
+
         The **scheduled_tasks** object supports the following:
-        
+
           * `adjustment` (`pulumi.Input[str]`)
           * `adjustmentPercentage` (`pulumi.Input[str]`)
           * `batchSizePercentage` (`pulumi.Input[str]`) - Percent size of each batch
@@ -125,8 +123,6 @@ class Beanstalk(pulumi.CustomResource):
           * `startTime` (`pulumi.Input[str]`)
           * `targetCapacity` (`pulumi.Input[str]`)
           * `taskType` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_aws_beanstalk.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -181,7 +177,7 @@ class Beanstalk(pulumi.CustomResource):
         """
         Get an existing Beanstalk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -197,27 +193,25 @@ class Beanstalk(pulumi.CustomResource):
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in. Cannot be changed after the group has been created.
-        
+
         The **deployment_preferences** object supports the following:
-        
+
           * `automaticRoll` (`pulumi.Input[bool]`) - Should roll perform automatically
           * `batchSizePercentage` (`pulumi.Input[float]`) - Percent size of each batch
           * `grace_period` (`pulumi.Input[float]`) - Amount of time to wait between batches
           * `strategies` (`pulumi.Input[list]`) - Strategy parameters
-        
             * `action` (`pulumi.Input[str]`) - Action to take
             * `shouldDrainInstances` (`pulumi.Input[bool]`) - Bool value if to wait to drain instance 
-        
+
         The **managed_actions** object supports the following:
-        
+
           * `platformUpdate` (`pulumi.Input[dict]`) - Platform Update parameters
-        
             * `performAt` (`pulumi.Input[str]`) - Actions to perform (options: timeWindow, never)
             * `timeWindow` (`pulumi.Input[str]`) - Time Window for when action occurs ex. Mon:23:50-Tue:00:20
             * `updateLevel` (`pulumi.Input[str]`) - - Level to update
-        
+
         The **scheduled_tasks** object supports the following:
-        
+
           * `adjustment` (`pulumi.Input[str]`)
           * `adjustmentPercentage` (`pulumi.Input[str]`)
           * `batchSizePercentage` (`pulumi.Input[str]`) - Percent size of each batch
@@ -233,12 +227,11 @@ class Beanstalk(pulumi.CustomResource):
           * `startTime` (`pulumi.Input[str]`)
           * `targetCapacity` (`pulumi.Input[str]`)
           * `taskType` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_aws_beanstalk.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["beanstalk_environment_id"] = beanstalk_environment_id
         __props__["beanstalk_environment_name"] = beanstalk_environment_name
         __props__["deployment_preferences"] = deployment_preferences

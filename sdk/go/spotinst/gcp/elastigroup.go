@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Spotinst elastigroup GCP resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_gcp.html.markdown.
 type Elastigroup struct {
 	pulumi.CustomResourceState

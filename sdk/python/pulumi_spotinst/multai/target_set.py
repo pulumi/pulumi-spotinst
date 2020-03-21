@@ -34,7 +34,7 @@ class TargetSet(pulumi.CustomResource):
     tags: pulumi.Output[list]
     """
     A list of key:value paired tags.
-    
+
       * `key` (`str`) - The tag's key.
       * `value` (`str`) - The tag's value.
     """
@@ -45,7 +45,9 @@ class TargetSet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, balancer_id=None, deployment_id=None, health_check=None, name=None, port=None, protocol=None, tags=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Multai Target Set.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_target_set.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] balancer_id: The id of the balancer.
@@ -55,9 +57,9 @@ class TargetSet(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol to allow connections to the target for the health check.
         :param pulumi.Input[list] tags: A list of key:value paired tags.
         :param pulumi.Input[float] weight: Defines how traffic is distributed between the Target Set.
-        
+
         The **health_check** object supports the following:
-        
+
           * `healthyThreshold` (`pulumi.Input[float]`) - Total number of allowed healthy Targets.
           * `interval` (`pulumi.Input[float]`) - The interval for the health check.
           * `path` (`pulumi.Input[str]`) - The path to perform the health check.
@@ -65,13 +67,11 @@ class TargetSet(pulumi.CustomResource):
           * `protocol` (`pulumi.Input[str]`) - The protocol to allow connections to the target for the health check.
           * `timeout` (`pulumi.Input[float]`) - The time out for the health check.
           * `unhealthyThreshold` (`pulumi.Input[float]`) - Total number of allowed unhealthy Targets.
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The tag's key.
           * `value` (`pulumi.Input[str]`) - The tag's value.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_target_set.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -119,7 +119,7 @@ class TargetSet(pulumi.CustomResource):
         """
         Get an existing TargetSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -130,9 +130,9 @@ class TargetSet(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol to allow connections to the target for the health check.
         :param pulumi.Input[list] tags: A list of key:value paired tags.
         :param pulumi.Input[float] weight: Defines how traffic is distributed between the Target Set.
-        
+
         The **health_check** object supports the following:
-        
+
           * `healthyThreshold` (`pulumi.Input[float]`) - Total number of allowed healthy Targets.
           * `interval` (`pulumi.Input[float]`) - The interval for the health check.
           * `path` (`pulumi.Input[str]`) - The path to perform the health check.
@@ -140,17 +140,16 @@ class TargetSet(pulumi.CustomResource):
           * `protocol` (`pulumi.Input[str]`) - The protocol to allow connections to the target for the health check.
           * `timeout` (`pulumi.Input[float]`) - The time out for the health check.
           * `unhealthyThreshold` (`pulumi.Input[float]`) - Total number of allowed unhealthy Targets.
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The tag's key.
           * `value` (`pulumi.Input[str]`) - The tag's value.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_target_set.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["balancer_id"] = balancer_id
         __props__["deployment_id"] = deployment_id
         __props__["health_check"] = health_check

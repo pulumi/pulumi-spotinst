@@ -11,7 +11,7 @@ import (
 )
 
 // Provides a Spotinst Multai Balancer.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_balancer.html.markdown.
 type Balancer struct {
 	pulumi.CustomResourceState

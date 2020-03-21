@@ -17,22 +17,19 @@ class Ocean(pulumi.CustomResource):
     autoscaler: pulumi.Output[dict]
     """
     Describes the Ocean ECS autoscaler.
-    
+
       * `cooldown` (`float`) - Cooldown period between scaling actions.
       * `down` (`dict`) - Auto Scaling scale down operations.
-    
         * `maxScaleDownPercentage` (`float`) - Would represent the maximum % to scale-down. Number between 1-100
-    
+
       * `headroom` (`dict`) - Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-    
         * `cpuPerUnit` (`float`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         * `memoryPerUnit` (`float`) - Optionally configure the amount of memory (MB) to allocate the headroom.
         * `numOfUnits` (`float`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-    
+
       * `isAutoConfig` (`bool`) - Automatically configure and optimize headroom resources.
       * `isEnabled` (`bool`) - Enable the Ocean ECS autoscaler.
       * `resourceLimits` (`dict`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-    
         * `maxMemoryGib` (`float`) - The maximum memory in GiB units that can be allocated to the cluster.
         * `maxVcpu` (`float`) - The maximum cpu in vCPU units that can be allocated to the cluster.
     """
@@ -95,7 +92,7 @@ class Ocean(pulumi.CustomResource):
     tags: pulumi.Output[list]
     """
     Optionally adds tags to instances launched in an Ocean cluster.
-    
+
       * `key` (`str`) - The tag key.
       * `value` (`str`) - The tag value.
     """
@@ -112,7 +109,9 @@ class Ocean(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, associate_public_ip_address=None, autoscaler=None, cluster_name=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, iam_instance_profile=None, image_id=None, key_pair=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, security_group_ids=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Ocean ECS resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_ecs.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
@@ -134,41 +133,35 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[list] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster.
-        
+
         The **autoscaler** object supports the following:
-        
+
           * `cooldown` (`pulumi.Input[float]`) - Cooldown period between scaling actions.
           * `down` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
-        
             * `maxScaleDownPercentage` (`pulumi.Input[float]`) - Would represent the maximum % to scale-down. Number between 1-100
-        
+
           * `headroom` (`pulumi.Input[dict]`) - Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-        
             * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
             * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate the headroom.
             * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        
+
           * `isAutoConfig` (`pulumi.Input[bool]`) - Automatically configure and optimize headroom resources.
           * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
           * `resourceLimits` (`pulumi.Input[dict]`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-        
             * `maxMemoryGib` (`pulumi.Input[float]`) - The maximum memory in GiB units that can be allocated to the cluster.
             * `maxVcpu` (`pulumi.Input[float]`) - The maximum cpu in vCPU units that can be allocated to the cluster.
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The tag key.
           * `value` (`pulumi.Input[str]`) - The tag value.
-        
-        The **update_policy** object supports the following:
-        
-          * `rollConfig` (`pulumi.Input[dict]`)
-        
-            * `batchSizePercentage` (`pulumi.Input[float]`)
-        
-          * `shouldRoll` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_ecs.html.markdown.
+        The **update_policy** object supports the following:
+
+          * `rollConfig` (`pulumi.Input[dict]`)
+            * `batchSizePercentage` (`pulumi.Input[float]`)
+
+          * `shouldRoll` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -227,7 +220,7 @@ class Ocean(pulumi.CustomResource):
         """
         Get an existing Ocean resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -250,45 +243,40 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[list] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster.
-        
+
         The **autoscaler** object supports the following:
-        
+
           * `cooldown` (`pulumi.Input[float]`) - Cooldown period between scaling actions.
           * `down` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
-        
             * `maxScaleDownPercentage` (`pulumi.Input[float]`) - Would represent the maximum % to scale-down. Number between 1-100
-        
+
           * `headroom` (`pulumi.Input[dict]`) - Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-        
             * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
             * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate the headroom.
             * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        
+
           * `isAutoConfig` (`pulumi.Input[bool]`) - Automatically configure and optimize headroom resources.
           * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
           * `resourceLimits` (`pulumi.Input[dict]`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-        
             * `maxMemoryGib` (`pulumi.Input[float]`) - The maximum memory in GiB units that can be allocated to the cluster.
             * `maxVcpu` (`pulumi.Input[float]`) - The maximum cpu in vCPU units that can be allocated to the cluster.
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The tag key.
           * `value` (`pulumi.Input[str]`) - The tag value.
-        
-        The **update_policy** object supports the following:
-        
-          * `rollConfig` (`pulumi.Input[dict]`)
-        
-            * `batchSizePercentage` (`pulumi.Input[float]`)
-        
-          * `shouldRoll` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_ecs.html.markdown.
+        The **update_policy** object supports the following:
+
+          * `rollConfig` (`pulumi.Input[dict]`)
+            * `batchSizePercentage` (`pulumi.Input[float]`)
+
+          * `shouldRoll` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["associate_public_ip_address"] = associate_public_ip_address
         __props__["autoscaler"] = autoscaler
         __props__["cluster_name"] = cluster_name

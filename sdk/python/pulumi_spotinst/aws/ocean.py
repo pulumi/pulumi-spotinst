@@ -17,24 +17,21 @@ class Ocean(pulumi.CustomResource):
     autoscaler: pulumi.Output[dict]
     """
     Describes the Ocean Kubernetes autoscaler.
-    
+
       * `autoscaleCooldown` (`float`) - Cooldown period between scaling actions.
       * `autoscaleDown` (`dict`) - Auto Scaling scale down operations.
-    
         * `evaluationPeriods` (`float`) - The number of evaluation periods that should accumulate before a scale down action takes place.
         * `maxScaleDownPercentage` (`float`) - Would represent the maximum % to scale-down. Number between 1-100.
-    
+
       * `autoscaleHeadroom` (`dict`) - Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-    
         * `cpuPerUnit` (`float`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         * `gpuPerUnit` (`float`) - Optionally configure the number of GPUS to allocate the headroom.
         * `memoryPerUnit` (`float`) - Optionally configure the amount of memory (MB) to allocate the headroom.
         * `numOfUnits` (`float`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-    
+
       * `autoscaleIsAutoConfig` (`bool`) - Automatically configure and optimize headroom resources.
       * `autoscaleIsEnabled` (`bool`) - Enable the Ocean Kubernetes autoscaler.
       * `resourceLimits` (`dict`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-    
         * `maxMemoryGib` (`float`) - The maximum memory in GiB units that can be allocated to the cluster.
         * `maxVcpu` (`float`) - The maximum cpu in vCPU units that can be allocated to the cluster.
     """
@@ -77,7 +74,7 @@ class Ocean(pulumi.CustomResource):
     load_balancers: pulumi.Output[list]
     """
     - Array of load balancer objects to add to ocean cluster
-    
+
       * `arn` (`str`) - Required if type is set to TARGET_GROUP
       * `name` (`str`) - Required if type is set to CLASSIC
       * `type` (`str`) - Can be set to CLASSIC or TARGET_GROUP
@@ -121,7 +118,7 @@ class Ocean(pulumi.CustomResource):
     tags: pulumi.Output[list]
     """
     Optionally adds tags to instances launched in an Ocean cluster.
-    
+
       * `key` (`str`) - The tag key.
       * `value` (`str`) - The tag value.
     """
@@ -141,7 +138,9 @@ class Ocean(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, associate_public_ip_address=None, autoscaler=None, blacklists=None, controller_id=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, fallback_to_ondemand=None, iam_instance_profile=None, image_id=None, key_name=None, load_balancers=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, root_volume_size=None, security_groups=None, spot_percentage=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Ocean AWS resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_aws.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
@@ -169,49 +168,43 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, OCean will utilize them before launching Spot instances.
         :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-        
+
         The **autoscaler** object supports the following:
-        
+
           * `autoscaleCooldown` (`pulumi.Input[float]`) - Cooldown period between scaling actions.
           * `autoscaleDown` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
-        
             * `evaluationPeriods` (`pulumi.Input[float]`) - The number of evaluation periods that should accumulate before a scale down action takes place.
             * `maxScaleDownPercentage` (`pulumi.Input[float]`) - Would represent the maximum % to scale-down. Number between 1-100.
-        
+
           * `autoscaleHeadroom` (`pulumi.Input[dict]`) - Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-        
             * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
             * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate the headroom.
             * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate the headroom.
             * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        
+
           * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`) - Automatically configure and optimize headroom resources.
           * `autoscaleIsEnabled` (`pulumi.Input[bool]`) - Enable the Ocean Kubernetes autoscaler.
           * `resourceLimits` (`pulumi.Input[dict]`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-        
             * `maxMemoryGib` (`pulumi.Input[float]`) - The maximum memory in GiB units that can be allocated to the cluster.
             * `maxVcpu` (`pulumi.Input[float]`) - The maximum cpu in vCPU units that can be allocated to the cluster.
-        
+
         The **load_balancers** object supports the following:
-        
+
           * `arn` (`pulumi.Input[str]`) - Required if type is set to TARGET_GROUP
           * `name` (`pulumi.Input[str]`) - Required if type is set to CLASSIC
           * `type` (`pulumi.Input[str]`) - Can be set to CLASSIC or TARGET_GROUP
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The tag key.
           * `value` (`pulumi.Input[str]`) - The tag value.
-        
-        The **update_policy** object supports the following:
-        
-          * `rollConfig` (`pulumi.Input[dict]`)
-        
-            * `batchSizePercentage` (`pulumi.Input[float]`)
-        
-          * `shouldRoll` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_aws.html.markdown.
+        The **update_policy** object supports the following:
+
+          * `rollConfig` (`pulumi.Input[dict]`)
+            * `batchSizePercentage` (`pulumi.Input[float]`)
+
+          * `shouldRoll` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -271,7 +264,7 @@ class Ocean(pulumi.CustomResource):
         """
         Get an existing Ocean resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -300,53 +293,48 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, OCean will utilize them before launching Spot instances.
         :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-        
+
         The **autoscaler** object supports the following:
-        
+
           * `autoscaleCooldown` (`pulumi.Input[float]`) - Cooldown period between scaling actions.
           * `autoscaleDown` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
-        
             * `evaluationPeriods` (`pulumi.Input[float]`) - The number of evaluation periods that should accumulate before a scale down action takes place.
             * `maxScaleDownPercentage` (`pulumi.Input[float]`) - Would represent the maximum % to scale-down. Number between 1-100.
-        
+
           * `autoscaleHeadroom` (`pulumi.Input[dict]`) - Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-        
             * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
             * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate the headroom.
             * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate the headroom.
             * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        
+
           * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`) - Automatically configure and optimize headroom resources.
           * `autoscaleIsEnabled` (`pulumi.Input[bool]`) - Enable the Ocean Kubernetes autoscaler.
           * `resourceLimits` (`pulumi.Input[dict]`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-        
             * `maxMemoryGib` (`pulumi.Input[float]`) - The maximum memory in GiB units that can be allocated to the cluster.
             * `maxVcpu` (`pulumi.Input[float]`) - The maximum cpu in vCPU units that can be allocated to the cluster.
-        
+
         The **load_balancers** object supports the following:
-        
+
           * `arn` (`pulumi.Input[str]`) - Required if type is set to TARGET_GROUP
           * `name` (`pulumi.Input[str]`) - Required if type is set to CLASSIC
           * `type` (`pulumi.Input[str]`) - Can be set to CLASSIC or TARGET_GROUP
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The tag key.
           * `value` (`pulumi.Input[str]`) - The tag value.
-        
-        The **update_policy** object supports the following:
-        
-          * `rollConfig` (`pulumi.Input[dict]`)
-        
-            * `batchSizePercentage` (`pulumi.Input[float]`)
-        
-          * `shouldRoll` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_aws.html.markdown.
+        The **update_policy** object supports the following:
+
+          * `rollConfig` (`pulumi.Input[dict]`)
+            * `batchSizePercentage` (`pulumi.Input[float]`)
+
+          * `shouldRoll` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["associate_public_ip_address"] = associate_public_ip_address
         __props__["autoscaler"] = autoscaler
         __props__["blacklists"] = blacklists

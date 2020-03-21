@@ -11,7 +11,7 @@ import (
 )
 
 // Provides a Spotinst Multai Deployment.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_deployment.html.markdown.
 type Deployment struct {
 	pulumi.CustomResourceState

@@ -39,7 +39,7 @@ class Elastigroup(pulumi.CustomResource):
     instance_types_customs: pulumi.Output[list]
     """
     Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
-    
+
       * `memoryGib` (`float`) - The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
       * `vcpu` (`float`)
     """
@@ -57,7 +57,7 @@ class Elastigroup(pulumi.CustomResource):
     labels: pulumi.Output[list]
     """
     Array of objects with key-value pairs.
-    
+
       * `key` (`str`) - Labels key.
       * `value` (`str`) - Labels value.
     """
@@ -68,7 +68,7 @@ class Elastigroup(pulumi.CustomResource):
     metadatas: pulumi.Output[list]
     """
     Array of objects with key-value pairs.
-    
+
       * `key` (`str`) - Labels key.
       * `value` (`str`) - Labels value.
     """
@@ -104,7 +104,7 @@ class Elastigroup(pulumi.CustomResource):
     subnets: pulumi.Output[list]
     """
     A list of regions and subnets.
-    
+
       * `region` (`str`) - The region for the group of subnets.
       * `subnetNames` (`list`) - The names of the subnets in the region.
     """
@@ -116,7 +116,9 @@ class Elastigroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auto_healing=None, availability_zones=None, backend_services=None, description=None, desired_capacity=None, disks=None, draining_timeout=None, fallback_to_ondemand=None, gpu=None, health_check_grace_period=None, health_check_type=None, instance_types_customs=None, instance_types_ondemand=None, instance_types_preemptibles=None, integration_docker_swarm=None, integration_gke=None, ip_forwarding=None, labels=None, max_size=None, metadatas=None, min_size=None, name=None, network_interfaces=None, ondemand_count=None, preemptible_percentage=None, scaling_down_policies=None, scaling_up_policies=None, scheduled_tasks=None, service_account=None, shutdown_script=None, startup_script=None, subnets=None, tags=None, unhealthy_duration=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst elastigroup GCP resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_gcp.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] availability_zones: List of availability zones for the group.
@@ -138,107 +140,99 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         :param pulumi.Input[list] subnets: A list of regions and subnets.
         :param pulumi.Input[list] tags: Tags to mark created instances.
-        
+
         The **backend_services** object supports the following:
-        
+
           * `locationType` (`pulumi.Input[str]`)
           * `namedPorts` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The group name. 
             * `ports` (`pulumi.Input[list]`)
-        
+
           * `scheme` (`pulumi.Input[str]`)
           * `serviceName` (`pulumi.Input[str]`)
-        
+
         The **disks** object supports the following:
-        
+
           * `autoDelete` (`pulumi.Input[bool]`)
           * `boot` (`pulumi.Input[bool]`)
           * `deviceName` (`pulumi.Input[str]`)
           * `initializeParams` (`pulumi.Input[list]`)
-        
             * `diskSizeGb` (`pulumi.Input[str]`)
             * `diskType` (`pulumi.Input[str]`)
-            * `sourceImage` (`pulumi.Input[str]`)
-        
+            * `source_image` (`pulumi.Input[str]`)
+
           * `interface` (`pulumi.Input[str]`)
           * `mode` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **gpu** object supports the following:
-        
+
           * `count` (`pulumi.Input[float]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **instance_types_customs** object supports the following:
-        
+
           * `memoryGib` (`pulumi.Input[float]`) - The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
           * `vcpu` (`pulumi.Input[float]`)
-        
+
         The **integration_docker_swarm** object supports the following:
-        
+
           * `masterHost` (`pulumi.Input[str]`)
           * `masterPort` (`pulumi.Input[float]`)
-        
+
         The **integration_gke** object supports the following:
-        
+
           * `autoUpdate` (`pulumi.Input[bool]`)
           * `autoscaleCooldown` (`pulumi.Input[float]`)
           * `autoscaleDown` (`pulumi.Input[dict]`)
-        
             * `evaluationPeriods` (`pulumi.Input[float]`)
-        
+
           * `autoscaleHeadroom` (`pulumi.Input[dict]`)
-        
             * `cpuPerUnit` (`pulumi.Input[float]`)
             * `memoryPerUnit` (`pulumi.Input[float]`)
             * `numOfUnits` (`pulumi.Input[float]`)
-        
+
           * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`)
           * `autoscaleIsEnabled` (`pulumi.Input[bool]`)
           * `autoscaleLabels` (`pulumi.Input[list]`)
-        
             * `key` (`pulumi.Input[str]`) - Labels key.
             * `value` (`pulumi.Input[str]`) - Labels value.
-        
+
           * `cluster_id` (`pulumi.Input[str]`)
           * `location` (`pulumi.Input[str]`)
-        
+
         The **labels** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - Labels key.
           * `value` (`pulumi.Input[str]`) - Labels value.
-        
+
         The **metadatas** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - Labels key.
           * `value` (`pulumi.Input[str]`) - Labels value.
-        
+
         The **network_interfaces** object supports the following:
-        
+
           * `accessConfigs` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The group name. 
             * `type` (`pulumi.Input[str]`)
-        
+
           * `aliasIpRanges` (`pulumi.Input[list]`)
-        
             * `ipCidrRange` (`pulumi.Input[str]`)
             * `subnetworkRangeName` (`pulumi.Input[str]`)
-        
+
           * `network` (`pulumi.Input[str]`)
-        
+
         The **scaling_down_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[float]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The group name. 
             * `value` (`pulumi.Input[str]`) - Labels value.
-        
+
           * `evaluationPeriods` (`pulumi.Input[float]`)
           * `metricName` (`pulumi.Input[str]`)
           * `namespace` (`pulumi.Input[str]`)
@@ -249,17 +243,16 @@ class Elastigroup(pulumi.CustomResource):
           * `statistic` (`pulumi.Input[str]`)
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
-        
+
         The **scaling_up_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[float]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The group name. 
             * `value` (`pulumi.Input[str]`) - Labels value.
-        
+
           * `evaluationPeriods` (`pulumi.Input[float]`)
           * `metricName` (`pulumi.Input[str]`)
           * `namespace` (`pulumi.Input[str]`)
@@ -270,22 +263,20 @@ class Elastigroup(pulumi.CustomResource):
           * `statistic` (`pulumi.Input[str]`)
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
-        
+
         The **scheduled_tasks** object supports the following:
-        
+
           * `cronExpression` (`pulumi.Input[str]`)
           * `isEnabled` (`pulumi.Input[bool]`)
           * `maxCapacity` (`pulumi.Input[str]`)
           * `minCapacity` (`pulumi.Input[str]`)
           * `targetCapacity` (`pulumi.Input[str]`)
           * `taskType` (`pulumi.Input[str]`)
-        
+
         The **subnets** object supports the following:
-        
+
           * `region` (`pulumi.Input[str]`) - The region for the group of subnets.
           * `subnetNames` (`pulumi.Input[list]`) - The names of the subnets in the region.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_gcp.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -351,7 +342,7 @@ class Elastigroup(pulumi.CustomResource):
         """
         Get an existing Elastigroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -374,107 +365,99 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         :param pulumi.Input[list] subnets: A list of regions and subnets.
         :param pulumi.Input[list] tags: Tags to mark created instances.
-        
+
         The **backend_services** object supports the following:
-        
+
           * `locationType` (`pulumi.Input[str]`)
           * `namedPorts` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The group name. 
             * `ports` (`pulumi.Input[list]`)
-        
+
           * `scheme` (`pulumi.Input[str]`)
           * `serviceName` (`pulumi.Input[str]`)
-        
+
         The **disks** object supports the following:
-        
+
           * `autoDelete` (`pulumi.Input[bool]`)
           * `boot` (`pulumi.Input[bool]`)
           * `deviceName` (`pulumi.Input[str]`)
           * `initializeParams` (`pulumi.Input[list]`)
-        
             * `diskSizeGb` (`pulumi.Input[str]`)
             * `diskType` (`pulumi.Input[str]`)
-            * `sourceImage` (`pulumi.Input[str]`)
-        
+            * `source_image` (`pulumi.Input[str]`)
+
           * `interface` (`pulumi.Input[str]`)
           * `mode` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **gpu** object supports the following:
-        
+
           * `count` (`pulumi.Input[float]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **instance_types_customs** object supports the following:
-        
+
           * `memoryGib` (`pulumi.Input[float]`) - The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
           * `vcpu` (`pulumi.Input[float]`)
-        
+
         The **integration_docker_swarm** object supports the following:
-        
+
           * `masterHost` (`pulumi.Input[str]`)
           * `masterPort` (`pulumi.Input[float]`)
-        
+
         The **integration_gke** object supports the following:
-        
+
           * `autoUpdate` (`pulumi.Input[bool]`)
           * `autoscaleCooldown` (`pulumi.Input[float]`)
           * `autoscaleDown` (`pulumi.Input[dict]`)
-        
             * `evaluationPeriods` (`pulumi.Input[float]`)
-        
+
           * `autoscaleHeadroom` (`pulumi.Input[dict]`)
-        
             * `cpuPerUnit` (`pulumi.Input[float]`)
             * `memoryPerUnit` (`pulumi.Input[float]`)
             * `numOfUnits` (`pulumi.Input[float]`)
-        
+
           * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`)
           * `autoscaleIsEnabled` (`pulumi.Input[bool]`)
           * `autoscaleLabels` (`pulumi.Input[list]`)
-        
             * `key` (`pulumi.Input[str]`) - Labels key.
             * `value` (`pulumi.Input[str]`) - Labels value.
-        
+
           * `cluster_id` (`pulumi.Input[str]`)
           * `location` (`pulumi.Input[str]`)
-        
+
         The **labels** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - Labels key.
           * `value` (`pulumi.Input[str]`) - Labels value.
-        
+
         The **metadatas** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - Labels key.
           * `value` (`pulumi.Input[str]`) - Labels value.
-        
+
         The **network_interfaces** object supports the following:
-        
+
           * `accessConfigs` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The group name. 
             * `type` (`pulumi.Input[str]`)
-        
+
           * `aliasIpRanges` (`pulumi.Input[list]`)
-        
             * `ipCidrRange` (`pulumi.Input[str]`)
             * `subnetworkRangeName` (`pulumi.Input[str]`)
-        
+
           * `network` (`pulumi.Input[str]`)
-        
+
         The **scaling_down_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[float]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The group name. 
             * `value` (`pulumi.Input[str]`) - Labels value.
-        
+
           * `evaluationPeriods` (`pulumi.Input[float]`)
           * `metricName` (`pulumi.Input[str]`)
           * `namespace` (`pulumi.Input[str]`)
@@ -485,17 +468,16 @@ class Elastigroup(pulumi.CustomResource):
           * `statistic` (`pulumi.Input[str]`)
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
-        
+
         The **scaling_up_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[float]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The group name. 
             * `value` (`pulumi.Input[str]`) - Labels value.
-        
+
           * `evaluationPeriods` (`pulumi.Input[float]`)
           * `metricName` (`pulumi.Input[str]`)
           * `namespace` (`pulumi.Input[str]`)
@@ -506,26 +488,25 @@ class Elastigroup(pulumi.CustomResource):
           * `statistic` (`pulumi.Input[str]`)
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
-        
+
         The **scheduled_tasks** object supports the following:
-        
+
           * `cronExpression` (`pulumi.Input[str]`)
           * `isEnabled` (`pulumi.Input[bool]`)
           * `maxCapacity` (`pulumi.Input[str]`)
           * `minCapacity` (`pulumi.Input[str]`)
           * `targetCapacity` (`pulumi.Input[str]`)
           * `taskType` (`pulumi.Input[str]`)
-        
+
         The **subnets** object supports the following:
-        
+
           * `region` (`pulumi.Input[str]`) - The region for the group of subnets.
           * `subnetNames` (`pulumi.Input[list]`) - The names of the subnets in the region.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_gcp.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["auto_healing"] = auto_healing
         __props__["availability_zones"] = availability_zones
         __props__["backend_services"] = backend_services

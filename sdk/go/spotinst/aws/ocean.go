@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Spotinst Ocean AWS resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_aws.html.markdown.
 type Ocean struct {
 	pulumi.CustomResourceState

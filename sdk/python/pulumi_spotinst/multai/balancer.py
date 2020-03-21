@@ -20,30 +20,30 @@ class Balancer(pulumi.CustomResource):
     tags: pulumi.Output[list]
     """
     A list of key:value paired tags.
-    
+
       * `key` (`str`) - The tag's key.
       * `value` (`str`) - The tag's value.
     """
     def __init__(__self__, resource_name, opts=None, connection_timeouts=None, dns_cname_aliases=None, name=None, scheme=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Multai Balancer.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_balancer.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
         :param pulumi.Input[list] tags: A list of key:value paired tags.
-        
+
         The **connection_timeouts** object supports the following:
-        
+
           * `draining` (`pulumi.Input[float]`) - The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
           * `idle` (`pulumi.Input[float]`) - The idle timeout value, in seconds. (range: 1 - 3600).
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The tag's key.
           * `value` (`pulumi.Input[str]`) - The tag's value.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_balancer.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -78,28 +78,27 @@ class Balancer(pulumi.CustomResource):
         """
         Get an existing Balancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
         :param pulumi.Input[list] tags: A list of key:value paired tags.
-        
+
         The **connection_timeouts** object supports the following:
-        
+
           * `draining` (`pulumi.Input[float]`) - The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
           * `idle` (`pulumi.Input[float]`) - The idle timeout value, in seconds. (range: 1 - 3600).
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The tag's key.
           * `value` (`pulumi.Input[str]`) - The tag's value.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_balancer.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["connection_timeouts"] = connection_timeouts
         __props__["dns_cname_aliases"] = dns_cname_aliases
         __props__["name"] = name
