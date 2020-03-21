@@ -29,7 +29,7 @@ class Target(pulumi.CustomResource):
     tags: pulumi.Output[list]
     """
     A list of key:value paired tags.
-    
+
       * `key` (`str`) - The tag's key.
       * `value` (`str`) - The tag's value.
     """
@@ -44,7 +44,9 @@ class Target(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, balancer_id=None, host=None, name=None, port=None, tags=None, target_set_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Multai Target.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_target.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] balancer_id: The ID of the balancer.
@@ -54,13 +56,11 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[list] tags: A list of key:value paired tags.
         :param pulumi.Input[str] target_set_id: The ID of the target set.
         :param pulumi.Input[float] weight: Defines how traffic is distributed between targets.
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The tag's key.
           * `value` (`pulumi.Input[str]`) - The tag's value.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_target.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +105,7 @@ class Target(pulumi.CustomResource):
         """
         Get an existing Target resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -116,17 +116,16 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[list] tags: A list of key:value paired tags.
         :param pulumi.Input[str] target_set_id: The ID of the target set.
         :param pulumi.Input[float] weight: Defines how traffic is distributed between targets.
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The tag's key.
           * `value` (`pulumi.Input[str]`) - The tag's value.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_target.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["balancer_id"] = balancer_id
         __props__["host"] = host
         __props__["name"] = name

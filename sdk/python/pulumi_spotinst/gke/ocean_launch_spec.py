@@ -13,7 +13,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     autoscale_headrooms: pulumi.Output[list]
     """
     Set custom headroom per launch spec. provide list of headrooms object.
-    
+
       * `cpuPerUnit` (`float`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
       * `gpuPerUnit` (`float`) - Optionally configure the number of GPUS to allocate for each headroom unit.
       * `memoryPerUnit` (`float`) - Optionally configure the amount of memory (MB) to allocate for each headroom unit.
@@ -22,14 +22,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
     labels: pulumi.Output[list]
     """
     Cluster's labels.
-    
+
       * `key` (`str`)
       * `value` (`str`)
     """
     metadatas: pulumi.Output[list]
     """
     Cluster's metadata.
-    
+
       * `key` (`str`)
       * `value` (`str`)
     """
@@ -44,7 +44,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     taints: pulumi.Output[list]
     """
     Cluster's taints.
-    
+
       * `effect` (`str`)
       * `key` (`str`)
       * `value` (`str`)
@@ -52,7 +52,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, labels=None, metadatas=None, ocean_id=None, source_image=None, taints=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a custom Spotinst Ocean GKE Launch Spec resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_launch_spec.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
@@ -61,31 +63,29 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create. 
         :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[list] taints: Cluster's taints.
-        
+
         The **autoscale_headrooms** object supports the following:
-        
+
           * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
           * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate for each headroom unit.
           * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate for each headroom unit.
           * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        
+
         The **labels** object supports the following:
-        
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-        
-        The **metadatas** object supports the following:
-        
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-        
-        The **taints** object supports the following:
-        
-          * `effect` (`pulumi.Input[str]`)
+
           * `key` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_launch_spec.html.markdown.
+        The **metadatas** object supports the following:
+
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
+
+        The **taints** object supports the following:
+
+          * `effect` (`pulumi.Input[str]`)
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -127,7 +127,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -137,35 +137,34 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create. 
         :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[list] taints: Cluster's taints.
-        
+
         The **autoscale_headrooms** object supports the following:
-        
+
           * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
           * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate for each headroom unit.
           * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate for each headroom unit.
           * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        
+
         The **labels** object supports the following:
-        
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-        
-        The **metadatas** object supports the following:
-        
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-        
-        The **taints** object supports the following:
-        
-          * `effect` (`pulumi.Input[str]`)
+
           * `key` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_launch_spec.html.markdown.
+        The **metadatas** object supports the following:
+
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
+
+        The **taints** object supports the following:
+
+          * `effect` (`pulumi.Input[str]`)
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["autoscale_headrooms"] = autoscale_headrooms
         __props__["labels"] = labels
         __props__["metadatas"] = metadatas

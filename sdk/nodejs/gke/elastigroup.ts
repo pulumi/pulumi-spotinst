@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_gke.html.markdown.
- */
 export class Elastigroup extends pulumi.CustomResource {
     /**
      * Get an existing Elastigroup resource's state with the given name, ID, and optional extra
@@ -172,6 +169,8 @@ export interface ElastigroupState {
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
      * The name of the GKE cluster you wish to import.
+     * 
+     * @deprecated Please define cluster_id under integration_gke
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
@@ -216,6 +215,8 @@ export interface ElastigroupArgs {
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
      * The name of the GKE cluster you wish to import.
+     * 
+     * @deprecated Please define cluster_id under integration_gke
      */
     readonly clusterId?: pulumi.Input<string>;
     /**

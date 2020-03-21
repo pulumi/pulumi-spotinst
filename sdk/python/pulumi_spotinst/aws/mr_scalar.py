@@ -85,15 +85,15 @@ class MrScalar(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, additional_info=None, additional_primary_security_groups=None, additional_replica_security_groups=None, applications=None, availability_zones=None, bootstrap_actions_files=None, cluster_id=None, configurations_files=None, core_desired_capacity=None, core_ebs_block_devices=None, core_ebs_optimized=None, core_instance_types=None, core_lifecycle=None, core_max_size=None, core_min_size=None, core_scaling_down_policies=None, core_scaling_up_policies=None, custom_ami_id=None, description=None, ebs_root_volume_size=None, ec2_key_name=None, expose_cluster_id=None, instance_weights=None, job_flow_role=None, keep_job_flow_alive=None, log_uri=None, managed_primary_security_group=None, managed_replica_security_group=None, master_ebs_block_devices=None, master_ebs_optimized=None, master_instance_types=None, master_lifecycle=None, name=None, provisioning_timeout=None, region=None, release_label=None, repo_upgrade_on_boot=None, retries=None, scheduled_tasks=None, security_config=None, service_access_security_group=None, service_role=None, steps_files=None, strategy=None, tags=None, task_desired_capacity=None, task_ebs_block_devices=None, task_ebs_optimized=None, task_instance_types=None, task_lifecycle=None, task_max_size=None, task_min_size=None, task_scaling_down_policies=None, task_scaling_up_policies=None, termination_protected=None, visible_to_all_users=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst AWS MrScaler resource.
-        
+
         ## Provisioning Timeout (Clone, New strategies)
-        
+
         * `timeout` - (Optional) The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
         * `timeout_action` - (Optional) The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
-        
+
         <a id="cluster-config"></a>
         ## Cluster Configuration (New strategy only)
-        
+
         * `log_uri` - (Optional) The path to the Amazon S3 location where logs for this cluster are stored.
         * `additional_info` - (Optional) This is meta information about third-party applications that third-party vendors use for testing purposes.
         * `security_config` - (Optional) The name of the security configuration applied to the cluster.
@@ -101,10 +101,10 @@ class MrScalar(pulumi.CustomResource):
         * `job_flow_role` - (Optional) The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
         * `termination_protected` - (Optional) Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
         * `keep_job_flow_alive` - (Optional) Specifies whether the cluster should remain available after completing all steps.
-        
+
         <a id="task-group"></a>
         ## Task Group (Wrap, Clone, and New strategies)
-        
+
         * `task_instance_types` - (Required) The MrScaler instance types for the task nodes.
         * `task_target` - (Required) amount of instances in task group.
         * `task_maximum` - (Optional) maximal amount of instances in task group.
@@ -116,10 +116,10 @@ class MrScalar(pulumi.CustomResource):
             * `volume_type` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
             * `size_in_gb` - (Required) Size of the volume, in GBs.
             * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
-        
+
         <a id="core-group"></a>
         ## Core Group (Clone, New strategies)
-        
+
         * `core_instance_types` - (Required) The MrScaler instance types for the core nodes.
         * `core_target` - (Required) amount of instances in core group.
         * `core_maximum` - (Optional) maximal amount of instances in core group.
@@ -131,10 +131,10 @@ class MrScalar(pulumi.CustomResource):
             * `volume_type` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
             * `size_in_gb` - (Required) Size of the volume, in GBs.
             * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
-        
+
         <a id="master-group"></a>
         ## Master Group (Clone, New strategies)
-        
+
         * `master_instance_types` - (Required) The MrScaler instance types for the master nodes.
         * `master_lifecycle` - (Required) The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         * `master_ebs_optimized` - (Optional) EBS Optimization setting for instances in group.
@@ -143,17 +143,17 @@ class MrScalar(pulumi.CustomResource):
             * `volume_type` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
             * `size_in_gb` - (Required) Size of the volume, in GBs.
             * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
-        
+
         <a id="tags"></a>
         ## Tags (Clone, New strategies)
-        
+
         * `tags` - (Optional) A list of tags to assign to the resource. You may define multiple tags.
             * `key` - (Required) Tag key.
             * `value` - (Required) Tag value.
-        
+
         <a id="Optional Compute Parameters"></a>  
         ## Optional Compute Parameters (New strategy)
-        
+
         * `managed_primary_security_group` - (Optional) EMR Managed Security group that will be set to the primary instance group.
         * `managed_replica_security_group` - (Optional) EMR Managed Security group that will be set to the replica instance group.
         * `service_access_security_group` - (Optional) The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
@@ -169,46 +169,46 @@ class MrScalar(pulumi.CustomResource):
         * `instance_weights` - (Optional) Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
             * `instance_type` - (Required) The type of the instance.
             * `weighted_capacity` - (Required) The weight given to the associated instance type. 
-        
+
         <a id="availability-zone"></a>
         ## Availability Zones (Clone, New strategies)
-        
+
         * `availability_zones` - (Required in Clone) List of AZs and their subnet Ids. See example above for usage.
-        
+
         <a id="configurations"></a>
         ## Configurations (Clone, New strategies)
-        
+
         * `configurations_file` - (Optional) Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
             * `bucket` - (Required) S3 Bucket name for configurations.
             * `key`- (Required) S3 key for configurations.
             
         <a id="steps"></a>
         ## Steps (Clone, New strategies)
-        
+
         * `steps_file` - (Optional) Steps from S3.
             * `bucket` - (Required) S3 Bucket name for steps.
             * `key`- (Required) S3 key for steps.
             
         <a id="boostrap-actions"></a>
         ## Bootstrap Actions (Clone, New strategies)   
-        
+
         * `bootstrap_actions_file` - (Optional) Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
             * `bucket` - (Required) S3 Bucket name for bootstrap actions.
             * `key`- (Required) S3 key for bootstrap actions.
-        
+
         <a id="scaling-policy"></a>
         ## Scaling Policies
-        
+
         Possible task group scaling policies (Wrap, Clone, and New strategies):
         * `task_scaling_up_policy`
         * `task_scaling_down_policy`
-        
+
         Possible core group scaling policies (Clone, New strategies):
         * `core_scaling_up_policy`
         * `core_scaling_down_policy`
-        
+
         Each `*_scaling_*_policy` supports the following:
-        
+
         * `policy_name` - (Required) The name of the policy.
         * `metric_name` - (Required) The name of the metric, with or without spaces.
         * `statistic` - (Required) The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
@@ -227,10 +227,10 @@ class MrScalar(pulumi.CustomResource):
         * `maximum` - (Optional) The maximum to set when scale is needed.
         * `target` - (Optional) The number of instances to set when scale is needed.
         * `action_type` - (Required) The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
-        
+
         <a id="scheduled-task"></a>
         ## Scheduled Tasks
-        
+
         * `scheduled_task` - (Optional) An array of scheduled tasks.
         * `is_enabled` - (Optional) Enable/Disable the specified scheduling task.
         * `task_type` - (Required) The type of task to be scheduled. Valid values: `setCapacity`.
@@ -239,7 +239,9 @@ class MrScalar(pulumi.CustomResource):
         * `desired_capacity` - (Optional) New desired capacity for the elastigroup.
         * `min_capacity` - (Optional) New min capacity for the elastigroup.
         * `max_capacity` - (Optional) New max capacity for the elastigroup.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/mrscaler_aws.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
@@ -247,139 +249,32 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] name: The MrScaler name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-        
+
         The **applications** object supports the following:
-        
+
           * `args` (`pulumi.Input[list]`)
           * `name` (`pulumi.Input[str]`) - The MrScaler name.
           * `version` (`pulumi.Input[str]`)
-        
+
         The **bootstrap_actions_files** object supports the following:
-        
+
           * `bucket` (`pulumi.Input[str]`)
           * `key` (`pulumi.Input[str]`)
-        
+
         The **configurations_files** object supports the following:
-        
+
           * `bucket` (`pulumi.Input[str]`)
           * `key` (`pulumi.Input[str]`)
-        
+
         The **core_ebs_block_devices** object supports the following:
-        
+
           * `iops` (`pulumi.Input[float]`)
           * `sizeInGb` (`pulumi.Input[float]`)
           * `volumeType` (`pulumi.Input[str]`)
           * `volumesPerInstance` (`pulumi.Input[float]`)
-        
+
         The **core_scaling_down_policies** object supports the following:
-        
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
-        
-        The **core_scaling_up_policies** object supports the following:
-        
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
-        
-        The **instance_weights** object supports the following:
-        
-          * `instanceType` (`pulumi.Input[str]`)
-          * `weightedCapacity` (`pulumi.Input[float]`)
-        
-        The **master_ebs_block_devices** object supports the following:
-        
-          * `iops` (`pulumi.Input[float]`)
-          * `sizeInGb` (`pulumi.Input[float]`)
-          * `volumeType` (`pulumi.Input[str]`)
-          * `volumesPerInstance` (`pulumi.Input[float]`)
-        
-        The **provisioning_timeout** object supports the following:
-        
-          * `timeout` (`pulumi.Input[float]`)
-          * `timeoutAction` (`pulumi.Input[str]`)
-        
-        The **scheduled_tasks** object supports the following:
-        
-          * `cron` (`pulumi.Input[str]`)
-          * `desired_capacity` (`pulumi.Input[str]`)
-          * `instanceGroupType` (`pulumi.Input[str]`)
-          * `isEnabled` (`pulumi.Input[bool]`)
-          * `maxCapacity` (`pulumi.Input[str]`)
-          * `minCapacity` (`pulumi.Input[str]`)
-          * `taskType` (`pulumi.Input[str]`)
-        
-        The **steps_files** object supports the following:
-        
-          * `bucket` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-        
-        The **tags** object supports the following:
-        
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-        
-        The **task_ebs_block_devices** object supports the following:
-        
-          * `iops` (`pulumi.Input[float]`)
-          * `sizeInGb` (`pulumi.Input[float]`)
-          * `volumeType` (`pulumi.Input[str]`)
-          * `volumesPerInstance` (`pulumi.Input[float]`)
-        
-        The **task_scaling_down_policies** object supports the following:
-        
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
-        
-        The **task_scaling_up_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
@@ -399,7 +294,112 @@ class MrScalar(pulumi.CustomResource):
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/mrscaler_aws.html.markdown.
+        The **core_scaling_up_policies** object supports the following:
+
+          * `actionType` (`pulumi.Input[str]`)
+          * `adjustment` (`pulumi.Input[str]`)
+          * `cooldown` (`pulumi.Input[float]`)
+          * `dimensions` (`pulumi.Input[dict]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `maxTargetCapacity` (`pulumi.Input[str]`)
+          * `maximum` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`)
+          * `minTargetCapacity` (`pulumi.Input[str]`)
+          * `minimum` (`pulumi.Input[str]`)
+          * `namespace` (`pulumi.Input[str]`)
+          * `operator` (`pulumi.Input[str]`)
+          * `period` (`pulumi.Input[float]`)
+          * `policyName` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`)
+          * `target` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`)
+          * `unit` (`pulumi.Input[str]`)
+
+        The **instance_weights** object supports the following:
+
+          * `instanceType` (`pulumi.Input[str]`)
+          * `weightedCapacity` (`pulumi.Input[float]`)
+
+        The **master_ebs_block_devices** object supports the following:
+
+          * `iops` (`pulumi.Input[float]`)
+          * `sizeInGb` (`pulumi.Input[float]`)
+          * `volumeType` (`pulumi.Input[str]`)
+          * `volumesPerInstance` (`pulumi.Input[float]`)
+
+        The **provisioning_timeout** object supports the following:
+
+          * `timeout` (`pulumi.Input[float]`)
+          * `timeoutAction` (`pulumi.Input[str]`)
+
+        The **scheduled_tasks** object supports the following:
+
+          * `cron` (`pulumi.Input[str]`)
+          * `desired_capacity` (`pulumi.Input[str]`)
+          * `instanceGroupType` (`pulumi.Input[str]`)
+          * `isEnabled` (`pulumi.Input[bool]`)
+          * `maxCapacity` (`pulumi.Input[str]`)
+          * `minCapacity` (`pulumi.Input[str]`)
+          * `taskType` (`pulumi.Input[str]`)
+
+        The **steps_files** object supports the following:
+
+          * `bucket` (`pulumi.Input[str]`)
+          * `key` (`pulumi.Input[str]`)
+
+        The **tags** object supports the following:
+
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
+
+        The **task_ebs_block_devices** object supports the following:
+
+          * `iops` (`pulumi.Input[float]`)
+          * `sizeInGb` (`pulumi.Input[float]`)
+          * `volumeType` (`pulumi.Input[str]`)
+          * `volumesPerInstance` (`pulumi.Input[float]`)
+
+        The **task_scaling_down_policies** object supports the following:
+
+          * `actionType` (`pulumi.Input[str]`)
+          * `adjustment` (`pulumi.Input[str]`)
+          * `cooldown` (`pulumi.Input[float]`)
+          * `dimensions` (`pulumi.Input[dict]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `maxTargetCapacity` (`pulumi.Input[str]`)
+          * `maximum` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`)
+          * `minTargetCapacity` (`pulumi.Input[str]`)
+          * `minimum` (`pulumi.Input[str]`)
+          * `namespace` (`pulumi.Input[str]`)
+          * `operator` (`pulumi.Input[str]`)
+          * `period` (`pulumi.Input[float]`)
+          * `policyName` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`)
+          * `target` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`)
+          * `unit` (`pulumi.Input[str]`)
+
+        The **task_scaling_up_policies** object supports the following:
+
+          * `actionType` (`pulumi.Input[str]`)
+          * `adjustment` (`pulumi.Input[str]`)
+          * `cooldown` (`pulumi.Input[float]`)
+          * `dimensions` (`pulumi.Input[dict]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `maxTargetCapacity` (`pulumi.Input[str]`)
+          * `maximum` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`)
+          * `minTargetCapacity` (`pulumi.Input[str]`)
+          * `minimum` (`pulumi.Input[str]`)
+          * `namespace` (`pulumi.Input[str]`)
+          * `operator` (`pulumi.Input[str]`)
+          * `period` (`pulumi.Input[float]`)
+          * `policyName` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`)
+          * `target` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`)
+          * `unit` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -488,7 +488,7 @@ class MrScalar(pulumi.CustomResource):
         """
         Get an existing MrScalar resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -497,32 +497,32 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] name: The MrScaler name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-        
+
         The **applications** object supports the following:
-        
+
           * `args` (`pulumi.Input[list]`)
           * `name` (`pulumi.Input[str]`) - The MrScaler name.
           * `version` (`pulumi.Input[str]`)
-        
+
         The **bootstrap_actions_files** object supports the following:
-        
+
           * `bucket` (`pulumi.Input[str]`)
           * `key` (`pulumi.Input[str]`)
-        
+
         The **configurations_files** object supports the following:
-        
+
           * `bucket` (`pulumi.Input[str]`)
           * `key` (`pulumi.Input[str]`)
-        
+
         The **core_ebs_block_devices** object supports the following:
-        
+
           * `iops` (`pulumi.Input[float]`)
           * `sizeInGb` (`pulumi.Input[float]`)
           * `volumeType` (`pulumi.Input[str]`)
           * `volumesPerInstance` (`pulumi.Input[float]`)
-        
+
         The **core_scaling_down_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
@@ -541,9 +541,9 @@ class MrScalar(pulumi.CustomResource):
           * `target` (`pulumi.Input[str]`)
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
-        
+
         The **core_scaling_up_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
@@ -562,26 +562,26 @@ class MrScalar(pulumi.CustomResource):
           * `target` (`pulumi.Input[str]`)
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
-        
+
         The **instance_weights** object supports the following:
-        
+
           * `instanceType` (`pulumi.Input[str]`)
           * `weightedCapacity` (`pulumi.Input[float]`)
-        
+
         The **master_ebs_block_devices** object supports the following:
-        
+
           * `iops` (`pulumi.Input[float]`)
           * `sizeInGb` (`pulumi.Input[float]`)
           * `volumeType` (`pulumi.Input[str]`)
           * `volumesPerInstance` (`pulumi.Input[float]`)
-        
+
         The **provisioning_timeout** object supports the following:
-        
+
           * `timeout` (`pulumi.Input[float]`)
           * `timeoutAction` (`pulumi.Input[str]`)
-        
+
         The **scheduled_tasks** object supports the following:
-        
+
           * `cron` (`pulumi.Input[str]`)
           * `desired_capacity` (`pulumi.Input[str]`)
           * `instanceGroupType` (`pulumi.Input[str]`)
@@ -589,47 +589,26 @@ class MrScalar(pulumi.CustomResource):
           * `maxCapacity` (`pulumi.Input[str]`)
           * `minCapacity` (`pulumi.Input[str]`)
           * `taskType` (`pulumi.Input[str]`)
-        
+
         The **steps_files** object supports the following:
-        
+
           * `bucket` (`pulumi.Input[str]`)
           * `key` (`pulumi.Input[str]`)
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-        
+
         The **task_ebs_block_devices** object supports the following:
-        
+
           * `iops` (`pulumi.Input[float]`)
           * `sizeInGb` (`pulumi.Input[float]`)
           * `volumeType` (`pulumi.Input[str]`)
           * `volumesPerInstance` (`pulumi.Input[float]`)
-        
+
         The **task_scaling_down_policies** object supports the following:
-        
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
-        
-        The **task_scaling_up_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
@@ -649,11 +628,31 @@ class MrScalar(pulumi.CustomResource):
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/mrscaler_aws.html.markdown.
+        The **task_scaling_up_policies** object supports the following:
+
+          * `actionType` (`pulumi.Input[str]`)
+          * `adjustment` (`pulumi.Input[str]`)
+          * `cooldown` (`pulumi.Input[float]`)
+          * `dimensions` (`pulumi.Input[dict]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `maxTargetCapacity` (`pulumi.Input[str]`)
+          * `maximum` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`)
+          * `minTargetCapacity` (`pulumi.Input[str]`)
+          * `minimum` (`pulumi.Input[str]`)
+          * `namespace` (`pulumi.Input[str]`)
+          * `operator` (`pulumi.Input[str]`)
+          * `period` (`pulumi.Input[float]`)
+          * `policyName` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`)
+          * `target` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`)
+          * `unit` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["additional_info"] = additional_info
         __props__["additional_primary_security_groups"] = additional_primary_security_groups
         __props__["additional_replica_security_groups"] = additional_replica_security_groups

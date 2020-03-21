@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Spotinst subscription resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/subscription.html.markdown.
 type Subscription struct {
 	pulumi.CustomResourceState

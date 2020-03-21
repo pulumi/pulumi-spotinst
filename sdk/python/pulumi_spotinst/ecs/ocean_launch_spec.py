@@ -13,14 +13,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
     attributes: pulumi.Output[list]
     """
     Optionally adds labels to instances launched in an Ocean cluster.
-    
+
       * `key` (`str`) - The label key.
       * `value` (`str`) - The label value.
     """
     autoscale_headrooms: pulumi.Output[list]
     """
     Set custom headroom per launch spec. provide list of headrooms object.
-    
+
       * `cpuPerUnit` (`float`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
       * `memoryPerUnit` (`float`) - Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
       * `numOfUnits` (`float`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
@@ -52,7 +52,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, attributes=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, name=None, ocean_id=None, security_group_ids=None, user_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a custom Spotinst Ocean ECS Launch Spec resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_ecs_launch_spec.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] attributes: Optionally adds labels to instances launched in an Ocean cluster.
@@ -63,19 +65,17 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[list] security_group_ids: One or more security group ids.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
-        
+
         The **attributes** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The label key.
           * `value` (`pulumi.Input[str]`) - The label value.
-        
+
         The **autoscale_headrooms** object supports the following:
-        
+
           * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
           * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
           * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_ecs_launch_spec.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -115,7 +115,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -127,23 +127,22 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[list] security_group_ids: One or more security group ids.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
-        
+
         The **attributes** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - The label key.
           * `value` (`pulumi.Input[str]`) - The label value.
-        
+
         The **autoscale_headrooms** object supports the following:
-        
+
           * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
           * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
           * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_ecs_launch_spec.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["attributes"] = attributes
         __props__["autoscale_headrooms"] = autoscale_headrooms
         __props__["iam_instance_profile"] = iam_instance_profile

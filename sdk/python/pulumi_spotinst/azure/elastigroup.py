@@ -65,7 +65,7 @@ class Elastigroup(pulumi.CustomResource):
     strategy: pulumi.Output[dict]
     """
     Describes the deployment strategy.
-    
+
       * `draining_timeout` (`float`) - Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
       * `lowPriorityPercentage` (`float`) - Percentage of Low Priority instances to maintain. Required if `od_count` is not specified.
       * `odCount` (`float`) - Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
@@ -78,7 +78,9 @@ class Elastigroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, custom_data=None, desired_capacity=None, health_check=None, images=None, integration_kubernetes=None, integration_multai_runtime=None, load_balancers=None, login=None, low_priority_sizes=None, managed_service_identities=None, max_size=None, min_size=None, name=None, network=None, od_sizes=None, product=None, region=None, resource_group_name=None, scaling_down_policies=None, scaling_up_policies=None, scheduled_tasks=None, shutdown_script=None, strategy=None, update_policy=None, user_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst elastigroup Azure resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_azure.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] desired_capacity: The desired number of instances the group should have at any time.
@@ -93,74 +95,70 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] shutdown_script: Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
         :param pulumi.Input[dict] strategy: Describes the deployment strategy.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
-        
+
         The **health_check** object supports the following:
-        
+
           * `auto_healing` (`pulumi.Input[bool]`)
           * `grace_period` (`pulumi.Input[float]`)
           * `health_check_type` (`pulumi.Input[str]`)
-        
+
         The **images** object supports the following:
-        
+
           * `customs` (`pulumi.Input[list]`)
-        
             * `imageName` (`pulumi.Input[str]`)
             * `resource_group_name` (`pulumi.Input[str]`) - The Resource Group that the user-assigned managed identity resides in.
-        
+
           * `marketplaces` (`pulumi.Input[list]`)
-        
             * `offer` (`pulumi.Input[str]`)
             * `publisher` (`pulumi.Input[str]`)
             * `sku` (`pulumi.Input[str]`)
-        
+
         The **integration_kubernetes** object supports the following:
-        
+
           * `clusterIdentifier` (`pulumi.Input[str]`)
-        
+
         The **integration_multai_runtime** object supports the following:
-        
-          * `deploymentId` (`pulumi.Input[str]`)
-        
+
+          * `deployment_id` (`pulumi.Input[str]`)
+
         The **load_balancers** object supports the following:
-        
+
           * `autoWeight` (`pulumi.Input[bool]`)
-          * `balancerId` (`pulumi.Input[str]`)
-          * `targetSetId` (`pulumi.Input[str]`)
+          * `balancer_id` (`pulumi.Input[str]`)
+          * `target_set_id` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **login** object supports the following:
-        
+
           * `password` (`pulumi.Input[str]`)
           * `sshPublicKey` (`pulumi.Input[str]`)
           * `userName` (`pulumi.Input[str]`)
-        
+
         The **managed_service_identities** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - The name of the managed identity.
           * `resource_group_name` (`pulumi.Input[str]`) - The Resource Group that the user-assigned managed identity resides in.
-        
+
         The **network** object supports the following:
-        
+
           * `additionalIpConfigs` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The name of the managed identity.
             * `privateIpVersion` (`pulumi.Input[str]`)
-        
+
           * `assignPublicIp` (`pulumi.Input[bool]`)
           * `resource_group_name` (`pulumi.Input[str]`) - The Resource Group that the user-assigned managed identity resides in.
           * `subnetName` (`pulumi.Input[str]`)
           * `virtualNetworkName` (`pulumi.Input[str]`)
-        
+
         The **scaling_down_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The name of the managed identity.
             * `value` (`pulumi.Input[str]`)
-        
+
           * `evaluationPeriods` (`pulumi.Input[float]`)
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
@@ -175,17 +173,16 @@ class Elastigroup(pulumi.CustomResource):
           * `target` (`pulumi.Input[str]`)
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
-        
+
         The **scaling_up_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The name of the managed identity.
             * `value` (`pulumi.Input[str]`)
-        
+
           * `evaluationPeriods` (`pulumi.Input[float]`)
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
@@ -200,9 +197,9 @@ class Elastigroup(pulumi.CustomResource):
           * `target` (`pulumi.Input[str]`)
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
-        
+
         The **scheduled_tasks** object supports the following:
-        
+
           * `adjustment` (`pulumi.Input[str]`)
           * `adjustmentPercentage` (`pulumi.Input[str]`)
           * `batchSizePercentage` (`pulumi.Input[str]`)
@@ -213,24 +210,21 @@ class Elastigroup(pulumi.CustomResource):
           * `scaleMinCapacity` (`pulumi.Input[str]`)
           * `scaleTargetCapacity` (`pulumi.Input[str]`)
           * `taskType` (`pulumi.Input[str]`)
-        
+
         The **strategy** object supports the following:
-        
+
           * `draining_timeout` (`pulumi.Input[float]`) - Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
           * `lowPriorityPercentage` (`pulumi.Input[float]`) - Percentage of Low Priority instances to maintain. Required if `od_count` is not specified.
           * `odCount` (`pulumi.Input[float]`) - Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
-        
+
         The **update_policy** object supports the following:
-        
+
           * `rollConfig` (`pulumi.Input[dict]`)
-        
             * `batchSizePercentage` (`pulumi.Input[float]`)
             * `grace_period` (`pulumi.Input[float]`)
             * `health_check_type` (`pulumi.Input[str]`)
-        
-          * `shouldRoll` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_azure.html.markdown.
+          * `shouldRoll` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -299,7 +293,7 @@ class Elastigroup(pulumi.CustomResource):
         """
         Get an existing Elastigroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -315,74 +309,70 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] shutdown_script: Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
         :param pulumi.Input[dict] strategy: Describes the deployment strategy.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
-        
+
         The **health_check** object supports the following:
-        
+
           * `auto_healing` (`pulumi.Input[bool]`)
           * `grace_period` (`pulumi.Input[float]`)
           * `health_check_type` (`pulumi.Input[str]`)
-        
+
         The **images** object supports the following:
-        
+
           * `customs` (`pulumi.Input[list]`)
-        
             * `imageName` (`pulumi.Input[str]`)
             * `resource_group_name` (`pulumi.Input[str]`) - The Resource Group that the user-assigned managed identity resides in.
-        
+
           * `marketplaces` (`pulumi.Input[list]`)
-        
             * `offer` (`pulumi.Input[str]`)
             * `publisher` (`pulumi.Input[str]`)
             * `sku` (`pulumi.Input[str]`)
-        
+
         The **integration_kubernetes** object supports the following:
-        
+
           * `clusterIdentifier` (`pulumi.Input[str]`)
-        
+
         The **integration_multai_runtime** object supports the following:
-        
-          * `deploymentId` (`pulumi.Input[str]`)
-        
+
+          * `deployment_id` (`pulumi.Input[str]`)
+
         The **load_balancers** object supports the following:
-        
+
           * `autoWeight` (`pulumi.Input[bool]`)
-          * `balancerId` (`pulumi.Input[str]`)
-          * `targetSetId` (`pulumi.Input[str]`)
+          * `balancer_id` (`pulumi.Input[str]`)
+          * `target_set_id` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **login** object supports the following:
-        
+
           * `password` (`pulumi.Input[str]`)
           * `sshPublicKey` (`pulumi.Input[str]`)
           * `userName` (`pulumi.Input[str]`)
-        
+
         The **managed_service_identities** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - The name of the managed identity.
           * `resource_group_name` (`pulumi.Input[str]`) - The Resource Group that the user-assigned managed identity resides in.
-        
+
         The **network** object supports the following:
-        
+
           * `additionalIpConfigs` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The name of the managed identity.
             * `privateIpVersion` (`pulumi.Input[str]`)
-        
+
           * `assignPublicIp` (`pulumi.Input[bool]`)
           * `resource_group_name` (`pulumi.Input[str]`) - The Resource Group that the user-assigned managed identity resides in.
           * `subnetName` (`pulumi.Input[str]`)
           * `virtualNetworkName` (`pulumi.Input[str]`)
-        
+
         The **scaling_down_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The name of the managed identity.
             * `value` (`pulumi.Input[str]`)
-        
+
           * `evaluationPeriods` (`pulumi.Input[float]`)
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
@@ -397,17 +387,16 @@ class Elastigroup(pulumi.CustomResource):
           * `target` (`pulumi.Input[str]`)
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
-        
+
         The **scaling_up_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`) - The name of the managed identity.
             * `value` (`pulumi.Input[str]`)
-        
+
           * `evaluationPeriods` (`pulumi.Input[float]`)
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
@@ -422,9 +411,9 @@ class Elastigroup(pulumi.CustomResource):
           * `target` (`pulumi.Input[str]`)
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
-        
+
         The **scheduled_tasks** object supports the following:
-        
+
           * `adjustment` (`pulumi.Input[str]`)
           * `adjustmentPercentage` (`pulumi.Input[str]`)
           * `batchSizePercentage` (`pulumi.Input[str]`)
@@ -435,28 +424,26 @@ class Elastigroup(pulumi.CustomResource):
           * `scaleMinCapacity` (`pulumi.Input[str]`)
           * `scaleTargetCapacity` (`pulumi.Input[str]`)
           * `taskType` (`pulumi.Input[str]`)
-        
+
         The **strategy** object supports the following:
-        
+
           * `draining_timeout` (`pulumi.Input[float]`) - Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
           * `lowPriorityPercentage` (`pulumi.Input[float]`) - Percentage of Low Priority instances to maintain. Required if `od_count` is not specified.
           * `odCount` (`pulumi.Input[float]`) - Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
-        
+
         The **update_policy** object supports the following:
-        
+
           * `rollConfig` (`pulumi.Input[dict]`)
-        
             * `batchSizePercentage` (`pulumi.Input[float]`)
             * `grace_period` (`pulumi.Input[float]`)
             * `health_check_type` (`pulumi.Input[str]`)
-        
-          * `shouldRoll` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_azure.html.markdown.
+          * `shouldRoll` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["custom_data"] = custom_data
         __props__["desired_capacity"] = desired_capacity
         __props__["health_check"] = health_check

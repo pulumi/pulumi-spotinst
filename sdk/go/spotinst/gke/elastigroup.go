@@ -12,13 +12,13 @@ import (
 )
 
 // Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
-// 
-// 
+//
+//
 // ## Diff-suppressed Parameters
-// 
+//
 // The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these
 // imported parameters by defining them in your template with your desired new value (including null values).
-// 
+//
 // * `backendServices`
 //     * `serviceName`
 //     * `locationType`
@@ -41,7 +41,7 @@ import (
 // * `subnets`
 //     * `region`
 //     * `subnetName`
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_gke.html.markdown.
 type Elastigroup struct {
 	pulumi.CustomResourceState

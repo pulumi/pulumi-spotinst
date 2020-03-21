@@ -143,7 +143,7 @@ class ManagedInstance(pulumi.CustomResource):
     tags: pulumi.Output[list]
     """
     Set tags for the instance. Items should be unique.
-    
+
       * `key` (`str`) - Tag's key.
       * `value` (`str`) - Tag's name.
     """
@@ -164,9 +164,9 @@ class ManagedInstance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auto_healing=None, block_devices_mode=None, cpu_credits=None, description=None, draining_timeout=None, ebs_optimized=None, elastic_ip=None, enable_monitoring=None, fall_back_to_od=None, grace_period=None, health_check_type=None, iam_instance_profile=None, image_id=None, instance_types=None, integration_route53=None, key_pair=None, life_cycle=None, load_balancers=None, name=None, network_interfaces=None, optimization_windows=None, orientation=None, persist_block_devices=None, persist_private_ip=None, persist_root_device=None, placement_tenancy=None, preferred_type=None, private_ip=None, product=None, region=None, revert_to_spot=None, scheduled_tasks=None, security_group_ids=None, shutdown_script=None, subnet_ids=None, tags=None, unhealthy_duration=None, user_data=None, utilize_reserved_instances=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst AWS ManagedInstance resource.
-        
+
         ## Load Balancers
-        
+
            * `loadBalancersConfig` - (Optional) LB integration object.
                * `load_balancers` - (Optional) List of load balancers configs.
                     * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
@@ -178,9 +178,9 @@ class ManagedInstance(pulumi.CustomResource):
                     * `auto_weight` - “Auto Weight” will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
                     * `zone_awareness` - “AZ Awareness” will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
                     * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-        
+
         Usage:
-        
+
            ```hcl
            load_balancers {
                arn  = "arn"
@@ -191,9 +191,11 @@ class ManagedInstance(pulumi.CustomResource):
                az_awareness = "true"
              }
            ```
-        
+
         <a id="route53"></a>
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/managed_instance_aws.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`. 
@@ -238,54 +240,50 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: The Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
                Default: `"false"`.
-        
+
         The **integration_route53** object supports the following:
-        
+
           * `domains` (`pulumi.Input[list]`)
-        
             * `hostedZoneId` (`pulumi.Input[str]`)
             * `recordSets` (`pulumi.Input[list]`)
-        
               * `name` (`pulumi.Input[str]`) - The ManagedInstance name.
               * `usePublicIp` (`pulumi.Input[bool]`)
-        
+
             * `spotinstAcctId` (`pulumi.Input[str]`)
-        
+
         The **load_balancers** object supports the following:
-        
+
           * `arn` (`pulumi.Input[str]`)
           * `autoWeight` (`pulumi.Input[bool]`)
           * `azAwareness` (`pulumi.Input[bool]`)
-          * `balancerId` (`pulumi.Input[str]`)
+          * `balancer_id` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`) - The ManagedInstance name.
-          * `targetSetId` (`pulumi.Input[str]`)
+          * `target_set_id` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **network_interfaces** object supports the following:
-        
+
           * `associateIpv6Address` (`pulumi.Input[bool]`)
           * `associate_public_ip_address` (`pulumi.Input[bool]`)
           * `deviceIndex` (`pulumi.Input[str]`)
-        
+
         The **revert_to_spot** object supports the following:
-        
+
           * `performAt` (`pulumi.Input[str]`) - Valid values: “always”, “never”, "timeWindow".
             Default `"never"`.
-        
+
         The **scheduled_tasks** object supports the following:
-        
+
           * `cronExpression` (`pulumi.Input[str]`)
           * `frequency` (`pulumi.Input[str]`)
           * `isEnabled` (`pulumi.Input[bool]`)
           * `startTime` (`pulumi.Input[str]`)
           * `taskType` (`pulumi.Input[str]`)
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - Tag's key.
           * `value` (`pulumi.Input[str]`) - Tag's name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/managed_instance_aws.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -367,7 +365,7 @@ class ManagedInstance(pulumi.CustomResource):
         """
         Get an existing ManagedInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -413,58 +411,55 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: The Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
                Default: `"false"`.
-        
+
         The **integration_route53** object supports the following:
-        
+
           * `domains` (`pulumi.Input[list]`)
-        
             * `hostedZoneId` (`pulumi.Input[str]`)
             * `recordSets` (`pulumi.Input[list]`)
-        
               * `name` (`pulumi.Input[str]`) - The ManagedInstance name.
               * `usePublicIp` (`pulumi.Input[bool]`)
-        
+
             * `spotinstAcctId` (`pulumi.Input[str]`)
-        
+
         The **load_balancers** object supports the following:
-        
+
           * `arn` (`pulumi.Input[str]`)
           * `autoWeight` (`pulumi.Input[bool]`)
           * `azAwareness` (`pulumi.Input[bool]`)
-          * `balancerId` (`pulumi.Input[str]`)
+          * `balancer_id` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`) - The ManagedInstance name.
-          * `targetSetId` (`pulumi.Input[str]`)
+          * `target_set_id` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **network_interfaces** object supports the following:
-        
+
           * `associateIpv6Address` (`pulumi.Input[bool]`)
           * `associate_public_ip_address` (`pulumi.Input[bool]`)
           * `deviceIndex` (`pulumi.Input[str]`)
-        
+
         The **revert_to_spot** object supports the following:
-        
+
           * `performAt` (`pulumi.Input[str]`) - Valid values: “always”, “never”, "timeWindow".
             Default `"never"`.
-        
+
         The **scheduled_tasks** object supports the following:
-        
+
           * `cronExpression` (`pulumi.Input[str]`)
           * `frequency` (`pulumi.Input[str]`)
           * `isEnabled` (`pulumi.Input[bool]`)
           * `startTime` (`pulumi.Input[str]`)
           * `taskType` (`pulumi.Input[str]`)
-        
+
         The **tags** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`) - Tag's key.
           * `value` (`pulumi.Input[str]`) - Tag's name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/managed_instance_aws.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["auto_healing"] = auto_healing
         __props__["block_devices_mode"] = block_devices_mode
         __props__["cpu_credits"] = cpu_credits

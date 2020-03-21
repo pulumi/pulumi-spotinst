@@ -457,6 +457,8 @@ export interface ElastigroupState {
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
      * List of availability zones for the group.
+     * 
+     * @deprecated This field will soon be handled by Region in Subnets
      */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[]>;
@@ -554,6 +556,8 @@ export interface ElastigroupArgs {
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
      * List of availability zones for the group.
+     * 
+     * @deprecated This field will soon be handled by Region in Subnets
      */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[]>;

@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/mrscaler_aws.html.markdown.
- */
 export class MrScalar extends pulumi.CustomResource {
     /**
      * Get an existing MrScalar resource's state with the given name, ID, and optional extra

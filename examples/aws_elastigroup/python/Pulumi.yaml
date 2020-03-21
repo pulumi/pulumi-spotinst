@@ -1,0 +1,3 @@
+name: elastigroup-python
+runtime: python
+description: A TypeScript application to create an AWS ElastiGroup

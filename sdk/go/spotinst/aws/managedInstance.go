@@ -12,9 +12,9 @@ import (
 )
 
 // Provides a Spotinst AWS ManagedInstance resource.
-// 
+//
 // ## Load Balancers
-// 
+//
 //    * `loadBalancersConfig` - (Optional) LB integration object.
 //        * `loadBalancers` - (Optional) List of load balancers configs.
 //             * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
@@ -26,9 +26,9 @@ import (
 //             * `autoWeight` - “Auto Weight” will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
 //             * `zoneAwareness` - “AZ Awareness” will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
 //             * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-// 
+//
 // Usage:
-// 
+//
 //    ```hcl
 //    loadBalancers {
 //        arn  = "arn"
@@ -39,9 +39,9 @@ import (
 //        azAwareness = "true"
 //      }
 //    ```
-// 
+//
 // <a id="route53"></a>
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/managed_instance_aws.html.markdown.
 type ManagedInstance struct {
 	pulumi.CustomResourceState

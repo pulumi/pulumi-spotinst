@@ -13,13 +13,12 @@ class OceanImport(pulumi.CustomResource):
     backend_services: pulumi.Output[list]
     """
     Describes the backend service configurations.
-    
+
       * `locationType` (`str`) - Sets which location the backend services will be active. Valid values: `regional`, `global`.
       * `namedPorts` (`list`)
-    
         * `name` (`str`)
         * `ports` (`list`) - A list of ports.
-    
+
       * `scheme` (`str`) - Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
       * `serviceName` (`str`) - The name of the backend service.
     """
@@ -48,7 +47,9 @@ class OceanImport(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, backend_services=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Ocean GKE import resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_import.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] backend_services: Describes the backend service configurations.
@@ -57,19 +58,16 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[str] location: The zone the master cluster is located in. 
         :param pulumi.Input[float] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[float] min_size: The lower limit of instances the cluster can scale down to.
-        
+
         The **backend_services** object supports the following:
-        
+
           * `locationType` (`pulumi.Input[str]`) - Sets which location the backend services will be active. Valid values: `regional`, `global`.
           * `namedPorts` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`)
             * `ports` (`pulumi.Input[list]`) - A list of ports.
-        
+
           * `scheme` (`pulumi.Input[str]`) - Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
           * `serviceName` (`pulumi.Input[str]`) - The name of the backend service.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_import.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -111,7 +109,7 @@ class OceanImport(pulumi.CustomResource):
         """
         Get an existing OceanImport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -121,23 +119,21 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[str] location: The zone the master cluster is located in. 
         :param pulumi.Input[float] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[float] min_size: The lower limit of instances the cluster can scale down to.
-        
+
         The **backend_services** object supports the following:
-        
+
           * `locationType` (`pulumi.Input[str]`) - Sets which location the backend services will be active. Valid values: `regional`, `global`.
           * `namedPorts` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`)
             * `ports` (`pulumi.Input[list]`) - A list of ports.
-        
+
           * `scheme` (`pulumi.Input[str]`) - Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
           * `serviceName` (`pulumi.Input[str]`) - The name of the backend service.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_import.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["backend_services"] = backend_services
         __props__["cluster_controller_id"] = cluster_controller_id
         __props__["cluster_name"] = cluster_name

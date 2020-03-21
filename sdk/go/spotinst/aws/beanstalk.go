@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Spotinst AWS group resource using Elastic Beanstalk.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_aws_beanstalk.html.markdown.
 type Beanstalk struct {
 	pulumi.CustomResourceState

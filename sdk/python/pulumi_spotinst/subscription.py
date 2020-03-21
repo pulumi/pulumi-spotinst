@@ -33,7 +33,9 @@ class Subscription(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, endpoint=None, event_type=None, format=None, protocol=None, resource_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst subscription resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/subscription.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint: The endpoint the notification will be sent to: url in case of `"http"`/`"https"`, email address in case of `"email"`/`"email-json"`, sns-topic-arn in case of `"aws-sns"`.
@@ -41,8 +43,6 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[dict] format: The format of the notification content (JSON Format - Key+Value). Valid values: `"%instance-id%"`, `"%event%"`, `"%resource-id%"`, `"%resource-name%"`.
         :param pulumi.Input[str] protocol: The protocol to send the notification. Valid values: `"http"`, `"https"`, `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
         :param pulumi.Input[str] resource_id: Spotinst Resource ID (Elastigroup ID).
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/subscription.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,7 +85,7 @@ class Subscription(pulumi.CustomResource):
         """
         Get an existing Subscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -94,12 +94,11 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[dict] format: The format of the notification content (JSON Format - Key+Value). Valid values: `"%instance-id%"`, `"%event%"`, `"%resource-id%"`, `"%resource-name%"`.
         :param pulumi.Input[str] protocol: The protocol to send the notification. Valid values: `"http"`, `"https"`, `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
         :param pulumi.Input[str] resource_id: Spotinst Resource ID (Elastigroup ID).
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/subscription.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["endpoint"] = endpoint
         __props__["event_type"] = event_type
         __props__["format"] = format

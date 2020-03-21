@@ -12,15 +12,15 @@ import (
 )
 
 // Provides a Spotinst AWS MrScaler resource.
-// 
+//
 // ## Provisioning Timeout (Clone, New strategies)
-// 
+//
 // * `timeout` - (Optional) The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
 // * `timeoutAction` - (Optional) The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
-// 
+//
 // <a id="cluster-config"></a>
 // ## Cluster Configuration (New strategy only)
-// 
+//
 // * `logUri` - (Optional) The path to the Amazon S3 location where logs for this cluster are stored.
 // * `additionalInfo` - (Optional) This is meta information about third-party applications that third-party vendors use for testing purposes.
 // * `securityConfig` - (Optional) The name of the security configuration applied to the cluster.
@@ -28,10 +28,10 @@ import (
 // * `jobFlowRole` - (Optional) The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
 // * `terminationProtected` - (Optional) Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
 // * `keepJobFlowAlive` - (Optional) Specifies whether the cluster should remain available after completing all steps.
-// 
+//
 // <a id="task-group"></a>
 // ## Task Group (Wrap, Clone, and New strategies)
-// 
+//
 // * `taskInstanceTypes` - (Required) The MrScaler instance types for the task nodes.
 // * `taskTarget` - (Required) amount of instances in task group.
 // * `taskMaximum` - (Optional) maximal amount of instances in task group.
@@ -43,10 +43,10 @@ import (
 //     * `volumeType` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
 //     * `sizeInGb` - (Required) Size of the volume, in GBs.
 //     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
-// 
+//
 // <a id="core-group"></a>
 // ## Core Group (Clone, New strategies)
-// 
+//
 // * `coreInstanceTypes` - (Required) The MrScaler instance types for the core nodes.
 // * `coreTarget` - (Required) amount of instances in core group.
 // * `coreMaximum` - (Optional) maximal amount of instances in core group.
@@ -58,10 +58,10 @@ import (
 //     * `volumeType` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
 //     * `sizeInGb` - (Required) Size of the volume, in GBs.
 //     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
-// 
+//
 // <a id="master-group"></a>
 // ## Master Group (Clone, New strategies)
-// 
+//
 // * `masterInstanceTypes` - (Required) The MrScaler instance types for the master nodes.
 // * `masterLifecycle` - (Required) The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 // * `masterEbsOptimized` - (Optional) EBS Optimization setting for instances in group.
@@ -70,17 +70,17 @@ import (
 //     * `volumeType` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
 //     * `sizeInGb` - (Required) Size of the volume, in GBs.
 //     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
-// 
+//
 // <a id="tags"></a>
 // ## Tags (Clone, New strategies)
-// 
+//
 // * `tags` - (Optional) A list of tags to assign to the resource. You may define multiple tags.
 //     * `key` - (Required) Tag key.
 //     * `value` - (Required) Tag value.
-// 
+//
 // <a id="Optional Compute Parameters"></a>  
 // ## Optional Compute Parameters (New strategy)
-// 
+//
 // * `managedPrimarySecurityGroup` - (Optional) EMR Managed Security group that will be set to the primary instance group.
 // * `managedReplicaSecurityGroup` - (Optional) EMR Managed Security group that will be set to the replica instance group.
 // * `serviceAccessSecurityGroup` - (Optional) The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
@@ -96,46 +96,46 @@ import (
 // * `instanceWeights` - (Optional) Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
 //     * `instanceType` - (Required) The type of the instance.
 //     * `weightedCapacity` - (Required) The weight given to the associated instance type. 
-// 
+//
 // <a id="availability-zone"></a>
 // ## Availability Zones (Clone, New strategies)
-// 
+//
 // * `availabilityZones` - (Required in Clone) List of AZs and their subnet Ids. See example above for usage.
-// 
+//
 // <a id="configurations"></a>
 // ## Configurations (Clone, New strategies)
-// 
+//
 // * `configurationsFile` - (Optional) Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
 //     * `bucket` - (Required) S3 Bucket name for configurations.
 //     * `key`- (Required) S3 key for configurations.
 //     
 // <a id="steps"></a>
 // ## Steps (Clone, New strategies)
-// 
+//
 // * `stepsFile` - (Optional) Steps from S3.
 //     * `bucket` - (Required) S3 Bucket name for steps.
 //     * `key`- (Required) S3 key for steps.
 //     
 // <a id="boostrap-actions"></a>
 // ## Bootstrap Actions (Clone, New strategies)   
-// 
+//
 // * `bootstrapActionsFile` - (Optional) Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
 //     * `bucket` - (Required) S3 Bucket name for bootstrap actions.
 //     * `key`- (Required) S3 key for bootstrap actions.
-// 
+//
 // <a id="scaling-policy"></a>
 // ## Scaling Policies
-// 
+//
 // Possible task group scaling policies (Wrap, Clone, and New strategies):
 // * `taskScalingUpPolicy`
 // * `taskScalingDownPolicy`
-// 
+//
 // Possible core group scaling policies (Clone, New strategies):
 // * `coreScalingUpPolicy`
 // * `coreScalingDownPolicy`
-// 
+//
 // Each `*_scaling_*_policy` supports the following:
-// 
+//
 // * `policyName` - (Required) The name of the policy.
 // * `metricName` - (Required) The name of the metric, with or without spaces.
 // * `statistic` - (Required) The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
@@ -154,10 +154,10 @@ import (
 // * `maximum` - (Optional) The maximum to set when scale is needed.
 // * `target` - (Optional) The number of instances to set when scale is needed.
 // * `actionType` - (Required) The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
-// 
+//
 // <a id="scheduled-task"></a>
 // ## Scheduled Tasks
-// 
+//
 // * `scheduledTask` - (Optional) An array of scheduled tasks.
 // * `isEnabled` - (Optional) Enable/Disable the specified scheduling task.
 // * `taskType` - (Required) The type of task to be scheduled. Valid values: `setCapacity`.
@@ -166,7 +166,7 @@ import (
 // * `desiredCapacity` - (Optional) New desired capacity for the elastigroup.
 // * `minCapacity` - (Optional) New min capacity for the elastigroup.
 // * `maxCapacity` - (Optional) New max capacity for the elastigroup.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/mrscaler_aws.html.markdown.
 type MrScalar struct {
 	pulumi.CustomResourceState

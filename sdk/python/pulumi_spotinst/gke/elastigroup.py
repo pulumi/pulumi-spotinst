@@ -51,13 +51,13 @@ class Elastigroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, backend_services=None, cluster_id=None, cluster_zone_name=None, desired_capacity=None, disks=None, draining_timeout=None, fallback_to_ondemand=None, gpu=None, instance_types_customs=None, instance_types_ondemand=None, instance_types_preemptibles=None, integration_docker_swarm=None, integration_gke=None, ip_forwarding=None, labels=None, max_size=None, metadatas=None, min_size=None, name=None, network_interfaces=None, node_image=None, ondemand_count=None, preemptible_percentage=None, scaling_down_policies=None, scaling_up_policies=None, service_account=None, shutdown_script=None, startup_script=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
-        
-        
+
+
         ## Diff-suppressed Parameters
-        
+
         The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these
         imported parameters by defining them in your template with your desired new value (including null values).
-        
+
         * `backend_services`
             * `service_name`
             * `location_type`
@@ -80,134 +80,107 @@ class Elastigroup(pulumi.CustomResource):
         * `subnets`
             * `region`
             * `subnet_name`
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_gke.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
         :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
         :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-        
+
         The **backend_services** object supports the following:
-        
+
           * `locationType` (`pulumi.Input[str]`)
           * `namedPorts` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`)
             * `ports` (`pulumi.Input[list]`)
-        
+
           * `scheme` (`pulumi.Input[str]`)
           * `serviceName` (`pulumi.Input[str]`)
-        
+
         The **disks** object supports the following:
-        
+
           * `autoDelete` (`pulumi.Input[bool]`)
           * `boot` (`pulumi.Input[bool]`)
           * `deviceName` (`pulumi.Input[str]`)
           * `initializeParams` (`pulumi.Input[list]`)
-        
             * `diskSizeGb` (`pulumi.Input[str]`)
             * `diskType` (`pulumi.Input[str]`)
             * `source_image` (`pulumi.Input[str]`)
-        
+
           * `interface` (`pulumi.Input[str]`)
           * `mode` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **gpu** object supports the following:
-        
+
           * `count` (`pulumi.Input[float]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **instance_types_customs** object supports the following:
-        
+
           * `memoryGib` (`pulumi.Input[float]`)
           * `vcpu` (`pulumi.Input[float]`)
-        
+
         The **integration_docker_swarm** object supports the following:
-        
+
           * `masterHost` (`pulumi.Input[str]`)
           * `masterPort` (`pulumi.Input[float]`)
-        
+
         The **integration_gke** object supports the following:
-        
+
           * `autoUpdate` (`pulumi.Input[bool]`)
           * `autoscaleCooldown` (`pulumi.Input[float]`)
           * `autoscaleDown` (`pulumi.Input[dict]`)
-        
             * `evaluationPeriods` (`pulumi.Input[float]`)
-        
+
           * `autoscaleHeadroom` (`pulumi.Input[dict]`)
-        
             * `cpuPerUnit` (`pulumi.Input[float]`)
             * `memoryPerUnit` (`pulumi.Input[float]`)
             * `numOfUnits` (`pulumi.Input[float]`)
-        
+
           * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`)
           * `autoscaleIsEnabled` (`pulumi.Input[bool]`)
           * `autoscaleLabels` (`pulumi.Input[list]`)
-        
             * `key` (`pulumi.Input[str]`)
             * `value` (`pulumi.Input[str]`)
-        
+
           * `cluster_id` (`pulumi.Input[str]`) - The name of the GKE cluster you wish to import.
           * `location` (`pulumi.Input[str]`)
-        
+
         The **labels** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-        
+
         The **metadatas** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-        
+
         The **network_interfaces** object supports the following:
-        
+
           * `accessConfigs` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`)
             * `type` (`pulumi.Input[str]`)
-        
+
           * `aliasIpRanges` (`pulumi.Input[list]`)
-        
             * `ipCidrRange` (`pulumi.Input[str]`)
             * `subnetworkRangeName` (`pulumi.Input[str]`)
-        
+
           * `network` (`pulumi.Input[str]`)
-        
+
         The **scaling_down_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[float]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`)
             * `value` (`pulumi.Input[str]`)
-        
-          * `evaluationPeriods` (`pulumi.Input[float]`)
-          * `metricName` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
-          * `policyName` (`pulumi.Input[str]`)
-          * `source` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
-        
-        The **scaling_up_policies** object supports the following:
-        
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[float]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[list]`)
-        
-            * `name` (`pulumi.Input[str]`)
-            * `value` (`pulumi.Input[str]`)
-        
+
           * `evaluationPeriods` (`pulumi.Input[float]`)
           * `metricName` (`pulumi.Input[str]`)
           * `namespace` (`pulumi.Input[str]`)
@@ -219,7 +192,25 @@ class Elastigroup(pulumi.CustomResource):
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_gke.html.markdown.
+        The **scaling_up_policies** object supports the following:
+
+          * `actionType` (`pulumi.Input[str]`)
+          * `adjustment` (`pulumi.Input[float]`)
+          * `cooldown` (`pulumi.Input[float]`)
+          * `dimensions` (`pulumi.Input[list]`)
+            * `name` (`pulumi.Input[str]`)
+            * `value` (`pulumi.Input[str]`)
+
+          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `metricName` (`pulumi.Input[str]`)
+          * `namespace` (`pulumi.Input[str]`)
+          * `operator` (`pulumi.Input[str]`)
+          * `period` (`pulumi.Input[float]`)
+          * `policyName` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`)
+          * `unit` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -282,135 +273,106 @@ class Elastigroup(pulumi.CustomResource):
         """
         Get an existing Elastigroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
         :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
         :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-        
+
         The **backend_services** object supports the following:
-        
+
           * `locationType` (`pulumi.Input[str]`)
           * `namedPorts` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`)
             * `ports` (`pulumi.Input[list]`)
-        
+
           * `scheme` (`pulumi.Input[str]`)
           * `serviceName` (`pulumi.Input[str]`)
-        
+
         The **disks** object supports the following:
-        
+
           * `autoDelete` (`pulumi.Input[bool]`)
           * `boot` (`pulumi.Input[bool]`)
           * `deviceName` (`pulumi.Input[str]`)
           * `initializeParams` (`pulumi.Input[list]`)
-        
             * `diskSizeGb` (`pulumi.Input[str]`)
             * `diskType` (`pulumi.Input[str]`)
             * `source_image` (`pulumi.Input[str]`)
-        
+
           * `interface` (`pulumi.Input[str]`)
           * `mode` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **gpu** object supports the following:
-        
+
           * `count` (`pulumi.Input[float]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **instance_types_customs** object supports the following:
-        
+
           * `memoryGib` (`pulumi.Input[float]`)
           * `vcpu` (`pulumi.Input[float]`)
-        
+
         The **integration_docker_swarm** object supports the following:
-        
+
           * `masterHost` (`pulumi.Input[str]`)
           * `masterPort` (`pulumi.Input[float]`)
-        
+
         The **integration_gke** object supports the following:
-        
+
           * `autoUpdate` (`pulumi.Input[bool]`)
           * `autoscaleCooldown` (`pulumi.Input[float]`)
           * `autoscaleDown` (`pulumi.Input[dict]`)
-        
             * `evaluationPeriods` (`pulumi.Input[float]`)
-        
+
           * `autoscaleHeadroom` (`pulumi.Input[dict]`)
-        
             * `cpuPerUnit` (`pulumi.Input[float]`)
             * `memoryPerUnit` (`pulumi.Input[float]`)
             * `numOfUnits` (`pulumi.Input[float]`)
-        
+
           * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`)
           * `autoscaleIsEnabled` (`pulumi.Input[bool]`)
           * `autoscaleLabels` (`pulumi.Input[list]`)
-        
             * `key` (`pulumi.Input[str]`)
             * `value` (`pulumi.Input[str]`)
-        
+
           * `cluster_id` (`pulumi.Input[str]`) - The name of the GKE cluster you wish to import.
           * `location` (`pulumi.Input[str]`)
-        
+
         The **labels** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-        
+
         The **metadatas** object supports the following:
-        
+
           * `key` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-        
+
         The **network_interfaces** object supports the following:
-        
+
           * `accessConfigs` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`)
             * `type` (`pulumi.Input[str]`)
-        
+
           * `aliasIpRanges` (`pulumi.Input[list]`)
-        
             * `ipCidrRange` (`pulumi.Input[str]`)
             * `subnetworkRangeName` (`pulumi.Input[str]`)
-        
+
           * `network` (`pulumi.Input[str]`)
-        
+
         The **scaling_down_policies** object supports the following:
-        
+
           * `actionType` (`pulumi.Input[str]`)
           * `adjustment` (`pulumi.Input[float]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`)
             * `value` (`pulumi.Input[str]`)
-        
-          * `evaluationPeriods` (`pulumi.Input[float]`)
-          * `metricName` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
-          * `policyName` (`pulumi.Input[str]`)
-          * `source` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
-        
-        The **scaling_up_policies** object supports the following:
-        
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[float]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[list]`)
-        
-            * `name` (`pulumi.Input[str]`)
-            * `value` (`pulumi.Input[str]`)
-        
+
           * `evaluationPeriods` (`pulumi.Input[float]`)
           * `metricName` (`pulumi.Input[str]`)
           * `namespace` (`pulumi.Input[str]`)
@@ -422,11 +384,30 @@ class Elastigroup(pulumi.CustomResource):
           * `threshold` (`pulumi.Input[float]`)
           * `unit` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_gke.html.markdown.
+        The **scaling_up_policies** object supports the following:
+
+          * `actionType` (`pulumi.Input[str]`)
+          * `adjustment` (`pulumi.Input[float]`)
+          * `cooldown` (`pulumi.Input[float]`)
+          * `dimensions` (`pulumi.Input[list]`)
+            * `name` (`pulumi.Input[str]`)
+            * `value` (`pulumi.Input[str]`)
+
+          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `metricName` (`pulumi.Input[str]`)
+          * `namespace` (`pulumi.Input[str]`)
+          * `operator` (`pulumi.Input[str]`)
+          * `period` (`pulumi.Input[float]`)
+          * `policyName` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`)
+          * `unit` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["backend_services"] = backend_services
         __props__["cluster_id"] = cluster_id
         __props__["cluster_zone_name"] = cluster_zone_name
