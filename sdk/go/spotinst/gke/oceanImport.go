@@ -18,18 +18,18 @@ type OceanImport struct {
 	pulumi.CustomResourceState
 
 	// Describes the backend service configurations.
-	BackendServices OceanImportBackendServiceArrayOutput `pulumi:"backendServices"`
-	ClusterControllerId pulumi.StringOutput `pulumi:"clusterControllerId"`
+	BackendServices     OceanImportBackendServiceArrayOutput `pulumi:"backendServices"`
+	ClusterControllerId pulumi.StringOutput                  `pulumi:"clusterControllerId"`
 	// The GKE cluster name.
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
-	// The number of instances to launch and maintain in the cluster. 
+	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
-	// The zone the master cluster is located in. 
+	// The zone the master cluster is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
-	MinSize pulumi.IntOutput `pulumi:"minSize"`
+	MinSize    pulumi.IntOutput         `pulumi:"minSize"`
 	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
 
@@ -68,35 +68,35 @@ func GetOceanImport(ctx *pulumi.Context,
 // Input properties used for looking up and filtering OceanImport resources.
 type oceanImportState struct {
 	// Describes the backend service configurations.
-	BackendServices []OceanImportBackendService `pulumi:"backendServices"`
-	ClusterControllerId *string `pulumi:"clusterControllerId"`
+	BackendServices     []OceanImportBackendService `pulumi:"backendServices"`
+	ClusterControllerId *string                     `pulumi:"clusterControllerId"`
 	// The GKE cluster name.
 	ClusterName *string `pulumi:"clusterName"`
-	// The number of instances to launch and maintain in the cluster. 
+	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// The zone the master cluster is located in. 
+	// The zone the master cluster is located in.
 	Location *string `pulumi:"location"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
-	MinSize *int `pulumi:"minSize"`
+	MinSize    *int     `pulumi:"minSize"`
 	Whitelists []string `pulumi:"whitelists"`
 }
 
 type OceanImportState struct {
 	// Describes the backend service configurations.
-	BackendServices OceanImportBackendServiceArrayInput
+	BackendServices     OceanImportBackendServiceArrayInput
 	ClusterControllerId pulumi.StringPtrInput
 	// The GKE cluster name.
 	ClusterName pulumi.StringPtrInput
-	// The number of instances to launch and maintain in the cluster. 
+	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
-	// The zone the master cluster is located in. 
+	// The zone the master cluster is located in.
 	Location pulumi.StringPtrInput
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
-	MinSize pulumi.IntPtrInput
+	MinSize    pulumi.IntPtrInput
 	Whitelists pulumi.StringArrayInput
 }
 
@@ -109,14 +109,14 @@ type oceanImportArgs struct {
 	BackendServices []OceanImportBackendService `pulumi:"backendServices"`
 	// The GKE cluster name.
 	ClusterName string `pulumi:"clusterName"`
-	// The number of instances to launch and maintain in the cluster. 
+	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// The zone the master cluster is located in. 
+	// The zone the master cluster is located in.
 	Location string `pulumi:"location"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
-	MinSize *int `pulumi:"minSize"`
+	MinSize    *int     `pulumi:"minSize"`
 	Whitelists []string `pulumi:"whitelists"`
 }
 
@@ -126,18 +126,17 @@ type OceanImportArgs struct {
 	BackendServices OceanImportBackendServiceArrayInput
 	// The GKE cluster name.
 	ClusterName pulumi.StringInput
-	// The number of instances to launch and maintain in the cluster. 
+	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
-	// The zone the master cluster is located in. 
+	// The zone the master cluster is located in.
 	Location pulumi.StringInput
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
-	MinSize pulumi.IntPtrInput
+	MinSize    pulumi.IntPtrInput
 	Whitelists pulumi.StringArrayInput
 }
 
 func (OceanImportArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanImportArgs)(nil)).Elem()
 }
-

@@ -17,8 +17,8 @@ package main
 import (
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
 
-	spotinst "github.com/pulumi/pulumi-spotinst"
-	"github.com/pulumi/pulumi-spotinst/pkg/version"
+	spotinst "github.com/pulumi/pulumi-spotinst/provider"
+	"github.com/pulumi/pulumi-spotinst/provider/pkg/version"
 )
 
 func main() {

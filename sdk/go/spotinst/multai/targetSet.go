@@ -20,8 +20,8 @@ type TargetSet struct {
 	// The id of the balancer.
 	BalancerId pulumi.StringOutput `pulumi:"balancerId"`
 	// The id of the deployment.
-	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
-	HealthCheck TargetSetHealthCheckOutput `pulumi:"healthCheck"`
+	DeploymentId pulumi.StringOutput        `pulumi:"deploymentId"`
+	HealthCheck  TargetSetHealthCheckOutput `pulumi:"healthCheck"`
 	// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The port on which the load balancer is listening.
@@ -80,8 +80,8 @@ type targetSetState struct {
 	// The id of the balancer.
 	BalancerId *string `pulumi:"balancerId"`
 	// The id of the deployment.
-	DeploymentId *string `pulumi:"deploymentId"`
-	HealthCheck *TargetSetHealthCheck `pulumi:"healthCheck"`
+	DeploymentId *string               `pulumi:"deploymentId"`
+	HealthCheck  *TargetSetHealthCheck `pulumi:"healthCheck"`
 	// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
 	Name *string `pulumi:"name"`
 	// The port on which the load balancer is listening.
@@ -99,7 +99,7 @@ type TargetSetState struct {
 	BalancerId pulumi.StringPtrInput
 	// The id of the deployment.
 	DeploymentId pulumi.StringPtrInput
-	HealthCheck TargetSetHealthCheckPtrInput
+	HealthCheck  TargetSetHealthCheckPtrInput
 	// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
 	Name pulumi.StringPtrInput
 	// The port on which the load balancer is listening.
@@ -120,8 +120,8 @@ type targetSetArgs struct {
 	// The id of the balancer.
 	BalancerId string `pulumi:"balancerId"`
 	// The id of the deployment.
-	DeploymentId string `pulumi:"deploymentId"`
-	HealthCheck TargetSetHealthCheck `pulumi:"healthCheck"`
+	DeploymentId string               `pulumi:"deploymentId"`
+	HealthCheck  TargetSetHealthCheck `pulumi:"healthCheck"`
 	// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
 	Name *string `pulumi:"name"`
 	// The port on which the load balancer is listening.
@@ -140,7 +140,7 @@ type TargetSetArgs struct {
 	BalancerId pulumi.StringInput
 	// The id of the deployment.
 	DeploymentId pulumi.StringInput
-	HealthCheck TargetSetHealthCheckInput
+	HealthCheck  TargetSetHealthCheckInput
 	// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
 	Name pulumi.StringPtrInput
 	// The port on which the load balancer is listening.
@@ -156,4 +156,3 @@ type TargetSetArgs struct {
 func (TargetSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetSetArgs)(nil)).Elem()
 }
-

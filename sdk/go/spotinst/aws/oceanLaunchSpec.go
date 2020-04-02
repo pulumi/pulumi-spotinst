@@ -25,7 +25,7 @@ type OceanLaunchSpec struct {
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
-	// The ocean cluster you wish to 
+	// The ocean cluster you wish to
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
@@ -78,7 +78,7 @@ type oceanLaunchSpecState struct {
 	ImageId *string `pulumi:"imageId"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
-	// The ocean cluster you wish to 
+	// The ocean cluster you wish to
 	OceanId *string `pulumi:"oceanId"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
@@ -101,7 +101,7 @@ type OceanLaunchSpecState struct {
 	ImageId pulumi.StringPtrInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayInput
-	// The ocean cluster you wish to 
+	// The ocean cluster you wish to
 	OceanId pulumi.StringPtrInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
@@ -128,7 +128,7 @@ type oceanLaunchSpecArgs struct {
 	ImageId *string `pulumi:"imageId"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
-	// The ocean cluster you wish to 
+	// The ocean cluster you wish to
 	OceanId string `pulumi:"oceanId"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
@@ -152,7 +152,7 @@ type OceanLaunchSpecArgs struct {
 	ImageId pulumi.StringPtrInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayInput
-	// The ocean cluster you wish to 
+	// The ocean cluster you wish to
 	OceanId pulumi.StringInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
@@ -169,4 +169,3 @@ type OceanLaunchSpecArgs struct {
 func (OceanLaunchSpecArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanLaunchSpecArgs)(nil)).Elem()
 }
-

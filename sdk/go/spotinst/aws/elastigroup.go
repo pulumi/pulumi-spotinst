@@ -21,7 +21,7 @@ type Elastigroup struct {
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
-	BlockDevicesMode pulumi.StringPtrOutput `pulumi:"blockDevicesMode"`
+	BlockDevicesMode  pulumi.StringPtrOutput   `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
 	CapacityUnit pulumi.StringOutput `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
@@ -31,15 +31,15 @@ type Elastigroup struct {
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
-	DrainingTimeout pulumi.IntOutput `pulumi:"drainingTimeout"`
+	DrainingTimeout pulumi.IntOutput                     `pulumi:"drainingTimeout"`
 	EbsBlockDevices ElastigroupEbsBlockDeviceArrayOutput `pulumi:"ebsBlockDevices"`
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
 	EbsOptimized pulumi.BoolOutput `pulumi:"ebsOptimized"`
 	// A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-	ElasticIps pulumi.StringArrayOutput `pulumi:"elasticIps"`
+	ElasticIps           pulumi.StringArrayOutput `pulumi:"elasticIps"`
 	ElasticLoadBalancers pulumi.StringArrayOutput `pulumi:"elasticLoadBalancers"`
 	// Indicates whether monitoring is enabled for the instance.
-	EnableMonitoring pulumi.BoolPtrOutput `pulumi:"enableMonitoring"`
+	EnableMonitoring      pulumi.BoolPtrOutput                       `pulumi:"enableMonitoring"`
 	EphemeralBlockDevices ElastigroupEphemeralBlockDeviceArrayOutput `pulumi:"ephemeralBlockDevices"`
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolOutput `pulumi:"fallbackToOndemand"`
@@ -60,78 +60,78 @@ type Elastigroup struct {
 	// One or more instance types.
 	InstanceTypesSpots pulumi.StringArrayOutput `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayOutput `pulumi:"instanceTypesWeights"`
-	IntegrationBeanstalk ElastigroupIntegrationBeanstalkPtrOutput `pulumi:"integrationBeanstalk"`
-	IntegrationCodedeploy ElastigroupIntegrationCodedeployPtrOutput `pulumi:"integrationCodedeploy"`
-	IntegrationDockerSwarm ElastigroupIntegrationDockerSwarmPtrOutput `pulumi:"integrationDockerSwarm"`
-	IntegrationEcs ElastigroupIntegrationEcsPtrOutput `pulumi:"integrationEcs"`
-	IntegrationGitlab ElastigroupIntegrationGitlabPtrOutput `pulumi:"integrationGitlab"`
-	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrOutput `pulumi:"integrationKubernetes"`
-	IntegrationMesosphere ElastigroupIntegrationMesospherePtrOutput `pulumi:"integrationMesosphere"`
+	InstanceTypesWeights     ElastigroupInstanceTypesWeightArrayOutput    `pulumi:"instanceTypesWeights"`
+	IntegrationBeanstalk     ElastigroupIntegrationBeanstalkPtrOutput     `pulumi:"integrationBeanstalk"`
+	IntegrationCodedeploy    ElastigroupIntegrationCodedeployPtrOutput    `pulumi:"integrationCodedeploy"`
+	IntegrationDockerSwarm   ElastigroupIntegrationDockerSwarmPtrOutput   `pulumi:"integrationDockerSwarm"`
+	IntegrationEcs           ElastigroupIntegrationEcsPtrOutput           `pulumi:"integrationEcs"`
+	IntegrationGitlab        ElastigroupIntegrationGitlabPtrOutput        `pulumi:"integrationGitlab"`
+	IntegrationKubernetes    ElastigroupIntegrationKubernetesPtrOutput    `pulumi:"integrationKubernetes"`
+	IntegrationMesosphere    ElastigroupIntegrationMesospherePtrOutput    `pulumi:"integrationMesosphere"`
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrOutput `pulumi:"integrationMultaiRuntime"`
-	IntegrationNomad ElastigroupIntegrationNomadPtrOutput `pulumi:"integrationNomad"`
-	IntegrationRancher ElastigroupIntegrationRancherPtrOutput `pulumi:"integrationRancher"`
-	IntegrationRoute53 ElastigroupIntegrationRoute53PtrOutput `pulumi:"integrationRoute53"`
+	IntegrationNomad         ElastigroupIntegrationNomadPtrOutput         `pulumi:"integrationNomad"`
+	IntegrationRancher       ElastigroupIntegrationRancherPtrOutput       `pulumi:"integrationRancher"`
+	IntegrationRoute53       ElastigroupIntegrationRoute53PtrOutput       `pulumi:"integrationRoute53"`
 	// The key name that should be used for the instance.
-	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
+	KeyName        pulumi.StringPtrOutput `pulumi:"keyName"`
 	LifetimePeriod pulumi.StringPtrOutput `pulumi:"lifetimePeriod"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
-	MinSize pulumi.IntOutput `pulumi:"minSize"`
+	MinSize          pulumi.IntOutput                      `pulumi:"minSize"`
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayOutput `pulumi:"multaiTargetSets"`
 	// The group name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name              pulumi.StringOutput                    `pulumi:"name"`
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrOutput `pulumi:"ondemandCount"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
-	Orientation pulumi.StringOutput `pulumi:"orientation"`
+	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+	Orientation         pulumi.StringOutput  `pulumi:"orientation"`
 	PersistBlockDevices pulumi.BoolPtrOutput `pulumi:"persistBlockDevices"`
-	PersistPrivateIp pulumi.BoolPtrOutput `pulumi:"persistPrivateIp"`
-	PersistRootDevice pulumi.BoolPtrOutput `pulumi:"persistRootDevice"`
+	PersistPrivateIp    pulumi.BoolPtrOutput `pulumi:"persistPrivateIp"`
+	PersistRootDevice   pulumi.BoolPtrOutput `pulumi:"persistRootDevice"`
 	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
 	PlacementTenancy pulumi.StringPtrOutput `pulumi:"placementTenancy"`
-	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
 	PreferredAvailabilityZones pulumi.StringArrayOutput `pulumi:"preferredAvailabilityZones"`
-	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
-	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+	PrivateIps                 pulumi.StringArrayOutput `pulumi:"privateIps"`
+	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringOutput `pulumi:"product"`
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
-	RevertToSpot ElastigroupRevertToSpotPtrOutput `pulumi:"revertToSpot"`
+	RevertToSpot        ElastigroupRevertToSpotPtrOutput        `pulumi:"revertToSpot"`
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
 	// Set termination policy.
-	ScalingStrategies ElastigroupScalingStrategyArrayOutput `pulumi:"scalingStrategies"`
+	ScalingStrategies     ElastigroupScalingStrategyArrayOutput     `pulumi:"scalingStrategies"`
 	ScalingTargetPolicies ElastigroupScalingTargetPolicyArrayOutput `pulumi:"scalingTargetPolicies"`
-	ScalingUpPolicies ElastigroupScalingUpPolicyArrayOutput `pulumi:"scalingUpPolicies"`
-	ScheduledTasks ElastigroupScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
+	ScalingUpPolicies     ElastigroupScalingUpPolicyArrayOutput     `pulumi:"scalingUpPolicies"`
+	ScheduledTasks        ElastigroupScheduledTaskArrayOutput       `pulumi:"scheduledTasks"`
 	// A list of associated security group IDS.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
-	ShutdownScript pulumi.StringPtrOutput `pulumi:"shutdownScript"`
-	Signals ElastigroupSignalArrayOutput `pulumi:"signals"`
+	ShutdownScript pulumi.StringPtrOutput       `pulumi:"shutdownScript"`
+	Signals        ElastigroupSignalArrayOutput `pulumi:"signals"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage pulumi.Float64PtrOutput `pulumi:"spotPercentage"`
+	SpotPercentage       pulumi.Float64PtrOutput                  `pulumi:"spotPercentage"`
 	StatefulDeallocation ElastigroupStatefulDeallocationPtrOutput `pulumi:"statefulDeallocation"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
-	Tags ElastigroupTagArrayOutput `pulumi:"tags"`
-	TargetGroupArns pulumi.StringArrayOutput `pulumi:"targetGroupArns"`
-	UpdatePolicy ElastigroupUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
+	Tags            ElastigroupTagArrayOutput        `pulumi:"tags"`
+	TargetGroupArns pulumi.StringArrayOutput         `pulumi:"targetGroupArns"`
+	UpdatePolicy    ElastigroupUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
 	// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
 	WaitForCapacity pulumi.IntPtrOutput `pulumi:"waitForCapacity"`
-	// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+	// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
 	WaitForCapacityTimeout pulumi.IntPtrOutput `pulumi:"waitForCapacityTimeout"`
 }
 
@@ -185,7 +185,7 @@ type elastigroupState struct {
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
+	BlockDevicesMode  *string  `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
 	CapacityUnit *string `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
@@ -195,15 +195,15 @@ type elastigroupState struct {
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
-	DrainingTimeout *int `pulumi:"drainingTimeout"`
+	DrainingTimeout *int                        `pulumi:"drainingTimeout"`
 	EbsBlockDevices []ElastigroupEbsBlockDevice `pulumi:"ebsBlockDevices"`
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-	ElasticIps []string `pulumi:"elasticIps"`
+	ElasticIps           []string `pulumi:"elasticIps"`
 	ElasticLoadBalancers []string `pulumi:"elasticLoadBalancers"`
 	// Indicates whether monitoring is enabled for the instance.
-	EnableMonitoring *bool `pulumi:"enableMonitoring"`
+	EnableMonitoring      *bool                             `pulumi:"enableMonitoring"`
 	EphemeralBlockDevices []ElastigroupEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
@@ -224,78 +224,78 @@ type elastigroupState struct {
 	// One or more instance types.
 	InstanceTypesSpots []string `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-	InstanceTypesWeights []ElastigroupInstanceTypesWeight `pulumi:"instanceTypesWeights"`
-	IntegrationBeanstalk *ElastigroupIntegrationBeanstalk `pulumi:"integrationBeanstalk"`
-	IntegrationCodedeploy *ElastigroupIntegrationCodedeploy `pulumi:"integrationCodedeploy"`
-	IntegrationDockerSwarm *ElastigroupIntegrationDockerSwarm `pulumi:"integrationDockerSwarm"`
-	IntegrationEcs *ElastigroupIntegrationEcs `pulumi:"integrationEcs"`
-	IntegrationGitlab *ElastigroupIntegrationGitlab `pulumi:"integrationGitlab"`
-	IntegrationKubernetes *ElastigroupIntegrationKubernetes `pulumi:"integrationKubernetes"`
-	IntegrationMesosphere *ElastigroupIntegrationMesosphere `pulumi:"integrationMesosphere"`
+	InstanceTypesWeights     []ElastigroupInstanceTypesWeight     `pulumi:"instanceTypesWeights"`
+	IntegrationBeanstalk     *ElastigroupIntegrationBeanstalk     `pulumi:"integrationBeanstalk"`
+	IntegrationCodedeploy    *ElastigroupIntegrationCodedeploy    `pulumi:"integrationCodedeploy"`
+	IntegrationDockerSwarm   *ElastigroupIntegrationDockerSwarm   `pulumi:"integrationDockerSwarm"`
+	IntegrationEcs           *ElastigroupIntegrationEcs           `pulumi:"integrationEcs"`
+	IntegrationGitlab        *ElastigroupIntegrationGitlab        `pulumi:"integrationGitlab"`
+	IntegrationKubernetes    *ElastigroupIntegrationKubernetes    `pulumi:"integrationKubernetes"`
+	IntegrationMesosphere    *ElastigroupIntegrationMesosphere    `pulumi:"integrationMesosphere"`
 	IntegrationMultaiRuntime *ElastigroupIntegrationMultaiRuntime `pulumi:"integrationMultaiRuntime"`
-	IntegrationNomad *ElastigroupIntegrationNomad `pulumi:"integrationNomad"`
-	IntegrationRancher *ElastigroupIntegrationRancher `pulumi:"integrationRancher"`
-	IntegrationRoute53 *ElastigroupIntegrationRoute53 `pulumi:"integrationRoute53"`
+	IntegrationNomad         *ElastigroupIntegrationNomad         `pulumi:"integrationNomad"`
+	IntegrationRancher       *ElastigroupIntegrationRancher       `pulumi:"integrationRancher"`
+	IntegrationRoute53       *ElastigroupIntegrationRoute53       `pulumi:"integrationRoute53"`
 	// The key name that should be used for the instance.
-	KeyName *string `pulumi:"keyName"`
+	KeyName        *string `pulumi:"keyName"`
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
-	MinSize *int `pulumi:"minSize"`
+	MinSize          *int                         `pulumi:"minSize"`
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
 	// The group name.
-	Name *string `pulumi:"name"`
+	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount *int `pulumi:"ondemandCount"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
-	Orientation *string `pulumi:"orientation"`
-	PersistBlockDevices *bool `pulumi:"persistBlockDevices"`
-	PersistPrivateIp *bool `pulumi:"persistPrivateIp"`
-	PersistRootDevice *bool `pulumi:"persistRootDevice"`
+	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+	Orientation         *string `pulumi:"orientation"`
+	PersistBlockDevices *bool   `pulumi:"persistBlockDevices"`
+	PersistPrivateIp    *bool   `pulumi:"persistPrivateIp"`
+	PersistRootDevice   *bool   `pulumi:"persistRootDevice"`
 	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
 	PlacementTenancy *string `pulumi:"placementTenancy"`
-	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
 	PreferredAvailabilityZones []string `pulumi:"preferredAvailabilityZones"`
-	PrivateIps []string `pulumi:"privateIps"`
-	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+	PrivateIps                 []string `pulumi:"privateIps"`
+	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product *string `pulumi:"product"`
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region *string `pulumi:"region"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
-	RevertToSpot *ElastigroupRevertToSpot `pulumi:"revertToSpot"`
+	RevertToSpot        *ElastigroupRevertToSpot       `pulumi:"revertToSpot"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	// Set termination policy.
-	ScalingStrategies []ElastigroupScalingStrategy `pulumi:"scalingStrategies"`
+	ScalingStrategies     []ElastigroupScalingStrategy     `pulumi:"scalingStrategies"`
 	ScalingTargetPolicies []ElastigroupScalingTargetPolicy `pulumi:"scalingTargetPolicies"`
-	ScalingUpPolicies []ElastigroupScalingUpPolicy `pulumi:"scalingUpPolicies"`
-	ScheduledTasks []ElastigroupScheduledTask `pulumi:"scheduledTasks"`
+	ScalingUpPolicies     []ElastigroupScalingUpPolicy     `pulumi:"scalingUpPolicies"`
+	ScheduledTasks        []ElastigroupScheduledTask       `pulumi:"scheduledTasks"`
 	// A list of associated security group IDS.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
-	ShutdownScript *string `pulumi:"shutdownScript"`
-	Signals []ElastigroupSignal `pulumi:"signals"`
+	ShutdownScript *string             `pulumi:"shutdownScript"`
+	Signals        []ElastigroupSignal `pulumi:"signals"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage *float64 `pulumi:"spotPercentage"`
+	SpotPercentage       *float64                         `pulumi:"spotPercentage"`
 	StatefulDeallocation *ElastigroupStatefulDeallocation `pulumi:"statefulDeallocation"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
-	Tags []ElastigroupTag `pulumi:"tags"`
-	TargetGroupArns []string `pulumi:"targetGroupArns"`
-	UpdatePolicy *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
+	Tags            []ElastigroupTag         `pulumi:"tags"`
+	TargetGroupArns []string                 `pulumi:"targetGroupArns"`
+	UpdatePolicy    *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
 	UserData *string `pulumi:"userData"`
 	// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
 	WaitForCapacity *int `pulumi:"waitForCapacity"`
-	// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+	// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
 	WaitForCapacityTimeout *int `pulumi:"waitForCapacityTimeout"`
 }
 
@@ -304,7 +304,7 @@ type ElastigroupState struct {
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
 	AvailabilityZones pulumi.StringArrayInput
-	BlockDevicesMode pulumi.StringPtrInput
+	BlockDevicesMode  pulumi.StringPtrInput
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
 	CapacityUnit pulumi.StringPtrInput
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
@@ -319,10 +319,10 @@ type ElastigroupState struct {
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
 	EbsOptimized pulumi.BoolPtrInput
 	// A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-	ElasticIps pulumi.StringArrayInput
+	ElasticIps           pulumi.StringArrayInput
 	ElasticLoadBalancers pulumi.StringArrayInput
 	// Indicates whether monitoring is enabled for the instance.
-	EnableMonitoring pulumi.BoolPtrInput
+	EnableMonitoring      pulumi.BoolPtrInput
 	EphemeralBlockDevices ElastigroupEphemeralBlockDeviceArrayInput
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
@@ -343,78 +343,78 @@ type ElastigroupState struct {
 	// One or more instance types.
 	InstanceTypesSpots pulumi.StringArrayInput
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayInput
-	IntegrationBeanstalk ElastigroupIntegrationBeanstalkPtrInput
-	IntegrationCodedeploy ElastigroupIntegrationCodedeployPtrInput
-	IntegrationDockerSwarm ElastigroupIntegrationDockerSwarmPtrInput
-	IntegrationEcs ElastigroupIntegrationEcsPtrInput
-	IntegrationGitlab ElastigroupIntegrationGitlabPtrInput
-	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrInput
-	IntegrationMesosphere ElastigroupIntegrationMesospherePtrInput
+	InstanceTypesWeights     ElastigroupInstanceTypesWeightArrayInput
+	IntegrationBeanstalk     ElastigroupIntegrationBeanstalkPtrInput
+	IntegrationCodedeploy    ElastigroupIntegrationCodedeployPtrInput
+	IntegrationDockerSwarm   ElastigroupIntegrationDockerSwarmPtrInput
+	IntegrationEcs           ElastigroupIntegrationEcsPtrInput
+	IntegrationGitlab        ElastigroupIntegrationGitlabPtrInput
+	IntegrationKubernetes    ElastigroupIntegrationKubernetesPtrInput
+	IntegrationMesosphere    ElastigroupIntegrationMesospherePtrInput
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrInput
-	IntegrationNomad ElastigroupIntegrationNomadPtrInput
-	IntegrationRancher ElastigroupIntegrationRancherPtrInput
-	IntegrationRoute53 ElastigroupIntegrationRoute53PtrInput
+	IntegrationNomad         ElastigroupIntegrationNomadPtrInput
+	IntegrationRancher       ElastigroupIntegrationRancherPtrInput
+	IntegrationRoute53       ElastigroupIntegrationRoute53PtrInput
 	// The key name that should be used for the instance.
-	KeyName pulumi.StringPtrInput
+	KeyName        pulumi.StringPtrInput
 	LifetimePeriod pulumi.StringPtrInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
-	MinSize pulumi.IntPtrInput
+	MinSize          pulumi.IntPtrInput
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
 	// The group name.
-	Name pulumi.StringPtrInput
+	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrInput
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
-	Orientation pulumi.StringPtrInput
+	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+	Orientation         pulumi.StringPtrInput
 	PersistBlockDevices pulumi.BoolPtrInput
-	PersistPrivateIp pulumi.BoolPtrInput
-	PersistRootDevice pulumi.BoolPtrInput
+	PersistPrivateIp    pulumi.BoolPtrInput
+	PersistRootDevice   pulumi.BoolPtrInput
 	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
 	PlacementTenancy pulumi.StringPtrInput
-	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
 	PreferredAvailabilityZones pulumi.StringArrayInput
-	PrivateIps pulumi.StringArrayInput
-	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+	PrivateIps                 pulumi.StringArrayInput
+	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringPtrInput
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region pulumi.StringPtrInput
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
-	RevertToSpot ElastigroupRevertToSpotPtrInput
+	RevertToSpot        ElastigroupRevertToSpotPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	// Set termination policy.
-	ScalingStrategies ElastigroupScalingStrategyArrayInput
+	ScalingStrategies     ElastigroupScalingStrategyArrayInput
 	ScalingTargetPolicies ElastigroupScalingTargetPolicyArrayInput
-	ScalingUpPolicies ElastigroupScalingUpPolicyArrayInput
-	ScheduledTasks ElastigroupScheduledTaskArrayInput
+	ScalingUpPolicies     ElastigroupScalingUpPolicyArrayInput
+	ScheduledTasks        ElastigroupScheduledTaskArrayInput
 	// A list of associated security group IDS.
 	SecurityGroups pulumi.StringArrayInput
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
 	ShutdownScript pulumi.StringPtrInput
-	Signals ElastigroupSignalArrayInput
+	Signals        ElastigroupSignalArrayInput
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage pulumi.Float64PtrInput
+	SpotPercentage       pulumi.Float64PtrInput
 	StatefulDeallocation ElastigroupStatefulDeallocationPtrInput
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
-	Tags ElastigroupTagArrayInput
+	Tags            ElastigroupTagArrayInput
 	TargetGroupArns pulumi.StringArrayInput
-	UpdatePolicy ElastigroupUpdatePolicyPtrInput
+	UpdatePolicy    ElastigroupUpdatePolicyPtrInput
 	// The user data to provide when launching the instance.
 	UserData pulumi.StringPtrInput
 	// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
 	WaitForCapacity pulumi.IntPtrInput
-	// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+	// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
 	WaitForCapacityTimeout pulumi.IntPtrInput
 }
 
@@ -427,7 +427,7 @@ type elastigroupArgs struct {
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
+	BlockDevicesMode  *string  `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
 	CapacityUnit *string `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
@@ -437,15 +437,15 @@ type elastigroupArgs struct {
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
-	DrainingTimeout *int `pulumi:"drainingTimeout"`
+	DrainingTimeout *int                        `pulumi:"drainingTimeout"`
 	EbsBlockDevices []ElastigroupEbsBlockDevice `pulumi:"ebsBlockDevices"`
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-	ElasticIps []string `pulumi:"elasticIps"`
+	ElasticIps           []string `pulumi:"elasticIps"`
 	ElasticLoadBalancers []string `pulumi:"elasticLoadBalancers"`
 	// Indicates whether monitoring is enabled for the instance.
-	EnableMonitoring *bool `pulumi:"enableMonitoring"`
+	EnableMonitoring      *bool                             `pulumi:"enableMonitoring"`
 	EphemeralBlockDevices []ElastigroupEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand bool `pulumi:"fallbackToOndemand"`
@@ -466,78 +466,78 @@ type elastigroupArgs struct {
 	// One or more instance types.
 	InstanceTypesSpots []string `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-	InstanceTypesWeights []ElastigroupInstanceTypesWeight `pulumi:"instanceTypesWeights"`
-	IntegrationBeanstalk *ElastigroupIntegrationBeanstalk `pulumi:"integrationBeanstalk"`
-	IntegrationCodedeploy *ElastigroupIntegrationCodedeploy `pulumi:"integrationCodedeploy"`
-	IntegrationDockerSwarm *ElastigroupIntegrationDockerSwarm `pulumi:"integrationDockerSwarm"`
-	IntegrationEcs *ElastigroupIntegrationEcs `pulumi:"integrationEcs"`
-	IntegrationGitlab *ElastigroupIntegrationGitlab `pulumi:"integrationGitlab"`
-	IntegrationKubernetes *ElastigroupIntegrationKubernetes `pulumi:"integrationKubernetes"`
-	IntegrationMesosphere *ElastigroupIntegrationMesosphere `pulumi:"integrationMesosphere"`
+	InstanceTypesWeights     []ElastigroupInstanceTypesWeight     `pulumi:"instanceTypesWeights"`
+	IntegrationBeanstalk     *ElastigroupIntegrationBeanstalk     `pulumi:"integrationBeanstalk"`
+	IntegrationCodedeploy    *ElastigroupIntegrationCodedeploy    `pulumi:"integrationCodedeploy"`
+	IntegrationDockerSwarm   *ElastigroupIntegrationDockerSwarm   `pulumi:"integrationDockerSwarm"`
+	IntegrationEcs           *ElastigroupIntegrationEcs           `pulumi:"integrationEcs"`
+	IntegrationGitlab        *ElastigroupIntegrationGitlab        `pulumi:"integrationGitlab"`
+	IntegrationKubernetes    *ElastigroupIntegrationKubernetes    `pulumi:"integrationKubernetes"`
+	IntegrationMesosphere    *ElastigroupIntegrationMesosphere    `pulumi:"integrationMesosphere"`
 	IntegrationMultaiRuntime *ElastigroupIntegrationMultaiRuntime `pulumi:"integrationMultaiRuntime"`
-	IntegrationNomad *ElastigroupIntegrationNomad `pulumi:"integrationNomad"`
-	IntegrationRancher *ElastigroupIntegrationRancher `pulumi:"integrationRancher"`
-	IntegrationRoute53 *ElastigroupIntegrationRoute53 `pulumi:"integrationRoute53"`
+	IntegrationNomad         *ElastigroupIntegrationNomad         `pulumi:"integrationNomad"`
+	IntegrationRancher       *ElastigroupIntegrationRancher       `pulumi:"integrationRancher"`
+	IntegrationRoute53       *ElastigroupIntegrationRoute53       `pulumi:"integrationRoute53"`
 	// The key name that should be used for the instance.
-	KeyName *string `pulumi:"keyName"`
+	KeyName        *string `pulumi:"keyName"`
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
-	MinSize *int `pulumi:"minSize"`
+	MinSize          *int                         `pulumi:"minSize"`
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
 	// The group name.
-	Name *string `pulumi:"name"`
+	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount *int `pulumi:"ondemandCount"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
-	Orientation string `pulumi:"orientation"`
-	PersistBlockDevices *bool `pulumi:"persistBlockDevices"`
-	PersistPrivateIp *bool `pulumi:"persistPrivateIp"`
-	PersistRootDevice *bool `pulumi:"persistRootDevice"`
+	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+	Orientation         string `pulumi:"orientation"`
+	PersistBlockDevices *bool  `pulumi:"persistBlockDevices"`
+	PersistPrivateIp    *bool  `pulumi:"persistPrivateIp"`
+	PersistRootDevice   *bool  `pulumi:"persistRootDevice"`
 	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
 	PlacementTenancy *string `pulumi:"placementTenancy"`
-	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
 	PreferredAvailabilityZones []string `pulumi:"preferredAvailabilityZones"`
-	PrivateIps []string `pulumi:"privateIps"`
-	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+	PrivateIps                 []string `pulumi:"privateIps"`
+	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product string `pulumi:"product"`
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region *string `pulumi:"region"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
-	RevertToSpot *ElastigroupRevertToSpot `pulumi:"revertToSpot"`
+	RevertToSpot        *ElastigroupRevertToSpot       `pulumi:"revertToSpot"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	// Set termination policy.
-	ScalingStrategies []ElastigroupScalingStrategy `pulumi:"scalingStrategies"`
+	ScalingStrategies     []ElastigroupScalingStrategy     `pulumi:"scalingStrategies"`
 	ScalingTargetPolicies []ElastigroupScalingTargetPolicy `pulumi:"scalingTargetPolicies"`
-	ScalingUpPolicies []ElastigroupScalingUpPolicy `pulumi:"scalingUpPolicies"`
-	ScheduledTasks []ElastigroupScheduledTask `pulumi:"scheduledTasks"`
+	ScalingUpPolicies     []ElastigroupScalingUpPolicy     `pulumi:"scalingUpPolicies"`
+	ScheduledTasks        []ElastigroupScheduledTask       `pulumi:"scheduledTasks"`
 	// A list of associated security group IDS.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
-	ShutdownScript *string `pulumi:"shutdownScript"`
-	Signals []ElastigroupSignal `pulumi:"signals"`
+	ShutdownScript *string             `pulumi:"shutdownScript"`
+	Signals        []ElastigroupSignal `pulumi:"signals"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage *float64 `pulumi:"spotPercentage"`
+	SpotPercentage       *float64                         `pulumi:"spotPercentage"`
 	StatefulDeallocation *ElastigroupStatefulDeallocation `pulumi:"statefulDeallocation"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
-	Tags []ElastigroupTag `pulumi:"tags"`
-	TargetGroupArns []string `pulumi:"targetGroupArns"`
-	UpdatePolicy *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
+	Tags            []ElastigroupTag         `pulumi:"tags"`
+	TargetGroupArns []string                 `pulumi:"targetGroupArns"`
+	UpdatePolicy    *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
 	UserData *string `pulumi:"userData"`
 	// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
 	WaitForCapacity *int `pulumi:"waitForCapacity"`
-	// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+	// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
 	WaitForCapacityTimeout *int `pulumi:"waitForCapacityTimeout"`
 }
 
@@ -547,7 +547,7 @@ type ElastigroupArgs struct {
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
 	AvailabilityZones pulumi.StringArrayInput
-	BlockDevicesMode pulumi.StringPtrInput
+	BlockDevicesMode  pulumi.StringPtrInput
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
 	CapacityUnit pulumi.StringPtrInput
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
@@ -562,10 +562,10 @@ type ElastigroupArgs struct {
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
 	EbsOptimized pulumi.BoolPtrInput
 	// A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-	ElasticIps pulumi.StringArrayInput
+	ElasticIps           pulumi.StringArrayInput
 	ElasticLoadBalancers pulumi.StringArrayInput
 	// Indicates whether monitoring is enabled for the instance.
-	EnableMonitoring pulumi.BoolPtrInput
+	EnableMonitoring      pulumi.BoolPtrInput
 	EphemeralBlockDevices ElastigroupEphemeralBlockDeviceArrayInput
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolInput
@@ -586,82 +586,81 @@ type ElastigroupArgs struct {
 	// One or more instance types.
 	InstanceTypesSpots pulumi.StringArrayInput
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayInput
-	IntegrationBeanstalk ElastigroupIntegrationBeanstalkPtrInput
-	IntegrationCodedeploy ElastigroupIntegrationCodedeployPtrInput
-	IntegrationDockerSwarm ElastigroupIntegrationDockerSwarmPtrInput
-	IntegrationEcs ElastigroupIntegrationEcsPtrInput
-	IntegrationGitlab ElastigroupIntegrationGitlabPtrInput
-	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrInput
-	IntegrationMesosphere ElastigroupIntegrationMesospherePtrInput
+	InstanceTypesWeights     ElastigroupInstanceTypesWeightArrayInput
+	IntegrationBeanstalk     ElastigroupIntegrationBeanstalkPtrInput
+	IntegrationCodedeploy    ElastigroupIntegrationCodedeployPtrInput
+	IntegrationDockerSwarm   ElastigroupIntegrationDockerSwarmPtrInput
+	IntegrationEcs           ElastigroupIntegrationEcsPtrInput
+	IntegrationGitlab        ElastigroupIntegrationGitlabPtrInput
+	IntegrationKubernetes    ElastigroupIntegrationKubernetesPtrInput
+	IntegrationMesosphere    ElastigroupIntegrationMesospherePtrInput
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrInput
-	IntegrationNomad ElastigroupIntegrationNomadPtrInput
-	IntegrationRancher ElastigroupIntegrationRancherPtrInput
-	IntegrationRoute53 ElastigroupIntegrationRoute53PtrInput
+	IntegrationNomad         ElastigroupIntegrationNomadPtrInput
+	IntegrationRancher       ElastigroupIntegrationRancherPtrInput
+	IntegrationRoute53       ElastigroupIntegrationRoute53PtrInput
 	// The key name that should be used for the instance.
-	KeyName pulumi.StringPtrInput
+	KeyName        pulumi.StringPtrInput
 	LifetimePeriod pulumi.StringPtrInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
-	MinSize pulumi.IntPtrInput
+	MinSize          pulumi.IntPtrInput
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
 	// The group name.
-	Name pulumi.StringPtrInput
+	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrInput
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
-	Orientation pulumi.StringInput
+	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+	Orientation         pulumi.StringInput
 	PersistBlockDevices pulumi.BoolPtrInput
-	PersistPrivateIp pulumi.BoolPtrInput
-	PersistRootDevice pulumi.BoolPtrInput
+	PersistPrivateIp    pulumi.BoolPtrInput
+	PersistRootDevice   pulumi.BoolPtrInput
 	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
 	PlacementTenancy pulumi.StringPtrInput
-	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
 	PreferredAvailabilityZones pulumi.StringArrayInput
-	PrivateIps pulumi.StringArrayInput
-	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+	PrivateIps                 pulumi.StringArrayInput
+	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringInput
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region pulumi.StringPtrInput
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
-	RevertToSpot ElastigroupRevertToSpotPtrInput
+	RevertToSpot        ElastigroupRevertToSpotPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	// Set termination policy.
-	ScalingStrategies ElastigroupScalingStrategyArrayInput
+	ScalingStrategies     ElastigroupScalingStrategyArrayInput
 	ScalingTargetPolicies ElastigroupScalingTargetPolicyArrayInput
-	ScalingUpPolicies ElastigroupScalingUpPolicyArrayInput
-	ScheduledTasks ElastigroupScheduledTaskArrayInput
+	ScalingUpPolicies     ElastigroupScalingUpPolicyArrayInput
+	ScheduledTasks        ElastigroupScheduledTaskArrayInput
 	// A list of associated security group IDS.
 	SecurityGroups pulumi.StringArrayInput
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
 	ShutdownScript pulumi.StringPtrInput
-	Signals ElastigroupSignalArrayInput
+	Signals        ElastigroupSignalArrayInput
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage pulumi.Float64PtrInput
+	SpotPercentage       pulumi.Float64PtrInput
 	StatefulDeallocation ElastigroupStatefulDeallocationPtrInput
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
-	Tags ElastigroupTagArrayInput
+	Tags            ElastigroupTagArrayInput
 	TargetGroupArns pulumi.StringArrayInput
-	UpdatePolicy ElastigroupUpdatePolicyPtrInput
+	UpdatePolicy    ElastigroupUpdatePolicyPtrInput
 	// The user data to provide when launching the instance.
 	UserData pulumi.StringPtrInput
 	// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
 	WaitForCapacity pulumi.IntPtrInput
-	// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+	// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
 	WaitForCapacityTimeout pulumi.IntPtrInput
 }
 
 func (ElastigroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*elastigroupArgs)(nil)).Elem()
 }
-

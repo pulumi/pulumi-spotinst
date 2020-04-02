@@ -19,22 +19,22 @@ type Elastigroup struct {
 
 	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
-	HealthCheck ElastigroupHealthCheckPtrOutput `pulumi:"healthCheck"`
-	Images ElastigroupImageArrayOutput `pulumi:"images"`
-	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrOutput `pulumi:"integrationKubernetes"`
+	DesiredCapacity          pulumi.IntPtrOutput                          `pulumi:"desiredCapacity"`
+	HealthCheck              ElastigroupHealthCheckPtrOutput              `pulumi:"healthCheck"`
+	Images                   ElastigroupImageArrayOutput                  `pulumi:"images"`
+	IntegrationKubernetes    ElastigroupIntegrationKubernetesPtrOutput    `pulumi:"integrationKubernetes"`
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrOutput `pulumi:"integrationMultaiRuntime"`
-	LoadBalancers ElastigroupLoadBalancerArrayOutput `pulumi:"loadBalancers"`
-	Login ElastigroupLoginPtrOutput `pulumi:"login"`
+	LoadBalancers            ElastigroupLoadBalancerArrayOutput           `pulumi:"loadBalancers"`
+	Login                    ElastigroupLoginPtrOutput                    `pulumi:"login"`
 	// Available Low-Priority sizes.
-	LowPrioritySizes pulumi.StringArrayOutput `pulumi:"lowPrioritySizes"`
+	LowPrioritySizes         pulumi.StringArrayOutput                     `pulumi:"lowPrioritySizes"`
 	ManagedServiceIdentities ElastigroupManagedServiceIdentityArrayOutput `pulumi:"managedServiceIdentities"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// The name of the managed identity.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput      `pulumi:"name"`
 	Network ElastigroupNetworkOutput `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayOutput `pulumi:"odSizes"`
@@ -43,14 +43,14 @@ type Elastigroup struct {
 	// The region your Azure group will be created in.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The Resource Group that the user-assigned managed identity resides in.
-	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
+	ResourceGroupName   pulumi.StringOutput                     `pulumi:"resourceGroupName"`
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies ElastigroupScalingUpPolicyArrayOutput `pulumi:"scalingUpPolicies"`
-	ScheduledTasks ElastigroupScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
+	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayOutput   `pulumi:"scalingUpPolicies"`
+	ScheduledTasks      ElastigroupScheduledTaskArrayOutput     `pulumi:"scheduledTasks"`
 	// Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
 	ShutdownScript pulumi.StringPtrOutput `pulumi:"shutdownScript"`
 	// Describes the deployment strategy.
-	Strategy ElastigroupStrategyOutput `pulumi:"strategy"`
+	Strategy     ElastigroupStrategyOutput        `pulumi:"strategy"`
 	UpdatePolicy ElastigroupUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
@@ -107,22 +107,22 @@ func GetElastigroup(ctx *pulumi.Context,
 type elastigroupState struct {
 	CustomData *string `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	HealthCheck *ElastigroupHealthCheck `pulumi:"healthCheck"`
-	Images []ElastigroupImage `pulumi:"images"`
-	IntegrationKubernetes *ElastigroupIntegrationKubernetes `pulumi:"integrationKubernetes"`
+	DesiredCapacity          *int                                 `pulumi:"desiredCapacity"`
+	HealthCheck              *ElastigroupHealthCheck              `pulumi:"healthCheck"`
+	Images                   []ElastigroupImage                   `pulumi:"images"`
+	IntegrationKubernetes    *ElastigroupIntegrationKubernetes    `pulumi:"integrationKubernetes"`
 	IntegrationMultaiRuntime *ElastigroupIntegrationMultaiRuntime `pulumi:"integrationMultaiRuntime"`
-	LoadBalancers []ElastigroupLoadBalancer `pulumi:"loadBalancers"`
-	Login *ElastigroupLogin `pulumi:"login"`
+	LoadBalancers            []ElastigroupLoadBalancer            `pulumi:"loadBalancers"`
+	Login                    *ElastigroupLogin                    `pulumi:"login"`
 	// Available Low-Priority sizes.
-	LowPrioritySizes []string `pulumi:"lowPrioritySizes"`
+	LowPrioritySizes         []string                            `pulumi:"lowPrioritySizes"`
 	ManagedServiceIdentities []ElastigroupManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// The name of the managed identity.
-	Name *string `pulumi:"name"`
+	Name    *string             `pulumi:"name"`
 	Network *ElastigroupNetwork `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes []string `pulumi:"odSizes"`
@@ -131,14 +131,14 @@ type elastigroupState struct {
 	// The region your Azure group will be created in.
 	Region *string `pulumi:"region"`
 	// The Resource Group that the user-assigned managed identity resides in.
-	ResourceGroupName *string `pulumi:"resourceGroupName"`
+	ResourceGroupName   *string                        `pulumi:"resourceGroupName"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies []ElastigroupScalingUpPolicy `pulumi:"scalingUpPolicies"`
-	ScheduledTasks []ElastigroupScheduledTask `pulumi:"scheduledTasks"`
+	ScalingUpPolicies   []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
+	ScheduledTasks      []ElastigroupScheduledTask     `pulumi:"scheduledTasks"`
 	// Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
 	ShutdownScript *string `pulumi:"shutdownScript"`
 	// Describes the deployment strategy.
-	Strategy *ElastigroupStrategy `pulumi:"strategy"`
+	Strategy     *ElastigroupStrategy     `pulumi:"strategy"`
 	UpdatePolicy *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
@@ -147,22 +147,22 @@ type elastigroupState struct {
 type ElastigroupState struct {
 	CustomData pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity pulumi.IntPtrInput
-	HealthCheck ElastigroupHealthCheckPtrInput
-	Images ElastigroupImageArrayInput
-	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrInput
+	DesiredCapacity          pulumi.IntPtrInput
+	HealthCheck              ElastigroupHealthCheckPtrInput
+	Images                   ElastigroupImageArrayInput
+	IntegrationKubernetes    ElastigroupIntegrationKubernetesPtrInput
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrInput
-	LoadBalancers ElastigroupLoadBalancerArrayInput
-	Login ElastigroupLoginPtrInput
+	LoadBalancers            ElastigroupLoadBalancerArrayInput
+	Login                    ElastigroupLoginPtrInput
 	// Available Low-Priority sizes.
-	LowPrioritySizes pulumi.StringArrayInput
+	LowPrioritySizes         pulumi.StringArrayInput
 	ManagedServiceIdentities ElastigroupManagedServiceIdentityArrayInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
 	// The name of the managed identity.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Network ElastigroupNetworkPtrInput
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayInput
@@ -171,14 +171,14 @@ type ElastigroupState struct {
 	// The region your Azure group will be created in.
 	Region pulumi.StringPtrInput
 	// The Resource Group that the user-assigned managed identity resides in.
-	ResourceGroupName pulumi.StringPtrInput
+	ResourceGroupName   pulumi.StringPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
-	ScalingUpPolicies ElastigroupScalingUpPolicyArrayInput
-	ScheduledTasks ElastigroupScheduledTaskArrayInput
+	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayInput
+	ScheduledTasks      ElastigroupScheduledTaskArrayInput
 	// Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
 	ShutdownScript pulumi.StringPtrInput
 	// Describes the deployment strategy.
-	Strategy ElastigroupStrategyPtrInput
+	Strategy     ElastigroupStrategyPtrInput
 	UpdatePolicy ElastigroupUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
@@ -191,22 +191,22 @@ func (ElastigroupState) ElementType() reflect.Type {
 type elastigroupArgs struct {
 	CustomData *string `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	HealthCheck *ElastigroupHealthCheck `pulumi:"healthCheck"`
-	Images []ElastigroupImage `pulumi:"images"`
-	IntegrationKubernetes *ElastigroupIntegrationKubernetes `pulumi:"integrationKubernetes"`
+	DesiredCapacity          *int                                 `pulumi:"desiredCapacity"`
+	HealthCheck              *ElastigroupHealthCheck              `pulumi:"healthCheck"`
+	Images                   []ElastigroupImage                   `pulumi:"images"`
+	IntegrationKubernetes    *ElastigroupIntegrationKubernetes    `pulumi:"integrationKubernetes"`
 	IntegrationMultaiRuntime *ElastigroupIntegrationMultaiRuntime `pulumi:"integrationMultaiRuntime"`
-	LoadBalancers []ElastigroupLoadBalancer `pulumi:"loadBalancers"`
-	Login *ElastigroupLogin `pulumi:"login"`
+	LoadBalancers            []ElastigroupLoadBalancer            `pulumi:"loadBalancers"`
+	Login                    *ElastigroupLogin                    `pulumi:"login"`
 	// Available Low-Priority sizes.
-	LowPrioritySizes []string `pulumi:"lowPrioritySizes"`
+	LowPrioritySizes         []string                            `pulumi:"lowPrioritySizes"`
 	ManagedServiceIdentities []ElastigroupManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// The name of the managed identity.
-	Name *string `pulumi:"name"`
+	Name    *string            `pulumi:"name"`
 	Network ElastigroupNetwork `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes []string `pulumi:"odSizes"`
@@ -215,14 +215,14 @@ type elastigroupArgs struct {
 	// The region your Azure group will be created in.
 	Region string `pulumi:"region"`
 	// The Resource Group that the user-assigned managed identity resides in.
-	ResourceGroupName string `pulumi:"resourceGroupName"`
+	ResourceGroupName   string                         `pulumi:"resourceGroupName"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies []ElastigroupScalingUpPolicy `pulumi:"scalingUpPolicies"`
-	ScheduledTasks []ElastigroupScheduledTask `pulumi:"scheduledTasks"`
+	ScalingUpPolicies   []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
+	ScheduledTasks      []ElastigroupScheduledTask     `pulumi:"scheduledTasks"`
 	// Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
 	ShutdownScript *string `pulumi:"shutdownScript"`
 	// Describes the deployment strategy.
-	Strategy ElastigroupStrategy `pulumi:"strategy"`
+	Strategy     ElastigroupStrategy      `pulumi:"strategy"`
 	UpdatePolicy *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
@@ -232,22 +232,22 @@ type elastigroupArgs struct {
 type ElastigroupArgs struct {
 	CustomData pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity pulumi.IntPtrInput
-	HealthCheck ElastigroupHealthCheckPtrInput
-	Images ElastigroupImageArrayInput
-	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrInput
+	DesiredCapacity          pulumi.IntPtrInput
+	HealthCheck              ElastigroupHealthCheckPtrInput
+	Images                   ElastigroupImageArrayInput
+	IntegrationKubernetes    ElastigroupIntegrationKubernetesPtrInput
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrInput
-	LoadBalancers ElastigroupLoadBalancerArrayInput
-	Login ElastigroupLoginPtrInput
+	LoadBalancers            ElastigroupLoadBalancerArrayInput
+	Login                    ElastigroupLoginPtrInput
 	// Available Low-Priority sizes.
-	LowPrioritySizes pulumi.StringArrayInput
+	LowPrioritySizes         pulumi.StringArrayInput
 	ManagedServiceIdentities ElastigroupManagedServiceIdentityArrayInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
 	// The name of the managed identity.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Network ElastigroupNetworkInput
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayInput
@@ -256,14 +256,14 @@ type ElastigroupArgs struct {
 	// The region your Azure group will be created in.
 	Region pulumi.StringInput
 	// The Resource Group that the user-assigned managed identity resides in.
-	ResourceGroupName pulumi.StringInput
+	ResourceGroupName   pulumi.StringInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
-	ScalingUpPolicies ElastigroupScalingUpPolicyArrayInput
-	ScheduledTasks ElastigroupScheduledTaskArrayInput
+	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayInput
+	ScheduledTasks      ElastigroupScheduledTaskArrayInput
 	// Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
 	ShutdownScript pulumi.StringPtrInput
 	// Describes the deployment strategy.
-	Strategy ElastigroupStrategyInput
+	Strategy     ElastigroupStrategyInput
 	UpdatePolicy ElastigroupUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
@@ -272,4 +272,3 @@ type ElastigroupArgs struct {
 func (ElastigroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*elastigroupArgs)(nil)).Elem()
 }
-
