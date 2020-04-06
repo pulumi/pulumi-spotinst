@@ -25,7 +25,7 @@ type OceanLaunchSpec struct {
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
-	// The Ocean Launch Specification name. 
+	// The Ocean Launch Specification name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Ocean cluster ID .
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
@@ -74,7 +74,7 @@ type oceanLaunchSpecState struct {
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
-	// The Ocean Launch Specification name. 
+	// The Ocean Launch Specification name.
 	Name *string `pulumi:"name"`
 	// The Ocean cluster ID .
 	OceanId *string `pulumi:"oceanId"`
@@ -93,7 +93,7 @@ type OceanLaunchSpecState struct {
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
-	// The Ocean Launch Specification name. 
+	// The Ocean Launch Specification name.
 	Name pulumi.StringPtrInput
 	// The Ocean cluster ID .
 	OceanId pulumi.StringPtrInput
@@ -116,7 +116,7 @@ type oceanLaunchSpecArgs struct {
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
-	// The Ocean Launch Specification name. 
+	// The Ocean Launch Specification name.
 	Name *string `pulumi:"name"`
 	// The Ocean cluster ID .
 	OceanId string `pulumi:"oceanId"`
@@ -136,7 +136,7 @@ type OceanLaunchSpecArgs struct {
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
-	// The Ocean Launch Specification name. 
+	// The Ocean Launch Specification name.
 	Name pulumi.StringPtrInput
 	// The Ocean cluster ID .
 	OceanId pulumi.StringInput
@@ -149,4 +149,3 @@ type OceanLaunchSpecArgs struct {
 func (OceanLaunchSpecArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanLaunchSpecArgs)(nil)).Elem()
 }
-

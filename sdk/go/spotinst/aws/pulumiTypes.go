@@ -69,7 +69,8 @@ type BeanstalkDeploymentPreferencesPtrInput interface {
 
 type beanstalkDeploymentPreferencesPtrType BeanstalkDeploymentPreferencesArgs
 
-func BeanstalkDeploymentPreferencesPtr(v *BeanstalkDeploymentPreferencesArgs) BeanstalkDeploymentPreferencesPtrInput {	return (*beanstalkDeploymentPreferencesPtrType)(v)
+func BeanstalkDeploymentPreferencesPtr(v *BeanstalkDeploymentPreferencesArgs) BeanstalkDeploymentPreferencesPtrInput {
+	return (*beanstalkDeploymentPreferencesPtrType)(v)
 }
 
 func (*beanstalkDeploymentPreferencesPtrType) ElementType() reflect.Type {
@@ -84,7 +85,7 @@ func (i *beanstalkDeploymentPreferencesPtrType) ToBeanstalkDeploymentPreferences
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkDeploymentPreferencesPtrOutput)
 }
 
-type BeanstalkDeploymentPreferencesOutput struct { *pulumi.OutputState }
+type BeanstalkDeploymentPreferencesOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkDeploymentPreferencesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BeanstalkDeploymentPreferences)(nil)).Elem()
@@ -107,27 +108,28 @@ func (o BeanstalkDeploymentPreferencesOutput) ToBeanstalkDeploymentPreferencesPt
 		return &v
 	}).(BeanstalkDeploymentPreferencesPtrOutput)
 }
+
 // Should roll perform automatically
 func (o BeanstalkDeploymentPreferencesOutput) AutomaticRoll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v BeanstalkDeploymentPreferences) *bool { return v.AutomaticRoll }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v BeanstalkDeploymentPreferences) *bool { return v.AutomaticRoll }).(pulumi.BoolPtrOutput)
 }
 
 // Percent size of each batch
 func (o BeanstalkDeploymentPreferencesOutput) BatchSizePercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BeanstalkDeploymentPreferences) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BeanstalkDeploymentPreferences) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
 
 // Amount of time to wait between batches
 func (o BeanstalkDeploymentPreferencesOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BeanstalkDeploymentPreferences) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BeanstalkDeploymentPreferences) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
 // Strategy parameters
 func (o BeanstalkDeploymentPreferencesOutput) Strategies() BeanstalkDeploymentPreferencesStrategyArrayOutput {
-	return o.ApplyT(func (v BeanstalkDeploymentPreferences) []BeanstalkDeploymentPreferencesStrategy { return v.Strategies }).(BeanstalkDeploymentPreferencesStrategyArrayOutput)
+	return o.ApplyT(func(v BeanstalkDeploymentPreferences) []BeanstalkDeploymentPreferencesStrategy { return v.Strategies }).(BeanstalkDeploymentPreferencesStrategyArrayOutput)
 }
 
-type BeanstalkDeploymentPreferencesPtrOutput struct { *pulumi.OutputState}
+type BeanstalkDeploymentPreferencesPtrOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkDeploymentPreferencesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BeanstalkDeploymentPreferences)(nil)).Elem()
@@ -142,33 +144,33 @@ func (o BeanstalkDeploymentPreferencesPtrOutput) ToBeanstalkDeploymentPreference
 }
 
 func (o BeanstalkDeploymentPreferencesPtrOutput) Elem() BeanstalkDeploymentPreferencesOutput {
-	return o.ApplyT(func (v *BeanstalkDeploymentPreferences) BeanstalkDeploymentPreferences { return *v }).(BeanstalkDeploymentPreferencesOutput)
+	return o.ApplyT(func(v *BeanstalkDeploymentPreferences) BeanstalkDeploymentPreferences { return *v }).(BeanstalkDeploymentPreferencesOutput)
 }
 
 // Should roll perform automatically
 func (o BeanstalkDeploymentPreferencesPtrOutput) AutomaticRoll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v BeanstalkDeploymentPreferences) *bool { return v.AutomaticRoll }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v BeanstalkDeploymentPreferences) *bool { return v.AutomaticRoll }).(pulumi.BoolPtrOutput)
 }
 
 // Percent size of each batch
 func (o BeanstalkDeploymentPreferencesPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BeanstalkDeploymentPreferences) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BeanstalkDeploymentPreferences) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
 
 // Amount of time to wait between batches
 func (o BeanstalkDeploymentPreferencesPtrOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BeanstalkDeploymentPreferences) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BeanstalkDeploymentPreferences) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
 // Strategy parameters
 func (o BeanstalkDeploymentPreferencesPtrOutput) Strategies() BeanstalkDeploymentPreferencesStrategyArrayOutput {
-	return o.ApplyT(func (v BeanstalkDeploymentPreferences) []BeanstalkDeploymentPreferencesStrategy { return v.Strategies }).(BeanstalkDeploymentPreferencesStrategyArrayOutput)
+	return o.ApplyT(func(v BeanstalkDeploymentPreferences) []BeanstalkDeploymentPreferencesStrategy { return v.Strategies }).(BeanstalkDeploymentPreferencesStrategyArrayOutput)
 }
 
 type BeanstalkDeploymentPreferencesStrategy struct {
 	// Action to take
 	Action *string `pulumi:"action"`
-	// Bool value if to wait to drain instance 
+	// Bool value if to wait to drain instance
 	ShouldDrainInstances *bool `pulumi:"shouldDrainInstances"`
 }
 
@@ -182,7 +184,7 @@ type BeanstalkDeploymentPreferencesStrategyInput interface {
 type BeanstalkDeploymentPreferencesStrategyArgs struct {
 	// Action to take
 	Action pulumi.StringPtrInput `pulumi:"action"`
-	// Bool value if to wait to drain instance 
+	// Bool value if to wait to drain instance
 	ShouldDrainInstances pulumi.BoolPtrInput `pulumi:"shouldDrainInstances"`
 }
 
@@ -219,7 +221,7 @@ func (i BeanstalkDeploymentPreferencesStrategyArray) ToBeanstalkDeploymentPrefer
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkDeploymentPreferencesStrategyArrayOutput)
 }
 
-type BeanstalkDeploymentPreferencesStrategyOutput struct { *pulumi.OutputState }
+type BeanstalkDeploymentPreferencesStrategyOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkDeploymentPreferencesStrategyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BeanstalkDeploymentPreferencesStrategy)(nil)).Elem()
@@ -235,15 +237,15 @@ func (o BeanstalkDeploymentPreferencesStrategyOutput) ToBeanstalkDeploymentPrefe
 
 // Action to take
 func (o BeanstalkDeploymentPreferencesStrategyOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkDeploymentPreferencesStrategy) *string { return v.Action }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkDeploymentPreferencesStrategy) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
-// Bool value if to wait to drain instance 
+// Bool value if to wait to drain instance
 func (o BeanstalkDeploymentPreferencesStrategyOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v BeanstalkDeploymentPreferencesStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v BeanstalkDeploymentPreferencesStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
 }
 
-type BeanstalkDeploymentPreferencesStrategyArrayOutput struct { *pulumi.OutputState}
+type BeanstalkDeploymentPreferencesStrategyArrayOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkDeploymentPreferencesStrategyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]BeanstalkDeploymentPreferencesStrategy)(nil)).Elem()
@@ -258,7 +260,7 @@ func (o BeanstalkDeploymentPreferencesStrategyArrayOutput) ToBeanstalkDeployment
 }
 
 func (o BeanstalkDeploymentPreferencesStrategyArrayOutput) Index(i pulumi.IntInput) BeanstalkDeploymentPreferencesStrategyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) BeanstalkDeploymentPreferencesStrategy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BeanstalkDeploymentPreferencesStrategy {
 		return vs[0].([]BeanstalkDeploymentPreferencesStrategy)[vs[1].(int)]
 	}).(BeanstalkDeploymentPreferencesStrategyOutput)
 }
@@ -309,7 +311,8 @@ type BeanstalkManagedActionsPtrInput interface {
 
 type beanstalkManagedActionsPtrType BeanstalkManagedActionsArgs
 
-func BeanstalkManagedActionsPtr(v *BeanstalkManagedActionsArgs) BeanstalkManagedActionsPtrInput {	return (*beanstalkManagedActionsPtrType)(v)
+func BeanstalkManagedActionsPtr(v *BeanstalkManagedActionsArgs) BeanstalkManagedActionsPtrInput {
+	return (*beanstalkManagedActionsPtrType)(v)
 }
 
 func (*beanstalkManagedActionsPtrType) ElementType() reflect.Type {
@@ -324,7 +327,7 @@ func (i *beanstalkManagedActionsPtrType) ToBeanstalkManagedActionsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkManagedActionsPtrOutput)
 }
 
-type BeanstalkManagedActionsOutput struct { *pulumi.OutputState }
+type BeanstalkManagedActionsOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkManagedActionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BeanstalkManagedActions)(nil)).Elem()
@@ -347,12 +350,13 @@ func (o BeanstalkManagedActionsOutput) ToBeanstalkManagedActionsPtrOutputWithCon
 		return &v
 	}).(BeanstalkManagedActionsPtrOutput)
 }
+
 // Platform Update parameters
 func (o BeanstalkManagedActionsOutput) PlatformUpdate() BeanstalkManagedActionsPlatformUpdatePtrOutput {
-	return o.ApplyT(func (v BeanstalkManagedActions) *BeanstalkManagedActionsPlatformUpdate { return v.PlatformUpdate }).(BeanstalkManagedActionsPlatformUpdatePtrOutput)
+	return o.ApplyT(func(v BeanstalkManagedActions) *BeanstalkManagedActionsPlatformUpdate { return v.PlatformUpdate }).(BeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
 
-type BeanstalkManagedActionsPtrOutput struct { *pulumi.OutputState}
+type BeanstalkManagedActionsPtrOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkManagedActionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BeanstalkManagedActions)(nil)).Elem()
@@ -367,12 +371,12 @@ func (o BeanstalkManagedActionsPtrOutput) ToBeanstalkManagedActionsPtrOutputWith
 }
 
 func (o BeanstalkManagedActionsPtrOutput) Elem() BeanstalkManagedActionsOutput {
-	return o.ApplyT(func (v *BeanstalkManagedActions) BeanstalkManagedActions { return *v }).(BeanstalkManagedActionsOutput)
+	return o.ApplyT(func(v *BeanstalkManagedActions) BeanstalkManagedActions { return *v }).(BeanstalkManagedActionsOutput)
 }
 
 // Platform Update parameters
 func (o BeanstalkManagedActionsPtrOutput) PlatformUpdate() BeanstalkManagedActionsPlatformUpdatePtrOutput {
-	return o.ApplyT(func (v BeanstalkManagedActions) *BeanstalkManagedActionsPlatformUpdate { return v.PlatformUpdate }).(BeanstalkManagedActionsPlatformUpdatePtrOutput)
+	return o.ApplyT(func(v BeanstalkManagedActions) *BeanstalkManagedActionsPlatformUpdate { return v.PlatformUpdate }).(BeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
 
 type BeanstalkManagedActionsPlatformUpdate struct {
@@ -429,7 +433,8 @@ type BeanstalkManagedActionsPlatformUpdatePtrInput interface {
 
 type beanstalkManagedActionsPlatformUpdatePtrType BeanstalkManagedActionsPlatformUpdateArgs
 
-func BeanstalkManagedActionsPlatformUpdatePtr(v *BeanstalkManagedActionsPlatformUpdateArgs) BeanstalkManagedActionsPlatformUpdatePtrInput {	return (*beanstalkManagedActionsPlatformUpdatePtrType)(v)
+func BeanstalkManagedActionsPlatformUpdatePtr(v *BeanstalkManagedActionsPlatformUpdateArgs) BeanstalkManagedActionsPlatformUpdatePtrInput {
+	return (*beanstalkManagedActionsPlatformUpdatePtrType)(v)
 }
 
 func (*beanstalkManagedActionsPlatformUpdatePtrType) ElementType() reflect.Type {
@@ -444,7 +449,7 @@ func (i *beanstalkManagedActionsPlatformUpdatePtrType) ToBeanstalkManagedActions
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
 
-type BeanstalkManagedActionsPlatformUpdateOutput struct { *pulumi.OutputState }
+type BeanstalkManagedActionsPlatformUpdateOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkManagedActionsPlatformUpdateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BeanstalkManagedActionsPlatformUpdate)(nil)).Elem()
@@ -467,22 +472,23 @@ func (o BeanstalkManagedActionsPlatformUpdateOutput) ToBeanstalkManagedActionsPl
 		return &v
 	}).(BeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
+
 // Actions to perform (options: timeWindow, never)
 func (o BeanstalkManagedActionsPlatformUpdateOutput) PerformAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
 }
 
 // Time Window for when action occurs ex. Mon:23:50-Tue:00:20
 func (o BeanstalkManagedActionsPlatformUpdateOutput) TimeWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
 }
 
 // - Level to update
 func (o BeanstalkManagedActionsPlatformUpdateOutput) UpdateLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
 }
 
-type BeanstalkManagedActionsPlatformUpdatePtrOutput struct { *pulumi.OutputState}
+type BeanstalkManagedActionsPlatformUpdatePtrOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkManagedActionsPlatformUpdatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BeanstalkManagedActionsPlatformUpdate)(nil)).Elem()
@@ -497,42 +503,42 @@ func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) ToBeanstalkManagedAction
 }
 
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) Elem() BeanstalkManagedActionsPlatformUpdateOutput {
-	return o.ApplyT(func (v *BeanstalkManagedActionsPlatformUpdate) BeanstalkManagedActionsPlatformUpdate { return *v }).(BeanstalkManagedActionsPlatformUpdateOutput)
+	return o.ApplyT(func(v *BeanstalkManagedActionsPlatformUpdate) BeanstalkManagedActionsPlatformUpdate { return *v }).(BeanstalkManagedActionsPlatformUpdateOutput)
 }
 
 // Actions to perform (options: timeWindow, never)
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) PerformAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
 }
 
 // Time Window for when action occurs ex. Mon:23:50-Tue:00:20
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) TimeWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
 }
 
 // - Level to update
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) UpdateLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
 }
 
 type BeanstalkScheduledTask struct {
-	Adjustment *string `pulumi:"adjustment"`
+	Adjustment           *string `pulumi:"adjustment"`
 	AdjustmentPercentage *string `pulumi:"adjustmentPercentage"`
 	// Percent size of each batch
 	BatchSizePercentage *string `pulumi:"batchSizePercentage"`
-	CronExpression *string `pulumi:"cronExpression"`
-	Frequency *string `pulumi:"frequency"`
+	CronExpression      *string `pulumi:"cronExpression"`
+	Frequency           *string `pulumi:"frequency"`
 	// Amount of time to wait between batches
-	GracePeriod *string `pulumi:"gracePeriod"`
-	IsEnabled *bool `pulumi:"isEnabled"`
-	MaxCapacity *string `pulumi:"maxCapacity"`
-	MinCapacity *string `pulumi:"minCapacity"`
-	ScaleMaxCapacity *string `pulumi:"scaleMaxCapacity"`
-	ScaleMinCapacity *string `pulumi:"scaleMinCapacity"`
+	GracePeriod         *string `pulumi:"gracePeriod"`
+	IsEnabled           *bool   `pulumi:"isEnabled"`
+	MaxCapacity         *string `pulumi:"maxCapacity"`
+	MinCapacity         *string `pulumi:"minCapacity"`
+	ScaleMaxCapacity    *string `pulumi:"scaleMaxCapacity"`
+	ScaleMinCapacity    *string `pulumi:"scaleMinCapacity"`
 	ScaleTargetCapacity *string `pulumi:"scaleTargetCapacity"`
-	StartTime *string `pulumi:"startTime"`
-	TargetCapacity *string `pulumi:"targetCapacity"`
-	TaskType string `pulumi:"taskType"`
+	StartTime           *string `pulumi:"startTime"`
+	TargetCapacity      *string `pulumi:"targetCapacity"`
+	TaskType            string  `pulumi:"taskType"`
 }
 
 type BeanstalkScheduledTaskInput interface {
@@ -543,23 +549,23 @@ type BeanstalkScheduledTaskInput interface {
 }
 
 type BeanstalkScheduledTaskArgs struct {
-	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
+	Adjustment           pulumi.StringPtrInput `pulumi:"adjustment"`
 	AdjustmentPercentage pulumi.StringPtrInput `pulumi:"adjustmentPercentage"`
 	// Percent size of each batch
 	BatchSizePercentage pulumi.StringPtrInput `pulumi:"batchSizePercentage"`
-	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
-	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	CronExpression      pulumi.StringPtrInput `pulumi:"cronExpression"`
+	Frequency           pulumi.StringPtrInput `pulumi:"frequency"`
 	// Amount of time to wait between batches
-	GracePeriod pulumi.StringPtrInput `pulumi:"gracePeriod"`
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	MaxCapacity pulumi.StringPtrInput `pulumi:"maxCapacity"`
-	MinCapacity pulumi.StringPtrInput `pulumi:"minCapacity"`
-	ScaleMaxCapacity pulumi.StringPtrInput `pulumi:"scaleMaxCapacity"`
-	ScaleMinCapacity pulumi.StringPtrInput `pulumi:"scaleMinCapacity"`
+	GracePeriod         pulumi.StringPtrInput `pulumi:"gracePeriod"`
+	IsEnabled           pulumi.BoolPtrInput   `pulumi:"isEnabled"`
+	MaxCapacity         pulumi.StringPtrInput `pulumi:"maxCapacity"`
+	MinCapacity         pulumi.StringPtrInput `pulumi:"minCapacity"`
+	ScaleMaxCapacity    pulumi.StringPtrInput `pulumi:"scaleMaxCapacity"`
+	ScaleMinCapacity    pulumi.StringPtrInput `pulumi:"scaleMinCapacity"`
 	ScaleTargetCapacity pulumi.StringPtrInput `pulumi:"scaleTargetCapacity"`
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	TargetCapacity pulumi.StringPtrInput `pulumi:"targetCapacity"`
-	TaskType pulumi.StringInput `pulumi:"taskType"`
+	StartTime           pulumi.StringPtrInput `pulumi:"startTime"`
+	TargetCapacity      pulumi.StringPtrInput `pulumi:"targetCapacity"`
+	TaskType            pulumi.StringInput    `pulumi:"taskType"`
 }
 
 func (BeanstalkScheduledTaskArgs) ElementType() reflect.Type {
@@ -595,7 +601,7 @@ func (i BeanstalkScheduledTaskArray) ToBeanstalkScheduledTaskArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkScheduledTaskArrayOutput)
 }
 
-type BeanstalkScheduledTaskOutput struct { *pulumi.OutputState }
+type BeanstalkScheduledTaskOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkScheduledTaskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BeanstalkScheduledTask)(nil)).Elem()
@@ -610,68 +616,68 @@ func (o BeanstalkScheduledTaskOutput) ToBeanstalkScheduledTaskOutputWithContext(
 }
 
 func (o BeanstalkScheduledTaskOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) AdjustmentPercentage() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.AdjustmentPercentage }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.AdjustmentPercentage }).(pulumi.StringPtrOutput)
 }
 
 // Percent size of each batch
 func (o BeanstalkScheduledTaskOutput) BatchSizePercentage() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.BatchSizePercentage }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.BatchSizePercentage }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) CronExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
 // Amount of time to wait between batches
 func (o BeanstalkScheduledTaskOutput) GracePeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.GracePeriod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.GracePeriod }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) MaxCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.MaxCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.MaxCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) MinCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.MinCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.MinCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) ScaleMaxCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.ScaleMaxCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.ScaleMaxCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) ScaleMinCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.ScaleMinCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.ScaleMinCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) ScaleTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.ScaleTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.ScaleTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) TargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) *string { return v.TargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.TargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o BeanstalkScheduledTaskOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func (v BeanstalkScheduledTask) string { return v.TaskType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BeanstalkScheduledTask) string { return v.TaskType }).(pulumi.StringOutput)
 }
 
-type BeanstalkScheduledTaskArrayOutput struct { *pulumi.OutputState}
+type BeanstalkScheduledTaskArrayOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkScheduledTaskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]BeanstalkScheduledTask)(nil)).Elem()
@@ -686,20 +692,20 @@ func (o BeanstalkScheduledTaskArrayOutput) ToBeanstalkScheduledTaskArrayOutputWi
 }
 
 func (o BeanstalkScheduledTaskArrayOutput) Index(i pulumi.IntInput) BeanstalkScheduledTaskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) BeanstalkScheduledTask {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BeanstalkScheduledTask {
 		return vs[0].([]BeanstalkScheduledTask)[vs[1].(int)]
 	}).(BeanstalkScheduledTaskOutput)
 }
 
 type ElastigroupEbsBlockDevice struct {
-	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
-	DeviceName string `pulumi:"deviceName"`
-	Encrypted *bool `pulumi:"encrypted"`
-	Iops *int `pulumi:"iops"`
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	SnapshotId *string `pulumi:"snapshotId"`
-	VolumeSize *int `pulumi:"volumeSize"`
-	VolumeType *string `pulumi:"volumeType"`
+	DeleteOnTermination *bool   `pulumi:"deleteOnTermination"`
+	DeviceName          string  `pulumi:"deviceName"`
+	Encrypted           *bool   `pulumi:"encrypted"`
+	Iops                *int    `pulumi:"iops"`
+	KmsKeyId            *string `pulumi:"kmsKeyId"`
+	SnapshotId          *string `pulumi:"snapshotId"`
+	VolumeSize          *int    `pulumi:"volumeSize"`
+	VolumeType          *string `pulumi:"volumeType"`
 }
 
 type ElastigroupEbsBlockDeviceInput interface {
@@ -710,14 +716,14 @@ type ElastigroupEbsBlockDeviceInput interface {
 }
 
 type ElastigroupEbsBlockDeviceArgs struct {
-	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
-	DeviceName pulumi.StringInput `pulumi:"deviceName"`
-	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
-	Iops pulumi.IntPtrInput `pulumi:"iops"`
-	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
-	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
-	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+	DeleteOnTermination pulumi.BoolPtrInput   `pulumi:"deleteOnTermination"`
+	DeviceName          pulumi.StringInput    `pulumi:"deviceName"`
+	Encrypted           pulumi.BoolPtrInput   `pulumi:"encrypted"`
+	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
+	KmsKeyId            pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	SnapshotId          pulumi.StringPtrInput `pulumi:"snapshotId"`
+	VolumeSize          pulumi.IntPtrInput    `pulumi:"volumeSize"`
+	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
 func (ElastigroupEbsBlockDeviceArgs) ElementType() reflect.Type {
@@ -753,7 +759,7 @@ func (i ElastigroupEbsBlockDeviceArray) ToElastigroupEbsBlockDeviceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupEbsBlockDeviceArrayOutput)
 }
 
-type ElastigroupEbsBlockDeviceOutput struct { *pulumi.OutputState }
+type ElastigroupEbsBlockDeviceOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupEbsBlockDeviceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupEbsBlockDevice)(nil)).Elem()
@@ -768,38 +774,38 @@ func (o ElastigroupEbsBlockDeviceOutput) ToElastigroupEbsBlockDeviceOutputWithCo
 }
 
 func (o ElastigroupEbsBlockDeviceOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupEbsBlockDevice) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupEbsBlockDeviceOutput) DeviceName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupEbsBlockDevice) string { return v.DeviceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupEbsBlockDeviceOutput) Encrypted() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupEbsBlockDevice) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupEbsBlockDeviceOutput) Iops() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupEbsBlockDevice) *int { return v.Iops }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupEbsBlockDeviceOutput) KmsKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupEbsBlockDevice) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupEbsBlockDeviceOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupEbsBlockDevice) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupEbsBlockDeviceOutput) VolumeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupEbsBlockDevice) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupEbsBlockDeviceOutput) VolumeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupEbsBlockDevice) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupEbsBlockDeviceArrayOutput struct { *pulumi.OutputState}
+type ElastigroupEbsBlockDeviceArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupEbsBlockDeviceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupEbsBlockDevice)(nil)).Elem()
@@ -814,13 +820,13 @@ func (o ElastigroupEbsBlockDeviceArrayOutput) ToElastigroupEbsBlockDeviceArrayOu
 }
 
 func (o ElastigroupEbsBlockDeviceArrayOutput) Index(i pulumi.IntInput) ElastigroupEbsBlockDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupEbsBlockDevice {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupEbsBlockDevice {
 		return vs[0].([]ElastigroupEbsBlockDevice)[vs[1].(int)]
 	}).(ElastigroupEbsBlockDeviceOutput)
 }
 
 type ElastigroupEphemeralBlockDevice struct {
-	DeviceName string `pulumi:"deviceName"`
+	DeviceName  string `pulumi:"deviceName"`
 	VirtualName string `pulumi:"virtualName"`
 }
 
@@ -832,7 +838,7 @@ type ElastigroupEphemeralBlockDeviceInput interface {
 }
 
 type ElastigroupEphemeralBlockDeviceArgs struct {
-	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	DeviceName  pulumi.StringInput `pulumi:"deviceName"`
 	VirtualName pulumi.StringInput `pulumi:"virtualName"`
 }
 
@@ -869,7 +875,7 @@ func (i ElastigroupEphemeralBlockDeviceArray) ToElastigroupEphemeralBlockDeviceA
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupEphemeralBlockDeviceArrayOutput)
 }
 
-type ElastigroupEphemeralBlockDeviceOutput struct { *pulumi.OutputState }
+type ElastigroupEphemeralBlockDeviceOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupEphemeralBlockDeviceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupEphemeralBlockDevice)(nil)).Elem()
@@ -884,14 +890,14 @@ func (o ElastigroupEphemeralBlockDeviceOutput) ToElastigroupEphemeralBlockDevice
 }
 
 func (o ElastigroupEphemeralBlockDeviceOutput) DeviceName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupEphemeralBlockDevice) string { return v.DeviceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupEphemeralBlockDevice) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupEphemeralBlockDeviceOutput) VirtualName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupEphemeralBlockDevice) string { return v.VirtualName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupEphemeralBlockDevice) string { return v.VirtualName }).(pulumi.StringOutput)
 }
 
-type ElastigroupEphemeralBlockDeviceArrayOutput struct { *pulumi.OutputState}
+type ElastigroupEphemeralBlockDeviceArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupEphemeralBlockDeviceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupEphemeralBlockDevice)(nil)).Elem()
@@ -906,7 +912,7 @@ func (o ElastigroupEphemeralBlockDeviceArrayOutput) ToElastigroupEphemeralBlockD
 }
 
 func (o ElastigroupEphemeralBlockDeviceArrayOutput) Index(i pulumi.IntInput) ElastigroupEphemeralBlockDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupEphemeralBlockDevice {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupEphemeralBlockDevice {
 		return vs[0].([]ElastigroupEphemeralBlockDevice)[vs[1].(int)]
 	}).(ElastigroupEphemeralBlockDeviceOutput)
 }
@@ -965,7 +971,7 @@ func (i ElastigroupInstanceTypesWeightArray) ToElastigroupInstanceTypesWeightArr
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupInstanceTypesWeightArrayOutput)
 }
 
-type ElastigroupInstanceTypesWeightOutput struct { *pulumi.OutputState }
+type ElastigroupInstanceTypesWeightOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupInstanceTypesWeightOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupInstanceTypesWeight)(nil)).Elem()
@@ -981,15 +987,15 @@ func (o ElastigroupInstanceTypesWeightOutput) ToElastigroupInstanceTypesWeightOu
 
 // Name of instance type (String).
 func (o ElastigroupInstanceTypesWeightOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupInstanceTypesWeight) string { return v.InstanceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupInstanceTypesWeight) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // Weight per instance type (Integer).
 func (o ElastigroupInstanceTypesWeightOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func (v ElastigroupInstanceTypesWeight) int { return v.Weight }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ElastigroupInstanceTypesWeight) int { return v.Weight }).(pulumi.IntOutput)
 }
 
-type ElastigroupInstanceTypesWeightArrayOutput struct { *pulumi.OutputState}
+type ElastigroupInstanceTypesWeightArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupInstanceTypesWeightArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupInstanceTypesWeight)(nil)).Elem()
@@ -1004,15 +1010,15 @@ func (o ElastigroupInstanceTypesWeightArrayOutput) ToElastigroupInstanceTypesWei
 }
 
 func (o ElastigroupInstanceTypesWeightArrayOutput) Index(i pulumi.IntInput) ElastigroupInstanceTypesWeightOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupInstanceTypesWeight {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupInstanceTypesWeight {
 		return vs[0].([]ElastigroupInstanceTypesWeight)[vs[1].(int)]
 	}).(ElastigroupInstanceTypesWeightOutput)
 }
 
 type ElastigroupIntegrationBeanstalk struct {
 	DeploymentPreferences *ElastigroupIntegrationBeanstalkDeploymentPreferences `pulumi:"deploymentPreferences"`
-	EnvironmentId *string `pulumi:"environmentId"`
-	ManagedActions *ElastigroupIntegrationBeanstalkManagedActions `pulumi:"managedActions"`
+	EnvironmentId         *string                                               `pulumi:"environmentId"`
+	ManagedActions        *ElastigroupIntegrationBeanstalkManagedActions        `pulumi:"managedActions"`
 }
 
 type ElastigroupIntegrationBeanstalkInput interface {
@@ -1024,8 +1030,8 @@ type ElastigroupIntegrationBeanstalkInput interface {
 
 type ElastigroupIntegrationBeanstalkArgs struct {
 	DeploymentPreferences ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrInput `pulumi:"deploymentPreferences"`
-	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
-	ManagedActions ElastigroupIntegrationBeanstalkManagedActionsPtrInput `pulumi:"managedActions"`
+	EnvironmentId         pulumi.StringPtrInput                                        `pulumi:"environmentId"`
+	ManagedActions        ElastigroupIntegrationBeanstalkManagedActionsPtrInput        `pulumi:"managedActions"`
 }
 
 func (ElastigroupIntegrationBeanstalkArgs) ElementType() reflect.Type {
@@ -1057,7 +1063,8 @@ type ElastigroupIntegrationBeanstalkPtrInput interface {
 
 type elastigroupIntegrationBeanstalkPtrType ElastigroupIntegrationBeanstalkArgs
 
-func ElastigroupIntegrationBeanstalkPtr(v *ElastigroupIntegrationBeanstalkArgs) ElastigroupIntegrationBeanstalkPtrInput {	return (*elastigroupIntegrationBeanstalkPtrType)(v)
+func ElastigroupIntegrationBeanstalkPtr(v *ElastigroupIntegrationBeanstalkArgs) ElastigroupIntegrationBeanstalkPtrInput {
+	return (*elastigroupIntegrationBeanstalkPtrType)(v)
 }
 
 func (*elastigroupIntegrationBeanstalkPtrType) ElementType() reflect.Type {
@@ -1072,7 +1079,7 @@ func (i *elastigroupIntegrationBeanstalkPtrType) ToElastigroupIntegrationBeansta
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationBeanstalkPtrOutput)
 }
 
-type ElastigroupIntegrationBeanstalkOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationBeanstalkOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationBeanstalkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationBeanstalk)(nil)).Elem()
@@ -1096,18 +1103,22 @@ func (o ElastigroupIntegrationBeanstalkOutput) ToElastigroupIntegrationBeanstalk
 	}).(ElastigroupIntegrationBeanstalkPtrOutput)
 }
 func (o ElastigroupIntegrationBeanstalkOutput) DeploymentPreferences() ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkDeploymentPreferences { return v.DeploymentPreferences }).(ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkDeploymentPreferences {
+		return v.DeploymentPreferences
+	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkOutput) EnvironmentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalk) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalk) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkOutput) ManagedActions() ElastigroupIntegrationBeanstalkManagedActionsPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkManagedActions { return v.ManagedActions }).(ElastigroupIntegrationBeanstalkManagedActionsPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkManagedActions {
+		return v.ManagedActions
+	}).(ElastigroupIntegrationBeanstalkManagedActionsPtrOutput)
 }
 
-type ElastigroupIntegrationBeanstalkPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationBeanstalkPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationBeanstalkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationBeanstalk)(nil)).Elem()
@@ -1122,26 +1133,30 @@ func (o ElastigroupIntegrationBeanstalkPtrOutput) ToElastigroupIntegrationBeanst
 }
 
 func (o ElastigroupIntegrationBeanstalkPtrOutput) Elem() ElastigroupIntegrationBeanstalkOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationBeanstalk) ElastigroupIntegrationBeanstalk { return *v }).(ElastigroupIntegrationBeanstalkOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalk) ElastigroupIntegrationBeanstalk { return *v }).(ElastigroupIntegrationBeanstalkOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkPtrOutput) DeploymentPreferences() ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkDeploymentPreferences { return v.DeploymentPreferences }).(ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkDeploymentPreferences {
+		return v.DeploymentPreferences
+	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkPtrOutput) EnvironmentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalk) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalk) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkPtrOutput) ManagedActions() ElastigroupIntegrationBeanstalkManagedActionsPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkManagedActions { return v.ManagedActions }).(ElastigroupIntegrationBeanstalkManagedActionsPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkManagedActions {
+		return v.ManagedActions
+	}).(ElastigroupIntegrationBeanstalkManagedActionsPtrOutput)
 }
 
 type ElastigroupIntegrationBeanstalkDeploymentPreferences struct {
-	AutomaticRoll *bool `pulumi:"automaticRoll"`
-	BatchSizePercentage *int `pulumi:"batchSizePercentage"`
-	GracePeriod *int `pulumi:"gracePeriod"`
-	Strategy *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy `pulumi:"strategy"`
+	AutomaticRoll       *bool                                                         `pulumi:"automaticRoll"`
+	BatchSizePercentage *int                                                          `pulumi:"batchSizePercentage"`
+	GracePeriod         *int                                                          `pulumi:"gracePeriod"`
+	Strategy            *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy `pulumi:"strategy"`
 }
 
 type ElastigroupIntegrationBeanstalkDeploymentPreferencesInput interface {
@@ -1152,10 +1167,10 @@ type ElastigroupIntegrationBeanstalkDeploymentPreferencesInput interface {
 }
 
 type ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs struct {
-	AutomaticRoll pulumi.BoolPtrInput `pulumi:"automaticRoll"`
-	BatchSizePercentage pulumi.IntPtrInput `pulumi:"batchSizePercentage"`
-	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
-	Strategy ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrInput `pulumi:"strategy"`
+	AutomaticRoll       pulumi.BoolPtrInput                                                  `pulumi:"automaticRoll"`
+	BatchSizePercentage pulumi.IntPtrInput                                                   `pulumi:"batchSizePercentage"`
+	GracePeriod         pulumi.IntPtrInput                                                   `pulumi:"gracePeriod"`
+	Strategy            ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrInput `pulumi:"strategy"`
 }
 
 func (ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs) ElementType() reflect.Type {
@@ -1187,7 +1202,8 @@ type ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrInput interface {
 
 type elastigroupIntegrationBeanstalkDeploymentPreferencesPtrType ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs
 
-func ElastigroupIntegrationBeanstalkDeploymentPreferencesPtr(v *ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs) ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrInput {	return (*elastigroupIntegrationBeanstalkDeploymentPreferencesPtrType)(v)
+func ElastigroupIntegrationBeanstalkDeploymentPreferencesPtr(v *ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs) ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrInput {
+	return (*elastigroupIntegrationBeanstalkDeploymentPreferencesPtrType)(v)
 }
 
 func (*elastigroupIntegrationBeanstalkDeploymentPreferencesPtrType) ElementType() reflect.Type {
@@ -1202,7 +1218,7 @@ func (i *elastigroupIntegrationBeanstalkDeploymentPreferencesPtrType) ToElastigr
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput)
 }
 
-type ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationBeanstalkDeploymentPreferences)(nil)).Elem()
@@ -1226,22 +1242,24 @@ func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput) ToElastigrou
 	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput)
 }
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput) AutomaticRoll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferences) *bool { return v.AutomaticRoll }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *bool { return v.AutomaticRoll }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput) BatchSizePercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferences) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferences) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput) Strategy() ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferences) *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy { return v.Strategy }).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
+		return v.Strategy
+	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput)
 }
 
-type ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationBeanstalkDeploymentPreferences)(nil)).Elem()
@@ -1256,28 +1274,32 @@ func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) ToElastig
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) Elem() ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationBeanstalkDeploymentPreferences) ElastigroupIntegrationBeanstalkDeploymentPreferences { return *v }).(ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkDeploymentPreferences) ElastigroupIntegrationBeanstalkDeploymentPreferences {
+		return *v
+	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) AutomaticRoll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferences) *bool { return v.AutomaticRoll }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *bool { return v.AutomaticRoll }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferences) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferences) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) Strategy() ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferences) *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy { return v.Strategy }).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
+		return v.Strategy
+	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput)
 }
 
 type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy struct {
-	Action *string `pulumi:"action"`
-	ShouldDrainInstances *bool `pulumi:"shouldDrainInstances"`
+	Action               *string `pulumi:"action"`
+	ShouldDrainInstances *bool   `pulumi:"shouldDrainInstances"`
 }
 
 type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyInput interface {
@@ -1288,8 +1310,8 @@ type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyInput interface
 }
 
 type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs struct {
-	Action pulumi.StringPtrInput `pulumi:"action"`
-	ShouldDrainInstances pulumi.BoolPtrInput `pulumi:"shouldDrainInstances"`
+	Action               pulumi.StringPtrInput `pulumi:"action"`
+	ShouldDrainInstances pulumi.BoolPtrInput   `pulumi:"shouldDrainInstances"`
 }
 
 func (ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs) ElementType() reflect.Type {
@@ -1321,7 +1343,8 @@ type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrInput interf
 
 type elastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrType ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs
 
-func ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtr(v *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs) ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrInput {	return (*elastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrType)(v)
+func ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtr(v *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs) ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrInput {
+	return (*elastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrType)(v)
 }
 
 func (*elastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrType) ElementType() reflect.Type {
@@ -1336,7 +1359,7 @@ func (i *elastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput)
 }
 
-type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy)(nil)).Elem()
@@ -1360,14 +1383,16 @@ func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput) ToEl
 	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput)
 }
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *string { return v.Action }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *bool {
+		return v.ShouldDrainInstances
+	}).(pulumi.BoolPtrOutput)
 }
 
-type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy)(nil)).Elem()
@@ -1382,15 +1407,19 @@ func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput) T
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput) Elem() ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy { return *v }).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
+		return *v
+	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *string { return v.Action }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *bool {
+		return v.ShouldDrainInstances
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ElastigroupIntegrationBeanstalkManagedActions struct {
@@ -1437,7 +1466,8 @@ type ElastigroupIntegrationBeanstalkManagedActionsPtrInput interface {
 
 type elastigroupIntegrationBeanstalkManagedActionsPtrType ElastigroupIntegrationBeanstalkManagedActionsArgs
 
-func ElastigroupIntegrationBeanstalkManagedActionsPtr(v *ElastigroupIntegrationBeanstalkManagedActionsArgs) ElastigroupIntegrationBeanstalkManagedActionsPtrInput {	return (*elastigroupIntegrationBeanstalkManagedActionsPtrType)(v)
+func ElastigroupIntegrationBeanstalkManagedActionsPtr(v *ElastigroupIntegrationBeanstalkManagedActionsArgs) ElastigroupIntegrationBeanstalkManagedActionsPtrInput {
+	return (*elastigroupIntegrationBeanstalkManagedActionsPtrType)(v)
 }
 
 func (*elastigroupIntegrationBeanstalkManagedActionsPtrType) ElementType() reflect.Type {
@@ -1452,7 +1482,7 @@ func (i *elastigroupIntegrationBeanstalkManagedActionsPtrType) ToElastigroupInte
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationBeanstalkManagedActionsPtrOutput)
 }
 
-type ElastigroupIntegrationBeanstalkManagedActionsOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationBeanstalkManagedActionsOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationBeanstalkManagedActionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationBeanstalkManagedActions)(nil)).Elem()
@@ -1476,10 +1506,12 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsOutput) ToElastigroupIntegr
 	}).(ElastigroupIntegrationBeanstalkManagedActionsPtrOutput)
 }
 func (o ElastigroupIntegrationBeanstalkManagedActionsOutput) PlatformUpdate() ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkManagedActions) *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate { return v.PlatformUpdate }).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActions) *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
+		return v.PlatformUpdate
+	}).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
 
-type ElastigroupIntegrationBeanstalkManagedActionsPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationBeanstalkManagedActionsPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationBeanstalkManagedActionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationBeanstalkManagedActions)(nil)).Elem()
@@ -1494,17 +1526,21 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsPtrOutput) ToElastigroupInt
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPtrOutput) Elem() ElastigroupIntegrationBeanstalkManagedActionsOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationBeanstalkManagedActions) ElastigroupIntegrationBeanstalkManagedActions { return *v }).(ElastigroupIntegrationBeanstalkManagedActionsOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkManagedActions) ElastigroupIntegrationBeanstalkManagedActions {
+		return *v
+	}).(ElastigroupIntegrationBeanstalkManagedActionsOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPtrOutput) PlatformUpdate() ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkManagedActions) *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate { return v.PlatformUpdate }).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActions) *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
+		return v.PlatformUpdate
+	}).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
 
 type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate struct {
 	// In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-	PerformAt *string `pulumi:"performAt"`
-	TimeWindow *string `pulumi:"timeWindow"`
+	PerformAt   *string `pulumi:"performAt"`
+	TimeWindow  *string `pulumi:"timeWindow"`
 	UpdateLevel *string `pulumi:"updateLevel"`
 }
 
@@ -1517,8 +1553,8 @@ type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateInput interface 
 
 type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs struct {
 	// In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-	PerformAt pulumi.StringPtrInput `pulumi:"performAt"`
-	TimeWindow pulumi.StringPtrInput `pulumi:"timeWindow"`
+	PerformAt   pulumi.StringPtrInput `pulumi:"performAt"`
+	TimeWindow  pulumi.StringPtrInput `pulumi:"timeWindow"`
 	UpdateLevel pulumi.StringPtrInput `pulumi:"updateLevel"`
 }
 
@@ -1551,7 +1587,8 @@ type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrInput interfa
 
 type elastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrType ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs
 
-func ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtr(v *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs) ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrInput {	return (*elastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrType)(v)
+func ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtr(v *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs) ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrInput {
+	return (*elastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrType)(v)
 }
 
 func (*elastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrType) ElementType() reflect.Type {
@@ -1566,7 +1603,7 @@ func (i *elastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrType) ToE
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
 
-type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate)(nil)).Elem()
@@ -1589,20 +1626,21 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput) ToEla
 		return &v
 	}).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
+
 // In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput) PerformAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput) TimeWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput) UpdateLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate)(nil)).Elem()
@@ -1617,26 +1655,28 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) To
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) Elem() ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate { return *v }).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
+		return *v
+	}).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput)
 }
 
 // In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) PerformAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) TimeWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) UpdateLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationCodedeploy struct {
-	CleanupOnFailure bool `pulumi:"cleanupOnFailure"`
-	DeploymentGroups []ElastigroupIntegrationCodedeployDeploymentGroup `pulumi:"deploymentGroups"`
-	TerminateInstanceOnFailure bool `pulumi:"terminateInstanceOnFailure"`
+	CleanupOnFailure           bool                                              `pulumi:"cleanupOnFailure"`
+	DeploymentGroups           []ElastigroupIntegrationCodedeployDeploymentGroup `pulumi:"deploymentGroups"`
+	TerminateInstanceOnFailure bool                                              `pulumi:"terminateInstanceOnFailure"`
 }
 
 type ElastigroupIntegrationCodedeployInput interface {
@@ -1647,9 +1687,9 @@ type ElastigroupIntegrationCodedeployInput interface {
 }
 
 type ElastigroupIntegrationCodedeployArgs struct {
-	CleanupOnFailure pulumi.BoolInput `pulumi:"cleanupOnFailure"`
-	DeploymentGroups ElastigroupIntegrationCodedeployDeploymentGroupArrayInput `pulumi:"deploymentGroups"`
-	TerminateInstanceOnFailure pulumi.BoolInput `pulumi:"terminateInstanceOnFailure"`
+	CleanupOnFailure           pulumi.BoolInput                                          `pulumi:"cleanupOnFailure"`
+	DeploymentGroups           ElastigroupIntegrationCodedeployDeploymentGroupArrayInput `pulumi:"deploymentGroups"`
+	TerminateInstanceOnFailure pulumi.BoolInput                                          `pulumi:"terminateInstanceOnFailure"`
 }
 
 func (ElastigroupIntegrationCodedeployArgs) ElementType() reflect.Type {
@@ -1681,7 +1721,8 @@ type ElastigroupIntegrationCodedeployPtrInput interface {
 
 type elastigroupIntegrationCodedeployPtrType ElastigroupIntegrationCodedeployArgs
 
-func ElastigroupIntegrationCodedeployPtr(v *ElastigroupIntegrationCodedeployArgs) ElastigroupIntegrationCodedeployPtrInput {	return (*elastigroupIntegrationCodedeployPtrType)(v)
+func ElastigroupIntegrationCodedeployPtr(v *ElastigroupIntegrationCodedeployArgs) ElastigroupIntegrationCodedeployPtrInput {
+	return (*elastigroupIntegrationCodedeployPtrType)(v)
 }
 
 func (*elastigroupIntegrationCodedeployPtrType) ElementType() reflect.Type {
@@ -1696,7 +1737,7 @@ func (i *elastigroupIntegrationCodedeployPtrType) ToElastigroupIntegrationCodede
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationCodedeployPtrOutput)
 }
 
-type ElastigroupIntegrationCodedeployOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationCodedeployOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationCodedeployOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationCodedeploy)(nil)).Elem()
@@ -1720,18 +1761,20 @@ func (o ElastigroupIntegrationCodedeployOutput) ToElastigroupIntegrationCodedepl
 	}).(ElastigroupIntegrationCodedeployPtrOutput)
 }
 func (o ElastigroupIntegrationCodedeployOutput) CleanupOnFailure() pulumi.BoolOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationCodedeploy) bool { return v.CleanupOnFailure }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationCodedeploy) bool { return v.CleanupOnFailure }).(pulumi.BoolOutput)
 }
 
 func (o ElastigroupIntegrationCodedeployOutput) DeploymentGroups() ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationCodedeploy) []ElastigroupIntegrationCodedeployDeploymentGroup { return v.DeploymentGroups }).(ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationCodedeploy) []ElastigroupIntegrationCodedeployDeploymentGroup {
+		return v.DeploymentGroups
+	}).(ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput)
 }
 
 func (o ElastigroupIntegrationCodedeployOutput) TerminateInstanceOnFailure() pulumi.BoolOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationCodedeploy) bool { return v.TerminateInstanceOnFailure }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationCodedeploy) bool { return v.TerminateInstanceOnFailure }).(pulumi.BoolOutput)
 }
 
-type ElastigroupIntegrationCodedeployPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationCodedeployPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationCodedeployPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationCodedeploy)(nil)).Elem()
@@ -1746,23 +1789,25 @@ func (o ElastigroupIntegrationCodedeployPtrOutput) ToElastigroupIntegrationCoded
 }
 
 func (o ElastigroupIntegrationCodedeployPtrOutput) Elem() ElastigroupIntegrationCodedeployOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationCodedeploy) ElastigroupIntegrationCodedeploy { return *v }).(ElastigroupIntegrationCodedeployOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationCodedeploy) ElastigroupIntegrationCodedeploy { return *v }).(ElastigroupIntegrationCodedeployOutput)
 }
 
 func (o ElastigroupIntegrationCodedeployPtrOutput) CleanupOnFailure() pulumi.BoolOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationCodedeploy) bool { return v.CleanupOnFailure }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationCodedeploy) bool { return v.CleanupOnFailure }).(pulumi.BoolOutput)
 }
 
 func (o ElastigroupIntegrationCodedeployPtrOutput) DeploymentGroups() ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationCodedeploy) []ElastigroupIntegrationCodedeployDeploymentGroup { return v.DeploymentGroups }).(ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationCodedeploy) []ElastigroupIntegrationCodedeployDeploymentGroup {
+		return v.DeploymentGroups
+	}).(ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput)
 }
 
 func (o ElastigroupIntegrationCodedeployPtrOutput) TerminateInstanceOnFailure() pulumi.BoolOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationCodedeploy) bool { return v.TerminateInstanceOnFailure }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationCodedeploy) bool { return v.TerminateInstanceOnFailure }).(pulumi.BoolOutput)
 }
 
 type ElastigroupIntegrationCodedeployDeploymentGroup struct {
-	ApplicationName string `pulumi:"applicationName"`
+	ApplicationName     string `pulumi:"applicationName"`
 	DeploymentGroupName string `pulumi:"deploymentGroupName"`
 }
 
@@ -1774,7 +1819,7 @@ type ElastigroupIntegrationCodedeployDeploymentGroupInput interface {
 }
 
 type ElastigroupIntegrationCodedeployDeploymentGroupArgs struct {
-	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	ApplicationName     pulumi.StringInput `pulumi:"applicationName"`
 	DeploymentGroupName pulumi.StringInput `pulumi:"deploymentGroupName"`
 }
 
@@ -1811,7 +1856,7 @@ func (i ElastigroupIntegrationCodedeployDeploymentGroupArray) ToElastigroupInteg
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput)
 }
 
-type ElastigroupIntegrationCodedeployDeploymentGroupOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationCodedeployDeploymentGroupOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationCodedeployDeploymentGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationCodedeployDeploymentGroup)(nil)).Elem()
@@ -1826,14 +1871,14 @@ func (o ElastigroupIntegrationCodedeployDeploymentGroupOutput) ToElastigroupInte
 }
 
 func (o ElastigroupIntegrationCodedeployDeploymentGroupOutput) ApplicationName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationCodedeployDeploymentGroup) string { return v.ApplicationName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationCodedeployDeploymentGroup) string { return v.ApplicationName }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationCodedeployDeploymentGroupOutput) DeploymentGroupName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationCodedeployDeploymentGroup) string { return v.DeploymentGroupName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationCodedeployDeploymentGroup) string { return v.DeploymentGroupName }).(pulumi.StringOutput)
 }
 
-type ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupIntegrationCodedeployDeploymentGroup)(nil)).Elem()
@@ -1848,18 +1893,18 @@ func (o ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput) ToElastigrou
 }
 
 func (o ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput) Index(i pulumi.IntInput) ElastigroupIntegrationCodedeployDeploymentGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupIntegrationCodedeployDeploymentGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupIntegrationCodedeployDeploymentGroup {
 		return vs[0].([]ElastigroupIntegrationCodedeployDeploymentGroup)[vs[1].(int)]
 	}).(ElastigroupIntegrationCodedeployDeploymentGroupOutput)
 }
 
 type ElastigroupIntegrationDockerSwarm struct {
-	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
-	AutoscaleDown *ElastigroupIntegrationDockerSwarmAutoscaleDown `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
-	MasterHost string `pulumi:"masterHost"`
-	MasterPort int `pulumi:"masterPort"`
+	AutoscaleCooldown  *int                                                `pulumi:"autoscaleCooldown"`
+	AutoscaleDown      *ElastigroupIntegrationDockerSwarmAutoscaleDown     `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom  *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsEnabled *bool                                               `pulumi:"autoscaleIsEnabled"`
+	MasterHost         string                                              `pulumi:"masterHost"`
+	MasterPort         int                                                 `pulumi:"masterPort"`
 }
 
 type ElastigroupIntegrationDockerSwarmInput interface {
@@ -1870,12 +1915,12 @@ type ElastigroupIntegrationDockerSwarmInput interface {
 }
 
 type ElastigroupIntegrationDockerSwarmArgs struct {
-	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
-	AutoscaleDown ElastigroupIntegrationDockerSwarmAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
-	MasterHost pulumi.StringInput `pulumi:"masterHost"`
-	MasterPort pulumi.IntInput `pulumi:"masterPort"`
+	AutoscaleCooldown  pulumi.IntPtrInput                                         `pulumi:"autoscaleCooldown"`
+	AutoscaleDown      ElastigroupIntegrationDockerSwarmAutoscaleDownPtrInput     `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom  ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsEnabled pulumi.BoolPtrInput                                        `pulumi:"autoscaleIsEnabled"`
+	MasterHost         pulumi.StringInput                                         `pulumi:"masterHost"`
+	MasterPort         pulumi.IntInput                                            `pulumi:"masterPort"`
 }
 
 func (ElastigroupIntegrationDockerSwarmArgs) ElementType() reflect.Type {
@@ -1907,7 +1952,8 @@ type ElastigroupIntegrationDockerSwarmPtrInput interface {
 
 type elastigroupIntegrationDockerSwarmPtrType ElastigroupIntegrationDockerSwarmArgs
 
-func ElastigroupIntegrationDockerSwarmPtr(v *ElastigroupIntegrationDockerSwarmArgs) ElastigroupIntegrationDockerSwarmPtrInput {	return (*elastigroupIntegrationDockerSwarmPtrType)(v)
+func ElastigroupIntegrationDockerSwarmPtr(v *ElastigroupIntegrationDockerSwarmArgs) ElastigroupIntegrationDockerSwarmPtrInput {
+	return (*elastigroupIntegrationDockerSwarmPtrType)(v)
 }
 
 func (*elastigroupIntegrationDockerSwarmPtrType) ElementType() reflect.Type {
@@ -1922,7 +1968,7 @@ func (i *elastigroupIntegrationDockerSwarmPtrType) ToElastigroupIntegrationDocke
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationDockerSwarmPtrOutput)
 }
 
-type ElastigroupIntegrationDockerSwarmOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationDockerSwarmOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationDockerSwarmOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationDockerSwarm)(nil)).Elem()
@@ -1946,30 +1992,34 @@ func (o ElastigroupIntegrationDockerSwarmOutput) ToElastigroupIntegrationDockerS
 	}).(ElastigroupIntegrationDockerSwarmPtrOutput)
 }
 func (o ElastigroupIntegrationDockerSwarmOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmOutput) AutoscaleDown() ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleDown {
+		return v.AutoscaleDown
+	}).(ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmOutput) AutoscaleHeadroom() ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom { return v.AutoscaleHeadroom }).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
+		return v.AutoscaleHeadroom
+	}).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmOutput) MasterHost() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) string { return v.MasterHost }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) string { return v.MasterHost }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmOutput) MasterPort() pulumi.IntOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) int { return v.MasterPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) int { return v.MasterPort }).(pulumi.IntOutput)
 }
 
-type ElastigroupIntegrationDockerSwarmPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationDockerSwarmPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationDockerSwarmPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationDockerSwarm)(nil)).Elem()
@@ -1984,31 +2034,35 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) ToElastigroupIntegrationDock
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) Elem() ElastigroupIntegrationDockerSwarmOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationDockerSwarm) ElastigroupIntegrationDockerSwarm { return *v }).(ElastigroupIntegrationDockerSwarmOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) ElastigroupIntegrationDockerSwarm { return *v }).(ElastigroupIntegrationDockerSwarmOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) AutoscaleDown() ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleDown {
+		return v.AutoscaleDown
+	}).(ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) AutoscaleHeadroom() ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom { return v.AutoscaleHeadroom }).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
+		return v.AutoscaleHeadroom
+	}).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterHost() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) string { return v.MasterHost }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) string { return v.MasterHost }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterPort() pulumi.IntOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarm) int { return v.MasterPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) int { return v.MasterPort }).(pulumi.IntOutput)
 }
 
 type ElastigroupIntegrationDockerSwarmAutoscaleDown struct {
@@ -2055,7 +2109,8 @@ type ElastigroupIntegrationDockerSwarmAutoscaleDownPtrInput interface {
 
 type elastigroupIntegrationDockerSwarmAutoscaleDownPtrType ElastigroupIntegrationDockerSwarmAutoscaleDownArgs
 
-func ElastigroupIntegrationDockerSwarmAutoscaleDownPtr(v *ElastigroupIntegrationDockerSwarmAutoscaleDownArgs) ElastigroupIntegrationDockerSwarmAutoscaleDownPtrInput {	return (*elastigroupIntegrationDockerSwarmAutoscaleDownPtrType)(v)
+func ElastigroupIntegrationDockerSwarmAutoscaleDownPtr(v *ElastigroupIntegrationDockerSwarmAutoscaleDownArgs) ElastigroupIntegrationDockerSwarmAutoscaleDownPtrInput {
+	return (*elastigroupIntegrationDockerSwarmAutoscaleDownPtrType)(v)
 }
 
 func (*elastigroupIntegrationDockerSwarmAutoscaleDownPtrType) ElementType() reflect.Type {
@@ -2070,7 +2125,7 @@ func (i *elastigroupIntegrationDockerSwarmAutoscaleDownPtrType) ToElastigroupInt
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput)
 }
 
-type ElastigroupIntegrationDockerSwarmAutoscaleDownOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationDockerSwarmAutoscaleDownOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationDockerSwarmAutoscaleDownOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationDockerSwarmAutoscaleDown)(nil)).Elem()
@@ -2094,10 +2149,10 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleDownOutput) ToElastigroupInteg
 	}).(ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput)
 }
 func (o ElastigroupIntegrationDockerSwarmAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarmAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
-type ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationDockerSwarmAutoscaleDown)(nil)).Elem()
@@ -2112,17 +2167,19 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) ToElastigroupIn
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationDockerSwarmAutoscaleDownOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationDockerSwarmAutoscaleDown) ElastigroupIntegrationDockerSwarmAutoscaleDown { return *v }).(ElastigroupIntegrationDockerSwarmAutoscaleDownOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarmAutoscaleDown) ElastigroupIntegrationDockerSwarmAutoscaleDown {
+		return *v
+	}).(ElastigroupIntegrationDockerSwarmAutoscaleDownOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarmAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationDockerSwarmAutoscaleHeadroom struct {
-	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits *int `pulumi:"numOfUnits"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
 }
 
 type ElastigroupIntegrationDockerSwarmAutoscaleHeadroomInput interface {
@@ -2133,9 +2190,9 @@ type ElastigroupIntegrationDockerSwarmAutoscaleHeadroomInput interface {
 }
 
 type ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs struct {
-	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs) ElementType() reflect.Type {
@@ -2167,7 +2224,8 @@ type ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrInput interface {
 
 type elastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrType ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs
 
-func ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtr(v *ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs) ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrInput {	return (*elastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrType)(v)
+func ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtr(v *ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs) ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrInput {
+	return (*elastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrType)(v)
 }
 
 func (*elastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrType) ElementType() reflect.Type {
@@ -2182,7 +2240,7 @@ func (i *elastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrType) ToElastigrou
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput)
 }
 
-type ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationDockerSwarmAutoscaleHeadroom)(nil)).Elem()
@@ -2206,18 +2264,18 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput) ToElastigroupI
 	}).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput)
 }
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
-type ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationDockerSwarmAutoscaleHeadroom)(nil)).Elem()
@@ -2232,30 +2290,32 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) ToElastigro
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) ElastigroupIntegrationDockerSwarmAutoscaleHeadroom { return *v }).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
+		return *v
+	}).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationEcs struct {
-	AutoscaleAttributes []ElastigroupIntegrationEcsAutoscaleAttribute `pulumi:"autoscaleAttributes"`
-	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
-	AutoscaleDown *ElastigroupIntegrationEcsAutoscaleDown `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom *ElastigroupIntegrationEcsAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsAutoConfig *bool `pulumi:"autoscaleIsAutoConfig"`
-	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
-	AutoscaleScaleDownNonServiceTasks *bool `pulumi:"autoscaleScaleDownNonServiceTasks"`
-	ClusterName string `pulumi:"clusterName"`
+	AutoscaleAttributes               []ElastigroupIntegrationEcsAutoscaleAttribute `pulumi:"autoscaleAttributes"`
+	AutoscaleCooldown                 *int                                          `pulumi:"autoscaleCooldown"`
+	AutoscaleDown                     *ElastigroupIntegrationEcsAutoscaleDown       `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom                 *ElastigroupIntegrationEcsAutoscaleHeadroom   `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsAutoConfig             *bool                                         `pulumi:"autoscaleIsAutoConfig"`
+	AutoscaleIsEnabled                *bool                                         `pulumi:"autoscaleIsEnabled"`
+	AutoscaleScaleDownNonServiceTasks *bool                                         `pulumi:"autoscaleScaleDownNonServiceTasks"`
+	ClusterName                       string                                        `pulumi:"clusterName"`
 }
 
 type ElastigroupIntegrationEcsInput interface {
@@ -2266,14 +2326,14 @@ type ElastigroupIntegrationEcsInput interface {
 }
 
 type ElastigroupIntegrationEcsArgs struct {
-	AutoscaleAttributes ElastigroupIntegrationEcsAutoscaleAttributeArrayInput `pulumi:"autoscaleAttributes"`
-	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
-	AutoscaleDown ElastigroupIntegrationEcsAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom ElastigroupIntegrationEcsAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsAutoConfig pulumi.BoolPtrInput `pulumi:"autoscaleIsAutoConfig"`
-	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
-	AutoscaleScaleDownNonServiceTasks pulumi.BoolPtrInput `pulumi:"autoscaleScaleDownNonServiceTasks"`
-	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	AutoscaleAttributes               ElastigroupIntegrationEcsAutoscaleAttributeArrayInput `pulumi:"autoscaleAttributes"`
+	AutoscaleCooldown                 pulumi.IntPtrInput                                    `pulumi:"autoscaleCooldown"`
+	AutoscaleDown                     ElastigroupIntegrationEcsAutoscaleDownPtrInput        `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom                 ElastigroupIntegrationEcsAutoscaleHeadroomPtrInput    `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsAutoConfig             pulumi.BoolPtrInput                                   `pulumi:"autoscaleIsAutoConfig"`
+	AutoscaleIsEnabled                pulumi.BoolPtrInput                                   `pulumi:"autoscaleIsEnabled"`
+	AutoscaleScaleDownNonServiceTasks pulumi.BoolPtrInput                                   `pulumi:"autoscaleScaleDownNonServiceTasks"`
+	ClusterName                       pulumi.StringInput                                    `pulumi:"clusterName"`
 }
 
 func (ElastigroupIntegrationEcsArgs) ElementType() reflect.Type {
@@ -2305,7 +2365,8 @@ type ElastigroupIntegrationEcsPtrInput interface {
 
 type elastigroupIntegrationEcsPtrType ElastigroupIntegrationEcsArgs
 
-func ElastigroupIntegrationEcsPtr(v *ElastigroupIntegrationEcsArgs) ElastigroupIntegrationEcsPtrInput {	return (*elastigroupIntegrationEcsPtrType)(v)
+func ElastigroupIntegrationEcsPtr(v *ElastigroupIntegrationEcsArgs) ElastigroupIntegrationEcsPtrInput {
+	return (*elastigroupIntegrationEcsPtrType)(v)
 }
 
 func (*elastigroupIntegrationEcsPtrType) ElementType() reflect.Type {
@@ -2320,7 +2381,7 @@ func (i *elastigroupIntegrationEcsPtrType) ToElastigroupIntegrationEcsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationEcsPtrOutput)
 }
 
-type ElastigroupIntegrationEcsOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationEcsOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationEcsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationEcs)(nil)).Elem()
@@ -2344,38 +2405,42 @@ func (o ElastigroupIntegrationEcsOutput) ToElastigroupIntegrationEcsPtrOutputWit
 	}).(ElastigroupIntegrationEcsPtrOutput)
 }
 func (o ElastigroupIntegrationEcsOutput) AutoscaleAttributes() ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) []ElastigroupIntegrationEcsAutoscaleAttribute { return v.AutoscaleAttributes }).(ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) []ElastigroupIntegrationEcsAutoscaleAttribute {
+		return v.AutoscaleAttributes
+	}).(ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput)
 }
 
 func (o ElastigroupIntegrationEcsOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsOutput) AutoscaleDown() ElastigroupIntegrationEcsAutoscaleDownPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationEcsAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationEcsAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsOutput) AutoscaleHeadroom() ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleHeadroom { return v.AutoscaleHeadroom }).(ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleHeadroom {
+		return v.AutoscaleHeadroom
+	}).(ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsOutput) AutoscaleScaleDownNonServiceTasks() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *bool { return v.AutoscaleScaleDownNonServiceTasks }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleScaleDownNonServiceTasks }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsOutput) ClusterName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) string { return v.ClusterName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-type ElastigroupIntegrationEcsPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationEcsPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationEcsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationEcs)(nil)).Elem()
@@ -2390,43 +2455,47 @@ func (o ElastigroupIntegrationEcsPtrOutput) ToElastigroupIntegrationEcsPtrOutput
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) Elem() ElastigroupIntegrationEcsOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationEcs) ElastigroupIntegrationEcs { return *v }).(ElastigroupIntegrationEcsOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) ElastigroupIntegrationEcs { return *v }).(ElastigroupIntegrationEcsOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleAttributes() ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) []ElastigroupIntegrationEcsAutoscaleAttribute { return v.AutoscaleAttributes }).(ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) []ElastigroupIntegrationEcsAutoscaleAttribute {
+		return v.AutoscaleAttributes
+	}).(ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleDown() ElastigroupIntegrationEcsAutoscaleDownPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationEcsAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationEcsAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleHeadroom() ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleHeadroom { return v.AutoscaleHeadroom }).(ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleHeadroom {
+		return v.AutoscaleHeadroom
+	}).(ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleScaleDownNonServiceTasks() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) *bool { return v.AutoscaleScaleDownNonServiceTasks }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleScaleDownNonServiceTasks }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) ClusterName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcs) string { return v.ClusterName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
 type ElastigroupIntegrationEcsAutoscaleAttribute struct {
-	Key string `pulumi:"key"`
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -2438,7 +2507,7 @@ type ElastigroupIntegrationEcsAutoscaleAttributeInput interface {
 }
 
 type ElastigroupIntegrationEcsAutoscaleAttributeArgs struct {
-	Key pulumi.StringInput `pulumi:"key"`
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2475,7 +2544,7 @@ func (i ElastigroupIntegrationEcsAutoscaleAttributeArray) ToElastigroupIntegrati
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput)
 }
 
-type ElastigroupIntegrationEcsAutoscaleAttributeOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationEcsAutoscaleAttributeOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationEcsAutoscaleAttributeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationEcsAutoscaleAttribute)(nil)).Elem()
@@ -2490,14 +2559,14 @@ func (o ElastigroupIntegrationEcsAutoscaleAttributeOutput) ToElastigroupIntegrat
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleAttributeOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleAttribute) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleAttribute) string { return v.Key }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleAttributeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleAttribute) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleAttribute) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupIntegrationEcsAutoscaleAttribute)(nil)).Elem()
@@ -2512,13 +2581,13 @@ func (o ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput) ToElastigroupInt
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput) Index(i pulumi.IntInput) ElastigroupIntegrationEcsAutoscaleAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupIntegrationEcsAutoscaleAttribute {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupIntegrationEcsAutoscaleAttribute {
 		return vs[0].([]ElastigroupIntegrationEcsAutoscaleAttribute)[vs[1].(int)]
 	}).(ElastigroupIntegrationEcsAutoscaleAttributeOutput)
 }
 
 type ElastigroupIntegrationEcsAutoscaleDown struct {
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
+	EvaluationPeriods      *int `pulumi:"evaluationPeriods"`
 	MaxScaleDownPercentage *int `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2530,7 +2599,7 @@ type ElastigroupIntegrationEcsAutoscaleDownInput interface {
 }
 
 type ElastigroupIntegrationEcsAutoscaleDownArgs struct {
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	EvaluationPeriods      pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
 	MaxScaleDownPercentage pulumi.IntPtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2563,7 +2632,8 @@ type ElastigroupIntegrationEcsAutoscaleDownPtrInput interface {
 
 type elastigroupIntegrationEcsAutoscaleDownPtrType ElastigroupIntegrationEcsAutoscaleDownArgs
 
-func ElastigroupIntegrationEcsAutoscaleDownPtr(v *ElastigroupIntegrationEcsAutoscaleDownArgs) ElastigroupIntegrationEcsAutoscaleDownPtrInput {	return (*elastigroupIntegrationEcsAutoscaleDownPtrType)(v)
+func ElastigroupIntegrationEcsAutoscaleDownPtr(v *ElastigroupIntegrationEcsAutoscaleDownArgs) ElastigroupIntegrationEcsAutoscaleDownPtrInput {
+	return (*elastigroupIntegrationEcsAutoscaleDownPtrType)(v)
 }
 
 func (*elastigroupIntegrationEcsAutoscaleDownPtrType) ElementType() reflect.Type {
@@ -2578,7 +2648,7 @@ func (i *elastigroupIntegrationEcsAutoscaleDownPtrType) ToElastigroupIntegration
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationEcsAutoscaleDownPtrOutput)
 }
 
-type ElastigroupIntegrationEcsAutoscaleDownOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationEcsAutoscaleDownOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationEcsAutoscaleDownOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationEcsAutoscaleDown)(nil)).Elem()
@@ -2602,14 +2672,14 @@ func (o ElastigroupIntegrationEcsAutoscaleDownOutput) ToElastigroupIntegrationEc
 	}).(ElastigroupIntegrationEcsAutoscaleDownPtrOutput)
 }
 func (o ElastigroupIntegrationEcsAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
 }
 
-type ElastigroupIntegrationEcsAutoscaleDownPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationEcsAutoscaleDownPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationEcsAutoscaleDownPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationEcsAutoscaleDown)(nil)).Elem()
@@ -2624,21 +2694,21 @@ func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) ToElastigroupIntegratio
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationEcsAutoscaleDownOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationEcsAutoscaleDown) ElastigroupIntegrationEcsAutoscaleDown { return *v }).(ElastigroupIntegrationEcsAutoscaleDownOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleDown) ElastigroupIntegrationEcsAutoscaleDown { return *v }).(ElastigroupIntegrationEcsAutoscaleDownOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationEcsAutoscaleHeadroom struct {
-	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits *int `pulumi:"numOfUnits"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
 }
 
 type ElastigroupIntegrationEcsAutoscaleHeadroomInput interface {
@@ -2649,9 +2719,9 @@ type ElastigroupIntegrationEcsAutoscaleHeadroomInput interface {
 }
 
 type ElastigroupIntegrationEcsAutoscaleHeadroomArgs struct {
-	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (ElastigroupIntegrationEcsAutoscaleHeadroomArgs) ElementType() reflect.Type {
@@ -2683,7 +2753,8 @@ type ElastigroupIntegrationEcsAutoscaleHeadroomPtrInput interface {
 
 type elastigroupIntegrationEcsAutoscaleHeadroomPtrType ElastigroupIntegrationEcsAutoscaleHeadroomArgs
 
-func ElastigroupIntegrationEcsAutoscaleHeadroomPtr(v *ElastigroupIntegrationEcsAutoscaleHeadroomArgs) ElastigroupIntegrationEcsAutoscaleHeadroomPtrInput {	return (*elastigroupIntegrationEcsAutoscaleHeadroomPtrType)(v)
+func ElastigroupIntegrationEcsAutoscaleHeadroomPtr(v *ElastigroupIntegrationEcsAutoscaleHeadroomArgs) ElastigroupIntegrationEcsAutoscaleHeadroomPtrInput {
+	return (*elastigroupIntegrationEcsAutoscaleHeadroomPtrType)(v)
 }
 
 func (*elastigroupIntegrationEcsAutoscaleHeadroomPtrType) ElementType() reflect.Type {
@@ -2698,7 +2769,7 @@ func (i *elastigroupIntegrationEcsAutoscaleHeadroomPtrType) ToElastigroupIntegra
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput)
 }
 
-type ElastigroupIntegrationEcsAutoscaleHeadroomOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationEcsAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationEcsAutoscaleHeadroomOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationEcsAutoscaleHeadroom)(nil)).Elem()
@@ -2722,18 +2793,18 @@ func (o ElastigroupIntegrationEcsAutoscaleHeadroomOutput) ToElastigroupIntegrati
 	}).(ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput)
 }
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
-type ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationEcsAutoscaleHeadroom)(nil)).Elem()
@@ -2748,19 +2819,21 @@ func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) ToElastigroupIntegr
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationEcsAutoscaleHeadroomOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationEcsAutoscaleHeadroom) ElastigroupIntegrationEcsAutoscaleHeadroom { return *v }).(ElastigroupIntegrationEcsAutoscaleHeadroomOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleHeadroom) ElastigroupIntegrationEcsAutoscaleHeadroom {
+		return *v
+	}).(ElastigroupIntegrationEcsAutoscaleHeadroomOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationGitlab struct {
@@ -2807,7 +2880,8 @@ type ElastigroupIntegrationGitlabPtrInput interface {
 
 type elastigroupIntegrationGitlabPtrType ElastigroupIntegrationGitlabArgs
 
-func ElastigroupIntegrationGitlabPtr(v *ElastigroupIntegrationGitlabArgs) ElastigroupIntegrationGitlabPtrInput {	return (*elastigroupIntegrationGitlabPtrType)(v)
+func ElastigroupIntegrationGitlabPtr(v *ElastigroupIntegrationGitlabArgs) ElastigroupIntegrationGitlabPtrInput {
+	return (*elastigroupIntegrationGitlabPtrType)(v)
 }
 
 func (*elastigroupIntegrationGitlabPtrType) ElementType() reflect.Type {
@@ -2822,7 +2896,7 @@ func (i *elastigroupIntegrationGitlabPtrType) ToElastigroupIntegrationGitlabPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationGitlabPtrOutput)
 }
 
-type ElastigroupIntegrationGitlabOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationGitlabOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationGitlabOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationGitlab)(nil)).Elem()
@@ -2846,10 +2920,10 @@ func (o ElastigroupIntegrationGitlabOutput) ToElastigroupIntegrationGitlabPtrOut
 	}).(ElastigroupIntegrationGitlabPtrOutput)
 }
 func (o ElastigroupIntegrationGitlabOutput) Runner() ElastigroupIntegrationGitlabRunnerPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationGitlab) *ElastigroupIntegrationGitlabRunner { return v.Runner }).(ElastigroupIntegrationGitlabRunnerPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationGitlab) *ElastigroupIntegrationGitlabRunner { return v.Runner }).(ElastigroupIntegrationGitlabRunnerPtrOutput)
 }
 
-type ElastigroupIntegrationGitlabPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationGitlabPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationGitlabPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationGitlab)(nil)).Elem()
@@ -2864,11 +2938,11 @@ func (o ElastigroupIntegrationGitlabPtrOutput) ToElastigroupIntegrationGitlabPtr
 }
 
 func (o ElastigroupIntegrationGitlabPtrOutput) Elem() ElastigroupIntegrationGitlabOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationGitlab) ElastigroupIntegrationGitlab { return *v }).(ElastigroupIntegrationGitlabOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGitlab) ElastigroupIntegrationGitlab { return *v }).(ElastigroupIntegrationGitlabOutput)
 }
 
 func (o ElastigroupIntegrationGitlabPtrOutput) Runner() ElastigroupIntegrationGitlabRunnerPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationGitlab) *ElastigroupIntegrationGitlabRunner { return v.Runner }).(ElastigroupIntegrationGitlabRunnerPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationGitlab) *ElastigroupIntegrationGitlabRunner { return v.Runner }).(ElastigroupIntegrationGitlabRunnerPtrOutput)
 }
 
 type ElastigroupIntegrationGitlabRunner struct {
@@ -2915,7 +2989,8 @@ type ElastigroupIntegrationGitlabRunnerPtrInput interface {
 
 type elastigroupIntegrationGitlabRunnerPtrType ElastigroupIntegrationGitlabRunnerArgs
 
-func ElastigroupIntegrationGitlabRunnerPtr(v *ElastigroupIntegrationGitlabRunnerArgs) ElastigroupIntegrationGitlabRunnerPtrInput {	return (*elastigroupIntegrationGitlabRunnerPtrType)(v)
+func ElastigroupIntegrationGitlabRunnerPtr(v *ElastigroupIntegrationGitlabRunnerArgs) ElastigroupIntegrationGitlabRunnerPtrInput {
+	return (*elastigroupIntegrationGitlabRunnerPtrType)(v)
 }
 
 func (*elastigroupIntegrationGitlabRunnerPtrType) ElementType() reflect.Type {
@@ -2930,7 +3005,7 @@ func (i *elastigroupIntegrationGitlabRunnerPtrType) ToElastigroupIntegrationGitl
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationGitlabRunnerPtrOutput)
 }
 
-type ElastigroupIntegrationGitlabRunnerOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationGitlabRunnerOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationGitlabRunnerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationGitlabRunner)(nil)).Elem()
@@ -2954,10 +3029,10 @@ func (o ElastigroupIntegrationGitlabRunnerOutput) ToElastigroupIntegrationGitlab
 	}).(ElastigroupIntegrationGitlabRunnerPtrOutput)
 }
 func (o ElastigroupIntegrationGitlabRunnerOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationGitlabRunner) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationGitlabRunner) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-type ElastigroupIntegrationGitlabRunnerPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationGitlabRunnerPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationGitlabRunnerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationGitlabRunner)(nil)).Elem()
@@ -2972,24 +3047,24 @@ func (o ElastigroupIntegrationGitlabRunnerPtrOutput) ToElastigroupIntegrationGit
 }
 
 func (o ElastigroupIntegrationGitlabRunnerPtrOutput) Elem() ElastigroupIntegrationGitlabRunnerOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationGitlabRunner) ElastigroupIntegrationGitlabRunner { return *v }).(ElastigroupIntegrationGitlabRunnerOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGitlabRunner) ElastigroupIntegrationGitlabRunner { return *v }).(ElastigroupIntegrationGitlabRunnerOutput)
 }
 
 func (o ElastigroupIntegrationGitlabRunnerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationGitlabRunner) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationGitlabRunner) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type ElastigroupIntegrationKubernetes struct {
-	ApiServer *string `pulumi:"apiServer"`
-	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
-	AutoscaleDown *ElastigroupIntegrationKubernetesAutoscaleDown `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom *ElastigroupIntegrationKubernetesAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsAutoConfig *bool `pulumi:"autoscaleIsAutoConfig"`
-	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
-	AutoscaleLabels []ElastigroupIntegrationKubernetesAutoscaleLabel `pulumi:"autoscaleLabels"`
-	ClusterIdentifier *string `pulumi:"clusterIdentifier"`
-	IntegrationMode *string `pulumi:"integrationMode"`
-	Token *string `pulumi:"token"`
+	ApiServer             *string                                            `pulumi:"apiServer"`
+	AutoscaleCooldown     *int                                               `pulumi:"autoscaleCooldown"`
+	AutoscaleDown         *ElastigroupIntegrationKubernetesAutoscaleDown     `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom     *ElastigroupIntegrationKubernetesAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsAutoConfig *bool                                              `pulumi:"autoscaleIsAutoConfig"`
+	AutoscaleIsEnabled    *bool                                              `pulumi:"autoscaleIsEnabled"`
+	AutoscaleLabels       []ElastigroupIntegrationKubernetesAutoscaleLabel   `pulumi:"autoscaleLabels"`
+	ClusterIdentifier     *string                                            `pulumi:"clusterIdentifier"`
+	IntegrationMode       *string                                            `pulumi:"integrationMode"`
+	Token                 *string                                            `pulumi:"token"`
 }
 
 type ElastigroupIntegrationKubernetesInput interface {
@@ -3000,16 +3075,16 @@ type ElastigroupIntegrationKubernetesInput interface {
 }
 
 type ElastigroupIntegrationKubernetesArgs struct {
-	ApiServer pulumi.StringPtrInput `pulumi:"apiServer"`
-	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
-	AutoscaleDown ElastigroupIntegrationKubernetesAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsAutoConfig pulumi.BoolPtrInput `pulumi:"autoscaleIsAutoConfig"`
-	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
-	AutoscaleLabels ElastigroupIntegrationKubernetesAutoscaleLabelArrayInput `pulumi:"autoscaleLabels"`
-	ClusterIdentifier pulumi.StringPtrInput `pulumi:"clusterIdentifier"`
-	IntegrationMode pulumi.StringPtrInput `pulumi:"integrationMode"`
-	Token pulumi.StringPtrInput `pulumi:"token"`
+	ApiServer             pulumi.StringPtrInput                                     `pulumi:"apiServer"`
+	AutoscaleCooldown     pulumi.IntPtrInput                                        `pulumi:"autoscaleCooldown"`
+	AutoscaleDown         ElastigroupIntegrationKubernetesAutoscaleDownPtrInput     `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom     ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsAutoConfig pulumi.BoolPtrInput                                       `pulumi:"autoscaleIsAutoConfig"`
+	AutoscaleIsEnabled    pulumi.BoolPtrInput                                       `pulumi:"autoscaleIsEnabled"`
+	AutoscaleLabels       ElastigroupIntegrationKubernetesAutoscaleLabelArrayInput  `pulumi:"autoscaleLabels"`
+	ClusterIdentifier     pulumi.StringPtrInput                                     `pulumi:"clusterIdentifier"`
+	IntegrationMode       pulumi.StringPtrInput                                     `pulumi:"integrationMode"`
+	Token                 pulumi.StringPtrInput                                     `pulumi:"token"`
 }
 
 func (ElastigroupIntegrationKubernetesArgs) ElementType() reflect.Type {
@@ -3041,7 +3116,8 @@ type ElastigroupIntegrationKubernetesPtrInput interface {
 
 type elastigroupIntegrationKubernetesPtrType ElastigroupIntegrationKubernetesArgs
 
-func ElastigroupIntegrationKubernetesPtr(v *ElastigroupIntegrationKubernetesArgs) ElastigroupIntegrationKubernetesPtrInput {	return (*elastigroupIntegrationKubernetesPtrType)(v)
+func ElastigroupIntegrationKubernetesPtr(v *ElastigroupIntegrationKubernetesArgs) ElastigroupIntegrationKubernetesPtrInput {
+	return (*elastigroupIntegrationKubernetesPtrType)(v)
 }
 
 func (*elastigroupIntegrationKubernetesPtrType) ElementType() reflect.Type {
@@ -3056,7 +3132,7 @@ func (i *elastigroupIntegrationKubernetesPtrType) ToElastigroupIntegrationKubern
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationKubernetesPtrOutput)
 }
 
-type ElastigroupIntegrationKubernetesOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationKubernetesOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationKubernetesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationKubernetes)(nil)).Elem()
@@ -3080,46 +3156,52 @@ func (o ElastigroupIntegrationKubernetesOutput) ToElastigroupIntegrationKubernet
 	}).(ElastigroupIntegrationKubernetesPtrOutput)
 }
 func (o ElastigroupIntegrationKubernetesOutput) ApiServer() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *string { return v.ApiServer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.ApiServer }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesOutput) AutoscaleDown() ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleDown {
+		return v.AutoscaleDown
+	}).(ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesOutput) AutoscaleHeadroom() ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleHeadroom { return v.AutoscaleHeadroom }).(ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleHeadroom {
+		return v.AutoscaleHeadroom
+	}).(ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesOutput) AutoscaleLabels() ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) []ElastigroupIntegrationKubernetesAutoscaleLabel { return v.AutoscaleLabels }).(ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) []ElastigroupIntegrationKubernetesAutoscaleLabel {
+		return v.AutoscaleLabels
+	}).(ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesOutput) ClusterIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *string { return v.ClusterIdentifier }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.ClusterIdentifier }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesOutput) IntegrationMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *string { return v.IntegrationMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.IntegrationMode }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupIntegrationKubernetesPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationKubernetesPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationKubernetesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationKubernetes)(nil)).Elem()
@@ -3134,47 +3216,53 @@ func (o ElastigroupIntegrationKubernetesPtrOutput) ToElastigroupIntegrationKuber
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) Elem() ElastigroupIntegrationKubernetesOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationKubernetes) ElastigroupIntegrationKubernetes { return *v }).(ElastigroupIntegrationKubernetesOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) ElastigroupIntegrationKubernetes { return *v }).(ElastigroupIntegrationKubernetesOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) ApiServer() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *string { return v.ApiServer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.ApiServer }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleDown() ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleDown {
+		return v.AutoscaleDown
+	}).(ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleHeadroom() ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleHeadroom { return v.AutoscaleHeadroom }).(ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleHeadroom {
+		return v.AutoscaleHeadroom
+	}).(ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleLabels() ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) []ElastigroupIntegrationKubernetesAutoscaleLabel { return v.AutoscaleLabels }).(ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) []ElastigroupIntegrationKubernetesAutoscaleLabel {
+		return v.AutoscaleLabels
+	}).(ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) ClusterIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *string { return v.ClusterIdentifier }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.ClusterIdentifier }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) IntegrationMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *string { return v.IntegrationMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.IntegrationMode }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetes) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationKubernetesAutoscaleDown struct {
@@ -3221,7 +3309,8 @@ type ElastigroupIntegrationKubernetesAutoscaleDownPtrInput interface {
 
 type elastigroupIntegrationKubernetesAutoscaleDownPtrType ElastigroupIntegrationKubernetesAutoscaleDownArgs
 
-func ElastigroupIntegrationKubernetesAutoscaleDownPtr(v *ElastigroupIntegrationKubernetesAutoscaleDownArgs) ElastigroupIntegrationKubernetesAutoscaleDownPtrInput {	return (*elastigroupIntegrationKubernetesAutoscaleDownPtrType)(v)
+func ElastigroupIntegrationKubernetesAutoscaleDownPtr(v *ElastigroupIntegrationKubernetesAutoscaleDownArgs) ElastigroupIntegrationKubernetesAutoscaleDownPtrInput {
+	return (*elastigroupIntegrationKubernetesAutoscaleDownPtrType)(v)
 }
 
 func (*elastigroupIntegrationKubernetesAutoscaleDownPtrType) ElementType() reflect.Type {
@@ -3236,7 +3325,7 @@ func (i *elastigroupIntegrationKubernetesAutoscaleDownPtrType) ToElastigroupInte
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput)
 }
 
-type ElastigroupIntegrationKubernetesAutoscaleDownOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationKubernetesAutoscaleDownOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationKubernetesAutoscaleDownOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationKubernetesAutoscaleDown)(nil)).Elem()
@@ -3260,10 +3349,10 @@ func (o ElastigroupIntegrationKubernetesAutoscaleDownOutput) ToElastigroupIntegr
 	}).(ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput)
 }
 func (o ElastigroupIntegrationKubernetesAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetesAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
-type ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationKubernetesAutoscaleDown)(nil)).Elem()
@@ -3278,17 +3367,19 @@ func (o ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) ToElastigroupInt
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationKubernetesAutoscaleDownOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationKubernetesAutoscaleDown) ElastigroupIntegrationKubernetesAutoscaleDown { return *v }).(ElastigroupIntegrationKubernetesAutoscaleDownOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetesAutoscaleDown) ElastigroupIntegrationKubernetesAutoscaleDown {
+		return *v
+	}).(ElastigroupIntegrationKubernetesAutoscaleDownOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetesAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationKubernetesAutoscaleHeadroom struct {
-	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits *int `pulumi:"numOfUnits"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
 }
 
 type ElastigroupIntegrationKubernetesAutoscaleHeadroomInput interface {
@@ -3299,9 +3390,9 @@ type ElastigroupIntegrationKubernetesAutoscaleHeadroomInput interface {
 }
 
 type ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs struct {
-	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs) ElementType() reflect.Type {
@@ -3333,7 +3424,8 @@ type ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrInput interface {
 
 type elastigroupIntegrationKubernetesAutoscaleHeadroomPtrType ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs
 
-func ElastigroupIntegrationKubernetesAutoscaleHeadroomPtr(v *ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs) ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrInput {	return (*elastigroupIntegrationKubernetesAutoscaleHeadroomPtrType)(v)
+func ElastigroupIntegrationKubernetesAutoscaleHeadroomPtr(v *ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs) ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrInput {
+	return (*elastigroupIntegrationKubernetesAutoscaleHeadroomPtrType)(v)
 }
 
 func (*elastigroupIntegrationKubernetesAutoscaleHeadroomPtrType) ElementType() reflect.Type {
@@ -3348,7 +3440,7 @@ func (i *elastigroupIntegrationKubernetesAutoscaleHeadroomPtrType) ToElastigroup
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput)
 }
 
-type ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationKubernetesAutoscaleHeadroom)(nil)).Elem()
@@ -3372,18 +3464,18 @@ func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput) ToElastigroupIn
 	}).(ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput)
 }
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
-type ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationKubernetesAutoscaleHeadroom)(nil)).Elem()
@@ -3398,23 +3490,25 @@ func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) ToElastigrou
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationKubernetesAutoscaleHeadroom) ElastigroupIntegrationKubernetesAutoscaleHeadroom { return *v }).(ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetesAutoscaleHeadroom) ElastigroupIntegrationKubernetesAutoscaleHeadroom {
+		return *v
+	}).(ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationKubernetesAutoscaleLabel struct {
-	Key string `pulumi:"key"`
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -3426,7 +3520,7 @@ type ElastigroupIntegrationKubernetesAutoscaleLabelInput interface {
 }
 
 type ElastigroupIntegrationKubernetesAutoscaleLabelArgs struct {
-	Key pulumi.StringInput `pulumi:"key"`
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -3463,7 +3557,7 @@ func (i ElastigroupIntegrationKubernetesAutoscaleLabelArray) ToElastigroupIntegr
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput)
 }
 
-type ElastigroupIntegrationKubernetesAutoscaleLabelOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationKubernetesAutoscaleLabelOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationKubernetesAutoscaleLabelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationKubernetesAutoscaleLabel)(nil)).Elem()
@@ -3478,14 +3572,14 @@ func (o ElastigroupIntegrationKubernetesAutoscaleLabelOutput) ToElastigroupInteg
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleLabelOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetesAutoscaleLabel) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleLabelOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationKubernetesAutoscaleLabel) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleLabel) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupIntegrationKubernetesAutoscaleLabel)(nil)).Elem()
@@ -3500,7 +3594,7 @@ func (o ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput) ToElastigroup
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput) Index(i pulumi.IntInput) ElastigroupIntegrationKubernetesAutoscaleLabelOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupIntegrationKubernetesAutoscaleLabel {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupIntegrationKubernetesAutoscaleLabel {
 		return vs[0].([]ElastigroupIntegrationKubernetesAutoscaleLabel)[vs[1].(int)]
 	}).(ElastigroupIntegrationKubernetesAutoscaleLabelOutput)
 }
@@ -3549,7 +3643,8 @@ type ElastigroupIntegrationMesospherePtrInput interface {
 
 type elastigroupIntegrationMesospherePtrType ElastigroupIntegrationMesosphereArgs
 
-func ElastigroupIntegrationMesospherePtr(v *ElastigroupIntegrationMesosphereArgs) ElastigroupIntegrationMesospherePtrInput {	return (*elastigroupIntegrationMesospherePtrType)(v)
+func ElastigroupIntegrationMesospherePtr(v *ElastigroupIntegrationMesosphereArgs) ElastigroupIntegrationMesospherePtrInput {
+	return (*elastigroupIntegrationMesospherePtrType)(v)
 }
 
 func (*elastigroupIntegrationMesospherePtrType) ElementType() reflect.Type {
@@ -3564,7 +3659,7 @@ func (i *elastigroupIntegrationMesospherePtrType) ToElastigroupIntegrationMesosp
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationMesospherePtrOutput)
 }
 
-type ElastigroupIntegrationMesosphereOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationMesosphereOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationMesosphereOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationMesosphere)(nil)).Elem()
@@ -3588,10 +3683,10 @@ func (o ElastigroupIntegrationMesosphereOutput) ToElastigroupIntegrationMesosphe
 	}).(ElastigroupIntegrationMesospherePtrOutput)
 }
 func (o ElastigroupIntegrationMesosphereOutput) ApiServer() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationMesosphere) string { return v.ApiServer }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationMesosphere) string { return v.ApiServer }).(pulumi.StringOutput)
 }
 
-type ElastigroupIntegrationMesospherePtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationMesospherePtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationMesospherePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationMesosphere)(nil)).Elem()
@@ -3606,11 +3701,11 @@ func (o ElastigroupIntegrationMesospherePtrOutput) ToElastigroupIntegrationMesos
 }
 
 func (o ElastigroupIntegrationMesospherePtrOutput) Elem() ElastigroupIntegrationMesosphereOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationMesosphere) ElastigroupIntegrationMesosphere { return *v }).(ElastigroupIntegrationMesosphereOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationMesosphere) ElastigroupIntegrationMesosphere { return *v }).(ElastigroupIntegrationMesosphereOutput)
 }
 
 func (o ElastigroupIntegrationMesospherePtrOutput) ApiServer() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationMesosphere) string { return v.ApiServer }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationMesosphere) string { return v.ApiServer }).(pulumi.StringOutput)
 }
 
 type ElastigroupIntegrationMultaiRuntime struct {
@@ -3657,7 +3752,8 @@ type ElastigroupIntegrationMultaiRuntimePtrInput interface {
 
 type elastigroupIntegrationMultaiRuntimePtrType ElastigroupIntegrationMultaiRuntimeArgs
 
-func ElastigroupIntegrationMultaiRuntimePtr(v *ElastigroupIntegrationMultaiRuntimeArgs) ElastigroupIntegrationMultaiRuntimePtrInput {	return (*elastigroupIntegrationMultaiRuntimePtrType)(v)
+func ElastigroupIntegrationMultaiRuntimePtr(v *ElastigroupIntegrationMultaiRuntimeArgs) ElastigroupIntegrationMultaiRuntimePtrInput {
+	return (*elastigroupIntegrationMultaiRuntimePtrType)(v)
 }
 
 func (*elastigroupIntegrationMultaiRuntimePtrType) ElementType() reflect.Type {
@@ -3672,7 +3768,7 @@ func (i *elastigroupIntegrationMultaiRuntimePtrType) ToElastigroupIntegrationMul
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationMultaiRuntimePtrOutput)
 }
 
-type ElastigroupIntegrationMultaiRuntimeOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationMultaiRuntimeOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationMultaiRuntimeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationMultaiRuntime)(nil)).Elem()
@@ -3696,10 +3792,10 @@ func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMulta
 	}).(ElastigroupIntegrationMultaiRuntimePtrOutput)
 }
 func (o ElastigroupIntegrationMultaiRuntimeOutput) DeploymentId() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationMultaiRuntime) string { return v.DeploymentId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationMultaiRuntime) string { return v.DeploymentId }).(pulumi.StringOutput)
 }
 
-type ElastigroupIntegrationMultaiRuntimePtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationMultaiRuntimePtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationMultaiRuntimePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationMultaiRuntime)(nil)).Elem()
@@ -3714,22 +3810,22 @@ func (o ElastigroupIntegrationMultaiRuntimePtrOutput) ToElastigroupIntegrationMu
 }
 
 func (o ElastigroupIntegrationMultaiRuntimePtrOutput) Elem() ElastigroupIntegrationMultaiRuntimeOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationMultaiRuntime) ElastigroupIntegrationMultaiRuntime { return *v }).(ElastigroupIntegrationMultaiRuntimeOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) ElastigroupIntegrationMultaiRuntime { return *v }).(ElastigroupIntegrationMultaiRuntimeOutput)
 }
 
 func (o ElastigroupIntegrationMultaiRuntimePtrOutput) DeploymentId() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationMultaiRuntime) string { return v.DeploymentId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationMultaiRuntime) string { return v.DeploymentId }).(pulumi.StringOutput)
 }
 
 type ElastigroupIntegrationNomad struct {
-	AclToken *string `pulumi:"aclToken"`
+	AclToken             *string                                          `pulumi:"aclToken"`
 	AutoscaleConstraints []ElastigroupIntegrationNomadAutoscaleConstraint `pulumi:"autoscaleConstraints"`
-	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
-	AutoscaleDown *ElastigroupIntegrationNomadAutoscaleDown `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom *ElastigroupIntegrationNomadAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
-	MasterHost string `pulumi:"masterHost"`
-	MasterPort int `pulumi:"masterPort"`
+	AutoscaleCooldown    *int                                             `pulumi:"autoscaleCooldown"`
+	AutoscaleDown        *ElastigroupIntegrationNomadAutoscaleDown        `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom    *ElastigroupIntegrationNomadAutoscaleHeadroom    `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsEnabled   *bool                                            `pulumi:"autoscaleIsEnabled"`
+	MasterHost           string                                           `pulumi:"masterHost"`
+	MasterPort           int                                              `pulumi:"masterPort"`
 }
 
 type ElastigroupIntegrationNomadInput interface {
@@ -3740,14 +3836,14 @@ type ElastigroupIntegrationNomadInput interface {
 }
 
 type ElastigroupIntegrationNomadArgs struct {
-	AclToken pulumi.StringPtrInput `pulumi:"aclToken"`
+	AclToken             pulumi.StringPtrInput                                    `pulumi:"aclToken"`
 	AutoscaleConstraints ElastigroupIntegrationNomadAutoscaleConstraintArrayInput `pulumi:"autoscaleConstraints"`
-	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
-	AutoscaleDown ElastigroupIntegrationNomadAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
-	AutoscaleHeadroom ElastigroupIntegrationNomadAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
-	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
-	MasterHost pulumi.StringInput `pulumi:"masterHost"`
-	MasterPort pulumi.IntInput `pulumi:"masterPort"`
+	AutoscaleCooldown    pulumi.IntPtrInput                                       `pulumi:"autoscaleCooldown"`
+	AutoscaleDown        ElastigroupIntegrationNomadAutoscaleDownPtrInput         `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom    ElastigroupIntegrationNomadAutoscaleHeadroomPtrInput     `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsEnabled   pulumi.BoolPtrInput                                      `pulumi:"autoscaleIsEnabled"`
+	MasterHost           pulumi.StringInput                                       `pulumi:"masterHost"`
+	MasterPort           pulumi.IntInput                                          `pulumi:"masterPort"`
 }
 
 func (ElastigroupIntegrationNomadArgs) ElementType() reflect.Type {
@@ -3779,7 +3875,8 @@ type ElastigroupIntegrationNomadPtrInput interface {
 
 type elastigroupIntegrationNomadPtrType ElastigroupIntegrationNomadArgs
 
-func ElastigroupIntegrationNomadPtr(v *ElastigroupIntegrationNomadArgs) ElastigroupIntegrationNomadPtrInput {	return (*elastigroupIntegrationNomadPtrType)(v)
+func ElastigroupIntegrationNomadPtr(v *ElastigroupIntegrationNomadArgs) ElastigroupIntegrationNomadPtrInput {
+	return (*elastigroupIntegrationNomadPtrType)(v)
 }
 
 func (*elastigroupIntegrationNomadPtrType) ElementType() reflect.Type {
@@ -3794,7 +3891,7 @@ func (i *elastigroupIntegrationNomadPtrType) ToElastigroupIntegrationNomadPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationNomadPtrOutput)
 }
 
-type ElastigroupIntegrationNomadOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationNomadOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationNomadOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationNomad)(nil)).Elem()
@@ -3818,38 +3915,42 @@ func (o ElastigroupIntegrationNomadOutput) ToElastigroupIntegrationNomadPtrOutpu
 	}).(ElastigroupIntegrationNomadPtrOutput)
 }
 func (o ElastigroupIntegrationNomadOutput) AclToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) *string { return v.AclToken }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) *string { return v.AclToken }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadOutput) AutoscaleConstraints() ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) []ElastigroupIntegrationNomadAutoscaleConstraint { return v.AutoscaleConstraints }).(ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) []ElastigroupIntegrationNomadAutoscaleConstraint {
+		return v.AutoscaleConstraints
+	}).(ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput)
 }
 
 func (o ElastigroupIntegrationNomadOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadOutput) AutoscaleDown() ElastigroupIntegrationNomadAutoscaleDownPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationNomadAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationNomadAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadOutput) AutoscaleHeadroom() ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleHeadroom { return v.AutoscaleHeadroom }).(ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleHeadroom {
+		return v.AutoscaleHeadroom
+	}).(ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadOutput) MasterHost() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) string { return v.MasterHost }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) string { return v.MasterHost }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationNomadOutput) MasterPort() pulumi.IntOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) int { return v.MasterPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) int { return v.MasterPort }).(pulumi.IntOutput)
 }
 
-type ElastigroupIntegrationNomadPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationNomadPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationNomadPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationNomad)(nil)).Elem()
@@ -3864,43 +3965,47 @@ func (o ElastigroupIntegrationNomadPtrOutput) ToElastigroupIntegrationNomadPtrOu
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) Elem() ElastigroupIntegrationNomadOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationNomad) ElastigroupIntegrationNomad { return *v }).(ElastigroupIntegrationNomadOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomad) ElastigroupIntegrationNomad { return *v }).(ElastigroupIntegrationNomadOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AclToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) *string { return v.AclToken }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) *string { return v.AclToken }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleConstraints() ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) []ElastigroupIntegrationNomadAutoscaleConstraint { return v.AutoscaleConstraints }).(ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) []ElastigroupIntegrationNomadAutoscaleConstraint {
+		return v.AutoscaleConstraints
+	}).(ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleDown() ElastigroupIntegrationNomadAutoscaleDownPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationNomadAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationNomadAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleHeadroom() ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleHeadroom { return v.AutoscaleHeadroom }).(ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleHeadroom {
+		return v.AutoscaleHeadroom
+	}).(ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) MasterHost() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) string { return v.MasterHost }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) string { return v.MasterHost }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) MasterPort() pulumi.IntOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomad) int { return v.MasterPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomad) int { return v.MasterPort }).(pulumi.IntOutput)
 }
 
 type ElastigroupIntegrationNomadAutoscaleConstraint struct {
-	Key string `pulumi:"key"`
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -3912,7 +4017,7 @@ type ElastigroupIntegrationNomadAutoscaleConstraintInput interface {
 }
 
 type ElastigroupIntegrationNomadAutoscaleConstraintArgs struct {
-	Key pulumi.StringInput `pulumi:"key"`
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -3949,7 +4054,7 @@ func (i ElastigroupIntegrationNomadAutoscaleConstraintArray) ToElastigroupIntegr
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput)
 }
 
-type ElastigroupIntegrationNomadAutoscaleConstraintOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationNomadAutoscaleConstraintOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationNomadAutoscaleConstraintOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationNomadAutoscaleConstraint)(nil)).Elem()
@@ -3964,14 +4069,14 @@ func (o ElastigroupIntegrationNomadAutoscaleConstraintOutput) ToElastigroupInteg
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleConstraintOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomadAutoscaleConstraint) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleConstraint) string { return v.Key }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleConstraintOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomadAutoscaleConstraint) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleConstraint) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupIntegrationNomadAutoscaleConstraint)(nil)).Elem()
@@ -3986,7 +4091,7 @@ func (o ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput) ToElastigroup
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput) Index(i pulumi.IntInput) ElastigroupIntegrationNomadAutoscaleConstraintOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupIntegrationNomadAutoscaleConstraint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupIntegrationNomadAutoscaleConstraint {
 		return vs[0].([]ElastigroupIntegrationNomadAutoscaleConstraint)[vs[1].(int)]
 	}).(ElastigroupIntegrationNomadAutoscaleConstraintOutput)
 }
@@ -4035,7 +4140,8 @@ type ElastigroupIntegrationNomadAutoscaleDownPtrInput interface {
 
 type elastigroupIntegrationNomadAutoscaleDownPtrType ElastigroupIntegrationNomadAutoscaleDownArgs
 
-func ElastigroupIntegrationNomadAutoscaleDownPtr(v *ElastigroupIntegrationNomadAutoscaleDownArgs) ElastigroupIntegrationNomadAutoscaleDownPtrInput {	return (*elastigroupIntegrationNomadAutoscaleDownPtrType)(v)
+func ElastigroupIntegrationNomadAutoscaleDownPtr(v *ElastigroupIntegrationNomadAutoscaleDownArgs) ElastigroupIntegrationNomadAutoscaleDownPtrInput {
+	return (*elastigroupIntegrationNomadAutoscaleDownPtrType)(v)
 }
 
 func (*elastigroupIntegrationNomadAutoscaleDownPtrType) ElementType() reflect.Type {
@@ -4050,7 +4156,7 @@ func (i *elastigroupIntegrationNomadAutoscaleDownPtrType) ToElastigroupIntegrati
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationNomadAutoscaleDownPtrOutput)
 }
 
-type ElastigroupIntegrationNomadAutoscaleDownOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationNomadAutoscaleDownOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationNomadAutoscaleDownOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationNomadAutoscaleDown)(nil)).Elem()
@@ -4074,10 +4180,10 @@ func (o ElastigroupIntegrationNomadAutoscaleDownOutput) ToElastigroupIntegration
 	}).(ElastigroupIntegrationNomadAutoscaleDownPtrOutput)
 }
 func (o ElastigroupIntegrationNomadAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomadAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
-type ElastigroupIntegrationNomadAutoscaleDownPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationNomadAutoscaleDownPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationNomadAutoscaleDownPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationNomadAutoscaleDown)(nil)).Elem()
@@ -4092,17 +4198,17 @@ func (o ElastigroupIntegrationNomadAutoscaleDownPtrOutput) ToElastigroupIntegrat
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationNomadAutoscaleDownOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationNomadAutoscaleDown) ElastigroupIntegrationNomadAutoscaleDown { return *v }).(ElastigroupIntegrationNomadAutoscaleDownOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomadAutoscaleDown) ElastigroupIntegrationNomadAutoscaleDown { return *v }).(ElastigroupIntegrationNomadAutoscaleDownOutput)
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomadAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationNomadAutoscaleHeadroom struct {
-	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits *int `pulumi:"numOfUnits"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
 }
 
 type ElastigroupIntegrationNomadAutoscaleHeadroomInput interface {
@@ -4113,9 +4219,9 @@ type ElastigroupIntegrationNomadAutoscaleHeadroomInput interface {
 }
 
 type ElastigroupIntegrationNomadAutoscaleHeadroomArgs struct {
-	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (ElastigroupIntegrationNomadAutoscaleHeadroomArgs) ElementType() reflect.Type {
@@ -4147,7 +4253,8 @@ type ElastigroupIntegrationNomadAutoscaleHeadroomPtrInput interface {
 
 type elastigroupIntegrationNomadAutoscaleHeadroomPtrType ElastigroupIntegrationNomadAutoscaleHeadroomArgs
 
-func ElastigroupIntegrationNomadAutoscaleHeadroomPtr(v *ElastigroupIntegrationNomadAutoscaleHeadroomArgs) ElastigroupIntegrationNomadAutoscaleHeadroomPtrInput {	return (*elastigroupIntegrationNomadAutoscaleHeadroomPtrType)(v)
+func ElastigroupIntegrationNomadAutoscaleHeadroomPtr(v *ElastigroupIntegrationNomadAutoscaleHeadroomArgs) ElastigroupIntegrationNomadAutoscaleHeadroomPtrInput {
+	return (*elastigroupIntegrationNomadAutoscaleHeadroomPtrType)(v)
 }
 
 func (*elastigroupIntegrationNomadAutoscaleHeadroomPtrType) ElementType() reflect.Type {
@@ -4162,7 +4269,7 @@ func (i *elastigroupIntegrationNomadAutoscaleHeadroomPtrType) ToElastigroupInteg
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput)
 }
 
-type ElastigroupIntegrationNomadAutoscaleHeadroomOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationNomadAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationNomadAutoscaleHeadroomOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationNomadAutoscaleHeadroom)(nil)).Elem()
@@ -4186,18 +4293,18 @@ func (o ElastigroupIntegrationNomadAutoscaleHeadroomOutput) ToElastigroupIntegra
 	}).(ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput)
 }
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
-type ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationNomadAutoscaleHeadroom)(nil)).Elem()
@@ -4212,26 +4319,28 @@ func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) ToElastigroupInte
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationNomadAutoscaleHeadroomOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationNomadAutoscaleHeadroom) ElastigroupIntegrationNomadAutoscaleHeadroom { return *v }).(ElastigroupIntegrationNomadAutoscaleHeadroomOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomadAutoscaleHeadroom) ElastigroupIntegrationNomadAutoscaleHeadroom {
+		return *v
+	}).(ElastigroupIntegrationNomadAutoscaleHeadroomOutput)
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationRancher struct {
-	AccessKey string `pulumi:"accessKey"`
-	MasterHost string `pulumi:"masterHost"`
-	SecretKey string `pulumi:"secretKey"`
-	Version *string `pulumi:"version"`
+	AccessKey  string  `pulumi:"accessKey"`
+	MasterHost string  `pulumi:"masterHost"`
+	SecretKey  string  `pulumi:"secretKey"`
+	Version    *string `pulumi:"version"`
 }
 
 type ElastigroupIntegrationRancherInput interface {
@@ -4242,10 +4351,10 @@ type ElastigroupIntegrationRancherInput interface {
 }
 
 type ElastigroupIntegrationRancherArgs struct {
-	AccessKey pulumi.StringInput `pulumi:"accessKey"`
-	MasterHost pulumi.StringInput `pulumi:"masterHost"`
-	SecretKey pulumi.StringInput `pulumi:"secretKey"`
-	Version pulumi.StringPtrInput `pulumi:"version"`
+	AccessKey  pulumi.StringInput    `pulumi:"accessKey"`
+	MasterHost pulumi.StringInput    `pulumi:"masterHost"`
+	SecretKey  pulumi.StringInput    `pulumi:"secretKey"`
+	Version    pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ElastigroupIntegrationRancherArgs) ElementType() reflect.Type {
@@ -4277,7 +4386,8 @@ type ElastigroupIntegrationRancherPtrInput interface {
 
 type elastigroupIntegrationRancherPtrType ElastigroupIntegrationRancherArgs
 
-func ElastigroupIntegrationRancherPtr(v *ElastigroupIntegrationRancherArgs) ElastigroupIntegrationRancherPtrInput {	return (*elastigroupIntegrationRancherPtrType)(v)
+func ElastigroupIntegrationRancherPtr(v *ElastigroupIntegrationRancherArgs) ElastigroupIntegrationRancherPtrInput {
+	return (*elastigroupIntegrationRancherPtrType)(v)
 }
 
 func (*elastigroupIntegrationRancherPtrType) ElementType() reflect.Type {
@@ -4292,7 +4402,7 @@ func (i *elastigroupIntegrationRancherPtrType) ToElastigroupIntegrationRancherPt
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationRancherPtrOutput)
 }
 
-type ElastigroupIntegrationRancherOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationRancherOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationRancherOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationRancher)(nil)).Elem()
@@ -4316,22 +4426,22 @@ func (o ElastigroupIntegrationRancherOutput) ToElastigroupIntegrationRancherPtrO
 	}).(ElastigroupIntegrationRancherPtrOutput)
 }
 func (o ElastigroupIntegrationRancherOutput) AccessKey() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRancher) string { return v.AccessKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRancher) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationRancherOutput) MasterHost() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRancher) string { return v.MasterHost }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRancher) string { return v.MasterHost }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationRancherOutput) SecretKey() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRancher) string { return v.SecretKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRancher) string { return v.SecretKey }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationRancherOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRancher) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRancher) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupIntegrationRancherPtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationRancherPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationRancherPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationRancher)(nil)).Elem()
@@ -4346,23 +4456,23 @@ func (o ElastigroupIntegrationRancherPtrOutput) ToElastigroupIntegrationRancherP
 }
 
 func (o ElastigroupIntegrationRancherPtrOutput) Elem() ElastigroupIntegrationRancherOutput {
-	return o.ApplyT(func (v *ElastigroupIntegrationRancher) ElastigroupIntegrationRancher { return *v }).(ElastigroupIntegrationRancherOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationRancher) ElastigroupIntegrationRancher { return *v }).(ElastigroupIntegrationRancherOutput)
 }
 
 func (o ElastigroupIntegrationRancherPtrOutput) AccessKey() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRancher) string { return v.AccessKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRancher) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationRancherPtrOutput) MasterHost() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRancher) string { return v.MasterHost }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRancher) string { return v.MasterHost }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationRancherPtrOutput) SecretKey() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRancher) string { return v.SecretKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRancher) string { return v.SecretKey }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationRancherPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRancher) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRancher) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationRoute53 struct {
@@ -4409,7 +4519,8 @@ type ElastigroupIntegrationRoute53PtrInput interface {
 
 type elastigroupIntegrationRoute53PtrType ElastigroupIntegrationRoute53Args
 
-func ElastigroupIntegrationRoute53Ptr(v *ElastigroupIntegrationRoute53Args) ElastigroupIntegrationRoute53PtrInput {	return (*elastigroupIntegrationRoute53PtrType)(v)
+func ElastigroupIntegrationRoute53Ptr(v *ElastigroupIntegrationRoute53Args) ElastigroupIntegrationRoute53PtrInput {
+	return (*elastigroupIntegrationRoute53PtrType)(v)
 }
 
 func (*elastigroupIntegrationRoute53PtrType) ElementType() reflect.Type {
@@ -4424,7 +4535,7 @@ func (i *elastigroupIntegrationRoute53PtrType) ToElastigroupIntegrationRoute53Pt
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationRoute53PtrOutput)
 }
 
-type ElastigroupIntegrationRoute53Output struct { *pulumi.OutputState }
+type ElastigroupIntegrationRoute53Output struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationRoute53Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationRoute53)(nil)).Elem()
@@ -4448,10 +4559,10 @@ func (o ElastigroupIntegrationRoute53Output) ToElastigroupIntegrationRoute53PtrO
 	}).(ElastigroupIntegrationRoute53PtrOutput)
 }
 func (o ElastigroupIntegrationRoute53Output) Domains() ElastigroupIntegrationRoute53DomainArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRoute53) []ElastigroupIntegrationRoute53Domain { return v.Domains }).(ElastigroupIntegrationRoute53DomainArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRoute53) []ElastigroupIntegrationRoute53Domain { return v.Domains }).(ElastigroupIntegrationRoute53DomainArrayOutput)
 }
 
-type ElastigroupIntegrationRoute53PtrOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationRoute53PtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationRoute53PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupIntegrationRoute53)(nil)).Elem()
@@ -4466,17 +4577,17 @@ func (o ElastigroupIntegrationRoute53PtrOutput) ToElastigroupIntegrationRoute53P
 }
 
 func (o ElastigroupIntegrationRoute53PtrOutput) Elem() ElastigroupIntegrationRoute53Output {
-	return o.ApplyT(func (v *ElastigroupIntegrationRoute53) ElastigroupIntegrationRoute53 { return *v }).(ElastigroupIntegrationRoute53Output)
+	return o.ApplyT(func(v *ElastigroupIntegrationRoute53) ElastigroupIntegrationRoute53 { return *v }).(ElastigroupIntegrationRoute53Output)
 }
 
 func (o ElastigroupIntegrationRoute53PtrOutput) Domains() ElastigroupIntegrationRoute53DomainArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRoute53) []ElastigroupIntegrationRoute53Domain { return v.Domains }).(ElastigroupIntegrationRoute53DomainArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRoute53) []ElastigroupIntegrationRoute53Domain { return v.Domains }).(ElastigroupIntegrationRoute53DomainArrayOutput)
 }
 
 type ElastigroupIntegrationRoute53Domain struct {
-	HostedZoneId string `pulumi:"hostedZoneId"`
-	RecordSets []ElastigroupIntegrationRoute53DomainRecordSet `pulumi:"recordSets"`
-	SpotinstAcctId *string `pulumi:"spotinstAcctId"`
+	HostedZoneId   string                                         `pulumi:"hostedZoneId"`
+	RecordSets     []ElastigroupIntegrationRoute53DomainRecordSet `pulumi:"recordSets"`
+	SpotinstAcctId *string                                        `pulumi:"spotinstAcctId"`
 }
 
 type ElastigroupIntegrationRoute53DomainInput interface {
@@ -4487,9 +4598,9 @@ type ElastigroupIntegrationRoute53DomainInput interface {
 }
 
 type ElastigroupIntegrationRoute53DomainArgs struct {
-	HostedZoneId pulumi.StringInput `pulumi:"hostedZoneId"`
-	RecordSets ElastigroupIntegrationRoute53DomainRecordSetArrayInput `pulumi:"recordSets"`
-	SpotinstAcctId pulumi.StringPtrInput `pulumi:"spotinstAcctId"`
+	HostedZoneId   pulumi.StringInput                                     `pulumi:"hostedZoneId"`
+	RecordSets     ElastigroupIntegrationRoute53DomainRecordSetArrayInput `pulumi:"recordSets"`
+	SpotinstAcctId pulumi.StringPtrInput                                  `pulumi:"spotinstAcctId"`
 }
 
 func (ElastigroupIntegrationRoute53DomainArgs) ElementType() reflect.Type {
@@ -4525,7 +4636,7 @@ func (i ElastigroupIntegrationRoute53DomainArray) ToElastigroupIntegrationRoute5
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationRoute53DomainArrayOutput)
 }
 
-type ElastigroupIntegrationRoute53DomainOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationRoute53DomainOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationRoute53DomainOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationRoute53Domain)(nil)).Elem()
@@ -4540,18 +4651,20 @@ func (o ElastigroupIntegrationRoute53DomainOutput) ToElastigroupIntegrationRoute
 }
 
 func (o ElastigroupIntegrationRoute53DomainOutput) HostedZoneId() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRoute53Domain) string { return v.HostedZoneId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRoute53Domain) string { return v.HostedZoneId }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationRoute53DomainOutput) RecordSets() ElastigroupIntegrationRoute53DomainRecordSetArrayOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRoute53Domain) []ElastigroupIntegrationRoute53DomainRecordSet { return v.RecordSets }).(ElastigroupIntegrationRoute53DomainRecordSetArrayOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRoute53Domain) []ElastigroupIntegrationRoute53DomainRecordSet {
+		return v.RecordSets
+	}).(ElastigroupIntegrationRoute53DomainRecordSetArrayOutput)
 }
 
 func (o ElastigroupIntegrationRoute53DomainOutput) SpotinstAcctId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRoute53Domain) *string { return v.SpotinstAcctId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRoute53Domain) *string { return v.SpotinstAcctId }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupIntegrationRoute53DomainArrayOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationRoute53DomainArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationRoute53DomainArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupIntegrationRoute53Domain)(nil)).Elem()
@@ -4566,15 +4679,15 @@ func (o ElastigroupIntegrationRoute53DomainArrayOutput) ToElastigroupIntegration
 }
 
 func (o ElastigroupIntegrationRoute53DomainArrayOutput) Index(i pulumi.IntInput) ElastigroupIntegrationRoute53DomainOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupIntegrationRoute53Domain {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupIntegrationRoute53Domain {
 		return vs[0].([]ElastigroupIntegrationRoute53Domain)[vs[1].(int)]
 	}).(ElastigroupIntegrationRoute53DomainOutput)
 }
 
 type ElastigroupIntegrationRoute53DomainRecordSet struct {
 	// The group name.
-	Name string `pulumi:"name"`
-	UsePublicIp *bool `pulumi:"usePublicIp"`
+	Name        string `pulumi:"name"`
+	UsePublicIp *bool  `pulumi:"usePublicIp"`
 }
 
 type ElastigroupIntegrationRoute53DomainRecordSetInput interface {
@@ -4586,7 +4699,7 @@ type ElastigroupIntegrationRoute53DomainRecordSetInput interface {
 
 type ElastigroupIntegrationRoute53DomainRecordSetArgs struct {
 	// The group name.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name        pulumi.StringInput  `pulumi:"name"`
 	UsePublicIp pulumi.BoolPtrInput `pulumi:"usePublicIp"`
 }
 
@@ -4623,7 +4736,7 @@ func (i ElastigroupIntegrationRoute53DomainRecordSetArray) ToElastigroupIntegrat
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationRoute53DomainRecordSetArrayOutput)
 }
 
-type ElastigroupIntegrationRoute53DomainRecordSetOutput struct { *pulumi.OutputState }
+type ElastigroupIntegrationRoute53DomainRecordSetOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationRoute53DomainRecordSetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupIntegrationRoute53DomainRecordSet)(nil)).Elem()
@@ -4639,14 +4752,14 @@ func (o ElastigroupIntegrationRoute53DomainRecordSetOutput) ToElastigroupIntegra
 
 // The group name.
 func (o ElastigroupIntegrationRoute53DomainRecordSetOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRoute53DomainRecordSet) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRoute53DomainRecordSet) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupIntegrationRoute53DomainRecordSetOutput) UsePublicIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupIntegrationRoute53DomainRecordSet) *bool { return v.UsePublicIp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupIntegrationRoute53DomainRecordSet) *bool { return v.UsePublicIp }).(pulumi.BoolPtrOutput)
 }
 
-type ElastigroupIntegrationRoute53DomainRecordSetArrayOutput struct { *pulumi.OutputState}
+type ElastigroupIntegrationRoute53DomainRecordSetArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationRoute53DomainRecordSetArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupIntegrationRoute53DomainRecordSet)(nil)).Elem()
@@ -4661,13 +4774,13 @@ func (o ElastigroupIntegrationRoute53DomainRecordSetArrayOutput) ToElastigroupIn
 }
 
 func (o ElastigroupIntegrationRoute53DomainRecordSetArrayOutput) Index(i pulumi.IntInput) ElastigroupIntegrationRoute53DomainRecordSetOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupIntegrationRoute53DomainRecordSet {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupIntegrationRoute53DomainRecordSet {
 		return vs[0].([]ElastigroupIntegrationRoute53DomainRecordSet)[vs[1].(int)]
 	}).(ElastigroupIntegrationRoute53DomainRecordSetOutput)
 }
 
 type ElastigroupMultaiTargetSet struct {
-	BalancerId string `pulumi:"balancerId"`
+	BalancerId  string `pulumi:"balancerId"`
 	TargetSetId string `pulumi:"targetSetId"`
 }
 
@@ -4679,7 +4792,7 @@ type ElastigroupMultaiTargetSetInput interface {
 }
 
 type ElastigroupMultaiTargetSetArgs struct {
-	BalancerId pulumi.StringInput `pulumi:"balancerId"`
+	BalancerId  pulumi.StringInput `pulumi:"balancerId"`
 	TargetSetId pulumi.StringInput `pulumi:"targetSetId"`
 }
 
@@ -4716,7 +4829,7 @@ func (i ElastigroupMultaiTargetSetArray) ToElastigroupMultaiTargetSetArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultaiTargetSetArrayOutput)
 }
 
-type ElastigroupMultaiTargetSetOutput struct { *pulumi.OutputState }
+type ElastigroupMultaiTargetSetOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupMultaiTargetSetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupMultaiTargetSet)(nil)).Elem()
@@ -4731,14 +4844,14 @@ func (o ElastigroupMultaiTargetSetOutput) ToElastigroupMultaiTargetSetOutputWith
 }
 
 func (o ElastigroupMultaiTargetSetOutput) BalancerId() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupMultaiTargetSet) string { return v.BalancerId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupMultaiTargetSet) string { return v.BalancerId }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupMultaiTargetSetOutput) TargetSetId() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupMultaiTargetSet) string { return v.TargetSetId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupMultaiTargetSet) string { return v.TargetSetId }).(pulumi.StringOutput)
 }
 
-type ElastigroupMultaiTargetSetArrayOutput struct { *pulumi.OutputState}
+type ElastigroupMultaiTargetSetArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupMultaiTargetSetArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupMultaiTargetSet)(nil)).Elem()
@@ -4753,20 +4866,20 @@ func (o ElastigroupMultaiTargetSetArrayOutput) ToElastigroupMultaiTargetSetArray
 }
 
 func (o ElastigroupMultaiTargetSetArrayOutput) Index(i pulumi.IntInput) ElastigroupMultaiTargetSetOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupMultaiTargetSet {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupMultaiTargetSet {
 		return vs[0].([]ElastigroupMultaiTargetSet)[vs[1].(int)]
 	}).(ElastigroupMultaiTargetSetOutput)
 }
 
 type ElastigroupNetworkInterface struct {
-	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
+	AssociateIpv6Address     *bool `pulumi:"associateIpv6Address"`
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
+	DeleteOnTermination      *bool `pulumi:"deleteOnTermination"`
 	// The group description.
-	Description *string `pulumi:"description"`
-	DeviceIndex string `pulumi:"deviceIndex"`
-	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
-	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	Description                    *string `pulumi:"description"`
+	DeviceIndex                    string  `pulumi:"deviceIndex"`
+	NetworkInterfaceId             *string `pulumi:"networkInterfaceId"`
+	PrivateIpAddress               *string `pulumi:"privateIpAddress"`
 	SecondaryPrivateIpAddressCount *string `pulumi:"secondaryPrivateIpAddressCount"`
 }
 
@@ -4778,14 +4891,14 @@ type ElastigroupNetworkInterfaceInput interface {
 }
 
 type ElastigroupNetworkInterfaceArgs struct {
-	AssociateIpv6Address pulumi.BoolPtrInput `pulumi:"associateIpv6Address"`
+	AssociateIpv6Address     pulumi.BoolPtrInput `pulumi:"associateIpv6Address"`
 	AssociatePublicIpAddress pulumi.BoolPtrInput `pulumi:"associatePublicIpAddress"`
-	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
+	DeleteOnTermination      pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
 	// The group description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	DeviceIndex pulumi.StringInput `pulumi:"deviceIndex"`
-	NetworkInterfaceId pulumi.StringPtrInput `pulumi:"networkInterfaceId"`
-	PrivateIpAddress pulumi.StringPtrInput `pulumi:"privateIpAddress"`
+	Description                    pulumi.StringPtrInput `pulumi:"description"`
+	DeviceIndex                    pulumi.StringInput    `pulumi:"deviceIndex"`
+	NetworkInterfaceId             pulumi.StringPtrInput `pulumi:"networkInterfaceId"`
+	PrivateIpAddress               pulumi.StringPtrInput `pulumi:"privateIpAddress"`
 	SecondaryPrivateIpAddressCount pulumi.StringPtrInput `pulumi:"secondaryPrivateIpAddressCount"`
 }
 
@@ -4822,7 +4935,7 @@ func (i ElastigroupNetworkInterfaceArray) ToElastigroupNetworkInterfaceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkInterfaceArrayOutput)
 }
 
-type ElastigroupNetworkInterfaceOutput struct { *pulumi.OutputState }
+type ElastigroupNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupNetworkInterfaceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupNetworkInterface)(nil)).Elem()
@@ -4837,39 +4950,39 @@ func (o ElastigroupNetworkInterfaceOutput) ToElastigroupNetworkInterfaceOutputWi
 }
 
 func (o ElastigroupNetworkInterfaceOutput) AssociateIpv6Address() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupNetworkInterface) *bool { return v.AssociateIpv6Address }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupNetworkInterface) *bool { return v.AssociateIpv6Address }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupNetworkInterfaceOutput) AssociatePublicIpAddress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupNetworkInterface) *bool { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupNetworkInterface) *bool { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupNetworkInterfaceOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupNetworkInterface) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupNetworkInterface) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
 // The group description.
 func (o ElastigroupNetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupNetworkInterface) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupNetworkInterface) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupNetworkInterfaceOutput) DeviceIndex() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupNetworkInterface) string { return v.DeviceIndex }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupNetworkInterface) string { return v.DeviceIndex }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupNetworkInterfaceOutput) NetworkInterfaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupNetworkInterface) *string { return v.NetworkInterfaceId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupNetworkInterface) *string { return v.NetworkInterfaceId }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupNetworkInterfaceOutput) PrivateIpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupNetworkInterface) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupNetworkInterface) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupNetworkInterfaceOutput) SecondaryPrivateIpAddressCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupNetworkInterface) *string { return v.SecondaryPrivateIpAddressCount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupNetworkInterface) *string { return v.SecondaryPrivateIpAddressCount }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupNetworkInterfaceArrayOutput struct { *pulumi.OutputState}
+type ElastigroupNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupNetworkInterfaceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupNetworkInterface)(nil)).Elem()
@@ -4884,7 +4997,7 @@ func (o ElastigroupNetworkInterfaceArrayOutput) ToElastigroupNetworkInterfaceArr
 }
 
 func (o ElastigroupNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ElastigroupNetworkInterfaceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupNetworkInterface {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupNetworkInterface {
 		return vs[0].([]ElastigroupNetworkInterface)[vs[1].(int)]
 	}).(ElastigroupNetworkInterfaceOutput)
 }
@@ -4939,7 +5052,8 @@ type ElastigroupRevertToSpotPtrInput interface {
 
 type elastigroupRevertToSpotPtrType ElastigroupRevertToSpotArgs
 
-func ElastigroupRevertToSpotPtr(v *ElastigroupRevertToSpotArgs) ElastigroupRevertToSpotPtrInput {	return (*elastigroupRevertToSpotPtrType)(v)
+func ElastigroupRevertToSpotPtr(v *ElastigroupRevertToSpotArgs) ElastigroupRevertToSpotPtrInput {
+	return (*elastigroupRevertToSpotPtrType)(v)
 }
 
 func (*elastigroupRevertToSpotPtrType) ElementType() reflect.Type {
@@ -4954,7 +5068,7 @@ func (i *elastigroupRevertToSpotPtrType) ToElastigroupRevertToSpotPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupRevertToSpotPtrOutput)
 }
 
-type ElastigroupRevertToSpotOutput struct { *pulumi.OutputState }
+type ElastigroupRevertToSpotOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupRevertToSpotOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupRevertToSpot)(nil)).Elem()
@@ -4977,17 +5091,18 @@ func (o ElastigroupRevertToSpotOutput) ToElastigroupRevertToSpotPtrOutputWithCon
 		return &v
 	}).(ElastigroupRevertToSpotPtrOutput)
 }
+
 // In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
 func (o ElastigroupRevertToSpotOutput) PerformAt() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
 }
 
 // Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
 func (o ElastigroupRevertToSpotOutput) TimeWindows() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ElastigroupRevertToSpot) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ElastigroupRevertToSpot) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
 }
 
-type ElastigroupRevertToSpotPtrOutput struct { *pulumi.OutputState}
+type ElastigroupRevertToSpotPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupRevertToSpotPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupRevertToSpot)(nil)).Elem()
@@ -5002,40 +5117,40 @@ func (o ElastigroupRevertToSpotPtrOutput) ToElastigroupRevertToSpotPtrOutputWith
 }
 
 func (o ElastigroupRevertToSpotPtrOutput) Elem() ElastigroupRevertToSpotOutput {
-	return o.ApplyT(func (v *ElastigroupRevertToSpot) ElastigroupRevertToSpot { return *v }).(ElastigroupRevertToSpotOutput)
+	return o.ApplyT(func(v *ElastigroupRevertToSpot) ElastigroupRevertToSpot { return *v }).(ElastigroupRevertToSpotOutput)
 }
 
 // In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
 func (o ElastigroupRevertToSpotPtrOutput) PerformAt() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
 }
 
 // Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
 func (o ElastigroupRevertToSpotPtrOutput) TimeWindows() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ElastigroupRevertToSpot) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ElastigroupRevertToSpot) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
 }
 
 type ElastigroupScalingDownPolicy struct {
-	ActionType *string `pulumi:"actionType"`
-	Adjustment *string `pulumi:"adjustment"`
-	Cooldown *int `pulumi:"cooldown"`
-	Dimensions []ElastigroupScalingDownPolicyDimension `pulumi:"dimensions"`
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
-	IsEnabled *bool `pulumi:"isEnabled"`
-	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
-	Maximum *string `pulumi:"maximum"`
-	MetricName string `pulumi:"metricName"`
-	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
-	Minimum *string `pulumi:"minimum"`
-	Namespace string `pulumi:"namespace"`
-	Operator *string `pulumi:"operator"`
-	Period *int `pulumi:"period"`
-	PolicyName string `pulumi:"policyName"`
-	Source *string `pulumi:"source"`
-	Statistic *string `pulumi:"statistic"`
-	Target *string `pulumi:"target"`
-	Threshold float64 `pulumi:"threshold"`
-	Unit string `pulumi:"unit"`
+	ActionType        *string                                 `pulumi:"actionType"`
+	Adjustment        *string                                 `pulumi:"adjustment"`
+	Cooldown          *int                                    `pulumi:"cooldown"`
+	Dimensions        []ElastigroupScalingDownPolicyDimension `pulumi:"dimensions"`
+	EvaluationPeriods *int                                    `pulumi:"evaluationPeriods"`
+	IsEnabled         *bool                                   `pulumi:"isEnabled"`
+	MaxTargetCapacity *string                                 `pulumi:"maxTargetCapacity"`
+	Maximum           *string                                 `pulumi:"maximum"`
+	MetricName        string                                  `pulumi:"metricName"`
+	MinTargetCapacity *string                                 `pulumi:"minTargetCapacity"`
+	Minimum           *string                                 `pulumi:"minimum"`
+	Namespace         string                                  `pulumi:"namespace"`
+	Operator          *string                                 `pulumi:"operator"`
+	Period            *int                                    `pulumi:"period"`
+	PolicyName        string                                  `pulumi:"policyName"`
+	Source            *string                                 `pulumi:"source"`
+	Statistic         *string                                 `pulumi:"statistic"`
+	Target            *string                                 `pulumi:"target"`
+	Threshold         float64                                 `pulumi:"threshold"`
+	Unit              string                                  `pulumi:"unit"`
 }
 
 type ElastigroupScalingDownPolicyInput interface {
@@ -5046,26 +5161,26 @@ type ElastigroupScalingDownPolicyInput interface {
 }
 
 type ElastigroupScalingDownPolicyArgs struct {
-	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
-	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
-	Dimensions ElastigroupScalingDownPolicyDimensionArrayInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
-	Maximum pulumi.StringPtrInput `pulumi:"maximum"`
-	MetricName pulumi.StringInput `pulumi:"metricName"`
-	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
-	Minimum pulumi.StringPtrInput `pulumi:"minimum"`
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	Period pulumi.IntPtrInput `pulumi:"period"`
-	PolicyName pulumi.StringInput `pulumi:"policyName"`
-	Source pulumi.StringPtrInput `pulumi:"source"`
-	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
-	Target pulumi.StringPtrInput `pulumi:"target"`
-	Threshold pulumi.Float64Input `pulumi:"threshold"`
-	Unit pulumi.StringInput `pulumi:"unit"`
+	ActionType        pulumi.StringPtrInput                           `pulumi:"actionType"`
+	Adjustment        pulumi.StringPtrInput                           `pulumi:"adjustment"`
+	Cooldown          pulumi.IntPtrInput                              `pulumi:"cooldown"`
+	Dimensions        ElastigroupScalingDownPolicyDimensionArrayInput `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput                              `pulumi:"evaluationPeriods"`
+	IsEnabled         pulumi.BoolPtrInput                             `pulumi:"isEnabled"`
+	MaxTargetCapacity pulumi.StringPtrInput                           `pulumi:"maxTargetCapacity"`
+	Maximum           pulumi.StringPtrInput                           `pulumi:"maximum"`
+	MetricName        pulumi.StringInput                              `pulumi:"metricName"`
+	MinTargetCapacity pulumi.StringPtrInput                           `pulumi:"minTargetCapacity"`
+	Minimum           pulumi.StringPtrInput                           `pulumi:"minimum"`
+	Namespace         pulumi.StringInput                              `pulumi:"namespace"`
+	Operator          pulumi.StringPtrInput                           `pulumi:"operator"`
+	Period            pulumi.IntPtrInput                              `pulumi:"period"`
+	PolicyName        pulumi.StringInput                              `pulumi:"policyName"`
+	Source            pulumi.StringPtrInput                           `pulumi:"source"`
+	Statistic         pulumi.StringPtrInput                           `pulumi:"statistic"`
+	Target            pulumi.StringPtrInput                           `pulumi:"target"`
+	Threshold         pulumi.Float64Input                             `pulumi:"threshold"`
+	Unit              pulumi.StringInput                              `pulumi:"unit"`
 }
 
 func (ElastigroupScalingDownPolicyArgs) ElementType() reflect.Type {
@@ -5101,7 +5216,7 @@ func (i ElastigroupScalingDownPolicyArray) ToElastigroupScalingDownPolicyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyArrayOutput)
 }
 
-type ElastigroupScalingDownPolicyOutput struct { *pulumi.OutputState }
+type ElastigroupScalingDownPolicyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingDownPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupScalingDownPolicy)(nil)).Elem()
@@ -5116,86 +5231,86 @@ func (o ElastigroupScalingDownPolicyOutput) ToElastigroupScalingDownPolicyOutput
 }
 
 func (o ElastigroupScalingDownPolicyOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Dimensions() ElastigroupScalingDownPolicyDimensionArrayOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) []ElastigroupScalingDownPolicyDimension { return v.Dimensions }).(ElastigroupScalingDownPolicyDimensionArrayOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) []ElastigroupScalingDownPolicyDimension { return v.Dimensions }).(ElastigroupScalingDownPolicyDimensionArrayOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Maximum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) MinTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Minimum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) PolicyName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Statistic() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Threshold() pulumi.Float64Output {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
 func (o ElastigroupScalingDownPolicyOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicy) string { return v.Unit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-type ElastigroupScalingDownPolicyArrayOutput struct { *pulumi.OutputState}
+type ElastigroupScalingDownPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingDownPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupScalingDownPolicy)(nil)).Elem()
@@ -5210,14 +5325,14 @@ func (o ElastigroupScalingDownPolicyArrayOutput) ToElastigroupScalingDownPolicyA
 }
 
 func (o ElastigroupScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingDownPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupScalingDownPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingDownPolicy {
 		return vs[0].([]ElastigroupScalingDownPolicy)[vs[1].(int)]
 	}).(ElastigroupScalingDownPolicyOutput)
 }
 
 type ElastigroupScalingDownPolicyDimension struct {
 	// The group name.
-	Name string `pulumi:"name"`
+	Name  string  `pulumi:"name"`
 	Value *string `pulumi:"value"`
 }
 
@@ -5230,7 +5345,7 @@ type ElastigroupScalingDownPolicyDimensionInput interface {
 
 type ElastigroupScalingDownPolicyDimensionArgs struct {
 	// The group name.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name  pulumi.StringInput    `pulumi:"name"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5267,7 +5382,7 @@ func (i ElastigroupScalingDownPolicyDimensionArray) ToElastigroupScalingDownPoli
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyDimensionArrayOutput)
 }
 
-type ElastigroupScalingDownPolicyDimensionOutput struct { *pulumi.OutputState }
+type ElastigroupScalingDownPolicyDimensionOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingDownPolicyDimensionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupScalingDownPolicyDimension)(nil)).Elem()
@@ -5283,14 +5398,14 @@ func (o ElastigroupScalingDownPolicyDimensionOutput) ToElastigroupScalingDownPol
 
 // The group name.
 func (o ElastigroupScalingDownPolicyDimensionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingDownPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingDownPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupScalingDownPolicyDimensionArrayOutput struct { *pulumi.OutputState}
+type ElastigroupScalingDownPolicyDimensionArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingDownPolicyDimensionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupScalingDownPolicyDimension)(nil)).Elem()
@@ -5305,7 +5420,7 @@ func (o ElastigroupScalingDownPolicyDimensionArrayOutput) ToElastigroupScalingDo
 }
 
 func (o ElastigroupScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingDownPolicyDimensionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupScalingDownPolicyDimension {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingDownPolicyDimension {
 		return vs[0].([]ElastigroupScalingDownPolicyDimension)[vs[1].(int)]
 	}).(ElastigroupScalingDownPolicyDimensionOutput)
 }
@@ -5364,7 +5479,7 @@ func (i ElastigroupScalingStrategyArray) ToElastigroupScalingStrategyArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingStrategyArrayOutput)
 }
 
-type ElastigroupScalingStrategyOutput struct { *pulumi.OutputState }
+type ElastigroupScalingStrategyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingStrategyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupScalingStrategy)(nil)).Elem()
@@ -5380,15 +5495,15 @@ func (o ElastigroupScalingStrategyOutput) ToElastigroupScalingStrategyOutputWith
 
 // Specify whether to terminate instances at the end of each billing hour.
 func (o ElastigroupScalingStrategyOutput) TerminateAtEndOfBillingHour() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingStrategy) *bool { return v.TerminateAtEndOfBillingHour }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingStrategy) *bool { return v.TerminateAtEndOfBillingHour }).(pulumi.BoolPtrOutput)
 }
 
 // - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `"default"`, `"newestInstance"`.
 func (o ElastigroupScalingStrategyOutput) TerminationPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingStrategy) *string { return v.TerminationPolicy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingStrategy) *string { return v.TerminationPolicy }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupScalingStrategyArrayOutput struct { *pulumi.OutputState}
+type ElastigroupScalingStrategyArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingStrategyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupScalingStrategy)(nil)).Elem()
@@ -5403,22 +5518,22 @@ func (o ElastigroupScalingStrategyArrayOutput) ToElastigroupScalingStrategyArray
 }
 
 func (o ElastigroupScalingStrategyArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingStrategyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupScalingStrategy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingStrategy {
 		return vs[0].([]ElastigroupScalingStrategy)[vs[1].(int)]
 	}).(ElastigroupScalingStrategyOutput)
 }
 
 type ElastigroupScalingTargetPolicy struct {
-	Cooldown *int `pulumi:"cooldown"`
-	Dimensions []ElastigroupScalingTargetPolicyDimension `pulumi:"dimensions"`
-	MetricName string `pulumi:"metricName"`
-	Namespace string `pulumi:"namespace"`
-	PolicyName string `pulumi:"policyName"`
-	PredictiveMode *string `pulumi:"predictiveMode"`
-	Source *string `pulumi:"source"`
-	Statistic *string `pulumi:"statistic"`
-	Target float64 `pulumi:"target"`
-	Unit string `pulumi:"unit"`
+	Cooldown       *int                                      `pulumi:"cooldown"`
+	Dimensions     []ElastigroupScalingTargetPolicyDimension `pulumi:"dimensions"`
+	MetricName     string                                    `pulumi:"metricName"`
+	Namespace      string                                    `pulumi:"namespace"`
+	PolicyName     string                                    `pulumi:"policyName"`
+	PredictiveMode *string                                   `pulumi:"predictiveMode"`
+	Source         *string                                   `pulumi:"source"`
+	Statistic      *string                                   `pulumi:"statistic"`
+	Target         float64                                   `pulumi:"target"`
+	Unit           string                                    `pulumi:"unit"`
 }
 
 type ElastigroupScalingTargetPolicyInput interface {
@@ -5429,16 +5544,16 @@ type ElastigroupScalingTargetPolicyInput interface {
 }
 
 type ElastigroupScalingTargetPolicyArgs struct {
-	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
-	Dimensions ElastigroupScalingTargetPolicyDimensionArrayInput `pulumi:"dimensions"`
-	MetricName pulumi.StringInput `pulumi:"metricName"`
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	PolicyName pulumi.StringInput `pulumi:"policyName"`
-	PredictiveMode pulumi.StringPtrInput `pulumi:"predictiveMode"`
-	Source pulumi.StringPtrInput `pulumi:"source"`
-	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
-	Target pulumi.Float64Input `pulumi:"target"`
-	Unit pulumi.StringInput `pulumi:"unit"`
+	Cooldown       pulumi.IntPtrInput                                `pulumi:"cooldown"`
+	Dimensions     ElastigroupScalingTargetPolicyDimensionArrayInput `pulumi:"dimensions"`
+	MetricName     pulumi.StringInput                                `pulumi:"metricName"`
+	Namespace      pulumi.StringInput                                `pulumi:"namespace"`
+	PolicyName     pulumi.StringInput                                `pulumi:"policyName"`
+	PredictiveMode pulumi.StringPtrInput                             `pulumi:"predictiveMode"`
+	Source         pulumi.StringPtrInput                             `pulumi:"source"`
+	Statistic      pulumi.StringPtrInput                             `pulumi:"statistic"`
+	Target         pulumi.Float64Input                               `pulumi:"target"`
+	Unit           pulumi.StringInput                                `pulumi:"unit"`
 }
 
 func (ElastigroupScalingTargetPolicyArgs) ElementType() reflect.Type {
@@ -5474,7 +5589,7 @@ func (i ElastigroupScalingTargetPolicyArray) ToElastigroupScalingTargetPolicyArr
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingTargetPolicyArrayOutput)
 }
 
-type ElastigroupScalingTargetPolicyOutput struct { *pulumi.OutputState }
+type ElastigroupScalingTargetPolicyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingTargetPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupScalingTargetPolicy)(nil)).Elem()
@@ -5489,46 +5604,46 @@ func (o ElastigroupScalingTargetPolicyOutput) ToElastigroupScalingTargetPolicyOu
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) Dimensions() ElastigroupScalingTargetPolicyDimensionArrayOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicy) []ElastigroupScalingTargetPolicyDimension { return v.Dimensions }).(ElastigroupScalingTargetPolicyDimensionArrayOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) []ElastigroupScalingTargetPolicyDimension { return v.Dimensions }).(ElastigroupScalingTargetPolicyDimensionArrayOutput)
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicy) string { return v.MetricName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicy) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) PolicyName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) PredictiveMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicy) *string { return v.PredictiveMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) *string { return v.PredictiveMode }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) Statistic() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) Target() pulumi.Float64Output {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicy) float64 { return v.Target }).(pulumi.Float64Output)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) float64 { return v.Target }).(pulumi.Float64Output)
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicy) string { return v.Unit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-type ElastigroupScalingTargetPolicyArrayOutput struct { *pulumi.OutputState}
+type ElastigroupScalingTargetPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingTargetPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupScalingTargetPolicy)(nil)).Elem()
@@ -5543,14 +5658,14 @@ func (o ElastigroupScalingTargetPolicyArrayOutput) ToElastigroupScalingTargetPol
 }
 
 func (o ElastigroupScalingTargetPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingTargetPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupScalingTargetPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingTargetPolicy {
 		return vs[0].([]ElastigroupScalingTargetPolicy)[vs[1].(int)]
 	}).(ElastigroupScalingTargetPolicyOutput)
 }
 
 type ElastigroupScalingTargetPolicyDimension struct {
 	// The group name.
-	Name string `pulumi:"name"`
+	Name  string  `pulumi:"name"`
 	Value *string `pulumi:"value"`
 }
 
@@ -5563,7 +5678,7 @@ type ElastigroupScalingTargetPolicyDimensionInput interface {
 
 type ElastigroupScalingTargetPolicyDimensionArgs struct {
 	// The group name.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name  pulumi.StringInput    `pulumi:"name"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5600,7 +5715,7 @@ func (i ElastigroupScalingTargetPolicyDimensionArray) ToElastigroupScalingTarget
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingTargetPolicyDimensionArrayOutput)
 }
 
-type ElastigroupScalingTargetPolicyDimensionOutput struct { *pulumi.OutputState }
+type ElastigroupScalingTargetPolicyDimensionOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingTargetPolicyDimensionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupScalingTargetPolicyDimension)(nil)).Elem()
@@ -5616,14 +5731,14 @@ func (o ElastigroupScalingTargetPolicyDimensionOutput) ToElastigroupScalingTarge
 
 // The group name.
 func (o ElastigroupScalingTargetPolicyDimensionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingTargetPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingTargetPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupScalingTargetPolicyDimensionArrayOutput struct { *pulumi.OutputState}
+type ElastigroupScalingTargetPolicyDimensionArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingTargetPolicyDimensionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupScalingTargetPolicyDimension)(nil)).Elem()
@@ -5638,32 +5753,32 @@ func (o ElastigroupScalingTargetPolicyDimensionArrayOutput) ToElastigroupScaling
 }
 
 func (o ElastigroupScalingTargetPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingTargetPolicyDimensionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupScalingTargetPolicyDimension {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingTargetPolicyDimension {
 		return vs[0].([]ElastigroupScalingTargetPolicyDimension)[vs[1].(int)]
 	}).(ElastigroupScalingTargetPolicyDimensionOutput)
 }
 
 type ElastigroupScalingUpPolicy struct {
-	ActionType *string `pulumi:"actionType"`
-	Adjustment *string `pulumi:"adjustment"`
-	Cooldown *int `pulumi:"cooldown"`
-	Dimensions []ElastigroupScalingUpPolicyDimension `pulumi:"dimensions"`
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
-	IsEnabled *bool `pulumi:"isEnabled"`
-	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
-	Maximum *string `pulumi:"maximum"`
-	MetricName string `pulumi:"metricName"`
-	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
-	Minimum *string `pulumi:"minimum"`
-	Namespace string `pulumi:"namespace"`
-	Operator *string `pulumi:"operator"`
-	Period *int `pulumi:"period"`
-	PolicyName string `pulumi:"policyName"`
-	Source *string `pulumi:"source"`
-	Statistic *string `pulumi:"statistic"`
-	Target *string `pulumi:"target"`
-	Threshold float64 `pulumi:"threshold"`
-	Unit string `pulumi:"unit"`
+	ActionType        *string                               `pulumi:"actionType"`
+	Adjustment        *string                               `pulumi:"adjustment"`
+	Cooldown          *int                                  `pulumi:"cooldown"`
+	Dimensions        []ElastigroupScalingUpPolicyDimension `pulumi:"dimensions"`
+	EvaluationPeriods *int                                  `pulumi:"evaluationPeriods"`
+	IsEnabled         *bool                                 `pulumi:"isEnabled"`
+	MaxTargetCapacity *string                               `pulumi:"maxTargetCapacity"`
+	Maximum           *string                               `pulumi:"maximum"`
+	MetricName        string                                `pulumi:"metricName"`
+	MinTargetCapacity *string                               `pulumi:"minTargetCapacity"`
+	Minimum           *string                               `pulumi:"minimum"`
+	Namespace         string                                `pulumi:"namespace"`
+	Operator          *string                               `pulumi:"operator"`
+	Period            *int                                  `pulumi:"period"`
+	PolicyName        string                                `pulumi:"policyName"`
+	Source            *string                               `pulumi:"source"`
+	Statistic         *string                               `pulumi:"statistic"`
+	Target            *string                               `pulumi:"target"`
+	Threshold         float64                               `pulumi:"threshold"`
+	Unit              string                                `pulumi:"unit"`
 }
 
 type ElastigroupScalingUpPolicyInput interface {
@@ -5674,26 +5789,26 @@ type ElastigroupScalingUpPolicyInput interface {
 }
 
 type ElastigroupScalingUpPolicyArgs struct {
-	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
-	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
-	Dimensions ElastigroupScalingUpPolicyDimensionArrayInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
-	Maximum pulumi.StringPtrInput `pulumi:"maximum"`
-	MetricName pulumi.StringInput `pulumi:"metricName"`
-	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
-	Minimum pulumi.StringPtrInput `pulumi:"minimum"`
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	Period pulumi.IntPtrInput `pulumi:"period"`
-	PolicyName pulumi.StringInput `pulumi:"policyName"`
-	Source pulumi.StringPtrInput `pulumi:"source"`
-	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
-	Target pulumi.StringPtrInput `pulumi:"target"`
-	Threshold pulumi.Float64Input `pulumi:"threshold"`
-	Unit pulumi.StringInput `pulumi:"unit"`
+	ActionType        pulumi.StringPtrInput                         `pulumi:"actionType"`
+	Adjustment        pulumi.StringPtrInput                         `pulumi:"adjustment"`
+	Cooldown          pulumi.IntPtrInput                            `pulumi:"cooldown"`
+	Dimensions        ElastigroupScalingUpPolicyDimensionArrayInput `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput                            `pulumi:"evaluationPeriods"`
+	IsEnabled         pulumi.BoolPtrInput                           `pulumi:"isEnabled"`
+	MaxTargetCapacity pulumi.StringPtrInput                         `pulumi:"maxTargetCapacity"`
+	Maximum           pulumi.StringPtrInput                         `pulumi:"maximum"`
+	MetricName        pulumi.StringInput                            `pulumi:"metricName"`
+	MinTargetCapacity pulumi.StringPtrInput                         `pulumi:"minTargetCapacity"`
+	Minimum           pulumi.StringPtrInput                         `pulumi:"minimum"`
+	Namespace         pulumi.StringInput                            `pulumi:"namespace"`
+	Operator          pulumi.StringPtrInput                         `pulumi:"operator"`
+	Period            pulumi.IntPtrInput                            `pulumi:"period"`
+	PolicyName        pulumi.StringInput                            `pulumi:"policyName"`
+	Source            pulumi.StringPtrInput                         `pulumi:"source"`
+	Statistic         pulumi.StringPtrInput                         `pulumi:"statistic"`
+	Target            pulumi.StringPtrInput                         `pulumi:"target"`
+	Threshold         pulumi.Float64Input                           `pulumi:"threshold"`
+	Unit              pulumi.StringInput                            `pulumi:"unit"`
 }
 
 func (ElastigroupScalingUpPolicyArgs) ElementType() reflect.Type {
@@ -5729,7 +5844,7 @@ func (i ElastigroupScalingUpPolicyArray) ToElastigroupScalingUpPolicyArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyArrayOutput)
 }
 
-type ElastigroupScalingUpPolicyOutput struct { *pulumi.OutputState }
+type ElastigroupScalingUpPolicyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingUpPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupScalingUpPolicy)(nil)).Elem()
@@ -5744,86 +5859,86 @@ func (o ElastigroupScalingUpPolicyOutput) ToElastigroupScalingUpPolicyOutputWith
 }
 
 func (o ElastigroupScalingUpPolicyOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Dimensions() ElastigroupScalingUpPolicyDimensionArrayOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) []ElastigroupScalingUpPolicyDimension { return v.Dimensions }).(ElastigroupScalingUpPolicyDimensionArrayOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) []ElastigroupScalingUpPolicyDimension { return v.Dimensions }).(ElastigroupScalingUpPolicyDimensionArrayOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Maximum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) MinTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Minimum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) PolicyName() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Statistic() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Threshold() pulumi.Float64Output {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
 func (o ElastigroupScalingUpPolicyOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicy) string { return v.Unit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-type ElastigroupScalingUpPolicyArrayOutput struct { *pulumi.OutputState}
+type ElastigroupScalingUpPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingUpPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupScalingUpPolicy)(nil)).Elem()
@@ -5838,14 +5953,14 @@ func (o ElastigroupScalingUpPolicyArrayOutput) ToElastigroupScalingUpPolicyArray
 }
 
 func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingUpPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupScalingUpPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingUpPolicy {
 		return vs[0].([]ElastigroupScalingUpPolicy)[vs[1].(int)]
 	}).(ElastigroupScalingUpPolicyOutput)
 }
 
 type ElastigroupScalingUpPolicyDimension struct {
 	// The group name.
-	Name string `pulumi:"name"`
+	Name  string  `pulumi:"name"`
 	Value *string `pulumi:"value"`
 }
 
@@ -5858,7 +5973,7 @@ type ElastigroupScalingUpPolicyDimensionInput interface {
 
 type ElastigroupScalingUpPolicyDimensionArgs struct {
 	// The group name.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name  pulumi.StringInput    `pulumi:"name"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5895,7 +6010,7 @@ func (i ElastigroupScalingUpPolicyDimensionArray) ToElastigroupScalingUpPolicyDi
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyDimensionArrayOutput)
 }
 
-type ElastigroupScalingUpPolicyDimensionOutput struct { *pulumi.OutputState }
+type ElastigroupScalingUpPolicyDimensionOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingUpPolicyDimensionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupScalingUpPolicyDimension)(nil)).Elem()
@@ -5911,14 +6026,14 @@ func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyD
 
 // The group name.
 func (o ElastigroupScalingUpPolicyDimensionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupScalingUpPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScalingUpPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupScalingUpPolicyDimensionArrayOutput struct { *pulumi.OutputState}
+type ElastigroupScalingUpPolicyDimensionArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingUpPolicyDimensionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupScalingUpPolicyDimension)(nil)).Elem()
@@ -5933,27 +6048,27 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) ToElastigroupScalingUpPo
 }
 
 func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingUpPolicyDimensionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupScalingUpPolicyDimension {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingUpPolicyDimension {
 		return vs[0].([]ElastigroupScalingUpPolicyDimension)[vs[1].(int)]
 	}).(ElastigroupScalingUpPolicyDimensionOutput)
 }
 
 type ElastigroupScheduledTask struct {
-	Adjustment *string `pulumi:"adjustment"`
+	Adjustment           *string `pulumi:"adjustment"`
 	AdjustmentPercentage *string `pulumi:"adjustmentPercentage"`
-	BatchSizePercentage *string `pulumi:"batchSizePercentage"`
-	CronExpression *string `pulumi:"cronExpression"`
-	Frequency *string `pulumi:"frequency"`
-	GracePeriod *string `pulumi:"gracePeriod"`
-	IsEnabled *bool `pulumi:"isEnabled"`
-	MaxCapacity *string `pulumi:"maxCapacity"`
-	MinCapacity *string `pulumi:"minCapacity"`
-	ScaleMaxCapacity *string `pulumi:"scaleMaxCapacity"`
-	ScaleMinCapacity *string `pulumi:"scaleMinCapacity"`
-	ScaleTargetCapacity *string `pulumi:"scaleTargetCapacity"`
-	StartTime *string `pulumi:"startTime"`
-	TargetCapacity *string `pulumi:"targetCapacity"`
-	TaskType string `pulumi:"taskType"`
+	BatchSizePercentage  *string `pulumi:"batchSizePercentage"`
+	CronExpression       *string `pulumi:"cronExpression"`
+	Frequency            *string `pulumi:"frequency"`
+	GracePeriod          *string `pulumi:"gracePeriod"`
+	IsEnabled            *bool   `pulumi:"isEnabled"`
+	MaxCapacity          *string `pulumi:"maxCapacity"`
+	MinCapacity          *string `pulumi:"minCapacity"`
+	ScaleMaxCapacity     *string `pulumi:"scaleMaxCapacity"`
+	ScaleMinCapacity     *string `pulumi:"scaleMinCapacity"`
+	ScaleTargetCapacity  *string `pulumi:"scaleTargetCapacity"`
+	StartTime            *string `pulumi:"startTime"`
+	TargetCapacity       *string `pulumi:"targetCapacity"`
+	TaskType             string  `pulumi:"taskType"`
 }
 
 type ElastigroupScheduledTaskInput interface {
@@ -5964,21 +6079,21 @@ type ElastigroupScheduledTaskInput interface {
 }
 
 type ElastigroupScheduledTaskArgs struct {
-	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
+	Adjustment           pulumi.StringPtrInput `pulumi:"adjustment"`
 	AdjustmentPercentage pulumi.StringPtrInput `pulumi:"adjustmentPercentage"`
-	BatchSizePercentage pulumi.StringPtrInput `pulumi:"batchSizePercentage"`
-	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
-	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
-	GracePeriod pulumi.StringPtrInput `pulumi:"gracePeriod"`
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	MaxCapacity pulumi.StringPtrInput `pulumi:"maxCapacity"`
-	MinCapacity pulumi.StringPtrInput `pulumi:"minCapacity"`
-	ScaleMaxCapacity pulumi.StringPtrInput `pulumi:"scaleMaxCapacity"`
-	ScaleMinCapacity pulumi.StringPtrInput `pulumi:"scaleMinCapacity"`
-	ScaleTargetCapacity pulumi.StringPtrInput `pulumi:"scaleTargetCapacity"`
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	TargetCapacity pulumi.StringPtrInput `pulumi:"targetCapacity"`
-	TaskType pulumi.StringInput `pulumi:"taskType"`
+	BatchSizePercentage  pulumi.StringPtrInput `pulumi:"batchSizePercentage"`
+	CronExpression       pulumi.StringPtrInput `pulumi:"cronExpression"`
+	Frequency            pulumi.StringPtrInput `pulumi:"frequency"`
+	GracePeriod          pulumi.StringPtrInput `pulumi:"gracePeriod"`
+	IsEnabled            pulumi.BoolPtrInput   `pulumi:"isEnabled"`
+	MaxCapacity          pulumi.StringPtrInput `pulumi:"maxCapacity"`
+	MinCapacity          pulumi.StringPtrInput `pulumi:"minCapacity"`
+	ScaleMaxCapacity     pulumi.StringPtrInput `pulumi:"scaleMaxCapacity"`
+	ScaleMinCapacity     pulumi.StringPtrInput `pulumi:"scaleMinCapacity"`
+	ScaleTargetCapacity  pulumi.StringPtrInput `pulumi:"scaleTargetCapacity"`
+	StartTime            pulumi.StringPtrInput `pulumi:"startTime"`
+	TargetCapacity       pulumi.StringPtrInput `pulumi:"targetCapacity"`
+	TaskType             pulumi.StringInput    `pulumi:"taskType"`
 }
 
 func (ElastigroupScheduledTaskArgs) ElementType() reflect.Type {
@@ -6014,7 +6129,7 @@ func (i ElastigroupScheduledTaskArray) ToElastigroupScheduledTaskArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScheduledTaskArrayOutput)
 }
 
-type ElastigroupScheduledTaskOutput struct { *pulumi.OutputState }
+type ElastigroupScheduledTaskOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScheduledTaskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupScheduledTask)(nil)).Elem()
@@ -6029,66 +6144,66 @@ func (o ElastigroupScheduledTaskOutput) ToElastigroupScheduledTaskOutputWithCont
 }
 
 func (o ElastigroupScheduledTaskOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) AdjustmentPercentage() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.AdjustmentPercentage }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.AdjustmentPercentage }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) BatchSizePercentage() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.BatchSizePercentage }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.BatchSizePercentage }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) CronExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) GracePeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.GracePeriod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.GracePeriod }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) MaxCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.MaxCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.MaxCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) MinCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.MinCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.MinCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) ScaleMaxCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.ScaleMaxCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.ScaleMaxCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) ScaleMinCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.ScaleMinCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.ScaleMinCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) ScaleTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.ScaleTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.ScaleTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) TargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) *string { return v.TargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.TargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScheduledTaskOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupScheduledTask) string { return v.TaskType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupScheduledTask) string { return v.TaskType }).(pulumi.StringOutput)
 }
 
-type ElastigroupScheduledTaskArrayOutput struct { *pulumi.OutputState}
+type ElastigroupScheduledTaskArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScheduledTaskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupScheduledTask)(nil)).Elem()
@@ -6103,15 +6218,15 @@ func (o ElastigroupScheduledTaskArrayOutput) ToElastigroupScheduledTaskArrayOutp
 }
 
 func (o ElastigroupScheduledTaskArrayOutput) Index(i pulumi.IntInput) ElastigroupScheduledTaskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupScheduledTask {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScheduledTask {
 		return vs[0].([]ElastigroupScheduledTask)[vs[1].(int)]
 	}).(ElastigroupScheduledTaskOutput)
 }
 
 type ElastigroupSignal struct {
 	// The group name.
-	Name string `pulumi:"name"`
-	Timeout *int `pulumi:"timeout"`
+	Name    string `pulumi:"name"`
+	Timeout *int   `pulumi:"timeout"`
 }
 
 type ElastigroupSignalInput interface {
@@ -6123,7 +6238,7 @@ type ElastigroupSignalInput interface {
 
 type ElastigroupSignalArgs struct {
 	// The group name.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name    pulumi.StringInput `pulumi:"name"`
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
@@ -6160,7 +6275,7 @@ func (i ElastigroupSignalArray) ToElastigroupSignalArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupSignalArrayOutput)
 }
 
-type ElastigroupSignalOutput struct { *pulumi.OutputState }
+type ElastigroupSignalOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupSignalOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupSignal)(nil)).Elem()
@@ -6176,14 +6291,14 @@ func (o ElastigroupSignalOutput) ToElastigroupSignalOutputWithContext(ctx contex
 
 // The group name.
 func (o ElastigroupSignalOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupSignal) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupSignal) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupSignalOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupSignal) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupSignal) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
-type ElastigroupSignalArrayOutput struct { *pulumi.OutputState}
+type ElastigroupSignalArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupSignalArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupSignal)(nil)).Elem()
@@ -6198,16 +6313,16 @@ func (o ElastigroupSignalArrayOutput) ToElastigroupSignalArrayOutputWithContext(
 }
 
 func (o ElastigroupSignalArrayOutput) Index(i pulumi.IntInput) ElastigroupSignalOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupSignal {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupSignal {
 		return vs[0].([]ElastigroupSignal)[vs[1].(int)]
 	}).(ElastigroupSignalOutput)
 }
 
 type ElastigroupStatefulDeallocation struct {
-	ShouldDeleteImages *bool `pulumi:"shouldDeleteImages"`
+	ShouldDeleteImages            *bool `pulumi:"shouldDeleteImages"`
 	ShouldDeleteNetworkInterfaces *bool `pulumi:"shouldDeleteNetworkInterfaces"`
-	ShouldDeleteSnapshots *bool `pulumi:"shouldDeleteSnapshots"`
-	ShouldDeleteVolumes *bool `pulumi:"shouldDeleteVolumes"`
+	ShouldDeleteSnapshots         *bool `pulumi:"shouldDeleteSnapshots"`
+	ShouldDeleteVolumes           *bool `pulumi:"shouldDeleteVolumes"`
 }
 
 type ElastigroupStatefulDeallocationInput interface {
@@ -6218,10 +6333,10 @@ type ElastigroupStatefulDeallocationInput interface {
 }
 
 type ElastigroupStatefulDeallocationArgs struct {
-	ShouldDeleteImages pulumi.BoolPtrInput `pulumi:"shouldDeleteImages"`
+	ShouldDeleteImages            pulumi.BoolPtrInput `pulumi:"shouldDeleteImages"`
 	ShouldDeleteNetworkInterfaces pulumi.BoolPtrInput `pulumi:"shouldDeleteNetworkInterfaces"`
-	ShouldDeleteSnapshots pulumi.BoolPtrInput `pulumi:"shouldDeleteSnapshots"`
-	ShouldDeleteVolumes pulumi.BoolPtrInput `pulumi:"shouldDeleteVolumes"`
+	ShouldDeleteSnapshots         pulumi.BoolPtrInput `pulumi:"shouldDeleteSnapshots"`
+	ShouldDeleteVolumes           pulumi.BoolPtrInput `pulumi:"shouldDeleteVolumes"`
 }
 
 func (ElastigroupStatefulDeallocationArgs) ElementType() reflect.Type {
@@ -6253,7 +6368,8 @@ type ElastigroupStatefulDeallocationPtrInput interface {
 
 type elastigroupStatefulDeallocationPtrType ElastigroupStatefulDeallocationArgs
 
-func ElastigroupStatefulDeallocationPtr(v *ElastigroupStatefulDeallocationArgs) ElastigroupStatefulDeallocationPtrInput {	return (*elastigroupStatefulDeallocationPtrType)(v)
+func ElastigroupStatefulDeallocationPtr(v *ElastigroupStatefulDeallocationArgs) ElastigroupStatefulDeallocationPtrInput {
+	return (*elastigroupStatefulDeallocationPtrType)(v)
 }
 
 func (*elastigroupStatefulDeallocationPtrType) ElementType() reflect.Type {
@@ -6268,7 +6384,7 @@ func (i *elastigroupStatefulDeallocationPtrType) ToElastigroupStatefulDeallocati
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupStatefulDeallocationPtrOutput)
 }
 
-type ElastigroupStatefulDeallocationOutput struct { *pulumi.OutputState }
+type ElastigroupStatefulDeallocationOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupStatefulDeallocationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupStatefulDeallocation)(nil)).Elem()
@@ -6292,22 +6408,22 @@ func (o ElastigroupStatefulDeallocationOutput) ToElastigroupStatefulDeallocation
 	}).(ElastigroupStatefulDeallocationPtrOutput)
 }
 func (o ElastigroupStatefulDeallocationOutput) ShouldDeleteImages() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteImages }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteImages }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupStatefulDeallocationOutput) ShouldDeleteNetworkInterfaces() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteNetworkInterfaces }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteNetworkInterfaces }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupStatefulDeallocationOutput) ShouldDeleteSnapshots() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteSnapshots }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteSnapshots }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupStatefulDeallocationOutput) ShouldDeleteVolumes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteVolumes }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteVolumes }).(pulumi.BoolPtrOutput)
 }
 
-type ElastigroupStatefulDeallocationPtrOutput struct { *pulumi.OutputState}
+type ElastigroupStatefulDeallocationPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupStatefulDeallocationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupStatefulDeallocation)(nil)).Elem()
@@ -6322,27 +6438,27 @@ func (o ElastigroupStatefulDeallocationPtrOutput) ToElastigroupStatefulDeallocat
 }
 
 func (o ElastigroupStatefulDeallocationPtrOutput) Elem() ElastigroupStatefulDeallocationOutput {
-	return o.ApplyT(func (v *ElastigroupStatefulDeallocation) ElastigroupStatefulDeallocation { return *v }).(ElastigroupStatefulDeallocationOutput)
+	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) ElastigroupStatefulDeallocation { return *v }).(ElastigroupStatefulDeallocationOutput)
 }
 
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteImages() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteImages }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteImages }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteNetworkInterfaces() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteNetworkInterfaces }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteNetworkInterfaces }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteSnapshots() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteSnapshots }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteSnapshots }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteVolumes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteVolumes }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteVolumes }).(pulumi.BoolPtrOutput)
 }
 
 type ElastigroupTag struct {
-	Key *string `pulumi:"key"`
+	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
 }
 
@@ -6354,7 +6470,7 @@ type ElastigroupTagInput interface {
 }
 
 type ElastigroupTagArgs struct {
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	Key   pulumi.StringPtrInput `pulumi:"key"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -6391,7 +6507,7 @@ func (i ElastigroupTagArray) ToElastigroupTagArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupTagArrayOutput)
 }
 
-type ElastigroupTagOutput struct { *pulumi.OutputState }
+type ElastigroupTagOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupTagOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupTag)(nil)).Elem()
@@ -6406,14 +6522,14 @@ func (o ElastigroupTagOutput) ToElastigroupTagOutputWithContext(ctx context.Cont
 }
 
 func (o ElastigroupTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupTagOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupTag) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupTagArrayOutput struct { *pulumi.OutputState}
+type ElastigroupTagArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupTagArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ElastigroupTag)(nil)).Elem()
@@ -6428,16 +6544,16 @@ func (o ElastigroupTagArrayOutput) ToElastigroupTagArrayOutputWithContext(ctx co
 }
 
 func (o ElastigroupTagArrayOutput) Index(i pulumi.IntInput) ElastigroupTagOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ElastigroupTag {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupTag {
 		return vs[0].([]ElastigroupTag)[vs[1].(int)]
 	}).(ElastigroupTagOutput)
 }
 
 type ElastigroupUpdatePolicy struct {
-	AutoApplyTags *bool `pulumi:"autoApplyTags"`
-	RollConfig *ElastigroupUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldResumeStateful bool `pulumi:"shouldResumeStateful"`
-	ShouldRoll bool `pulumi:"shouldRoll"`
+	AutoApplyTags        *bool                              `pulumi:"autoApplyTags"`
+	RollConfig           *ElastigroupUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	ShouldResumeStateful bool                               `pulumi:"shouldResumeStateful"`
+	ShouldRoll           bool                               `pulumi:"shouldRoll"`
 }
 
 type ElastigroupUpdatePolicyInput interface {
@@ -6448,10 +6564,10 @@ type ElastigroupUpdatePolicyInput interface {
 }
 
 type ElastigroupUpdatePolicyArgs struct {
-	AutoApplyTags pulumi.BoolPtrInput `pulumi:"autoApplyTags"`
-	RollConfig ElastigroupUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldResumeStateful pulumi.BoolInput `pulumi:"shouldResumeStateful"`
-	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
+	AutoApplyTags        pulumi.BoolPtrInput                       `pulumi:"autoApplyTags"`
+	RollConfig           ElastigroupUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	ShouldResumeStateful pulumi.BoolInput                          `pulumi:"shouldResumeStateful"`
+	ShouldRoll           pulumi.BoolInput                          `pulumi:"shouldRoll"`
 }
 
 func (ElastigroupUpdatePolicyArgs) ElementType() reflect.Type {
@@ -6483,7 +6599,8 @@ type ElastigroupUpdatePolicyPtrInput interface {
 
 type elastigroupUpdatePolicyPtrType ElastigroupUpdatePolicyArgs
 
-func ElastigroupUpdatePolicyPtr(v *ElastigroupUpdatePolicyArgs) ElastigroupUpdatePolicyPtrInput {	return (*elastigroupUpdatePolicyPtrType)(v)
+func ElastigroupUpdatePolicyPtr(v *ElastigroupUpdatePolicyArgs) ElastigroupUpdatePolicyPtrInput {
+	return (*elastigroupUpdatePolicyPtrType)(v)
 }
 
 func (*elastigroupUpdatePolicyPtrType) ElementType() reflect.Type {
@@ -6498,7 +6615,7 @@ func (i *elastigroupUpdatePolicyPtrType) ToElastigroupUpdatePolicyPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyPtrOutput)
 }
 
-type ElastigroupUpdatePolicyOutput struct { *pulumi.OutputState }
+type ElastigroupUpdatePolicyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupUpdatePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupUpdatePolicy)(nil)).Elem()
@@ -6522,22 +6639,22 @@ func (o ElastigroupUpdatePolicyOutput) ToElastigroupUpdatePolicyPtrOutputWithCon
 	}).(ElastigroupUpdatePolicyPtrOutput)
 }
 func (o ElastigroupUpdatePolicyOutput) AutoApplyTags() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicy) *bool { return v.AutoApplyTags }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicy) *bool { return v.AutoApplyTags }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyOutput) RollConfig() ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig { return v.RollConfig }).(ElastigroupUpdatePolicyRollConfigPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig { return v.RollConfig }).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyOutput) ShouldResumeStateful() pulumi.BoolOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicy) bool { return v.ShouldResumeStateful }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicy) bool { return v.ShouldResumeStateful }).(pulumi.BoolOutput)
 }
 
 func (o ElastigroupUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
 
-type ElastigroupUpdatePolicyPtrOutput struct { *pulumi.OutputState}
+type ElastigroupUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupUpdatePolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupUpdatePolicy)(nil)).Elem()
@@ -6552,33 +6669,33 @@ func (o ElastigroupUpdatePolicyPtrOutput) ToElastigroupUpdatePolicyPtrOutputWith
 }
 
 func (o ElastigroupUpdatePolicyPtrOutput) Elem() ElastigroupUpdatePolicyOutput {
-	return o.ApplyT(func (v *ElastigroupUpdatePolicy) ElastigroupUpdatePolicy { return *v }).(ElastigroupUpdatePolicyOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicy) ElastigroupUpdatePolicy { return *v }).(ElastigroupUpdatePolicyOutput)
 }
 
 func (o ElastigroupUpdatePolicyPtrOutput) AutoApplyTags() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicy) *bool { return v.AutoApplyTags }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicy) *bool { return v.AutoApplyTags }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyPtrOutput) RollConfig() ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig { return v.RollConfig }).(ElastigroupUpdatePolicyRollConfigPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig { return v.RollConfig }).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyPtrOutput) ShouldResumeStateful() pulumi.BoolOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicy) bool { return v.ShouldResumeStateful }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicy) bool { return v.ShouldResumeStateful }).(pulumi.BoolOutput)
 }
 
 func (o ElastigroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
 
 type ElastigroupUpdatePolicyRollConfig struct {
-	BatchSizePercentage int `pulumi:"batchSizePercentage"`
-	GracePeriod *int `pulumi:"gracePeriod"`
+	BatchSizePercentage int  `pulumi:"batchSizePercentage"`
+	GracePeriod         *int `pulumi:"gracePeriod"`
 	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
-	HealthCheckType *string `pulumi:"healthCheckType"`
-	Strategy *ElastigroupUpdatePolicyRollConfigStrategy `pulumi:"strategy"`
-	WaitForRollPercentage *int `pulumi:"waitForRollPercentage"`
-	WaitForRollTimeout *int `pulumi:"waitForRollTimeout"`
+	HealthCheckType       *string                                    `pulumi:"healthCheckType"`
+	Strategy              *ElastigroupUpdatePolicyRollConfigStrategy `pulumi:"strategy"`
+	WaitForRollPercentage *int                                       `pulumi:"waitForRollPercentage"`
+	WaitForRollTimeout    *int                                       `pulumi:"waitForRollTimeout"`
 }
 
 type ElastigroupUpdatePolicyRollConfigInput interface {
@@ -6589,13 +6706,13 @@ type ElastigroupUpdatePolicyRollConfigInput interface {
 }
 
 type ElastigroupUpdatePolicyRollConfigArgs struct {
-	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
-	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
+	BatchSizePercentage pulumi.IntInput    `pulumi:"batchSizePercentage"`
+	GracePeriod         pulumi.IntPtrInput `pulumi:"gracePeriod"`
 	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
-	HealthCheckType pulumi.StringPtrInput `pulumi:"healthCheckType"`
-	Strategy ElastigroupUpdatePolicyRollConfigStrategyPtrInput `pulumi:"strategy"`
-	WaitForRollPercentage pulumi.IntPtrInput `pulumi:"waitForRollPercentage"`
-	WaitForRollTimeout pulumi.IntPtrInput `pulumi:"waitForRollTimeout"`
+	HealthCheckType       pulumi.StringPtrInput                             `pulumi:"healthCheckType"`
+	Strategy              ElastigroupUpdatePolicyRollConfigStrategyPtrInput `pulumi:"strategy"`
+	WaitForRollPercentage pulumi.IntPtrInput                                `pulumi:"waitForRollPercentage"`
+	WaitForRollTimeout    pulumi.IntPtrInput                                `pulumi:"waitForRollTimeout"`
 }
 
 func (ElastigroupUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -6627,7 +6744,8 @@ type ElastigroupUpdatePolicyRollConfigPtrInput interface {
 
 type elastigroupUpdatePolicyRollConfigPtrType ElastigroupUpdatePolicyRollConfigArgs
 
-func ElastigroupUpdatePolicyRollConfigPtr(v *ElastigroupUpdatePolicyRollConfigArgs) ElastigroupUpdatePolicyRollConfigPtrInput {	return (*elastigroupUpdatePolicyRollConfigPtrType)(v)
+func ElastigroupUpdatePolicyRollConfigPtr(v *ElastigroupUpdatePolicyRollConfigArgs) ElastigroupUpdatePolicyRollConfigPtrInput {
+	return (*elastigroupUpdatePolicyRollConfigPtrType)(v)
 }
 
 func (*elastigroupUpdatePolicyRollConfigPtrType) ElementType() reflect.Type {
@@ -6642,7 +6760,7 @@ func (i *elastigroupUpdatePolicyRollConfigPtrType) ToElastigroupUpdatePolicyRoll
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 
-type ElastigroupUpdatePolicyRollConfigOutput struct { *pulumi.OutputState }
+type ElastigroupUpdatePolicyRollConfigOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupUpdatePolicyRollConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupUpdatePolicyRollConfig)(nil)).Elem()
@@ -6666,31 +6784,33 @@ func (o ElastigroupUpdatePolicyRollConfigOutput) ToElastigroupUpdatePolicyRollCo
 	}).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 func (o ElastigroupUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
 // The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 func (o ElastigroupUpdatePolicyRollConfigOutput) HealthCheckType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigOutput) Strategy() ElastigroupUpdatePolicyRollConfigStrategyPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfigStrategy { return v.Strategy }).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfigStrategy {
+		return v.Strategy
+	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigOutput) WaitForRollPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollPercentage }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigOutput) WaitForRollTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollTimeout }).(pulumi.IntPtrOutput)
 }
 
-type ElastigroupUpdatePolicyRollConfigPtrOutput struct { *pulumi.OutputState}
+type ElastigroupUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupUpdatePolicyRollConfig)(nil)).Elem()
@@ -6705,38 +6825,40 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) ToElastigroupUpdatePolicyRol
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Elem() ElastigroupUpdatePolicyRollConfigOutput {
-	return o.ApplyT(func (v *ElastigroupUpdatePolicyRollConfig) ElastigroupUpdatePolicyRollConfig { return *v }).(ElastigroupUpdatePolicyRollConfigOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) ElastigroupUpdatePolicyRollConfig { return *v }).(ElastigroupUpdatePolicyRollConfigOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
 // The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Strategy() ElastigroupUpdatePolicyRollConfigStrategyPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfigStrategy { return v.Strategy }).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfigStrategy {
+		return v.Strategy
+	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollPercentage }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollTimeout }).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategy struct {
-	Action string `pulumi:"action"`
-	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
-	ShouldDrainInstances *bool `pulumi:"shouldDrainInstances"`
+	Action                    string `pulumi:"action"`
+	BatchMinHealthyPercentage *int   `pulumi:"batchMinHealthyPercentage"`
+	ShouldDrainInstances      *bool  `pulumi:"shouldDrainInstances"`
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategyInput interface {
@@ -6747,9 +6869,9 @@ type ElastigroupUpdatePolicyRollConfigStrategyInput interface {
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategyArgs struct {
-	Action pulumi.StringInput `pulumi:"action"`
-	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
-	ShouldDrainInstances pulumi.BoolPtrInput `pulumi:"shouldDrainInstances"`
+	Action                    pulumi.StringInput  `pulumi:"action"`
+	BatchMinHealthyPercentage pulumi.IntPtrInput  `pulumi:"batchMinHealthyPercentage"`
+	ShouldDrainInstances      pulumi.BoolPtrInput `pulumi:"shouldDrainInstances"`
 }
 
 func (ElastigroupUpdatePolicyRollConfigStrategyArgs) ElementType() reflect.Type {
@@ -6781,7 +6903,8 @@ type ElastigroupUpdatePolicyRollConfigStrategyPtrInput interface {
 
 type elastigroupUpdatePolicyRollConfigStrategyPtrType ElastigroupUpdatePolicyRollConfigStrategyArgs
 
-func ElastigroupUpdatePolicyRollConfigStrategyPtr(v *ElastigroupUpdatePolicyRollConfigStrategyArgs) ElastigroupUpdatePolicyRollConfigStrategyPtrInput {	return (*elastigroupUpdatePolicyRollConfigStrategyPtrType)(v)
+func ElastigroupUpdatePolicyRollConfigStrategyPtr(v *ElastigroupUpdatePolicyRollConfigStrategyArgs) ElastigroupUpdatePolicyRollConfigStrategyPtrInput {
+	return (*elastigroupUpdatePolicyRollConfigStrategyPtrType)(v)
 }
 
 func (*elastigroupUpdatePolicyRollConfigStrategyPtrType) ElementType() reflect.Type {
@@ -6796,7 +6919,7 @@ func (i *elastigroupUpdatePolicyRollConfigStrategyPtrType) ToElastigroupUpdatePo
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
-type ElastigroupUpdatePolicyRollConfigStrategyOutput struct { *pulumi.OutputState }
+type ElastigroupUpdatePolicyRollConfigStrategyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupUpdatePolicyRollConfigStrategyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigStrategy)(nil)).Elem()
@@ -6820,18 +6943,18 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) ToElastigroupUpdatePoli
 	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfigStrategy) string { return v.Action }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) string { return v.Action }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfigStrategy) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfigStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
 }
 
-type ElastigroupUpdatePolicyRollConfigStrategyPtrOutput struct { *pulumi.OutputState}
+type ElastigroupUpdatePolicyRollConfigStrategyPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupUpdatePolicyRollConfigStrategy)(nil)).Elem()
@@ -6846,19 +6969,21 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) ToElastigroupUpdateP
 }
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) Elem() ElastigroupUpdatePolicyRollConfigStrategyOutput {
-	return o.ApplyT(func (v *ElastigroupUpdatePolicyRollConfigStrategy) ElastigroupUpdatePolicyRollConfigStrategy { return *v }).(ElastigroupUpdatePolicyRollConfigStrategyOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) ElastigroupUpdatePolicyRollConfigStrategy {
+		return *v
+	}).(ElastigroupUpdatePolicyRollConfigStrategyOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfigStrategy) string { return v.Action }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) string { return v.Action }).(pulumi.StringOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfigStrategy) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ElastigroupUpdatePolicyRollConfigStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
 }
 
 type ManagedInstanceIntegrationRoute53 struct {
@@ -6905,7 +7030,8 @@ type ManagedInstanceIntegrationRoute53PtrInput interface {
 
 type managedInstanceIntegrationRoute53PtrType ManagedInstanceIntegrationRoute53Args
 
-func ManagedInstanceIntegrationRoute53Ptr(v *ManagedInstanceIntegrationRoute53Args) ManagedInstanceIntegrationRoute53PtrInput {	return (*managedInstanceIntegrationRoute53PtrType)(v)
+func ManagedInstanceIntegrationRoute53Ptr(v *ManagedInstanceIntegrationRoute53Args) ManagedInstanceIntegrationRoute53PtrInput {
+	return (*managedInstanceIntegrationRoute53PtrType)(v)
 }
 
 func (*managedInstanceIntegrationRoute53PtrType) ElementType() reflect.Type {
@@ -6920,7 +7046,7 @@ func (i *managedInstanceIntegrationRoute53PtrType) ToManagedInstanceIntegrationR
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceIntegrationRoute53PtrOutput)
 }
 
-type ManagedInstanceIntegrationRoute53Output struct { *pulumi.OutputState }
+type ManagedInstanceIntegrationRoute53Output struct{ *pulumi.OutputState }
 
 func (ManagedInstanceIntegrationRoute53Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedInstanceIntegrationRoute53)(nil)).Elem()
@@ -6944,10 +7070,10 @@ func (o ManagedInstanceIntegrationRoute53Output) ToManagedInstanceIntegrationRou
 	}).(ManagedInstanceIntegrationRoute53PtrOutput)
 }
 func (o ManagedInstanceIntegrationRoute53Output) Domains() ManagedInstanceIntegrationRoute53DomainArrayOutput {
-	return o.ApplyT(func (v ManagedInstanceIntegrationRoute53) []ManagedInstanceIntegrationRoute53Domain { return v.Domains }).(ManagedInstanceIntegrationRoute53DomainArrayOutput)
+	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53) []ManagedInstanceIntegrationRoute53Domain { return v.Domains }).(ManagedInstanceIntegrationRoute53DomainArrayOutput)
 }
 
-type ManagedInstanceIntegrationRoute53PtrOutput struct { *pulumi.OutputState}
+type ManagedInstanceIntegrationRoute53PtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceIntegrationRoute53PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ManagedInstanceIntegrationRoute53)(nil)).Elem()
@@ -6962,17 +7088,17 @@ func (o ManagedInstanceIntegrationRoute53PtrOutput) ToManagedInstanceIntegration
 }
 
 func (o ManagedInstanceIntegrationRoute53PtrOutput) Elem() ManagedInstanceIntegrationRoute53Output {
-	return o.ApplyT(func (v *ManagedInstanceIntegrationRoute53) ManagedInstanceIntegrationRoute53 { return *v }).(ManagedInstanceIntegrationRoute53Output)
+	return o.ApplyT(func(v *ManagedInstanceIntegrationRoute53) ManagedInstanceIntegrationRoute53 { return *v }).(ManagedInstanceIntegrationRoute53Output)
 }
 
 func (o ManagedInstanceIntegrationRoute53PtrOutput) Domains() ManagedInstanceIntegrationRoute53DomainArrayOutput {
-	return o.ApplyT(func (v ManagedInstanceIntegrationRoute53) []ManagedInstanceIntegrationRoute53Domain { return v.Domains }).(ManagedInstanceIntegrationRoute53DomainArrayOutput)
+	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53) []ManagedInstanceIntegrationRoute53Domain { return v.Domains }).(ManagedInstanceIntegrationRoute53DomainArrayOutput)
 }
 
 type ManagedInstanceIntegrationRoute53Domain struct {
-	HostedZoneId string `pulumi:"hostedZoneId"`
-	RecordSets []ManagedInstanceIntegrationRoute53DomainRecordSet `pulumi:"recordSets"`
-	SpotinstAcctId *string `pulumi:"spotinstAcctId"`
+	HostedZoneId   string                                             `pulumi:"hostedZoneId"`
+	RecordSets     []ManagedInstanceIntegrationRoute53DomainRecordSet `pulumi:"recordSets"`
+	SpotinstAcctId *string                                            `pulumi:"spotinstAcctId"`
 }
 
 type ManagedInstanceIntegrationRoute53DomainInput interface {
@@ -6983,9 +7109,9 @@ type ManagedInstanceIntegrationRoute53DomainInput interface {
 }
 
 type ManagedInstanceIntegrationRoute53DomainArgs struct {
-	HostedZoneId pulumi.StringInput `pulumi:"hostedZoneId"`
-	RecordSets ManagedInstanceIntegrationRoute53DomainRecordSetArrayInput `pulumi:"recordSets"`
-	SpotinstAcctId pulumi.StringPtrInput `pulumi:"spotinstAcctId"`
+	HostedZoneId   pulumi.StringInput                                         `pulumi:"hostedZoneId"`
+	RecordSets     ManagedInstanceIntegrationRoute53DomainRecordSetArrayInput `pulumi:"recordSets"`
+	SpotinstAcctId pulumi.StringPtrInput                                      `pulumi:"spotinstAcctId"`
 }
 
 func (ManagedInstanceIntegrationRoute53DomainArgs) ElementType() reflect.Type {
@@ -7021,7 +7147,7 @@ func (i ManagedInstanceIntegrationRoute53DomainArray) ToManagedInstanceIntegrati
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceIntegrationRoute53DomainArrayOutput)
 }
 
-type ManagedInstanceIntegrationRoute53DomainOutput struct { *pulumi.OutputState }
+type ManagedInstanceIntegrationRoute53DomainOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceIntegrationRoute53DomainOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedInstanceIntegrationRoute53Domain)(nil)).Elem()
@@ -7036,18 +7162,20 @@ func (o ManagedInstanceIntegrationRoute53DomainOutput) ToManagedInstanceIntegrat
 }
 
 func (o ManagedInstanceIntegrationRoute53DomainOutput) HostedZoneId() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedInstanceIntegrationRoute53Domain) string { return v.HostedZoneId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53Domain) string { return v.HostedZoneId }).(pulumi.StringOutput)
 }
 
 func (o ManagedInstanceIntegrationRoute53DomainOutput) RecordSets() ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput {
-	return o.ApplyT(func (v ManagedInstanceIntegrationRoute53Domain) []ManagedInstanceIntegrationRoute53DomainRecordSet { return v.RecordSets }).(ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput)
+	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53Domain) []ManagedInstanceIntegrationRoute53DomainRecordSet {
+		return v.RecordSets
+	}).(ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput)
 }
 
 func (o ManagedInstanceIntegrationRoute53DomainOutput) SpotinstAcctId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceIntegrationRoute53Domain) *string { return v.SpotinstAcctId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53Domain) *string { return v.SpotinstAcctId }).(pulumi.StringPtrOutput)
 }
 
-type ManagedInstanceIntegrationRoute53DomainArrayOutput struct { *pulumi.OutputState}
+type ManagedInstanceIntegrationRoute53DomainArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceIntegrationRoute53DomainArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedInstanceIntegrationRoute53Domain)(nil)).Elem()
@@ -7062,15 +7190,15 @@ func (o ManagedInstanceIntegrationRoute53DomainArrayOutput) ToManagedInstanceInt
 }
 
 func (o ManagedInstanceIntegrationRoute53DomainArrayOutput) Index(i pulumi.IntInput) ManagedInstanceIntegrationRoute53DomainOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedInstanceIntegrationRoute53Domain {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstanceIntegrationRoute53Domain {
 		return vs[0].([]ManagedInstanceIntegrationRoute53Domain)[vs[1].(int)]
 	}).(ManagedInstanceIntegrationRoute53DomainOutput)
 }
 
 type ManagedInstanceIntegrationRoute53DomainRecordSet struct {
 	// The ManagedInstance name.
-	Name string `pulumi:"name"`
-	UsePublicIp *bool `pulumi:"usePublicIp"`
+	Name        string `pulumi:"name"`
+	UsePublicIp *bool  `pulumi:"usePublicIp"`
 }
 
 type ManagedInstanceIntegrationRoute53DomainRecordSetInput interface {
@@ -7082,7 +7210,7 @@ type ManagedInstanceIntegrationRoute53DomainRecordSetInput interface {
 
 type ManagedInstanceIntegrationRoute53DomainRecordSetArgs struct {
 	// The ManagedInstance name.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name        pulumi.StringInput  `pulumi:"name"`
 	UsePublicIp pulumi.BoolPtrInput `pulumi:"usePublicIp"`
 }
 
@@ -7119,7 +7247,7 @@ func (i ManagedInstanceIntegrationRoute53DomainRecordSetArray) ToManagedInstance
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput)
 }
 
-type ManagedInstanceIntegrationRoute53DomainRecordSetOutput struct { *pulumi.OutputState }
+type ManagedInstanceIntegrationRoute53DomainRecordSetOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceIntegrationRoute53DomainRecordSetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedInstanceIntegrationRoute53DomainRecordSet)(nil)).Elem()
@@ -7135,14 +7263,14 @@ func (o ManagedInstanceIntegrationRoute53DomainRecordSetOutput) ToManagedInstanc
 
 // The ManagedInstance name.
 func (o ManagedInstanceIntegrationRoute53DomainRecordSetOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedInstanceIntegrationRoute53DomainRecordSet) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53DomainRecordSet) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o ManagedInstanceIntegrationRoute53DomainRecordSetOutput) UsePublicIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceIntegrationRoute53DomainRecordSet) *bool { return v.UsePublicIp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53DomainRecordSet) *bool { return v.UsePublicIp }).(pulumi.BoolPtrOutput)
 }
 
-type ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput struct { *pulumi.OutputState}
+type ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedInstanceIntegrationRoute53DomainRecordSet)(nil)).Elem()
@@ -7157,20 +7285,20 @@ func (o ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput) ToManagedIn
 }
 
 func (o ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput) Index(i pulumi.IntInput) ManagedInstanceIntegrationRoute53DomainRecordSetOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedInstanceIntegrationRoute53DomainRecordSet {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstanceIntegrationRoute53DomainRecordSet {
 		return vs[0].([]ManagedInstanceIntegrationRoute53DomainRecordSet)[vs[1].(int)]
 	}).(ManagedInstanceIntegrationRoute53DomainRecordSetOutput)
 }
 
 type ManagedInstanceLoadBalancer struct {
-	Arn *string `pulumi:"arn"`
-	AutoWeight *bool `pulumi:"autoWeight"`
-	AzAwareness *bool `pulumi:"azAwareness"`
-	BalancerId *string `pulumi:"balancerId"`
+	Arn         *string `pulumi:"arn"`
+	AutoWeight  *bool   `pulumi:"autoWeight"`
+	AzAwareness *bool   `pulumi:"azAwareness"`
+	BalancerId  *string `pulumi:"balancerId"`
 	// The ManagedInstance name.
-	Name *string `pulumi:"name"`
+	Name        *string `pulumi:"name"`
 	TargetSetId *string `pulumi:"targetSetId"`
-	Type string `pulumi:"type"`
+	Type        string  `pulumi:"type"`
 }
 
 type ManagedInstanceLoadBalancerInput interface {
@@ -7181,14 +7309,14 @@ type ManagedInstanceLoadBalancerInput interface {
 }
 
 type ManagedInstanceLoadBalancerArgs struct {
-	Arn pulumi.StringPtrInput `pulumi:"arn"`
-	AutoWeight pulumi.BoolPtrInput `pulumi:"autoWeight"`
-	AzAwareness pulumi.BoolPtrInput `pulumi:"azAwareness"`
-	BalancerId pulumi.StringPtrInput `pulumi:"balancerId"`
+	Arn         pulumi.StringPtrInput `pulumi:"arn"`
+	AutoWeight  pulumi.BoolPtrInput   `pulumi:"autoWeight"`
+	AzAwareness pulumi.BoolPtrInput   `pulumi:"azAwareness"`
+	BalancerId  pulumi.StringPtrInput `pulumi:"balancerId"`
 	// The ManagedInstance name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
 	TargetSetId pulumi.StringPtrInput `pulumi:"targetSetId"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Type        pulumi.StringInput    `pulumi:"type"`
 }
 
 func (ManagedInstanceLoadBalancerArgs) ElementType() reflect.Type {
@@ -7224,7 +7352,7 @@ func (i ManagedInstanceLoadBalancerArray) ToManagedInstanceLoadBalancerArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceLoadBalancerArrayOutput)
 }
 
-type ManagedInstanceLoadBalancerOutput struct { *pulumi.OutputState }
+type ManagedInstanceLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceLoadBalancerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedInstanceLoadBalancer)(nil)).Elem()
@@ -7239,35 +7367,35 @@ func (o ManagedInstanceLoadBalancerOutput) ToManagedInstanceLoadBalancerOutputWi
 }
 
 func (o ManagedInstanceLoadBalancerOutput) Arn() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedInstanceLoadBalancerOutput) AutoWeight() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceLoadBalancer) *bool { return v.AutoWeight }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *bool { return v.AutoWeight }).(pulumi.BoolPtrOutput)
 }
 
 func (o ManagedInstanceLoadBalancerOutput) AzAwareness() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceLoadBalancer) *bool { return v.AzAwareness }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *bool { return v.AzAwareness }).(pulumi.BoolPtrOutput)
 }
 
 func (o ManagedInstanceLoadBalancerOutput) BalancerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceLoadBalancer) *string { return v.BalancerId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.BalancerId }).(pulumi.StringPtrOutput)
 }
 
 // The ManagedInstance name.
 func (o ManagedInstanceLoadBalancerOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedInstanceLoadBalancerOutput) TargetSetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceLoadBalancer) *string { return v.TargetSetId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.TargetSetId }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedInstanceLoadBalancerOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedInstanceLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ManagedInstanceLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type ManagedInstanceLoadBalancerArrayOutput struct { *pulumi.OutputState}
+type ManagedInstanceLoadBalancerArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceLoadBalancerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedInstanceLoadBalancer)(nil)).Elem()
@@ -7282,15 +7410,15 @@ func (o ManagedInstanceLoadBalancerArrayOutput) ToManagedInstanceLoadBalancerArr
 }
 
 func (o ManagedInstanceLoadBalancerArrayOutput) Index(i pulumi.IntInput) ManagedInstanceLoadBalancerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedInstanceLoadBalancer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstanceLoadBalancer {
 		return vs[0].([]ManagedInstanceLoadBalancer)[vs[1].(int)]
 	}).(ManagedInstanceLoadBalancerOutput)
 }
 
 type ManagedInstanceNetworkInterface struct {
-	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
-	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	DeviceIndex string `pulumi:"deviceIndex"`
+	AssociateIpv6Address     *bool  `pulumi:"associateIpv6Address"`
+	AssociatePublicIpAddress *bool  `pulumi:"associatePublicIpAddress"`
+	DeviceIndex              string `pulumi:"deviceIndex"`
 }
 
 type ManagedInstanceNetworkInterfaceInput interface {
@@ -7301,9 +7429,9 @@ type ManagedInstanceNetworkInterfaceInput interface {
 }
 
 type ManagedInstanceNetworkInterfaceArgs struct {
-	AssociateIpv6Address pulumi.BoolPtrInput `pulumi:"associateIpv6Address"`
+	AssociateIpv6Address     pulumi.BoolPtrInput `pulumi:"associateIpv6Address"`
 	AssociatePublicIpAddress pulumi.BoolPtrInput `pulumi:"associatePublicIpAddress"`
-	DeviceIndex pulumi.StringInput `pulumi:"deviceIndex"`
+	DeviceIndex              pulumi.StringInput  `pulumi:"deviceIndex"`
 }
 
 func (ManagedInstanceNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -7339,7 +7467,7 @@ func (i ManagedInstanceNetworkInterfaceArray) ToManagedInstanceNetworkInterfaceA
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceNetworkInterfaceArrayOutput)
 }
 
-type ManagedInstanceNetworkInterfaceOutput struct { *pulumi.OutputState }
+type ManagedInstanceNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceNetworkInterfaceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedInstanceNetworkInterface)(nil)).Elem()
@@ -7354,18 +7482,18 @@ func (o ManagedInstanceNetworkInterfaceOutput) ToManagedInstanceNetworkInterface
 }
 
 func (o ManagedInstanceNetworkInterfaceOutput) AssociateIpv6Address() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceNetworkInterface) *bool { return v.AssociateIpv6Address }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceNetworkInterface) *bool { return v.AssociateIpv6Address }).(pulumi.BoolPtrOutput)
 }
 
 func (o ManagedInstanceNetworkInterfaceOutput) AssociatePublicIpAddress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceNetworkInterface) *bool { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceNetworkInterface) *bool { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
 }
 
 func (o ManagedInstanceNetworkInterfaceOutput) DeviceIndex() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedInstanceNetworkInterface) string { return v.DeviceIndex }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ManagedInstanceNetworkInterface) string { return v.DeviceIndex }).(pulumi.StringOutput)
 }
 
-type ManagedInstanceNetworkInterfaceArrayOutput struct { *pulumi.OutputState}
+type ManagedInstanceNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceNetworkInterfaceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedInstanceNetworkInterface)(nil)).Elem()
@@ -7380,7 +7508,7 @@ func (o ManagedInstanceNetworkInterfaceArrayOutput) ToManagedInstanceNetworkInte
 }
 
 func (o ManagedInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ManagedInstanceNetworkInterfaceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedInstanceNetworkInterface {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstanceNetworkInterface {
 		return vs[0].([]ManagedInstanceNetworkInterface)[vs[1].(int)]
 	}).(ManagedInstanceNetworkInterfaceOutput)
 }
@@ -7433,7 +7561,8 @@ type ManagedInstanceRevertToSpotPtrInput interface {
 
 type managedInstanceRevertToSpotPtrType ManagedInstanceRevertToSpotArgs
 
-func ManagedInstanceRevertToSpotPtr(v *ManagedInstanceRevertToSpotArgs) ManagedInstanceRevertToSpotPtrInput {	return (*managedInstanceRevertToSpotPtrType)(v)
+func ManagedInstanceRevertToSpotPtr(v *ManagedInstanceRevertToSpotArgs) ManagedInstanceRevertToSpotPtrInput {
+	return (*managedInstanceRevertToSpotPtrType)(v)
 }
 
 func (*managedInstanceRevertToSpotPtrType) ElementType() reflect.Type {
@@ -7448,7 +7577,7 @@ func (i *managedInstanceRevertToSpotPtrType) ToManagedInstanceRevertToSpotPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceRevertToSpotPtrOutput)
 }
 
-type ManagedInstanceRevertToSpotOutput struct { *pulumi.OutputState }
+type ManagedInstanceRevertToSpotOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceRevertToSpotOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedInstanceRevertToSpot)(nil)).Elem()
@@ -7471,13 +7600,14 @@ func (o ManagedInstanceRevertToSpotOutput) ToManagedInstanceRevertToSpotPtrOutpu
 		return &v
 	}).(ManagedInstanceRevertToSpotPtrOutput)
 }
+
 // Valid values: “always”, “never”, "timeWindow".
 // Default `"never"`.
 func (o ManagedInstanceRevertToSpotOutput) PerformAt() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedInstanceRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ManagedInstanceRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
 }
 
-type ManagedInstanceRevertToSpotPtrOutput struct { *pulumi.OutputState}
+type ManagedInstanceRevertToSpotPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceRevertToSpotPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ManagedInstanceRevertToSpot)(nil)).Elem()
@@ -7492,21 +7622,21 @@ func (o ManagedInstanceRevertToSpotPtrOutput) ToManagedInstanceRevertToSpotPtrOu
 }
 
 func (o ManagedInstanceRevertToSpotPtrOutput) Elem() ManagedInstanceRevertToSpotOutput {
-	return o.ApplyT(func (v *ManagedInstanceRevertToSpot) ManagedInstanceRevertToSpot { return *v }).(ManagedInstanceRevertToSpotOutput)
+	return o.ApplyT(func(v *ManagedInstanceRevertToSpot) ManagedInstanceRevertToSpot { return *v }).(ManagedInstanceRevertToSpotOutput)
 }
 
 // Valid values: “always”, “never”, "timeWindow".
 // Default `"never"`.
 func (o ManagedInstanceRevertToSpotPtrOutput) PerformAt() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedInstanceRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ManagedInstanceRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
 }
 
 type ManagedInstanceScheduledTask struct {
 	CronExpression *string `pulumi:"cronExpression"`
-	Frequency *string `pulumi:"frequency"`
-	IsEnabled *bool `pulumi:"isEnabled"`
-	StartTime *string `pulumi:"startTime"`
-	TaskType string `pulumi:"taskType"`
+	Frequency      *string `pulumi:"frequency"`
+	IsEnabled      *bool   `pulumi:"isEnabled"`
+	StartTime      *string `pulumi:"startTime"`
+	TaskType       string  `pulumi:"taskType"`
 }
 
 type ManagedInstanceScheduledTaskInput interface {
@@ -7518,10 +7648,10 @@ type ManagedInstanceScheduledTaskInput interface {
 
 type ManagedInstanceScheduledTaskArgs struct {
 	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
-	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	TaskType pulumi.StringInput `pulumi:"taskType"`
+	Frequency      pulumi.StringPtrInput `pulumi:"frequency"`
+	IsEnabled      pulumi.BoolPtrInput   `pulumi:"isEnabled"`
+	StartTime      pulumi.StringPtrInput `pulumi:"startTime"`
+	TaskType       pulumi.StringInput    `pulumi:"taskType"`
 }
 
 func (ManagedInstanceScheduledTaskArgs) ElementType() reflect.Type {
@@ -7557,7 +7687,7 @@ func (i ManagedInstanceScheduledTaskArray) ToManagedInstanceScheduledTaskArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceScheduledTaskArrayOutput)
 }
 
-type ManagedInstanceScheduledTaskOutput struct { *pulumi.OutputState }
+type ManagedInstanceScheduledTaskOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceScheduledTaskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedInstanceScheduledTask)(nil)).Elem()
@@ -7572,26 +7702,26 @@ func (o ManagedInstanceScheduledTaskOutput) ToManagedInstanceScheduledTaskOutput
 }
 
 func (o ManagedInstanceScheduledTaskOutput) CronExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceScheduledTask) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceScheduledTask) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedInstanceScheduledTaskOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceScheduledTask) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceScheduledTask) *string { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedInstanceScheduledTaskOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceScheduledTask) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceScheduledTask) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ManagedInstanceScheduledTaskOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceScheduledTask) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceScheduledTask) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedInstanceScheduledTaskOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedInstanceScheduledTask) string { return v.TaskType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ManagedInstanceScheduledTask) string { return v.TaskType }).(pulumi.StringOutput)
 }
 
-type ManagedInstanceScheduledTaskArrayOutput struct { *pulumi.OutputState}
+type ManagedInstanceScheduledTaskArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceScheduledTaskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedInstanceScheduledTask)(nil)).Elem()
@@ -7606,7 +7736,7 @@ func (o ManagedInstanceScheduledTaskArrayOutput) ToManagedInstanceScheduledTaskA
 }
 
 func (o ManagedInstanceScheduledTaskArrayOutput) Index(i pulumi.IntInput) ManagedInstanceScheduledTaskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedInstanceScheduledTask {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstanceScheduledTask {
 		return vs[0].([]ManagedInstanceScheduledTask)[vs[1].(int)]
 	}).(ManagedInstanceScheduledTaskOutput)
 }
@@ -7665,7 +7795,7 @@ func (i ManagedInstanceTagArray) ToManagedInstanceTagArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceTagArrayOutput)
 }
 
-type ManagedInstanceTagOutput struct { *pulumi.OutputState }
+type ManagedInstanceTagOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceTagOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedInstanceTag)(nil)).Elem()
@@ -7681,15 +7811,15 @@ func (o ManagedInstanceTagOutput) ToManagedInstanceTagOutputWithContext(ctx cont
 
 // Tag's key.
 func (o ManagedInstanceTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 // Tag's name.
 func (o ManagedInstanceTagOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedInstanceTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedInstanceTag) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type ManagedInstanceTagArrayOutput struct { *pulumi.OutputState}
+type ManagedInstanceTagArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceTagArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedInstanceTag)(nil)).Elem()
@@ -7704,7 +7834,7 @@ func (o ManagedInstanceTagArrayOutput) ToManagedInstanceTagArrayOutputWithContex
 }
 
 func (o ManagedInstanceTagArrayOutput) Index(i pulumi.IntInput) ManagedInstanceTagOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedInstanceTag {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstanceTag {
 		return vs[0].([]ManagedInstanceTag)[vs[1].(int)]
 	}).(ManagedInstanceTagOutput)
 }
@@ -7712,7 +7842,7 @@ func (o ManagedInstanceTagArrayOutput) Index(i pulumi.IntInput) ManagedInstanceT
 type MrScalarApplication struct {
 	Args []string `pulumi:"args"`
 	// The MrScaler name.
-	Name string `pulumi:"name"`
+	Name    string  `pulumi:"name"`
 	Version *string `pulumi:"version"`
 }
 
@@ -7726,7 +7856,7 @@ type MrScalarApplicationInput interface {
 type MrScalarApplicationArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// The MrScaler name.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name    pulumi.StringInput    `pulumi:"name"`
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -7763,7 +7893,7 @@ func (i MrScalarApplicationArray) ToMrScalarApplicationArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarApplicationArrayOutput)
 }
 
-type MrScalarApplicationOutput struct { *pulumi.OutputState }
+type MrScalarApplicationOutput struct{ *pulumi.OutputState }
 
 func (MrScalarApplicationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarApplication)(nil)).Elem()
@@ -7778,19 +7908,19 @@ func (o MrScalarApplicationOutput) ToMrScalarApplicationOutputWithContext(ctx co
 }
 
 func (o MrScalarApplicationOutput) Args() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v MrScalarApplication) []string { return v.Args }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v MrScalarApplication) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
 // The MrScaler name.
 func (o MrScalarApplicationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarApplication) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarApplication) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o MrScalarApplicationOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarApplication) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarApplication) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type MrScalarApplicationArrayOutput struct { *pulumi.OutputState}
+type MrScalarApplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarApplicationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarApplication)(nil)).Elem()
@@ -7805,14 +7935,14 @@ func (o MrScalarApplicationArrayOutput) ToMrScalarApplicationArrayOutputWithCont
 }
 
 func (o MrScalarApplicationArrayOutput) Index(i pulumi.IntInput) MrScalarApplicationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarApplication {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarApplication {
 		return vs[0].([]MrScalarApplication)[vs[1].(int)]
 	}).(MrScalarApplicationOutput)
 }
 
 type MrScalarBootstrapActionsFile struct {
 	Bucket string `pulumi:"bucket"`
-	Key string `pulumi:"key"`
+	Key    string `pulumi:"key"`
 }
 
 type MrScalarBootstrapActionsFileInput interface {
@@ -7824,7 +7954,7 @@ type MrScalarBootstrapActionsFileInput interface {
 
 type MrScalarBootstrapActionsFileArgs struct {
 	Bucket pulumi.StringInput `pulumi:"bucket"`
-	Key pulumi.StringInput `pulumi:"key"`
+	Key    pulumi.StringInput `pulumi:"key"`
 }
 
 func (MrScalarBootstrapActionsFileArgs) ElementType() reflect.Type {
@@ -7860,7 +7990,7 @@ func (i MrScalarBootstrapActionsFileArray) ToMrScalarBootstrapActionsFileArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarBootstrapActionsFileArrayOutput)
 }
 
-type MrScalarBootstrapActionsFileOutput struct { *pulumi.OutputState }
+type MrScalarBootstrapActionsFileOutput struct{ *pulumi.OutputState }
 
 func (MrScalarBootstrapActionsFileOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarBootstrapActionsFile)(nil)).Elem()
@@ -7875,14 +8005,14 @@ func (o MrScalarBootstrapActionsFileOutput) ToMrScalarBootstrapActionsFileOutput
 }
 
 func (o MrScalarBootstrapActionsFileOutput) Bucket() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarBootstrapActionsFile) string { return v.Bucket }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarBootstrapActionsFile) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
 func (o MrScalarBootstrapActionsFileOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarBootstrapActionsFile) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarBootstrapActionsFile) string { return v.Key }).(pulumi.StringOutput)
 }
 
-type MrScalarBootstrapActionsFileArrayOutput struct { *pulumi.OutputState}
+type MrScalarBootstrapActionsFileArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarBootstrapActionsFileArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarBootstrapActionsFile)(nil)).Elem()
@@ -7897,14 +8027,14 @@ func (o MrScalarBootstrapActionsFileArrayOutput) ToMrScalarBootstrapActionsFileA
 }
 
 func (o MrScalarBootstrapActionsFileArrayOutput) Index(i pulumi.IntInput) MrScalarBootstrapActionsFileOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarBootstrapActionsFile {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarBootstrapActionsFile {
 		return vs[0].([]MrScalarBootstrapActionsFile)[vs[1].(int)]
 	}).(MrScalarBootstrapActionsFileOutput)
 }
 
 type MrScalarConfigurationsFile struct {
 	Bucket string `pulumi:"bucket"`
-	Key string `pulumi:"key"`
+	Key    string `pulumi:"key"`
 }
 
 type MrScalarConfigurationsFileInput interface {
@@ -7916,7 +8046,7 @@ type MrScalarConfigurationsFileInput interface {
 
 type MrScalarConfigurationsFileArgs struct {
 	Bucket pulumi.StringInput `pulumi:"bucket"`
-	Key pulumi.StringInput `pulumi:"key"`
+	Key    pulumi.StringInput `pulumi:"key"`
 }
 
 func (MrScalarConfigurationsFileArgs) ElementType() reflect.Type {
@@ -7952,7 +8082,7 @@ func (i MrScalarConfigurationsFileArray) ToMrScalarConfigurationsFileArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarConfigurationsFileArrayOutput)
 }
 
-type MrScalarConfigurationsFileOutput struct { *pulumi.OutputState }
+type MrScalarConfigurationsFileOutput struct{ *pulumi.OutputState }
 
 func (MrScalarConfigurationsFileOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarConfigurationsFile)(nil)).Elem()
@@ -7967,14 +8097,14 @@ func (o MrScalarConfigurationsFileOutput) ToMrScalarConfigurationsFileOutputWith
 }
 
 func (o MrScalarConfigurationsFileOutput) Bucket() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarConfigurationsFile) string { return v.Bucket }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarConfigurationsFile) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
 func (o MrScalarConfigurationsFileOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarConfigurationsFile) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarConfigurationsFile) string { return v.Key }).(pulumi.StringOutput)
 }
 
-type MrScalarConfigurationsFileArrayOutput struct { *pulumi.OutputState}
+type MrScalarConfigurationsFileArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarConfigurationsFileArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarConfigurationsFile)(nil)).Elem()
@@ -7989,16 +8119,16 @@ func (o MrScalarConfigurationsFileArrayOutput) ToMrScalarConfigurationsFileArray
 }
 
 func (o MrScalarConfigurationsFileArrayOutput) Index(i pulumi.IntInput) MrScalarConfigurationsFileOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarConfigurationsFile {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarConfigurationsFile {
 		return vs[0].([]MrScalarConfigurationsFile)[vs[1].(int)]
 	}).(MrScalarConfigurationsFileOutput)
 }
 
 type MrScalarCoreEbsBlockDevice struct {
-	Iops *int `pulumi:"iops"`
-	SizeInGb int `pulumi:"sizeInGb"`
-	VolumeType string `pulumi:"volumeType"`
-	VolumesPerInstance *int `pulumi:"volumesPerInstance"`
+	Iops               *int   `pulumi:"iops"`
+	SizeInGb           int    `pulumi:"sizeInGb"`
+	VolumeType         string `pulumi:"volumeType"`
+	VolumesPerInstance *int   `pulumi:"volumesPerInstance"`
 }
 
 type MrScalarCoreEbsBlockDeviceInput interface {
@@ -8009,9 +8139,9 @@ type MrScalarCoreEbsBlockDeviceInput interface {
 }
 
 type MrScalarCoreEbsBlockDeviceArgs struct {
-	Iops pulumi.IntPtrInput `pulumi:"iops"`
-	SizeInGb pulumi.IntInput `pulumi:"sizeInGb"`
-	VolumeType pulumi.StringInput `pulumi:"volumeType"`
+	Iops               pulumi.IntPtrInput `pulumi:"iops"`
+	SizeInGb           pulumi.IntInput    `pulumi:"sizeInGb"`
+	VolumeType         pulumi.StringInput `pulumi:"volumeType"`
 	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
 }
 
@@ -8048,7 +8178,7 @@ func (i MrScalarCoreEbsBlockDeviceArray) ToMrScalarCoreEbsBlockDeviceArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarCoreEbsBlockDeviceArrayOutput)
 }
 
-type MrScalarCoreEbsBlockDeviceOutput struct { *pulumi.OutputState }
+type MrScalarCoreEbsBlockDeviceOutput struct{ *pulumi.OutputState }
 
 func (MrScalarCoreEbsBlockDeviceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarCoreEbsBlockDevice)(nil)).Elem()
@@ -8063,22 +8193,22 @@ func (o MrScalarCoreEbsBlockDeviceOutput) ToMrScalarCoreEbsBlockDeviceOutputWith
 }
 
 func (o MrScalarCoreEbsBlockDeviceOutput) Iops() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreEbsBlockDevice) *int { return v.Iops }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreEbsBlockDevice) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarCoreEbsBlockDeviceOutput) SizeInGb() pulumi.IntOutput {
-	return o.ApplyT(func (v MrScalarCoreEbsBlockDevice) int { return v.SizeInGb }).(pulumi.IntOutput)
+	return o.ApplyT(func(v MrScalarCoreEbsBlockDevice) int { return v.SizeInGb }).(pulumi.IntOutput)
 }
 
 func (o MrScalarCoreEbsBlockDeviceOutput) VolumeType() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarCoreEbsBlockDevice) string { return v.VolumeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarCoreEbsBlockDevice) string { return v.VolumeType }).(pulumi.StringOutput)
 }
 
 func (o MrScalarCoreEbsBlockDeviceOutput) VolumesPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreEbsBlockDevice) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreEbsBlockDevice) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
 }
 
-type MrScalarCoreEbsBlockDeviceArrayOutput struct { *pulumi.OutputState}
+type MrScalarCoreEbsBlockDeviceArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarCoreEbsBlockDeviceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarCoreEbsBlockDevice)(nil)).Elem()
@@ -8093,30 +8223,30 @@ func (o MrScalarCoreEbsBlockDeviceArrayOutput) ToMrScalarCoreEbsBlockDeviceArray
 }
 
 func (o MrScalarCoreEbsBlockDeviceArrayOutput) Index(i pulumi.IntInput) MrScalarCoreEbsBlockDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarCoreEbsBlockDevice {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarCoreEbsBlockDevice {
 		return vs[0].([]MrScalarCoreEbsBlockDevice)[vs[1].(int)]
 	}).(MrScalarCoreEbsBlockDeviceOutput)
 }
 
 type MrScalarCoreScalingDownPolicy struct {
-	ActionType *string `pulumi:"actionType"`
-	Adjustment *string `pulumi:"adjustment"`
-	Cooldown *int `pulumi:"cooldown"`
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
-	Maximum *string `pulumi:"maximum"`
-	MetricName string `pulumi:"metricName"`
-	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
-	Minimum *string `pulumi:"minimum"`
-	Namespace string `pulumi:"namespace"`
-	Operator *string `pulumi:"operator"`
-	Period *int `pulumi:"period"`
-	PolicyName string `pulumi:"policyName"`
-	Statistic *string `pulumi:"statistic"`
-	Target *string `pulumi:"target"`
-	Threshold float64 `pulumi:"threshold"`
-	Unit string `pulumi:"unit"`
+	ActionType        *string                `pulumi:"actionType"`
+	Adjustment        *string                `pulumi:"adjustment"`
+	Cooldown          *int                   `pulumi:"cooldown"`
+	Dimensions        map[string]interface{} `pulumi:"dimensions"`
+	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
+	MaxTargetCapacity *string                `pulumi:"maxTargetCapacity"`
+	Maximum           *string                `pulumi:"maximum"`
+	MetricName        string                 `pulumi:"metricName"`
+	MinTargetCapacity *string                `pulumi:"minTargetCapacity"`
+	Minimum           *string                `pulumi:"minimum"`
+	Namespace         string                 `pulumi:"namespace"`
+	Operator          *string                `pulumi:"operator"`
+	Period            *int                   `pulumi:"period"`
+	PolicyName        string                 `pulumi:"policyName"`
+	Statistic         *string                `pulumi:"statistic"`
+	Target            *string                `pulumi:"target"`
+	Threshold         float64                `pulumi:"threshold"`
+	Unit              string                 `pulumi:"unit"`
 }
 
 type MrScalarCoreScalingDownPolicyInput interface {
@@ -8127,24 +8257,24 @@ type MrScalarCoreScalingDownPolicyInput interface {
 }
 
 type MrScalarCoreScalingDownPolicyArgs struct {
-	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
-	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
-	Dimensions pulumi.MapInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	ActionType        pulumi.StringPtrInput `pulumi:"actionType"`
+	Adjustment        pulumi.StringPtrInput `pulumi:"adjustment"`
+	Cooldown          pulumi.IntPtrInput    `pulumi:"cooldown"`
+	Dimensions        pulumi.MapInput       `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
-	Maximum pulumi.StringPtrInput `pulumi:"maximum"`
-	MetricName pulumi.StringInput `pulumi:"metricName"`
+	Maximum           pulumi.StringPtrInput `pulumi:"maximum"`
+	MetricName        pulumi.StringInput    `pulumi:"metricName"`
 	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
-	Minimum pulumi.StringPtrInput `pulumi:"minimum"`
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	Period pulumi.IntPtrInput `pulumi:"period"`
-	PolicyName pulumi.StringInput `pulumi:"policyName"`
-	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
-	Target pulumi.StringPtrInput `pulumi:"target"`
-	Threshold pulumi.Float64Input `pulumi:"threshold"`
-	Unit pulumi.StringInput `pulumi:"unit"`
+	Minimum           pulumi.StringPtrInput `pulumi:"minimum"`
+	Namespace         pulumi.StringInput    `pulumi:"namespace"`
+	Operator          pulumi.StringPtrInput `pulumi:"operator"`
+	Period            pulumi.IntPtrInput    `pulumi:"period"`
+	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
+	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
+	Target            pulumi.StringPtrInput `pulumi:"target"`
+	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
+	Unit              pulumi.StringInput    `pulumi:"unit"`
 }
 
 func (MrScalarCoreScalingDownPolicyArgs) ElementType() reflect.Type {
@@ -8180,7 +8310,7 @@ func (i MrScalarCoreScalingDownPolicyArray) ToMrScalarCoreScalingDownPolicyArray
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarCoreScalingDownPolicyArrayOutput)
 }
 
-type MrScalarCoreScalingDownPolicyOutput struct { *pulumi.OutputState }
+type MrScalarCoreScalingDownPolicyOutput struct{ *pulumi.OutputState }
 
 func (MrScalarCoreScalingDownPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarCoreScalingDownPolicy)(nil)).Elem()
@@ -8195,78 +8325,78 @@ func (o MrScalarCoreScalingDownPolicyOutput) ToMrScalarCoreScalingDownPolicyOutp
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Maximum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) MinTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Minimum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) PolicyName() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Statistic() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Threshold() pulumi.Float64Output {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
 func (o MrScalarCoreScalingDownPolicyOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingDownPolicy) string { return v.Unit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-type MrScalarCoreScalingDownPolicyArrayOutput struct { *pulumi.OutputState}
+type MrScalarCoreScalingDownPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarCoreScalingDownPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarCoreScalingDownPolicy)(nil)).Elem()
@@ -8281,30 +8411,30 @@ func (o MrScalarCoreScalingDownPolicyArrayOutput) ToMrScalarCoreScalingDownPolic
 }
 
 func (o MrScalarCoreScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) MrScalarCoreScalingDownPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarCoreScalingDownPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarCoreScalingDownPolicy {
 		return vs[0].([]MrScalarCoreScalingDownPolicy)[vs[1].(int)]
 	}).(MrScalarCoreScalingDownPolicyOutput)
 }
 
 type MrScalarCoreScalingUpPolicy struct {
-	ActionType *string `pulumi:"actionType"`
-	Adjustment *string `pulumi:"adjustment"`
-	Cooldown *int `pulumi:"cooldown"`
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
-	Maximum *string `pulumi:"maximum"`
-	MetricName string `pulumi:"metricName"`
-	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
-	Minimum *string `pulumi:"minimum"`
-	Namespace string `pulumi:"namespace"`
-	Operator *string `pulumi:"operator"`
-	Period *int `pulumi:"period"`
-	PolicyName string `pulumi:"policyName"`
-	Statistic *string `pulumi:"statistic"`
-	Target *string `pulumi:"target"`
-	Threshold float64 `pulumi:"threshold"`
-	Unit string `pulumi:"unit"`
+	ActionType        *string                `pulumi:"actionType"`
+	Adjustment        *string                `pulumi:"adjustment"`
+	Cooldown          *int                   `pulumi:"cooldown"`
+	Dimensions        map[string]interface{} `pulumi:"dimensions"`
+	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
+	MaxTargetCapacity *string                `pulumi:"maxTargetCapacity"`
+	Maximum           *string                `pulumi:"maximum"`
+	MetricName        string                 `pulumi:"metricName"`
+	MinTargetCapacity *string                `pulumi:"minTargetCapacity"`
+	Minimum           *string                `pulumi:"minimum"`
+	Namespace         string                 `pulumi:"namespace"`
+	Operator          *string                `pulumi:"operator"`
+	Period            *int                   `pulumi:"period"`
+	PolicyName        string                 `pulumi:"policyName"`
+	Statistic         *string                `pulumi:"statistic"`
+	Target            *string                `pulumi:"target"`
+	Threshold         float64                `pulumi:"threshold"`
+	Unit              string                 `pulumi:"unit"`
 }
 
 type MrScalarCoreScalingUpPolicyInput interface {
@@ -8315,24 +8445,24 @@ type MrScalarCoreScalingUpPolicyInput interface {
 }
 
 type MrScalarCoreScalingUpPolicyArgs struct {
-	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
-	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
-	Dimensions pulumi.MapInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	ActionType        pulumi.StringPtrInput `pulumi:"actionType"`
+	Adjustment        pulumi.StringPtrInput `pulumi:"adjustment"`
+	Cooldown          pulumi.IntPtrInput    `pulumi:"cooldown"`
+	Dimensions        pulumi.MapInput       `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
-	Maximum pulumi.StringPtrInput `pulumi:"maximum"`
-	MetricName pulumi.StringInput `pulumi:"metricName"`
+	Maximum           pulumi.StringPtrInput `pulumi:"maximum"`
+	MetricName        pulumi.StringInput    `pulumi:"metricName"`
 	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
-	Minimum pulumi.StringPtrInput `pulumi:"minimum"`
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	Period pulumi.IntPtrInput `pulumi:"period"`
-	PolicyName pulumi.StringInput `pulumi:"policyName"`
-	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
-	Target pulumi.StringPtrInput `pulumi:"target"`
-	Threshold pulumi.Float64Input `pulumi:"threshold"`
-	Unit pulumi.StringInput `pulumi:"unit"`
+	Minimum           pulumi.StringPtrInput `pulumi:"minimum"`
+	Namespace         pulumi.StringInput    `pulumi:"namespace"`
+	Operator          pulumi.StringPtrInput `pulumi:"operator"`
+	Period            pulumi.IntPtrInput    `pulumi:"period"`
+	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
+	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
+	Target            pulumi.StringPtrInput `pulumi:"target"`
+	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
+	Unit              pulumi.StringInput    `pulumi:"unit"`
 }
 
 func (MrScalarCoreScalingUpPolicyArgs) ElementType() reflect.Type {
@@ -8368,7 +8498,7 @@ func (i MrScalarCoreScalingUpPolicyArray) ToMrScalarCoreScalingUpPolicyArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarCoreScalingUpPolicyArrayOutput)
 }
 
-type MrScalarCoreScalingUpPolicyOutput struct { *pulumi.OutputState }
+type MrScalarCoreScalingUpPolicyOutput struct{ *pulumi.OutputState }
 
 func (MrScalarCoreScalingUpPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarCoreScalingUpPolicy)(nil)).Elem()
@@ -8383,78 +8513,78 @@ func (o MrScalarCoreScalingUpPolicyOutput) ToMrScalarCoreScalingUpPolicyOutputWi
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Maximum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) MinTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Minimum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) PolicyName() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Statistic() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Threshold() pulumi.Float64Output {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
 func (o MrScalarCoreScalingUpPolicyOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarCoreScalingUpPolicy) string { return v.Unit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-type MrScalarCoreScalingUpPolicyArrayOutput struct { *pulumi.OutputState}
+type MrScalarCoreScalingUpPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarCoreScalingUpPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarCoreScalingUpPolicy)(nil)).Elem()
@@ -8469,14 +8599,14 @@ func (o MrScalarCoreScalingUpPolicyArrayOutput) ToMrScalarCoreScalingUpPolicyArr
 }
 
 func (o MrScalarCoreScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) MrScalarCoreScalingUpPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarCoreScalingUpPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarCoreScalingUpPolicy {
 		return vs[0].([]MrScalarCoreScalingUpPolicy)[vs[1].(int)]
 	}).(MrScalarCoreScalingUpPolicyOutput)
 }
 
 type MrScalarInstanceWeight struct {
-	InstanceType string `pulumi:"instanceType"`
-	WeightedCapacity int `pulumi:"weightedCapacity"`
+	InstanceType     string `pulumi:"instanceType"`
+	WeightedCapacity int    `pulumi:"weightedCapacity"`
 }
 
 type MrScalarInstanceWeightInput interface {
@@ -8487,8 +8617,8 @@ type MrScalarInstanceWeightInput interface {
 }
 
 type MrScalarInstanceWeightArgs struct {
-	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	WeightedCapacity pulumi.IntInput `pulumi:"weightedCapacity"`
+	InstanceType     pulumi.StringInput `pulumi:"instanceType"`
+	WeightedCapacity pulumi.IntInput    `pulumi:"weightedCapacity"`
 }
 
 func (MrScalarInstanceWeightArgs) ElementType() reflect.Type {
@@ -8524,7 +8654,7 @@ func (i MrScalarInstanceWeightArray) ToMrScalarInstanceWeightArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarInstanceWeightArrayOutput)
 }
 
-type MrScalarInstanceWeightOutput struct { *pulumi.OutputState }
+type MrScalarInstanceWeightOutput struct{ *pulumi.OutputState }
 
 func (MrScalarInstanceWeightOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarInstanceWeight)(nil)).Elem()
@@ -8539,14 +8669,14 @@ func (o MrScalarInstanceWeightOutput) ToMrScalarInstanceWeightOutputWithContext(
 }
 
 func (o MrScalarInstanceWeightOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarInstanceWeight) string { return v.InstanceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarInstanceWeight) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 func (o MrScalarInstanceWeightOutput) WeightedCapacity() pulumi.IntOutput {
-	return o.ApplyT(func (v MrScalarInstanceWeight) int { return v.WeightedCapacity }).(pulumi.IntOutput)
+	return o.ApplyT(func(v MrScalarInstanceWeight) int { return v.WeightedCapacity }).(pulumi.IntOutput)
 }
 
-type MrScalarInstanceWeightArrayOutput struct { *pulumi.OutputState}
+type MrScalarInstanceWeightArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarInstanceWeightArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarInstanceWeight)(nil)).Elem()
@@ -8561,16 +8691,16 @@ func (o MrScalarInstanceWeightArrayOutput) ToMrScalarInstanceWeightArrayOutputWi
 }
 
 func (o MrScalarInstanceWeightArrayOutput) Index(i pulumi.IntInput) MrScalarInstanceWeightOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarInstanceWeight {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarInstanceWeight {
 		return vs[0].([]MrScalarInstanceWeight)[vs[1].(int)]
 	}).(MrScalarInstanceWeightOutput)
 }
 
 type MrScalarMasterEbsBlockDevice struct {
-	Iops *int `pulumi:"iops"`
-	SizeInGb int `pulumi:"sizeInGb"`
-	VolumeType string `pulumi:"volumeType"`
-	VolumesPerInstance *int `pulumi:"volumesPerInstance"`
+	Iops               *int   `pulumi:"iops"`
+	SizeInGb           int    `pulumi:"sizeInGb"`
+	VolumeType         string `pulumi:"volumeType"`
+	VolumesPerInstance *int   `pulumi:"volumesPerInstance"`
 }
 
 type MrScalarMasterEbsBlockDeviceInput interface {
@@ -8581,9 +8711,9 @@ type MrScalarMasterEbsBlockDeviceInput interface {
 }
 
 type MrScalarMasterEbsBlockDeviceArgs struct {
-	Iops pulumi.IntPtrInput `pulumi:"iops"`
-	SizeInGb pulumi.IntInput `pulumi:"sizeInGb"`
-	VolumeType pulumi.StringInput `pulumi:"volumeType"`
+	Iops               pulumi.IntPtrInput `pulumi:"iops"`
+	SizeInGb           pulumi.IntInput    `pulumi:"sizeInGb"`
+	VolumeType         pulumi.StringInput `pulumi:"volumeType"`
 	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
 }
 
@@ -8620,7 +8750,7 @@ func (i MrScalarMasterEbsBlockDeviceArray) ToMrScalarMasterEbsBlockDeviceArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarMasterEbsBlockDeviceArrayOutput)
 }
 
-type MrScalarMasterEbsBlockDeviceOutput struct { *pulumi.OutputState }
+type MrScalarMasterEbsBlockDeviceOutput struct{ *pulumi.OutputState }
 
 func (MrScalarMasterEbsBlockDeviceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarMasterEbsBlockDevice)(nil)).Elem()
@@ -8635,22 +8765,22 @@ func (o MrScalarMasterEbsBlockDeviceOutput) ToMrScalarMasterEbsBlockDeviceOutput
 }
 
 func (o MrScalarMasterEbsBlockDeviceOutput) Iops() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarMasterEbsBlockDevice) *int { return v.Iops }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarMasterEbsBlockDevice) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarMasterEbsBlockDeviceOutput) SizeInGb() pulumi.IntOutput {
-	return o.ApplyT(func (v MrScalarMasterEbsBlockDevice) int { return v.SizeInGb }).(pulumi.IntOutput)
+	return o.ApplyT(func(v MrScalarMasterEbsBlockDevice) int { return v.SizeInGb }).(pulumi.IntOutput)
 }
 
 func (o MrScalarMasterEbsBlockDeviceOutput) VolumeType() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarMasterEbsBlockDevice) string { return v.VolumeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarMasterEbsBlockDevice) string { return v.VolumeType }).(pulumi.StringOutput)
 }
 
 func (o MrScalarMasterEbsBlockDeviceOutput) VolumesPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarMasterEbsBlockDevice) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarMasterEbsBlockDevice) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
 }
 
-type MrScalarMasterEbsBlockDeviceArrayOutput struct { *pulumi.OutputState}
+type MrScalarMasterEbsBlockDeviceArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarMasterEbsBlockDeviceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarMasterEbsBlockDevice)(nil)).Elem()
@@ -8665,13 +8795,13 @@ func (o MrScalarMasterEbsBlockDeviceArrayOutput) ToMrScalarMasterEbsBlockDeviceA
 }
 
 func (o MrScalarMasterEbsBlockDeviceArrayOutput) Index(i pulumi.IntInput) MrScalarMasterEbsBlockDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarMasterEbsBlockDevice {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarMasterEbsBlockDevice {
 		return vs[0].([]MrScalarMasterEbsBlockDevice)[vs[1].(int)]
 	}).(MrScalarMasterEbsBlockDeviceOutput)
 }
 
 type MrScalarProvisioningTimeout struct {
-	Timeout int `pulumi:"timeout"`
+	Timeout       int    `pulumi:"timeout"`
 	TimeoutAction string `pulumi:"timeoutAction"`
 }
 
@@ -8683,7 +8813,7 @@ type MrScalarProvisioningTimeoutInput interface {
 }
 
 type MrScalarProvisioningTimeoutArgs struct {
-	Timeout pulumi.IntInput `pulumi:"timeout"`
+	Timeout       pulumi.IntInput    `pulumi:"timeout"`
 	TimeoutAction pulumi.StringInput `pulumi:"timeoutAction"`
 }
 
@@ -8716,7 +8846,8 @@ type MrScalarProvisioningTimeoutPtrInput interface {
 
 type mrScalarProvisioningTimeoutPtrType MrScalarProvisioningTimeoutArgs
 
-func MrScalarProvisioningTimeoutPtr(v *MrScalarProvisioningTimeoutArgs) MrScalarProvisioningTimeoutPtrInput {	return (*mrScalarProvisioningTimeoutPtrType)(v)
+func MrScalarProvisioningTimeoutPtr(v *MrScalarProvisioningTimeoutArgs) MrScalarProvisioningTimeoutPtrInput {
+	return (*mrScalarProvisioningTimeoutPtrType)(v)
 }
 
 func (*mrScalarProvisioningTimeoutPtrType) ElementType() reflect.Type {
@@ -8731,7 +8862,7 @@ func (i *mrScalarProvisioningTimeoutPtrType) ToMrScalarProvisioningTimeoutPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarProvisioningTimeoutPtrOutput)
 }
 
-type MrScalarProvisioningTimeoutOutput struct { *pulumi.OutputState }
+type MrScalarProvisioningTimeoutOutput struct{ *pulumi.OutputState }
 
 func (MrScalarProvisioningTimeoutOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarProvisioningTimeout)(nil)).Elem()
@@ -8755,14 +8886,14 @@ func (o MrScalarProvisioningTimeoutOutput) ToMrScalarProvisioningTimeoutPtrOutpu
 	}).(MrScalarProvisioningTimeoutPtrOutput)
 }
 func (o MrScalarProvisioningTimeoutOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func (v MrScalarProvisioningTimeout) int { return v.Timeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v MrScalarProvisioningTimeout) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
 func (o MrScalarProvisioningTimeoutOutput) TimeoutAction() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarProvisioningTimeout) string { return v.TimeoutAction }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarProvisioningTimeout) string { return v.TimeoutAction }).(pulumi.StringOutput)
 }
 
-type MrScalarProvisioningTimeoutPtrOutput struct { *pulumi.OutputState}
+type MrScalarProvisioningTimeoutPtrOutput struct{ *pulumi.OutputState }
 
 func (MrScalarProvisioningTimeoutPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MrScalarProvisioningTimeout)(nil)).Elem()
@@ -8777,25 +8908,25 @@ func (o MrScalarProvisioningTimeoutPtrOutput) ToMrScalarProvisioningTimeoutPtrOu
 }
 
 func (o MrScalarProvisioningTimeoutPtrOutput) Elem() MrScalarProvisioningTimeoutOutput {
-	return o.ApplyT(func (v *MrScalarProvisioningTimeout) MrScalarProvisioningTimeout { return *v }).(MrScalarProvisioningTimeoutOutput)
+	return o.ApplyT(func(v *MrScalarProvisioningTimeout) MrScalarProvisioningTimeout { return *v }).(MrScalarProvisioningTimeoutOutput)
 }
 
 func (o MrScalarProvisioningTimeoutPtrOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func (v MrScalarProvisioningTimeout) int { return v.Timeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v MrScalarProvisioningTimeout) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
 func (o MrScalarProvisioningTimeoutPtrOutput) TimeoutAction() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarProvisioningTimeout) string { return v.TimeoutAction }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarProvisioningTimeout) string { return v.TimeoutAction }).(pulumi.StringOutput)
 }
 
 type MrScalarScheduledTask struct {
-	Cron string `pulumi:"cron"`
-	DesiredCapacity *string `pulumi:"desiredCapacity"`
-	InstanceGroupType string `pulumi:"instanceGroupType"`
-	IsEnabled *bool `pulumi:"isEnabled"`
-	MaxCapacity *string `pulumi:"maxCapacity"`
-	MinCapacity *string `pulumi:"minCapacity"`
-	TaskType string `pulumi:"taskType"`
+	Cron              string  `pulumi:"cron"`
+	DesiredCapacity   *string `pulumi:"desiredCapacity"`
+	InstanceGroupType string  `pulumi:"instanceGroupType"`
+	IsEnabled         *bool   `pulumi:"isEnabled"`
+	MaxCapacity       *string `pulumi:"maxCapacity"`
+	MinCapacity       *string `pulumi:"minCapacity"`
+	TaskType          string  `pulumi:"taskType"`
 }
 
 type MrScalarScheduledTaskInput interface {
@@ -8806,13 +8937,13 @@ type MrScalarScheduledTaskInput interface {
 }
 
 type MrScalarScheduledTaskArgs struct {
-	Cron pulumi.StringInput `pulumi:"cron"`
-	DesiredCapacity pulumi.StringPtrInput `pulumi:"desiredCapacity"`
-	InstanceGroupType pulumi.StringInput `pulumi:"instanceGroupType"`
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	MaxCapacity pulumi.StringPtrInput `pulumi:"maxCapacity"`
-	MinCapacity pulumi.StringPtrInput `pulumi:"minCapacity"`
-	TaskType pulumi.StringInput `pulumi:"taskType"`
+	Cron              pulumi.StringInput    `pulumi:"cron"`
+	DesiredCapacity   pulumi.StringPtrInput `pulumi:"desiredCapacity"`
+	InstanceGroupType pulumi.StringInput    `pulumi:"instanceGroupType"`
+	IsEnabled         pulumi.BoolPtrInput   `pulumi:"isEnabled"`
+	MaxCapacity       pulumi.StringPtrInput `pulumi:"maxCapacity"`
+	MinCapacity       pulumi.StringPtrInput `pulumi:"minCapacity"`
+	TaskType          pulumi.StringInput    `pulumi:"taskType"`
 }
 
 func (MrScalarScheduledTaskArgs) ElementType() reflect.Type {
@@ -8848,7 +8979,7 @@ func (i MrScalarScheduledTaskArray) ToMrScalarScheduledTaskArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarScheduledTaskArrayOutput)
 }
 
-type MrScalarScheduledTaskOutput struct { *pulumi.OutputState }
+type MrScalarScheduledTaskOutput struct{ *pulumi.OutputState }
 
 func (MrScalarScheduledTaskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarScheduledTask)(nil)).Elem()
@@ -8863,34 +8994,34 @@ func (o MrScalarScheduledTaskOutput) ToMrScalarScheduledTaskOutputWithContext(ct
 }
 
 func (o MrScalarScheduledTaskOutput) Cron() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarScheduledTask) string { return v.Cron }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarScheduledTask) string { return v.Cron }).(pulumi.StringOutput)
 }
 
 func (o MrScalarScheduledTaskOutput) DesiredCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarScheduledTask) *string { return v.DesiredCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarScheduledTask) *string { return v.DesiredCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarScheduledTaskOutput) InstanceGroupType() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarScheduledTask) string { return v.InstanceGroupType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarScheduledTask) string { return v.InstanceGroupType }).(pulumi.StringOutput)
 }
 
 func (o MrScalarScheduledTaskOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v MrScalarScheduledTask) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v MrScalarScheduledTask) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o MrScalarScheduledTaskOutput) MaxCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarScheduledTask) *string { return v.MaxCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarScheduledTask) *string { return v.MaxCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarScheduledTaskOutput) MinCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarScheduledTask) *string { return v.MinCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarScheduledTask) *string { return v.MinCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarScheduledTaskOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarScheduledTask) string { return v.TaskType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarScheduledTask) string { return v.TaskType }).(pulumi.StringOutput)
 }
 
-type MrScalarScheduledTaskArrayOutput struct { *pulumi.OutputState}
+type MrScalarScheduledTaskArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarScheduledTaskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarScheduledTask)(nil)).Elem()
@@ -8905,14 +9036,14 @@ func (o MrScalarScheduledTaskArrayOutput) ToMrScalarScheduledTaskArrayOutputWith
 }
 
 func (o MrScalarScheduledTaskArrayOutput) Index(i pulumi.IntInput) MrScalarScheduledTaskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarScheduledTask {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarScheduledTask {
 		return vs[0].([]MrScalarScheduledTask)[vs[1].(int)]
 	}).(MrScalarScheduledTaskOutput)
 }
 
 type MrScalarStepsFile struct {
 	Bucket string `pulumi:"bucket"`
-	Key string `pulumi:"key"`
+	Key    string `pulumi:"key"`
 }
 
 type MrScalarStepsFileInput interface {
@@ -8924,7 +9055,7 @@ type MrScalarStepsFileInput interface {
 
 type MrScalarStepsFileArgs struct {
 	Bucket pulumi.StringInput `pulumi:"bucket"`
-	Key pulumi.StringInput `pulumi:"key"`
+	Key    pulumi.StringInput `pulumi:"key"`
 }
 
 func (MrScalarStepsFileArgs) ElementType() reflect.Type {
@@ -8960,7 +9091,7 @@ func (i MrScalarStepsFileArray) ToMrScalarStepsFileArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarStepsFileArrayOutput)
 }
 
-type MrScalarStepsFileOutput struct { *pulumi.OutputState }
+type MrScalarStepsFileOutput struct{ *pulumi.OutputState }
 
 func (MrScalarStepsFileOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarStepsFile)(nil)).Elem()
@@ -8975,14 +9106,14 @@ func (o MrScalarStepsFileOutput) ToMrScalarStepsFileOutputWithContext(ctx contex
 }
 
 func (o MrScalarStepsFileOutput) Bucket() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarStepsFile) string { return v.Bucket }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarStepsFile) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
 func (o MrScalarStepsFileOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarStepsFile) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarStepsFile) string { return v.Key }).(pulumi.StringOutput)
 }
 
-type MrScalarStepsFileArrayOutput struct { *pulumi.OutputState}
+type MrScalarStepsFileArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarStepsFileArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarStepsFile)(nil)).Elem()
@@ -8997,13 +9128,13 @@ func (o MrScalarStepsFileArrayOutput) ToMrScalarStepsFileArrayOutputWithContext(
 }
 
 func (o MrScalarStepsFileArrayOutput) Index(i pulumi.IntInput) MrScalarStepsFileOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarStepsFile {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarStepsFile {
 		return vs[0].([]MrScalarStepsFile)[vs[1].(int)]
 	}).(MrScalarStepsFileOutput)
 }
 
 type MrScalarTag struct {
-	Key string `pulumi:"key"`
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -9015,7 +9146,7 @@ type MrScalarTagInput interface {
 }
 
 type MrScalarTagArgs struct {
-	Key pulumi.StringInput `pulumi:"key"`
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -9052,7 +9183,7 @@ func (i MrScalarTagArray) ToMrScalarTagArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarTagArrayOutput)
 }
 
-type MrScalarTagOutput struct { *pulumi.OutputState }
+type MrScalarTagOutput struct{ *pulumi.OutputState }
 
 func (MrScalarTagOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarTag)(nil)).Elem()
@@ -9067,14 +9198,14 @@ func (o MrScalarTagOutput) ToMrScalarTagOutputWithContext(ctx context.Context) M
 }
 
 func (o MrScalarTagOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTag) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 func (o MrScalarTagOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTag) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTag) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type MrScalarTagArrayOutput struct { *pulumi.OutputState}
+type MrScalarTagArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarTagArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarTag)(nil)).Elem()
@@ -9089,16 +9220,16 @@ func (o MrScalarTagArrayOutput) ToMrScalarTagArrayOutputWithContext(ctx context.
 }
 
 func (o MrScalarTagArrayOutput) Index(i pulumi.IntInput) MrScalarTagOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarTag {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarTag {
 		return vs[0].([]MrScalarTag)[vs[1].(int)]
 	}).(MrScalarTagOutput)
 }
 
 type MrScalarTaskEbsBlockDevice struct {
-	Iops *int `pulumi:"iops"`
-	SizeInGb int `pulumi:"sizeInGb"`
-	VolumeType string `pulumi:"volumeType"`
-	VolumesPerInstance *int `pulumi:"volumesPerInstance"`
+	Iops               *int   `pulumi:"iops"`
+	SizeInGb           int    `pulumi:"sizeInGb"`
+	VolumeType         string `pulumi:"volumeType"`
+	VolumesPerInstance *int   `pulumi:"volumesPerInstance"`
 }
 
 type MrScalarTaskEbsBlockDeviceInput interface {
@@ -9109,9 +9240,9 @@ type MrScalarTaskEbsBlockDeviceInput interface {
 }
 
 type MrScalarTaskEbsBlockDeviceArgs struct {
-	Iops pulumi.IntPtrInput `pulumi:"iops"`
-	SizeInGb pulumi.IntInput `pulumi:"sizeInGb"`
-	VolumeType pulumi.StringInput `pulumi:"volumeType"`
+	Iops               pulumi.IntPtrInput `pulumi:"iops"`
+	SizeInGb           pulumi.IntInput    `pulumi:"sizeInGb"`
+	VolumeType         pulumi.StringInput `pulumi:"volumeType"`
 	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
 }
 
@@ -9148,7 +9279,7 @@ func (i MrScalarTaskEbsBlockDeviceArray) ToMrScalarTaskEbsBlockDeviceArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarTaskEbsBlockDeviceArrayOutput)
 }
 
-type MrScalarTaskEbsBlockDeviceOutput struct { *pulumi.OutputState }
+type MrScalarTaskEbsBlockDeviceOutput struct{ *pulumi.OutputState }
 
 func (MrScalarTaskEbsBlockDeviceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarTaskEbsBlockDevice)(nil)).Elem()
@@ -9163,22 +9294,22 @@ func (o MrScalarTaskEbsBlockDeviceOutput) ToMrScalarTaskEbsBlockDeviceOutputWith
 }
 
 func (o MrScalarTaskEbsBlockDeviceOutput) Iops() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskEbsBlockDevice) *int { return v.Iops }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskEbsBlockDevice) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarTaskEbsBlockDeviceOutput) SizeInGb() pulumi.IntOutput {
-	return o.ApplyT(func (v MrScalarTaskEbsBlockDevice) int { return v.SizeInGb }).(pulumi.IntOutput)
+	return o.ApplyT(func(v MrScalarTaskEbsBlockDevice) int { return v.SizeInGb }).(pulumi.IntOutput)
 }
 
 func (o MrScalarTaskEbsBlockDeviceOutput) VolumeType() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTaskEbsBlockDevice) string { return v.VolumeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTaskEbsBlockDevice) string { return v.VolumeType }).(pulumi.StringOutput)
 }
 
 func (o MrScalarTaskEbsBlockDeviceOutput) VolumesPerInstance() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskEbsBlockDevice) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskEbsBlockDevice) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
 }
 
-type MrScalarTaskEbsBlockDeviceArrayOutput struct { *pulumi.OutputState}
+type MrScalarTaskEbsBlockDeviceArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarTaskEbsBlockDeviceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarTaskEbsBlockDevice)(nil)).Elem()
@@ -9193,30 +9324,30 @@ func (o MrScalarTaskEbsBlockDeviceArrayOutput) ToMrScalarTaskEbsBlockDeviceArray
 }
 
 func (o MrScalarTaskEbsBlockDeviceArrayOutput) Index(i pulumi.IntInput) MrScalarTaskEbsBlockDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarTaskEbsBlockDevice {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarTaskEbsBlockDevice {
 		return vs[0].([]MrScalarTaskEbsBlockDevice)[vs[1].(int)]
 	}).(MrScalarTaskEbsBlockDeviceOutput)
 }
 
 type MrScalarTaskScalingDownPolicy struct {
-	ActionType *string `pulumi:"actionType"`
-	Adjustment *string `pulumi:"adjustment"`
-	Cooldown *int `pulumi:"cooldown"`
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
-	Maximum *string `pulumi:"maximum"`
-	MetricName string `pulumi:"metricName"`
-	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
-	Minimum *string `pulumi:"minimum"`
-	Namespace string `pulumi:"namespace"`
-	Operator *string `pulumi:"operator"`
-	Period *int `pulumi:"period"`
-	PolicyName string `pulumi:"policyName"`
-	Statistic *string `pulumi:"statistic"`
-	Target *string `pulumi:"target"`
-	Threshold float64 `pulumi:"threshold"`
-	Unit string `pulumi:"unit"`
+	ActionType        *string                `pulumi:"actionType"`
+	Adjustment        *string                `pulumi:"adjustment"`
+	Cooldown          *int                   `pulumi:"cooldown"`
+	Dimensions        map[string]interface{} `pulumi:"dimensions"`
+	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
+	MaxTargetCapacity *string                `pulumi:"maxTargetCapacity"`
+	Maximum           *string                `pulumi:"maximum"`
+	MetricName        string                 `pulumi:"metricName"`
+	MinTargetCapacity *string                `pulumi:"minTargetCapacity"`
+	Minimum           *string                `pulumi:"minimum"`
+	Namespace         string                 `pulumi:"namespace"`
+	Operator          *string                `pulumi:"operator"`
+	Period            *int                   `pulumi:"period"`
+	PolicyName        string                 `pulumi:"policyName"`
+	Statistic         *string                `pulumi:"statistic"`
+	Target            *string                `pulumi:"target"`
+	Threshold         float64                `pulumi:"threshold"`
+	Unit              string                 `pulumi:"unit"`
 }
 
 type MrScalarTaskScalingDownPolicyInput interface {
@@ -9227,24 +9358,24 @@ type MrScalarTaskScalingDownPolicyInput interface {
 }
 
 type MrScalarTaskScalingDownPolicyArgs struct {
-	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
-	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
-	Dimensions pulumi.MapInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	ActionType        pulumi.StringPtrInput `pulumi:"actionType"`
+	Adjustment        pulumi.StringPtrInput `pulumi:"adjustment"`
+	Cooldown          pulumi.IntPtrInput    `pulumi:"cooldown"`
+	Dimensions        pulumi.MapInput       `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
-	Maximum pulumi.StringPtrInput `pulumi:"maximum"`
-	MetricName pulumi.StringInput `pulumi:"metricName"`
+	Maximum           pulumi.StringPtrInput `pulumi:"maximum"`
+	MetricName        pulumi.StringInput    `pulumi:"metricName"`
 	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
-	Minimum pulumi.StringPtrInput `pulumi:"minimum"`
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	Period pulumi.IntPtrInput `pulumi:"period"`
-	PolicyName pulumi.StringInput `pulumi:"policyName"`
-	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
-	Target pulumi.StringPtrInput `pulumi:"target"`
-	Threshold pulumi.Float64Input `pulumi:"threshold"`
-	Unit pulumi.StringInput `pulumi:"unit"`
+	Minimum           pulumi.StringPtrInput `pulumi:"minimum"`
+	Namespace         pulumi.StringInput    `pulumi:"namespace"`
+	Operator          pulumi.StringPtrInput `pulumi:"operator"`
+	Period            pulumi.IntPtrInput    `pulumi:"period"`
+	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
+	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
+	Target            pulumi.StringPtrInput `pulumi:"target"`
+	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
+	Unit              pulumi.StringInput    `pulumi:"unit"`
 }
 
 func (MrScalarTaskScalingDownPolicyArgs) ElementType() reflect.Type {
@@ -9280,7 +9411,7 @@ func (i MrScalarTaskScalingDownPolicyArray) ToMrScalarTaskScalingDownPolicyArray
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarTaskScalingDownPolicyArrayOutput)
 }
 
-type MrScalarTaskScalingDownPolicyOutput struct { *pulumi.OutputState }
+type MrScalarTaskScalingDownPolicyOutput struct{ *pulumi.OutputState }
 
 func (MrScalarTaskScalingDownPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarTaskScalingDownPolicy)(nil)).Elem()
@@ -9295,78 +9426,78 @@ func (o MrScalarTaskScalingDownPolicyOutput) ToMrScalarTaskScalingDownPolicyOutp
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Maximum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) MinTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Minimum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) PolicyName() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Statistic() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Threshold() pulumi.Float64Output {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
 func (o MrScalarTaskScalingDownPolicyOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingDownPolicy) string { return v.Unit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-type MrScalarTaskScalingDownPolicyArrayOutput struct { *pulumi.OutputState}
+type MrScalarTaskScalingDownPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarTaskScalingDownPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarTaskScalingDownPolicy)(nil)).Elem()
@@ -9381,30 +9512,30 @@ func (o MrScalarTaskScalingDownPolicyArrayOutput) ToMrScalarTaskScalingDownPolic
 }
 
 func (o MrScalarTaskScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) MrScalarTaskScalingDownPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarTaskScalingDownPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarTaskScalingDownPolicy {
 		return vs[0].([]MrScalarTaskScalingDownPolicy)[vs[1].(int)]
 	}).(MrScalarTaskScalingDownPolicyOutput)
 }
 
 type MrScalarTaskScalingUpPolicy struct {
-	ActionType *string `pulumi:"actionType"`
-	Adjustment *string `pulumi:"adjustment"`
-	Cooldown *int `pulumi:"cooldown"`
-	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
-	Maximum *string `pulumi:"maximum"`
-	MetricName string `pulumi:"metricName"`
-	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
-	Minimum *string `pulumi:"minimum"`
-	Namespace string `pulumi:"namespace"`
-	Operator *string `pulumi:"operator"`
-	Period *int `pulumi:"period"`
-	PolicyName string `pulumi:"policyName"`
-	Statistic *string `pulumi:"statistic"`
-	Target *string `pulumi:"target"`
-	Threshold float64 `pulumi:"threshold"`
-	Unit string `pulumi:"unit"`
+	ActionType        *string                `pulumi:"actionType"`
+	Adjustment        *string                `pulumi:"adjustment"`
+	Cooldown          *int                   `pulumi:"cooldown"`
+	Dimensions        map[string]interface{} `pulumi:"dimensions"`
+	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
+	MaxTargetCapacity *string                `pulumi:"maxTargetCapacity"`
+	Maximum           *string                `pulumi:"maximum"`
+	MetricName        string                 `pulumi:"metricName"`
+	MinTargetCapacity *string                `pulumi:"minTargetCapacity"`
+	Minimum           *string                `pulumi:"minimum"`
+	Namespace         string                 `pulumi:"namespace"`
+	Operator          *string                `pulumi:"operator"`
+	Period            *int                   `pulumi:"period"`
+	PolicyName        string                 `pulumi:"policyName"`
+	Statistic         *string                `pulumi:"statistic"`
+	Target            *string                `pulumi:"target"`
+	Threshold         float64                `pulumi:"threshold"`
+	Unit              string                 `pulumi:"unit"`
 }
 
 type MrScalarTaskScalingUpPolicyInput interface {
@@ -9415,24 +9546,24 @@ type MrScalarTaskScalingUpPolicyInput interface {
 }
 
 type MrScalarTaskScalingUpPolicyArgs struct {
-	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
-	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
-	Dimensions pulumi.MapInput `pulumi:"dimensions"`
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	ActionType        pulumi.StringPtrInput `pulumi:"actionType"`
+	Adjustment        pulumi.StringPtrInput `pulumi:"adjustment"`
+	Cooldown          pulumi.IntPtrInput    `pulumi:"cooldown"`
+	Dimensions        pulumi.MapInput       `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
-	Maximum pulumi.StringPtrInput `pulumi:"maximum"`
-	MetricName pulumi.StringInput `pulumi:"metricName"`
+	Maximum           pulumi.StringPtrInput `pulumi:"maximum"`
+	MetricName        pulumi.StringInput    `pulumi:"metricName"`
 	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
-	Minimum pulumi.StringPtrInput `pulumi:"minimum"`
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	Period pulumi.IntPtrInput `pulumi:"period"`
-	PolicyName pulumi.StringInput `pulumi:"policyName"`
-	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
-	Target pulumi.StringPtrInput `pulumi:"target"`
-	Threshold pulumi.Float64Input `pulumi:"threshold"`
-	Unit pulumi.StringInput `pulumi:"unit"`
+	Minimum           pulumi.StringPtrInput `pulumi:"minimum"`
+	Namespace         pulumi.StringInput    `pulumi:"namespace"`
+	Operator          pulumi.StringPtrInput `pulumi:"operator"`
+	Period            pulumi.IntPtrInput    `pulumi:"period"`
+	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
+	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
+	Target            pulumi.StringPtrInput `pulumi:"target"`
+	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
+	Unit              pulumi.StringInput    `pulumi:"unit"`
 }
 
 func (MrScalarTaskScalingUpPolicyArgs) ElementType() reflect.Type {
@@ -9468,7 +9599,7 @@ func (i MrScalarTaskScalingUpPolicyArray) ToMrScalarTaskScalingUpPolicyArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarTaskScalingUpPolicyArrayOutput)
 }
 
-type MrScalarTaskScalingUpPolicyOutput struct { *pulumi.OutputState }
+type MrScalarTaskScalingUpPolicyOutput struct{ *pulumi.OutputState }
 
 func (MrScalarTaskScalingUpPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalarTaskScalingUpPolicy)(nil)).Elem()
@@ -9483,78 +9614,78 @@ func (o MrScalarTaskScalingUpPolicyOutput) ToMrScalarTaskScalingUpPolicyOutputWi
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Adjustment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Maximum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) MinTargetCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Minimum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) PolicyName() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Statistic() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Threshold() pulumi.Float64Output {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
 func (o MrScalarTaskScalingUpPolicyOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func (v MrScalarTaskScalingUpPolicy) string { return v.Unit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-type MrScalarTaskScalingUpPolicyArrayOutput struct { *pulumi.OutputState}
+type MrScalarTaskScalingUpPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarTaskScalingUpPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MrScalarTaskScalingUpPolicy)(nil)).Elem()
@@ -9569,7 +9700,7 @@ func (o MrScalarTaskScalingUpPolicyArrayOutput) ToMrScalarTaskScalingUpPolicyArr
 }
 
 func (o MrScalarTaskScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) MrScalarTaskScalingUpPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MrScalarTaskScalingUpPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarTaskScalingUpPolicy {
 		return vs[0].([]MrScalarTaskScalingUpPolicy)[vs[1].(int)]
 	}).(MrScalarTaskScalingUpPolicyOutput)
 }
@@ -9640,7 +9771,8 @@ type OceanAutoscalerPtrInput interface {
 
 type oceanAutoscalerPtrType OceanAutoscalerArgs
 
-func OceanAutoscalerPtr(v *OceanAutoscalerArgs) OceanAutoscalerPtrInput {	return (*oceanAutoscalerPtrType)(v)
+func OceanAutoscalerPtr(v *OceanAutoscalerArgs) OceanAutoscalerPtrInput {
+	return (*oceanAutoscalerPtrType)(v)
 }
 
 func (*oceanAutoscalerPtrType) ElementType() reflect.Type {
@@ -9655,7 +9787,7 @@ func (i *oceanAutoscalerPtrType) ToOceanAutoscalerPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerPtrOutput)
 }
 
-type OceanAutoscalerOutput struct { *pulumi.OutputState }
+type OceanAutoscalerOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanAutoscaler)(nil)).Elem()
@@ -9678,37 +9810,38 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context
 		return &v
 	}).(OceanAutoscalerPtrOutput)
 }
+
 // Cooldown period between scaling actions.
 func (o OceanAutoscalerOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
 // Auto Scaling scale down operations.
 func (o OceanAutoscalerOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerAutoscaleDown { return v.AutoscaleDown }).(OceanAutoscalerAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleDown { return v.AutoscaleDown }).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
 // Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanAutoscalerOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom { return v.AutoscaleHeadroom }).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom { return v.AutoscaleHeadroom }).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
 // Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
 // Enable the Ocean Kubernetes autoscaler.
 func (o OceanAutoscalerOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
-type OceanAutoscalerPtrOutput struct { *pulumi.OutputState}
+type OceanAutoscalerPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanAutoscaler)(nil)).Elem()
@@ -9723,37 +9856,37 @@ func (o OceanAutoscalerPtrOutput) ToOceanAutoscalerPtrOutputWithContext(ctx cont
 }
 
 func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
-	return o.ApplyT(func (v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
 }
 
 // Cooldown period between scaling actions.
 func (o OceanAutoscalerPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
 // Auto Scaling scale down operations.
 func (o OceanAutoscalerPtrOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerAutoscaleDown { return v.AutoscaleDown }).(OceanAutoscalerAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleDown { return v.AutoscaleDown }).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
 // Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanAutoscalerPtrOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom { return v.AutoscaleHeadroom }).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom { return v.AutoscaleHeadroom }).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
 // Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
 // Enable the Ocean Kubernetes autoscaler.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
 type OceanAutoscalerAutoscaleDown struct {
@@ -9806,7 +9939,8 @@ type OceanAutoscalerAutoscaleDownPtrInput interface {
 
 type oceanAutoscalerAutoscaleDownPtrType OceanAutoscalerAutoscaleDownArgs
 
-func OceanAutoscalerAutoscaleDownPtr(v *OceanAutoscalerAutoscaleDownArgs) OceanAutoscalerAutoscaleDownPtrInput {	return (*oceanAutoscalerAutoscaleDownPtrType)(v)
+func OceanAutoscalerAutoscaleDownPtr(v *OceanAutoscalerAutoscaleDownArgs) OceanAutoscalerAutoscaleDownPtrInput {
+	return (*oceanAutoscalerAutoscaleDownPtrType)(v)
 }
 
 func (*oceanAutoscalerAutoscaleDownPtrType) ElementType() reflect.Type {
@@ -9821,7 +9955,7 @@ func (i *oceanAutoscalerAutoscaleDownPtrType) ToOceanAutoscalerAutoscaleDownPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
-type OceanAutoscalerAutoscaleDownOutput struct { *pulumi.OutputState }
+type OceanAutoscalerAutoscaleDownOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerAutoscaleDownOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanAutoscalerAutoscaleDown)(nil)).Elem()
@@ -9844,17 +9978,18 @@ func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownPtrOut
 		return &v
 	}).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
+
 // The number of evaluation periods that should accumulate before a scale down action takes place.
 func (o OceanAutoscalerAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 // Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
 }
 
-type OceanAutoscalerAutoscaleDownPtrOutput struct { *pulumi.OutputState}
+type OceanAutoscalerAutoscaleDownPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerAutoscaleDownPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanAutoscalerAutoscaleDown)(nil)).Elem()
@@ -9869,17 +10004,17 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) ToOceanAutoscalerAutoscaleDownPtr
 }
 
 func (o OceanAutoscalerAutoscaleDownPtrOutput) Elem() OceanAutoscalerAutoscaleDownOutput {
-	return o.ApplyT(func (v *OceanAutoscalerAutoscaleDown) OceanAutoscalerAutoscaleDown { return *v }).(OceanAutoscalerAutoscaleDownOutput)
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) OceanAutoscalerAutoscaleDown { return *v }).(OceanAutoscalerAutoscaleDownOutput)
 }
 
 // The number of evaluation periods that should accumulate before a scale down action takes place.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
 // Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
 }
 
 type OceanAutoscalerAutoscaleHeadroom struct {
@@ -9940,7 +10075,8 @@ type OceanAutoscalerAutoscaleHeadroomPtrInput interface {
 
 type oceanAutoscalerAutoscaleHeadroomPtrType OceanAutoscalerAutoscaleHeadroomArgs
 
-func OceanAutoscalerAutoscaleHeadroomPtr(v *OceanAutoscalerAutoscaleHeadroomArgs) OceanAutoscalerAutoscaleHeadroomPtrInput {	return (*oceanAutoscalerAutoscaleHeadroomPtrType)(v)
+func OceanAutoscalerAutoscaleHeadroomPtr(v *OceanAutoscalerAutoscaleHeadroomArgs) OceanAutoscalerAutoscaleHeadroomPtrInput {
+	return (*oceanAutoscalerAutoscaleHeadroomPtrType)(v)
 }
 
 func (*oceanAutoscalerAutoscaleHeadroomPtrType) ElementType() reflect.Type {
@@ -9955,7 +10091,7 @@ func (i *oceanAutoscalerAutoscaleHeadroomPtrType) ToOceanAutoscalerAutoscaleHead
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
-type OceanAutoscalerAutoscaleHeadroomOutput struct { *pulumi.OutputState }
+type OceanAutoscalerAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerAutoscaleHeadroomOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanAutoscalerAutoscaleHeadroom)(nil)).Elem()
@@ -9978,27 +10114,28 @@ func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadro
 		return &v
 	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
+
 // Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the number of GPUS to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
-type OceanAutoscalerAutoscaleHeadroomPtrOutput struct { *pulumi.OutputState}
+type OceanAutoscalerAutoscaleHeadroomPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerAutoscaleHeadroomPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanAutoscalerAutoscaleHeadroom)(nil)).Elem()
@@ -10013,27 +10150,27 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) ToOceanAutoscalerAutoscaleHea
 }
 
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanAutoscalerAutoscaleHeadroomOutput {
-	return o.ApplyT(func (v *OceanAutoscalerAutoscaleHeadroom) OceanAutoscalerAutoscaleHeadroom { return *v }).(OceanAutoscalerAutoscaleHeadroomOutput)
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) OceanAutoscalerAutoscaleHeadroom { return *v }).(OceanAutoscalerAutoscaleHeadroomOutput)
 }
 
 // Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the number of GPUS to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
 type OceanAutoscalerResourceLimits struct {
@@ -10086,7 +10223,8 @@ type OceanAutoscalerResourceLimitsPtrInput interface {
 
 type oceanAutoscalerResourceLimitsPtrType OceanAutoscalerResourceLimitsArgs
 
-func OceanAutoscalerResourceLimitsPtr(v *OceanAutoscalerResourceLimitsArgs) OceanAutoscalerResourceLimitsPtrInput {	return (*oceanAutoscalerResourceLimitsPtrType)(v)
+func OceanAutoscalerResourceLimitsPtr(v *OceanAutoscalerResourceLimitsArgs) OceanAutoscalerResourceLimitsPtrInput {
+	return (*oceanAutoscalerResourceLimitsPtrType)(v)
 }
 
 func (*oceanAutoscalerResourceLimitsPtrType) ElementType() reflect.Type {
@@ -10101,7 +10239,7 @@ func (i *oceanAutoscalerResourceLimitsPtrType) ToOceanAutoscalerResourceLimitsPt
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
-type OceanAutoscalerResourceLimitsOutput struct { *pulumi.OutputState }
+type OceanAutoscalerResourceLimitsOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerResourceLimitsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanAutoscalerResourceLimits)(nil)).Elem()
@@ -10124,17 +10262,18 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 		return &v
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
+
 // The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
 // The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
 
-type OceanAutoscalerResourceLimitsPtrOutput struct { *pulumi.OutputState}
+type OceanAutoscalerResourceLimitsPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerResourceLimitsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanAutoscalerResourceLimits)(nil)).Elem()
@@ -10149,17 +10288,17 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) ToOceanAutoscalerResourceLimitsP
 }
 
 func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLimitsOutput {
-	return o.ApplyT(func (v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits { return *v }).(OceanAutoscalerResourceLimitsOutput)
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits { return *v }).(OceanAutoscalerResourceLimitsOutput)
 }
 
 // The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
 // The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
 
 type OceanLaunchSpecAutoscaleHeadroom struct {
@@ -10224,7 +10363,7 @@ func (i OceanLaunchSpecAutoscaleHeadroomArray) ToOceanLaunchSpecAutoscaleHeadroo
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecAutoscaleHeadroomArrayOutput)
 }
 
-type OceanLaunchSpecAutoscaleHeadroomOutput struct { *pulumi.OutputState }
+type OceanLaunchSpecAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecAutoscaleHeadroomOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroom)(nil)).Elem()
@@ -10240,25 +10379,25 @@ func (o OceanLaunchSpecAutoscaleHeadroomOutput) ToOceanLaunchSpecAutoscaleHeadro
 
 // Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanLaunchSpecAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanLaunchSpecAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the number of GPUS to allocate for each headroom unit.
 func (o OceanLaunchSpecAutoscaleHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanLaunchSpecAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 func (o OceanLaunchSpecAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanLaunchSpecAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
 func (o OceanLaunchSpecAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntOutput {
-	return o.ApplyT(func (v OceanLaunchSpecAutoscaleHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
 }
 
-type OceanLaunchSpecAutoscaleHeadroomArrayOutput struct { *pulumi.OutputState}
+type OceanLaunchSpecAutoscaleHeadroomArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecAutoscaleHeadroomArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]OceanLaunchSpecAutoscaleHeadroom)(nil)).Elem()
@@ -10273,7 +10412,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) ToOceanLaunchSpecAutoscaleH
 }
 
 func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecAutoscaleHeadroomOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) OceanLaunchSpecAutoscaleHeadroom {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecAutoscaleHeadroom {
 		return vs[0].([]OceanLaunchSpecAutoscaleHeadroom)[vs[1].(int)]
 	}).(OceanLaunchSpecAutoscaleHeadroomOutput)
 }
@@ -10332,7 +10471,7 @@ func (i OceanLaunchSpecLabelArray) ToOceanLaunchSpecLabelArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecLabelArrayOutput)
 }
 
-type OceanLaunchSpecLabelOutput struct { *pulumi.OutputState }
+type OceanLaunchSpecLabelOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecLabelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanLaunchSpecLabel)(nil)).Elem()
@@ -10348,15 +10487,15 @@ func (o OceanLaunchSpecLabelOutput) ToOceanLaunchSpecLabelOutputWithContext(ctx 
 
 // The tag key.
 func (o OceanLaunchSpecLabelOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanLaunchSpecLabel) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanLaunchSpecLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The tag value.
 func (o OceanLaunchSpecLabelOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanLaunchSpecLabel) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanLaunchSpecLabel) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type OceanLaunchSpecLabelArrayOutput struct { *pulumi.OutputState}
+type OceanLaunchSpecLabelArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecLabelArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]OceanLaunchSpecLabel)(nil)).Elem()
@@ -10371,7 +10510,7 @@ func (o OceanLaunchSpecLabelArrayOutput) ToOceanLaunchSpecLabelArrayOutputWithCo
 }
 
 func (o OceanLaunchSpecLabelArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecLabelOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) OceanLaunchSpecLabel {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecLabel {
 		return vs[0].([]OceanLaunchSpecLabel)[vs[1].(int)]
 	}).(OceanLaunchSpecLabelOutput)
 }
@@ -10434,7 +10573,7 @@ func (i OceanLaunchSpecTaintArray) ToOceanLaunchSpecTaintArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecTaintArrayOutput)
 }
 
-type OceanLaunchSpecTaintOutput struct { *pulumi.OutputState }
+type OceanLaunchSpecTaintOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecTaintOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanLaunchSpecTaint)(nil)).Elem()
@@ -10450,20 +10589,20 @@ func (o OceanLaunchSpecTaintOutput) ToOceanLaunchSpecTaintOutputWithContext(ctx 
 
 // The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 func (o OceanLaunchSpecTaintOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanLaunchSpecTaint) string { return v.Effect }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
 // The tag key.
 func (o OceanLaunchSpecTaintOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanLaunchSpecTaint) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The tag value.
 func (o OceanLaunchSpecTaintOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanLaunchSpecTaint) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type OceanLaunchSpecTaintArrayOutput struct { *pulumi.OutputState}
+type OceanLaunchSpecTaintArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecTaintArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]OceanLaunchSpecTaint)(nil)).Elem()
@@ -10478,7 +10617,7 @@ func (o OceanLaunchSpecTaintArrayOutput) ToOceanLaunchSpecTaintArrayOutputWithCo
 }
 
 func (o OceanLaunchSpecTaintArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecTaintOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) OceanLaunchSpecTaint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecTaint {
 		return vs[0].([]OceanLaunchSpecTaint)[vs[1].(int)]
 	}).(OceanLaunchSpecTaintOutput)
 }
@@ -10541,7 +10680,7 @@ func (i OceanLoadBalancerArray) ToOceanLoadBalancerArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLoadBalancerArrayOutput)
 }
 
-type OceanLoadBalancerOutput struct { *pulumi.OutputState }
+type OceanLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (OceanLoadBalancerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanLoadBalancer)(nil)).Elem()
@@ -10557,20 +10696,20 @@ func (o OceanLoadBalancerOutput) ToOceanLoadBalancerOutputWithContext(ctx contex
 
 // Required if type is set to TARGET_GROUP
 func (o OceanLoadBalancerOutput) Arn() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v OceanLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v OceanLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
 
 // Required if type is set to CLASSIC
 func (o OceanLoadBalancerOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v OceanLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v OceanLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Can be set to CLASSIC or TARGET_GROUP
 func (o OceanLoadBalancerOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v OceanLoadBalancer) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v OceanLoadBalancer) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type OceanLoadBalancerArrayOutput struct { *pulumi.OutputState}
+type OceanLoadBalancerArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanLoadBalancerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]OceanLoadBalancer)(nil)).Elem()
@@ -10585,7 +10724,7 @@ func (o OceanLoadBalancerArrayOutput) ToOceanLoadBalancerArrayOutputWithContext(
 }
 
 func (o OceanLoadBalancerArrayOutput) Index(i pulumi.IntInput) OceanLoadBalancerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) OceanLoadBalancer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLoadBalancer {
 		return vs[0].([]OceanLoadBalancer)[vs[1].(int)]
 	}).(OceanLoadBalancerOutput)
 }
@@ -10644,7 +10783,7 @@ func (i OceanTagArray) ToOceanTagArrayOutputWithContext(ctx context.Context) Oce
 	return pulumi.ToOutputWithContext(ctx, i).(OceanTagArrayOutput)
 }
 
-type OceanTagOutput struct { *pulumi.OutputState }
+type OceanTagOutput struct{ *pulumi.OutputState }
 
 func (OceanTagOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanTag)(nil)).Elem()
@@ -10660,15 +10799,15 @@ func (o OceanTagOutput) ToOceanTagOutputWithContext(ctx context.Context) OceanTa
 
 // The tag key.
 func (o OceanTagOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanTag) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The tag value.
 func (o OceanTagOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanTag) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanTag) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type OceanTagArrayOutput struct { *pulumi.OutputState}
+type OceanTagArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanTagArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]OceanTag)(nil)).Elem()
@@ -10683,14 +10822,14 @@ func (o OceanTagArrayOutput) ToOceanTagArrayOutputWithContext(ctx context.Contex
 }
 
 func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) OceanTag {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanTag {
 		return vs[0].([]OceanTag)[vs[1].(int)]
 	}).(OceanTagOutput)
 }
 
 type OceanUpdatePolicy struct {
 	RollConfig *OceanUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll bool `pulumi:"shouldRoll"`
+	ShouldRoll bool                         `pulumi:"shouldRoll"`
 }
 
 type OceanUpdatePolicyInput interface {
@@ -10702,7 +10841,7 @@ type OceanUpdatePolicyInput interface {
 
 type OceanUpdatePolicyArgs struct {
 	RollConfig OceanUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
+	ShouldRoll pulumi.BoolInput                    `pulumi:"shouldRoll"`
 }
 
 func (OceanUpdatePolicyArgs) ElementType() reflect.Type {
@@ -10734,7 +10873,8 @@ type OceanUpdatePolicyPtrInput interface {
 
 type oceanUpdatePolicyPtrType OceanUpdatePolicyArgs
 
-func OceanUpdatePolicyPtr(v *OceanUpdatePolicyArgs) OceanUpdatePolicyPtrInput {	return (*oceanUpdatePolicyPtrType)(v)
+func OceanUpdatePolicyPtr(v *OceanUpdatePolicyArgs) OceanUpdatePolicyPtrInput {
+	return (*oceanUpdatePolicyPtrType)(v)
 }
 
 func (*oceanUpdatePolicyPtrType) ElementType() reflect.Type {
@@ -10749,7 +10889,7 @@ func (i *oceanUpdatePolicyPtrType) ToOceanUpdatePolicyPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OceanUpdatePolicyPtrOutput)
 }
 
-type OceanUpdatePolicyOutput struct { *pulumi.OutputState }
+type OceanUpdatePolicyOutput struct{ *pulumi.OutputState }
 
 func (OceanUpdatePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanUpdatePolicy)(nil)).Elem()
@@ -10773,14 +10913,14 @@ func (o OceanUpdatePolicyOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx con
 	}).(OceanUpdatePolicyPtrOutput)
 }
 func (o OceanUpdatePolicyOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func (v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
+	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
 func (o OceanUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func (v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
 
-type OceanUpdatePolicyPtrOutput struct { *pulumi.OutputState}
+type OceanUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanUpdatePolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanUpdatePolicy)(nil)).Elem()
@@ -10795,15 +10935,15 @@ func (o OceanUpdatePolicyPtrOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx 
 }
 
 func (o OceanUpdatePolicyPtrOutput) Elem() OceanUpdatePolicyOutput {
-	return o.ApplyT(func (v *OceanUpdatePolicy) OceanUpdatePolicy { return *v }).(OceanUpdatePolicyOutput)
+	return o.ApplyT(func(v *OceanUpdatePolicy) OceanUpdatePolicy { return *v }).(OceanUpdatePolicyOutput)
 }
 
 func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func (v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
+	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
 func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func (v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
 
 type OceanUpdatePolicyRollConfig struct {
@@ -10850,7 +10990,8 @@ type OceanUpdatePolicyRollConfigPtrInput interface {
 
 type oceanUpdatePolicyRollConfigPtrType OceanUpdatePolicyRollConfigArgs
 
-func OceanUpdatePolicyRollConfigPtr(v *OceanUpdatePolicyRollConfigArgs) OceanUpdatePolicyRollConfigPtrInput {	return (*oceanUpdatePolicyRollConfigPtrType)(v)
+func OceanUpdatePolicyRollConfigPtr(v *OceanUpdatePolicyRollConfigArgs) OceanUpdatePolicyRollConfigPtrInput {
+	return (*oceanUpdatePolicyRollConfigPtrType)(v)
 }
 
 func (*oceanUpdatePolicyRollConfigPtrType) ElementType() reflect.Type {
@@ -10865,7 +11006,7 @@ func (i *oceanUpdatePolicyRollConfigPtrType) ToOceanUpdatePolicyRollConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
-type OceanUpdatePolicyRollConfigOutput struct { *pulumi.OutputState }
+type OceanUpdatePolicyRollConfigOutput struct{ *pulumi.OutputState }
 
 func (OceanUpdatePolicyRollConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanUpdatePolicyRollConfig)(nil)).Elem()
@@ -10889,10 +11030,10 @@ func (o OceanUpdatePolicyRollConfigOutput) ToOceanUpdatePolicyRollConfigPtrOutpu
 	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 func (o OceanUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func (v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
-type OceanUpdatePolicyRollConfigPtrOutput struct { *pulumi.OutputState}
+type OceanUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanUpdatePolicyRollConfig)(nil)).Elem()
@@ -10907,11 +11048,11 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) ToOceanUpdatePolicyRollConfigPtrOu
 }
 
 func (o OceanUpdatePolicyRollConfigPtrOutput) Elem() OceanUpdatePolicyRollConfigOutput {
-	return o.ApplyT(func (v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig { return *v }).(OceanUpdatePolicyRollConfigOutput)
+	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig { return *v }).(OceanUpdatePolicyRollConfigOutput)
 }
 
 func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func (v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
 func init() {

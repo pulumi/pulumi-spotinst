@@ -77,7 +77,8 @@ type OceanAutoscalerPtrInput interface {
 
 type oceanAutoscalerPtrType OceanAutoscalerArgs
 
-func OceanAutoscalerPtr(v *OceanAutoscalerArgs) OceanAutoscalerPtrInput {	return (*oceanAutoscalerPtrType)(v)
+func OceanAutoscalerPtr(v *OceanAutoscalerArgs) OceanAutoscalerPtrInput {
+	return (*oceanAutoscalerPtrType)(v)
 }
 
 func (*oceanAutoscalerPtrType) ElementType() reflect.Type {
@@ -92,7 +93,7 @@ func (i *oceanAutoscalerPtrType) ToOceanAutoscalerPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerPtrOutput)
 }
 
-type OceanAutoscalerOutput struct { *pulumi.OutputState }
+type OceanAutoscalerOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanAutoscaler)(nil)).Elem()
@@ -115,37 +116,38 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context
 		return &v
 	}).(OceanAutoscalerPtrOutput)
 }
+
 // Cooldown period between scaling actions.
 func (o OceanAutoscalerOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
 // Auto Scaling scale down operations.
 func (o OceanAutoscalerOutput) Down() OceanAutoscalerDownPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerDown { return v.Down }).(OceanAutoscalerDownPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerDown { return v.Down }).(OceanAutoscalerDownPtrOutput)
 }
 
 // Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
 func (o OceanAutoscalerOutput) Headroom() OceanAutoscalerHeadroomPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerHeadroom { return v.Headroom }).(OceanAutoscalerHeadroomPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerHeadroom { return v.Headroom }).(OceanAutoscalerHeadroomPtrOutput)
 }
 
 // Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerOutput) IsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *bool { return v.IsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.IsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
 // Enable the Ocean ECS autoscaler.
 func (o OceanAutoscalerOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
-type OceanAutoscalerPtrOutput struct { *pulumi.OutputState}
+type OceanAutoscalerPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanAutoscaler)(nil)).Elem()
@@ -160,37 +162,37 @@ func (o OceanAutoscalerPtrOutput) ToOceanAutoscalerPtrOutputWithContext(ctx cont
 }
 
 func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
-	return o.ApplyT(func (v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
 }
 
 // Cooldown period between scaling actions.
 func (o OceanAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
 // Auto Scaling scale down operations.
 func (o OceanAutoscalerPtrOutput) Down() OceanAutoscalerDownPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerDown { return v.Down }).(OceanAutoscalerDownPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerDown { return v.Down }).(OceanAutoscalerDownPtrOutput)
 }
 
 // Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
 func (o OceanAutoscalerPtrOutput) Headroom() OceanAutoscalerHeadroomPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerHeadroom { return v.Headroom }).(OceanAutoscalerHeadroomPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerHeadroom { return v.Headroom }).(OceanAutoscalerHeadroomPtrOutput)
 }
 
 // Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *bool { return v.IsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.IsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
 // Enable the Ocean ECS autoscaler.
 func (o OceanAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
-	return o.ApplyT(func (v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
 type OceanAutoscalerDown struct {
@@ -239,7 +241,8 @@ type OceanAutoscalerDownPtrInput interface {
 
 type oceanAutoscalerDownPtrType OceanAutoscalerDownArgs
 
-func OceanAutoscalerDownPtr(v *OceanAutoscalerDownArgs) OceanAutoscalerDownPtrInput {	return (*oceanAutoscalerDownPtrType)(v)
+func OceanAutoscalerDownPtr(v *OceanAutoscalerDownArgs) OceanAutoscalerDownPtrInput {
+	return (*oceanAutoscalerDownPtrType)(v)
 }
 
 func (*oceanAutoscalerDownPtrType) ElementType() reflect.Type {
@@ -254,7 +257,7 @@ func (i *oceanAutoscalerDownPtrType) ToOceanAutoscalerDownPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerDownPtrOutput)
 }
 
-type OceanAutoscalerDownOutput struct { *pulumi.OutputState }
+type OceanAutoscalerDownOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerDownOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanAutoscalerDown)(nil)).Elem()
@@ -277,12 +280,13 @@ func (o OceanAutoscalerDownOutput) ToOceanAutoscalerDownPtrOutputWithContext(ctx
 		return &v
 	}).(OceanAutoscalerDownPtrOutput)
 }
+
 // Would represent the maximum % to scale-down. Number between 1-100
 func (o OceanAutoscalerDownOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
 }
 
-type OceanAutoscalerDownPtrOutput struct { *pulumi.OutputState}
+type OceanAutoscalerDownPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerDownPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanAutoscalerDown)(nil)).Elem()
@@ -297,12 +301,12 @@ func (o OceanAutoscalerDownPtrOutput) ToOceanAutoscalerDownPtrOutputWithContext(
 }
 
 func (o OceanAutoscalerDownPtrOutput) Elem() OceanAutoscalerDownOutput {
-	return o.ApplyT(func (v *OceanAutoscalerDown) OceanAutoscalerDown { return *v }).(OceanAutoscalerDownOutput)
+	return o.ApplyT(func(v *OceanAutoscalerDown) OceanAutoscalerDown { return *v }).(OceanAutoscalerDownOutput)
 }
 
 // Would represent the maximum % to scale-down. Number between 1-100
 func (o OceanAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
 }
 
 type OceanAutoscalerHeadroom struct {
@@ -359,7 +363,8 @@ type OceanAutoscalerHeadroomPtrInput interface {
 
 type oceanAutoscalerHeadroomPtrType OceanAutoscalerHeadroomArgs
 
-func OceanAutoscalerHeadroomPtr(v *OceanAutoscalerHeadroomArgs) OceanAutoscalerHeadroomPtrInput {	return (*oceanAutoscalerHeadroomPtrType)(v)
+func OceanAutoscalerHeadroomPtr(v *OceanAutoscalerHeadroomArgs) OceanAutoscalerHeadroomPtrInput {
+	return (*oceanAutoscalerHeadroomPtrType)(v)
 }
 
 func (*oceanAutoscalerHeadroomPtrType) ElementType() reflect.Type {
@@ -374,7 +379,7 @@ func (i *oceanAutoscalerHeadroomPtrType) ToOceanAutoscalerHeadroomPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerHeadroomPtrOutput)
 }
 
-type OceanAutoscalerHeadroomOutput struct { *pulumi.OutputState }
+type OceanAutoscalerHeadroomOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerHeadroomOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanAutoscalerHeadroom)(nil)).Elem()
@@ -397,22 +402,23 @@ func (o OceanAutoscalerHeadroomOutput) ToOceanAutoscalerHeadroomPtrOutputWithCon
 		return &v
 	}).(OceanAutoscalerHeadroomPtrOutput)
 }
+
 // Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
-type OceanAutoscalerHeadroomPtrOutput struct { *pulumi.OutputState}
+type OceanAutoscalerHeadroomPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerHeadroomPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanAutoscalerHeadroom)(nil)).Elem()
@@ -427,22 +433,22 @@ func (o OceanAutoscalerHeadroomPtrOutput) ToOceanAutoscalerHeadroomPtrOutputWith
 }
 
 func (o OceanAutoscalerHeadroomPtrOutput) Elem() OceanAutoscalerHeadroomOutput {
-	return o.ApplyT(func (v *OceanAutoscalerHeadroom) OceanAutoscalerHeadroom { return *v }).(OceanAutoscalerHeadroomOutput)
+	return o.ApplyT(func(v *OceanAutoscalerHeadroom) OceanAutoscalerHeadroom { return *v }).(OceanAutoscalerHeadroomOutput)
 }
 
 // Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
 type OceanAutoscalerResourceLimits struct {
@@ -495,7 +501,8 @@ type OceanAutoscalerResourceLimitsPtrInput interface {
 
 type oceanAutoscalerResourceLimitsPtrType OceanAutoscalerResourceLimitsArgs
 
-func OceanAutoscalerResourceLimitsPtr(v *OceanAutoscalerResourceLimitsArgs) OceanAutoscalerResourceLimitsPtrInput {	return (*oceanAutoscalerResourceLimitsPtrType)(v)
+func OceanAutoscalerResourceLimitsPtr(v *OceanAutoscalerResourceLimitsArgs) OceanAutoscalerResourceLimitsPtrInput {
+	return (*oceanAutoscalerResourceLimitsPtrType)(v)
 }
 
 func (*oceanAutoscalerResourceLimitsPtrType) ElementType() reflect.Type {
@@ -510,7 +517,7 @@ func (i *oceanAutoscalerResourceLimitsPtrType) ToOceanAutoscalerResourceLimitsPt
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
-type OceanAutoscalerResourceLimitsOutput struct { *pulumi.OutputState }
+type OceanAutoscalerResourceLimitsOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerResourceLimitsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanAutoscalerResourceLimits)(nil)).Elem()
@@ -533,17 +540,18 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 		return &v
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
+
 // The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
 // The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
 
-type OceanAutoscalerResourceLimitsPtrOutput struct { *pulumi.OutputState}
+type OceanAutoscalerResourceLimitsPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerResourceLimitsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanAutoscalerResourceLimits)(nil)).Elem()
@@ -558,17 +566,17 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) ToOceanAutoscalerResourceLimitsP
 }
 
 func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLimitsOutput {
-	return o.ApplyT(func (v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits { return *v }).(OceanAutoscalerResourceLimitsOutput)
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits { return *v }).(OceanAutoscalerResourceLimitsOutput)
 }
 
 // The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
 // The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
 
 type OceanLaunchSpecAttribute struct {
@@ -625,7 +633,7 @@ func (i OceanLaunchSpecAttributeArray) ToOceanLaunchSpecAttributeArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecAttributeArrayOutput)
 }
 
-type OceanLaunchSpecAttributeOutput struct { *pulumi.OutputState }
+type OceanLaunchSpecAttributeOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecAttributeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanLaunchSpecAttribute)(nil)).Elem()
@@ -641,15 +649,15 @@ func (o OceanLaunchSpecAttributeOutput) ToOceanLaunchSpecAttributeOutputWithCont
 
 // The label key.
 func (o OceanLaunchSpecAttributeOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanLaunchSpecAttribute) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanLaunchSpecAttribute) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The label value.
 func (o OceanLaunchSpecAttributeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanLaunchSpecAttribute) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanLaunchSpecAttribute) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type OceanLaunchSpecAttributeArrayOutput struct { *pulumi.OutputState}
+type OceanLaunchSpecAttributeArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecAttributeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]OceanLaunchSpecAttribute)(nil)).Elem()
@@ -664,7 +672,7 @@ func (o OceanLaunchSpecAttributeArrayOutput) ToOceanLaunchSpecAttributeArrayOutp
 }
 
 func (o OceanLaunchSpecAttributeArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) OceanLaunchSpecAttribute {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecAttribute {
 		return vs[0].([]OceanLaunchSpecAttribute)[vs[1].(int)]
 	}).(OceanLaunchSpecAttributeOutput)
 }
@@ -727,7 +735,7 @@ func (i OceanLaunchSpecAutoscaleHeadroomArray) ToOceanLaunchSpecAutoscaleHeadroo
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecAutoscaleHeadroomArrayOutput)
 }
 
-type OceanLaunchSpecAutoscaleHeadroomOutput struct { *pulumi.OutputState }
+type OceanLaunchSpecAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecAutoscaleHeadroomOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroom)(nil)).Elem()
@@ -743,20 +751,20 @@ func (o OceanLaunchSpecAutoscaleHeadroomOutput) ToOceanLaunchSpecAutoscaleHeadro
 
 // Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
 func (o OceanLaunchSpecAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanLaunchSpecAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 func (o OceanLaunchSpecAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OceanLaunchSpecAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
 // The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanLaunchSpecAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntOutput {
-	return o.ApplyT(func (v OceanLaunchSpecAutoscaleHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
 }
 
-type OceanLaunchSpecAutoscaleHeadroomArrayOutput struct { *pulumi.OutputState}
+type OceanLaunchSpecAutoscaleHeadroomArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecAutoscaleHeadroomArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]OceanLaunchSpecAutoscaleHeadroom)(nil)).Elem()
@@ -771,7 +779,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) ToOceanLaunchSpecAutoscaleH
 }
 
 func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecAutoscaleHeadroomOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) OceanLaunchSpecAutoscaleHeadroom {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecAutoscaleHeadroom {
 		return vs[0].([]OceanLaunchSpecAutoscaleHeadroom)[vs[1].(int)]
 	}).(OceanLaunchSpecAutoscaleHeadroomOutput)
 }
@@ -830,7 +838,7 @@ func (i OceanTagArray) ToOceanTagArrayOutputWithContext(ctx context.Context) Oce
 	return pulumi.ToOutputWithContext(ctx, i).(OceanTagArrayOutput)
 }
 
-type OceanTagOutput struct { *pulumi.OutputState }
+type OceanTagOutput struct{ *pulumi.OutputState }
 
 func (OceanTagOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanTag)(nil)).Elem()
@@ -846,15 +854,15 @@ func (o OceanTagOutput) ToOceanTagOutputWithContext(ctx context.Context) OceanTa
 
 // The tag key.
 func (o OceanTagOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanTag) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The tag value.
 func (o OceanTagOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v OceanTag) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v OceanTag) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type OceanTagArrayOutput struct { *pulumi.OutputState}
+type OceanTagArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanTagArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]OceanTag)(nil)).Elem()
@@ -869,14 +877,14 @@ func (o OceanTagArrayOutput) ToOceanTagArrayOutputWithContext(ctx context.Contex
 }
 
 func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) OceanTag {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanTag {
 		return vs[0].([]OceanTag)[vs[1].(int)]
 	}).(OceanTagOutput)
 }
 
 type OceanUpdatePolicy struct {
 	RollConfig *OceanUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll bool `pulumi:"shouldRoll"`
+	ShouldRoll bool                         `pulumi:"shouldRoll"`
 }
 
 type OceanUpdatePolicyInput interface {
@@ -888,7 +896,7 @@ type OceanUpdatePolicyInput interface {
 
 type OceanUpdatePolicyArgs struct {
 	RollConfig OceanUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
+	ShouldRoll pulumi.BoolInput                    `pulumi:"shouldRoll"`
 }
 
 func (OceanUpdatePolicyArgs) ElementType() reflect.Type {
@@ -920,7 +928,8 @@ type OceanUpdatePolicyPtrInput interface {
 
 type oceanUpdatePolicyPtrType OceanUpdatePolicyArgs
 
-func OceanUpdatePolicyPtr(v *OceanUpdatePolicyArgs) OceanUpdatePolicyPtrInput {	return (*oceanUpdatePolicyPtrType)(v)
+func OceanUpdatePolicyPtr(v *OceanUpdatePolicyArgs) OceanUpdatePolicyPtrInput {
+	return (*oceanUpdatePolicyPtrType)(v)
 }
 
 func (*oceanUpdatePolicyPtrType) ElementType() reflect.Type {
@@ -935,7 +944,7 @@ func (i *oceanUpdatePolicyPtrType) ToOceanUpdatePolicyPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OceanUpdatePolicyPtrOutput)
 }
 
-type OceanUpdatePolicyOutput struct { *pulumi.OutputState }
+type OceanUpdatePolicyOutput struct{ *pulumi.OutputState }
 
 func (OceanUpdatePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanUpdatePolicy)(nil)).Elem()
@@ -959,14 +968,14 @@ func (o OceanUpdatePolicyOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx con
 	}).(OceanUpdatePolicyPtrOutput)
 }
 func (o OceanUpdatePolicyOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func (v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
+	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
 func (o OceanUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func (v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
 
-type OceanUpdatePolicyPtrOutput struct { *pulumi.OutputState}
+type OceanUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanUpdatePolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanUpdatePolicy)(nil)).Elem()
@@ -981,15 +990,15 @@ func (o OceanUpdatePolicyPtrOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx 
 }
 
 func (o OceanUpdatePolicyPtrOutput) Elem() OceanUpdatePolicyOutput {
-	return o.ApplyT(func (v *OceanUpdatePolicy) OceanUpdatePolicy { return *v }).(OceanUpdatePolicyOutput)
+	return o.ApplyT(func(v *OceanUpdatePolicy) OceanUpdatePolicy { return *v }).(OceanUpdatePolicyOutput)
 }
 
 func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func (v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
+	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
 func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func (v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
 
 type OceanUpdatePolicyRollConfig struct {
@@ -1036,7 +1045,8 @@ type OceanUpdatePolicyRollConfigPtrInput interface {
 
 type oceanUpdatePolicyRollConfigPtrType OceanUpdatePolicyRollConfigArgs
 
-func OceanUpdatePolicyRollConfigPtr(v *OceanUpdatePolicyRollConfigArgs) OceanUpdatePolicyRollConfigPtrInput {	return (*oceanUpdatePolicyRollConfigPtrType)(v)
+func OceanUpdatePolicyRollConfigPtr(v *OceanUpdatePolicyRollConfigArgs) OceanUpdatePolicyRollConfigPtrInput {
+	return (*oceanUpdatePolicyRollConfigPtrType)(v)
 }
 
 func (*oceanUpdatePolicyRollConfigPtrType) ElementType() reflect.Type {
@@ -1051,7 +1061,7 @@ func (i *oceanUpdatePolicyRollConfigPtrType) ToOceanUpdatePolicyRollConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
-type OceanUpdatePolicyRollConfigOutput struct { *pulumi.OutputState }
+type OceanUpdatePolicyRollConfigOutput struct{ *pulumi.OutputState }
 
 func (OceanUpdatePolicyRollConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanUpdatePolicyRollConfig)(nil)).Elem()
@@ -1075,10 +1085,10 @@ func (o OceanUpdatePolicyRollConfigOutput) ToOceanUpdatePolicyRollConfigPtrOutpu
 	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 func (o OceanUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func (v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
-type OceanUpdatePolicyRollConfigPtrOutput struct { *pulumi.OutputState}
+type OceanUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanUpdatePolicyRollConfig)(nil)).Elem()
@@ -1093,11 +1103,11 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) ToOceanUpdatePolicyRollConfigPtrOu
 }
 
 func (o OceanUpdatePolicyRollConfigPtrOutput) Elem() OceanUpdatePolicyRollConfigOutput {
-	return o.ApplyT(func (v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig { return *v }).(OceanUpdatePolicyRollConfigOutput)
+	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig { return *v }).(OceanUpdatePolicyRollConfigOutput)
 }
 
 func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func (v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
 func init() {

@@ -17,7 +17,7 @@ import (
 type Beanstalk struct {
 	pulumi.CustomResourceState
 
-	// The id of an existing Beanstalk environment. 
+	// The id of an existing Beanstalk environment.
 	BeanstalkEnvironmentId pulumi.StringPtrOutput `pulumi:"beanstalkEnvironmentId"`
 	// The name of an existing Beanstalk environment.
 	BeanstalkEnvironmentName pulumi.StringPtrOutput `pulumi:"beanstalkEnvironmentName"`
@@ -27,7 +27,7 @@ type Beanstalk struct {
 	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
 	// One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
 	InstanceTypesSpots pulumi.StringArrayOutput `pulumi:"instanceTypesSpots"`
-	Maintenance pulumi.StringPtrOutput `pulumi:"maintenance"`
+	Maintenance        pulumi.StringPtrOutput   `pulumi:"maintenance"`
 	// Managed Actions parameters
 	ManagedActions BeanstalkManagedActionsPtrOutput `pulumi:"managedActions"`
 	// The maximum number of instances the group should have at any time.
@@ -40,7 +40,7 @@ type Beanstalk struct {
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringOutput `pulumi:"product"`
 	// The AWS region your group will be created in. Cannot be changed after the group has been created.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region         pulumi.StringOutput               `pulumi:"region"`
 	ScheduledTasks BeanstalkScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 }
 
@@ -90,7 +90,7 @@ func GetBeanstalk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Beanstalk resources.
 type beanstalkState struct {
-	// The id of an existing Beanstalk environment. 
+	// The id of an existing Beanstalk environment.
 	BeanstalkEnvironmentId *string `pulumi:"beanstalkEnvironmentId"`
 	// The name of an existing Beanstalk environment.
 	BeanstalkEnvironmentName *string `pulumi:"beanstalkEnvironmentName"`
@@ -100,7 +100,7 @@ type beanstalkState struct {
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
 	InstanceTypesSpots []string `pulumi:"instanceTypesSpots"`
-	Maintenance *string `pulumi:"maintenance"`
+	Maintenance        *string  `pulumi:"maintenance"`
 	// Managed Actions parameters
 	ManagedActions *BeanstalkManagedActions `pulumi:"managedActions"`
 	// The maximum number of instances the group should have at any time.
@@ -113,12 +113,12 @@ type beanstalkState struct {
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product *string `pulumi:"product"`
 	// The AWS region your group will be created in. Cannot be changed after the group has been created.
-	Region *string `pulumi:"region"`
+	Region         *string                  `pulumi:"region"`
 	ScheduledTasks []BeanstalkScheduledTask `pulumi:"scheduledTasks"`
 }
 
 type BeanstalkState struct {
-	// The id of an existing Beanstalk environment. 
+	// The id of an existing Beanstalk environment.
 	BeanstalkEnvironmentId pulumi.StringPtrInput
 	// The name of an existing Beanstalk environment.
 	BeanstalkEnvironmentName pulumi.StringPtrInput
@@ -128,7 +128,7 @@ type BeanstalkState struct {
 	DesiredCapacity pulumi.IntPtrInput
 	// One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
 	InstanceTypesSpots pulumi.StringArrayInput
-	Maintenance pulumi.StringPtrInput
+	Maintenance        pulumi.StringPtrInput
 	// Managed Actions parameters
 	ManagedActions BeanstalkManagedActionsPtrInput
 	// The maximum number of instances the group should have at any time.
@@ -141,7 +141,7 @@ type BeanstalkState struct {
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringPtrInput
 	// The AWS region your group will be created in. Cannot be changed after the group has been created.
-	Region pulumi.StringPtrInput
+	Region         pulumi.StringPtrInput
 	ScheduledTasks BeanstalkScheduledTaskArrayInput
 }
 
@@ -150,7 +150,7 @@ func (BeanstalkState) ElementType() reflect.Type {
 }
 
 type beanstalkArgs struct {
-	// The id of an existing Beanstalk environment. 
+	// The id of an existing Beanstalk environment.
 	BeanstalkEnvironmentId *string `pulumi:"beanstalkEnvironmentId"`
 	// The name of an existing Beanstalk environment.
 	BeanstalkEnvironmentName *string `pulumi:"beanstalkEnvironmentName"`
@@ -160,7 +160,7 @@ type beanstalkArgs struct {
 	DesiredCapacity int `pulumi:"desiredCapacity"`
 	// One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
 	InstanceTypesSpots []string `pulumi:"instanceTypesSpots"`
-	Maintenance *string `pulumi:"maintenance"`
+	Maintenance        *string  `pulumi:"maintenance"`
 	// Managed Actions parameters
 	ManagedActions *BeanstalkManagedActions `pulumi:"managedActions"`
 	// The maximum number of instances the group should have at any time.
@@ -173,13 +173,13 @@ type beanstalkArgs struct {
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product string `pulumi:"product"`
 	// The AWS region your group will be created in. Cannot be changed after the group has been created.
-	Region string `pulumi:"region"`
+	Region         string                   `pulumi:"region"`
 	ScheduledTasks []BeanstalkScheduledTask `pulumi:"scheduledTasks"`
 }
 
 // The set of arguments for constructing a Beanstalk resource.
 type BeanstalkArgs struct {
-	// The id of an existing Beanstalk environment. 
+	// The id of an existing Beanstalk environment.
 	BeanstalkEnvironmentId pulumi.StringPtrInput
 	// The name of an existing Beanstalk environment.
 	BeanstalkEnvironmentName pulumi.StringPtrInput
@@ -189,7 +189,7 @@ type BeanstalkArgs struct {
 	DesiredCapacity pulumi.IntInput
 	// One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
 	InstanceTypesSpots pulumi.StringArrayInput
-	Maintenance pulumi.StringPtrInput
+	Maintenance        pulumi.StringPtrInput
 	// Managed Actions parameters
 	ManagedActions BeanstalkManagedActionsPtrInput
 	// The maximum number of instances the group should have at any time.
@@ -202,11 +202,10 @@ type BeanstalkArgs struct {
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringInput
 	// The AWS region your group will be created in. Cannot be changed after the group has been created.
-	Region pulumi.StringInput
+	Region         pulumi.StringInput
 	ScheduledTasks BeanstalkScheduledTaskArrayInput
 }
 
 func (BeanstalkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*beanstalkArgs)(nil)).Elem()
 }
-

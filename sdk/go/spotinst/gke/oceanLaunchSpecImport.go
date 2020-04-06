@@ -19,7 +19,7 @@ type OceanLaunchSpecImport struct {
 
 	// The node pool you wish to use in your launchSpec.
 	NodePoolName pulumi.StringOutput `pulumi:"nodePoolName"`
-	// The Ocean cluster ID required for launchSpec create. 
+	// The Ocean cluster ID required for launchSpec create.
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
 }
 
@@ -59,14 +59,14 @@ func GetOceanLaunchSpecImport(ctx *pulumi.Context,
 type oceanLaunchSpecImportState struct {
 	// The node pool you wish to use in your launchSpec.
 	NodePoolName *string `pulumi:"nodePoolName"`
-	// The Ocean cluster ID required for launchSpec create. 
+	// The Ocean cluster ID required for launchSpec create.
 	OceanId *string `pulumi:"oceanId"`
 }
 
 type OceanLaunchSpecImportState struct {
 	// The node pool you wish to use in your launchSpec.
 	NodePoolName pulumi.StringPtrInput
-	// The Ocean cluster ID required for launchSpec create. 
+	// The Ocean cluster ID required for launchSpec create.
 	OceanId pulumi.StringPtrInput
 }
 
@@ -77,7 +77,7 @@ func (OceanLaunchSpecImportState) ElementType() reflect.Type {
 type oceanLaunchSpecImportArgs struct {
 	// The node pool you wish to use in your launchSpec.
 	NodePoolName string `pulumi:"nodePoolName"`
-	// The Ocean cluster ID required for launchSpec create. 
+	// The Ocean cluster ID required for launchSpec create.
 	OceanId string `pulumi:"oceanId"`
 }
 
@@ -85,11 +85,10 @@ type oceanLaunchSpecImportArgs struct {
 type OceanLaunchSpecImportArgs struct {
 	// The node pool you wish to use in your launchSpec.
 	NodePoolName pulumi.StringInput
-	// The Ocean cluster ID required for launchSpec create. 
+	// The Ocean cluster ID required for launchSpec create.
 	OceanId pulumi.StringInput
 }
 
 func (OceanLaunchSpecImportArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanLaunchSpecImportArgs)(nil)).Elem()
 }
-

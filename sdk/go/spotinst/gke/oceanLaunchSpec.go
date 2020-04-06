@@ -23,7 +23,7 @@ type OceanLaunchSpec struct {
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayOutput `pulumi:"metadatas"`
-	// The Ocean cluster ID required for launchSpec create. 
+	// The Ocean cluster ID required for launchSpec create.
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
 	// Image URL.
 	SourceImage pulumi.StringOutput `pulumi:"sourceImage"`
@@ -74,7 +74,7 @@ type oceanLaunchSpecState struct {
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
-	// The Ocean cluster ID required for launchSpec create. 
+	// The Ocean cluster ID required for launchSpec create.
 	OceanId *string `pulumi:"oceanId"`
 	// Image URL.
 	SourceImage *string `pulumi:"sourceImage"`
@@ -89,7 +89,7 @@ type OceanLaunchSpecState struct {
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
-	// The Ocean cluster ID required for launchSpec create. 
+	// The Ocean cluster ID required for launchSpec create.
 	OceanId pulumi.StringPtrInput
 	// Image URL.
 	SourceImage pulumi.StringPtrInput
@@ -108,7 +108,7 @@ type oceanLaunchSpecArgs struct {
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
-	// The Ocean cluster ID required for launchSpec create. 
+	// The Ocean cluster ID required for launchSpec create.
 	OceanId string `pulumi:"oceanId"`
 	// Image URL.
 	SourceImage string `pulumi:"sourceImage"`
@@ -124,7 +124,7 @@ type OceanLaunchSpecArgs struct {
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
-	// The Ocean cluster ID required for launchSpec create. 
+	// The Ocean cluster ID required for launchSpec create.
 	OceanId pulumi.StringInput
 	// Image URL.
 	SourceImage pulumi.StringInput
@@ -135,4 +135,3 @@ type OceanLaunchSpecArgs struct {
 func (OceanLaunchSpecArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanLaunchSpecArgs)(nil)).Elem()
 }
-

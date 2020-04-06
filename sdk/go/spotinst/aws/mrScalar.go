@@ -78,7 +78,7 @@ import (
 //     * `key` - (Required) Tag key.
 //     * `value` - (Required) Tag value.
 //
-// <a id="Optional Compute Parameters"></a>  
+// <a id="Optional Compute Parameters"></a>
 // ## Optional Compute Parameters (New strategy)
 //
 // * `managedPrimarySecurityGroup` - (Optional) EMR Managed Security group that will be set to the primary instance group.
@@ -95,7 +95,7 @@ import (
 //     * `version`- (Optional)T he version of the application.
 // * `instanceWeights` - (Optional) Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
 //     * `instanceType` - (Required) The type of the instance.
-//     * `weightedCapacity` - (Required) The weight given to the associated instance type. 
+//     * `weightedCapacity` - (Required) The weight given to the associated instance type.
 //
 // <a id="availability-zone"></a>
 // ## Availability Zones (Clone, New strategies)
@@ -108,16 +108,16 @@ import (
 // * `configurationsFile` - (Optional) Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
 //     * `bucket` - (Required) S3 Bucket name for configurations.
 //     * `key`- (Required) S3 key for configurations.
-//     
+//
 // <a id="steps"></a>
 // ## Steps (Clone, New strategies)
 //
 // * `stepsFile` - (Optional) Steps from S3.
 //     * `bucket` - (Required) S3 Bucket name for steps.
 //     * `key`- (Required) S3 key for steps.
-//     
+//
 // <a id="boostrap-actions"></a>
-// ## Bootstrap Actions (Clone, New strategies)   
+// ## Bootstrap Actions (Clone, New strategies)
 //
 // * `bootstrapActionsFile` - (Optional) Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
 //     * `bucket` - (Required) S3 Bucket name for bootstrap actions.
@@ -171,68 +171,68 @@ import (
 type MrScalar struct {
 	pulumi.CustomResourceState
 
-	AdditionalInfo pulumi.StringPtrOutput `pulumi:"additionalInfo"`
-	AdditionalPrimarySecurityGroups pulumi.StringArrayOutput `pulumi:"additionalPrimarySecurityGroups"`
-	AdditionalReplicaSecurityGroups pulumi.StringArrayOutput `pulumi:"additionalReplicaSecurityGroups"`
-	Applications MrScalarApplicationArrayOutput `pulumi:"applications"`
-	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
-	BootstrapActionsFiles MrScalarBootstrapActionsFileArrayOutput `pulumi:"bootstrapActionsFiles"`
+	AdditionalInfo                  pulumi.StringPtrOutput                  `pulumi:"additionalInfo"`
+	AdditionalPrimarySecurityGroups pulumi.StringArrayOutput                `pulumi:"additionalPrimarySecurityGroups"`
+	AdditionalReplicaSecurityGroups pulumi.StringArrayOutput                `pulumi:"additionalReplicaSecurityGroups"`
+	Applications                    MrScalarApplicationArrayOutput          `pulumi:"applications"`
+	AvailabilityZones               pulumi.StringArrayOutput                `pulumi:"availabilityZones"`
+	BootstrapActionsFiles           MrScalarBootstrapActionsFileArrayOutput `pulumi:"bootstrapActionsFiles"`
 	// The MrScaler cluster id.
-	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
-	ConfigurationsFiles MrScalarConfigurationsFileArrayOutput `pulumi:"configurationsFiles"`
-	CoreDesiredCapacity pulumi.IntPtrOutput `pulumi:"coreDesiredCapacity"`
-	CoreEbsBlockDevices MrScalarCoreEbsBlockDeviceArrayOutput `pulumi:"coreEbsBlockDevices"`
-	CoreEbsOptimized pulumi.BoolPtrOutput `pulumi:"coreEbsOptimized"`
-	CoreInstanceTypes pulumi.StringArrayOutput `pulumi:"coreInstanceTypes"`
-	CoreLifecycle pulumi.StringPtrOutput `pulumi:"coreLifecycle"`
-	CoreMaxSize pulumi.IntPtrOutput `pulumi:"coreMaxSize"`
-	CoreMinSize pulumi.IntPtrOutput `pulumi:"coreMinSize"`
+	ClusterId               pulumi.StringPtrOutput                   `pulumi:"clusterId"`
+	ConfigurationsFiles     MrScalarConfigurationsFileArrayOutput    `pulumi:"configurationsFiles"`
+	CoreDesiredCapacity     pulumi.IntPtrOutput                      `pulumi:"coreDesiredCapacity"`
+	CoreEbsBlockDevices     MrScalarCoreEbsBlockDeviceArrayOutput    `pulumi:"coreEbsBlockDevices"`
+	CoreEbsOptimized        pulumi.BoolPtrOutput                     `pulumi:"coreEbsOptimized"`
+	CoreInstanceTypes       pulumi.StringArrayOutput                 `pulumi:"coreInstanceTypes"`
+	CoreLifecycle           pulumi.StringPtrOutput                   `pulumi:"coreLifecycle"`
+	CoreMaxSize             pulumi.IntPtrOutput                      `pulumi:"coreMaxSize"`
+	CoreMinSize             pulumi.IntPtrOutput                      `pulumi:"coreMinSize"`
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayOutput `pulumi:"coreScalingDownPolicies"`
-	CoreScalingUpPolicies MrScalarCoreScalingUpPolicyArrayOutput `pulumi:"coreScalingUpPolicies"`
-	CustomAmiId pulumi.StringPtrOutput `pulumi:"customAmiId"`
+	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayOutput   `pulumi:"coreScalingUpPolicies"`
+	CustomAmiId             pulumi.StringPtrOutput                   `pulumi:"customAmiId"`
 	// The MrScaler description.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	EbsRootVolumeSize pulumi.IntPtrOutput `pulumi:"ebsRootVolumeSize"`
-	Ec2KeyName pulumi.StringPtrOutput `pulumi:"ec2KeyName"`
-	ExposeClusterId pulumi.BoolPtrOutput `pulumi:"exposeClusterId"`
-	InstanceWeights MrScalarInstanceWeightArrayOutput `pulumi:"instanceWeights"`
-	JobFlowRole pulumi.StringPtrOutput `pulumi:"jobFlowRole"`
-	KeepJobFlowAlive pulumi.BoolPtrOutput `pulumi:"keepJobFlowAlive"`
-	LogUri pulumi.StringPtrOutput `pulumi:"logUri"`
-	ManagedPrimarySecurityGroup pulumi.StringPtrOutput `pulumi:"managedPrimarySecurityGroup"`
-	ManagedReplicaSecurityGroup pulumi.StringPtrOutput `pulumi:"managedReplicaSecurityGroup"`
-	MasterEbsBlockDevices MrScalarMasterEbsBlockDeviceArrayOutput `pulumi:"masterEbsBlockDevices"`
-	MasterEbsOptimized pulumi.BoolPtrOutput `pulumi:"masterEbsOptimized"`
-	MasterInstanceTypes pulumi.StringArrayOutput `pulumi:"masterInstanceTypes"`
-	MasterLifecycle pulumi.StringPtrOutput `pulumi:"masterLifecycle"`
+	Description                 pulumi.StringPtrOutput                  `pulumi:"description"`
+	EbsRootVolumeSize           pulumi.IntPtrOutput                     `pulumi:"ebsRootVolumeSize"`
+	Ec2KeyName                  pulumi.StringPtrOutput                  `pulumi:"ec2KeyName"`
+	ExposeClusterId             pulumi.BoolPtrOutput                    `pulumi:"exposeClusterId"`
+	InstanceWeights             MrScalarInstanceWeightArrayOutput       `pulumi:"instanceWeights"`
+	JobFlowRole                 pulumi.StringPtrOutput                  `pulumi:"jobFlowRole"`
+	KeepJobFlowAlive            pulumi.BoolPtrOutput                    `pulumi:"keepJobFlowAlive"`
+	LogUri                      pulumi.StringPtrOutput                  `pulumi:"logUri"`
+	ManagedPrimarySecurityGroup pulumi.StringPtrOutput                  `pulumi:"managedPrimarySecurityGroup"`
+	ManagedReplicaSecurityGroup pulumi.StringPtrOutput                  `pulumi:"managedReplicaSecurityGroup"`
+	MasterEbsBlockDevices       MrScalarMasterEbsBlockDeviceArrayOutput `pulumi:"masterEbsBlockDevices"`
+	MasterEbsOptimized          pulumi.BoolPtrOutput                    `pulumi:"masterEbsOptimized"`
+	MasterInstanceTypes         pulumi.StringArrayOutput                `pulumi:"masterInstanceTypes"`
+	MasterLifecycle             pulumi.StringPtrOutput                  `pulumi:"masterLifecycle"`
 	// The MrScaler name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	OutputClusterId pulumi.StringOutput `pulumi:"outputClusterId"`
+	Name                pulumi.StringOutput                  `pulumi:"name"`
+	OutputClusterId     pulumi.StringOutput                  `pulumi:"outputClusterId"`
 	ProvisioningTimeout MrScalarProvisioningTimeoutPtrOutput `pulumi:"provisioningTimeout"`
 	// The MrScaler region.
-	Region pulumi.StringPtrOutput `pulumi:"region"`
-	ReleaseLabel pulumi.StringPtrOutput `pulumi:"releaseLabel"`
-	RepoUpgradeOnBoot pulumi.StringPtrOutput `pulumi:"repoUpgradeOnBoot"`
-	Retries pulumi.IntPtrOutput `pulumi:"retries"`
-	ScheduledTasks MrScalarScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
-	SecurityConfig pulumi.StringPtrOutput `pulumi:"securityConfig"`
-	ServiceAccessSecurityGroup pulumi.StringPtrOutput `pulumi:"serviceAccessSecurityGroup"`
-	ServiceRole pulumi.StringPtrOutput `pulumi:"serviceRole"`
-	StepsFiles MrScalarStepsFileArrayOutput `pulumi:"stepsFiles"`
+	Region                     pulumi.StringPtrOutput           `pulumi:"region"`
+	ReleaseLabel               pulumi.StringPtrOutput           `pulumi:"releaseLabel"`
+	RepoUpgradeOnBoot          pulumi.StringPtrOutput           `pulumi:"repoUpgradeOnBoot"`
+	Retries                    pulumi.IntPtrOutput              `pulumi:"retries"`
+	ScheduledTasks             MrScalarScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
+	SecurityConfig             pulumi.StringPtrOutput           `pulumi:"securityConfig"`
+	ServiceAccessSecurityGroup pulumi.StringPtrOutput           `pulumi:"serviceAccessSecurityGroup"`
+	ServiceRole                pulumi.StringPtrOutput           `pulumi:"serviceRole"`
+	StepsFiles                 MrScalarStepsFileArrayOutput     `pulumi:"stepsFiles"`
 	// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-	Strategy pulumi.StringOutput `pulumi:"strategy"`
-	Tags MrScalarTagArrayOutput `pulumi:"tags"`
-	TaskDesiredCapacity pulumi.IntPtrOutput `pulumi:"taskDesiredCapacity"`
-	TaskEbsBlockDevices MrScalarTaskEbsBlockDeviceArrayOutput `pulumi:"taskEbsBlockDevices"`
-	TaskEbsOptimized pulumi.BoolPtrOutput `pulumi:"taskEbsOptimized"`
-	TaskInstanceTypes pulumi.StringArrayOutput `pulumi:"taskInstanceTypes"`
-	TaskLifecycle pulumi.StringPtrOutput `pulumi:"taskLifecycle"`
-	TaskMaxSize pulumi.IntPtrOutput `pulumi:"taskMaxSize"`
-	TaskMinSize pulumi.IntPtrOutput `pulumi:"taskMinSize"`
+	Strategy                pulumi.StringOutput                      `pulumi:"strategy"`
+	Tags                    MrScalarTagArrayOutput                   `pulumi:"tags"`
+	TaskDesiredCapacity     pulumi.IntPtrOutput                      `pulumi:"taskDesiredCapacity"`
+	TaskEbsBlockDevices     MrScalarTaskEbsBlockDeviceArrayOutput    `pulumi:"taskEbsBlockDevices"`
+	TaskEbsOptimized        pulumi.BoolPtrOutput                     `pulumi:"taskEbsOptimized"`
+	TaskInstanceTypes       pulumi.StringArrayOutput                 `pulumi:"taskInstanceTypes"`
+	TaskLifecycle           pulumi.StringPtrOutput                   `pulumi:"taskLifecycle"`
+	TaskMaxSize             pulumi.IntPtrOutput                      `pulumi:"taskMaxSize"`
+	TaskMinSize             pulumi.IntPtrOutput                      `pulumi:"taskMinSize"`
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayOutput `pulumi:"taskScalingDownPolicies"`
-	TaskScalingUpPolicies MrScalarTaskScalingUpPolicyArrayOutput `pulumi:"taskScalingUpPolicies"`
-	TerminationProtected pulumi.BoolPtrOutput `pulumi:"terminationProtected"`
-	VisibleToAllUsers pulumi.BoolPtrOutput `pulumi:"visibleToAllUsers"`
+	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayOutput   `pulumi:"taskScalingUpPolicies"`
+	TerminationProtected    pulumi.BoolPtrOutput                     `pulumi:"terminationProtected"`
+	VisibleToAllUsers       pulumi.BoolPtrOutput                     `pulumi:"visibleToAllUsers"`
 }
 
 // NewMrScalar registers a new resource with the given unique name, arguments, and options.
@@ -266,133 +266,133 @@ func GetMrScalar(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MrScalar resources.
 type mrScalarState struct {
-	AdditionalInfo *string `pulumi:"additionalInfo"`
-	AdditionalPrimarySecurityGroups []string `pulumi:"additionalPrimarySecurityGroups"`
-	AdditionalReplicaSecurityGroups []string `pulumi:"additionalReplicaSecurityGroups"`
-	Applications []MrScalarApplication `pulumi:"applications"`
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	BootstrapActionsFiles []MrScalarBootstrapActionsFile `pulumi:"bootstrapActionsFiles"`
+	AdditionalInfo                  *string                        `pulumi:"additionalInfo"`
+	AdditionalPrimarySecurityGroups []string                       `pulumi:"additionalPrimarySecurityGroups"`
+	AdditionalReplicaSecurityGroups []string                       `pulumi:"additionalReplicaSecurityGroups"`
+	Applications                    []MrScalarApplication          `pulumi:"applications"`
+	AvailabilityZones               []string                       `pulumi:"availabilityZones"`
+	BootstrapActionsFiles           []MrScalarBootstrapActionsFile `pulumi:"bootstrapActionsFiles"`
 	// The MrScaler cluster id.
-	ClusterId *string `pulumi:"clusterId"`
-	ConfigurationsFiles []MrScalarConfigurationsFile `pulumi:"configurationsFiles"`
-	CoreDesiredCapacity *int `pulumi:"coreDesiredCapacity"`
-	CoreEbsBlockDevices []MrScalarCoreEbsBlockDevice `pulumi:"coreEbsBlockDevices"`
-	CoreEbsOptimized *bool `pulumi:"coreEbsOptimized"`
-	CoreInstanceTypes []string `pulumi:"coreInstanceTypes"`
-	CoreLifecycle *string `pulumi:"coreLifecycle"`
-	CoreMaxSize *int `pulumi:"coreMaxSize"`
-	CoreMinSize *int `pulumi:"coreMinSize"`
+	ClusterId               *string                         `pulumi:"clusterId"`
+	ConfigurationsFiles     []MrScalarConfigurationsFile    `pulumi:"configurationsFiles"`
+	CoreDesiredCapacity     *int                            `pulumi:"coreDesiredCapacity"`
+	CoreEbsBlockDevices     []MrScalarCoreEbsBlockDevice    `pulumi:"coreEbsBlockDevices"`
+	CoreEbsOptimized        *bool                           `pulumi:"coreEbsOptimized"`
+	CoreInstanceTypes       []string                        `pulumi:"coreInstanceTypes"`
+	CoreLifecycle           *string                         `pulumi:"coreLifecycle"`
+	CoreMaxSize             *int                            `pulumi:"coreMaxSize"`
+	CoreMinSize             *int                            `pulumi:"coreMinSize"`
 	CoreScalingDownPolicies []MrScalarCoreScalingDownPolicy `pulumi:"coreScalingDownPolicies"`
-	CoreScalingUpPolicies []MrScalarCoreScalingUpPolicy `pulumi:"coreScalingUpPolicies"`
-	CustomAmiId *string `pulumi:"customAmiId"`
+	CoreScalingUpPolicies   []MrScalarCoreScalingUpPolicy   `pulumi:"coreScalingUpPolicies"`
+	CustomAmiId             *string                         `pulumi:"customAmiId"`
 	// The MrScaler description.
-	Description *string `pulumi:"description"`
-	EbsRootVolumeSize *int `pulumi:"ebsRootVolumeSize"`
-	Ec2KeyName *string `pulumi:"ec2KeyName"`
-	ExposeClusterId *bool `pulumi:"exposeClusterId"`
-	InstanceWeights []MrScalarInstanceWeight `pulumi:"instanceWeights"`
-	JobFlowRole *string `pulumi:"jobFlowRole"`
-	KeepJobFlowAlive *bool `pulumi:"keepJobFlowAlive"`
-	LogUri *string `pulumi:"logUri"`
-	ManagedPrimarySecurityGroup *string `pulumi:"managedPrimarySecurityGroup"`
-	ManagedReplicaSecurityGroup *string `pulumi:"managedReplicaSecurityGroup"`
-	MasterEbsBlockDevices []MrScalarMasterEbsBlockDevice `pulumi:"masterEbsBlockDevices"`
-	MasterEbsOptimized *bool `pulumi:"masterEbsOptimized"`
-	MasterInstanceTypes []string `pulumi:"masterInstanceTypes"`
-	MasterLifecycle *string `pulumi:"masterLifecycle"`
+	Description                 *string                        `pulumi:"description"`
+	EbsRootVolumeSize           *int                           `pulumi:"ebsRootVolumeSize"`
+	Ec2KeyName                  *string                        `pulumi:"ec2KeyName"`
+	ExposeClusterId             *bool                          `pulumi:"exposeClusterId"`
+	InstanceWeights             []MrScalarInstanceWeight       `pulumi:"instanceWeights"`
+	JobFlowRole                 *string                        `pulumi:"jobFlowRole"`
+	KeepJobFlowAlive            *bool                          `pulumi:"keepJobFlowAlive"`
+	LogUri                      *string                        `pulumi:"logUri"`
+	ManagedPrimarySecurityGroup *string                        `pulumi:"managedPrimarySecurityGroup"`
+	ManagedReplicaSecurityGroup *string                        `pulumi:"managedReplicaSecurityGroup"`
+	MasterEbsBlockDevices       []MrScalarMasterEbsBlockDevice `pulumi:"masterEbsBlockDevices"`
+	MasterEbsOptimized          *bool                          `pulumi:"masterEbsOptimized"`
+	MasterInstanceTypes         []string                       `pulumi:"masterInstanceTypes"`
+	MasterLifecycle             *string                        `pulumi:"masterLifecycle"`
 	// The MrScaler name.
-	Name *string `pulumi:"name"`
-	OutputClusterId *string `pulumi:"outputClusterId"`
+	Name                *string                      `pulumi:"name"`
+	OutputClusterId     *string                      `pulumi:"outputClusterId"`
 	ProvisioningTimeout *MrScalarProvisioningTimeout `pulumi:"provisioningTimeout"`
 	// The MrScaler region.
-	Region *string `pulumi:"region"`
-	ReleaseLabel *string `pulumi:"releaseLabel"`
-	RepoUpgradeOnBoot *string `pulumi:"repoUpgradeOnBoot"`
-	Retries *int `pulumi:"retries"`
-	ScheduledTasks []MrScalarScheduledTask `pulumi:"scheduledTasks"`
-	SecurityConfig *string `pulumi:"securityConfig"`
-	ServiceAccessSecurityGroup *string `pulumi:"serviceAccessSecurityGroup"`
-	ServiceRole *string `pulumi:"serviceRole"`
-	StepsFiles []MrScalarStepsFile `pulumi:"stepsFiles"`
+	Region                     *string                 `pulumi:"region"`
+	ReleaseLabel               *string                 `pulumi:"releaseLabel"`
+	RepoUpgradeOnBoot          *string                 `pulumi:"repoUpgradeOnBoot"`
+	Retries                    *int                    `pulumi:"retries"`
+	ScheduledTasks             []MrScalarScheduledTask `pulumi:"scheduledTasks"`
+	SecurityConfig             *string                 `pulumi:"securityConfig"`
+	ServiceAccessSecurityGroup *string                 `pulumi:"serviceAccessSecurityGroup"`
+	ServiceRole                *string                 `pulumi:"serviceRole"`
+	StepsFiles                 []MrScalarStepsFile     `pulumi:"stepsFiles"`
 	// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-	Strategy *string `pulumi:"strategy"`
-	Tags []MrScalarTag `pulumi:"tags"`
-	TaskDesiredCapacity *int `pulumi:"taskDesiredCapacity"`
-	TaskEbsBlockDevices []MrScalarTaskEbsBlockDevice `pulumi:"taskEbsBlockDevices"`
-	TaskEbsOptimized *bool `pulumi:"taskEbsOptimized"`
-	TaskInstanceTypes []string `pulumi:"taskInstanceTypes"`
-	TaskLifecycle *string `pulumi:"taskLifecycle"`
-	TaskMaxSize *int `pulumi:"taskMaxSize"`
-	TaskMinSize *int `pulumi:"taskMinSize"`
+	Strategy                *string                         `pulumi:"strategy"`
+	Tags                    []MrScalarTag                   `pulumi:"tags"`
+	TaskDesiredCapacity     *int                            `pulumi:"taskDesiredCapacity"`
+	TaskEbsBlockDevices     []MrScalarTaskEbsBlockDevice    `pulumi:"taskEbsBlockDevices"`
+	TaskEbsOptimized        *bool                           `pulumi:"taskEbsOptimized"`
+	TaskInstanceTypes       []string                        `pulumi:"taskInstanceTypes"`
+	TaskLifecycle           *string                         `pulumi:"taskLifecycle"`
+	TaskMaxSize             *int                            `pulumi:"taskMaxSize"`
+	TaskMinSize             *int                            `pulumi:"taskMinSize"`
 	TaskScalingDownPolicies []MrScalarTaskScalingDownPolicy `pulumi:"taskScalingDownPolicies"`
-	TaskScalingUpPolicies []MrScalarTaskScalingUpPolicy `pulumi:"taskScalingUpPolicies"`
-	TerminationProtected *bool `pulumi:"terminationProtected"`
-	VisibleToAllUsers *bool `pulumi:"visibleToAllUsers"`
+	TaskScalingUpPolicies   []MrScalarTaskScalingUpPolicy   `pulumi:"taskScalingUpPolicies"`
+	TerminationProtected    *bool                           `pulumi:"terminationProtected"`
+	VisibleToAllUsers       *bool                           `pulumi:"visibleToAllUsers"`
 }
 
 type MrScalarState struct {
-	AdditionalInfo pulumi.StringPtrInput
+	AdditionalInfo                  pulumi.StringPtrInput
 	AdditionalPrimarySecurityGroups pulumi.StringArrayInput
 	AdditionalReplicaSecurityGroups pulumi.StringArrayInput
-	Applications MrScalarApplicationArrayInput
-	AvailabilityZones pulumi.StringArrayInput
-	BootstrapActionsFiles MrScalarBootstrapActionsFileArrayInput
+	Applications                    MrScalarApplicationArrayInput
+	AvailabilityZones               pulumi.StringArrayInput
+	BootstrapActionsFiles           MrScalarBootstrapActionsFileArrayInput
 	// The MrScaler cluster id.
-	ClusterId pulumi.StringPtrInput
-	ConfigurationsFiles MrScalarConfigurationsFileArrayInput
-	CoreDesiredCapacity pulumi.IntPtrInput
-	CoreEbsBlockDevices MrScalarCoreEbsBlockDeviceArrayInput
-	CoreEbsOptimized pulumi.BoolPtrInput
-	CoreInstanceTypes pulumi.StringArrayInput
-	CoreLifecycle pulumi.StringPtrInput
-	CoreMaxSize pulumi.IntPtrInput
-	CoreMinSize pulumi.IntPtrInput
+	ClusterId               pulumi.StringPtrInput
+	ConfigurationsFiles     MrScalarConfigurationsFileArrayInput
+	CoreDesiredCapacity     pulumi.IntPtrInput
+	CoreEbsBlockDevices     MrScalarCoreEbsBlockDeviceArrayInput
+	CoreEbsOptimized        pulumi.BoolPtrInput
+	CoreInstanceTypes       pulumi.StringArrayInput
+	CoreLifecycle           pulumi.StringPtrInput
+	CoreMaxSize             pulumi.IntPtrInput
+	CoreMinSize             pulumi.IntPtrInput
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayInput
-	CoreScalingUpPolicies MrScalarCoreScalingUpPolicyArrayInput
-	CustomAmiId pulumi.StringPtrInput
+	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayInput
+	CustomAmiId             pulumi.StringPtrInput
 	// The MrScaler description.
-	Description pulumi.StringPtrInput
-	EbsRootVolumeSize pulumi.IntPtrInput
-	Ec2KeyName pulumi.StringPtrInput
-	ExposeClusterId pulumi.BoolPtrInput
-	InstanceWeights MrScalarInstanceWeightArrayInput
-	JobFlowRole pulumi.StringPtrInput
-	KeepJobFlowAlive pulumi.BoolPtrInput
-	LogUri pulumi.StringPtrInput
+	Description                 pulumi.StringPtrInput
+	EbsRootVolumeSize           pulumi.IntPtrInput
+	Ec2KeyName                  pulumi.StringPtrInput
+	ExposeClusterId             pulumi.BoolPtrInput
+	InstanceWeights             MrScalarInstanceWeightArrayInput
+	JobFlowRole                 pulumi.StringPtrInput
+	KeepJobFlowAlive            pulumi.BoolPtrInput
+	LogUri                      pulumi.StringPtrInput
 	ManagedPrimarySecurityGroup pulumi.StringPtrInput
 	ManagedReplicaSecurityGroup pulumi.StringPtrInput
-	MasterEbsBlockDevices MrScalarMasterEbsBlockDeviceArrayInput
-	MasterEbsOptimized pulumi.BoolPtrInput
-	MasterInstanceTypes pulumi.StringArrayInput
-	MasterLifecycle pulumi.StringPtrInput
+	MasterEbsBlockDevices       MrScalarMasterEbsBlockDeviceArrayInput
+	MasterEbsOptimized          pulumi.BoolPtrInput
+	MasterInstanceTypes         pulumi.StringArrayInput
+	MasterLifecycle             pulumi.StringPtrInput
 	// The MrScaler name.
-	Name pulumi.StringPtrInput
-	OutputClusterId pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	OutputClusterId     pulumi.StringPtrInput
 	ProvisioningTimeout MrScalarProvisioningTimeoutPtrInput
 	// The MrScaler region.
-	Region pulumi.StringPtrInput
-	ReleaseLabel pulumi.StringPtrInput
-	RepoUpgradeOnBoot pulumi.StringPtrInput
-	Retries pulumi.IntPtrInput
-	ScheduledTasks MrScalarScheduledTaskArrayInput
-	SecurityConfig pulumi.StringPtrInput
+	Region                     pulumi.StringPtrInput
+	ReleaseLabel               pulumi.StringPtrInput
+	RepoUpgradeOnBoot          pulumi.StringPtrInput
+	Retries                    pulumi.IntPtrInput
+	ScheduledTasks             MrScalarScheduledTaskArrayInput
+	SecurityConfig             pulumi.StringPtrInput
 	ServiceAccessSecurityGroup pulumi.StringPtrInput
-	ServiceRole pulumi.StringPtrInput
-	StepsFiles MrScalarStepsFileArrayInput
+	ServiceRole                pulumi.StringPtrInput
+	StepsFiles                 MrScalarStepsFileArrayInput
 	// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-	Strategy pulumi.StringPtrInput
-	Tags MrScalarTagArrayInput
-	TaskDesiredCapacity pulumi.IntPtrInput
-	TaskEbsBlockDevices MrScalarTaskEbsBlockDeviceArrayInput
-	TaskEbsOptimized pulumi.BoolPtrInput
-	TaskInstanceTypes pulumi.StringArrayInput
-	TaskLifecycle pulumi.StringPtrInput
-	TaskMaxSize pulumi.IntPtrInput
-	TaskMinSize pulumi.IntPtrInput
+	Strategy                pulumi.StringPtrInput
+	Tags                    MrScalarTagArrayInput
+	TaskDesiredCapacity     pulumi.IntPtrInput
+	TaskEbsBlockDevices     MrScalarTaskEbsBlockDeviceArrayInput
+	TaskEbsOptimized        pulumi.BoolPtrInput
+	TaskInstanceTypes       pulumi.StringArrayInput
+	TaskLifecycle           pulumi.StringPtrInput
+	TaskMaxSize             pulumi.IntPtrInput
+	TaskMinSize             pulumi.IntPtrInput
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayInput
-	TaskScalingUpPolicies MrScalarTaskScalingUpPolicyArrayInput
-	TerminationProtected pulumi.BoolPtrInput
-	VisibleToAllUsers pulumi.BoolPtrInput
+	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayInput
+	TerminationProtected    pulumi.BoolPtrInput
+	VisibleToAllUsers       pulumi.BoolPtrInput
 }
 
 func (MrScalarState) ElementType() reflect.Type {
@@ -400,135 +400,134 @@ func (MrScalarState) ElementType() reflect.Type {
 }
 
 type mrScalarArgs struct {
-	AdditionalInfo *string `pulumi:"additionalInfo"`
-	AdditionalPrimarySecurityGroups []string `pulumi:"additionalPrimarySecurityGroups"`
-	AdditionalReplicaSecurityGroups []string `pulumi:"additionalReplicaSecurityGroups"`
-	Applications []MrScalarApplication `pulumi:"applications"`
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	BootstrapActionsFiles []MrScalarBootstrapActionsFile `pulumi:"bootstrapActionsFiles"`
+	AdditionalInfo                  *string                        `pulumi:"additionalInfo"`
+	AdditionalPrimarySecurityGroups []string                       `pulumi:"additionalPrimarySecurityGroups"`
+	AdditionalReplicaSecurityGroups []string                       `pulumi:"additionalReplicaSecurityGroups"`
+	Applications                    []MrScalarApplication          `pulumi:"applications"`
+	AvailabilityZones               []string                       `pulumi:"availabilityZones"`
+	BootstrapActionsFiles           []MrScalarBootstrapActionsFile `pulumi:"bootstrapActionsFiles"`
 	// The MrScaler cluster id.
-	ClusterId *string `pulumi:"clusterId"`
-	ConfigurationsFiles []MrScalarConfigurationsFile `pulumi:"configurationsFiles"`
-	CoreDesiredCapacity *int `pulumi:"coreDesiredCapacity"`
-	CoreEbsBlockDevices []MrScalarCoreEbsBlockDevice `pulumi:"coreEbsBlockDevices"`
-	CoreEbsOptimized *bool `pulumi:"coreEbsOptimized"`
-	CoreInstanceTypes []string `pulumi:"coreInstanceTypes"`
-	CoreLifecycle *string `pulumi:"coreLifecycle"`
-	CoreMaxSize *int `pulumi:"coreMaxSize"`
-	CoreMinSize *int `pulumi:"coreMinSize"`
+	ClusterId               *string                         `pulumi:"clusterId"`
+	ConfigurationsFiles     []MrScalarConfigurationsFile    `pulumi:"configurationsFiles"`
+	CoreDesiredCapacity     *int                            `pulumi:"coreDesiredCapacity"`
+	CoreEbsBlockDevices     []MrScalarCoreEbsBlockDevice    `pulumi:"coreEbsBlockDevices"`
+	CoreEbsOptimized        *bool                           `pulumi:"coreEbsOptimized"`
+	CoreInstanceTypes       []string                        `pulumi:"coreInstanceTypes"`
+	CoreLifecycle           *string                         `pulumi:"coreLifecycle"`
+	CoreMaxSize             *int                            `pulumi:"coreMaxSize"`
+	CoreMinSize             *int                            `pulumi:"coreMinSize"`
 	CoreScalingDownPolicies []MrScalarCoreScalingDownPolicy `pulumi:"coreScalingDownPolicies"`
-	CoreScalingUpPolicies []MrScalarCoreScalingUpPolicy `pulumi:"coreScalingUpPolicies"`
-	CustomAmiId *string `pulumi:"customAmiId"`
+	CoreScalingUpPolicies   []MrScalarCoreScalingUpPolicy   `pulumi:"coreScalingUpPolicies"`
+	CustomAmiId             *string                         `pulumi:"customAmiId"`
 	// The MrScaler description.
-	Description *string `pulumi:"description"`
-	EbsRootVolumeSize *int `pulumi:"ebsRootVolumeSize"`
-	Ec2KeyName *string `pulumi:"ec2KeyName"`
-	ExposeClusterId *bool `pulumi:"exposeClusterId"`
-	InstanceWeights []MrScalarInstanceWeight `pulumi:"instanceWeights"`
-	JobFlowRole *string `pulumi:"jobFlowRole"`
-	KeepJobFlowAlive *bool `pulumi:"keepJobFlowAlive"`
-	LogUri *string `pulumi:"logUri"`
-	ManagedPrimarySecurityGroup *string `pulumi:"managedPrimarySecurityGroup"`
-	ManagedReplicaSecurityGroup *string `pulumi:"managedReplicaSecurityGroup"`
-	MasterEbsBlockDevices []MrScalarMasterEbsBlockDevice `pulumi:"masterEbsBlockDevices"`
-	MasterEbsOptimized *bool `pulumi:"masterEbsOptimized"`
-	MasterInstanceTypes []string `pulumi:"masterInstanceTypes"`
-	MasterLifecycle *string `pulumi:"masterLifecycle"`
+	Description                 *string                        `pulumi:"description"`
+	EbsRootVolumeSize           *int                           `pulumi:"ebsRootVolumeSize"`
+	Ec2KeyName                  *string                        `pulumi:"ec2KeyName"`
+	ExposeClusterId             *bool                          `pulumi:"exposeClusterId"`
+	InstanceWeights             []MrScalarInstanceWeight       `pulumi:"instanceWeights"`
+	JobFlowRole                 *string                        `pulumi:"jobFlowRole"`
+	KeepJobFlowAlive            *bool                          `pulumi:"keepJobFlowAlive"`
+	LogUri                      *string                        `pulumi:"logUri"`
+	ManagedPrimarySecurityGroup *string                        `pulumi:"managedPrimarySecurityGroup"`
+	ManagedReplicaSecurityGroup *string                        `pulumi:"managedReplicaSecurityGroup"`
+	MasterEbsBlockDevices       []MrScalarMasterEbsBlockDevice `pulumi:"masterEbsBlockDevices"`
+	MasterEbsOptimized          *bool                          `pulumi:"masterEbsOptimized"`
+	MasterInstanceTypes         []string                       `pulumi:"masterInstanceTypes"`
+	MasterLifecycle             *string                        `pulumi:"masterLifecycle"`
 	// The MrScaler name.
-	Name *string `pulumi:"name"`
+	Name                *string                      `pulumi:"name"`
 	ProvisioningTimeout *MrScalarProvisioningTimeout `pulumi:"provisioningTimeout"`
 	// The MrScaler region.
-	Region *string `pulumi:"region"`
-	ReleaseLabel *string `pulumi:"releaseLabel"`
-	RepoUpgradeOnBoot *string `pulumi:"repoUpgradeOnBoot"`
-	Retries *int `pulumi:"retries"`
-	ScheduledTasks []MrScalarScheduledTask `pulumi:"scheduledTasks"`
-	SecurityConfig *string `pulumi:"securityConfig"`
-	ServiceAccessSecurityGroup *string `pulumi:"serviceAccessSecurityGroup"`
-	ServiceRole *string `pulumi:"serviceRole"`
-	StepsFiles []MrScalarStepsFile `pulumi:"stepsFiles"`
+	Region                     *string                 `pulumi:"region"`
+	ReleaseLabel               *string                 `pulumi:"releaseLabel"`
+	RepoUpgradeOnBoot          *string                 `pulumi:"repoUpgradeOnBoot"`
+	Retries                    *int                    `pulumi:"retries"`
+	ScheduledTasks             []MrScalarScheduledTask `pulumi:"scheduledTasks"`
+	SecurityConfig             *string                 `pulumi:"securityConfig"`
+	ServiceAccessSecurityGroup *string                 `pulumi:"serviceAccessSecurityGroup"`
+	ServiceRole                *string                 `pulumi:"serviceRole"`
+	StepsFiles                 []MrScalarStepsFile     `pulumi:"stepsFiles"`
 	// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-	Strategy string `pulumi:"strategy"`
-	Tags []MrScalarTag `pulumi:"tags"`
-	TaskDesiredCapacity *int `pulumi:"taskDesiredCapacity"`
-	TaskEbsBlockDevices []MrScalarTaskEbsBlockDevice `pulumi:"taskEbsBlockDevices"`
-	TaskEbsOptimized *bool `pulumi:"taskEbsOptimized"`
-	TaskInstanceTypes []string `pulumi:"taskInstanceTypes"`
-	TaskLifecycle *string `pulumi:"taskLifecycle"`
-	TaskMaxSize *int `pulumi:"taskMaxSize"`
-	TaskMinSize *int `pulumi:"taskMinSize"`
+	Strategy                string                          `pulumi:"strategy"`
+	Tags                    []MrScalarTag                   `pulumi:"tags"`
+	TaskDesiredCapacity     *int                            `pulumi:"taskDesiredCapacity"`
+	TaskEbsBlockDevices     []MrScalarTaskEbsBlockDevice    `pulumi:"taskEbsBlockDevices"`
+	TaskEbsOptimized        *bool                           `pulumi:"taskEbsOptimized"`
+	TaskInstanceTypes       []string                        `pulumi:"taskInstanceTypes"`
+	TaskLifecycle           *string                         `pulumi:"taskLifecycle"`
+	TaskMaxSize             *int                            `pulumi:"taskMaxSize"`
+	TaskMinSize             *int                            `pulumi:"taskMinSize"`
 	TaskScalingDownPolicies []MrScalarTaskScalingDownPolicy `pulumi:"taskScalingDownPolicies"`
-	TaskScalingUpPolicies []MrScalarTaskScalingUpPolicy `pulumi:"taskScalingUpPolicies"`
-	TerminationProtected *bool `pulumi:"terminationProtected"`
-	VisibleToAllUsers *bool `pulumi:"visibleToAllUsers"`
+	TaskScalingUpPolicies   []MrScalarTaskScalingUpPolicy   `pulumi:"taskScalingUpPolicies"`
+	TerminationProtected    *bool                           `pulumi:"terminationProtected"`
+	VisibleToAllUsers       *bool                           `pulumi:"visibleToAllUsers"`
 }
 
 // The set of arguments for constructing a MrScalar resource.
 type MrScalarArgs struct {
-	AdditionalInfo pulumi.StringPtrInput
+	AdditionalInfo                  pulumi.StringPtrInput
 	AdditionalPrimarySecurityGroups pulumi.StringArrayInput
 	AdditionalReplicaSecurityGroups pulumi.StringArrayInput
-	Applications MrScalarApplicationArrayInput
-	AvailabilityZones pulumi.StringArrayInput
-	BootstrapActionsFiles MrScalarBootstrapActionsFileArrayInput
+	Applications                    MrScalarApplicationArrayInput
+	AvailabilityZones               pulumi.StringArrayInput
+	BootstrapActionsFiles           MrScalarBootstrapActionsFileArrayInput
 	// The MrScaler cluster id.
-	ClusterId pulumi.StringPtrInput
-	ConfigurationsFiles MrScalarConfigurationsFileArrayInput
-	CoreDesiredCapacity pulumi.IntPtrInput
-	CoreEbsBlockDevices MrScalarCoreEbsBlockDeviceArrayInput
-	CoreEbsOptimized pulumi.BoolPtrInput
-	CoreInstanceTypes pulumi.StringArrayInput
-	CoreLifecycle pulumi.StringPtrInput
-	CoreMaxSize pulumi.IntPtrInput
-	CoreMinSize pulumi.IntPtrInput
+	ClusterId               pulumi.StringPtrInput
+	ConfigurationsFiles     MrScalarConfigurationsFileArrayInput
+	CoreDesiredCapacity     pulumi.IntPtrInput
+	CoreEbsBlockDevices     MrScalarCoreEbsBlockDeviceArrayInput
+	CoreEbsOptimized        pulumi.BoolPtrInput
+	CoreInstanceTypes       pulumi.StringArrayInput
+	CoreLifecycle           pulumi.StringPtrInput
+	CoreMaxSize             pulumi.IntPtrInput
+	CoreMinSize             pulumi.IntPtrInput
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayInput
-	CoreScalingUpPolicies MrScalarCoreScalingUpPolicyArrayInput
-	CustomAmiId pulumi.StringPtrInput
+	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayInput
+	CustomAmiId             pulumi.StringPtrInput
 	// The MrScaler description.
-	Description pulumi.StringPtrInput
-	EbsRootVolumeSize pulumi.IntPtrInput
-	Ec2KeyName pulumi.StringPtrInput
-	ExposeClusterId pulumi.BoolPtrInput
-	InstanceWeights MrScalarInstanceWeightArrayInput
-	JobFlowRole pulumi.StringPtrInput
-	KeepJobFlowAlive pulumi.BoolPtrInput
-	LogUri pulumi.StringPtrInput
+	Description                 pulumi.StringPtrInput
+	EbsRootVolumeSize           pulumi.IntPtrInput
+	Ec2KeyName                  pulumi.StringPtrInput
+	ExposeClusterId             pulumi.BoolPtrInput
+	InstanceWeights             MrScalarInstanceWeightArrayInput
+	JobFlowRole                 pulumi.StringPtrInput
+	KeepJobFlowAlive            pulumi.BoolPtrInput
+	LogUri                      pulumi.StringPtrInput
 	ManagedPrimarySecurityGroup pulumi.StringPtrInput
 	ManagedReplicaSecurityGroup pulumi.StringPtrInput
-	MasterEbsBlockDevices MrScalarMasterEbsBlockDeviceArrayInput
-	MasterEbsOptimized pulumi.BoolPtrInput
-	MasterInstanceTypes pulumi.StringArrayInput
-	MasterLifecycle pulumi.StringPtrInput
+	MasterEbsBlockDevices       MrScalarMasterEbsBlockDeviceArrayInput
+	MasterEbsOptimized          pulumi.BoolPtrInput
+	MasterInstanceTypes         pulumi.StringArrayInput
+	MasterLifecycle             pulumi.StringPtrInput
 	// The MrScaler name.
-	Name pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
 	ProvisioningTimeout MrScalarProvisioningTimeoutPtrInput
 	// The MrScaler region.
-	Region pulumi.StringPtrInput
-	ReleaseLabel pulumi.StringPtrInput
-	RepoUpgradeOnBoot pulumi.StringPtrInput
-	Retries pulumi.IntPtrInput
-	ScheduledTasks MrScalarScheduledTaskArrayInput
-	SecurityConfig pulumi.StringPtrInput
+	Region                     pulumi.StringPtrInput
+	ReleaseLabel               pulumi.StringPtrInput
+	RepoUpgradeOnBoot          pulumi.StringPtrInput
+	Retries                    pulumi.IntPtrInput
+	ScheduledTasks             MrScalarScheduledTaskArrayInput
+	SecurityConfig             pulumi.StringPtrInput
 	ServiceAccessSecurityGroup pulumi.StringPtrInput
-	ServiceRole pulumi.StringPtrInput
-	StepsFiles MrScalarStepsFileArrayInput
+	ServiceRole                pulumi.StringPtrInput
+	StepsFiles                 MrScalarStepsFileArrayInput
 	// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-	Strategy pulumi.StringInput
-	Tags MrScalarTagArrayInput
-	TaskDesiredCapacity pulumi.IntPtrInput
-	TaskEbsBlockDevices MrScalarTaskEbsBlockDeviceArrayInput
-	TaskEbsOptimized pulumi.BoolPtrInput
-	TaskInstanceTypes pulumi.StringArrayInput
-	TaskLifecycle pulumi.StringPtrInput
-	TaskMaxSize pulumi.IntPtrInput
-	TaskMinSize pulumi.IntPtrInput
+	Strategy                pulumi.StringInput
+	Tags                    MrScalarTagArrayInput
+	TaskDesiredCapacity     pulumi.IntPtrInput
+	TaskEbsBlockDevices     MrScalarTaskEbsBlockDeviceArrayInput
+	TaskEbsOptimized        pulumi.BoolPtrInput
+	TaskInstanceTypes       pulumi.StringArrayInput
+	TaskLifecycle           pulumi.StringPtrInput
+	TaskMaxSize             pulumi.IntPtrInput
+	TaskMinSize             pulumi.IntPtrInput
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayInput
-	TaskScalingUpPolicies MrScalarTaskScalingUpPolicyArrayInput
-	TerminationProtected pulumi.BoolPtrInput
-	VisibleToAllUsers pulumi.BoolPtrInput
+	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayInput
+	TerminationProtected    pulumi.BoolPtrInput
+	VisibleToAllUsers       pulumi.BoolPtrInput
 }
 
 func (MrScalarArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mrScalarArgs)(nil)).Elem()
 }
-
