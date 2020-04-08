@@ -100,6 +100,9 @@ namespace Pulumi.SpotInst.Ecs
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        [Output("scheduledTasks")]
+        public Output<ImmutableArray<Outputs.OceanScheduledTasks>> ScheduledTasks { get; private set; } = null!;
+
         /// <summary>
         /// One or more security group ids.
         /// </summary>
@@ -127,6 +130,9 @@ namespace Pulumi.SpotInst.Ecs
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
+        /// <summary>
+        /// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        /// </summary>
         [Output("utilizeReservedInstances")]
         public Output<bool?> UtilizeReservedInstances { get; private set; } = null!;
 
@@ -266,6 +272,14 @@ namespace Pulumi.SpotInst.Ecs
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        [Input("scheduledTasks")]
+        private InputList<Inputs.OceanScheduledTasksArgs>? _scheduledTasks;
+        public InputList<Inputs.OceanScheduledTasksArgs> ScheduledTasks
+        {
+            get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTasksArgs>());
+            set => _scheduledTasks = value;
+        }
+
         [Input("securityGroupIds", required: true)]
         private InputList<string>? _securityGroupIds;
 
@@ -311,6 +325,9 @@ namespace Pulumi.SpotInst.Ecs
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        /// <summary>
+        /// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        /// </summary>
         [Input("utilizeReservedInstances")]
         public Input<bool>? UtilizeReservedInstances { get; set; }
 
@@ -417,6 +434,14 @@ namespace Pulumi.SpotInst.Ecs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("scheduledTasks")]
+        private InputList<Inputs.OceanScheduledTasksGetArgs>? _scheduledTasks;
+        public InputList<Inputs.OceanScheduledTasksGetArgs> ScheduledTasks
+        {
+            get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTasksGetArgs>());
+            set => _scheduledTasks = value;
+        }
+
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
 
@@ -462,6 +487,9 @@ namespace Pulumi.SpotInst.Ecs
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        /// <summary>
+        /// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        /// </summary>
         [Input("utilizeReservedInstances")]
         public Input<bool>? UtilizeReservedInstances { get; set; }
 
@@ -685,6 +713,122 @@ namespace Pulumi.SpotInst.Ecs
         }
     }
 
+    public sealed class OceanScheduledTasksArgs : Pulumi.ResourceArgs
+    {
+        [Input("shutdownHours")]
+        public Input<OceanScheduledTasksShutdownHoursArgs>? ShutdownHours { get; set; }
+
+        [Input("tasks")]
+        private InputList<OceanScheduledTasksTasksArgs>? _tasks;
+        public InputList<OceanScheduledTasksTasksArgs> Tasks
+        {
+            get => _tasks ?? (_tasks = new InputList<OceanScheduledTasksTasksArgs>());
+            set => _tasks = value;
+        }
+
+        public OceanScheduledTasksArgs()
+        {
+        }
+    }
+
+    public sealed class OceanScheduledTasksGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("shutdownHours")]
+        public Input<OceanScheduledTasksShutdownHoursGetArgs>? ShutdownHours { get; set; }
+
+        [Input("tasks")]
+        private InputList<OceanScheduledTasksTasksGetArgs>? _tasks;
+        public InputList<OceanScheduledTasksTasksGetArgs> Tasks
+        {
+            get => _tasks ?? (_tasks = new InputList<OceanScheduledTasksTasksGetArgs>());
+            set => _tasks = value;
+        }
+
+        public OceanScheduledTasksGetArgs()
+        {
+        }
+    }
+
+    public sealed class OceanScheduledTasksShutdownHoursArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Enable the Ocean ECS autoscaler.
+        /// </summary>
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
+        [Input("timeWindows", required: true)]
+        private InputList<string>? _timeWindows;
+        public InputList<string> TimeWindows
+        {
+            get => _timeWindows ?? (_timeWindows = new InputList<string>());
+            set => _timeWindows = value;
+        }
+
+        public OceanScheduledTasksShutdownHoursArgs()
+        {
+        }
+    }
+
+    public sealed class OceanScheduledTasksShutdownHoursGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Enable the Ocean ECS autoscaler.
+        /// </summary>
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
+        [Input("timeWindows", required: true)]
+        private InputList<string>? _timeWindows;
+        public InputList<string> TimeWindows
+        {
+            get => _timeWindows ?? (_timeWindows = new InputList<string>());
+            set => _timeWindows = value;
+        }
+
+        public OceanScheduledTasksShutdownHoursGetArgs()
+        {
+        }
+    }
+
+    public sealed class OceanScheduledTasksTasksArgs : Pulumi.ResourceArgs
+    {
+        [Input("cronExpression", required: true)]
+        public Input<string> CronExpression { get; set; } = null!;
+
+        /// <summary>
+        /// Enable the Ocean ECS autoscaler.
+        /// </summary>
+        [Input("isEnabled", required: true)]
+        public Input<bool> IsEnabled { get; set; } = null!;
+
+        [Input("taskType", required: true)]
+        public Input<string> TaskType { get; set; } = null!;
+
+        public OceanScheduledTasksTasksArgs()
+        {
+        }
+    }
+
+    public sealed class OceanScheduledTasksTasksGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("cronExpression", required: true)]
+        public Input<string> CronExpression { get; set; } = null!;
+
+        /// <summary>
+        /// Enable the Ocean ECS autoscaler.
+        /// </summary>
+        [Input("isEnabled", required: true)]
+        public Input<bool> IsEnabled { get; set; } = null!;
+
+        [Input("taskType", required: true)]
+        public Input<string> TaskType { get; set; } = null!;
+
+        public OceanScheduledTasksTasksGetArgs()
+        {
+        }
+    }
+
     public sealed class OceanTagsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
@@ -881,6 +1025,63 @@ namespace Pulumi.SpotInst.Ecs
         {
             MaxMemoryGib = maxMemoryGib;
             MaxVcpu = maxVcpu;
+        }
+    }
+
+    [OutputType]
+    public sealed class OceanScheduledTasks
+    {
+        public readonly OceanScheduledTasksShutdownHours? ShutdownHours;
+        public readonly ImmutableArray<OceanScheduledTasksTasks> Tasks;
+
+        [OutputConstructor]
+        private OceanScheduledTasks(
+            OceanScheduledTasksShutdownHours? shutdownHours,
+            ImmutableArray<OceanScheduledTasksTasks> tasks)
+        {
+            ShutdownHours = shutdownHours;
+            Tasks = tasks;
+        }
+    }
+
+    [OutputType]
+    public sealed class OceanScheduledTasksShutdownHours
+    {
+        /// <summary>
+        /// Enable the Ocean ECS autoscaler.
+        /// </summary>
+        public readonly bool? IsEnabled;
+        public readonly ImmutableArray<string> TimeWindows;
+
+        [OutputConstructor]
+        private OceanScheduledTasksShutdownHours(
+            bool? isEnabled,
+            ImmutableArray<string> timeWindows)
+        {
+            IsEnabled = isEnabled;
+            TimeWindows = timeWindows;
+        }
+    }
+
+    [OutputType]
+    public sealed class OceanScheduledTasksTasks
+    {
+        public readonly string CronExpression;
+        /// <summary>
+        /// Enable the Ocean ECS autoscaler.
+        /// </summary>
+        public readonly bool IsEnabled;
+        public readonly string TaskType;
+
+        [OutputConstructor]
+        private OceanScheduledTasksTasks(
+            string cronExpression,
+            bool isEnabled,
+            string taskType)
+        {
+            CronExpression = cronExpression;
+            IsEnabled = isEnabled;
+            TaskType = taskType;
         }
     }
 

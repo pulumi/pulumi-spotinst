@@ -43,8 +43,9 @@ class OceanImport(pulumi.CustomResource):
     """
     The lower limit of instances the cluster can scale down to.
     """
+    scheduled_tasks: pulumi.Output[list]
     whitelists: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, backend_services=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, backend_services=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, scheduled_tasks=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Ocean GKE import resource.
 
@@ -68,6 +69,18 @@ class OceanImport(pulumi.CustomResource):
 
           * `scheme` (`pulumi.Input[str]`) - Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
           * `serviceName` (`pulumi.Input[str]`) - The name of the backend service.
+
+        The **scheduled_tasks** object supports the following:
+
+          * `shutdownHours` (`pulumi.Input[dict]`)
+            * `isEnabled` (`pulumi.Input[bool]`)
+            * `timeWindows` (`pulumi.Input[list]`)
+
+          * `tasks` (`pulumi.Input[list]`)
+            * `batchSizePercentage` (`pulumi.Input[float]`)
+            * `cronExpression` (`pulumi.Input[str]`)
+            * `isEnabled` (`pulumi.Input[bool]`)
+            * `taskType` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,6 +109,7 @@ class OceanImport(pulumi.CustomResource):
             __props__['location'] = location
             __props__['max_size'] = max_size
             __props__['min_size'] = min_size
+            __props__['scheduled_tasks'] = scheduled_tasks
             __props__['whitelists'] = whitelists
             __props__['cluster_controller_id'] = None
         super(OceanImport, __self__).__init__(
@@ -105,7 +119,7 @@ class OceanImport(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backend_services=None, cluster_controller_id=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, whitelists=None):
+    def get(resource_name, id, opts=None, backend_services=None, cluster_controller_id=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, scheduled_tasks=None, whitelists=None):
         """
         Get an existing OceanImport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -129,6 +143,18 @@ class OceanImport(pulumi.CustomResource):
 
           * `scheme` (`pulumi.Input[str]`) - Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
           * `serviceName` (`pulumi.Input[str]`) - The name of the backend service.
+
+        The **scheduled_tasks** object supports the following:
+
+          * `shutdownHours` (`pulumi.Input[dict]`)
+            * `isEnabled` (`pulumi.Input[bool]`)
+            * `timeWindows` (`pulumi.Input[list]`)
+
+          * `tasks` (`pulumi.Input[list]`)
+            * `batchSizePercentage` (`pulumi.Input[float]`)
+            * `cronExpression` (`pulumi.Input[str]`)
+            * `isEnabled` (`pulumi.Input[bool]`)
+            * `taskType` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -141,6 +167,7 @@ class OceanImport(pulumi.CustomResource):
         __props__["location"] = location
         __props__["max_size"] = max_size
         __props__["min_size"] = min_size
+        __props__["scheduled_tasks"] = scheduled_tasks
         __props__["whitelists"] = whitelists
         return OceanImport(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

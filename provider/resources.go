@@ -29,13 +29,13 @@ const (
 	// packages:
 	mainPkg = "spotinst"
 	// modules:
-	awsMod          = "Aws"
-	ecsMod          = "Ecs"
-	gcpMod          = "Gcp"
-	gkeMod          = "Gke"
-	azureMod        = "Azure"
-	multaiMod       = "Multai"
-	subscriptionMod = "Index"
+	awsMod    = "Aws"
+	ecsMod    = "Ecs"
+	gcpMod    = "Gcp"
+	gkeMod    = "Gke"
+	azureMod  = "Azure"
+	multaiMod = "Multai"
+	mainMod   = "Index"
 )
 
 var namespaceMap = map[string]string{
@@ -121,7 +121,8 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_ocean_gke_import":             {Tok: makeResource(gkeMod, "OceanImport")},
 			"spotinst_ocean_gke_launch_spec":        {Tok: makeResource(gkeMod, "OceanLaunchSpec")},
 			"spotinst_ocean_gke_launch_spec_import": {Tok: makeResource(gkeMod, "OceanLaunchSpecImport")},
-			"spotinst_subscription":                 {Tok: makeResource(subscriptionMod, "Subscription")},
+			"spotinst_subscription":                 {Tok: makeResource(mainMod, "Subscription")},
+			"spotinst_health_check":                 {Tok: makeResource(mainMod, "HealthCheck")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{

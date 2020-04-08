@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     associatePublicIpAddress: true,
  *     // --- AUTOSCALER -----------------
  *     autoscaler: {
+ *         autoHeadroomPercentage: 50,
  *         autoscaleCooldown: 300,
  *         autoscaleDown: {
  *             evaluationPeriods: 300,
@@ -41,6 +42,7 @@ import * as utilities from "../utilities";
  *     drainingTimeout: 120,
  *     // --- STRATEGY --------------------
  *     fallbackToOndemand: true,
+ *     gracePeriod: 600,
  *     iamInstanceProfile: "iam-profile",
  *     // --- LAUNCH CONFIGURATION --------------
  *     imageId: "ami-123456",
@@ -60,7 +62,6 @@ import * as utilities from "../utilities";
  *     region: "us-west-2",
  *     rootVolumeSize: 20,
  *     securityGroups: ["sg-987654321"],
- *     spotPercentage: 100,
  *     subnetIds: ["subnet-123456789"],
  *     userData: "echo hello world",
  *     utilizeReservedInstances: false,
@@ -78,6 +79,26 @@ import * as utilities from "../utilities";
  *     * `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
  *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
  * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ * 
+ * <a id="scheduled-task"></a>
+ * ## scheduled task
+ * 
+ * * `scheduledTask` - (Optional) Set scheduling object.
+ *     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
+ *         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
+ *                                      Example: True
+ *         * `timeWindows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+ *                                       Example: Fri:15:30-Wed:14:30
+ *     * `tasks` - (Optional) The scheduling tasks for the cluster.
+ *         * `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+ *         * `cronExpression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+ *                                          Example: 0 1 * * *
+ *         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
+ *                                    Example: clusterRoll
+ *              
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
@@ -144,6 +165,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
     /**
+     * The amount of time, in seconds, after the instance has launched to start checking its health.
+     */
+    public readonly gracePeriod!: pulumi.Output<number | undefined>;
+    /**
      * The instance profile iam role.
      */
     public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
@@ -183,13 +208,11 @@ export class Ocean extends pulumi.CustomResource {
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
     public readonly rootVolumeSize!: pulumi.Output<number | undefined>;
+    public readonly scheduledTasks!: pulumi.Output<outputs.aws.OceanScheduledTask[] | undefined>;
     /**
      * One or more security group ids.
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
-    /**
-     * The percentage of Spot instances the cluster should maintain. Min 0, max 100.
-     */
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -233,6 +256,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
             inputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
             inputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
+            inputs["gracePeriod"] = state ? state.gracePeriod : undefined;
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
@@ -243,6 +267,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
+            inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
             inputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
@@ -267,6 +292,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
             inputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
             inputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
+            inputs["gracePeriod"] = args ? args.gracePeriod : undefined;
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
@@ -277,6 +303,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
+            inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
@@ -334,6 +361,10 @@ export interface OceanState {
      */
     readonly fallbackToOndemand?: pulumi.Input<boolean>;
     /**
+     * The amount of time, in seconds, after the instance has launched to start checking its health.
+     */
+    readonly gracePeriod?: pulumi.Input<number>;
+    /**
      * The instance profile iam role.
      */
     readonly iamInstanceProfile?: pulumi.Input<string>;
@@ -373,13 +404,11 @@ export interface OceanState {
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
     readonly rootVolumeSize?: pulumi.Input<number>;
+    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The percentage of Spot instances the cluster should maintain. Min 0, max 100.
-     */
     readonly spotPercentage?: pulumi.Input<number>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -441,6 +470,10 @@ export interface OceanArgs {
      */
     readonly fallbackToOndemand?: pulumi.Input<boolean>;
     /**
+     * The amount of time, in seconds, after the instance has launched to start checking its health.
+     */
+    readonly gracePeriod?: pulumi.Input<number>;
+    /**
      * The instance profile iam role.
      */
     readonly iamInstanceProfile?: pulumi.Input<string>;
@@ -480,13 +513,11 @@ export interface OceanArgs {
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
     readonly rootVolumeSize?: pulumi.Input<number>;
+    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
      */
     readonly securityGroups: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The percentage of Spot instances the cluster should maintain. Min 0, max 100.
-     */
     readonly spotPercentage?: pulumi.Input<number>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.

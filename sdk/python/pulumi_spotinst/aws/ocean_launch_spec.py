@@ -34,6 +34,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
       * `key` (`str`) - The tag key.
       * `value` (`str`) - The tag value.
     """
+    name: pulumi.Output[str]
+    """
+    Set Launch Specification name 
+    """
     ocean_id: pulumi.Output[str]
     """
     The ocean cluster you wish to 
@@ -50,6 +54,13 @@ class OceanLaunchSpec(pulumi.CustomResource):
     """
     Set subnets in launchSpec. Each element in array should be subnet ID.
     """
+    tags: pulumi.Output[list]
+    """
+    A key/value mapping of tags to assign to the resource.
+
+      * `key` (`str`) - The tag key.
+      * `value` (`str`) - The tag value.
+    """
     taints: pulumi.Output[list]
     """
     Optionally adds labels to instances launched in an Ocean cluster.
@@ -62,7 +73,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     """
     Base64-encoded MIME user data to make available to the instances.
     """
-    def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, labels=None, ocean_id=None, root_volume_size=None, security_groups=None, subnet_ids=None, taints=None, user_data=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a custom Spotinst Ocean AWS Launch Spec resource.
 
@@ -74,10 +85,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[list] labels: Optionally adds labels to instances launched in an Ocean cluster.
+        :param pulumi.Input[str] name: Set Launch Specification name 
         :param pulumi.Input[str] ocean_id: The ocean cluster you wish to 
         :param pulumi.Input[float] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[list] security_groups: Optionally adds security group IDs.
         :param pulumi.Input[list] subnet_ids: Set subnets in launchSpec. Each element in array should be subnet ID.
+        :param pulumi.Input[list] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[list] taints: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
 
@@ -89,6 +102,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
           * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
 
         The **labels** object supports the following:
+
+          * `key` (`pulumi.Input[str]`) - The tag key.
+          * `value` (`pulumi.Input[str]`) - The tag value.
+
+        The **tags** object supports the following:
 
           * `key` (`pulumi.Input[str]`) - The tag key.
           * `value` (`pulumi.Input[str]`) - The tag value.
@@ -120,12 +138,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__['iam_instance_profile'] = iam_instance_profile
             __props__['image_id'] = image_id
             __props__['labels'] = labels
+            __props__['name'] = name
             if ocean_id is None:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__['ocean_id'] = ocean_id
             __props__['root_volume_size'] = root_volume_size
             __props__['security_groups'] = security_groups
             __props__['subnet_ids'] = subnet_ids
+            __props__['tags'] = tags
             __props__['taints'] = taints
             __props__['user_data'] = user_data
         super(OceanLaunchSpec, __self__).__init__(
@@ -135,7 +155,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, labels=None, ocean_id=None, root_volume_size=None, security_groups=None, subnet_ids=None, taints=None, user_data=None):
+    def get(resource_name, id, opts=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None):
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -147,10 +167,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[list] labels: Optionally adds labels to instances launched in an Ocean cluster.
+        :param pulumi.Input[str] name: Set Launch Specification name 
         :param pulumi.Input[str] ocean_id: The ocean cluster you wish to 
         :param pulumi.Input[float] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[list] security_groups: Optionally adds security group IDs.
         :param pulumi.Input[list] subnet_ids: Set subnets in launchSpec. Each element in array should be subnet ID.
+        :param pulumi.Input[list] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[list] taints: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
 
@@ -162,6 +184,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
           * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
 
         The **labels** object supports the following:
+
+          * `key` (`pulumi.Input[str]`) - The tag key.
+          * `value` (`pulumi.Input[str]`) - The tag value.
+
+        The **tags** object supports the following:
 
           * `key` (`pulumi.Input[str]`) - The tag key.
           * `value` (`pulumi.Input[str]`) - The tag value.
@@ -180,10 +207,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["iam_instance_profile"] = iam_instance_profile
         __props__["image_id"] = image_id
         __props__["labels"] = labels
+        __props__["name"] = name
         __props__["ocean_id"] = ocean_id
         __props__["root_volume_size"] = root_volume_size
         __props__["security_groups"] = security_groups
         __props__["subnet_ids"] = subnet_ids
+        __props__["tags"] = tags
         __props__["taints"] = taints
         __props__["user_data"] = user_data
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)

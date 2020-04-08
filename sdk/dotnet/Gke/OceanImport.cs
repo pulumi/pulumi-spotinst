@@ -55,6 +55,9 @@ namespace Pulumi.SpotInst.Gke
         [Output("minSize")]
         public Output<int> MinSize { get; private set; } = null!;
 
+        [Output("scheduledTasks")]
+        public Output<ImmutableArray<Outputs.OceanImportScheduledTasks>> ScheduledTasks { get; private set; } = null!;
+
         [Output("whitelists")]
         public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
 
@@ -146,6 +149,14 @@ namespace Pulumi.SpotInst.Gke
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
 
+        [Input("scheduledTasks")]
+        private InputList<Inputs.OceanImportScheduledTasksArgs>? _scheduledTasks;
+        public InputList<Inputs.OceanImportScheduledTasksArgs> ScheduledTasks
+        {
+            get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanImportScheduledTasksArgs>());
+            set => _scheduledTasks = value;
+        }
+
         [Input("whitelists")]
         private InputList<string>? _whitelists;
         public InputList<string> Whitelists
@@ -205,6 +216,14 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
+
+        [Input("scheduledTasks")]
+        private InputList<Inputs.OceanImportScheduledTasksGetArgs>? _scheduledTasks;
+        public InputList<Inputs.OceanImportScheduledTasksGetArgs> ScheduledTasks
+        {
+            get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanImportScheduledTasksGetArgs>());
+            set => _scheduledTasks = value;
+        }
 
         [Input("whitelists")]
         private InputList<string>? _whitelists;
@@ -331,6 +350,116 @@ namespace Pulumi.SpotInst.Gke
         {
         }
     }
+
+    public sealed class OceanImportScheduledTasksArgs : Pulumi.ResourceArgs
+    {
+        [Input("shutdownHours")]
+        public Input<OceanImportScheduledTasksShutdownHoursArgs>? ShutdownHours { get; set; }
+
+        [Input("tasks")]
+        private InputList<OceanImportScheduledTasksTasksArgs>? _tasks;
+        public InputList<OceanImportScheduledTasksTasksArgs> Tasks
+        {
+            get => _tasks ?? (_tasks = new InputList<OceanImportScheduledTasksTasksArgs>());
+            set => _tasks = value;
+        }
+
+        public OceanImportScheduledTasksArgs()
+        {
+        }
+    }
+
+    public sealed class OceanImportScheduledTasksGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("shutdownHours")]
+        public Input<OceanImportScheduledTasksShutdownHoursGetArgs>? ShutdownHours { get; set; }
+
+        [Input("tasks")]
+        private InputList<OceanImportScheduledTasksTasksGetArgs>? _tasks;
+        public InputList<OceanImportScheduledTasksTasksGetArgs> Tasks
+        {
+            get => _tasks ?? (_tasks = new InputList<OceanImportScheduledTasksTasksGetArgs>());
+            set => _tasks = value;
+        }
+
+        public OceanImportScheduledTasksGetArgs()
+        {
+        }
+    }
+
+    public sealed class OceanImportScheduledTasksShutdownHoursArgs : Pulumi.ResourceArgs
+    {
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
+        [Input("timeWindows", required: true)]
+        private InputList<string>? _timeWindows;
+        public InputList<string> TimeWindows
+        {
+            get => _timeWindows ?? (_timeWindows = new InputList<string>());
+            set => _timeWindows = value;
+        }
+
+        public OceanImportScheduledTasksShutdownHoursArgs()
+        {
+        }
+    }
+
+    public sealed class OceanImportScheduledTasksShutdownHoursGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
+        [Input("timeWindows", required: true)]
+        private InputList<string>? _timeWindows;
+        public InputList<string> TimeWindows
+        {
+            get => _timeWindows ?? (_timeWindows = new InputList<string>());
+            set => _timeWindows = value;
+        }
+
+        public OceanImportScheduledTasksShutdownHoursGetArgs()
+        {
+        }
+    }
+
+    public sealed class OceanImportScheduledTasksTasksArgs : Pulumi.ResourceArgs
+    {
+        [Input("batchSizePercentage")]
+        public Input<int>? BatchSizePercentage { get; set; }
+
+        [Input("cronExpression", required: true)]
+        public Input<string> CronExpression { get; set; } = null!;
+
+        [Input("isEnabled", required: true)]
+        public Input<bool> IsEnabled { get; set; } = null!;
+
+        [Input("taskType", required: true)]
+        public Input<string> TaskType { get; set; } = null!;
+
+        public OceanImportScheduledTasksTasksArgs()
+        {
+        }
+    }
+
+    public sealed class OceanImportScheduledTasksTasksGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("batchSizePercentage")]
+        public Input<int>? BatchSizePercentage { get; set; }
+
+        [Input("cronExpression", required: true)]
+        public Input<string> CronExpression { get; set; } = null!;
+
+        [Input("isEnabled", required: true)]
+        public Input<bool> IsEnabled { get; set; } = null!;
+
+        [Input("taskType", required: true)]
+        public Input<string> TaskType { get; set; } = null!;
+
+        public OceanImportScheduledTasksTasksGetArgs()
+        {
+        }
+    }
     }
 
     namespace Outputs
@@ -383,6 +512,60 @@ namespace Pulumi.SpotInst.Gke
         {
             Name = name;
             Ports = ports;
+        }
+    }
+
+    [OutputType]
+    public sealed class OceanImportScheduledTasks
+    {
+        public readonly OceanImportScheduledTasksShutdownHours? ShutdownHours;
+        public readonly ImmutableArray<OceanImportScheduledTasksTasks> Tasks;
+
+        [OutputConstructor]
+        private OceanImportScheduledTasks(
+            OceanImportScheduledTasksShutdownHours? shutdownHours,
+            ImmutableArray<OceanImportScheduledTasksTasks> tasks)
+        {
+            ShutdownHours = shutdownHours;
+            Tasks = tasks;
+        }
+    }
+
+    [OutputType]
+    public sealed class OceanImportScheduledTasksShutdownHours
+    {
+        public readonly bool? IsEnabled;
+        public readonly ImmutableArray<string> TimeWindows;
+
+        [OutputConstructor]
+        private OceanImportScheduledTasksShutdownHours(
+            bool? isEnabled,
+            ImmutableArray<string> timeWindows)
+        {
+            IsEnabled = isEnabled;
+            TimeWindows = timeWindows;
+        }
+    }
+
+    [OutputType]
+    public sealed class OceanImportScheduledTasksTasks
+    {
+        public readonly int? BatchSizePercentage;
+        public readonly string CronExpression;
+        public readonly bool IsEnabled;
+        public readonly string TaskType;
+
+        [OutputConstructor]
+        private OceanImportScheduledTasksTasks(
+            int? batchSizePercentage,
+            string cronExpression,
+            bool isEnabled,
+            string taskType)
+        {
+            BatchSizePercentage = batchSizePercentage;
+            CronExpression = cronExpression;
+            IsEnabled = isEnabled;
+            TaskType = taskType;
         }
     }
     }

@@ -41,6 +41,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLaunchSpecLabels>> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Set Launch Specification name 
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
         /// The ocean cluster you wish to 
         /// </summary>
         [Output("oceanId")]
@@ -63,6 +69,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
+
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecTags>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Optionally adds labels to instances launched in an Ocean cluster.
@@ -159,6 +171,12 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
+        /// Set Launch Specification name 
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// The ocean cluster you wish to 
         /// </summary>
         [Input("oceanId", required: true)]
@@ -192,6 +210,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
             set => _subnetIds = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.OceanLaunchSpecTagsArgs>? _tags;
+
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecTagsArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.OceanLaunchSpecTagsArgs>());
+            set => _tags = value;
         }
 
         [Input("taints")]
@@ -256,6 +286,12 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
+        /// Set Launch Specification name 
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// The ocean cluster you wish to 
         /// </summary>
         [Input("oceanId")]
@@ -289,6 +325,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
             set => _subnetIds = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.OceanLaunchSpecTagsGetArgs>? _tags;
+
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecTagsGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.OceanLaunchSpecTagsGetArgs>());
+            set => _tags = value;
         }
 
         [Input("taints")]
@@ -417,6 +465,44 @@ namespace Pulumi.SpotInst.Aws
         }
     }
 
+    public sealed class OceanLaunchSpecTagsArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The tag key.
+        /// </summary>
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
+
+        /// <summary>
+        /// The tag value.
+        /// </summary>
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
+
+        public OceanLaunchSpecTagsArgs()
+        {
+        }
+    }
+
+    public sealed class OceanLaunchSpecTagsGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The tag key.
+        /// </summary>
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
+
+        /// <summary>
+        /// The tag value.
+        /// </summary>
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
+
+        public OceanLaunchSpecTagsGetArgs()
+        {
+        }
+    }
+
     public sealed class OceanLaunchSpecTaintsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
@@ -519,6 +605,28 @@ namespace Pulumi.SpotInst.Aws
 
         [OutputConstructor]
         private OceanLaunchSpecLabels(
+            string key,
+            string value)
+        {
+            Key = key;
+            Value = value;
+        }
+    }
+
+    [OutputType]
+    public sealed class OceanLaunchSpecTags
+    {
+        /// <summary>
+        /// The tag key.
+        /// </summary>
+        public readonly string Key;
+        /// <summary>
+        /// The tag value.
+        /// </summary>
+        public readonly string Value;
+
+        [OutputConstructor]
+        private OceanLaunchSpecTags(
             string key,
             string value)
         {

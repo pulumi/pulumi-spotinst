@@ -784,6 +784,323 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 	}).(OceanLaunchSpecAutoscaleHeadroomOutput)
 }
 
+type OceanScheduledTask struct {
+	ShutdownHours *OceanScheduledTaskShutdownHours `pulumi:"shutdownHours"`
+	Tasks         []OceanScheduledTaskTask         `pulumi:"tasks"`
+}
+
+type OceanScheduledTaskInput interface {
+	pulumi.Input
+
+	ToOceanScheduledTaskOutput() OceanScheduledTaskOutput
+	ToOceanScheduledTaskOutputWithContext(context.Context) OceanScheduledTaskOutput
+}
+
+type OceanScheduledTaskArgs struct {
+	ShutdownHours OceanScheduledTaskShutdownHoursPtrInput `pulumi:"shutdownHours"`
+	Tasks         OceanScheduledTaskTaskArrayInput        `pulumi:"tasks"`
+}
+
+func (OceanScheduledTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanScheduledTask)(nil)).Elem()
+}
+
+func (i OceanScheduledTaskArgs) ToOceanScheduledTaskOutput() OceanScheduledTaskOutput {
+	return i.ToOceanScheduledTaskOutputWithContext(context.Background())
+}
+
+func (i OceanScheduledTaskArgs) ToOceanScheduledTaskOutputWithContext(ctx context.Context) OceanScheduledTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskOutput)
+}
+
+type OceanScheduledTaskArrayInput interface {
+	pulumi.Input
+
+	ToOceanScheduledTaskArrayOutput() OceanScheduledTaskArrayOutput
+	ToOceanScheduledTaskArrayOutputWithContext(context.Context) OceanScheduledTaskArrayOutput
+}
+
+type OceanScheduledTaskArray []OceanScheduledTaskInput
+
+func (OceanScheduledTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanScheduledTask)(nil)).Elem()
+}
+
+func (i OceanScheduledTaskArray) ToOceanScheduledTaskArrayOutput() OceanScheduledTaskArrayOutput {
+	return i.ToOceanScheduledTaskArrayOutputWithContext(context.Background())
+}
+
+func (i OceanScheduledTaskArray) ToOceanScheduledTaskArrayOutputWithContext(ctx context.Context) OceanScheduledTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskArrayOutput)
+}
+
+type OceanScheduledTaskOutput struct{ *pulumi.OutputState }
+
+func (OceanScheduledTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanScheduledTask)(nil)).Elem()
+}
+
+func (o OceanScheduledTaskOutput) ToOceanScheduledTaskOutput() OceanScheduledTaskOutput {
+	return o
+}
+
+func (o OceanScheduledTaskOutput) ToOceanScheduledTaskOutputWithContext(ctx context.Context) OceanScheduledTaskOutput {
+	return o
+}
+
+func (o OceanScheduledTaskOutput) ShutdownHours() OceanScheduledTaskShutdownHoursPtrOutput {
+	return o.ApplyT(func(v OceanScheduledTask) *OceanScheduledTaskShutdownHours { return v.ShutdownHours }).(OceanScheduledTaskShutdownHoursPtrOutput)
+}
+
+func (o OceanScheduledTaskOutput) Tasks() OceanScheduledTaskTaskArrayOutput {
+	return o.ApplyT(func(v OceanScheduledTask) []OceanScheduledTaskTask { return v.Tasks }).(OceanScheduledTaskTaskArrayOutput)
+}
+
+type OceanScheduledTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanScheduledTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanScheduledTask)(nil)).Elem()
+}
+
+func (o OceanScheduledTaskArrayOutput) ToOceanScheduledTaskArrayOutput() OceanScheduledTaskArrayOutput {
+	return o
+}
+
+func (o OceanScheduledTaskArrayOutput) ToOceanScheduledTaskArrayOutputWithContext(ctx context.Context) OceanScheduledTaskArrayOutput {
+	return o
+}
+
+func (o OceanScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanScheduledTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanScheduledTask {
+		return vs[0].([]OceanScheduledTask)[vs[1].(int)]
+	}).(OceanScheduledTaskOutput)
+}
+
+type OceanScheduledTaskShutdownHours struct {
+	// Enable the Ocean ECS autoscaler.
+	IsEnabled   *bool    `pulumi:"isEnabled"`
+	TimeWindows []string `pulumi:"timeWindows"`
+}
+
+type OceanScheduledTaskShutdownHoursInput interface {
+	pulumi.Input
+
+	ToOceanScheduledTaskShutdownHoursOutput() OceanScheduledTaskShutdownHoursOutput
+	ToOceanScheduledTaskShutdownHoursOutputWithContext(context.Context) OceanScheduledTaskShutdownHoursOutput
+}
+
+type OceanScheduledTaskShutdownHoursArgs struct {
+	// Enable the Ocean ECS autoscaler.
+	IsEnabled   pulumi.BoolPtrInput     `pulumi:"isEnabled"`
+	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
+}
+
+func (OceanScheduledTaskShutdownHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanScheduledTaskShutdownHours)(nil)).Elem()
+}
+
+func (i OceanScheduledTaskShutdownHoursArgs) ToOceanScheduledTaskShutdownHoursOutput() OceanScheduledTaskShutdownHoursOutput {
+	return i.ToOceanScheduledTaskShutdownHoursOutputWithContext(context.Background())
+}
+
+func (i OceanScheduledTaskShutdownHoursArgs) ToOceanScheduledTaskShutdownHoursOutputWithContext(ctx context.Context) OceanScheduledTaskShutdownHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskShutdownHoursOutput)
+}
+
+func (i OceanScheduledTaskShutdownHoursArgs) ToOceanScheduledTaskShutdownHoursPtrOutput() OceanScheduledTaskShutdownHoursPtrOutput {
+	return i.ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i OceanScheduledTaskShutdownHoursArgs) ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(ctx context.Context) OceanScheduledTaskShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskShutdownHoursOutput).ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(ctx)
+}
+
+type OceanScheduledTaskShutdownHoursPtrInput interface {
+	pulumi.Input
+
+	ToOceanScheduledTaskShutdownHoursPtrOutput() OceanScheduledTaskShutdownHoursPtrOutput
+	ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(context.Context) OceanScheduledTaskShutdownHoursPtrOutput
+}
+
+type oceanScheduledTaskShutdownHoursPtrType OceanScheduledTaskShutdownHoursArgs
+
+func OceanScheduledTaskShutdownHoursPtr(v *OceanScheduledTaskShutdownHoursArgs) OceanScheduledTaskShutdownHoursPtrInput {
+	return (*oceanScheduledTaskShutdownHoursPtrType)(v)
+}
+
+func (*oceanScheduledTaskShutdownHoursPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanScheduledTaskShutdownHours)(nil)).Elem()
+}
+
+func (i *oceanScheduledTaskShutdownHoursPtrType) ToOceanScheduledTaskShutdownHoursPtrOutput() OceanScheduledTaskShutdownHoursPtrOutput {
+	return i.ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanScheduledTaskShutdownHoursPtrType) ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(ctx context.Context) OceanScheduledTaskShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskShutdownHoursPtrOutput)
+}
+
+type OceanScheduledTaskShutdownHoursOutput struct{ *pulumi.OutputState }
+
+func (OceanScheduledTaskShutdownHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanScheduledTaskShutdownHours)(nil)).Elem()
+}
+
+func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHoursOutput() OceanScheduledTaskShutdownHoursOutput {
+	return o
+}
+
+func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHoursOutputWithContext(ctx context.Context) OceanScheduledTaskShutdownHoursOutput {
+	return o
+}
+
+func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHoursPtrOutput() OceanScheduledTaskShutdownHoursPtrOutput {
+	return o.ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(ctx context.Context) OceanScheduledTaskShutdownHoursPtrOutput {
+	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *OceanScheduledTaskShutdownHours {
+		return &v
+	}).(OceanScheduledTaskShutdownHoursPtrOutput)
+}
+
+// Enable the Ocean ECS autoscaler.
+func (o OceanScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanScheduledTaskShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+}
+
+type OceanScheduledTaskShutdownHoursPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanScheduledTaskShutdownHoursPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanScheduledTaskShutdownHours)(nil)).Elem()
+}
+
+func (o OceanScheduledTaskShutdownHoursPtrOutput) ToOceanScheduledTaskShutdownHoursPtrOutput() OceanScheduledTaskShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanScheduledTaskShutdownHoursPtrOutput) ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(ctx context.Context) OceanScheduledTaskShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanScheduledTaskShutdownHoursPtrOutput) Elem() OceanScheduledTaskShutdownHoursOutput {
+	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) OceanScheduledTaskShutdownHours { return *v }).(OceanScheduledTaskShutdownHoursOutput)
+}
+
+// Enable the Ocean ECS autoscaler.
+func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+}
+
+type OceanScheduledTaskTask struct {
+	CronExpression string `pulumi:"cronExpression"`
+	// Enable the Ocean ECS autoscaler.
+	IsEnabled bool   `pulumi:"isEnabled"`
+	TaskType  string `pulumi:"taskType"`
+}
+
+type OceanScheduledTaskTaskInput interface {
+	pulumi.Input
+
+	ToOceanScheduledTaskTaskOutput() OceanScheduledTaskTaskOutput
+	ToOceanScheduledTaskTaskOutputWithContext(context.Context) OceanScheduledTaskTaskOutput
+}
+
+type OceanScheduledTaskTaskArgs struct {
+	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
+	// Enable the Ocean ECS autoscaler.
+	IsEnabled pulumi.BoolInput   `pulumi:"isEnabled"`
+	TaskType  pulumi.StringInput `pulumi:"taskType"`
+}
+
+func (OceanScheduledTaskTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanScheduledTaskTask)(nil)).Elem()
+}
+
+func (i OceanScheduledTaskTaskArgs) ToOceanScheduledTaskTaskOutput() OceanScheduledTaskTaskOutput {
+	return i.ToOceanScheduledTaskTaskOutputWithContext(context.Background())
+}
+
+func (i OceanScheduledTaskTaskArgs) ToOceanScheduledTaskTaskOutputWithContext(ctx context.Context) OceanScheduledTaskTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskTaskOutput)
+}
+
+type OceanScheduledTaskTaskArrayInput interface {
+	pulumi.Input
+
+	ToOceanScheduledTaskTaskArrayOutput() OceanScheduledTaskTaskArrayOutput
+	ToOceanScheduledTaskTaskArrayOutputWithContext(context.Context) OceanScheduledTaskTaskArrayOutput
+}
+
+type OceanScheduledTaskTaskArray []OceanScheduledTaskTaskInput
+
+func (OceanScheduledTaskTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanScheduledTaskTask)(nil)).Elem()
+}
+
+func (i OceanScheduledTaskTaskArray) ToOceanScheduledTaskTaskArrayOutput() OceanScheduledTaskTaskArrayOutput {
+	return i.ToOceanScheduledTaskTaskArrayOutputWithContext(context.Background())
+}
+
+func (i OceanScheduledTaskTaskArray) ToOceanScheduledTaskTaskArrayOutputWithContext(ctx context.Context) OceanScheduledTaskTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanScheduledTaskTaskArrayOutput)
+}
+
+type OceanScheduledTaskTaskOutput struct{ *pulumi.OutputState }
+
+func (OceanScheduledTaskTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanScheduledTaskTask)(nil)).Elem()
+}
+
+func (o OceanScheduledTaskTaskOutput) ToOceanScheduledTaskTaskOutput() OceanScheduledTaskTaskOutput {
+	return o
+}
+
+func (o OceanScheduledTaskTaskOutput) ToOceanScheduledTaskTaskOutputWithContext(ctx context.Context) OceanScheduledTaskTaskOutput {
+	return o
+}
+
+func (o OceanScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
+}
+
+// Enable the Ocean ECS autoscaler.
+func (o OceanScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v OceanScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o OceanScheduledTaskTaskOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanScheduledTaskTask) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+type OceanScheduledTaskTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanScheduledTaskTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanScheduledTaskTask)(nil)).Elem()
+}
+
+func (o OceanScheduledTaskTaskArrayOutput) ToOceanScheduledTaskTaskArrayOutput() OceanScheduledTaskTaskArrayOutput {
+	return o
+}
+
+func (o OceanScheduledTaskTaskArrayOutput) ToOceanScheduledTaskTaskArrayOutputWithContext(ctx context.Context) OceanScheduledTaskTaskArrayOutput {
+	return o
+}
+
+func (o OceanScheduledTaskTaskArrayOutput) Index(i pulumi.IntInput) OceanScheduledTaskTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanScheduledTaskTask {
+		return vs[0].([]OceanScheduledTaskTask)[vs[1].(int)]
+	}).(OceanScheduledTaskTaskOutput)
+}
+
 type OceanTag struct {
 	// The tag key.
 	Key string `pulumi:"key"`
@@ -1123,6 +1440,12 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecAttributeArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomArrayOutput{})
+	pulumi.RegisterOutputType(OceanScheduledTaskOutput{})
+	pulumi.RegisterOutputType(OceanScheduledTaskArrayOutput{})
+	pulumi.RegisterOutputType(OceanScheduledTaskShutdownHoursOutput{})
+	pulumi.RegisterOutputType(OceanScheduledTaskShutdownHoursPtrOutput{})
+	pulumi.RegisterOutputType(OceanScheduledTaskTaskOutput{})
+	pulumi.RegisterOutputType(OceanScheduledTaskTaskArrayOutput{})
 	pulumi.RegisterOutputType(OceanTagOutput{})
 	pulumi.RegisterOutputType(OceanTagArrayOutput{})
 	pulumi.RegisterOutputType(OceanUpdatePolicyOutput{})

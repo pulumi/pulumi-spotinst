@@ -33,6 +33,8 @@ type Ocean struct {
 	EbsOptimized pulumi.BoolPtrOutput `pulumi:"ebsOptimized"`
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrOutput `pulumi:"fallbackToOndemand"`
+	// The amount of time, in seconds, after the instance has launched to start checking its health.
+	GracePeriod pulumi.IntPtrOutput `pulumi:"gracePeriod"`
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -52,11 +54,11 @@ type Ocean struct {
 	// The region the cluster will run in.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
+	RootVolumeSize pulumi.IntPtrOutput           `pulumi:"rootVolumeSize"`
+	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
-	// The percentage of Spot instances the cluster should maintain. Min 0, max 100.
-	SpotPercentage pulumi.Float64PtrOutput `pulumi:"spotPercentage"`
+	SpotPercentage pulumi.Float64PtrOutput  `pulumi:"spotPercentage"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
@@ -120,6 +122,8 @@ type oceanState struct {
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
+	// The amount of time, in seconds, after the instance has launched to start checking its health.
+	GracePeriod *int `pulumi:"gracePeriod"`
 	// The instance profile iam role.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -139,10 +143,10 @@ type oceanState struct {
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	RootVolumeSize *int                 `pulumi:"rootVolumeSize"`
+	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
-	// The percentage of Spot instances the cluster should maintain. Min 0, max 100.
 	SpotPercentage *float64 `pulumi:"spotPercentage"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds []string `pulumi:"subnetIds"`
@@ -174,6 +178,8 @@ type OceanState struct {
 	EbsOptimized pulumi.BoolPtrInput
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
+	// The amount of time, in seconds, after the instance has launched to start checking its health.
+	GracePeriod pulumi.IntPtrInput
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
@@ -194,9 +200,9 @@ type OceanState struct {
 	Region pulumi.StringPtrInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrInput
+	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
-	// The percentage of Spot instances the cluster should maintain. Min 0, max 100.
 	SpotPercentage pulumi.Float64PtrInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayInput
@@ -232,6 +238,8 @@ type oceanArgs struct {
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
+	// The amount of time, in seconds, after the instance has launched to start checking its health.
+	GracePeriod *int `pulumi:"gracePeriod"`
 	// The instance profile iam role.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -251,10 +259,10 @@ type oceanArgs struct {
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	RootVolumeSize *int                 `pulumi:"rootVolumeSize"`
+	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
-	// The percentage of Spot instances the cluster should maintain. Min 0, max 100.
 	SpotPercentage *float64 `pulumi:"spotPercentage"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds []string `pulumi:"subnetIds"`
@@ -287,6 +295,8 @@ type OceanArgs struct {
 	EbsOptimized pulumi.BoolPtrInput
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
+	// The amount of time, in seconds, after the instance has launched to start checking its health.
+	GracePeriod pulumi.IntPtrInput
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
@@ -307,9 +317,9 @@ type OceanArgs struct {
 	Region pulumi.StringPtrInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrInput
+	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
-	// The percentage of Spot instances the cluster should maintain. Min 0, max 100.
 	SpotPercentage pulumi.Float64PtrInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayInput
