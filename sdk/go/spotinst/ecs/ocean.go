@@ -44,7 +44,8 @@ type Ocean struct {
 	// The Ocean cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region the cluster will run in.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region         pulumi.StringOutput           `pulumi:"region"`
+	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -53,8 +54,9 @@ type Ocean struct {
 	Tags         OceanTagArrayOutput        `pulumi:"tags"`
 	UpdatePolicy OceanUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData                 pulumi.StringPtrOutput `pulumi:"userData"`
-	UtilizeReservedInstances pulumi.BoolPtrOutput   `pulumi:"utilizeReservedInstances"`
+	UserData pulumi.StringPtrOutput `pulumi:"userData"`
+	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
@@ -126,7 +128,8 @@ type oceanState struct {
 	// The Ocean cluster name.
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
-	Region *string `pulumi:"region"`
+	Region         *string              `pulumi:"region"`
+	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -135,8 +138,9 @@ type oceanState struct {
 	Tags         []OceanTag         `pulumi:"tags"`
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData                 *string `pulumi:"userData"`
-	UtilizeReservedInstances *bool   `pulumi:"utilizeReservedInstances"`
+	UserData *string `pulumi:"userData"`
+	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists []string `pulumi:"whitelists"`
 }
@@ -169,7 +173,8 @@ type OceanState struct {
 	// The Ocean cluster name.
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
-	Region pulumi.StringPtrInput
+	Region         pulumi.StringPtrInput
+	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -178,7 +183,8 @@ type OceanState struct {
 	Tags         OceanTagArrayInput
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData                 pulumi.StringPtrInput
+	UserData pulumi.StringPtrInput
+	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayInput
@@ -216,7 +222,8 @@ type oceanArgs struct {
 	// The Ocean cluster name.
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
-	Region string `pulumi:"region"`
+	Region         string               `pulumi:"region"`
+	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -225,8 +232,9 @@ type oceanArgs struct {
 	Tags         []OceanTag         `pulumi:"tags"`
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData                 *string `pulumi:"userData"`
-	UtilizeReservedInstances *bool   `pulumi:"utilizeReservedInstances"`
+	UserData *string `pulumi:"userData"`
+	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists []string `pulumi:"whitelists"`
 }
@@ -260,7 +268,8 @@ type OceanArgs struct {
 	// The Ocean cluster name.
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
-	Region pulumi.StringInput
+	Region         pulumi.StringInput
+	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -269,7 +278,8 @@ type OceanArgs struct {
 	Tags         OceanTagArrayInput
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData                 pulumi.StringPtrInput
+	UserData pulumi.StringPtrInput
+	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayInput

@@ -29,8 +29,9 @@ type OceanImport struct {
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
-	MinSize    pulumi.IntOutput         `pulumi:"minSize"`
-	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
+	MinSize        pulumi.IntOutput                    `pulumi:"minSize"`
+	ScheduledTasks OceanImportScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
+	Whitelists     pulumi.StringArrayOutput            `pulumi:"whitelists"`
 }
 
 // NewOceanImport registers a new resource with the given unique name, arguments, and options.
@@ -79,8 +80,9 @@ type oceanImportState struct {
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
-	MinSize    *int     `pulumi:"minSize"`
-	Whitelists []string `pulumi:"whitelists"`
+	MinSize        *int                       `pulumi:"minSize"`
+	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
+	Whitelists     []string                   `pulumi:"whitelists"`
 }
 
 type OceanImportState struct {
@@ -96,8 +98,9 @@ type OceanImportState struct {
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
-	MinSize    pulumi.IntPtrInput
-	Whitelists pulumi.StringArrayInput
+	MinSize        pulumi.IntPtrInput
+	ScheduledTasks OceanImportScheduledTaskArrayInput
+	Whitelists     pulumi.StringArrayInput
 }
 
 func (OceanImportState) ElementType() reflect.Type {
@@ -116,8 +119,9 @@ type oceanImportArgs struct {
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
-	MinSize    *int     `pulumi:"minSize"`
-	Whitelists []string `pulumi:"whitelists"`
+	MinSize        *int                       `pulumi:"minSize"`
+	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
+	Whitelists     []string                   `pulumi:"whitelists"`
 }
 
 // The set of arguments for constructing a OceanImport resource.
@@ -133,8 +137,9 @@ type OceanImportArgs struct {
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
-	MinSize    pulumi.IntPtrInput
-	Whitelists pulumi.StringArrayInput
+	MinSize        pulumi.IntPtrInput
+	ScheduledTasks OceanImportScheduledTaskArrayInput
+	Whitelists     pulumi.StringArrayInput
 }
 
 func (OceanImportArgs) ElementType() reflect.Type {

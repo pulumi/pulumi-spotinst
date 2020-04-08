@@ -18,6 +18,7 @@ class Ocean(pulumi.CustomResource):
     """
     Describes the Ocean Kubernetes autoscaler.
 
+      * `autoHeadroomPercentage` (`float`) - Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
       * `autoscaleCooldown` (`float`) - Cooldown period between scaling actions.
       * `autoscaleDown` (`dict`) - Auto Scaling scale down operations.
         * `evaluationPeriods` (`float`) - The number of evaluation periods that should accumulate before a scale down action takes place.
@@ -58,6 +59,10 @@ class Ocean(pulumi.CustomResource):
     fallback_to_ondemand: pulumi.Output[bool]
     """
     If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+    """
+    grace_period: pulumi.Output[float]
+    """
+    The amount of time, in seconds, after the instance has launched to start checking its health.
     """
     iam_instance_profile: pulumi.Output[str]
     """
@@ -103,14 +108,12 @@ class Ocean(pulumi.CustomResource):
     """
     The size (in Gb) to allocate for the root volume. Minimum `20`.
     """
+    scheduled_tasks: pulumi.Output[list]
     security_groups: pulumi.Output[list]
     """
     One or more security group ids.
     """
     spot_percentage: pulumi.Output[float]
-    """
-    The percentage of Spot instances the cluster should maintain. Min 0, max 100.
-    """
     subnet_ids: pulumi.Output[list]
     """
     A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -135,7 +138,7 @@ class Ocean(pulumi.CustomResource):
     """
     Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
     """
-    def __init__(__self__, resource_name, opts=None, associate_public_ip_address=None, autoscaler=None, blacklists=None, controller_id=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, fallback_to_ondemand=None, iam_instance_profile=None, image_id=None, key_name=None, load_balancers=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, root_volume_size=None, security_groups=None, spot_percentage=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, associate_public_ip_address=None, autoscaler=None, blacklists=None, controller_id=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, fallback_to_ondemand=None, grace_period=None, iam_instance_profile=None, image_id=None, key_name=None, load_balancers=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, root_volume_size=None, scheduled_tasks=None, security_groups=None, spot_percentage=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Ocean AWS resource.
 
@@ -151,6 +154,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[float] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+        :param pulumi.Input[float] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
@@ -162,7 +166,6 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[float] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[list] security_groups: One or more security group ids.
-        :param pulumi.Input[float] spot_percentage: The percentage of Spot instances the cluster should maintain. Min 0, max 100.
         :param pulumi.Input[list] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[list] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
@@ -171,6 +174,7 @@ class Ocean(pulumi.CustomResource):
 
         The **autoscaler** object supports the following:
 
+          * `autoHeadroomPercentage` (`pulumi.Input[float]`) - Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
           * `autoscaleCooldown` (`pulumi.Input[float]`) - Cooldown period between scaling actions.
           * `autoscaleDown` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
             * `evaluationPeriods` (`pulumi.Input[float]`) - The number of evaluation periods that should accumulate before a scale down action takes place.
@@ -193,6 +197,17 @@ class Ocean(pulumi.CustomResource):
           * `arn` (`pulumi.Input[str]`) - Required if type is set to TARGET_GROUP
           * `name` (`pulumi.Input[str]`) - Required if type is set to CLASSIC
           * `type` (`pulumi.Input[str]`) - Can be set to CLASSIC or TARGET_GROUP
+
+        The **scheduled_tasks** object supports the following:
+
+          * `shutdownHours` (`pulumi.Input[dict]`)
+            * `isEnabled` (`pulumi.Input[bool]`)
+            * `timeWindows` (`pulumi.Input[list]`)
+
+          * `tasks` (`pulumi.Input[list]`)
+            * `cronExpression` (`pulumi.Input[str]`)
+            * `isEnabled` (`pulumi.Input[bool]`)
+            * `taskType` (`pulumi.Input[str]`)
 
         The **tags** object supports the following:
 
@@ -231,6 +246,7 @@ class Ocean(pulumi.CustomResource):
             __props__['draining_timeout'] = draining_timeout
             __props__['ebs_optimized'] = ebs_optimized
             __props__['fallback_to_ondemand'] = fallback_to_ondemand
+            __props__['grace_period'] = grace_period
             __props__['iam_instance_profile'] = iam_instance_profile
             __props__['image_id'] = image_id
             __props__['key_name'] = key_name
@@ -241,6 +257,7 @@ class Ocean(pulumi.CustomResource):
             __props__['name'] = name
             __props__['region'] = region
             __props__['root_volume_size'] = root_volume_size
+            __props__['scheduled_tasks'] = scheduled_tasks
             if security_groups is None:
                 raise TypeError("Missing required property 'security_groups'")
             __props__['security_groups'] = security_groups
@@ -260,7 +277,7 @@ class Ocean(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, associate_public_ip_address=None, autoscaler=None, blacklists=None, controller_id=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, fallback_to_ondemand=None, iam_instance_profile=None, image_id=None, key_name=None, load_balancers=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, root_volume_size=None, security_groups=None, spot_percentage=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None):
+    def get(resource_name, id, opts=None, associate_public_ip_address=None, autoscaler=None, blacklists=None, controller_id=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, fallback_to_ondemand=None, grace_period=None, iam_instance_profile=None, image_id=None, key_name=None, load_balancers=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, root_volume_size=None, scheduled_tasks=None, security_groups=None, spot_percentage=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None):
         """
         Get an existing Ocean resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -276,6 +293,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[float] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+        :param pulumi.Input[float] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
@@ -287,7 +305,6 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[float] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[list] security_groups: One or more security group ids.
-        :param pulumi.Input[float] spot_percentage: The percentage of Spot instances the cluster should maintain. Min 0, max 100.
         :param pulumi.Input[list] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[list] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
@@ -296,6 +313,7 @@ class Ocean(pulumi.CustomResource):
 
         The **autoscaler** object supports the following:
 
+          * `autoHeadroomPercentage` (`pulumi.Input[float]`) - Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
           * `autoscaleCooldown` (`pulumi.Input[float]`) - Cooldown period between scaling actions.
           * `autoscaleDown` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
             * `evaluationPeriods` (`pulumi.Input[float]`) - The number of evaluation periods that should accumulate before a scale down action takes place.
@@ -318,6 +336,17 @@ class Ocean(pulumi.CustomResource):
           * `arn` (`pulumi.Input[str]`) - Required if type is set to TARGET_GROUP
           * `name` (`pulumi.Input[str]`) - Required if type is set to CLASSIC
           * `type` (`pulumi.Input[str]`) - Can be set to CLASSIC or TARGET_GROUP
+
+        The **scheduled_tasks** object supports the following:
+
+          * `shutdownHours` (`pulumi.Input[dict]`)
+            * `isEnabled` (`pulumi.Input[bool]`)
+            * `timeWindows` (`pulumi.Input[list]`)
+
+          * `tasks` (`pulumi.Input[list]`)
+            * `cronExpression` (`pulumi.Input[str]`)
+            * `isEnabled` (`pulumi.Input[bool]`)
+            * `taskType` (`pulumi.Input[str]`)
 
         The **tags** object supports the following:
 
@@ -343,6 +372,7 @@ class Ocean(pulumi.CustomResource):
         __props__["draining_timeout"] = draining_timeout
         __props__["ebs_optimized"] = ebs_optimized
         __props__["fallback_to_ondemand"] = fallback_to_ondemand
+        __props__["grace_period"] = grace_period
         __props__["iam_instance_profile"] = iam_instance_profile
         __props__["image_id"] = image_id
         __props__["key_name"] = key_name
@@ -353,6 +383,7 @@ class Ocean(pulumi.CustomResource):
         __props__["name"] = name
         __props__["region"] = region
         __props__["root_volume_size"] = root_volume_size
+        __props__["scheduled_tasks"] = scheduled_tasks
         __props__["security_groups"] = security_groups
         __props__["spot_percentage"] = spot_percentage
         __props__["subnet_ids"] = subnet_ids

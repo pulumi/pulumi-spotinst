@@ -5,6 +5,7 @@ CHANGELOG
 * Upgrade to Pulumi v1.13.1
 * Upgrade to pulumi-terraform-bridge v1.8.4
 * Refactor layout to support Go modules
+* Upgrade to v1.14.3 of the SpotInst Terraform Provider
 
 ---
 

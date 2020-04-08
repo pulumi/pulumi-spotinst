@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     rootVolumeSize: 30,
  *     securityGroups: ["sg-987654321"],
  *     subnetIds: ["subnet-1234"],
+ *     tags: [{
+ *         key: "Env",
+ *         value: "production",
+ *     }],
  *     taints: [{
  *         effect: "NoExecute",
  *         key: "taint key updated",
@@ -87,6 +91,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<outputs.aws.OceanLaunchSpecLabel[] | undefined>;
     /**
+     * Set Launch Specification name 
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
      * The ocean cluster you wish to 
      */
     public readonly oceanId!: pulumi.Output<string>;
@@ -102,6 +110,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Set subnets in launchSpec. Each element in array should be subnet ID.
      */
     public readonly subnetIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * A key/value mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<outputs.aws.OceanLaunchSpecTag[] | undefined>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
@@ -127,10 +139,12 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["labels"] = state ? state.labels : undefined;
+            inputs["name"] = state ? state.name : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
             inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["taints"] = state ? state.taints : undefined;
             inputs["userData"] = state ? state.userData : undefined;
         } else {
@@ -142,10 +156,12 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
             inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["taints"] = args ? args.taints : undefined;
             inputs["userData"] = args ? args.userData : undefined;
         }
@@ -181,6 +197,10 @@ export interface OceanLaunchSpecState {
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLabel>[]>;
     /**
+     * Set Launch Specification name 
+     */
+    readonly name?: pulumi.Input<string>;
+    /**
      * The ocean cluster you wish to 
      */
     readonly oceanId?: pulumi.Input<string>;
@@ -196,6 +216,10 @@ export interface OceanLaunchSpecState {
      * Set subnets in launchSpec. Each element in array should be subnet ID.
      */
     readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A key/value mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTag>[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
@@ -227,6 +251,10 @@ export interface OceanLaunchSpecArgs {
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLabel>[]>;
     /**
+     * Set Launch Specification name 
+     */
+    readonly name?: pulumi.Input<string>;
+    /**
      * The ocean cluster you wish to 
      */
     readonly oceanId: pulumi.Input<string>;
@@ -242,6 +270,10 @@ export interface OceanLaunchSpecArgs {
      * Set subnets in launchSpec. Each element in array should be subnet ID.
      */
     readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A key/value mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTag>[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */

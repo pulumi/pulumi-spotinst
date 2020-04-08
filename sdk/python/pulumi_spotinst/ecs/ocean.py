@@ -81,6 +81,7 @@ class Ocean(pulumi.CustomResource):
     """
     The region the cluster will run in.
     """
+    scheduled_tasks: pulumi.Output[list]
     security_group_ids: pulumi.Output[list]
     """
     One or more security group ids.
@@ -102,11 +103,14 @@ class Ocean(pulumi.CustomResource):
     Base64-encoded MIME user data to make available to the instances.
     """
     utilize_reserved_instances: pulumi.Output[bool]
+    """
+    If Reserved instances exist, OCean will utilize them before launching Spot instances.
+    """
     whitelists: pulumi.Output[list]
     """
     Instance types allowed in the Ocean cluster.
     """
-    def __init__(__self__, resource_name, opts=None, associate_public_ip_address=None, autoscaler=None, cluster_name=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, iam_instance_profile=None, image_id=None, key_pair=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, security_group_ids=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, associate_public_ip_address=None, autoscaler=None, cluster_name=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, iam_instance_profile=None, image_id=None, key_pair=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, scheduled_tasks=None, security_group_ids=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Ocean ECS resource.
 
@@ -132,6 +136,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[list] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[list] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
+        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, OCean will utilize them before launching Spot instances.
         :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster.
 
         The **autoscaler** object supports the following:
@@ -150,6 +155,17 @@ class Ocean(pulumi.CustomResource):
           * `resourceLimits` (`pulumi.Input[dict]`) - Optionally set upper and lower bounds on the resource usage of the cluster.
             * `maxMemoryGib` (`pulumi.Input[float]`) - The maximum memory in GiB units that can be allocated to the cluster.
             * `maxVcpu` (`pulumi.Input[float]`) - The maximum cpu in vCPU units that can be allocated to the cluster.
+
+        The **scheduled_tasks** object supports the following:
+
+          * `shutdownHours` (`pulumi.Input[dict]`)
+            * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
+            * `timeWindows` (`pulumi.Input[list]`)
+
+          * `tasks` (`pulumi.Input[list]`)
+            * `cronExpression` (`pulumi.Input[str]`)
+            * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
+            * `taskType` (`pulumi.Input[str]`)
 
         The **tags** object supports the following:
 
@@ -198,6 +214,7 @@ class Ocean(pulumi.CustomResource):
             if region is None:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
+            __props__['scheduled_tasks'] = scheduled_tasks
             if security_group_ids is None:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__['security_group_ids'] = security_group_ids
@@ -216,7 +233,7 @@ class Ocean(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, associate_public_ip_address=None, autoscaler=None, cluster_name=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, iam_instance_profile=None, image_id=None, key_pair=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, security_group_ids=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None):
+    def get(resource_name, id, opts=None, associate_public_ip_address=None, autoscaler=None, cluster_name=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, iam_instance_profile=None, image_id=None, key_pair=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, scheduled_tasks=None, security_group_ids=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None):
         """
         Get an existing Ocean resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -242,6 +259,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[list] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[list] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
+        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, OCean will utilize them before launching Spot instances.
         :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster.
 
         The **autoscaler** object supports the following:
@@ -260,6 +278,17 @@ class Ocean(pulumi.CustomResource):
           * `resourceLimits` (`pulumi.Input[dict]`) - Optionally set upper and lower bounds on the resource usage of the cluster.
             * `maxMemoryGib` (`pulumi.Input[float]`) - The maximum memory in GiB units that can be allocated to the cluster.
             * `maxVcpu` (`pulumi.Input[float]`) - The maximum cpu in vCPU units that can be allocated to the cluster.
+
+        The **scheduled_tasks** object supports the following:
+
+          * `shutdownHours` (`pulumi.Input[dict]`)
+            * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
+            * `timeWindows` (`pulumi.Input[list]`)
+
+          * `tasks` (`pulumi.Input[list]`)
+            * `cronExpression` (`pulumi.Input[str]`)
+            * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
+            * `taskType` (`pulumi.Input[str]`)
 
         The **tags** object supports the following:
 
@@ -291,6 +320,7 @@ class Ocean(pulumi.CustomResource):
         __props__["monitoring"] = monitoring
         __props__["name"] = name
         __props__["region"] = region
+        __props__["scheduled_tasks"] = scheduled_tasks
         __props__["security_group_ids"] = security_group_ids
         __props__["subnet_ids"] = subnet_ids
         __props__["tags"] = tags

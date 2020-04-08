@@ -28,6 +28,7 @@ import (
 // * `jobFlowRole` - (Optional) The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
 // * `terminationProtected` - (Optional) Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
 // * `keepJobFlowAlive` - (Optional) Specifies whether the cluster should remain available after completing all steps.
+// * `retries` - (Optional) Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded.
 //
 // <a id="task-group"></a>
 // ## Task Group (Wrap, Clone, and New strategies)

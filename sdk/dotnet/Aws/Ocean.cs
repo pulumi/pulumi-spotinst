@@ -65,6 +65,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
         /// <summary>
+        /// The amount of time, in seconds, after the instance has launched to start checking its health.
+        /// </summary>
+        [Output("gracePeriod")]
+        public Output<int?> GracePeriod { get; private set; } = null!;
+
+        /// <summary>
         /// The instance profile iam role.
         /// </summary>
         [Output("iamInstanceProfile")]
@@ -124,15 +130,15 @@ namespace Pulumi.SpotInst.Aws
         [Output("rootVolumeSize")]
         public Output<int?> RootVolumeSize { get; private set; } = null!;
 
+        [Output("scheduledTasks")]
+        public Output<ImmutableArray<Outputs.OceanScheduledTasks>> ScheduledTasks { get; private set; } = null!;
+
         /// <summary>
         /// One or more security group ids.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
-        /// <summary>
-        /// The percentage of Spot instances the cluster should maintain. Min 0, max 100.
-        /// </summary>
         [Output("spotPercentage")]
         public Output<double?> SpotPercentage { get; private set; } = null!;
 
@@ -270,6 +276,12 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? FallbackToOndemand { get; set; }
 
         /// <summary>
+        /// The amount of time, in seconds, after the instance has launched to start checking its health.
+        /// </summary>
+        [Input("gracePeriod")]
+        public Input<int>? GracePeriod { get; set; }
+
+        /// <summary>
         /// The instance profile iam role.
         /// </summary>
         [Input("iamInstanceProfile")]
@@ -335,6 +347,14 @@ namespace Pulumi.SpotInst.Aws
         [Input("rootVolumeSize")]
         public Input<int>? RootVolumeSize { get; set; }
 
+        [Input("scheduledTasks")]
+        private InputList<Inputs.OceanScheduledTasksArgs>? _scheduledTasks;
+        public InputList<Inputs.OceanScheduledTasksArgs> ScheduledTasks
+        {
+            get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTasksArgs>());
+            set => _scheduledTasks = value;
+        }
+
         [Input("securityGroups", required: true)]
         private InputList<string>? _securityGroups;
 
@@ -347,9 +367,6 @@ namespace Pulumi.SpotInst.Aws
             set => _securityGroups = value;
         }
 
-        /// <summary>
-        /// The percentage of Spot instances the cluster should maintain. Min 0, max 100.
-        /// </summary>
         [Input("spotPercentage")]
         public Input<double>? SpotPercentage { get; set; }
 
@@ -466,6 +483,12 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? FallbackToOndemand { get; set; }
 
         /// <summary>
+        /// The amount of time, in seconds, after the instance has launched to start checking its health.
+        /// </summary>
+        [Input("gracePeriod")]
+        public Input<int>? GracePeriod { get; set; }
+
+        /// <summary>
         /// The instance profile iam role.
         /// </summary>
         [Input("iamInstanceProfile")]
@@ -531,6 +554,14 @@ namespace Pulumi.SpotInst.Aws
         [Input("rootVolumeSize")]
         public Input<int>? RootVolumeSize { get; set; }
 
+        [Input("scheduledTasks")]
+        private InputList<Inputs.OceanScheduledTasksGetArgs>? _scheduledTasks;
+        public InputList<Inputs.OceanScheduledTasksGetArgs> ScheduledTasks
+        {
+            get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTasksGetArgs>());
+            set => _scheduledTasks = value;
+        }
+
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
 
@@ -543,9 +574,6 @@ namespace Pulumi.SpotInst.Aws
             set => _securityGroups = value;
         }
 
-        /// <summary>
-        /// The percentage of Spot instances the cluster should maintain. Min 0, max 100.
-        /// </summary>
         [Input("spotPercentage")]
         public Input<double>? SpotPercentage { get; set; }
 
@@ -610,6 +638,12 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class OceanAutoscalerArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
+        /// </summary>
+        [Input("autoHeadroomPercentage")]
+        public Input<int>? AutoHeadroomPercentage { get; set; }
+
         /// <summary>
         /// Cooldown period between scaling actions.
         /// </summary>
@@ -754,6 +788,12 @@ namespace Pulumi.SpotInst.Aws
     public sealed class OceanAutoscalerGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
+        /// </summary>
+        [Input("autoHeadroomPercentage")]
+        public Input<int>? AutoHeadroomPercentage { get; set; }
+
+        /// <summary>
         /// Cooldown period between scaling actions.
         /// </summary>
         [Input("autoscaleCooldown")]
@@ -882,6 +922,110 @@ namespace Pulumi.SpotInst.Aws
         }
     }
 
+    public sealed class OceanScheduledTasksArgs : Pulumi.ResourceArgs
+    {
+        [Input("shutdownHours")]
+        public Input<OceanScheduledTasksShutdownHoursArgs>? ShutdownHours { get; set; }
+
+        [Input("tasks")]
+        private InputList<OceanScheduledTasksTasksArgs>? _tasks;
+        public InputList<OceanScheduledTasksTasksArgs> Tasks
+        {
+            get => _tasks ?? (_tasks = new InputList<OceanScheduledTasksTasksArgs>());
+            set => _tasks = value;
+        }
+
+        public OceanScheduledTasksArgs()
+        {
+        }
+    }
+
+    public sealed class OceanScheduledTasksGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("shutdownHours")]
+        public Input<OceanScheduledTasksShutdownHoursGetArgs>? ShutdownHours { get; set; }
+
+        [Input("tasks")]
+        private InputList<OceanScheduledTasksTasksGetArgs>? _tasks;
+        public InputList<OceanScheduledTasksTasksGetArgs> Tasks
+        {
+            get => _tasks ?? (_tasks = new InputList<OceanScheduledTasksTasksGetArgs>());
+            set => _tasks = value;
+        }
+
+        public OceanScheduledTasksGetArgs()
+        {
+        }
+    }
+
+    public sealed class OceanScheduledTasksShutdownHoursArgs : Pulumi.ResourceArgs
+    {
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
+        [Input("timeWindows", required: true)]
+        private InputList<string>? _timeWindows;
+        public InputList<string> TimeWindows
+        {
+            get => _timeWindows ?? (_timeWindows = new InputList<string>());
+            set => _timeWindows = value;
+        }
+
+        public OceanScheduledTasksShutdownHoursArgs()
+        {
+        }
+    }
+
+    public sealed class OceanScheduledTasksShutdownHoursGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
+        [Input("timeWindows", required: true)]
+        private InputList<string>? _timeWindows;
+        public InputList<string> TimeWindows
+        {
+            get => _timeWindows ?? (_timeWindows = new InputList<string>());
+            set => _timeWindows = value;
+        }
+
+        public OceanScheduledTasksShutdownHoursGetArgs()
+        {
+        }
+    }
+
+    public sealed class OceanScheduledTasksTasksArgs : Pulumi.ResourceArgs
+    {
+        [Input("cronExpression", required: true)]
+        public Input<string> CronExpression { get; set; } = null!;
+
+        [Input("isEnabled", required: true)]
+        public Input<bool> IsEnabled { get; set; } = null!;
+
+        [Input("taskType", required: true)]
+        public Input<string> TaskType { get; set; } = null!;
+
+        public OceanScheduledTasksTasksArgs()
+        {
+        }
+    }
+
+    public sealed class OceanScheduledTasksTasksGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("cronExpression", required: true)]
+        public Input<string> CronExpression { get; set; } = null!;
+
+        [Input("isEnabled", required: true)]
+        public Input<bool> IsEnabled { get; set; } = null!;
+
+        [Input("taskType", required: true)]
+        public Input<string> TaskType { get; set; } = null!;
+
+        public OceanScheduledTasksTasksGetArgs()
+        {
+        }
+    }
+
     public sealed class OceanTagsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
@@ -974,6 +1118,10 @@ namespace Pulumi.SpotInst.Aws
     public sealed class OceanAutoscaler
     {
         /// <summary>
+        /// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
+        /// </summary>
+        public readonly int? AutoHeadroomPercentage;
+        /// <summary>
         /// Cooldown period between scaling actions.
         /// </summary>
         public readonly int? AutoscaleCooldown;
@@ -1000,6 +1148,7 @@ namespace Pulumi.SpotInst.Aws
 
         [OutputConstructor]
         private OceanAutoscaler(
+            int? autoHeadroomPercentage,
             int? autoscaleCooldown,
             OceanAutoscalerAutoscaleDown? autoscaleDown,
             OceanAutoscalerAutoscaleHeadroom? autoscaleHeadroom,
@@ -1007,6 +1156,7 @@ namespace Pulumi.SpotInst.Aws
             bool? autoscaleIsEnabled,
             OceanAutoscalerResourceLimits? resourceLimits)
         {
+            AutoHeadroomPercentage = autoHeadroomPercentage;
             AutoscaleCooldown = autoscaleCooldown;
             AutoscaleDown = autoscaleDown;
             AutoscaleHeadroom = autoscaleHeadroom;
@@ -1119,6 +1269,57 @@ namespace Pulumi.SpotInst.Aws
             Arn = arn;
             Name = name;
             Type = type;
+        }
+    }
+
+    [OutputType]
+    public sealed class OceanScheduledTasks
+    {
+        public readonly OceanScheduledTasksShutdownHours? ShutdownHours;
+        public readonly ImmutableArray<OceanScheduledTasksTasks> Tasks;
+
+        [OutputConstructor]
+        private OceanScheduledTasks(
+            OceanScheduledTasksShutdownHours? shutdownHours,
+            ImmutableArray<OceanScheduledTasksTasks> tasks)
+        {
+            ShutdownHours = shutdownHours;
+            Tasks = tasks;
+        }
+    }
+
+    [OutputType]
+    public sealed class OceanScheduledTasksShutdownHours
+    {
+        public readonly bool? IsEnabled;
+        public readonly ImmutableArray<string> TimeWindows;
+
+        [OutputConstructor]
+        private OceanScheduledTasksShutdownHours(
+            bool? isEnabled,
+            ImmutableArray<string> timeWindows)
+        {
+            IsEnabled = isEnabled;
+            TimeWindows = timeWindows;
+        }
+    }
+
+    [OutputType]
+    public sealed class OceanScheduledTasksTasks
+    {
+        public readonly string CronExpression;
+        public readonly bool IsEnabled;
+        public readonly string TaskType;
+
+        [OutputConstructor]
+        private OceanScheduledTasksTasks(
+            string cronExpression,
+            bool isEnabled,
+            string taskType)
+        {
+            CronExpression = cronExpression;
+            IsEnabled = isEnabled;
+            TaskType = taskType;
         }
     }
 

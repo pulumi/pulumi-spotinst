@@ -25,6 +25,8 @@ type OceanLaunchSpec struct {
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
+	// Set Launch Specification name
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The ocean cluster you wish to
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
 	// Set root volume size (in GB).
@@ -33,6 +35,8 @@ type OceanLaunchSpec struct {
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
+	// A key/value mapping of tags to assign to the resource.
+	Tags OceanLaunchSpecTagArrayOutput `pulumi:"tags"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints OceanLaunchSpecTaintArrayOutput `pulumi:"taints"`
 	// Base64-encoded MIME user data to make available to the instances.
@@ -78,6 +82,8 @@ type oceanLaunchSpecState struct {
 	ImageId *string `pulumi:"imageId"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
+	// Set Launch Specification name
+	Name *string `pulumi:"name"`
 	// The ocean cluster you wish to
 	OceanId *string `pulumi:"oceanId"`
 	// Set root volume size (in GB).
@@ -86,6 +92,8 @@ type oceanLaunchSpecState struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds []string `pulumi:"subnetIds"`
+	// A key/value mapping of tags to assign to the resource.
+	Tags []OceanLaunchSpecTag `pulumi:"tags"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
 	// Base64-encoded MIME user data to make available to the instances.
@@ -101,6 +109,8 @@ type OceanLaunchSpecState struct {
 	ImageId pulumi.StringPtrInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayInput
+	// Set Launch Specification name
+	Name pulumi.StringPtrInput
 	// The ocean cluster you wish to
 	OceanId pulumi.StringPtrInput
 	// Set root volume size (in GB).
@@ -109,6 +119,8 @@ type OceanLaunchSpecState struct {
 	SecurityGroups pulumi.StringArrayInput
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds pulumi.StringArrayInput
+	// A key/value mapping of tags to assign to the resource.
+	Tags OceanLaunchSpecTagArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints OceanLaunchSpecTaintArrayInput
 	// Base64-encoded MIME user data to make available to the instances.
@@ -128,6 +140,8 @@ type oceanLaunchSpecArgs struct {
 	ImageId *string `pulumi:"imageId"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
+	// Set Launch Specification name
+	Name *string `pulumi:"name"`
 	// The ocean cluster you wish to
 	OceanId string `pulumi:"oceanId"`
 	// Set root volume size (in GB).
@@ -136,6 +150,8 @@ type oceanLaunchSpecArgs struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds []string `pulumi:"subnetIds"`
+	// A key/value mapping of tags to assign to the resource.
+	Tags []OceanLaunchSpecTag `pulumi:"tags"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
 	// Base64-encoded MIME user data to make available to the instances.
@@ -152,6 +168,8 @@ type OceanLaunchSpecArgs struct {
 	ImageId pulumi.StringPtrInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayInput
+	// Set Launch Specification name
+	Name pulumi.StringPtrInput
 	// The ocean cluster you wish to
 	OceanId pulumi.StringInput
 	// Set root volume size (in GB).
@@ -160,6 +178,8 @@ type OceanLaunchSpecArgs struct {
 	SecurityGroups pulumi.StringArrayInput
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds pulumi.StringArrayInput
+	// A key/value mapping of tags to assign to the resource.
+	Tags OceanLaunchSpecTagArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints OceanLaunchSpecTaintArrayInput
 	// Base64-encoded MIME user data to make available to the instances.

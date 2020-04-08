@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 
+export interface HealthCheckCheck {
+    endPoint: pulumi.Input<string>;
+    /**
+     * The number of consecutive successful health checks that must occur before declaring an instance healthy.
+     */
+    healthy: pulumi.Input<number>;
+    /**
+     * The amount of time (in seconds) between each health check (minimum: 10).
+     */
+    interval: pulumi.Input<number>;
+    /**
+     * The port of the Spotinst HCS (default: 80).
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The protocol to use to connect with the instance. Valid values: http, https.
+     */
+    protocol: pulumi.Input<string>;
+    timeOut: pulumi.Input<number>;
+    /**
+     * The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+     */
+    unhealthy: pulumi.Input<number>;
+}
+
 export namespace aws {
     export interface BeanstalkDeploymentPreferences {
         /**
@@ -698,6 +723,10 @@ export namespace aws {
 
     export interface OceanAutoscaler {
         /**
+         * Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
+         */
+        autoHeadroomPercentage?: pulumi.Input<number>;
+        /**
          * Cooldown period between scaling actions.
          */
         autoscaleCooldown?: pulumi.Input<number>;
@@ -794,6 +823,17 @@ export namespace aws {
         value: pulumi.Input<string>;
     }
 
+    export interface OceanLaunchSpecTag {
+        /**
+         * The tag key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The tag value.
+         */
+        value: pulumi.Input<string>;
+    }
+
     export interface OceanLaunchSpecTaint {
         /**
          * The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
@@ -822,6 +862,22 @@ export namespace aws {
          * Can be set to CLASSIC or TARGET_GROUP
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface OceanScheduledTask {
+        shutdownHours?: pulumi.Input<inputs.aws.OceanScheduledTaskShutdownHours>;
+        tasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTaskTask>[]>;
+    }
+
+    export interface OceanScheduledTaskShutdownHours {
+        isEnabled?: pulumi.Input<boolean>;
+        timeWindows: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OceanScheduledTaskTask {
+        cronExpression: pulumi.Input<string>;
+        isEnabled: pulumi.Input<boolean>;
+        taskType: pulumi.Input<string>;
     }
 
     export interface OceanTag {
@@ -1105,6 +1161,28 @@ export namespace ecs {
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
         numOfUnits: pulumi.Input<number>;
+    }
+
+    export interface OceanScheduledTask {
+        shutdownHours?: pulumi.Input<inputs.ecs.OceanScheduledTaskShutdownHours>;
+        tasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTaskTask>[]>;
+    }
+
+    export interface OceanScheduledTaskShutdownHours {
+        /**
+         * Enable the Ocean ECS autoscaler.
+         */
+        isEnabled?: pulumi.Input<boolean>;
+        timeWindows: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OceanScheduledTaskTask {
+        cronExpression: pulumi.Input<string>;
+        /**
+         * Enable the Ocean ECS autoscaler.
+         */
+        isEnabled: pulumi.Input<boolean>;
+        taskType: pulumi.Input<string>;
     }
 
     export interface OceanTag {
@@ -1497,6 +1575,23 @@ export namespace gke {
          * A list of ports.
          */
         ports: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OceanImportScheduledTask {
+        shutdownHours?: pulumi.Input<inputs.gke.OceanImportScheduledTaskShutdownHours>;
+        tasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTaskTask>[]>;
+    }
+
+    export interface OceanImportScheduledTaskShutdownHours {
+        isEnabled?: pulumi.Input<boolean>;
+        timeWindows: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface OceanImportScheduledTaskTask {
+        batchSizePercentage?: pulumi.Input<number>;
+        cronExpression: pulumi.Input<string>;
+        isEnabled: pulumi.Input<boolean>;
+        taskType: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecAutoscaleHeadroom {

@@ -89,6 +89,7 @@ export class Ocean extends pulumi.CustomResource {
      * The region the cluster will run in.
      */
     public readonly region!: pulumi.Output<string>;
+    public readonly scheduledTasks!: pulumi.Output<outputs.ecs.OceanScheduledTask[] | undefined>;
     /**
      * One or more security group ids.
      */
@@ -106,6 +107,9 @@ export class Ocean extends pulumi.CustomResource {
      * Base64-encoded MIME user data to make available to the instances.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
+    /**
+     * If Reserved instances exist, OCean will utilize them before launching Spot instances.
+     */
     public readonly utilizeReservedInstances!: pulumi.Output<boolean | undefined>;
     /**
      * Instance types allowed in the Ocean cluster.
@@ -138,6 +142,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["monitoring"] = state ? state.monitoring : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -173,6 +178,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["monitoring"] = args ? args.monitoring : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -252,6 +258,7 @@ export interface OceanState {
      * The region the cluster will run in.
      */
     readonly region?: pulumi.Input<string>;
+    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
      */
@@ -269,6 +276,9 @@ export interface OceanState {
      * Base64-encoded MIME user data to make available to the instances.
      */
     readonly userData?: pulumi.Input<string>;
+    /**
+     * If Reserved instances exist, OCean will utilize them before launching Spot instances.
+     */
     readonly utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
      * Instance types allowed in the Ocean cluster.
@@ -336,6 +346,7 @@ export interface OceanArgs {
      * The region the cluster will run in.
      */
     readonly region: pulumi.Input<string>;
+    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
      */
@@ -353,6 +364,9 @@ export interface OceanArgs {
      * Base64-encoded MIME user data to make available to the instances.
      */
     readonly userData?: pulumi.Input<string>;
+    /**
+     * If Reserved instances exist, OCean will utilize them before launching Spot instances.
+     */
     readonly utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
      * Instance types allowed in the Ocean cluster.
