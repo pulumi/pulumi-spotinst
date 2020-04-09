@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Azure
     /// <summary>
     /// Provides a Spotinst elastigroup Azure resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_azure.html.markdown.
     /// </summary>
     public partial class Elastigroup : Pulumi.CustomResource

@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Aws
     /// <summary>
     /// Provides a custom Spotinst Ocean AWS Launch Spec resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_aws_launch_spec.html.markdown.
     /// </summary>
     public partial class OceanLaunchSpec : Pulumi.CustomResource

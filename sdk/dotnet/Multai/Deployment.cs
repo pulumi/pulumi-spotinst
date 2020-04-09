@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Multai
     /// <summary>
     /// Provides a Spotinst Multai Deployment.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_deployment.html.markdown.
     /// </summary>
     public partial class Deployment : Pulumi.CustomResource

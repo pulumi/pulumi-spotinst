@@ -13,6 +13,7 @@ namespace Pulumi.SpotInst.Gke
     /// Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
     /// 
     /// 
+    /// 
     /// ## Diff-suppressed Parameters
     /// 
     /// The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these

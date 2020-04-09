@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Multai
     /// <summary>
     /// Provides a Spotinst Multai Balancer.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_balancer.html.markdown.
     /// </summary>
     public partial class Balancer : Pulumi.CustomResource

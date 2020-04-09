@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Gke
     /// <summary>
     /// Provides a Spotinst Ocean GKE import resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_import.html.markdown.
     /// </summary>
     public partial class OceanImport : Pulumi.CustomResource

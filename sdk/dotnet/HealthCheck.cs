@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst
     /// <summary>
     /// Provides a Spotinst Health Check resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/health_check.html.markdown.
     /// </summary>
     public partial class HealthCheck : Pulumi.CustomResource

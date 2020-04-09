@@ -44,6 +44,8 @@ class Listener(pulumi.CustomResource):
         """
         Provides a Spotinst Multai Listener.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_listener.html.markdown.
 
         :param str resource_name: The name of the resource.

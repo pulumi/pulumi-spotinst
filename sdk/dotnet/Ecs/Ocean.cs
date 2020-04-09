@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Ecs
     /// <summary>
     /// Provides a Spotinst Ocean ECS resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_ecs.html.markdown.
     /// </summary>
     public partial class Ocean : Pulumi.CustomResource

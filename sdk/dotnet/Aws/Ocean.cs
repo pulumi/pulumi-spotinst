@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Aws
     /// <summary>
     /// Provides a Spotinst Ocean AWS resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_aws.html.markdown.
     /// </summary>
     public partial class Ocean : Pulumi.CustomResource

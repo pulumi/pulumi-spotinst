@@ -12,6 +12,7 @@ namespace Pulumi.SpotInst.Aws
     /// <summary>
     /// Provides a Spotinst AWS ManagedInstance resource.
     /// 
+    /// 
     /// ## Load Balancers
     /// 
     ///    * `loadBalancersConfig` - (Optional) LB integration object.

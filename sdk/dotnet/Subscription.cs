@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst
     /// <summary>
     /// Provides a Spotinst subscription resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/subscription.html.markdown.
     /// </summary>
     public partial class Subscription : Pulumi.CustomResource

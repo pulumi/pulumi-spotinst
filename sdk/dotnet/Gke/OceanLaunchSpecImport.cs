@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Gke
     /// <summary>
     /// Provides a custom Spotinst Ocean GKE Launch Spec Import resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_launch_spec_import.html.markdown.
     /// </summary>
     public partial class OceanLaunchSpecImport : Pulumi.CustomResource

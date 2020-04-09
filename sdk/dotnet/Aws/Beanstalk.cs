@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Aws
     /// <summary>
     /// Provides a Spotinst AWS group resource using Elastic Beanstalk.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_aws_beanstalk.html.markdown.
     /// </summary>
     public partial class Beanstalk : Pulumi.CustomResource

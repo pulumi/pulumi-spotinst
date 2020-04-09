@@ -12,6 +12,8 @@ namespace Pulumi.SpotInst.Multai
     /// <summary>
     /// Provides a Spotinst Multai Target.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_target.html.markdown.
     /// </summary>
     public partial class Target : Pulumi.CustomResource

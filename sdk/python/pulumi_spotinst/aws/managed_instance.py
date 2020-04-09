@@ -165,6 +165,7 @@ class ManagedInstance(pulumi.CustomResource):
         """
         Provides a Spotinst AWS ManagedInstance resource.
 
+
         ## Load Balancers
 
            * `loadBalancersConfig` - (Optional) LB integration object.
