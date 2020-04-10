@@ -30,8 +30,6 @@ class Balancer(pulumi.CustomResource):
 
 
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_balancer.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.

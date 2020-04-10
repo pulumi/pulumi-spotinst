@@ -195,8 +195,6 @@ class ManagedInstance(pulumi.CustomResource):
 
         <a id="route53"></a>
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/managed_instance_aws.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`. 

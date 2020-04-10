@@ -241,8 +241,6 @@ class MrScalar(pulumi.CustomResource):
         * `min_capacity` - (Optional) New min capacity for the elastigroup.
         * `max_capacity` - (Optional) New max capacity for the elastigroup.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/mrscaler_aws.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
