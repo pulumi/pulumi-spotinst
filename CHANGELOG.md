@@ -2,12 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.3.0 (2020-04-014)
 * Upgrade to Pulumi v1.13.1
 * Upgrade to pulumi-terraform-bridge v1.8.4
 * Refactor layout to support Go modules
 * Upgrade to v1.14.3 of the SpotInst Terraform Provider
-
----
 
 ## 1.2.0 (2020-03-21)
 * Upgrade to Pulumi v1.12.1 
