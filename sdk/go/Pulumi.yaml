@@ -1,3 +1,0 @@
-name: spotinst
-description: A Pulumi resource provider for spotinst.
-language: go
