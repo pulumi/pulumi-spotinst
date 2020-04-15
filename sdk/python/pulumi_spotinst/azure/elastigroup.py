@@ -79,7 +79,7 @@ class Elastigroup(pulumi.CustomResource):
         """
         Provides a Spotinst elastigroup Azure resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_azure.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

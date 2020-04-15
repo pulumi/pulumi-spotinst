@@ -53,7 +53,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Provides a custom Spotinst Ocean GKE Launch Spec resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_launch_spec.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

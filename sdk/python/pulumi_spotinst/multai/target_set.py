@@ -46,7 +46,7 @@ class TargetSet(pulumi.CustomResource):
         """
         Provides a Spotinst Multai Target Set.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_target_set.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -8,6 +8,7 @@ sdk/nodejs/node_modules
 **/command-output/
 
 .idea/
+.vscode/
 *.iml
 
 yarn.lock

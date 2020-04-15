@@ -49,7 +49,7 @@ class OceanImport(pulumi.CustomResource):
         """
         Provides a Spotinst Ocean GKE import resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_import.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

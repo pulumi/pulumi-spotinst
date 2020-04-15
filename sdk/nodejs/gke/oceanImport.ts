@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -38,13 +40,6 @@ import * as utilities from "../utilities";
  *         "n1-standard-2",
  *     ],
  * });
- * ```
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * 
- * 
- * export const controllerClusterId = spotinst_ocean_gke_import_ocean_gke_example.clusterControllerId;
  * ```
  * 
  * ## scheduled task
