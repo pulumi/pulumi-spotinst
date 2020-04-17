@@ -9,7 +9,7 @@ class ElastiGroupStack : Stack
     {
         var sg = new Pulumi.Aws.Ec2.SecurityGroup("my-csharp-security-group");
 
-        var azs = Invokes.GetAvailabilityZones();
+        var azs = GetAvailabilityZones.InvokeAsync();
         
         var elastigroup = new Elastigroup("my-csharp-elastigroup", new ElastigroupArgs
         {
