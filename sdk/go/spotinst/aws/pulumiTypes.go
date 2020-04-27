@@ -162,22 +162,42 @@ func (o BeanstalkDeploymentPreferencesPtrOutput) Elem() BeanstalkDeploymentPrefe
 
 // Should roll perform automatically
 func (o BeanstalkDeploymentPreferencesPtrOutput) AutomaticRoll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BeanstalkDeploymentPreferences) *bool { return v.AutomaticRoll }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *BeanstalkDeploymentPreferences) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticRoll
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Percent size of each batch
 func (o BeanstalkDeploymentPreferencesPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BeanstalkDeploymentPreferences) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *BeanstalkDeploymentPreferences) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 // Amount of time to wait between batches
 func (o BeanstalkDeploymentPreferencesPtrOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BeanstalkDeploymentPreferences) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *BeanstalkDeploymentPreferences) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriod
+	}).(pulumi.IntPtrOutput)
 }
 
 // Strategy parameters
 func (o BeanstalkDeploymentPreferencesPtrOutput) Strategies() BeanstalkDeploymentPreferencesStrategyArrayOutput {
-	return o.ApplyT(func(v BeanstalkDeploymentPreferences) []BeanstalkDeploymentPreferencesStrategy { return v.Strategies }).(BeanstalkDeploymentPreferencesStrategyArrayOutput)
+	return o.ApplyT(func(v *BeanstalkDeploymentPreferences) []BeanstalkDeploymentPreferencesStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.Strategies
+	}).(BeanstalkDeploymentPreferencesStrategyArrayOutput)
 }
 
 type BeanstalkDeploymentPreferencesStrategy struct {
@@ -413,7 +433,12 @@ func (o BeanstalkManagedActionsPtrOutput) Elem() BeanstalkManagedActionsOutput {
 
 // Platform Update parameters
 func (o BeanstalkManagedActionsPtrOutput) PlatformUpdate() BeanstalkManagedActionsPlatformUpdatePtrOutput {
-	return o.ApplyT(func(v BeanstalkManagedActions) *BeanstalkManagedActionsPlatformUpdate { return v.PlatformUpdate }).(BeanstalkManagedActionsPlatformUpdatePtrOutput)
+	return o.ApplyT(func(v *BeanstalkManagedActions) *BeanstalkManagedActionsPlatformUpdate {
+		if v == nil {
+			return nil
+		}
+		return v.PlatformUpdate
+	}).(BeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
 
 type BeanstalkManagedActionsPlatformUpdate struct {
@@ -559,17 +584,32 @@ func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) Elem() BeanstalkManagedA
 
 // Actions to perform (options: timeWindow, never)
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) PerformAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BeanstalkManagedActionsPlatformUpdate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerformAt
+	}).(pulumi.StringPtrOutput)
 }
 
 // Time Window for when action occurs ex. Mon:23:50-Tue:00:20
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) TimeWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BeanstalkManagedActionsPlatformUpdate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindow
+	}).(pulumi.StringPtrOutput)
 }
 
 // - Level to update
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) UpdateLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BeanstalkManagedActionsPlatformUpdate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 type BeanstalkScheduledTask struct {
@@ -1242,17 +1282,28 @@ func (o ElastigroupIntegrationBeanstalkPtrOutput) Elem() ElastigroupIntegrationB
 }
 
 func (o ElastigroupIntegrationBeanstalkPtrOutput) DeploymentPreferences() ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkDeploymentPreferences {
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkDeploymentPreferences {
+		if v == nil {
+			return nil
+		}
 		return v.DeploymentPreferences
 	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkPtrOutput) EnvironmentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalk) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkPtrOutput) ManagedActions() ElastigroupIntegrationBeanstalkManagedActionsPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkManagedActions {
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalkManagedActions {
+		if v == nil {
+			return nil
+		}
 		return v.ManagedActions
 	}).(ElastigroupIntegrationBeanstalkManagedActionsPtrOutput)
 }
@@ -1399,19 +1450,37 @@ func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) Elem() El
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) AutomaticRoll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *bool { return v.AutomaticRoll }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkDeploymentPreferences) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticRoll
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkDeploymentPreferences) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkDeploymentPreferences) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriod
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) Strategy() ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkDeploymentPreferences) *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
+		if v == nil {
+			return nil
+		}
 		return v.Strategy
 	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput)
 }
@@ -1546,11 +1615,19 @@ func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput) E
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *string { return v.Action }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *bool {
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *bool {
+		if v == nil {
+			return nil
+		}
 		return v.ShouldDrainInstances
 	}).(pulumi.BoolPtrOutput)
 }
@@ -1679,7 +1756,10 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsPtrOutput) Elem() Elastigro
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPtrOutput) PlatformUpdate() ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActions) *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkManagedActions) *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
+		if v == nil {
+			return nil
+		}
 		return v.PlatformUpdate
 	}).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
@@ -1823,15 +1903,30 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) El
 
 // In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) PerformAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.PerformAt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerformAt
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) TimeWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.TimeWindow }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindow
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) UpdateLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationCodedeploy struct {
@@ -1967,18 +2062,31 @@ func (o ElastigroupIntegrationCodedeployPtrOutput) Elem() ElastigroupIntegration
 	return o.ApplyT(func(v *ElastigroupIntegrationCodedeploy) ElastigroupIntegrationCodedeploy { return *v }).(ElastigroupIntegrationCodedeployOutput)
 }
 
-func (o ElastigroupIntegrationCodedeployPtrOutput) CleanupOnFailure() pulumi.BoolOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationCodedeploy) bool { return v.CleanupOnFailure }).(pulumi.BoolOutput)
+func (o ElastigroupIntegrationCodedeployPtrOutput) CleanupOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationCodedeploy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CleanupOnFailure
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationCodedeployPtrOutput) DeploymentGroups() ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationCodedeploy) []ElastigroupIntegrationCodedeployDeploymentGroup {
+	return o.ApplyT(func(v *ElastigroupIntegrationCodedeploy) []ElastigroupIntegrationCodedeployDeploymentGroup {
+		if v == nil {
+			return nil
+		}
 		return v.DeploymentGroups
 	}).(ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput)
 }
 
-func (o ElastigroupIntegrationCodedeployPtrOutput) TerminateInstanceOnFailure() pulumi.BoolOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationCodedeploy) bool { return v.TerminateInstanceOnFailure }).(pulumi.BoolOutput)
+func (o ElastigroupIntegrationCodedeployPtrOutput) TerminateInstanceOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationCodedeploy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.TerminateInstanceOnFailure
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ElastigroupIntegrationCodedeployDeploymentGroup struct {
@@ -2237,31 +2345,57 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) Elem() ElastigroupIntegratio
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleCooldown
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) AutoscaleDown() ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleDown {
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleDown {
+		if v == nil {
+			return nil
+		}
 		return v.AutoscaleDown
 	}).(ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) AutoscaleHeadroom() ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
+		if v == nil {
+			return nil
+		}
 		return v.AutoscaleHeadroom
 	}).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
-func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterHost() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) string { return v.MasterHost }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterHost
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterPort() pulumi.IntOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) int { return v.MasterPort }).(pulumi.IntOutput)
+func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterPort
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationDockerSwarmAutoscaleDown struct {
@@ -2386,7 +2520,12 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) Elem() Elastigr
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarmAutoscaleDown) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationPeriods
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationDockerSwarmAutoscaleHeadroom struct {
@@ -2523,15 +2662,30 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) Elem() Elas
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumOfUnits
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationEcs struct {
@@ -2700,39 +2854,75 @@ func (o ElastigroupIntegrationEcsPtrOutput) Elem() ElastigroupIntegrationEcsOutp
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleAttributes() ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcs) []ElastigroupIntegrationEcsAutoscaleAttribute {
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) []ElastigroupIntegrationEcsAutoscaleAttribute {
+		if v == nil {
+			return nil
+		}
 		return v.AutoscaleAttributes
 	}).(ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcs) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleCooldown
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleDown() ElastigroupIntegrationEcsAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationEcsAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleDown {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleDown
+	}).(ElastigroupIntegrationEcsAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleHeadroom() ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleHeadroom {
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsAutoscaleHeadroom {
+		if v == nil {
+			return nil
+		}
 		return v.AutoscaleHeadroom
 	}).(ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsAutoConfig
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleScaleDownNonServiceTasks() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleScaleDownNonServiceTasks }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleScaleDownNonServiceTasks
+	}).(pulumi.BoolPtrOutput)
 }
 
-func (o ElastigroupIntegrationEcsPtrOutput) ClusterName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcs) string { return v.ClusterName }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationEcsPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterName
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationEcsAutoscaleAttribute struct {
@@ -2963,11 +3153,21 @@ func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) Elem() ElastigroupInteg
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleDown) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationPeriods
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleDown) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxScaleDownPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationEcsAutoscaleHeadroom struct {
@@ -3104,15 +3304,30 @@ func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) Elem() ElastigroupI
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumOfUnits
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationGitlab struct {
@@ -3235,7 +3450,12 @@ func (o ElastigroupIntegrationGitlabPtrOutput) Elem() ElastigroupIntegrationGitl
 }
 
 func (o ElastigroupIntegrationGitlabPtrOutput) Runner() ElastigroupIntegrationGitlabRunnerPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGitlab) *ElastigroupIntegrationGitlabRunner { return v.Runner }).(ElastigroupIntegrationGitlabRunnerPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGitlab) *ElastigroupIntegrationGitlabRunner {
+		if v == nil {
+			return nil
+		}
+		return v.Runner
+	}).(ElastigroupIntegrationGitlabRunnerPtrOutput)
 }
 
 type ElastigroupIntegrationGitlabRunner struct {
@@ -3358,7 +3578,12 @@ func (o ElastigroupIntegrationGitlabRunnerPtrOutput) Elem() ElastigroupIntegrati
 }
 
 func (o ElastigroupIntegrationGitlabRunnerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGitlabRunner) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGitlabRunner) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ElastigroupIntegrationKubernetes struct {
@@ -3541,49 +3766,93 @@ func (o ElastigroupIntegrationKubernetesPtrOutput) Elem() ElastigroupIntegration
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) ApiServer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.ApiServer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServer
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleCooldown
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleDown() ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleDown {
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleDown {
+		if v == nil {
+			return nil
+		}
 		return v.AutoscaleDown
 	}).(ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleHeadroom() ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleHeadroom {
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetesAutoscaleHeadroom {
+		if v == nil {
+			return nil
+		}
 		return v.AutoscaleHeadroom
 	}).(ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsAutoConfig
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleLabels() ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) []ElastigroupIntegrationKubernetesAutoscaleLabel {
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) []ElastigroupIntegrationKubernetesAutoscaleLabel {
+		if v == nil {
+			return nil
+		}
 		return v.AutoscaleLabels
 	}).(ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) ClusterIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.ClusterIdentifier }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterIdentifier
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) IntegrationMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.IntegrationMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrationMode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationKubernetesAutoscaleDown struct {
@@ -3708,7 +3977,12 @@ func (o ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) Elem() Elastigro
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetesAutoscaleDown) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationPeriods
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationKubernetesAutoscaleHeadroom struct {
@@ -3845,15 +4119,30 @@ func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) Elem() Elast
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetesAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumOfUnits
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationKubernetesAutoscaleLabel struct {
@@ -4077,8 +4366,13 @@ func (o ElastigroupIntegrationMesospherePtrOutput) Elem() ElastigroupIntegration
 	return o.ApplyT(func(v *ElastigroupIntegrationMesosphere) ElastigroupIntegrationMesosphere { return *v }).(ElastigroupIntegrationMesosphereOutput)
 }
 
-func (o ElastigroupIntegrationMesospherePtrOutput) ApiServer() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationMesosphere) string { return v.ApiServer }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationMesospherePtrOutput) ApiServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationMesosphere) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiServer
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationMultaiRuntime struct {
@@ -4200,8 +4494,13 @@ func (o ElastigroupIntegrationMultaiRuntimePtrOutput) Elem() ElastigroupIntegrat
 	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) ElastigroupIntegrationMultaiRuntime { return *v }).(ElastigroupIntegrationMultaiRuntimeOutput)
 }
 
-func (o ElastigroupIntegrationMultaiRuntimePtrOutput) DeploymentId() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationMultaiRuntime) string { return v.DeploymentId }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationMultaiRuntimePtrOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeploymentId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationNomad struct {
@@ -4370,39 +4669,75 @@ func (o ElastigroupIntegrationNomadPtrOutput) Elem() ElastigroupIntegrationNomad
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AclToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomad) *string { return v.AclToken }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AclToken
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleConstraints() ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomad) []ElastigroupIntegrationNomadAutoscaleConstraint {
+	return o.ApplyT(func(v *ElastigroupIntegrationNomad) []ElastigroupIntegrationNomadAutoscaleConstraint {
+		if v == nil {
+			return nil
+		}
 		return v.AutoscaleConstraints
 	}).(ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomad) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomad) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleCooldown
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleDown() ElastigroupIntegrationNomadAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationNomadAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleDown {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleDown
+	}).(ElastigroupIntegrationNomadAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleHeadroom() ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleHeadroom {
+	return o.ApplyT(func(v *ElastigroupIntegrationNomad) *ElastigroupIntegrationNomadAutoscaleHeadroom {
+		if v == nil {
+			return nil
+		}
 		return v.AutoscaleHeadroom
 	}).(ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomad) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomad) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
-func (o ElastigroupIntegrationNomadPtrOutput) MasterHost() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomad) string { return v.MasterHost }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationNomadPtrOutput) MasterHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationNomad) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterHost
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ElastigroupIntegrationNomadPtrOutput) MasterPort() pulumi.IntOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomad) int { return v.MasterPort }).(pulumi.IntOutput)
+func (o ElastigroupIntegrationNomadPtrOutput) MasterPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationNomad) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterPort
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationNomadAutoscaleConstraint struct {
@@ -4627,7 +4962,12 @@ func (o ElastigroupIntegrationNomadAutoscaleDownPtrOutput) Elem() ElastigroupInt
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomadAutoscaleDown) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationPeriods
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationNomadAutoscaleHeadroom struct {
@@ -4764,15 +5104,30 @@ func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) Elem() Elastigrou
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomadAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomadAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomadAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumOfUnits
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationRancher struct {
@@ -4912,20 +5267,40 @@ func (o ElastigroupIntegrationRancherPtrOutput) Elem() ElastigroupIntegrationRan
 	return o.ApplyT(func(v *ElastigroupIntegrationRancher) ElastigroupIntegrationRancher { return *v }).(ElastigroupIntegrationRancherOutput)
 }
 
-func (o ElastigroupIntegrationRancherPtrOutput) AccessKey() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationRancher) string { return v.AccessKey }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationRancherPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationRancher) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKey
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ElastigroupIntegrationRancherPtrOutput) MasterHost() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationRancher) string { return v.MasterHost }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationRancherPtrOutput) MasterHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationRancher) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterHost
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ElastigroupIntegrationRancherPtrOutput) SecretKey() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationRancher) string { return v.SecretKey }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationRancherPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationRancher) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretKey
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationRancherPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationRancher) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationRancher) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationRoute53 struct {
@@ -5048,7 +5423,12 @@ func (o ElastigroupIntegrationRoute53PtrOutput) Elem() ElastigroupIntegrationRou
 }
 
 func (o ElastigroupIntegrationRoute53PtrOutput) Domains() ElastigroupIntegrationRoute53DomainArrayOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationRoute53) []ElastigroupIntegrationRoute53Domain { return v.Domains }).(ElastigroupIntegrationRoute53DomainArrayOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationRoute53) []ElastigroupIntegrationRoute53Domain {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(ElastigroupIntegrationRoute53DomainArrayOutput)
 }
 
 type ElastigroupIntegrationRoute53Domain struct {
@@ -5642,13 +6022,23 @@ func (o ElastigroupRevertToSpotPtrOutput) Elem() ElastigroupRevertToSpotOutput {
 }
 
 // In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-func (o ElastigroupRevertToSpotPtrOutput) PerformAt() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
+func (o ElastigroupRevertToSpotPtrOutput) PerformAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupRevertToSpot) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PerformAt
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
 func (o ElastigroupRevertToSpotPtrOutput) TimeWindows() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ElastigroupRevertToSpot) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ElastigroupRevertToSpot) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
 }
 
 type ElastigroupScalingDownPolicy struct {
@@ -7067,19 +7457,39 @@ func (o ElastigroupStatefulDeallocationPtrOutput) Elem() ElastigroupStatefulDeal
 }
 
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteImages() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteImages }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldDeleteImages
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteNetworkInterfaces() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteNetworkInterfaces }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldDeleteNetworkInterfaces
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteSnapshots() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteSnapshots }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldDeleteSnapshots
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteVolumes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteVolumes }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldDeleteVolumes
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ElastigroupTag struct {
@@ -7322,19 +7732,39 @@ func (o ElastigroupUpdatePolicyPtrOutput) Elem() ElastigroupUpdatePolicyOutput {
 }
 
 func (o ElastigroupUpdatePolicyPtrOutput) AutoApplyTags() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicy) *bool { return v.AutoApplyTags }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoApplyTags
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyPtrOutput) RollConfig() ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig { return v.RollConfig }).(ElastigroupUpdatePolicyRollConfigPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RollConfig
+	}).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 
-func (o ElastigroupUpdatePolicyPtrOutput) ShouldResumeStateful() pulumi.BoolOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicy) bool { return v.ShouldResumeStateful }).(pulumi.BoolOutput)
+func (o ElastigroupUpdatePolicyPtrOutput) ShouldResumeStateful() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldResumeStateful
+	}).(pulumi.BoolPtrOutput)
 }
 
-func (o ElastigroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+func (o ElastigroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldRoll
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ElastigroupUpdatePolicyRollConfig struct {
@@ -7491,31 +7921,59 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Elem() ElastigroupUpdatePoli
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) ElastigroupUpdatePolicyRollConfig { return *v }).(ElastigroupUpdatePolicyRollConfigOutput)
 }
 
-func (o ElastigroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+func (o ElastigroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriod
+	}).(pulumi.IntPtrOutput)
 }
 
 // The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Strategy() ElastigroupUpdatePolicyRollConfigStrategyPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfigStrategy {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfigStrategy {
+		if v == nil {
+			return nil
+		}
 		return v.Strategy
 	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForRollPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForRollTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategy struct {
@@ -7651,16 +8109,31 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) Elem() ElastigroupUp
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOutput)
 }
 
-func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) string { return v.Action }).(pulumi.StringOutput)
+func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Action
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchMinHealthyPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldDrainInstances
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ManagedInstanceIntegrationRoute53 struct {
@@ -7783,7 +8256,12 @@ func (o ManagedInstanceIntegrationRoute53PtrOutput) Elem() ManagedInstanceIntegr
 }
 
 func (o ManagedInstanceIntegrationRoute53PtrOutput) Domains() ManagedInstanceIntegrationRoute53DomainArrayOutput {
-	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53) []ManagedInstanceIntegrationRoute53Domain { return v.Domains }).(ManagedInstanceIntegrationRoute53DomainArrayOutput)
+	return o.ApplyT(func(v *ManagedInstanceIntegrationRoute53) []ManagedInstanceIntegrationRoute53Domain {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(ManagedInstanceIntegrationRoute53DomainArrayOutput)
 }
 
 type ManagedInstanceIntegrationRoute53Domain struct {
@@ -8372,8 +8850,13 @@ func (o ManagedInstanceRevertToSpotPtrOutput) Elem() ManagedInstanceRevertToSpot
 
 // Valid values: “always”, “never”, "timeWindow".
 // Default `"never"`.
-func (o ManagedInstanceRevertToSpotPtrOutput) PerformAt() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedInstanceRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
+func (o ManagedInstanceRevertToSpotPtrOutput) PerformAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceRevertToSpot) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PerformAt
+	}).(pulumi.StringPtrOutput)
 }
 
 type ManagedInstanceScheduledTask struct {
@@ -9770,12 +10253,22 @@ func (o MrScalarProvisioningTimeoutPtrOutput) Elem() MrScalarProvisioningTimeout
 	return o.ApplyT(func(v *MrScalarProvisioningTimeout) MrScalarProvisioningTimeout { return *v }).(MrScalarProvisioningTimeoutOutput)
 }
 
-func (o MrScalarProvisioningTimeoutPtrOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func(v MrScalarProvisioningTimeout) int { return v.Timeout }).(pulumi.IntOutput)
+func (o MrScalarProvisioningTimeoutPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MrScalarProvisioningTimeout) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o MrScalarProvisioningTimeoutPtrOutput) TimeoutAction() pulumi.StringOutput {
-	return o.ApplyT(func(v MrScalarProvisioningTimeout) string { return v.TimeoutAction }).(pulumi.StringOutput)
+func (o MrScalarProvisioningTimeoutPtrOutput) TimeoutAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MrScalarProvisioningTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeoutAction
+	}).(pulumi.StringPtrOutput)
 }
 
 type MrScalarScheduledTask struct {
@@ -10803,37 +11296,72 @@ func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
 
 // Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
 func (o OceanAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoHeadroomPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 // Cooldown period between scaling actions.
 func (o OceanAutoscalerPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleCooldown
+	}).(pulumi.IntPtrOutput)
 }
 
 // Auto Scaling scale down operations.
 func (o OceanAutoscalerPtrOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleDown { return v.AutoscaleDown }).(OceanAutoscalerAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerAutoscaleDown {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleDown
+	}).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
 // Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanAutoscalerPtrOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom { return v.AutoscaleHeadroom }).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleHeadroom
+	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
 // Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsAutoConfig
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Enable the Ocean Kubernetes autoscaler.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerResourceLimits {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLimits
+	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
 type OceanAutoscalerAutoscaleDown struct {
@@ -10970,12 +11498,22 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) Elem() OceanAutoscalerAutoscaleDo
 
 // The number of evaluation periods that should accumulate before a scale down action takes place.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationPeriods
+	}).(pulumi.IntPtrOutput)
 }
 
 // Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxScaleDownPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 type OceanAutoscalerAutoscaleHeadroom struct {
@@ -11130,22 +11668,42 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanAutoscalerAutosca
 
 // Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the number of GPUS to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GpuPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 // The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumOfUnits
+	}).(pulumi.IntPtrOutput)
 }
 
 type OceanAutoscalerResourceLimits struct {
@@ -11282,12 +11840,22 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLi
 
 // The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemoryGib
+	}).(pulumi.IntPtrOutput)
 }
 
 // The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVcpu
+	}).(pulumi.IntPtrOutput)
 }
 
 type OceanLaunchSpecAutoscaleHeadroom struct {
@@ -12094,11 +12662,21 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) Elem() OceanScheduledTaskShutd
 }
 
 func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
 }
 
 type OceanScheduledTaskTask struct {
@@ -12443,11 +13021,21 @@ func (o OceanUpdatePolicyPtrOutput) Elem() OceanUpdatePolicyOutput {
 }
 
 func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
+	return o.ApplyT(func(v *OceanUpdatePolicy) *OceanUpdatePolicyRollConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RollConfig
+	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
-func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func(v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldRoll
+	}).(pulumi.BoolPtrOutput)
 }
 
 type OceanUpdatePolicyRollConfig struct {
@@ -12569,8 +13157,13 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) Elem() OceanUpdatePolicyRollConfig
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig { return *v }).(OceanUpdatePolicyRollConfigOutput)
 }
 
-func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 func init() {

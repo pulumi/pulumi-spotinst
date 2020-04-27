@@ -180,37 +180,72 @@ func (o HealthCheckCheckPtrOutput) Elem() HealthCheckCheckOutput {
 	return o.ApplyT(func(v *HealthCheckCheck) HealthCheckCheck { return *v }).(HealthCheckCheckOutput)
 }
 
-func (o HealthCheckCheckPtrOutput) EndPoint() pulumi.StringOutput {
-	return o.ApplyT(func(v HealthCheckCheck) string { return v.EndPoint }).(pulumi.StringOutput)
+func (o HealthCheckCheckPtrOutput) EndPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HealthCheckCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndPoint
+	}).(pulumi.StringPtrOutput)
 }
 
 // The number of consecutive successful health checks that must occur before declaring an instance healthy.
-func (o HealthCheckCheckPtrOutput) Healthy() pulumi.IntOutput {
-	return o.ApplyT(func(v HealthCheckCheck) int { return v.Healthy }).(pulumi.IntOutput)
+func (o HealthCheckCheckPtrOutput) Healthy() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HealthCheckCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Healthy
+	}).(pulumi.IntPtrOutput)
 }
 
 // The amount of time (in seconds) between each health check (minimum: 10).
-func (o HealthCheckCheckPtrOutput) Interval() pulumi.IntOutput {
-	return o.ApplyT(func(v HealthCheckCheck) int { return v.Interval }).(pulumi.IntOutput)
+func (o HealthCheckCheckPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HealthCheckCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Interval
+	}).(pulumi.IntPtrOutput)
 }
 
 // The port of the Spotinst HCS (default: 80).
-func (o HealthCheckCheckPtrOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v HealthCheckCheck) int { return v.Port }).(pulumi.IntOutput)
+func (o HealthCheckCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HealthCheckCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 // The protocol to use to connect with the instance. Valid values: http, https.
-func (o HealthCheckCheckPtrOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v HealthCheckCheck) string { return v.Protocol }).(pulumi.StringOutput)
+func (o HealthCheckCheckPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HealthCheckCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Protocol
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o HealthCheckCheckPtrOutput) TimeOut() pulumi.IntOutput {
-	return o.ApplyT(func(v HealthCheckCheck) int { return v.TimeOut }).(pulumi.IntOutput)
+func (o HealthCheckCheckPtrOutput) TimeOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HealthCheckCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeOut
+	}).(pulumi.IntPtrOutput)
 }
 
 // The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
-func (o HealthCheckCheckPtrOutput) Unhealthy() pulumi.IntOutput {
-	return o.ApplyT(func(v HealthCheckCheck) int { return v.Unhealthy }).(pulumi.IntOutput)
+func (o HealthCheckCheckPtrOutput) Unhealthy() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HealthCheckCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Unhealthy
+	}).(pulumi.IntPtrOutput)
 }
 
 func init() {

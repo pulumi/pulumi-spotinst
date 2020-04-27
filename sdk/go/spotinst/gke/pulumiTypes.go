@@ -801,12 +801,22 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) Elem() ElastigroupIntegratio
 	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) ElastigroupIntegrationDockerSwarm { return *v }).(ElastigroupIntegrationDockerSwarmOutput)
 }
 
-func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterHost() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) string { return v.MasterHost }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterHost
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterPort() pulumi.IntOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) int { return v.MasterPort }).(pulumi.IntOutput)
+func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterPort
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationGke struct {
@@ -982,42 +992,85 @@ func (o ElastigroupIntegrationGkePtrOutput) Elem() ElastigroupIntegrationGkeOutp
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) AutoUpdate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoUpdate }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoUpdate
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleCooldown
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleDown() ElastigroupIntegrationGkeAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleDown {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleDown
+	}).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleHeadroom() ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleHeadroom {
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleHeadroom {
+		if v == nil {
+			return nil
+		}
 		return v.AutoscaleHeadroom
 	}).(ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput)
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsAutoConfig
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleLabels() ElastigroupIntegrationGkeAutoscaleLabelArrayOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) []ElastigroupIntegrationGkeAutoscaleLabel { return v.AutoscaleLabels }).(ElastigroupIntegrationGkeAutoscaleLabelArrayOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) []ElastigroupIntegrationGkeAutoscaleLabel {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleLabels
+	}).(ElastigroupIntegrationGkeAutoscaleLabelArrayOutput)
 }
 
 // The name of the GKE cluster you wish to import.
 func (o ElastigroupIntegrationGkePtrOutput) ClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) *string { return v.Location }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationGkeAutoscaleDown struct {
@@ -1140,7 +1193,12 @@ func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) Elem() ElastigroupInteg
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleDown) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationPeriods
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationGkeAutoscaleHeadroom struct {
@@ -1277,15 +1335,30 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) Elem() ElastigroupI
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumOfUnits
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupIntegrationGkeAutoscaleLabel struct {
@@ -2914,11 +2987,21 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) Elem() OceanImportSchedu
 }
 
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
 }
 
 type OceanImportScheduledTaskTask struct {
