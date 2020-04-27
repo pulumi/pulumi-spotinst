@@ -142,15 +142,30 @@ func (o ElastigroupHealthCheckPtrOutput) Elem() ElastigroupHealthCheckOutput {
 }
 
 func (o ElastigroupHealthCheckPtrOutput) AutoHealing() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupHealthCheck) *bool { return v.AutoHealing }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupHealthCheck) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoHealing
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupHealthCheckPtrOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupHealthCheck) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriod
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o ElastigroupHealthCheckPtrOutput) HealthCheckType() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupHealthCheck) string { return v.HealthCheckType }).(pulumi.StringOutput)
+func (o ElastigroupHealthCheckPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HealthCheckType
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupImage struct {
@@ -587,8 +602,13 @@ func (o ElastigroupIntegrationKubernetesPtrOutput) Elem() ElastigroupIntegration
 	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) ElastigroupIntegrationKubernetes { return *v }).(ElastigroupIntegrationKubernetesOutput)
 }
 
-func (o ElastigroupIntegrationKubernetesPtrOutput) ClusterIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) string { return v.ClusterIdentifier }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationKubernetesPtrOutput) ClusterIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterIdentifier
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupIntegrationMultaiRuntime struct {
@@ -710,8 +730,13 @@ func (o ElastigroupIntegrationMultaiRuntimePtrOutput) Elem() ElastigroupIntegrat
 	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) ElastigroupIntegrationMultaiRuntime { return *v }).(ElastigroupIntegrationMultaiRuntimeOutput)
 }
 
-func (o ElastigroupIntegrationMultaiRuntimePtrOutput) DeploymentId() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationMultaiRuntime) string { return v.DeploymentId }).(pulumi.StringOutput)
+func (o ElastigroupIntegrationMultaiRuntimePtrOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeploymentId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupLoadBalancer struct {
@@ -960,15 +985,30 @@ func (o ElastigroupLoginPtrOutput) Elem() ElastigroupLoginOutput {
 }
 
 func (o ElastigroupLoginPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupLogin) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupLogin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupLoginPtrOutput) SshPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupLogin) *string { return v.SshPublicKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupLogin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SshPublicKey
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ElastigroupLoginPtrOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupLogin) string { return v.UserName }).(pulumi.StringOutput)
+func (o ElastigroupLoginPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupLogin) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserName
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupManagedServiceIdentity struct {
@@ -1226,24 +1266,49 @@ func (o ElastigroupNetworkPtrOutput) Elem() ElastigroupNetworkOutput {
 }
 
 func (o ElastigroupNetworkPtrOutput) AdditionalIpConfigs() ElastigroupNetworkAdditionalIpConfigArrayOutput {
-	return o.ApplyT(func(v ElastigroupNetwork) []ElastigroupNetworkAdditionalIpConfig { return v.AdditionalIpConfigs }).(ElastigroupNetworkAdditionalIpConfigArrayOutput)
+	return o.ApplyT(func(v *ElastigroupNetwork) []ElastigroupNetworkAdditionalIpConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalIpConfigs
+	}).(ElastigroupNetworkAdditionalIpConfigArrayOutput)
 }
 
 func (o ElastigroupNetworkPtrOutput) AssignPublicIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ElastigroupNetwork) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ElastigroupNetwork) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AssignPublicIp
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The Resource Group that the user-assigned managed identity resides in.
-func (o ElastigroupNetworkPtrOutput) ResourceGroupName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupNetwork) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+func (o ElastigroupNetworkPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceGroupName
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ElastigroupNetworkPtrOutput) SubnetName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupNetwork) string { return v.SubnetName }).(pulumi.StringOutput)
+func (o ElastigroupNetworkPtrOutput) SubnetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetName
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ElastigroupNetworkPtrOutput) VirtualNetworkName() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupNetwork) string { return v.VirtualNetworkName }).(pulumi.StringOutput)
+func (o ElastigroupNetworkPtrOutput) VirtualNetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkName
+	}).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupNetworkAdditionalIpConfig struct {
@@ -2250,17 +2315,32 @@ func (o ElastigroupStrategyPtrOutput) Elem() ElastigroupStrategyOutput {
 
 // Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
 func (o ElastigroupStrategyPtrOutput) DrainingTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupStrategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupStrategy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DrainingTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 // Percentage of Low Priority instances to maintain. Required if `odCount` is not specified.
 func (o ElastigroupStrategyPtrOutput) LowPriorityPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupStrategy) *int { return v.LowPriorityPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupStrategy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LowPriorityPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 // Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
 func (o ElastigroupStrategyPtrOutput) OdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupStrategy) *int { return v.OdCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupStrategy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type ElastigroupUpdatePolicy struct {
@@ -2389,11 +2469,21 @@ func (o ElastigroupUpdatePolicyPtrOutput) Elem() ElastigroupUpdatePolicyOutput {
 }
 
 func (o ElastigroupUpdatePolicyPtrOutput) RollConfig() ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig { return v.RollConfig }).(ElastigroupUpdatePolicyRollConfigPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RollConfig
+	}).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 
-func (o ElastigroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+func (o ElastigroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldRoll
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ElastigroupUpdatePolicyRollConfig struct {
@@ -2527,16 +2617,31 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Elem() ElastigroupUpdatePoli
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) ElastigroupUpdatePolicyRollConfig { return *v }).(ElastigroupUpdatePolicyRollConfigOutput)
 }
 
-func (o ElastigroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+func (o ElastigroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) GracePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriod
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckType
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

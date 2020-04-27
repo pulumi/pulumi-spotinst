@@ -144,12 +144,22 @@ func (o BalancerConnectionTimeoutsPtrOutput) Elem() BalancerConnectionTimeoutsOu
 
 // The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
 func (o BalancerConnectionTimeoutsPtrOutput) Draining() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BalancerConnectionTimeouts) *int { return v.Draining }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *BalancerConnectionTimeouts) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Draining
+	}).(pulumi.IntPtrOutput)
 }
 
 // The idle timeout value, in seconds. (range: 1 - 3600).
 func (o BalancerConnectionTimeoutsPtrOutput) Idle() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BalancerConnectionTimeouts) *int { return v.Idle }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *BalancerConnectionTimeouts) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Idle
+	}).(pulumi.IntPtrOutput)
 }
 
 type BalancerTag struct {
@@ -538,32 +548,62 @@ func (o ListenerTlsConfigPtrOutput) Elem() ListenerTlsConfigOutput {
 
 // Contains one or more certificate chains to present to the other side of the connection.
 func (o ListenerTlsConfigPtrOutput) CertificateIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ListenerTlsConfig) []string { return v.CertificateIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ListenerTlsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateIds
+	}).(pulumi.StringArrayOutput)
 }
 
 // List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
 func (o ListenerTlsConfigPtrOutput) CipherSuites() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ListenerTlsConfig) []string { return v.CipherSuites }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ListenerTlsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CipherSuites
+	}).(pulumi.StringArrayOutput)
 }
 
 // MaxVersion contains the maximum SSL/TLS version that is acceptable.
-func (o ListenerTlsConfigPtrOutput) MaxVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v ListenerTlsConfig) string { return v.MaxVersion }).(pulumi.StringOutput)
+func (o ListenerTlsConfigPtrOutput) MaxVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 // MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
-func (o ListenerTlsConfigPtrOutput) MinVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v ListenerTlsConfig) string { return v.MinVersion }).(pulumi.StringOutput)
+func (o ListenerTlsConfigPtrOutput) MinVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListenerTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MinVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 // Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
-func (o ListenerTlsConfigPtrOutput) PreferServerCipherSuites() pulumi.BoolOutput {
-	return o.ApplyT(func(v ListenerTlsConfig) bool { return v.PreferServerCipherSuites }).(pulumi.BoolOutput)
+func (o ListenerTlsConfigPtrOutput) PreferServerCipherSuites() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerTlsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.PreferServerCipherSuites
+	}).(pulumi.BoolPtrOutput)
 }
 
 // May be set to true to disable session ticket (resumption) support.
-func (o ListenerTlsConfigPtrOutput) SessionTicketsDisabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ListenerTlsConfig) bool { return v.SessionTicketsDisabled }).(pulumi.BoolOutput)
+func (o ListenerTlsConfigPtrOutput) SessionTicketsDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerTlsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SessionTicketsDisabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type RoutingRuleTag struct {
@@ -852,38 +892,73 @@ func (o TargetSetHealthCheckPtrOutput) Elem() TargetSetHealthCheckOutput {
 }
 
 // Total number of allowed healthy Targets.
-func (o TargetSetHealthCheckPtrOutput) HealthyThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v TargetSetHealthCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+func (o TargetSetHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetSetHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HealthyThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 // The interval for the health check.
-func (o TargetSetHealthCheckPtrOutput) Interval() pulumi.IntOutput {
-	return o.ApplyT(func(v TargetSetHealthCheck) int { return v.Interval }).(pulumi.IntOutput)
+func (o TargetSetHealthCheckPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetSetHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Interval
+	}).(pulumi.IntPtrOutput)
 }
 
 // The path to perform the health check.
-func (o TargetSetHealthCheckPtrOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v TargetSetHealthCheck) string { return v.Path }).(pulumi.StringOutput)
+func (o TargetSetHealthCheckPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetSetHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
 // The port on which the load balancer is listening.
 func (o TargetSetHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TargetSetHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *TargetSetHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 // The protocol to allow connections to the target for the health check.
-func (o TargetSetHealthCheckPtrOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v TargetSetHealthCheck) string { return v.Protocol }).(pulumi.StringOutput)
+func (o TargetSetHealthCheckPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetSetHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Protocol
+	}).(pulumi.StringPtrOutput)
 }
 
 // The time out for the health check.
-func (o TargetSetHealthCheckPtrOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func(v TargetSetHealthCheck) int { return v.Timeout }).(pulumi.IntOutput)
+func (o TargetSetHealthCheckPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetSetHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 // Total number of allowed unhealthy Targets.
-func (o TargetSetHealthCheckPtrOutput) UnhealthyThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v TargetSetHealthCheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+func (o TargetSetHealthCheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetSetHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.UnhealthyThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 type TargetSetTag struct {

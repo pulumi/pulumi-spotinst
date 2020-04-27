@@ -180,32 +180,62 @@ func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
 
 // Cooldown period between scaling actions.
 func (o OceanAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cooldown
+	}).(pulumi.IntPtrOutput)
 }
 
 // Auto Scaling scale down operations.
 func (o OceanAutoscalerPtrOutput) Down() OceanAutoscalerDownPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerDown { return v.Down }).(OceanAutoscalerDownPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerDown {
+		if v == nil {
+			return nil
+		}
+		return v.Down
+	}).(OceanAutoscalerDownPtrOutput)
 }
 
 // Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
 func (o OceanAutoscalerPtrOutput) Headroom() OceanAutoscalerHeadroomPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerHeadroom { return v.Headroom }).(OceanAutoscalerHeadroomPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerHeadroom {
+		if v == nil {
+			return nil
+		}
+		return v.Headroom
+	}).(OceanAutoscalerHeadroomPtrOutput)
 }
 
 // Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.IsAutoConfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoConfig
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Enable the Ocean ECS autoscaler.
 func (o OceanAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerResourceLimits {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLimits
+	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
 type OceanAutoscalerDown struct {
@@ -333,7 +363,12 @@ func (o OceanAutoscalerDownPtrOutput) Elem() OceanAutoscalerDownOutput {
 
 // Would represent the maximum % to scale-down. Number between 1-100
 func (o OceanAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerDown) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxScaleDownPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 type OceanAutoscalerHeadroom struct {
@@ -479,17 +514,32 @@ func (o OceanAutoscalerHeadroomPtrOutput) Elem() OceanAutoscalerHeadroomOutput {
 
 // Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 // Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryPerUnit
+	}).(pulumi.IntPtrOutput)
 }
 
 // The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumOfUnits
+	}).(pulumi.IntPtrOutput)
 }
 
 type OceanAutoscalerResourceLimits struct {
@@ -626,12 +676,22 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLi
 
 // The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemoryGib
+	}).(pulumi.IntPtrOutput)
 }
 
 // The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVcpu
+	}).(pulumi.IntPtrOutput)
 }
 
 type OceanLaunchSpecAttribute struct {
@@ -1092,11 +1152,21 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) Elem() OceanScheduledTaskShutd
 
 // Enable the Ocean ECS autoscaler.
 func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
 }
 
 type OceanScheduledTaskTask struct {
@@ -1444,11 +1514,21 @@ func (o OceanUpdatePolicyPtrOutput) Elem() OceanUpdatePolicyOutput {
 }
 
 func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
+	return o.ApplyT(func(v *OceanUpdatePolicy) *OceanUpdatePolicyRollConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RollConfig
+	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
-func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolOutput {
-	return o.ApplyT(func(v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldRoll
+	}).(pulumi.BoolPtrOutput)
 }
 
 type OceanUpdatePolicyRollConfig struct {
@@ -1570,8 +1650,13 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) Elem() OceanUpdatePolicyRollConfig
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig { return *v }).(OceanUpdatePolicyRollConfigOutput)
 }
 
-func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntOutput {
-	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 func init() {
