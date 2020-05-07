@@ -15,9 +15,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         [Input("cronExpression", required: true)]
         public Input<string> CronExpression { get; set; } = null!;
 
-        /// <summary>
-        /// Enable the Ocean ECS autoscaler.
-        /// </summary>
         [Input("isEnabled", required: true)]
         public Input<bool> IsEnabled { get; set; } = null!;
 

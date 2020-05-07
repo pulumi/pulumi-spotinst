@@ -37,9 +37,6 @@ export class Ocean extends pulumi.CustomResource {
      * Configure public IP address allocation.
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
-    /**
-     * Describes the Ocean ECS autoscaler.
-     */
     public readonly autoscaler!: pulumi.Output<outputs.ecs.OceanAutoscaler | undefined>;
     /**
      * The ocean cluster name.
@@ -112,7 +109,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly utilizeReservedInstances!: pulumi.Output<boolean | undefined>;
     /**
-     * Instance types allowed in the Ocean cluster.
+     * Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
      */
     public readonly whitelists!: pulumi.Output<string[] | undefined>;
 
@@ -206,9 +203,6 @@ export interface OceanState {
      * Configure public IP address allocation.
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
-    /**
-     * Describes the Ocean ECS autoscaler.
-     */
     readonly autoscaler?: pulumi.Input<inputs.ecs.OceanAutoscaler>;
     /**
      * The ocean cluster name.
@@ -281,7 +275,7 @@ export interface OceanState {
      */
     readonly utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
-     * Instance types allowed in the Ocean cluster.
+     * Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
      */
     readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -294,9 +288,6 @@ export interface OceanArgs {
      * Configure public IP address allocation.
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
-    /**
-     * Describes the Ocean ECS autoscaler.
-     */
     readonly autoscaler?: pulumi.Input<inputs.ecs.OceanAutoscaler>;
     /**
      * The ocean cluster name.
@@ -369,7 +360,7 @@ export interface OceanArgs {
      */
     readonly utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
-     * Instance types allowed in the Ocean cluster.
+     * Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
      */
     readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

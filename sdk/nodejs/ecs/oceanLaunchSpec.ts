@@ -31,6 +31,10 @@ import * as utilities from "../utilities";
  *     imageId: "ami-123456",
  *     oceanId: "o-123456",
  *     securityGroupIds: ["awseb-12345"],
+ *     tags: [{
+ *         key: "Env",
+ *         value: "production",
+ *     }],
  *     userData: "echo hello world",
  * });
  * ```
@@ -93,6 +97,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
+     * A key/value mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<outputs.ecs.OceanLaunchSpecTag[] | undefined>;
+    /**
      * Base64-encoded MIME user data to make available to the instances.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
@@ -116,6 +124,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
@@ -129,6 +138,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
         }
         if (!opts) {
@@ -175,6 +185,10 @@ export interface OceanLaunchSpecState {
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * A key/value mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecTag>[]>;
+    /**
      * Base64-encoded MIME user data to make available to the instances.
      */
     readonly userData?: pulumi.Input<string>;
@@ -212,6 +226,10 @@ export interface OceanLaunchSpecArgs {
      * One or more security group ids.
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A key/value mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecTag>[]>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */

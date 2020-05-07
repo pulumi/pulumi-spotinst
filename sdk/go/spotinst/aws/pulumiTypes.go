@@ -7977,9 +7977,10 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollTimeout() pulumi.
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategy struct {
-	Action                    string `pulumi:"action"`
-	BatchMinHealthyPercentage *int   `pulumi:"batchMinHealthyPercentage"`
-	ShouldDrainInstances      *bool  `pulumi:"shouldDrainInstances"`
+	Action                    string                                              `pulumi:"action"`
+	BatchMinHealthyPercentage *int                                                `pulumi:"batchMinHealthyPercentage"`
+	OnFailure                 *ElastigroupUpdatePolicyRollConfigStrategyOnFailure `pulumi:"onFailure"`
+	ShouldDrainInstances      *bool                                               `pulumi:"shouldDrainInstances"`
 }
 
 // ElastigroupUpdatePolicyRollConfigStrategyInput is an input type that accepts ElastigroupUpdatePolicyRollConfigStrategyArgs and ElastigroupUpdatePolicyRollConfigStrategyOutput values.
@@ -7995,9 +7996,10 @@ type ElastigroupUpdatePolicyRollConfigStrategyInput interface {
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategyArgs struct {
-	Action                    pulumi.StringInput  `pulumi:"action"`
-	BatchMinHealthyPercentage pulumi.IntPtrInput  `pulumi:"batchMinHealthyPercentage"`
-	ShouldDrainInstances      pulumi.BoolPtrInput `pulumi:"shouldDrainInstances"`
+	Action                    pulumi.StringInput                                         `pulumi:"action"`
+	BatchMinHealthyPercentage pulumi.IntPtrInput                                         `pulumi:"batchMinHealthyPercentage"`
+	OnFailure                 ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput `pulumi:"onFailure"`
+	ShouldDrainInstances      pulumi.BoolPtrInput                                        `pulumi:"shouldDrainInstances"`
 }
 
 func (ElastigroupUpdatePolicyRollConfigStrategyArgs) ElementType() reflect.Type {
@@ -8085,6 +8087,12 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) BatchMinHealthyPercenta
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
+func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) OnFailure() ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
+		return v.OnFailure
+	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput)
+}
+
 func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *bool { return v.ShouldDrainInstances }).(pulumi.BoolPtrOutput)
 }
@@ -8127,12 +8135,217 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) BatchMinHealthyPerce
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) OnFailure() ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) *ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
+		if v == nil {
+			return nil
+		}
+		return v.OnFailure
+	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput)
+}
+
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) ShouldDrainInstances() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) *bool {
 		if v == nil {
 			return nil
 		}
 		return v.ShouldDrainInstances
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ElastigroupUpdatePolicyRollConfigStrategyOnFailure struct {
+	ActionType string `pulumi:"actionType"`
+	BatchNum   *int   `pulumi:"batchNum"`
+	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+	DrainingTimeout               *int  `pulumi:"drainingTimeout"`
+	ShouldDecrementTargetCapacity *bool `pulumi:"shouldDecrementTargetCapacity"`
+	ShouldHandleAllBatches        *bool `pulumi:"shouldHandleAllBatches"`
+}
+
+// ElastigroupUpdatePolicyRollConfigStrategyOnFailureInput is an input type that accepts ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs and ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput values.
+// You can construct a concrete instance of `ElastigroupUpdatePolicyRollConfigStrategyOnFailureInput` via:
+//
+// 		 ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs{...}
+//
+type ElastigroupUpdatePolicyRollConfigStrategyOnFailureInput interface {
+	pulumi.Input
+
+	ToElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput() ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput
+	ToElastigroupUpdatePolicyRollConfigStrategyOnFailureOutputWithContext(context.Context) ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput
+}
+
+type ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs struct {
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+	BatchNum   pulumi.IntPtrInput `pulumi:"batchNum"`
+	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+	DrainingTimeout               pulumi.IntPtrInput  `pulumi:"drainingTimeout"`
+	ShouldDecrementTargetCapacity pulumi.BoolPtrInput `pulumi:"shouldDecrementTargetCapacity"`
+	ShouldHandleAllBatches        pulumi.BoolPtrInput `pulumi:"shouldHandleAllBatches"`
+}
+
+func (ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigStrategyOnFailure)(nil)).Elem()
+}
+
+func (i ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs) ToElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput() ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput {
+	return i.ToElastigroupUpdatePolicyRollConfigStrategyOnFailureOutputWithContext(context.Background())
+}
+
+func (i ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs) ToElastigroupUpdatePolicyRollConfigStrategyOnFailureOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput)
+}
+
+func (i ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs) ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput() ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
+	return i.ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs) ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput).ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutputWithContext(ctx)
+}
+
+// ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput is an input type that accepts ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs, ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtr and ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput values.
+// You can construct a concrete instance of `ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput` via:
+//
+// 		 ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput interface {
+	pulumi.Input
+
+	ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput() ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput
+	ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutputWithContext(context.Context) ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput
+}
+
+type elastigroupUpdatePolicyRollConfigStrategyOnFailurePtrType ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs
+
+func ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtr(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs) ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput {
+	return (*elastigroupUpdatePolicyRollConfigStrategyOnFailurePtrType)(v)
+}
+
+func (*elastigroupUpdatePolicyRollConfigStrategyOnFailurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupUpdatePolicyRollConfigStrategyOnFailure)(nil)).Elem()
+}
+
+func (i *elastigroupUpdatePolicyRollConfigStrategyOnFailurePtrType) ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput() ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
+	return i.ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupUpdatePolicyRollConfigStrategyOnFailurePtrType) ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput)
+}
+
+type ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigStrategyOnFailure)(nil)).Elem()
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ToElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput() ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput {
+	return o
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ToElastigroupUpdatePolicyRollConfigStrategyOnFailureOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput {
+	return o
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput() ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
+	return o.ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
+		return &v
+	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput)
+}
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) BatchNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *int { return v.BatchNum }).(pulumi.IntPtrOutput)
+}
+
+// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ShouldDecrementTargetCapacity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool {
+		return v.ShouldDecrementTargetCapacity
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ShouldHandleAllBatches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool { return v.ShouldHandleAllBatches }).(pulumi.BoolPtrOutput)
+}
+
+type ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupUpdatePolicyRollConfigStrategyOnFailure)(nil)).Elem()
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput() ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
+	return o
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
+	return o
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) Elem() ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
+		return *v
+	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput)
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ActionType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) BatchNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchNum
+	}).(pulumi.IntPtrOutput)
+}
+
+// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DrainingTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ShouldDecrementTargetCapacity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldDecrementTargetCapacity
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ShouldHandleAllBatches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldHandleAllBatches
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -9517,24 +9730,32 @@ func (o MrScalarCoreEbsBlockDeviceArrayOutput) Index(i pulumi.IntInput) MrScalar
 }
 
 type MrScalarCoreScalingDownPolicy struct {
-	ActionType        *string                `pulumi:"actionType"`
-	Adjustment        *string                `pulumi:"adjustment"`
-	Cooldown          *int                   `pulumi:"cooldown"`
-	Dimensions        map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity *string                `pulumi:"maxTargetCapacity"`
-	Maximum           *string                `pulumi:"maximum"`
-	MetricName        string                 `pulumi:"metricName"`
-	MinTargetCapacity *string                `pulumi:"minTargetCapacity"`
-	Minimum           *string                `pulumi:"minimum"`
-	Namespace         string                 `pulumi:"namespace"`
-	Operator          *string                `pulumi:"operator"`
-	Period            *int                   `pulumi:"period"`
-	PolicyName        string                 `pulumi:"policyName"`
-	Statistic         *string                `pulumi:"statistic"`
-	Target            *string                `pulumi:"target"`
-	Threshold         float64                `pulumi:"threshold"`
-	Unit              string                 `pulumi:"unit"`
+	ActionType *string                `pulumi:"actionType"`
+	Adjustment *string                `pulumi:"adjustment"`
+	Cooldown   *int                   `pulumi:"cooldown"`
+	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	// The number of periods over which data is compared to the specified threshold.
+	EvaluationPeriods *int    `pulumi:"evaluationPeriods"`
+	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
+	Maximum           *string `pulumi:"maximum"`
+	// The name of the metric in CloudWatch which the statement will be based on.
+	MetricName        string  `pulumi:"metricName"`
+	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
+	Minimum           *string `pulumi:"minimum"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace string `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator *string `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period     *int   `pulumi:"period"`
+	PolicyName string `pulumi:"policyName"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic *string `pulumi:"statistic"`
+	Target    *string `pulumi:"target"`
+	// The value that the specified statistic is compared to.
+	Threshold float64 `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit string `pulumi:"unit"`
 }
 
 // MrScalarCoreScalingDownPolicyInput is an input type that accepts MrScalarCoreScalingDownPolicyArgs and MrScalarCoreScalingDownPolicyOutput values.
@@ -9550,24 +9771,32 @@ type MrScalarCoreScalingDownPolicyInput interface {
 }
 
 type MrScalarCoreScalingDownPolicyArgs struct {
-	ActionType        pulumi.StringPtrInput `pulumi:"actionType"`
-	Adjustment        pulumi.StringPtrInput `pulumi:"adjustment"`
-	Cooldown          pulumi.IntPtrInput    `pulumi:"cooldown"`
-	Dimensions        pulumi.MapInput       `pulumi:"dimensions"`
+	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
+	Cooldown   pulumi.IntPtrInput    `pulumi:"cooldown"`
+	Dimensions pulumi.MapInput       `pulumi:"dimensions"`
+	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
 	Maximum           pulumi.StringPtrInput `pulumi:"maximum"`
+	// The name of the metric in CloudWatch which the statement will be based on.
 	MetricName        pulumi.StringInput    `pulumi:"metricName"`
 	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
 	Minimum           pulumi.StringPtrInput `pulumi:"minimum"`
-	Namespace         pulumi.StringInput    `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput `pulumi:"operator"`
-	Period            pulumi.IntPtrInput    `pulumi:"period"`
-	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
-	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
-	Target            pulumi.StringPtrInput `pulumi:"target"`
-	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
-	Unit              pulumi.StringInput    `pulumi:"unit"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period     pulumi.IntPtrInput `pulumi:"period"`
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	Target    pulumi.StringPtrInput `pulumi:"target"`
+	// The value that the specified statistic is compared to.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit pulumi.StringInput `pulumi:"unit"`
 }
 
 func (MrScalarCoreScalingDownPolicyArgs) ElementType() reflect.Type {
@@ -9638,6 +9867,7 @@ func (o MrScalarCoreScalingDownPolicyOutput) Dimensions() pulumi.MapOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
+// The number of periods over which data is compared to the specified threshold.
 func (o MrScalarCoreScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -9650,6 +9880,7 @@ func (o MrScalarCoreScalingDownPolicyOutput) Maximum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
 }
 
+// The name of the metric in CloudWatch which the statement will be based on.
 func (o MrScalarCoreScalingDownPolicyOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
@@ -9662,14 +9893,17 @@ func (o MrScalarCoreScalingDownPolicyOutput) Minimum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
 }
 
+// Must contain the value: `AWS/ElasticMapReduce`.
 func (o MrScalarCoreScalingDownPolicyOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
 func (o MrScalarCoreScalingDownPolicyOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
+// The time window in seconds over which the statistic is applied.
 func (o MrScalarCoreScalingDownPolicyOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -9678,6 +9912,7 @@ func (o MrScalarCoreScalingDownPolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
+// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
 func (o MrScalarCoreScalingDownPolicyOutput) Statistic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
@@ -9686,10 +9921,12 @@ func (o MrScalarCoreScalingDownPolicyOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
+// The value that the specified statistic is compared to.
 func (o MrScalarCoreScalingDownPolicyOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
+// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
 func (o MrScalarCoreScalingDownPolicyOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingDownPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
@@ -9715,24 +9952,32 @@ func (o MrScalarCoreScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) MrSca
 }
 
 type MrScalarCoreScalingUpPolicy struct {
-	ActionType        *string                `pulumi:"actionType"`
-	Adjustment        *string                `pulumi:"adjustment"`
-	Cooldown          *int                   `pulumi:"cooldown"`
-	Dimensions        map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity *string                `pulumi:"maxTargetCapacity"`
-	Maximum           *string                `pulumi:"maximum"`
-	MetricName        string                 `pulumi:"metricName"`
-	MinTargetCapacity *string                `pulumi:"minTargetCapacity"`
-	Minimum           *string                `pulumi:"minimum"`
-	Namespace         string                 `pulumi:"namespace"`
-	Operator          *string                `pulumi:"operator"`
-	Period            *int                   `pulumi:"period"`
-	PolicyName        string                 `pulumi:"policyName"`
-	Statistic         *string                `pulumi:"statistic"`
-	Target            *string                `pulumi:"target"`
-	Threshold         float64                `pulumi:"threshold"`
-	Unit              string                 `pulumi:"unit"`
+	ActionType *string                `pulumi:"actionType"`
+	Adjustment *string                `pulumi:"adjustment"`
+	Cooldown   *int                   `pulumi:"cooldown"`
+	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	// The number of periods over which data is compared to the specified threshold.
+	EvaluationPeriods *int    `pulumi:"evaluationPeriods"`
+	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
+	Maximum           *string `pulumi:"maximum"`
+	// The name of the metric in CloudWatch which the statement will be based on.
+	MetricName        string  `pulumi:"metricName"`
+	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
+	Minimum           *string `pulumi:"minimum"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace string `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator *string `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period     *int   `pulumi:"period"`
+	PolicyName string `pulumi:"policyName"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic *string `pulumi:"statistic"`
+	Target    *string `pulumi:"target"`
+	// The value that the specified statistic is compared to.
+	Threshold float64 `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit string `pulumi:"unit"`
 }
 
 // MrScalarCoreScalingUpPolicyInput is an input type that accepts MrScalarCoreScalingUpPolicyArgs and MrScalarCoreScalingUpPolicyOutput values.
@@ -9748,24 +9993,32 @@ type MrScalarCoreScalingUpPolicyInput interface {
 }
 
 type MrScalarCoreScalingUpPolicyArgs struct {
-	ActionType        pulumi.StringPtrInput `pulumi:"actionType"`
-	Adjustment        pulumi.StringPtrInput `pulumi:"adjustment"`
-	Cooldown          pulumi.IntPtrInput    `pulumi:"cooldown"`
-	Dimensions        pulumi.MapInput       `pulumi:"dimensions"`
+	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
+	Cooldown   pulumi.IntPtrInput    `pulumi:"cooldown"`
+	Dimensions pulumi.MapInput       `pulumi:"dimensions"`
+	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
 	Maximum           pulumi.StringPtrInput `pulumi:"maximum"`
+	// The name of the metric in CloudWatch which the statement will be based on.
 	MetricName        pulumi.StringInput    `pulumi:"metricName"`
 	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
 	Minimum           pulumi.StringPtrInput `pulumi:"minimum"`
-	Namespace         pulumi.StringInput    `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput `pulumi:"operator"`
-	Period            pulumi.IntPtrInput    `pulumi:"period"`
-	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
-	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
-	Target            pulumi.StringPtrInput `pulumi:"target"`
-	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
-	Unit              pulumi.StringInput    `pulumi:"unit"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period     pulumi.IntPtrInput `pulumi:"period"`
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	Target    pulumi.StringPtrInput `pulumi:"target"`
+	// The value that the specified statistic is compared to.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit pulumi.StringInput `pulumi:"unit"`
 }
 
 func (MrScalarCoreScalingUpPolicyArgs) ElementType() reflect.Type {
@@ -9836,6 +10089,7 @@ func (o MrScalarCoreScalingUpPolicyOutput) Dimensions() pulumi.MapOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
+// The number of periods over which data is compared to the specified threshold.
 func (o MrScalarCoreScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -9848,6 +10102,7 @@ func (o MrScalarCoreScalingUpPolicyOutput) Maximum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
 }
 
+// The name of the metric in CloudWatch which the statement will be based on.
 func (o MrScalarCoreScalingUpPolicyOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
@@ -9860,14 +10115,17 @@ func (o MrScalarCoreScalingUpPolicyOutput) Minimum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
 }
 
+// Must contain the value: `AWS/ElasticMapReduce`.
 func (o MrScalarCoreScalingUpPolicyOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
 func (o MrScalarCoreScalingUpPolicyOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
+// The time window in seconds over which the statistic is applied.
 func (o MrScalarCoreScalingUpPolicyOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -9876,6 +10134,7 @@ func (o MrScalarCoreScalingUpPolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
+// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
 func (o MrScalarCoreScalingUpPolicyOutput) Statistic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
@@ -9884,10 +10143,12 @@ func (o MrScalarCoreScalingUpPolicyOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
+// The value that the specified statistic is compared to.
 func (o MrScalarCoreScalingUpPolicyOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
+// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
 func (o MrScalarCoreScalingUpPolicyOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarCoreScalingUpPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
@@ -10722,24 +10983,32 @@ func (o MrScalarTaskEbsBlockDeviceArrayOutput) Index(i pulumi.IntInput) MrScalar
 }
 
 type MrScalarTaskScalingDownPolicy struct {
-	ActionType        *string                `pulumi:"actionType"`
-	Adjustment        *string                `pulumi:"adjustment"`
-	Cooldown          *int                   `pulumi:"cooldown"`
-	Dimensions        map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity *string                `pulumi:"maxTargetCapacity"`
-	Maximum           *string                `pulumi:"maximum"`
-	MetricName        string                 `pulumi:"metricName"`
-	MinTargetCapacity *string                `pulumi:"minTargetCapacity"`
-	Minimum           *string                `pulumi:"minimum"`
-	Namespace         string                 `pulumi:"namespace"`
-	Operator          *string                `pulumi:"operator"`
-	Period            *int                   `pulumi:"period"`
-	PolicyName        string                 `pulumi:"policyName"`
-	Statistic         *string                `pulumi:"statistic"`
-	Target            *string                `pulumi:"target"`
-	Threshold         float64                `pulumi:"threshold"`
-	Unit              string                 `pulumi:"unit"`
+	ActionType *string                `pulumi:"actionType"`
+	Adjustment *string                `pulumi:"adjustment"`
+	Cooldown   *int                   `pulumi:"cooldown"`
+	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	// The number of periods over which data is compared to the specified threshold.
+	EvaluationPeriods *int    `pulumi:"evaluationPeriods"`
+	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
+	Maximum           *string `pulumi:"maximum"`
+	// The name of the metric in CloudWatch which the statement will be based on.
+	MetricName        string  `pulumi:"metricName"`
+	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
+	Minimum           *string `pulumi:"minimum"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace string `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator *string `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period     *int   `pulumi:"period"`
+	PolicyName string `pulumi:"policyName"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic *string `pulumi:"statistic"`
+	Target    *string `pulumi:"target"`
+	// The value that the specified statistic is compared to.
+	Threshold float64 `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit string `pulumi:"unit"`
 }
 
 // MrScalarTaskScalingDownPolicyInput is an input type that accepts MrScalarTaskScalingDownPolicyArgs and MrScalarTaskScalingDownPolicyOutput values.
@@ -10755,24 +11024,32 @@ type MrScalarTaskScalingDownPolicyInput interface {
 }
 
 type MrScalarTaskScalingDownPolicyArgs struct {
-	ActionType        pulumi.StringPtrInput `pulumi:"actionType"`
-	Adjustment        pulumi.StringPtrInput `pulumi:"adjustment"`
-	Cooldown          pulumi.IntPtrInput    `pulumi:"cooldown"`
-	Dimensions        pulumi.MapInput       `pulumi:"dimensions"`
+	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
+	Cooldown   pulumi.IntPtrInput    `pulumi:"cooldown"`
+	Dimensions pulumi.MapInput       `pulumi:"dimensions"`
+	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
 	Maximum           pulumi.StringPtrInput `pulumi:"maximum"`
+	// The name of the metric in CloudWatch which the statement will be based on.
 	MetricName        pulumi.StringInput    `pulumi:"metricName"`
 	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
 	Minimum           pulumi.StringPtrInput `pulumi:"minimum"`
-	Namespace         pulumi.StringInput    `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput `pulumi:"operator"`
-	Period            pulumi.IntPtrInput    `pulumi:"period"`
-	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
-	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
-	Target            pulumi.StringPtrInput `pulumi:"target"`
-	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
-	Unit              pulumi.StringInput    `pulumi:"unit"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period     pulumi.IntPtrInput `pulumi:"period"`
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	Target    pulumi.StringPtrInput `pulumi:"target"`
+	// The value that the specified statistic is compared to.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit pulumi.StringInput `pulumi:"unit"`
 }
 
 func (MrScalarTaskScalingDownPolicyArgs) ElementType() reflect.Type {
@@ -10843,6 +11120,7 @@ func (o MrScalarTaskScalingDownPolicyOutput) Dimensions() pulumi.MapOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
+// The number of periods over which data is compared to the specified threshold.
 func (o MrScalarTaskScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -10855,6 +11133,7 @@ func (o MrScalarTaskScalingDownPolicyOutput) Maximum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
 }
 
+// The name of the metric in CloudWatch which the statement will be based on.
 func (o MrScalarTaskScalingDownPolicyOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
@@ -10867,14 +11146,17 @@ func (o MrScalarTaskScalingDownPolicyOutput) Minimum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
 }
 
+// Must contain the value: `AWS/ElasticMapReduce`.
 func (o MrScalarTaskScalingDownPolicyOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
 func (o MrScalarTaskScalingDownPolicyOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
+// The time window in seconds over which the statistic is applied.
 func (o MrScalarTaskScalingDownPolicyOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -10883,6 +11165,7 @@ func (o MrScalarTaskScalingDownPolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
+// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
 func (o MrScalarTaskScalingDownPolicyOutput) Statistic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
@@ -10891,10 +11174,12 @@ func (o MrScalarTaskScalingDownPolicyOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
+// The value that the specified statistic is compared to.
 func (o MrScalarTaskScalingDownPolicyOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
+// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
 func (o MrScalarTaskScalingDownPolicyOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingDownPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
@@ -10920,24 +11205,32 @@ func (o MrScalarTaskScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) MrSca
 }
 
 type MrScalarTaskScalingUpPolicy struct {
-	ActionType        *string                `pulumi:"actionType"`
-	Adjustment        *string                `pulumi:"adjustment"`
-	Cooldown          *int                   `pulumi:"cooldown"`
-	Dimensions        map[string]interface{} `pulumi:"dimensions"`
-	EvaluationPeriods *int                   `pulumi:"evaluationPeriods"`
-	MaxTargetCapacity *string                `pulumi:"maxTargetCapacity"`
-	Maximum           *string                `pulumi:"maximum"`
-	MetricName        string                 `pulumi:"metricName"`
-	MinTargetCapacity *string                `pulumi:"minTargetCapacity"`
-	Minimum           *string                `pulumi:"minimum"`
-	Namespace         string                 `pulumi:"namespace"`
-	Operator          *string                `pulumi:"operator"`
-	Period            *int                   `pulumi:"period"`
-	PolicyName        string                 `pulumi:"policyName"`
-	Statistic         *string                `pulumi:"statistic"`
-	Target            *string                `pulumi:"target"`
-	Threshold         float64                `pulumi:"threshold"`
-	Unit              string                 `pulumi:"unit"`
+	ActionType *string                `pulumi:"actionType"`
+	Adjustment *string                `pulumi:"adjustment"`
+	Cooldown   *int                   `pulumi:"cooldown"`
+	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	// The number of periods over which data is compared to the specified threshold.
+	EvaluationPeriods *int    `pulumi:"evaluationPeriods"`
+	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
+	Maximum           *string `pulumi:"maximum"`
+	// The name of the metric in CloudWatch which the statement will be based on.
+	MetricName        string  `pulumi:"metricName"`
+	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
+	Minimum           *string `pulumi:"minimum"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace string `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator *string `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period     *int   `pulumi:"period"`
+	PolicyName string `pulumi:"policyName"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic *string `pulumi:"statistic"`
+	Target    *string `pulumi:"target"`
+	// The value that the specified statistic is compared to.
+	Threshold float64 `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit string `pulumi:"unit"`
 }
 
 // MrScalarTaskScalingUpPolicyInput is an input type that accepts MrScalarTaskScalingUpPolicyArgs and MrScalarTaskScalingUpPolicyOutput values.
@@ -10953,24 +11246,32 @@ type MrScalarTaskScalingUpPolicyInput interface {
 }
 
 type MrScalarTaskScalingUpPolicyArgs struct {
-	ActionType        pulumi.StringPtrInput `pulumi:"actionType"`
-	Adjustment        pulumi.StringPtrInput `pulumi:"adjustment"`
-	Cooldown          pulumi.IntPtrInput    `pulumi:"cooldown"`
-	Dimensions        pulumi.MapInput       `pulumi:"dimensions"`
+	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
+	Cooldown   pulumi.IntPtrInput    `pulumi:"cooldown"`
+	Dimensions pulumi.MapInput       `pulumi:"dimensions"`
+	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
 	Maximum           pulumi.StringPtrInput `pulumi:"maximum"`
+	// The name of the metric in CloudWatch which the statement will be based on.
 	MetricName        pulumi.StringInput    `pulumi:"metricName"`
 	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
 	Minimum           pulumi.StringPtrInput `pulumi:"minimum"`
-	Namespace         pulumi.StringInput    `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput `pulumi:"operator"`
-	Period            pulumi.IntPtrInput    `pulumi:"period"`
-	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
-	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
-	Target            pulumi.StringPtrInput `pulumi:"target"`
-	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
-	Unit              pulumi.StringInput    `pulumi:"unit"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period     pulumi.IntPtrInput `pulumi:"period"`
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	Target    pulumi.StringPtrInput `pulumi:"target"`
+	// The value that the specified statistic is compared to.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit pulumi.StringInput `pulumi:"unit"`
 }
 
 func (MrScalarTaskScalingUpPolicyArgs) ElementType() reflect.Type {
@@ -11041,6 +11342,7 @@ func (o MrScalarTaskScalingUpPolicyOutput) Dimensions() pulumi.MapOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
+// The number of periods over which data is compared to the specified threshold.
 func (o MrScalarTaskScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -11053,6 +11355,7 @@ func (o MrScalarTaskScalingUpPolicyOutput) Maximum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Maximum }).(pulumi.StringPtrOutput)
 }
 
+// The name of the metric in CloudWatch which the statement will be based on.
 func (o MrScalarTaskScalingUpPolicyOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
@@ -11065,14 +11368,17 @@ func (o MrScalarTaskScalingUpPolicyOutput) Minimum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Minimum }).(pulumi.StringPtrOutput)
 }
 
+// Must contain the value: `AWS/ElasticMapReduce`.
 func (o MrScalarTaskScalingUpPolicyOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
 func (o MrScalarTaskScalingUpPolicyOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
+// The time window in seconds over which the statistic is applied.
 func (o MrScalarTaskScalingUpPolicyOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -11081,6 +11387,7 @@ func (o MrScalarTaskScalingUpPolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
+// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
 func (o MrScalarTaskScalingUpPolicyOutput) Statistic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
@@ -11089,10 +11396,12 @@ func (o MrScalarTaskScalingUpPolicyOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
+// The value that the specified statistic is compared to.
 func (o MrScalarTaskScalingUpPolicyOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
+// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
 func (o MrScalarTaskScalingUpPolicyOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v MrScalarTaskScalingUpPolicy) string { return v.Unit }).(pulumi.StringOutput)
 }
@@ -11117,21 +11426,272 @@ func (o MrScalarTaskScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) MrScala
 	}).(MrScalarTaskScalingUpPolicyOutput)
 }
 
+type MrScalarTerminationPolicy struct {
+	Statements []MrScalarTerminationPolicyStatement `pulumi:"statements"`
+}
+
+// MrScalarTerminationPolicyInput is an input type that accepts MrScalarTerminationPolicyArgs and MrScalarTerminationPolicyOutput values.
+// You can construct a concrete instance of `MrScalarTerminationPolicyInput` via:
+//
+// 		 MrScalarTerminationPolicyArgs{...}
+//
+type MrScalarTerminationPolicyInput interface {
+	pulumi.Input
+
+	ToMrScalarTerminationPolicyOutput() MrScalarTerminationPolicyOutput
+	ToMrScalarTerminationPolicyOutputWithContext(context.Context) MrScalarTerminationPolicyOutput
+}
+
+type MrScalarTerminationPolicyArgs struct {
+	Statements MrScalarTerminationPolicyStatementArrayInput `pulumi:"statements"`
+}
+
+func (MrScalarTerminationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MrScalarTerminationPolicy)(nil)).Elem()
+}
+
+func (i MrScalarTerminationPolicyArgs) ToMrScalarTerminationPolicyOutput() MrScalarTerminationPolicyOutput {
+	return i.ToMrScalarTerminationPolicyOutputWithContext(context.Background())
+}
+
+func (i MrScalarTerminationPolicyArgs) ToMrScalarTerminationPolicyOutputWithContext(ctx context.Context) MrScalarTerminationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MrScalarTerminationPolicyOutput)
+}
+
+// MrScalarTerminationPolicyArrayInput is an input type that accepts MrScalarTerminationPolicyArray and MrScalarTerminationPolicyArrayOutput values.
+// You can construct a concrete instance of `MrScalarTerminationPolicyArrayInput` via:
+//
+// 		 MrScalarTerminationPolicyArray{ MrScalarTerminationPolicyArgs{...} }
+//
+type MrScalarTerminationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToMrScalarTerminationPolicyArrayOutput() MrScalarTerminationPolicyArrayOutput
+	ToMrScalarTerminationPolicyArrayOutputWithContext(context.Context) MrScalarTerminationPolicyArrayOutput
+}
+
+type MrScalarTerminationPolicyArray []MrScalarTerminationPolicyInput
+
+func (MrScalarTerminationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MrScalarTerminationPolicy)(nil)).Elem()
+}
+
+func (i MrScalarTerminationPolicyArray) ToMrScalarTerminationPolicyArrayOutput() MrScalarTerminationPolicyArrayOutput {
+	return i.ToMrScalarTerminationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i MrScalarTerminationPolicyArray) ToMrScalarTerminationPolicyArrayOutputWithContext(ctx context.Context) MrScalarTerminationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MrScalarTerminationPolicyArrayOutput)
+}
+
+type MrScalarTerminationPolicyOutput struct{ *pulumi.OutputState }
+
+func (MrScalarTerminationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MrScalarTerminationPolicy)(nil)).Elem()
+}
+
+func (o MrScalarTerminationPolicyOutput) ToMrScalarTerminationPolicyOutput() MrScalarTerminationPolicyOutput {
+	return o
+}
+
+func (o MrScalarTerminationPolicyOutput) ToMrScalarTerminationPolicyOutputWithContext(ctx context.Context) MrScalarTerminationPolicyOutput {
+	return o
+}
+
+func (o MrScalarTerminationPolicyOutput) Statements() MrScalarTerminationPolicyStatementArrayOutput {
+	return o.ApplyT(func(v MrScalarTerminationPolicy) []MrScalarTerminationPolicyStatement { return v.Statements }).(MrScalarTerminationPolicyStatementArrayOutput)
+}
+
+type MrScalarTerminationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (MrScalarTerminationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MrScalarTerminationPolicy)(nil)).Elem()
+}
+
+func (o MrScalarTerminationPolicyArrayOutput) ToMrScalarTerminationPolicyArrayOutput() MrScalarTerminationPolicyArrayOutput {
+	return o
+}
+
+func (o MrScalarTerminationPolicyArrayOutput) ToMrScalarTerminationPolicyArrayOutputWithContext(ctx context.Context) MrScalarTerminationPolicyArrayOutput {
+	return o
+}
+
+func (o MrScalarTerminationPolicyArrayOutput) Index(i pulumi.IntInput) MrScalarTerminationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarTerminationPolicy {
+		return vs[0].([]MrScalarTerminationPolicy)[vs[1].(int)]
+	}).(MrScalarTerminationPolicyOutput)
+}
+
+type MrScalarTerminationPolicyStatement struct {
+	// The number of periods over which data is compared to the specified threshold.
+	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
+	// The name of the metric in CloudWatch which the statement will be based on.
+	MetricName string `pulumi:"metricName"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace string `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator *string `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period *int `pulumi:"period"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic *string `pulumi:"statistic"`
+	// The value that the specified statistic is compared to.
+	Threshold float64 `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit *string `pulumi:"unit"`
+}
+
+// MrScalarTerminationPolicyStatementInput is an input type that accepts MrScalarTerminationPolicyStatementArgs and MrScalarTerminationPolicyStatementOutput values.
+// You can construct a concrete instance of `MrScalarTerminationPolicyStatementInput` via:
+//
+// 		 MrScalarTerminationPolicyStatementArgs{...}
+//
+type MrScalarTerminationPolicyStatementInput interface {
+	pulumi.Input
+
+	ToMrScalarTerminationPolicyStatementOutput() MrScalarTerminationPolicyStatementOutput
+	ToMrScalarTerminationPolicyStatementOutputWithContext(context.Context) MrScalarTerminationPolicyStatementOutput
+}
+
+type MrScalarTerminationPolicyStatementArgs struct {
+	// The number of periods over which data is compared to the specified threshold.
+	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	// The name of the metric in CloudWatch which the statement will be based on.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// Must contain the value: `AWS/ElasticMapReduce`.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The time window in seconds over which the statistic is applied.
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	// The value that the specified statistic is compared to.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (MrScalarTerminationPolicyStatementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MrScalarTerminationPolicyStatement)(nil)).Elem()
+}
+
+func (i MrScalarTerminationPolicyStatementArgs) ToMrScalarTerminationPolicyStatementOutput() MrScalarTerminationPolicyStatementOutput {
+	return i.ToMrScalarTerminationPolicyStatementOutputWithContext(context.Background())
+}
+
+func (i MrScalarTerminationPolicyStatementArgs) ToMrScalarTerminationPolicyStatementOutputWithContext(ctx context.Context) MrScalarTerminationPolicyStatementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MrScalarTerminationPolicyStatementOutput)
+}
+
+// MrScalarTerminationPolicyStatementArrayInput is an input type that accepts MrScalarTerminationPolicyStatementArray and MrScalarTerminationPolicyStatementArrayOutput values.
+// You can construct a concrete instance of `MrScalarTerminationPolicyStatementArrayInput` via:
+//
+// 		 MrScalarTerminationPolicyStatementArray{ MrScalarTerminationPolicyStatementArgs{...} }
+//
+type MrScalarTerminationPolicyStatementArrayInput interface {
+	pulumi.Input
+
+	ToMrScalarTerminationPolicyStatementArrayOutput() MrScalarTerminationPolicyStatementArrayOutput
+	ToMrScalarTerminationPolicyStatementArrayOutputWithContext(context.Context) MrScalarTerminationPolicyStatementArrayOutput
+}
+
+type MrScalarTerminationPolicyStatementArray []MrScalarTerminationPolicyStatementInput
+
+func (MrScalarTerminationPolicyStatementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MrScalarTerminationPolicyStatement)(nil)).Elem()
+}
+
+func (i MrScalarTerminationPolicyStatementArray) ToMrScalarTerminationPolicyStatementArrayOutput() MrScalarTerminationPolicyStatementArrayOutput {
+	return i.ToMrScalarTerminationPolicyStatementArrayOutputWithContext(context.Background())
+}
+
+func (i MrScalarTerminationPolicyStatementArray) ToMrScalarTerminationPolicyStatementArrayOutputWithContext(ctx context.Context) MrScalarTerminationPolicyStatementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MrScalarTerminationPolicyStatementArrayOutput)
+}
+
+type MrScalarTerminationPolicyStatementOutput struct{ *pulumi.OutputState }
+
+func (MrScalarTerminationPolicyStatementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MrScalarTerminationPolicyStatement)(nil)).Elem()
+}
+
+func (o MrScalarTerminationPolicyStatementOutput) ToMrScalarTerminationPolicyStatementOutput() MrScalarTerminationPolicyStatementOutput {
+	return o
+}
+
+func (o MrScalarTerminationPolicyStatementOutput) ToMrScalarTerminationPolicyStatementOutputWithContext(ctx context.Context) MrScalarTerminationPolicyStatementOutput {
+	return o
+}
+
+// The number of periods over which data is compared to the specified threshold.
+func (o MrScalarTerminationPolicyStatementOutput) EvaluationPeriods() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+}
+
+// The name of the metric in CloudWatch which the statement will be based on.
+func (o MrScalarTerminationPolicyStatementOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Must contain the value: `AWS/ElasticMapReduce`.
+func (o MrScalarTerminationPolicyStatementOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+func (o MrScalarTerminationPolicyStatementOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// The time window in seconds over which the statistic is applied.
+func (o MrScalarTerminationPolicyStatementOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+func (o MrScalarTerminationPolicyStatementOutput) Statistic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+}
+
+// The value that the specified statistic is compared to.
+func (o MrScalarTerminationPolicyStatementOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+func (o MrScalarTerminationPolicyStatementOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MrScalarTerminationPolicyStatement) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type MrScalarTerminationPolicyStatementArrayOutput struct{ *pulumi.OutputState }
+
+func (MrScalarTerminationPolicyStatementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MrScalarTerminationPolicyStatement)(nil)).Elem()
+}
+
+func (o MrScalarTerminationPolicyStatementArrayOutput) ToMrScalarTerminationPolicyStatementArrayOutput() MrScalarTerminationPolicyStatementArrayOutput {
+	return o
+}
+
+func (o MrScalarTerminationPolicyStatementArrayOutput) ToMrScalarTerminationPolicyStatementArrayOutputWithContext(ctx context.Context) MrScalarTerminationPolicyStatementArrayOutput {
+	return o
+}
+
+func (o MrScalarTerminationPolicyStatementArrayOutput) Index(i pulumi.IntInput) MrScalarTerminationPolicyStatementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalarTerminationPolicyStatement {
+		return vs[0].([]MrScalarTerminationPolicyStatement)[vs[1].(int)]
+	}).(MrScalarTerminationPolicyStatementOutput)
+}
+
 type OceanAutoscaler struct {
-	// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
-	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
-	// Cooldown period between scaling actions.
-	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
-	// Auto Scaling scale down operations.
-	AutoscaleDown *OceanAutoscalerAutoscaleDown `pulumi:"autoscaleDown"`
-	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-	AutoscaleHeadroom *OceanAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
-	// Automatically configure and optimize headroom resources.
-	AutoscaleIsAutoConfig *bool `pulumi:"autoscaleIsAutoConfig"`
-	// Enable the Ocean Kubernetes autoscaler.
-	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
-	// Optionally set upper and lower bounds on the resource usage of the cluster.
-	ResourceLimits *OceanAutoscalerResourceLimits `pulumi:"resourceLimits"`
+	AutoHeadroomPercentage *int                              `pulumi:"autoHeadroomPercentage"`
+	AutoscaleCooldown      *int                              `pulumi:"autoscaleCooldown"`
+	AutoscaleDown          *OceanAutoscalerAutoscaleDown     `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom      *OceanAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsAutoConfig  *bool                             `pulumi:"autoscaleIsAutoConfig"`
+	AutoscaleIsEnabled     *bool                             `pulumi:"autoscaleIsEnabled"`
+	ResourceLimits         *OceanAutoscalerResourceLimits    `pulumi:"resourceLimits"`
 }
 
 // OceanAutoscalerInput is an input type that accepts OceanAutoscalerArgs and OceanAutoscalerOutput values.
@@ -11147,20 +11707,13 @@ type OceanAutoscalerInput interface {
 }
 
 type OceanAutoscalerArgs struct {
-	// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
-	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
-	// Cooldown period between scaling actions.
-	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
-	// Auto Scaling scale down operations.
-	AutoscaleDown OceanAutoscalerAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
-	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-	AutoscaleHeadroom OceanAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
-	// Automatically configure and optimize headroom resources.
-	AutoscaleIsAutoConfig pulumi.BoolPtrInput `pulumi:"autoscaleIsAutoConfig"`
-	// Enable the Ocean Kubernetes autoscaler.
-	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
-	// Optionally set upper and lower bounds on the resource usage of the cluster.
-	ResourceLimits OceanAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
+	AutoHeadroomPercentage pulumi.IntPtrInput                       `pulumi:"autoHeadroomPercentage"`
+	AutoscaleCooldown      pulumi.IntPtrInput                       `pulumi:"autoscaleCooldown"`
+	AutoscaleDown          OceanAutoscalerAutoscaleDownPtrInput     `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom      OceanAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsAutoConfig  pulumi.BoolPtrInput                      `pulumi:"autoscaleIsAutoConfig"`
+	AutoscaleIsEnabled     pulumi.BoolPtrInput                      `pulumi:"autoscaleIsEnabled"`
+	ResourceLimits         OceanAutoscalerResourceLimitsPtrInput    `pulumi:"resourceLimits"`
 }
 
 func (OceanAutoscalerArgs) ElementType() reflect.Type {
@@ -11240,38 +11793,30 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context
 		return &v
 	}).(OceanAutoscalerPtrOutput)
 }
-
-// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
 func (o OceanAutoscalerOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }
 
-// Cooldown period between scaling actions.
 func (o OceanAutoscalerOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
-// Auto Scaling scale down operations.
 func (o OceanAutoscalerOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleDown { return v.AutoscaleDown }).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
-// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanAutoscalerOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom { return v.AutoscaleHeadroom }).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
-// Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
-// Enable the Ocean Kubernetes autoscaler.
 func (o OceanAutoscalerOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
 }
@@ -11294,7 +11839,6 @@ func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
 }
 
-// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
 func (o OceanAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *int {
 		if v == nil {
@@ -11304,7 +11848,6 @@ func (o OceanAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Cooldown period between scaling actions.
 func (o OceanAutoscalerPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *int {
 		if v == nil {
@@ -11314,7 +11857,6 @@ func (o OceanAutoscalerPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Auto Scaling scale down operations.
 func (o OceanAutoscalerPtrOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerAutoscaleDown {
 		if v == nil {
@@ -11324,7 +11866,6 @@ func (o OceanAutoscalerPtrOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPt
 	}).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
-// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanAutoscalerPtrOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom {
 		if v == nil {
@@ -11334,7 +11875,6 @@ func (o OceanAutoscalerPtrOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHe
 	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
-// Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -11344,7 +11884,6 @@ func (o OceanAutoscalerPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enable the Ocean Kubernetes autoscaler.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -11354,7 +11893,6 @@ func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerResourceLimits {
 		if v == nil {
@@ -11365,9 +11903,7 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 }
 
 type OceanAutoscalerAutoscaleDown struct {
-	// The number of evaluation periods that should accumulate before a scale down action takes place.
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
-	// Would represent the maximum % to scale-down. Number between 1-100.
+	EvaluationPeriods      *int `pulumi:"evaluationPeriods"`
 	MaxScaleDownPercentage *int `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -11384,9 +11920,7 @@ type OceanAutoscalerAutoscaleDownInput interface {
 }
 
 type OceanAutoscalerAutoscaleDownArgs struct {
-	// The number of evaluation periods that should accumulate before a scale down action takes place.
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
-	// Would represent the maximum % to scale-down. Number between 1-100.
+	EvaluationPeriods      pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
 	MaxScaleDownPercentage pulumi.IntPtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -11467,13 +12001,10 @@ func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownPtrOut
 		return &v
 	}).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
-
-// The number of evaluation periods that should accumulate before a scale down action takes place.
 func (o OceanAutoscalerAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
-// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
 }
@@ -11496,7 +12027,6 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) Elem() OceanAutoscalerAutoscaleDo
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) OceanAutoscalerAutoscaleDown { return *v }).(OceanAutoscalerAutoscaleDownOutput)
 }
 
-// The number of evaluation periods that should accumulate before a scale down action takes place.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *int {
 		if v == nil {
@@ -11506,7 +12036,6 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *int {
 		if v == nil {
@@ -11517,14 +12046,10 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.I
 }
 
 type OceanAutoscalerAutoscaleHeadroom struct {
-	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-	CpuPerUnit *int `pulumi:"cpuPerUnit"`
-	// Optionally configure the number of GPUS to allocate the headroom.
-	GpuPerUnit *int `pulumi:"gpuPerUnit"`
-	// Optionally configure the amount of memory (MB) to allocate the headroom.
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
+	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-	NumOfUnits *int `pulumi:"numOfUnits"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
 }
 
 // OceanAutoscalerAutoscaleHeadroomInput is an input type that accepts OceanAutoscalerAutoscaleHeadroomArgs and OceanAutoscalerAutoscaleHeadroomOutput values.
@@ -11540,14 +12065,10 @@ type OceanAutoscalerAutoscaleHeadroomInput interface {
 }
 
 type OceanAutoscalerAutoscaleHeadroomArgs struct {
-	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	// Optionally configure the number of GPUS to allocate the headroom.
-	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
-	// Optionally configure the amount of memory (MB) to allocate the headroom.
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (OceanAutoscalerAutoscaleHeadroomArgs) ElementType() reflect.Type {
@@ -11627,23 +12148,18 @@ func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadro
 		return &v
 	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
-
-// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the number of GPUS to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -11666,7 +12182,6 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanAutoscalerAutosca
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) OceanAutoscalerAutoscaleHeadroom { return *v }).(OceanAutoscalerAutoscaleHeadroomOutput)
 }
 
-// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -11676,7 +12191,6 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the number of GPUS to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -11686,7 +12200,6 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -11696,7 +12209,6 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -11707,10 +12219,8 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOut
 }
 
 type OceanAutoscalerResourceLimits struct {
-	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
-	// The maximum cpu in vCPU units that can be allocated to the cluster.
-	MaxVcpu *int `pulumi:"maxVcpu"`
+	MaxVcpu      *int `pulumi:"maxVcpu"`
 }
 
 // OceanAutoscalerResourceLimitsInput is an input type that accepts OceanAutoscalerResourceLimitsArgs and OceanAutoscalerResourceLimitsOutput values.
@@ -11726,10 +12236,8 @@ type OceanAutoscalerResourceLimitsInput interface {
 }
 
 type OceanAutoscalerResourceLimitsArgs struct {
-	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
-	// The maximum cpu in vCPU units that can be allocated to the cluster.
-	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	MaxVcpu      pulumi.IntPtrInput `pulumi:"maxVcpu"`
 }
 
 func (OceanAutoscalerResourceLimitsArgs) ElementType() reflect.Type {
@@ -11809,13 +12317,10 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 		return &v
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
-
-// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
-// The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
@@ -11838,7 +12343,6 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLi
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits { return *v }).(OceanAutoscalerResourceLimitsOutput)
 }
 
-// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -11848,7 +12352,6 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -13277,6 +13780,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigStrategyOutput{})
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput{})
+	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceIntegrationRoute53Output{})
 	pulumi.RegisterOutputType(ManagedInstanceIntegrationRoute53PtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceIntegrationRoute53DomainOutput{})
@@ -13323,6 +13828,10 @@ func init() {
 	pulumi.RegisterOutputType(MrScalarTaskScalingDownPolicyArrayOutput{})
 	pulumi.RegisterOutputType(MrScalarTaskScalingUpPolicyOutput{})
 	pulumi.RegisterOutputType(MrScalarTaskScalingUpPolicyArrayOutput{})
+	pulumi.RegisterOutputType(MrScalarTerminationPolicyOutput{})
+	pulumi.RegisterOutputType(MrScalarTerminationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(MrScalarTerminationPolicyStatementOutput{})
+	pulumi.RegisterOutputType(MrScalarTerminationPolicyStatementArrayOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerAutoscaleDownOutput{})

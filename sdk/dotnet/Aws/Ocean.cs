@@ -20,9 +20,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("associatePublicIpAddress")]
         public Output<bool?> AssociatePublicIpAddress { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the Ocean Kubernetes autoscaler.
-        /// </summary>
         [Output("autoscaler")]
         public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
 
@@ -96,7 +93,7 @@ namespace Pulumi.SpotInst.Aws
         /// The upper limit of instances the cluster can scale up to.
         /// </summary>
         [Output("maxSize")]
-        public Output<int> MaxSize { get; private set; } = null!;
+        public Output<int?> MaxSize { get; private set; } = null!;
 
         /// <summary>
         /// The lower limit of instances the cluster can scale down to.
@@ -162,7 +159,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> UserData { get; private set; } = null!;
 
         /// <summary>
-        /// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         /// </summary>
         [Output("utilizeReservedInstances")]
         public Output<bool?> UtilizeReservedInstances { get; private set; } = null!;
@@ -225,9 +222,6 @@ namespace Pulumi.SpotInst.Aws
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// Describes the Ocean Kubernetes autoscaler.
-        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerArgs>? Autoscaler { get; set; }
 
@@ -402,7 +396,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         /// </summary>
         [Input("utilizeReservedInstances")]
         public Input<bool>? UtilizeReservedInstances { get; set; }
@@ -432,9 +426,6 @@ namespace Pulumi.SpotInst.Aws
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// Describes the Ocean Kubernetes autoscaler.
-        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerGetArgs>? Autoscaler { get; set; }
 
@@ -609,7 +600,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         /// </summary>
         [Input("utilizeReservedInstances")]
         public Input<bool>? UtilizeReservedInstances { get; set; }

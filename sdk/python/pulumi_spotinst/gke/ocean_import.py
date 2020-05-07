@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class OceanImport(pulumi.CustomResource):
+    autoscaler: pulumi.Output[dict]
     backend_services: pulumi.Output[list]
     """
     Describes the backend service configurations.
@@ -45,7 +46,7 @@ class OceanImport(pulumi.CustomResource):
     """
     scheduled_tasks: pulumi.Output[list]
     whitelists: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, backend_services=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, scheduled_tasks=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, autoscaler=None, backend_services=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, scheduled_tasks=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst Ocean GKE import resource.
 
@@ -59,6 +60,26 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[str] location: The zone the master cluster is located in. 
         :param pulumi.Input[float] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[float] min_size: The lower limit of instances the cluster can scale down to.
+
+        The **autoscaler** object supports the following:
+
+          * `autoHeadroomPercentage` (`pulumi.Input[float]`)
+          * `cooldown` (`pulumi.Input[float]`)
+          * `down` (`pulumi.Input[dict]`)
+            * `evaluationPeriods` (`pulumi.Input[float]`)
+            * `maxScaleDownPercentage` (`pulumi.Input[float]`)
+
+          * `headroom` (`pulumi.Input[dict]`)
+            * `cpuPerUnit` (`pulumi.Input[float]`)
+            * `gpuPerUnit` (`pulumi.Input[float]`)
+            * `memoryPerUnit` (`pulumi.Input[float]`)
+            * `numOfUnits` (`pulumi.Input[float]`)
+
+          * `isAutoConfig` (`pulumi.Input[bool]`)
+          * `isEnabled` (`pulumi.Input[bool]`)
+          * `resourceLimits` (`pulumi.Input[dict]`)
+            * `maxMemoryGib` (`pulumi.Input[float]`)
+            * `maxVcpu` (`pulumi.Input[float]`)
 
         The **backend_services** object supports the following:
 
@@ -99,6 +120,7 @@ class OceanImport(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['autoscaler'] = autoscaler
             __props__['backend_services'] = backend_services
             if cluster_name is None:
                 raise TypeError("Missing required property 'cluster_name'")
@@ -119,7 +141,7 @@ class OceanImport(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backend_services=None, cluster_controller_id=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, scheduled_tasks=None, whitelists=None):
+    def get(resource_name, id, opts=None, autoscaler=None, backend_services=None, cluster_controller_id=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, scheduled_tasks=None, whitelists=None):
         """
         Get an existing OceanImport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -133,6 +155,26 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[str] location: The zone the master cluster is located in. 
         :param pulumi.Input[float] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[float] min_size: The lower limit of instances the cluster can scale down to.
+
+        The **autoscaler** object supports the following:
+
+          * `autoHeadroomPercentage` (`pulumi.Input[float]`)
+          * `cooldown` (`pulumi.Input[float]`)
+          * `down` (`pulumi.Input[dict]`)
+            * `evaluationPeriods` (`pulumi.Input[float]`)
+            * `maxScaleDownPercentage` (`pulumi.Input[float]`)
+
+          * `headroom` (`pulumi.Input[dict]`)
+            * `cpuPerUnit` (`pulumi.Input[float]`)
+            * `gpuPerUnit` (`pulumi.Input[float]`)
+            * `memoryPerUnit` (`pulumi.Input[float]`)
+            * `numOfUnits` (`pulumi.Input[float]`)
+
+          * `isAutoConfig` (`pulumi.Input[bool]`)
+          * `isEnabled` (`pulumi.Input[bool]`)
+          * `resourceLimits` (`pulumi.Input[dict]`)
+            * `maxMemoryGib` (`pulumi.Input[float]`)
+            * `maxVcpu` (`pulumi.Input[float]`)
 
         The **backend_services** object supports the following:
 
@@ -160,6 +202,7 @@ class OceanImport(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["autoscaler"] = autoscaler
         __props__["backend_services"] = backend_services
         __props__["cluster_controller_id"] = cluster_controller_id
         __props__["cluster_name"] = cluster_name

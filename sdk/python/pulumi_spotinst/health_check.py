@@ -14,12 +14,12 @@ class HealthCheck(pulumi.CustomResource):
     """
     Describes the check to execute.
 
-      * `endPoint` (`str`)
+      * `endpoint` (`str`) - The destination for the request.
       * `healthy` (`float`) - The number of consecutive successful health checks that must occur before declaring an instance healthy.
       * `interval` (`float`) - The amount of time (in seconds) between each health check (minimum: 10).
       * `port` (`float`) - The port of the Spotinst HCS (default: 80).
       * `protocol` (`str`) - The protocol to use to connect with the instance. Valid values: http, https.
-      * `timeOut` (`float`)
+      * `timeout` (`float`) - the amount of time (in seconds) to wait when receiving a response from the health check.
       * `unhealthy` (`float`) - The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
     """
     name: pulumi.Output[str]
@@ -46,12 +46,12 @@ class HealthCheck(pulumi.CustomResource):
 
         The **check** object supports the following:
 
-          * `endPoint` (`pulumi.Input[str]`)
+          * `endpoint` (`pulumi.Input[str]`) - The destination for the request.
           * `healthy` (`pulumi.Input[float]`) - The number of consecutive successful health checks that must occur before declaring an instance healthy.
           * `interval` (`pulumi.Input[float]`) - The amount of time (in seconds) between each health check (minimum: 10).
           * `port` (`pulumi.Input[float]`) - The port of the Spotinst HCS (default: 80).
           * `protocol` (`pulumi.Input[str]`) - The protocol to use to connect with the instance. Valid values: http, https.
-          * `timeOut` (`pulumi.Input[float]`)
+          * `timeout` (`pulumi.Input[float]`) - the amount of time (in seconds) to wait when receiving a response from the health check.
           * `unhealthy` (`pulumi.Input[float]`) - The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
         """
         if __name__ is not None:
@@ -101,12 +101,12 @@ class HealthCheck(pulumi.CustomResource):
 
         The **check** object supports the following:
 
-          * `endPoint` (`pulumi.Input[str]`)
+          * `endpoint` (`pulumi.Input[str]`) - The destination for the request.
           * `healthy` (`pulumi.Input[float]`) - The number of consecutive successful health checks that must occur before declaring an instance healthy.
           * `interval` (`pulumi.Input[float]`) - The amount of time (in seconds) between each health check (minimum: 10).
           * `port` (`pulumi.Input[float]`) - The port of the Spotinst HCS (default: 80).
           * `protocol` (`pulumi.Input[str]`) - The protocol to use to connect with the instance. Valid values: http, https.
-          * `timeOut` (`pulumi.Input[float]`)
+          * `timeout` (`pulumi.Input[float]`) - the amount of time (in seconds) to wait when receiving a response from the health check.
           * `unhealthy` (`pulumi.Input[float]`) - The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

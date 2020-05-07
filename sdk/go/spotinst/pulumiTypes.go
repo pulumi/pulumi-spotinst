@@ -11,7 +11,8 @@ import (
 )
 
 type HealthCheckCheck struct {
-	EndPoint string `pulumi:"endPoint"`
+	// The destination for the request.
+	Endpoint string `pulumi:"endpoint"`
 	// The number of consecutive successful health checks that must occur before declaring an instance healthy.
 	Healthy int `pulumi:"healthy"`
 	// The amount of time (in seconds) between each health check (minimum: 10).
@@ -20,7 +21,8 @@ type HealthCheckCheck struct {
 	Port int `pulumi:"port"`
 	// The protocol to use to connect with the instance. Valid values: http, https.
 	Protocol string `pulumi:"protocol"`
-	TimeOut  int    `pulumi:"timeOut"`
+	// the amount of time (in seconds) to wait when receiving a response from the health check.
+	Timeout int `pulumi:"timeout"`
 	// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
 	Unhealthy int `pulumi:"unhealthy"`
 }
@@ -38,7 +40,8 @@ type HealthCheckCheckInput interface {
 }
 
 type HealthCheckCheckArgs struct {
-	EndPoint pulumi.StringInput `pulumi:"endPoint"`
+	// The destination for the request.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// The number of consecutive successful health checks that must occur before declaring an instance healthy.
 	Healthy pulumi.IntInput `pulumi:"healthy"`
 	// The amount of time (in seconds) between each health check (minimum: 10).
@@ -47,7 +50,8 @@ type HealthCheckCheckArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The protocol to use to connect with the instance. Valid values: http, https.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
-	TimeOut  pulumi.IntInput    `pulumi:"timeOut"`
+	// the amount of time (in seconds) to wait when receiving a response from the health check.
+	Timeout pulumi.IntInput `pulumi:"timeout"`
 	// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
 	Unhealthy pulumi.IntInput `pulumi:"unhealthy"`
 }
@@ -129,8 +133,10 @@ func (o HealthCheckCheckOutput) ToHealthCheckCheckPtrOutputWithContext(ctx conte
 		return &v
 	}).(HealthCheckCheckPtrOutput)
 }
-func (o HealthCheckCheckOutput) EndPoint() pulumi.StringOutput {
-	return o.ApplyT(func(v HealthCheckCheck) string { return v.EndPoint }).(pulumi.StringOutput)
+
+// The destination for the request.
+func (o HealthCheckCheckOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthCheckCheck) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
 // The number of consecutive successful health checks that must occur before declaring an instance healthy.
@@ -153,8 +159,9 @@ func (o HealthCheckCheckOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v HealthCheckCheck) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-func (o HealthCheckCheckOutput) TimeOut() pulumi.IntOutput {
-	return o.ApplyT(func(v HealthCheckCheck) int { return v.TimeOut }).(pulumi.IntOutput)
+// the amount of time (in seconds) to wait when receiving a response from the health check.
+func (o HealthCheckCheckOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v HealthCheckCheck) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
 // The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
@@ -180,12 +187,13 @@ func (o HealthCheckCheckPtrOutput) Elem() HealthCheckCheckOutput {
 	return o.ApplyT(func(v *HealthCheckCheck) HealthCheckCheck { return *v }).(HealthCheckCheckOutput)
 }
 
-func (o HealthCheckCheckPtrOutput) EndPoint() pulumi.StringPtrOutput {
+// The destination for the request.
+func (o HealthCheckCheckPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckCheck) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.EndPoint
+		return &v.Endpoint
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -229,12 +237,13 @@ func (o HealthCheckCheckPtrOutput) Protocol() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o HealthCheckCheckPtrOutput) TimeOut() pulumi.IntPtrOutput {
+// the amount of time (in seconds) to wait when receiving a response from the health check.
+func (o HealthCheckCheckPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HealthCheckCheck) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.TimeOut
+		return &v.Timeout
 	}).(pulumi.IntPtrOutput)
 }
 

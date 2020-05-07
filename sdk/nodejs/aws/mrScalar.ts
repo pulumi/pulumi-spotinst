@@ -53,6 +53,7 @@ export class MrScalar extends pulumi.CustomResource {
     public readonly coreMinSize!: pulumi.Output<number | undefined>;
     public readonly coreScalingDownPolicies!: pulumi.Output<outputs.aws.MrScalarCoreScalingDownPolicy[] | undefined>;
     public readonly coreScalingUpPolicies!: pulumi.Output<outputs.aws.MrScalarCoreScalingUpPolicy[] | undefined>;
+    public readonly coreUnit!: pulumi.Output<string | undefined>;
     public readonly customAmiId!: pulumi.Output<string | undefined>;
     /**
      * The MrScaler description.
@@ -103,6 +104,11 @@ export class MrScalar extends pulumi.CustomResource {
     public readonly taskMinSize!: pulumi.Output<number | undefined>;
     public readonly taskScalingDownPolicies!: pulumi.Output<outputs.aws.MrScalarTaskScalingDownPolicy[] | undefined>;
     public readonly taskScalingUpPolicies!: pulumi.Output<outputs.aws.MrScalarTaskScalingUpPolicy[] | undefined>;
+    public readonly taskUnit!: pulumi.Output<string | undefined>;
+    /**
+     * Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+     */
+    public readonly terminationPolicies!: pulumi.Output<outputs.aws.MrScalarTerminationPolicy[] | undefined>;
     public readonly terminationProtected!: pulumi.Output<boolean | undefined>;
     public readonly visibleToAllUsers!: pulumi.Output<boolean | undefined>;
 
@@ -135,6 +141,7 @@ export class MrScalar extends pulumi.CustomResource {
             inputs["coreMinSize"] = state ? state.coreMinSize : undefined;
             inputs["coreScalingDownPolicies"] = state ? state.coreScalingDownPolicies : undefined;
             inputs["coreScalingUpPolicies"] = state ? state.coreScalingUpPolicies : undefined;
+            inputs["coreUnit"] = state ? state.coreUnit : undefined;
             inputs["customAmiId"] = state ? state.customAmiId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["ebsRootVolumeSize"] = state ? state.ebsRootVolumeSize : undefined;
@@ -173,6 +180,8 @@ export class MrScalar extends pulumi.CustomResource {
             inputs["taskMinSize"] = state ? state.taskMinSize : undefined;
             inputs["taskScalingDownPolicies"] = state ? state.taskScalingDownPolicies : undefined;
             inputs["taskScalingUpPolicies"] = state ? state.taskScalingUpPolicies : undefined;
+            inputs["taskUnit"] = state ? state.taskUnit : undefined;
+            inputs["terminationPolicies"] = state ? state.terminationPolicies : undefined;
             inputs["terminationProtected"] = state ? state.terminationProtected : undefined;
             inputs["visibleToAllUsers"] = state ? state.visibleToAllUsers : undefined;
         } else {
@@ -197,6 +206,7 @@ export class MrScalar extends pulumi.CustomResource {
             inputs["coreMinSize"] = args ? args.coreMinSize : undefined;
             inputs["coreScalingDownPolicies"] = args ? args.coreScalingDownPolicies : undefined;
             inputs["coreScalingUpPolicies"] = args ? args.coreScalingUpPolicies : undefined;
+            inputs["coreUnit"] = args ? args.coreUnit : undefined;
             inputs["customAmiId"] = args ? args.customAmiId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["ebsRootVolumeSize"] = args ? args.ebsRootVolumeSize : undefined;
@@ -234,6 +244,8 @@ export class MrScalar extends pulumi.CustomResource {
             inputs["taskMinSize"] = args ? args.taskMinSize : undefined;
             inputs["taskScalingDownPolicies"] = args ? args.taskScalingDownPolicies : undefined;
             inputs["taskScalingUpPolicies"] = args ? args.taskScalingUpPolicies : undefined;
+            inputs["taskUnit"] = args ? args.taskUnit : undefined;
+            inputs["terminationPolicies"] = args ? args.terminationPolicies : undefined;
             inputs["terminationProtected"] = args ? args.terminationProtected : undefined;
             inputs["visibleToAllUsers"] = args ? args.visibleToAllUsers : undefined;
             inputs["outputClusterId"] = undefined /*out*/;
@@ -273,6 +285,7 @@ export interface MrScalarState {
     readonly coreMinSize?: pulumi.Input<number>;
     readonly coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
     readonly coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
+    readonly coreUnit?: pulumi.Input<string>;
     readonly customAmiId?: pulumi.Input<string>;
     /**
      * The MrScaler description.
@@ -323,6 +336,11 @@ export interface MrScalarState {
     readonly taskMinSize?: pulumi.Input<number>;
     readonly taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[]>;
     readonly taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[]>;
+    readonly taskUnit?: pulumi.Input<string>;
+    /**
+     * Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+     */
+    readonly terminationPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicy>[]>;
     readonly terminationProtected?: pulumi.Input<boolean>;
     readonly visibleToAllUsers?: pulumi.Input<boolean>;
 }
@@ -351,6 +369,7 @@ export interface MrScalarArgs {
     readonly coreMinSize?: pulumi.Input<number>;
     readonly coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
     readonly coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
+    readonly coreUnit?: pulumi.Input<string>;
     readonly customAmiId?: pulumi.Input<string>;
     /**
      * The MrScaler description.
@@ -400,6 +419,11 @@ export interface MrScalarArgs {
     readonly taskMinSize?: pulumi.Input<number>;
     readonly taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[]>;
     readonly taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[]>;
+    readonly taskUnit?: pulumi.Input<string>;
+    /**
+     * Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+     */
+    readonly terminationPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicy>[]>;
     readonly terminationProtected?: pulumi.Input<boolean>;
     readonly visibleToAllUsers?: pulumi.Input<boolean>;
 }

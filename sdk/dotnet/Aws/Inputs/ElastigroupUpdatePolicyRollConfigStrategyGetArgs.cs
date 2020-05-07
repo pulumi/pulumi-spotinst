@@ -18,6 +18,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("batchMinHealthyPercentage")]
         public Input<int>? BatchMinHealthyPercentage { get; set; }
 
+        [Input("onFailure")]
+        public Input<Inputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailureGetArgs>? OnFailure { get; set; }
+
         [Input("shouldDrainInstances")]
         public Input<bool>? ShouldDrainInstances { get; set; }
 

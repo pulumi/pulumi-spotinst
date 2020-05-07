@@ -2531,6 +2531,683 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput)
 	}).(ElastigroupScalingUpPolicyDimensionOutput)
 }
 
+type OceanImportAutoscaler struct {
+	AutoHeadroomPercentage *int                                 `pulumi:"autoHeadroomPercentage"`
+	Cooldown               *int                                 `pulumi:"cooldown"`
+	Down                   *OceanImportAutoscalerDown           `pulumi:"down"`
+	Headroom               *OceanImportAutoscalerHeadroom       `pulumi:"headroom"`
+	IsAutoConfig           *bool                                `pulumi:"isAutoConfig"`
+	IsEnabled              *bool                                `pulumi:"isEnabled"`
+	ResourceLimits         *OceanImportAutoscalerResourceLimits `pulumi:"resourceLimits"`
+}
+
+// OceanImportAutoscalerInput is an input type that accepts OceanImportAutoscalerArgs and OceanImportAutoscalerOutput values.
+// You can construct a concrete instance of `OceanImportAutoscalerInput` via:
+//
+// 		 OceanImportAutoscalerArgs{...}
+//
+type OceanImportAutoscalerInput interface {
+	pulumi.Input
+
+	ToOceanImportAutoscalerOutput() OceanImportAutoscalerOutput
+	ToOceanImportAutoscalerOutputWithContext(context.Context) OceanImportAutoscalerOutput
+}
+
+type OceanImportAutoscalerArgs struct {
+	AutoHeadroomPercentage pulumi.IntPtrInput                          `pulumi:"autoHeadroomPercentage"`
+	Cooldown               pulumi.IntPtrInput                          `pulumi:"cooldown"`
+	Down                   OceanImportAutoscalerDownPtrInput           `pulumi:"down"`
+	Headroom               OceanImportAutoscalerHeadroomPtrInput       `pulumi:"headroom"`
+	IsAutoConfig           pulumi.BoolPtrInput                         `pulumi:"isAutoConfig"`
+	IsEnabled              pulumi.BoolPtrInput                         `pulumi:"isEnabled"`
+	ResourceLimits         OceanImportAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
+}
+
+func (OceanImportAutoscalerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportAutoscaler)(nil)).Elem()
+}
+
+func (i OceanImportAutoscalerArgs) ToOceanImportAutoscalerOutput() OceanImportAutoscalerOutput {
+	return i.ToOceanImportAutoscalerOutputWithContext(context.Background())
+}
+
+func (i OceanImportAutoscalerArgs) ToOceanImportAutoscalerOutputWithContext(ctx context.Context) OceanImportAutoscalerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerOutput)
+}
+
+func (i OceanImportAutoscalerArgs) ToOceanImportAutoscalerPtrOutput() OceanImportAutoscalerPtrOutput {
+	return i.ToOceanImportAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i OceanImportAutoscalerArgs) ToOceanImportAutoscalerPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerOutput).ToOceanImportAutoscalerPtrOutputWithContext(ctx)
+}
+
+// OceanImportAutoscalerPtrInput is an input type that accepts OceanImportAutoscalerArgs, OceanImportAutoscalerPtr and OceanImportAutoscalerPtrOutput values.
+// You can construct a concrete instance of `OceanImportAutoscalerPtrInput` via:
+//
+// 		 OceanImportAutoscalerArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type OceanImportAutoscalerPtrInput interface {
+	pulumi.Input
+
+	ToOceanImportAutoscalerPtrOutput() OceanImportAutoscalerPtrOutput
+	ToOceanImportAutoscalerPtrOutputWithContext(context.Context) OceanImportAutoscalerPtrOutput
+}
+
+type oceanImportAutoscalerPtrType OceanImportAutoscalerArgs
+
+func OceanImportAutoscalerPtr(v *OceanImportAutoscalerArgs) OceanImportAutoscalerPtrInput {
+	return (*oceanImportAutoscalerPtrType)(v)
+}
+
+func (*oceanImportAutoscalerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportAutoscaler)(nil)).Elem()
+}
+
+func (i *oceanImportAutoscalerPtrType) ToOceanImportAutoscalerPtrOutput() OceanImportAutoscalerPtrOutput {
+	return i.ToOceanImportAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanImportAutoscalerPtrType) ToOceanImportAutoscalerPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerPtrOutput)
+}
+
+type OceanImportAutoscalerOutput struct{ *pulumi.OutputState }
+
+func (OceanImportAutoscalerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportAutoscaler)(nil)).Elem()
+}
+
+func (o OceanImportAutoscalerOutput) ToOceanImportAutoscalerOutput() OceanImportAutoscalerOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerOutput) ToOceanImportAutoscalerOutputWithContext(ctx context.Context) OceanImportAutoscalerOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerOutput) ToOceanImportAutoscalerPtrOutput() OceanImportAutoscalerPtrOutput {
+	return o.ToOceanImportAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (o OceanImportAutoscalerOutput) ToOceanImportAutoscalerPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscaler {
+		return &v
+	}).(OceanImportAutoscalerPtrOutput)
+}
+func (o OceanImportAutoscalerOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscaler) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerOutput) Cooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerOutput) Down() OceanImportAutoscalerDownPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerDown { return v.Down }).(OceanImportAutoscalerDownPtrOutput)
+}
+
+func (o OceanImportAutoscalerOutput) Headroom() OceanImportAutoscalerHeadroomPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerHeadroom { return v.Headroom }).(OceanImportAutoscalerHeadroomPtrOutput)
+}
+
+func (o OceanImportAutoscalerOutput) IsAutoConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscaler) *bool { return v.IsAutoConfig }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanImportAutoscalerOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscaler) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanImportAutoscalerOutput) ResourceLimits() OceanImportAutoscalerResourceLimitsPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerResourceLimits { return v.ResourceLimits }).(OceanImportAutoscalerResourceLimitsPtrOutput)
+}
+
+type OceanImportAutoscalerPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanImportAutoscalerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportAutoscaler)(nil)).Elem()
+}
+
+func (o OceanImportAutoscalerPtrOutput) ToOceanImportAutoscalerPtrOutput() OceanImportAutoscalerPtrOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerPtrOutput) ToOceanImportAutoscalerPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerPtrOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerPtrOutput) Elem() OceanImportAutoscalerOutput {
+	return o.ApplyT(func(v *OceanImportAutoscaler) OceanImportAutoscaler { return *v }).(OceanImportAutoscalerOutput)
+}
+
+func (o OceanImportAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoHeadroomPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cooldown
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerPtrOutput) Down() OceanImportAutoscalerDownPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscaler) *OceanImportAutoscalerDown {
+		if v == nil {
+			return nil
+		}
+		return v.Down
+	}).(OceanImportAutoscalerDownPtrOutput)
+}
+
+func (o OceanImportAutoscalerPtrOutput) Headroom() OceanImportAutoscalerHeadroomPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscaler) *OceanImportAutoscalerHeadroom {
+		if v == nil {
+			return nil
+		}
+		return v.Headroom
+	}).(OceanImportAutoscalerHeadroomPtrOutput)
+}
+
+func (o OceanImportAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAutoConfig
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanImportAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanImportAutoscalerPtrOutput) ResourceLimits() OceanImportAutoscalerResourceLimitsPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscaler) *OceanImportAutoscalerResourceLimits {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLimits
+	}).(OceanImportAutoscalerResourceLimitsPtrOutput)
+}
+
+type OceanImportAutoscalerDown struct {
+	EvaluationPeriods      *int     `pulumi:"evaluationPeriods"`
+	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
+}
+
+// OceanImportAutoscalerDownInput is an input type that accepts OceanImportAutoscalerDownArgs and OceanImportAutoscalerDownOutput values.
+// You can construct a concrete instance of `OceanImportAutoscalerDownInput` via:
+//
+// 		 OceanImportAutoscalerDownArgs{...}
+//
+type OceanImportAutoscalerDownInput interface {
+	pulumi.Input
+
+	ToOceanImportAutoscalerDownOutput() OceanImportAutoscalerDownOutput
+	ToOceanImportAutoscalerDownOutputWithContext(context.Context) OceanImportAutoscalerDownOutput
+}
+
+type OceanImportAutoscalerDownArgs struct {
+	EvaluationPeriods      pulumi.IntPtrInput     `pulumi:"evaluationPeriods"`
+	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
+}
+
+func (OceanImportAutoscalerDownArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportAutoscalerDown)(nil)).Elem()
+}
+
+func (i OceanImportAutoscalerDownArgs) ToOceanImportAutoscalerDownOutput() OceanImportAutoscalerDownOutput {
+	return i.ToOceanImportAutoscalerDownOutputWithContext(context.Background())
+}
+
+func (i OceanImportAutoscalerDownArgs) ToOceanImportAutoscalerDownOutputWithContext(ctx context.Context) OceanImportAutoscalerDownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerDownOutput)
+}
+
+func (i OceanImportAutoscalerDownArgs) ToOceanImportAutoscalerDownPtrOutput() OceanImportAutoscalerDownPtrOutput {
+	return i.ToOceanImportAutoscalerDownPtrOutputWithContext(context.Background())
+}
+
+func (i OceanImportAutoscalerDownArgs) ToOceanImportAutoscalerDownPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerDownPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerDownOutput).ToOceanImportAutoscalerDownPtrOutputWithContext(ctx)
+}
+
+// OceanImportAutoscalerDownPtrInput is an input type that accepts OceanImportAutoscalerDownArgs, OceanImportAutoscalerDownPtr and OceanImportAutoscalerDownPtrOutput values.
+// You can construct a concrete instance of `OceanImportAutoscalerDownPtrInput` via:
+//
+// 		 OceanImportAutoscalerDownArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type OceanImportAutoscalerDownPtrInput interface {
+	pulumi.Input
+
+	ToOceanImportAutoscalerDownPtrOutput() OceanImportAutoscalerDownPtrOutput
+	ToOceanImportAutoscalerDownPtrOutputWithContext(context.Context) OceanImportAutoscalerDownPtrOutput
+}
+
+type oceanImportAutoscalerDownPtrType OceanImportAutoscalerDownArgs
+
+func OceanImportAutoscalerDownPtr(v *OceanImportAutoscalerDownArgs) OceanImportAutoscalerDownPtrInput {
+	return (*oceanImportAutoscalerDownPtrType)(v)
+}
+
+func (*oceanImportAutoscalerDownPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportAutoscalerDown)(nil)).Elem()
+}
+
+func (i *oceanImportAutoscalerDownPtrType) ToOceanImportAutoscalerDownPtrOutput() OceanImportAutoscalerDownPtrOutput {
+	return i.ToOceanImportAutoscalerDownPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanImportAutoscalerDownPtrType) ToOceanImportAutoscalerDownPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerDownPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerDownPtrOutput)
+}
+
+type OceanImportAutoscalerDownOutput struct{ *pulumi.OutputState }
+
+func (OceanImportAutoscalerDownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportAutoscalerDown)(nil)).Elem()
+}
+
+func (o OceanImportAutoscalerDownOutput) ToOceanImportAutoscalerDownOutput() OceanImportAutoscalerDownOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerDownOutput) ToOceanImportAutoscalerDownOutputWithContext(ctx context.Context) OceanImportAutoscalerDownOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerDownOutput) ToOceanImportAutoscalerDownPtrOutput() OceanImportAutoscalerDownPtrOutput {
+	return o.ToOceanImportAutoscalerDownPtrOutputWithContext(context.Background())
+}
+
+func (o OceanImportAutoscalerDownOutput) ToOceanImportAutoscalerDownPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerDownPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerDown) *OceanImportAutoscalerDown {
+		return &v
+	}).(OceanImportAutoscalerDownPtrOutput)
+}
+func (o OceanImportAutoscalerDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
+}
+
+type OceanImportAutoscalerDownPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanImportAutoscalerDownPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportAutoscalerDown)(nil)).Elem()
+}
+
+func (o OceanImportAutoscalerDownPtrOutput) ToOceanImportAutoscalerDownPtrOutput() OceanImportAutoscalerDownPtrOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerDownPtrOutput) ToOceanImportAutoscalerDownPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerDownPtrOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerDownPtrOutput) Elem() OceanImportAutoscalerDownOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerDown) OceanImportAutoscalerDown { return *v }).(OceanImportAutoscalerDownOutput)
+}
+
+func (o OceanImportAutoscalerDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerDown) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationPeriods
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerDown) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxScaleDownPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+type OceanImportAutoscalerHeadroom struct {
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
+	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
+	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
+}
+
+// OceanImportAutoscalerHeadroomInput is an input type that accepts OceanImportAutoscalerHeadroomArgs and OceanImportAutoscalerHeadroomOutput values.
+// You can construct a concrete instance of `OceanImportAutoscalerHeadroomInput` via:
+//
+// 		 OceanImportAutoscalerHeadroomArgs{...}
+//
+type OceanImportAutoscalerHeadroomInput interface {
+	pulumi.Input
+
+	ToOceanImportAutoscalerHeadroomOutput() OceanImportAutoscalerHeadroomOutput
+	ToOceanImportAutoscalerHeadroomOutputWithContext(context.Context) OceanImportAutoscalerHeadroomOutput
+}
+
+type OceanImportAutoscalerHeadroomArgs struct {
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
+}
+
+func (OceanImportAutoscalerHeadroomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportAutoscalerHeadroom)(nil)).Elem()
+}
+
+func (i OceanImportAutoscalerHeadroomArgs) ToOceanImportAutoscalerHeadroomOutput() OceanImportAutoscalerHeadroomOutput {
+	return i.ToOceanImportAutoscalerHeadroomOutputWithContext(context.Background())
+}
+
+func (i OceanImportAutoscalerHeadroomArgs) ToOceanImportAutoscalerHeadroomOutputWithContext(ctx context.Context) OceanImportAutoscalerHeadroomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerHeadroomOutput)
+}
+
+func (i OceanImportAutoscalerHeadroomArgs) ToOceanImportAutoscalerHeadroomPtrOutput() OceanImportAutoscalerHeadroomPtrOutput {
+	return i.ToOceanImportAutoscalerHeadroomPtrOutputWithContext(context.Background())
+}
+
+func (i OceanImportAutoscalerHeadroomArgs) ToOceanImportAutoscalerHeadroomPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerHeadroomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerHeadroomOutput).ToOceanImportAutoscalerHeadroomPtrOutputWithContext(ctx)
+}
+
+// OceanImportAutoscalerHeadroomPtrInput is an input type that accepts OceanImportAutoscalerHeadroomArgs, OceanImportAutoscalerHeadroomPtr and OceanImportAutoscalerHeadroomPtrOutput values.
+// You can construct a concrete instance of `OceanImportAutoscalerHeadroomPtrInput` via:
+//
+// 		 OceanImportAutoscalerHeadroomArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type OceanImportAutoscalerHeadroomPtrInput interface {
+	pulumi.Input
+
+	ToOceanImportAutoscalerHeadroomPtrOutput() OceanImportAutoscalerHeadroomPtrOutput
+	ToOceanImportAutoscalerHeadroomPtrOutputWithContext(context.Context) OceanImportAutoscalerHeadroomPtrOutput
+}
+
+type oceanImportAutoscalerHeadroomPtrType OceanImportAutoscalerHeadroomArgs
+
+func OceanImportAutoscalerHeadroomPtr(v *OceanImportAutoscalerHeadroomArgs) OceanImportAutoscalerHeadroomPtrInput {
+	return (*oceanImportAutoscalerHeadroomPtrType)(v)
+}
+
+func (*oceanImportAutoscalerHeadroomPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportAutoscalerHeadroom)(nil)).Elem()
+}
+
+func (i *oceanImportAutoscalerHeadroomPtrType) ToOceanImportAutoscalerHeadroomPtrOutput() OceanImportAutoscalerHeadroomPtrOutput {
+	return i.ToOceanImportAutoscalerHeadroomPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanImportAutoscalerHeadroomPtrType) ToOceanImportAutoscalerHeadroomPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerHeadroomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerHeadroomPtrOutput)
+}
+
+type OceanImportAutoscalerHeadroomOutput struct{ *pulumi.OutputState }
+
+func (OceanImportAutoscalerHeadroomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportAutoscalerHeadroom)(nil)).Elem()
+}
+
+func (o OceanImportAutoscalerHeadroomOutput) ToOceanImportAutoscalerHeadroomOutput() OceanImportAutoscalerHeadroomOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerHeadroomOutput) ToOceanImportAutoscalerHeadroomOutputWithContext(ctx context.Context) OceanImportAutoscalerHeadroomOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerHeadroomOutput) ToOceanImportAutoscalerHeadroomPtrOutput() OceanImportAutoscalerHeadroomPtrOutput {
+	return o.ToOceanImportAutoscalerHeadroomPtrOutputWithContext(context.Background())
+}
+
+func (o OceanImportAutoscalerHeadroomOutput) ToOceanImportAutoscalerHeadroomPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerHeadroomPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *OceanImportAutoscalerHeadroom {
+		return &v
+	}).(OceanImportAutoscalerHeadroomPtrOutput)
+}
+func (o OceanImportAutoscalerHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+}
+
+type OceanImportAutoscalerHeadroomPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanImportAutoscalerHeadroomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportAutoscalerHeadroom)(nil)).Elem()
+}
+
+func (o OceanImportAutoscalerHeadroomPtrOutput) ToOceanImportAutoscalerHeadroomPtrOutput() OceanImportAutoscalerHeadroomPtrOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerHeadroomPtrOutput) ToOceanImportAutoscalerHeadroomPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerHeadroomPtrOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerHeadroomPtrOutput) Elem() OceanImportAutoscalerHeadroomOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) OceanImportAutoscalerHeadroom { return *v }).(OceanImportAutoscalerHeadroomOutput)
+}
+
+func (o OceanImportAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuPerUnit
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GpuPerUnit
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryPerUnit
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumOfUnits
+	}).(pulumi.IntPtrOutput)
+}
+
+type OceanImportAutoscalerResourceLimits struct {
+	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
+	MaxVcpu      *int `pulumi:"maxVcpu"`
+}
+
+// OceanImportAutoscalerResourceLimitsInput is an input type that accepts OceanImportAutoscalerResourceLimitsArgs and OceanImportAutoscalerResourceLimitsOutput values.
+// You can construct a concrete instance of `OceanImportAutoscalerResourceLimitsInput` via:
+//
+// 		 OceanImportAutoscalerResourceLimitsArgs{...}
+//
+type OceanImportAutoscalerResourceLimitsInput interface {
+	pulumi.Input
+
+	ToOceanImportAutoscalerResourceLimitsOutput() OceanImportAutoscalerResourceLimitsOutput
+	ToOceanImportAutoscalerResourceLimitsOutputWithContext(context.Context) OceanImportAutoscalerResourceLimitsOutput
+}
+
+type OceanImportAutoscalerResourceLimitsArgs struct {
+	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
+	MaxVcpu      pulumi.IntPtrInput `pulumi:"maxVcpu"`
+}
+
+func (OceanImportAutoscalerResourceLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportAutoscalerResourceLimits)(nil)).Elem()
+}
+
+func (i OceanImportAutoscalerResourceLimitsArgs) ToOceanImportAutoscalerResourceLimitsOutput() OceanImportAutoscalerResourceLimitsOutput {
+	return i.ToOceanImportAutoscalerResourceLimitsOutputWithContext(context.Background())
+}
+
+func (i OceanImportAutoscalerResourceLimitsArgs) ToOceanImportAutoscalerResourceLimitsOutputWithContext(ctx context.Context) OceanImportAutoscalerResourceLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerResourceLimitsOutput)
+}
+
+func (i OceanImportAutoscalerResourceLimitsArgs) ToOceanImportAutoscalerResourceLimitsPtrOutput() OceanImportAutoscalerResourceLimitsPtrOutput {
+	return i.ToOceanImportAutoscalerResourceLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanImportAutoscalerResourceLimitsArgs) ToOceanImportAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerResourceLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerResourceLimitsOutput).ToOceanImportAutoscalerResourceLimitsPtrOutputWithContext(ctx)
+}
+
+// OceanImportAutoscalerResourceLimitsPtrInput is an input type that accepts OceanImportAutoscalerResourceLimitsArgs, OceanImportAutoscalerResourceLimitsPtr and OceanImportAutoscalerResourceLimitsPtrOutput values.
+// You can construct a concrete instance of `OceanImportAutoscalerResourceLimitsPtrInput` via:
+//
+// 		 OceanImportAutoscalerResourceLimitsArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type OceanImportAutoscalerResourceLimitsPtrInput interface {
+	pulumi.Input
+
+	ToOceanImportAutoscalerResourceLimitsPtrOutput() OceanImportAutoscalerResourceLimitsPtrOutput
+	ToOceanImportAutoscalerResourceLimitsPtrOutputWithContext(context.Context) OceanImportAutoscalerResourceLimitsPtrOutput
+}
+
+type oceanImportAutoscalerResourceLimitsPtrType OceanImportAutoscalerResourceLimitsArgs
+
+func OceanImportAutoscalerResourceLimitsPtr(v *OceanImportAutoscalerResourceLimitsArgs) OceanImportAutoscalerResourceLimitsPtrInput {
+	return (*oceanImportAutoscalerResourceLimitsPtrType)(v)
+}
+
+func (*oceanImportAutoscalerResourceLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportAutoscalerResourceLimits)(nil)).Elem()
+}
+
+func (i *oceanImportAutoscalerResourceLimitsPtrType) ToOceanImportAutoscalerResourceLimitsPtrOutput() OceanImportAutoscalerResourceLimitsPtrOutput {
+	return i.ToOceanImportAutoscalerResourceLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanImportAutoscalerResourceLimitsPtrType) ToOceanImportAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerResourceLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportAutoscalerResourceLimitsPtrOutput)
+}
+
+type OceanImportAutoscalerResourceLimitsOutput struct{ *pulumi.OutputState }
+
+func (OceanImportAutoscalerResourceLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportAutoscalerResourceLimits)(nil)).Elem()
+}
+
+func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResourceLimitsOutput() OceanImportAutoscalerResourceLimitsOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResourceLimitsOutputWithContext(ctx context.Context) OceanImportAutoscalerResourceLimitsOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResourceLimitsPtrOutput() OceanImportAutoscalerResourceLimitsPtrOutput {
+	return o.ToOceanImportAutoscalerResourceLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerResourceLimitsPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerResourceLimits) *OceanImportAutoscalerResourceLimits {
+		return &v
+	}).(OceanImportAutoscalerResourceLimitsPtrOutput)
+}
+func (o OceanImportAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+}
+
+type OceanImportAutoscalerResourceLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanImportAutoscalerResourceLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportAutoscalerResourceLimits)(nil)).Elem()
+}
+
+func (o OceanImportAutoscalerResourceLimitsPtrOutput) ToOceanImportAutoscalerResourceLimitsPtrOutput() OceanImportAutoscalerResourceLimitsPtrOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerResourceLimitsPtrOutput) ToOceanImportAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerResourceLimitsPtrOutput {
+	return o
+}
+
+func (o OceanImportAutoscalerResourceLimitsPtrOutput) Elem() OceanImportAutoscalerResourceLimitsOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) OceanImportAutoscalerResourceLimits { return *v }).(OceanImportAutoscalerResourceLimitsOutput)
+}
+
+func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemoryGib
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
 type OceanImportBackendService struct {
 	// Sets which location the backend services will be active. Valid values: `regional`, `global`.
 	LocationType *string                              `pulumi:"locationType"`
@@ -3597,6 +4274,14 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionArrayOutput{})
+	pulumi.RegisterOutputType(OceanImportAutoscalerOutput{})
+	pulumi.RegisterOutputType(OceanImportAutoscalerPtrOutput{})
+	pulumi.RegisterOutputType(OceanImportAutoscalerDownOutput{})
+	pulumi.RegisterOutputType(OceanImportAutoscalerDownPtrOutput{})
+	pulumi.RegisterOutputType(OceanImportAutoscalerHeadroomOutput{})
+	pulumi.RegisterOutputType(OceanImportAutoscalerHeadroomPtrOutput{})
+	pulumi.RegisterOutputType(OceanImportAutoscalerResourceLimitsOutput{})
+	pulumi.RegisterOutputType(OceanImportAutoscalerResourceLimitsPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportBackendServiceOutput{})
 	pulumi.RegisterOutputType(OceanImportBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(OceanImportBackendServiceNamedPortOutput{})

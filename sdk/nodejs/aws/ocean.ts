@@ -19,29 +19,10 @@ import * as utilities from "../utilities";
  * 
  * const example = new spotinst.aws.Ocean("example", {
  *     associatePublicIpAddress: true,
- *     // --- AUTOSCALER -----------------
- *     autoscaler: {
- *         autoHeadroomPercentage: 50,
- *         autoscaleCooldown: 300,
- *         autoscaleDown: {
- *             evaluationPeriods: 300,
- *         },
- *         autoscaleHeadroom: {
- *             cpuPerUnit: 1024,
- *             gpuPerUnit: 1,
- *             memoryPerUnit: 512,
- *             numOfUnits: 2,
- *         },
- *         autoscaleIsAutoConfig: false,
- *         autoscaleIsEnabled: false,
- *         resourceLimits: {
- *             maxMemoryGib: 20,
- *             maxVcpu: 1024,
- *         },
- *     },
  *     controllerId: "fakeClusterId",
  *     desiredCapacity: 2,
  *     drainingTimeout: 120,
+ *     ebsOptimized: true,
  *     // --- STRATEGY --------------------
  *     fallbackToOndemand: true,
  *     gracePeriod: 600,
@@ -61,10 +42,15 @@ import * as utilities from "../utilities";
  *     ],
  *     maxSize: 2,
  *     minSize: 1,
+ *     monitoring: true,
  *     region: "us-west-2",
  *     rootVolumeSize: 20,
  *     securityGroups: ["sg-987654321"],
  *     subnetIds: ["subnet-123456789"],
+ *     tags: [{
+ *         key: "fakeKey",
+ *         value: "fakeValue",
+ *     }],
  *     userData: "echo hello world",
  *     utilizeReservedInstances: false,
  *     whitelists: [
@@ -74,6 +60,29 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * ## Auto Scaler
+ * 
+ * * `autoscaler` - (Optional) Describes the Ocean Kubernetes autoscaler.
+ * * `autoscaleIsEnabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes autoscaler.
+ * * `autoscaleIsAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+ * * `autoscaleCooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+ * * `autoHeadroomPercentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
+ * * `autoscaleHeadroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+ * * `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+ * * `gpuPerUnit` - (Optional) Optionally configure the number of GPUS to allocate the headroom.
+ * * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+ * * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+ * * `autoscaleDown` - (Optional) Auto Scaling scale down operations.
+ * * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+ * * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+ * * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+ * * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ * 
+ * <a id="update-policy"></a>
  * ## Update Policy
  * 
  * * `updatePolicy` - (Optional)
@@ -138,9 +147,6 @@ export class Ocean extends pulumi.CustomResource {
      * Configure public IP address allocation.
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
-    /**
-     * Describes the Ocean Kubernetes autoscaler.
-     */
     public readonly autoscaler!: pulumi.Output<outputs.aws.OceanAutoscaler | undefined>;
     /**
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -189,7 +195,7 @@ export class Ocean extends pulumi.CustomResource {
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    public readonly maxSize!: pulumi.Output<number>;
+    public readonly maxSize!: pulumi.Output<number | undefined>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
@@ -230,7 +236,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
-     * If Reserved instances exist, OCean will utilize them before launching Spot instances.
+     * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
     public readonly utilizeReservedInstances!: pulumi.Output<boolean | undefined>;
     /**
@@ -334,9 +340,6 @@ export interface OceanState {
      * Configure public IP address allocation.
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
-    /**
-     * Describes the Ocean Kubernetes autoscaler.
-     */
     readonly autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     /**
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -426,7 +429,7 @@ export interface OceanState {
      */
     readonly userData?: pulumi.Input<string>;
     /**
-     * If Reserved instances exist, OCean will utilize them before launching Spot instances.
+     * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
     readonly utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
@@ -443,9 +446,6 @@ export interface OceanArgs {
      * Configure public IP address allocation.
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
-    /**
-     * Describes the Ocean Kubernetes autoscaler.
-     */
     readonly autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     /**
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -535,7 +535,7 @@ export interface OceanArgs {
      */
     readonly userData?: pulumi.Input<string>;
     /**
-     * If Reserved instances exist, OCean will utilize them before launching Spot instances.
+     * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
     readonly utilizeReservedInstances?: pulumi.Input<boolean>;
     /**

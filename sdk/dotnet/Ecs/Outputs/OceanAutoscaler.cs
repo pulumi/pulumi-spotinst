@@ -13,29 +13,11 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     [OutputType]
     public sealed class OceanAutoscaler
     {
-        /// <summary>
-        /// Cooldown period between scaling actions.
-        /// </summary>
         public readonly int? Cooldown;
-        /// <summary>
-        /// Auto Scaling scale down operations.
-        /// </summary>
         public readonly Outputs.OceanAutoscalerDown? Down;
-        /// <summary>
-        /// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-        /// </summary>
         public readonly Outputs.OceanAutoscalerHeadroom? Headroom;
-        /// <summary>
-        /// Automatically configure and optimize headroom resources.
-        /// </summary>
         public readonly bool? IsAutoConfig;
-        /// <summary>
-        /// Enable the Ocean ECS autoscaler.
-        /// </summary>
         public readonly bool? IsEnabled;
-        /// <summary>
-        /// Optionally set upper and lower bounds on the resource usage of the cluster.
-        /// </summary>
         public readonly Outputs.OceanAutoscalerResourceLimits? ResourceLimits;
 
         [OutputConstructor]

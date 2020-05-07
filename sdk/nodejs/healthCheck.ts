@@ -20,20 +20,16 @@ import * as utilities from "./utilities";
  * const httpCheck = new spotinst.HealthCheck("httpCheck", {
  *     check: {
  *         endpoint: "http://endpoint.com",
+ *         healthy: 1,
  *         interval: 10,
  *         port: 1337,
  *         protocol: "http",
  *         timeout: 10,
- *     },
- *     proxy: [{
- *         addr: "http://proxy.com",
- *         port: 80,
- *     }],
- *     resourceId: "sig-123",
- *     threshold: [{
- *         healthy: 1,
  *         unhealthy: 1,
- *     }],
+ *     },
+ *     proxyAddress: "http://proxy.com",
+ *     proxyPort: 80,
+ *     resourceId: "sig-123",
  * });
  * ```
  *

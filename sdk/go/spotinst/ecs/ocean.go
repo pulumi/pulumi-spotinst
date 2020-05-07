@@ -15,9 +15,8 @@ type Ocean struct {
 	pulumi.CustomResourceState
 
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean ECS autoscaler.
-	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
+	AssociatePublicIpAddress pulumi.BoolPtrOutput     `pulumi:"associatePublicIpAddress"`
+	Autoscaler               OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// The ocean cluster name.
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// The number of instances to launch and maintain in the cluster.
@@ -54,7 +53,7 @@ type Ocean struct {
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
-	// Instance types allowed in the Ocean cluster.
+	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
 
@@ -99,9 +98,8 @@ func GetOcean(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Ocean resources.
 type oceanState struct {
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean ECS autoscaler.
-	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
+	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
+	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
 	// The ocean cluster name.
 	ClusterName *string `pulumi:"clusterName"`
 	// The number of instances to launch and maintain in the cluster.
@@ -138,15 +136,14 @@ type oceanState struct {
 	UserData *string `pulumi:"userData"`
 	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
-	// Instance types allowed in the Ocean cluster.
+	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 	Whitelists []string `pulumi:"whitelists"`
 }
 
 type OceanState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	// Describes the Ocean ECS autoscaler.
-	Autoscaler OceanAutoscalerPtrInput
+	Autoscaler               OceanAutoscalerPtrInput
 	// The ocean cluster name.
 	ClusterName pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
@@ -183,7 +180,7 @@ type OceanState struct {
 	UserData pulumi.StringPtrInput
 	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
-	// Instance types allowed in the Ocean cluster.
+	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 	Whitelists pulumi.StringArrayInput
 }
 
@@ -193,9 +190,8 @@ func (OceanState) ElementType() reflect.Type {
 
 type oceanArgs struct {
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean ECS autoscaler.
-	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
+	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
+	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
 	// The ocean cluster name.
 	ClusterName string `pulumi:"clusterName"`
 	// The number of instances to launch and maintain in the cluster.
@@ -232,7 +228,7 @@ type oceanArgs struct {
 	UserData *string `pulumi:"userData"`
 	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
-	// Instance types allowed in the Ocean cluster.
+	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 	Whitelists []string `pulumi:"whitelists"`
 }
 
@@ -240,8 +236,7 @@ type oceanArgs struct {
 type OceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	// Describes the Ocean ECS autoscaler.
-	Autoscaler OceanAutoscalerPtrInput
+	Autoscaler               OceanAutoscalerPtrInput
 	// The ocean cluster name.
 	ClusterName pulumi.StringInput
 	// The number of instances to launch and maintain in the cluster.
@@ -278,7 +273,7 @@ type OceanArgs struct {
 	UserData pulumi.StringPtrInput
 	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
-	// Instance types allowed in the Ocean cluster.
+	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 	Whitelists pulumi.StringArrayInput
 }
 

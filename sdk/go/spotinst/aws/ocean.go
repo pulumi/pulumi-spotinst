@@ -15,9 +15,8 @@ type Ocean struct {
 	pulumi.CustomResourceState
 
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean Kubernetes autoscaler.
-	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
+	AssociatePublicIpAddress pulumi.BoolPtrOutput     `pulumi:"associatePublicIpAddress"`
+	Autoscaler               OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayOutput `pulumi:"blacklists"`
 	// The ocean cluster identifier. Example: `ocean.k8s`
@@ -41,7 +40,7 @@ type Ocean struct {
 	// - Array of load balancer objects to add to ocean cluster
 	LoadBalancers OceanLoadBalancerArrayOutput `pulumi:"loadBalancers"`
 	// The upper limit of instances the cluster can scale up to.
-	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
+	MaxSize pulumi.IntPtrOutput `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -63,7 +62,7 @@ type Ocean struct {
 	UpdatePolicy OceanUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
-	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
 	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
@@ -104,9 +103,8 @@ func GetOcean(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Ocean resources.
 type oceanState struct {
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean Kubernetes autoscaler.
-	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
+	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
+	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists []string `pulumi:"blacklists"`
 	// The ocean cluster identifier. Example: `ocean.k8s`
@@ -152,7 +150,7 @@ type oceanState struct {
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
-	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
 	Whitelists []string `pulumi:"whitelists"`
@@ -161,8 +159,7 @@ type oceanState struct {
 type OceanState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	// Describes the Ocean Kubernetes autoscaler.
-	Autoscaler OceanAutoscalerPtrInput
+	Autoscaler               OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayInput
 	// The ocean cluster identifier. Example: `ocean.k8s`
@@ -208,7 +205,7 @@ type OceanState struct {
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
-	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
 	Whitelists pulumi.StringArrayInput
@@ -220,9 +217,8 @@ func (OceanState) ElementType() reflect.Type {
 
 type oceanArgs struct {
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean Kubernetes autoscaler.
-	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
+	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
+	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists []string `pulumi:"blacklists"`
 	// The ocean cluster identifier. Example: `ocean.k8s`
@@ -268,7 +264,7 @@ type oceanArgs struct {
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
-	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
 	Whitelists []string `pulumi:"whitelists"`
@@ -278,8 +274,7 @@ type oceanArgs struct {
 type OceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	// Describes the Ocean Kubernetes autoscaler.
-	Autoscaler OceanAutoscalerPtrInput
+	Autoscaler               OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayInput
 	// The ocean cluster identifier. Example: `ocean.k8s`
@@ -325,7 +320,7 @@ type OceanArgs struct {
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
-	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
 	Whitelists pulumi.StringArrayInput

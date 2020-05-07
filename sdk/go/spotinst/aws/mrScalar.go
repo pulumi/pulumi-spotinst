@@ -36,6 +36,7 @@ import (
 // * `taskTarget` - (Required) amount of instances in task group.
 // * `taskMaximum` - (Optional) maximal amount of instances in task group.
 // * `taskMinimum` - (Optional) The minimal amount of instances in task group.
+// * `taskUnit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
 // * `taskLifecycle` - (Required) The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 // * `taskEbsOptimized` - (Optional) EBS Optimization setting for instances in group.
 // * `taskEbsBlockDevice` - (Required) This determines the ebs configuration for your task group instances. Only a single block is allowed.
@@ -51,6 +52,7 @@ import (
 // * `coreTarget` - (Required) amount of instances in core group.
 // * `coreMaximum` - (Optional) maximal amount of instances in core group.
 // * `coreMinimum` - (Optional) The minimal amount of instances in core group.
+// * `coreUnit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
 // * `coreLifecycle` - (Required) The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 // * `coreEbsOptimized` - (Optional) EBS Optimization setting for instances in group.
 // * `coreEbsBlockDevice` - (Required) This determines the ebs configuration for your core group instances. Only a single block is allowed.
@@ -166,6 +168,8 @@ import (
 // * `desiredCapacity` - (Optional) New desired capacity for the elastigroup.
 // * `minCapacity` - (Optional) New min capacity for the elastigroup.
 // * `maxCapacity` - (Optional) New max capacity for the elastigroup.
+//
+// <a id="termination-policies"></a>
 type MrScalar struct {
 	pulumi.CustomResourceState
 
@@ -187,6 +191,7 @@ type MrScalar struct {
 	CoreMinSize             pulumi.IntPtrOutput                      `pulumi:"coreMinSize"`
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayOutput `pulumi:"coreScalingDownPolicies"`
 	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayOutput   `pulumi:"coreScalingUpPolicies"`
+	CoreUnit                pulumi.StringPtrOutput                   `pulumi:"coreUnit"`
 	CustomAmiId             pulumi.StringPtrOutput                   `pulumi:"customAmiId"`
 	// The MrScaler description.
 	Description                 pulumi.StringPtrOutput                  `pulumi:"description"`
@@ -229,8 +234,11 @@ type MrScalar struct {
 	TaskMinSize             pulumi.IntPtrOutput                      `pulumi:"taskMinSize"`
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayOutput `pulumi:"taskScalingDownPolicies"`
 	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayOutput   `pulumi:"taskScalingUpPolicies"`
-	TerminationProtected    pulumi.BoolPtrOutput                     `pulumi:"terminationProtected"`
-	VisibleToAllUsers       pulumi.BoolPtrOutput                     `pulumi:"visibleToAllUsers"`
+	TaskUnit                pulumi.StringPtrOutput                   `pulumi:"taskUnit"`
+	// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+	TerminationPolicies  MrScalarTerminationPolicyArrayOutput `pulumi:"terminationPolicies"`
+	TerminationProtected pulumi.BoolPtrOutput                 `pulumi:"terminationProtected"`
+	VisibleToAllUsers    pulumi.BoolPtrOutput                 `pulumi:"visibleToAllUsers"`
 }
 
 // NewMrScalar registers a new resource with the given unique name, arguments, and options.
@@ -282,6 +290,7 @@ type mrScalarState struct {
 	CoreMinSize             *int                            `pulumi:"coreMinSize"`
 	CoreScalingDownPolicies []MrScalarCoreScalingDownPolicy `pulumi:"coreScalingDownPolicies"`
 	CoreScalingUpPolicies   []MrScalarCoreScalingUpPolicy   `pulumi:"coreScalingUpPolicies"`
+	CoreUnit                *string                         `pulumi:"coreUnit"`
 	CustomAmiId             *string                         `pulumi:"customAmiId"`
 	// The MrScaler description.
 	Description                 *string                        `pulumi:"description"`
@@ -324,8 +333,11 @@ type mrScalarState struct {
 	TaskMinSize             *int                            `pulumi:"taskMinSize"`
 	TaskScalingDownPolicies []MrScalarTaskScalingDownPolicy `pulumi:"taskScalingDownPolicies"`
 	TaskScalingUpPolicies   []MrScalarTaskScalingUpPolicy   `pulumi:"taskScalingUpPolicies"`
-	TerminationProtected    *bool                           `pulumi:"terminationProtected"`
-	VisibleToAllUsers       *bool                           `pulumi:"visibleToAllUsers"`
+	TaskUnit                *string                         `pulumi:"taskUnit"`
+	// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+	TerminationPolicies  []MrScalarTerminationPolicy `pulumi:"terminationPolicies"`
+	TerminationProtected *bool                       `pulumi:"terminationProtected"`
+	VisibleToAllUsers    *bool                       `pulumi:"visibleToAllUsers"`
 }
 
 type MrScalarState struct {
@@ -347,6 +359,7 @@ type MrScalarState struct {
 	CoreMinSize             pulumi.IntPtrInput
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayInput
 	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayInput
+	CoreUnit                pulumi.StringPtrInput
 	CustomAmiId             pulumi.StringPtrInput
 	// The MrScaler description.
 	Description                 pulumi.StringPtrInput
@@ -389,8 +402,11 @@ type MrScalarState struct {
 	TaskMinSize             pulumi.IntPtrInput
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayInput
 	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayInput
-	TerminationProtected    pulumi.BoolPtrInput
-	VisibleToAllUsers       pulumi.BoolPtrInput
+	TaskUnit                pulumi.StringPtrInput
+	// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+	TerminationPolicies  MrScalarTerminationPolicyArrayInput
+	TerminationProtected pulumi.BoolPtrInput
+	VisibleToAllUsers    pulumi.BoolPtrInput
 }
 
 func (MrScalarState) ElementType() reflect.Type {
@@ -416,6 +432,7 @@ type mrScalarArgs struct {
 	CoreMinSize             *int                            `pulumi:"coreMinSize"`
 	CoreScalingDownPolicies []MrScalarCoreScalingDownPolicy `pulumi:"coreScalingDownPolicies"`
 	CoreScalingUpPolicies   []MrScalarCoreScalingUpPolicy   `pulumi:"coreScalingUpPolicies"`
+	CoreUnit                *string                         `pulumi:"coreUnit"`
 	CustomAmiId             *string                         `pulumi:"customAmiId"`
 	// The MrScaler description.
 	Description                 *string                        `pulumi:"description"`
@@ -457,8 +474,11 @@ type mrScalarArgs struct {
 	TaskMinSize             *int                            `pulumi:"taskMinSize"`
 	TaskScalingDownPolicies []MrScalarTaskScalingDownPolicy `pulumi:"taskScalingDownPolicies"`
 	TaskScalingUpPolicies   []MrScalarTaskScalingUpPolicy   `pulumi:"taskScalingUpPolicies"`
-	TerminationProtected    *bool                           `pulumi:"terminationProtected"`
-	VisibleToAllUsers       *bool                           `pulumi:"visibleToAllUsers"`
+	TaskUnit                *string                         `pulumi:"taskUnit"`
+	// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+	TerminationPolicies  []MrScalarTerminationPolicy `pulumi:"terminationPolicies"`
+	TerminationProtected *bool                       `pulumi:"terminationProtected"`
+	VisibleToAllUsers    *bool                       `pulumi:"visibleToAllUsers"`
 }
 
 // The set of arguments for constructing a MrScalar resource.
@@ -481,6 +501,7 @@ type MrScalarArgs struct {
 	CoreMinSize             pulumi.IntPtrInput
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayInput
 	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayInput
+	CoreUnit                pulumi.StringPtrInput
 	CustomAmiId             pulumi.StringPtrInput
 	// The MrScaler description.
 	Description                 pulumi.StringPtrInput
@@ -522,8 +543,11 @@ type MrScalarArgs struct {
 	TaskMinSize             pulumi.IntPtrInput
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayInput
 	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayInput
-	TerminationProtected    pulumi.BoolPtrInput
-	VisibleToAllUsers       pulumi.BoolPtrInput
+	TaskUnit                pulumi.StringPtrInput
+	// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+	TerminationPolicies  MrScalarTerminationPolicyArrayInput
+	TerminationProtected pulumi.BoolPtrInput
+	VisibleToAllUsers    pulumi.BoolPtrInput
 }
 
 func (MrScalarArgs) ElementType() reflect.Type {

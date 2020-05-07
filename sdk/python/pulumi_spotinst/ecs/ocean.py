@@ -15,24 +15,6 @@ class Ocean(pulumi.CustomResource):
     Configure public IP address allocation.
     """
     autoscaler: pulumi.Output[dict]
-    """
-    Describes the Ocean ECS autoscaler.
-
-      * `cooldown` (`float`) - Cooldown period between scaling actions.
-      * `down` (`dict`) - Auto Scaling scale down operations.
-        * `maxScaleDownPercentage` (`float`) - Would represent the maximum % to scale-down. Number between 1-100
-
-      * `headroom` (`dict`) - Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-        * `cpuPerUnit` (`float`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        * `memoryPerUnit` (`float`) - Optionally configure the amount of memory (MB) to allocate the headroom.
-        * `numOfUnits` (`float`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-
-      * `isAutoConfig` (`bool`) - Automatically configure and optimize headroom resources.
-      * `isEnabled` (`bool`) - Enable the Ocean ECS autoscaler.
-      * `resourceLimits` (`dict`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-        * `maxMemoryGib` (`float`) - The maximum memory in GiB units that can be allocated to the cluster.
-        * `maxVcpu` (`float`) - The maximum cpu in vCPU units that can be allocated to the cluster.
-    """
     cluster_name: pulumi.Output[str]
     """
     The ocean cluster name.
@@ -108,7 +90,7 @@ class Ocean(pulumi.CustomResource):
     """
     whitelists: pulumi.Output[list]
     """
-    Instance types allowed in the Ocean cluster.
+    Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
     """
     def __init__(__self__, resource_name, opts=None, associate_public_ip_address=None, autoscaler=None, cluster_name=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, iam_instance_profile=None, image_id=None, key_pair=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, scheduled_tasks=None, security_group_ids=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -119,7 +101,6 @@ class Ocean(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[dict] autoscaler: Describes the Ocean ECS autoscaler.
         :param pulumi.Input[str] cluster_name: The ocean cluster name.
         :param pulumi.Input[float] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[float] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -137,34 +118,34 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[list] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, OCean will utilize them before launching Spot instances.
-        :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster.
+        :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 
         The **autoscaler** object supports the following:
 
-          * `cooldown` (`pulumi.Input[float]`) - Cooldown period between scaling actions.
-          * `down` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
-            * `maxScaleDownPercentage` (`pulumi.Input[float]`) - Would represent the maximum % to scale-down. Number between 1-100
+          * `cooldown` (`pulumi.Input[float]`)
+          * `down` (`pulumi.Input[dict]`)
+            * `maxScaleDownPercentage` (`pulumi.Input[float]`)
 
-          * `headroom` (`pulumi.Input[dict]`) - Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-            * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-            * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate the headroom.
-            * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+          * `headroom` (`pulumi.Input[dict]`)
+            * `cpuPerUnit` (`pulumi.Input[float]`)
+            * `memoryPerUnit` (`pulumi.Input[float]`)
+            * `numOfUnits` (`pulumi.Input[float]`)
 
-          * `isAutoConfig` (`pulumi.Input[bool]`) - Automatically configure and optimize headroom resources.
-          * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
-          * `resourceLimits` (`pulumi.Input[dict]`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-            * `maxMemoryGib` (`pulumi.Input[float]`) - The maximum memory in GiB units that can be allocated to the cluster.
-            * `maxVcpu` (`pulumi.Input[float]`) - The maximum cpu in vCPU units that can be allocated to the cluster.
+          * `isAutoConfig` (`pulumi.Input[bool]`)
+          * `isEnabled` (`pulumi.Input[bool]`)
+          * `resourceLimits` (`pulumi.Input[dict]`)
+            * `maxMemoryGib` (`pulumi.Input[float]`)
+            * `maxVcpu` (`pulumi.Input[float]`)
 
         The **scheduled_tasks** object supports the following:
 
           * `shutdownHours` (`pulumi.Input[dict]`)
-            * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
+            * `isEnabled` (`pulumi.Input[bool]`)
             * `timeWindows` (`pulumi.Input[list]`)
 
           * `tasks` (`pulumi.Input[list]`)
             * `cronExpression` (`pulumi.Input[str]`)
-            * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
+            * `isEnabled` (`pulumi.Input[bool]`)
             * `taskType` (`pulumi.Input[str]`)
 
         The **tags** object supports the following:
@@ -242,7 +223,6 @@ class Ocean(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[dict] autoscaler: Describes the Ocean ECS autoscaler.
         :param pulumi.Input[str] cluster_name: The ocean cluster name.
         :param pulumi.Input[float] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[float] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -260,34 +240,34 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[list] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, OCean will utilize them before launching Spot instances.
-        :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster.
+        :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 
         The **autoscaler** object supports the following:
 
-          * `cooldown` (`pulumi.Input[float]`) - Cooldown period between scaling actions.
-          * `down` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
-            * `maxScaleDownPercentage` (`pulumi.Input[float]`) - Would represent the maximum % to scale-down. Number between 1-100
+          * `cooldown` (`pulumi.Input[float]`)
+          * `down` (`pulumi.Input[dict]`)
+            * `maxScaleDownPercentage` (`pulumi.Input[float]`)
 
-          * `headroom` (`pulumi.Input[dict]`) - Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-            * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-            * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate the headroom.
-            * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+          * `headroom` (`pulumi.Input[dict]`)
+            * `cpuPerUnit` (`pulumi.Input[float]`)
+            * `memoryPerUnit` (`pulumi.Input[float]`)
+            * `numOfUnits` (`pulumi.Input[float]`)
 
-          * `isAutoConfig` (`pulumi.Input[bool]`) - Automatically configure and optimize headroom resources.
-          * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
-          * `resourceLimits` (`pulumi.Input[dict]`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-            * `maxMemoryGib` (`pulumi.Input[float]`) - The maximum memory in GiB units that can be allocated to the cluster.
-            * `maxVcpu` (`pulumi.Input[float]`) - The maximum cpu in vCPU units that can be allocated to the cluster.
+          * `isAutoConfig` (`pulumi.Input[bool]`)
+          * `isEnabled` (`pulumi.Input[bool]`)
+          * `resourceLimits` (`pulumi.Input[dict]`)
+            * `maxMemoryGib` (`pulumi.Input[float]`)
+            * `maxVcpu` (`pulumi.Input[float]`)
 
         The **scheduled_tasks** object supports the following:
 
           * `shutdownHours` (`pulumi.Input[dict]`)
-            * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
+            * `isEnabled` (`pulumi.Input[bool]`)
             * `timeWindows` (`pulumi.Input[list]`)
 
           * `tasks` (`pulumi.Input[list]`)
             * `cronExpression` (`pulumi.Input[str]`)
-            * `isEnabled` (`pulumi.Input[bool]`) - Enable the Ocean ECS autoscaler.
+            * `isEnabled` (`pulumi.Input[bool]`)
             * `taskType` (`pulumi.Input[str]`)
 
         The **tags** object supports the following:

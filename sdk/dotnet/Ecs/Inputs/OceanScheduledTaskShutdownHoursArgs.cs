@@ -12,9 +12,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
 
     public sealed class OceanScheduledTaskShutdownHoursArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enable the Ocean ECS autoscaler.
-        /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
 
