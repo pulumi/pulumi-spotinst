@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     [OutputType]
     public sealed class OceanScheduledTaskShutdownHours
     {
-        /// <summary>
-        /// Enable the Ocean ECS autoscaler.
-        /// </summary>
         public readonly bool? IsEnabled;
         public readonly ImmutableArray<string> TimeWindows;
 

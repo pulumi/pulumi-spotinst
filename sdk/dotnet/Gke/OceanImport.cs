@@ -14,6 +14,9 @@ namespace Pulumi.SpotInst.Gke
     /// </summary>
     public partial class OceanImport : Pulumi.CustomResource
     {
+        [Output("autoscaler")]
+        public Output<Outputs.OceanImportAutoscaler> Autoscaler { get; private set; } = null!;
+
         /// <summary>
         /// Describes the backend service configurations.
         /// </summary>
@@ -105,6 +108,9 @@ namespace Pulumi.SpotInst.Gke
 
     public sealed class OceanImportArgs : Pulumi.ResourceArgs
     {
+        [Input("autoscaler")]
+        public Input<Inputs.OceanImportAutoscalerArgs>? Autoscaler { get; set; }
+
         [Input("backendServices")]
         private InputList<Inputs.OceanImportBackendServiceArgs>? _backendServices;
 
@@ -170,6 +176,9 @@ namespace Pulumi.SpotInst.Gke
 
     public sealed class OceanImportState : Pulumi.ResourceArgs
     {
+        [Input("autoscaler")]
+        public Input<Inputs.OceanImportAutoscalerGetArgs>? Autoscaler { get; set; }
+
         [Input("backendServices")]
         private InputList<Inputs.OceanImportBackendServiceGetArgs>? _backendServices;
 

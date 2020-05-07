@@ -14,6 +14,7 @@ import (
 type OceanImport struct {
 	pulumi.CustomResourceState
 
+	Autoscaler OceanImportAutoscalerOutput `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
 	BackendServices     OceanImportBackendServiceArrayOutput `pulumi:"backendServices"`
 	ClusterControllerId pulumi.StringOutput                  `pulumi:"clusterControllerId"`
@@ -65,6 +66,7 @@ func GetOceanImport(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OceanImport resources.
 type oceanImportState struct {
+	Autoscaler *OceanImportAutoscaler `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
 	BackendServices     []OceanImportBackendService `pulumi:"backendServices"`
 	ClusterControllerId *string                     `pulumi:"clusterControllerId"`
@@ -83,6 +85,7 @@ type oceanImportState struct {
 }
 
 type OceanImportState struct {
+	Autoscaler OceanImportAutoscalerPtrInput
 	// Describes the backend service configurations.
 	BackendServices     OceanImportBackendServiceArrayInput
 	ClusterControllerId pulumi.StringPtrInput
@@ -105,6 +108,7 @@ func (OceanImportState) ElementType() reflect.Type {
 }
 
 type oceanImportArgs struct {
+	Autoscaler *OceanImportAutoscaler `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
 	BackendServices []OceanImportBackendService `pulumi:"backendServices"`
 	// The GKE cluster name.
@@ -123,6 +127,7 @@ type oceanImportArgs struct {
 
 // The set of arguments for constructing a OceanImport resource.
 type OceanImportArgs struct {
+	Autoscaler OceanImportAutoscalerPtrInput
 	// Describes the backend service configurations.
 	BackendServices OceanImportBackendServiceArrayInput
 	// The GKE cluster name.

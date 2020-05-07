@@ -5,7 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 
 export interface HealthCheckCheck {
-    endPoint: pulumi.Input<string>;
+    /**
+     * The destination for the request.
+     */
+    endpoint: pulumi.Input<string>;
     /**
      * The number of consecutive successful health checks that must occur before declaring an instance healthy.
      */
@@ -22,7 +25,10 @@ export interface HealthCheckCheck {
      * The protocol to use to connect with the instance. Valid values: http, https.
      */
     protocol: pulumi.Input<string>;
-    timeOut: pulumi.Input<number>;
+    /**
+     * the amount of time (in seconds) to wait when receiving a response from the health check.
+     */
+    timeout: pulumi.Input<number>;
     /**
      * The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
      */
@@ -500,7 +506,19 @@ export namespace aws {
     export interface ElastigroupUpdatePolicyRollConfigStrategy {
         action: pulumi.Input<string>;
         batchMinHealthyPercentage?: pulumi.Input<number>;
+        onFailure?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfigStrategyOnFailure>;
         shouldDrainInstances?: pulumi.Input<boolean>;
+    }
+
+    export interface ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
+        actionType: pulumi.Input<string>;
+        batchNum?: pulumi.Input<number>;
+        /**
+         * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+         */
+        drainingTimeout?: pulumi.Input<number>;
+        shouldDecrementTargetCapacity?: pulumi.Input<boolean>;
+        shouldHandleAllBatches?: pulumi.Input<boolean>;
     }
 
     export interface ManagedInstanceIntegrationRoute53 {
@@ -598,19 +616,43 @@ export namespace aws {
         adjustment?: pulumi.Input<string>;
         cooldown?: pulumi.Input<number>;
         dimensions?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
         evaluationPeriods?: pulumi.Input<number>;
         maxTargetCapacity?: pulumi.Input<string>;
         maximum?: pulumi.Input<string>;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
         metricName: pulumi.Input<string>;
         minTargetCapacity?: pulumi.Input<string>;
         minimum?: pulumi.Input<string>;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
         namespace: pulumi.Input<string>;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
         operator?: pulumi.Input<string>;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
         period?: pulumi.Input<number>;
         policyName: pulumi.Input<string>;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         */
         statistic?: pulumi.Input<string>;
         target?: pulumi.Input<string>;
+        /**
+         * The value that the specified statistic is compared to.
+         */
         threshold: pulumi.Input<number>;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         */
         unit: pulumi.Input<string>;
     }
 
@@ -619,19 +661,43 @@ export namespace aws {
         adjustment?: pulumi.Input<string>;
         cooldown?: pulumi.Input<number>;
         dimensions?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
         evaluationPeriods?: pulumi.Input<number>;
         maxTargetCapacity?: pulumi.Input<string>;
         maximum?: pulumi.Input<string>;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
         metricName: pulumi.Input<string>;
         minTargetCapacity?: pulumi.Input<string>;
         minimum?: pulumi.Input<string>;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
         namespace: pulumi.Input<string>;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
         operator?: pulumi.Input<string>;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
         period?: pulumi.Input<number>;
         policyName: pulumi.Input<string>;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         */
         statistic?: pulumi.Input<string>;
         target?: pulumi.Input<string>;
+        /**
+         * The value that the specified statistic is compared to.
+         */
         threshold: pulumi.Input<number>;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         */
         unit: pulumi.Input<string>;
     }
 
@@ -684,19 +750,43 @@ export namespace aws {
         adjustment?: pulumi.Input<string>;
         cooldown?: pulumi.Input<number>;
         dimensions?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
         evaluationPeriods?: pulumi.Input<number>;
         maxTargetCapacity?: pulumi.Input<string>;
         maximum?: pulumi.Input<string>;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
         metricName: pulumi.Input<string>;
         minTargetCapacity?: pulumi.Input<string>;
         minimum?: pulumi.Input<string>;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
         namespace: pulumi.Input<string>;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
         operator?: pulumi.Input<string>;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
         period?: pulumi.Input<number>;
         policyName: pulumi.Input<string>;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         */
         statistic?: pulumi.Input<string>;
         target?: pulumi.Input<string>;
+        /**
+         * The value that the specified statistic is compared to.
+         */
         threshold: pulumi.Input<number>;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         */
         unit: pulumi.Input<string>;
     }
 
@@ -705,91 +795,109 @@ export namespace aws {
         adjustment?: pulumi.Input<string>;
         cooldown?: pulumi.Input<number>;
         dimensions?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
         evaluationPeriods?: pulumi.Input<number>;
         maxTargetCapacity?: pulumi.Input<string>;
         maximum?: pulumi.Input<string>;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
         metricName: pulumi.Input<string>;
         minTargetCapacity?: pulumi.Input<string>;
         minimum?: pulumi.Input<string>;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
         namespace: pulumi.Input<string>;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
         operator?: pulumi.Input<string>;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
         period?: pulumi.Input<number>;
         policyName: pulumi.Input<string>;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         */
         statistic?: pulumi.Input<string>;
         target?: pulumi.Input<string>;
+        /**
+         * The value that the specified statistic is compared to.
+         */
         threshold: pulumi.Input<number>;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         */
         unit: pulumi.Input<string>;
     }
 
+    export interface MrScalarTerminationPolicy {
+        statements: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicyStatement>[]>;
+    }
+
+    export interface MrScalarTerminationPolicyStatement {
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
+        evaluationPeriods?: pulumi.Input<number>;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
+        metricName: pulumi.Input<string>;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
+        period?: pulumi.Input<number>;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         */
+        statistic?: pulumi.Input<string>;
+        /**
+         * The value that the specified statistic is compared to.
+         */
+        threshold: pulumi.Input<number>;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         */
+        unit?: pulumi.Input<string>;
+    }
+
     export interface OceanAutoscaler {
-        /**
-         * Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
-         */
         autoHeadroomPercentage?: pulumi.Input<number>;
-        /**
-         * Cooldown period between scaling actions.
-         */
         autoscaleCooldown?: pulumi.Input<number>;
-        /**
-         * Auto Scaling scale down operations.
-         */
         autoscaleDown?: pulumi.Input<inputs.aws.OceanAutoscalerAutoscaleDown>;
-        /**
-         * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-         */
         autoscaleHeadroom?: pulumi.Input<inputs.aws.OceanAutoscalerAutoscaleHeadroom>;
-        /**
-         * Automatically configure and optimize headroom resources.
-         */
         autoscaleIsAutoConfig?: pulumi.Input<boolean>;
-        /**
-         * Enable the Ocean Kubernetes autoscaler.
-         */
         autoscaleIsEnabled?: pulumi.Input<boolean>;
-        /**
-         * Optionally set upper and lower bounds on the resource usage of the cluster.
-         */
         resourceLimits?: pulumi.Input<inputs.aws.OceanAutoscalerResourceLimits>;
     }
 
     export interface OceanAutoscalerAutoscaleDown {
-        /**
-         * The number of evaluation periods that should accumulate before a scale down action takes place.
-         */
         evaluationPeriods?: pulumi.Input<number>;
-        /**
-         * Would represent the maximum % to scale-down. Number between 1-100.
-         */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
-        /**
-         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: pulumi.Input<number>;
-        /**
-         * Optionally configure the number of GPUS to allocate the headroom.
-         */
         gpuPerUnit?: pulumi.Input<number>;
-        /**
-         * Optionally configure the amount of memory (MB) to allocate the headroom.
-         */
         memoryPerUnit?: pulumi.Input<number>;
-        /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-         */
         numOfUnits?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerResourceLimits {
-        /**
-         * The maximum memory in GiB units that can be allocated to the cluster.
-         */
         maxMemoryGib?: pulumi.Input<number>;
-        /**
-         * The maximum cpu in vCPU units that can be allocated to the cluster.
-         */
         maxVcpu?: pulumi.Input<number>;
     }
 
@@ -1078,62 +1186,26 @@ export namespace azure {
 
 export namespace ecs {
     export interface OceanAutoscaler {
-        /**
-         * Cooldown period between scaling actions.
-         */
         cooldown?: pulumi.Input<number>;
-        /**
-         * Auto Scaling scale down operations.
-         */
         down?: pulumi.Input<inputs.ecs.OceanAutoscalerDown>;
-        /**
-         * Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-         */
         headroom?: pulumi.Input<inputs.ecs.OceanAutoscalerHeadroom>;
-        /**
-         * Automatically configure and optimize headroom resources.
-         */
         isAutoConfig?: pulumi.Input<boolean>;
-        /**
-         * Enable the Ocean ECS autoscaler.
-         */
         isEnabled?: pulumi.Input<boolean>;
-        /**
-         * Optionally set upper and lower bounds on the resource usage of the cluster.
-         */
         resourceLimits?: pulumi.Input<inputs.ecs.OceanAutoscalerResourceLimits>;
     }
 
     export interface OceanAutoscalerDown {
-        /**
-         * Would represent the maximum % to scale-down. Number between 1-100
-         */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerHeadroom {
-        /**
-         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: pulumi.Input<number>;
-        /**
-         * Optionally configure the amount of memory (MB) to allocate the headroom.
-         */
         memoryPerUnit?: pulumi.Input<number>;
-        /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-         */
         numOfUnits?: pulumi.Input<number>;
     }
 
     export interface OceanAutoscalerResourceLimits {
-        /**
-         * The maximum memory in GiB units that can be allocated to the cluster.
-         */
         maxMemoryGib?: pulumi.Input<number>;
-        /**
-         * The maximum cpu in vCPU units that can be allocated to the cluster.
-         */
         maxVcpu?: pulumi.Input<number>;
     }
 
@@ -1163,24 +1235,29 @@ export namespace ecs {
         numOfUnits: pulumi.Input<number>;
     }
 
+    export interface OceanLaunchSpecTag {
+        /**
+         * The label key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The label value.
+         */
+        value: pulumi.Input<string>;
+    }
+
     export interface OceanScheduledTask {
         shutdownHours?: pulumi.Input<inputs.ecs.OceanScheduledTaskShutdownHours>;
         tasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTaskTask>[]>;
     }
 
     export interface OceanScheduledTaskShutdownHours {
-        /**
-         * Enable the Ocean ECS autoscaler.
-         */
         isEnabled?: pulumi.Input<boolean>;
         timeWindows: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanScheduledTaskTask {
         cronExpression: pulumi.Input<string>;
-        /**
-         * Enable the Ocean ECS autoscaler.
-         */
         isEnabled: pulumi.Input<boolean>;
         taskType: pulumi.Input<string>;
     }
@@ -1551,6 +1628,33 @@ export namespace gke {
     export interface ElastigroupScalingUpPolicyDimension {
         name: pulumi.Input<string>;
         value?: pulumi.Input<string>;
+    }
+
+    export interface OceanImportAutoscaler {
+        autoHeadroomPercentage?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number>;
+        down?: pulumi.Input<inputs.gke.OceanImportAutoscalerDown>;
+        headroom?: pulumi.Input<inputs.gke.OceanImportAutoscalerHeadroom>;
+        isAutoConfig?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean>;
+        resourceLimits?: pulumi.Input<inputs.gke.OceanImportAutoscalerResourceLimits>;
+    }
+
+    export interface OceanImportAutoscalerDown {
+        evaluationPeriods?: pulumi.Input<number>;
+        maxScaleDownPercentage?: pulumi.Input<number>;
+    }
+
+    export interface OceanImportAutoscalerHeadroom {
+        cpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number>;
+    }
+
+    export interface OceanImportAutoscalerResourceLimits {
+        maxMemoryGib?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number>;
     }
 
     export interface OceanImportBackendService {

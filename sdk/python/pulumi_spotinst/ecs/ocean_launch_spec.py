@@ -45,11 +45,18 @@ class OceanLaunchSpec(pulumi.CustomResource):
     """
     One or more security group ids.
     """
+    tags: pulumi.Output[list]
+    """
+    A key/value mapping of tags to assign to the resource.
+
+      * `key` (`str`) - The label key.
+      * `value` (`str`) - The label value.
+    """
     user_data: pulumi.Output[str]
     """
     Base64-encoded MIME user data to make available to the instances.
     """
-    def __init__(__self__, resource_name, opts=None, attributes=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, name=None, ocean_id=None, security_group_ids=None, user_data=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, attributes=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, name=None, ocean_id=None, security_group_ids=None, tags=None, user_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a custom Spotinst Ocean ECS Launch Spec resource.
 
@@ -64,6 +71,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Ocean Launch Specification name. 
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[list] security_group_ids: One or more security group ids.
+        :param pulumi.Input[list] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
 
         The **attributes** object supports the following:
@@ -76,6 +84,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
           * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
           * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
           * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+
+        The **tags** object supports the following:
+
+          * `key` (`pulumi.Input[str]`) - The label key.
+          * `value` (`pulumi.Input[str]`) - The label value.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,6 +116,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ocean_id'")
             __props__['ocean_id'] = ocean_id
             __props__['security_group_ids'] = security_group_ids
+            __props__['tags'] = tags
             __props__['user_data'] = user_data
         super(OceanLaunchSpec, __self__).__init__(
             'spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec',
@@ -111,7 +125,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, attributes=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, name=None, ocean_id=None, security_group_ids=None, user_data=None):
+    def get(resource_name, id, opts=None, attributes=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, name=None, ocean_id=None, security_group_ids=None, tags=None, user_data=None):
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -126,6 +140,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Ocean Launch Specification name. 
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[list] security_group_ids: One or more security group ids.
+        :param pulumi.Input[list] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
 
         The **attributes** object supports the following:
@@ -138,6 +153,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
           * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
           * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
           * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+
+        The **tags** object supports the following:
+
+          * `key` (`pulumi.Input[str]`) - The label key.
+          * `value` (`pulumi.Input[str]`) - The label value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -150,6 +170,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["name"] = name
         __props__["ocean_id"] = ocean_id
         __props__["security_group_ids"] = security_group_ids
+        __props__["tags"] = tags
         __props__["user_data"] = user_data
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

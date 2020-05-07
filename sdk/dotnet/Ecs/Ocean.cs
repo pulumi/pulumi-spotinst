@@ -20,9 +20,6 @@ namespace Pulumi.SpotInst.Ecs
         [Output("associatePublicIpAddress")]
         public Output<bool?> AssociatePublicIpAddress { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the Ocean ECS autoscaler.
-        /// </summary>
         [Output("autoscaler")]
         public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
 
@@ -135,7 +132,7 @@ namespace Pulumi.SpotInst.Ecs
         public Output<bool?> UtilizeReservedInstances { get; private set; } = null!;
 
         /// <summary>
-        /// Instance types allowed in the Ocean cluster.
+        /// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
         /// </summary>
         [Output("whitelists")]
         public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
@@ -192,9 +189,6 @@ namespace Pulumi.SpotInst.Ecs
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// Describes the Ocean ECS autoscaler.
-        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerArgs>? Autoscaler { get; set; }
 
@@ -333,7 +327,7 @@ namespace Pulumi.SpotInst.Ecs
         private InputList<string>? _whitelists;
 
         /// <summary>
-        /// Instance types allowed in the Ocean cluster.
+        /// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
         /// </summary>
         public InputList<string> Whitelists
         {
@@ -354,9 +348,6 @@ namespace Pulumi.SpotInst.Ecs
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// Describes the Ocean ECS autoscaler.
-        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerGetArgs>? Autoscaler { get; set; }
 
@@ -495,7 +486,7 @@ namespace Pulumi.SpotInst.Ecs
         private InputList<string>? _whitelists;
 
         /// <summary>
-        /// Instance types allowed in the Ocean cluster.
+        /// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
         /// </summary>
         public InputList<string> Whitelists
         {

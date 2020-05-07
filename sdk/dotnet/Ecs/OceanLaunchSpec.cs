@@ -57,6 +57,12 @@ namespace Pulumi.SpotInst.Ecs
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.
         /// </summary>
         [Output("userData")]
@@ -168,6 +174,18 @@ namespace Pulumi.SpotInst.Ecs
             set => _securityGroupIds = value;
         }
 
+        [Input("tags")]
+        private InputList<Inputs.OceanLaunchSpecTagArgs>? _tags;
+
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.OceanLaunchSpecTagArgs>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.
         /// </summary>
@@ -239,6 +257,18 @@ namespace Pulumi.SpotInst.Ecs
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.OceanLaunchSpecTagGetArgs>? _tags;
+
+        /// <summary>
+        /// A key/value mapping of tags to assign to the resource.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.OceanLaunchSpecTagGetArgs>());
+            set => _tags = value;
         }
 
         /// <summary>

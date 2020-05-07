@@ -28,6 +28,8 @@ type OceanLaunchSpec struct {
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// A key/value mapping of tags to assign to the resource.
+	Tags OceanLaunchSpecTagArrayOutput `pulumi:"tags"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 }
@@ -77,6 +79,8 @@ type oceanLaunchSpecState struct {
 	OceanId *string `pulumi:"oceanId"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A key/value mapping of tags to assign to the resource.
+	Tags []OceanLaunchSpecTag `pulumi:"tags"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
 }
@@ -96,6 +100,8 @@ type OceanLaunchSpecState struct {
 	OceanId pulumi.StringPtrInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
+	// A key/value mapping of tags to assign to the resource.
+	Tags OceanLaunchSpecTagArrayInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
 }
@@ -119,6 +125,8 @@ type oceanLaunchSpecArgs struct {
 	OceanId string `pulumi:"oceanId"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A key/value mapping of tags to assign to the resource.
+	Tags []OceanLaunchSpecTag `pulumi:"tags"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
 }
@@ -139,6 +147,8 @@ type OceanLaunchSpecArgs struct {
 	OceanId pulumi.StringInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
+	// A key/value mapping of tags to assign to the resource.
+	Tags OceanLaunchSpecTagArrayInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
 }

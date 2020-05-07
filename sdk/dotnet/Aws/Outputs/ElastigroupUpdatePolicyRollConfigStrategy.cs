@@ -15,6 +15,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     {
         public readonly string Action;
         public readonly int? BatchMinHealthyPercentage;
+        public readonly Outputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailure? OnFailure;
         public readonly bool? ShouldDrainInstances;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             int? batchMinHealthyPercentage,
 
+            Outputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailure? onFailure,
+
             bool? shouldDrainInstances)
         {
             Action = action;
             BatchMinHealthyPercentage = batchMinHealthyPercentage;
+            OnFailure = onFailure;
             ShouldDrainInstances = shouldDrainInstances;
         }
     }

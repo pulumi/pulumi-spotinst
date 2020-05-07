@@ -12,8 +12,11 @@ namespace Pulumi.SpotInst.Inputs
 
     public sealed class HealthCheckCheckGetArgs : Pulumi.ResourceArgs
     {
-        [Input("endPoint", required: true)]
-        public Input<string> EndPoint { get; set; } = null!;
+        /// <summary>
+        /// The destination for the request.
+        /// </summary>
+        [Input("endpoint", required: true)]
+        public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
         /// The number of consecutive successful health checks that must occur before declaring an instance healthy.
@@ -39,8 +42,11 @@ namespace Pulumi.SpotInst.Inputs
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
-        [Input("timeOut", required: true)]
-        public Input<int> TimeOut { get; set; } = null!;
+        /// <summary>
+        /// the amount of time (in seconds) to wait when receiving a response from the health check.
+        /// </summary>
+        [Input("timeout", required: true)]
+        public Input<int> Timeout { get; set; } = null!;
 
         /// <summary>
         /// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.

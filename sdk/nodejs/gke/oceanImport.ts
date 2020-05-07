@@ -62,6 +62,30 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * 
+ * <a id="autoscaler"></a>
+ * ## Autoscaler
+ * 
+ * * `autoscaler` - (Optional) The Ocean Kubernetes Autoscaler object.
+ * * `isEnabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Autoscaler.
+ * * `isAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+ * * `autoHeadroomPercentage` - Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+ * * `cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+ * * `headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+ * * `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+ * * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MiB) to allocate the headroom.
+ * * `gpuPerUnit` - (Optional) How much GPU allocate for headroom unit.
+ * * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+ * * `down` - (Optional) Auto Scaling scale down operations.
+ * * `evaluationPeriods` - (Optional, Default: `null`) The number of evaluation periods that should accumulate before a scale down action takes place.
+ * * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+ * * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+ * * `maxVcpu` - (Optional) The maximum cpu in vCpu units that can be allocated to the cluster.
+ * * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_import.html.markdown.
  */
@@ -92,6 +116,7 @@ export class OceanImport extends pulumi.CustomResource {
         return obj['__pulumiType'] === OceanImport.__pulumiType;
     }
 
+    public readonly autoscaler!: pulumi.Output<outputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
      */
@@ -132,6 +157,7 @@ export class OceanImport extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as OceanImportState | undefined;
+            inputs["autoscaler"] = state ? state.autoscaler : undefined;
             inputs["backendServices"] = state ? state.backendServices : undefined;
             inputs["clusterControllerId"] = state ? state.clusterControllerId : undefined;
             inputs["clusterName"] = state ? state.clusterName : undefined;
@@ -149,6 +175,7 @@ export class OceanImport extends pulumi.CustomResource {
             if (!args || args.location === undefined) {
                 throw new Error("Missing required property 'location'");
             }
+            inputs["autoscaler"] = args ? args.autoscaler : undefined;
             inputs["backendServices"] = args ? args.backendServices : undefined;
             inputs["clusterName"] = args ? args.clusterName : undefined;
             inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
@@ -174,6 +201,7 @@ export class OceanImport extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OceanImport resources.
  */
 export interface OceanImportState {
+    readonly autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
      */
@@ -207,6 +235,7 @@ export interface OceanImportState {
  * The set of arguments for constructing a OceanImport resource.
  */
 export interface OceanImportArgs {
+    readonly autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
      */

@@ -36,6 +36,7 @@ namespace Pulumi.SpotInst.Aws
     /// * `task_target` - (Required) amount of instances in task group.
     /// * `task_maximum` - (Optional) maximal amount of instances in task group.
     /// * `task_minimum` - (Optional) The minimal amount of instances in task group.
+    /// * `task_unit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
     /// * `task_lifecycle` - (Required) The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
     /// * `task_ebs_optimized` - (Optional) EBS Optimization setting for instances in group.
     /// * `task_ebs_block_device` - (Required) This determines the ebs configuration for your task group instances. Only a single block is allowed.
@@ -51,6 +52,7 @@ namespace Pulumi.SpotInst.Aws
     /// * `core_target` - (Required) amount of instances in core group.
     /// * `core_maximum` - (Optional) maximal amount of instances in core group.
     /// * `core_minimum` - (Optional) The minimal amount of instances in core group.
+    /// * `core_unit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
     /// * `core_lifecycle` - (Required) The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
     /// * `core_ebs_optimized` - (Optional) EBS Optimization setting for instances in group.
     /// * `core_ebs_block_device` - (Required) This determines the ebs configuration for your core group instances. Only a single block is allowed.
@@ -166,6 +168,8 @@ namespace Pulumi.SpotInst.Aws
     /// * `desired_capacity` - (Optional) New desired capacity for the elastigroup.
     /// * `min_capacity` - (Optional) New min capacity for the elastigroup.
     /// * `max_capacity` - (Optional) New max capacity for the elastigroup.
+    /// 
+    /// &lt;a id="termination-policies"&gt;&lt;/a&gt;
     /// </summary>
     public partial class MrScalar : Pulumi.CustomResource
     {
@@ -222,6 +226,9 @@ namespace Pulumi.SpotInst.Aws
 
         [Output("coreScalingUpPolicies")]
         public Output<ImmutableArray<Outputs.MrScalarCoreScalingUpPolicy>> CoreScalingUpPolicies { get; private set; } = null!;
+
+        [Output("coreUnit")]
+        public Output<string?> CoreUnit { get; private set; } = null!;
 
         [Output("customAmiId")]
         public Output<string?> CustomAmiId { get; private set; } = null!;
@@ -348,6 +355,15 @@ namespace Pulumi.SpotInst.Aws
 
         [Output("taskScalingUpPolicies")]
         public Output<ImmutableArray<Outputs.MrScalarTaskScalingUpPolicy>> TaskScalingUpPolicies { get; private set; } = null!;
+
+        [Output("taskUnit")]
+        public Output<string?> TaskUnit { get; private set; } = null!;
+
+        /// <summary>
+        /// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+        /// </summary>
+        [Output("terminationPolicies")]
+        public Output<ImmutableArray<Outputs.MrScalarTerminationPolicy>> TerminationPolicies { get; private set; } = null!;
 
         [Output("terminationProtected")]
         public Output<bool?> TerminationProtected { get; private set; } = null!;
@@ -504,6 +520,9 @@ namespace Pulumi.SpotInst.Aws
             get => _coreScalingUpPolicies ?? (_coreScalingUpPolicies = new InputList<Inputs.MrScalarCoreScalingUpPolicyArgs>());
             set => _coreScalingUpPolicies = value;
         }
+
+        [Input("coreUnit")]
+        public Input<string>? CoreUnit { get; set; }
 
         [Input("customAmiId")]
         public Input<string>? CustomAmiId { get; set; }
@@ -678,6 +697,21 @@ namespace Pulumi.SpotInst.Aws
             set => _taskScalingUpPolicies = value;
         }
 
+        [Input("taskUnit")]
+        public Input<string>? TaskUnit { get; set; }
+
+        [Input("terminationPolicies")]
+        private InputList<Inputs.MrScalarTerminationPolicyArgs>? _terminationPolicies;
+
+        /// <summary>
+        /// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+        /// </summary>
+        public InputList<Inputs.MrScalarTerminationPolicyArgs> TerminationPolicies
+        {
+            get => _terminationPolicies ?? (_terminationPolicies = new InputList<Inputs.MrScalarTerminationPolicyArgs>());
+            set => _terminationPolicies = value;
+        }
+
         [Input("terminationProtected")]
         public Input<bool>? TerminationProtected { get; set; }
 
@@ -794,6 +828,9 @@ namespace Pulumi.SpotInst.Aws
             get => _coreScalingUpPolicies ?? (_coreScalingUpPolicies = new InputList<Inputs.MrScalarCoreScalingUpPolicyGetArgs>());
             set => _coreScalingUpPolicies = value;
         }
+
+        [Input("coreUnit")]
+        public Input<string>? CoreUnit { get; set; }
 
         [Input("customAmiId")]
         public Input<string>? CustomAmiId { get; set; }
@@ -969,6 +1006,21 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _taskScalingUpPolicies ?? (_taskScalingUpPolicies = new InputList<Inputs.MrScalarTaskScalingUpPolicyGetArgs>());
             set => _taskScalingUpPolicies = value;
+        }
+
+        [Input("taskUnit")]
+        public Input<string>? TaskUnit { get; set; }
+
+        [Input("terminationPolicies")]
+        private InputList<Inputs.MrScalarTerminationPolicyGetArgs>? _terminationPolicies;
+
+        /// <summary>
+        /// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+        /// </summary>
+        public InputList<Inputs.MrScalarTerminationPolicyGetArgs> TerminationPolicies
+        {
+            get => _terminationPolicies ?? (_terminationPolicies = new InputList<Inputs.MrScalarTerminationPolicyGetArgs>());
+            set => _terminationPolicies = value;
         }
 
         [Input("terminationProtected")]

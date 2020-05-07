@@ -12,39 +12,21 @@ namespace Pulumi.SpotInst.Ecs.Inputs
 
     public sealed class OceanAutoscalerArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Cooldown period between scaling actions.
-        /// </summary>
         [Input("cooldown")]
         public Input<int>? Cooldown { get; set; }
 
-        /// <summary>
-        /// Auto Scaling scale down operations.
-        /// </summary>
         [Input("down")]
         public Input<Inputs.OceanAutoscalerDownArgs>? Down { get; set; }
 
-        /// <summary>
-        /// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-        /// </summary>
         [Input("headroom")]
         public Input<Inputs.OceanAutoscalerHeadroomArgs>? Headroom { get; set; }
 
-        /// <summary>
-        /// Automatically configure and optimize headroom resources.
-        /// </summary>
         [Input("isAutoConfig")]
         public Input<bool>? IsAutoConfig { get; set; }
 
-        /// <summary>
-        /// Enable the Ocean ECS autoscaler.
-        /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
 
-        /// <summary>
-        /// Optionally set upper and lower bounds on the resource usage of the cluster.
-        /// </summary>
         [Input("resourceLimits")]
         public Input<Inputs.OceanAutoscalerResourceLimitsArgs>? ResourceLimits { get; set; }
 

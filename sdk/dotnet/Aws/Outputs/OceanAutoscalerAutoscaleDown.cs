@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanAutoscalerAutoscaleDown
     {
-        /// <summary>
-        /// The number of evaluation periods that should accumulate before a scale down action takes place.
-        /// </summary>
         public readonly int? EvaluationPeriods;
-        /// <summary>
-        /// Would represent the maximum % to scale-down. Number between 1-100.
-        /// </summary>
         public readonly int? MaxScaleDownPercentage;
 
         [OutputConstructor]

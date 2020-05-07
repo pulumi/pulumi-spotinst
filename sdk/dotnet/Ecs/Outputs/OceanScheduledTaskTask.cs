@@ -14,9 +14,6 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     public sealed class OceanScheduledTaskTask
     {
         public readonly string CronExpression;
-        /// <summary>
-        /// Enable the Ocean ECS autoscaler.
-        /// </summary>
         public readonly bool IsEnabled;
         public readonly string TaskType;
 

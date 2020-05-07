@@ -15,31 +15,46 @@ namespace Pulumi.SpotInst
     public partial class Subscription : Pulumi.CustomResource
     {
         /// <summary>
-        /// The endpoint the notification will be sent to: url in case of `"http"`/`"https"`, email address in case of `"email"`/`"email-json"`, sns-topic-arn in case of `"aws-sns"`.
+        /// The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
         /// </summary>
         [Output("endpoint")]
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`, `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`, `"GROUP_UPDATED"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EMR_PROVISION_TIMEOUT"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`. 
+        /// The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`,
+        /// `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`,
+        /// `"GROUP_UPDATED"`,
+        /// `"AWS_EMR_PROVISION_TIMEOUT"`,
+        /// `"GROUP_BEANSTALK_INIT_READY"`,
+        /// `"AZURE_VM_TERMINATED"`,
+        /// `"AZURE_VM_TERMINATE"`,
+        /// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
+        /// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
+        /// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
+        /// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
         /// </summary>
         [Output("eventType")]
         public Output<string> EventType { get; private set; } = null!;
 
         /// <summary>
-        /// The format of the notification content (JSON Format - Key+Value). Valid values: `"%instance-id%"`, `"%event%"`, `"%resource-id%"`, `"%resource-name%"`.
+        /// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
+        /// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
+        /// Default: {`"event"`: `"&lt;event&gt;"`, `"instanceId"`: `"&lt;instance-id&gt;"`, `"resourceId"`: `"&lt;resource-id&gt;"`, `"resourceName"`: `"&lt;resource-name&gt;"` }.
         /// </summary>
         [Output("format")]
         public Output<ImmutableDictionary<string, object>?> Format { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol to send the notification. Valid values: `"http"`, `"https"`, `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
+        /// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        /// The following values are deprecated: `"http"` , `"https"`
+        /// You can use the generic `"web"` protocol instead.
+        /// `"aws-sns"` is only supported with AWS provider
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// Spotinst Resource ID (Elastigroup ID).
+        /// Spotinst Resource id (Elastigroup or Ocean ID).
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
@@ -91,13 +106,23 @@ namespace Pulumi.SpotInst
     public sealed class SubscriptionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The endpoint the notification will be sent to: url in case of `"http"`/`"https"`, email address in case of `"email"`/`"email-json"`, sns-topic-arn in case of `"aws-sns"`.
+        /// The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`, `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`, `"GROUP_UPDATED"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EMR_PROVISION_TIMEOUT"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`. 
+        /// The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`,
+        /// `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`,
+        /// `"GROUP_UPDATED"`,
+        /// `"AWS_EMR_PROVISION_TIMEOUT"`,
+        /// `"GROUP_BEANSTALK_INIT_READY"`,
+        /// `"AZURE_VM_TERMINATED"`,
+        /// `"AZURE_VM_TERMINATE"`,
+        /// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
+        /// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
+        /// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
+        /// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
         /// </summary>
         [Input("eventType", required: true)]
         public Input<string> EventType { get; set; } = null!;
@@ -106,7 +131,9 @@ namespace Pulumi.SpotInst
         private InputMap<object>? _format;
 
         /// <summary>
-        /// The format of the notification content (JSON Format - Key+Value). Valid values: `"%instance-id%"`, `"%event%"`, `"%resource-id%"`, `"%resource-name%"`.
+        /// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
+        /// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
+        /// Default: {`"event"`: `"&lt;event&gt;"`, `"instanceId"`: `"&lt;instance-id&gt;"`, `"resourceId"`: `"&lt;resource-id&gt;"`, `"resourceName"`: `"&lt;resource-name&gt;"` }.
         /// </summary>
         public InputMap<object> Format
         {
@@ -115,13 +142,16 @@ namespace Pulumi.SpotInst
         }
 
         /// <summary>
-        /// The protocol to send the notification. Valid values: `"http"`, `"https"`, `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
+        /// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        /// The following values are deprecated: `"http"` , `"https"`
+        /// You can use the generic `"web"` protocol instead.
+        /// `"aws-sns"` is only supported with AWS provider
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
-        /// Spotinst Resource ID (Elastigroup ID).
+        /// Spotinst Resource id (Elastigroup or Ocean ID).
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
@@ -134,13 +164,23 @@ namespace Pulumi.SpotInst
     public sealed class SubscriptionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The endpoint the notification will be sent to: url in case of `"http"`/`"https"`, email address in case of `"email"`/`"email-json"`, sns-topic-arn in case of `"aws-sns"`.
+        /// The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`, `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`, `"GROUP_UPDATED"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EMR_PROVISION_TIMEOUT"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`. 
+        /// The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`,
+        /// `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`,
+        /// `"GROUP_UPDATED"`,
+        /// `"AWS_EMR_PROVISION_TIMEOUT"`,
+        /// `"GROUP_BEANSTALK_INIT_READY"`,
+        /// `"AZURE_VM_TERMINATED"`,
+        /// `"AZURE_VM_TERMINATE"`,
+        /// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
+        /// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
+        /// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
+        /// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
         /// </summary>
         [Input("eventType")]
         public Input<string>? EventType { get; set; }
@@ -149,7 +189,9 @@ namespace Pulumi.SpotInst
         private InputMap<object>? _format;
 
         /// <summary>
-        /// The format of the notification content (JSON Format - Key+Value). Valid values: `"%instance-id%"`, `"%event%"`, `"%resource-id%"`, `"%resource-name%"`.
+        /// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
+        /// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
+        /// Default: {`"event"`: `"&lt;event&gt;"`, `"instanceId"`: `"&lt;instance-id&gt;"`, `"resourceId"`: `"&lt;resource-id&gt;"`, `"resourceName"`: `"&lt;resource-name&gt;"` }.
         /// </summary>
         public InputMap<object> Format
         {
@@ -158,13 +200,16 @@ namespace Pulumi.SpotInst
         }
 
         /// <summary>
-        /// The protocol to send the notification. Valid values: `"http"`, `"https"`, `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
+        /// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        /// The following values are deprecated: `"http"` , `"https"`
+        /// You can use the generic `"web"` protocol instead.
+        /// `"aws-sns"` is only supported with AWS provider
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// Spotinst Resource ID (Elastigroup ID).
+        /// Spotinst Resource id (Elastigroup or Ocean ID).
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }

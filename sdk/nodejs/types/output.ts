@@ -5,7 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
 export interface HealthCheckCheck {
-    endPoint: string;
+    /**
+     * The destination for the request.
+     */
+    endpoint: string;
     /**
      * The number of consecutive successful health checks that must occur before declaring an instance healthy.
      */
@@ -22,7 +25,10 @@ export interface HealthCheckCheck {
      * The protocol to use to connect with the instance. Valid values: http, https.
      */
     protocol: string;
-    timeOut: number;
+    /**
+     * the amount of time (in seconds) to wait when receiving a response from the health check.
+     */
+    timeout: number;
     /**
      * The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
      */
@@ -500,7 +506,19 @@ export namespace aws {
     export interface ElastigroupUpdatePolicyRollConfigStrategy {
         action: string;
         batchMinHealthyPercentage?: number;
+        onFailure?: outputs.aws.ElastigroupUpdatePolicyRollConfigStrategyOnFailure;
         shouldDrainInstances?: boolean;
+    }
+
+    export interface ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
+        actionType: string;
+        batchNum?: number;
+        /**
+         * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+         */
+        drainingTimeout?: number;
+        shouldDecrementTargetCapacity?: boolean;
+        shouldHandleAllBatches?: boolean;
     }
 
     export interface ManagedInstanceIntegrationRoute53 {
@@ -598,19 +616,43 @@ export namespace aws {
         adjustment?: string;
         cooldown: number;
         dimensions?: {[key: string]: any};
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
         evaluationPeriods: number;
         maxTargetCapacity?: string;
         maximum?: string;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
         metricName: string;
         minTargetCapacity?: string;
         minimum?: string;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
         namespace: string;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
         operator: string;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
         period: number;
         policyName: string;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         */
         statistic: string;
         target?: string;
+        /**
+         * The value that the specified statistic is compared to.
+         */
         threshold: number;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         */
         unit: string;
     }
 
@@ -619,19 +661,43 @@ export namespace aws {
         adjustment?: string;
         cooldown: number;
         dimensions?: {[key: string]: any};
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
         evaluationPeriods: number;
         maxTargetCapacity?: string;
         maximum?: string;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
         metricName: string;
         minTargetCapacity?: string;
         minimum?: string;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
         namespace: string;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
         operator: string;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
         period: number;
         policyName: string;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         */
         statistic: string;
         target?: string;
+        /**
+         * The value that the specified statistic is compared to.
+         */
         threshold: number;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         */
         unit: string;
     }
 
@@ -684,19 +750,43 @@ export namespace aws {
         adjustment?: string;
         cooldown: number;
         dimensions?: {[key: string]: any};
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
         evaluationPeriods: number;
         maxTargetCapacity?: string;
         maximum?: string;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
         metricName: string;
         minTargetCapacity?: string;
         minimum?: string;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
         namespace: string;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
         operator: string;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
         period: number;
         policyName: string;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         */
         statistic: string;
         target?: string;
+        /**
+         * The value that the specified statistic is compared to.
+         */
         threshold: number;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         */
         unit: string;
     }
 
@@ -705,91 +795,109 @@ export namespace aws {
         adjustment?: string;
         cooldown: number;
         dimensions?: {[key: string]: any};
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
         evaluationPeriods: number;
         maxTargetCapacity?: string;
         maximum?: string;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
         metricName: string;
         minTargetCapacity?: string;
         minimum?: string;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
         namespace: string;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
         operator: string;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
         period: number;
         policyName: string;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         */
         statistic: string;
         target?: string;
+        /**
+         * The value that the specified statistic is compared to.
+         */
         threshold: number;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         */
         unit: string;
     }
 
+    export interface MrScalarTerminationPolicy {
+        statements: outputs.aws.MrScalarTerminationPolicyStatement[];
+    }
+
+    export interface MrScalarTerminationPolicyStatement {
+        /**
+         * The number of periods over which data is compared to the specified threshold.
+         */
+        evaluationPeriods?: number;
+        /**
+         * The name of the metric in CloudWatch which the statement will be based on.
+         */
+        metricName: string;
+        /**
+         * Must contain the value: `AWS/ElasticMapReduce`.
+         */
+        namespace: string;
+        /**
+         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         */
+        operator?: string;
+        /**
+         * The time window in seconds over which the statistic is applied.
+         */
+        period?: number;
+        /**
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         */
+        statistic?: string;
+        /**
+         * The value that the specified statistic is compared to.
+         */
+        threshold: number;
+        /**
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         */
+        unit?: string;
+    }
+
     export interface OceanAutoscaler {
-        /**
-         * Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
-         */
         autoHeadroomPercentage?: number;
-        /**
-         * Cooldown period between scaling actions.
-         */
         autoscaleCooldown?: number;
-        /**
-         * Auto Scaling scale down operations.
-         */
         autoscaleDown?: outputs.aws.OceanAutoscalerAutoscaleDown;
-        /**
-         * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-         */
         autoscaleHeadroom?: outputs.aws.OceanAutoscalerAutoscaleHeadroom;
-        /**
-         * Automatically configure and optimize headroom resources.
-         */
         autoscaleIsAutoConfig?: boolean;
-        /**
-         * Enable the Ocean Kubernetes autoscaler.
-         */
         autoscaleIsEnabled?: boolean;
-        /**
-         * Optionally set upper and lower bounds on the resource usage of the cluster.
-         */
         resourceLimits?: outputs.aws.OceanAutoscalerResourceLimits;
     }
 
     export interface OceanAutoscalerAutoscaleDown {
-        /**
-         * The number of evaluation periods that should accumulate before a scale down action takes place.
-         */
         evaluationPeriods?: number;
-        /**
-         * Would represent the maximum % to scale-down. Number between 1-100.
-         */
         maxScaleDownPercentage?: number;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
-        /**
-         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: number;
-        /**
-         * Optionally configure the number of GPUS to allocate the headroom.
-         */
         gpuPerUnit?: number;
-        /**
-         * Optionally configure the amount of memory (MB) to allocate the headroom.
-         */
         memoryPerUnit?: number;
-        /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-         */
         numOfUnits?: number;
     }
 
     export interface OceanAutoscalerResourceLimits {
-        /**
-         * The maximum memory in GiB units that can be allocated to the cluster.
-         */
         maxMemoryGib?: number;
-        /**
-         * The maximum cpu in vCPU units that can be allocated to the cluster.
-         */
         maxVcpu?: number;
     }
 
@@ -1078,62 +1186,26 @@ export namespace azure {
 
 export namespace ecs {
     export interface OceanAutoscaler {
-        /**
-         * Cooldown period between scaling actions.
-         */
         cooldown?: number;
-        /**
-         * Auto Scaling scale down operations.
-         */
         down?: outputs.ecs.OceanAutoscalerDown;
-        /**
-         * Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-         */
         headroom?: outputs.ecs.OceanAutoscalerHeadroom;
-        /**
-         * Automatically configure and optimize headroom resources.
-         */
         isAutoConfig?: boolean;
-        /**
-         * Enable the Ocean ECS autoscaler.
-         */
         isEnabled?: boolean;
-        /**
-         * Optionally set upper and lower bounds on the resource usage of the cluster.
-         */
         resourceLimits?: outputs.ecs.OceanAutoscalerResourceLimits;
     }
 
     export interface OceanAutoscalerDown {
-        /**
-         * Would represent the maximum % to scale-down. Number between 1-100
-         */
         maxScaleDownPercentage?: number;
     }
 
     export interface OceanAutoscalerHeadroom {
-        /**
-         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: number;
-        /**
-         * Optionally configure the amount of memory (MB) to allocate the headroom.
-         */
         memoryPerUnit?: number;
-        /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-         */
         numOfUnits?: number;
     }
 
     export interface OceanAutoscalerResourceLimits {
-        /**
-         * The maximum memory in GiB units that can be allocated to the cluster.
-         */
         maxMemoryGib?: number;
-        /**
-         * The maximum cpu in vCPU units that can be allocated to the cluster.
-         */
         maxVcpu?: number;
     }
 
@@ -1163,24 +1235,29 @@ export namespace ecs {
         numOfUnits: number;
     }
 
+    export interface OceanLaunchSpecTag {
+        /**
+         * The label key.
+         */
+        key: string;
+        /**
+         * The label value.
+         */
+        value: string;
+    }
+
     export interface OceanScheduledTask {
         shutdownHours?: outputs.ecs.OceanScheduledTaskShutdownHours;
         tasks?: outputs.ecs.OceanScheduledTaskTask[];
     }
 
     export interface OceanScheduledTaskShutdownHours {
-        /**
-         * Enable the Ocean ECS autoscaler.
-         */
         isEnabled?: boolean;
         timeWindows: string[];
     }
 
     export interface OceanScheduledTaskTask {
         cronExpression: string;
-        /**
-         * Enable the Ocean ECS autoscaler.
-         */
         isEnabled: boolean;
         taskType: string;
     }
@@ -1551,6 +1628,33 @@ export namespace gke {
     export interface ElastigroupScalingUpPolicyDimension {
         name: string;
         value?: string;
+    }
+
+    export interface OceanImportAutoscaler {
+        autoHeadroomPercentage?: number;
+        cooldown?: number;
+        down?: outputs.gke.OceanImportAutoscalerDown;
+        headroom?: outputs.gke.OceanImportAutoscalerHeadroom;
+        isAutoConfig?: boolean;
+        isEnabled?: boolean;
+        resourceLimits?: outputs.gke.OceanImportAutoscalerResourceLimits;
+    }
+
+    export interface OceanImportAutoscalerDown {
+        evaluationPeriods?: number;
+        maxScaleDownPercentage?: number;
+    }
+
+    export interface OceanImportAutoscalerHeadroom {
+        cpuPerUnit?: number;
+        gpuPerUnit?: number;
+        memoryPerUnit?: number;
+        numOfUnits?: number;
+    }
+
+    export interface OceanImportAutoscalerResourceLimits {
+        maxMemoryGib?: number;
+        maxVcpu?: number;
     }
 
     export interface OceanImportBackendService {

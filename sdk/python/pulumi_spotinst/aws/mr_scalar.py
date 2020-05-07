@@ -30,6 +30,7 @@ class MrScalar(pulumi.CustomResource):
     core_min_size: pulumi.Output[float]
     core_scaling_down_policies: pulumi.Output[list]
     core_scaling_up_policies: pulumi.Output[list]
+    core_unit: pulumi.Output[str]
     custom_ami_id: pulumi.Output[str]
     description: pulumi.Output[str]
     """
@@ -80,9 +81,24 @@ class MrScalar(pulumi.CustomResource):
     task_min_size: pulumi.Output[float]
     task_scaling_down_policies: pulumi.Output[list]
     task_scaling_up_policies: pulumi.Output[list]
+    task_unit: pulumi.Output[str]
+    termination_policies: pulumi.Output[list]
+    """
+    Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+
+      * `statements` (`list`)
+        * `evaluationPeriods` (`float`) - The number of periods over which data is compared to the specified threshold.
+        * `metricName` (`str`) - The name of the metric in CloudWatch which the statement will be based on.
+        * `namespace` (`str`) - Must contain the value: `AWS/ElasticMapReduce`.
+        * `operator` (`str`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        * `period` (`float`) - The time window in seconds over which the statistic is applied.
+        * `statistic` (`str`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+        * `threshold` (`float`) - The value that the specified statistic is compared to.
+        * `unit` (`str`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+    """
     termination_protected: pulumi.Output[bool]
     visible_to_all_users: pulumi.Output[bool]
-    def __init__(__self__, resource_name, opts=None, additional_info=None, additional_primary_security_groups=None, additional_replica_security_groups=None, applications=None, availability_zones=None, bootstrap_actions_files=None, cluster_id=None, configurations_files=None, core_desired_capacity=None, core_ebs_block_devices=None, core_ebs_optimized=None, core_instance_types=None, core_lifecycle=None, core_max_size=None, core_min_size=None, core_scaling_down_policies=None, core_scaling_up_policies=None, custom_ami_id=None, description=None, ebs_root_volume_size=None, ec2_key_name=None, expose_cluster_id=None, instance_weights=None, job_flow_role=None, keep_job_flow_alive=None, log_uri=None, managed_primary_security_group=None, managed_replica_security_group=None, master_ebs_block_devices=None, master_ebs_optimized=None, master_instance_types=None, master_lifecycle=None, name=None, provisioning_timeout=None, region=None, release_label=None, repo_upgrade_on_boot=None, retries=None, scheduled_tasks=None, security_config=None, service_access_security_group=None, service_role=None, steps_files=None, strategy=None, tags=None, task_desired_capacity=None, task_ebs_block_devices=None, task_ebs_optimized=None, task_instance_types=None, task_lifecycle=None, task_max_size=None, task_min_size=None, task_scaling_down_policies=None, task_scaling_up_policies=None, termination_protected=None, visible_to_all_users=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, additional_info=None, additional_primary_security_groups=None, additional_replica_security_groups=None, applications=None, availability_zones=None, bootstrap_actions_files=None, cluster_id=None, configurations_files=None, core_desired_capacity=None, core_ebs_block_devices=None, core_ebs_optimized=None, core_instance_types=None, core_lifecycle=None, core_max_size=None, core_min_size=None, core_scaling_down_policies=None, core_scaling_up_policies=None, core_unit=None, custom_ami_id=None, description=None, ebs_root_volume_size=None, ec2_key_name=None, expose_cluster_id=None, instance_weights=None, job_flow_role=None, keep_job_flow_alive=None, log_uri=None, managed_primary_security_group=None, managed_replica_security_group=None, master_ebs_block_devices=None, master_ebs_optimized=None, master_instance_types=None, master_lifecycle=None, name=None, provisioning_timeout=None, region=None, release_label=None, repo_upgrade_on_boot=None, retries=None, scheduled_tasks=None, security_config=None, service_access_security_group=None, service_role=None, steps_files=None, strategy=None, tags=None, task_desired_capacity=None, task_ebs_block_devices=None, task_ebs_optimized=None, task_instance_types=None, task_lifecycle=None, task_max_size=None, task_min_size=None, task_scaling_down_policies=None, task_scaling_up_policies=None, task_unit=None, termination_policies=None, termination_protected=None, visible_to_all_users=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Spotinst AWS MrScaler resource.
 
@@ -110,6 +126,7 @@ class MrScalar(pulumi.CustomResource):
         * `task_target` - (Required) amount of instances in task group.
         * `task_maximum` - (Optional) maximal amount of instances in task group.
         * `task_minimum` - (Optional) The minimal amount of instances in task group.
+        * `task_unit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         * `task_lifecycle` - (Required) The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         * `task_ebs_optimized` - (Optional) EBS Optimization setting for instances in group.
         * `task_ebs_block_device` - (Required) This determines the ebs configuration for your task group instances. Only a single block is allowed.
@@ -125,6 +142,7 @@ class MrScalar(pulumi.CustomResource):
         * `core_target` - (Required) amount of instances in core group.
         * `core_maximum` - (Optional) maximal amount of instances in core group.
         * `core_minimum` - (Optional) The minimal amount of instances in core group.
+        * `core_unit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         * `core_lifecycle` - (Required) The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         * `core_ebs_optimized` - (Optional) EBS Optimization setting for instances in group.
         * `core_ebs_block_device` - (Required) This determines the ebs configuration for your core group instances. Only a single block is allowed.
@@ -241,6 +259,9 @@ class MrScalar(pulumi.CustomResource):
         * `min_capacity` - (Optional) New min capacity for the elastigroup.
         * `max_capacity` - (Optional) New max capacity for the elastigroup.
 
+        <a id="termination-policies"></a>
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
@@ -248,6 +269,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] name: The MrScaler name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
+        :param pulumi.Input[list] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
 
         The **applications** object supports the following:
 
@@ -278,20 +300,20 @@ class MrScalar(pulumi.CustomResource):
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
           * `minTargetCapacity` (`pulumi.Input[str]`)
           * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
+          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
+          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
           * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
           * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
+          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
 
         The **core_scaling_up_policies** object supports the following:
 
@@ -299,20 +321,20 @@ class MrScalar(pulumi.CustomResource):
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
           * `minTargetCapacity` (`pulumi.Input[str]`)
           * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
+          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
+          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
           * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
           * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
+          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
 
         The **instance_weights** object supports the following:
 
@@ -364,20 +386,20 @@ class MrScalar(pulumi.CustomResource):
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
           * `minTargetCapacity` (`pulumi.Input[str]`)
           * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
+          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
+          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
           * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
           * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
+          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
 
         The **task_scaling_up_policies** object supports the following:
 
@@ -385,20 +407,32 @@ class MrScalar(pulumi.CustomResource):
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
           * `minTargetCapacity` (`pulumi.Input[str]`)
           * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
+          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
+          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
           * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
           * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
+          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+
+        The **termination_policies** object supports the following:
+
+          * `statements` (`pulumi.Input[list]`)
+            * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
+            * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
+            * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
+            * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+            * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
+            * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+            * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
+            * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -434,6 +468,7 @@ class MrScalar(pulumi.CustomResource):
             __props__['core_min_size'] = core_min_size
             __props__['core_scaling_down_policies'] = core_scaling_down_policies
             __props__['core_scaling_up_policies'] = core_scaling_up_policies
+            __props__['core_unit'] = core_unit
             __props__['custom_ami_id'] = custom_ami_id
             __props__['description'] = description
             __props__['ebs_root_volume_size'] = ebs_root_volume_size
@@ -473,6 +508,8 @@ class MrScalar(pulumi.CustomResource):
             __props__['task_min_size'] = task_min_size
             __props__['task_scaling_down_policies'] = task_scaling_down_policies
             __props__['task_scaling_up_policies'] = task_scaling_up_policies
+            __props__['task_unit'] = task_unit
+            __props__['termination_policies'] = termination_policies
             __props__['termination_protected'] = termination_protected
             __props__['visible_to_all_users'] = visible_to_all_users
             __props__['output_cluster_id'] = None
@@ -483,7 +520,7 @@ class MrScalar(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, additional_info=None, additional_primary_security_groups=None, additional_replica_security_groups=None, applications=None, availability_zones=None, bootstrap_actions_files=None, cluster_id=None, configurations_files=None, core_desired_capacity=None, core_ebs_block_devices=None, core_ebs_optimized=None, core_instance_types=None, core_lifecycle=None, core_max_size=None, core_min_size=None, core_scaling_down_policies=None, core_scaling_up_policies=None, custom_ami_id=None, description=None, ebs_root_volume_size=None, ec2_key_name=None, expose_cluster_id=None, instance_weights=None, job_flow_role=None, keep_job_flow_alive=None, log_uri=None, managed_primary_security_group=None, managed_replica_security_group=None, master_ebs_block_devices=None, master_ebs_optimized=None, master_instance_types=None, master_lifecycle=None, name=None, output_cluster_id=None, provisioning_timeout=None, region=None, release_label=None, repo_upgrade_on_boot=None, retries=None, scheduled_tasks=None, security_config=None, service_access_security_group=None, service_role=None, steps_files=None, strategy=None, tags=None, task_desired_capacity=None, task_ebs_block_devices=None, task_ebs_optimized=None, task_instance_types=None, task_lifecycle=None, task_max_size=None, task_min_size=None, task_scaling_down_policies=None, task_scaling_up_policies=None, termination_protected=None, visible_to_all_users=None):
+    def get(resource_name, id, opts=None, additional_info=None, additional_primary_security_groups=None, additional_replica_security_groups=None, applications=None, availability_zones=None, bootstrap_actions_files=None, cluster_id=None, configurations_files=None, core_desired_capacity=None, core_ebs_block_devices=None, core_ebs_optimized=None, core_instance_types=None, core_lifecycle=None, core_max_size=None, core_min_size=None, core_scaling_down_policies=None, core_scaling_up_policies=None, core_unit=None, custom_ami_id=None, description=None, ebs_root_volume_size=None, ec2_key_name=None, expose_cluster_id=None, instance_weights=None, job_flow_role=None, keep_job_flow_alive=None, log_uri=None, managed_primary_security_group=None, managed_replica_security_group=None, master_ebs_block_devices=None, master_ebs_optimized=None, master_instance_types=None, master_lifecycle=None, name=None, output_cluster_id=None, provisioning_timeout=None, region=None, release_label=None, repo_upgrade_on_boot=None, retries=None, scheduled_tasks=None, security_config=None, service_access_security_group=None, service_role=None, steps_files=None, strategy=None, tags=None, task_desired_capacity=None, task_ebs_block_devices=None, task_ebs_optimized=None, task_instance_types=None, task_lifecycle=None, task_max_size=None, task_min_size=None, task_scaling_down_policies=None, task_scaling_up_policies=None, task_unit=None, termination_policies=None, termination_protected=None, visible_to_all_users=None):
         """
         Get an existing MrScalar resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -496,6 +533,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] name: The MrScaler name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
+        :param pulumi.Input[list] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
 
         The **applications** object supports the following:
 
@@ -526,20 +564,20 @@ class MrScalar(pulumi.CustomResource):
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
           * `minTargetCapacity` (`pulumi.Input[str]`)
           * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
+          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
+          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
           * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
           * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
+          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
 
         The **core_scaling_up_policies** object supports the following:
 
@@ -547,20 +585,20 @@ class MrScalar(pulumi.CustomResource):
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
           * `minTargetCapacity` (`pulumi.Input[str]`)
           * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
+          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
+          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
           * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
           * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
+          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
 
         The **instance_weights** object supports the following:
 
@@ -612,20 +650,20 @@ class MrScalar(pulumi.CustomResource):
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
           * `minTargetCapacity` (`pulumi.Input[str]`)
           * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
+          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
+          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
           * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
           * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
+          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
 
         The **task_scaling_up_policies** object supports the following:
 
@@ -633,20 +671,32 @@ class MrScalar(pulumi.CustomResource):
           * `adjustment` (`pulumi.Input[str]`)
           * `cooldown` (`pulumi.Input[float]`)
           * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`)
+          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
           * `maxTargetCapacity` (`pulumi.Input[str]`)
           * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`)
+          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
           * `minTargetCapacity` (`pulumi.Input[str]`)
           * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
+          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
+          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
           * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
+          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
           * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
+          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
+          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+
+        The **termination_policies** object supports the following:
+
+          * `statements` (`pulumi.Input[list]`)
+            * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
+            * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
+            * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
+            * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+            * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
+            * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+            * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
+            * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -669,6 +719,7 @@ class MrScalar(pulumi.CustomResource):
         __props__["core_min_size"] = core_min_size
         __props__["core_scaling_down_policies"] = core_scaling_down_policies
         __props__["core_scaling_up_policies"] = core_scaling_up_policies
+        __props__["core_unit"] = core_unit
         __props__["custom_ami_id"] = custom_ami_id
         __props__["description"] = description
         __props__["ebs_root_volume_size"] = ebs_root_volume_size
@@ -707,6 +758,8 @@ class MrScalar(pulumi.CustomResource):
         __props__["task_min_size"] = task_min_size
         __props__["task_scaling_down_policies"] = task_scaling_down_policies
         __props__["task_scaling_up_policies"] = task_scaling_up_policies
+        __props__["task_unit"] = task_unit
+        __props__["termination_policies"] = termination_policies
         __props__["termination_protected"] = termination_protected
         __props__["visible_to_all_users"] = visible_to_all_users
         return MrScalar(resource_name, opts=opts, __props__=__props__)

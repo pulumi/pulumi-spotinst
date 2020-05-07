@@ -11,17 +11,11 @@ import (
 )
 
 type OceanAutoscaler struct {
-	// Cooldown period between scaling actions.
-	Cooldown *int `pulumi:"cooldown"`
-	// Auto Scaling scale down operations.
-	Down *OceanAutoscalerDown `pulumi:"down"`
-	// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-	Headroom *OceanAutoscalerHeadroom `pulumi:"headroom"`
-	// Automatically configure and optimize headroom resources.
-	IsAutoConfig *bool `pulumi:"isAutoConfig"`
-	// Enable the Ocean ECS autoscaler.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// Optionally set upper and lower bounds on the resource usage of the cluster.
+	Cooldown       *int                           `pulumi:"cooldown"`
+	Down           *OceanAutoscalerDown           `pulumi:"down"`
+	Headroom       *OceanAutoscalerHeadroom       `pulumi:"headroom"`
+	IsAutoConfig   *bool                          `pulumi:"isAutoConfig"`
+	IsEnabled      *bool                          `pulumi:"isEnabled"`
 	ResourceLimits *OceanAutoscalerResourceLimits `pulumi:"resourceLimits"`
 }
 
@@ -38,17 +32,11 @@ type OceanAutoscalerInput interface {
 }
 
 type OceanAutoscalerArgs struct {
-	// Cooldown period between scaling actions.
-	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
-	// Auto Scaling scale down operations.
-	Down OceanAutoscalerDownPtrInput `pulumi:"down"`
-	// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-	Headroom OceanAutoscalerHeadroomPtrInput `pulumi:"headroom"`
-	// Automatically configure and optimize headroom resources.
-	IsAutoConfig pulumi.BoolPtrInput `pulumi:"isAutoConfig"`
-	// Enable the Ocean ECS autoscaler.
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// Optionally set upper and lower bounds on the resource usage of the cluster.
+	Cooldown       pulumi.IntPtrInput                    `pulumi:"cooldown"`
+	Down           OceanAutoscalerDownPtrInput           `pulumi:"down"`
+	Headroom       OceanAutoscalerHeadroomPtrInput       `pulumi:"headroom"`
+	IsAutoConfig   pulumi.BoolPtrInput                   `pulumi:"isAutoConfig"`
+	IsEnabled      pulumi.BoolPtrInput                   `pulumi:"isEnabled"`
 	ResourceLimits OceanAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
 }
 
@@ -129,33 +117,26 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context
 		return &v
 	}).(OceanAutoscalerPtrOutput)
 }
-
-// Cooldown period between scaling actions.
 func (o OceanAutoscalerOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
-// Auto Scaling scale down operations.
 func (o OceanAutoscalerOutput) Down() OceanAutoscalerDownPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerDown { return v.Down }).(OceanAutoscalerDownPtrOutput)
 }
 
-// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
 func (o OceanAutoscalerOutput) Headroom() OceanAutoscalerHeadroomPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerHeadroom { return v.Headroom }).(OceanAutoscalerHeadroomPtrOutput)
 }
 
-// Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.IsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
-// Enable the Ocean ECS autoscaler.
 func (o OceanAutoscalerOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
 }
@@ -178,7 +159,6 @@ func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
 }
 
-// Cooldown period between scaling actions.
 func (o OceanAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *int {
 		if v == nil {
@@ -188,7 +168,6 @@ func (o OceanAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Auto Scaling scale down operations.
 func (o OceanAutoscalerPtrOutput) Down() OceanAutoscalerDownPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerDown {
 		if v == nil {
@@ -198,7 +177,6 @@ func (o OceanAutoscalerPtrOutput) Down() OceanAutoscalerDownPtrOutput {
 	}).(OceanAutoscalerDownPtrOutput)
 }
 
-// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
 func (o OceanAutoscalerPtrOutput) Headroom() OceanAutoscalerHeadroomPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerHeadroom {
 		if v == nil {
@@ -208,7 +186,6 @@ func (o OceanAutoscalerPtrOutput) Headroom() OceanAutoscalerHeadroomPtrOutput {
 	}).(OceanAutoscalerHeadroomPtrOutput)
 }
 
-// Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -218,7 +195,6 @@ func (o OceanAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enable the Ocean ECS autoscaler.
 func (o OceanAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -228,7 +204,6 @@ func (o OceanAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerResourceLimits {
 		if v == nil {
@@ -239,7 +214,6 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 }
 
 type OceanAutoscalerDown struct {
-	// Would represent the maximum % to scale-down. Number between 1-100
 	MaxScaleDownPercentage *int `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -256,7 +230,6 @@ type OceanAutoscalerDownInput interface {
 }
 
 type OceanAutoscalerDownArgs struct {
-	// Would represent the maximum % to scale-down. Number between 1-100
 	MaxScaleDownPercentage pulumi.IntPtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -337,8 +310,6 @@ func (o OceanAutoscalerDownOutput) ToOceanAutoscalerDownPtrOutputWithContext(ctx
 		return &v
 	}).(OceanAutoscalerDownPtrOutput)
 }
-
-// Would represent the maximum % to scale-down. Number between 1-100
 func (o OceanAutoscalerDownOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
 }
@@ -361,7 +332,6 @@ func (o OceanAutoscalerDownPtrOutput) Elem() OceanAutoscalerDownOutput {
 	return o.ApplyT(func(v *OceanAutoscalerDown) OceanAutoscalerDown { return *v }).(OceanAutoscalerDownOutput)
 }
 
-// Would represent the maximum % to scale-down. Number between 1-100
 func (o OceanAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerDown) *int {
 		if v == nil {
@@ -372,12 +342,9 @@ func (o OceanAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutp
 }
 
 type OceanAutoscalerHeadroom struct {
-	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-	CpuPerUnit *int `pulumi:"cpuPerUnit"`
-	// Optionally configure the amount of memory (MB) to allocate the headroom.
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-	NumOfUnits *int `pulumi:"numOfUnits"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
 }
 
 // OceanAutoscalerHeadroomInput is an input type that accepts OceanAutoscalerHeadroomArgs and OceanAutoscalerHeadroomOutput values.
@@ -393,12 +360,9 @@ type OceanAutoscalerHeadroomInput interface {
 }
 
 type OceanAutoscalerHeadroomArgs struct {
-	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	// Optionally configure the amount of memory (MB) to allocate the headroom.
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (OceanAutoscalerHeadroomArgs) ElementType() reflect.Type {
@@ -478,18 +442,14 @@ func (o OceanAutoscalerHeadroomOutput) ToOceanAutoscalerHeadroomPtrOutputWithCon
 		return &v
 	}).(OceanAutoscalerHeadroomPtrOutput)
 }
-
-// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -512,7 +472,6 @@ func (o OceanAutoscalerHeadroomPtrOutput) Elem() OceanAutoscalerHeadroomOutput {
 	return o.ApplyT(func(v *OceanAutoscalerHeadroom) OceanAutoscalerHeadroom { return *v }).(OceanAutoscalerHeadroomOutput)
 }
 
-// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerHeadroom) *int {
 		if v == nil {
@@ -522,7 +481,6 @@ func (o OceanAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerHeadroom) *int {
 		if v == nil {
@@ -532,7 +490,6 @@ func (o OceanAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerHeadroom) *int {
 		if v == nil {
@@ -543,10 +500,8 @@ func (o OceanAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 }
 
 type OceanAutoscalerResourceLimits struct {
-	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
-	// The maximum cpu in vCPU units that can be allocated to the cluster.
-	MaxVcpu *int `pulumi:"maxVcpu"`
+	MaxVcpu      *int `pulumi:"maxVcpu"`
 }
 
 // OceanAutoscalerResourceLimitsInput is an input type that accepts OceanAutoscalerResourceLimitsArgs and OceanAutoscalerResourceLimitsOutput values.
@@ -562,10 +517,8 @@ type OceanAutoscalerResourceLimitsInput interface {
 }
 
 type OceanAutoscalerResourceLimitsArgs struct {
-	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
-	// The maximum cpu in vCPU units that can be allocated to the cluster.
-	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	MaxVcpu      pulumi.IntPtrInput `pulumi:"maxVcpu"`
 }
 
 func (OceanAutoscalerResourceLimitsArgs) ElementType() reflect.Type {
@@ -645,13 +598,10 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 		return &v
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
-
-// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
-// The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
@@ -674,7 +624,6 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLi
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits { return *v }).(OceanAutoscalerResourceLimitsOutput)
 }
 
-// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -684,7 +633,6 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -919,6 +867,114 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 	}).(OceanLaunchSpecAutoscaleHeadroomOutput)
 }
 
+type OceanLaunchSpecTag struct {
+	// The label key.
+	Key string `pulumi:"key"`
+	// The label value.
+	Value string `pulumi:"value"`
+}
+
+// OceanLaunchSpecTagInput is an input type that accepts OceanLaunchSpecTagArgs and OceanLaunchSpecTagOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecTagInput` via:
+//
+// 		 OceanLaunchSpecTagArgs{...}
+//
+type OceanLaunchSpecTagInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecTagOutput() OceanLaunchSpecTagOutput
+	ToOceanLaunchSpecTagOutputWithContext(context.Context) OceanLaunchSpecTagOutput
+}
+
+type OceanLaunchSpecTagArgs struct {
+	// The label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The label value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (OceanLaunchSpecTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecTag)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecTagArgs) ToOceanLaunchSpecTagOutput() OceanLaunchSpecTagOutput {
+	return i.ToOceanLaunchSpecTagOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecTagArgs) ToOceanLaunchSpecTagOutputWithContext(ctx context.Context) OceanLaunchSpecTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecTagOutput)
+}
+
+// OceanLaunchSpecTagArrayInput is an input type that accepts OceanLaunchSpecTagArray and OceanLaunchSpecTagArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecTagArrayInput` via:
+//
+// 		 OceanLaunchSpecTagArray{ OceanLaunchSpecTagArgs{...} }
+//
+type OceanLaunchSpecTagArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecTagArrayOutput() OceanLaunchSpecTagArrayOutput
+	ToOceanLaunchSpecTagArrayOutputWithContext(context.Context) OceanLaunchSpecTagArrayOutput
+}
+
+type OceanLaunchSpecTagArray []OceanLaunchSpecTagInput
+
+func (OceanLaunchSpecTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecTag)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecTagArray) ToOceanLaunchSpecTagArrayOutput() OceanLaunchSpecTagArrayOutput {
+	return i.ToOceanLaunchSpecTagArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecTagArray) ToOceanLaunchSpecTagArrayOutputWithContext(ctx context.Context) OceanLaunchSpecTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecTagArrayOutput)
+}
+
+type OceanLaunchSpecTagOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecTag)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecTagOutput) ToOceanLaunchSpecTagOutput() OceanLaunchSpecTagOutput {
+	return o
+}
+
+func (o OceanLaunchSpecTagOutput) ToOceanLaunchSpecTagOutputWithContext(ctx context.Context) OceanLaunchSpecTagOutput {
+	return o
+}
+
+// The label key.
+func (o OceanLaunchSpecTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The label value.
+func (o OceanLaunchSpecTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type OceanLaunchSpecTagArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecTag)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecTagArrayOutput) ToOceanLaunchSpecTagArrayOutput() OceanLaunchSpecTagArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecTagArrayOutput) ToOceanLaunchSpecTagArrayOutputWithContext(ctx context.Context) OceanLaunchSpecTagArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecTagArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecTag {
+		return vs[0].([]OceanLaunchSpecTag)[vs[1].(int)]
+	}).(OceanLaunchSpecTagOutput)
+}
+
 type OceanScheduledTask struct {
 	ShutdownHours *OceanScheduledTaskShutdownHours `pulumi:"shutdownHours"`
 	Tasks         []OceanScheduledTaskTask         `pulumi:"tasks"`
@@ -1022,7 +1078,6 @@ func (o OceanScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanScheduledTa
 }
 
 type OceanScheduledTaskShutdownHours struct {
-	// Enable the Ocean ECS autoscaler.
 	IsEnabled   *bool    `pulumi:"isEnabled"`
 	TimeWindows []string `pulumi:"timeWindows"`
 }
@@ -1040,7 +1095,6 @@ type OceanScheduledTaskShutdownHoursInput interface {
 }
 
 type OceanScheduledTaskShutdownHoursArgs struct {
-	// Enable the Ocean ECS autoscaler.
 	IsEnabled   pulumi.BoolPtrInput     `pulumi:"isEnabled"`
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
@@ -1122,8 +1176,6 @@ func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHours
 		return &v
 	}).(OceanScheduledTaskShutdownHoursPtrOutput)
 }
-
-// Enable the Ocean ECS autoscaler.
 func (o OceanScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1150,7 +1202,6 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) Elem() OceanScheduledTaskShutd
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) OceanScheduledTaskShutdownHours { return *v }).(OceanScheduledTaskShutdownHoursOutput)
 }
 
-// Enable the Ocean ECS autoscaler.
 func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) *bool {
 		if v == nil {
@@ -1171,9 +1222,8 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArr
 
 type OceanScheduledTaskTask struct {
 	CronExpression string `pulumi:"cronExpression"`
-	// Enable the Ocean ECS autoscaler.
-	IsEnabled bool   `pulumi:"isEnabled"`
-	TaskType  string `pulumi:"taskType"`
+	IsEnabled      bool   `pulumi:"isEnabled"`
+	TaskType       string `pulumi:"taskType"`
 }
 
 // OceanScheduledTaskTaskInput is an input type that accepts OceanScheduledTaskTaskArgs and OceanScheduledTaskTaskOutput values.
@@ -1190,9 +1240,8 @@ type OceanScheduledTaskTaskInput interface {
 
 type OceanScheduledTaskTaskArgs struct {
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Enable the Ocean ECS autoscaler.
-	IsEnabled pulumi.BoolInput   `pulumi:"isEnabled"`
-	TaskType  pulumi.StringInput `pulumi:"taskType"`
+	IsEnabled      pulumi.BoolInput   `pulumi:"isEnabled"`
+	TaskType       pulumi.StringInput `pulumi:"taskType"`
 }
 
 func (OceanScheduledTaskTaskArgs) ElementType() reflect.Type {
@@ -1251,7 +1300,6 @@ func (o OceanScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Enable the Ocean ECS autoscaler.
 func (o OceanScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
@@ -1672,6 +1720,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecAttributeArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecTagOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecTagArrayOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskArrayOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskShutdownHoursOutput{})

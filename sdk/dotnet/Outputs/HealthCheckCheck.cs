@@ -13,7 +13,10 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class HealthCheckCheck
     {
-        public readonly string EndPoint;
+        /// <summary>
+        /// The destination for the request.
+        /// </summary>
+        public readonly string Endpoint;
         /// <summary>
         /// The number of consecutive successful health checks that must occur before declaring an instance healthy.
         /// </summary>
@@ -30,7 +33,10 @@ namespace Pulumi.SpotInst.Outputs
         /// The protocol to use to connect with the instance. Valid values: http, https.
         /// </summary>
         public readonly string Protocol;
-        public readonly int TimeOut;
+        /// <summary>
+        /// the amount of time (in seconds) to wait when receiving a response from the health check.
+        /// </summary>
+        public readonly int Timeout;
         /// <summary>
         /// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
         /// </summary>
@@ -38,7 +44,7 @@ namespace Pulumi.SpotInst.Outputs
 
         [OutputConstructor]
         private HealthCheckCheck(
-            string endPoint,
+            string endpoint,
 
             int healthy,
 
@@ -48,16 +54,16 @@ namespace Pulumi.SpotInst.Outputs
 
             string protocol,
 
-            int timeOut,
+            int timeout,
 
             int unhealthy)
         {
-            EndPoint = endPoint;
+            Endpoint = endpoint;
             Healthy = healthy;
             Interval = interval;
             Port = port;
             Protocol = protocol;
-            TimeOut = timeOut;
+            Timeout = timeout;
             Unhealthy = unhealthy;
         }
     }

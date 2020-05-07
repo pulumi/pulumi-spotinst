@@ -15,27 +15,6 @@ class Ocean(pulumi.CustomResource):
     Configure public IP address allocation.
     """
     autoscaler: pulumi.Output[dict]
-    """
-    Describes the Ocean Kubernetes autoscaler.
-
-      * `autoHeadroomPercentage` (`float`) - Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
-      * `autoscaleCooldown` (`float`) - Cooldown period between scaling actions.
-      * `autoscaleDown` (`dict`) - Auto Scaling scale down operations.
-        * `evaluationPeriods` (`float`) - The number of evaluation periods that should accumulate before a scale down action takes place.
-        * `maxScaleDownPercentage` (`float`) - Would represent the maximum % to scale-down. Number between 1-100.
-
-      * `autoscaleHeadroom` (`dict`) - Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-        * `cpuPerUnit` (`float`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        * `gpuPerUnit` (`float`) - Optionally configure the number of GPUS to allocate the headroom.
-        * `memoryPerUnit` (`float`) - Optionally configure the amount of memory (MB) to allocate the headroom.
-        * `numOfUnits` (`float`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-
-      * `autoscaleIsAutoConfig` (`bool`) - Automatically configure and optimize headroom resources.
-      * `autoscaleIsEnabled` (`bool`) - Enable the Ocean Kubernetes autoscaler.
-      * `resourceLimits` (`dict`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-        * `maxMemoryGib` (`float`) - The maximum memory in GiB units that can be allocated to the cluster.
-        * `maxVcpu` (`float`) - The maximum cpu in vCPU units that can be allocated to the cluster.
-    """
     blacklists: pulumi.Output[list]
     """
     Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -132,7 +111,7 @@ class Ocean(pulumi.CustomResource):
     """
     utilize_reserved_instances: pulumi.Output[bool]
     """
-    If Reserved instances exist, OCean will utilize them before launching Spot instances.
+    If Reserved instances exist, Ocean will utilize them before launching Spot instances.
     """
     whitelists: pulumi.Output[list]
     """
@@ -147,7 +126,6 @@ class Ocean(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[dict] autoscaler: Describes the Ocean Kubernetes autoscaler.
         :param pulumi.Input[list] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[str] controller_id: The ocean cluster identifier. Example: `ocean.k8s`
         :param pulumi.Input[float] desired_capacity: The number of instances to launch and maintain in the cluster.
@@ -169,28 +147,28 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[list] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[list] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
-        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
 
         The **autoscaler** object supports the following:
 
-          * `autoHeadroomPercentage` (`pulumi.Input[float]`) - Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
-          * `autoscaleCooldown` (`pulumi.Input[float]`) - Cooldown period between scaling actions.
-          * `autoscaleDown` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
-            * `evaluationPeriods` (`pulumi.Input[float]`) - The number of evaluation periods that should accumulate before a scale down action takes place.
-            * `maxScaleDownPercentage` (`pulumi.Input[float]`) - Would represent the maximum % to scale-down. Number between 1-100.
+          * `autoHeadroomPercentage` (`pulumi.Input[float]`)
+          * `autoscaleCooldown` (`pulumi.Input[float]`)
+          * `autoscaleDown` (`pulumi.Input[dict]`)
+            * `evaluationPeriods` (`pulumi.Input[float]`)
+            * `maxScaleDownPercentage` (`pulumi.Input[float]`)
 
-          * `autoscaleHeadroom` (`pulumi.Input[dict]`) - Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-            * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-            * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate the headroom.
-            * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate the headroom.
-            * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+          * `autoscaleHeadroom` (`pulumi.Input[dict]`)
+            * `cpuPerUnit` (`pulumi.Input[float]`)
+            * `gpuPerUnit` (`pulumi.Input[float]`)
+            * `memoryPerUnit` (`pulumi.Input[float]`)
+            * `numOfUnits` (`pulumi.Input[float]`)
 
-          * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`) - Automatically configure and optimize headroom resources.
-          * `autoscaleIsEnabled` (`pulumi.Input[bool]`) - Enable the Ocean Kubernetes autoscaler.
-          * `resourceLimits` (`pulumi.Input[dict]`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-            * `maxMemoryGib` (`pulumi.Input[float]`) - The maximum memory in GiB units that can be allocated to the cluster.
-            * `maxVcpu` (`pulumi.Input[float]`) - The maximum cpu in vCPU units that can be allocated to the cluster.
+          * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`)
+          * `autoscaleIsEnabled` (`pulumi.Input[bool]`)
+          * `resourceLimits` (`pulumi.Input[dict]`)
+            * `maxMemoryGib` (`pulumi.Input[float]`)
+            * `maxVcpu` (`pulumi.Input[float]`)
 
         The **load_balancers** object supports the following:
 
@@ -286,7 +264,6 @@ class Ocean(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[dict] autoscaler: Describes the Ocean Kubernetes autoscaler.
         :param pulumi.Input[list] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[str] controller_id: The ocean cluster identifier. Example: `ocean.k8s`
         :param pulumi.Input[float] desired_capacity: The number of instances to launch and maintain in the cluster.
@@ -308,28 +285,28 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[list] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[list] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
-        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[list] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
 
         The **autoscaler** object supports the following:
 
-          * `autoHeadroomPercentage` (`pulumi.Input[float]`) - Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
-          * `autoscaleCooldown` (`pulumi.Input[float]`) - Cooldown period between scaling actions.
-          * `autoscaleDown` (`pulumi.Input[dict]`) - Auto Scaling scale down operations.
-            * `evaluationPeriods` (`pulumi.Input[float]`) - The number of evaluation periods that should accumulate before a scale down action takes place.
-            * `maxScaleDownPercentage` (`pulumi.Input[float]`) - Would represent the maximum % to scale-down. Number between 1-100.
+          * `autoHeadroomPercentage` (`pulumi.Input[float]`)
+          * `autoscaleCooldown` (`pulumi.Input[float]`)
+          * `autoscaleDown` (`pulumi.Input[dict]`)
+            * `evaluationPeriods` (`pulumi.Input[float]`)
+            * `maxScaleDownPercentage` (`pulumi.Input[float]`)
 
-          * `autoscaleHeadroom` (`pulumi.Input[dict]`) - Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-            * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-            * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate the headroom.
-            * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate the headroom.
-            * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+          * `autoscaleHeadroom` (`pulumi.Input[dict]`)
+            * `cpuPerUnit` (`pulumi.Input[float]`)
+            * `gpuPerUnit` (`pulumi.Input[float]`)
+            * `memoryPerUnit` (`pulumi.Input[float]`)
+            * `numOfUnits` (`pulumi.Input[float]`)
 
-          * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`) - Automatically configure and optimize headroom resources.
-          * `autoscaleIsEnabled` (`pulumi.Input[bool]`) - Enable the Ocean Kubernetes autoscaler.
-          * `resourceLimits` (`pulumi.Input[dict]`) - Optionally set upper and lower bounds on the resource usage of the cluster.
-            * `maxMemoryGib` (`pulumi.Input[float]`) - The maximum memory in GiB units that can be allocated to the cluster.
-            * `maxVcpu` (`pulumi.Input[float]`) - The maximum cpu in vCPU units that can be allocated to the cluster.
+          * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`)
+          * `autoscaleIsEnabled` (`pulumi.Input[bool]`)
+          * `resourceLimits` (`pulumi.Input[dict]`)
+            * `maxMemoryGib` (`pulumi.Input[float]`)
+            * `maxVcpu` (`pulumi.Input[float]`)
 
         The **load_balancers** object supports the following:
 

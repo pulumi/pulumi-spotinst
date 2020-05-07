@@ -567,6 +567,13 @@ class Elastigroup(pulumi.CustomResource):
             * `strategy` (`pulumi.Input[dict]`)
               * `action` (`pulumi.Input[str]`)
               * `batchMinHealthyPercentage` (`pulumi.Input[float]`)
+              * `onFailure` (`pulumi.Input[dict]`)
+                * `actionType` (`pulumi.Input[str]`)
+                * `batchNum` (`pulumi.Input[float]`)
+                * `draining_timeout` (`pulumi.Input[float]`) - The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+                * `shouldDecrementTargetCapacity` (`pulumi.Input[bool]`)
+                * `shouldHandleAllBatches` (`pulumi.Input[bool]`)
+
               * `shouldDrainInstances` (`pulumi.Input[bool]`)
 
             * `waitForRollPercentage` (`pulumi.Input[float]`)
@@ -1030,6 +1037,13 @@ class Elastigroup(pulumi.CustomResource):
             * `strategy` (`pulumi.Input[dict]`)
               * `action` (`pulumi.Input[str]`)
               * `batchMinHealthyPercentage` (`pulumi.Input[float]`)
+              * `onFailure` (`pulumi.Input[dict]`)
+                * `actionType` (`pulumi.Input[str]`)
+                * `batchNum` (`pulumi.Input[float]`)
+                * `draining_timeout` (`pulumi.Input[float]`) - The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+                * `shouldDecrementTargetCapacity` (`pulumi.Input[bool]`)
+                * `shouldHandleAllBatches` (`pulumi.Input[bool]`)
+
               * `shouldDrainInstances` (`pulumi.Input[bool]`)
 
             * `waitForRollPercentage` (`pulumi.Input[float]`)

@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Ecs.Inputs
 
     public sealed class OceanAutoscalerResourceLimitsGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The maximum memory in GiB units that can be allocated to the cluster.
-        /// </summary>
         [Input("maxMemoryGib")]
         public Input<int>? MaxMemoryGib { get; set; }
 
-        /// <summary>
-        /// The maximum cpu in vCPU units that can be allocated to the cluster.
-        /// </summary>
         [Input("maxVcpu")]
         public Input<int>? MaxVcpu { get; set; }
 
