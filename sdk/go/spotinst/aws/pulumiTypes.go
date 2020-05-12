@@ -12487,6 +12487,257 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 	}).(OceanLaunchSpecAutoscaleHeadroomOutput)
 }
 
+type OceanLaunchSpecElasticIpPool struct {
+	// Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+	TagSelector *OceanLaunchSpecElasticIpPoolTagSelector `pulumi:"tagSelector"`
+}
+
+// OceanLaunchSpecElasticIpPoolInput is an input type that accepts OceanLaunchSpecElasticIpPoolArgs and OceanLaunchSpecElasticIpPoolOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecElasticIpPoolInput` via:
+//
+// 		 OceanLaunchSpecElasticIpPoolArgs{...}
+//
+type OceanLaunchSpecElasticIpPoolInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecElasticIpPoolOutput() OceanLaunchSpecElasticIpPoolOutput
+	ToOceanLaunchSpecElasticIpPoolOutputWithContext(context.Context) OceanLaunchSpecElasticIpPoolOutput
+}
+
+type OceanLaunchSpecElasticIpPoolArgs struct {
+	// Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+	TagSelector OceanLaunchSpecElasticIpPoolTagSelectorPtrInput `pulumi:"tagSelector"`
+}
+
+func (OceanLaunchSpecElasticIpPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecElasticIpPool)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecElasticIpPoolArgs) ToOceanLaunchSpecElasticIpPoolOutput() OceanLaunchSpecElasticIpPoolOutput {
+	return i.ToOceanLaunchSpecElasticIpPoolOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecElasticIpPoolArgs) ToOceanLaunchSpecElasticIpPoolOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecElasticIpPoolOutput)
+}
+
+// OceanLaunchSpecElasticIpPoolArrayInput is an input type that accepts OceanLaunchSpecElasticIpPoolArray and OceanLaunchSpecElasticIpPoolArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecElasticIpPoolArrayInput` via:
+//
+// 		 OceanLaunchSpecElasticIpPoolArray{ OceanLaunchSpecElasticIpPoolArgs{...} }
+//
+type OceanLaunchSpecElasticIpPoolArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecElasticIpPoolArrayOutput() OceanLaunchSpecElasticIpPoolArrayOutput
+	ToOceanLaunchSpecElasticIpPoolArrayOutputWithContext(context.Context) OceanLaunchSpecElasticIpPoolArrayOutput
+}
+
+type OceanLaunchSpecElasticIpPoolArray []OceanLaunchSpecElasticIpPoolInput
+
+func (OceanLaunchSpecElasticIpPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecElasticIpPool)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecElasticIpPoolArray) ToOceanLaunchSpecElasticIpPoolArrayOutput() OceanLaunchSpecElasticIpPoolArrayOutput {
+	return i.ToOceanLaunchSpecElasticIpPoolArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecElasticIpPoolArray) ToOceanLaunchSpecElasticIpPoolArrayOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecElasticIpPoolArrayOutput)
+}
+
+type OceanLaunchSpecElasticIpPoolOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecElasticIpPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecElasticIpPool)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecElasticIpPoolOutput) ToOceanLaunchSpecElasticIpPoolOutput() OceanLaunchSpecElasticIpPoolOutput {
+	return o
+}
+
+func (o OceanLaunchSpecElasticIpPoolOutput) ToOceanLaunchSpecElasticIpPoolOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolOutput {
+	return o
+}
+
+// Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+func (o OceanLaunchSpecElasticIpPoolOutput) TagSelector() OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecElasticIpPool) *OceanLaunchSpecElasticIpPoolTagSelector { return v.TagSelector }).(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput)
+}
+
+type OceanLaunchSpecElasticIpPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecElasticIpPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecElasticIpPool)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecElasticIpPoolArrayOutput) ToOceanLaunchSpecElasticIpPoolArrayOutput() OceanLaunchSpecElasticIpPoolArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecElasticIpPoolArrayOutput) ToOceanLaunchSpecElasticIpPoolArrayOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecElasticIpPoolArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecElasticIpPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecElasticIpPool {
+		return vs[0].([]OceanLaunchSpecElasticIpPool)[vs[1].(int)]
+	}).(OceanLaunchSpecElasticIpPoolOutput)
+}
+
+type OceanLaunchSpecElasticIpPoolTagSelector struct {
+	// Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+	TagKey string `pulumi:"tagKey"`
+	// Elastic IP tag value. Can be null.
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// OceanLaunchSpecElasticIpPoolTagSelectorInput is an input type that accepts OceanLaunchSpecElasticIpPoolTagSelectorArgs and OceanLaunchSpecElasticIpPoolTagSelectorOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecElasticIpPoolTagSelectorInput` via:
+//
+// 		 OceanLaunchSpecElasticIpPoolTagSelectorArgs{...}
+//
+type OceanLaunchSpecElasticIpPoolTagSelectorInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecElasticIpPoolTagSelectorOutput() OceanLaunchSpecElasticIpPoolTagSelectorOutput
+	ToOceanLaunchSpecElasticIpPoolTagSelectorOutputWithContext(context.Context) OceanLaunchSpecElasticIpPoolTagSelectorOutput
+}
+
+type OceanLaunchSpecElasticIpPoolTagSelectorArgs struct {
+	// Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+	// Elastic IP tag value. Can be null.
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (OceanLaunchSpecElasticIpPoolTagSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecElasticIpPoolTagSelector)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecElasticIpPoolTagSelectorArgs) ToOceanLaunchSpecElasticIpPoolTagSelectorOutput() OceanLaunchSpecElasticIpPoolTagSelectorOutput {
+	return i.ToOceanLaunchSpecElasticIpPoolTagSelectorOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecElasticIpPoolTagSelectorArgs) ToOceanLaunchSpecElasticIpPoolTagSelectorOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolTagSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecElasticIpPoolTagSelectorOutput)
+}
+
+func (i OceanLaunchSpecElasticIpPoolTagSelectorArgs) ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutput() OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
+	return i.ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecElasticIpPoolTagSelectorArgs) ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecElasticIpPoolTagSelectorOutput).ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecElasticIpPoolTagSelectorPtrInput is an input type that accepts OceanLaunchSpecElasticIpPoolTagSelectorArgs, OceanLaunchSpecElasticIpPoolTagSelectorPtr and OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecElasticIpPoolTagSelectorPtrInput` via:
+//
+// 		 OceanLaunchSpecElasticIpPoolTagSelectorArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type OceanLaunchSpecElasticIpPoolTagSelectorPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutput() OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput
+	ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutputWithContext(context.Context) OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput
+}
+
+type oceanLaunchSpecElasticIpPoolTagSelectorPtrType OceanLaunchSpecElasticIpPoolTagSelectorArgs
+
+func OceanLaunchSpecElasticIpPoolTagSelectorPtr(v *OceanLaunchSpecElasticIpPoolTagSelectorArgs) OceanLaunchSpecElasticIpPoolTagSelectorPtrInput {
+	return (*oceanLaunchSpecElasticIpPoolTagSelectorPtrType)(v)
+}
+
+func (*oceanLaunchSpecElasticIpPoolTagSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecElasticIpPoolTagSelector)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecElasticIpPoolTagSelectorPtrType) ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutput() OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
+	return i.ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecElasticIpPoolTagSelectorPtrType) ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput)
+}
+
+type OceanLaunchSpecElasticIpPoolTagSelectorOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecElasticIpPoolTagSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecElasticIpPoolTagSelector)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) ToOceanLaunchSpecElasticIpPoolTagSelectorOutput() OceanLaunchSpecElasticIpPoolTagSelectorOutput {
+	return o
+}
+
+func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) ToOceanLaunchSpecElasticIpPoolTagSelectorOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolTagSelectorOutput {
+	return o
+}
+
+func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutput() OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
+	return o.ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecElasticIpPoolTagSelector) *OceanLaunchSpecElasticIpPoolTagSelector {
+		return &v
+	}).(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput)
+}
+
+// Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecElasticIpPoolTagSelector) string { return v.TagKey }).(pulumi.StringOutput)
+}
+
+// Elastic IP tag value. Can be null.
+func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecElasticIpPoolTagSelector) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecElasticIpPoolTagSelector)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutput() OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) Elem() OceanLaunchSpecElasticIpPoolTagSelectorOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecElasticIpPoolTagSelector) OceanLaunchSpecElasticIpPoolTagSelector { return *v }).(OceanLaunchSpecElasticIpPoolTagSelectorOutput)
+}
+
+// Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecElasticIpPoolTagSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elastic IP tag value. Can be null.
+func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecElasticIpPoolTagSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TagValue
+	}).(pulumi.StringPtrOutput)
+}
+
 type OceanLaunchSpecLabel struct {
 	// The tag key.
 	Key string `pulumi:"key"`
@@ -13842,6 +14093,10 @@ func init() {
 	pulumi.RegisterOutputType(OceanAutoscalerResourceLimitsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolTagSelectorOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagOutput{})

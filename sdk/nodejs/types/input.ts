@@ -920,6 +920,24 @@ export namespace aws {
         numOfUnits: pulumi.Input<number>;
     }
 
+    export interface OceanLaunchSpecElasticIpPool {
+        /**
+         * Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+         */
+        tagSelector?: pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPoolTagSelector>;
+    }
+
+    export interface OceanLaunchSpecElasticIpPoolTagSelector {
+        /**
+         * Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+         */
+        tagKey: pulumi.Input<string>;
+        /**
+         * Elastic IP tag value. Can be null.
+         */
+        tagValue?: pulumi.Input<string>;
+    }
+
     export interface OceanLaunchSpecLabel {
         /**
          * The tag key.

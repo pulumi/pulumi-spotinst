@@ -24,6 +24,12 @@ import * as utilities from "../utilities";
  *         memoryPerUnit: 2048,
  *         numOfUnits: 5,
  *     }],
+ *     elasticIpPools: [{
+ *         tagSelector: {
+ *             tagKey: "key",
+ *             tagValue: "value",
+ *         },
+ *     }],
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-123456",
  *     labels: [{
@@ -80,6 +86,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
     public readonly autoscaleHeadrooms!: pulumi.Output<outputs.aws.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
+    /**
+     * Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+     */
+    public readonly elasticIpPools!: pulumi.Output<outputs.aws.OceanLaunchSpecElasticIpPool[] | undefined>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
@@ -138,6 +148,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
             inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
+            inputs["elasticIpPools"] = state ? state.elasticIpPools : undefined;
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -155,6 +166,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
                 throw new Error("Missing required property 'oceanId'");
             }
             inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
+            inputs["elasticIpPools"] = args ? args.elasticIpPools : undefined;
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -186,6 +198,10 @@ export interface OceanLaunchSpecState {
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    /**
+     * Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+     */
+    readonly elasticIpPools?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPool>[]>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
@@ -240,6 +256,10 @@ export interface OceanLaunchSpecArgs {
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    /**
+     * Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+     */
+    readonly elasticIpPools?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPool>[]>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
