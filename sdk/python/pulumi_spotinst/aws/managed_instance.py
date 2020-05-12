@@ -163,38 +163,7 @@ class ManagedInstance(pulumi.CustomResource):
     vpc_id: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, auto_healing=None, block_devices_mode=None, cpu_credits=None, description=None, draining_timeout=None, ebs_optimized=None, elastic_ip=None, enable_monitoring=None, fall_back_to_od=None, grace_period=None, health_check_type=None, iam_instance_profile=None, image_id=None, instance_types=None, integration_route53=None, key_pair=None, life_cycle=None, load_balancers=None, name=None, network_interfaces=None, optimization_windows=None, orientation=None, persist_block_devices=None, persist_private_ip=None, persist_root_device=None, placement_tenancy=None, preferred_type=None, private_ip=None, product=None, region=None, revert_to_spot=None, scheduled_tasks=None, security_group_ids=None, shutdown_script=None, subnet_ids=None, tags=None, unhealthy_duration=None, user_data=None, utilize_reserved_instances=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Spotinst AWS ManagedInstance resource.
-
-
-        ## Load Balancers
-
-           * `loadBalancersConfig` - (Optional) LB integration object.
-               * `load_balancers` - (Optional) List of load balancers configs.
-                    * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
-                    * `arn` - The AWS resource ARN (Required only for ALB target groups).
-                    * `balancer_id` - The Multai load balancer ID.
-                    Default: lb-123456
-                    * `target_set_id` - The Multai load target set ID.
-                    Default: ts-123456
-                    * `auto_weight` - “Auto Weight” will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-                    * `zone_awareness` - “AZ Awareness” will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
-                    * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-
-        Usage:
-
-           ```hcl
-           load_balancers {
-               arn  = "arn"
-               type = "CLASSIC"
-               balancer_id   = "lb-123"
-               target_set_id = "ts-123"
-               auto_weight   = "true"
-               az_awareness = "true"
-             }
-           ```
-
-        <a id="route53"></a>
-
+        Create a ManagedInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`. 

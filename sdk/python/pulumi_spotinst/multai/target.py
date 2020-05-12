@@ -45,6 +45,25 @@ class Target(pulumi.CustomResource):
         """
         Provides a Spotinst Multai Target.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        my_target = spotinst.multai.Target("myTarget",
+            balancer_id="b-12345",
+            host="host",
+            port=1338,
+            tags=[{
+                "key": "env",
+                "value": "prod",
+            }],
+            target_set_id="l-98765",
+            weight=1)
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -46,6 +46,34 @@ class TargetSet(pulumi.CustomResource):
         """
         Provides a Spotinst Multai Target Set.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        my_target_set = spotinst.multai.TargetSet("myTargetSet",
+            balancer_id="b-12345",
+            deployment_id="dp-12345",
+            health_check={
+                "healthyThreshold": 3,
+                "interval": 20,
+                "path": "/",
+                "port": 3001,
+                "protocol": "http",
+                "timeout": 5,
+                "unhealthyThreshold": 3,
+            },
+            port=1338,
+            protocol="http",
+            tags=[{
+                "key": "env",
+                "value": "prod",
+            }],
+            weight=2)
+        ```
 
 
         :param str resource_name: The name of the resource.

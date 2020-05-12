@@ -53,7 +53,88 @@ class Elastigroup(pulumi.CustomResource):
         Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
 
 
+        ## Example Usage
 
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example_gke_elastigroup = spotinst.gke.Elastigroup("example-gke-elastigroup",
+            backend_services=[{
+                "locationType": "global",
+                "namedPorts": [{
+                    "name": "http",
+                    "ports": [
+                        80,
+                        8080,
+                    ],
+                }],
+                "serviceName": "backend-service",
+            }],
+            cluster_zone_name="us-central1-a",
+            desired_capacity=3,
+            instance_types_ondemand="n1-standard-1",
+            instance_types_preemptibles=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ],
+            integration_gke={
+                "autoscaleCooldown": 300,
+                "autoscaleDown": {
+                    "evaluationPeriods": 300,
+                },
+                "autoscaleHeadroom": {
+                    "cpuPerUnit": 1024,
+                    "memoryPerUnit": 512,
+                    "numOfUnits": 2,
+                },
+                "autoscaleIsAutoConfig": False,
+                "autoscaleIsEnabled": True,
+                "autoscaleLabels": [{
+                    "key": "label_key",
+                    "value": "label_value",
+                }],
+                "clusterId": "example-cluster-id",
+                "location": "us-central1-a",
+            },
+            max_size=5,
+            min_size=1,
+            node_image="COS",
+            preemptible_percentage=100)
+        ```
+
+        ## Third-Party Integrations
+
+        * `integration_gke` - (Required) Describes the GKE integration.
+
+            * `location` - (Optional) The location of your GKE cluster.
+            * `cluster_id` - (Optional) The GKE cluster ID you wish to import.
+            * `autoscale_is_enabled` -  (Optional, Default: `false`) Specifies whether the auto scaling feature is enabled.
+            * `autoscale_is_autoconfig` - (Optional, Default: `false`) Enabling the automatic auto-scaler functionality. For more information please see: .
+            * `autoscale_cooldown` - (Optional, Default: `300`) The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+            
+            * `autoscale_headroom` - (Optional) Headroom for the cluster.
+                * `cpu_per_unit` - (Optional, Default: `0`) Cpu units for compute.
+                * `memory_per_unit` - (Optional, Default: `0`) RAM units for compute.
+                * `num_of_units` - (Optional, Default: `0`) Amount of units for compute.
+            
+            * `autoscale_down` - (Optional) Enabling scale down.
+                * `evaluation_periods` - (Optional, Default: `5`) Amount of cooldown evaluation periods for scale down.
+            
+            * `autoscale_labels` - (Optional) Labels to assign to the resource.
+                * `key` - (Optional) The label name.
+                * `value` - (Optional) The label value.
+            
+                    
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="diff-suppressed-parameters"></a>
         ## Diff-suppressed Parameters
 
         The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these

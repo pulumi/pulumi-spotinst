@@ -79,7 +79,250 @@ class Elastigroup(pulumi.CustomResource):
         """
         Provides a Spotinst elastigroup Azure resource.
 
+        ## Example Usage
 
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        test_azure_group = spotinst.azure.Elastigroup("testAzureGroup",
+            desired_capacity=1,
+            health_check={
+                "autoHealing": True,
+                "gracePeriod": 120,
+                "healthCheckType": "INSTANCE_STATE",
+            },
+            images=[{
+                "marketplace": [{
+                    "offer": "UbuntuServer",
+                    "publisher": "Canonical",
+                    "sku": "16.04-LTS",
+                }],
+            }],
+            load_balancers=[{
+                "autoWeight": True,
+                "balancerId": "lb-1ee2e3q",
+                "targetSetId": "ts-3eq",
+                "type": "MULTAI_TARGET_SET",
+            }],
+            login={
+                "sshPublicKey": "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+                "userName": "admin",
+            },
+            low_priority_sizes=[
+                "standard_a1_v1",
+                "standard_a1_v2",
+            ],
+            managed_service_identities=[{
+                "name": "example-identity",
+                "resourceGroupName": "spotinst-azure",
+            }],
+            max_size=1,
+            min_size=0,
+            network={
+                "assignPublicIp": True,
+                "resourceGroupName": "subnetResourceGroup",
+                "subnetName": "my-subnet-name",
+                "virtualNetworkName": "vname",
+            },
+            od_sizes=[
+                "standard_a1_v1",
+                "standard_a1_v2",
+            ],
+            product="Linux",
+            region="eastus",
+            resource_group_name="spotinst-azure",
+            scaling_down_policies=[{
+                "actionType": "adjustment",
+                "adjustment": "MIN(5,10)",
+                "cooldown": 60,
+                "dimensions": [{
+                    "name": "name-1",
+                    "value": "value-1",
+                }],
+                "evaluationPeriods": "10",
+                "metricName": "CPUUtilization",
+                "namespace": "Microsoft.Compute",
+                "operator": "gt",
+                "period": "60",
+                "policyName": "policy-name",
+                "statistic": "average",
+                "threshold": 10,
+                "unit": "percent",
+            }],
+            scaling_up_policies=[{
+                "actionType": "setMinTarget",
+                "cooldown": 60,
+                "dimensions": [
+                    {
+                        "name": "resourceName",
+                        "value": "resource-name",
+                    },
+                    {
+                        "name": "resourceGroupName",
+                        "value": "resource-group-name",
+                    },
+                ],
+                "evaluationPeriods": "10",
+                "metricName": "CPUUtilization",
+                "minTargetCapacity": 1,
+                "namespace": "Microsoft.Compute",
+                "operator": "gt",
+                "period": "60",
+                "policyName": "policy-name",
+                "statistic": "average",
+                "threshold": 10,
+                "unit": "percent",
+            }],
+            scheduled_tasks=[{
+                "adjustment": 2,
+                "adjustmentPercentage": 50,
+                "batchSizePercentage": 33,
+                "cronExpression": "* * * * *",
+                "gracePeriod": 300,
+                "isEnabled": True,
+                "scaleMaxCapacity": 8,
+                "scaleMinCapacity": 5,
+                "scaleTargetCapacity": 6,
+                "taskType": "scale",
+            }],
+            shutdown_script="",
+            strategy={
+                "drainingTimeout": 300,
+                "odCount": 1,
+            },
+            user_data="")
+        ```
+
+        ## Load Balancers
+
+        * `load_balancers` - (Required) Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+        * `type` - (Required) The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        * `balancer_id` - (Required) The balancer ID.
+        * `target_set_id` - (Required) The scale set ID associated with the load balancer.
+        * `auto_weight` - (Optional, Default: `false`)
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="image"></a>
+        ## Image
+
+        * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+        * `publisher` - (Optional) Image publisher. Required if resource_group_name is not specified.
+        * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
+        * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+        * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
+        * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="health-check"></a>
+        ## Health Check
+
+        * `health_check` - (Optional) Describes the health check configuration.
+        * `health_check_type` - (Optional) Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
+        * `grace_period` - (Optional) Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+        * `auto_healing` - (Optional) Enable auto-healing of unhealthy VMs.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="network"></a>
+        ## Network
+
+        * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
+        * `virtual_network_name` - (Required) Name of Vnet.
+        * `subnet_name` - (Required) ID of subnet.
+        * `resource_group_name` - (Required) Vnet Resource Group Name.
+        * `assign_public_up` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
+        * `additional_ip_configs` - (Optional) Array of additional IP configuration objects.
+        * `name` - (Required) The IP configuration name.
+        * `private_ip_version` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="login"></a>
+        ## Login
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="login"></a>
+        ## Login
+
+        * `login` - (Required) Describes the login configuration.
+        * `user_name` - (Required) Set admin access for accessing your VMs.
+        * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux product types.
+        * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows product types.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="scaling-policy"></a>
+        ## Scheduling
+
+        * `scheduled_task` - (Optional) Describes the configuration of one or more scheduled tasks.
+        * `is_enabled` - (Optional, Default: `true`) Describes whether the task is enabled. When true the task should run when false it should not run.
+        * `cron_expression` - (Required) A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
+        * `task_type` - (Required) The task type to run. Valid Values: `backup_ami`, `scale`, `scaleUp`, `roll`, `statefulUpdateCapacity`, `statefulRecycle`.
+        * `scale_min_capacity` - (Optional) The min capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
+        * `scale_max_capacity` - (Optional) The max capacity of the group. Required when ‘task_type' is ‘scale'.
+        * `scale_target_capacity` - (Optional) The target capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
+        * `adjustment` - (Optional) The number of instances to add/remove to/from the target capacity when scale is needed.
+        * `adjustment_percentage` - (Optional) The percent of instances to add/remove to/from the target capacity when scale is needed.
+        * `batch_size_percentage` - (Optional) The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
+        * `grace_period` - (Optional) The time to allow instances to become healthy.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="update-policy"></a>
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+
+            * `should_roll` - (Required) Sets the enablement of the roll option.
+            * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
+                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+                * `health_check_type` - (Optional) Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+                * `grace_period` - (Optional) Sets the grace period for new instances to become healthy.
+               
+        ```python
+        import pulumi
+        ```
+
+        <a id="third-party-integrations"></a>
+        ## Third-Party Integrations
+
+        * `integration_kubernetes` - (Optional) Describes the [Kubernetes](https://kubernetes.io/) integration.
+            * `cluster_identifier` - (Required) The cluster ID.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+
+        * `integration_multai_runtime` - (Optional) Describes the [Multai Runtime](https://spotinst.com/) integration.
+            * `deployment_id` - (Optional) The deployment id you want to get
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

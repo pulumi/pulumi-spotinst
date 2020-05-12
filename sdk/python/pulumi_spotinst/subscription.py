@@ -49,6 +49,28 @@ class Subscription(pulumi.CustomResource):
         """
         Provides a Spotinst subscription resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # Create a Subscription
+        default_subscription = spotinst.Subscription("default-subscription",
+            endpoint="http://endpoint.com",
+            event_type="AWS_EC2_INSTANCE_LAUNCH",
+            format={
+                "event": "%event%",
+                "instance_id": "%instance-id%",
+                "resource_id": "%resource-id%",
+                "resource_name": "%resource-name%",
+                "tags": "foo,baz,baz",
+            },
+            protocol="http",
+            resource_id=spotinst_elastigroup_aws["my-eg"]["id"])
+        ```
 
 
         :param str resource_name: The name of the resource.

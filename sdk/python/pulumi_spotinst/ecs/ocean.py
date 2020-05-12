@@ -94,10 +94,7 @@ class Ocean(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, associate_public_ip_address=None, autoscaler=None, cluster_name=None, desired_capacity=None, draining_timeout=None, ebs_optimized=None, iam_instance_profile=None, image_id=None, key_pair=None, max_size=None, min_size=None, monitoring=None, name=None, region=None, scheduled_tasks=None, security_group_ids=None, subnet_ids=None, tags=None, update_policy=None, user_data=None, utilize_reserved_instances=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Spotinst Ocean ECS resource.
-
-
-
+        Create a Ocean resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
