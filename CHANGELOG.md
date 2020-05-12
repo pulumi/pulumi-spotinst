@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.15.0 of the SpotInst Terraform Provider 
-* Upgrade to pulumi-terraform-bridge v2.3.1
+_(none)_
 
 ---
+
+## 2.2.0 (2020-05-12)
+* Upgrade to v1.15.0 of the SpotInst Terraform Provider 
+* Upgrade to pulumi-terraform-bridge v2.3.1
 
 ## 2.1.0 (2020-04-28)
 * Upgrade to pulumi-terraform-bridge v2.1.0
