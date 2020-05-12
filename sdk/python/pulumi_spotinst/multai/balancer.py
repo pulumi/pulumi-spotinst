@@ -28,6 +28,25 @@ class Balancer(pulumi.CustomResource):
         """
         Provides a Spotinst Multai Balancer.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        my_balancer = spotinst.multai.Balancer("myBalancer",
+            connection_timeouts={
+                "draining": 10,
+                "idle": 10,
+            },
+            scheme="internal",
+            tags=[{
+                "key": "env",
+                "value": "prod",
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

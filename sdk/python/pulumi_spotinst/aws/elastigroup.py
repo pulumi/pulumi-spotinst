@@ -220,10 +220,7 @@ class Elastigroup(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, availability_zones=None, block_devices_mode=None, capacity_unit=None, cpu_credits=None, description=None, desired_capacity=None, draining_timeout=None, ebs_block_devices=None, ebs_optimized=None, elastic_ips=None, elastic_load_balancers=None, enable_monitoring=None, ephemeral_block_devices=None, fallback_to_ondemand=None, health_check_grace_period=None, health_check_type=None, health_check_unhealthy_duration_before_replacement=None, iam_instance_profile=None, image_id=None, instance_types_ondemand=None, instance_types_preferred_spots=None, instance_types_spots=None, instance_types_weights=None, integration_beanstalk=None, integration_codedeploy=None, integration_docker_swarm=None, integration_ecs=None, integration_gitlab=None, integration_kubernetes=None, integration_mesosphere=None, integration_multai_runtime=None, integration_nomad=None, integration_rancher=None, integration_route53=None, key_name=None, lifetime_period=None, max_size=None, min_size=None, multai_target_sets=None, name=None, network_interfaces=None, ondemand_count=None, orientation=None, persist_block_devices=None, persist_private_ip=None, persist_root_device=None, placement_tenancy=None, preferred_availability_zones=None, private_ips=None, product=None, region=None, revert_to_spot=None, scaling_down_policies=None, scaling_strategies=None, scaling_target_policies=None, scaling_up_policies=None, scheduled_tasks=None, security_groups=None, shutdown_script=None, signals=None, spot_percentage=None, stateful_deallocation=None, subnet_ids=None, tags=None, target_group_arns=None, update_policy=None, user_data=None, utilize_reserved_instances=None, wait_for_capacity=None, wait_for_capacity_timeout=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Spotinst AWS group resource.
-
-
-
+        Create a Elastigroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.

@@ -121,7 +121,107 @@ class Ocean(pulumi.CustomResource):
         """
         Provides a Spotinst Ocean AWS resource.
 
+        ## Example Usage
 
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.aws.Ocean("example",
+            associate_public_ip_address=True,
+            controller_id="fakeClusterId",
+            desired_capacity=2,
+            draining_timeout=120,
+            ebs_optimized=True,
+            fallback_to_ondemand=True,
+            grace_period=600,
+            iam_instance_profile="iam-profile",
+            image_id="ami-123456",
+            key_name="fake key",
+            load_balancers=[
+                {
+                    "arn": "arn:aws:elasticloadbalancing:us-west-2:fake-arn",
+                    "type": "TARGET_GROUP",
+                },
+                {
+                    "name": "AntonK",
+                    "type": "CLASSIC",
+                },
+            ],
+            max_size=2,
+            min_size=1,
+            monitoring=True,
+            region="us-west-2",
+            root_volume_size=20,
+            security_groups=["sg-987654321"],
+            subnet_ids=["subnet-123456789"],
+            tags=[{
+                "key": "fakeKey",
+                "value": "fakeValue",
+            }],
+            user_data="echo hello world",
+            utilize_reserved_instances=False,
+            whitelists=[
+                "t1.micro",
+                "m1.small",
+            ])
+        ```
+
+        ## Auto Scaler
+
+        * `autoscaler` - (Optional) Describes the Ocean Kubernetes autoscaler.
+        * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes autoscaler.
+        * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+        * `autoscale_cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+        * `auto_headroom_percentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
+        * `autoscale_headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+        * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        * `gpu_per_unit` - (Optional) Optionally configure the number of GPUS to allocate the headroom.
+        * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+        * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        * `autoscale_down` - (Optional) Auto Scaling scale down operations.
+        * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+        * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+        * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+        * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="update-policy"></a>
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+            * `should_roll` - (Required) Enables the roll.
+            * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
+                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="scheduled-task"></a>
+        ## scheduled task
+
+        * `scheduled_task` - (Optional) Set scheduling object.
+            * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
+                * `is_enabled` - (Optional)  Flag to enable / disable the shutdown hours.
+                                             Example: True
+                * `time_windows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+                                              Example: Fri:15:30-Wed:14:30
+            * `tasks` - (Optional) The scheduling tasks for the cluster.
+                * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+                * `cron_expression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+                                                 Example: 0 1 * * *
+                * `task_type` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
+                                           Example: clusterRoll
+                     
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

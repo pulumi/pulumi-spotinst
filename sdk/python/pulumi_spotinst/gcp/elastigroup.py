@@ -117,7 +117,228 @@ class Elastigroup(pulumi.CustomResource):
         """
         Provides a Spotinst elastigroup GCP resource.
 
+        ## Example Usage
 
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.gcp.Elastigroup("example",
+            availability_zones=[
+                "asia-east1-c",
+                "us-central1-a",
+            ],
+            backend_services_config=[{
+                "ports": [{
+                    "portName": "port-name",
+                    "ports": [
+                        8000,
+                        6000,
+                    ],
+                }],
+                "serviceName": "spotinst-elb-backend-service",
+            }],
+            description="spotinst gcp group",
+            desired_capacity=1,
+            disks=[{
+                "autoDelete": True,
+                "boot": True,
+                "deviceName": "device",
+                "initializeParams": [{
+                    "diskSizeGb": 10,
+                    "diskType": "pd-standard",
+                    "sourceImage": "",
+                }],
+                "interface": "SCSI",
+                "mode": "READ_WRITE",
+                "type": "PERSISTENT",
+            }],
+            draining_timeout=180,
+            fallback_to_ondemand=True,
+            instance_types_customs=[{
+                "memoryGiB": 7.5,
+                "vCPU": 2,
+            }],
+            instance_types_ondemand=["n1-standard-1"],
+            instance_types_preemptibles=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ],
+            labels=[{
+                "key": "test_key",
+                "value": "test_value",
+            }],
+            max_size=1,
+            min_size=0,
+            network_interfaces=[{
+                "network": "spot-network",
+            }],
+            preemptible_percentage=50,
+            scaling=[{
+                "up": [{
+                    "action": [{
+                        "adjustment": 1,
+                        "type": "adjustment",
+                    }],
+                    "cooldown": 300,
+                    "dimensions": [{
+                        "name": "storage_type",
+                        "value": "pd-ssd",
+                    }],
+                    "evaluationPeriods": 1,
+                    "metricName": "instance/disk/read_ops_count",
+                    "namespace": "compute",
+                    "operator": "gte",
+                    "period": 300,
+                    "policyName": "scale_up_1",
+                    "source": "stackdriver",
+                    "statistic": "average",
+                    "threshold": 10000,
+                    "unit": "percent",
+                }],
+            }],
+            service_account="example@myProject.iam.gservicecct.com",
+            startup_script="",
+            subnets=[{
+                "region": "asia-east1",
+                "subnetNames": "",
+            }],
+            tags=[
+                "http",
+                "https",
+            ])
+        ```
+
+        ## GPU
+
+        * `gpu` - (Optional) Defines the GPU configuration.
+            * `type` - (Required) The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+            * `count` - (Required) The number of GPUs. Must be 0, 2, 4, 6, 8.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="health-check"></a>
+        ## Backend Services
+
+        * `backend_services` - (Optional) Describes the backend service configurations.
+            * `service_name` - (Required) The name of the backend service.
+            * `location_type` - (Optional) Sets which location the backend services will be active. Valid values: `regional`, `global`.
+            * `scheme` - (Optional) Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+            * `named_port` - (Optional) Describes a named port and a list of ports.
+                * `port_name` - (Required) The name of the port.
+                * `ports` - (Required) A list of ports.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="disks"></a>
+        ## Disks
+
+        * `disks` - (Optional) Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+            * `auto_delete` - (Optional) Specifies whether the disk will be auto-deleted when the instance is deleted.
+            * `boot` - (Optional) Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+            * `device_name` - (Optional) Specifies a unique device name of your choice.
+            * `interface` - (Optional, Default: `SCSI`) Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. 
+            * `mode` - (Optional, Default: `READ_WRITE`) The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+            * `source` - (Optional) Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+            * `type` - (Optional, Default: `PERSISTENT`) Specifies the type of disk, either SCRATCH or PERSISTENT.
+            * `initialize_params` - (Optional) Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
+                * `disk_size_gb` - (Optional) Specifies disk size in gigabytes. Must be in increments of 2.
+                * `disk_type` - (Optional, Default" `pd-standard`) Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+                * `source_image` - (Optional) A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="network-interface"></a>
+        ## Network Interfaces
+
+        Each of the `network_interface` attributes controls a portion of the GCP
+        Instance's "Network Interfaces". It's a good idea to familiarize yourself with [GCP's Network
+        Interfaces docs](https://cloud.google.com/vpc/docs/multiple-interfaces-concepts)
+        to understand the implications of using these attributes.
+
+        * `network_interface` - (Required, minimum 1) Array of objects representing the network configuration for the elastigroup.
+            * `network` - (Required) Network resource for this group.
+            * `access_configs` - (Optional) Array of configurations.
+                * `name` - (Optional) Name of this access configuration.
+                * `type` - (Optional) Array of configurations for this interface. Currently, only ONE_TO_ONE_NAT is supported.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="scaling-policy"></a>
+        ## Scaling Policies
+
+        * `scaling_up_policy` - (Optional) Contains scaling policies for scaling the Elastigroup up.
+        * `scaling_down_policy` - (Optional) Contains scaling policies for scaling the Elastigroup down.
+
+        Each `scaling_*_policy` supports the following:
+
+        * `policy_name` - (Optional) Name of scaling policy.
+        * `metric_name` - (Optional) Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
+        * `statistic` - (Optional) Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
+        * `threshold` - (Optional) The value at which the scaling action is triggered.
+        * `period` - (Optional) Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+        * `evaluation_periods` - (Optional) Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+        * `cooldown` - (Optional) Time (seconds) to wait after a scaling action before resuming monitoring.
+        * `operator` - (Optional) The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
+        * `action` - (Optional) Scaling action to take when the policy is triggered.
+            * `type` - (Optional) Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+            * `adjustment` - (Optional) Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
+        * `dimensions` - (Optional) A list of dimensions describing qualities of the metric.
+            * `name` - (Required) The dimension name.
+            * `value` - (Required) The dimension value.
+            
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="third-party-integrations"></a>
+        ## Third-Party Integrations
+
+        * `integration_docker_swarm` - (Optional) Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+            * `master_host` - (Required) IP or FQDN of one of your swarm managers.
+            * `master_port` - (Required) Network port used by your swarm.
+                    
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="scheduled-task"></a>
+        ## Scheduled Tasks
+
+        Each `scheduled_task` supports the following:
+
+        * `task_type` - (Required) The task type to run. Valid values: `"setCapacity"`.
+        * `cron_expression` - (Optional) A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
+        * `is_enabled` - (Optional, Default: `true`) Setting the task to being enabled or disabled.
+        * `target_capacity` - (Optional) The desired number of instances the group should have.
+        * `min_capacity` - (Optional) The minimum number of instances the group should have.
+        * `max_capacity` - (Optional) The maximum number of instances the group should have.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

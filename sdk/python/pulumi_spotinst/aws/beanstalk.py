@@ -73,7 +73,70 @@ class Beanstalk(pulumi.CustomResource):
         """
         Provides a Spotinst AWS group resource using Elastic Beanstalk.
 
+        ## Example Usage
 
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        elastigoup_aws_beanstalk = spotinst.aws.Beanstalk("elastigoup-aws-beanstalk",
+            beanstalk_environment_id="e-example",
+            beanstalk_environment_name="example-env",
+            deployment_preferences={
+                "automaticRoll": True,
+                "batchSizePercentage": 100,
+                "gracePeriod": 90,
+                "strategy": [{
+                    "action": "REPLACE_SERVER",
+                    "shouldDrainInstances": True,
+                }],
+            },
+            desired_capacity=0,
+            instance_types_spots=[
+                "t2.micro",
+                "t2.medium",
+                "t2.large",
+            ],
+            managed_actions={
+                "platformUpdate": {
+                    "performAt": "timeWindow",
+                    "timeWindow": "Mon:23:50-Tue:00:20",
+                    "updateLevel": "minorAndPatch",
+                },
+            },
+            max_size=1,
+            min_size=0,
+            product="Linux/UNIX",
+            region="us-west-2")
+        ```
+
+        ## Scheduled Tasks
+
+        Each `scheduled_task` supports the following:
+
+        * `task_type` - (Required) The task type to run. Supported task types are: `"scale"`, `"backup_ami"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
+        * `cron_expression` - (Optional; Required if not using `frequency`) A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
+        * `start_time` - (Optional; Format: ISO 8601) Set a start time for one time tasks.
+        * `frequency` - (Optional; Required if not using `cron_expression`) The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
+        * `scale_target_capacity` - (Optional) The desired number of instances the group should have.
+        * `scale_min_capacity` - (Optional) The minimum number of instances the group should have.
+        * `scale_max_capacity` - (Optional) The maximum number of instances the group should have.
+        * `is_enabled` - (Optional, Default: `true`) Setting the task to being enabled or disabled.
+        * `target_capacity` - (Optional; Only valid for statefulUpdateCapacity) The desired number of instances the group should have.
+        * `min_capacity` - (Optional; Only valid for statefulUpdateCapacity) The minimum number of instances the group should have.
+        * `max_capacity` - (Optional; Only valid for statefulUpdateCapacity) The maximum number of instances the group should have.
+        * `batch_size_percentage` - (Optional; Required when the `task_type` is `"roll"`.) The percentage size of each batch in the scheduled deployment roll.
+        * `grace_period` - (Optional) The period of time (seconds) to wait before checking a batch's health after it's deployment.
+        * `adjustment` - (Optional; Min 1) The number of instances to add or remove.
+        * `adjustment_percentage` - (Optional; Min 1) The percentage of instances to add or remove.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

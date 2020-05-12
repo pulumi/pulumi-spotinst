@@ -18,6 +18,16 @@ class Deployment(pulumi.CustomResource):
         """
         Provides a Spotinst Multai Deployment.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        my_deployment = spotinst.multai.Deployment("myDeployment")
+        ```
 
 
         :param str resource_name: The name of the resource.

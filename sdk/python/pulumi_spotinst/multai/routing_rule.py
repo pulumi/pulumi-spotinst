@@ -40,6 +40,24 @@ class RoutingRule(pulumi.CustomResource):
         """
         Provides a Spotinst Multai Routing Rule.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        my_routing_rule = spotinst.multai.RoutingRule("myRoutingRule",
+            balancer_id="b-12345",
+            listener_id="l-98765",
+            route="Path(`/bar`)",
+            strategy="LEASTCONN",
+            tags=[{
+                "key": "env",
+                "value": "prod",
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

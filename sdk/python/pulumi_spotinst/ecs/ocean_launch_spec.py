@@ -60,6 +60,34 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Provides a custom Spotinst Ocean ECS Launch Spec resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.ecs.OceanLaunchSpec("example",
+            attributes=[{
+                "key": "fakeKey",
+                "value": "fakeValue",
+            }],
+            autoscale_headrooms=[{
+                "cpuPerUnit": 1000,
+                "memoryPerUnit": 2048,
+                "numOfUnits": 5,
+            }],
+            iam_instance_profile="iam-profile",
+            image_id="ami-123456",
+            ocean_id="o-123456",
+            security_group_ids=["awseb-12345"],
+            tags=[{
+                "key": "Env",
+                "value": "production",
+            }],
+            user_data="echo hello world")
+        ```
 
 
         :param str resource_name: The name of the resource.
