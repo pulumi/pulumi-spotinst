@@ -16,6 +16,8 @@ type OceanLaunchSpec struct {
 
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
+	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayOutput `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -73,6 +75,8 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 type oceanLaunchSpecState struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -100,6 +104,8 @@ type oceanLaunchSpecState struct {
 type OceanLaunchSpecState struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
@@ -131,6 +137,8 @@ func (OceanLaunchSpecState) ElementType() reflect.Type {
 type oceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -159,6 +167,8 @@ type oceanLaunchSpecArgs struct {
 type OceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.

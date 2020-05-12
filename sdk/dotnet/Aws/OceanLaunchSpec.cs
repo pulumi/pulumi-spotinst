@@ -21,6 +21,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroom>> AutoscaleHeadrooms { get; private set; } = null!;
 
         /// <summary>
+        /// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+        /// </summary>
+        [Output("elasticIpPools")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecElasticIpPool>> ElasticIpPools { get; private set; } = null!;
+
+        /// <summary>
         /// The ARN or name of an IAM instance profile to associate with launched instances.
         /// </summary>
         [Output("iamInstanceProfile")]
@@ -144,6 +150,18 @@ namespace Pulumi.SpotInst.Aws
             set => _autoscaleHeadrooms = value;
         }
 
+        [Input("elasticIpPools")]
+        private InputList<Inputs.OceanLaunchSpecElasticIpPoolArgs>? _elasticIpPools;
+
+        /// <summary>
+        /// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecElasticIpPoolArgs> ElasticIpPools
+        {
+            get => _elasticIpPools ?? (_elasticIpPools = new InputList<Inputs.OceanLaunchSpecElasticIpPoolArgs>());
+            set => _elasticIpPools = value;
+        }
+
         /// <summary>
         /// The ARN or name of an IAM instance profile to associate with launched instances.
         /// </summary>
@@ -257,6 +275,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _autoscaleHeadrooms ?? (_autoscaleHeadrooms = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomGetArgs>());
             set => _autoscaleHeadrooms = value;
+        }
+
+        [Input("elasticIpPools")]
+        private InputList<Inputs.OceanLaunchSpecElasticIpPoolGetArgs>? _elasticIpPools;
+
+        /// <summary>
+        /// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecElasticIpPoolGetArgs> ElasticIpPools
+        {
+            get => _elasticIpPools ?? (_elasticIpPools = new InputList<Inputs.OceanLaunchSpecElasticIpPoolGetArgs>());
+            set => _elasticIpPools = value;
         }
 
         /// <summary>

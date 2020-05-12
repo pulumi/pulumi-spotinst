@@ -920,6 +920,24 @@ export namespace aws {
         numOfUnits: number;
     }
 
+    export interface OceanLaunchSpecElasticIpPool {
+        /**
+         * Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+         */
+        tagSelector?: outputs.aws.OceanLaunchSpecElasticIpPoolTagSelector;
+    }
+
+    export interface OceanLaunchSpecElasticIpPoolTagSelector {
+        /**
+         * Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+         */
+        tagKey: string;
+        /**
+         * Elastic IP tag value. Can be null.
+         */
+        tagValue?: string;
+    }
+
     export interface OceanLaunchSpecLabel {
         /**
          * The tag key.

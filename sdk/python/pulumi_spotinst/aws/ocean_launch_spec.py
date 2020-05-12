@@ -19,6 +19,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
       * `memoryPerUnit` (`float`) - Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
       * `numOfUnits` (`float`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
     """
+    elastic_ip_pools: pulumi.Output[list]
+    """
+    Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+
+      * `tagSelector` (`dict`) - Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+        * `tagKey` (`str`) - Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+        * `tagValue` (`str`) - Elastic IP tag value. Can be null.
+    """
     iam_instance_profile: pulumi.Output[str]
     """
     The ARN or name of an IAM instance profile to associate with launched instances.
@@ -73,7 +81,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     """
     Base64-encoded MIME user data to make available to the instances.
     """
-    def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, elastic_ip_pools=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a custom Spotinst Ocean AWS Launch Spec resource.
 
@@ -91,6 +99,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 "gpuPerUnit": 0,
                 "memoryPerUnit": 2048,
                 "numOfUnits": 5,
+            }],
+            elastic_ip_pools=[{
+                "tagSelector": {
+                    "tagKey": "key",
+                    "tagValue": "value",
+                },
             }],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
@@ -118,6 +132,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[list] elastic_ip_pools: Assign an Elastic IP to the instances spun by the launch spec. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[list] labels: Optionally adds labels to instances launched in an Ocean cluster.
@@ -136,6 +151,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
           * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate for each headroom unit.
           * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
           * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+
+        The **elastic_ip_pools** object supports the following:
+
+          * `tagSelector` (`pulumi.Input[dict]`) - Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+            * `tagKey` (`pulumi.Input[str]`) - Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+            * `tagValue` (`pulumi.Input[str]`) - Elastic IP tag value. Can be null.
 
         The **labels** object supports the following:
 
@@ -171,6 +192,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['autoscale_headrooms'] = autoscale_headrooms
+            __props__['elastic_ip_pools'] = elastic_ip_pools
             __props__['iam_instance_profile'] = iam_instance_profile
             __props__['image_id'] = image_id
             __props__['labels'] = labels
@@ -191,7 +213,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, autoscale_headrooms=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None):
+    def get(resource_name, id, opts=None, autoscale_headrooms=None, elastic_ip_pools=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None):
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -200,6 +222,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[list] elastic_ip_pools: Assign an Elastic IP to the instances spun by the launch spec. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[list] labels: Optionally adds labels to instances launched in an Ocean cluster.
@@ -218,6 +241,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
           * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate for each headroom unit.
           * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
           * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+
+        The **elastic_ip_pools** object supports the following:
+
+          * `tagSelector` (`pulumi.Input[dict]`) - Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+            * `tagKey` (`pulumi.Input[str]`) - Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+            * `tagValue` (`pulumi.Input[str]`) - Elastic IP tag value. Can be null.
 
         The **labels** object supports the following:
 
@@ -240,6 +269,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["autoscale_headrooms"] = autoscale_headrooms
+        __props__["elastic_ip_pools"] = elastic_ip_pools
         __props__["iam_instance_profile"] = iam_instance_profile
         __props__["image_id"] = image_id
         __props__["labels"] = labels
