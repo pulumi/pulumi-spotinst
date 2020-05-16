@@ -11,6 +11,10 @@ before_install:
     - source ${PULUMI_SCRIPTS}/ci/keep-failed-tests.sh
 install:
     - source ${PULUMI_SCRIPTS}/ci/install-common-toolchain.sh
+    # Configure the local AWS SDK and use the `pulumi-ci` profile for when
+    # weo run tests later.
+    - source ${PULUMI_SCRIPTS}/ci/configure-aws.sh
+    - export AWS_PROFILE=pulumi-ci
     - curl -L https://get.pulumi.com/ | bash
     - export PATH=$HOME/.pulumi/bin:$PATH
 before_script:
