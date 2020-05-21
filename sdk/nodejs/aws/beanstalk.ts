@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst AWS group resource using Elastic Beanstalk.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const elastigoupAwsBeanstalk = new spotinst.aws.Beanstalk("elastigoup-aws-beanstalk", {
  *     beanstalkEnvironmentId: "e-example",
  *     beanstalkEnvironmentName: "example-env",
@@ -48,11 +48,11 @@ import * as utilities from "../utilities";
  *     region: "us-west-2",
  * });
  * ```
- * 
+ *
  * ## Scheduled Tasks
- * 
+ *
  * Each `scheduledTask` supports the following:
- * 
+ *
  * * `taskType` - (Required) The task type to run. Supported task types are: `"scale"`, `"backupAmi"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
  * * `cronExpression` - (Optional; Required if not using `frequency`) A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
  * * `startTime` - (Optional; Format: ISO 8601) Set a start time for one time tasks.
@@ -68,14 +68,12 @@ import * as utilities from "../utilities";
  * * `gracePeriod` - (Optional) The period of time (seconds) to wait before checking a batch's health after it's deployment.
  * * `adjustment` - (Optional; Min 1) The number of instances to add or remove.
  * * `adjustmentPercentage` - (Optional; Min 1) The percentage of instances to add or remove.
- * 
+ *
  * Usage:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_aws_beanstalk.html.markdown.
  */
 export class Beanstalk extends pulumi.CustomResource {
     /**

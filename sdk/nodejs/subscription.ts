@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Spotinst subscription resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * // Create a Subscription
  * const defaultSubscription = new spotinst.Subscription("default-subscription", {
  *     endpoint: "http://endpoint.com",
@@ -32,8 +32,6 @@ import * as utilities from "./utilities";
  *     resourceId: spotinst_elastigroup_aws_my_eg.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/subscription.html.markdown.
  */
 export class Subscription extends pulumi.CustomResource {
     /**

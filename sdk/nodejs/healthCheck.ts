@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Spotinst Health Check resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const httpCheck = new spotinst.HealthCheck("httpCheck", {
  *     check: {
  *         endpoint: "http://endpoint.com",
@@ -32,8 +32,6 @@ import * as utilities from "./utilities";
  *     resourceId: "sig-123",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/health_check.html.markdown.
  */
 export class HealthCheck extends pulumi.CustomResource {
     /**

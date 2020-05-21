@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst Ocean AWS resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const example = new spotinst.aws.Ocean("example", {
  *     associatePublicIpAddress: true,
  *     controllerId: "fakeClusterId",
@@ -59,9 +59,9 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * 
+ *
  * ## Auto Scaler
- * 
+ *
  * * `autoscaler` - (Optional) Describes the Ocean Kubernetes autoscaler.
  * * `autoscaleIsEnabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes autoscaler.
  * * `autoscaleIsAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
@@ -77,26 +77,26 @@ import * as utilities from "../utilities";
  * * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
  * * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
  * * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="update-policy"></a>
  * ## Update Policy
- * 
+ *
  * * `updatePolicy` - (Optional)
  *     * `shouldRoll` - (Required) Enables the roll.
  *     * `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
  *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="scheduled-task"></a>
  * ## scheduled task
- * 
+ *
  * * `scheduledTask` - (Optional) Set scheduling object.
  *     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
  *         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
@@ -113,8 +113,6 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_aws.html.markdown.
  */
 export class Ocean extends pulumi.CustomResource {
     /**

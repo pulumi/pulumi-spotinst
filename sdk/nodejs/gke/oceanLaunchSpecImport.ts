@@ -8,22 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a custom Spotinst Ocean GKE Launch Spec Import resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const example = new spotinst.gke.OceanLaunchSpecImport("example", {
  *     nodePoolName: "default-pool",
  *     oceanId: "o-123456",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_launch_spec_import.html.markdown.
  */
 export class OceanLaunchSpecImport extends pulumi.CustomResource {
     /**

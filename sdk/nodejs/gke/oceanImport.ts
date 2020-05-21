@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst Ocean GKE import resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const example = new spotinst.gke.OceanImport("example", {
  *     backendServices: [{
  *         locationType: "regional",
@@ -41,9 +41,9 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * 
+ *
  * ## scheduled task
- * 
+ *
  * * `scheduledTask` - (Optional) Set scheduling object.
  *     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
  *         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
@@ -62,10 +62,10 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="autoscaler"></a>
  * ## Autoscaler
- * 
+ *
  * * `autoscaler` - (Optional) The Ocean Kubernetes Autoscaler object.
  * * `isEnabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Autoscaler.
  * * `isAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
@@ -82,12 +82,10 @@ import * as utilities from "../utilities";
  * * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
  * * `maxVcpu` - (Optional) The maximum cpu in vCpu units that can be allocated to the cluster.
  * * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_import.html.markdown.
  */
 export class OceanImport extends pulumi.CustomResource {
     /**
