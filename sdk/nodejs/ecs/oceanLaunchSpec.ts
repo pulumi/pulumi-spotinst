@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a custom Spotinst Ocean ECS Launch Spec resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const example = new spotinst.ecs.OceanLaunchSpec("example", {
  *     attributes: [{
  *         key: "fakeKey",
@@ -38,8 +38,6 @@ import * as utilities from "../utilities";
  *     userData: "echo hello world",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_ecs_launch_spec.html.markdown.
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {
     /**

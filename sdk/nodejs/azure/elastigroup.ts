@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst elastigroup Azure resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const testAzureGroup = new spotinst.azure.Elastigroup("testAzureGroup", {
  *     desiredCapacity: 1,
  *     // --- HEALTH-CHECKS -------------------------------------------------
@@ -136,48 +136,48 @@ import * as utilities from "../utilities";
  *     userData: "",
  * });
  * ```
- * 
+ *
  * ## Load Balancers
- * 
+ *
  * * `loadBalancers` - (Required) Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
  * * `type` - (Required) The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
  * * `balancerId` - (Required) The balancer ID.
  * * `targetSetId` - (Required) The scale set ID associated with the load balancer.
  * * `autoWeight` - (Optional, Default: `false`)
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="image"></a>
  * ## Image
- * 
+ *
  * * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
  * * `publisher` - (Optional) Image publisher. Required if resourceGroupName is not specified.
  * * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
  * * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
  * * `resourceGroupName` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
  * * `imageName` - (Optional) Name of the custom image. Required if resourceGroupName is specified.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="health-check"></a>
  * ## Health Check
- * 
+ *
  * * `healthCheck` - (Optional) Describes the health check configuration.
  * * `healthCheckType` - (Optional) Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
  * * `gracePeriod` - (Optional) Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
  * * `autoHealing` - (Optional) Enable auto-healing of unhealthy VMs.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="network"></a>
  * ## Network
- * 
+ *
  * * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
  * * `virtualNetworkName` - (Required) Name of Vnet.
  * * `subnetName` - (Required) ID of subnet.
@@ -186,33 +186,33 @@ import * as utilities from "../utilities";
  * * `additionalIpConfigs` - (Optional) Array of additional IP configuration objects.
  * * `name` - (Required) The IP configuration name.
  * * `privateIpVersion` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="login"></a>
  * ## Login
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="login"></a>
  * ## Login
- * 
+ *
  * * `login` - (Required) Describes the login configuration.
  * * `userName` - (Required) Set admin access for accessing your VMs.
  * * `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Required for Linux product types.
  * * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows product types.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="scaling-policy"></a>
  * ## Scheduling
- * 
+ *
  * * `scheduledTask` - (Optional) Describes the configuration of one or more scheduled tasks.
  * * `isEnabled` - (Optional, Default: `true`) Describes whether the task is enabled. When true the task should run when false it should not run.
  * * `cronExpression` - (Required) A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
@@ -224,16 +224,16 @@ import * as utilities from "../utilities";
  * * `adjustmentPercentage` - (Optional) The percent of instances to add/remove to/from the target capacity when scale is needed.
  * * `batchSizePercentage` - (Optional) The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
  * * `gracePeriod` - (Optional) The time to allow instances to become healthy.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="update-policy"></a>
  * ## Update Policy
- * 
+ *
  * * `updatePolicy` - (Optional)
- * 
+ *
  *     * `shouldRoll` - (Required) Sets the enablement of the roll option.
  *     * `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
  *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
@@ -243,29 +243,27 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="third-party-integrations"></a>
  * ## Third-Party Integrations
- * 
+ *
  * * `integrationKubernetes` - (Optional) Describes the [Kubernetes](https://kubernetes.io/) integration.
  *     * `clusterIdentifier` - (Required) The cluster ID.
- * 
+ *
  * Usage:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * 
- * * `integrationMultaiRuntime` - (Optional) Describes the [Multai Runtime](https://spotinst.com/) integration.
- *     * `deploymentId` - (Optional) The deployment id you want to get
- * 
- * Usage:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_azure.html.markdown.
+ * * `integrationMultaiRuntime` - (Optional) Describes the [Multai Runtime](https://spotinst.com/) integration.
+ *     * `deploymentId` - (Optional) The deployment id you want to get
+ *
+ * Usage:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**

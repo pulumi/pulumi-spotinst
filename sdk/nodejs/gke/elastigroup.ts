@@ -169,7 +169,6 @@ export interface ElastigroupState {
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
      * The name of the GKE cluster you wish to import.
-     * 
      * @deprecated Please define cluster_id under integration_gke
      */
     readonly clusterId?: pulumi.Input<string>;
@@ -215,7 +214,6 @@ export interface ElastigroupArgs {
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
      * The name of the GKE cluster you wish to import.
-     * 
      * @deprecated Please define cluster_id under integration_gke
      */
     readonly clusterId?: pulumi.Input<string>;

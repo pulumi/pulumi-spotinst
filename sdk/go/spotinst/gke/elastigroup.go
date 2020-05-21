@@ -46,6 +46,8 @@ type Elastigroup struct {
 
 	BackendServices ElastigroupBackendServiceArrayOutput `pulumi:"backendServices"`
 	// The name of the GKE cluster you wish to import.
+	//
+	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// The zone where the cluster is hosted.
 	ClusterZoneName           pulumi.StringOutput                        `pulumi:"clusterZoneName"`
@@ -114,6 +116,8 @@ func GetElastigroup(ctx *pulumi.Context,
 type elastigroupState struct {
 	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
 	// The name of the GKE cluster you wish to import.
+	//
+	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId *string `pulumi:"clusterId"`
 	// The zone where the cluster is hosted.
 	ClusterZoneName           *string                            `pulumi:"clusterZoneName"`
@@ -149,6 +153,8 @@ type elastigroupState struct {
 type ElastigroupState struct {
 	BackendServices ElastigroupBackendServiceArrayInput
 	// The name of the GKE cluster you wish to import.
+	//
+	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId pulumi.StringPtrInput
 	// The zone where the cluster is hosted.
 	ClusterZoneName           pulumi.StringPtrInput
@@ -188,6 +194,8 @@ func (ElastigroupState) ElementType() reflect.Type {
 type elastigroupArgs struct {
 	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
 	// The name of the GKE cluster you wish to import.
+	//
+	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId *string `pulumi:"clusterId"`
 	// The zone where the cluster is hosted.
 	ClusterZoneName           string                             `pulumi:"clusterZoneName"`
@@ -224,6 +232,8 @@ type elastigroupArgs struct {
 type ElastigroupArgs struct {
 	BackendServices ElastigroupBackendServiceArrayInput
 	// The name of the GKE cluster you wish to import.
+	//
+	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId pulumi.StringPtrInput
 	// The zone where the cluster is hosted.
 	ClusterZoneName           pulumi.StringInput

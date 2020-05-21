@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a custom Spotinst Ocean GKE Launch Spec resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const example = new spotinst.gke.OceanLaunchSpec("example", {
  *     autoscaleHeadrooms: [{
  *         cpuPerUnit: 1000,
@@ -41,8 +41,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/ocean_gke_launch_spec.html.markdown.
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {
     /**

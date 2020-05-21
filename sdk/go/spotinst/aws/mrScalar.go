@@ -238,7 +238,8 @@ type MrScalar struct {
 	// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
 	TerminationPolicies  MrScalarTerminationPolicyArrayOutput `pulumi:"terminationPolicies"`
 	TerminationProtected pulumi.BoolPtrOutput                 `pulumi:"terminationProtected"`
-	VisibleToAllUsers    pulumi.BoolPtrOutput                 `pulumi:"visibleToAllUsers"`
+	// Deprecated: This field has been removed from our API and is no longer functional.
+	VisibleToAllUsers pulumi.BoolPtrOutput `pulumi:"visibleToAllUsers"`
 }
 
 // NewMrScalar registers a new resource with the given unique name, arguments, and options.
@@ -337,7 +338,8 @@ type mrScalarState struct {
 	// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
 	TerminationPolicies  []MrScalarTerminationPolicy `pulumi:"terminationPolicies"`
 	TerminationProtected *bool                       `pulumi:"terminationProtected"`
-	VisibleToAllUsers    *bool                       `pulumi:"visibleToAllUsers"`
+	// Deprecated: This field has been removed from our API and is no longer functional.
+	VisibleToAllUsers *bool `pulumi:"visibleToAllUsers"`
 }
 
 type MrScalarState struct {
@@ -406,7 +408,8 @@ type MrScalarState struct {
 	// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
 	TerminationPolicies  MrScalarTerminationPolicyArrayInput
 	TerminationProtected pulumi.BoolPtrInput
-	VisibleToAllUsers    pulumi.BoolPtrInput
+	// Deprecated: This field has been removed from our API and is no longer functional.
+	VisibleToAllUsers pulumi.BoolPtrInput
 }
 
 func (MrScalarState) ElementType() reflect.Type {
@@ -478,7 +481,8 @@ type mrScalarArgs struct {
 	// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
 	TerminationPolicies  []MrScalarTerminationPolicy `pulumi:"terminationPolicies"`
 	TerminationProtected *bool                       `pulumi:"terminationProtected"`
-	VisibleToAllUsers    *bool                       `pulumi:"visibleToAllUsers"`
+	// Deprecated: This field has been removed from our API and is no longer functional.
+	VisibleToAllUsers *bool `pulumi:"visibleToAllUsers"`
 }
 
 // The set of arguments for constructing a MrScalar resource.
@@ -547,7 +551,8 @@ type MrScalarArgs struct {
 	// Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
 	TerminationPolicies  MrScalarTerminationPolicyArrayInput
 	TerminationProtected pulumi.BoolPtrInput
-	VisibleToAllUsers    pulumi.BoolPtrInput
+	// Deprecated: This field has been removed from our API and is no longer functional.
+	VisibleToAllUsers pulumi.BoolPtrInput
 }
 
 func (MrScalarArgs) ElementType() reflect.Type {

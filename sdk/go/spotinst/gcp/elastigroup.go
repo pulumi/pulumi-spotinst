@@ -16,6 +16,8 @@ type Elastigroup struct {
 
 	AutoHealing pulumi.BoolPtrOutput `pulumi:"autoHealing"`
 	// List of availability zones for the group.
+	//
+	// Deprecated: This field will soon be handled by Region in Subnets
 	AvailabilityZones pulumi.StringArrayOutput             `pulumi:"availabilityZones"`
 	BackendServices   ElastigroupBackendServiceArrayOutput `pulumi:"backendServices"`
 	// The region your GCP group will be created in.
@@ -102,6 +104,8 @@ func GetElastigroup(ctx *pulumi.Context,
 type elastigroupState struct {
 	AutoHealing *bool `pulumi:"autoHealing"`
 	// List of availability zones for the group.
+	//
+	// Deprecated: This field will soon be handled by Region in Subnets
 	AvailabilityZones []string                    `pulumi:"availabilityZones"`
 	BackendServices   []ElastigroupBackendService `pulumi:"backendServices"`
 	// The region your GCP group will be created in.
@@ -158,6 +162,8 @@ type elastigroupState struct {
 type ElastigroupState struct {
 	AutoHealing pulumi.BoolPtrInput
 	// List of availability zones for the group.
+	//
+	// Deprecated: This field will soon be handled by Region in Subnets
 	AvailabilityZones pulumi.StringArrayInput
 	BackendServices   ElastigroupBackendServiceArrayInput
 	// The region your GCP group will be created in.
@@ -218,6 +224,8 @@ func (ElastigroupState) ElementType() reflect.Type {
 type elastigroupArgs struct {
 	AutoHealing *bool `pulumi:"autoHealing"`
 	// List of availability zones for the group.
+	//
+	// Deprecated: This field will soon be handled by Region in Subnets
 	AvailabilityZones []string                    `pulumi:"availabilityZones"`
 	BackendServices   []ElastigroupBackendService `pulumi:"backendServices"`
 	// The region your GCP group will be created in.
@@ -275,6 +283,8 @@ type elastigroupArgs struct {
 type ElastigroupArgs struct {
 	AutoHealing pulumi.BoolPtrInput
 	// List of availability zones for the group.
+	//
+	// Deprecated: This field will soon be handled by Region in Subnets
 	AvailabilityZones pulumi.StringArrayInput
 	BackendServices   ElastigroupBackendServiceArrayInput
 	// The region your GCP group will be created in.

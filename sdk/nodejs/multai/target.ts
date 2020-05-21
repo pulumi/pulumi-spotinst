@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst Multai Target.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const myTarget = new spotinst.multai.Target("myTarget", {
  *     balancerId: "b-12345",
  *     host: "host",
@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  *     weight: 1,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_target.html.markdown.
  */
 export class Target extends pulumi.CustomResource {
     /**

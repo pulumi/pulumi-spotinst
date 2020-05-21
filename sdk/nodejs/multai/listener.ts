@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst Multai Listener.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const myListener = new spotinst.multai.Listener("myListener", {
  *     balancerId: "b-12345",
  *     name: "foo",
@@ -36,8 +36,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_listener.html.markdown.
  */
 export class Listener extends pulumi.CustomResource {
     /**

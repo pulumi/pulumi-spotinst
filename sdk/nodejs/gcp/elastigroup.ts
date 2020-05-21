@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst elastigroup GCP resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const example = new spotinst.gcp.Elastigroup("example", {
  *     availabilityZones: [
  *         "asia-east1-c",
@@ -104,22 +104,22 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * 
+ *
  * ## GPU
- * 
+ *
  * * `gpu` - (Optional) Defines the GPU configuration.
  *     * `type` - (Required) The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
  *     * `count` - (Required) The number of GPUs. Must be 0, 2, 4, 6, 8.
- * 
+ *
  * Usage:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="health-check"></a>
  * ## Backend Services
- * 
+ *
  * * `backendServices` - (Optional) Describes the backend service configurations.
  *     * `serviceName` - (Required) The name of the backend service.
  *     * `locationType` - (Optional) Sets which location the backend services will be active. Valid values: `regional`, `global`.
@@ -127,16 +127,16 @@ import * as utilities from "../utilities";
  *     * `namedPort` - (Optional) Describes a named port and a list of ports.
  *         * `portName` - (Required) The name of the port.
  *         * `ports` - (Required) A list of ports.
- * 
+ *
  * Usage:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="disks"></a>
  * ## Disks
- * 
+ *
  * * `disks` - (Optional) Array of disks associated with this instance. Persistent disks must be created before you can assign them.
  *     * `autoDelete` - (Optional) Specifies whether the disk will be auto-deleted when the instance is deleted.
  *     * `boot` - (Optional) Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
@@ -149,39 +149,39 @@ import * as utilities from "../utilities";
  *         * `diskSizeGb` - (Optional) Specifies disk size in gigabytes. Must be in increments of 2.
  *         * `diskType` - (Optional, Default" `pd-standard`) Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
  *         * `sourceImage` - (Optional) A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
- * 
+ *
  * Usage:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="network-interface"></a>
  * ## Network Interfaces
- * 
+ *
  * Each of the `networkInterface` attributes controls a portion of the GCP
  * Instance's "Network Interfaces". It's a good idea to familiarize yourself with [GCP's Network
  * Interfaces docs](https://cloud.google.com/vpc/docs/multiple-interfaces-concepts)
  * to understand the implications of using these attributes.
- * 
+ *
  * * `networkInterface` - (Required, minimum 1) Array of objects representing the network configuration for the elastigroup.
  *     * `network` - (Required) Network resource for this group.
  *     * `accessConfigs` - (Optional) Array of configurations.
  *         * `name` - (Optional) Name of this access configuration.
  *         * `type` - (Optional) Array of configurations for this interface. Currently, only ONE_TO_ONE_NAT is supported.
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="scaling-policy"></a>
  * ## Scaling Policies
- * 
+ *
  * * `scalingUpPolicy` - (Optional) Contains scaling policies for scaling the Elastigroup up.
  * * `scalingDownPolicy` - (Optional) Contains scaling policies for scaling the Elastigroup down.
- * 
+ *
  * Each `scaling_*_policy` supports the following:
- * 
+ *
  * * `policyName` - (Optional) Name of scaling policy.
  * * `metricName` - (Optional) Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
  * * `statistic` - (Optional) Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
@@ -198,43 +198,41 @@ import * as utilities from "../utilities";
  *     * `value` - (Required) The dimension value.
  *     
  * Usage:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="third-party-integrations"></a>
  * ## Third-Party Integrations
- * 
+ *
  * * `integrationDockerSwarm` - (Optional) Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
  *     * `masterHost` - (Required) IP or FQDN of one of your swarm managers.
  *     * `masterPort` - (Required) Network port used by your swarm.
  *             
  * Usage:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
+ *
  * <a id="scheduled-task"></a>
  * ## Scheduled Tasks
- * 
+ *
  * Each `scheduledTask` supports the following:
- * 
+ *
  * * `taskType` - (Required) The task type to run. Valid values: `"setCapacity"`.
  * * `cronExpression` - (Optional) A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
  * * `isEnabled` - (Optional, Default: `true`) Setting the task to being enabled or disabled.
  * * `targetCapacity` - (Optional) The desired number of instances the group should have.
  * * `minCapacity` - (Optional) The minimum number of instances the group should have.
  * * `maxCapacity` - (Optional) The maximum number of instances the group should have.
- * 
+ *
  * Usage:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/elastigroup_gcp.html.markdown.
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**
@@ -459,7 +457,6 @@ export interface ElastigroupState {
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
      * List of availability zones for the group.
-     * 
      * @deprecated This field will soon be handled by Region in Subnets
      */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
@@ -558,7 +555,6 @@ export interface ElastigroupArgs {
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
      * List of availability zones for the group.
-     * 
      * @deprecated This field will soon be handled by Region in Subnets
      */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;

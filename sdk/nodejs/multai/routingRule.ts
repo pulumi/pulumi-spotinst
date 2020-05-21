@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst Multai Routing Rule.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
- * 
+ *
  * const myRoutingRule = new spotinst.multai.RoutingRule("myRoutingRule", {
  *     balancerId: "b-12345",
  *     listenerId: "l-98765",
@@ -28,8 +28,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-spotinst/blob/master/website/docs/r/multai_routing_rule.html.markdown.
  */
 export class RoutingRule extends pulumi.CustomResource {
     /**
