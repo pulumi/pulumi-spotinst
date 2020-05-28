@@ -13,6 +13,55 @@ namespace Pulumi.SpotInst.Aws
     /// Provides a Spotinst AWS ManagedInstance resource.
     /// 
     /// 
+    /// ## Network Interface - (Optional) List of network interfaces in an EC2 instance.
+    /// 
+    /// * `device_index` - (Optional) The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
+    /// * `associate_public_ip_address` - (Optional) Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
+    /// * `associate_ipv6_address` - (Optional) Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
+    ///    Default: false
+    /// 
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="scheduled-task"&gt;&lt;/a&gt;
+    /// ## Scheduled Tasks
+    /// 
+    /// Each `scheduled_task` supports the following:
+    /// 
+    /// * `is_enabled` - (Optional) Describes whether the task is enabled. When true the task should run when false it should not run.
+    /// * `frequency` - (Optional) Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
+    /// * `start_time` - (Optional) DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
+    ///    Example: 2019-05-23T10:55:09Z
+    /// * `cron_expression` - (Optional) A valid cron expression. For example : " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+    ///    Example: 0 1 * * *
+    /// * `task_type`- (Required) The task type to run. Valid Values: "pause", "resume", "recycle".
+    /// 
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="load-balancers"&gt;&lt;/a&gt;
     /// ## Load Balancers
     /// 
     ///    * `loadBalancersConfig` - (Optional) LB integration object.

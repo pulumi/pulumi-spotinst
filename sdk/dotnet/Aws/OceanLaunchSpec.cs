@@ -11,6 +11,85 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a custom Spotinst Ocean AWS Launch Spec resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new SpotInst.Aws.OceanLaunchSpec("example", new SpotInst.Aws.OceanLaunchSpecArgs
+    ///         {
+    ///             AutoscaleHeadrooms = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
+    ///                 {
+    ///                     CpuPerUnit = 1000,
+    ///                     GpuPerUnit = 0,
+    ///                     MemoryPerUnit = 2048,
+    ///                     NumOfUnits = 5,
+    ///                 },
+    ///             },
+    ///             ElasticIpPools = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs
+    ///                 {
+    ///                     TagSelector = new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs
+    ///                     {
+    ///                         TagKey = "key",
+    ///                         TagValue = "value",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             IamInstanceProfile = "iam-profile",
+    ///             ImageId = "ami-123456",
+    ///             Labels = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecLabelArgs
+    ///                 {
+    ///                     Key = "fakeKey",
+    ///                     Value = "fakeValue",
+    ///                 },
+    ///             },
+    ///             OceanId = "o-123456",
+    ///             RootVolumeSize = 30,
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "sg-987654321",
+    ///             },
+    ///             SubnetIds = 
+    ///             {
+    ///                 "subnet-1234",
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecTagArgs
+    ///                 {
+    ///                     Key = "Env",
+    ///                     Value = "production",
+    ///                 },
+    ///             },
+    ///             Taints = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecTaintArgs
+    ///                 {
+    ///                     Effect = "NoExecute",
+    ///                     Key = "taint key updated",
+    ///                     Value = "taint value updated",
+    ///                 },
+    ///             },
+    ///             UserData = "echo hello world",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class OceanLaunchSpec : Pulumi.CustomResource
     {

@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Aws
 {
-    /// <summary>
-    /// Provides a Spotinst AWS group resource.
-    /// </summary>
     public partial class Elastigroup : Pulumi.CustomResource
     {
         /// <summary>

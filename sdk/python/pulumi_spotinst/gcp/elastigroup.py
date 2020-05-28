@@ -149,7 +149,7 @@ class Elastigroup(pulumi.CustomResource):
                 "initializeParams": [{
                     "diskSizeGb": 10,
                     "diskType": "pd-standard",
-                    "sourceImage": "",
+                    "source_image": "",
                 }],
                 "interface": "SCSI",
                 "mode": "READ_WRITE",

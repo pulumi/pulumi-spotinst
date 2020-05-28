@@ -87,7 +87,7 @@ class Beanstalk(pulumi.CustomResource):
             deployment_preferences={
                 "automaticRoll": True,
                 "batchSizePercentage": 100,
-                "gracePeriod": 90,
+                "grace_period": 90,
                 "strategy": [{
                     "action": "REPLACE_SERVER",
                     "shouldDrainInstances": True,

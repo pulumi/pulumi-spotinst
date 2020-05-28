@@ -11,6 +11,155 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a Spotinst Ocean AWS resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new SpotInst.Aws.Ocean("example", new SpotInst.Aws.OceanArgs
+    ///         {
+    ///             AssociatePublicIpAddress = true,
+    ///             ControllerId = "fakeClusterId",
+    ///             DesiredCapacity = 2,
+    ///             DrainingTimeout = 120,
+    ///             EbsOptimized = true,
+    ///             FallbackToOndemand = true,
+    ///             GracePeriod = 600,
+    ///             IamInstanceProfile = "iam-profile",
+    ///             ImageId = "ami-123456",
+    ///             KeyName = "fake key",
+    ///             LoadBalancers = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLoadBalancerArgs
+    ///                 {
+    ///                     Arn = "arn:aws:elasticloadbalancing:us-west-2:fake-arn",
+    ///                     Type = "TARGET_GROUP",
+    ///                 },
+    ///                 new SpotInst.Aws.Inputs.OceanLoadBalancerArgs
+    ///                 {
+    ///                     Name = "AntonK",
+    ///                     Type = "CLASSIC",
+    ///                 },
+    ///             },
+    ///             MaxSize = 2,
+    ///             MinSize = 1,
+    ///             Monitoring = true,
+    ///             Region = "us-west-2",
+    ///             RootVolumeSize = 20,
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "sg-987654321",
+    ///             },
+    ///             SubnetIds = 
+    ///             {
+    ///                 "subnet-123456789",
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanTagArgs
+    ///                 {
+    ///                     Key = "fakeKey",
+    ///                     Value = "fakeValue",
+    ///                 },
+    ///             },
+    ///             UserData = "echo hello world",
+    ///             UtilizeReservedInstances = false,
+    ///             Whitelists = 
+    ///             {
+    ///                 "t1.micro",
+    ///                 "m1.small",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Auto Scaler
+    /// 
+    /// * `autoscaler` - (Optional) Describes the Ocean Kubernetes autoscaler.
+    /// * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes autoscaler.
+    /// * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+    /// * `autoscale_cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+    /// * `auto_headroom_percentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
+    /// * `autoscale_headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+    /// * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+    /// * `gpu_per_unit` - (Optional) Optionally configure the number of GPUS to allocate the headroom.
+    /// * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+    /// * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+    /// * `autoscale_down` - (Optional) Auto Scaling scale down operations.
+    /// * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+    /// * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+    /// * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+    /// * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="update-policy"&gt;&lt;/a&gt;
+    /// ## Update Policy
+    /// 
+    /// * `update_policy` - (Optional)
+    ///     * `should_roll` - (Required) Enables the roll.
+    ///     * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
+    ///         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="scheduled-task"&gt;&lt;/a&gt;
+    /// ## scheduled task
+    /// 
+    /// * `scheduled_task` - (Optional) Set scheduling object.
+    ///     * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
+    ///         * `is_enabled` - (Optional)  Flag to enable / disable the shutdown hours.
+    ///                                      Example: True
+    ///         * `time_windows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+    ///                                       Example: Fri:15:30-Wed:14:30
+    ///     * `tasks` - (Optional) The scheduling tasks for the cluster.
+    ///         * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+    ///         * `cron_expression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+    ///                                          Example: 0 1 * * *
+    ///         * `task_type` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
+    ///                                    Example: clusterRoll
+    ///              
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Ocean : Pulumi.CustomResource
     {

@@ -11,6 +11,26 @@ namespace Pulumi.SpotInst.Multai
 {
     /// <summary>
     /// Provides a Spotinst Multai Deployment.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myDeployment = new SpotInst.Multai.Deployment("myDeployment", new SpotInst.Multai.DeploymentArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Deployment : Pulumi.CustomResource
     {

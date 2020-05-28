@@ -11,6 +11,192 @@ namespace Pulumi.SpotInst.Gcp
 {
     /// <summary>
     /// Provides a Spotinst elastigroup GCP resource.
+    /// 
+    /// 
+    /// ## GPU
+    /// 
+    /// * `gpu` - (Optional) Defines the GPU configuration.
+    ///     * `type` - (Required) The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+    ///     * `count` - (Required) The number of GPUs. Must be 0, 2, 4, 6, 8.
+    /// 
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="health-check"&gt;&lt;/a&gt;
+    /// ## Backend Services
+    /// 
+    /// * `backend_services` - (Optional) Describes the backend service configurations.
+    ///     * `service_name` - (Required) The name of the backend service.
+    ///     * `location_type` - (Optional) Sets which location the backend services will be active. Valid values: `regional`, `global`.
+    ///     * `scheme` - (Optional) Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
+    ///     * `named_port` - (Optional) Describes a named port and a list of ports.
+    ///         * `port_name` - (Required) The name of the port.
+    ///         * `ports` - (Required) A list of ports.
+    /// 
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="disks"&gt;&lt;/a&gt;
+    /// ## Disks
+    /// 
+    /// * `disks` - (Optional) Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+    ///     * `auto_delete` - (Optional) Specifies whether the disk will be auto-deleted when the instance is deleted.
+    ///     * `boot` - (Optional) Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+    ///     * `device_name` - (Optional) Specifies a unique device name of your choice.
+    ///     * `interface` - (Optional, Default: `SCSI`) Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. 
+    ///     * `mode` - (Optional, Default: `READ_WRITE`) The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+    ///     * `source` - (Optional) Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
+    ///     * `type` - (Optional, Default: `PERSISTENT`) Specifies the type of disk, either SCRATCH or PERSISTENT.
+    ///     * `initialize_params` - (Optional) Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
+    ///         * `disk_size_gb` - (Optional) Specifies disk size in gigabytes. Must be in increments of 2.
+    ///         * `disk_type` - (Optional, Default" `pd-standard`) Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
+    ///         * `source_image` - (Optional) A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+    /// 
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="network-interface"&gt;&lt;/a&gt;
+    /// ## Network Interfaces
+    /// 
+    /// Each of the `network_interface` attributes controls a portion of the GCP
+    /// Instance's "Network Interfaces". It's a good idea to familiarize yourself with [GCP's Network
+    /// Interfaces docs](https://cloud.google.com/vpc/docs/multiple-interfaces-concepts)
+    /// to understand the implications of using these attributes.
+    /// 
+    /// * `network_interface` - (Required, minimum 1) Array of objects representing the network configuration for the elastigroup.
+    ///     * `network` - (Required) Network resource for this group.
+    ///     * `access_configs` - (Optional) Array of configurations.
+    ///         * `name` - (Optional) Name of this access configuration.
+    ///         * `type` - (Optional) Array of configurations for this interface. Currently, only ONE_TO_ONE_NAT is supported.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="scaling-policy"&gt;&lt;/a&gt;
+    /// ## Scaling Policies
+    /// 
+    /// * `scaling_up_policy` - (Optional) Contains scaling policies for scaling the Elastigroup up.
+    /// * `scaling_down_policy` - (Optional) Contains scaling policies for scaling the Elastigroup down.
+    /// 
+    /// Each `scaling_*_policy` supports the following:
+    /// 
+    /// * `policy_name` - (Optional) Name of scaling policy.
+    /// * `metric_name` - (Optional) Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
+    /// * `statistic` - (Optional) Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
+    /// * `threshold` - (Optional) The value at which the scaling action is triggered.
+    /// * `period` - (Optional) Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
+    /// * `evaluation_periods` - (Optional) Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+    /// * `cooldown` - (Optional) Time (seconds) to wait after a scaling action before resuming monitoring.
+    /// * `operator` - (Optional) The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
+    /// * `action` - (Optional) Scaling action to take when the policy is triggered.
+    ///     * `type` - (Optional) Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+    ///     * `adjustment` - (Optional) Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
+    /// * `dimensions` - (Optional) A list of dimensions describing qualities of the metric.
+    ///     * `name` - (Required) The dimension name.
+    ///     * `value` - (Required) The dimension value.
+    ///     
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="third-party-integrations"&gt;&lt;/a&gt;
+    /// ## Third-Party Integrations
+    /// 
+    /// * `integration_docker_swarm` - (Optional) Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+    ///     * `master_host` - (Required) IP or FQDN of one of your swarm managers.
+    ///     * `master_port` - (Required) Network port used by your swarm.
+    ///             
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="scheduled-task"&gt;&lt;/a&gt;
+    /// ## Scheduled Tasks
+    /// 
+    /// Each `scheduled_task` supports the following:
+    /// 
+    /// * `task_type` - (Required) The task type to run. Valid values: `"setCapacity"`.
+    /// * `cron_expression` - (Optional) A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
+    /// * `is_enabled` - (Optional, Default: `true`) Setting the task to being enabled or disabled.
+    /// * `target_capacity` - (Optional) The desired number of instances the group should have.
+    /// * `min_capacity` - (Optional) The minimum number of instances the group should have.
+    /// * `max_capacity` - (Optional) The maximum number of instances the group should have.
+    /// 
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Elastigroup : Pulumi.CustomResource
     {

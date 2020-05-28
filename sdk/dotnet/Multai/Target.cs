@@ -11,6 +11,39 @@ namespace Pulumi.SpotInst.Multai
 {
     /// <summary>
     /// Provides a Spotinst Multai Target.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myTarget = new SpotInst.Multai.Target("myTarget", new SpotInst.Multai.TargetArgs
+    ///         {
+    ///             BalancerId = "b-12345",
+    ///             Host = "host",
+    ///             Port = 1338,
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Multai.Inputs.TargetTagArgs
+    ///                 {
+    ///                     Key = "env",
+    ///                     Value = "prod",
+    ///                 },
+    ///             },
+    ///             TargetSetId = "l-98765",
+    ///             Weight = 1,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Target : Pulumi.CustomResource
     {

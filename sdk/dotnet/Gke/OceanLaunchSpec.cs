@@ -11,6 +11,63 @@ namespace Pulumi.SpotInst.Gke
 {
     /// <summary>
     /// Provides a custom Spotinst Ocean GKE Launch Spec resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new SpotInst.Gke.OceanLaunchSpec("example", new SpotInst.Gke.OceanLaunchSpecArgs
+    ///         {
+    ///             AutoscaleHeadrooms = 
+    ///             {
+    ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
+    ///                 {
+    ///                     CpuPerUnit = 1000,
+    ///                     GpuPerUnit = 0,
+    ///                     MemoryPerUnit = 2048,
+    ///                     NumOfUnits = 5,
+    ///                 },
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecLabelArgs
+    ///                 {
+    ///                     Key = "labelKey",
+    ///                     Value = "labelVal",
+    ///                 },
+    ///             },
+    ///             Metadatas = 
+    ///             {
+    ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecMetadataArgs
+    ///                 {
+    ///                     Key = "gci-update-strategy",
+    ///                     Value = "update_disabled",
+    ///                 },
+    ///             },
+    ///             OceanId = "o-123456",
+    ///             SourceImage = "image",
+    ///             Taints = 
+    ///             {
+    ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecTaintArgs
+    ///                 {
+    ///                     Effect = "taintEffect",
+    ///                     Key = "taintKey",
+    ///                     Value = "taintVal",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class OceanLaunchSpec : Pulumi.CustomResource
     {
