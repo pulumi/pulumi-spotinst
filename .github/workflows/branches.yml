@@ -186,8 +186,6 @@ jobs:
       with:
         name: ${{ matrix.language  }}-sdk
         path: ${{ github.workspace}}/sdk/${{ matrix.language }}
-    - name: Check worktree clean
-      uses: ./ci-scripts/ci/check-worktree-is-clean
     - name: Update path
       run: echo ::add-path::${{ github.workspace }}/bin
     - name: Install pipenv
