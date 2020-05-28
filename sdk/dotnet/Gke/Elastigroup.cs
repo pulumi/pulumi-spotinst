@@ -13,7 +13,122 @@ namespace Pulumi.SpotInst.Gke
     /// Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
     /// 
     /// 
+    /// ## Example Usage
     /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example_gke_elastigroup = new SpotInst.Gke.Elastigroup("example-gke-elastigroup", new SpotInst.Gke.ElastigroupArgs
+    ///         {
+    ///             BackendServices = 
+    ///             {
+    ///                 new SpotInst.Gke.Inputs.ElastigroupBackendServiceArgs
+    ///                 {
+    ///                     LocationType = "global",
+    ///                     NamedPorts = 
+    ///                     {
+    ///                         new SpotInst.Gke.Inputs.ElastigroupBackendServiceNamedPortArgs
+    ///                         {
+    ///                             Name = "http",
+    ///                             Ports = 
+    ///                             {
+    ///                                 80,
+    ///                                 8080,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     ServiceName = "backend-service",
+    ///                 },
+    ///             },
+    ///             ClusterZoneName = "us-central1-a",
+    ///             DesiredCapacity = 3,
+    ///             InstanceTypesOndemand = "n1-standard-1",
+    ///             InstanceTypesPreemptibles = 
+    ///             {
+    ///                 "n1-standard-1",
+    ///                 "n1-standard-2",
+    ///             },
+    ///             IntegrationGke = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeArgs
+    ///             {
+    ///                 AutoscaleCooldown = 300,
+    ///                 AutoscaleDown = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleDownArgs
+    ///                 {
+    ///                     EvaluationPeriods = 300,
+    ///                 },
+    ///                 AutoscaleHeadroom = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleHeadroomArgs
+    ///                 {
+    ///                     CpuPerUnit = 1024,
+    ///                     MemoryPerUnit = 512,
+    ///                     NumOfUnits = 2,
+    ///                 },
+    ///                 AutoscaleIsAutoConfig = false,
+    ///                 AutoscaleIsEnabled = true,
+    ///                 AutoscaleLabels = 
+    ///                 {
+    ///                     new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleLabelArgs
+    ///                     {
+    ///                         Key = "label_key",
+    ///                         Value = "label_value",
+    ///                     },
+    ///                 },
+    ///                 ClusterId = "example-cluster-id",
+    ///                 Location = "us-central1-a",
+    ///             },
+    ///             MaxSize = 5,
+    ///             MinSize = 1,
+    ///             NodeImage = "COS",
+    ///             PreemptiblePercentage = 100,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Third-Party Integrations
+    /// 
+    /// * `integration_gke` - (Required) Describes the GKE integration.
+    /// 
+    ///     * `location` - (Optional) The location of your GKE cluster.
+    ///     * `cluster_id` - (Optional) The GKE cluster ID you wish to import.
+    ///     * `autoscale_is_enabled` -  (Optional, Default: `false`) Specifies whether the auto scaling feature is enabled.
+    ///     * `autoscale_is_autoconfig` - (Optional, Default: `false`) Enabling the automatic auto-scaler functionality. For more information please see: .
+    ///     * `autoscale_cooldown` - (Optional, Default: `300`) The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+    ///     
+    ///     * `autoscale_headroom` - (Optional) Headroom for the cluster.
+    ///         * `cpu_per_unit` - (Optional, Default: `0`) Cpu units for compute.
+    ///         * `memory_per_unit` - (Optional, Default: `0`) RAM units for compute.
+    ///         * `num_of_units` - (Optional, Default: `0`) Amount of units for compute.
+    ///     
+    ///     * `autoscale_down` - (Optional) Enabling scale down.
+    ///         * `evaluation_periods` - (Optional, Default: `5`) Amount of cooldown evaluation periods for scale down.
+    ///     
+    ///     * `autoscale_labels` - (Optional) Labels to assign to the resource.
+    ///         * `key` - (Optional) The label name.
+    ///         * `value` - (Optional) The label value.
+    ///     
+    ///             
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="diff-suppressed-parameters"&gt;&lt;/a&gt;
     /// ## Diff-suppressed Parameters
     /// 
     /// The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these

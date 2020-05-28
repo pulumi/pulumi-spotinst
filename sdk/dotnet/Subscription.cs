@@ -11,6 +11,39 @@ namespace Pulumi.SpotInst
 {
     /// <summary>
     /// Provides a Spotinst subscription resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a Subscription
+    ///         var default_subscription = new SpotInst.Subscription("default-subscription", new SpotInst.SubscriptionArgs
+    ///         {
+    ///             Endpoint = "http://endpoint.com",
+    ///             EventType = "AWS_EC2_INSTANCE_LAUNCH",
+    ///             Format = 
+    ///             {
+    ///                 { "event", "%event%" },
+    ///                 { "instance_id", "%instance-id%" },
+    ///                 { "resource_id", "%resource-id%" },
+    ///                 { "resource_name", "%resource-name%" },
+    ///                 { "tags", "foo,baz,baz" },
+    ///             },
+    ///             Protocol = "http",
+    ///             ResourceId = spotinst_elastigroup_aws.My_eg.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Subscription : Pulumi.CustomResource
     {

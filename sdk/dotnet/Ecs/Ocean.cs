@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Ecs
 {
-    /// <summary>
-    /// Provides a Spotinst Ocean ECS resource.
-    /// </summary>
     public partial class Ocean : Pulumi.CustomResource
     {
         /// <summary>

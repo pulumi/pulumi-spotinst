@@ -11,6 +11,40 @@ namespace Pulumi.SpotInst.Multai
 {
     /// <summary>
     /// Provides a Spotinst Multai Balancer.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myBalancer = new SpotInst.Multai.Balancer("myBalancer", new SpotInst.Multai.BalancerArgs
+    ///         {
+    ///             ConnectionTimeouts = new SpotInst.Multai.Inputs.BalancerConnectionTimeoutsArgs
+    ///             {
+    ///                 Draining = 10,
+    ///                 Idle = 10,
+    ///             },
+    ///             Scheme = "internal",
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Multai.Inputs.BalancerTagArgs
+    ///                 {
+    ///                     Key = "env",
+    ///                     Value = "prod",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Balancer : Pulumi.CustomResource
     {

@@ -90,9 +90,9 @@ class Elastigroup(pulumi.CustomResource):
         test_azure_group = spotinst.azure.Elastigroup("testAzureGroup",
             desired_capacity=1,
             health_check={
-                "autoHealing": True,
-                "gracePeriod": 120,
-                "healthCheckType": "INSTANCE_STATE",
+                "auto_healing": True,
+                "grace_period": 120,
+                "health_check_type": "INSTANCE_STATE",
             },
             images=[{
                 "marketplace": [{
@@ -103,8 +103,8 @@ class Elastigroup(pulumi.CustomResource):
             }],
             load_balancers=[{
                 "autoWeight": True,
-                "balancerId": "lb-1ee2e3q",
-                "targetSetId": "ts-3eq",
+                "balancer_id": "lb-1ee2e3q",
+                "target_set_id": "ts-3eq",
                 "type": "MULTAI_TARGET_SET",
             }],
             login={
@@ -117,13 +117,13 @@ class Elastigroup(pulumi.CustomResource):
             ],
             managed_service_identities=[{
                 "name": "example-identity",
-                "resourceGroupName": "spotinst-azure",
+                "resource_group_name": "spotinst-azure",
             }],
             max_size=1,
             min_size=0,
             network={
                 "assignPublicIp": True,
-                "resourceGroupName": "subnetResourceGroup",
+                "resource_group_name": "subnetResourceGroup",
                 "subnetName": "my-subnet-name",
                 "virtualNetworkName": "vname",
             },
@@ -181,7 +181,7 @@ class Elastigroup(pulumi.CustomResource):
                 "adjustmentPercentage": 50,
                 "batchSizePercentage": 33,
                 "cronExpression": "* * * * *",
-                "gracePeriod": 300,
+                "grace_period": 300,
                 "isEnabled": True,
                 "scaleMaxCapacity": 8,
                 "scaleMinCapacity": 5,
@@ -190,7 +190,7 @@ class Elastigroup(pulumi.CustomResource):
             }],
             shutdown_script="",
             strategy={
-                "drainingTimeout": 300,
+                "draining_timeout": 300,
                 "odCount": 1,
             },
             user_data="")

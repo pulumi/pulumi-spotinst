@@ -11,6 +11,59 @@ namespace Pulumi.SpotInst.Ecs
 {
     /// <summary>
     /// Provides a custom Spotinst Ocean ECS Launch Spec resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new SpotInst.Ecs.OceanLaunchSpec("example", new SpotInst.Ecs.OceanLaunchSpecArgs
+    ///         {
+    ///             Attributes = 
+    ///             {
+    ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecAttributeArgs
+    ///                 {
+    ///                     Key = "fakeKey",
+    ///                     Value = "fakeValue",
+    ///                 },
+    ///             },
+    ///             AutoscaleHeadrooms = 
+    ///             {
+    ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
+    ///                 {
+    ///                     CpuPerUnit = 1000,
+    ///                     MemoryPerUnit = 2048,
+    ///                     NumOfUnits = 5,
+    ///                 },
+    ///             },
+    ///             IamInstanceProfile = "iam-profile",
+    ///             ImageId = "ami-123456",
+    ///             OceanId = "o-123456",
+    ///             SecurityGroupIds = 
+    ///             {
+    ///                 "awseb-12345",
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecTagArgs
+    ///                 {
+    ///                     Key = "Env",
+    ///                     Value = "production",
+    ///                 },
+    ///             },
+    ///             UserData = "echo hello world",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class OceanLaunchSpec : Pulumi.CustomResource
     {

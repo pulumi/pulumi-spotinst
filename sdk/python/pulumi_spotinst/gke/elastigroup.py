@@ -96,7 +96,7 @@ class Elastigroup(pulumi.CustomResource):
                     "key": "label_key",
                     "value": "label_value",
                 }],
-                "clusterId": "example-cluster-id",
+                "cluster_id": "example-cluster-id",
                 "location": "us-central1-a",
             },
             max_size=5,

@@ -11,6 +11,38 @@ namespace Pulumi.SpotInst.Multai
 {
     /// <summary>
     /// Provides a Spotinst Multai Routing Rule.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myRoutingRule = new SpotInst.Multai.RoutingRule("myRoutingRule", new SpotInst.Multai.RoutingRuleArgs
+    ///         {
+    ///             BalancerId = "b-12345",
+    ///             ListenerId = "l-98765",
+    ///             Route = "Path(`/bar`)",
+    ///             Strategy = "LEASTCONN",
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Multai.Inputs.RoutingRuleTagArgs
+    ///                 {
+    ///                     Key = "env",
+    ///                     Value = "prod",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RoutingRule : Pulumi.CustomResource
     {

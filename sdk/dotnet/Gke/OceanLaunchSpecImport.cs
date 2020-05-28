@@ -11,6 +11,28 @@ namespace Pulumi.SpotInst.Gke
 {
     /// <summary>
     /// Provides a custom Spotinst Ocean GKE Launch Spec Import resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new SpotInst.Gke.OceanLaunchSpecImport("example", new SpotInst.Gke.OceanLaunchSpecImportArgs
+    ///         {
+    ///             NodePoolName = "default-pool",
+    ///             OceanId = "o-123456",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class OceanLaunchSpecImport : Pulumi.CustomResource
     {
