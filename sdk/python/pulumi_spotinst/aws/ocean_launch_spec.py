@@ -50,6 +50,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     """
     The ocean cluster you wish to 
     """
+    resource_limits: pulumi.Output[list]
     root_volume_size: pulumi.Output[float]
     """
     Set root volume size (in GB).
@@ -81,7 +82,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     """
     Base64-encoded MIME user data to make available to the instances.
     """
-    def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, elastic_ip_pools=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, elastic_ip_pools=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, resource_limits=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a custom Spotinst Ocean AWS Launch Spec resource.
 
@@ -113,6 +114,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 "value": "fakeValue",
             }],
             ocean_id="o-123456",
+            resource_limits=[{
+                "maxInstanceCount": 4,
+            }],
             root_volume_size=30,
             security_groups=["sg-987654321"],
             subnet_ids=["subnet-1234"],
@@ -163,6 +167,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
           * `key` (`pulumi.Input[str]`) - The tag key.
           * `value` (`pulumi.Input[str]`) - The tag value.
 
+        The **resource_limits** object supports the following:
+
+          * `maxInstanceCount` (`pulumi.Input[float]`) - set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+
         The **tags** object supports the following:
 
           * `key` (`pulumi.Input[str]`) - The tag key.
@@ -200,6 +208,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             if ocean_id is None:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__['ocean_id'] = ocean_id
+            __props__['resource_limits'] = resource_limits
             __props__['root_volume_size'] = root_volume_size
             __props__['security_groups'] = security_groups
             __props__['subnet_ids'] = subnet_ids
@@ -213,7 +222,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, autoscale_headrooms=None, elastic_ip_pools=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None):
+    def get(resource_name, id, opts=None, autoscale_headrooms=None, elastic_ip_pools=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, resource_limits=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None):
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -253,6 +262,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
           * `key` (`pulumi.Input[str]`) - The tag key.
           * `value` (`pulumi.Input[str]`) - The tag value.
 
+        The **resource_limits** object supports the following:
+
+          * `maxInstanceCount` (`pulumi.Input[float]`) - set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+
         The **tags** object supports the following:
 
           * `key` (`pulumi.Input[str]`) - The tag key.
@@ -275,6 +288,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["labels"] = labels
         __props__["name"] = name
         __props__["ocean_id"] = ocean_id
+        __props__["resource_limits"] = resource_limits
         __props__["root_volume_size"] = root_volume_size
         __props__["security_groups"] = security_groups
         __props__["subnet_ids"] = subnet_ids

@@ -58,6 +58,13 @@ namespace Pulumi.SpotInst.Aws
     ///                 },
     ///             },
     ///             OceanId = "o-123456",
+    ///             ResourceLimits = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecResourceLimitArgs
+    ///                 {
+    ///                     MaxInstanceCount = 4,
+    ///                 },
+    ///             },
     ///             RootVolumeSize = 30,
     ///             SecurityGroups = 
     ///             {
@@ -134,6 +141,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("oceanId")]
         public Output<string> OceanId { get; private set; } = null!;
+
+        [Output("resourceLimits")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecResourceLimit>> ResourceLimits { get; private set; } = null!;
 
         /// <summary>
         /// Set root volume size (in GB).
@@ -277,6 +287,14 @@ namespace Pulumi.SpotInst.Aws
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
 
+        [Input("resourceLimits")]
+        private InputList<Inputs.OceanLaunchSpecResourceLimitArgs>? _resourceLimits;
+        public InputList<Inputs.OceanLaunchSpecResourceLimitArgs> ResourceLimits
+        {
+            get => _resourceLimits ?? (_resourceLimits = new InputList<Inputs.OceanLaunchSpecResourceLimitArgs>());
+            set => _resourceLimits = value;
+        }
+
         /// <summary>
         /// Set root volume size (in GB).
         /// </summary>
@@ -403,6 +421,14 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
+
+        [Input("resourceLimits")]
+        private InputList<Inputs.OceanLaunchSpecResourceLimitGetArgs>? _resourceLimits;
+        public InputList<Inputs.OceanLaunchSpecResourceLimitGetArgs> ResourceLimits
+        {
+            get => _resourceLimits ?? (_resourceLimits = new InputList<Inputs.OceanLaunchSpecResourceLimitGetArgs>());
+            set => _resourceLimits = value;
+        }
 
         /// <summary>
         /// Set root volume size (in GB).

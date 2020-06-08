@@ -949,6 +949,13 @@ export namespace aws {
         value: string;
     }
 
+    export interface OceanLaunchSpecResourceLimit {
+        /**
+         * set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+         */
+        maxInstanceCount?: number;
+    }
+
     export interface OceanLaunchSpecTag {
         /**
          * The tag key.

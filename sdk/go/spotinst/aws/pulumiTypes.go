@@ -11903,8 +11903,8 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 }
 
 type OceanAutoscalerAutoscaleDown struct {
-	EvaluationPeriods      *int `pulumi:"evaluationPeriods"`
-	MaxScaleDownPercentage *int `pulumi:"maxScaleDownPercentage"`
+	EvaluationPeriods      *int     `pulumi:"evaluationPeriods"`
+	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
 // OceanAutoscalerAutoscaleDownInput is an input type that accepts OceanAutoscalerAutoscaleDownArgs and OceanAutoscalerAutoscaleDownOutput values.
@@ -11920,8 +11920,8 @@ type OceanAutoscalerAutoscaleDownInput interface {
 }
 
 type OceanAutoscalerAutoscaleDownArgs struct {
-	EvaluationPeriods      pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
-	MaxScaleDownPercentage pulumi.IntPtrInput `pulumi:"maxScaleDownPercentage"`
+	EvaluationPeriods      pulumi.IntPtrInput     `pulumi:"evaluationPeriods"`
+	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
 func (OceanAutoscalerAutoscaleDownArgs) ElementType() reflect.Type {
@@ -12005,8 +12005,8 @@ func (o OceanAutoscalerAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOut
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
-func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
 
 type OceanAutoscalerAutoscaleDownPtrOutput struct{ *pulumi.OutputState }
@@ -12036,13 +12036,13 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *int {
+func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.MaxScaleDownPercentage
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 type OceanAutoscalerAutoscaleHeadroom struct {
@@ -12844,6 +12844,105 @@ func (o OceanLaunchSpecLabelArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecLabel {
 		return vs[0].([]OceanLaunchSpecLabel)[vs[1].(int)]
 	}).(OceanLaunchSpecLabelOutput)
+}
+
+type OceanLaunchSpecResourceLimit struct {
+	// set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
+}
+
+// OceanLaunchSpecResourceLimitInput is an input type that accepts OceanLaunchSpecResourceLimitArgs and OceanLaunchSpecResourceLimitOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecResourceLimitInput` via:
+//
+// 		 OceanLaunchSpecResourceLimitArgs{...}
+//
+type OceanLaunchSpecResourceLimitInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecResourceLimitOutput() OceanLaunchSpecResourceLimitOutput
+	ToOceanLaunchSpecResourceLimitOutputWithContext(context.Context) OceanLaunchSpecResourceLimitOutput
+}
+
+type OceanLaunchSpecResourceLimitArgs struct {
+	// set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
+}
+
+func (OceanLaunchSpecResourceLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecResourceLimit)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecResourceLimitArgs) ToOceanLaunchSpecResourceLimitOutput() OceanLaunchSpecResourceLimitOutput {
+	return i.ToOceanLaunchSpecResourceLimitOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecResourceLimitArgs) ToOceanLaunchSpecResourceLimitOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecResourceLimitOutput)
+}
+
+// OceanLaunchSpecResourceLimitArrayInput is an input type that accepts OceanLaunchSpecResourceLimitArray and OceanLaunchSpecResourceLimitArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecResourceLimitArrayInput` via:
+//
+// 		 OceanLaunchSpecResourceLimitArray{ OceanLaunchSpecResourceLimitArgs{...} }
+//
+type OceanLaunchSpecResourceLimitArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecResourceLimitArrayOutput() OceanLaunchSpecResourceLimitArrayOutput
+	ToOceanLaunchSpecResourceLimitArrayOutputWithContext(context.Context) OceanLaunchSpecResourceLimitArrayOutput
+}
+
+type OceanLaunchSpecResourceLimitArray []OceanLaunchSpecResourceLimitInput
+
+func (OceanLaunchSpecResourceLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecResourceLimit)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecResourceLimitArray) ToOceanLaunchSpecResourceLimitArrayOutput() OceanLaunchSpecResourceLimitArrayOutput {
+	return i.ToOceanLaunchSpecResourceLimitArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecResourceLimitArray) ToOceanLaunchSpecResourceLimitArrayOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecResourceLimitArrayOutput)
+}
+
+type OceanLaunchSpecResourceLimitOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecResourceLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecResourceLimit)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecResourceLimitOutput) ToOceanLaunchSpecResourceLimitOutput() OceanLaunchSpecResourceLimitOutput {
+	return o
+}
+
+func (o OceanLaunchSpecResourceLimitOutput) ToOceanLaunchSpecResourceLimitOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitOutput {
+	return o
+}
+
+// set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+func (o OceanLaunchSpecResourceLimitOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecResourceLimit) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecResourceLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecResourceLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecResourceLimit)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecResourceLimitArrayOutput) ToOceanLaunchSpecResourceLimitArrayOutput() OceanLaunchSpecResourceLimitArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecResourceLimitArrayOutput) ToOceanLaunchSpecResourceLimitArrayOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecResourceLimitArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecResourceLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecResourceLimit {
+		return vs[0].([]OceanLaunchSpecResourceLimit)[vs[1].(int)]
+	}).(OceanLaunchSpecResourceLimitOutput)
 }
 
 type OceanLaunchSpecTag struct {
@@ -14099,6 +14198,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTaintOutput{})

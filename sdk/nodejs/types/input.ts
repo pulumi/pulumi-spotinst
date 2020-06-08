@@ -949,6 +949,13 @@ export namespace aws {
         value: pulumi.Input<string>;
     }
 
+    export interface OceanLaunchSpecResourceLimit {
+        /**
+         * set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+         */
+        maxInstanceCount?: pulumi.Input<number>;
+    }
+
     export interface OceanLaunchSpecTag {
         /**
          * The tag key.
