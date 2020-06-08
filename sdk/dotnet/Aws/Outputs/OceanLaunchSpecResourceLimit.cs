@@ -11,19 +11,17 @@ namespace Pulumi.SpotInst.Aws.Outputs
 {
 
     [OutputType]
-    public sealed class OceanAutoscalerAutoscaleDown
+    public sealed class OceanLaunchSpecResourceLimit
     {
-        public readonly int? EvaluationPeriods;
-        public readonly double? MaxScaleDownPercentage;
+        /// <summary>
+        /// set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+        /// </summary>
+        public readonly int? MaxInstanceCount;
 
         [OutputConstructor]
-        private OceanAutoscalerAutoscaleDown(
-            int? evaluationPeriods,
-
-            double? maxScaleDownPercentage)
+        private OceanLaunchSpecResourceLimit(int? maxInstanceCount)
         {
-            EvaluationPeriods = evaluationPeriods;
-            MaxScaleDownPercentage = maxScaleDownPercentage;
+            MaxInstanceCount = maxInstanceCount;
         }
     }
 }

@@ -3949,7 +3949,7 @@
                     }
                 },
                 "maxScaleDownPercentage": {
-                    "type": "integer",
+                    "type": "number",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4127,6 +4127,20 @@
                 "key",
                 "value"
             ]
+        },
+        "spotinst:aws/OceanLaunchSpecResourceLimit:OceanLaunchSpecResourceLimit": {
+            "properties": {
+                "maxInstanceCount": {
+                    "type": "integer",
+                    "description": "set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "spotinst:aws/OceanLaunchSpecTag:OceanLaunchSpecTag": {
             "properties": {
@@ -11062,7 +11076,7 @@
             }
         },
         "spotinst:aws/oceanLaunchSpec:OceanLaunchSpec": {
-            "description": "Provides a custom Spotinst Ocean AWS Launch Spec resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.aws.OceanLaunchSpec(\"example\", {\n    autoscaleHeadrooms: [{\n        cpuPerUnit: 1000,\n        gpuPerUnit: 0,\n        memoryPerUnit: 2048,\n        numOfUnits: 5,\n    }],\n    elasticIpPools: [{\n        tagSelector: {\n            tagKey: \"key\",\n            tagValue: \"value\",\n        },\n    }],\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-123456\",\n    labels: [{\n        key: \"fakeKey\",\n        value: \"fakeValue\",\n    }],\n    oceanId: \"o-123456\",\n    rootVolumeSize: 30,\n    securityGroups: [\"sg-987654321\"],\n    subnetIds: [\"subnet-1234\"],\n    tags: [{\n        key: \"Env\",\n        value: \"production\",\n    }],\n    taints: [{\n        effect: \"NoExecute\",\n        key: \"taint key updated\",\n        value: \"taint value updated\",\n    }],\n    userData: \"echo hello world\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.aws.OceanLaunchSpec(\"example\",\n    autoscale_headrooms=[{\n        \"cpuPerUnit\": 1000,\n        \"gpuPerUnit\": 0,\n        \"memoryPerUnit\": 2048,\n        \"numOfUnits\": 5,\n    }],\n    elastic_ip_pools=[{\n        \"tagSelector\": {\n            \"tagKey\": \"key\",\n            \"tagValue\": \"value\",\n        },\n    }],\n    iam_instance_profile=\"iam-profile\",\n    image_id=\"ami-123456\",\n    labels=[{\n        \"key\": \"fakeKey\",\n        \"value\": \"fakeValue\",\n    }],\n    ocean_id=\"o-123456\",\n    root_volume_size=30,\n    security_groups=[\"sg-987654321\"],\n    subnet_ids=[\"subnet-1234\"],\n    tags=[{\n        \"key\": \"Env\",\n        \"value\": \"production\",\n    }],\n    taints=[{\n        \"effect\": \"NoExecute\",\n        \"key\": \"taint key updated\",\n        \"value\": \"taint value updated\",\n    }],\n    user_data=\"echo hello world\")\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new SpotInst.Aws.OceanLaunchSpec(\"example\", new SpotInst.Aws.OceanLaunchSpecArgs\n        {\n            AutoscaleHeadrooms = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs\n                {\n                    CpuPerUnit = 1000,\n                    GpuPerUnit = 0,\n                    MemoryPerUnit = 2048,\n                    NumOfUnits = 5,\n                },\n            },\n            ElasticIpPools = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs\n                {\n                    TagSelector = new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs\n                    {\n                        TagKey = \"key\",\n                        TagValue = \"value\",\n                    },\n                },\n            },\n            IamInstanceProfile = \"iam-profile\",\n            ImageId = \"ami-123456\",\n            Labels = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecLabelArgs\n                {\n                    Key = \"fakeKey\",\n                    Value = \"fakeValue\",\n                },\n            },\n            OceanId = \"o-123456\",\n            RootVolumeSize = 30,\n            SecurityGroups = \n            {\n                \"sg-987654321\",\n            },\n            SubnetIds = \n            {\n                \"subnet-1234\",\n            },\n            Tags = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecTagArgs\n                {\n                    Key = \"Env\",\n                    Value = \"production\",\n                },\n            },\n            Taints = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecTaintArgs\n                {\n                    Effect = \"NoExecute\",\n                    Key = \"taint key updated\",\n                    Value = \"taint value updated\",\n                },\n            },\n            UserData = \"echo hello world\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Provides a custom Spotinst Ocean AWS Launch Spec resource.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "autoscaleHeadrooms": {
                     "type": "array",
@@ -11100,6 +11114,12 @@
                 "oceanId": {
                     "type": "string",
                     "description": "The ocean cluster you wish to \n"
+                },
+                "resourceLimits": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecResourceLimit:OceanLaunchSpecResourceLimit"
+                    }
                 },
                 "rootVolumeSize": {
                     "type": "integer",
@@ -11180,6 +11200,12 @@
                     "type": "string",
                     "description": "The ocean cluster you wish to \n"
                 },
+                "resourceLimits": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecResourceLimit:OceanLaunchSpecResourceLimit"
+                    }
+                },
                 "rootVolumeSize": {
                     "type": "integer",
                     "description": "Set root volume size (in GB).\n"
@@ -11259,6 +11285,12 @@
                     "oceanId": {
                         "type": "string",
                         "description": "The ocean cluster you wish to \n"
+                    },
+                    "resourceLimits": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/OceanLaunchSpecResourceLimit:OceanLaunchSpecResourceLimit"
+                        }
                     },
                     "rootVolumeSize": {
                         "type": "integer",

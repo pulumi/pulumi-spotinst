@@ -37,6 +37,9 @@ import * as utilities from "../utilities";
  *         value: "fakeValue",
  *     }],
  *     oceanId: "o-123456",
+ *     resourceLimits: [{
+ *         maxInstanceCount: 4,
+ *     }],
  *     rootVolumeSize: 30,
  *     securityGroups: ["sg-987654321"],
  *     subnetIds: ["subnet-1234"],
@@ -108,6 +111,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * The ocean cluster you wish to 
      */
     public readonly oceanId!: pulumi.Output<string>;
+    public readonly resourceLimits!: pulumi.Output<outputs.aws.OceanLaunchSpecResourceLimit[] | undefined>;
     /**
      * Set root volume size (in GB).
      */
@@ -152,6 +156,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
+            inputs["resourceLimits"] = state ? state.resourceLimits : undefined;
             inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
@@ -170,6 +175,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
+            inputs["resourceLimits"] = args ? args.resourceLimits : undefined;
             inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
@@ -220,6 +226,7 @@ export interface OceanLaunchSpecState {
      * The ocean cluster you wish to 
      */
     readonly oceanId?: pulumi.Input<string>;
+    readonly resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[]>;
     /**
      * Set root volume size (in GB).
      */
@@ -278,6 +285,7 @@ export interface OceanLaunchSpecArgs {
      * The ocean cluster you wish to 
      */
     readonly oceanId: pulumi.Input<string>;
+    readonly resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[]>;
     /**
      * Set root volume size (in GB).
      */
