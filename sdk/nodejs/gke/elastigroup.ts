@@ -14,6 +14,7 @@ export class Elastigroup extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ElastigroupState, opts?: pulumi.CustomResourceOptions): Elastigroup {
         return new Elastigroup(name, <any>state, { ...opts, id: id });
@@ -36,6 +37,8 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly backendServices!: pulumi.Output<outputs.gke.ElastigroupBackendService[] | undefined>;
     /**
      * The name of the GKE cluster you wish to import.
+     *
+     * @deprecated Please define cluster_id under integration_gke
      */
     public readonly clusterId!: pulumi.Output<string | undefined>;
     /**
@@ -169,6 +172,7 @@ export interface ElastigroupState {
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
      * The name of the GKE cluster you wish to import.
+     *
      * @deprecated Please define cluster_id under integration_gke
      */
     readonly clusterId?: pulumi.Input<string>;
@@ -214,6 +218,7 @@ export interface ElastigroupArgs {
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
      * The name of the GKE cluster you wish to import.
+     *
      * @deprecated Please define cluster_id under integration_gke
      */
     readonly clusterId?: pulumi.Input<string>;

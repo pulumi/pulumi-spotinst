@@ -242,6 +242,7 @@ export class Elastigroup extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ElastigroupState, opts?: pulumi.CustomResourceOptions): Elastigroup {
         return new Elastigroup(name, <any>state, { ...opts, id: id });
@@ -264,6 +265,8 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly autoHealing!: pulumi.Output<boolean | undefined>;
     /**
      * List of availability zones for the group.
+     *
+     * @deprecated This field will soon be handled by Region in Subnets
      */
     public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
     public readonly backendServices!: pulumi.Output<outputs.gcp.ElastigroupBackendService[] | undefined>;
@@ -457,6 +460,7 @@ export interface ElastigroupState {
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
      * List of availability zones for the group.
+     *
      * @deprecated This field will soon be handled by Region in Subnets
      */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
@@ -555,6 +559,7 @@ export interface ElastigroupArgs {
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
      * List of availability zones for the group.
+     *
      * @deprecated This field will soon be handled by Region in Subnets
      */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;

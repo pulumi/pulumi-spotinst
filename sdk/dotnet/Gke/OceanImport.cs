@@ -38,8 +38,8 @@ namespace Pulumi.SpotInst.Gke
     ///                             Name = "http",
     ///                             Ports = 
     ///                             {
-    ///                                 80,
-    ///                                 8080,
+    ///                                 "80",
+    ///                                 "8080",
     ///                             },
     ///                         },
     ///                     },

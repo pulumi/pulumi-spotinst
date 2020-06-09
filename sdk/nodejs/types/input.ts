@@ -3,6 +3,7 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface HealthCheckCheck {
     /**
@@ -34,7 +35,6 @@ export interface HealthCheckCheck {
      */
     unhealthy: pulumi.Input<number>;
 }
-
 export namespace aws {
     export interface BeanstalkDeploymentPreferences {
         /**
@@ -1884,3 +1884,4 @@ export namespace multai {
         value: pulumi.Input<string>;
     }
 }
+
