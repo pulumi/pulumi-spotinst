@@ -14,6 +14,7 @@ export class MrScalar extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MrScalarState, opts?: pulumi.CustomResourceOptions): MrScalar {
         return new MrScalar(name, <any>state, { ...opts, id: id });
@@ -110,6 +111,9 @@ export class MrScalar extends pulumi.CustomResource {
      */
     public readonly terminationPolicies!: pulumi.Output<outputs.aws.MrScalarTerminationPolicy[] | undefined>;
     public readonly terminationProtected!: pulumi.Output<boolean | undefined>;
+    /**
+     * @deprecated This field has been removed from our API and is no longer functional.
+     */
     public readonly visibleToAllUsers!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -342,6 +346,9 @@ export interface MrScalarState {
      */
     readonly terminationPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicy>[]>;
     readonly terminationProtected?: pulumi.Input<boolean>;
+    /**
+     * @deprecated This field has been removed from our API and is no longer functional.
+     */
     readonly visibleToAllUsers?: pulumi.Input<boolean>;
 }
 
@@ -425,5 +432,8 @@ export interface MrScalarArgs {
      */
     readonly terminationPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicy>[]>;
     readonly terminationProtected?: pulumi.Input<boolean>;
+    /**
+     * @deprecated This field has been removed from our API and is no longer functional.
+     */
     readonly visibleToAllUsers?: pulumi.Input<boolean>;
 }
