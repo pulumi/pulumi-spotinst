@@ -130,7 +130,7 @@ class Ocean(pulumi.CustomResource):
 
           * `isAutoConfig` (`pulumi.Input[bool]`)
           * `isEnabled` (`pulumi.Input[bool]`)
-          * `resourceLimits` (`pulumi.Input[dict]`)
+          * `resource_limits` (`pulumi.Input[dict]`)
             * `maxMemoryGib` (`pulumi.Input[float]`)
             * `maxVcpu` (`pulumi.Input[float]`)
 
@@ -252,7 +252,7 @@ class Ocean(pulumi.CustomResource):
 
           * `isAutoConfig` (`pulumi.Input[bool]`)
           * `isEnabled` (`pulumi.Input[bool]`)
-          * `resourceLimits` (`pulumi.Input[dict]`)
+          * `resource_limits` (`pulumi.Input[dict]`)
             * `maxMemoryGib` (`pulumi.Input[float]`)
             * `maxVcpu` (`pulumi.Input[float]`)
 

@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 2.4.0 (2020-06-08)
+* Upgrade to v1.17.0 of the SpotInst Terraform Provider
+
 ## 2.3.1 (2020-05-28)
 * Upgrade to Pulumi v2.3.0
 * Upgrade to pulumi-terraform-bridge v2.4.0

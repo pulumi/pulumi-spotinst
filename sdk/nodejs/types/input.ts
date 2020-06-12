@@ -3,6 +3,7 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface HealthCheckCheck {
     /**
@@ -34,7 +35,6 @@ export interface HealthCheckCheck {
      */
     unhealthy: pulumi.Input<number>;
 }
-
 export namespace aws {
     export interface BeanstalkDeploymentPreferences {
         /**
@@ -947,6 +947,13 @@ export namespace aws {
          * The tag value.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecResourceLimit {
+        /**
+         * set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+         */
+        maxInstanceCount?: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecTag {
@@ -1877,3 +1884,4 @@ export namespace multai {
         value: pulumi.Input<string>;
     }
 }
+

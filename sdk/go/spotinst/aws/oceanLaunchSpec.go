@@ -27,7 +27,8 @@ type OceanLaunchSpec struct {
 	// Set Launch Specification name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ocean cluster you wish to
-	OceanId pulumi.StringOutput `pulumi:"oceanId"`
+	OceanId        pulumi.StringOutput                     `pulumi:"oceanId"`
+	ResourceLimits OceanLaunchSpecResourceLimitArrayOutput `pulumi:"resourceLimits"`
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
@@ -86,7 +87,8 @@ type oceanLaunchSpecState struct {
 	// Set Launch Specification name
 	Name *string `pulumi:"name"`
 	// The ocean cluster you wish to
-	OceanId *string `pulumi:"oceanId"`
+	OceanId        *string                        `pulumi:"oceanId"`
+	ResourceLimits []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
@@ -115,7 +117,8 @@ type OceanLaunchSpecState struct {
 	// Set Launch Specification name
 	Name pulumi.StringPtrInput
 	// The ocean cluster you wish to
-	OceanId pulumi.StringPtrInput
+	OceanId        pulumi.StringPtrInput
+	ResourceLimits OceanLaunchSpecResourceLimitArrayInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
 	// Optionally adds security group IDs.
@@ -148,7 +151,8 @@ type oceanLaunchSpecArgs struct {
 	// Set Launch Specification name
 	Name *string `pulumi:"name"`
 	// The ocean cluster you wish to
-	OceanId string `pulumi:"oceanId"`
+	OceanId        string                         `pulumi:"oceanId"`
+	ResourceLimits []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
@@ -178,7 +182,8 @@ type OceanLaunchSpecArgs struct {
 	// Set Launch Specification name
 	Name pulumi.StringPtrInput
 	// The ocean cluster you wish to
-	OceanId pulumi.StringInput
+	OceanId        pulumi.StringInput
+	ResourceLimits OceanLaunchSpecResourceLimitArrayInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
 	// Optionally adds security group IDs.
