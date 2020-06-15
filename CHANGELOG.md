@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 2.4.1 (2020-06-12)
+* Switch to GitHub actions for build
+
 ## 2.4.0 (2020-06-08)
 * Upgrade to v1.17.0 of the SpotInst Terraform Provider
 
