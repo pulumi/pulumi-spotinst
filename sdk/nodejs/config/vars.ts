@@ -13,6 +13,10 @@ let __config = new pulumi.Config("spotinst");
  */
 export let account: string | undefined = __config.get("account") || (utilities.getEnv("SPOTINST_ACCOUNT") || "");
 /**
+ * Spotinst SDK Feature Flags
+ */
+export let featureFlags: string | undefined = __config.get("featureFlags");
+/**
  * Spotinst Personal API Access Token
  */
 export let token: string | undefined = __config.get("token") || (utilities.getEnv("SPOTINST_TOKEN") || "");

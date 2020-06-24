@@ -14,6 +14,11 @@ namespace Pulumi.SpotInst
         public static string? Account { get; set; } = __config.Get("account") ?? Utilities.GetEnv("SPOTINST_ACCOUNT") ?? "";
 
         /// <summary>
+        /// Spotinst SDK Feature Flags
+        /// </summary>
+        public static string? FeatureFlags { get; set; } = __config.Get("featureFlags");
+
+        /// <summary>
         /// Spotinst Personal API Access Token
         /// </summary>
         public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("SPOTINST_TOKEN") ?? "";

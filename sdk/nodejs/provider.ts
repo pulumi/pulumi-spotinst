@@ -36,6 +36,7 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         inputs["account"] = (args ? args.account : undefined) || (utilities.getEnv("SPOTINST_ACCOUNT") || "");
+        inputs["featureFlags"] = args ? args.featureFlags : undefined;
         inputs["token"] = (args ? args.token : undefined) || (utilities.getEnv("SPOTINST_TOKEN") || "");
         if (!opts) {
             opts = {}
@@ -56,6 +57,10 @@ export interface ProviderArgs {
      * Spotinst Account ID
      */
     readonly account?: pulumi.Input<string>;
+    /**
+     * Spotinst SDK Feature Flags
+     */
+    readonly featureFlags?: pulumi.Input<string>;
     /**
      * Spotinst Personal API Access Token
      */

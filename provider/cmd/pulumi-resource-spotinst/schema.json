@@ -24,6 +24,10 @@
                     ]
                 }
             },
+            "featureFlags": {
+                "type": "string",
+                "description": "Spotinst SDK Feature Flags\n"
+            },
             "token": {
                 "type": "string",
                 "description": "Spotinst Personal API Access Token\n",
@@ -8382,6 +8386,10 @@
                         "SPOTINST_ACCOUNT"
                     ]
                 }
+            },
+            "featureFlags": {
+                "type": "string",
+                "description": "Spotinst SDK Feature Flags\n"
             },
             "token": {
                 "type": "string",

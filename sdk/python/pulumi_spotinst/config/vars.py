@@ -16,6 +16,11 @@ account = __config__.get('account') or (utilities.get_env('SPOTINST_ACCOUNT') or
 Spotinst Account ID
 """
 
+feature_flags = __config__.get('featureFlags')
+"""
+Spotinst SDK Feature Flags
+"""
+
 token = __config__.get('token') or (utilities.get_env('SPOTINST_TOKEN') or '')
 """
 Spotinst Personal API Access Token
