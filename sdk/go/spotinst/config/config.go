@@ -17,6 +17,11 @@ func GetAccount(ctx *pulumi.Context) string {
 	return getEnvOrDefault("", nil, "SPOTINST_ACCOUNT").(string)
 }
 
+// Spotinst SDK Feature Flags
+func GetFeatureFlags(ctx *pulumi.Context) string {
+	return config.Get(ctx, "spotinst:featureFlags")
+}
+
 // Spotinst Personal API Access Token
 func GetToken(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "spotinst:token")

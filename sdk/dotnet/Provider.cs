@@ -51,6 +51,12 @@ namespace Pulumi.SpotInst
         public Input<string>? Account { get; set; }
 
         /// <summary>
+        /// Spotinst SDK Feature Flags
+        /// </summary>
+        [Input("featureFlags")]
+        public Input<string>? FeatureFlags { get; set; }
+
+        /// <summary>
         /// Spotinst Personal API Access Token
         /// </summary>
         [Input("token")]

@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, account=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, account=None, feature_flags=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the spotinst package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -20,6 +20,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account: Spotinst Account ID
+        :param pulumi.Input[str] feature_flags: Spotinst SDK Feature Flags
         :param pulumi.Input[str] token: Spotinst Personal API Access Token
         """
         if __name__ is not None:
@@ -42,6 +43,7 @@ class Provider(pulumi.ProviderResource):
             if account is None:
                 account = (utilities.get_env('SPOTINST_ACCOUNT') or '')
             __props__['account'] = account
+            __props__['feature_flags'] = feature_flags
             if token is None:
                 token = (utilities.get_env('SPOTINST_TOKEN') or '')
             __props__['token'] = token

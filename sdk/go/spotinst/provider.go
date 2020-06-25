@@ -40,6 +40,8 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// Spotinst Account ID
 	Account *string `pulumi:"account"`
+	// Spotinst SDK Feature Flags
+	FeatureFlags *string `pulumi:"featureFlags"`
 	// Spotinst Personal API Access Token
 	Token *string `pulumi:"token"`
 }
@@ -48,6 +50,8 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// Spotinst Account ID
 	Account pulumi.StringPtrInput
+	// Spotinst SDK Feature Flags
+	FeatureFlags pulumi.StringPtrInput
 	// Spotinst Personal API Access Token
 	Token pulumi.StringPtrInput
 }
