@@ -484,6 +484,7 @@ class Elastigroup(pulumi.CustomResource):
             * `name` (`pulumi.Input[str]`) - The group name.
             * `value` (`pulumi.Input[str]`)
 
+          * `maxCapacityPerScale` (`pulumi.Input[str]`)
           * `metricName` (`pulumi.Input[str]`)
           * `namespace` (`pulumi.Input[str]`)
           * `policyName` (`pulumi.Input[str]`)
@@ -954,6 +955,7 @@ class Elastigroup(pulumi.CustomResource):
             * `name` (`pulumi.Input[str]`) - The group name.
             * `value` (`pulumi.Input[str]`)
 
+          * `maxCapacityPerScale` (`pulumi.Input[str]`)
           * `metricName` (`pulumi.Input[str]`)
           * `namespace` (`pulumi.Input[str]`)
           * `policyName` (`pulumi.Input[str]`)

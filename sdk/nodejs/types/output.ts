@@ -397,6 +397,7 @@ export namespace aws {
     export interface ElastigroupScalingTargetPolicy {
         cooldown: number;
         dimensions?: outputs.aws.ElastigroupScalingTargetPolicyDimension[];
+        maxCapacityPerScale?: string;
         metricName: string;
         namespace: string;
         policyName: string;

@@ -397,6 +397,7 @@ export namespace aws {
     export interface ElastigroupScalingTargetPolicy {
         cooldown?: pulumi.Input<number>;
         dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicyDimension>[]>;
+        maxCapacityPerScale?: pulumi.Input<string>;
         metricName: pulumi.Input<string>;
         namespace: pulumi.Input<string>;
         policyName: pulumi.Input<string>;

@@ -23,6 +23,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
             set => _dimensions = value;
         }
 
+        [Input("maxCapacityPerScale")]
+        public Input<string>? MaxCapacityPerScale { get; set; }
+
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
 
