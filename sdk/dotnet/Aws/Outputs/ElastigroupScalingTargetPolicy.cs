@@ -15,6 +15,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     {
         public readonly int? Cooldown;
         public readonly ImmutableArray<Outputs.ElastigroupScalingTargetPolicyDimension> Dimensions;
+        public readonly string? MaxCapacityPerScale;
         public readonly string MetricName;
         public readonly string Namespace;
         public readonly string PolicyName;
@@ -29,6 +30,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
             int? cooldown,
 
             ImmutableArray<Outputs.ElastigroupScalingTargetPolicyDimension> dimensions,
+
+            string? maxCapacityPerScale,
 
             string metricName,
 
@@ -48,6 +51,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         {
             Cooldown = cooldown;
             Dimensions = dimensions;
+            MaxCapacityPerScale = maxCapacityPerScale;
             MetricName = metricName;
             Namespace = @namespace;
             PolicyName = policyName;

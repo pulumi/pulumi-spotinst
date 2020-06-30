@@ -6465,16 +6465,17 @@ func (o ElastigroupScalingStrategyArrayOutput) Index(i pulumi.IntInput) Elastigr
 }
 
 type ElastigroupScalingTargetPolicy struct {
-	Cooldown       *int                                      `pulumi:"cooldown"`
-	Dimensions     []ElastigroupScalingTargetPolicyDimension `pulumi:"dimensions"`
-	MetricName     string                                    `pulumi:"metricName"`
-	Namespace      string                                    `pulumi:"namespace"`
-	PolicyName     string                                    `pulumi:"policyName"`
-	PredictiveMode *string                                   `pulumi:"predictiveMode"`
-	Source         *string                                   `pulumi:"source"`
-	Statistic      *string                                   `pulumi:"statistic"`
-	Target         float64                                   `pulumi:"target"`
-	Unit           string                                    `pulumi:"unit"`
+	Cooldown            *int                                      `pulumi:"cooldown"`
+	Dimensions          []ElastigroupScalingTargetPolicyDimension `pulumi:"dimensions"`
+	MaxCapacityPerScale *string                                   `pulumi:"maxCapacityPerScale"`
+	MetricName          string                                    `pulumi:"metricName"`
+	Namespace           string                                    `pulumi:"namespace"`
+	PolicyName          string                                    `pulumi:"policyName"`
+	PredictiveMode      *string                                   `pulumi:"predictiveMode"`
+	Source              *string                                   `pulumi:"source"`
+	Statistic           *string                                   `pulumi:"statistic"`
+	Target              float64                                   `pulumi:"target"`
+	Unit                string                                    `pulumi:"unit"`
 }
 
 // ElastigroupScalingTargetPolicyInput is an input type that accepts ElastigroupScalingTargetPolicyArgs and ElastigroupScalingTargetPolicyOutput values.
@@ -6490,16 +6491,17 @@ type ElastigroupScalingTargetPolicyInput interface {
 }
 
 type ElastigroupScalingTargetPolicyArgs struct {
-	Cooldown       pulumi.IntPtrInput                                `pulumi:"cooldown"`
-	Dimensions     ElastigroupScalingTargetPolicyDimensionArrayInput `pulumi:"dimensions"`
-	MetricName     pulumi.StringInput                                `pulumi:"metricName"`
-	Namespace      pulumi.StringInput                                `pulumi:"namespace"`
-	PolicyName     pulumi.StringInput                                `pulumi:"policyName"`
-	PredictiveMode pulumi.StringPtrInput                             `pulumi:"predictiveMode"`
-	Source         pulumi.StringPtrInput                             `pulumi:"source"`
-	Statistic      pulumi.StringPtrInput                             `pulumi:"statistic"`
-	Target         pulumi.Float64Input                               `pulumi:"target"`
-	Unit           pulumi.StringInput                                `pulumi:"unit"`
+	Cooldown            pulumi.IntPtrInput                                `pulumi:"cooldown"`
+	Dimensions          ElastigroupScalingTargetPolicyDimensionArrayInput `pulumi:"dimensions"`
+	MaxCapacityPerScale pulumi.StringPtrInput                             `pulumi:"maxCapacityPerScale"`
+	MetricName          pulumi.StringInput                                `pulumi:"metricName"`
+	Namespace           pulumi.StringInput                                `pulumi:"namespace"`
+	PolicyName          pulumi.StringInput                                `pulumi:"policyName"`
+	PredictiveMode      pulumi.StringPtrInput                             `pulumi:"predictiveMode"`
+	Source              pulumi.StringPtrInput                             `pulumi:"source"`
+	Statistic           pulumi.StringPtrInput                             `pulumi:"statistic"`
+	Target              pulumi.Float64Input                               `pulumi:"target"`
+	Unit                pulumi.StringInput                                `pulumi:"unit"`
 }
 
 func (ElastigroupScalingTargetPolicyArgs) ElementType() reflect.Type {
@@ -6560,6 +6562,10 @@ func (o ElastigroupScalingTargetPolicyOutput) Cooldown() pulumi.IntPtrOutput {
 
 func (o ElastigroupScalingTargetPolicyOutput) Dimensions() ElastigroupScalingTargetPolicyDimensionArrayOutput {
 	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) []ElastigroupScalingTargetPolicyDimension { return v.Dimensions }).(ElastigroupScalingTargetPolicyDimensionArrayOutput)
+}
+
+func (o ElastigroupScalingTargetPolicyOutput) MaxCapacityPerScale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) *string { return v.MaxCapacityPerScale }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupScalingTargetPolicyOutput) MetricName() pulumi.StringOutput {
