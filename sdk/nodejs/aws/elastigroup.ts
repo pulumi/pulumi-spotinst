@@ -151,7 +151,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly ondemandCount!: pulumi.Output<number | undefined>;
     /**
-     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
+     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
      */
     public readonly orientation!: pulumi.Output<string>;
     public readonly persistBlockDevices!: pulumi.Output<boolean | undefined>;
@@ -227,7 +227,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly waitForCapacity!: pulumi.Output<number | undefined>;
     /**
-     * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+     * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
      */
     public readonly waitForCapacityTimeout!: pulumi.Output<number | undefined>;
 
@@ -536,7 +536,7 @@ export interface ElastigroupState {
      */
     readonly ondemandCount?: pulumi.Input<number>;
     /**
-     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
+     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
      */
     readonly orientation?: pulumi.Input<string>;
     readonly persistBlockDevices?: pulumi.Input<boolean>;
@@ -612,7 +612,7 @@ export interface ElastigroupState {
      */
     readonly waitForCapacity?: pulumi.Input<number>;
     /**
-     * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+     * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
      */
     readonly waitForCapacityTimeout?: pulumi.Input<number>;
 }
@@ -738,7 +738,7 @@ export interface ElastigroupArgs {
      */
     readonly ondemandCount?: pulumi.Input<number>;
     /**
-     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
+     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
      */
     readonly orientation: pulumi.Input<string>;
     readonly persistBlockDevices?: pulumi.Input<boolean>;
@@ -814,7 +814,7 @@ export interface ElastigroupArgs {
      */
     readonly waitForCapacity?: pulumi.Input<number>;
     /**
-     * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+     * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
      */
     readonly waitForCapacityTimeout?: pulumi.Input<number>;
 }

@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const myTarget = new spotinst.multai.Target("myTarget", {
+ * const myTarget = new spotinst.multai.Target("my_target", {
  *     balancerId: "b-12345",
  *     host: "host",
  *     port: 1338,

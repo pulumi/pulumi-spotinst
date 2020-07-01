@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const testAzureGroup = new spotinst.azure.Elastigroup("testAzureGroup", {
+ * const testAzureGroup = new spotinst.azure.Elastigroup("test_azure_group", {
  *     desiredCapacity: 1,
  *     // --- HEALTH-CHECKS -------------------------------------------------
  *     healthCheck: {
@@ -46,8 +44,8 @@ import * as utilities from "../utilities";
  *         userName: "admin",
  *     },
  *     lowPrioritySizes: [
- *         "standardA1V1",
- *         "standardA1V2",
+ *         "standard_a1_v1",
+ *         "standard_a1_v2",
  *     ],
  *     managedServiceIdentities: [{
  *         name: "example-identity",
@@ -65,8 +63,8 @@ import * as utilities from "../utilities";
  *     },
  *     // --- INSTANCE TYPES ------------------------------------------------
  *     odSizes: [
- *         "standardA1V1",
- *         "standardA1V2",
+ *         "standard_a1_v1",
+ *         "standard_a1_v2",
  *     ],
  *     product: "Linux",
  *     region: "eastus",
@@ -136,7 +134,6 @@ import * as utilities from "../utilities";
  *     userData: "",
  * });
  * ```
- *
  * ## Load Balancers
  *
  * * `loadBalancers` - (Required) Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
@@ -233,13 +230,13 @@ import * as utilities from "../utilities";
  * ## Update Policy
  *
  * * `updatePolicy` - (Optional)
- *
+ *   
  *     * `shouldRoll` - (Required) Sets the enablement of the roll option.
  *     * `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
  *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
  *         * `healthCheckType` - (Optional) Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
  *         * `gracePeriod` - (Optional) Sets the grace period for new instances to become healthy.
- *        
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```

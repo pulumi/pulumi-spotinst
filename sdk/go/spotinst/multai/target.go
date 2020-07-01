@@ -11,6 +11,39 @@ import (
 )
 
 // Provides a Spotinst Multai Target.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := multai.NewTarget(ctx, "myTarget", &multai.TargetArgs{
+// 			BalancerId: pulumi.String("b-12345"),
+// 			Host:       pulumi.String("host"),
+// 			Port:       pulumi.Int(1338),
+// 			Tags: multai.TargetTagArray{
+// 				&multai.TargetTagArgs{
+// 					Key:   pulumi.String("env"),
+// 					Value: pulumi.String("prod"),
+// 				},
+// 			},
+// 			TargetSetId: pulumi.String("l-98765"),
+// 			Weight:      pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Target struct {
 	pulumi.CustomResourceState
 

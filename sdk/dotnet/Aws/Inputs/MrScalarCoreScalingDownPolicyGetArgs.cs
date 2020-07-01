@@ -75,7 +75,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> PolicyName { get; set; } = null!;
 
         /// <summary>
-        /// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+        /// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         /// </summary>
         [Input("statistic")]
         public Input<string>? Statistic { get; set; }
@@ -90,7 +90,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<double> Threshold { get; set; } = null!;
 
         /// <summary>
-        /// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+        /// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
         /// </summary>
         [Input("unit", required: true)]
         public Input<string> Unit { get; set; } = null!;

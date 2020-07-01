@@ -12,7 +12,59 @@ import (
 
 // Provides a Spotinst AWS ManagedInstance resource.
 //
+// ## Network Interface - (Optional) List of network interfaces in an EC2 instance.
 //
+// * `deviceIndex` - (Optional) The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
+// * `associatePublicIpAddress` - (Optional) Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
+// * `associateIpv6Address` - (Optional) Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
+//    Default: false
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="scheduled-task"></a>
+// ## Scheduled Tasks
+//
+// Each `scheduledTask` supports the following:
+//
+// * `isEnabled` - (Optional) Describes whether the task is enabled. When true the task should run when false it should not run.
+// * `frequency` - (Optional) Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
+// * `startTime` - (Optional) DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
+//    Example: 2019-05-23T10:55:09Z
+// * `cronExpression` - (Optional) A valid cron expression. For example : " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+//    Example: 0 1 * * *
+// * `taskType`- (Required) The task type to run. Valid Values: "pause", "resume", "recycle".
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="load-balancers"></a>
 // ## Load Balancers
 //
 //    * `loadBalancersConfig` - (Optional) LB integration object.
@@ -20,25 +72,14 @@ import (
 //             * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
 //             * `arn` - The AWS resource ARN (Required only for ALB target groups).
 //             * `balancerId` - The Multai load balancer ID.
-//             Default: lb-123456
+//                  Default: lb-123456
 //             * `targetSetId` - The Multai load target set ID.
-//             Default: ts-123456
+//                  Default: ts-123456
 //             * `autoWeight` - “Auto Weight” will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
 //             * `zoneAwareness` - “AZ Awareness” will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
 //             * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
 //
 // Usage:
-//
-//    ```hcl
-//    loadBalancers {
-//        arn  = "arn"
-//        type = "CLASSIC"
-//        balancerId   = "lb-123"
-//        targetSetId = "ts-123"
-//        autoWeight   = "true"
-//        azAwareness = "true"
-//      }
-//    ```
 //
 // <a id="route53"></a>
 type ManagedInstance struct {

@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const myListener = new spotinst.multai.Listener("myListener", {
+ * const myListener = new spotinst.multai.Listener("my_listener", {
  *     balancerId: "b-12345",
  *     name: "foo",
  *     port: 1337,

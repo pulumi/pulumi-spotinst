@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const httpCheck = new spotinst.HealthCheck("httpCheck", {
+ * const httpCheck = new spotinst.HealthCheck("http_check", {
  *     check: {
  *         endpoint: "http://endpoint.com",
  *         healthy: 1,

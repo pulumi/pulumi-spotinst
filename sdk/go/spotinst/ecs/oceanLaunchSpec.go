@@ -11,6 +11,54 @@ import (
 )
 
 // Provides a custom Spotinst Ocean ECS Launch Spec resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewOceanLaunchSpec(ctx, "example", &ecs.OceanLaunchSpecArgs{
+// 			Attributes: ecs.OceanLaunchSpecAttributeArray{
+// 				&ecs.OceanLaunchSpecAttributeArgs{
+// 					Key:   pulumi.String("fakeKey"),
+// 					Value: pulumi.String("fakeValue"),
+// 				},
+// 			},
+// 			AutoscaleHeadrooms: ecs.OceanLaunchSpecAutoscaleHeadroomArray{
+// 				&ecs.OceanLaunchSpecAutoscaleHeadroomArgs{
+// 					CpuPerUnit:    pulumi.Int(1000),
+// 					MemoryPerUnit: pulumi.Int(2048),
+// 					NumOfUnits:    pulumi.Int(5),
+// 				},
+// 			},
+// 			IamInstanceProfile: pulumi.String("iam-profile"),
+// 			ImageId:            pulumi.String("ami-123456"),
+// 			OceanId:            pulumi.String("o-123456"),
+// 			SecurityGroupIds: pulumi.StringArray{
+// 				pulumi.String("awseb-12345"),
+// 			},
+// 			Tags: ecs.OceanLaunchSpecTagArray{
+// 				&ecs.OceanLaunchSpecTagArgs{
+// 					Key:   pulumi.String("Env"),
+// 					Value: pulumi.String("production"),
+// 				},
+// 			},
+// 			UserData: pulumi.String("echo hello world"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
 

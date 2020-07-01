@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     public sealed class ElastigroupScalingUpPolicyDimension
     {
         /// <summary>
-        /// The group name. 
+        /// The group name.
         /// </summary>
         public readonly string Name;
         /// <summary>

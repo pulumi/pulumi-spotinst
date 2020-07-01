@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -59,7 +57,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
  * ## Auto Scaler
  *
  * * `autoscaler` - (Optional) Describes the Ocean Kubernetes autoscaler.
@@ -109,7 +106,7 @@ import * as utilities from "../utilities";
  *                                          Example: 0 1 * * *
  *         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
  *                                    Example: clusterRoll
- *              
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```

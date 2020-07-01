@@ -11,6 +11,38 @@ import (
 )
 
 // Provides a Spotinst Multai Routing Rule.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := multai.NewRoutingRule(ctx, "myRoutingRule", &multai.RoutingRuleArgs{
+// 			BalancerId: pulumi.String("b-12345"),
+// 			ListenerId: pulumi.String("l-98765"),
+// 			Route:      pulumi.String("Path(`/bar`)"),
+// 			Strategy:   pulumi.String("LEASTCONN"),
+// 			Tags: multai.RoutingRuleTagArray{
+// 				&multai.RoutingRuleTagArgs{
+// 					Key:   pulumi.String("env"),
+// 					Value: pulumi.String("prod"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type RoutingRule struct {
 	pulumi.CustomResourceState
 

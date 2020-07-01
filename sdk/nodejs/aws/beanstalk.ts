@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const elastigoupAwsBeanstalk = new spotinst.aws.Beanstalk("elastigoup-aws-beanstalk", {
+ * const elastigoup_aws_beanstalk = new spotinst.aws.Beanstalk("elastigoup-aws-beanstalk", {
  *     beanstalkEnvironmentId: "e-example",
  *     beanstalkEnvironmentName: "example-env",
  *     deploymentPreferences: {
@@ -48,7 +46,6 @@ import * as utilities from "../utilities";
  *     region: "us-west-2",
  * });
  * ```
- *
  * ## Scheduled Tasks
  *
  * Each `scheduledTask` supports the following:
@@ -104,7 +101,7 @@ export class Beanstalk extends pulumi.CustomResource {
     }
 
     /**
-     * The id of an existing Beanstalk environment. 
+     * The id of an existing Beanstalk environment.
      */
     public readonly beanstalkEnvironmentId!: pulumi.Output<string | undefined>;
     /**
@@ -226,7 +223,7 @@ export class Beanstalk extends pulumi.CustomResource {
  */
 export interface BeanstalkState {
     /**
-     * The id of an existing Beanstalk environment. 
+     * The id of an existing Beanstalk environment.
      */
     readonly beanstalkEnvironmentId?: pulumi.Input<string>;
     /**
@@ -279,7 +276,7 @@ export interface BeanstalkState {
  */
 export interface BeanstalkArgs {
     /**
-     * The id of an existing Beanstalk environment. 
+     * The id of an existing Beanstalk environment.
      */
     readonly beanstalkEnvironmentId?: pulumi.Input<string>;
     /**

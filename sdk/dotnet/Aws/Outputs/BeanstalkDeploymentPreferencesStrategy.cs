@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// Bool value if to wait to drain instance 
+        /// Bool value if to wait to drain instance
         /// </summary>
         public readonly bool? ShouldDrainInstances;
 

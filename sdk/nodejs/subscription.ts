@@ -9,14 +9,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * // Create a Subscription
- * const defaultSubscription = new spotinst.Subscription("default-subscription", {
+ * const default_subscription = new spotinst.Subscription("default-subscription", {
  *     endpoint: "http://endpoint.com",
  *     eventType: "AWS_EC2_INSTANCE_LAUNCH",
  *     format: {

@@ -11,6 +11,154 @@ import (
 )
 
 // Provides a Spotinst Ocean AWS resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/aws"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aws.NewOcean(ctx, "example", &aws.OceanArgs{
+// 			AssociatePublicIpAddress: pulumi.Bool(true),
+// 			ControllerId:             pulumi.String("fakeClusterId"),
+// 			DesiredCapacity:          pulumi.Int(2),
+// 			DrainingTimeout:          pulumi.Int(120),
+// 			EbsOptimized:             pulumi.Bool(true),
+// 			FallbackToOndemand:       pulumi.Bool(true),
+// 			GracePeriod:              pulumi.Int(600),
+// 			IamInstanceProfile:       pulumi.String("iam-profile"),
+// 			ImageId:                  pulumi.String("ami-123456"),
+// 			KeyName:                  pulumi.String("fake key"),
+// 			LoadBalancers: aws.OceanLoadBalancerArray{
+// 				&aws.OceanLoadBalancerArgs{
+// 					Arn:  pulumi.String("arn:aws:elasticloadbalancing:us-west-2:fake-arn"),
+// 					Type: pulumi.String("TARGET_GROUP"),
+// 				},
+// 				&aws.OceanLoadBalancerArgs{
+// 					Name: pulumi.String("AntonK"),
+// 					Type: pulumi.String("CLASSIC"),
+// 				},
+// 			},
+// 			MaxSize:        pulumi.Int(2),
+// 			MinSize:        pulumi.Int(1),
+// 			Monitoring:     pulumi.Bool(true),
+// 			Region:         pulumi.String("us-west-2"),
+// 			RootVolumeSize: pulumi.Int(20),
+// 			SecurityGroups: pulumi.StringArray{
+// 				pulumi.String("sg-987654321"),
+// 			},
+// 			SubnetIds: pulumi.StringArray{
+// 				pulumi.String("subnet-123456789"),
+// 			},
+// 			Tags: aws.OceanTagArray{
+// 				&aws.OceanTagArgs{
+// 					Key:   pulumi.String("fakeKey"),
+// 					Value: pulumi.String("fakeValue"),
+// 				},
+// 			},
+// 			UserData:                 pulumi.String("echo hello world"),
+// 			UtilizeReservedInstances: pulumi.Bool(false),
+// 			Whitelists: pulumi.StringArray{
+// 				pulumi.String("t1.micro"),
+// 				pulumi.String("m1.small"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Auto Scaler
+//
+// * `autoscaler` - (Optional) Describes the Ocean Kubernetes autoscaler.
+// * `autoscaleIsEnabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes autoscaler.
+// * `autoscaleIsAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+// * `autoscaleCooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+// * `autoHeadroomPercentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `isAutoConfig` toggled on.
+// * `autoscaleHeadroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+// * `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+// * `gpuPerUnit` - (Optional) Optionally configure the number of GPUS to allocate the headroom.
+// * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+// * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+// * `autoscaleDown` - (Optional) Auto Scaling scale down operations.
+// * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+// * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+// * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+// * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="update-policy"></a>
+// ## Update Policy
+//
+// * `updatePolicy` - (Optional)
+//     * `shouldRoll` - (Required) Enables the roll.
+//     * `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
+//         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="scheduled-task"></a>
+// ## scheduled task
+//
+// * `scheduledTask` - (Optional) Set scheduling object.
+//     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
+//         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
+//                                      Example: True
+//         * `timeWindows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+//                                       Example: Fri:15:30-Wed:14:30
+//     * `tasks` - (Optional) The scheduling tasks for the cluster.
+//         * `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+//         * `cronExpression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+//                                          Example: 0 1 * * *
+//         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
+//                                    Example: clusterRoll
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
 type Ocean struct {
 	pulumi.CustomResourceState
 

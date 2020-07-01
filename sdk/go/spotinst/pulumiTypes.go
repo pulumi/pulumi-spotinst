@@ -30,8 +30,7 @@ type HealthCheckCheck struct {
 // HealthCheckCheckInput is an input type that accepts HealthCheckCheckArgs and HealthCheckCheckOutput values.
 // You can construct a concrete instance of `HealthCheckCheckInput` via:
 //
-// 		 HealthCheckCheckArgs{...}
-//
+//          HealthCheckCheckArgs{...}
 type HealthCheckCheckInput interface {
 	pulumi.Input
 
@@ -79,12 +78,11 @@ func (i HealthCheckCheckArgs) ToHealthCheckCheckPtrOutputWithContext(ctx context
 // HealthCheckCheckPtrInput is an input type that accepts HealthCheckCheckArgs, HealthCheckCheckPtr and HealthCheckCheckPtrOutput values.
 // You can construct a concrete instance of `HealthCheckCheckPtrInput` via:
 //
-// 		 HealthCheckCheckArgs{...}
+//          HealthCheckCheckArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type HealthCheckCheckPtrInput interface {
 	pulumi.Input
 

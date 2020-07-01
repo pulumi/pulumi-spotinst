@@ -11,6 +11,131 @@ import (
 )
 
 // Provides a Spotinst Ocean GKE import resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/gke"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gke.NewOceanImport(ctx, "example", &gke.OceanImportArgs{
+// 			BackendServices: gke.OceanImportBackendServiceArray{
+// 				&gke.OceanImportBackendServiceArgs{
+// 					LocationType: pulumi.String("regional"),
+// 					NamedPorts: gke.OceanImportBackendServiceNamedPortArray{
+// 						&gke.OceanImportBackendServiceNamedPortArgs{
+// 							Name: pulumi.String("http"),
+// 							Ports: pulumi.StringArray{
+// 								pulumi.String("80"),
+// 								pulumi.String("8080"),
+// 							},
+// 						},
+// 					},
+// 					Scheme:      pulumi.String("INTERNAL"),
+// 					ServiceName: pulumi.String("example-backend-service"),
+// 				},
+// 			},
+// 			ClusterName:     pulumi.String("example-cluster-name"),
+// 			DesiredCapacity: pulumi.Int(0),
+// 			Location:        pulumi.String("us-central1-a"),
+// 			MaxSize:         pulumi.Int(2),
+// 			MinSize:         pulumi.Int(0),
+// 			Whitelists: pulumi.StringArray{
+// 				pulumi.String("n1-standard-1"),
+// 				pulumi.String("n1-standard-2"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ctx.Export("controllerClusterId", spotinst_ocean_gke_import.Ocean-gke-example.Cluster_controller_id)
+// 		return nil
+// 	})
+// }
+// ```
+// ## scheduled task
+//
+// * `scheduledTask` - (Optional) Set scheduling object.
+//     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
+//         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
+//                                      Example: True
+//         * `timeWindows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+//                                       Example: Fri:15:30-Wed:14:30
+//     * `tasks` - (Optional) The scheduling tasks for the cluster.
+//         * `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+//         * `cronExpression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+//                                          Example: 0 1 * * *
+//         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
+//         * `batchSizePercentage` - (Optional)  Value in % to set size of batch in roll. Valid values are 0-100
+//                                                 Example: 20.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="autoscaler"></a>
+// ## Autoscaler
+//
+// * `autoscaler` - (Optional) The Ocean Kubernetes Autoscaler object.
+// * `isEnabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Autoscaler.
+// * `isAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+// * `autoHeadroomPercentage` - Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+// * `cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+// * `headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+// * `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+// * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MiB) to allocate the headroom.
+// * `gpuPerUnit` - (Optional) How much GPU allocate for headroom unit.
+// * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+// * `down` - (Optional) Auto Scaling scale down operations.
+// * `evaluationPeriods` - (Optional, Default: `null`) The number of evaluation periods that should accumulate before a scale down action takes place.
+// * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+// * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+// * `maxVcpu` - (Optional) The maximum cpu in vCpu units that can be allocated to the cluster.
+// * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
 type OceanImport struct {
 	pulumi.CustomResourceState
 

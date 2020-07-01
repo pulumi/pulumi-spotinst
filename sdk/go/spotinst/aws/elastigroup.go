@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Spotinst AWS group resource.
 type Elastigroup struct {
 	pulumi.CustomResourceState
 

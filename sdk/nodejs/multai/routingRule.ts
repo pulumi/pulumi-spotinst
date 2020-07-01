@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const myRoutingRule = new spotinst.multai.RoutingRule("myRoutingRule", {
+ * const myRoutingRule = new spotinst.multai.RoutingRule("my_routing_rule", {
  *     balancerId: "b-12345",
  *     listenerId: "l-98765",
  *     route: "Path(`/bar`)",

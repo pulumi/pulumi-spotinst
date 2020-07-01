@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -30,7 +28,7 @@ import * as utilities from "../utilities";
  *     }],
  *     metadatas: [{
  *         key: "gci-update-strategy",
- *         value: "updateDisabled",
+ *         value: "update_disabled",
  *     }],
  *     oceanId: "o-123456",
  *     sourceImage: "image",
@@ -83,7 +81,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly metadatas!: pulumi.Output<outputs.gke.OceanLaunchSpecMetadata[]>;
     /**
-     * The Ocean cluster ID required for launchSpec create. 
+     * The Ocean cluster ID required for launchSpec create.
      */
     public readonly oceanId!: pulumi.Output<string>;
     /**
@@ -159,7 +157,7 @@ export interface OceanLaunchSpecState {
      */
     readonly metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
     /**
-     * The Ocean cluster ID required for launchSpec create. 
+     * The Ocean cluster ID required for launchSpec create.
      */
     readonly oceanId?: pulumi.Input<string>;
     /**
@@ -189,7 +187,7 @@ export interface OceanLaunchSpecArgs {
      */
     readonly metadatas: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
     /**
-     * The Ocean cluster ID required for launchSpec create. 
+     * The Ocean cluster ID required for launchSpec create.
      */
     readonly oceanId: pulumi.Input<string>;
     /**

@@ -14,8 +14,6 @@ namespace Pulumi.SpotInst.Multai
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;

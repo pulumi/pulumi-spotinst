@@ -11,6 +11,138 @@ import (
 )
 
 // Provides a Spotinst Ocean ECS resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/ecs"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ecs.NewOcean(ctx, "example", &ecs.OceanArgs{
+// 			AssociatePublicIpAddress: pulumi.Bool(false),
+// 			ClusterName:              pulumi.String("terraform-ecs-cluster"),
+// 			DesiredCapacity:          pulumi.Int(0),
+// 			DrainingTimeout:          pulumi.Int(120),
+// 			EbsOptimized:             pulumi.Bool(true),
+// 			IamInstanceProfile:       pulumi.String("iam-profile"),
+// 			ImageId:                  pulumi.String("ami-12345"),
+// 			KeyPair:                  pulumi.String("KeyPair"),
+// 			MaxSize:                  pulumi.Int(1),
+// 			MinSize:                  pulumi.Int(0),
+// 			Monitoring:               pulumi.Bool(true),
+// 			Region:                   pulumi.String("us-west-2"),
+// 			SecurityGroupIds: pulumi.StringArray{
+// 				pulumi.String("sg-12345"),
+// 			},
+// 			SubnetIds: pulumi.StringArray{
+// 				pulumi.String("subnet-12345"),
+// 			},
+// 			Tags: ecs.OceanTagArray{
+// 				&ecs.OceanTagArgs{
+// 					Key:   pulumi.String("fakeKey"),
+// 					Value: pulumi.String("fakeValue"),
+// 				},
+// 			},
+// 			UserData:                 pulumi.String("echo hello world"),
+// 			UtilizeReservedInstances: pulumi.Bool(false),
+// 			Whitelists: pulumi.StringArray{
+// 				pulumi.String("t3.medium"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Auto Scaler
+//
+// * `autoscaler` - (Optional) Describes the Ocean ECS autoscaler.
+//     * `isEnabled` - (Optional, Default: `true`) Enable the Ocean ECS autoscaler.
+//     * `isAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+//     * `cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+//     * `headroom` - (Optional) Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+//         * `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+//         * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+//         * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+//     * `down` - (Optional) Auto Scaling scale down operations.
+//         * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100
+//     * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+//         * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+//         * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="update-policy"></a>
+// ## Update Policy
+//
+// * `updatePolicy` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
+//     * `shouldRoll` - (Required) Enables the roll.
+//     * `rollConfig` - (Required)
+//         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="scheduled-task"></a>
+// ## scheduled task
+//
+// * `scheduledTask` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
+//     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
+//         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
+//                                      Example: True
+//         * `timeWindows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+//                                       Example: Fri:15:30-Wed:14:30
+//     * `tasks` - (Optional) The scheduling tasks for the cluster.
+//         * `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+//         * `cronExpression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+//                                          Example: 0 1 * * *.
+//         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
+//                                    Example: clusterRoll.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
 type Ocean struct {
 	pulumi.CustomResourceState
 

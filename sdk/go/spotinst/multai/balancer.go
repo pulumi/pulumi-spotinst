@@ -10,6 +10,39 @@ import (
 )
 
 // Provides a Spotinst Multai Balancer.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := multai.NewBalancer(ctx, "myBalancer", &multai.BalancerArgs{
+// 			ConnectionTimeouts: &multai.BalancerConnectionTimeoutsArgs{
+// 				Draining: pulumi.Int(10),
+// 				Idle:     pulumi.Int(10),
+// 			},
+// 			Scheme: pulumi.String("internal"),
+// 			Tags: multai.BalancerTagArray{
+// 				&multai.BalancerTagArgs{
+// 					Key:   pulumi.String("env"),
+// 					Value: pulumi.String("prod"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Balancer struct {
 	pulumi.CustomResourceState
 

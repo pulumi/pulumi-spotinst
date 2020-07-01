@@ -11,6 +11,79 @@ import (
 )
 
 // Provides a custom Spotinst Ocean AWS Launch Spec resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/aws"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aws.NewOceanLaunchSpec(ctx, "example", &aws.OceanLaunchSpecArgs{
+// 			AutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{
+// 				&aws.OceanLaunchSpecAutoscaleHeadroomArgs{
+// 					CpuPerUnit:    pulumi.Int(1000),
+// 					GpuPerUnit:    pulumi.Int(0),
+// 					MemoryPerUnit: pulumi.Int(2048),
+// 					NumOfUnits:    pulumi.Int(5),
+// 				},
+// 			},
+// 			ElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{
+// 				&aws.OceanLaunchSpecElasticIpPoolArgs{
+// 					TagSelector: &aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{
+// 						TagKey:   pulumi.String("key"),
+// 						TagValue: pulumi.String("value"),
+// 					},
+// 				},
+// 			},
+// 			IamInstanceProfile: pulumi.String("iam-profile"),
+// 			ImageId:            pulumi.String("ami-123456"),
+// 			Labels: aws.OceanLaunchSpecLabelArray{
+// 				&aws.OceanLaunchSpecLabelArgs{
+// 					Key:   pulumi.String("fakeKey"),
+// 					Value: pulumi.String("fakeValue"),
+// 				},
+// 			},
+// 			OceanId: pulumi.String("o-123456"),
+// 			ResourceLimits: aws.OceanLaunchSpecResourceLimitArray{
+// 				&aws.OceanLaunchSpecResourceLimitArgs{
+// 					MaxInstanceCount: pulumi.Int(4),
+// 				},
+// 			},
+// 			RootVolumeSize: pulumi.Int(30),
+// 			SecurityGroups: pulumi.StringArray{
+// 				pulumi.String("sg-987654321"),
+// 			},
+// 			SubnetIds: pulumi.StringArray{
+// 				pulumi.String("subnet-1234"),
+// 			},
+// 			Tags: aws.OceanLaunchSpecTagArray{
+// 				&aws.OceanLaunchSpecTagArgs{
+// 					Key:   pulumi.String("Env"),
+// 					Value: pulumi.String("production"),
+// 				},
+// 			},
+// 			Taints: aws.OceanLaunchSpecTaintArray{
+// 				&aws.OceanLaunchSpecTaintArgs{
+// 					Effect: pulumi.String("NoExecute"),
+// 					Key:    pulumi.String("taint key updated"),
+// 					Value:  pulumi.String("taint value updated"),
+// 				},
+// 			},
+// 			UserData: pulumi.String("echo hello world"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
 

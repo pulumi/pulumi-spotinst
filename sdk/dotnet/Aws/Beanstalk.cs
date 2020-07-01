@@ -14,8 +14,6 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
@@ -33,12 +31,12 @@ namespace Pulumi.SpotInst.Aws
     ///                 AutomaticRoll = true,
     ///                 BatchSizePercentage = 100,
     ///                 GracePeriod = 90,
-    ///                 Strategy = 
+    ///                 Strategies = 
     ///                 {
-    ///                     
+    ///                     new SpotInst.Aws.Inputs.BeanstalkDeploymentPreferencesStrategyArgs
     ///                     {
-    ///                         { "action", "REPLACE_SERVER" },
-    ///                         { "shouldDrainInstances", true },
+    ///                         Action = "REPLACE_SERVER",
+    ///                         ShouldDrainInstances = true,
     ///                     },
     ///                 },
     ///             },
@@ -67,7 +65,6 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// }
     /// ```
-    /// 
     /// ## Scheduled Tasks
     /// 
     /// Each `scheduled_task` supports the following:
@@ -105,7 +102,7 @@ namespace Pulumi.SpotInst.Aws
     public partial class Beanstalk : Pulumi.CustomResource
     {
         /// <summary>
-        /// The id of an existing Beanstalk environment. 
+        /// The id of an existing Beanstalk environment.
         /// </summary>
         [Output("beanstalkEnvironmentId")]
         public Output<string?> BeanstalkEnvironmentId { get; private set; } = null!;
@@ -224,7 +221,7 @@ namespace Pulumi.SpotInst.Aws
     public sealed class BeanstalkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of an existing Beanstalk environment. 
+        /// The id of an existing Beanstalk environment.
         /// </summary>
         [Input("beanstalkEnvironmentId")]
         public Input<string>? BeanstalkEnvironmentId { get; set; }
@@ -315,7 +312,7 @@ namespace Pulumi.SpotInst.Aws
     public sealed class BeanstalkState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of an existing Beanstalk environment. 
+        /// The id of an existing Beanstalk environment.
         /// </summary>
         [Input("beanstalkEnvironmentId")]
         public Input<string>? BeanstalkEnvironmentId { get; set; }

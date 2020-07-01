@@ -9,6 +9,516 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Aws
 {
+    /// <summary>
+    /// Provides a Spotinst AWS MrScaler resource.
+    /// 
+    /// ## Provisioning Timeout (Clone, New strategies)
+    /// 
+    /// * `timeout` - (Optional) The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
+    /// * `timeout_action` - (Optional) The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+    /// 
+    /// &lt;a id="cluster-config"&gt;&lt;/a&gt;
+    /// ## Cluster Configuration (New strategy only)
+    /// 
+    /// * `log_uri` - (Optional) The path to the Amazon S3 location where logs for this cluster are stored.
+    /// * `additional_info` - (Optional) This is meta information about third-party applications that third-party vendors use for testing purposes.
+    /// * `security_config` - (Optional) The name of the security configuration applied to the cluster.
+    /// * `service_role` - (Optional) The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
+    /// * `job_flow_role` - (Optional) The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
+    /// * `termination_protected` - (Optional) Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
+    /// * `keep_job_flow_alive` - (Optional) Specifies whether the cluster should remain available after completing all steps.
+    /// * `retries` - (Optional) Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded.
+    /// 
+    /// &lt;a id="task-group"&gt;&lt;/a&gt;
+    /// ## Task Group (Wrap, Clone, and New strategies)
+    /// 
+    /// * `task_instance_types` - (Required) The MrScaler instance types for the task nodes.
+    /// * `task_target` - (Required) amount of instances in task group.
+    /// * `task_maximum` - (Optional) maximal amount of instances in task group.
+    /// * `task_minimum` - (Optional) The minimal amount of instances in task group.
+    /// * `task_unit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+    /// * `task_lifecycle` - (Required) The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+    /// * `task_ebs_optimized` - (Optional) EBS Optimization setting for instances in group.
+    /// * `task_ebs_block_device` - (Required) This determines the ebs configuration for your task group instances. Only a single block is allowed.
+    ///     * `volumes_per_instance` - (Optional; Default 1) Amount of volumes per instance in the task group.
+    ///     * `volume_type` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
+    ///     * `size_in_gb` - (Required) Size of the volume, in GBs.
+    ///     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
+    /// 
+    /// &lt;a id="core-group"&gt;&lt;/a&gt;
+    /// ## Core Group (Clone, New strategies)
+    /// 
+    /// * `core_instance_types` - (Required) The MrScaler instance types for the core nodes.
+    /// * `core_target` - (Required) amount of instances in core group.
+    /// * `core_maximum` - (Optional) maximal amount of instances in core group.
+    /// * `core_minimum` - (Optional) The minimal amount of instances in core group.
+    /// * `core_unit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+    /// * `core_lifecycle` - (Required) The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+    /// * `core_ebs_optimized` - (Optional) EBS Optimization setting for instances in group.
+    /// * `core_ebs_block_device` - (Required) This determines the ebs configuration for your core group instances. Only a single block is allowed.
+    ///     * `volumes_per_instance` - (Optional; Default 1) Amount of volumes per instance in the core group.
+    ///     * `volume_type` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
+    ///     * `size_in_gb` - (Required) Size of the volume, in GBs.
+    ///     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
+    /// 
+    /// &lt;a id="master-group"&gt;&lt;/a&gt;
+    /// ## Master Group (Clone, New strategies)
+    /// 
+    /// * `master_instance_types` - (Required) The MrScaler instance types for the master nodes.
+    /// * `master_lifecycle` - (Required) The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+    /// * `master_ebs_optimized` - (Optional) EBS Optimization setting for instances in group.
+    /// * `master_ebs_block_device` - (Required) This determines the ebs configuration for your master group instances. Only a single block is allowed.
+    ///     * `volumes_per_instance` - (Optional; Default 1) Amount of volumes per instance in the master group.
+    ///     * `volume_type` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
+    ///     * `size_in_gb` - (Required) Size of the volume, in GBs.
+    ///     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
+    /// 
+    /// &lt;a id="tags"&gt;&lt;/a&gt;
+    /// ## Tags (Clone, New strategies)
+    /// 
+    /// * `tags` - (Optional) A list of tags to assign to the resource. You may define multiple tags.
+    ///     * `key` - (Required) Tag key.
+    ///     * `value` - (Required) Tag value.
+    /// 
+    /// &lt;a id="Optional Compute Parameters"&gt;&lt;/a&gt;
+    /// ## Optional Compute Parameters (New strategy)
+    /// 
+    /// * `managed_primary_security_group` - (Optional) EMR Managed Security group that will be set to the primary instance group.
+    /// * `managed_replica_security_group` - (Optional) EMR Managed Security group that will be set to the replica instance group.
+    /// * `service_access_security_group` - (Optional) The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
+    /// * `additional_primary_security_groups` - (Optional) A list of additional Amazon EC2 security group IDs for the master node.
+    /// * `additional_replica_security_groups` - (Optional) A list of additional Amazon EC2 security group IDs for the core and task nodes.
+    /// * `custom_ami_id` - (Optional) The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
+    /// * `repo_upgrade_on_boot` - (Optional) Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
+    /// * `ec2_key_name` - (Optional) The name of an Amazon EC2 key pair that can be used to ssh to the master node.
+    /// * `applications` - (Optional) A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
+    ///     * `args` - (Optional) Arguments for EMR to pass to the application.
+    ///     * `name` - (Required) The application name.
+    ///     * `version`- (Optional)T he version of the application.
+    /// * `instance_weights` - (Optional) Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
+    ///     * `instance_type` - (Required) The type of the instance.
+    ///     * `weighted_capacity` - (Required) The weight given to the associated instance type.
+    /// 
+    /// &lt;a id="availability-zone"&gt;&lt;/a&gt;
+    /// ## Availability Zones (Clone, New strategies)
+    /// 
+    /// * `availability_zones` - (Required in Clone) List of AZs and their subnet Ids. See example above for usage.
+    /// 
+    /// &lt;a id="configurations"&gt;&lt;/a&gt;
+    /// ## Configurations (Clone, New strategies)
+    /// 
+    /// * `configurations_file` - (Optional) Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+    ///     * `bucket` - (Required) S3 Bucket name for configurations.
+    ///     * `key`- (Required) S3 key for configurations.
+    /// 
+    /// &lt;a id="steps"&gt;&lt;/a&gt;
+    /// ## Steps (Clone, New strategies)
+    /// 
+    /// * `steps_file` - (Optional) Steps from S3.
+    ///     * `bucket` - (Required) S3 Bucket name for steps.
+    ///     * `key`- (Required) S3 key for steps.
+    /// 
+    /// &lt;a id="boostrap-actions"&gt;&lt;/a&gt;
+    /// ## Bootstrap Actions (Clone, New strategies)
+    /// 
+    /// * `bootstrap_actions_file` - (Optional) Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+    ///     * `bucket` - (Required) S3 Bucket name for bootstrap actions.
+    ///     * `key`- (Required) S3 key for bootstrap actions.
+    /// 
+    /// &lt;a id="scaling-policy"&gt;&lt;/a&gt;
+    /// ## Scaling Policies
+    /// 
+    /// Possible task group scaling policies (Wrap, Clone, and New strategies):
+    /// * `task_scaling_up_policy`
+    /// * `task_scaling_down_policy`
+    /// 
+    /// Possible core group scaling policies (Clone, New strategies):
+    /// * `core_scaling_up_policy`
+    /// * `core_scaling_down_policy`
+    /// 
+    /// Each `*_scaling_*_policy` supports the following:
+    /// 
+    /// * `policy_name` - (Required) The name of the policy.
+    /// * `metric_name` - (Required) The name of the metric, with or without spaces.
+    /// * `statistic` - (Required) The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+    /// * `unit` - (Required) The unit for the metric.
+    /// * `threshold` - (Required) The value against which the specified statistic is compared.
+    /// * `adjustment` - (Optional) The number of instances to add/remove to/from the target capacity when scale is needed.
+    /// * `min_target_capacity` - (Optional) Min target capacity for scale up.
+    /// * `max_target_capacity` - (Optional) Max target capacity for scale down.
+    /// * `namespace` - (Required) The namespace for the metric.
+    /// * `operator` - (Required) The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
+    /// * `evaluation_periods` - (Required) The number of periods over which data is compared to the specified threshold.
+    /// * `period` - (Required) The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+    /// * `cooldown` - (Required) The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+    /// * `dimensions` - (Optional) A mapping of dimensions describing qualities of the metric.
+    /// * `minimum` - (Optional) The minimum to set when scale is needed.
+    /// * `maximum` - (Optional) The maximum to set when scale is needed.
+    /// * `target` - (Optional) The number of instances to set when scale is needed.
+    /// * `action_type` - (Required) The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+    /// 
+    /// &lt;a id="scheduled-task"&gt;&lt;/a&gt;
+    /// ## Scheduled Tasks
+    /// 
+    /// * `scheduled_task` - (Optional) An array of scheduled tasks.
+    /// * `is_enabled` - (Optional) Enable/Disable the specified scheduling task.
+    /// * `task_type` - (Required) The type of task to be scheduled. Valid values: `setCapacity`.
+    /// * `instance_group_type` - (Required) Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
+    /// * `cron` - (Required) A cron expression representing the schedule for the task.
+    /// * `desired_capacity` - (Optional) New desired capacity for the elastigroup.
+    /// * `min_capacity` - (Optional) New min capacity for the elastigroup.
+    /// * `max_capacity` - (Optional) New max capacity for the elastigroup.
+    /// 
+    /// &lt;a id="termination-policies"&gt;&lt;/a&gt;
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### New Strategy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var terraform_MrScaler_01 = new SpotInst.Aws.MrScalar("terraform-MrScaler-01", new SpotInst.Aws.MrScalarArgs
+    ///         {
+    ///             AdditionalInfo = "{'test':'more information'}",
+    ///             AdditionalPrimarySecurityGroups = 
+    ///             {
+    ///                 "sg-456321",
+    ///             },
+    ///             AdditionalReplicaSecurityGroups = 
+    ///             {
+    ///                 "sg-123654",
+    ///             },
+    ///             Applications = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarApplicationArgs
+    ///                 {
+    ///                     Name = "Ganglia",
+    ///                     Version = "1.0",
+    ///                 },
+    ///                 new SpotInst.Aws.Inputs.MrScalarApplicationArgs
+    ///                 {
+    ///                     Name = "Hadoop",
+    ///                 },
+    ///                 new SpotInst.Aws.Inputs.MrScalarApplicationArgs
+    ///                 {
+    ///                     Args = 
+    ///                     {
+    ///                         "fake",
+    ///                         "args",
+    ///                     },
+    ///                     Name = "Pig",
+    ///                 },
+    ///             },
+    ///             AvailabilityZones = 
+    ///             {
+    ///                 "us-west-2a:subnet-123456",
+    ///             },
+    ///             BootstrapActionsFiles = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarBootstrapActionsFileArgs
+    ///                 {
+    ///                     Bucket = "terraform-emr-test",
+    ///                     Key = "bootstrap-actions.json",
+    ///                 },
+    ///             },
+    ///             ConfigurationsFiles = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarConfigurationsFileArgs
+    ///                 {
+    ///                     Bucket = "example-bucket",
+    ///                     Key = "configurations.json",
+    ///                 },
+    ///             },
+    ///             CoreDesiredCapacity = 1,
+    ///             CoreEbsBlockDevices = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarCoreEbsBlockDeviceArgs
+    ///                 {
+    ///                     SizeInGb = 40,
+    ///                     VolumeType = "gp2",
+    ///                     VolumesPerInstance = 2,
+    ///                 },
+    ///             },
+    ///             CoreEbsOptimized = false,
+    ///             CoreInstanceTypes = 
+    ///             {
+    ///                 "c3.xlarge",
+    ///                 "c4.xlarge",
+    ///             },
+    ///             CoreLifecycle = "ON_DEMAND",
+    ///             CoreMaxSize = 1,
+    ///             CoreMinSize = 1,
+    ///             CoreUnit = "instance",
+    ///             CustomAmiId = "ami-123456",
+    ///             Description = "Testing MrScaler creation via Terraform",
+    ///             Ec2KeyName = "test-key",
+    ///             InstanceWeights = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarInstanceWeightArgs
+    ///                 {
+    ///                     InstanceType = "t2.small",
+    ///                     WeightedCapacity = 10,
+    ///                 },
+    ///                 new SpotInst.Aws.Inputs.MrScalarInstanceWeightArgs
+    ///                 {
+    ///                     InstanceType = "t2.medium",
+    ///                     WeightedCapacity = 90,
+    ///                 },
+    ///             },
+    ///             JobFlowRole = "EMR_EC2_ExampleRole",
+    ///             KeepJobFlowAlive = true,
+    ///             LogUri = "s3://example-logs",
+    ///             ManagedPrimarySecurityGroup = "sg-123456",
+    ///             ManagedReplicaSecurityGroup = "sg-987654",
+    ///             MasterEbsBlockDevices = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarMasterEbsBlockDeviceArgs
+    ///                 {
+    ///                     SizeInGb = 30,
+    ///                     VolumeType = "gp2",
+    ///                     VolumesPerInstance = 1,
+    ///                 },
+    ///             },
+    ///             MasterEbsOptimized = true,
+    ///             MasterInstanceTypes = 
+    ///             {
+    ///                 "c3.xlarge",
+    ///             },
+    ///             MasterLifecycle = "SPOT",
+    ///             ProvisioningTimeout = new SpotInst.Aws.Inputs.MrScalarProvisioningTimeoutArgs
+    ///             {
+    ///                 Timeout = 15,
+    ///                 TimeoutAction = "terminate",
+    ///             },
+    ///             Region = "us-west-2",
+    ///             ReleaseLabel = "emr-5.17.0",
+    ///             RepoUpgradeOnBoot = "NONE",
+    ///             Retries = 2,
+    ///             SecurityConfig = "example-config",
+    ///             ServiceAccessSecurityGroup = "access-example",
+    ///             ServiceRole = "example-role",
+    ///             StepsFiles = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarStepsFileArgs
+    ///                 {
+    ///                     Bucket = "example-bucket",
+    ///                     Key = "steps.json",
+    ///                 },
+    ///             },
+    ///             Strategy = "new",
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarTagArgs
+    ///                 {
+    ///                     Key = "Creator",
+    ///                     Value = "Terraform",
+    ///                 },
+    ///             },
+    ///             TaskDesiredCapacity = 1,
+    ///             TaskEbsBlockDevices = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarTaskEbsBlockDeviceArgs
+    ///                 {
+    ///                     SizeInGb = 40,
+    ///                     VolumeType = "gp2",
+    ///                     VolumesPerInstance = 2,
+    ///                 },
+    ///             },
+    ///             TaskEbsOptimized = false,
+    ///             TaskInstanceTypes = 
+    ///             {
+    ///                 "c3.xlarge",
+    ///                 "c4.xlarge",
+    ///             },
+    ///             TaskLifecycle = "SPOT",
+    ///             TaskMaxSize = 30,
+    ///             TaskMinSize = 0,
+    ///             TaskUnit = "instance",
+    ///             TerminationProtected = false,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Clone Strategy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var terraform_MrScaler_01 = new SpotInst.Aws.MrScalar("terraform-MrScaler-01", new SpotInst.Aws.MrScalarArgs
+    ///         {
+    ///             AvailabilityZones = 
+    ///             {
+    ///                 "us-west-2a:subnet-12345678",
+    ///             },
+    ///             ClusterId = "j-123456789",
+    ///             CoreDesiredCapacity = 1,
+    ///             CoreEbsBlockDevices = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarCoreEbsBlockDeviceArgs
+    ///                 {
+    ///                     SizeInGb = 40,
+    ///                     VolumeType = "gp2",
+    ///                     VolumesPerInstance = 2,
+    ///                 },
+    ///             },
+    ///             CoreEbsOptimized = false,
+    ///             CoreInstanceTypes = 
+    ///             {
+    ///                 "c3.xlarge",
+    ///                 "c4.xlarge",
+    ///             },
+    ///             CoreLifecycle = "ON_DEMAND",
+    ///             CoreMaxSize = 1,
+    ///             CoreMinSize = 1,
+    ///             CoreUnit = "instance",
+    ///             Description = "Testing MrScaler creation via Terraform",
+    ///             ExposeClusterId = true,
+    ///             MasterEbsBlockDevices = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarMasterEbsBlockDeviceArgs
+    ///                 {
+    ///                     SizeInGb = 30,
+    ///                     VolumeType = "gp2",
+    ///                     VolumesPerInstance = 1,
+    ///                 },
+    ///             },
+    ///             MasterEbsOptimized = true,
+    ///             MasterInstanceTypes = 
+    ///             {
+    ///                 "c3.xlarge",
+    ///             },
+    ///             MasterLifecycle = "SPOT",
+    ///             Region = "us-west-2",
+    ///             Strategy = "clone",
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarTagArgs
+    ///                 {
+    ///                     Key = "Creator",
+    ///                     Value = "Terraform",
+    ///                 },
+    ///             },
+    ///             TaskDesiredCapacity = 1,
+    ///             TaskEbsBlockDevices = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarTaskEbsBlockDeviceArgs
+    ///                 {
+    ///                     SizeInGb = 40,
+    ///                     VolumeType = "gp2",
+    ///                     VolumesPerInstance = 2,
+    ///                 },
+    ///             },
+    ///             TaskEbsOptimized = false,
+    ///             TaskInstanceTypes = 
+    ///             {
+    ///                 "c3.xlarge",
+    ///                 "c4.xlarge",
+    ///             },
+    ///             TaskLifecycle = "SPOT",
+    ///             TaskMaxSize = 30,
+    ///             TaskMinSize = 0,
+    ///             TaskScalingDownPolicies = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarTaskScalingDownPolicyArgs
+    ///                 {
+    ///                     ActionType = "",
+    ///                     Adjustment = "1",
+    ///                     Cooldown = 60,
+    ///                     Dimensions = 
+    ///                     {
+    ///                         { "name", "name-1" },
+    ///                         { "value", "value-1" },
+    ///                     },
+    ///                     EvaluationPeriods = 10,
+    ///                     MaxTargetCapacity = "1",
+    ///                     Maximum = "10",
+    ///                     MetricName = "CPUUtilization",
+    ///                     Minimum = "0",
+    ///                     Namespace = "AWS/EC2",
+    ///                     Operator = "gt",
+    ///                     Period = 60,
+    ///                     PolicyName = "policy-name",
+    ///                     Statistic = "average",
+    ///                     Target = "5",
+    ///                     Threshold = 10,
+    ///                     Unit = "",
+    ///                 },
+    ///             },
+    ///             TaskUnit = "instance",
+    ///         });
+    ///         this.Mrscaler_name = terraform_MrScaler_01.Name;
+    ///         this.Mrscaler_created_cluster_id = terraform_MrScaler_01.OutputClusterId;
+    ///     }
+    /// 
+    ///     [Output("mrscaler-name")]
+    ///     public Output&lt;string&gt; Mrscaler_name { get; set; }
+    ///     [Output("mrscaler-created-cluster-id")]
+    ///     public Output&lt;string&gt; Mrscaler_created_cluster_id { get; set; }
+    /// }
+    /// ```
+    /// ### Wrap Strategy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example_scaler_2 = new SpotInst.Aws.MrScalar("example-scaler-2", new SpotInst.Aws.MrScalarArgs
+    ///         {
+    ///             ClusterId = "j-27UVDEHXL4OQM",
+    ///             Description = "created by Terraform",
+    ///             Region = "us-west-2",
+    ///             Strategy = "wrap",
+    ///             TaskDesiredCapacity = 2,
+    ///             TaskEbsBlockDevices = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.MrScalarTaskEbsBlockDeviceArgs
+    ///                 {
+    ///                     SizeInGb = 20,
+    ///                     VolumeType = "gp2",
+    ///                     VolumesPerInstance = 1,
+    ///                 },
+    ///             },
+    ///             TaskInstanceTypes = 
+    ///             {
+    ///                 "c3.xlarge",
+    ///                 "c4.xlarge",
+    ///             },
+    ///             TaskLifecycle = "SPOT",
+    ///             TaskMaxSize = 4,
+    ///             TaskMinSize = 0,
+    ///             TaskUnit = "instance",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class MrScalar : Pulumi.CustomResource
     {
         [Output("additionalInfo")]

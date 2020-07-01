@@ -212,7 +212,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> OndemandCount { get; private set; } = null!;
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
+        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
         /// </summary>
         [Output("orientation")]
         public Output<string> Orientation { get; private set; } = null!;
@@ -342,7 +342,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> WaitForCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+        /// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
         /// </summary>
         [Output("waitForCapacityTimeout")]
         public Output<int?> WaitForCapacityTimeout { get; private set; } = null!;
@@ -649,7 +649,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? OndemandCount { get; set; }
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
+        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
         /// </summary>
         [Input("orientation", required: true)]
         public Input<string> Orientation { get; set; } = null!;
@@ -844,7 +844,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? WaitForCapacity { get; set; }
 
         /// <summary>
-        /// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+        /// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
         /// </summary>
         [Input("waitForCapacityTimeout")]
         public Input<int>? WaitForCapacityTimeout { get; set; }
@@ -1112,7 +1112,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? OndemandCount { get; set; }
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.    
+        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
         /// </summary>
         [Input("orientation")]
         public Input<string>? Orientation { get; set; }
@@ -1307,7 +1307,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? WaitForCapacity { get; set; }
 
         /// <summary>
-        /// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
+        /// Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
         /// </summary>
         [Input("waitForCapacityTimeout")]
         public Input<int>? WaitForCapacityTimeout { get; set; }

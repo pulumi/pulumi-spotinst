@@ -9,13 +9,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const myDeployment = new spotinst.multai.Deployment("myDeployment", {});
+ * const myDeployment = new spotinst.multai.Deployment("my_deployment", {});
  * ```
  */
 export class Deployment extends pulumi.CustomResource {
