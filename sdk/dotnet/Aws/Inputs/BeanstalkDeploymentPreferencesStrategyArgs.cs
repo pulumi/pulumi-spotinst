@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// Bool value if to wait to drain instance 
+        /// Bool value if to wait to drain instance
         /// </summary>
         [Input("shouldDrainInstances")]
         public Input<bool>? ShouldDrainInstances { get; set; }

@@ -11,6 +11,377 @@ import (
 )
 
 // Provides a Spotinst elastigroup Azure resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/azure"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azure.NewElastigroup(ctx, "testAzureGroup", &azure.ElastigroupArgs{
+// 			DesiredCapacity: pulumi.Int(1),
+// 			HealthCheck: &azure.ElastigroupHealthCheckArgs{
+// 				AutoHealing:     pulumi.Bool(true),
+// 				GracePeriod:     pulumi.Int(120),
+// 				HealthCheckType: pulumi.String("INSTANCE_STATE"),
+// 			},
+// 			Images: azure.ElastigroupImageArray{
+// 				&azure.ElastigroupImageArgs{
+// 					Marketplaces: azure.ElastigroupImageMarketplaceArray{
+// 						&azure.ElastigroupImageMarketplaceArgs{
+// 							Offer:     pulumi.String("UbuntuServer"),
+// 							Publisher: pulumi.String("Canonical"),
+// 							Sku:       pulumi.String("16.04-LTS"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			LoadBalancers: azure.ElastigroupLoadBalancerArray{
+// 				&azure.ElastigroupLoadBalancerArgs{
+// 					AutoWeight:  pulumi.Bool(true),
+// 					BalancerId:  pulumi.String("lb-1ee2e3q"),
+// 					TargetSetId: pulumi.String("ts-3eq"),
+// 					Type:        pulumi.String("MULTAI_TARGET_SET"),
+// 				},
+// 			},
+// 			Login: &azure.ElastigroupLoginArgs{
+// 				SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
+// 				UserName:     pulumi.String("admin"),
+// 			},
+// 			LowPrioritySizes: pulumi.StringArray{
+// 				pulumi.String("standard_a1_v1"),
+// 				pulumi.String("standard_a1_v2"),
+// 			},
+// 			ManagedServiceIdentities: azure.ElastigroupManagedServiceIdentityArray{
+// 				&azure.ElastigroupManagedServiceIdentityArgs{
+// 					Name:              pulumi.String("example-identity"),
+// 					ResourceGroupName: pulumi.String("spotinst-azure"),
+// 				},
+// 			},
+// 			MaxSize: pulumi.Int(1),
+// 			MinSize: pulumi.Int(0),
+// 			Network: &azure.ElastigroupNetworkArgs{
+// 				AssignPublicIp:     pulumi.Bool(true),
+// 				ResourceGroupName:  pulumi.String("subnetResourceGroup"),
+// 				SubnetName:         pulumi.String("my-subnet-name"),
+// 				VirtualNetworkName: pulumi.String("vname"),
+// 			},
+// 			OdSizes: pulumi.StringArray{
+// 				pulumi.String("standard_a1_v1"),
+// 				pulumi.String("standard_a1_v2"),
+// 			},
+// 			Product:           pulumi.String("Linux"),
+// 			Region:            pulumi.String("eastus"),
+// 			ResourceGroupName: pulumi.String("spotinst-azure"),
+// 			ScalingDownPolicies: azure.ElastigroupScalingDownPolicyArray{
+// 				&azure.ElastigroupScalingDownPolicyArgs{
+// 					ActionType: pulumi.String("adjustment"),
+// 					Adjustment: pulumi.String("MIN(5,10)"),
+// 					Cooldown:   pulumi.Int(60),
+// 					Dimensions: azure.ElastigroupScalingDownPolicyDimensionArray{
+// 						&azure.ElastigroupScalingDownPolicyDimensionArgs{
+// 							Name:  pulumi.String("name-1"),
+// 							Value: pulumi.String("value-1"),
+// 						},
+// 					},
+// 					EvaluationPeriods: pulumi.Int(10),
+// 					MetricName:        pulumi.String("CPUUtilization"),
+// 					Namespace:         pulumi.String("Microsoft.Compute"),
+// 					Operator:          pulumi.String("gt"),
+// 					Period:            pulumi.Int(60),
+// 					PolicyName:        pulumi.String("policy-name"),
+// 					Statistic:         pulumi.String("average"),
+// 					Threshold:         pulumi.Float64(10),
+// 					Unit:              pulumi.String("percent"),
+// 				},
+// 			},
+// 			ScalingUpPolicies: azure.ElastigroupScalingUpPolicyArray{
+// 				&azure.ElastigroupScalingUpPolicyArgs{
+// 					ActionType: pulumi.String("setMinTarget"),
+// 					Cooldown:   pulumi.Int(60),
+// 					Dimensions: azure.ElastigroupScalingUpPolicyDimensionArray{
+// 						&azure.ElastigroupScalingUpPolicyDimensionArgs{
+// 							Name:  pulumi.String("resourceName"),
+// 							Value: pulumi.String("resource-name"),
+// 						},
+// 						&azure.ElastigroupScalingUpPolicyDimensionArgs{
+// 							Name:  pulumi.String("resourceGroupName"),
+// 							Value: pulumi.String("resource-group-name"),
+// 						},
+// 					},
+// 					EvaluationPeriods: pulumi.Int(10),
+// 					MetricName:        pulumi.String("CPUUtilization"),
+// 					MinTargetCapacity: pulumi.String("1"),
+// 					Namespace:         pulumi.String("Microsoft.Compute"),
+// 					Operator:          pulumi.String("gt"),
+// 					Period:            pulumi.Int(60),
+// 					PolicyName:        pulumi.String("policy-name"),
+// 					Statistic:         pulumi.String("average"),
+// 					Threshold:         pulumi.Float64(10),
+// 					Unit:              pulumi.String("percent"),
+// 				},
+// 			},
+// 			ScheduledTasks: azure.ElastigroupScheduledTaskArray{
+// 				&azure.ElastigroupScheduledTaskArgs{
+// 					Adjustment:           pulumi.String("2"),
+// 					AdjustmentPercentage: pulumi.String("50"),
+// 					BatchSizePercentage:  pulumi.String("33"),
+// 					CronExpression:       pulumi.String("* * * * *"),
+// 					GracePeriod:          pulumi.String("300"),
+// 					IsEnabled:            pulumi.Bool(true),
+// 					ScaleMaxCapacity:     pulumi.String("8"),
+// 					ScaleMinCapacity:     pulumi.String("5"),
+// 					ScaleTargetCapacity:  pulumi.String("6"),
+// 					TaskType:             pulumi.String("scale"),
+// 				},
+// 			},
+// 			ShutdownScript: pulumi.String(""),
+// 			Strategy: &azure.ElastigroupStrategyArgs{
+// 				DrainingTimeout: pulumi.Int(300),
+// 				OdCount:         pulumi.Int(1),
+// 			},
+// 			UserData: pulumi.String(""),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Load Balancers
+//
+// * `loadBalancers` - (Required) Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+// * `type` - (Required) The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+// * `balancerId` - (Required) The balancer ID.
+// * `targetSetId` - (Required) The scale set ID associated with the load balancer.
+// * `autoWeight` - (Optional, Default: `false`)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="image"></a>
+// ## Image
+//
+// * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+// * `publisher` - (Optional) Image publisher. Required if resourceGroupName is not specified.
+// * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
+// * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+// * `resourceGroupName` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
+// * `imageName` - (Optional) Name of the custom image. Required if resourceGroupName is specified.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="health-check"></a>
+// ## Health Check
+//
+// * `healthCheck` - (Optional) Describes the health check configuration.
+// * `healthCheckType` - (Optional) Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
+// * `gracePeriod` - (Optional) Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+// * `autoHealing` - (Optional) Enable auto-healing of unhealthy VMs.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="network"></a>
+// ## Network
+//
+// * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
+// * `virtualNetworkName` - (Required) Name of Vnet.
+// * `subnetName` - (Required) ID of subnet.
+// * `resourceGroupName` - (Required) Vnet Resource Group Name.
+// * `assignPublicUp` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
+// * `additionalIpConfigs` - (Optional) Array of additional IP configuration objects.
+// * `name` - (Required) The IP configuration name.
+// * `privateIpVersion` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="login"></a>
+// ## Login
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="login"></a>
+// ## Login
+//
+// * `login` - (Required) Describes the login configuration.
+// * `userName` - (Required) Set admin access for accessing your VMs.
+// * `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Required for Linux product types.
+// * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows product types.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="scaling-policy"></a>
+// ## Scheduling
+//
+// * `scheduledTask` - (Optional) Describes the configuration of one or more scheduled tasks.
+// * `isEnabled` - (Optional, Default: `true`) Describes whether the task is enabled. When true the task should run when false it should not run.
+// * `cronExpression` - (Required) A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
+// * `taskType` - (Required) The task type to run. Valid Values: `backupAmi`, `scale`, `scaleUp`, `roll`, `statefulUpdateCapacity`, `statefulRecycle`.
+// * `scaleMinCapacity` - (Optional) The min capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
+// * `scaleMaxCapacity` - (Optional) The max capacity of the group. Required when ‘task_type' is ‘scale'.
+// * `scaleTargetCapacity` - (Optional) The target capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
+// * `adjustment` - (Optional) The number of instances to add/remove to/from the target capacity when scale is needed.
+// * `adjustmentPercentage` - (Optional) The percent of instances to add/remove to/from the target capacity when scale is needed.
+// * `batchSizePercentage` - (Optional) The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
+// * `gracePeriod` - (Optional) The time to allow instances to become healthy.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="update-policy"></a>
+// ## Update Policy
+//
+// * `updatePolicy` - (Optional)
+//
+//     * `shouldRoll` - (Required) Sets the enablement of the roll option.
+//     * `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
+//         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+//         * `healthCheckType` - (Optional) Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+//         * `gracePeriod` - (Optional) Sets the grace period for new instances to become healthy.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="third-party-integrations"></a>
+// ## Third-Party Integrations
+//
+// * `integrationKubernetes` - (Optional) Describes the [Kubernetes](https://kubernetes.io/) integration.
+//     * `clusterIdentifier` - (Required) The cluster ID.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// * `integrationMultaiRuntime` - (Optional) Describes the [Multai Runtime](https://spotinst.com/) integration.
+//     * `deploymentId` - (Optional) The deployment id you want to get
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
 type Elastigroup struct {
 	pulumi.CustomResourceState
 

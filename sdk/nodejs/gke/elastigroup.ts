@@ -6,6 +6,127 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
+ *
+ * ## Example Usage
+ *
+ * A spotinst.gke.Elastigroup supports all of the fields defined in spotinst_elastigroup_gcp.
+ *
+ * There are two main differences:
+ *
+ * * you must include `clusterZoneName` and `clusterId`
+ * * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example_gke_elastigroup = new spotinst.gke.Elastigroup("example-gke-elastigroup", {
+ *     backendServices: [{
+ *         locationType: "global",
+ *         namedPorts: [{
+ *             name: "http",
+ *             ports: [
+ *                 "80",
+ *                 "8080",
+ *             ],
+ *         }],
+ *         serviceName: "backend-service",
+ *     }],
+ *     // cluster_id        = "terraform-acc-test-cluster" // deprecated
+ *     clusterZoneName: "us-central1-a",
+ *     desiredCapacity: 3,
+ *     // --- INSTANCE TYPES --------------------------------
+ *     instanceTypesOndemand: "n1-standard-1",
+ *     instanceTypesPreemptibles: [
+ *         "n1-standard-1",
+ *         "n1-standard-2",
+ *     ],
+ *     integrationGke: {
+ *         autoscaleCooldown: 300,
+ *         autoscaleDown: {
+ *             evaluationPeriods: 300,
+ *         },
+ *         autoscaleHeadroom: {
+ *             cpuPerUnit: 1024,
+ *             memoryPerUnit: 512,
+ *             numOfUnits: 2,
+ *         },
+ *         autoscaleIsAutoConfig: false,
+ *         autoscaleIsEnabled: true,
+ *         autoscaleLabels: [{
+ *             key: "label_key",
+ *             value: "label_value",
+ *         }],
+ *         clusterId: "example-cluster-id",
+ *         location: "us-central1-a",
+ *     },
+ *     // --- CAPACITY ------------
+ *     maxSize: 5,
+ *     minSize: 1,
+ *     nodeImage: "COS",
+ *     // --- STRATEGY --------------------
+ *     preemptiblePercentage: 100,
+ * });
+ * ```
+ * ## Third-Party Integrations
+ *
+ * * `integrationGke` - (Required) Describes the GKE integration.
+ *   
+ *     * `location` - (Optional) The location of your GKE cluster.
+ *     * `clusterId` - (Optional) The GKE cluster ID you wish to import.
+ *     * `autoscaleIsEnabled` -  (Optional, Default: `false`) Specifies whether the auto scaling feature is enabled.
+ *     * `autoscaleIsAutoconfig` - (Optional, Default: `false`) Enabling the automatic auto-scaler functionality. For more information please see: .
+ *     * `autoscaleCooldown` - (Optional, Default: `300`) The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+ *   
+ *     * `autoscaleHeadroom` - (Optional) Headroom for the cluster.
+ *         * `cpuPerUnit` - (Optional, Default: `0`) Cpu units for compute.
+ *         * `memoryPerUnit` - (Optional, Default: `0`) RAM units for compute.
+ *         * `numOfUnits` - (Optional, Default: `0`) Amount of units for compute.
+ *   
+ *     * `autoscaleDown` - (Optional) Enabling scale down.
+ *         * `evaluationPeriods` - (Optional, Default: `5`) Amount of cooldown evaluation periods for scale down.
+ *   
+ *     * `autoscaleLabels` - (Optional) Labels to assign to the resource.
+ *         * `key` - (Optional) The label name.
+ *         * `value` - (Optional) The label value.
+ *
+ * Usage:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * <a id="diff-suppressed-parameters"></a>
+ * ## Diff-suppressed Parameters
+ *
+ * The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these
+ * imported parameters by defining them in your template with your desired new value (including null values).
+ *
+ * * `backendServices`
+ *     * `serviceName`
+ *     * `locationType`
+ *     * `scheme`
+ *     * `namedPort`
+ *         * `portName`
+ *         * `ports`
+ * * `labels`
+ *     * `key`
+ *     * `value`
+ * * `metadata`
+ *     * `key`
+ *     * `value`
+ * * `tags`
+ *     * `key`
+ *     * `value`
+ * * `serviceAccount`
+ * * `ipForwarding`
+ * * `fallbackToOd`
+ * * `subnets`
+ *     * `region`
+ *     * `subnetName`
+ */
 export class Elastigroup extends pulumi.CustomResource {
     /**
      * Get an existing Elastigroup resource's state with the given name, ID, and optional extra

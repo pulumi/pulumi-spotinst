@@ -11,6 +11,57 @@ import (
 )
 
 // Provides a custom Spotinst Ocean GKE Launch Spec resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/gke"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gke.NewOceanLaunchSpec(ctx, "example", &gke.OceanLaunchSpecArgs{
+// 			AutoscaleHeadrooms: gke.OceanLaunchSpecAutoscaleHeadroomArray{
+// 				&gke.OceanLaunchSpecAutoscaleHeadroomArgs{
+// 					CpuPerUnit:    pulumi.Int(1000),
+// 					GpuPerUnit:    pulumi.Int(0),
+// 					MemoryPerUnit: pulumi.Int(2048),
+// 					NumOfUnits:    pulumi.Int(5),
+// 				},
+// 			},
+// 			Labels: gke.OceanLaunchSpecLabelArray{
+// 				&gke.OceanLaunchSpecLabelArgs{
+// 					Key:   pulumi.String("labelKey"),
+// 					Value: pulumi.String("labelVal"),
+// 				},
+// 			},
+// 			Metadatas: gke.OceanLaunchSpecMetadataArray{
+// 				&gke.OceanLaunchSpecMetadataArgs{
+// 					Key:   pulumi.String("gci-update-strategy"),
+// 					Value: pulumi.String("update_disabled"),
+// 				},
+// 			},
+// 			OceanId:     pulumi.String("o-123456"),
+// 			SourceImage: pulumi.String("image"),
+// 			Taints: gke.OceanLaunchSpecTaintArray{
+// 				&gke.OceanLaunchSpecTaintArgs{
+// 					Effect: pulumi.String("taintEffect"),
+// 					Key:    pulumi.String("taintKey"),
+// 					Value:  pulumi.String("taintVal"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
 

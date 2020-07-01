@@ -20,8 +20,7 @@ type BalancerConnectionTimeouts struct {
 // BalancerConnectionTimeoutsInput is an input type that accepts BalancerConnectionTimeoutsArgs and BalancerConnectionTimeoutsOutput values.
 // You can construct a concrete instance of `BalancerConnectionTimeoutsInput` via:
 //
-// 		 BalancerConnectionTimeoutsArgs{...}
-//
+//          BalancerConnectionTimeoutsArgs{...}
 type BalancerConnectionTimeoutsInput interface {
 	pulumi.Input
 
@@ -59,12 +58,11 @@ func (i BalancerConnectionTimeoutsArgs) ToBalancerConnectionTimeoutsPtrOutputWit
 // BalancerConnectionTimeoutsPtrInput is an input type that accepts BalancerConnectionTimeoutsArgs, BalancerConnectionTimeoutsPtr and BalancerConnectionTimeoutsPtrOutput values.
 // You can construct a concrete instance of `BalancerConnectionTimeoutsPtrInput` via:
 //
-// 		 BalancerConnectionTimeoutsArgs{...}
+//          BalancerConnectionTimeoutsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type BalancerConnectionTimeoutsPtrInput interface {
 	pulumi.Input
 
@@ -172,8 +170,7 @@ type BalancerTag struct {
 // BalancerTagInput is an input type that accepts BalancerTagArgs and BalancerTagOutput values.
 // You can construct a concrete instance of `BalancerTagInput` via:
 //
-// 		 BalancerTagArgs{...}
-//
+//          BalancerTagArgs{...}
 type BalancerTagInput interface {
 	pulumi.Input
 
@@ -203,8 +200,7 @@ func (i BalancerTagArgs) ToBalancerTagOutputWithContext(ctx context.Context) Bal
 // BalancerTagArrayInput is an input type that accepts BalancerTagArray and BalancerTagArrayOutput values.
 // You can construct a concrete instance of `BalancerTagArrayInput` via:
 //
-// 		 BalancerTagArray{ BalancerTagArgs{...} }
-//
+//          BalancerTagArray{ BalancerTagArgs{...} }
 type BalancerTagArrayInput interface {
 	pulumi.Input
 
@@ -280,8 +276,7 @@ type ListenerTag struct {
 // ListenerTagInput is an input type that accepts ListenerTagArgs and ListenerTagOutput values.
 // You can construct a concrete instance of `ListenerTagInput` via:
 //
-// 		 ListenerTagArgs{...}
-//
+//          ListenerTagArgs{...}
 type ListenerTagInput interface {
 	pulumi.Input
 
@@ -311,8 +306,7 @@ func (i ListenerTagArgs) ToListenerTagOutputWithContext(ctx context.Context) Lis
 // ListenerTagArrayInput is an input type that accepts ListenerTagArray and ListenerTagArrayOutput values.
 // You can construct a concrete instance of `ListenerTagArrayInput` via:
 //
-// 		 ListenerTagArray{ ListenerTagArgs{...} }
-//
+//          ListenerTagArray{ ListenerTagArgs{...} }
 type ListenerTagArrayInput interface {
 	pulumi.Input
 
@@ -396,8 +390,7 @@ type ListenerTlsConfig struct {
 // ListenerTlsConfigInput is an input type that accepts ListenerTlsConfigArgs and ListenerTlsConfigOutput values.
 // You can construct a concrete instance of `ListenerTlsConfigInput` via:
 //
-// 		 ListenerTlsConfigArgs{...}
-//
+//          ListenerTlsConfigArgs{...}
 type ListenerTlsConfigInput interface {
 	pulumi.Input
 
@@ -443,12 +436,11 @@ func (i ListenerTlsConfigArgs) ToListenerTlsConfigPtrOutputWithContext(ctx conte
 // ListenerTlsConfigPtrInput is an input type that accepts ListenerTlsConfigArgs, ListenerTlsConfigPtr and ListenerTlsConfigPtrOutput values.
 // You can construct a concrete instance of `ListenerTlsConfigPtrInput` via:
 //
-// 		 ListenerTlsConfigArgs{...}
+//          ListenerTlsConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ListenerTlsConfigPtrInput interface {
 	pulumi.Input
 
@@ -616,8 +608,7 @@ type RoutingRuleTag struct {
 // RoutingRuleTagInput is an input type that accepts RoutingRuleTagArgs and RoutingRuleTagOutput values.
 // You can construct a concrete instance of `RoutingRuleTagInput` via:
 //
-// 		 RoutingRuleTagArgs{...}
-//
+//          RoutingRuleTagArgs{...}
 type RoutingRuleTagInput interface {
 	pulumi.Input
 
@@ -647,8 +638,7 @@ func (i RoutingRuleTagArgs) ToRoutingRuleTagOutputWithContext(ctx context.Contex
 // RoutingRuleTagArrayInput is an input type that accepts RoutingRuleTagArray and RoutingRuleTagArrayOutput values.
 // You can construct a concrete instance of `RoutingRuleTagArrayInput` via:
 //
-// 		 RoutingRuleTagArray{ RoutingRuleTagArgs{...} }
-//
+//          RoutingRuleTagArray{ RoutingRuleTagArgs{...} }
 type RoutingRuleTagArrayInput interface {
 	pulumi.Input
 
@@ -734,8 +724,7 @@ type TargetSetHealthCheck struct {
 // TargetSetHealthCheckInput is an input type that accepts TargetSetHealthCheckArgs and TargetSetHealthCheckOutput values.
 // You can construct a concrete instance of `TargetSetHealthCheckInput` via:
 //
-// 		 TargetSetHealthCheckArgs{...}
-//
+//          TargetSetHealthCheckArgs{...}
 type TargetSetHealthCheckInput interface {
 	pulumi.Input
 
@@ -783,12 +772,11 @@ func (i TargetSetHealthCheckArgs) ToTargetSetHealthCheckPtrOutputWithContext(ctx
 // TargetSetHealthCheckPtrInput is an input type that accepts TargetSetHealthCheckArgs, TargetSetHealthCheckPtr and TargetSetHealthCheckPtrOutput values.
 // You can construct a concrete instance of `TargetSetHealthCheckPtrInput` via:
 //
-// 		 TargetSetHealthCheckArgs{...}
+//          TargetSetHealthCheckArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TargetSetHealthCheckPtrInput interface {
 	pulumi.Input
 
@@ -971,8 +959,7 @@ type TargetSetTag struct {
 // TargetSetTagInput is an input type that accepts TargetSetTagArgs and TargetSetTagOutput values.
 // You can construct a concrete instance of `TargetSetTagInput` via:
 //
-// 		 TargetSetTagArgs{...}
-//
+//          TargetSetTagArgs{...}
 type TargetSetTagInput interface {
 	pulumi.Input
 
@@ -1002,8 +989,7 @@ func (i TargetSetTagArgs) ToTargetSetTagOutputWithContext(ctx context.Context) T
 // TargetSetTagArrayInput is an input type that accepts TargetSetTagArray and TargetSetTagArrayOutput values.
 // You can construct a concrete instance of `TargetSetTagArrayInput` via:
 //
-// 		 TargetSetTagArray{ TargetSetTagArgs{...} }
-//
+//          TargetSetTagArray{ TargetSetTagArgs{...} }
 type TargetSetTagArrayInput interface {
 	pulumi.Input
 
@@ -1079,8 +1065,7 @@ type TargetTag struct {
 // TargetTagInput is an input type that accepts TargetTagArgs and TargetTagOutput values.
 // You can construct a concrete instance of `TargetTagInput` via:
 //
-// 		 TargetTagArgs{...}
-//
+//          TargetTagArgs{...}
 type TargetTagInput interface {
 	pulumi.Input
 
@@ -1110,8 +1095,7 @@ func (i TargetTagArgs) ToTargetTagOutputWithContext(ctx context.Context) TargetT
 // TargetTagArrayInput is an input type that accepts TargetTagArray and TargetTagArrayOutput values.
 // You can construct a concrete instance of `TargetTagArrayInput` via:
 //
-// 		 TargetTagArray{ TargetTagArgs{...} }
-//
+//          TargetTagArray{ TargetTagArgs{...} }
 type TargetTagArrayInput interface {
 	pulumi.Input
 

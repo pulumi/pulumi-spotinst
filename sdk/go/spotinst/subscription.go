@@ -11,6 +11,41 @@ import (
 )
 
 // Provides a Spotinst subscription resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := spotinst.NewSubscription(ctx, "default_subscription", &spotinst.SubscriptionArgs{
+// 			Endpoint:  pulumi.String("http://endpoint.com"),
+// 			EventType: pulumi.String("AWS_EC2_INSTANCE_LAUNCH"),
+// 			Format: pulumi.StringMap{
+// 				"event":         pulumi.String(fmt.Sprintf("%v%v%v", "%", "event", "%")),
+// 				"instance_id":   pulumi.String(fmt.Sprintf("%v%v%v", "%", "instance-id", "%")),
+// 				"resource_id":   pulumi.String(fmt.Sprintf("%v%v%v", "%", "resource-id", "%")),
+// 				"resource_name": pulumi.String(fmt.Sprintf("%v%v%v", "%", "resource-name", "%")),
+// 				"tags":          pulumi.String("foo,baz,baz"),
+// 			},
+// 			Protocol:   pulumi.String("http"),
+// 			ResourceId: pulumi.String(spotinst_elastigroup_aws.My - eg.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Subscription struct {
 	pulumi.CustomResourceState
 

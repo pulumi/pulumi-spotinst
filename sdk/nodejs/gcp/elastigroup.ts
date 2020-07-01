@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -48,7 +46,7 @@ import * as utilities from "../utilities";
  *         type: "PERSISTENT",
  *     }],
  *     drainingTimeout: 180,
- *     // onDemandCount      = 2
+ *     // on_demand_count      = 2
  *     fallbackToOndemand: true,
  *     instanceTypesCustoms: [{
  *         memoryGiB: 7.5,
@@ -60,8 +58,8 @@ import * as utilities from "../utilities";
  *         "n1-standard-2",
  *     ],
  *     labels: [{
- *         key: "testKey",
- *         value: "testValue",
+ *         key: "test_key",
+ *         value: "test_value",
  *     }],
  *     maxSize: 1,
  *     minSize: 0,
@@ -77,7 +75,7 @@ import * as utilities from "../utilities";
  *             }],
  *             cooldown: 300,
  *             dimensions: [{
- *                 name: "storageType",
+ *                 name: "storage_type",
  *                 value: "pd-ssd",
  *             }],
  *             evaluationPeriods: 1,
@@ -85,7 +83,7 @@ import * as utilities from "../utilities";
  *             namespace: "compute",
  *             operator: "gte",
  *             period: 300,
- *             policyName: "scaleUp1",
+ *             policyName: "scale_up_1",
  *             source: "stackdriver",
  *             statistic: "average",
  *             threshold: 10000,
@@ -104,7 +102,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
  * ## GPU
  *
  * * `gpu` - (Optional) Defines the GPU configuration.
@@ -141,7 +138,7 @@ import * as utilities from "../utilities";
  *     * `autoDelete` - (Optional) Specifies whether the disk will be auto-deleted when the instance is deleted.
  *     * `boot` - (Optional) Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
  *     * `deviceName` - (Optional) Specifies a unique device name of your choice.
- *     * `interface` - (Optional, Default: `SCSI`) Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. 
+ *     * `interface` - (Optional, Default: `SCSI`) Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
  *     * `mode` - (Optional, Default: `READ_WRITE`) The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
  *     * `source` - (Optional) Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
  *     * `type` - (Optional, Default: `PERSISTENT`) Specifies the type of disk, either SCRATCH or PERSISTENT.
@@ -196,7 +193,7 @@ import * as utilities from "../utilities";
  * * `dimensions` - (Optional) A list of dimensions describing qualities of the metric.
  *     * `name` - (Required) The dimension name.
  *     * `value` - (Required) The dimension value.
- *     
+ *
  * Usage:
  *
  * ```typescript
@@ -209,7 +206,7 @@ import * as utilities from "../utilities";
  * * `integrationDockerSwarm` - (Optional) Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
  *     * `masterHost` - (Required) IP or FQDN of one of your swarm managers.
  *     * `masterPort` - (Required) Network port used by your swarm.
- *             
+ *
  * Usage:
  *
  * ```typescript
@@ -322,7 +319,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * The group name. 
+     * The group name.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaces!: pulumi.Output<outputs.gcp.ElastigroupNetworkInterface[] | undefined>;
@@ -517,7 +514,7 @@ export interface ElastigroupState {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * The group name. 
+     * The group name.
      */
     readonly name?: pulumi.Input<string>;
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterface>[]>;
@@ -616,7 +613,7 @@ export interface ElastigroupArgs {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * The group name. 
+     * The group name.
      */
     readonly name?: pulumi.Input<string>;
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterface>[]>;

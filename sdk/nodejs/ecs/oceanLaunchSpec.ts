@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -84,7 +82,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
-     * The Ocean Launch Specification name. 
+     * The Ocean Launch Specification name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -172,7 +170,7 @@ export interface OceanLaunchSpecState {
      */
     readonly imageId?: pulumi.Input<string>;
     /**
-     * The Ocean Launch Specification name. 
+     * The Ocean Launch Specification name.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -214,7 +212,7 @@ export interface OceanLaunchSpecArgs {
      */
     readonly imageId?: pulumi.Input<string>;
     /**
-     * The Ocean Launch Specification name. 
+     * The Ocean Launch Specification name.
      */
     readonly name?: pulumi.Input<string>;
     /**

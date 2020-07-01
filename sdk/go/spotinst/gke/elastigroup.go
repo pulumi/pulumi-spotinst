@@ -12,8 +12,120 @@ import (
 
 // Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
 //
+// ## Example Usage
 //
+// A gke.Elastigroup supports all of the fields defined in spotinst_elastigroup_gcp.
 //
+// There are two main differences:
+//
+// * you must include `clusterZoneName` and `clusterId`
+// * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/gke"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gke.NewElastigroup(ctx, "example_gke_elastigroup", &gke.ElastigroupArgs{
+// 			BackendServices: gke.ElastigroupBackendServiceArray{
+// 				&gke.ElastigroupBackendServiceArgs{
+// 					LocationType: pulumi.String("global"),
+// 					NamedPorts: gke.ElastigroupBackendServiceNamedPortArray{
+// 						&gke.ElastigroupBackendServiceNamedPortArgs{
+// 							Name: pulumi.String("http"),
+// 							Ports: pulumi.StringArray{
+// 								pulumi.String("80"),
+// 								pulumi.String("8080"),
+// 							},
+// 						},
+// 					},
+// 					ServiceName: pulumi.String("backend-service"),
+// 				},
+// 			},
+// 			ClusterZoneName:       pulumi.String("us-central1-a"),
+// 			DesiredCapacity:       pulumi.Int(3),
+// 			InstanceTypesOndemand: pulumi.String("n1-standard-1"),
+// 			InstanceTypesPreemptibles: pulumi.StringArray{
+// 				pulumi.String("n1-standard-1"),
+// 				pulumi.String("n1-standard-2"),
+// 			},
+// 			IntegrationGke: &gke.ElastigroupIntegrationGkeArgs{
+// 				AutoscaleCooldown: pulumi.Int(300),
+// 				AutoscaleDown: &gke.ElastigroupIntegrationGkeAutoscaleDownArgs{
+// 					EvaluationPeriods: pulumi.Int(300),
+// 				},
+// 				AutoscaleHeadroom: &gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs{
+// 					CpuPerUnit:    pulumi.Int(1024),
+// 					MemoryPerUnit: pulumi.Int(512),
+// 					NumOfUnits:    pulumi.Int(2),
+// 				},
+// 				AutoscaleIsAutoConfig: pulumi.Bool(false),
+// 				AutoscaleIsEnabled:    pulumi.Bool(true),
+// 				AutoscaleLabels: gke.ElastigroupIntegrationGkeAutoscaleLabelArray{
+// 					&gke.ElastigroupIntegrationGkeAutoscaleLabelArgs{
+// 						Key:   pulumi.String("label_key"),
+// 						Value: pulumi.String("label_value"),
+// 					},
+// 				},
+// 				ClusterId: pulumi.String("example-cluster-id"),
+// 				Location:  pulumi.String("us-central1-a"),
+// 			},
+// 			MaxSize:               pulumi.Int(5),
+// 			MinSize:               pulumi.Int(1),
+// 			NodeImage:             pulumi.String("COS"),
+// 			PreemptiblePercentage: pulumi.Int(100),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Third-Party Integrations
+//
+// * `integrationGke` - (Required) Describes the GKE integration.
+//
+//     * `location` - (Optional) The location of your GKE cluster.
+//     * `clusterId` - (Optional) The GKE cluster ID you wish to import.
+//     * `autoscaleIsEnabled` -  (Optional, Default: `false`) Specifies whether the auto scaling feature is enabled.
+//     * `autoscaleIsAutoconfig` - (Optional, Default: `false`) Enabling the automatic auto-scaler functionality. For more information please see: .
+//     * `autoscaleCooldown` - (Optional, Default: `300`) The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+//
+//     * `autoscaleHeadroom` - (Optional) Headroom for the cluster.
+//         * `cpuPerUnit` - (Optional, Default: `0`) Cpu units for compute.
+//         * `memoryPerUnit` - (Optional, Default: `0`) RAM units for compute.
+//         * `numOfUnits` - (Optional, Default: `0`) Amount of units for compute.
+//
+//     * `autoscaleDown` - (Optional) Enabling scale down.
+//         * `evaluationPeriods` - (Optional, Default: `5`) Amount of cooldown evaluation periods for scale down.
+//
+//     * `autoscaleLabels` - (Optional) Labels to assign to the resource.
+//         * `key` - (Optional) The label name.
+//         * `value` - (Optional) The label value.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="diff-suppressed-parameters"></a>
 // ## Diff-suppressed Parameters
 //
 // The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these

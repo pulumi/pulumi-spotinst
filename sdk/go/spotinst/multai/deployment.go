@@ -10,6 +10,27 @@ import (
 )
 
 // Provides a Spotinst Multai Deployment.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := multai.NewDeployment(ctx, "myDeployment", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Deployment struct {
 	pulumi.CustomResourceState
 

@@ -14,8 +14,6 @@ namespace Pulumi.SpotInst.Ecs
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
@@ -92,7 +90,7 @@ namespace Pulumi.SpotInst.Ecs
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// The Ocean Launch Specification name. 
+        /// The Ocean Launch Specification name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -204,7 +202,7 @@ namespace Pulumi.SpotInst.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The Ocean Launch Specification name. 
+        /// The Ocean Launch Specification name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -289,7 +287,7 @@ namespace Pulumi.SpotInst.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The Ocean Launch Specification name. 
+        /// The Ocean Launch Specification name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -61,7 +61,7 @@ export namespace aws {
          */
         action?: pulumi.Input<string>;
         /**
-         * Bool value if to wait to drain instance 
+         * Bool value if to wait to drain instance
          */
         shouldDrainInstances?: pulumi.Input<boolean>;
     }
@@ -643,7 +643,7 @@ export namespace aws {
         period?: pulumi.Input<number>;
         policyName: pulumi.Input<string>;
         /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
          */
         statistic?: pulumi.Input<string>;
         target?: pulumi.Input<string>;
@@ -652,7 +652,7 @@ export namespace aws {
          */
         threshold: pulumi.Input<number>;
         /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
          */
         unit: pulumi.Input<string>;
     }
@@ -688,7 +688,7 @@ export namespace aws {
         period?: pulumi.Input<number>;
         policyName: pulumi.Input<string>;
         /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
          */
         statistic?: pulumi.Input<string>;
         target?: pulumi.Input<string>;
@@ -697,7 +697,7 @@ export namespace aws {
          */
         threshold: pulumi.Input<number>;
         /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
          */
         unit: pulumi.Input<string>;
     }
@@ -777,7 +777,7 @@ export namespace aws {
         period?: pulumi.Input<number>;
         policyName: pulumi.Input<string>;
         /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
          */
         statistic?: pulumi.Input<string>;
         target?: pulumi.Input<string>;
@@ -786,7 +786,7 @@ export namespace aws {
          */
         threshold: pulumi.Input<number>;
         /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
          */
         unit: pulumi.Input<string>;
     }
@@ -822,7 +822,7 @@ export namespace aws {
         period?: pulumi.Input<number>;
         policyName: pulumi.Input<string>;
         /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
          */
         statistic?: pulumi.Input<string>;
         target?: pulumi.Input<string>;
@@ -831,7 +831,7 @@ export namespace aws {
          */
         threshold: pulumi.Input<number>;
         /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
          */
         unit: pulumi.Input<string>;
     }
@@ -862,7 +862,7 @@ export namespace aws {
          */
         period?: pulumi.Input<number>;
         /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`                 
+         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
          */
         statistic?: pulumi.Input<string>;
         /**
@@ -870,7 +870,7 @@ export namespace aws {
          */
         threshold: pulumi.Input<number>;
         /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`                     
+         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
          */
         unit?: pulumi.Input<string>;
     }
@@ -1319,7 +1319,7 @@ export namespace gcp {
 
     export interface ElastigroupBackendServiceNamedPort {
         /**
-         * The group name. 
+         * The group name.
          */
         name: pulumi.Input<string>;
         ports: pulumi.Input<pulumi.Input<string>[]>;
@@ -1423,7 +1423,7 @@ export namespace gcp {
 
     export interface ElastigroupNetworkInterfaceAccessConfig {
         /**
-         * The group name. 
+         * The group name.
          */
         name?: pulumi.Input<string>;
         type?: pulumi.Input<string>;
@@ -1453,7 +1453,7 @@ export namespace gcp {
 
     export interface ElastigroupScalingDownPolicyDimension {
         /**
-         * The group name. 
+         * The group name.
          */
         name: pulumi.Input<string>;
         /**
@@ -1481,7 +1481,7 @@ export namespace gcp {
 
     export interface ElastigroupScalingUpPolicyDimension {
         /**
-         * The group name. 
+         * The group name.
          */
         name: pulumi.Input<string>;
         /**

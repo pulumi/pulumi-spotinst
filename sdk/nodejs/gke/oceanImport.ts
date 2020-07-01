@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -42,6 +40,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ *
+ * export const controllerClusterId = spotinst_ocean_gke_import_ocean_gke_example.clusterControllerId;
+ * ```
  * ## scheduled task
  *
  * * `scheduledTask` - (Optional) Set scheduling object.
@@ -57,8 +61,7 @@ import * as utilities from "../utilities";
  *         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
  *         * `batchSizePercentage` - (Optional)  Value in % to set size of batch in roll. Valid values are 0-100
  *                                                 Example: 20.
- *                           
- *              
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
@@ -126,11 +129,11 @@ export class OceanImport extends pulumi.CustomResource {
      */
     public readonly clusterName!: pulumi.Output<string>;
     /**
-     * The number of instances to launch and maintain in the cluster. 
+     * The number of instances to launch and maintain in the cluster.
      */
     public readonly desiredCapacity!: pulumi.Output<number>;
     /**
-     * The zone the master cluster is located in. 
+     * The zone the master cluster is located in.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -211,11 +214,11 @@ export interface OceanImportState {
      */
     readonly clusterName?: pulumi.Input<string>;
     /**
-     * The number of instances to launch and maintain in the cluster. 
+     * The number of instances to launch and maintain in the cluster.
      */
     readonly desiredCapacity?: pulumi.Input<number>;
     /**
-     * The zone the master cluster is located in. 
+     * The zone the master cluster is located in.
      */
     readonly location?: pulumi.Input<string>;
     /**
@@ -244,11 +247,11 @@ export interface OceanImportArgs {
      */
     readonly clusterName: pulumi.Input<string>;
     /**
-     * The number of instances to launch and maintain in the cluster. 
+     * The number of instances to launch and maintain in the cluster.
      */
     readonly desiredCapacity?: pulumi.Input<number>;
     /**
-     * The zone the master cluster is located in. 
+     * The zone the master cluster is located in.
      */
     readonly location: pulumi.Input<string>;
     /**

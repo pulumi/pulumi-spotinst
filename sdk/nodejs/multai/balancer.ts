@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const myBalancer = new spotinst.multai.Balancer("myBalancer", {
+ * const myBalancer = new spotinst.multai.Balancer("my_balancer", {
  *     connectionTimeouts: {
  *         draining: 10,
  *         idle: 10,

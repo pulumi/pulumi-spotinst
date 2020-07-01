@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -105,11 +103,11 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<outputs.aws.OceanLaunchSpecLabel[] | undefined>;
     /**
-     * Set Launch Specification name 
+     * Set Launch Specification name
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ocean cluster you wish to 
+     * The ocean cluster you wish to
      */
     public readonly oceanId!: pulumi.Output<string>;
     public readonly resourceLimits!: pulumi.Output<outputs.aws.OceanLaunchSpecResourceLimit[] | undefined>;
@@ -220,11 +218,11 @@ export interface OceanLaunchSpecState {
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLabel>[]>;
     /**
-     * Set Launch Specification name 
+     * Set Launch Specification name
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ocean cluster you wish to 
+     * The ocean cluster you wish to
      */
     readonly oceanId?: pulumi.Input<string>;
     readonly resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[]>;
@@ -279,11 +277,11 @@ export interface OceanLaunchSpecArgs {
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecLabel>[]>;
     /**
-     * Set Launch Specification name 
+     * Set Launch Specification name
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ocean cluster you wish to 
+     * The ocean cluster you wish to
      */
     readonly oceanId: pulumi.Input<string>;
     readonly resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[]>;

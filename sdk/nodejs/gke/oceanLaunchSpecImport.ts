@@ -9,8 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -54,7 +52,7 @@ export class OceanLaunchSpecImport extends pulumi.CustomResource {
      */
     public readonly nodePoolName!: pulumi.Output<string>;
     /**
-     * The Ocean cluster ID required for launchSpec create. 
+     * The Ocean cluster ID required for launchSpec create.
      */
     public readonly oceanId!: pulumi.Output<string>;
 
@@ -103,7 +101,7 @@ export interface OceanLaunchSpecImportState {
      */
     readonly nodePoolName?: pulumi.Input<string>;
     /**
-     * The Ocean cluster ID required for launchSpec create. 
+     * The Ocean cluster ID required for launchSpec create.
      */
     readonly oceanId?: pulumi.Input<string>;
 }
@@ -117,7 +115,7 @@ export interface OceanLaunchSpecImportArgs {
      */
     readonly nodePoolName: pulumi.Input<string>;
     /**
-     * The Ocean cluster ID required for launchSpec create. 
+     * The Ocean cluster ID required for launchSpec create.
      */
     readonly oceanId: pulumi.Input<string>;
 }

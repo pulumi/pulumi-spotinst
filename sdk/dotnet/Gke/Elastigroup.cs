@@ -12,10 +12,14 @@ namespace Pulumi.SpotInst.Gke
     /// <summary>
     /// Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
     /// 
-    /// 
     /// ## Example Usage
     /// 
+    /// A spotinst.gke.Elastigroup supports all of the fields defined in spotinst_elastigroup_gcp.
     /// 
+    /// There are two main differences:
+    /// 
+    /// * you must include `cluster_zone_name` and `cluster_id`
+    /// * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -90,30 +94,28 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// }
     /// ```
-    /// 
     /// ## Third-Party Integrations
     /// 
     /// * `integration_gke` - (Required) Describes the GKE integration.
-    /// 
+    ///   
     ///     * `location` - (Optional) The location of your GKE cluster.
     ///     * `cluster_id` - (Optional) The GKE cluster ID you wish to import.
     ///     * `autoscale_is_enabled` -  (Optional, Default: `false`) Specifies whether the auto scaling feature is enabled.
     ///     * `autoscale_is_autoconfig` - (Optional, Default: `false`) Enabling the automatic auto-scaler functionality. For more information please see: .
     ///     * `autoscale_cooldown` - (Optional, Default: `300`) The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-    ///     
+    ///   
     ///     * `autoscale_headroom` - (Optional) Headroom for the cluster.
     ///         * `cpu_per_unit` - (Optional, Default: `0`) Cpu units for compute.
     ///         * `memory_per_unit` - (Optional, Default: `0`) RAM units for compute.
     ///         * `num_of_units` - (Optional, Default: `0`) Amount of units for compute.
-    ///     
+    ///   
     ///     * `autoscale_down` - (Optional) Enabling scale down.
     ///         * `evaluation_periods` - (Optional, Default: `5`) Amount of cooldown evaluation periods for scale down.
-    ///     
+    ///   
     ///     * `autoscale_labels` - (Optional) Labels to assign to the resource.
     ///         * `key` - (Optional) The label name.
     ///         * `value` - (Optional) The label value.
-    ///     
-    ///             
+    /// 
     /// Usage:
     /// 
     /// ```csharp

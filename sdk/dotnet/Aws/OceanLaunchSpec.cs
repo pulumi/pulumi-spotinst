@@ -14,8 +14,6 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
@@ -131,13 +129,13 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLaunchSpecLabel>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Set Launch Specification name 
+        /// Set Launch Specification name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ocean cluster you wish to 
+        /// The ocean cluster you wish to
         /// </summary>
         [Output("oceanId")]
         public Output<string> OceanId { get; private set; } = null!;
@@ -276,13 +274,13 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Set Launch Specification name 
+        /// Set Launch Specification name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ocean cluster you wish to 
+        /// The ocean cluster you wish to
         /// </summary>
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
@@ -411,13 +409,13 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Set Launch Specification name 
+        /// Set Launch Specification name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ocean cluster you wish to 
+        /// The ocean cluster you wish to
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }

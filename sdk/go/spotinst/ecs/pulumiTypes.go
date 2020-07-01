@@ -22,8 +22,7 @@ type OceanAutoscaler struct {
 // OceanAutoscalerInput is an input type that accepts OceanAutoscalerArgs and OceanAutoscalerOutput values.
 // You can construct a concrete instance of `OceanAutoscalerInput` via:
 //
-// 		 OceanAutoscalerArgs{...}
-//
+//          OceanAutoscalerArgs{...}
 type OceanAutoscalerInput interface {
 	pulumi.Input
 
@@ -63,12 +62,11 @@ func (i OceanAutoscalerArgs) ToOceanAutoscalerPtrOutputWithContext(ctx context.C
 // OceanAutoscalerPtrInput is an input type that accepts OceanAutoscalerArgs, OceanAutoscalerPtr and OceanAutoscalerPtrOutput values.
 // You can construct a concrete instance of `OceanAutoscalerPtrInput` via:
 //
-// 		 OceanAutoscalerArgs{...}
+//          OceanAutoscalerArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type OceanAutoscalerPtrInput interface {
 	pulumi.Input
 
@@ -220,8 +218,7 @@ type OceanAutoscalerDown struct {
 // OceanAutoscalerDownInput is an input type that accepts OceanAutoscalerDownArgs and OceanAutoscalerDownOutput values.
 // You can construct a concrete instance of `OceanAutoscalerDownInput` via:
 //
-// 		 OceanAutoscalerDownArgs{...}
-//
+//          OceanAutoscalerDownArgs{...}
 type OceanAutoscalerDownInput interface {
 	pulumi.Input
 
@@ -256,12 +253,11 @@ func (i OceanAutoscalerDownArgs) ToOceanAutoscalerDownPtrOutputWithContext(ctx c
 // OceanAutoscalerDownPtrInput is an input type that accepts OceanAutoscalerDownArgs, OceanAutoscalerDownPtr and OceanAutoscalerDownPtrOutput values.
 // You can construct a concrete instance of `OceanAutoscalerDownPtrInput` via:
 //
-// 		 OceanAutoscalerDownArgs{...}
+//          OceanAutoscalerDownArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type OceanAutoscalerDownPtrInput interface {
 	pulumi.Input
 
@@ -350,8 +346,7 @@ type OceanAutoscalerHeadroom struct {
 // OceanAutoscalerHeadroomInput is an input type that accepts OceanAutoscalerHeadroomArgs and OceanAutoscalerHeadroomOutput values.
 // You can construct a concrete instance of `OceanAutoscalerHeadroomInput` via:
 //
-// 		 OceanAutoscalerHeadroomArgs{...}
-//
+//          OceanAutoscalerHeadroomArgs{...}
 type OceanAutoscalerHeadroomInput interface {
 	pulumi.Input
 
@@ -388,12 +383,11 @@ func (i OceanAutoscalerHeadroomArgs) ToOceanAutoscalerHeadroomPtrOutputWithConte
 // OceanAutoscalerHeadroomPtrInput is an input type that accepts OceanAutoscalerHeadroomArgs, OceanAutoscalerHeadroomPtr and OceanAutoscalerHeadroomPtrOutput values.
 // You can construct a concrete instance of `OceanAutoscalerHeadroomPtrInput` via:
 //
-// 		 OceanAutoscalerHeadroomArgs{...}
+//          OceanAutoscalerHeadroomArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type OceanAutoscalerHeadroomPtrInput interface {
 	pulumi.Input
 
@@ -507,8 +501,7 @@ type OceanAutoscalerResourceLimits struct {
 // OceanAutoscalerResourceLimitsInput is an input type that accepts OceanAutoscalerResourceLimitsArgs and OceanAutoscalerResourceLimitsOutput values.
 // You can construct a concrete instance of `OceanAutoscalerResourceLimitsInput` via:
 //
-// 		 OceanAutoscalerResourceLimitsArgs{...}
-//
+//          OceanAutoscalerResourceLimitsArgs{...}
 type OceanAutoscalerResourceLimitsInput interface {
 	pulumi.Input
 
@@ -544,12 +537,11 @@ func (i OceanAutoscalerResourceLimitsArgs) ToOceanAutoscalerResourceLimitsPtrOut
 // OceanAutoscalerResourceLimitsPtrInput is an input type that accepts OceanAutoscalerResourceLimitsArgs, OceanAutoscalerResourceLimitsPtr and OceanAutoscalerResourceLimitsPtrOutput values.
 // You can construct a concrete instance of `OceanAutoscalerResourceLimitsPtrInput` via:
 //
-// 		 OceanAutoscalerResourceLimitsArgs{...}
+//          OceanAutoscalerResourceLimitsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type OceanAutoscalerResourceLimitsPtrInput interface {
 	pulumi.Input
 
@@ -652,8 +644,7 @@ type OceanLaunchSpecAttribute struct {
 // OceanLaunchSpecAttributeInput is an input type that accepts OceanLaunchSpecAttributeArgs and OceanLaunchSpecAttributeOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecAttributeInput` via:
 //
-// 		 OceanLaunchSpecAttributeArgs{...}
-//
+//          OceanLaunchSpecAttributeArgs{...}
 type OceanLaunchSpecAttributeInput interface {
 	pulumi.Input
 
@@ -683,8 +674,7 @@ func (i OceanLaunchSpecAttributeArgs) ToOceanLaunchSpecAttributeOutputWithContex
 // OceanLaunchSpecAttributeArrayInput is an input type that accepts OceanLaunchSpecAttributeArray and OceanLaunchSpecAttributeArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecAttributeArrayInput` via:
 //
-// 		 OceanLaunchSpecAttributeArray{ OceanLaunchSpecAttributeArgs{...} }
-//
+//          OceanLaunchSpecAttributeArray{ OceanLaunchSpecAttributeArgs{...} }
 type OceanLaunchSpecAttributeArrayInput interface {
 	pulumi.Input
 
@@ -762,8 +752,7 @@ type OceanLaunchSpecAutoscaleHeadroom struct {
 // OceanLaunchSpecAutoscaleHeadroomInput is an input type that accepts OceanLaunchSpecAutoscaleHeadroomArgs and OceanLaunchSpecAutoscaleHeadroomOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecAutoscaleHeadroomInput` via:
 //
-// 		 OceanLaunchSpecAutoscaleHeadroomArgs{...}
-//
+//          OceanLaunchSpecAutoscaleHeadroomArgs{...}
 type OceanLaunchSpecAutoscaleHeadroomInput interface {
 	pulumi.Input
 
@@ -795,8 +784,7 @@ func (i OceanLaunchSpecAutoscaleHeadroomArgs) ToOceanLaunchSpecAutoscaleHeadroom
 // OceanLaunchSpecAutoscaleHeadroomArrayInput is an input type that accepts OceanLaunchSpecAutoscaleHeadroomArray and OceanLaunchSpecAutoscaleHeadroomArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecAutoscaleHeadroomArrayInput` via:
 //
-// 		 OceanLaunchSpecAutoscaleHeadroomArray{ OceanLaunchSpecAutoscaleHeadroomArgs{...} }
-//
+//          OceanLaunchSpecAutoscaleHeadroomArray{ OceanLaunchSpecAutoscaleHeadroomArgs{...} }
 type OceanLaunchSpecAutoscaleHeadroomArrayInput interface {
 	pulumi.Input
 
@@ -877,8 +865,7 @@ type OceanLaunchSpecTag struct {
 // OceanLaunchSpecTagInput is an input type that accepts OceanLaunchSpecTagArgs and OceanLaunchSpecTagOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecTagInput` via:
 //
-// 		 OceanLaunchSpecTagArgs{...}
-//
+//          OceanLaunchSpecTagArgs{...}
 type OceanLaunchSpecTagInput interface {
 	pulumi.Input
 
@@ -908,8 +895,7 @@ func (i OceanLaunchSpecTagArgs) ToOceanLaunchSpecTagOutputWithContext(ctx contex
 // OceanLaunchSpecTagArrayInput is an input type that accepts OceanLaunchSpecTagArray and OceanLaunchSpecTagArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecTagArrayInput` via:
 //
-// 		 OceanLaunchSpecTagArray{ OceanLaunchSpecTagArgs{...} }
-//
+//          OceanLaunchSpecTagArray{ OceanLaunchSpecTagArgs{...} }
 type OceanLaunchSpecTagArrayInput interface {
 	pulumi.Input
 
@@ -983,8 +969,7 @@ type OceanScheduledTask struct {
 // OceanScheduledTaskInput is an input type that accepts OceanScheduledTaskArgs and OceanScheduledTaskOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskInput` via:
 //
-// 		 OceanScheduledTaskArgs{...}
-//
+//          OceanScheduledTaskArgs{...}
 type OceanScheduledTaskInput interface {
 	pulumi.Input
 
@@ -1012,8 +997,7 @@ func (i OceanScheduledTaskArgs) ToOceanScheduledTaskOutputWithContext(ctx contex
 // OceanScheduledTaskArrayInput is an input type that accepts OceanScheduledTaskArray and OceanScheduledTaskArrayOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskArrayInput` via:
 //
-// 		 OceanScheduledTaskArray{ OceanScheduledTaskArgs{...} }
-//
+//          OceanScheduledTaskArray{ OceanScheduledTaskArgs{...} }
 type OceanScheduledTaskArrayInput interface {
 	pulumi.Input
 
@@ -1085,8 +1069,7 @@ type OceanScheduledTaskShutdownHours struct {
 // OceanScheduledTaskShutdownHoursInput is an input type that accepts OceanScheduledTaskShutdownHoursArgs and OceanScheduledTaskShutdownHoursOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskShutdownHoursInput` via:
 //
-// 		 OceanScheduledTaskShutdownHoursArgs{...}
-//
+//          OceanScheduledTaskShutdownHoursArgs{...}
 type OceanScheduledTaskShutdownHoursInput interface {
 	pulumi.Input
 
@@ -1122,12 +1105,11 @@ func (i OceanScheduledTaskShutdownHoursArgs) ToOceanScheduledTaskShutdownHoursPt
 // OceanScheduledTaskShutdownHoursPtrInput is an input type that accepts OceanScheduledTaskShutdownHoursArgs, OceanScheduledTaskShutdownHoursPtr and OceanScheduledTaskShutdownHoursPtrOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskShutdownHoursPtrInput` via:
 //
-// 		 OceanScheduledTaskShutdownHoursArgs{...}
+//          OceanScheduledTaskShutdownHoursArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type OceanScheduledTaskShutdownHoursPtrInput interface {
 	pulumi.Input
 
@@ -1229,8 +1211,7 @@ type OceanScheduledTaskTask struct {
 // OceanScheduledTaskTaskInput is an input type that accepts OceanScheduledTaskTaskArgs and OceanScheduledTaskTaskOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskTaskInput` via:
 //
-// 		 OceanScheduledTaskTaskArgs{...}
-//
+//          OceanScheduledTaskTaskArgs{...}
 type OceanScheduledTaskTaskInput interface {
 	pulumi.Input
 
@@ -1259,8 +1240,7 @@ func (i OceanScheduledTaskTaskArgs) ToOceanScheduledTaskTaskOutputWithContext(ct
 // OceanScheduledTaskTaskArrayInput is an input type that accepts OceanScheduledTaskTaskArray and OceanScheduledTaskTaskArrayOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskTaskArrayInput` via:
 //
-// 		 OceanScheduledTaskTaskArray{ OceanScheduledTaskTaskArgs{...} }
-//
+//          OceanScheduledTaskTaskArray{ OceanScheduledTaskTaskArgs{...} }
 type OceanScheduledTaskTaskArrayInput interface {
 	pulumi.Input
 
@@ -1338,8 +1318,7 @@ type OceanTag struct {
 // OceanTagInput is an input type that accepts OceanTagArgs and OceanTagOutput values.
 // You can construct a concrete instance of `OceanTagInput` via:
 //
-// 		 OceanTagArgs{...}
-//
+//          OceanTagArgs{...}
 type OceanTagInput interface {
 	pulumi.Input
 
@@ -1369,8 +1348,7 @@ func (i OceanTagArgs) ToOceanTagOutputWithContext(ctx context.Context) OceanTagO
 // OceanTagArrayInput is an input type that accepts OceanTagArray and OceanTagArrayOutput values.
 // You can construct a concrete instance of `OceanTagArrayInput` via:
 //
-// 		 OceanTagArray{ OceanTagArgs{...} }
-//
+//          OceanTagArray{ OceanTagArgs{...} }
 type OceanTagArrayInput interface {
 	pulumi.Input
 
@@ -1444,8 +1422,7 @@ type OceanUpdatePolicy struct {
 // OceanUpdatePolicyInput is an input type that accepts OceanUpdatePolicyArgs and OceanUpdatePolicyOutput values.
 // You can construct a concrete instance of `OceanUpdatePolicyInput` via:
 //
-// 		 OceanUpdatePolicyArgs{...}
-//
+//          OceanUpdatePolicyArgs{...}
 type OceanUpdatePolicyInput interface {
 	pulumi.Input
 
@@ -1481,12 +1458,11 @@ func (i OceanUpdatePolicyArgs) ToOceanUpdatePolicyPtrOutputWithContext(ctx conte
 // OceanUpdatePolicyPtrInput is an input type that accepts OceanUpdatePolicyArgs, OceanUpdatePolicyPtr and OceanUpdatePolicyPtrOutput values.
 // You can construct a concrete instance of `OceanUpdatePolicyPtrInput` via:
 //
-// 		 OceanUpdatePolicyArgs{...}
+//          OceanUpdatePolicyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type OceanUpdatePolicyPtrInput interface {
 	pulumi.Input
 
@@ -1586,8 +1562,7 @@ type OceanUpdatePolicyRollConfig struct {
 // OceanUpdatePolicyRollConfigInput is an input type that accepts OceanUpdatePolicyRollConfigArgs and OceanUpdatePolicyRollConfigOutput values.
 // You can construct a concrete instance of `OceanUpdatePolicyRollConfigInput` via:
 //
-// 		 OceanUpdatePolicyRollConfigArgs{...}
-//
+//          OceanUpdatePolicyRollConfigArgs{...}
 type OceanUpdatePolicyRollConfigInput interface {
 	pulumi.Input
 
@@ -1622,12 +1597,11 @@ func (i OceanUpdatePolicyRollConfigArgs) ToOceanUpdatePolicyRollConfigPtrOutputW
 // OceanUpdatePolicyRollConfigPtrInput is an input type that accepts OceanUpdatePolicyRollConfigArgs, OceanUpdatePolicyRollConfigPtr and OceanUpdatePolicyRollConfigPtrOutput values.
 // You can construct a concrete instance of `OceanUpdatePolicyRollConfigPtrInput` via:
 //
-// 		 OceanUpdatePolicyRollConfigArgs{...}
+//          OceanUpdatePolicyRollConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type OceanUpdatePolicyRollConfigPtrInput interface {
 	pulumi.Input
 

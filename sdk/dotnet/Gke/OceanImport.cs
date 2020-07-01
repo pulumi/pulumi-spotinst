@@ -14,8 +14,6 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
@@ -63,6 +61,20 @@ namespace Pulumi.SpotInst.Gke
     /// }
     /// ```
     /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         this.ControllerClusterId = spotinst_ocean_gke_import.Ocean_gke_example.Cluster_controller_id;
+    ///     }
+    /// 
+    ///     [Output("controllerClusterId")]
+    ///     public Output&lt;string&gt; ControllerClusterId { get; set; }
+    /// }
+    /// ```
     /// ## scheduled task
     /// 
     /// * `scheduled_task` - (Optional) Set scheduling object.
@@ -78,8 +90,7 @@ namespace Pulumi.SpotInst.Gke
     ///         * `task_type` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
     ///         * `batch_size_percentage` - (Optional)  Value in % to set size of batch in roll. Valid values are 0-100
     ///                                                 Example: 20.
-    ///                           
-    ///              
+    /// 
     /// ```csharp
     /// using Pulumi;
     /// 
@@ -145,13 +156,13 @@ namespace Pulumi.SpotInst.Gke
         public Output<string> ClusterName { get; private set; } = null!;
 
         /// <summary>
-        /// The number of instances to launch and maintain in the cluster. 
+        /// The number of instances to launch and maintain in the cluster.
         /// </summary>
         [Output("desiredCapacity")]
         public Output<int> DesiredCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// The zone the master cluster is located in. 
+        /// The zone the master cluster is located in.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -242,13 +253,13 @@ namespace Pulumi.SpotInst.Gke
         public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// The number of instances to launch and maintain in the cluster. 
+        /// The number of instances to launch and maintain in the cluster.
         /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// The zone the master cluster is located in. 
+        /// The zone the master cluster is located in.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -313,13 +324,13 @@ namespace Pulumi.SpotInst.Gke
         public Input<string>? ClusterName { get; set; }
 
         /// <summary>
-        /// The number of instances to launch and maintain in the cluster. 
+        /// The number of instances to launch and maintain in the cluster.
         /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// The zone the master cluster is located in. 
+        /// The zone the master cluster is located in.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -14,8 +14,6 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
@@ -82,7 +80,6 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// }
     /// ```
-    /// 
     /// ## Auto Scaler
     /// 
     /// * `autoscaler` - (Optional) Describes the Ocean Kubernetes autoscaler.
@@ -148,7 +145,7 @@ namespace Pulumi.SpotInst.Aws
     ///                                          Example: 0 1 * * *
     ///         * `task_type` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
     ///                                    Example: clusterRoll
-    ///              
+    /// 
     /// ```csharp
     /// using Pulumi;
     /// 

@@ -6,6 +6,123 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a Spotinst AWS ManagedInstance resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * // Create an MangedInstance
+ * const default_managed_instance = new spotinst.aws.ManagedInstance("default-managed-instance", {
+ *     autoHealing: true,
+ *     blockDevicesMode: "reattach",
+ *     cpuCredits: "standard",
+ *     description: "created by Terraform",
+ *     drainingTimeout: 120,
+ *     ebsOptimized: true,
+ *     elasticIp: "ip",
+ *     enableMonitoring: true,
+ *     fallbackToOndemand: false,
+ *     gracePeriod: 180,
+ *     healthCheckType: "EC2",
+ *     iamInstanceProfile: "iam-profile",
+ *     imageId: "ami-1234",
+ *     instanceTypes: [
+ *         "t1.micro",
+ *         "t3.medium",
+ *         "t3.large",
+ *         "t2.medium",
+ *         "t2.large",
+ *         "z1d.large",
+ *     ],
+ *     keyPair: "labs-oregon",
+ *     lifeCycle: "on_demand",
+ *     optimizationWindows: ["Mon:03:00-Wed:02:20"],
+ *     orientation: "balanced",
+ *     persistBlockDevices: true,
+ *     persistPrivateIp: false,
+ *     persistRootDevice: true,
+ *     placementTenancy: "default",
+ *     preferredType: "t1.micro",
+ *     privateIp: "ip",
+ *     product: "Linux/UNIX",
+ *     region: "us-west-2",
+ *     revertToSpot: {
+ *         performAt: "always",
+ *     },
+ *     securityGroupIds: ["sg-234"],
+ *     shutdownScript: "managed instance bye world",
+ *     subnetIds: ["subnet-123"],
+ *     tags: [
+ *         {
+ *             key: "explicit1",
+ *             value: "value1",
+ *         },
+ *         {
+ *             key: "explicit2",
+ *             value: "value2",
+ *         },
+ *     ],
+ *     unhealthyDuration: 60,
+ *     userData: "managed instance hello world",
+ *     utilizeReservedInstances: true,
+ *     vpcId: "vpc-123",
+ * });
+ * ```
+ * ## Network Interface - (Optional) List of network interfaces in an EC2 instance.
+ *
+ * * `deviceIndex` - (Optional) The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
+ * * `associatePublicIpAddress` - (Optional) Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
+ * * `associateIpv6Address` - (Optional) Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
+ *    Default: false
+ *
+ * Usage:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * <a id="scheduled-task"></a>
+ * ## Scheduled Tasks
+ *
+ * Each `scheduledTask` supports the following:
+ *
+ * * `isEnabled` - (Optional) Describes whether the task is enabled. When true the task should run when false it should not run.
+ * * `frequency` - (Optional) Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
+ * * `startTime` - (Optional) DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
+ *    Example: 2019-05-23T10:55:09Z
+ * * `cronExpression` - (Optional) A valid cron expression. For example : " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+ *    Example: 0 1 * * *
+ * * `taskType`- (Required) The task type to run. Valid Values: "pause", "resume", "recycle".
+ *
+ * Usage:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * <a id="load-balancers"></a>
+ * ## Load Balancers
+ *
+ *    * `loadBalancersConfig` - (Optional) LB integration object.
+ *        * `loadBalancers` - (Optional) List of load balancers configs.
+ *             * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
+ *             * `arn` - The AWS resource ARN (Required only for ALB target groups).
+ *             * `balancerId` - The Multai load balancer ID.
+ *                  Default: lb-123456
+ *             * `targetSetId` - The Multai load target set ID.
+ *                  Default: ts-123456
+ *             * `autoWeight` - “Auto Weight” will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
+ *             * `zoneAwareness` - “AZ Awareness” will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
+ *             * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+ *
+ * Usage:
+ *
+ * <a id="route53"></a>
+ */
 export class ManagedInstance extends pulumi.CustomResource {
     /**
      * Get an existing ManagedInstance resource's state with the given name, ID, and optional extra
@@ -35,7 +152,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     }
 
     /**
-     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`. 
+     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
      */
     public readonly autoHealing!: pulumi.Output<boolean | undefined>;
     /**
@@ -118,11 +235,11 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly orientation!: pulumi.Output<string | undefined>;
     /**
-     * Should the instance maintain its Data volumes. 
+     * Should the instance maintain its Data volumes.
      */
     public readonly persistBlockDevices!: pulumi.Output<boolean>;
     /**
-     * Should the instance maintain its private IP.  
+     * Should the instance maintain its private IP.
      */
     public readonly persistPrivateIp!: pulumi.Output<boolean | undefined>;
     /**
@@ -139,11 +256,11 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly preferredType!: pulumi.Output<string | undefined>;
     /**
-     * Private IP Allocation Id to associate to the instance. 
+     * Private IP Allocation Id to associate to the instance.
      */
     public readonly privateIp!: pulumi.Output<string | undefined>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.    
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
      */
     public readonly product!: pulumi.Output<string>;
     /**
@@ -312,7 +429,7 @@ export class ManagedInstance extends pulumi.CustomResource {
  */
 export interface ManagedInstanceState {
     /**
-     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`. 
+     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
      */
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
@@ -395,11 +512,11 @@ export interface ManagedInstanceState {
      */
     readonly orientation?: pulumi.Input<string>;
     /**
-     * Should the instance maintain its Data volumes. 
+     * Should the instance maintain its Data volumes.
      */
     readonly persistBlockDevices?: pulumi.Input<boolean>;
     /**
-     * Should the instance maintain its private IP.  
+     * Should the instance maintain its private IP.
      */
     readonly persistPrivateIp?: pulumi.Input<boolean>;
     /**
@@ -416,11 +533,11 @@ export interface ManagedInstanceState {
      */
     readonly preferredType?: pulumi.Input<string>;
     /**
-     * Private IP Allocation Id to associate to the instance. 
+     * Private IP Allocation Id to associate to the instance.
      */
     readonly privateIp?: pulumi.Input<string>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.    
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
      */
     readonly product?: pulumi.Input<string>;
     /**
@@ -466,7 +583,7 @@ export interface ManagedInstanceState {
  */
 export interface ManagedInstanceArgs {
     /**
-     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`. 
+     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
      */
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
@@ -549,11 +666,11 @@ export interface ManagedInstanceArgs {
      */
     readonly orientation?: pulumi.Input<string>;
     /**
-     * Should the instance maintain its Data volumes. 
+     * Should the instance maintain its Data volumes.
      */
     readonly persistBlockDevices: pulumi.Input<boolean>;
     /**
-     * Should the instance maintain its private IP.  
+     * Should the instance maintain its private IP.
      */
     readonly persistPrivateIp?: pulumi.Input<boolean>;
     /**
@@ -570,11 +687,11 @@ export interface ManagedInstanceArgs {
      */
     readonly preferredType?: pulumi.Input<string>;
     /**
-     * Private IP Allocation Id to associate to the instance. 
+     * Private IP Allocation Id to associate to the instance.
      */
     readonly privateIp?: pulumi.Input<string>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.    
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
      */
     readonly product: pulumi.Input<string>;
     /**

@@ -12,7 +12,6 @@ namespace Pulumi.SpotInst.Aws
     /// <summary>
     /// Provides a Spotinst AWS ManagedInstance resource.
     /// 
-    /// 
     /// ## Network Interface - (Optional) List of network interfaces in an EC2 instance.
     /// 
     /// * `device_index` - (Optional) The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
@@ -69,32 +68,21 @@ namespace Pulumi.SpotInst.Aws
     ///             * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
     ///             * `arn` - The AWS resource ARN (Required only for ALB target groups).
     ///             * `balancer_id` - The Multai load balancer ID.
-    ///             Default: lb-123456
+    ///                  Default: lb-123456
     ///             * `target_set_id` - The Multai load target set ID.
-    ///             Default: ts-123456
+    ///                  Default: ts-123456
     ///             * `auto_weight` - “Auto Weight” will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
     ///             * `zone_awareness` - “AZ Awareness” will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
     ///             * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
     /// 
     /// Usage:
     /// 
-    ///    ```hcl
-    ///    load_balancers {
-    ///        arn  = "arn"
-    ///        type = "CLASSIC"
-    ///        balancer_id   = "lb-123"
-    ///        target_set_id = "ts-123"
-    ///        auto_weight   = "true"
-    ///        az_awareness = "true"
-    ///      }
-    ///    ```
-    /// 
     /// &lt;a id="route53"&gt;&lt;/a&gt;
     /// </summary>
     public partial class ManagedInstance : Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`. 
+        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
         /// </summary>
         [Output("autoHealing")]
         public Output<bool?> AutoHealing { get; private set; } = null!;
@@ -221,13 +209,13 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> Orientation { get; private set; } = null!;
 
         /// <summary>
-        /// Should the instance maintain its Data volumes. 
+        /// Should the instance maintain its Data volumes.
         /// </summary>
         [Output("persistBlockDevices")]
         public Output<bool> PersistBlockDevices { get; private set; } = null!;
 
         /// <summary>
-        /// Should the instance maintain its private IP.  
+        /// Should the instance maintain its private IP.
         /// </summary>
         [Output("persistPrivateIp")]
         public Output<bool?> PersistPrivateIp { get; private set; } = null!;
@@ -252,13 +240,13 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> PreferredType { get; private set; } = null!;
 
         /// <summary>
-        /// Private IP Allocation Id to associate to the instance. 
+        /// Private IP Allocation Id to associate to the instance.
         /// </summary>
         [Output("privateIp")]
         public Output<string?> PrivateIp { get; private set; } = null!;
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.    
+        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
         /// </summary>
         [Output("product")]
         public Output<string> Product { get; private set; } = null!;
@@ -368,7 +356,7 @@ namespace Pulumi.SpotInst.Aws
     public sealed class ManagedInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`. 
+        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
         /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
@@ -517,13 +505,13 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? Orientation { get; set; }
 
         /// <summary>
-        /// Should the instance maintain its Data volumes. 
+        /// Should the instance maintain its Data volumes.
         /// </summary>
         [Input("persistBlockDevices", required: true)]
         public Input<bool> PersistBlockDevices { get; set; } = null!;
 
         /// <summary>
-        /// Should the instance maintain its private IP.  
+        /// Should the instance maintain its private IP.
         /// </summary>
         [Input("persistPrivateIp")]
         public Input<bool>? PersistPrivateIp { get; set; }
@@ -548,13 +536,13 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? PreferredType { get; set; }
 
         /// <summary>
-        /// Private IP Allocation Id to associate to the instance. 
+        /// Private IP Allocation Id to associate to the instance.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.    
+        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
         /// </summary>
         [Input("product", required: true)]
         public Input<string> Product { get; set; } = null!;
@@ -648,7 +636,7 @@ namespace Pulumi.SpotInst.Aws
     public sealed class ManagedInstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`. 
+        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
         /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
@@ -797,13 +785,13 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? Orientation { get; set; }
 
         /// <summary>
-        /// Should the instance maintain its Data volumes. 
+        /// Should the instance maintain its Data volumes.
         /// </summary>
         [Input("persistBlockDevices")]
         public Input<bool>? PersistBlockDevices { get; set; }
 
         /// <summary>
-        /// Should the instance maintain its private IP.  
+        /// Should the instance maintain its private IP.
         /// </summary>
         [Input("persistPrivateIp")]
         public Input<bool>? PersistPrivateIp { get; set; }
@@ -828,13 +816,13 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? PreferredType { get; set; }
 
         /// <summary>
-        /// Private IP Allocation Id to associate to the instance. 
+        /// Private IP Allocation Id to associate to the instance.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.    
+        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
         /// </summary>
         [Input("product")]
         public Input<string>? Product { get; set; }

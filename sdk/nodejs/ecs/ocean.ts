@@ -6,6 +6,91 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a Spotinst Ocean ECS resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.ecs.Ocean("example", {
+ *     associatePublicIpAddress: false,
+ *     clusterName: "terraform-ecs-cluster",
+ *     desiredCapacity: 0,
+ *     drainingTimeout: 120,
+ *     ebsOptimized: true,
+ *     iamInstanceProfile: "iam-profile",
+ *     imageId: "ami-12345",
+ *     keyPair: "KeyPair",
+ *     maxSize: 1,
+ *     minSize: 0,
+ *     monitoring: true,
+ *     region: "us-west-2",
+ *     securityGroupIds: ["sg-12345"],
+ *     subnetIds: ["subnet-12345"],
+ *     tags: [{
+ *         key: "fakeKey",
+ *         value: "fakeValue",
+ *     }],
+ *     userData: "echo hello world",
+ *     utilizeReservedInstances: false,
+ *     whitelists: ["t3.medium"],
+ * });
+ * ```
+ * ## Auto Scaler
+ *
+ * * `autoscaler` - (Optional) Describes the Ocean ECS autoscaler.
+ *     * `isEnabled` - (Optional, Default: `true`) Enable the Ocean ECS autoscaler.
+ *     * `isAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+ *     * `cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+ *     * `headroom` - (Optional) Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+ *         * `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+ *         * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+ *         * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+ *     * `down` - (Optional) Auto Scaling scale down operations.
+ *         * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100
+ *     * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+ *         * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+ *         * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * <a id="update-policy"></a>
+ * ## Update Policy
+ *
+ * * `updatePolicy` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
+ *     * `shouldRoll` - (Required) Enables the roll.
+ *     * `rollConfig` - (Required)
+ *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * <a id="scheduled-task"></a>
+ * ## scheduled task
+ *
+ * * `scheduledTask` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
+ *     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
+ *         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
+ *                                      Example: True
+ *         * `timeWindows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+ *                                       Example: Fri:15:30-Wed:14:30
+ *     * `tasks` - (Optional) The scheduling tasks for the cluster.
+ *         * `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+ *         * `cronExpression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
+ *                                          Example: 0 1 * * *.
+ *         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
+ *                                    Example: clusterRoll.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ */
 export class Ocean extends pulumi.CustomResource {
     /**
      * Get an existing Ocean resource's state with the given name, ID, and optional extra

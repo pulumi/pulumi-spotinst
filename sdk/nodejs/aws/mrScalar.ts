@@ -6,6 +6,408 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a Spotinst AWS MrScaler resource.
+ *
+ * ## Provisioning Timeout (Clone, New strategies)
+ *
+ * * `timeout` - (Optional) The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
+ * * `timeoutAction` - (Optional) The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+ *
+ * <a id="cluster-config"></a>
+ * ## Cluster Configuration (New strategy only)
+ *
+ * * `logUri` - (Optional) The path to the Amazon S3 location where logs for this cluster are stored.
+ * * `additionalInfo` - (Optional) This is meta information about third-party applications that third-party vendors use for testing purposes.
+ * * `securityConfig` - (Optional) The name of the security configuration applied to the cluster.
+ * * `serviceRole` - (Optional) The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
+ * * `jobFlowRole` - (Optional) The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
+ * * `terminationProtected` - (Optional) Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
+ * * `keepJobFlowAlive` - (Optional) Specifies whether the cluster should remain available after completing all steps.
+ * * `retries` - (Optional) Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded.
+ *
+ * <a id="task-group"></a>
+ * ## Task Group (Wrap, Clone, and New strategies)
+ *
+ * * `taskInstanceTypes` - (Required) The MrScaler instance types for the task nodes.
+ * * `taskTarget` - (Required) amount of instances in task group.
+ * * `taskMaximum` - (Optional) maximal amount of instances in task group.
+ * * `taskMinimum` - (Optional) The minimal amount of instances in task group.
+ * * `taskUnit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+ * * `taskLifecycle` - (Required) The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+ * * `taskEbsOptimized` - (Optional) EBS Optimization setting for instances in group.
+ * * `taskEbsBlockDevice` - (Required) This determines the ebs configuration for your task group instances. Only a single block is allowed.
+ *     * `volumesPerInstance` - (Optional; Default 1) Amount of volumes per instance in the task group.
+ *     * `volumeType` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
+ *     * `sizeInGb` - (Required) Size of the volume, in GBs.
+ *     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
+ *
+ * <a id="core-group"></a>
+ * ## Core Group (Clone, New strategies)
+ *
+ * * `coreInstanceTypes` - (Required) The MrScaler instance types for the core nodes.
+ * * `coreTarget` - (Required) amount of instances in core group.
+ * * `coreMaximum` - (Optional) maximal amount of instances in core group.
+ * * `coreMinimum` - (Optional) The minimal amount of instances in core group.
+ * * `coreUnit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+ * * `coreLifecycle` - (Required) The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+ * * `coreEbsOptimized` - (Optional) EBS Optimization setting for instances in group.
+ * * `coreEbsBlockDevice` - (Required) This determines the ebs configuration for your core group instances. Only a single block is allowed.
+ *     * `volumesPerInstance` - (Optional; Default 1) Amount of volumes per instance in the core group.
+ *     * `volumeType` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
+ *     * `sizeInGb` - (Required) Size of the volume, in GBs.
+ *     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
+ *
+ * <a id="master-group"></a>
+ * ## Master Group (Clone, New strategies)
+ *
+ * * `masterInstanceTypes` - (Required) The MrScaler instance types for the master nodes.
+ * * `masterLifecycle` - (Required) The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+ * * `masterEbsOptimized` - (Optional) EBS Optimization setting for instances in group.
+ * * `masterEbsBlockDevice` - (Required) This determines the ebs configuration for your master group instances. Only a single block is allowed.
+ *     * `volumesPerInstance` - (Optional; Default 1) Amount of volumes per instance in the master group.
+ *     * `volumeType` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
+ *     * `sizeInGb` - (Required) Size of the volume, in GBs.
+ *     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
+ *
+ * <a id="tags"></a>
+ * ## Tags (Clone, New strategies)
+ *
+ * * `tags` - (Optional) A list of tags to assign to the resource. You may define multiple tags.
+ *     * `key` - (Required) Tag key.
+ *     * `value` - (Required) Tag value.
+ *
+ * <a id="Optional Compute Parameters"></a>
+ * ## Optional Compute Parameters (New strategy)
+ *
+ * * `managedPrimarySecurityGroup` - (Optional) EMR Managed Security group that will be set to the primary instance group.
+ * * `managedReplicaSecurityGroup` - (Optional) EMR Managed Security group that will be set to the replica instance group.
+ * * `serviceAccessSecurityGroup` - (Optional) The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
+ * * `additionalPrimarySecurityGroups` - (Optional) A list of additional Amazon EC2 security group IDs for the master node.
+ * * `additionalReplicaSecurityGroups` - (Optional) A list of additional Amazon EC2 security group IDs for the core and task nodes.
+ * * `customAmiId` - (Optional) The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
+ * * `repoUpgradeOnBoot` - (Optional) Applies only when `customAmiId` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
+ * * `ec2KeyName` - (Optional) The name of an Amazon EC2 key pair that can be used to ssh to the master node.
+ * * `applications` - (Optional) A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
+ *     * `args` - (Optional) Arguments for EMR to pass to the application.
+ *     * `name` - (Required) The application name.
+ *     * `version`- (Optional)T he version of the application.
+ * * `instanceWeights` - (Optional) Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
+ *     * `instanceType` - (Required) The type of the instance.
+ *     * `weightedCapacity` - (Required) The weight given to the associated instance type.
+ *
+ * <a id="availability-zone"></a>
+ * ## Availability Zones (Clone, New strategies)
+ *
+ * * `availabilityZones` - (Required in Clone) List of AZs and their subnet Ids. See example above for usage.
+ *
+ * <a id="configurations"></a>
+ * ## Configurations (Clone, New strategies)
+ *
+ * * `configurationsFile` - (Optional) Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+ *     * `bucket` - (Required) S3 Bucket name for configurations.
+ *     * `key`- (Required) S3 key for configurations.
+ *
+ * <a id="steps"></a>
+ * ## Steps (Clone, New strategies)
+ *
+ * * `stepsFile` - (Optional) Steps from S3.
+ *     * `bucket` - (Required) S3 Bucket name for steps.
+ *     * `key`- (Required) S3 key for steps.
+ *
+ * <a id="boostrap-actions"></a>
+ * ## Bootstrap Actions (Clone, New strategies)
+ *
+ * * `bootstrapActionsFile` - (Optional) Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+ *     * `bucket` - (Required) S3 Bucket name for bootstrap actions.
+ *     * `key`- (Required) S3 key for bootstrap actions.
+ *
+ * <a id="scaling-policy"></a>
+ * ## Scaling Policies
+ *
+ * Possible task group scaling policies (Wrap, Clone, and New strategies):
+ * * `taskScalingUpPolicy`
+ * * `taskScalingDownPolicy`
+ *
+ * Possible core group scaling policies (Clone, New strategies):
+ * * `coreScalingUpPolicy`
+ * * `coreScalingDownPolicy`
+ *
+ * Each `*_scaling_*_policy` supports the following:
+ *
+ * * `policyName` - (Required) The name of the policy.
+ * * `metricName` - (Required) The name of the metric, with or without spaces.
+ * * `statistic` - (Required) The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+ * * `unit` - (Required) The unit for the metric.
+ * * `threshold` - (Required) The value against which the specified statistic is compared.
+ * * `adjustment` - (Optional) The number of instances to add/remove to/from the target capacity when scale is needed.
+ * * `minTargetCapacity` - (Optional) Min target capacity for scale up.
+ * * `maxTargetCapacity` - (Optional) Max target capacity for scale down.
+ * * `namespace` - (Required) The namespace for the metric.
+ * * `operator` - (Required) The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
+ * * `evaluationPeriods` - (Required) The number of periods over which data is compared to the specified threshold.
+ * * `period` - (Required) The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+ * * `cooldown` - (Required) The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
+ * * `dimensions` - (Optional) A mapping of dimensions describing qualities of the metric.
+ * * `minimum` - (Optional) The minimum to set when scale is needed.
+ * * `maximum` - (Optional) The maximum to set when scale is needed.
+ * * `target` - (Optional) The number of instances to set when scale is needed.
+ * * `actionType` - (Required) The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+ *
+ * <a id="scheduled-task"></a>
+ * ## Scheduled Tasks
+ *
+ * * `scheduledTask` - (Optional) An array of scheduled tasks.
+ * * `isEnabled` - (Optional) Enable/Disable the specified scheduling task.
+ * * `taskType` - (Required) The type of task to be scheduled. Valid values: `setCapacity`.
+ * * `instanceGroupType` - (Required) Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
+ * * `cron` - (Required) A cron expression representing the schedule for the task.
+ * * `desiredCapacity` - (Optional) New desired capacity for the elastigroup.
+ * * `minCapacity` - (Optional) New min capacity for the elastigroup.
+ * * `maxCapacity` - (Optional) New max capacity for the elastigroup.
+ *
+ * <a id="termination-policies"></a>
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ * ### New Strategy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const terraform_MrScaler_01 = new spotinst.aws.MrScalar("Terraform-MrScaler-01", {
+ *     additionalInfo: "{'test':'more information'}",
+ *     additionalPrimarySecurityGroups: ["sg-456321"],
+ *     additionalReplicaSecurityGroups: ["sg-123654"],
+ *     applications: [
+ *         {
+ *             name: "Ganglia",
+ *             version: "1.0",
+ *         },
+ *         {
+ *             name: "Hadoop",
+ *         },
+ *         {
+ *             args: [
+ *                 "fake",
+ *                 "args",
+ *             ],
+ *             name: "Pig",
+ *         },
+ *     ],
+ *     availabilityZones: ["us-west-2a:subnet-123456"],
+ *     bootstrapActionsFiles: [{
+ *         bucket: "terraform-emr-test",
+ *         key: "bootstrap-actions.json",
+ *     }],
+ *     configurationsFiles: [{
+ *         bucket: "example-bucket",
+ *         key: "configurations.json",
+ *     }],
+ *     coreDesiredCapacity: 1,
+ *     coreEbsBlockDevices: [{
+ *         sizeInGb: 40,
+ *         volumeType: "gp2",
+ *         volumesPerInstance: 2,
+ *     }],
+ *     coreEbsOptimized: false,
+ *     // --- CORE GROUP -------------
+ *     coreInstanceTypes: [
+ *         "c3.xlarge",
+ *         "c4.xlarge",
+ *     ],
+ *     coreLifecycle: "ON_DEMAND",
+ *     coreMaxSize: 1,
+ *     coreMinSize: 1,
+ *     coreUnit: "instance",
+ *     // --- OPTONAL COMPUTE -----
+ *     customAmiId: "ami-123456",
+ *     description: "Testing MrScaler creation via Terraform",
+ *     ec2KeyName: "test-key",
+ *     instanceWeights: [
+ *         {
+ *             instanceType: "t2.small",
+ *             weightedCapacity: 10,
+ *         },
+ *         {
+ *             instanceType: "t2.medium",
+ *             weightedCapacity: 90,
+ *         },
+ *     ],
+ *     jobFlowRole: "EMR_EC2_ExampleRole",
+ *     keepJobFlowAlive: true,
+ *     // --- CLUSTER ------------
+ *     logUri: "s3://example-logs",
+ *     managedPrimarySecurityGroup: "sg-123456",
+ *     managedReplicaSecurityGroup: "sg-987654",
+ *     masterEbsBlockDevices: [{
+ *         sizeInGb: 30,
+ *         volumeType: "gp2",
+ *         volumesPerInstance: 1,
+ *     }],
+ *     masterEbsOptimized: true,
+ *     // --- MASTER GROUP -------------
+ *     masterInstanceTypes: ["c3.xlarge"],
+ *     masterLifecycle: "SPOT",
+ *     provisioningTimeout: {
+ *         timeout: 15,
+ *         timeoutAction: "terminate",
+ *     },
+ *     region: "us-west-2",
+ *     releaseLabel: "emr-5.17.0",
+ *     repoUpgradeOnBoot: "NONE",
+ *     retries: 2,
+ *     securityConfig: "example-config",
+ *     serviceAccessSecurityGroup: "access-example",
+ *     serviceRole: "example-role",
+ *     stepsFiles: [{
+ *         bucket: "example-bucket",
+ *         key: "steps.json",
+ *     }],
+ *     strategy: "new",
+ *     // --- TAGS -------------------
+ *     tags: [{
+ *         key: "Creator",
+ *         value: "Terraform",
+ *     }],
+ *     taskDesiredCapacity: 1,
+ *     taskEbsBlockDevices: [{
+ *         sizeInGb: 40,
+ *         volumeType: "gp2",
+ *         volumesPerInstance: 2,
+ *     }],
+ *     taskEbsOptimized: false,
+ *     // --- TASK GROUP -------------
+ *     taskInstanceTypes: [
+ *         "c3.xlarge",
+ *         "c4.xlarge",
+ *     ],
+ *     taskLifecycle: "SPOT",
+ *     taskMaxSize: 30,
+ *     taskMinSize: 0,
+ *     taskUnit: "instance",
+ *     terminationProtected: false,
+ * });
+ * ```
+ * ### Clone Strategy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const terraform_MrScaler_01 = new spotinst.aws.MrScalar("Terraform-MrScaler-01", {
+ *     availabilityZones: ["us-west-2a:subnet-12345678"],
+ *     clusterId: "j-123456789",
+ *     coreDesiredCapacity: 1,
+ *     coreEbsBlockDevices: [{
+ *         sizeInGb: 40,
+ *         volumeType: "gp2",
+ *         volumesPerInstance: 2,
+ *     }],
+ *     coreEbsOptimized: false,
+ *     // --- CORE GROUP -------------
+ *     coreInstanceTypes: [
+ *         "c3.xlarge",
+ *         "c4.xlarge",
+ *     ],
+ *     coreLifecycle: "ON_DEMAND",
+ *     coreMaxSize: 1,
+ *     coreMinSize: 1,
+ *     coreUnit: "instance",
+ *     description: "Testing MrScaler creation via Terraform",
+ *     exposeClusterId: true,
+ *     masterEbsBlockDevices: [{
+ *         sizeInGb: 30,
+ *         volumeType: "gp2",
+ *         volumesPerInstance: 1,
+ *     }],
+ *     masterEbsOptimized: true,
+ *     // --- MASTER GROUP -------------
+ *     masterInstanceTypes: ["c3.xlarge"],
+ *     masterLifecycle: "SPOT",
+ *     region: "us-west-2",
+ *     strategy: "clone",
+ *     // --- TAGS -------------------
+ *     tags: [{
+ *         key: "Creator",
+ *         value: "Terraform",
+ *     }],
+ *     taskDesiredCapacity: 1,
+ *     taskEbsBlockDevices: [{
+ *         sizeInGb: 40,
+ *         volumeType: "gp2",
+ *         volumesPerInstance: 2,
+ *     }],
+ *     taskEbsOptimized: false,
+ *     // --- TASK GROUP -------------
+ *     taskInstanceTypes: [
+ *         "c3.xlarge",
+ *         "c4.xlarge",
+ *     ],
+ *     taskLifecycle: "SPOT",
+ *     taskMaxSize: 30,
+ *     taskMinSize: 0,
+ *     // --- TASK SCALING POLICY ------
+ *     taskScalingDownPolicies: [{
+ *         actionType: "",
+ *         adjustment: "1",
+ *         cooldown: 60,
+ *         dimensions: {
+ *             name: "name-1",
+ *             value: "value-1",
+ *         },
+ *         evaluationPeriods: 10,
+ *         maxTargetCapacity: "1",
+ *         maximum: "10",
+ *         metricName: "CPUUtilization",
+ *         minimum: "0",
+ *         namespace: "AWS/EC2",
+ *         operator: "gt",
+ *         period: 60,
+ *         policyName: "policy-name",
+ *         statistic: "average",
+ *         target: "5",
+ *         threshold: 10,
+ *         unit: "",
+ *     }],
+ *     taskUnit: "instance",
+ * });
+ *
+ * export const mrscaler_name = terraform_MrScaler_01.name;
+ * export const mrscaler_created_cluster_id = terraform_MrScaler_01.outputClusterId;
+ * ```
+ * ### Wrap Strategy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example_scaler_2 = new spotinst.aws.MrScalar("example-scaler-2", {
+ *     clusterId: "j-27UVDEHXL4OQM",
+ *     description: "created by Terraform",
+ *     region: "us-west-2",
+ *     strategy: "wrap",
+ *     taskDesiredCapacity: 2,
+ *     taskEbsBlockDevices: [{
+ *         sizeInGb: 20,
+ *         volumeType: "gp2",
+ *         volumesPerInstance: 1,
+ *     }],
+ *     // --- TASK GROUP -------------
+ *     taskInstanceTypes: [
+ *         "c3.xlarge",
+ *         "c4.xlarge",
+ *     ],
+ *     taskLifecycle: "SPOT",
+ *     taskMaxSize: 4,
+ *     taskMinSize: 0,
+ *     taskUnit: "instance",
+ * });
+ * ```
+ */
 export class MrScalar extends pulumi.CustomResource {
     /**
      * Get an existing MrScalar resource's state with the given name, ID, and optional extra

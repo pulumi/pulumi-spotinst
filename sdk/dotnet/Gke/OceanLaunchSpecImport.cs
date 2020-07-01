@@ -14,8 +14,6 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
@@ -43,7 +41,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<string> NodePoolName { get; private set; } = null!;
 
         /// <summary>
-        /// The Ocean cluster ID required for launchSpec create. 
+        /// The Ocean cluster ID required for launchSpec create.
         /// </summary>
         [Output("oceanId")]
         public Output<string> OceanId { get; private set; } = null!;
@@ -101,7 +99,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<string> NodePoolName { get; set; } = null!;
 
         /// <summary>
-        /// The Ocean cluster ID required for launchSpec create. 
+        /// The Ocean cluster ID required for launchSpec create.
         /// </summary>
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
@@ -120,7 +118,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<string>? NodePoolName { get; set; }
 
         /// <summary>
-        /// The Ocean cluster ID required for launchSpec create. 
+        /// The Ocean cluster ID required for launchSpec create.
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
