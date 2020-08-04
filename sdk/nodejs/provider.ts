@@ -35,9 +35,11 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        inputs["account"] = (args ? args.account : undefined) || (utilities.getEnv("SPOTINST_ACCOUNT") || "");
-        inputs["featureFlags"] = args ? args.featureFlags : undefined;
-        inputs["token"] = (args ? args.token : undefined) || (utilities.getEnv("SPOTINST_TOKEN") || "");
+        {
+            inputs["account"] = (args ? args.account : undefined) || (utilities.getEnv("SPOTINST_ACCOUNT") || "");
+            inputs["featureFlags"] = args ? args.featureFlags : undefined;
+            inputs["token"] = (args ? args.token : undefined) || (utilities.getEnv("SPOTINST_TOKEN") || "");
+        }
         if (!opts) {
             opts = {}
         }
