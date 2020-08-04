@@ -33,6 +33,22 @@ import (
 // 					NumOfUnits:    pulumi.Int(5),
 // 				},
 // 			},
+// 			BlockDeviceMappings: aws.OceanLaunchSpecBlockDeviceMappingArray{
+// 				&aws.OceanLaunchSpecBlockDeviceMappingArgs{
+// 					DeviceName: pulumi.String("/dev/xvda1"),
+// 					Ebs: &aws.OceanLaunchSpecBlockDeviceMappingEbsArgs{
+// 						DeleteOnTermination: pulumi.Bool(true),
+// 						DynamicVolumeSize: &aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{
+// 							BaseSize:            pulumi.Int(50),
+// 							Resource:            pulumi.String("CPU"),
+// 							SizePerResourceUnit: pulumi.Int(20),
+// 						},
+// 						Encrypted:  pulumi.Bool(false),
+// 						VolumeSize: pulumi.Int(50),
+// 						VolumeType: pulumi.String("gp2"),
+// 					},
+// 				},
+// 			},
 // 			ElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{
 // 				&aws.OceanLaunchSpecElasticIpPoolArgs{
 // 					TagSelector: &aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{
@@ -89,6 +105,8 @@ type OceanLaunchSpec struct {
 
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayOutput `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -149,6 +167,8 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 type oceanLaunchSpecState struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
 	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -179,6 +199,8 @@ type oceanLaunchSpecState struct {
 type OceanLaunchSpecState struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
 	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -213,6 +235,8 @@ func (OceanLaunchSpecState) ElementType() reflect.Type {
 type oceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
 	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -244,6 +268,8 @@ type oceanLaunchSpecArgs struct {
 type OceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
 	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.

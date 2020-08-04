@@ -34,6 +34,26 @@ namespace Pulumi.SpotInst.Aws
     ///                     NumOfUnits = 5,
     ///                 },
     ///             },
+    ///             BlockDeviceMappings = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
+    ///                 {
+    ///                     DeviceName = "/dev/xvda1",
+    ///                     Ebs = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
+    ///                     {
+    ///                         DeleteOnTermination = true,
+    ///                         DynamicVolumeSize = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs
+    ///                         {
+    ///                             BaseSize = 50,
+    ///                             Resource = "CPU",
+    ///                             SizePerResourceUnit = 20,
+    ///                         },
+    ///                         Encrypted = false,
+    ///                         VolumeSize = 50,
+    ///                         VolumeType = "gp2",
+    ///                     },
+    ///                 },
+    ///             },
     ///             ElasticIpPools = 
     ///             {
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs
@@ -103,6 +123,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("autoscaleHeadrooms")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroom>> AutoscaleHeadrooms { get; private set; } = null!;
+
+        /// <summary>
+        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        [Output("blockDeviceMappings")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
         /// <summary>
         /// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
@@ -235,6 +261,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _autoscaleHeadrooms ?? (_autoscaleHeadrooms = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomArgs>());
             set => _autoscaleHeadrooms = value;
+        }
+
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs>());
+            set => _blockDeviceMappings = value;
         }
 
         [Input("elasticIpPools")]
@@ -370,6 +408,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _autoscaleHeadrooms ?? (_autoscaleHeadrooms = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomGetArgs>());
             set => _autoscaleHeadrooms = value;
+        }
+
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs>());
+            set => _blockDeviceMappings = value;
         }
 
         [Input("elasticIpPools")]

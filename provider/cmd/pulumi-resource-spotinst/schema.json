@@ -4203,6 +4203,172 @@
                 "numOfUnits"
             ]
         },
+        "spotinst:aws/OceanLaunchSpecBlockDeviceMapping:OceanLaunchSpecBlockDeviceMapping": {
+            "properties": {
+                "deviceName": {
+                    "type": "string",
+                    "description": "String. Set device name. (Example: \"/dev/xvda1\").\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebs": {
+                    "$ref": "#/types/spotinst:aws/OceanLaunchSpecBlockDeviceMappingEbs:OceanLaunchSpecBlockDeviceMappingEbs",
+                    "description": "Object. Set Elastic Block Store properties .\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "noDevice": {
+                    "type": "string",
+                    "description": "String. suppresses the specified device included in the block device mapping of the AMI.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "virtualName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "deviceName"
+            ]
+        },
+        "spotinst:aws/OceanLaunchSpecBlockDeviceMappingEbs:OceanLaunchSpecBlockDeviceMappingEbs": {
+            "properties": {
+                "deleteOnTermination": {
+                    "type": "boolean",
+                    "description": "Boolean. Flag to delete the EBS on instance termination.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dynamicVolumeSize": {
+                    "$ref": "#/types/spotinst:aws/OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize:OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize",
+                    "description": "Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encrypted": {
+                    "type": "boolean",
+                    "description": "Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "iops": {
+                    "type": "integer",
+                    "description": "Int. The number of I/O operations per second (IOPS) that the volume supports.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKeyId": {
+                    "type": "string",
+                    "description": "String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snapshotId": {
+                    "type": "string",
+                    "description": "(Optional) String. The Snapshot ID to mount by.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeSize": {
+                    "type": "integer",
+                    "description": "Int. The size, in GB of the volume.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeType": {
+                    "type": "string",
+                    "description": "String. The type of the volume (example: \"gp2\").\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deleteOnTermination",
+                        "encrypted",
+                        "volumeType"
+                    ]
+                }
+            }
+        },
+        "spotinst:aws/OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize:OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize": {
+            "properties": {
+                "baseSize": {
+                    "type": "integer",
+                    "description": "Int. Initial size for volume. (Example: 50)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "String. Resource type to increase volume size dynamically by. (valid values: \"CPU\")\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sizePerResourceUnit": {
+                    "type": "integer",
+                    "description": "Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "baseSize",
+                "resource",
+                "sizePerResourceUnit"
+            ]
+        },
         "spotinst:aws/OceanLaunchSpecElasticIpPool:OceanLaunchSpecElasticIpPool": {
             "properties": {
                 "tagSelector": {
@@ -11334,7 +11500,7 @@
             }
         },
         "spotinst:aws/oceanLaunchSpec:OceanLaunchSpec": {
-            "description": "Provides a custom Spotinst Ocean AWS Launch Spec resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.aws.OceanLaunchSpec(\"example\", {\n    autoscaleHeadrooms: [{\n        cpuPerUnit: 1000,\n        gpuPerUnit: 0,\n        memoryPerUnit: 2048,\n        numOfUnits: 5,\n    }],\n    elasticIpPools: [{\n        tagSelector: {\n            tagKey: \"key\",\n            tagValue: \"value\",\n        },\n    }],\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-123456\",\n    labels: [{\n        key: \"fakeKey\",\n        value: \"fakeValue\",\n    }],\n    oceanId: \"o-123456\",\n    resourceLimits: [{\n        maxInstanceCount: 4,\n    }],\n    rootVolumeSize: 30,\n    securityGroups: [\"sg-987654321\"],\n    subnetIds: [\"subnet-1234\"],\n    tags: [{\n        key: \"Env\",\n        value: \"production\",\n    }],\n    taints: [{\n        effect: \"NoExecute\",\n        key: \"taint key updated\",\n        value: \"taint value updated\",\n    }],\n    userData: \"echo hello world\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.aws.OceanLaunchSpec(\"example\",\n    autoscale_headrooms=[{\n        \"cpuPerUnit\": 1000,\n        \"gpuPerUnit\": 0,\n        \"memoryPerUnit\": 2048,\n        \"numOfUnits\": 5,\n    }],\n    elastic_ip_pools=[{\n        \"tagSelector\": {\n            \"tagKey\": \"key\",\n            \"tagValue\": \"value\",\n        },\n    }],\n    iam_instance_profile=\"iam-profile\",\n    image_id=\"ami-123456\",\n    labels=[{\n        \"key\": \"fakeKey\",\n        \"value\": \"fakeValue\",\n    }],\n    ocean_id=\"o-123456\",\n    resource_limits=[{\n        \"maxInstanceCount\": 4,\n    }],\n    root_volume_size=30,\n    security_groups=[\"sg-987654321\"],\n    subnet_ids=[\"subnet-1234\"],\n    tags=[{\n        \"key\": \"Env\",\n        \"value\": \"production\",\n    }],\n    taints=[{\n        \"effect\": \"NoExecute\",\n        \"key\": \"taint key updated\",\n        \"value\": \"taint value updated\",\n    }],\n    user_data=\"echo hello world\")\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new SpotInst.Aws.OceanLaunchSpec(\"example\", new SpotInst.Aws.OceanLaunchSpecArgs\n        {\n            AutoscaleHeadrooms = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs\n                {\n                    CpuPerUnit = 1000,\n                    GpuPerUnit = 0,\n                    MemoryPerUnit = 2048,\n                    NumOfUnits = 5,\n                },\n            },\n            ElasticIpPools = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs\n                {\n                    TagSelector = new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs\n                    {\n                        TagKey = \"key\",\n                        TagValue = \"value\",\n                    },\n                },\n            },\n            IamInstanceProfile = \"iam-profile\",\n            ImageId = \"ami-123456\",\n            Labels = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecLabelArgs\n                {\n                    Key = \"fakeKey\",\n                    Value = \"fakeValue\",\n                },\n            },\n            OceanId = \"o-123456\",\n            ResourceLimits = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecResourceLimitArgs\n                {\n                    MaxInstanceCount = 4,\n                },\n            },\n            RootVolumeSize = 30,\n            SecurityGroups = \n            {\n                \"sg-987654321\",\n            },\n            SubnetIds = \n            {\n                \"subnet-1234\",\n            },\n            Tags = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecTagArgs\n                {\n                    Key = \"Env\",\n                    Value = \"production\",\n                },\n            },\n            Taints = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecTaintArgs\n                {\n                    Effect = \"NoExecute\",\n                    Key = \"taint key updated\",\n                    Value = \"taint value updated\",\n                },\n            },\n            UserData = \"echo hello world\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aws.NewOceanLaunchSpec(ctx, \"example\", \u0026aws.OceanLaunchSpecArgs{\n\t\t\tAutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecAutoscaleHeadroomArgs{\n\t\t\t\t\tCpuPerUnit:    pulumi.Int(1000),\n\t\t\t\t\tGpuPerUnit:    pulumi.Int(0),\n\t\t\t\t\tMemoryPerUnit: pulumi.Int(2048),\n\t\t\t\t\tNumOfUnits:    pulumi.Int(5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecElasticIpPoolArgs{\n\t\t\t\t\tTagSelector: \u0026aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{\n\t\t\t\t\t\tTagKey:   pulumi.String(\"key\"),\n\t\t\t\t\t\tTagValue: pulumi.String(\"value\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tIamInstanceProfile: pulumi.String(\"iam-profile\"),\n\t\t\tImageId:            pulumi.String(\"ami-123456\"),\n\t\t\tLabels: aws.OceanLaunchSpecLabelArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecLabelArgs{\n\t\t\t\t\tKey:   pulumi.String(\"fakeKey\"),\n\t\t\t\t\tValue: pulumi.String(\"fakeValue\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOceanId: pulumi.String(\"o-123456\"),\n\t\t\tResourceLimits: aws.OceanLaunchSpecResourceLimitArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecResourceLimitArgs{\n\t\t\t\t\tMaxInstanceCount: pulumi.Int(4),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRootVolumeSize: pulumi.Int(30),\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"sg-987654321\"),\n\t\t\t},\n\t\t\tSubnetIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"subnet-1234\"),\n\t\t\t},\n\t\t\tTags: aws.OceanLaunchSpecTagArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"Env\"),\n\t\t\t\t\tValue: pulumi.String(\"production\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTaints: aws.OceanLaunchSpecTaintArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecTaintArgs{\n\t\t\t\t\tEffect: pulumi.String(\"NoExecute\"),\n\t\t\t\t\tKey:    pulumi.String(\"taint key updated\"),\n\t\t\t\t\tValue:  pulumi.String(\"taint value updated\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tUserData: pulumi.String(\"echo hello world\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a custom Spotinst Ocean AWS Launch Spec resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.aws.OceanLaunchSpec(\"example\", {\n    autoscaleHeadrooms: [{\n        cpuPerUnit: 1000,\n        gpuPerUnit: 0,\n        memoryPerUnit: 2048,\n        numOfUnits: 5,\n    }],\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvda1\",\n        ebs: {\n            deleteOnTermination: true,\n            dynamicVolumeSize: {\n                baseSize: 50,\n                resource: \"CPU\",\n                sizePerResourceUnit: 20,\n            },\n            encrypted: false,\n            volumeSize: 50,\n            volumeType: \"gp2\",\n        },\n    }],\n    elasticIpPools: [{\n        tagSelector: {\n            tagKey: \"key\",\n            tagValue: \"value\",\n        },\n    }],\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-123456\",\n    labels: [{\n        key: \"fakeKey\",\n        value: \"fakeValue\",\n    }],\n    oceanId: \"o-123456\",\n    resourceLimits: [{\n        maxInstanceCount: 4,\n    }],\n    rootVolumeSize: 30,\n    securityGroups: [\"sg-987654321\"],\n    subnetIds: [\"subnet-1234\"],\n    tags: [{\n        key: \"Env\",\n        value: \"production\",\n    }],\n    taints: [{\n        effect: \"NoExecute\",\n        key: \"taint key updated\",\n        value: \"taint value updated\",\n    }],\n    userData: \"echo hello world\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.aws.OceanLaunchSpec(\"example\",\n    autoscale_headrooms=[{\n        \"cpuPerUnit\": 1000,\n        \"gpuPerUnit\": 0,\n        \"memoryPerUnit\": 2048,\n        \"numOfUnits\": 5,\n    }],\n    block_device_mappings=[{\n        \"deviceName\": \"/dev/xvda1\",\n        \"ebs\": {\n            \"deleteOnTermination\": \"true\",\n            \"dynamicVolumeSize\": {\n                \"baseSize\": 50,\n                \"resource\": \"CPU\",\n                \"sizePerResourceUnit\": 20,\n            },\n            \"encrypted\": \"false\",\n            \"volumeSize\": 50,\n            \"volumeType\": \"gp2\",\n        },\n    }],\n    elastic_ip_pools=[{\n        \"tagSelector\": {\n            \"tagKey\": \"key\",\n            \"tagValue\": \"value\",\n        },\n    }],\n    iam_instance_profile=\"iam-profile\",\n    image_id=\"ami-123456\",\n    labels=[{\n        \"key\": \"fakeKey\",\n        \"value\": \"fakeValue\",\n    }],\n    ocean_id=\"o-123456\",\n    resource_limits=[{\n        \"maxInstanceCount\": 4,\n    }],\n    root_volume_size=30,\n    security_groups=[\"sg-987654321\"],\n    subnet_ids=[\"subnet-1234\"],\n    tags=[{\n        \"key\": \"Env\",\n        \"value\": \"production\",\n    }],\n    taints=[{\n        \"effect\": \"NoExecute\",\n        \"key\": \"taint key updated\",\n        \"value\": \"taint value updated\",\n    }],\n    user_data=\"echo hello world\")\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new SpotInst.Aws.OceanLaunchSpec(\"example\", new SpotInst.Aws.OceanLaunchSpecArgs\n        {\n            AutoscaleHeadrooms = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs\n                {\n                    CpuPerUnit = 1000,\n                    GpuPerUnit = 0,\n                    MemoryPerUnit = 2048,\n                    NumOfUnits = 5,\n                },\n            },\n            BlockDeviceMappings = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingArgs\n                {\n                    DeviceName = \"/dev/xvda1\",\n                    Ebs = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs\n                    {\n                        DeleteOnTermination = true,\n                        DynamicVolumeSize = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs\n                        {\n                            BaseSize = 50,\n                            Resource = \"CPU\",\n                            SizePerResourceUnit = 20,\n                        },\n                        Encrypted = false,\n                        VolumeSize = 50,\n                        VolumeType = \"gp2\",\n                    },\n                },\n            },\n            ElasticIpPools = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs\n                {\n                    TagSelector = new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs\n                    {\n                        TagKey = \"key\",\n                        TagValue = \"value\",\n                    },\n                },\n            },\n            IamInstanceProfile = \"iam-profile\",\n            ImageId = \"ami-123456\",\n            Labels = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecLabelArgs\n                {\n                    Key = \"fakeKey\",\n                    Value = \"fakeValue\",\n                },\n            },\n            OceanId = \"o-123456\",\n            ResourceLimits = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecResourceLimitArgs\n                {\n                    MaxInstanceCount = 4,\n                },\n            },\n            RootVolumeSize = 30,\n            SecurityGroups = \n            {\n                \"sg-987654321\",\n            },\n            SubnetIds = \n            {\n                \"subnet-1234\",\n            },\n            Tags = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecTagArgs\n                {\n                    Key = \"Env\",\n                    Value = \"production\",\n                },\n            },\n            Taints = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecTaintArgs\n                {\n                    Effect = \"NoExecute\",\n                    Key = \"taint key updated\",\n                    Value = \"taint value updated\",\n                },\n            },\n            UserData = \"echo hello world\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aws.NewOceanLaunchSpec(ctx, \"example\", \u0026aws.OceanLaunchSpecArgs{\n\t\t\tAutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecAutoscaleHeadroomArgs{\n\t\t\t\t\tCpuPerUnit:    pulumi.Int(1000),\n\t\t\t\t\tGpuPerUnit:    pulumi.Int(0),\n\t\t\t\t\tMemoryPerUnit: pulumi.Int(2048),\n\t\t\t\t\tNumOfUnits:    pulumi.Int(5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBlockDeviceMappings: aws.OceanLaunchSpecBlockDeviceMappingArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecBlockDeviceMappingArgs{\n\t\t\t\t\tDeviceName: pulumi.String(\"/dev/xvda1\"),\n\t\t\t\t\tEbs: \u0026aws.OceanLaunchSpecBlockDeviceMappingEbsArgs{\n\t\t\t\t\t\tDeleteOnTermination: pulumi.Bool(true),\n\t\t\t\t\t\tDynamicVolumeSize: \u0026aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{\n\t\t\t\t\t\t\tBaseSize:            pulumi.Int(50),\n\t\t\t\t\t\t\tResource:            pulumi.String(\"CPU\"),\n\t\t\t\t\t\t\tSizePerResourceUnit: pulumi.Int(20),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tEncrypted:  pulumi.Bool(false),\n\t\t\t\t\t\tVolumeSize: pulumi.Int(50),\n\t\t\t\t\t\tVolumeType: pulumi.String(\"gp2\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecElasticIpPoolArgs{\n\t\t\t\t\tTagSelector: \u0026aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{\n\t\t\t\t\t\tTagKey:   pulumi.String(\"key\"),\n\t\t\t\t\t\tTagValue: pulumi.String(\"value\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tIamInstanceProfile: pulumi.String(\"iam-profile\"),\n\t\t\tImageId:            pulumi.String(\"ami-123456\"),\n\t\t\tLabels: aws.OceanLaunchSpecLabelArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecLabelArgs{\n\t\t\t\t\tKey:   pulumi.String(\"fakeKey\"),\n\t\t\t\t\tValue: pulumi.String(\"fakeValue\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOceanId: pulumi.String(\"o-123456\"),\n\t\t\tResourceLimits: aws.OceanLaunchSpecResourceLimitArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecResourceLimitArgs{\n\t\t\t\t\tMaxInstanceCount: pulumi.Int(4),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRootVolumeSize: pulumi.Int(30),\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"sg-987654321\"),\n\t\t\t},\n\t\t\tSubnetIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"subnet-1234\"),\n\t\t\t},\n\t\t\tTags: aws.OceanLaunchSpecTagArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"Env\"),\n\t\t\t\t\tValue: pulumi.String(\"production\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTaints: aws.OceanLaunchSpecTaintArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecTaintArgs{\n\t\t\t\t\tEffect: pulumi.String(\"NoExecute\"),\n\t\t\t\t\tKey:    pulumi.String(\"taint key updated\"),\n\t\t\t\t\tValue:  pulumi.String(\"taint value updated\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tUserData: pulumi.String(\"echo hello world\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "autoscaleHeadrooms": {
                     "type": "array",
@@ -11342,6 +11508,13 @@
                         "$ref": "#/types/spotinst:aws/OceanLaunchSpecAutoscaleHeadroom:OceanLaunchSpecAutoscaleHeadroom"
                     },
                     "description": "Set custom headroom per launch spec. provide list of headrooms object.\n"
+                },
+                "blockDeviceMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecBlockDeviceMapping:OceanLaunchSpecBlockDeviceMapping"
+                    },
+                    "description": "Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.\n"
                 },
                 "elasticIpPools": {
                     "type": "array",
@@ -11428,6 +11601,13 @@
                     },
                     "description": "Set custom headroom per launch spec. provide list of headrooms object.\n"
                 },
+                "blockDeviceMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecBlockDeviceMapping:OceanLaunchSpecBlockDeviceMapping"
+                    },
+                    "description": "Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.\n"
+                },
                 "elasticIpPools": {
                     "type": "array",
                     "items": {
@@ -11513,6 +11693,13 @@
                             "$ref": "#/types/spotinst:aws/OceanLaunchSpecAutoscaleHeadroom:OceanLaunchSpecAutoscaleHeadroom"
                         },
                         "description": "Set custom headroom per launch spec. provide list of headrooms object.\n"
+                    },
+                    "blockDeviceMappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/OceanLaunchSpecBlockDeviceMapping:OceanLaunchSpecBlockDeviceMapping"
+                        },
+                        "description": "Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.\n"
                     },
                     "elasticIpPools": {
                         "type": "array",

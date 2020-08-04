@@ -921,6 +921,72 @@ export namespace aws {
         numOfUnits: pulumi.Input<number>;
     }
 
+    export interface OceanLaunchSpecBlockDeviceMapping {
+        /**
+         * String. Set device name. (Example: "/dev/xvda1").
+         */
+        deviceName: pulumi.Input<string>;
+        /**
+         * Object. Set Elastic Block Store properties .
+         */
+        ebs?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbs>;
+        /**
+         * String. suppresses the specified device included in the block device mapping of the AMI.
+         */
+        noDevice?: pulumi.Input<string>;
+        virtualName?: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
+        deleteOnTermination?: pulumi.Input<boolean>;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
+        dynamicVolumeSize?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize>;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
+        encrypted?: pulumi.Input<boolean>;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
+        iops?: pulumi.Input<number>;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
+        kmsKeyId?: pulumi.Input<string>;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
+        snapshotId?: pulumi.Input<string>;
+        /**
+         * Int. The size, in GB of the volume.
+         */
+        volumeSize?: pulumi.Input<number>;
+        /**
+         * String. The type of the volume (example: "gp2").
+         */
+        volumeType?: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
+        baseSize: pulumi.Input<number>;
+        /**
+         * String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+         */
+        resource: pulumi.Input<string>;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+         */
+        sizePerResourceUnit: pulumi.Input<number>;
+    }
+
     export interface OceanLaunchSpecElasticIpPool {
         /**
          * Key-value object, which defines an Elastic IP from the customer pool. Can be null.
