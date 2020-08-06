@@ -6,11 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 __config__ = pulumi.Config('spotinst')
 
-account = __config__.get('account') or (utilities.get_env('SPOTINST_ACCOUNT') or '')
+account = __config__.get('account') or (_utilities.get_env('SPOTINST_ACCOUNT') or '')
 """
 Spotinst Account ID
 """
@@ -20,7 +20,7 @@ feature_flags = __config__.get('featureFlags')
 Spotinst SDK Feature Flags
 """
 
-token = __config__.get('token') or (utilities.get_env('SPOTINST_TOKEN') or '')
+token = __config__.get('token') or (_utilities.get_env('SPOTINST_TOKEN') or '')
 """
 Spotinst Personal API Access Token
 """

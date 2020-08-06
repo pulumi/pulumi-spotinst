@@ -14,10 +14,6 @@ namespace Pulumi.SpotInst.Multai.Inputs
     {
         [Input("certificateIds", required: true)]
         private InputList<string>? _certificateIds;
-
-        /// <summary>
-        /// Contains one or more certificate chains to present to the other side of the connection.
-        /// </summary>
         public InputList<string> CertificateIds
         {
             get => _certificateIds ?? (_certificateIds = new InputList<string>());
@@ -26,37 +22,21 @@ namespace Pulumi.SpotInst.Multai.Inputs
 
         [Input("cipherSuites", required: true)]
         private InputList<string>? _cipherSuites;
-
-        /// <summary>
-        /// List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
-        /// </summary>
         public InputList<string> CipherSuites
         {
             get => _cipherSuites ?? (_cipherSuites = new InputList<string>());
             set => _cipherSuites = value;
         }
 
-        /// <summary>
-        /// MaxVersion contains the maximum SSL/TLS version that is acceptable.
-        /// </summary>
         [Input("maxVersion", required: true)]
         public Input<string> MaxVersion { get; set; } = null!;
 
-        /// <summary>
-        /// MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
-        /// </summary>
         [Input("minVersion", required: true)]
         public Input<string> MinVersion { get; set; } = null!;
 
-        /// <summary>
-        /// Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
-        /// </summary>
         [Input("preferServerCipherSuites", required: true)]
         public Input<bool> PreferServerCipherSuites { get; set; } = null!;
 
-        /// <summary>
-        /// May be set to true to disable session ticket (resumption) support.
-        /// </summary>
         [Input("sessionTicketsDisabled", required: true)]
         public Input<bool> SessionTicketsDisabled { get; set; } = null!;
 

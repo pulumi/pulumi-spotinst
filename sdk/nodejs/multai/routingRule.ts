@@ -6,27 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Spotinst Multai Routing Rule.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const myRoutingRule = new spotinst.multai.RoutingRule("my_routing_rule", {
- *     balancerId: "b-12345",
- *     listenerId: "l-98765",
- *     route: "Path(`/bar`)",
- *     strategy: "LEASTCONN",
- *     tags: [{
- *         key: "env",
- *         value: "prod",
- *     }],
- * });
- * ```
- */
 export class RoutingRule extends pulumi.CustomResource {
     /**
      * Get an existing RoutingRule resource's state with the given name, ID, and optional extra
@@ -55,27 +34,12 @@ export class RoutingRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === RoutingRule.__pulumiType;
     }
 
-    /**
-     * The ID of the balancer.
-     */
     public readonly balancerId!: pulumi.Output<string>;
-    /**
-     * The ID of the listener.
-     */
     public readonly listenerId!: pulumi.Output<string>;
     public readonly middlewareIds!: pulumi.Output<string[] | undefined>;
     public readonly priority!: pulumi.Output<number | undefined>;
-    /**
-     * Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path("/foo/bar") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using && operator: — Method(“POST”) && Path("/v1")
-     */
     public readonly route!: pulumi.Output<string>;
-    /**
-     * Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.
-     */
     public readonly strategy!: pulumi.Output<string | undefined>;
-    /**
-     * A list of key:value paired tags.
-     */
     public readonly tags!: pulumi.Output<outputs.multai.RoutingRuleTag[] | undefined>;
     public readonly targetSetIds!: pulumi.Output<string[]>;
 
@@ -137,27 +101,12 @@ export class RoutingRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RoutingRule resources.
  */
 export interface RoutingRuleState {
-    /**
-     * The ID of the balancer.
-     */
     readonly balancerId?: pulumi.Input<string>;
-    /**
-     * The ID of the listener.
-     */
     readonly listenerId?: pulumi.Input<string>;
     readonly middlewareIds?: pulumi.Input<pulumi.Input<string>[]>;
     readonly priority?: pulumi.Input<number>;
-    /**
-     * Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path("/foo/bar") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using && operator: — Method(“POST”) && Path("/v1")
-     */
     readonly route?: pulumi.Input<string>;
-    /**
-     * Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.
-     */
     readonly strategy?: pulumi.Input<string>;
-    /**
-     * A list of key:value paired tags.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.RoutingRuleTag>[]>;
     readonly targetSetIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -166,27 +115,12 @@ export interface RoutingRuleState {
  * The set of arguments for constructing a RoutingRule resource.
  */
 export interface RoutingRuleArgs {
-    /**
-     * The ID of the balancer.
-     */
     readonly balancerId: pulumi.Input<string>;
-    /**
-     * The ID of the listener.
-     */
     readonly listenerId: pulumi.Input<string>;
     readonly middlewareIds?: pulumi.Input<pulumi.Input<string>[]>;
     readonly priority?: pulumi.Input<number>;
-    /**
-     * Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path("/foo/bar") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using && operator: — Method(“POST”) && Path("/v1")
-     */
     readonly route: pulumi.Input<string>;
-    /**
-     * Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.
-     */
     readonly strategy?: pulumi.Input<string>;
-    /**
-     * A list of key:value paired tags.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.RoutingRuleTag>[]>;
     readonly targetSetIds: pulumi.Input<pulumi.Input<string>[]>;
 }

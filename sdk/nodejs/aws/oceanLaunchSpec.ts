@@ -22,6 +22,20 @@ import * as utilities from "../utilities";
  *         memoryPerUnit: 2048,
  *         numOfUnits: 5,
  *     }],
+ *     blockDeviceMappings: [{
+ *         deviceName: "/dev/xvda1",
+ *         ebs: {
+ *             deleteOnTermination: true,
+ *             dynamicVolumeSize: {
+ *                 baseSize: 50,
+ *                 resource: "CPU",
+ *                 sizePerResourceUnit: 20,
+ *             },
+ *             encrypted: false,
+ *             volumeSize: 50,
+ *             volumeType: "gp2",
+ *         },
+ *     }],
  *     elasticIpPools: [{
  *         tagSelector: {
  *             tagKey: "key",
@@ -87,6 +101,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly autoscaleHeadrooms!: pulumi.Output<outputs.aws.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
     /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    public readonly blockDeviceMappings!: pulumi.Output<outputs.aws.OceanLaunchSpecBlockDeviceMapping[] | undefined>;
+    /**
      * Assign an Elastic IP to the instances spun by the launch spec. Can be null.
      */
     public readonly elasticIpPools!: pulumi.Output<outputs.aws.OceanLaunchSpecElasticIpPool[] | undefined>;
@@ -149,6 +167,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
             inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
+            inputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             inputs["elasticIpPools"] = state ? state.elasticIpPools : undefined;
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
@@ -168,6 +187,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
                 throw new Error("Missing required property 'oceanId'");
             }
             inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
+            inputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             inputs["elasticIpPools"] = args ? args.elasticIpPools : undefined;
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
@@ -201,6 +221,10 @@ export interface OceanLaunchSpecState {
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[]>;
     /**
      * Assign an Elastic IP to the instances spun by the launch spec. Can be null.
      */
@@ -260,6 +284,10 @@ export interface OceanLaunchSpecArgs {
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[]>;
     /**
      * Assign an Elastic IP to the instances spun by the launch spec. Can be null.
      */

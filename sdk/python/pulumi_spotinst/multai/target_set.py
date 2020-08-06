@@ -6,97 +6,38 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class TargetSet(pulumi.CustomResource):
     balancer_id: pulumi.Output[str]
-    """
-    The id of the balancer.
-    """
     deployment_id: pulumi.Output[str]
-    """
-    The id of the deployment.
-    """
     health_check: pulumi.Output[dict]
     name: pulumi.Output[str]
-    """
-    The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-    """
     port: pulumi.Output[float]
-    """
-    The port on which the load balancer is listening.
-    """
     protocol: pulumi.Output[str]
-    """
-    The protocol to allow connections to the target for the health check.
-    """
     tags: pulumi.Output[list]
-    """
-    A list of key:value paired tags.
-
-      * `key` (`str`) - The tag's key.
-      * `value` (`str`) - The tag's value.
-    """
     weight: pulumi.Output[float]
-    """
-    Defines how traffic is distributed between the Target Set.
-    """
     def __init__(__self__, resource_name, opts=None, balancer_id=None, deployment_id=None, health_check=None, name=None, port=None, protocol=None, tags=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Spotinst Multai Target Set.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        my_target_set = spotinst.multai.TargetSet("myTargetSet",
-            balancer_id="b-12345",
-            deployment_id="dp-12345",
-            health_check={
-                "healthyThreshold": 3,
-                "interval": 20,
-                "path": "/",
-                "port": 3001,
-                "protocol": "http",
-                "timeout": 5,
-                "unhealthyThreshold": 3,
-            },
-            port=1338,
-            protocol="http",
-            tags=[{
-                "key": "env",
-                "value": "prod",
-            }],
-            weight=2)
-        ```
-
+        Create a TargetSet resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] balancer_id: The id of the balancer.
-        :param pulumi.Input[str] deployment_id: The id of the deployment.
-        :param pulumi.Input[str] name: The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        :param pulumi.Input[float] port: The port on which the load balancer is listening.
-        :param pulumi.Input[str] protocol: The protocol to allow connections to the target for the health check.
-        :param pulumi.Input[list] tags: A list of key:value paired tags.
-        :param pulumi.Input[float] weight: Defines how traffic is distributed between the Target Set.
 
         The **health_check** object supports the following:
 
-          * `healthyThreshold` (`pulumi.Input[float]`) - Total number of allowed healthy Targets.
-          * `interval` (`pulumi.Input[float]`) - The interval for the health check.
-          * `path` (`pulumi.Input[str]`) - The path to perform the health check.
-          * `port` (`pulumi.Input[float]`) - The port on which the load balancer is listening.
-          * `protocol` (`pulumi.Input[str]`) - The protocol to allow connections to the target for the health check.
-          * `timeout` (`pulumi.Input[float]`) - The time out for the health check.
-          * `unhealthyThreshold` (`pulumi.Input[float]`) - Total number of allowed unhealthy Targets.
+          * `healthyThreshold` (`pulumi.Input[float]`)
+          * `interval` (`pulumi.Input[float]`)
+          * `path` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[float]`)
+          * `protocol` (`pulumi.Input[str]`)
+          * `timeout` (`pulumi.Input[float]`)
+          * `unhealthyThreshold` (`pulumi.Input[float]`)
 
         The **tags** object supports the following:
 
-          * `key` (`pulumi.Input[str]`) - The tag's key.
-          * `value` (`pulumi.Input[str]`) - The tag's value.
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,7 +50,7 @@ class TargetSet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -148,28 +89,21 @@ class TargetSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] balancer_id: The id of the balancer.
-        :param pulumi.Input[str] deployment_id: The id of the deployment.
-        :param pulumi.Input[str] name: The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        :param pulumi.Input[float] port: The port on which the load balancer is listening.
-        :param pulumi.Input[str] protocol: The protocol to allow connections to the target for the health check.
-        :param pulumi.Input[list] tags: A list of key:value paired tags.
-        :param pulumi.Input[float] weight: Defines how traffic is distributed between the Target Set.
 
         The **health_check** object supports the following:
 
-          * `healthyThreshold` (`pulumi.Input[float]`) - Total number of allowed healthy Targets.
-          * `interval` (`pulumi.Input[float]`) - The interval for the health check.
-          * `path` (`pulumi.Input[str]`) - The path to perform the health check.
-          * `port` (`pulumi.Input[float]`) - The port on which the load balancer is listening.
-          * `protocol` (`pulumi.Input[str]`) - The protocol to allow connections to the target for the health check.
-          * `timeout` (`pulumi.Input[float]`) - The time out for the health check.
-          * `unhealthyThreshold` (`pulumi.Input[float]`) - Total number of allowed unhealthy Targets.
+          * `healthyThreshold` (`pulumi.Input[float]`)
+          * `interval` (`pulumi.Input[float]`)
+          * `path` (`pulumi.Input[str]`)
+          * `port` (`pulumi.Input[float]`)
+          * `protocol` (`pulumi.Input[str]`)
+          * `timeout` (`pulumi.Input[float]`)
+          * `unhealthyThreshold` (`pulumi.Input[float]`)
 
         The **tags** object supports the following:
 
-          * `key` (`pulumi.Input[str]`) - The tag's key.
-          * `value` (`pulumi.Input[str]`) - The tag's value.
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -186,7 +120,7 @@ class TargetSet(pulumi.CustomResource):
         return TargetSet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

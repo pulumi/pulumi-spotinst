@@ -310,6 +310,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationRoute53Domain {
         hostedZoneId: pulumi.Input<string>;
+        recordSetType?: pulumi.Input<string>;
         recordSets: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53DomainRecordSet>[]>;
         spotinstAcctId?: pulumi.Input<string>;
     }
@@ -319,6 +320,7 @@ export namespace aws {
          * The group name.
          */
         name: pulumi.Input<string>;
+        usePublicDns?: pulumi.Input<boolean>;
         usePublicIp?: pulumi.Input<boolean>;
     }
 
@@ -528,6 +530,7 @@ export namespace aws {
 
     export interface ManagedInstanceIntegrationRoute53Domain {
         hostedZoneId: pulumi.Input<string>;
+        recordSetType?: pulumi.Input<string>;
         recordSets: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceIntegrationRoute53DomainRecordSet>[]>;
         spotinstAcctId?: pulumi.Input<string>;
     }
@@ -537,6 +540,7 @@ export namespace aws {
          * The ManagedInstance name.
          */
         name: pulumi.Input<string>;
+        usePublicDns?: pulumi.Input<boolean>;
         usePublicIp?: pulumi.Input<boolean>;
     }
 
@@ -561,7 +565,7 @@ export namespace aws {
 
     export interface ManagedInstanceRevertToSpot {
         /**
-         * Valid values: “always”, “never”, "timeWindow".
+         * Valid values: `"always"`, `"never"`, `"timeWindow"`.
          * Default `"never"`.
          */
         performAt: pulumi.Input<string>;
@@ -919,6 +923,72 @@ export namespace aws {
          * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
          */
         numOfUnits: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMapping {
+        /**
+         * String. Set device name. (Example: "/dev/xvda1").
+         */
+        deviceName: pulumi.Input<string>;
+        /**
+         * Object. Set Elastic Block Store properties .
+         */
+        ebs?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbs>;
+        /**
+         * String. suppresses the specified device included in the block device mapping of the AMI.
+         */
+        noDevice?: pulumi.Input<string>;
+        virtualName?: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
+        deleteOnTermination?: pulumi.Input<boolean>;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
+        dynamicVolumeSize?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize>;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
+        encrypted?: pulumi.Input<boolean>;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
+        iops?: pulumi.Input<number>;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
+        kmsKeyId?: pulumi.Input<string>;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
+        snapshotId?: pulumi.Input<string>;
+        /**
+         * Int. The size, in GB of the volume.
+         */
+        volumeSize?: pulumi.Input<number>;
+        /**
+         * String. The type of the volume (example: "gp2").
+         */
+        volumeType?: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
+        baseSize: pulumi.Input<number>;
+        /**
+         * String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+         */
+        resource: pulumi.Input<string>;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+         */
+        sizePerResourceUnit: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecElasticIpPool {
@@ -1762,126 +1832,51 @@ export namespace gke {
 
 export namespace multai {
     export interface BalancerConnectionTimeouts {
-        /**
-         * The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
-         */
         draining?: pulumi.Input<number>;
-        /**
-         * The idle timeout value, in seconds. (range: 1 - 3600).
-         */
         idle?: pulumi.Input<number>;
     }
 
     export interface BalancerTag {
-        /**
-         * The tag's key.
-         */
         key: pulumi.Input<string>;
-        /**
-         * The tag's value.
-         */
         value: pulumi.Input<string>;
     }
 
     export interface ListenerTag {
-        /**
-         * The tag's key.
-         */
         key: pulumi.Input<string>;
-        /**
-         * The tag's value.
-         */
         value: pulumi.Input<string>;
     }
 
     export interface ListenerTlsConfig {
-        /**
-         * Contains one or more certificate chains to present to the other side of the connection.
-         */
         certificateIds: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
-         */
         cipherSuites: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * MaxVersion contains the maximum SSL/TLS version that is acceptable.
-         */
         maxVersion: pulumi.Input<string>;
-        /**
-         * MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
-         */
         minVersion: pulumi.Input<string>;
-        /**
-         * Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
-         */
         preferServerCipherSuites: pulumi.Input<boolean>;
-        /**
-         * May be set to true to disable session ticket (resumption) support.
-         */
         sessionTicketsDisabled: pulumi.Input<boolean>;
     }
 
     export interface RoutingRuleTag {
-        /**
-         * The tag's key.
-         */
         key: pulumi.Input<string>;
-        /**
-         * The tag's value.
-         */
         value: pulumi.Input<string>;
     }
 
     export interface TargetSetHealthCheck {
-        /**
-         * Total number of allowed healthy Targets.
-         */
         healthyThreshold: pulumi.Input<number>;
-        /**
-         * The interval for the health check.
-         */
         interval: pulumi.Input<number>;
-        /**
-         * The path to perform the health check.
-         */
         path: pulumi.Input<string>;
-        /**
-         * The port on which the load balancer is listening.
-         */
         port?: pulumi.Input<number>;
-        /**
-         * The protocol to allow connections to the target for the health check.
-         */
         protocol: pulumi.Input<string>;
-        /**
-         * The time out for the health check.
-         */
         timeout: pulumi.Input<number>;
-        /**
-         * Total number of allowed unhealthy Targets.
-         */
         unhealthyThreshold: pulumi.Input<number>;
     }
 
     export interface TargetSetTag {
-        /**
-         * The tag's key.
-         */
         key: pulumi.Input<string>;
-        /**
-         * The tag's value.
-         */
         value: pulumi.Input<string>;
     }
 
     export interface TargetTag {
-        /**
-         * The tag's key.
-         */
         key: pulumi.Input<string>;
-        /**
-         * The tag's value.
-         */
         value: pulumi.Input<string>;
     }
 }

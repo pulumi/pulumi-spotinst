@@ -9,41 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Multai
 {
-    /// <summary>
-    /// Provides a Spotinst Multai Balancer.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myBalancer = new SpotInst.Multai.Balancer("myBalancer", new SpotInst.Multai.BalancerArgs
-    ///         {
-    ///             ConnectionTimeouts = new SpotInst.Multai.Inputs.BalancerConnectionTimeoutsArgs
-    ///             {
-    ///                 Draining = 10,
-    ///                 Idle = 10,
-    ///             },
-    ///             Scheme = "internal",
-    ///             Tags = 
-    ///             {
-    ///                 new SpotInst.Multai.Inputs.BalancerTagArgs
-    ///                 {
-    ///                     Key = "env",
-    ///                     Value = "prod",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Balancer : Pulumi.CustomResource
     {
         [Output("connectionTimeouts")]
@@ -52,18 +17,12 @@ namespace Pulumi.SpotInst.Multai
         [Output("dnsCnameAliases")]
         public Output<ImmutableArray<string>> DnsCnameAliases { get; private set; } = null!;
 
-        /// <summary>
-        /// The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("scheme")]
         public Output<string?> Scheme { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.BalancerTag>> Tags { get; private set; } = null!;
 
@@ -124,9 +83,6 @@ namespace Pulumi.SpotInst.Multai
             set => _dnsCnameAliases = value;
         }
 
-        /// <summary>
-        /// The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -135,10 +91,6 @@ namespace Pulumi.SpotInst.Multai
 
         [Input("tags")]
         private InputList<Inputs.BalancerTagArgs>? _tags;
-
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         public InputList<Inputs.BalancerTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.BalancerTagArgs>());
@@ -163,9 +115,6 @@ namespace Pulumi.SpotInst.Multai
             set => _dnsCnameAliases = value;
         }
 
-        /// <summary>
-        /// The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -174,10 +123,6 @@ namespace Pulumi.SpotInst.Multai
 
         [Input("tags")]
         private InputList<Inputs.BalancerTagGetArgs>? _tags;
-
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         public InputList<Inputs.BalancerTagGetArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.BalancerTagGetArgs>());

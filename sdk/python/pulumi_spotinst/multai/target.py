@@ -6,77 +6,27 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Target(pulumi.CustomResource):
     balancer_id: pulumi.Output[str]
-    """
-    The ID of the balancer.
-    """
     host: pulumi.Output[str]
-    """
-    The address (IP or URL) of the targets to register
-    """
     name: pulumi.Output[str]
-    """
-    The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-    """
     port: pulumi.Output[float]
-    """
-    The port the target will register to.
-    """
     tags: pulumi.Output[list]
-    """
-    A list of key:value paired tags.
-
-      * `key` (`str`) - The tag's key.
-      * `value` (`str`) - The tag's value.
-    """
     target_set_id: pulumi.Output[str]
-    """
-    The ID of the target set.
-    """
     weight: pulumi.Output[float]
-    """
-    Defines how traffic is distributed between targets.
-    """
     def __init__(__self__, resource_name, opts=None, balancer_id=None, host=None, name=None, port=None, tags=None, target_set_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Spotinst Multai Target.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        my_target = spotinst.multai.Target("myTarget",
-            balancer_id="b-12345",
-            host="host",
-            port=1338,
-            tags=[{
-                "key": "env",
-                "value": "prod",
-            }],
-            target_set_id="l-98765",
-            weight=1)
-        ```
-
+        Create a Target resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] balancer_id: The ID of the balancer.
-        :param pulumi.Input[str] host: The address (IP or URL) of the targets to register
-        :param pulumi.Input[str] name: The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        :param pulumi.Input[float] port: The port the target will register to.
-        :param pulumi.Input[list] tags: A list of key:value paired tags.
-        :param pulumi.Input[str] target_set_id: The ID of the target set.
-        :param pulumi.Input[float] weight: Defines how traffic is distributed between targets.
 
         The **tags** object supports the following:
 
-          * `key` (`pulumi.Input[str]`) - The tag's key.
-          * `value` (`pulumi.Input[str]`) - The tag's value.
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,7 +39,7 @@ class Target(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -125,18 +75,11 @@ class Target(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] balancer_id: The ID of the balancer.
-        :param pulumi.Input[str] host: The address (IP or URL) of the targets to register
-        :param pulumi.Input[str] name: The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        :param pulumi.Input[float] port: The port the target will register to.
-        :param pulumi.Input[list] tags: A list of key:value paired tags.
-        :param pulumi.Input[str] target_set_id: The ID of the target set.
-        :param pulumi.Input[float] weight: Defines how traffic is distributed between targets.
 
         The **tags** object supports the following:
 
-          * `key` (`pulumi.Input[str]`) - The tag's key.
-          * `value` (`pulumi.Input[str]`) - The tag's value.
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -152,7 +95,7 @@ class Target(pulumi.CustomResource):
         return Target(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

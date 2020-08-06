@@ -310,6 +310,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationRoute53Domain {
         hostedZoneId: string;
+        recordSetType?: string;
         recordSets: outputs.aws.ElastigroupIntegrationRoute53DomainRecordSet[];
         spotinstAcctId?: string;
     }
@@ -319,6 +320,7 @@ export namespace aws {
          * The group name.
          */
         name: string;
+        usePublicDns?: boolean;
         usePublicIp?: boolean;
     }
 
@@ -528,6 +530,7 @@ export namespace aws {
 
     export interface ManagedInstanceIntegrationRoute53Domain {
         hostedZoneId: string;
+        recordSetType?: string;
         recordSets: outputs.aws.ManagedInstanceIntegrationRoute53DomainRecordSet[];
         spotinstAcctId?: string;
     }
@@ -537,6 +540,7 @@ export namespace aws {
          * The ManagedInstance name.
          */
         name: string;
+        usePublicDns?: boolean;
         usePublicIp?: boolean;
     }
 
@@ -561,7 +565,7 @@ export namespace aws {
 
     export interface ManagedInstanceRevertToSpot {
         /**
-         * Valid values: “always”, “never”, "timeWindow".
+         * Valid values: `"always"`, `"never"`, `"timeWindow"`.
          * Default `"never"`.
          */
         performAt: string;
@@ -919,6 +923,72 @@ export namespace aws {
          * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
          */
         numOfUnits: number;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMapping {
+        /**
+         * String. Set device name. (Example: "/dev/xvda1").
+         */
+        deviceName: string;
+        /**
+         * Object. Set Elastic Block Store properties .
+         */
+        ebs?: outputs.aws.OceanLaunchSpecBlockDeviceMappingEbs;
+        /**
+         * String. suppresses the specified device included in the block device mapping of the AMI.
+         */
+        noDevice?: string;
+        virtualName?: string;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
+        deleteOnTermination: boolean;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
+        dynamicVolumeSize?: outputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
+        encrypted: boolean;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
+        iops?: number;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
+        kmsKeyId?: string;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
+        snapshotId?: string;
+        /**
+         * Int. The size, in GB of the volume.
+         */
+        volumeSize?: number;
+        /**
+         * String. The type of the volume (example: "gp2").
+         */
+        volumeType: string;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
+        baseSize: number;
+        /**
+         * String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+         */
+        resource: string;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+         */
+        sizePerResourceUnit: number;
     }
 
     export interface OceanLaunchSpecElasticIpPool {
@@ -1762,126 +1832,51 @@ export namespace gke {
 
 export namespace multai {
     export interface BalancerConnectionTimeouts {
-        /**
-         * The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
-         */
         draining?: number;
-        /**
-         * The idle timeout value, in seconds. (range: 1 - 3600).
-         */
         idle?: number;
     }
 
     export interface BalancerTag {
-        /**
-         * The tag's key.
-         */
         key: string;
-        /**
-         * The tag's value.
-         */
         value: string;
     }
 
     export interface ListenerTag {
-        /**
-         * The tag's key.
-         */
         key: string;
-        /**
-         * The tag's value.
-         */
         value: string;
     }
 
     export interface ListenerTlsConfig {
-        /**
-         * Contains one or more certificate chains to present to the other side of the connection.
-         */
         certificateIds: string[];
-        /**
-         * List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
-         */
         cipherSuites: string[];
-        /**
-         * MaxVersion contains the maximum SSL/TLS version that is acceptable.
-         */
         maxVersion: string;
-        /**
-         * MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
-         */
         minVersion: string;
-        /**
-         * Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
-         */
         preferServerCipherSuites: boolean;
-        /**
-         * May be set to true to disable session ticket (resumption) support.
-         */
         sessionTicketsDisabled: boolean;
     }
 
     export interface RoutingRuleTag {
-        /**
-         * The tag's key.
-         */
         key: string;
-        /**
-         * The tag's value.
-         */
         value: string;
     }
 
     export interface TargetSetHealthCheck {
-        /**
-         * Total number of allowed healthy Targets.
-         */
         healthyThreshold: number;
-        /**
-         * The interval for the health check.
-         */
         interval: number;
-        /**
-         * The path to perform the health check.
-         */
         path: string;
-        /**
-         * The port on which the load balancer is listening.
-         */
         port: number;
-        /**
-         * The protocol to allow connections to the target for the health check.
-         */
         protocol: string;
-        /**
-         * The time out for the health check.
-         */
         timeout: number;
-        /**
-         * Total number of allowed unhealthy Targets.
-         */
         unhealthyThreshold: number;
     }
 
     export interface TargetSetTag {
-        /**
-         * The tag's key.
-         */
         key: string;
-        /**
-         * The tag's value.
-         */
         value: string;
     }
 
     export interface TargetTag {
-        /**
-         * The tag's key.
-         */
         key: string;
-        /**
-         * The tag's value.
-         */
         value: string;
     }
 }

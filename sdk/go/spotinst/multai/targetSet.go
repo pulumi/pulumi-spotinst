@@ -10,67 +10,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Spotinst Multai Target Set.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := multai.NewTargetSet(ctx, "myTargetSet", &multai.TargetSetArgs{
-// 			BalancerId:   pulumi.String("b-12345"),
-// 			DeploymentId: pulumi.String("dp-12345"),
-// 			HealthCheck: &multai.TargetSetHealthCheckArgs{
-// 				HealthyThreshold:   pulumi.Int(3),
-// 				Interval:           pulumi.Int(20),
-// 				Path:               pulumi.String("/"),
-// 				Port:               pulumi.Int(3001),
-// 				Protocol:           pulumi.String("http"),
-// 				Timeout:            pulumi.Int(5),
-// 				UnhealthyThreshold: pulumi.Int(3),
-// 			},
-// 			Port:     pulumi.Int(1338),
-// 			Protocol: pulumi.String("http"),
-// 			Tags: multai.TargetSetTagArray{
-// 				&multai.TargetSetTagArgs{
-// 					Key:   pulumi.String("env"),
-// 					Value: pulumi.String("prod"),
-// 				},
-// 			},
-// 			Weight: pulumi.Int(2),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type TargetSet struct {
 	pulumi.CustomResourceState
 
-	// The id of the balancer.
-	BalancerId pulumi.StringOutput `pulumi:"balancerId"`
-	// The id of the deployment.
+	BalancerId   pulumi.StringOutput        `pulumi:"balancerId"`
 	DeploymentId pulumi.StringOutput        `pulumi:"deploymentId"`
 	HealthCheck  TargetSetHealthCheckOutput `pulumi:"healthCheck"`
-	// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The port on which the load balancer is listening.
-	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// The protocol to allow connections to the target for the health check.
-	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// A list of key:value paired tags.
-	Tags TargetSetTagArrayOutput `pulumi:"tags"`
-	// Defines how traffic is distributed between the Target Set.
-	Weight pulumi.IntOutput `pulumi:"weight"`
+	Name         pulumi.StringOutput        `pulumi:"name"`
+	Port         pulumi.IntPtrOutput        `pulumi:"port"`
+	Protocol     pulumi.StringOutput        `pulumi:"protocol"`
+	Tags         TargetSetTagArrayOutput    `pulumi:"tags"`
+	Weight       pulumi.IntOutput           `pulumi:"weight"`
 }
 
 // NewTargetSet registers a new resource with the given unique name, arguments, and options.
@@ -116,39 +66,25 @@ func GetTargetSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TargetSet resources.
 type targetSetState struct {
-	// The id of the balancer.
-	BalancerId *string `pulumi:"balancerId"`
-	// The id of the deployment.
+	BalancerId   *string               `pulumi:"balancerId"`
 	DeploymentId *string               `pulumi:"deploymentId"`
 	HealthCheck  *TargetSetHealthCheck `pulumi:"healthCheck"`
-	// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name *string `pulumi:"name"`
-	// The port on which the load balancer is listening.
-	Port *int `pulumi:"port"`
-	// The protocol to allow connections to the target for the health check.
-	Protocol *string `pulumi:"protocol"`
-	// A list of key:value paired tags.
-	Tags []TargetSetTag `pulumi:"tags"`
-	// Defines how traffic is distributed between the Target Set.
-	Weight *int `pulumi:"weight"`
+	Name         *string               `pulumi:"name"`
+	Port         *int                  `pulumi:"port"`
+	Protocol     *string               `pulumi:"protocol"`
+	Tags         []TargetSetTag        `pulumi:"tags"`
+	Weight       *int                  `pulumi:"weight"`
 }
 
 type TargetSetState struct {
-	// The id of the balancer.
-	BalancerId pulumi.StringPtrInput
-	// The id of the deployment.
+	BalancerId   pulumi.StringPtrInput
 	DeploymentId pulumi.StringPtrInput
 	HealthCheck  TargetSetHealthCheckPtrInput
-	// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name pulumi.StringPtrInput
-	// The port on which the load balancer is listening.
-	Port pulumi.IntPtrInput
-	// The protocol to allow connections to the target for the health check.
-	Protocol pulumi.StringPtrInput
-	// A list of key:value paired tags.
-	Tags TargetSetTagArrayInput
-	// Defines how traffic is distributed between the Target Set.
-	Weight pulumi.IntPtrInput
+	Name         pulumi.StringPtrInput
+	Port         pulumi.IntPtrInput
+	Protocol     pulumi.StringPtrInput
+	Tags         TargetSetTagArrayInput
+	Weight       pulumi.IntPtrInput
 }
 
 func (TargetSetState) ElementType() reflect.Type {
@@ -156,40 +92,26 @@ func (TargetSetState) ElementType() reflect.Type {
 }
 
 type targetSetArgs struct {
-	// The id of the balancer.
-	BalancerId string `pulumi:"balancerId"`
-	// The id of the deployment.
+	BalancerId   string               `pulumi:"balancerId"`
 	DeploymentId string               `pulumi:"deploymentId"`
 	HealthCheck  TargetSetHealthCheck `pulumi:"healthCheck"`
-	// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name *string `pulumi:"name"`
-	// The port on which the load balancer is listening.
-	Port *int `pulumi:"port"`
-	// The protocol to allow connections to the target for the health check.
-	Protocol string `pulumi:"protocol"`
-	// A list of key:value paired tags.
-	Tags []TargetSetTag `pulumi:"tags"`
-	// Defines how traffic is distributed between the Target Set.
-	Weight int `pulumi:"weight"`
+	Name         *string              `pulumi:"name"`
+	Port         *int                 `pulumi:"port"`
+	Protocol     string               `pulumi:"protocol"`
+	Tags         []TargetSetTag       `pulumi:"tags"`
+	Weight       int                  `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a TargetSet resource.
 type TargetSetArgs struct {
-	// The id of the balancer.
-	BalancerId pulumi.StringInput
-	// The id of the deployment.
+	BalancerId   pulumi.StringInput
 	DeploymentId pulumi.StringInput
 	HealthCheck  TargetSetHealthCheckInput
-	// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name pulumi.StringPtrInput
-	// The port on which the load balancer is listening.
-	Port pulumi.IntPtrInput
-	// The protocol to allow connections to the target for the health check.
-	Protocol pulumi.StringInput
-	// A list of key:value paired tags.
-	Tags TargetSetTagArrayInput
-	// Defines how traffic is distributed between the Target Set.
-	Weight pulumi.IntInput
+	Name         pulumi.StringPtrInput
+	Port         pulumi.IntPtrInput
+	Protocol     pulumi.StringInput
+	Tags         TargetSetTagArrayInput
+	Weight       pulumi.IntInput
 }
 
 func (TargetSetArgs) ElementType() reflect.Type {

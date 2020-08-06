@@ -6,60 +6,30 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 
 class Balancer(pulumi.CustomResource):
     connection_timeouts: pulumi.Output[dict]
     dns_cname_aliases: pulumi.Output[list]
     name: pulumi.Output[str]
-    """
-    The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-    """
     scheme: pulumi.Output[str]
     tags: pulumi.Output[list]
-    """
-    A list of key:value paired tags.
-
-      * `key` (`str`) - The tag's key.
-      * `value` (`str`) - The tag's value.
-    """
     def __init__(__self__, resource_name, opts=None, connection_timeouts=None, dns_cname_aliases=None, name=None, scheme=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Spotinst Multai Balancer.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        my_balancer = spotinst.multai.Balancer("myBalancer",
-            connection_timeouts={
-                "draining": 10,
-                "idle": 10,
-            },
-            scheme="internal",
-            tags=[{
-                "key": "env",
-                "value": "prod",
-            }])
-        ```
-
+        Create a Balancer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        :param pulumi.Input[list] tags: A list of key:value paired tags.
 
         The **connection_timeouts** object supports the following:
 
-          * `draining` (`pulumi.Input[float]`) - The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
-          * `idle` (`pulumi.Input[float]`) - The idle timeout value, in seconds. (range: 1 - 3600).
+          * `draining` (`pulumi.Input[float]`)
+          * `idle` (`pulumi.Input[float]`)
 
         The **tags** object supports the following:
 
-          * `key` (`pulumi.Input[str]`) - The tag's key.
-          * `value` (`pulumi.Input[str]`) - The tag's value.
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -72,7 +42,7 @@ class Balancer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -98,18 +68,16 @@ class Balancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        :param pulumi.Input[list] tags: A list of key:value paired tags.
 
         The **connection_timeouts** object supports the following:
 
-          * `draining` (`pulumi.Input[float]`) - The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
-          * `idle` (`pulumi.Input[float]`) - The idle timeout value, in seconds. (range: 1 - 3600).
+          * `draining` (`pulumi.Input[float]`)
+          * `idle` (`pulumi.Input[float]`)
 
         The **tags** object supports the following:
 
-          * `key` (`pulumi.Input[str]`) - The tag's key.
-          * `value` (`pulumi.Input[str]`) - The tag's value.
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -123,7 +91,7 @@ class Balancer(pulumi.CustomResource):
         return Balancer(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

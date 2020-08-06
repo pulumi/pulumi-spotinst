@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Multai.Outputs
     [OutputType]
     public sealed class TargetSetTag
     {
-        /// <summary>
-        /// The tag's key.
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// The tag's value.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

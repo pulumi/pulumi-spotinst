@@ -42,9 +42,9 @@ namespace Pulumi.SpotInst.Aws
     /// * `frequency` - (Optional) Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
     /// * `start_time` - (Optional) DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
     ///    Example: 2019-05-23T10:55:09Z
-    /// * `cron_expression` - (Optional) A valid cron expression. For example : " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+    /// * `cron_expression` - (Optional) A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
     ///    Example: 0 1 * * *
-    /// * `task_type`- (Required) The task type to run. Valid Values: "pause", "resume", "recycle".
+    /// * `task_type`- (Required) The task type to run. Valid values: "pause", "resume", "recycle".
     /// 
     /// Usage:
     /// 
@@ -63,7 +63,8 @@ namespace Pulumi.SpotInst.Aws
     /// &lt;a id="load-balancers"&gt;&lt;/a&gt;
     /// ## Load Balancers
     /// 
-    ///    * `loadBalancersConfig` - (Optional) LB integration object.
+    ///    * `loadBalancersConfig` - (Optional) Load Balancers integration object.
+    ///      
     ///        * `load_balancers` - (Optional) List of load balancers configs.
     ///             * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
     ///             * `arn` - The AWS resource ARN (Required only for ALB target groups).
@@ -71,18 +72,56 @@ namespace Pulumi.SpotInst.Aws
     ///                  Default: lb-123456
     ///             * `target_set_id` - The Multai load target set ID.
     ///                  Default: ts-123456
-    ///             * `auto_weight` - “Auto Weight” will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-    ///             * `zone_awareness` - “AZ Awareness” will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
+    ///             * `auto_weight` - "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
+    ///             * `zone_awareness` - "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
     ///             * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
     /// 
     /// Usage:
     /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// &lt;a id="route53"&gt;&lt;/a&gt;
+    /// ## route53
+    /// 
+    ///    * `integration_route53` - (Optional) Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+    ///      
+    ///        * `domains` - (Required) Route 53 Domain configurations.
+    ///            * `hosted_zone_id` - (Required) The Route 53 Hosted Zone Id for the registered Domain.
+    ///            * `spotinst_acct_id` - (Optional) The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
+    ///            * `record_set_type` - (Optional, Default: `a`) The type of the record set. Valid values: `"a"`, `"cname"`.
+    ///            * `record_sets` - (Required) List of record sets
+    ///                * `name` - (Required) The record set name.
+    ///                * `use_public_ip` - (Optional, Default: `false`) - Designates whether the IP address should be exposed to connections outside the VPC.
+    ///                * `use_public_dns` - (Optional, Default: `false`) - Designates whether the DNS address should be exposed to connections outside the VPC.
+    /// 
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ManagedInstance : Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
+        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
         /// </summary>
         [Output("autoHealing")]
         public Output<bool?> AutoHealing { get; private set; } = null!;
@@ -95,7 +134,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> BlockDevicesMode { get; private set; } = null!;
 
         /// <summary>
-        /// cpuCredits can have one of two values: “unlimited”, “standard”.
+        /// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
         /// Default: unlimited
         /// </summary>
         [Output("cpuCredits")]
@@ -114,7 +153,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> DrainingTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.
+        /// Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
         /// Default: false
         /// </summary>
         [Output("ebsOptimized")]
@@ -137,14 +176,14 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> FallBackToOd { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120"`.
+        /// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
         /// </summary>
         [Output("gracePeriod")]
         public Output<int?> GracePeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.
-        /// Default: `“EC2”`.
+        /// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
+        /// Default: `"EC2"`.
         /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
@@ -177,7 +216,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> KeyPair { get; private set; } = null!;
 
         /// <summary>
-        /// Set lifecycle, valid values: `“spot”`, `“on_demand”`.
+        /// Set lifecycle, valid values: `"spot"`, `"on_demand"`.
         /// Default `"spot"`.
         /// </summary>
         [Output("lifeCycle")]
@@ -196,7 +235,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.ManagedInstanceNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
-        /// When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.
+        /// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         /// </summary>
         [Output("optimizationWindows")]
         public Output<ImmutableArray<string>> OptimizationWindows { get; private set; } = null!;
@@ -227,7 +266,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> PersistRootDevice { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values: "default", "dedicated"
+        /// Valid values: `"default"`, `"dedicated"`.
         /// Default: default
         /// </summary>
         [Output("placementTenancy")]
@@ -288,7 +327,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.ManagedInstanceTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120"`.
+        /// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
         /// </summary>
         [Output("unhealthyDuration")]
         public Output<int?> UnhealthyDuration { get; private set; } = null!;
@@ -356,7 +395,7 @@ namespace Pulumi.SpotInst.Aws
     public sealed class ManagedInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
+        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
         /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
@@ -369,7 +408,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? BlockDevicesMode { get; set; }
 
         /// <summary>
-        /// cpuCredits can have one of two values: “unlimited”, “standard”.
+        /// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
         /// Default: unlimited
         /// </summary>
         [Input("cpuCredits")]
@@ -388,7 +427,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? DrainingTimeout { get; set; }
 
         /// <summary>
-        /// Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.
+        /// Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
         /// Default: false
         /// </summary>
         [Input("ebsOptimized")]
@@ -411,14 +450,14 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? FallBackToOd { get; set; }
 
         /// <summary>
-        /// The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120"`.
+        /// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
         /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
         /// <summary>
-        /// The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.
-        /// Default: `“EC2”`.
+        /// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
+        /// Default: `"EC2"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
@@ -457,7 +496,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? KeyPair { get; set; }
 
         /// <summary>
-        /// Set lifecycle, valid values: `“spot”`, `“on_demand”`.
+        /// Set lifecycle, valid values: `"spot"`, `"on_demand"`.
         /// Default `"spot"`.
         /// </summary>
         [Input("lifeCycle")]
@@ -489,7 +528,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _optimizationWindows;
 
         /// <summary>
-        /// When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.
+        /// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         /// </summary>
         public InputList<string> OptimizationWindows
         {
@@ -523,7 +562,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? PersistRootDevice { get; set; }
 
         /// <summary>
-        /// Valid values: "default", "dedicated"
+        /// Valid values: `"default"`, `"dedicated"`.
         /// Default: default
         /// </summary>
         [Input("placementTenancy")]
@@ -607,7 +646,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120"`.
+        /// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
         /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }
@@ -636,7 +675,7 @@ namespace Pulumi.SpotInst.Aws
     public sealed class ManagedInstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
+        /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
         /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
@@ -649,7 +688,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? BlockDevicesMode { get; set; }
 
         /// <summary>
-        /// cpuCredits can have one of two values: “unlimited”, “standard”.
+        /// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
         /// Default: unlimited
         /// </summary>
         [Input("cpuCredits")]
@@ -668,7 +707,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? DrainingTimeout { get; set; }
 
         /// <summary>
-        /// Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.
+        /// Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
         /// Default: false
         /// </summary>
         [Input("ebsOptimized")]
@@ -691,14 +730,14 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? FallBackToOd { get; set; }
 
         /// <summary>
-        /// The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120"`.
+        /// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
         /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
         /// <summary>
-        /// The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.
-        /// Default: `“EC2”`.
+        /// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
+        /// Default: `"EC2"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
@@ -737,7 +776,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? KeyPair { get; set; }
 
         /// <summary>
-        /// Set lifecycle, valid values: `“spot”`, `“on_demand”`.
+        /// Set lifecycle, valid values: `"spot"`, `"on_demand"`.
         /// Default `"spot"`.
         /// </summary>
         [Input("lifeCycle")]
@@ -769,7 +808,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _optimizationWindows;
 
         /// <summary>
-        /// When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.
+        /// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         /// </summary>
         public InputList<string> OptimizationWindows
         {
@@ -803,7 +842,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? PersistRootDevice { get; set; }
 
         /// <summary>
-        /// Valid values: "default", "dedicated"
+        /// Valid values: `"default"`, `"dedicated"`.
         /// Default: default
         /// </summary>
         [Input("placementTenancy")]
@@ -887,7 +926,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120"`.
+        /// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
         /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }

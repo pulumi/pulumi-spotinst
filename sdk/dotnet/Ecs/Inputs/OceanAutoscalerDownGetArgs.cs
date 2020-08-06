@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
     public sealed class OceanAutoscalerDownGetArgs : Pulumi.ResourceArgs
     {
         [Input("maxScaleDownPercentage")]
-        public Input<int>? MaxScaleDownPercentage { get; set; }
+        public Input<double>? MaxScaleDownPercentage { get; set; }
 
         public OceanAutoscalerDownGetArgs()
         {

@@ -13,10 +13,10 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     [OutputType]
     public sealed class OceanAutoscalerDown
     {
-        public readonly int? MaxScaleDownPercentage;
+        public readonly double? MaxScaleDownPercentage;
 
         [OutputConstructor]
-        private OceanAutoscalerDown(int? maxScaleDownPercentage)
+        private OceanAutoscalerDown(double? maxScaleDownPercentage)
         {
             MaxScaleDownPercentage = maxScaleDownPercentage;
         }

@@ -6,28 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Spotinst Multai Target.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const myTarget = new spotinst.multai.Target("my_target", {
- *     balancerId: "b-12345",
- *     host: "host",
- *     port: 1338,
- *     tags: [{
- *         key: "env",
- *         value: "prod",
- *     }],
- *     targetSetId: "l-98765",
- *     weight: 1,
- * });
- * ```
- */
 export class Target extends pulumi.CustomResource {
     /**
      * Get an existing Target resource's state with the given name, ID, and optional extra
@@ -56,33 +34,12 @@ export class Target extends pulumi.CustomResource {
         return obj['__pulumiType'] === Target.__pulumiType;
     }
 
-    /**
-     * The ID of the balancer.
-     */
     public readonly balancerId!: pulumi.Output<string>;
-    /**
-     * The address (IP or URL) of the targets to register
-     */
     public readonly host!: pulumi.Output<string>;
-    /**
-     * The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The port the target will register to.
-     */
     public readonly port!: pulumi.Output<number | undefined>;
-    /**
-     * A list of key:value paired tags.
-     */
     public readonly tags!: pulumi.Output<outputs.multai.TargetTag[] | undefined>;
-    /**
-     * The ID of the target set.
-     */
     public readonly targetSetId!: pulumi.Output<string>;
-    /**
-     * Defines how traffic is distributed between targets.
-     */
     public readonly weight!: pulumi.Output<number>;
 
     /**
@@ -141,33 +98,12 @@ export class Target extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Target resources.
  */
 export interface TargetState {
-    /**
-     * The ID of the balancer.
-     */
     readonly balancerId?: pulumi.Input<string>;
-    /**
-     * The address (IP or URL) of the targets to register
-     */
     readonly host?: pulumi.Input<string>;
-    /**
-     * The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The port the target will register to.
-     */
     readonly port?: pulumi.Input<number>;
-    /**
-     * A list of key:value paired tags.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetTag>[]>;
-    /**
-     * The ID of the target set.
-     */
     readonly targetSetId?: pulumi.Input<string>;
-    /**
-     * Defines how traffic is distributed between targets.
-     */
     readonly weight?: pulumi.Input<number>;
 }
 
@@ -175,32 +111,11 @@ export interface TargetState {
  * The set of arguments for constructing a Target resource.
  */
 export interface TargetArgs {
-    /**
-     * The ID of the balancer.
-     */
     readonly balancerId: pulumi.Input<string>;
-    /**
-     * The address (IP or URL) of the targets to register
-     */
     readonly host: pulumi.Input<string>;
-    /**
-     * The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The port the target will register to.
-     */
     readonly port?: pulumi.Input<number>;
-    /**
-     * A list of key:value paired tags.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetTag>[]>;
-    /**
-     * The ID of the target set.
-     */
     readonly targetSetId: pulumi.Input<string>;
-    /**
-     * Defines how traffic is distributed between targets.
-     */
     readonly weight: pulumi.Input<number>;
 }

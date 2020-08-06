@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ManagedInstanceRevertToSpot
     {
         /// <summary>
-        /// Valid values: “always”, “never”, "timeWindow".
+        /// Valid values: `"always"`, `"never"`, `"timeWindow"`.
         /// Default `"never"`.
         /// </summary>
         public readonly string PerformAt;

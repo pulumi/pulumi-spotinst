@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * // Create an MangedInstance
+ * // Create a Manged Instance
  * const default_managed_instance = new spotinst.aws.ManagedInstance("default-managed-instance", {
  *     autoHealing: true,
  *     blockDevicesMode: "reattach",
@@ -94,9 +94,9 @@ import * as utilities from "../utilities";
  * * `frequency` - (Optional) Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
  * * `startTime` - (Optional) DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
  *    Example: 2019-05-23T10:55:09Z
- * * `cronExpression` - (Optional) A valid cron expression. For example : " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+ * * `cronExpression` - (Optional) A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
  *    Example: 0 1 * * *
- * * `taskType`- (Required) The task type to run. Valid Values: "pause", "resume", "recycle".
+ * * `taskType`- (Required) The task type to run. Valid values: "pause", "resume", "recycle".
  *
  * Usage:
  *
@@ -107,7 +107,8 @@ import * as utilities from "../utilities";
  * <a id="load-balancers"></a>
  * ## Load Balancers
  *
- *    * `loadBalancersConfig` - (Optional) LB integration object.
+ *    * `loadBalancersConfig` - (Optional) Load Balancers integration object.
+ *      
  *        * `loadBalancers` - (Optional) List of load balancers configs.
  *             * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
  *             * `arn` - The AWS resource ARN (Required only for ALB target groups).
@@ -115,13 +116,35 @@ import * as utilities from "../utilities";
  *                  Default: lb-123456
  *             * `targetSetId` - The Multai load target set ID.
  *                  Default: ts-123456
- *             * `autoWeight` - “Auto Weight” will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
- *             * `zoneAwareness` - “AZ Awareness” will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
+ *             * `autoWeight` - "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
+ *             * `zoneAwareness` - "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
  *             * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
  *
  * Usage:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
  * <a id="route53"></a>
+ * ## route53
+ *
+ *    * `integrationRoute53` - (Optional) Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+ *      
+ *        * `domains` - (Required) Route 53 Domain configurations.
+ *            * `hostedZoneId` - (Required) The Route 53 Hosted Zone Id for the registered Domain.
+ *            * `spotinstAcctId` - (Optional) The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
+ *            * `recordSetType` - (Optional, Default: `a`) The type of the record set. Valid values: `"a"`, `"cname"`.
+ *            * `recordSets` - (Required) List of record sets
+ *                * `name` - (Required) The record set name.
+ *                * `usePublicIp` - (Optional, Default: `false`) - Designates whether the IP address should be exposed to connections outside the VPC.
+ *                * `usePublicDns` - (Optional, Default: `false`) - Designates whether the DNS address should be exposed to connections outside the VPC.
+ *
+ * Usage:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
  */
 export class ManagedInstance extends pulumi.CustomResource {
     /**
@@ -152,7 +175,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     }
 
     /**
-     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
+     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
      */
     public readonly autoHealing!: pulumi.Output<boolean | undefined>;
     /**
@@ -161,7 +184,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly blockDevicesMode!: pulumi.Output<string | undefined>;
     /**
-     * cpuCredits can have one of two values: “unlimited”, “standard”.
+     * cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
      * Default: unlimited
      */
     public readonly cpuCredits!: pulumi.Output<string | undefined>;
@@ -174,7 +197,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly drainingTimeout!: pulumi.Output<number | undefined>;
     /**
-     * Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.
+     * Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
      * Default: false
      */
     public readonly ebsOptimized!: pulumi.Output<boolean>;
@@ -189,12 +212,12 @@ export class ManagedInstance extends pulumi.CustomResource {
     public readonly enableMonitoring!: pulumi.Output<boolean | undefined>;
     public readonly fallBackToOd!: pulumi.Output<boolean | undefined>;
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120"`.
+     * The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
      */
     public readonly gracePeriod!: pulumi.Output<number | undefined>;
     /**
-     * The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.
-     * Default: `“EC2”`.
+     * The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
+     * Default: `"EC2"`.
      */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
@@ -215,7 +238,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly keyPair!: pulumi.Output<string | undefined>;
     /**
-     * Set lifecycle, valid values: `“spot”`, `“on_demand”`.
+     * Set lifecycle, valid values: `"spot"`, `"onDemand"`.
      * Default `"spot"`.
      */
     public readonly lifeCycle!: pulumi.Output<string | undefined>;
@@ -226,7 +249,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaces!: pulumi.Output<outputs.aws.ManagedInstanceNetworkInterface[] | undefined>;
     /**
-     * When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.
+     * When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
      */
     public readonly optimizationWindows!: pulumi.Output<string[] | undefined>;
     /**
@@ -247,7 +270,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly persistRootDevice!: pulumi.Output<boolean | undefined>;
     /**
-     * Valid values: "default", "dedicated"
+     * Valid values: `"default"`, `"dedicated"`.
      * Default: default
      */
     public readonly placementTenancy!: pulumi.Output<string | undefined>;
@@ -286,7 +309,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.aws.ManagedInstanceTag[] | undefined>;
     /**
-     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120"`.
+     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
      */
     public readonly unhealthyDuration!: pulumi.Output<number | undefined>;
     /**
@@ -429,7 +452,7 @@ export class ManagedInstance extends pulumi.CustomResource {
  */
 export interface ManagedInstanceState {
     /**
-     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
+     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
      */
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
@@ -438,7 +461,7 @@ export interface ManagedInstanceState {
      */
     readonly blockDevicesMode?: pulumi.Input<string>;
     /**
-     * cpuCredits can have one of two values: “unlimited”, “standard”.
+     * cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
      * Default: unlimited
      */
     readonly cpuCredits?: pulumi.Input<string>;
@@ -451,7 +474,7 @@ export interface ManagedInstanceState {
      */
     readonly drainingTimeout?: pulumi.Input<number>;
     /**
-     * Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.
+     * Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
      * Default: false
      */
     readonly ebsOptimized?: pulumi.Input<boolean>;
@@ -466,12 +489,12 @@ export interface ManagedInstanceState {
     readonly enableMonitoring?: pulumi.Input<boolean>;
     readonly fallBackToOd?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120"`.
+     * The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
      */
     readonly gracePeriod?: pulumi.Input<number>;
     /**
-     * The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.
-     * Default: `“EC2”`.
+     * The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
+     * Default: `"EC2"`.
      */
     readonly healthCheckType?: pulumi.Input<string>;
     /**
@@ -492,7 +515,7 @@ export interface ManagedInstanceState {
      */
     readonly keyPair?: pulumi.Input<string>;
     /**
-     * Set lifecycle, valid values: `“spot”`, `“on_demand”`.
+     * Set lifecycle, valid values: `"spot"`, `"onDemand"`.
      * Default `"spot"`.
      */
     readonly lifeCycle?: pulumi.Input<string>;
@@ -503,7 +526,7 @@ export interface ManagedInstanceState {
     readonly name?: pulumi.Input<string>;
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceNetworkInterface>[]>;
     /**
-     * When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.
+     * When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
      */
     readonly optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -524,7 +547,7 @@ export interface ManagedInstanceState {
      */
     readonly persistRootDevice?: pulumi.Input<boolean>;
     /**
-     * Valid values: "default", "dedicated"
+     * Valid values: `"default"`, `"dedicated"`.
      * Default: default
      */
     readonly placementTenancy?: pulumi.Input<string>;
@@ -563,7 +586,7 @@ export interface ManagedInstanceState {
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceTag>[]>;
     /**
-     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120"`.
+     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
      */
     readonly unhealthyDuration?: pulumi.Input<number>;
     /**
@@ -583,7 +606,7 @@ export interface ManagedInstanceState {
  */
 export interface ManagedInstanceArgs {
     /**
-     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
+     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
      */
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
@@ -592,7 +615,7 @@ export interface ManagedInstanceArgs {
      */
     readonly blockDevicesMode?: pulumi.Input<string>;
     /**
-     * cpuCredits can have one of two values: “unlimited”, “standard”.
+     * cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
      * Default: unlimited
      */
     readonly cpuCredits?: pulumi.Input<string>;
@@ -605,7 +628,7 @@ export interface ManagedInstanceArgs {
      */
     readonly drainingTimeout?: pulumi.Input<number>;
     /**
-     * Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.
+     * Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
      * Default: false
      */
     readonly ebsOptimized?: pulumi.Input<boolean>;
@@ -620,12 +643,12 @@ export interface ManagedInstanceArgs {
     readonly enableMonitoring?: pulumi.Input<boolean>;
     readonly fallBackToOd?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120"`.
+     * The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
      */
     readonly gracePeriod?: pulumi.Input<number>;
     /**
-     * The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.
-     * Default: `“EC2”`.
+     * The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
+     * Default: `"EC2"`.
      */
     readonly healthCheckType?: pulumi.Input<string>;
     /**
@@ -646,7 +669,7 @@ export interface ManagedInstanceArgs {
      */
     readonly keyPair?: pulumi.Input<string>;
     /**
-     * Set lifecycle, valid values: `“spot”`, `“on_demand”`.
+     * Set lifecycle, valid values: `"spot"`, `"onDemand"`.
      * Default `"spot"`.
      */
     readonly lifeCycle?: pulumi.Input<string>;
@@ -657,7 +680,7 @@ export interface ManagedInstanceArgs {
     readonly name?: pulumi.Input<string>;
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceNetworkInterface>[]>;
     /**
-     * When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.
+     * When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
      */
     readonly optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -678,7 +701,7 @@ export interface ManagedInstanceArgs {
      */
     readonly persistRootDevice?: pulumi.Input<boolean>;
     /**
-     * Valid values: "default", "dedicated"
+     * Valid values: `"default"`, `"dedicated"`.
      * Default: default
      */
     readonly placementTenancy?: pulumi.Input<string>;
@@ -717,7 +740,7 @@ export interface ManagedInstanceArgs {
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceTag>[]>;
     /**
-     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120"`.
+     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
      */
     readonly unhealthyDuration?: pulumi.Input<number>;
     /**

@@ -10,20 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Spotinst Multai Listener.
 type Listener struct {
 	pulumi.CustomResourceState
 
-	// The ID of the balancer.
-	BalancerId pulumi.StringOutput `pulumi:"balancerId"`
-	// The port on which the load balancer is listening.
-	Port pulumi.IntOutput `pulumi:"port"`
-	// The protocol to allow connections to the load balancer.
-	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// A list of key:value paired tags.
-	Tags ListenerTagArrayOutput `pulumi:"tags"`
-	// Describes the TLSConfig configuration.
-	TlsConfig ListenerTlsConfigPtrOutput `pulumi:"tlsConfig"`
+	BalancerId pulumi.StringOutput        `pulumi:"balancerId"`
+	Port       pulumi.IntOutput           `pulumi:"port"`
+	Protocol   pulumi.StringOutput        `pulumi:"protocol"`
+	Tags       ListenerTagArrayOutput     `pulumi:"tags"`
+	TlsConfig  ListenerTlsConfigPtrOutput `pulumi:"tlsConfig"`
 }
 
 // NewListener registers a new resource with the given unique name, arguments, and options.
@@ -63,29 +57,19 @@ func GetListener(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Listener resources.
 type listenerState struct {
-	// The ID of the balancer.
-	BalancerId *string `pulumi:"balancerId"`
-	// The port on which the load balancer is listening.
-	Port *int `pulumi:"port"`
-	// The protocol to allow connections to the load balancer.
-	Protocol *string `pulumi:"protocol"`
-	// A list of key:value paired tags.
-	Tags []ListenerTag `pulumi:"tags"`
-	// Describes the TLSConfig configuration.
-	TlsConfig *ListenerTlsConfig `pulumi:"tlsConfig"`
+	BalancerId *string            `pulumi:"balancerId"`
+	Port       *int               `pulumi:"port"`
+	Protocol   *string            `pulumi:"protocol"`
+	Tags       []ListenerTag      `pulumi:"tags"`
+	TlsConfig  *ListenerTlsConfig `pulumi:"tlsConfig"`
 }
 
 type ListenerState struct {
-	// The ID of the balancer.
 	BalancerId pulumi.StringPtrInput
-	// The port on which the load balancer is listening.
-	Port pulumi.IntPtrInput
-	// The protocol to allow connections to the load balancer.
-	Protocol pulumi.StringPtrInput
-	// A list of key:value paired tags.
-	Tags ListenerTagArrayInput
-	// Describes the TLSConfig configuration.
-	TlsConfig ListenerTlsConfigPtrInput
+	Port       pulumi.IntPtrInput
+	Protocol   pulumi.StringPtrInput
+	Tags       ListenerTagArrayInput
+	TlsConfig  ListenerTlsConfigPtrInput
 }
 
 func (ListenerState) ElementType() reflect.Type {
@@ -93,30 +77,20 @@ func (ListenerState) ElementType() reflect.Type {
 }
 
 type listenerArgs struct {
-	// The ID of the balancer.
-	BalancerId string `pulumi:"balancerId"`
-	// The port on which the load balancer is listening.
-	Port int `pulumi:"port"`
-	// The protocol to allow connections to the load balancer.
-	Protocol string `pulumi:"protocol"`
-	// A list of key:value paired tags.
-	Tags []ListenerTag `pulumi:"tags"`
-	// Describes the TLSConfig configuration.
-	TlsConfig *ListenerTlsConfig `pulumi:"tlsConfig"`
+	BalancerId string             `pulumi:"balancerId"`
+	Port       int                `pulumi:"port"`
+	Protocol   string             `pulumi:"protocol"`
+	Tags       []ListenerTag      `pulumi:"tags"`
+	TlsConfig  *ListenerTlsConfig `pulumi:"tlsConfig"`
 }
 
 // The set of arguments for constructing a Listener resource.
 type ListenerArgs struct {
-	// The ID of the balancer.
 	BalancerId pulumi.StringInput
-	// The port on which the load balancer is listening.
-	Port pulumi.IntInput
-	// The protocol to allow connections to the load balancer.
-	Protocol pulumi.StringInput
-	// A list of key:value paired tags.
-	Tags ListenerTagArrayInput
-	// Describes the TLSConfig configuration.
-	TlsConfig ListenerTlsConfigPtrInput
+	Port       pulumi.IntInput
+	Protocol   pulumi.StringInput
+	Tags       ListenerTagArrayInput
+	TlsConfig  ListenerTlsConfigPtrInput
 }
 
 func (ListenerArgs) ElementType() reflect.Type {

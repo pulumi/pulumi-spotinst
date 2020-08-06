@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Spotinst Multai Deployment.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const myDeployment = new spotinst.multai.Deployment("my_deployment", {});
- * ```
- */
 export class Deployment extends pulumi.CustomResource {
     /**
      * Get an existing Deployment resource's state with the given name, ID, and optional extra
@@ -44,9 +32,6 @@ export class Deployment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Deployment.__pulumiType;
     }
 
-    /**
-     * The deployment name.
-     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -81,9 +66,6 @@ export class Deployment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Deployment resources.
  */
 export interface DeploymentState {
-    /**
-     * The deployment name.
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -91,8 +73,5 @@ export interface DeploymentState {
  * The set of arguments for constructing a Deployment resource.
  */
 export interface DeploymentArgs {
-    /**
-     * The deployment name.
-     */
     readonly name?: pulumi.Input<string>;
 }

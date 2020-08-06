@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ManagedInstanceRevertToSpotArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Valid values: “always”, “never”, "timeWindow".
+        /// Valid values: `"always"`, `"never"`, `"timeWindow"`.
         /// Default `"never"`.
         /// </summary>
         [Input("performAt", required: true)]

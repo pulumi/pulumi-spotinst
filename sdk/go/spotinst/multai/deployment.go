@@ -9,32 +9,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Spotinst Multai Deployment.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := multai.NewDeployment(ctx, "myDeployment", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Deployment struct {
 	pulumi.CustomResourceState
 
-	// The deployment name.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -66,12 +43,10 @@ func GetDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Deployment resources.
 type deploymentState struct {
-	// The deployment name.
 	Name *string `pulumi:"name"`
 }
 
 type DeploymentState struct {
-	// The deployment name.
 	Name pulumi.StringPtrInput
 }
 
@@ -80,13 +55,11 @@ func (DeploymentState) ElementType() reflect.Type {
 }
 
 type deploymentArgs struct {
-	// The deployment name.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Deployment resource.
 type DeploymentArgs struct {
-	// The deployment name.
 	Name pulumi.StringPtrInput
 }
 

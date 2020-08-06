@@ -15,6 +15,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("hostedZoneId", required: true)]
         public Input<string> HostedZoneId { get; set; } = null!;
 
+        [Input("recordSetType")]
+        public Input<string>? RecordSetType { get; set; }
+
         [Input("recordSets", required: true)]
         private InputList<Inputs.ManagedInstanceIntegrationRoute53DomainRecordSetArgs>? _recordSets;
         public InputList<Inputs.ManagedInstanceIntegrationRoute53DomainRecordSetArgs> RecordSets
