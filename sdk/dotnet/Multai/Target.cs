@@ -9,81 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Multai
 {
-    /// <summary>
-    /// Provides a Spotinst Multai Target.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myTarget = new SpotInst.Multai.Target("myTarget", new SpotInst.Multai.TargetArgs
-    ///         {
-    ///             BalancerId = "b-12345",
-    ///             Host = "host",
-    ///             Port = 1338,
-    ///             Tags = 
-    ///             {
-    ///                 new SpotInst.Multai.Inputs.TargetTagArgs
-    ///                 {
-    ///                     Key = "env",
-    ///                     Value = "prod",
-    ///                 },
-    ///             },
-    ///             TargetSetId = "l-98765",
-    ///             Weight = 1,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Target : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the balancer.
-        /// </summary>
         [Output("balancerId")]
         public Output<string> BalancerId { get; private set; } = null!;
 
-        /// <summary>
-        /// The address (IP or URL) of the targets to register
-        /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The port the target will register to.
-        /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.TargetTag>> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the target set.
-        /// </summary>
         [Output("targetSetId")]
         public Output<string> TargetSetId { get; private set; } = null!;
 
-        /// <summary>
-        /// Defines how traffic is distributed between targets.
-        /// </summary>
         [Output("weight")]
         public Output<int> Weight { get; private set; } = null!;
 
@@ -133,51 +78,29 @@ namespace Pulumi.SpotInst.Multai
 
     public sealed class TargetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the balancer.
-        /// </summary>
         [Input("balancerId", required: true)]
         public Input<string> BalancerId { get; set; } = null!;
 
-        /// <summary>
-        /// The address (IP or URL) of the targets to register
-        /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The port the target will register to.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.TargetTagArgs>? _tags;
-
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         public InputList<Inputs.TargetTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.TargetTagArgs>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of the target set.
-        /// </summary>
         [Input("targetSetId", required: true)]
         public Input<string> TargetSetId { get; set; } = null!;
 
-        /// <summary>
-        /// Defines how traffic is distributed between targets.
-        /// </summary>
         [Input("weight", required: true)]
         public Input<int> Weight { get; set; } = null!;
 
@@ -188,51 +111,29 @@ namespace Pulumi.SpotInst.Multai
 
     public sealed class TargetState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the balancer.
-        /// </summary>
         [Input("balancerId")]
         public Input<string>? BalancerId { get; set; }
 
-        /// <summary>
-        /// The address (IP or URL) of the targets to register
-        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
-        /// <summary>
-        /// The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The port the target will register to.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.TargetTagGetArgs>? _tags;
-
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         public InputList<Inputs.TargetTagGetArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.TargetTagGetArgs>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of the target set.
-        /// </summary>
         [Input("targetSetId")]
         public Input<string>? TargetSetId { get; set; }
 
-        /// <summary>
-        /// Defines how traffic is distributed between targets.
-        /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
 

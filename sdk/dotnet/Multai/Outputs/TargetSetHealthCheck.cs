@@ -13,33 +13,12 @@ namespace Pulumi.SpotInst.Multai.Outputs
     [OutputType]
     public sealed class TargetSetHealthCheck
     {
-        /// <summary>
-        /// Total number of allowed healthy Targets.
-        /// </summary>
         public readonly int HealthyThreshold;
-        /// <summary>
-        /// The interval for the health check.
-        /// </summary>
         public readonly int Interval;
-        /// <summary>
-        /// The path to perform the health check.
-        /// </summary>
         public readonly string Path;
-        /// <summary>
-        /// The port on which the load balancer is listening.
-        /// </summary>
         public readonly int? Port;
-        /// <summary>
-        /// The protocol to allow connections to the target for the health check.
-        /// </summary>
         public readonly string Protocol;
-        /// <summary>
-        /// The time out for the health check.
-        /// </summary>
         public readonly int Timeout;
-        /// <summary>
-        /// Total number of allowed unhealthy Targets.
-        /// </summary>
         public readonly int UnhealthyThreshold;
 
         [OutputConstructor]

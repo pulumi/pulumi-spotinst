@@ -897,7 +897,7 @@
                     }
                 },
                 "maxScaleDownPercentage": {
-                    "type": "integer",
+                    "type": "number",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1363,6 +1363,14 @@
                         }
                     }
                 },
+                "recordSetType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "recordSets": {
                     "type": "array",
                     "items": {
@@ -1394,6 +1402,14 @@
                 "name": {
                     "type": "string",
                     "description": "The group name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usePublicDns": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2575,6 +2591,14 @@
                         }
                     }
                 },
+                "recordSetType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "recordSets": {
                     "type": "array",
                     "items": {
@@ -2606,6 +2630,14 @@
                 "name": {
                     "type": "string",
                     "description": "The ManagedInstance name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usePublicDns": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2727,7 +2759,7 @@
             "properties": {
                 "performAt": {
                     "type": "string",
-                    "description": "Valid values: “always”, “never”, \"timeWindow\".\nDefault `\"never\"`.\n",
+                    "description": "Valid values: `\"always\"`, `\"never\"`, `\"timeWindow\"`.\nDefault `\"never\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5656,7 +5688,7 @@
         "spotinst:ecs/OceanAutoscalerDown:OceanAutoscalerDown": {
             "properties": {
                 "maxScaleDownPercentage": {
-                    "type": "integer",
+                    "type": "number",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8231,7 +8263,6 @@
             "properties": {
                 "draining": {
                     "type": "integer",
-                    "description": "The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8240,7 +8271,6 @@
                 },
                 "idle": {
                     "type": "integer",
-                    "description": "The idle timeout value, in seconds. (range: 1 - 3600).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8254,7 +8284,6 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The tag's key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8263,7 +8292,6 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The tag's value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8281,7 +8309,6 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The tag's key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8290,7 +8317,6 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The tag's value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8311,7 +8337,6 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Contains one or more certificate chains to present to the other side of the connection.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8323,7 +8348,6 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8332,7 +8356,6 @@
                 },
                 "maxVersion": {
                     "type": "string",
-                    "description": "MaxVersion contains the maximum SSL/TLS version that is acceptable.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8341,7 +8364,6 @@
                 },
                 "minVersion": {
                     "type": "string",
-                    "description": "MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8350,7 +8372,6 @@
                 },
                 "preferServerCipherSuites": {
                     "type": "boolean",
-                    "description": "Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8359,7 +8380,6 @@
                 },
                 "sessionTicketsDisabled": {
                     "type": "boolean",
-                    "description": "May be set to true to disable session ticket (resumption) support.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8381,7 +8401,6 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The tag's key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8390,7 +8409,6 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The tag's value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8408,7 +8426,6 @@
             "properties": {
                 "healthyThreshold": {
                     "type": "integer",
-                    "description": "Total number of allowed healthy Targets.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8417,7 +8434,6 @@
                 },
                 "interval": {
                     "type": "integer",
-                    "description": "The interval for the health check.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8426,7 +8442,6 @@
                 },
                 "path": {
                     "type": "string",
-                    "description": "The path to perform the health check.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8435,7 +8450,6 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "The port on which the load balancer is listening.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8444,7 +8458,6 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol to allow connections to the target for the health check.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8453,7 +8466,6 @@
                 },
                 "timeout": {
                     "type": "integer",
-                    "description": "The time out for the health check.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8462,7 +8474,6 @@
                 },
                 "unhealthyThreshold": {
                     "type": "integer",
-                    "description": "Total number of allowed unhealthy Targets.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8497,7 +8508,6 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The tag's key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8506,7 +8516,6 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The tag's value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8524,7 +8533,6 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The tag's key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8533,7 +8541,6 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The tag's value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9759,11 +9766,11 @@
             }
         },
         "spotinst:aws/managedInstance:ManagedInstance": {
-            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create an MangedInstance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Terraform\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# Create an MangedInstance\ndefault_managed_instance = spotinst.aws.ManagedInstance(\"default-managed-instance\",\n    auto_healing=\"true\",\n    block_devices_mode=\"reattach\",\n    cpu_credits=\"standard\",\n    description=\"created by Terraform\",\n    draining_timeout=\"120\",\n    ebs_optimized=\"true\",\n    elastic_ip=\"ip\",\n    enable_monitoring=\"true\",\n    fallback_to_ondemand=False,\n    grace_period=\"180\",\n    health_check_type=\"EC2\",\n    iam_instance_profile=\"iam-profile\",\n    image_id=\"ami-1234\",\n    instance_types=[\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    key_pair=\"labs-oregon\",\n    life_cycle=\"on_demand\",\n    optimization_windows=[\"Mon:03:00-Wed:02:20\"],\n    orientation=\"balanced\",\n    persist_block_devices=\"true\",\n    persist_private_ip=\"false\",\n    persist_root_device=\"true\",\n    placement_tenancy=\"default\",\n    preferred_type=\"t1.micro\",\n    private_ip=\"ip\",\n    product=\"Linux/UNIX\",\n    region=\"us-west-2\",\n    revert_to_spot={\n        \"performAt\": \"always\",\n    },\n    security_group_ids=[\"sg-234\"],\n    shutdown_script=\"managed instance bye world\",\n    subnet_ids=[\"subnet-123\"],\n    tags=[\n        {\n            \"key\": \"explicit1\",\n            \"value\": \"value1\",\n        },\n        {\n            \"key\": \"explicit2\",\n            \"value\": \"value2\",\n        },\n    ],\n    unhealthy_duration=\"60\",\n    user_data=\"managed instance hello world\",\n    utilize_reserved_instances=\"true\",\n    vpc_id=\"vpc-123\")\n```\n{{% /example %}}\n{{% /examples %}}\n## Network Interface - (Optional) List of network interfaces in an EC2 instance.\n\n* `device_index` - (Optional) The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.\n* `associate_public_ip_address` - (Optional) Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.\n* `associate_ipv6_address` - (Optional) Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.\n   Default: false\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n\u003ca id=\"scheduled-task\"\u003e\u003c/a\u003e\n## Scheduled Tasks\n\nEach `scheduled_task` supports the following:\n\n* `is_enabled` - (Optional) Describes whether the task is enabled. When true the task should run when false it should not run.\n* `frequency` - (Optional) Set frequency for the task. Valid values: \"hourly\", \"daily\", \"weekly\", \"continuous\".\n* `start_time` - (Optional) DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If \"frequency\" or \"cronExpression\" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.\n   Example: 2019-05-23T10:55:09Z\n* `cron_expression` - (Optional) A valid cron expression. For example : \" * * * * * \". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.\n   Example: 0 1 * * *\n* `task_type`- (Required) The task type to run. Valid Values: \"pause\", \"resume\", \"recycle\".\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n\u003ca id=\"load-balancers\"\u003e\u003c/a\u003e\n## Load Balancers\n\n   * `loadBalancersConfig` - (Optional) LB integration object.\n       * `load_balancers` - (Optional) List of load balancers configs.\n            * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.\n            * `arn` - The AWS resource ARN (Required only for ALB target groups).\n            * `balancer_id` - The Multai load balancer ID.\n            Default: lb-123456\n            * `target_set_id` - The Multai load target set ID.\n            Default: ts-123456\n            * `auto_weight` - “Auto Weight” will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.\n            * `zone_awareness` - “AZ Awareness” will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.\n            * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.\n\nUsage:\n\n   ```hcl\n   load_balancers {\n       arn  = \"arn\"\n       type = \"CLASSIC\"\n       balancer_id   = \"lb-123\"\n       target_set_id = \"ts-123\"\n       auto_weight   = \"true\"\n       az_awareness = \"true\"\n     }\n   ```\n\n\u003ca id=\"route53\"\u003e\u003c/a\u003e",
+            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Terraform\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# Create a Manged Instance\ndefault_managed_instance = spotinst.aws.ManagedInstance(\"default-managed-instance\",\n    auto_healing=\"true\",\n    block_devices_mode=\"reattach\",\n    cpu_credits=\"standard\",\n    description=\"created by Terraform\",\n    draining_timeout=\"120\",\n    ebs_optimized=\"true\",\n    elastic_ip=\"ip\",\n    enable_monitoring=\"true\",\n    fallback_to_ondemand=False,\n    grace_period=\"180\",\n    health_check_type=\"EC2\",\n    iam_instance_profile=\"iam-profile\",\n    image_id=\"ami-1234\",\n    instance_types=[\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    key_pair=\"labs-oregon\",\n    life_cycle=\"on_demand\",\n    optimization_windows=[\"Mon:03:00-Wed:02:20\"],\n    orientation=\"balanced\",\n    persist_block_devices=\"true\",\n    persist_private_ip=\"false\",\n    persist_root_device=\"true\",\n    placement_tenancy=\"default\",\n    preferred_type=\"t1.micro\",\n    private_ip=\"ip\",\n    product=\"Linux/UNIX\",\n    region=\"us-west-2\",\n    revert_to_spot={\n        \"performAt\": \"always\",\n    },\n    security_group_ids=[\"sg-234\"],\n    shutdown_script=\"managed instance bye world\",\n    subnet_ids=[\"subnet-123\"],\n    tags=[\n        {\n            \"key\": \"explicit1\",\n            \"value\": \"value1\",\n        },\n        {\n            \"key\": \"explicit2\",\n            \"value\": \"value2\",\n        },\n    ],\n    unhealthy_duration=\"60\",\n    user_data=\"managed instance hello world\",\n    utilize_reserved_instances=\"true\",\n    vpc_id=\"vpc-123\")\n```\n{{% /example %}}\n{{% /examples %}}\n## Network Interface - (Optional) List of network interfaces in an EC2 instance.\n\n* `device_index` - (Optional) The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.\n* `associate_public_ip_address` - (Optional) Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.\n* `associate_ipv6_address` - (Optional) Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.\n   Default: false\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n\u003ca id=\"scheduled-task\"\u003e\u003c/a\u003e\n## Scheduled Tasks\n\nEach `scheduled_task` supports the following:\n\n* `is_enabled` - (Optional) Describes whether the task is enabled. When true the task should run when false it should not run.\n* `frequency` - (Optional) Set frequency for the task. Valid values: \"hourly\", \"daily\", \"weekly\", \"continuous\".\n* `start_time` - (Optional) DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If \"frequency\" or \"cronExpression\" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.\n   Example: 2019-05-23T10:55:09Z\n* `cron_expression` - (Optional) A valid cron expression. For example: \" * * * * * \". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.\n   Example: 0 1 * * *\n* `task_type`- (Required) The task type to run. Valid values: \"pause\", \"resume\", \"recycle\".\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n\u003ca id=\"load-balancers\"\u003e\u003c/a\u003e\n## Load Balancers\n\n   * `loadBalancersConfig` - (Optional) Load Balancers integration object.\n       \n       * `load_balancers` - (Optional) List of load balancers configs.\n            * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.\n            * `arn` - The AWS resource ARN (Required only for ALB target groups).\n            * `balancer_id` - The Multai load balancer ID.\n            Default: lb-123456\n            * `target_set_id` - The Multai load target set ID.\n            Default: ts-123456\n            * `auto_weight` - \"Auto Weight\" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.\n            * `zone_awareness` - \"AZ Awareness\" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.\n            * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n\u003ca id=\"route53\"\u003e\u003c/a\u003e\n## route53\n \n   * `integration_route53` - (Optional) Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.\n       \n       * `domains` - (Required) Route 53 Domain configurations.\n           * `hosted_zone_id` - (Required) The Route 53 Hosted Zone Id for the registered Domain.\n           * `spotinst_acct_id` - (Optional) The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.\n           * `record_set_type` - (Optional, Default: `a`) The type of the record set. Valid values: `\"a\"`, `\"cname\"`.\n           * `record_sets` - (Required) List of record sets\n               * `name` - (Required) The record set name.\n               * `use_public_ip` - (Optional, Default: `false`) - Designates whether the IP address should be exposed to connections outside the VPC.\n               * `use_public_dns` - (Optional, Default: `false`) - Designates whether the DNS address should be exposed to connections outside the VPC.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "autoHealing": {
                     "type": "boolean",
-                    "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.\n"
+                    "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `\"true\"`.\n"
                 },
                 "blockDevicesMode": {
                     "type": "string",
@@ -9771,7 +9778,7 @@
                 },
                 "cpuCredits": {
                     "type": "string",
-                    "description": "cpuCredits can have one of two values: “unlimited”, “standard”.\nDefault: unlimited\n"
+                    "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\nDefault: unlimited\n"
                 },
                 "description": {
                     "type": "string",
@@ -9783,7 +9790,7 @@
                 },
                 "ebsOptimized": {
                     "type": "boolean",
-                    "description": "Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.\nDefault: false\n"
+                    "description": "Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.\nDefault: false\n"
                 },
                 "elasticIp": {
                     "type": "string",
@@ -9798,11 +9805,11 @@
                 },
                 "gracePeriod": {
                     "type": "integer",
-                    "description": "The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120\"`.\n"
+                    "description": "The amount of time, in seconds, after the instance has launched to starts and check its health, default `\"120\"`.\n"
                 },
                 "healthCheckType": {
                     "type": "string",
-                    "description": "The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.\nDefault: `“EC2”`.\n"
+                    "description": "The service to use for the health check. Valid values: `\"EC2\"`, `\"ELB\"`, `\"TARGET_GROUP\"`, `\"MULTAI_TARGET_SET\"`.\nDefault: `\"EC2\"`.\n"
                 },
                 "iamInstanceProfile": {
                     "type": "string",
@@ -9828,7 +9835,7 @@
                 },
                 "lifeCycle": {
                     "type": "string",
-                    "description": "Set lifecycle, valid values: `“spot”`, `“on_demand”`.\nDefault `\"spot\"`.\n"
+                    "description": "Set lifecycle, valid values: `\"spot\"`, `\"on_demand\"`.\nDefault `\"spot\"`.\n"
                 },
                 "loadBalancers": {
                     "type": "array",
@@ -9851,7 +9858,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.\n"
+                    "description": "When `performAt` is `\"timeWindow\"`: must specify a list of `\"timeWindows\"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).\n"
                 },
                 "orientation": {
                     "type": "string",
@@ -9871,7 +9878,7 @@
                 },
                 "placementTenancy": {
                     "type": "string",
-                    "description": "Valid values: \"default\", \"dedicated\"\nDefault: default\n"
+                    "description": "Valid values: `\"default\"`, `\"dedicated\"`.\nDefault: default\n"
                 },
                 "preferredType": {
                     "type": "string",
@@ -9925,7 +9932,7 @@
                 },
                 "unhealthyDuration": {
                     "type": "integer",
-                    "description": "The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120\"`.\n"
+                    "description": "The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `\"120\"`.\n"
                 },
                 "userData": {
                     "type": "string",
@@ -9952,7 +9959,7 @@
             "inputProperties": {
                 "autoHealing": {
                     "type": "boolean",
-                    "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.\n"
+                    "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `\"true\"`.\n"
                 },
                 "blockDevicesMode": {
                     "type": "string",
@@ -9960,7 +9967,7 @@
                 },
                 "cpuCredits": {
                     "type": "string",
-                    "description": "cpuCredits can have one of two values: “unlimited”, “standard”.\nDefault: unlimited\n"
+                    "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\nDefault: unlimited\n"
                 },
                 "description": {
                     "type": "string",
@@ -9972,7 +9979,7 @@
                 },
                 "ebsOptimized": {
                     "type": "boolean",
-                    "description": "Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.\nDefault: false\n"
+                    "description": "Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.\nDefault: false\n"
                 },
                 "elasticIp": {
                     "type": "string",
@@ -9987,11 +9994,11 @@
                 },
                 "gracePeriod": {
                     "type": "integer",
-                    "description": "The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120\"`.\n"
+                    "description": "The amount of time, in seconds, after the instance has launched to starts and check its health, default `\"120\"`.\n"
                 },
                 "healthCheckType": {
                     "type": "string",
-                    "description": "The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.\nDefault: `“EC2”`.\n"
+                    "description": "The service to use for the health check. Valid values: `\"EC2\"`, `\"ELB\"`, `\"TARGET_GROUP\"`, `\"MULTAI_TARGET_SET\"`.\nDefault: `\"EC2\"`.\n"
                 },
                 "iamInstanceProfile": {
                     "type": "string",
@@ -10017,7 +10024,7 @@
                 },
                 "lifeCycle": {
                     "type": "string",
-                    "description": "Set lifecycle, valid values: `“spot”`, `“on_demand”`.\nDefault `\"spot\"`.\n"
+                    "description": "Set lifecycle, valid values: `\"spot\"`, `\"on_demand\"`.\nDefault `\"spot\"`.\n"
                 },
                 "loadBalancers": {
                     "type": "array",
@@ -10040,7 +10047,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.\n"
+                    "description": "When `performAt` is `\"timeWindow\"`: must specify a list of `\"timeWindows\"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).\n"
                 },
                 "orientation": {
                     "type": "string",
@@ -10060,7 +10067,7 @@
                 },
                 "placementTenancy": {
                     "type": "string",
-                    "description": "Valid values: \"default\", \"dedicated\"\nDefault: default\n"
+                    "description": "Valid values: `\"default\"`, `\"dedicated\"`.\nDefault: default\n"
                 },
                 "preferredType": {
                     "type": "string",
@@ -10114,7 +10121,7 @@
                 },
                 "unhealthyDuration": {
                     "type": "integer",
-                    "description": "The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120\"`.\n"
+                    "description": "The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `\"120\"`.\n"
                 },
                 "userData": {
                     "type": "string",
@@ -10141,7 +10148,7 @@
                 "properties": {
                     "autoHealing": {
                         "type": "boolean",
-                        "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.\n"
+                        "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `\"true\"`.\n"
                     },
                     "blockDevicesMode": {
                         "type": "string",
@@ -10149,7 +10156,7 @@
                     },
                     "cpuCredits": {
                         "type": "string",
-                        "description": "cpuCredits can have one of two values: “unlimited”, “standard”.\nDefault: unlimited\n"
+                        "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\nDefault: unlimited\n"
                     },
                     "description": {
                         "type": "string",
@@ -10161,7 +10168,7 @@
                     },
                     "ebsOptimized": {
                         "type": "boolean",
-                        "description": "Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.\nDefault: false\n"
+                        "description": "Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.\nDefault: false\n"
                     },
                     "elasticIp": {
                         "type": "string",
@@ -10176,11 +10183,11 @@
                     },
                     "gracePeriod": {
                         "type": "integer",
-                        "description": "The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120\"`.\n"
+                        "description": "The amount of time, in seconds, after the instance has launched to starts and check its health, default `\"120\"`.\n"
                     },
                     "healthCheckType": {
                         "type": "string",
-                        "description": "The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.\nDefault: `“EC2”`.\n"
+                        "description": "The service to use for the health check. Valid values: `\"EC2\"`, `\"ELB\"`, `\"TARGET_GROUP\"`, `\"MULTAI_TARGET_SET\"`.\nDefault: `\"EC2\"`.\n"
                     },
                     "iamInstanceProfile": {
                         "type": "string",
@@ -10206,7 +10213,7 @@
                     },
                     "lifeCycle": {
                         "type": "string",
-                        "description": "Set lifecycle, valid values: `“spot”`, `“on_demand”`.\nDefault `\"spot\"`.\n"
+                        "description": "Set lifecycle, valid values: `\"spot\"`, `\"on_demand\"`.\nDefault `\"spot\"`.\n"
                     },
                     "loadBalancers": {
                         "type": "array",
@@ -10229,7 +10236,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.\n"
+                        "description": "When `performAt` is `\"timeWindow\"`: must specify a list of `\"timeWindows\"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).\n"
                     },
                     "orientation": {
                         "type": "string",
@@ -10249,7 +10256,7 @@
                     },
                     "placementTenancy": {
                         "type": "string",
-                        "description": "Valid values: \"default\", \"dedicated\"\nDefault: default\n"
+                        "description": "Valid values: `\"default\"`, `\"dedicated\"`.\nDefault: default\n"
                     },
                     "preferredType": {
                         "type": "string",
@@ -10303,7 +10310,7 @@
                     },
                     "unhealthyDuration": {
                         "type": "integer",
-                        "description": "The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120\"`.\n"
+                        "description": "The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `\"120\"`.\n"
                     },
                     "userData": {
                         "type": "string",
@@ -14052,7 +14059,6 @@
             }
         },
         "spotinst:multai/balancer:Balancer": {
-            "description": "Provides a Spotinst Multai Balancer.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst myBalancer = new spotinst.multai.Balancer(\"my_balancer\", {\n    connectionTimeouts: {\n        draining: 10,\n        idle: 10,\n    },\n    scheme: \"internal\",\n    tags: [{\n        key: \"env\",\n        value: \"prod\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nmy_balancer = spotinst.multai.Balancer(\"myBalancer\",\n    connection_timeouts={\n        \"draining\": 10,\n        \"idle\": 10,\n    },\n    scheme=\"internal\",\n    tags=[{\n        \"key\": \"env\",\n        \"value\": \"prod\",\n    }])\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myBalancer = new SpotInst.Multai.Balancer(\"myBalancer\", new SpotInst.Multai.BalancerArgs\n        {\n            ConnectionTimeouts = new SpotInst.Multai.Inputs.BalancerConnectionTimeoutsArgs\n            {\n                Draining = 10,\n                Idle = 10,\n            },\n            Scheme = \"internal\",\n            Tags = \n            {\n                new SpotInst.Multai.Inputs.BalancerTagArgs\n                {\n                    Key = \"env\",\n                    Value = \"prod\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := multai.NewBalancer(ctx, \"myBalancer\", \u0026multai.BalancerArgs{\n\t\t\tConnectionTimeouts: \u0026multai.BalancerConnectionTimeoutsArgs{\n\t\t\t\tDraining: pulumi.Int(10),\n\t\t\t\tIdle:     pulumi.Int(10),\n\t\t\t},\n\t\t\tScheme: pulumi.String(\"internal\"),\n\t\t\tTags: multai.BalancerTagArray{\n\t\t\t\t\u0026multai.BalancerTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"env\"),\n\t\t\t\t\tValue: pulumi.String(\"prod\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "connectionTimeouts": {
                     "$ref": "#/types/spotinst:multai/BalancerConnectionTimeouts:BalancerConnectionTimeouts"
@@ -14064,8 +14070,7 @@
                     }
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.\n"
+                    "type": "string"
                 },
                 "scheme": {
                     "type": "string"
@@ -14074,8 +14079,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:multai/BalancerTag:BalancerTag"
-                    },
-                    "description": "A list of key:value paired tags.\n"
+                    }
                 }
             },
             "required": [
@@ -14092,8 +14096,7 @@
                     }
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.\n"
+                    "type": "string"
                 },
                 "scheme": {
                     "type": "string"
@@ -14102,8 +14105,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:multai/BalancerTag:BalancerTag"
-                    },
-                    "description": "A list of key:value paired tags.\n"
+                    }
                 }
             },
             "stateInputs": {
@@ -14119,8 +14121,7 @@
                         }
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.\n"
+                        "type": "string"
                     },
                     "scheme": {
                         "type": "string"
@@ -14129,19 +14130,16 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:multai/BalancerTag:BalancerTag"
-                        },
-                        "description": "A list of key:value paired tags.\n"
+                        }
                     }
                 },
                 "type": "object"
             }
         },
         "spotinst:multai/deployment:Deployment": {
-            "description": "Provides a Spotinst Multai Deployment.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst myDeployment = new spotinst.multai.Deployment(\"my_deployment\", {});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nmy_deployment = spotinst.multai.Deployment(\"myDeployment\")\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myDeployment = new SpotInst.Multai.Deployment(\"myDeployment\", new SpotInst.Multai.DeploymentArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := multai.NewDeployment(ctx, \"myDeployment\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "name": {
-                    "type": "string",
-                    "description": "The deployment name.\n"
+                    "type": "string"
                 }
             },
             "required": [
@@ -14149,46 +14147,38 @@
             ],
             "inputProperties": {
                 "name": {
-                    "type": "string",
-                    "description": "The deployment name.\n"
+                    "type": "string"
                 }
             },
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Deployment resources.\n",
                 "properties": {
                     "name": {
-                        "type": "string",
-                        "description": "The deployment name.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object"
             }
         },
         "spotinst:multai/listener:Listener": {
-            "description": "Provides a Spotinst Multai Listener.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst myListener = new spotinst.multai.Listener(\"my_listener\", {\n    balancerId: \"b-12345\",\n    name: \"foo\",\n    port: 1337,\n    protocol: \"http\",\n    tags: [{\n        key: \"env\",\n        value: \"prod\",\n    }],\n    tlsConfig: {\n        certificateIds: [\"ce-12345\"],\n        cipherSuites: [\"\"],\n        maxVersion: \"TLS12\",\n        minVersion: \"TLS10\",\n        preferServerCipherSuites: true,\n        sessionTicketsDisabled: false,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nmy_listener = spotinst.multai.Listener(\"myListener\",\n    balancer_id=\"b-12345\",\n    name=\"foo\",\n    port=1337,\n    protocol=\"http\",\n    tags=[{\n        \"key\": \"env\",\n        \"value\": \"prod\",\n    }],\n    tls_config={\n        \"certificateIds\": [\"ce-12345\"],\n        \"cipherSuites\": [\"\"],\n        \"maxVersion\": \"TLS12\",\n        \"minVersion\": \"TLS10\",\n        \"preferServerCipherSuites\": True,\n        \"sessionTicketsDisabled\": False,\n    })\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "balancerId": {
-                    "type": "string",
-                    "description": "The ID of the balancer.\n"
+                    "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "The port on which the load balancer is listening.\n"
+                    "type": "integer"
                 },
                 "protocol": {
-                    "type": "string",
-                    "description": "The protocol to allow connections to the load balancer.\n"
+                    "type": "string"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:multai/ListenerTag:ListenerTag"
-                    },
-                    "description": "A list of key:value paired tags.\n"
+                    }
                 },
                 "tlsConfig": {
-                    "$ref": "#/types/spotinst:multai/ListenerTlsConfig:ListenerTlsConfig",
-                    "description": "Describes the TLSConfig configuration.\n"
+                    "$ref": "#/types/spotinst:multai/ListenerTlsConfig:ListenerTlsConfig"
                 }
             },
             "required": [
@@ -14198,27 +14188,22 @@
             ],
             "inputProperties": {
                 "balancerId": {
-                    "type": "string",
-                    "description": "The ID of the balancer.\n"
+                    "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "The port on which the load balancer is listening.\n"
+                    "type": "integer"
                 },
                 "protocol": {
-                    "type": "string",
-                    "description": "The protocol to allow connections to the load balancer.\n"
+                    "type": "string"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:multai/ListenerTag:ListenerTag"
-                    },
-                    "description": "A list of key:value paired tags.\n"
+                    }
                 },
                 "tlsConfig": {
-                    "$ref": "#/types/spotinst:multai/ListenerTlsConfig:ListenerTlsConfig",
-                    "description": "Describes the TLSConfig configuration.\n"
+                    "$ref": "#/types/spotinst:multai/ListenerTlsConfig:ListenerTlsConfig"
                 }
             },
             "requiredInputs": [
@@ -14230,42 +14215,34 @@
                 "description": "Input properties used for looking up and filtering Listener resources.\n",
                 "properties": {
                     "balancerId": {
-                        "type": "string",
-                        "description": "The ID of the balancer.\n"
+                        "type": "string"
                     },
                     "port": {
-                        "type": "integer",
-                        "description": "The port on which the load balancer is listening.\n"
+                        "type": "integer"
                     },
                     "protocol": {
-                        "type": "string",
-                        "description": "The protocol to allow connections to the load balancer.\n"
+                        "type": "string"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:multai/ListenerTag:ListenerTag"
-                        },
-                        "description": "A list of key:value paired tags.\n"
+                        }
                     },
                     "tlsConfig": {
-                        "$ref": "#/types/spotinst:multai/ListenerTlsConfig:ListenerTlsConfig",
-                        "description": "Describes the TLSConfig configuration.\n"
+                        "$ref": "#/types/spotinst:multai/ListenerTlsConfig:ListenerTlsConfig"
                     }
                 },
                 "type": "object"
             }
         },
         "spotinst:multai/routingRule:RoutingRule": {
-            "description": "Provides a Spotinst Multai Routing Rule.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst myRoutingRule = new spotinst.multai.RoutingRule(\"my_routing_rule\", {\n    balancerId: \"b-12345\",\n    listenerId: \"l-98765\",\n    route: \"Path(`/bar`)\",\n    strategy: \"LEASTCONN\",\n    tags: [{\n        key: \"env\",\n        value: \"prod\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nmy_routing_rule = spotinst.multai.RoutingRule(\"myRoutingRule\",\n    balancer_id=\"b-12345\",\n    listener_id=\"l-98765\",\n    route=\"Path(`/bar`)\",\n    strategy=\"LEASTCONN\",\n    tags=[{\n        \"key\": \"env\",\n        \"value\": \"prod\",\n    }])\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myRoutingRule = new SpotInst.Multai.RoutingRule(\"myRoutingRule\", new SpotInst.Multai.RoutingRuleArgs\n        {\n            BalancerId = \"b-12345\",\n            ListenerId = \"l-98765\",\n            Route = \"Path(`/bar`)\",\n            Strategy = \"LEASTCONN\",\n            Tags = \n            {\n                new SpotInst.Multai.Inputs.RoutingRuleTagArgs\n                {\n                    Key = \"env\",\n                    Value = \"prod\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := multai.NewRoutingRule(ctx, \"myRoutingRule\", \u0026multai.RoutingRuleArgs{\n\t\t\tBalancerId: pulumi.String(\"b-12345\"),\n\t\t\tListenerId: pulumi.String(\"l-98765\"),\n\t\t\tRoute:      pulumi.String(\"Path(`/bar`)\"),\n\t\t\tStrategy:   pulumi.String(\"LEASTCONN\"),\n\t\t\tTags: multai.RoutingRuleTagArray{\n\t\t\t\t\u0026multai.RoutingRuleTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"env\"),\n\t\t\t\t\tValue: pulumi.String(\"prod\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "balancerId": {
-                    "type": "string",
-                    "description": "The ID of the balancer.\n"
+                    "type": "string"
                 },
                 "listenerId": {
-                    "type": "string",
-                    "description": "The ID of the listener.\n"
+                    "type": "string"
                 },
                 "middlewareIds": {
                     "type": "array",
@@ -14277,19 +14254,16 @@
                     "type": "integer"
                 },
                 "route": {
-                    "type": "string",
-                    "description": "Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path(\"/foo/bar\") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using \u0026\u0026 operator: — Method(“POST”) \u0026\u0026 Path(\"/v1\")\n"
+                    "type": "string"
                 },
                 "strategy": {
-                    "type": "string",
-                    "description": "Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.\n"
+                    "type": "string"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:multai/RoutingRuleTag:RoutingRuleTag"
-                    },
-                    "description": "A list of key:value paired tags.\n"
+                    }
                 },
                 "targetSetIds": {
                     "type": "array",
@@ -14306,12 +14280,10 @@
             ],
             "inputProperties": {
                 "balancerId": {
-                    "type": "string",
-                    "description": "The ID of the balancer.\n"
+                    "type": "string"
                 },
                 "listenerId": {
-                    "type": "string",
-                    "description": "The ID of the listener.\n"
+                    "type": "string"
                 },
                 "middlewareIds": {
                     "type": "array",
@@ -14323,19 +14295,16 @@
                     "type": "integer"
                 },
                 "route": {
-                    "type": "string",
-                    "description": "Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path(\"/foo/bar\") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using \u0026\u0026 operator: — Method(“POST”) \u0026\u0026 Path(\"/v1\")\n"
+                    "type": "string"
                 },
                 "strategy": {
-                    "type": "string",
-                    "description": "Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.\n"
+                    "type": "string"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:multai/RoutingRuleTag:RoutingRuleTag"
-                    },
-                    "description": "A list of key:value paired tags.\n"
+                    }
                 },
                 "targetSetIds": {
                     "type": "array",
@@ -14354,12 +14323,10 @@
                 "description": "Input properties used for looking up and filtering RoutingRule resources.\n",
                 "properties": {
                     "balancerId": {
-                        "type": "string",
-                        "description": "The ID of the balancer.\n"
+                        "type": "string"
                     },
                     "listenerId": {
-                        "type": "string",
-                        "description": "The ID of the listener.\n"
+                        "type": "string"
                     },
                     "middlewareIds": {
                         "type": "array",
@@ -14371,19 +14338,16 @@
                         "type": "integer"
                     },
                     "route": {
-                        "type": "string",
-                        "description": "Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path(\"/foo/bar\") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using \u0026\u0026 operator: — Method(“POST”) \u0026\u0026 Path(\"/v1\")\n"
+                        "type": "string"
                     },
                     "strategy": {
-                        "type": "string",
-                        "description": "Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.\n"
+                        "type": "string"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:multai/RoutingRuleTag:RoutingRuleTag"
-                        },
-                        "description": "A list of key:value paired tags.\n"
+                        }
                     },
                     "targetSetIds": {
                         "type": "array",
@@ -14396,38 +14360,30 @@
             }
         },
         "spotinst:multai/target:Target": {
-            "description": "Provides a Spotinst Multai Target.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst myTarget = new spotinst.multai.Target(\"my_target\", {\n    balancerId: \"b-12345\",\n    host: \"host\",\n    port: 1338,\n    tags: [{\n        key: \"env\",\n        value: \"prod\",\n    }],\n    targetSetId: \"l-98765\",\n    weight: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nmy_target = spotinst.multai.Target(\"myTarget\",\n    balancer_id=\"b-12345\",\n    host=\"host\",\n    port=1338,\n    tags=[{\n        \"key\": \"env\",\n        \"value\": \"prod\",\n    }],\n    target_set_id=\"l-98765\",\n    weight=1)\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myTarget = new SpotInst.Multai.Target(\"myTarget\", new SpotInst.Multai.TargetArgs\n        {\n            BalancerId = \"b-12345\",\n            Host = \"host\",\n            Port = 1338,\n            Tags = \n            {\n                new SpotInst.Multai.Inputs.TargetTagArgs\n                {\n                    Key = \"env\",\n                    Value = \"prod\",\n                },\n            },\n            TargetSetId = \"l-98765\",\n            Weight = 1,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := multai.NewTarget(ctx, \"myTarget\", \u0026multai.TargetArgs{\n\t\t\tBalancerId: pulumi.String(\"b-12345\"),\n\t\t\tHost:       pulumi.String(\"host\"),\n\t\t\tPort:       pulumi.Int(1338),\n\t\t\tTags: multai.TargetTagArray{\n\t\t\t\t\u0026multai.TargetTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"env\"),\n\t\t\t\t\tValue: pulumi.String(\"prod\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTargetSetId: pulumi.String(\"l-98765\"),\n\t\t\tWeight:      pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "balancerId": {
-                    "type": "string",
-                    "description": "The ID of the balancer.\n"
+                    "type": "string"
                 },
                 "host": {
-                    "type": "string",
-                    "description": "The address (IP or URL) of the targets to register\n"
+                    "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.\n"
+                    "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "The port the target will register to.\n"
+                    "type": "integer"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:multai/TargetTag:TargetTag"
-                    },
-                    "description": "A list of key:value paired tags.\n"
+                    }
                 },
                 "targetSetId": {
-                    "type": "string",
-                    "description": "The ID of the target set.\n"
+                    "type": "string"
                 },
                 "weight": {
-                    "type": "integer",
-                    "description": "Defines how traffic is distributed between targets.\n"
+                    "type": "integer"
                 }
             },
             "required": [
@@ -14439,35 +14395,28 @@
             ],
             "inputProperties": {
                 "balancerId": {
-                    "type": "string",
-                    "description": "The ID of the balancer.\n"
+                    "type": "string"
                 },
                 "host": {
-                    "type": "string",
-                    "description": "The address (IP or URL) of the targets to register\n"
+                    "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.\n"
+                    "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "The port the target will register to.\n"
+                    "type": "integer"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:multai/TargetTag:TargetTag"
-                    },
-                    "description": "A list of key:value paired tags.\n"
+                    }
                 },
                 "targetSetId": {
-                    "type": "string",
-                    "description": "The ID of the target set.\n"
+                    "type": "string"
                 },
                 "weight": {
-                    "type": "integer",
-                    "description": "Defines how traffic is distributed between targets.\n"
+                    "type": "integer"
                 }
             },
             "requiredInputs": [
@@ -14480,76 +14429,61 @@
                 "description": "Input properties used for looking up and filtering Target resources.\n",
                 "properties": {
                     "balancerId": {
-                        "type": "string",
-                        "description": "The ID of the balancer.\n"
+                        "type": "string"
                     },
                     "host": {
-                        "type": "string",
-                        "description": "The address (IP or URL) of the targets to register\n"
+                        "type": "string"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.\n"
+                        "type": "string"
                     },
                     "port": {
-                        "type": "integer",
-                        "description": "The port the target will register to.\n"
+                        "type": "integer"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:multai/TargetTag:TargetTag"
-                        },
-                        "description": "A list of key:value paired tags.\n"
+                        }
                     },
                     "targetSetId": {
-                        "type": "string",
-                        "description": "The ID of the target set.\n"
+                        "type": "string"
                     },
                     "weight": {
-                        "type": "integer",
-                        "description": "Defines how traffic is distributed between targets.\n"
+                        "type": "integer"
                     }
                 },
                 "type": "object"
             }
         },
         "spotinst:multai/targetSet:TargetSet": {
-            "description": "Provides a Spotinst Multai Target Set.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst myTargetSet = new spotinst.multai.TargetSet(\"my_target_set\", {\n    balancerId: \"b-12345\",\n    deploymentId: \"dp-12345\",\n    healthCheck: {\n        healthyThreshold: 3,\n        interval: 20,\n        path: \"/\",\n        port: 3001,\n        protocol: \"http\",\n        timeout: 5,\n        unhealthyThreshold: 3,\n    },\n    port: 1338,\n    protocol: \"http\",\n    tags: [{\n        key: \"env\",\n        value: \"prod\",\n    }],\n    weight: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nmy_target_set = spotinst.multai.TargetSet(\"myTargetSet\",\n    balancer_id=\"b-12345\",\n    deployment_id=\"dp-12345\",\n    health_check={\n        \"healthyThreshold\": 3,\n        \"interval\": 20,\n        \"path\": \"/\",\n        \"port\": 3001,\n        \"protocol\": \"http\",\n        \"timeout\": 5,\n        \"unhealthyThreshold\": 3,\n    },\n    port=1338,\n    protocol=\"http\",\n    tags=[{\n        \"key\": \"env\",\n        \"value\": \"prod\",\n    }],\n    weight=2)\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myTargetSet = new SpotInst.Multai.TargetSet(\"myTargetSet\", new SpotInst.Multai.TargetSetArgs\n        {\n            BalancerId = \"b-12345\",\n            DeploymentId = \"dp-12345\",\n            HealthCheck = new SpotInst.Multai.Inputs.TargetSetHealthCheckArgs\n            {\n                HealthyThreshold = 3,\n                Interval = 20,\n                Path = \"/\",\n                Port = 3001,\n                Protocol = \"http\",\n                Timeout = 5,\n                UnhealthyThreshold = 3,\n            },\n            Port = 1338,\n            Protocol = \"http\",\n            Tags = \n            {\n                new SpotInst.Multai.Inputs.TargetSetTagArgs\n                {\n                    Key = \"env\",\n                    Value = \"prod\",\n                },\n            },\n            Weight = 2,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := multai.NewTargetSet(ctx, \"myTargetSet\", \u0026multai.TargetSetArgs{\n\t\t\tBalancerId:   pulumi.String(\"b-12345\"),\n\t\t\tDeploymentId: pulumi.String(\"dp-12345\"),\n\t\t\tHealthCheck: \u0026multai.TargetSetHealthCheckArgs{\n\t\t\t\tHealthyThreshold:   pulumi.Int(3),\n\t\t\t\tInterval:           pulumi.Int(20),\n\t\t\t\tPath:               pulumi.String(\"/\"),\n\t\t\t\tPort:               pulumi.Int(3001),\n\t\t\t\tProtocol:           pulumi.String(\"http\"),\n\t\t\t\tTimeout:            pulumi.Int(5),\n\t\t\t\tUnhealthyThreshold: pulumi.Int(3),\n\t\t\t},\n\t\t\tPort:     pulumi.Int(1338),\n\t\t\tProtocol: pulumi.String(\"http\"),\n\t\t\tTags: multai.TargetSetTagArray{\n\t\t\t\t\u0026multai.TargetSetTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"env\"),\n\t\t\t\t\tValue: pulumi.String(\"prod\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tWeight: pulumi.Int(2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "balancerId": {
-                    "type": "string",
-                    "description": "The id of the balancer.\n"
+                    "type": "string"
                 },
                 "deploymentId": {
-                    "type": "string",
-                    "description": "The id of the deployment.\n"
+                    "type": "string"
                 },
                 "healthCheck": {
                     "$ref": "#/types/spotinst:multai/TargetSetHealthCheck:TargetSetHealthCheck"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.\n"
+                    "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "The port on which the load balancer is listening.\n"
+                    "type": "integer"
                 },
                 "protocol": {
-                    "type": "string",
-                    "description": "The protocol to allow connections to the target for the health check.\n"
+                    "type": "string"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:multai/TargetSetTag:TargetSetTag"
-                    },
-                    "description": "A list of key:value paired tags.\n"
+                    }
                 },
                 "weight": {
-                    "type": "integer",
-                    "description": "Defines how traffic is distributed between the Target Set.\n"
+                    "type": "integer"
                 }
             },
             "required": [
@@ -14562,38 +14496,31 @@
             ],
             "inputProperties": {
                 "balancerId": {
-                    "type": "string",
-                    "description": "The id of the balancer.\n"
+                    "type": "string"
                 },
                 "deploymentId": {
-                    "type": "string",
-                    "description": "The id of the deployment.\n"
+                    "type": "string"
                 },
                 "healthCheck": {
                     "$ref": "#/types/spotinst:multai/TargetSetHealthCheck:TargetSetHealthCheck"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.\n"
+                    "type": "string"
                 },
                 "port": {
-                    "type": "integer",
-                    "description": "The port on which the load balancer is listening.\n"
+                    "type": "integer"
                 },
                 "protocol": {
-                    "type": "string",
-                    "description": "The protocol to allow connections to the target for the health check.\n"
+                    "type": "string"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:multai/TargetSetTag:TargetSetTag"
-                    },
-                    "description": "A list of key:value paired tags.\n"
+                    }
                 },
                 "weight": {
-                    "type": "integer",
-                    "description": "Defines how traffic is distributed between the Target Set.\n"
+                    "type": "integer"
                 }
             },
             "requiredInputs": [
@@ -14607,38 +14534,31 @@
                 "description": "Input properties used for looking up and filtering TargetSet resources.\n",
                 "properties": {
                     "balancerId": {
-                        "type": "string",
-                        "description": "The id of the balancer.\n"
+                        "type": "string"
                     },
                     "deploymentId": {
-                        "type": "string",
-                        "description": "The id of the deployment.\n"
+                        "type": "string"
                     },
                     "healthCheck": {
                         "$ref": "#/types/spotinst:multai/TargetSetHealthCheck:TargetSetHealthCheck"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.\n"
+                        "type": "string"
                     },
                     "port": {
-                        "type": "integer",
-                        "description": "The port on which the load balancer is listening.\n"
+                        "type": "integer"
                     },
                     "protocol": {
-                        "type": "string",
-                        "description": "The protocol to allow connections to the target for the health check.\n"
+                        "type": "string"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:multai/TargetSetTag:TargetSetTag"
-                        },
-                        "description": "A list of key:value paired tags.\n"
+                        }
                     },
                     "weight": {
-                        "type": "integer",
-                        "description": "Defines how traffic is distributed between the Target Set.\n"
+                        "type": "integer"
                     }
                 },
                 "type": "object"

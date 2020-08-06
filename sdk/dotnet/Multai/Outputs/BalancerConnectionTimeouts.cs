@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Multai.Outputs
     [OutputType]
     public sealed class BalancerConnectionTimeouts
     {
-        /// <summary>
-        /// The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
-        /// </summary>
         public readonly int? Draining;
-        /// <summary>
-        /// The idle timeout value, in seconds. (range: 1 - 3600).
-        /// </summary>
         public readonly int? Idle;
 
         [OutputConstructor]

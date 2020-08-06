@@ -212,7 +212,7 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 }
 
 type OceanAutoscalerDown struct {
-	MaxScaleDownPercentage *int `pulumi:"maxScaleDownPercentage"`
+	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
 // OceanAutoscalerDownInput is an input type that accepts OceanAutoscalerDownArgs and OceanAutoscalerDownOutput values.
@@ -227,7 +227,7 @@ type OceanAutoscalerDownInput interface {
 }
 
 type OceanAutoscalerDownArgs struct {
-	MaxScaleDownPercentage pulumi.IntPtrInput `pulumi:"maxScaleDownPercentage"`
+	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
 func (OceanAutoscalerDownArgs) ElementType() reflect.Type {
@@ -306,8 +306,8 @@ func (o OceanAutoscalerDownOutput) ToOceanAutoscalerDownPtrOutputWithContext(ctx
 		return &v
 	}).(OceanAutoscalerDownPtrOutput)
 }
-func (o OceanAutoscalerDownOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+func (o OceanAutoscalerDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
 
 type OceanAutoscalerDownPtrOutput struct{ *pulumi.OutputState }
@@ -328,13 +328,13 @@ func (o OceanAutoscalerDownPtrOutput) Elem() OceanAutoscalerDownOutput {
 	return o.ApplyT(func(v *OceanAutoscalerDown) OceanAutoscalerDown { return *v }).(OceanAutoscalerDownOutput)
 }
 
-func (o OceanAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OceanAutoscalerDown) *int {
+func (o OceanAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanAutoscalerDown) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.MaxScaleDownPercentage
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 type OceanAutoscalerHeadroom struct {

@@ -9,94 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Multai
 {
-    /// <summary>
-    /// Provides a Spotinst Multai Target Set.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myTargetSet = new SpotInst.Multai.TargetSet("myTargetSet", new SpotInst.Multai.TargetSetArgs
-    ///         {
-    ///             BalancerId = "b-12345",
-    ///             DeploymentId = "dp-12345",
-    ///             HealthCheck = new SpotInst.Multai.Inputs.TargetSetHealthCheckArgs
-    ///             {
-    ///                 HealthyThreshold = 3,
-    ///                 Interval = 20,
-    ///                 Path = "/",
-    ///                 Port = 3001,
-    ///                 Protocol = "http",
-    ///                 Timeout = 5,
-    ///                 UnhealthyThreshold = 3,
-    ///             },
-    ///             Port = 1338,
-    ///             Protocol = "http",
-    ///             Tags = 
-    ///             {
-    ///                 new SpotInst.Multai.Inputs.TargetSetTagArgs
-    ///                 {
-    ///                     Key = "env",
-    ///                     Value = "prod",
-    ///                 },
-    ///             },
-    ///             Weight = 2,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class TargetSet : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The id of the balancer.
-        /// </summary>
         [Output("balancerId")]
         public Output<string> BalancerId { get; private set; } = null!;
 
-        /// <summary>
-        /// The id of the deployment.
-        /// </summary>
         [Output("deploymentId")]
         public Output<string> DeploymentId { get; private set; } = null!;
 
         [Output("healthCheck")]
         public Output<Outputs.TargetSetHealthCheck> HealthCheck { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The port on which the load balancer is listening.
-        /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
 
-        /// <summary>
-        /// The protocol to allow connections to the target for the health check.
-        /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.TargetSetTag>> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Defines how traffic is distributed between the Target Set.
-        /// </summary>
         [Output("weight")]
         public Output<int> Weight { get; private set; } = null!;
 
@@ -146,54 +81,32 @@ namespace Pulumi.SpotInst.Multai
 
     public sealed class TargetSetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The id of the balancer.
-        /// </summary>
         [Input("balancerId", required: true)]
         public Input<string> BalancerId { get; set; } = null!;
 
-        /// <summary>
-        /// The id of the deployment.
-        /// </summary>
         [Input("deploymentId", required: true)]
         public Input<string> DeploymentId { get; set; } = null!;
 
         [Input("healthCheck", required: true)]
         public Input<Inputs.TargetSetHealthCheckArgs> HealthCheck { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The port on which the load balancer is listening.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// The protocol to allow connections to the target for the health check.
-        /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
         [Input("tags")]
         private InputList<Inputs.TargetSetTagArgs>? _tags;
-
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         public InputList<Inputs.TargetSetTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.TargetSetTagArgs>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Defines how traffic is distributed between the Target Set.
-        /// </summary>
         [Input("weight", required: true)]
         public Input<int> Weight { get; set; } = null!;
 
@@ -204,54 +117,32 @@ namespace Pulumi.SpotInst.Multai
 
     public sealed class TargetSetState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The id of the balancer.
-        /// </summary>
         [Input("balancerId")]
         public Input<string>? BalancerId { get; set; }
 
-        /// <summary>
-        /// The id of the deployment.
-        /// </summary>
         [Input("deploymentId")]
         public Input<string>? DeploymentId { get; set; }
 
         [Input("healthCheck")]
         public Input<Inputs.TargetSetHealthCheckGetArgs>? HealthCheck { get; set; }
 
-        /// <summary>
-        /// The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The port on which the load balancer is listening.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// The protocol to allow connections to the target for the health check.
-        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.TargetSetTagGetArgs>? _tags;
-
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         public InputList<Inputs.TargetSetTagGetArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.TargetSetTagGetArgs>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Defines how traffic is distributed between the Target Set.
-        /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
 

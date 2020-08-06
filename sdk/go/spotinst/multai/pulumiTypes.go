@@ -11,10 +11,8 @@ import (
 )
 
 type BalancerConnectionTimeouts struct {
-	// The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
 	Draining *int `pulumi:"draining"`
-	// The idle timeout value, in seconds. (range: 1 - 3600).
-	Idle *int `pulumi:"idle"`
+	Idle     *int `pulumi:"idle"`
 }
 
 // BalancerConnectionTimeoutsInput is an input type that accepts BalancerConnectionTimeoutsArgs and BalancerConnectionTimeoutsOutput values.
@@ -29,10 +27,8 @@ type BalancerConnectionTimeoutsInput interface {
 }
 
 type BalancerConnectionTimeoutsArgs struct {
-	// The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
 	Draining pulumi.IntPtrInput `pulumi:"draining"`
-	// The idle timeout value, in seconds. (range: 1 - 3600).
-	Idle pulumi.IntPtrInput `pulumi:"idle"`
+	Idle     pulumi.IntPtrInput `pulumi:"idle"`
 }
 
 func (BalancerConnectionTimeoutsArgs) ElementType() reflect.Type {
@@ -111,13 +107,10 @@ func (o BalancerConnectionTimeoutsOutput) ToBalancerConnectionTimeoutsPtrOutputW
 		return &v
 	}).(BalancerConnectionTimeoutsPtrOutput)
 }
-
-// The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
 func (o BalancerConnectionTimeoutsOutput) Draining() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BalancerConnectionTimeouts) *int { return v.Draining }).(pulumi.IntPtrOutput)
 }
 
-// The idle timeout value, in seconds. (range: 1 - 3600).
 func (o BalancerConnectionTimeoutsOutput) Idle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BalancerConnectionTimeouts) *int { return v.Idle }).(pulumi.IntPtrOutput)
 }
@@ -140,7 +133,6 @@ func (o BalancerConnectionTimeoutsPtrOutput) Elem() BalancerConnectionTimeoutsOu
 	return o.ApplyT(func(v *BalancerConnectionTimeouts) BalancerConnectionTimeouts { return *v }).(BalancerConnectionTimeoutsOutput)
 }
 
-// The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
 func (o BalancerConnectionTimeoutsPtrOutput) Draining() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BalancerConnectionTimeouts) *int {
 		if v == nil {
@@ -150,7 +142,6 @@ func (o BalancerConnectionTimeoutsPtrOutput) Draining() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The idle timeout value, in seconds. (range: 1 - 3600).
 func (o BalancerConnectionTimeoutsPtrOutput) Idle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BalancerConnectionTimeouts) *int {
 		if v == nil {
@@ -161,9 +152,7 @@ func (o BalancerConnectionTimeoutsPtrOutput) Idle() pulumi.IntPtrOutput {
 }
 
 type BalancerTag struct {
-	// The tag's key.
-	Key string `pulumi:"key"`
-	// The tag's value.
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -179,9 +168,7 @@ type BalancerTagInput interface {
 }
 
 type BalancerTagArgs struct {
-	// The tag's key.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The tag's value.
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -236,12 +223,10 @@ func (o BalancerTagOutput) ToBalancerTagOutputWithContext(ctx context.Context) B
 	return o
 }
 
-// The tag's key.
 func (o BalancerTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v BalancerTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The tag's value.
 func (o BalancerTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v BalancerTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -267,9 +252,7 @@ func (o BalancerTagArrayOutput) Index(i pulumi.IntInput) BalancerTagOutput {
 }
 
 type ListenerTag struct {
-	// The tag's key.
-	Key string `pulumi:"key"`
-	// The tag's value.
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -285,9 +268,7 @@ type ListenerTagInput interface {
 }
 
 type ListenerTagArgs struct {
-	// The tag's key.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The tag's value.
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -342,12 +323,10 @@ func (o ListenerTagOutput) ToListenerTagOutputWithContext(ctx context.Context) L
 	return o
 }
 
-// The tag's key.
 func (o ListenerTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ListenerTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The tag's value.
 func (o ListenerTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ListenerTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -373,18 +352,12 @@ func (o ListenerTagArrayOutput) Index(i pulumi.IntInput) ListenerTagOutput {
 }
 
 type ListenerTlsConfig struct {
-	// Contains one or more certificate chains to present to the other side of the connection.
-	CertificateIds []string `pulumi:"certificateIds"`
-	// List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
-	CipherSuites []string `pulumi:"cipherSuites"`
-	// MaxVersion contains the maximum SSL/TLS version that is acceptable.
-	MaxVersion string `pulumi:"maxVersion"`
-	// MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
-	MinVersion string `pulumi:"minVersion"`
-	// Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
-	PreferServerCipherSuites bool `pulumi:"preferServerCipherSuites"`
-	// May be set to true to disable session ticket (resumption) support.
-	SessionTicketsDisabled bool `pulumi:"sessionTicketsDisabled"`
+	CertificateIds           []string `pulumi:"certificateIds"`
+	CipherSuites             []string `pulumi:"cipherSuites"`
+	MaxVersion               string   `pulumi:"maxVersion"`
+	MinVersion               string   `pulumi:"minVersion"`
+	PreferServerCipherSuites bool     `pulumi:"preferServerCipherSuites"`
+	SessionTicketsDisabled   bool     `pulumi:"sessionTicketsDisabled"`
 }
 
 // ListenerTlsConfigInput is an input type that accepts ListenerTlsConfigArgs and ListenerTlsConfigOutput values.
@@ -399,18 +372,12 @@ type ListenerTlsConfigInput interface {
 }
 
 type ListenerTlsConfigArgs struct {
-	// Contains one or more certificate chains to present to the other side of the connection.
-	CertificateIds pulumi.StringArrayInput `pulumi:"certificateIds"`
-	// List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
-	CipherSuites pulumi.StringArrayInput `pulumi:"cipherSuites"`
-	// MaxVersion contains the maximum SSL/TLS version that is acceptable.
-	MaxVersion pulumi.StringInput `pulumi:"maxVersion"`
-	// MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
-	MinVersion pulumi.StringInput `pulumi:"minVersion"`
-	// Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
-	PreferServerCipherSuites pulumi.BoolInput `pulumi:"preferServerCipherSuites"`
-	// May be set to true to disable session ticket (resumption) support.
-	SessionTicketsDisabled pulumi.BoolInput `pulumi:"sessionTicketsDisabled"`
+	CertificateIds           pulumi.StringArrayInput `pulumi:"certificateIds"`
+	CipherSuites             pulumi.StringArrayInput `pulumi:"cipherSuites"`
+	MaxVersion               pulumi.StringInput      `pulumi:"maxVersion"`
+	MinVersion               pulumi.StringInput      `pulumi:"minVersion"`
+	PreferServerCipherSuites pulumi.BoolInput        `pulumi:"preferServerCipherSuites"`
+	SessionTicketsDisabled   pulumi.BoolInput        `pulumi:"sessionTicketsDisabled"`
 }
 
 func (ListenerTlsConfigArgs) ElementType() reflect.Type {
@@ -489,33 +456,26 @@ func (o ListenerTlsConfigOutput) ToListenerTlsConfigPtrOutputWithContext(ctx con
 		return &v
 	}).(ListenerTlsConfigPtrOutput)
 }
-
-// Contains one or more certificate chains to present to the other side of the connection.
 func (o ListenerTlsConfigOutput) CertificateIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListenerTlsConfig) []string { return v.CertificateIds }).(pulumi.StringArrayOutput)
 }
 
-// List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
 func (o ListenerTlsConfigOutput) CipherSuites() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListenerTlsConfig) []string { return v.CipherSuites }).(pulumi.StringArrayOutput)
 }
 
-// MaxVersion contains the maximum SSL/TLS version that is acceptable.
 func (o ListenerTlsConfigOutput) MaxVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ListenerTlsConfig) string { return v.MaxVersion }).(pulumi.StringOutput)
 }
 
-// MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
 func (o ListenerTlsConfigOutput) MinVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ListenerTlsConfig) string { return v.MinVersion }).(pulumi.StringOutput)
 }
 
-// Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
 func (o ListenerTlsConfigOutput) PreferServerCipherSuites() pulumi.BoolOutput {
 	return o.ApplyT(func(v ListenerTlsConfig) bool { return v.PreferServerCipherSuites }).(pulumi.BoolOutput)
 }
 
-// May be set to true to disable session ticket (resumption) support.
 func (o ListenerTlsConfigOutput) SessionTicketsDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ListenerTlsConfig) bool { return v.SessionTicketsDisabled }).(pulumi.BoolOutput)
 }
@@ -538,7 +498,6 @@ func (o ListenerTlsConfigPtrOutput) Elem() ListenerTlsConfigOutput {
 	return o.ApplyT(func(v *ListenerTlsConfig) ListenerTlsConfig { return *v }).(ListenerTlsConfigOutput)
 }
 
-// Contains one or more certificate chains to present to the other side of the connection.
 func (o ListenerTlsConfigPtrOutput) CertificateIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ListenerTlsConfig) []string {
 		if v == nil {
@@ -548,7 +507,6 @@ func (o ListenerTlsConfigPtrOutput) CertificateIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
 func (o ListenerTlsConfigPtrOutput) CipherSuites() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ListenerTlsConfig) []string {
 		if v == nil {
@@ -558,7 +516,6 @@ func (o ListenerTlsConfigPtrOutput) CipherSuites() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// MaxVersion contains the maximum SSL/TLS version that is acceptable.
 func (o ListenerTlsConfigPtrOutput) MaxVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerTlsConfig) *string {
 		if v == nil {
@@ -568,7 +525,6 @@ func (o ListenerTlsConfigPtrOutput) MaxVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
 func (o ListenerTlsConfigPtrOutput) MinVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerTlsConfig) *string {
 		if v == nil {
@@ -578,7 +534,6 @@ func (o ListenerTlsConfigPtrOutput) MinVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
 func (o ListenerTlsConfigPtrOutput) PreferServerCipherSuites() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerTlsConfig) *bool {
 		if v == nil {
@@ -588,7 +543,6 @@ func (o ListenerTlsConfigPtrOutput) PreferServerCipherSuites() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// May be set to true to disable session ticket (resumption) support.
 func (o ListenerTlsConfigPtrOutput) SessionTicketsDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerTlsConfig) *bool {
 		if v == nil {
@@ -599,9 +553,7 @@ func (o ListenerTlsConfigPtrOutput) SessionTicketsDisabled() pulumi.BoolPtrOutpu
 }
 
 type RoutingRuleTag struct {
-	// The tag's key.
-	Key string `pulumi:"key"`
-	// The tag's value.
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -617,9 +569,7 @@ type RoutingRuleTagInput interface {
 }
 
 type RoutingRuleTagArgs struct {
-	// The tag's key.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The tag's value.
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -674,12 +624,10 @@ func (o RoutingRuleTagOutput) ToRoutingRuleTagOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The tag's key.
 func (o RoutingRuleTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v RoutingRuleTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The tag's value.
 func (o RoutingRuleTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v RoutingRuleTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -705,20 +653,13 @@ func (o RoutingRuleTagArrayOutput) Index(i pulumi.IntInput) RoutingRuleTagOutput
 }
 
 type TargetSetHealthCheck struct {
-	// Total number of allowed healthy Targets.
-	HealthyThreshold int `pulumi:"healthyThreshold"`
-	// The interval for the health check.
-	Interval int `pulumi:"interval"`
-	// The path to perform the health check.
-	Path string `pulumi:"path"`
-	// The port on which the load balancer is listening.
-	Port *int `pulumi:"port"`
-	// The protocol to allow connections to the target for the health check.
-	Protocol string `pulumi:"protocol"`
-	// The time out for the health check.
-	Timeout int `pulumi:"timeout"`
-	// Total number of allowed unhealthy Targets.
-	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
+	HealthyThreshold   int    `pulumi:"healthyThreshold"`
+	Interval           int    `pulumi:"interval"`
+	Path               string `pulumi:"path"`
+	Port               *int   `pulumi:"port"`
+	Protocol           string `pulumi:"protocol"`
+	Timeout            int    `pulumi:"timeout"`
+	UnhealthyThreshold int    `pulumi:"unhealthyThreshold"`
 }
 
 // TargetSetHealthCheckInput is an input type that accepts TargetSetHealthCheckArgs and TargetSetHealthCheckOutput values.
@@ -733,20 +674,13 @@ type TargetSetHealthCheckInput interface {
 }
 
 type TargetSetHealthCheckArgs struct {
-	// Total number of allowed healthy Targets.
-	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
-	// The interval for the health check.
-	Interval pulumi.IntInput `pulumi:"interval"`
-	// The path to perform the health check.
-	Path pulumi.StringInput `pulumi:"path"`
-	// The port on which the load balancer is listening.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// The protocol to allow connections to the target for the health check.
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// The time out for the health check.
-	Timeout pulumi.IntInput `pulumi:"timeout"`
-	// Total number of allowed unhealthy Targets.
-	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
+	HealthyThreshold   pulumi.IntInput    `pulumi:"healthyThreshold"`
+	Interval           pulumi.IntInput    `pulumi:"interval"`
+	Path               pulumi.StringInput `pulumi:"path"`
+	Port               pulumi.IntPtrInput `pulumi:"port"`
+	Protocol           pulumi.StringInput `pulumi:"protocol"`
+	Timeout            pulumi.IntInput    `pulumi:"timeout"`
+	UnhealthyThreshold pulumi.IntInput    `pulumi:"unhealthyThreshold"`
 }
 
 func (TargetSetHealthCheckArgs) ElementType() reflect.Type {
@@ -825,38 +759,30 @@ func (o TargetSetHealthCheckOutput) ToTargetSetHealthCheckPtrOutputWithContext(c
 		return &v
 	}).(TargetSetHealthCheckPtrOutput)
 }
-
-// Total number of allowed healthy Targets.
 func (o TargetSetHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v TargetSetHealthCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
-// The interval for the health check.
 func (o TargetSetHealthCheckOutput) Interval() pulumi.IntOutput {
 	return o.ApplyT(func(v TargetSetHealthCheck) int { return v.Interval }).(pulumi.IntOutput)
 }
 
-// The path to perform the health check.
 func (o TargetSetHealthCheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetSetHealthCheck) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The port on which the load balancer is listening.
 func (o TargetSetHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TargetSetHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// The protocol to allow connections to the target for the health check.
 func (o TargetSetHealthCheckOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetSetHealthCheck) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The time out for the health check.
 func (o TargetSetHealthCheckOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v TargetSetHealthCheck) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// Total number of allowed unhealthy Targets.
 func (o TargetSetHealthCheckOutput) UnhealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v TargetSetHealthCheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
 }
@@ -879,7 +805,6 @@ func (o TargetSetHealthCheckPtrOutput) Elem() TargetSetHealthCheckOutput {
 	return o.ApplyT(func(v *TargetSetHealthCheck) TargetSetHealthCheck { return *v }).(TargetSetHealthCheckOutput)
 }
 
-// Total number of allowed healthy Targets.
 func (o TargetSetHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TargetSetHealthCheck) *int {
 		if v == nil {
@@ -889,7 +814,6 @@ func (o TargetSetHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The interval for the health check.
 func (o TargetSetHealthCheckPtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TargetSetHealthCheck) *int {
 		if v == nil {
@@ -899,7 +823,6 @@ func (o TargetSetHealthCheckPtrOutput) Interval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The path to perform the health check.
 func (o TargetSetHealthCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetSetHealthCheck) *string {
 		if v == nil {
@@ -909,7 +832,6 @@ func (o TargetSetHealthCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The port on which the load balancer is listening.
 func (o TargetSetHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TargetSetHealthCheck) *int {
 		if v == nil {
@@ -919,7 +841,6 @@ func (o TargetSetHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The protocol to allow connections to the target for the health check.
 func (o TargetSetHealthCheckPtrOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetSetHealthCheck) *string {
 		if v == nil {
@@ -929,7 +850,6 @@ func (o TargetSetHealthCheckPtrOutput) Protocol() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The time out for the health check.
 func (o TargetSetHealthCheckPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TargetSetHealthCheck) *int {
 		if v == nil {
@@ -939,7 +859,6 @@ func (o TargetSetHealthCheckPtrOutput) Timeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Total number of allowed unhealthy Targets.
 func (o TargetSetHealthCheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TargetSetHealthCheck) *int {
 		if v == nil {
@@ -950,9 +869,7 @@ func (o TargetSetHealthCheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput 
 }
 
 type TargetSetTag struct {
-	// The tag's key.
-	Key string `pulumi:"key"`
-	// The tag's value.
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -968,9 +885,7 @@ type TargetSetTagInput interface {
 }
 
 type TargetSetTagArgs struct {
-	// The tag's key.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The tag's value.
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1025,12 +940,10 @@ func (o TargetSetTagOutput) ToTargetSetTagOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The tag's key.
 func (o TargetSetTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetSetTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The tag's value.
 func (o TargetSetTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetSetTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1056,9 +969,7 @@ func (o TargetSetTagArrayOutput) Index(i pulumi.IntInput) TargetSetTagOutput {
 }
 
 type TargetTag struct {
-	// The tag's key.
-	Key string `pulumi:"key"`
-	// The tag's value.
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -1074,9 +985,7 @@ type TargetTagInput interface {
 }
 
 type TargetTagArgs struct {
-	// The tag's key.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The tag's value.
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1131,12 +1040,10 @@ func (o TargetTagOutput) ToTargetTagOutputWithContext(ctx context.Context) Targe
 	return o
 }
 
-// The tag's key.
 func (o TargetTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The tag's value.
 func (o TargetTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetTag) string { return v.Value }).(pulumi.StringOutput)
 }

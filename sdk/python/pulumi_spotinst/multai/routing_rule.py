@@ -11,64 +11,23 @@ from .. import _utilities, _tables
 
 class RoutingRule(pulumi.CustomResource):
     balancer_id: pulumi.Output[str]
-    """
-    The ID of the balancer.
-    """
     listener_id: pulumi.Output[str]
-    """
-    The ID of the listener.
-    """
     middleware_ids: pulumi.Output[list]
     priority: pulumi.Output[float]
     route: pulumi.Output[str]
-    """
-    Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path("/foo/bar") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using && operator: — Method(“POST”) && Path("/v1")
-    """
     strategy: pulumi.Output[str]
-    """
-    Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.
-    """
     tags: pulumi.Output[list]
-    """
-    A list of key:value paired tags.
-
-      * `key` (`str`) - The tag's key.
-      * `value` (`str`) - The tag's value.
-    """
     target_set_ids: pulumi.Output[list]
     def __init__(__self__, resource_name, opts=None, balancer_id=None, listener_id=None, middleware_ids=None, priority=None, route=None, strategy=None, tags=None, target_set_ids=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Spotinst Multai Routing Rule.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        my_routing_rule = spotinst.multai.RoutingRule("myRoutingRule",
-            balancer_id="b-12345",
-            listener_id="l-98765",
-            route="Path(`/bar`)",
-            strategy="LEASTCONN",
-            tags=[{
-                "key": "env",
-                "value": "prod",
-            }])
-        ```
-
+        Create a RoutingRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] balancer_id: The ID of the balancer.
-        :param pulumi.Input[str] listener_id: The ID of the listener.
-        :param pulumi.Input[str] route: Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path("/foo/bar") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using && operator: — Method(“POST”) && Path("/v1")
-        :param pulumi.Input[str] strategy: Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.
-        :param pulumi.Input[list] tags: A list of key:value paired tags.
 
         The **tags** object supports the following:
 
-          * `key` (`pulumi.Input[str]`) - The tag's key.
-          * `value` (`pulumi.Input[str]`) - The tag's value.
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,16 +77,11 @@ class RoutingRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] balancer_id: The ID of the balancer.
-        :param pulumi.Input[str] listener_id: The ID of the listener.
-        :param pulumi.Input[str] route: Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path("/foo/bar") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using && operator: — Method(“POST”) && Path("/v1")
-        :param pulumi.Input[str] strategy: Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.
-        :param pulumi.Input[list] tags: A list of key:value paired tags.
 
         The **tags** object supports the following:
 
-          * `key` (`pulumi.Input[str]`) - The tag's key.
-          * `value` (`pulumi.Input[str]`) - The tag's value.
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -6,37 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Spotinst Multai Target Set.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const myTargetSet = new spotinst.multai.TargetSet("my_target_set", {
- *     balancerId: "b-12345",
- *     deploymentId: "dp-12345",
- *     healthCheck: {
- *         healthyThreshold: 3,
- *         interval: 20,
- *         path: "/",
- *         port: 3001,
- *         protocol: "http",
- *         timeout: 5,
- *         unhealthyThreshold: 3,
- *     },
- *     port: 1338,
- *     protocol: "http",
- *     tags: [{
- *         key: "env",
- *         value: "prod",
- *     }],
- *     weight: 2,
- * });
- * ```
- */
 export class TargetSet extends pulumi.CustomResource {
     /**
      * Get an existing TargetSet resource's state with the given name, ID, and optional extra
@@ -65,34 +34,13 @@ export class TargetSet extends pulumi.CustomResource {
         return obj['__pulumiType'] === TargetSet.__pulumiType;
     }
 
-    /**
-     * The id of the balancer.
-     */
     public readonly balancerId!: pulumi.Output<string>;
-    /**
-     * The id of the deployment.
-     */
     public readonly deploymentId!: pulumi.Output<string>;
     public readonly healthCheck!: pulumi.Output<outputs.multai.TargetSetHealthCheck>;
-    /**
-     * The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The port on which the load balancer is listening.
-     */
     public readonly port!: pulumi.Output<number | undefined>;
-    /**
-     * The protocol to allow connections to the target for the health check.
-     */
     public readonly protocol!: pulumi.Output<string>;
-    /**
-     * A list of key:value paired tags.
-     */
     public readonly tags!: pulumi.Output<outputs.multai.TargetSetTag[] | undefined>;
-    /**
-     * Defines how traffic is distributed between the Target Set.
-     */
     public readonly weight!: pulumi.Output<number>;
 
     /**
@@ -156,34 +104,13 @@ export class TargetSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TargetSet resources.
  */
 export interface TargetSetState {
-    /**
-     * The id of the balancer.
-     */
     readonly balancerId?: pulumi.Input<string>;
-    /**
-     * The id of the deployment.
-     */
     readonly deploymentId?: pulumi.Input<string>;
     readonly healthCheck?: pulumi.Input<inputs.multai.TargetSetHealthCheck>;
-    /**
-     * The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The port on which the load balancer is listening.
-     */
     readonly port?: pulumi.Input<number>;
-    /**
-     * The protocol to allow connections to the target for the health check.
-     */
     readonly protocol?: pulumi.Input<string>;
-    /**
-     * A list of key:value paired tags.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetSetTag>[]>;
-    /**
-     * Defines how traffic is distributed between the Target Set.
-     */
     readonly weight?: pulumi.Input<number>;
 }
 
@@ -191,33 +118,12 @@ export interface TargetSetState {
  * The set of arguments for constructing a TargetSet resource.
  */
 export interface TargetSetArgs {
-    /**
-     * The id of the balancer.
-     */
     readonly balancerId: pulumi.Input<string>;
-    /**
-     * The id of the deployment.
-     */
     readonly deploymentId: pulumi.Input<string>;
     readonly healthCheck: pulumi.Input<inputs.multai.TargetSetHealthCheck>;
-    /**
-     * The name of the Target Set. Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The port on which the load balancer is listening.
-     */
     readonly port?: pulumi.Input<number>;
-    /**
-     * The protocol to allow connections to the target for the health check.
-     */
     readonly protocol: pulumi.Input<string>;
-    /**
-     * A list of key:value paired tags.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetSetTag>[]>;
-    /**
-     * Defines how traffic is distributed between the Target Set.
-     */
     readonly weight: pulumi.Input<number>;
 }

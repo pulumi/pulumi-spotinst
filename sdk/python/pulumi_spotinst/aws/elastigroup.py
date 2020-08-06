@@ -419,8 +419,10 @@ class Elastigroup(pulumi.CustomResource):
 
           * `domains` (`pulumi.Input[list]`)
             * `hostedZoneId` (`pulumi.Input[str]`)
+            * `recordSetType` (`pulumi.Input[str]`)
             * `recordSets` (`pulumi.Input[list]`)
               * `name` (`pulumi.Input[str]`) - The group name.
+              * `usePublicDns` (`pulumi.Input[bool]`)
               * `usePublicIp` (`pulumi.Input[bool]`)
 
             * `spotinstAcctId` (`pulumi.Input[str]`)
@@ -890,8 +892,10 @@ class Elastigroup(pulumi.CustomResource):
 
           * `domains` (`pulumi.Input[list]`)
             * `hostedZoneId` (`pulumi.Input[str]`)
+            * `recordSetType` (`pulumi.Input[str]`)
             * `recordSets` (`pulumi.Input[list]`)
               * `name` (`pulumi.Input[str]`) - The group name.
+              * `usePublicDns` (`pulumi.Input[bool]`)
               * `usePublicIp` (`pulumi.Input[bool]`)
 
             * `spotinstAcctId` (`pulumi.Input[str]`)

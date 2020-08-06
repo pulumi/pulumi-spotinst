@@ -11,85 +11,29 @@ from .. import _utilities, _tables
 
 class Listener(pulumi.CustomResource):
     balancer_id: pulumi.Output[str]
-    """
-    The ID of the balancer.
-    """
     port: pulumi.Output[float]
-    """
-    The port on which the load balancer is listening.
-    """
     protocol: pulumi.Output[str]
-    """
-    The protocol to allow connections to the load balancer.
-    """
     tags: pulumi.Output[list]
-    """
-    A list of key:value paired tags.
-
-      * `key` (`str`) - The tag's key.
-      * `value` (`str`) - The tag's value.
-    """
     tls_config: pulumi.Output[dict]
-    """
-    Describes the TLSConfig configuration.
-
-      * `certificateIds` (`list`) - Contains one or more certificate chains to present to the other side of the connection.
-      * `cipherSuites` (`list`) - List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
-      * `maxVersion` (`str`) - MaxVersion contains the maximum SSL/TLS version that is acceptable.
-      * `minVersion` (`str`) - MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
-      * `preferServerCipherSuites` (`bool`) - Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
-      * `sessionTicketsDisabled` (`bool`) - May be set to true to disable session ticket (resumption) support.
-    """
     def __init__(__self__, resource_name, opts=None, balancer_id=None, port=None, protocol=None, tags=None, tls_config=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Spotinst Multai Listener.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        my_listener = spotinst.multai.Listener("myListener",
-            balancer_id="b-12345",
-            name="foo",
-            port=1337,
-            protocol="http",
-            tags=[{
-                "key": "env",
-                "value": "prod",
-            }],
-            tls_config={
-                "certificateIds": ["ce-12345"],
-                "cipherSuites": [""],
-                "maxVersion": "TLS12",
-                "minVersion": "TLS10",
-                "preferServerCipherSuites": True,
-                "sessionTicketsDisabled": False,
-            })
-        ```
-
+        Create a Listener resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] balancer_id: The ID of the balancer.
-        :param pulumi.Input[float] port: The port on which the load balancer is listening.
-        :param pulumi.Input[str] protocol: The protocol to allow connections to the load balancer.
-        :param pulumi.Input[list] tags: A list of key:value paired tags.
-        :param pulumi.Input[dict] tls_config: Describes the TLSConfig configuration.
 
         The **tags** object supports the following:
 
-          * `key` (`pulumi.Input[str]`) - The tag's key.
-          * `value` (`pulumi.Input[str]`) - The tag's value.
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
 
         The **tls_config** object supports the following:
 
-          * `certificateIds` (`pulumi.Input[list]`) - Contains one or more certificate chains to present to the other side of the connection.
-          * `cipherSuites` (`pulumi.Input[list]`) - List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
-          * `maxVersion` (`pulumi.Input[str]`) - MaxVersion contains the maximum SSL/TLS version that is acceptable.
-          * `minVersion` (`pulumi.Input[str]`) - MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
-          * `preferServerCipherSuites` (`pulumi.Input[bool]`) - Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
-          * `sessionTicketsDisabled` (`pulumi.Input[bool]`) - May be set to true to disable session ticket (resumption) support.
+          * `certificateIds` (`pulumi.Input[list]`)
+          * `cipherSuites` (`pulumi.Input[list]`)
+          * `maxVersion` (`pulumi.Input[str]`)
+          * `minVersion` (`pulumi.Input[str]`)
+          * `preferServerCipherSuites` (`pulumi.Input[bool]`)
+          * `sessionTicketsDisabled` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -134,25 +78,20 @@ class Listener(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] balancer_id: The ID of the balancer.
-        :param pulumi.Input[float] port: The port on which the load balancer is listening.
-        :param pulumi.Input[str] protocol: The protocol to allow connections to the load balancer.
-        :param pulumi.Input[list] tags: A list of key:value paired tags.
-        :param pulumi.Input[dict] tls_config: Describes the TLSConfig configuration.
 
         The **tags** object supports the following:
 
-          * `key` (`pulumi.Input[str]`) - The tag's key.
-          * `value` (`pulumi.Input[str]`) - The tag's value.
+          * `key` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
 
         The **tls_config** object supports the following:
 
-          * `certificateIds` (`pulumi.Input[list]`) - Contains one or more certificate chains to present to the other side of the connection.
-          * `cipherSuites` (`pulumi.Input[list]`) - List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
-          * `maxVersion` (`pulumi.Input[str]`) - MaxVersion contains the maximum SSL/TLS version that is acceptable.
-          * `minVersion` (`pulumi.Input[str]`) - MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
-          * `preferServerCipherSuites` (`pulumi.Input[bool]`) - Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
-          * `sessionTicketsDisabled` (`pulumi.Input[bool]`) - May be set to true to disable session ticket (resumption) support.
+          * `certificateIds` (`pulumi.Input[list]`)
+          * `cipherSuites` (`pulumi.Input[list]`)
+          * `maxVersion` (`pulumi.Input[str]`)
+          * `minVersion` (`pulumi.Input[str]`)
+          * `preferServerCipherSuites` (`pulumi.Input[bool]`)
+          * `sessionTicketsDisabled` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

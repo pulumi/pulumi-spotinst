@@ -9,32 +9,8 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Multai
 {
-    /// <summary>
-    /// Provides a Spotinst Multai Deployment.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myDeployment = new SpotInst.Multai.Deployment("myDeployment", new SpotInst.Multai.DeploymentArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Deployment : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The deployment name.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -84,9 +60,6 @@ namespace Pulumi.SpotInst.Multai
 
     public sealed class DeploymentArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The deployment name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -97,9 +70,6 @@ namespace Pulumi.SpotInst.Multai
 
     public sealed class DeploymentState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The deployment name.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

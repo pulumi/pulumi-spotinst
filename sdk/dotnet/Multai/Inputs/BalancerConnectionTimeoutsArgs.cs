@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Multai.Inputs
 
     public sealed class BalancerConnectionTimeoutsArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The time for the load balancer to keep connections alive before reporting the target as de-registered, in seconds (range: 1 - 3600).
-        /// </summary>
         [Input("draining")]
         public Input<int>? Draining { get; set; }
 
-        /// <summary>
-        /// The idle timeout value, in seconds. (range: 1 - 3600).
-        /// </summary>
         [Input("idle")]
         public Input<int>? Idle { get; set; }
 

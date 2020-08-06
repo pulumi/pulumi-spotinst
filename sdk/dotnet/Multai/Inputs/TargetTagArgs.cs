@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Multai.Inputs
 
     public sealed class TargetTagArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The tag's key.
-        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
-        /// <summary>
-        /// The tag's value.
-        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

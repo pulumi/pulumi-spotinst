@@ -9,50 +9,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Spotinst Multai Balancer.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := multai.NewBalancer(ctx, "myBalancer", &multai.BalancerArgs{
-// 			ConnectionTimeouts: &multai.BalancerConnectionTimeoutsArgs{
-// 				Draining: pulumi.Int(10),
-// 				Idle:     pulumi.Int(10),
-// 			},
-// 			Scheme: pulumi.String("internal"),
-// 			Tags: multai.BalancerTagArray{
-// 				&multai.BalancerTagArgs{
-// 					Key:   pulumi.String("env"),
-// 					Value: pulumi.String("prod"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Balancer struct {
 	pulumi.CustomResourceState
 
 	ConnectionTimeouts BalancerConnectionTimeoutsPtrOutput `pulumi:"connectionTimeouts"`
 	DnsCnameAliases    pulumi.StringArrayOutput            `pulumi:"dnsCnameAliases"`
-	// The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name   pulumi.StringOutput    `pulumi:"name"`
-	Scheme pulumi.StringPtrOutput `pulumi:"scheme"`
-	// A list of key:value paired tags.
-	Tags BalancerTagArrayOutput `pulumi:"tags"`
+	Name               pulumi.StringOutput                 `pulumi:"name"`
+	Scheme             pulumi.StringPtrOutput              `pulumi:"scheme"`
+	Tags               BalancerTagArrayOutput              `pulumi:"tags"`
 }
 
 // NewBalancer registers a new resource with the given unique name, arguments, and options.
@@ -85,21 +49,17 @@ func GetBalancer(ctx *pulumi.Context,
 type balancerState struct {
 	ConnectionTimeouts *BalancerConnectionTimeouts `pulumi:"connectionTimeouts"`
 	DnsCnameAliases    []string                    `pulumi:"dnsCnameAliases"`
-	// The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name   *string `pulumi:"name"`
-	Scheme *string `pulumi:"scheme"`
-	// A list of key:value paired tags.
-	Tags []BalancerTag `pulumi:"tags"`
+	Name               *string                     `pulumi:"name"`
+	Scheme             *string                     `pulumi:"scheme"`
+	Tags               []BalancerTag               `pulumi:"tags"`
 }
 
 type BalancerState struct {
 	ConnectionTimeouts BalancerConnectionTimeoutsPtrInput
 	DnsCnameAliases    pulumi.StringArrayInput
-	// The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name   pulumi.StringPtrInput
-	Scheme pulumi.StringPtrInput
-	// A list of key:value paired tags.
-	Tags BalancerTagArrayInput
+	Name               pulumi.StringPtrInput
+	Scheme             pulumi.StringPtrInput
+	Tags               BalancerTagArrayInput
 }
 
 func (BalancerState) ElementType() reflect.Type {
@@ -109,22 +69,18 @@ func (BalancerState) ElementType() reflect.Type {
 type balancerArgs struct {
 	ConnectionTimeouts *BalancerConnectionTimeouts `pulumi:"connectionTimeouts"`
 	DnsCnameAliases    []string                    `pulumi:"dnsCnameAliases"`
-	// The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name   *string `pulumi:"name"`
-	Scheme *string `pulumi:"scheme"`
-	// A list of key:value paired tags.
-	Tags []BalancerTag `pulumi:"tags"`
+	Name               *string                     `pulumi:"name"`
+	Scheme             *string                     `pulumi:"scheme"`
+	Tags               []BalancerTag               `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Balancer resource.
 type BalancerArgs struct {
 	ConnectionTimeouts BalancerConnectionTimeoutsPtrInput
 	DnsCnameAliases    pulumi.StringArrayInput
-	// The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name   pulumi.StringPtrInput
-	Scheme pulumi.StringPtrInput
-	// A list of key:value paired tags.
-	Tags BalancerTagArrayInput
+	Name               pulumi.StringPtrInput
+	Scheme             pulumi.StringPtrInput
+	Tags               BalancerTagArrayInput
 }
 
 func (BalancerArgs) ElementType() reflect.Type {

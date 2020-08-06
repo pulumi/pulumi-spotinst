@@ -17,15 +17,19 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// The ManagedInstance name.
         /// </summary>
         public readonly string Name;
+        public readonly bool? UsePublicDns;
         public readonly bool? UsePublicIp;
 
         [OutputConstructor]
         private ManagedInstanceIntegrationRoute53DomainRecordSet(
             string name,
 
+            bool? usePublicDns,
+
             bool? usePublicIp)
         {
             Name = name;
+            UsePublicDns = usePublicDns;
             UsePublicIp = usePublicIp;
         }
     }

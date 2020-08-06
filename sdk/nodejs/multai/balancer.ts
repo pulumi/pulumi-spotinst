@@ -6,28 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Spotinst Multai Balancer.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const myBalancer = new spotinst.multai.Balancer("my_balancer", {
- *     connectionTimeouts: {
- *         draining: 10,
- *         idle: 10,
- *     },
- *     scheme: "internal",
- *     tags: [{
- *         key: "env",
- *         value: "prod",
- *     }],
- * });
- * ```
- */
 export class Balancer extends pulumi.CustomResource {
     /**
      * Get an existing Balancer resource's state with the given name, ID, and optional extra
@@ -58,14 +36,8 @@ export class Balancer extends pulumi.CustomResource {
 
     public readonly connectionTimeouts!: pulumi.Output<outputs.multai.BalancerConnectionTimeouts | undefined>;
     public readonly dnsCnameAliases!: pulumi.Output<string[] | undefined>;
-    /**
-     * The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-     */
     public readonly name!: pulumi.Output<string>;
     public readonly scheme!: pulumi.Output<string | undefined>;
-    /**
-     * A list of key:value paired tags.
-     */
     public readonly tags!: pulumi.Output<outputs.multai.BalancerTag[] | undefined>;
 
     /**
@@ -110,14 +82,8 @@ export class Balancer extends pulumi.CustomResource {
 export interface BalancerState {
     readonly connectionTimeouts?: pulumi.Input<inputs.multai.BalancerConnectionTimeouts>;
     readonly dnsCnameAliases?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-     */
     readonly name?: pulumi.Input<string>;
     readonly scheme?: pulumi.Input<string>;
-    /**
-     * A list of key:value paired tags.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.BalancerTag>[]>;
 }
 
@@ -127,13 +93,7 @@ export interface BalancerState {
 export interface BalancerArgs {
     readonly connectionTimeouts?: pulumi.Input<inputs.multai.BalancerConnectionTimeouts>;
     readonly dnsCnameAliases?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The balancer name. May contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-     */
     readonly name?: pulumi.Input<string>;
     readonly scheme?: pulumi.Input<string>;
-    /**
-     * A list of key:value paired tags.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.BalancerTag>[]>;
 }

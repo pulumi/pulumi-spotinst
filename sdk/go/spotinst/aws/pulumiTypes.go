@@ -2988,8 +2988,8 @@ func (o ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput) Index(i pulumi.I
 }
 
 type ElastigroupIntegrationEcsAutoscaleDown struct {
-	EvaluationPeriods      *int `pulumi:"evaluationPeriods"`
-	MaxScaleDownPercentage *int `pulumi:"maxScaleDownPercentage"`
+	EvaluationPeriods      *int     `pulumi:"evaluationPeriods"`
+	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
 // ElastigroupIntegrationEcsAutoscaleDownInput is an input type that accepts ElastigroupIntegrationEcsAutoscaleDownArgs and ElastigroupIntegrationEcsAutoscaleDownOutput values.
@@ -3004,8 +3004,8 @@ type ElastigroupIntegrationEcsAutoscaleDownInput interface {
 }
 
 type ElastigroupIntegrationEcsAutoscaleDownArgs struct {
-	EvaluationPeriods      pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
-	MaxScaleDownPercentage pulumi.IntPtrInput `pulumi:"maxScaleDownPercentage"`
+	EvaluationPeriods      pulumi.IntPtrInput     `pulumi:"evaluationPeriods"`
+	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
 func (ElastigroupIntegrationEcsAutoscaleDownArgs) ElementType() reflect.Type {
@@ -3088,8 +3088,8 @@ func (o ElastigroupIntegrationEcsAutoscaleDownOutput) EvaluationPeriods() pulumi
 	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
-func (o ElastigroupIntegrationEcsAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
+func (o ElastigroupIntegrationEcsAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
 
 type ElastigroupIntegrationEcsAutoscaleDownPtrOutput struct{ *pulumi.OutputState }
@@ -3119,13 +3119,13 @@ func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) EvaluationPeriods() pul
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleDown) *int {
+func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleDown) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.MaxScaleDownPercentage
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 type ElastigroupIntegrationEcsAutoscaleHeadroom struct {
@@ -5361,6 +5361,7 @@ func (o ElastigroupIntegrationRoute53PtrOutput) Domains() ElastigroupIntegration
 
 type ElastigroupIntegrationRoute53Domain struct {
 	HostedZoneId   string                                         `pulumi:"hostedZoneId"`
+	RecordSetType  *string                                        `pulumi:"recordSetType"`
 	RecordSets     []ElastigroupIntegrationRoute53DomainRecordSet `pulumi:"recordSets"`
 	SpotinstAcctId *string                                        `pulumi:"spotinstAcctId"`
 }
@@ -5378,6 +5379,7 @@ type ElastigroupIntegrationRoute53DomainInput interface {
 
 type ElastigroupIntegrationRoute53DomainArgs struct {
 	HostedZoneId   pulumi.StringInput                                     `pulumi:"hostedZoneId"`
+	RecordSetType  pulumi.StringPtrInput                                  `pulumi:"recordSetType"`
 	RecordSets     ElastigroupIntegrationRoute53DomainRecordSetArrayInput `pulumi:"recordSets"`
 	SpotinstAcctId pulumi.StringPtrInput                                  `pulumi:"spotinstAcctId"`
 }
@@ -5437,6 +5439,10 @@ func (o ElastigroupIntegrationRoute53DomainOutput) HostedZoneId() pulumi.StringO
 	return o.ApplyT(func(v ElastigroupIntegrationRoute53Domain) string { return v.HostedZoneId }).(pulumi.StringOutput)
 }
 
+func (o ElastigroupIntegrationRoute53DomainOutput) RecordSetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupIntegrationRoute53Domain) *string { return v.RecordSetType }).(pulumi.StringPtrOutput)
+}
+
 func (o ElastigroupIntegrationRoute53DomainOutput) RecordSets() ElastigroupIntegrationRoute53DomainRecordSetArrayOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationRoute53Domain) []ElastigroupIntegrationRoute53DomainRecordSet {
 		return v.RecordSets
@@ -5469,8 +5475,9 @@ func (o ElastigroupIntegrationRoute53DomainArrayOutput) Index(i pulumi.IntInput)
 
 type ElastigroupIntegrationRoute53DomainRecordSet struct {
 	// The group name.
-	Name        string `pulumi:"name"`
-	UsePublicIp *bool  `pulumi:"usePublicIp"`
+	Name         string `pulumi:"name"`
+	UsePublicDns *bool  `pulumi:"usePublicDns"`
+	UsePublicIp  *bool  `pulumi:"usePublicIp"`
 }
 
 // ElastigroupIntegrationRoute53DomainRecordSetInput is an input type that accepts ElastigroupIntegrationRoute53DomainRecordSetArgs and ElastigroupIntegrationRoute53DomainRecordSetOutput values.
@@ -5486,8 +5493,9 @@ type ElastigroupIntegrationRoute53DomainRecordSetInput interface {
 
 type ElastigroupIntegrationRoute53DomainRecordSetArgs struct {
 	// The group name.
-	Name        pulumi.StringInput  `pulumi:"name"`
-	UsePublicIp pulumi.BoolPtrInput `pulumi:"usePublicIp"`
+	Name         pulumi.StringInput  `pulumi:"name"`
+	UsePublicDns pulumi.BoolPtrInput `pulumi:"usePublicDns"`
+	UsePublicIp  pulumi.BoolPtrInput `pulumi:"usePublicIp"`
 }
 
 func (ElastigroupIntegrationRoute53DomainRecordSetArgs) ElementType() reflect.Type {
@@ -5544,6 +5552,10 @@ func (o ElastigroupIntegrationRoute53DomainRecordSetOutput) ToElastigroupIntegra
 // The group name.
 func (o ElastigroupIntegrationRoute53DomainRecordSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationRoute53DomainRecordSet) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupIntegrationRoute53DomainRecordSetOutput) UsePublicDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupIntegrationRoute53DomainRecordSet) *bool { return v.UsePublicDns }).(pulumi.BoolPtrOutput)
 }
 
 func (o ElastigroupIntegrationRoute53DomainRecordSetOutput) UsePublicIp() pulumi.BoolPtrOutput {
@@ -8371,6 +8383,7 @@ func (o ManagedInstanceIntegrationRoute53PtrOutput) Domains() ManagedInstanceInt
 
 type ManagedInstanceIntegrationRoute53Domain struct {
 	HostedZoneId   string                                             `pulumi:"hostedZoneId"`
+	RecordSetType  *string                                            `pulumi:"recordSetType"`
 	RecordSets     []ManagedInstanceIntegrationRoute53DomainRecordSet `pulumi:"recordSets"`
 	SpotinstAcctId *string                                            `pulumi:"spotinstAcctId"`
 }
@@ -8388,6 +8401,7 @@ type ManagedInstanceIntegrationRoute53DomainInput interface {
 
 type ManagedInstanceIntegrationRoute53DomainArgs struct {
 	HostedZoneId   pulumi.StringInput                                         `pulumi:"hostedZoneId"`
+	RecordSetType  pulumi.StringPtrInput                                      `pulumi:"recordSetType"`
 	RecordSets     ManagedInstanceIntegrationRoute53DomainRecordSetArrayInput `pulumi:"recordSets"`
 	SpotinstAcctId pulumi.StringPtrInput                                      `pulumi:"spotinstAcctId"`
 }
@@ -8447,6 +8461,10 @@ func (o ManagedInstanceIntegrationRoute53DomainOutput) HostedZoneId() pulumi.Str
 	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53Domain) string { return v.HostedZoneId }).(pulumi.StringOutput)
 }
 
+func (o ManagedInstanceIntegrationRoute53DomainOutput) RecordSetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53Domain) *string { return v.RecordSetType }).(pulumi.StringPtrOutput)
+}
+
 func (o ManagedInstanceIntegrationRoute53DomainOutput) RecordSets() ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput {
 	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53Domain) []ManagedInstanceIntegrationRoute53DomainRecordSet {
 		return v.RecordSets
@@ -8479,8 +8497,9 @@ func (o ManagedInstanceIntegrationRoute53DomainArrayOutput) Index(i pulumi.IntIn
 
 type ManagedInstanceIntegrationRoute53DomainRecordSet struct {
 	// The ManagedInstance name.
-	Name        string `pulumi:"name"`
-	UsePublicIp *bool  `pulumi:"usePublicIp"`
+	Name         string `pulumi:"name"`
+	UsePublicDns *bool  `pulumi:"usePublicDns"`
+	UsePublicIp  *bool  `pulumi:"usePublicIp"`
 }
 
 // ManagedInstanceIntegrationRoute53DomainRecordSetInput is an input type that accepts ManagedInstanceIntegrationRoute53DomainRecordSetArgs and ManagedInstanceIntegrationRoute53DomainRecordSetOutput values.
@@ -8496,8 +8515,9 @@ type ManagedInstanceIntegrationRoute53DomainRecordSetInput interface {
 
 type ManagedInstanceIntegrationRoute53DomainRecordSetArgs struct {
 	// The ManagedInstance name.
-	Name        pulumi.StringInput  `pulumi:"name"`
-	UsePublicIp pulumi.BoolPtrInput `pulumi:"usePublicIp"`
+	Name         pulumi.StringInput  `pulumi:"name"`
+	UsePublicDns pulumi.BoolPtrInput `pulumi:"usePublicDns"`
+	UsePublicIp  pulumi.BoolPtrInput `pulumi:"usePublicIp"`
 }
 
 func (ManagedInstanceIntegrationRoute53DomainRecordSetArgs) ElementType() reflect.Type {
@@ -8554,6 +8574,10 @@ func (o ManagedInstanceIntegrationRoute53DomainRecordSetOutput) ToManagedInstanc
 // The ManagedInstance name.
 func (o ManagedInstanceIntegrationRoute53DomainRecordSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53DomainRecordSet) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ManagedInstanceIntegrationRoute53DomainRecordSetOutput) UsePublicDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53DomainRecordSet) *bool { return v.UsePublicDns }).(pulumi.BoolPtrOutput)
 }
 
 func (o ManagedInstanceIntegrationRoute53DomainRecordSetOutput) UsePublicIp() pulumi.BoolPtrOutput {
@@ -8820,7 +8844,7 @@ func (o ManagedInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Man
 }
 
 type ManagedInstanceRevertToSpot struct {
-	// Valid values: “always”, “never”, "timeWindow".
+	// Valid values: `"always"`, `"never"`, `"timeWindow"`.
 	// Default `"never"`.
 	PerformAt string `pulumi:"performAt"`
 }
@@ -8837,7 +8861,7 @@ type ManagedInstanceRevertToSpotInput interface {
 }
 
 type ManagedInstanceRevertToSpotArgs struct {
-	// Valid values: “always”, “never”, "timeWindow".
+	// Valid values: `"always"`, `"never"`, `"timeWindow"`.
 	// Default `"never"`.
 	PerformAt pulumi.StringInput `pulumi:"performAt"`
 }
@@ -8919,7 +8943,7 @@ func (o ManagedInstanceRevertToSpotOutput) ToManagedInstanceRevertToSpotPtrOutpu
 	}).(ManagedInstanceRevertToSpotPtrOutput)
 }
 
-// Valid values: “always”, “never”, "timeWindow".
+// Valid values: `"always"`, `"never"`, `"timeWindow"`.
 // Default `"never"`.
 func (o ManagedInstanceRevertToSpotOutput) PerformAt() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedInstanceRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
@@ -8943,7 +8967,7 @@ func (o ManagedInstanceRevertToSpotPtrOutput) Elem() ManagedInstanceRevertToSpot
 	return o.ApplyT(func(v *ManagedInstanceRevertToSpot) ManagedInstanceRevertToSpot { return *v }).(ManagedInstanceRevertToSpotOutput)
 }
 
-// Valid values: “always”, “never”, "timeWindow".
+// Valid values: `"always"`, `"never"`, `"timeWindow"`.
 // Default `"never"`.
 func (o ManagedInstanceRevertToSpotPtrOutput) PerformAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstanceRevertToSpot) *string {

@@ -14,13 +14,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationEcsAutoscaleDown
     {
         public readonly int? EvaluationPeriods;
-        public readonly int? MaxScaleDownPercentage;
+        public readonly double? MaxScaleDownPercentage;
 
         [OutputConstructor]
         private ElastigroupIntegrationEcsAutoscaleDown(
             int? evaluationPeriods,
 
-            int? maxScaleDownPercentage)
+            double? maxScaleDownPercentage)
         {
             EvaluationPeriods = evaluationPeriods;
             MaxScaleDownPercentage = maxScaleDownPercentage;

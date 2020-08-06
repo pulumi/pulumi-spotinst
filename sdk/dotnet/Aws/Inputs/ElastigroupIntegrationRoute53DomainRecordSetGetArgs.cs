@@ -18,6 +18,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("usePublicDns")]
+        public Input<bool>? UsePublicDns { get; set; }
+
         [Input("usePublicIp")]
         public Input<bool>? UsePublicIp { get; set; }
 

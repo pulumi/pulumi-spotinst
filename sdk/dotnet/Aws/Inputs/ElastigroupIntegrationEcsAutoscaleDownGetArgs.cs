@@ -16,7 +16,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? EvaluationPeriods { get; set; }
 
         [Input("maxScaleDownPercentage")]
-        public Input<int>? MaxScaleDownPercentage { get; set; }
+        public Input<double>? MaxScaleDownPercentage { get; set; }
 
         public ElastigroupIntegrationEcsAutoscaleDownGetArgs()
         {

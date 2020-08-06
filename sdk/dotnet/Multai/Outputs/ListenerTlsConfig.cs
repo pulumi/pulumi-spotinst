@@ -13,29 +13,11 @@ namespace Pulumi.SpotInst.Multai.Outputs
     [OutputType]
     public sealed class ListenerTlsConfig
     {
-        /// <summary>
-        /// Contains one or more certificate chains to present to the other side of the connection.
-        /// </summary>
         public readonly ImmutableArray<string> CertificateIds;
-        /// <summary>
-        /// List of supported cipher suites. If cipherSuites is nil, TLS uses a list of suites supported by the implementation.
-        /// </summary>
         public readonly ImmutableArray<string> CipherSuites;
-        /// <summary>
-        /// MaxVersion contains the maximum SSL/TLS version that is acceptable.
-        /// </summary>
         public readonly string MaxVersion;
-        /// <summary>
-        /// MinVersion contains the minimum SSL/TLS version that is acceptable (1.0 is the minimum).
-        /// </summary>
         public readonly string MinVersion;
-        /// <summary>
-        /// Controls whether the server selects the client’s most preferred ciphersuite, or the server’s most preferred ciphersuite.
-        /// </summary>
         public readonly bool PreferServerCipherSuites;
-        /// <summary>
-        /// May be set to true to disable session ticket (resumption) support.
-        /// </summary>
         public readonly bool SessionTicketsDisabled;
 
         [OutputConstructor]

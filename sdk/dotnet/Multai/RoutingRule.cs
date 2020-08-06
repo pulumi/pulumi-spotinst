@@ -9,50 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Multai
 {
-    /// <summary>
-    /// Provides a Spotinst Multai Routing Rule.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myRoutingRule = new SpotInst.Multai.RoutingRule("myRoutingRule", new SpotInst.Multai.RoutingRuleArgs
-    ///         {
-    ///             BalancerId = "b-12345",
-    ///             ListenerId = "l-98765",
-    ///             Route = "Path(`/bar`)",
-    ///             Strategy = "LEASTCONN",
-    ///             Tags = 
-    ///             {
-    ///                 new SpotInst.Multai.Inputs.RoutingRuleTagArgs
-    ///                 {
-    ///                     Key = "env",
-    ///                     Value = "prod",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class RoutingRule : Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the balancer.
-        /// </summary>
         [Output("balancerId")]
         public Output<string> BalancerId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the listener.
-        /// </summary>
         [Output("listenerId")]
         public Output<string> ListenerId { get; private set; } = null!;
 
@@ -62,21 +23,12 @@ namespace Pulumi.SpotInst.Multai
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
 
-        /// <summary>
-        /// Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path("/foo/bar") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using &amp;&amp; operator: — Method(“POST”) &amp;&amp; Path("/v1")
-        /// </summary>
         [Output("route")]
         public Output<string> Route { get; private set; } = null!;
 
-        /// <summary>
-        /// Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.
-        /// </summary>
         [Output("strategy")]
         public Output<string?> Strategy { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.RoutingRuleTag>> Tags { get; private set; } = null!;
 
@@ -129,15 +81,9 @@ namespace Pulumi.SpotInst.Multai
 
     public sealed class RoutingRuleArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the balancer.
-        /// </summary>
         [Input("balancerId", required: true)]
         public Input<string> BalancerId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the listener.
-        /// </summary>
         [Input("listenerId", required: true)]
         public Input<string> ListenerId { get; set; } = null!;
 
@@ -152,24 +98,14 @@ namespace Pulumi.SpotInst.Multai
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        /// <summary>
-        /// Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path("/foo/bar") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using &amp;&amp; operator: — Method(“POST”) &amp;&amp; Path("/v1")
-        /// </summary>
         [Input("route", required: true)]
         public Input<string> Route { get; set; } = null!;
 
-        /// <summary>
-        /// Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.
-        /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.RoutingRuleTagArgs>? _tags;
-
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         public InputList<Inputs.RoutingRuleTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.RoutingRuleTagArgs>());
@@ -191,15 +127,9 @@ namespace Pulumi.SpotInst.Multai
 
     public sealed class RoutingRuleState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the balancer.
-        /// </summary>
         [Input("balancerId")]
         public Input<string>? BalancerId { get; set; }
 
-        /// <summary>
-        /// The ID of the listener.
-        /// </summary>
         [Input("listenerId")]
         public Input<string>? ListenerId { get; set; }
 
@@ -214,24 +144,14 @@ namespace Pulumi.SpotInst.Multai
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        /// <summary>
-        /// Route defines a simple language for matching HTTP requests and route the traffic accordingly. Route provides series of matchers that follow the syntax: Path matcher: — Path("/foo/bar") // trie-based PathRegexp(“/foo/.*”) // regexp-based Method matcher: — Method(“GET”) // trie-based MethodRegexp(“POST|PUT”) // regexp based Header matcher: — Header(“Content-Type”, “application/json”) // trie-based HeaderRegexp(“Content-Type”, “application/.*”) // regexp based Matchers can be combined using &amp;&amp; operator: — Method(“POST”) &amp;&amp; Path("/v1")
-        /// </summary>
         [Input("route")]
         public Input<string>? Route { get; set; }
 
-        /// <summary>
-        /// Balancing strategy. Valid values: `ROUNDROBIN`, `RANDOM`, `LEASTCONN`, `IPHASH`.
-        /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.RoutingRuleTagGetArgs>? _tags;
-
-        /// <summary>
-        /// A list of key:value paired tags.
-        /// </summary>
         public InputList<Inputs.RoutingRuleTagGetArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.RoutingRuleTagGetArgs>());

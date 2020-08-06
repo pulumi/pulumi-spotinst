@@ -14,6 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationRoute53Domain
     {
         public readonly string HostedZoneId;
+        public readonly string? RecordSetType;
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationRoute53DomainRecordSet> RecordSets;
         public readonly string? SpotinstAcctId;
 
@@ -21,11 +22,14 @@ namespace Pulumi.SpotInst.Aws.Outputs
         private ElastigroupIntegrationRoute53Domain(
             string hostedZoneId,
 
+            string? recordSetType,
+
             ImmutableArray<Outputs.ElastigroupIntegrationRoute53DomainRecordSet> recordSets,
 
             string? spotinstAcctId)
         {
             HostedZoneId = hostedZoneId;
+            RecordSetType = recordSetType;
             RecordSets = recordSets;
             SpotinstAcctId = spotinstAcctId;
         }

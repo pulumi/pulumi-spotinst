@@ -10,57 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Spotinst Multai Target.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/multai"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := multai.NewTarget(ctx, "myTarget", &multai.TargetArgs{
-// 			BalancerId: pulumi.String("b-12345"),
-// 			Host:       pulumi.String("host"),
-// 			Port:       pulumi.Int(1338),
-// 			Tags: multai.TargetTagArray{
-// 				&multai.TargetTagArgs{
-// 					Key:   pulumi.String("env"),
-// 					Value: pulumi.String("prod"),
-// 				},
-// 			},
-// 			TargetSetId: pulumi.String("l-98765"),
-// 			Weight:      pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Target struct {
 	pulumi.CustomResourceState
 
-	// The ID of the balancer.
-	BalancerId pulumi.StringOutput `pulumi:"balancerId"`
-	// The address (IP or URL) of the targets to register
-	Host pulumi.StringOutput `pulumi:"host"`
-	// The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The port the target will register to.
-	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// A list of key:value paired tags.
-	Tags TargetTagArrayOutput `pulumi:"tags"`
-	// The ID of the target set.
-	TargetSetId pulumi.StringOutput `pulumi:"targetSetId"`
-	// Defines how traffic is distributed between targets.
-	Weight pulumi.IntOutput `pulumi:"weight"`
+	BalancerId  pulumi.StringOutput  `pulumi:"balancerId"`
+	Host        pulumi.StringOutput  `pulumi:"host"`
+	Name        pulumi.StringOutput  `pulumi:"name"`
+	Port        pulumi.IntPtrOutput  `pulumi:"port"`
+	Tags        TargetTagArrayOutput `pulumi:"tags"`
+	TargetSetId pulumi.StringOutput  `pulumi:"targetSetId"`
+	Weight      pulumi.IntOutput     `pulumi:"weight"`
 }
 
 // NewTarget registers a new resource with the given unique name, arguments, and options.
@@ -103,37 +62,23 @@ func GetTarget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Target resources.
 type targetState struct {
-	// The ID of the balancer.
-	BalancerId *string `pulumi:"balancerId"`
-	// The address (IP or URL) of the targets to register
-	Host *string `pulumi:"host"`
-	// The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name *string `pulumi:"name"`
-	// The port the target will register to.
-	Port *int `pulumi:"port"`
-	// A list of key:value paired tags.
-	Tags []TargetTag `pulumi:"tags"`
-	// The ID of the target set.
-	TargetSetId *string `pulumi:"targetSetId"`
-	// Defines how traffic is distributed between targets.
-	Weight *int `pulumi:"weight"`
+	BalancerId  *string     `pulumi:"balancerId"`
+	Host        *string     `pulumi:"host"`
+	Name        *string     `pulumi:"name"`
+	Port        *int        `pulumi:"port"`
+	Tags        []TargetTag `pulumi:"tags"`
+	TargetSetId *string     `pulumi:"targetSetId"`
+	Weight      *int        `pulumi:"weight"`
 }
 
 type TargetState struct {
-	// The ID of the balancer.
-	BalancerId pulumi.StringPtrInput
-	// The address (IP or URL) of the targets to register
-	Host pulumi.StringPtrInput
-	// The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name pulumi.StringPtrInput
-	// The port the target will register to.
-	Port pulumi.IntPtrInput
-	// A list of key:value paired tags.
-	Tags TargetTagArrayInput
-	// The ID of the target set.
+	BalancerId  pulumi.StringPtrInput
+	Host        pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Port        pulumi.IntPtrInput
+	Tags        TargetTagArrayInput
 	TargetSetId pulumi.StringPtrInput
-	// Defines how traffic is distributed between targets.
-	Weight pulumi.IntPtrInput
+	Weight      pulumi.IntPtrInput
 }
 
 func (TargetState) ElementType() reflect.Type {
@@ -141,38 +86,24 @@ func (TargetState) ElementType() reflect.Type {
 }
 
 type targetArgs struct {
-	// The ID of the balancer.
-	BalancerId string `pulumi:"balancerId"`
-	// The address (IP or URL) of the targets to register
-	Host string `pulumi:"host"`
-	// The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name *string `pulumi:"name"`
-	// The port the target will register to.
-	Port *int `pulumi:"port"`
-	// A list of key:value paired tags.
-	Tags []TargetTag `pulumi:"tags"`
-	// The ID of the target set.
-	TargetSetId string `pulumi:"targetSetId"`
-	// Defines how traffic is distributed between targets.
-	Weight int `pulumi:"weight"`
+	BalancerId  string      `pulumi:"balancerId"`
+	Host        string      `pulumi:"host"`
+	Name        *string     `pulumi:"name"`
+	Port        *int        `pulumi:"port"`
+	Tags        []TargetTag `pulumi:"tags"`
+	TargetSetId string      `pulumi:"targetSetId"`
+	Weight      int         `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a Target resource.
 type TargetArgs struct {
-	// The ID of the balancer.
-	BalancerId pulumi.StringInput
-	// The address (IP or URL) of the targets to register
-	Host pulumi.StringInput
-	// The name of the Target . Must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-	Name pulumi.StringPtrInput
-	// The port the target will register to.
-	Port pulumi.IntPtrInput
-	// A list of key:value paired tags.
-	Tags TargetTagArrayInput
-	// The ID of the target set.
+	BalancerId  pulumi.StringInput
+	Host        pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	Port        pulumi.IntPtrInput
+	Tags        TargetTagArrayInput
 	TargetSetId pulumi.StringInput
-	// Defines how traffic is distributed between targets.
-	Weight pulumi.IntInput
+	Weight      pulumi.IntInput
 }
 
 func (TargetArgs) ElementType() reflect.Type {

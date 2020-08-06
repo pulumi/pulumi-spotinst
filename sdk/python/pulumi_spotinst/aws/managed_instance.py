@@ -12,7 +12,7 @@ from .. import _utilities, _tables
 class ManagedInstance(pulumi.CustomResource):
     auto_healing: pulumi.Output[bool]
     """
-    Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
+    Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
     """
     block_devices_mode: pulumi.Output[str]
     """
@@ -21,7 +21,7 @@ class ManagedInstance(pulumi.CustomResource):
     """
     cpu_credits: pulumi.Output[str]
     """
-    cpuCredits can have one of two values: “unlimited”, “standard”.
+    cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
     Default: unlimited
     """
     description: pulumi.Output[str]
@@ -34,7 +34,7 @@ class ManagedInstance(pulumi.CustomResource):
     """
     ebs_optimized: pulumi.Output[bool]
     """
-    Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.
+    Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
     Default: false
     """
     elastic_ip: pulumi.Output[str]
@@ -49,12 +49,12 @@ class ManagedInstance(pulumi.CustomResource):
     fall_back_to_od: pulumi.Output[bool]
     grace_period: pulumi.Output[float]
     """
-    The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120"`.
+    The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
     """
     health_check_type: pulumi.Output[str]
     """
-    The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.
-    Default: `“EC2”`.
+    The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
+    Default: `"EC2"`.
     """
     iam_instance_profile: pulumi.Output[str]
     """
@@ -75,7 +75,7 @@ class ManagedInstance(pulumi.CustomResource):
     """
     life_cycle: pulumi.Output[str]
     """
-    Set lifecycle, valid values: `“spot”`, `“on_demand”`.
+    Set lifecycle, valid values: `"spot"`, `"on_demand"`.
     Default `"spot"`.
     """
     load_balancers: pulumi.Output[list]
@@ -86,7 +86,7 @@ class ManagedInstance(pulumi.CustomResource):
     network_interfaces: pulumi.Output[list]
     optimization_windows: pulumi.Output[list]
     """
-    When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.
+    When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
     """
     orientation: pulumi.Output[str]
     """
@@ -107,7 +107,7 @@ class ManagedInstance(pulumi.CustomResource):
     """
     placement_tenancy: pulumi.Output[str]
     """
-    Valid values: "default", "dedicated"
+    Valid values: `"default"`, `"dedicated"`.
     Default: default
     """
     preferred_type: pulumi.Output[str]
@@ -149,7 +149,7 @@ class ManagedInstance(pulumi.CustomResource):
     """
     unhealthy_duration: pulumi.Output[float]
     """
-    The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120"`.
+    The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
     """
     user_data: pulumi.Output[str]
     """
@@ -171,7 +171,7 @@ class ManagedInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        # Create an MangedInstance
+        # Create a Manged Instance
         default_managed_instance = spotinst.aws.ManagedInstance("default-managed-instance",
             auto_healing="true",
             block_devices_mode="reattach",
@@ -249,9 +249,9 @@ class ManagedInstance(pulumi.CustomResource):
         * `frequency` - (Optional) Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
         * `start_time` - (Optional) DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
            Example: 2019-05-23T10:55:09Z
-        * `cron_expression` - (Optional) A valid cron expression. For example : " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+        * `cron_expression` - (Optional) A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
            Example: 0 1 * * *
-        * `task_type`- (Required) The task type to run. Valid Values: "pause", "resume", "recycle".
+        * `task_type`- (Required) The task type to run. Valid values: "pause", "resume", "recycle".
 
         Usage:
 
@@ -262,7 +262,8 @@ class ManagedInstance(pulumi.CustomResource):
         <a id="load-balancers"></a>
         ## Load Balancers
 
-           * `loadBalancersConfig` - (Optional) LB integration object.
+           * `loadBalancersConfig` - (Optional) Load Balancers integration object.
+             
                * `load_balancers` - (Optional) List of load balancers configs.
                     * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
                     * `arn` - The AWS resource ARN (Required only for ALB target groups).
@@ -270,45 +271,67 @@ class ManagedInstance(pulumi.CustomResource):
                          Default: lb-123456
                     * `target_set_id` - The Multai load target set ID.
                          Default: ts-123456
-                    * `auto_weight` - “Auto Weight” will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-                    * `zone_awareness` - “AZ Awareness” will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
+                    * `auto_weight` - "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
+                    * `zone_awareness` - "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
                     * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
 
         Usage:
 
+        ```python
+        import pulumi
+        ```
+
         <a id="route53"></a>
+        ## route53
+
+           * `integration_route53` - (Optional) Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+             
+               * `domains` - (Required) Route 53 Domain configurations.
+                   * `hosted_zone_id` - (Required) The Route 53 Hosted Zone Id for the registered Domain.
+                   * `spotinst_acct_id` - (Optional) The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
+                   * `record_set_type` - (Optional, Default: `a`) The type of the record set. Valid values: `"a"`, `"cname"`.
+                   * `record_sets` - (Required) List of record sets
+                       * `name` - (Required) The record set name.
+                       * `use_public_ip` - (Optional, Default: `false`) - Designates whether the IP address should be exposed to connections outside the VPC.
+                       * `use_public_dns` - (Optional, Default: `false`) - Designates whether the DNS address should be exposed to connections outside the VPC.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
+        :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
         :param pulumi.Input[str] block_devices_mode: Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
                Default: `"onLaunch"`.
-        :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: “unlimited”, “standard”.
+        :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
                Default: unlimited
         :param pulumi.Input[str] description: The ManagedInstance description.
         :param pulumi.Input[float] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-        :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.
+        :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
                Default: false
         :param pulumi.Input[str] elastic_ip: Elastic IP Allocation Id to associate to the instance.
         :param pulumi.Input[bool] enable_monitoring: Describes whether instance Enhanced Monitoring is enabled.
                Default: false
-        :param pulumi.Input[float] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120"`.
-        :param pulumi.Input[str] health_check_type: The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.
-               Default: `“EC2”`.
+        :param pulumi.Input[float] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
+        :param pulumi.Input[str] health_check_type: The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
+               Default: `"EC2"`.
         :param pulumi.Input[str] iam_instance_profile: Set IAM profile to instance. Set only one of ARN or Name.
         :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
         :param pulumi.Input[list] instance_types: Comma separated list of available instance types for instance.
         :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
-        :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `“spot”`, `“on_demand”`.
+        :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`.
                Default `"spot"`.
         :param pulumi.Input[str] name: The ManagedInstance name.
-        :param pulumi.Input[list] optimization_windows: When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.
+        :param pulumi.Input[list] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
                Default: `"availabilityOriented"`.
         :param pulumi.Input[bool] persist_block_devices: Should the instance maintain its Data volumes.
         :param pulumi.Input[bool] persist_private_ip: Should the instance maintain its private IP.
         :param pulumi.Input[bool] persist_root_device: Should the instance maintain its root device volumes.
-        :param pulumi.Input[str] placement_tenancy: Valid values: "default", "dedicated"
+        :param pulumi.Input[str] placement_tenancy: Valid values: `"default"`, `"dedicated"`.
                Default: default
         :param pulumi.Input[str] preferred_type: Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
         :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
@@ -318,7 +341,7 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
         :param pulumi.Input[list] subnet_ids: A comma-separated list of subnet identifiers for your instance.
         :param pulumi.Input[list] tags: Set tags for the instance. Items should be unique.
-        :param pulumi.Input[float] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120"`.
+        :param pulumi.Input[float] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
         :param pulumi.Input[str] user_data: The Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
                Default: `"false"`.
@@ -327,8 +350,10 @@ class ManagedInstance(pulumi.CustomResource):
 
           * `domains` (`pulumi.Input[list]`)
             * `hostedZoneId` (`pulumi.Input[str]`)
+            * `recordSetType` (`pulumi.Input[str]`)
             * `recordSets` (`pulumi.Input[list]`)
               * `name` (`pulumi.Input[str]`) - The ManagedInstance name.
+              * `usePublicDns` (`pulumi.Input[bool]`)
               * `usePublicIp` (`pulumi.Input[bool]`)
 
             * `spotinstAcctId` (`pulumi.Input[str]`)
@@ -351,7 +376,7 @@ class ManagedInstance(pulumi.CustomResource):
 
         The **revert_to_spot** object supports the following:
 
-          * `performAt` (`pulumi.Input[str]`) - Valid values: “always”, “never”, "timeWindow".
+          * `performAt` (`pulumi.Input[str]`) - Valid values: `"always"`, `"never"`, `"timeWindow"`.
             Default `"never"`.
 
         The **scheduled_tasks** object supports the following:
@@ -451,35 +476,35 @@ class ManagedInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `“true”`.
+        :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
         :param pulumi.Input[str] block_devices_mode: Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
                Default: `"onLaunch"`.
-        :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: “unlimited”, “standard”.
+        :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
                Default: unlimited
         :param pulumi.Input[str] description: The ManagedInstance description.
         :param pulumi.Input[float] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-        :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instance which is not enabled by default. Note - additional charges will be applied.
+        :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
                Default: false
         :param pulumi.Input[str] elastic_ip: Elastic IP Allocation Id to associate to the instance.
         :param pulumi.Input[bool] enable_monitoring: Describes whether instance Enhanced Monitoring is enabled.
                Default: false
-        :param pulumi.Input[float] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `“120"`.
-        :param pulumi.Input[str] health_check_type: The service to use for the health check. Valid values: `“EC2”`, `“ELB”`, `“TARGET_GROUP”`, `“MULTAI_TARGET_SET”`.
-               Default: `“EC2”`.
+        :param pulumi.Input[float] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
+        :param pulumi.Input[str] health_check_type: The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
+               Default: `"EC2"`.
         :param pulumi.Input[str] iam_instance_profile: Set IAM profile to instance. Set only one of ARN or Name.
         :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
         :param pulumi.Input[list] instance_types: Comma separated list of available instance types for instance.
         :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
-        :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `“spot”`, `“on_demand”`.
+        :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`.
                Default `"spot"`.
         :param pulumi.Input[str] name: The ManagedInstance name.
-        :param pulumi.Input[list] optimization_windows: When performAt is 'timeWindow': must specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59.
+        :param pulumi.Input[list] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
                Default: `"availabilityOriented"`.
         :param pulumi.Input[bool] persist_block_devices: Should the instance maintain its Data volumes.
         :param pulumi.Input[bool] persist_private_ip: Should the instance maintain its private IP.
         :param pulumi.Input[bool] persist_root_device: Should the instance maintain its root device volumes.
-        :param pulumi.Input[str] placement_tenancy: Valid values: "default", "dedicated"
+        :param pulumi.Input[str] placement_tenancy: Valid values: `"default"`, `"dedicated"`.
                Default: default
         :param pulumi.Input[str] preferred_type: Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
         :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
@@ -489,7 +514,7 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
         :param pulumi.Input[list] subnet_ids: A comma-separated list of subnet identifiers for your instance.
         :param pulumi.Input[list] tags: Set tags for the instance. Items should be unique.
-        :param pulumi.Input[float] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `“120"`.
+        :param pulumi.Input[float] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
         :param pulumi.Input[str] user_data: The Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
                Default: `"false"`.
@@ -498,8 +523,10 @@ class ManagedInstance(pulumi.CustomResource):
 
           * `domains` (`pulumi.Input[list]`)
             * `hostedZoneId` (`pulumi.Input[str]`)
+            * `recordSetType` (`pulumi.Input[str]`)
             * `recordSets` (`pulumi.Input[list]`)
               * `name` (`pulumi.Input[str]`) - The ManagedInstance name.
+              * `usePublicDns` (`pulumi.Input[bool]`)
               * `usePublicIp` (`pulumi.Input[bool]`)
 
             * `spotinstAcctId` (`pulumi.Input[str]`)
@@ -522,7 +549,7 @@ class ManagedInstance(pulumi.CustomResource):
 
         The **revert_to_spot** object supports the following:
 
-          * `performAt` (`pulumi.Input[str]`) - Valid values: “always”, “never”, "timeWindow".
+          * `performAt` (`pulumi.Input[str]`) - Valid values: `"always"`, `"never"`, `"timeWindow"`.
             Default `"never"`.
 
         The **scheduled_tasks** object supports the following:

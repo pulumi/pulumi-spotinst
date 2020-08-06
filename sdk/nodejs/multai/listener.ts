@@ -6,35 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Spotinst Multai Listener.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const myListener = new spotinst.multai.Listener("my_listener", {
- *     balancerId: "b-12345",
- *     name: "foo",
- *     port: 1337,
- *     protocol: "http",
- *     tags: [{
- *         key: "env",
- *         value: "prod",
- *     }],
- *     tlsConfig: {
- *         certificateIds: ["ce-12345"],
- *         cipherSuites: [""],
- *         maxVersion: "TLS12",
- *         minVersion: "TLS10",
- *         preferServerCipherSuites: true,
- *         sessionTicketsDisabled: false,
- *     },
- * });
- * ```
- */
 export class Listener extends pulumi.CustomResource {
     /**
      * Get an existing Listener resource's state with the given name, ID, and optional extra
@@ -63,25 +34,10 @@ export class Listener extends pulumi.CustomResource {
         return obj['__pulumiType'] === Listener.__pulumiType;
     }
 
-    /**
-     * The ID of the balancer.
-     */
     public readonly balancerId!: pulumi.Output<string>;
-    /**
-     * The port on which the load balancer is listening.
-     */
     public readonly port!: pulumi.Output<number>;
-    /**
-     * The protocol to allow connections to the load balancer.
-     */
     public readonly protocol!: pulumi.Output<string>;
-    /**
-     * A list of key:value paired tags.
-     */
     public readonly tags!: pulumi.Output<outputs.multai.ListenerTag[] | undefined>;
-    /**
-     * Describes the TLSConfig configuration.
-     */
     public readonly tlsConfig!: pulumi.Output<outputs.multai.ListenerTlsConfig | undefined>;
 
     /**
@@ -133,25 +89,10 @@ export class Listener extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Listener resources.
  */
 export interface ListenerState {
-    /**
-     * The ID of the balancer.
-     */
     readonly balancerId?: pulumi.Input<string>;
-    /**
-     * The port on which the load balancer is listening.
-     */
     readonly port?: pulumi.Input<number>;
-    /**
-     * The protocol to allow connections to the load balancer.
-     */
     readonly protocol?: pulumi.Input<string>;
-    /**
-     * A list of key:value paired tags.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.ListenerTag>[]>;
-    /**
-     * Describes the TLSConfig configuration.
-     */
     readonly tlsConfig?: pulumi.Input<inputs.multai.ListenerTlsConfig>;
 }
 
@@ -159,24 +100,9 @@ export interface ListenerState {
  * The set of arguments for constructing a Listener resource.
  */
 export interface ListenerArgs {
-    /**
-     * The ID of the balancer.
-     */
     readonly balancerId: pulumi.Input<string>;
-    /**
-     * The port on which the load balancer is listening.
-     */
     readonly port: pulumi.Input<number>;
-    /**
-     * The protocol to allow connections to the load balancer.
-     */
     readonly protocol: pulumi.Input<string>;
-    /**
-     * A list of key:value paired tags.
-     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.ListenerTag>[]>;
-    /**
-     * Describes the TLSConfig configuration.
-     */
     readonly tlsConfig?: pulumi.Input<inputs.multai.ListenerTlsConfig>;
 }
