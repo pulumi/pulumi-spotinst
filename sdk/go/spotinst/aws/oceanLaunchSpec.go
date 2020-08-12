@@ -11,95 +11,6 @@ import (
 )
 
 // Provides a custom Spotinst Ocean AWS Launch Spec resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/aws"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.NewOceanLaunchSpec(ctx, "example", &aws.OceanLaunchSpecArgs{
-// 			AutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{
-// 				&aws.OceanLaunchSpecAutoscaleHeadroomArgs{
-// 					CpuPerUnit:    pulumi.Int(1000),
-// 					GpuPerUnit:    pulumi.Int(0),
-// 					MemoryPerUnit: pulumi.Int(2048),
-// 					NumOfUnits:    pulumi.Int(5),
-// 				},
-// 			},
-// 			BlockDeviceMappings: aws.OceanLaunchSpecBlockDeviceMappingArray{
-// 				&aws.OceanLaunchSpecBlockDeviceMappingArgs{
-// 					DeviceName: pulumi.String("/dev/xvda1"),
-// 					Ebs: &aws.OceanLaunchSpecBlockDeviceMappingEbsArgs{
-// 						DeleteOnTermination: pulumi.Bool(true),
-// 						DynamicVolumeSize: &aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{
-// 							BaseSize:            pulumi.Int(50),
-// 							Resource:            pulumi.String("CPU"),
-// 							SizePerResourceUnit: pulumi.Int(20),
-// 						},
-// 						Encrypted:  pulumi.Bool(false),
-// 						VolumeSize: pulumi.Int(50),
-// 						VolumeType: pulumi.String("gp2"),
-// 					},
-// 				},
-// 			},
-// 			ElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{
-// 				&aws.OceanLaunchSpecElasticIpPoolArgs{
-// 					TagSelector: &aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{
-// 						TagKey:   pulumi.String("key"),
-// 						TagValue: pulumi.String("value"),
-// 					},
-// 				},
-// 			},
-// 			IamInstanceProfile: pulumi.String("iam-profile"),
-// 			ImageId:            pulumi.String("ami-123456"),
-// 			Labels: aws.OceanLaunchSpecLabelArray{
-// 				&aws.OceanLaunchSpecLabelArgs{
-// 					Key:   pulumi.String("fakeKey"),
-// 					Value: pulumi.String("fakeValue"),
-// 				},
-// 			},
-// 			OceanId: pulumi.String("o-123456"),
-// 			ResourceLimits: aws.OceanLaunchSpecResourceLimitArray{
-// 				&aws.OceanLaunchSpecResourceLimitArgs{
-// 					MaxInstanceCount: pulumi.Int(4),
-// 				},
-// 			},
-// 			RootVolumeSize: pulumi.Int(30),
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.String("sg-987654321"),
-// 			},
-// 			SubnetIds: pulumi.StringArray{
-// 				pulumi.String("subnet-1234"),
-// 			},
-// 			Tags: aws.OceanLaunchSpecTagArray{
-// 				&aws.OceanLaunchSpecTagArgs{
-// 					Key:   pulumi.String("Env"),
-// 					Value: pulumi.String("production"),
-// 				},
-// 			},
-// 			Taints: aws.OceanLaunchSpecTaintArray{
-// 				&aws.OceanLaunchSpecTaintArgs{
-// 					Effect: pulumi.String("NoExecute"),
-// 					Key:    pulumi.String("taint key updated"),
-// 					Value:  pulumi.String("taint value updated"),
-// 				},
-// 			},
-// 			UserData: pulumi.String("echo hello world"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
 
@@ -112,7 +23,8 @@ type OceanLaunchSpec struct {
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
-	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	ImageId       pulumi.StringPtrOutput   `pulumi:"imageId"`
+	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
 	// Set Launch Specification name
@@ -174,7 +86,8 @@ type oceanLaunchSpecState struct {
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
-	ImageId *string `pulumi:"imageId"`
+	ImageId       *string  `pulumi:"imageId"`
+	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Set Launch Specification name
@@ -206,7 +119,8 @@ type OceanLaunchSpecState struct {
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
-	ImageId pulumi.StringPtrInput
+	ImageId       pulumi.StringPtrInput
+	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayInput
 	// Set Launch Specification name
@@ -242,7 +156,8 @@ type oceanLaunchSpecArgs struct {
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
-	ImageId *string `pulumi:"imageId"`
+	ImageId       *string  `pulumi:"imageId"`
+	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Set Launch Specification name
@@ -275,7 +190,8 @@ type OceanLaunchSpecArgs struct {
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
-	ImageId pulumi.StringPtrInput
+	ImageId       pulumi.StringPtrInput
+	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayInput
 	// Set Launch Specification name

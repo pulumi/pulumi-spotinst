@@ -6,7 +6,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.12.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.6.0
 	github.com/pulumi/pulumi/sdk/v2 v2.7.1
-	github.com/terraform-providers/terraform-provider-spotinst v1.22.0
+	github.com/terraform-providers/terraform-provider-spotinst v1.23.0
 )
 
 replace (
