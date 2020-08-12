@@ -548,6 +548,8 @@ github.com/spotinst/spotinst-sdk-go v1.54.0 h1:/tsPTxwRl6mCrLvAJVtQLkgsqYq8NHz9j
 github.com/spotinst/spotinst-sdk-go v1.54.0/go.mod h1:nWi2DyjUi1WUZclpsqZFXvImsU0T39ppqqHwC4/T5mw=
 github.com/spotinst/spotinst-sdk-go v1.57.0 h1:1Qqhuo/Ci8OvytjE89ANyfmB6nJ8+H4BQEiMkZlVx8k=
 github.com/spotinst/spotinst-sdk-go v1.57.0/go.mod h1:nWi2DyjUi1WUZclpsqZFXvImsU0T39ppqqHwC4/T5mw=
+github.com/spotinst/spotinst-sdk-go v1.58.0 h1:h7617CMlfHL3W+CMlhs883kVy3MPdGML/Z4+mW+ddgc=
+github.com/spotinst/spotinst-sdk-go v1.58.0/go.mod h1:nWi2DyjUi1WUZclpsqZFXvImsU0T39ppqqHwC4/T5mw=
 github.com/src-d/gcfg v1.4.0 h1:xXbNR5AlLSA315x2UO+fTSSAXCDf+Ar38/6oyGbDKQ4=
 github.com/src-d/gcfg v1.4.0/go.mod h1:p/UMsR43ujA89BJY9duynAwIpvqEujIH/jFlfL7jWoI=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
@@ -576,6 +578,8 @@ github.com/terraform-providers/terraform-provider-spotinst v1.21.0 h1:BAni6/c07N
 github.com/terraform-providers/terraform-provider-spotinst v1.21.0/go.mod h1:7uHMdHEsq6AAmY/Fv/eLz/yo/PvhwBLdKV7BKT5mtjU=
 github.com/terraform-providers/terraform-provider-spotinst v1.22.0 h1:MOGNl6GKf/1DKeOCjn+DAIcaikv78bdFMuoplPcISSM=
 github.com/terraform-providers/terraform-provider-spotinst v1.22.0/go.mod h1:L6fRe9F0pejSrhM/LGjJEutIpQVIthNyHFA0JiNnKAs=
+github.com/terraform-providers/terraform-provider-spotinst v1.23.0 h1:U5IwfswnFl0EVEoZkoAV92RYVUhTNMhg+nZoNbDmfF4=
+github.com/terraform-providers/terraform-provider-spotinst v1.23.0/go.mod h1:eIzr9z8brgUhxmj9cnirEJKf3Nfj39KfMBHm5fXmD50=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=

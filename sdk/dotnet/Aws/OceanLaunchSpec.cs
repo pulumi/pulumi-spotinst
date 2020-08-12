@@ -11,110 +11,6 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a custom Spotinst Ocean AWS Launch Spec resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new SpotInst.Aws.OceanLaunchSpec("example", new SpotInst.Aws.OceanLaunchSpecArgs
-    ///         {
-    ///             AutoscaleHeadrooms = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
-    ///                 {
-    ///                     CpuPerUnit = 1000,
-    ///                     GpuPerUnit = 0,
-    ///                     MemoryPerUnit = 2048,
-    ///                     NumOfUnits = 5,
-    ///                 },
-    ///             },
-    ///             BlockDeviceMappings = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
-    ///                 {
-    ///                     DeviceName = "/dev/xvda1",
-    ///                     Ebs = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
-    ///                     {
-    ///                         DeleteOnTermination = true,
-    ///                         DynamicVolumeSize = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs
-    ///                         {
-    ///                             BaseSize = 50,
-    ///                             Resource = "CPU",
-    ///                             SizePerResourceUnit = 20,
-    ///                         },
-    ///                         Encrypted = false,
-    ///                         VolumeSize = 50,
-    ///                         VolumeType = "gp2",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             ElasticIpPools = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs
-    ///                 {
-    ///                     TagSelector = new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs
-    ///                     {
-    ///                         TagKey = "key",
-    ///                         TagValue = "value",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             IamInstanceProfile = "iam-profile",
-    ///             ImageId = "ami-123456",
-    ///             Labels = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecLabelArgs
-    ///                 {
-    ///                     Key = "fakeKey",
-    ///                     Value = "fakeValue",
-    ///                 },
-    ///             },
-    ///             OceanId = "o-123456",
-    ///             ResourceLimits = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecResourceLimitArgs
-    ///                 {
-    ///                     MaxInstanceCount = 4,
-    ///                 },
-    ///             },
-    ///             RootVolumeSize = 30,
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "sg-987654321",
-    ///             },
-    ///             SubnetIds = 
-    ///             {
-    ///                 "subnet-1234",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecTagArgs
-    ///                 {
-    ///                     Key = "Env",
-    ///                     Value = "production",
-    ///                 },
-    ///             },
-    ///             Taints = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecTaintArgs
-    ///                 {
-    ///                     Effect = "NoExecute",
-    ///                     Key = "taint key updated",
-    ///                     Value = "taint value updated",
-    ///                 },
-    ///             },
-    ///             UserData = "echo hello world",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class OceanLaunchSpec : Pulumi.CustomResource
     {
@@ -147,6 +43,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
+
+        [Output("instanceTypes")]
+        public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
         /// Optionally adds labels to instances launched in an Ocean cluster.
@@ -299,6 +198,14 @@ namespace Pulumi.SpotInst.Aws
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
+        [Input("instanceTypes")]
+        private InputList<string>? _instanceTypes;
+        public InputList<string> InstanceTypes
+        {
+            get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
+            set => _instanceTypes = value;
+        }
+
         [Input("labels")]
         private InputList<Inputs.OceanLaunchSpecLabelArgs>? _labels;
 
@@ -445,6 +352,14 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        [Input("instanceTypes")]
+        private InputList<string>? _instanceTypes;
+        public InputList<string> InstanceTypes
+        {
+            get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
+            set => _instanceTypes = value;
+        }
 
         [Input("labels")]
         private InputList<Inputs.OceanLaunchSpecLabelGetArgs>? _labels;

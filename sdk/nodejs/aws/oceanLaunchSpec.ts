@@ -44,6 +44,23 @@ import * as utilities from "../utilities";
  *     }],
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-123456",
+ *     intanceTypes: [
+ *         "m3.large",
+ *         "m3.xlarge",
+ *         "m3.2xlarge",
+ *         "m4.large",
+ *         "m4.xlarge",
+ *         "m4.4xlarge",
+ *         "m4.2xlarge",
+ *         "m4.10xlarge",
+ *         "m4.16xlarge",
+ *         "m5.large",
+ *         "m5.xlarge",
+ *         "m5.2xlarge",
+ *         "m5.4xlarge",
+ *         "m5.12xlarge",
+ *         "m5.24xlarge",
+ *     ],
  *     labels: [{
  *         key: "fakeKey",
  *         value: "fakeValue",
@@ -116,6 +133,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * ID of the image used to launch the instances.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
+    public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
@@ -171,6 +189,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["elasticIpPools"] = state ? state.elasticIpPools : undefined;
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
+            inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
@@ -191,6 +210,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["elasticIpPools"] = args ? args.elasticIpPools : undefined;
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
+            inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
@@ -237,6 +257,7 @@ export interface OceanLaunchSpecState {
      * ID of the image used to launch the instances.
      */
     readonly imageId?: pulumi.Input<string>;
+    readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
@@ -300,6 +321,7 @@ export interface OceanLaunchSpecArgs {
      * ID of the image used to launch the instances.
      */
     readonly imageId?: pulumi.Input<string>;
+    readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */

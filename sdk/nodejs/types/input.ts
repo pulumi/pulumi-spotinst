@@ -6,10 +6,11 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface HealthCheckCheck {
+    endPoint?: pulumi.Input<string>;
     /**
      * The destination for the request.
      */
-    endpoint: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
     /**
      * The number of consecutive successful health checks that must occur before declaring an instance healthy.
      */
@@ -26,10 +27,11 @@ export interface HealthCheckCheck {
      * The protocol to use to connect with the instance. Valid values: http, https.
      */
     protocol: pulumi.Input<string>;
+    timeOut?: pulumi.Input<number>;
     /**
      * the amount of time (in seconds) to wait when receiving a response from the health check.
      */
-    timeout: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
      */

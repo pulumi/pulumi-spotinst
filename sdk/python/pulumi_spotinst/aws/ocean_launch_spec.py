@@ -57,6 +57,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     """
     ID of the image used to launch the instances.
     """
+    instance_types: pulumi.Output[list]
     labels: pulumi.Output[list]
     """
     Optionally adds labels to instances launched in an Ocean cluster.
@@ -104,7 +105,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     """
     Base64-encoded MIME user data to make available to the instances.
     """
-    def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, block_device_mappings=None, elastic_ip_pools=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, resource_limits=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, block_device_mappings=None, elastic_ip_pools=None, iam_instance_profile=None, image_id=None, instance_types=None, labels=None, name=None, ocean_id=None, resource_limits=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a custom Spotinst Ocean AWS Launch Spec resource.
 
@@ -143,6 +144,23 @@ class OceanLaunchSpec(pulumi.CustomResource):
             }],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
+            intance_types=[
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.4xlarge",
+                "m4.2xlarge",
+                "m4.10xlarge",
+                "m4.16xlarge",
+                "m5.large",
+                "m5.xlarge",
+                "m5.2xlarge",
+                "m5.4xlarge",
+                "m5.12xlarge",
+                "m5.24xlarge",
+            ],
             labels=[{
                 "key": "fakeKey",
                 "value": "fakeValue",
@@ -258,6 +276,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__['elastic_ip_pools'] = elastic_ip_pools
             __props__['iam_instance_profile'] = iam_instance_profile
             __props__['image_id'] = image_id
+            __props__['instance_types'] = instance_types
             __props__['labels'] = labels
             __props__['name'] = name
             if ocean_id is None:
@@ -277,7 +296,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, autoscale_headrooms=None, block_device_mappings=None, elastic_ip_pools=None, iam_instance_profile=None, image_id=None, labels=None, name=None, ocean_id=None, resource_limits=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None):
+    def get(resource_name, id, opts=None, autoscale_headrooms=None, block_device_mappings=None, elastic_ip_pools=None, iam_instance_profile=None, image_id=None, instance_types=None, labels=None, name=None, ocean_id=None, resource_limits=None, root_volume_size=None, security_groups=None, subnet_ids=None, tags=None, taints=None, user_data=None):
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -362,6 +381,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["elastic_ip_pools"] = elastic_ip_pools
         __props__["iam_instance_profile"] = iam_instance_profile
         __props__["image_id"] = image_id
+        __props__["instance_types"] = instance_types
         __props__["labels"] = labels
         __props__["name"] = name
         __props__["ocean_id"] = ocean_id
