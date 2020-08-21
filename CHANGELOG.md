@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.23.0 of the SpotInst Terraform Provider
+* Upgrade to v1.24.0 of the SpotInst Terraform Provider
 
 ---
 
