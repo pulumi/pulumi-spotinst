@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.24.0 of the SpotInst Terraform Provider
+_(none)_
 
 ---
+
+## 2.9.0 (2020-08-21)
+* Upgrade to v1.24.0 of the SpotInst Terraform Provider
 
 ## 2.8.0 (2020-08-06)
 * Upgrade to v1.22.0 of the SpotInst Terraform Provider
