@@ -5,29 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['RoutingRule']
 
 
 class RoutingRule(pulumi.CustomResource):
-    balancer_id: pulumi.Output[str]
-    listener_id: pulumi.Output[str]
-    middleware_ids: pulumi.Output[list]
-    priority: pulumi.Output[float]
-    route: pulumi.Output[str]
-    strategy: pulumi.Output[str]
-    tags: pulumi.Output[list]
-    target_set_ids: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, balancer_id=None, listener_id=None, middleware_ids=None, priority=None, route=None, strategy=None, tags=None, target_set_ids=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 balancer_id: Optional[pulumi.Input[str]] = None,
+                 listener_id: Optional[pulumi.Input[str]] = None,
+                 middleware_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 route: Optional[pulumi.Input[str]] = None,
+                 strategy: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RoutingRuleTagArgs']]]]] = None,
+                 target_set_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a RoutingRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        The **tags** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,19 +73,24 @@ class RoutingRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, balancer_id=None, listener_id=None, middleware_ids=None, priority=None, route=None, strategy=None, tags=None, target_set_ids=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            balancer_id: Optional[pulumi.Input[str]] = None,
+            listener_id: Optional[pulumi.Input[str]] = None,
+            middleware_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            priority: Optional[pulumi.Input[float]] = None,
+            route: Optional[pulumi.Input[str]] = None,
+            strategy: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RoutingRuleTagArgs']]]]] = None,
+            target_set_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'RoutingRule':
         """
         Get an existing RoutingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        The **tags** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -97,8 +106,49 @@ class RoutingRule(pulumi.CustomResource):
         __props__["target_set_ids"] = target_set_ids
         return RoutingRule(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="balancerId")
+    def balancer_id(self) -> str:
+        return pulumi.get(self, "balancer_id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter(name="middlewareIds")
+    def middleware_ids(self) -> Optional[List[str]]:
+        return pulumi.get(self, "middleware_ids")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[float]:
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def route(self) -> str:
+        return pulumi.get(self, "route")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[str]:
+        return pulumi.get(self, "strategy")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List['outputs.RoutingRuleTag']]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="targetSetIds")
+    def target_set_ids(self) -> List[str]:
+        return pulumi.get(self, "target_set_ids")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

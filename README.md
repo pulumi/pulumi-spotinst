@@ -1,4 +1,10 @@
-[![Build Status](https://travis-ci.com/pulumi/pulumi-spotinst.svg?branch=master)](https://travis-ci.com/pulumi/pulumi-spotinst)
+[![Actions Status](https://github.com/pulumi/pulumi-spotinst/workflows/master/badge.svg)](https://github.com/pulumi/pulumi-spotinst/actions)
+[![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
+[![NPM version](https://badge.fury.io/js/%40pulumi%2Fspotinst.svg)](https://www.npmjs.com/package/@pulumi/spotinst)
+[![Python version](https://badge.fury.io/py/pulumi-spotinst.svg)](https://pypi.org/project/pulumi-spotinst)
+[![NuGet version](https://badge.fury.io/nu/pulumi.spotinst.svg)](https://badge.fury.io/nu/pulumi.spotinst)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-spotinst/sdk/v2/go)](https://pkg.go.dev/github.com/pulumi/pulumi-spotinst/sdk/v2/go)
+[![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-spotinst/blob/master/LICENSE)
 
 # Spotinst Resource Provider
 

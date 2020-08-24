@@ -5,50 +5,50 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Elastigroup']
 
 
 class Elastigroup(pulumi.CustomResource):
-    backend_services: pulumi.Output[list]
-    cluster_id: pulumi.Output[str]
-    """
-    The name of the GKE cluster you wish to import.
-    """
-    cluster_zone_name: pulumi.Output[str]
-    """
-    The zone where the cluster is hosted.
-    """
-    desired_capacity: pulumi.Output[float]
-    disks: pulumi.Output[list]
-    draining_timeout: pulumi.Output[float]
-    fallback_to_ondemand: pulumi.Output[bool]
-    gpu: pulumi.Output[list]
-    instance_types_customs: pulumi.Output[list]
-    instance_types_ondemand: pulumi.Output[str]
-    instance_types_preemptibles: pulumi.Output[list]
-    integration_docker_swarm: pulumi.Output[dict]
-    integration_gke: pulumi.Output[dict]
-    ip_forwarding: pulumi.Output[bool]
-    labels: pulumi.Output[list]
-    max_size: pulumi.Output[float]
-    metadatas: pulumi.Output[list]
-    min_size: pulumi.Output[float]
-    name: pulumi.Output[str]
-    network_interfaces: pulumi.Output[list]
-    node_image: pulumi.Output[str]
-    """
-    The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-    """
-    ondemand_count: pulumi.Output[float]
-    preemptible_percentage: pulumi.Output[float]
-    scaling_down_policies: pulumi.Output[list]
-    scaling_up_policies: pulumi.Output[list]
-    service_account: pulumi.Output[str]
-    shutdown_script: pulumi.Output[str]
-    startup_script: pulumi.Output[str]
-    tags: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, backend_services=None, cluster_id=None, cluster_zone_name=None, desired_capacity=None, disks=None, draining_timeout=None, fallback_to_ondemand=None, gpu=None, instance_types_customs=None, instance_types_ondemand=None, instance_types_preemptibles=None, integration_docker_swarm=None, integration_gke=None, ip_forwarding=None, labels=None, max_size=None, metadatas=None, min_size=None, name=None, network_interfaces=None, node_image=None, ondemand_count=None, preemptible_percentage=None, scaling_down_policies=None, scaling_up_policies=None, service_account=None, shutdown_script=None, startup_script=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 backend_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_zone_name: Optional[pulumi.Input[str]] = None,
+                 desired_capacity: Optional[pulumi.Input[float]] = None,
+                 disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupDiskArgs']]]]] = None,
+                 draining_timeout: Optional[pulumi.Input[float]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 gpu: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
+                 instance_types_customs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
+                 instance_types_ondemand: Optional[pulumi.Input[str]] = None,
+                 instance_types_preemptibles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
+                 integration_gke: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']]] = None,
+                 ip_forwarding: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]]] = None,
+                 max_size: Optional[pulumi.Input[float]] = None,
+                 metadatas: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]]] = None,
+                 min_size: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+                 node_image: Optional[pulumi.Input[str]] = None,
+                 ondemand_count: Optional[pulumi.Input[float]] = None,
+                 preemptible_percentage: Optional[pulumi.Input[float]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 shutdown_script: Optional[pulumi.Input[str]] = None,
+                 startup_script: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
 
@@ -66,17 +66,17 @@ class Elastigroup(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example_gke_elastigroup = spotinst.gke.Elastigroup("example-gke-elastigroup",
-            backend_services=[{
-                "locationType": "global",
-                "namedPorts": [{
-                    "name": "http",
-                    "ports": [
-                        80,
-                        8080,
+            backend_services=[spotinst.gke.ElastigroupBackendServiceArgs(
+                location_type="global",
+                named_ports=[spotinst.gke.ElastigroupBackendServiceNamedPortArgs(
+                    name="http",
+                    ports=[
+                        "80",
+                        "8080",
                     ],
-                }],
-                "serviceName": "backend-service",
-            }],
+                )],
+                service_name="backend-service",
+            )],
             cluster_zone_name="us-central1-a",
             desired_capacity=3,
             instance_types_ondemand="n1-standard-1",
@@ -84,25 +84,25 @@ class Elastigroup(pulumi.CustomResource):
                 "n1-standard-1",
                 "n1-standard-2",
             ],
-            integration_gke={
-                "autoscaleCooldown": 300,
-                "autoscaleDown": {
-                    "evaluationPeriods": 300,
-                },
-                "autoscaleHeadroom": {
-                    "cpuPerUnit": 1024,
-                    "memoryPerUnit": 512,
-                    "numOfUnits": 2,
-                },
-                "autoscaleIsAutoConfig": False,
-                "autoscaleIsEnabled": True,
-                "autoscaleLabels": [{
-                    "key": "label_key",
-                    "value": "label_value",
-                }],
-                "cluster_id": "example-cluster-id",
-                "location": "us-central1-a",
-            },
+            integration_gke=spotinst.gke.ElastigroupIntegrationGkeArgs(
+                autoscale_cooldown=300,
+                autoscale_down=spotinst.gke.ElastigroupIntegrationGkeAutoscaleDownArgs(
+                    evaluation_periods=300,
+                ),
+                autoscale_headroom=spotinst.gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs(
+                    cpu_per_unit=1024,
+                    memory_per_unit=512,
+                    num_of_units=2,
+                ),
+                autoscale_is_auto_config=False,
+                autoscale_is_enabled=True,
+                autoscale_labels=[spotinst.gke.ElastigroupIntegrationGkeAutoscaleLabelArgs(
+                    key="label_key",
+                    value="label_value",
+                )],
+                cluster_id="example-cluster-id",
+                location="us-central1-a",
+            ),
             max_size=5,
             min_size=1,
             node_image="COS",
@@ -170,129 +170,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
         :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
         :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-
-        The **backend_services** object supports the following:
-
-          * `locationType` (`pulumi.Input[str]`)
-          * `namedPorts` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
-            * `ports` (`pulumi.Input[list]`)
-
-          * `scheme` (`pulumi.Input[str]`)
-          * `serviceName` (`pulumi.Input[str]`)
-
-        The **disks** object supports the following:
-
-          * `autoDelete` (`pulumi.Input[bool]`)
-          * `boot` (`pulumi.Input[bool]`)
-          * `deviceName` (`pulumi.Input[str]`)
-          * `initializeParams` (`pulumi.Input[list]`)
-            * `diskSizeGb` (`pulumi.Input[str]`)
-            * `diskType` (`pulumi.Input[str]`)
-            * `source_image` (`pulumi.Input[str]`)
-
-          * `interface` (`pulumi.Input[str]`)
-          * `mode` (`pulumi.Input[str]`)
-          * `source` (`pulumi.Input[str]`)
-          * `type` (`pulumi.Input[str]`)
-
-        The **gpu** object supports the following:
-
-          * `count` (`pulumi.Input[float]`)
-          * `type` (`pulumi.Input[str]`)
-
-        The **instance_types_customs** object supports the following:
-
-          * `memoryGib` (`pulumi.Input[float]`)
-          * `vcpu` (`pulumi.Input[float]`)
-
-        The **integration_docker_swarm** object supports the following:
-
-          * `masterHost` (`pulumi.Input[str]`)
-          * `masterPort` (`pulumi.Input[float]`)
-
-        The **integration_gke** object supports the following:
-
-          * `autoUpdate` (`pulumi.Input[bool]`)
-          * `autoscaleCooldown` (`pulumi.Input[float]`)
-          * `autoscaleDown` (`pulumi.Input[dict]`)
-            * `evaluationPeriods` (`pulumi.Input[float]`)
-
-          * `autoscaleHeadroom` (`pulumi.Input[dict]`)
-            * `cpuPerUnit` (`pulumi.Input[float]`)
-            * `memoryPerUnit` (`pulumi.Input[float]`)
-            * `numOfUnits` (`pulumi.Input[float]`)
-
-          * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`)
-          * `autoscaleIsEnabled` (`pulumi.Input[bool]`)
-          * `autoscaleLabels` (`pulumi.Input[list]`)
-            * `key` (`pulumi.Input[str]`)
-            * `value` (`pulumi.Input[str]`)
-
-          * `cluster_id` (`pulumi.Input[str]`) - The name of the GKE cluster you wish to import.
-          * `location` (`pulumi.Input[str]`)
-
-        The **labels** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **metadatas** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **network_interfaces** object supports the following:
-
-          * `accessConfigs` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
-            * `type` (`pulumi.Input[str]`)
-
-          * `aliasIpRanges` (`pulumi.Input[list]`)
-            * `ipCidrRange` (`pulumi.Input[str]`)
-            * `subnetworkRangeName` (`pulumi.Input[str]`)
-
-          * `network` (`pulumi.Input[str]`)
-
-        The **scaling_down_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[float]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
-            * `value` (`pulumi.Input[str]`)
-
-          * `evaluationPeriods` (`pulumi.Input[float]`)
-          * `metricName` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
-          * `policyName` (`pulumi.Input[str]`)
-          * `source` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
-
-        The **scaling_up_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[float]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
-            * `value` (`pulumi.Input[str]`)
-
-          * `evaluationPeriods` (`pulumi.Input[float]`)
-          * `metricName` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
-          * `policyName` (`pulumi.Input[str]`)
-          * `source` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -354,140 +231,48 @@ class Elastigroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, backend_services=None, cluster_id=None, cluster_zone_name=None, desired_capacity=None, disks=None, draining_timeout=None, fallback_to_ondemand=None, gpu=None, instance_types_customs=None, instance_types_ondemand=None, instance_types_preemptibles=None, integration_docker_swarm=None, integration_gke=None, ip_forwarding=None, labels=None, max_size=None, metadatas=None, min_size=None, name=None, network_interfaces=None, node_image=None, ondemand_count=None, preemptible_percentage=None, scaling_down_policies=None, scaling_up_policies=None, service_account=None, shutdown_script=None, startup_script=None, tags=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]]] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            cluster_zone_name: Optional[pulumi.Input[str]] = None,
+            desired_capacity: Optional[pulumi.Input[float]] = None,
+            disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupDiskArgs']]]]] = None,
+            draining_timeout: Optional[pulumi.Input[float]] = None,
+            fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+            gpu: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
+            instance_types_customs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
+            instance_types_ondemand: Optional[pulumi.Input[str]] = None,
+            instance_types_preemptibles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
+            integration_gke: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']]] = None,
+            ip_forwarding: Optional[pulumi.Input[bool]] = None,
+            labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]]] = None,
+            max_size: Optional[pulumi.Input[float]] = None,
+            metadatas: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]]] = None,
+            min_size: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+            node_image: Optional[pulumi.Input[str]] = None,
+            ondemand_count: Optional[pulumi.Input[float]] = None,
+            preemptible_percentage: Optional[pulumi.Input[float]] = None,
+            scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
+            scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
+            service_account: Optional[pulumi.Input[str]] = None,
+            shutdown_script: Optional[pulumi.Input[str]] = None,
+            startup_script: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Elastigroup':
         """
         Get an existing Elastigroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
         :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
         :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-
-        The **backend_services** object supports the following:
-
-          * `locationType` (`pulumi.Input[str]`)
-          * `namedPorts` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
-            * `ports` (`pulumi.Input[list]`)
-
-          * `scheme` (`pulumi.Input[str]`)
-          * `serviceName` (`pulumi.Input[str]`)
-
-        The **disks** object supports the following:
-
-          * `autoDelete` (`pulumi.Input[bool]`)
-          * `boot` (`pulumi.Input[bool]`)
-          * `deviceName` (`pulumi.Input[str]`)
-          * `initializeParams` (`pulumi.Input[list]`)
-            * `diskSizeGb` (`pulumi.Input[str]`)
-            * `diskType` (`pulumi.Input[str]`)
-            * `source_image` (`pulumi.Input[str]`)
-
-          * `interface` (`pulumi.Input[str]`)
-          * `mode` (`pulumi.Input[str]`)
-          * `source` (`pulumi.Input[str]`)
-          * `type` (`pulumi.Input[str]`)
-
-        The **gpu** object supports the following:
-
-          * `count` (`pulumi.Input[float]`)
-          * `type` (`pulumi.Input[str]`)
-
-        The **instance_types_customs** object supports the following:
-
-          * `memoryGib` (`pulumi.Input[float]`)
-          * `vcpu` (`pulumi.Input[float]`)
-
-        The **integration_docker_swarm** object supports the following:
-
-          * `masterHost` (`pulumi.Input[str]`)
-          * `masterPort` (`pulumi.Input[float]`)
-
-        The **integration_gke** object supports the following:
-
-          * `autoUpdate` (`pulumi.Input[bool]`)
-          * `autoscaleCooldown` (`pulumi.Input[float]`)
-          * `autoscaleDown` (`pulumi.Input[dict]`)
-            * `evaluationPeriods` (`pulumi.Input[float]`)
-
-          * `autoscaleHeadroom` (`pulumi.Input[dict]`)
-            * `cpuPerUnit` (`pulumi.Input[float]`)
-            * `memoryPerUnit` (`pulumi.Input[float]`)
-            * `numOfUnits` (`pulumi.Input[float]`)
-
-          * `autoscaleIsAutoConfig` (`pulumi.Input[bool]`)
-          * `autoscaleIsEnabled` (`pulumi.Input[bool]`)
-          * `autoscaleLabels` (`pulumi.Input[list]`)
-            * `key` (`pulumi.Input[str]`)
-            * `value` (`pulumi.Input[str]`)
-
-          * `cluster_id` (`pulumi.Input[str]`) - The name of the GKE cluster you wish to import.
-          * `location` (`pulumi.Input[str]`)
-
-        The **labels** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **metadatas** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **network_interfaces** object supports the following:
-
-          * `accessConfigs` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
-            * `type` (`pulumi.Input[str]`)
-
-          * `aliasIpRanges` (`pulumi.Input[list]`)
-            * `ipCidrRange` (`pulumi.Input[str]`)
-            * `subnetworkRangeName` (`pulumi.Input[str]`)
-
-          * `network` (`pulumi.Input[str]`)
-
-        The **scaling_down_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[float]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
-            * `value` (`pulumi.Input[str]`)
-
-          * `evaluationPeriods` (`pulumi.Input[float]`)
-          * `metricName` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
-          * `policyName` (`pulumi.Input[str]`)
-          * `source` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
-
-        The **scaling_up_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[float]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
-            * `value` (`pulumi.Input[str]`)
-
-          * `evaluationPeriods` (`pulumi.Input[float]`)
-          * `metricName` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`)
-          * `operator` (`pulumi.Input[str]`)
-          * `period` (`pulumi.Input[float]`)
-          * `policyName` (`pulumi.Input[str]`)
-          * `source` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`)
-          * `unit` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -524,8 +309,163 @@ class Elastigroup(pulumi.CustomResource):
         __props__["tags"] = tags
         return Elastigroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="backendServices")
+    def backend_services(self) -> Optional[List['outputs.ElastigroupBackendService']]:
+        return pulumi.get(self, "backend_services")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[str]:
+        """
+        The name of the GKE cluster you wish to import.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="clusterZoneName")
+    def cluster_zone_name(self) -> str:
+        """
+        The zone where the cluster is hosted.
+        """
+        return pulumi.get(self, "cluster_zone_name")
+
+    @property
+    @pulumi.getter(name="desiredCapacity")
+    def desired_capacity(self) -> float:
+        return pulumi.get(self, "desired_capacity")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[List['outputs.ElastigroupDisk']]:
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[float]:
+        return pulumi.get(self, "draining_timeout")
+
+    @property
+    @pulumi.getter(name="fallbackToOndemand")
+    def fallback_to_ondemand(self) -> Optional[bool]:
+        return pulumi.get(self, "fallback_to_ondemand")
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> Optional[List['outputs.ElastigroupGpu']]:
+        return pulumi.get(self, "gpu")
+
+    @property
+    @pulumi.getter(name="instanceTypesCustoms")
+    def instance_types_customs(self) -> Optional[List['outputs.ElastigroupInstanceTypesCustom']]:
+        return pulumi.get(self, "instance_types_customs")
+
+    @property
+    @pulumi.getter(name="instanceTypesOndemand")
+    def instance_types_ondemand(self) -> Optional[str]:
+        return pulumi.get(self, "instance_types_ondemand")
+
+    @property
+    @pulumi.getter(name="instanceTypesPreemptibles")
+    def instance_types_preemptibles(self) -> Optional[List[str]]:
+        return pulumi.get(self, "instance_types_preemptibles")
+
+    @property
+    @pulumi.getter(name="integrationDockerSwarm")
+    def integration_docker_swarm(self) -> Optional['outputs.ElastigroupIntegrationDockerSwarm']:
+        return pulumi.get(self, "integration_docker_swarm")
+
+    @property
+    @pulumi.getter(name="integrationGke")
+    def integration_gke(self) -> Optional['outputs.ElastigroupIntegrationGke']:
+        return pulumi.get(self, "integration_gke")
+
+    @property
+    @pulumi.getter(name="ipForwarding")
+    def ip_forwarding(self) -> Optional[bool]:
+        return pulumi.get(self, "ip_forwarding")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[List['outputs.ElastigroupLabel']]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> float:
+        return pulumi.get(self, "max_size")
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[List['outputs.ElastigroupMetadata']]:
+        return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> float:
+        return pulumi.get(self, "min_size")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[List['outputs.ElastigroupNetworkInterface']]:
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="nodeImage")
+    def node_image(self) -> Optional[str]:
+        """
+        The image that will be used for the node VMs. Possible values: COS, UBUNTU.
+        """
+        return pulumi.get(self, "node_image")
+
+    @property
+    @pulumi.getter(name="ondemandCount")
+    def ondemand_count(self) -> Optional[float]:
+        return pulumi.get(self, "ondemand_count")
+
+    @property
+    @pulumi.getter(name="preemptiblePercentage")
+    def preemptible_percentage(self) -> Optional[float]:
+        return pulumi.get(self, "preemptible_percentage")
+
+    @property
+    @pulumi.getter(name="scalingDownPolicies")
+    def scaling_down_policies(self) -> Optional[List['outputs.ElastigroupScalingDownPolicy']]:
+        return pulumi.get(self, "scaling_down_policies")
+
+    @property
+    @pulumi.getter(name="scalingUpPolicies")
+    def scaling_up_policies(self) -> Optional[List['outputs.ElastigroupScalingUpPolicy']]:
+        return pulumi.get(self, "scaling_up_policies")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[str]:
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shutdownScript")
+    def shutdown_script(self) -> Optional[str]:
+        return pulumi.get(self, "shutdown_script")
+
+    @property
+    @pulumi.getter(name="startupScript")
+    def startup_script(self) -> Optional[str]:
+        return pulumi.get(self, "startup_script")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        return pulumi.get(self, "tags")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
