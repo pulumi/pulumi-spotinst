@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     }],
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-123456",
- *     intanceTypes: [
+ *     instanceTypes: [
  *         "m3.large",
  *         "m3.xlarge",
  *         "m3.2xlarge",
@@ -133,6 +133,9 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * ID of the image used to launch the instances.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
+    /**
+     * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+     */
     public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
@@ -257,6 +260,9 @@ export interface OceanLaunchSpecState {
      * ID of the image used to launch the instances.
      */
     readonly imageId?: pulumi.Input<string>;
+    /**
+     * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+     */
     readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
@@ -321,6 +327,9 @@ export interface OceanLaunchSpecArgs {
      * ID of the image used to launch the instances.
      */
     readonly imageId?: pulumi.Input<string>;
+    /**
+     * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+     */
     readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
