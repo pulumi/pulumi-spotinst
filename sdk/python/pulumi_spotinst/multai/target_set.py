@@ -5,39 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['TargetSet']
 
 
 class TargetSet(pulumi.CustomResource):
-    balancer_id: pulumi.Output[str]
-    deployment_id: pulumi.Output[str]
-    health_check: pulumi.Output[dict]
-    name: pulumi.Output[str]
-    port: pulumi.Output[float]
-    protocol: pulumi.Output[str]
-    tags: pulumi.Output[list]
-    weight: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, balancer_id=None, deployment_id=None, health_check=None, name=None, port=None, protocol=None, tags=None, weight=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 balancer_id: Optional[pulumi.Input[str]] = None,
+                 deployment_id: Optional[pulumi.Input[str]] = None,
+                 health_check: Optional[pulumi.Input[pulumi.InputType['TargetSetHealthCheckArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[float]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TargetSetTagArgs']]]]] = None,
+                 weight: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a TargetSet resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        The **health_check** object supports the following:
-
-          * `healthyThreshold` (`pulumi.Input[float]`)
-          * `interval` (`pulumi.Input[float]`)
-          * `path` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
-          * `protocol` (`pulumi.Input[str]`)
-          * `timeout` (`pulumi.Input[float]`)
-          * `unhealthyThreshold` (`pulumi.Input[float]`)
-
-        The **tags** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,29 +75,24 @@ class TargetSet(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, balancer_id=None, deployment_id=None, health_check=None, name=None, port=None, protocol=None, tags=None, weight=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            balancer_id: Optional[pulumi.Input[str]] = None,
+            deployment_id: Optional[pulumi.Input[str]] = None,
+            health_check: Optional[pulumi.Input[pulumi.InputType['TargetSetHealthCheckArgs']]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[float]] = None,
+            protocol: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TargetSetTagArgs']]]]] = None,
+            weight: Optional[pulumi.Input[float]] = None) -> 'TargetSet':
         """
         Get an existing TargetSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        The **health_check** object supports the following:
-
-          * `healthyThreshold` (`pulumi.Input[float]`)
-          * `interval` (`pulumi.Input[float]`)
-          * `path` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
-          * `protocol` (`pulumi.Input[str]`)
-          * `timeout` (`pulumi.Input[float]`)
-          * `unhealthyThreshold` (`pulumi.Input[float]`)
-
-        The **tags** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -119,8 +108,49 @@ class TargetSet(pulumi.CustomResource):
         __props__["weight"] = weight
         return TargetSet(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="balancerId")
+    def balancer_id(self) -> str:
+        return pulumi.get(self, "balancer_id")
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> str:
+        return pulumi.get(self, "deployment_id")
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> 'outputs.TargetSetHealthCheck':
+        return pulumi.get(self, "health_check")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[float]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List['outputs.TargetSetTag']]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> float:
+        return pulumi.get(self, "weight")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,36 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['HealthCheck']
 
 
 class HealthCheck(pulumi.CustomResource):
-    check: pulumi.Output[dict]
-    """
-    Describes the check to execute.
-
-      * `endPoint` (`str`)
-      * `endpoint` (`str`) - The destination for the request.
-      * `healthy` (`float`) - The number of consecutive successful health checks that must occur before declaring an instance healthy.
-      * `interval` (`float`) - The amount of time (in seconds) between each health check (minimum: 10).
-      * `port` (`float`) - The port of the Spotinst HCS (default: 80).
-      * `protocol` (`str`) - The protocol to use to connect with the instance. Valid values: http, https.
-      * `timeOut` (`float`)
-      * `timeout` (`float`) - the amount of time (in seconds) to wait when receiving a response from the health check.
-      * `unhealthy` (`float`) - The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the health check.
-    """
-    proxy_address: pulumi.Output[str]
-    proxy_port: pulumi.Output[float]
-    resource_id: pulumi.Output[str]
-    """
-    The ID of the resource to check.
-    """
-    def __init__(__self__, resource_name, opts=None, check=None, name=None, proxy_address=None, proxy_port=None, resource_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 check: Optional[pulumi.Input[pulumi.InputType['HealthCheckCheckArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 proxy_address: Optional[pulumi.Input[str]] = None,
+                 proxy_port: Optional[pulumi.Input[float]] = None,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Spotinst Health Check resource.
 
@@ -45,15 +35,15 @@ class HealthCheck(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         http_check = spotinst.HealthCheck("httpCheck",
-            check={
-                "endpoint": "http://endpoint.com",
-                "healthy": 1,
-                "interval": 10,
-                "port": 1337,
-                "protocol": "http",
-                "timeout": 10,
-                "unhealthy": 1,
-            },
+            check=spotinst.HealthCheckCheckArgs(
+                endpoint="http://endpoint.com",
+                healthy=1,
+                interval=10,
+                port=1337,
+                protocol="http",
+                timeout=10,
+                unhealthy=1,
+            ),
             proxy_address="http://proxy.com",
             proxy_port=80,
             resource_id="sig-123")
@@ -61,21 +51,9 @@ class HealthCheck(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] check: Describes the check to execute.
+        :param pulumi.Input[pulumi.InputType['HealthCheckCheckArgs']] check: Describes the check to execute.
         :param pulumi.Input[str] name: The name of the health check.
         :param pulumi.Input[str] resource_id: The ID of the resource to check.
-
-        The **check** object supports the following:
-
-          * `endPoint` (`pulumi.Input[str]`)
-          * `endpoint` (`pulumi.Input[str]`) - The destination for the request.
-          * `healthy` (`pulumi.Input[float]`) - The number of consecutive successful health checks that must occur before declaring an instance healthy.
-          * `interval` (`pulumi.Input[float]`) - The amount of time (in seconds) between each health check (minimum: 10).
-          * `port` (`pulumi.Input[float]`) - The port of the Spotinst HCS (default: 80).
-          * `protocol` (`pulumi.Input[str]`) - The protocol to use to connect with the instance. Valid values: http, https.
-          * `timeOut` (`pulumi.Input[float]`)
-          * `timeout` (`pulumi.Input[float]`) - the amount of time (in seconds) to wait when receiving a response from the health check.
-          * `unhealthy` (`pulumi.Input[float]`) - The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -110,29 +88,24 @@ class HealthCheck(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, check=None, name=None, proxy_address=None, proxy_port=None, resource_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            check: Optional[pulumi.Input[pulumi.InputType['HealthCheckCheckArgs']]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            proxy_address: Optional[pulumi.Input[str]] = None,
+            proxy_port: Optional[pulumi.Input[float]] = None,
+            resource_id: Optional[pulumi.Input[str]] = None) -> 'HealthCheck':
         """
         Get an existing HealthCheck resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] check: Describes the check to execute.
+        :param pulumi.Input[pulumi.InputType['HealthCheckCheckArgs']] check: Describes the check to execute.
         :param pulumi.Input[str] name: The name of the health check.
         :param pulumi.Input[str] resource_id: The ID of the resource to check.
-
-        The **check** object supports the following:
-
-          * `endPoint` (`pulumi.Input[str]`)
-          * `endpoint` (`pulumi.Input[str]`) - The destination for the request.
-          * `healthy` (`pulumi.Input[float]`) - The number of consecutive successful health checks that must occur before declaring an instance healthy.
-          * `interval` (`pulumi.Input[float]`) - The amount of time (in seconds) between each health check (minimum: 10).
-          * `port` (`pulumi.Input[float]`) - The port of the Spotinst HCS (default: 80).
-          * `protocol` (`pulumi.Input[str]`) - The protocol to use to connect with the instance. Valid values: http, https.
-          * `timeOut` (`pulumi.Input[float]`)
-          * `timeout` (`pulumi.Input[float]`) - the amount of time (in seconds) to wait when receiving a response from the health check.
-          * `unhealthy` (`pulumi.Input[float]`) - The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -145,8 +118,43 @@ class HealthCheck(pulumi.CustomResource):
         __props__["resource_id"] = resource_id
         return HealthCheck(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def check(self) -> Optional['outputs.HealthCheckCheck']:
+        """
+        Describes the check to execute.
+        """
+        return pulumi.get(self, "check")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the health check.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="proxyAddress")
+    def proxy_address(self) -> str:
+        return pulumi.get(self, "proxy_address")
+
+    @property
+    @pulumi.getter(name="proxyPort")
+    def proxy_port(self) -> Optional[float]:
+        return pulumi.get(self, "proxy_port")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The ID of the resource to check.
+        """
+        return pulumi.get(self, "resource_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

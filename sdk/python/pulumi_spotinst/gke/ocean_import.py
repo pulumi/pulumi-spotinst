@@ -5,48 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['OceanImport']
 
 
 class OceanImport(pulumi.CustomResource):
-    autoscaler: pulumi.Output[dict]
-    backend_services: pulumi.Output[list]
-    """
-    Describes the backend service configurations.
-
-      * `locationType` (`str`) - Sets which location the backend services will be active. Valid values: `regional`, `global`.
-      * `namedPorts` (`list`)
-        * `name` (`str`)
-        * `ports` (`list`) - A list of ports.
-
-      * `scheme` (`str`) - Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
-      * `serviceName` (`str`) - The name of the backend service.
-    """
-    cluster_controller_id: pulumi.Output[str]
-    cluster_name: pulumi.Output[str]
-    """
-    The GKE cluster name.
-    """
-    desired_capacity: pulumi.Output[float]
-    """
-    The number of instances to launch and maintain in the cluster.
-    """
-    location: pulumi.Output[str]
-    """
-    The zone the master cluster is located in.
-    """
-    max_size: pulumi.Output[float]
-    """
-    The upper limit of instances the cluster can scale up to.
-    """
-    min_size: pulumi.Output[float]
-    """
-    The lower limit of instances the cluster can scale down to.
-    """
-    scheduled_tasks: pulumi.Output[list]
-    whitelists: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, autoscaler=None, backend_services=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, scheduled_tasks=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']]] = None,
+                 backend_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 desired_capacity: Optional[pulumi.Input[float]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 max_size: Optional[pulumi.Input[float]] = None,
+                 min_size: Optional[pulumi.Input[float]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
+                 whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Spotinst Ocean GKE import resource.
 
@@ -57,18 +39,18 @@ class OceanImport(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.gke.OceanImport("example",
-            backend_services=[{
-                "locationType": "regional",
-                "namedPorts": [{
-                    "name": "http",
-                    "ports": [
-                        80,
-                        8080,
+            backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
+                location_type="regional",
+                named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
+                    name="http",
+                    ports=[
+                        "80",
+                        "8080",
                     ],
-                }],
-                "scheme": "INTERNAL",
-                "serviceName": "example-backend-service",
-            }],
+                )],
+                scheme="INTERNAL",
+                service_name="example-backend-service",
+            )],
             cluster_name="example-cluster-name",
             desired_capacity=0,
             location="us-central1-a",
@@ -131,54 +113,12 @@ class OceanImport(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] backend_services: Describes the backend service configurations.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
         :param pulumi.Input[float] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[float] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[float] min_size: The lower limit of instances the cluster can scale down to.
-
-        The **autoscaler** object supports the following:
-
-          * `autoHeadroomPercentage` (`pulumi.Input[float]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `down` (`pulumi.Input[dict]`)
-            * `evaluationPeriods` (`pulumi.Input[float]`)
-            * `maxScaleDownPercentage` (`pulumi.Input[float]`)
-
-          * `headroom` (`pulumi.Input[dict]`)
-            * `cpuPerUnit` (`pulumi.Input[float]`)
-            * `gpuPerUnit` (`pulumi.Input[float]`)
-            * `memoryPerUnit` (`pulumi.Input[float]`)
-            * `numOfUnits` (`pulumi.Input[float]`)
-
-          * `isAutoConfig` (`pulumi.Input[bool]`)
-          * `isEnabled` (`pulumi.Input[bool]`)
-          * `resource_limits` (`pulumi.Input[dict]`)
-            * `maxMemoryGib` (`pulumi.Input[float]`)
-            * `maxVcpu` (`pulumi.Input[float]`)
-
-        The **backend_services** object supports the following:
-
-          * `locationType` (`pulumi.Input[str]`) - Sets which location the backend services will be active. Valid values: `regional`, `global`.
-          * `namedPorts` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
-            * `ports` (`pulumi.Input[list]`) - A list of ports.
-
-          * `scheme` (`pulumi.Input[str]`) - Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
-          * `serviceName` (`pulumi.Input[str]`) - The name of the backend service.
-
-        The **scheduled_tasks** object supports the following:
-
-          * `shutdownHours` (`pulumi.Input[dict]`)
-            * `isEnabled` (`pulumi.Input[bool]`)
-            * `timeWindows` (`pulumi.Input[list]`)
-
-          * `tasks` (`pulumi.Input[list]`)
-            * `batchSizePercentage` (`pulumi.Input[float]`)
-            * `cronExpression` (`pulumi.Input[str]`)
-            * `isEnabled` (`pulumi.Input[bool]`)
-            * `taskType` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -218,62 +158,32 @@ class OceanImport(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, autoscaler=None, backend_services=None, cluster_controller_id=None, cluster_name=None, desired_capacity=None, location=None, max_size=None, min_size=None, scheduled_tasks=None, whitelists=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']]] = None,
+            backend_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]]] = None,
+            cluster_controller_id: Optional[pulumi.Input[str]] = None,
+            cluster_name: Optional[pulumi.Input[str]] = None,
+            desired_capacity: Optional[pulumi.Input[float]] = None,
+            location: Optional[pulumi.Input[str]] = None,
+            max_size: Optional[pulumi.Input[float]] = None,
+            min_size: Optional[pulumi.Input[float]] = None,
+            scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
+            whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'OceanImport':
         """
         Get an existing OceanImport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] backend_services: Describes the backend service configurations.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
         :param pulumi.Input[float] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[float] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[float] min_size: The lower limit of instances the cluster can scale down to.
-
-        The **autoscaler** object supports the following:
-
-          * `autoHeadroomPercentage` (`pulumi.Input[float]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `down` (`pulumi.Input[dict]`)
-            * `evaluationPeriods` (`pulumi.Input[float]`)
-            * `maxScaleDownPercentage` (`pulumi.Input[float]`)
-
-          * `headroom` (`pulumi.Input[dict]`)
-            * `cpuPerUnit` (`pulumi.Input[float]`)
-            * `gpuPerUnit` (`pulumi.Input[float]`)
-            * `memoryPerUnit` (`pulumi.Input[float]`)
-            * `numOfUnits` (`pulumi.Input[float]`)
-
-          * `isAutoConfig` (`pulumi.Input[bool]`)
-          * `isEnabled` (`pulumi.Input[bool]`)
-          * `resource_limits` (`pulumi.Input[dict]`)
-            * `maxMemoryGib` (`pulumi.Input[float]`)
-            * `maxVcpu` (`pulumi.Input[float]`)
-
-        The **backend_services** object supports the following:
-
-          * `locationType` (`pulumi.Input[str]`) - Sets which location the backend services will be active. Valid values: `regional`, `global`.
-          * `namedPorts` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
-            * `ports` (`pulumi.Input[list]`) - A list of ports.
-
-          * `scheme` (`pulumi.Input[str]`) - Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
-          * `serviceName` (`pulumi.Input[str]`) - The name of the backend service.
-
-        The **scheduled_tasks** object supports the following:
-
-          * `shutdownHours` (`pulumi.Input[dict]`)
-            * `isEnabled` (`pulumi.Input[bool]`)
-            * `timeWindows` (`pulumi.Input[list]`)
-
-          * `tasks` (`pulumi.Input[list]`)
-            * `batchSizePercentage` (`pulumi.Input[float]`)
-            * `cronExpression` (`pulumi.Input[str]`)
-            * `isEnabled` (`pulumi.Input[bool]`)
-            * `taskType` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -291,8 +201,77 @@ class OceanImport(pulumi.CustomResource):
         __props__["whitelists"] = whitelists
         return OceanImport(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def autoscaler(self) -> 'outputs.OceanImportAutoscaler':
+        return pulumi.get(self, "autoscaler")
+
+    @property
+    @pulumi.getter(name="backendServices")
+    def backend_services(self) -> Optional[List['outputs.OceanImportBackendService']]:
+        """
+        Describes the backend service configurations.
+        """
+        return pulumi.get(self, "backend_services")
+
+    @property
+    @pulumi.getter(name="clusterControllerId")
+    def cluster_controller_id(self) -> str:
+        return pulumi.get(self, "cluster_controller_id")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        The GKE cluster name.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="desiredCapacity")
+    def desired_capacity(self) -> float:
+        """
+        The number of instances to launch and maintain in the cluster.
+        """
+        return pulumi.get(self, "desired_capacity")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The zone the master cluster is located in.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> float:
+        """
+        The upper limit of instances the cluster can scale up to.
+        """
+        return pulumi.get(self, "max_size")
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> float:
+        """
+        The lower limit of instances the cluster can scale down to.
+        """
+        return pulumi.get(self, "min_size")
+
+    @property
+    @pulumi.getter(name="scheduledTasks")
+    def scheduled_tasks(self) -> Optional[List['outputs.OceanImportScheduledTask']]:
+        return pulumi.get(self, "scheduled_tasks")
+
+    @property
+    @pulumi.getter
+    def whitelists(self) -> Optional[List[str]]:
+        return pulumi.get(self, "whitelists")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

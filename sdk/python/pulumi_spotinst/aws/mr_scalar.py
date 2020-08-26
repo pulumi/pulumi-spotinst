@@ -5,100 +5,80 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['MrScalar']
 
 
 class MrScalar(pulumi.CustomResource):
-    additional_info: pulumi.Output[str]
-    additional_primary_security_groups: pulumi.Output[list]
-    additional_replica_security_groups: pulumi.Output[list]
-    applications: pulumi.Output[list]
-    availability_zones: pulumi.Output[list]
-    bootstrap_actions_files: pulumi.Output[list]
-    cluster_id: pulumi.Output[str]
-    """
-    The MrScaler cluster id.
-    """
-    configurations_files: pulumi.Output[list]
-    core_desired_capacity: pulumi.Output[float]
-    core_ebs_block_devices: pulumi.Output[list]
-    core_ebs_optimized: pulumi.Output[bool]
-    core_instance_types: pulumi.Output[list]
-    core_lifecycle: pulumi.Output[str]
-    core_max_size: pulumi.Output[float]
-    core_min_size: pulumi.Output[float]
-    core_scaling_down_policies: pulumi.Output[list]
-    core_scaling_up_policies: pulumi.Output[list]
-    core_unit: pulumi.Output[str]
-    custom_ami_id: pulumi.Output[str]
-    description: pulumi.Output[str]
-    """
-    The MrScaler description.
-    """
-    ebs_root_volume_size: pulumi.Output[float]
-    ec2_key_name: pulumi.Output[str]
-    expose_cluster_id: pulumi.Output[bool]
-    instance_weights: pulumi.Output[list]
-    job_flow_role: pulumi.Output[str]
-    keep_job_flow_alive: pulumi.Output[bool]
-    log_uri: pulumi.Output[str]
-    managed_primary_security_group: pulumi.Output[str]
-    managed_replica_security_group: pulumi.Output[str]
-    master_ebs_block_devices: pulumi.Output[list]
-    master_ebs_optimized: pulumi.Output[bool]
-    master_instance_types: pulumi.Output[list]
-    master_lifecycle: pulumi.Output[str]
-    name: pulumi.Output[str]
-    """
-    The MrScaler name.
-    """
-    output_cluster_id: pulumi.Output[str]
-    provisioning_timeout: pulumi.Output[dict]
-    region: pulumi.Output[str]
-    """
-    The MrScaler region.
-    """
-    release_label: pulumi.Output[str]
-    repo_upgrade_on_boot: pulumi.Output[str]
-    retries: pulumi.Output[float]
-    scheduled_tasks: pulumi.Output[list]
-    security_config: pulumi.Output[str]
-    service_access_security_group: pulumi.Output[str]
-    service_role: pulumi.Output[str]
-    steps_files: pulumi.Output[list]
-    strategy: pulumi.Output[str]
-    """
-    The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-    """
-    tags: pulumi.Output[list]
-    task_desired_capacity: pulumi.Output[float]
-    task_ebs_block_devices: pulumi.Output[list]
-    task_ebs_optimized: pulumi.Output[bool]
-    task_instance_types: pulumi.Output[list]
-    task_lifecycle: pulumi.Output[str]
-    task_max_size: pulumi.Output[float]
-    task_min_size: pulumi.Output[float]
-    task_scaling_down_policies: pulumi.Output[list]
-    task_scaling_up_policies: pulumi.Output[list]
-    task_unit: pulumi.Output[str]
-    termination_policies: pulumi.Output[list]
-    """
-    Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
-
-      * `statements` (`list`)
-        * `evaluationPeriods` (`float`) - The number of periods over which data is compared to the specified threshold.
-        * `metricName` (`str`) - The name of the metric in CloudWatch which the statement will be based on.
-        * `namespace` (`str`) - Must contain the value: `AWS/ElasticMapReduce`.
-        * `operator` (`str`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        * `period` (`float`) - The time window in seconds over which the statistic is applied.
-        * `statistic` (`str`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-        * `threshold` (`float`) - The value that the specified statistic is compared to.
-        * `unit` (`str`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-    """
-    termination_protected: pulumi.Output[bool]
-    visible_to_all_users: pulumi.Output[bool]
-    def __init__(__self__, resource_name, opts=None, additional_info=None, additional_primary_security_groups=None, additional_replica_security_groups=None, applications=None, availability_zones=None, bootstrap_actions_files=None, cluster_id=None, configurations_files=None, core_desired_capacity=None, core_ebs_block_devices=None, core_ebs_optimized=None, core_instance_types=None, core_lifecycle=None, core_max_size=None, core_min_size=None, core_scaling_down_policies=None, core_scaling_up_policies=None, core_unit=None, custom_ami_id=None, description=None, ebs_root_volume_size=None, ec2_key_name=None, expose_cluster_id=None, instance_weights=None, job_flow_role=None, keep_job_flow_alive=None, log_uri=None, managed_primary_security_group=None, managed_replica_security_group=None, master_ebs_block_devices=None, master_ebs_optimized=None, master_instance_types=None, master_lifecycle=None, name=None, provisioning_timeout=None, region=None, release_label=None, repo_upgrade_on_boot=None, retries=None, scheduled_tasks=None, security_config=None, service_access_security_group=None, service_role=None, steps_files=None, strategy=None, tags=None, task_desired_capacity=None, task_ebs_block_devices=None, task_ebs_optimized=None, task_instance_types=None, task_lifecycle=None, task_max_size=None, task_min_size=None, task_scaling_down_policies=None, task_scaling_up_policies=None, task_unit=None, termination_policies=None, termination_protected=None, visible_to_all_users=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_info: Optional[pulumi.Input[str]] = None,
+                 additional_primary_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 additional_replica_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 applications: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarApplicationArgs']]]]] = None,
+                 availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 bootstrap_actions_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarBootstrapActionsFileArgs']]]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 configurations_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarConfigurationsFileArgs']]]]] = None,
+                 core_desired_capacity: Optional[pulumi.Input[float]] = None,
+                 core_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreEbsBlockDeviceArgs']]]]] = None,
+                 core_ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 core_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 core_lifecycle: Optional[pulumi.Input[str]] = None,
+                 core_max_size: Optional[pulumi.Input[float]] = None,
+                 core_min_size: Optional[pulumi.Input[float]] = None,
+                 core_scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreScalingDownPolicyArgs']]]]] = None,
+                 core_scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreScalingUpPolicyArgs']]]]] = None,
+                 core_unit: Optional[pulumi.Input[str]] = None,
+                 custom_ami_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ebs_root_volume_size: Optional[pulumi.Input[float]] = None,
+                 ec2_key_name: Optional[pulumi.Input[str]] = None,
+                 expose_cluster_id: Optional[pulumi.Input[bool]] = None,
+                 instance_weights: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarInstanceWeightArgs']]]]] = None,
+                 job_flow_role: Optional[pulumi.Input[str]] = None,
+                 keep_job_flow_alive: Optional[pulumi.Input[bool]] = None,
+                 log_uri: Optional[pulumi.Input[str]] = None,
+                 managed_primary_security_group: Optional[pulumi.Input[str]] = None,
+                 managed_replica_security_group: Optional[pulumi.Input[str]] = None,
+                 master_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarMasterEbsBlockDeviceArgs']]]]] = None,
+                 master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 master_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 master_lifecycle: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 provisioning_timeout: Optional[pulumi.Input[pulumi.InputType['MrScalarProvisioningTimeoutArgs']]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 release_label: Optional[pulumi.Input[str]] = None,
+                 repo_upgrade_on_boot: Optional[pulumi.Input[str]] = None,
+                 retries: Optional[pulumi.Input[float]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarScheduledTaskArgs']]]]] = None,
+                 security_config: Optional[pulumi.Input[str]] = None,
+                 service_access_security_group: Optional[pulumi.Input[str]] = None,
+                 service_role: Optional[pulumi.Input[str]] = None,
+                 steps_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarStepsFileArgs']]]]] = None,
+                 strategy: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTagArgs']]]]] = None,
+                 task_desired_capacity: Optional[pulumi.Input[float]] = None,
+                 task_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskEbsBlockDeviceArgs']]]]] = None,
+                 task_ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 task_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 task_lifecycle: Optional[pulumi.Input[str]] = None,
+                 task_max_size: Optional[pulumi.Input[float]] = None,
+                 task_min_size: Optional[pulumi.Input[float]] = None,
+                 task_scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskScalingDownPolicyArgs']]]]] = None,
+                 task_scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskScalingUpPolicyArgs']]]]] = None,
+                 task_unit: Optional[pulumi.Input[str]] = None,
+                 termination_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]]] = None,
+                 termination_protected: Optional[pulumi.Input[bool]] = None,
+                 visible_to_all_users: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Spotinst AWS MrScaler resource.
 
@@ -276,36 +256,36 @@ class MrScalar(pulumi.CustomResource):
             additional_primary_security_groups=["sg-456321"],
             additional_replica_security_groups=["sg-123654"],
             applications=[
-                {
-                    "name": "Ganglia",
-                    "version": "1.0",
-                },
-                {
-                    "name": "Hadoop",
-                },
-                {
-                    "args": [
+                spotinst.aws.MrScalarApplicationArgs(
+                    name="Ganglia",
+                    version="1.0",
+                ),
+                spotinst.aws.MrScalarApplicationArgs(
+                    name="Hadoop",
+                ),
+                spotinst.aws.MrScalarApplicationArgs(
+                    args=[
                         "fake",
                         "args",
                     ],
-                    "name": "Pig",
-                },
+                    name="Pig",
+                ),
             ],
             availability_zones=["us-west-2a:subnet-123456"],
-            bootstrap_actions_files=[{
-                "bucket": "terraform-emr-test",
-                "key": "bootstrap-actions.json",
-            }],
-            configurations_files=[{
-                "bucket": "example-bucket",
-                "key": "configurations.json",
-            }],
+            bootstrap_actions_files=[spotinst.aws.MrScalarBootstrapActionsFileArgs(
+                bucket="terraform-emr-test",
+                key="bootstrap-actions.json",
+            )],
+            configurations_files=[spotinst.aws.MrScalarConfigurationsFileArgs(
+                bucket="example-bucket",
+                key="configurations.json",
+            )],
             core_desired_capacity=1,
-            core_ebs_block_devices=[{
-                "sizeInGb": 40,
-                "volumeType": "gp2",
-                "volumesPerInstance": 2,
-            }],
+            core_ebs_block_devices=[spotinst.aws.MrScalarCoreEbsBlockDeviceArgs(
+                size_in_gb=40,
+                volume_type="gp2",
+                volumes_per_instance=2,
+            )],
             core_ebs_optimized=False,
             core_instance_types=[
                 "c3.xlarge",
@@ -319,32 +299,32 @@ class MrScalar(pulumi.CustomResource):
             description="Testing MrScaler creation via Terraform",
             ec2_key_name="test-key",
             instance_weights=[
-                {
-                    "instanceType": "t2.small",
-                    "weightedCapacity": 10,
-                },
-                {
-                    "instanceType": "t2.medium",
-                    "weightedCapacity": 90,
-                },
+                spotinst.aws.MrScalarInstanceWeightArgs(
+                    instance_type="t2.small",
+                    weighted_capacity=10,
+                ),
+                spotinst.aws.MrScalarInstanceWeightArgs(
+                    instance_type="t2.medium",
+                    weighted_capacity=90,
+                ),
             ],
             job_flow_role="EMR_EC2_ExampleRole",
             keep_job_flow_alive=True,
             log_uri="s3://example-logs",
             managed_primary_security_group="sg-123456",
             managed_replica_security_group="sg-987654",
-            master_ebs_block_devices=[{
-                "sizeInGb": 30,
-                "volumeType": "gp2",
-                "volumesPerInstance": 1,
-            }],
+            master_ebs_block_devices=[spotinst.aws.MrScalarMasterEbsBlockDeviceArgs(
+                size_in_gb=30,
+                volume_type="gp2",
+                volumes_per_instance=1,
+            )],
             master_ebs_optimized=True,
             master_instance_types=["c3.xlarge"],
             master_lifecycle="SPOT",
-            provisioning_timeout={
-                "timeout": 15,
-                "timeoutAction": "terminate",
-            },
+            provisioning_timeout=spotinst.aws.MrScalarProvisioningTimeoutArgs(
+                timeout=15,
+                timeout_action="terminate",
+            ),
             region="us-west-2",
             release_label="emr-5.17.0",
             repo_upgrade_on_boot="NONE",
@@ -352,21 +332,21 @@ class MrScalar(pulumi.CustomResource):
             security_config="example-config",
             service_access_security_group="access-example",
             service_role="example-role",
-            steps_files=[{
-                "bucket": "example-bucket",
-                "key": "steps.json",
-            }],
+            steps_files=[spotinst.aws.MrScalarStepsFileArgs(
+                bucket="example-bucket",
+                key="steps.json",
+            )],
             strategy="new",
-            tags=[{
-                "key": "Creator",
-                "value": "Terraform",
-            }],
+            tags=[spotinst.aws.MrScalarTagArgs(
+                key="Creator",
+                value="Terraform",
+            )],
             task_desired_capacity=1,
-            task_ebs_block_devices=[{
-                "sizeInGb": 40,
-                "volumeType": "gp2",
-                "volumesPerInstance": 2,
-            }],
+            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
+                size_in_gb=40,
+                volume_type="gp2",
+                volumes_per_instance=2,
+            )],
             task_ebs_optimized=False,
             task_instance_types=[
                 "c3.xlarge",
@@ -388,11 +368,11 @@ class MrScalar(pulumi.CustomResource):
             availability_zones=["us-west-2a:subnet-12345678"],
             cluster_id="j-123456789",
             core_desired_capacity=1,
-            core_ebs_block_devices=[{
-                "sizeInGb": 40,
-                "volumeType": "gp2",
-                "volumesPerInstance": 2,
-            }],
+            core_ebs_block_devices=[spotinst.aws.MrScalarCoreEbsBlockDeviceArgs(
+                size_in_gb=40,
+                volume_type="gp2",
+                volumes_per_instance=2,
+            )],
             core_ebs_optimized=False,
             core_instance_types=[
                 "c3.xlarge",
@@ -404,26 +384,26 @@ class MrScalar(pulumi.CustomResource):
             core_unit="instance",
             description="Testing MrScaler creation via Terraform",
             expose_cluster_id=True,
-            master_ebs_block_devices=[{
-                "sizeInGb": 30,
-                "volumeType": "gp2",
-                "volumesPerInstance": 1,
-            }],
+            master_ebs_block_devices=[spotinst.aws.MrScalarMasterEbsBlockDeviceArgs(
+                size_in_gb=30,
+                volume_type="gp2",
+                volumes_per_instance=1,
+            )],
             master_ebs_optimized=True,
             master_instance_types=["c3.xlarge"],
             master_lifecycle="SPOT",
             region="us-west-2",
             strategy="clone",
-            tags=[{
-                "key": "Creator",
-                "value": "Terraform",
-            }],
+            tags=[spotinst.aws.MrScalarTagArgs(
+                key="Creator",
+                value="Terraform",
+            )],
             task_desired_capacity=1,
-            task_ebs_block_devices=[{
-                "sizeInGb": 40,
-                "volumeType": "gp2",
-                "volumesPerInstance": 2,
-            }],
+            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
+                size_in_gb=40,
+                volume_type="gp2",
+                volumes_per_instance=2,
+            )],
             task_ebs_optimized=False,
             task_instance_types=[
                 "c3.xlarge",
@@ -432,28 +412,28 @@ class MrScalar(pulumi.CustomResource):
             task_lifecycle="SPOT",
             task_max_size=30,
             task_min_size=0,
-            task_scaling_down_policies=[{
-                "actionType": "",
-                "adjustment": "1",
-                "cooldown": 60,
-                "dimensions": {
+            task_scaling_down_policies=[spotinst.aws.MrScalarTaskScalingDownPolicyArgs(
+                action_type="",
+                adjustment="1",
+                cooldown=60,
+                dimensions={
                     "name": "name-1",
                     "value": "value-1",
                 },
-                "evaluationPeriods": 10,
-                "maxTargetCapacity": 1,
-                "maximum": 10,
-                "metricName": "CPUUtilization",
-                "minimum": 0,
-                "namespace": "AWS/EC2",
-                "operator": "gt",
-                "period": 60,
-                "policyName": "policy-name",
-                "statistic": "average",
-                "target": 5,
-                "threshold": 10,
-                "unit": "",
-            }],
+                evaluation_periods=10,
+                max_target_capacity="1",
+                maximum="10",
+                metric_name="CPUUtilization",
+                minimum="0",
+                namespace="AWS/EC2",
+                operator="gt",
+                period=60,
+                policy_name="policy-name",
+                statistic="average",
+                target="5",
+                threshold=10,
+                unit="",
+            )],
             task_unit="instance")
         pulumi.export("mrscaler-name", terraform__mr_scaler_01.name)
         pulumi.export("mrscaler-created-cluster-id", terraform__mr_scaler_01.output_cluster_id)
@@ -470,11 +450,11 @@ class MrScalar(pulumi.CustomResource):
             region="us-west-2",
             strategy="wrap",
             task_desired_capacity=2,
-            task_ebs_block_devices=[{
-                "sizeInGb": 20,
-                "volumeType": "gp2",
-                "volumesPerInstance": 1,
-            }],
+            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
+                size_in_gb=20,
+                volume_type="gp2",
+                volumes_per_instance=1,
+            )],
             task_instance_types=[
                 "c3.xlarge",
                 "c4.xlarge",
@@ -492,170 +472,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] name: The MrScaler name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-        :param pulumi.Input[list] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
-
-        The **applications** object supports the following:
-
-          * `args` (`pulumi.Input[list]`)
-          * `name` (`pulumi.Input[str]`) - The MrScaler name.
-          * `version` (`pulumi.Input[str]`)
-
-        The **bootstrap_actions_files** object supports the following:
-
-          * `bucket` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-
-        The **configurations_files** object supports the following:
-
-          * `bucket` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-
-        The **core_ebs_block_devices** object supports the following:
-
-          * `iops` (`pulumi.Input[float]`)
-          * `sizeInGb` (`pulumi.Input[float]`)
-          * `volumeType` (`pulumi.Input[str]`)
-          * `volumesPerInstance` (`pulumi.Input[float]`)
-
-        The **core_scaling_down_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
-          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
-          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-
-        The **core_scaling_up_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
-          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
-          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-
-        The **instance_weights** object supports the following:
-
-          * `instanceType` (`pulumi.Input[str]`)
-          * `weightedCapacity` (`pulumi.Input[float]`)
-
-        The **master_ebs_block_devices** object supports the following:
-
-          * `iops` (`pulumi.Input[float]`)
-          * `sizeInGb` (`pulumi.Input[float]`)
-          * `volumeType` (`pulumi.Input[str]`)
-          * `volumesPerInstance` (`pulumi.Input[float]`)
-
-        The **provisioning_timeout** object supports the following:
-
-          * `timeout` (`pulumi.Input[float]`)
-          * `timeoutAction` (`pulumi.Input[str]`)
-
-        The **scheduled_tasks** object supports the following:
-
-          * `cron` (`pulumi.Input[str]`)
-          * `desired_capacity` (`pulumi.Input[str]`)
-          * `instanceGroupType` (`pulumi.Input[str]`)
-          * `isEnabled` (`pulumi.Input[bool]`)
-          * `maxCapacity` (`pulumi.Input[str]`)
-          * `minCapacity` (`pulumi.Input[str]`)
-          * `taskType` (`pulumi.Input[str]`)
-
-        The **steps_files** object supports the following:
-
-          * `bucket` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-
-        The **tags** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **task_ebs_block_devices** object supports the following:
-
-          * `iops` (`pulumi.Input[float]`)
-          * `sizeInGb` (`pulumi.Input[float]`)
-          * `volumeType` (`pulumi.Input[str]`)
-          * `volumesPerInstance` (`pulumi.Input[float]`)
-
-        The **task_scaling_down_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
-          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
-          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-
-        The **task_scaling_up_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
-          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
-          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-
-        The **termination_policies** object supports the following:
-
-          * `statements` (`pulumi.Input[list]`)
-            * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
-            * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
-            * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
-            * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-            * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
-            * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-            * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
-            * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -746,183 +563,82 @@ class MrScalar(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, additional_info=None, additional_primary_security_groups=None, additional_replica_security_groups=None, applications=None, availability_zones=None, bootstrap_actions_files=None, cluster_id=None, configurations_files=None, core_desired_capacity=None, core_ebs_block_devices=None, core_ebs_optimized=None, core_instance_types=None, core_lifecycle=None, core_max_size=None, core_min_size=None, core_scaling_down_policies=None, core_scaling_up_policies=None, core_unit=None, custom_ami_id=None, description=None, ebs_root_volume_size=None, ec2_key_name=None, expose_cluster_id=None, instance_weights=None, job_flow_role=None, keep_job_flow_alive=None, log_uri=None, managed_primary_security_group=None, managed_replica_security_group=None, master_ebs_block_devices=None, master_ebs_optimized=None, master_instance_types=None, master_lifecycle=None, name=None, output_cluster_id=None, provisioning_timeout=None, region=None, release_label=None, repo_upgrade_on_boot=None, retries=None, scheduled_tasks=None, security_config=None, service_access_security_group=None, service_role=None, steps_files=None, strategy=None, tags=None, task_desired_capacity=None, task_ebs_block_devices=None, task_ebs_optimized=None, task_instance_types=None, task_lifecycle=None, task_max_size=None, task_min_size=None, task_scaling_down_policies=None, task_scaling_up_policies=None, task_unit=None, termination_policies=None, termination_protected=None, visible_to_all_users=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_info: Optional[pulumi.Input[str]] = None,
+            additional_primary_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            additional_replica_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            applications: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarApplicationArgs']]]]] = None,
+            availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            bootstrap_actions_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarBootstrapActionsFileArgs']]]]] = None,
+            cluster_id: Optional[pulumi.Input[str]] = None,
+            configurations_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarConfigurationsFileArgs']]]]] = None,
+            core_desired_capacity: Optional[pulumi.Input[float]] = None,
+            core_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreEbsBlockDeviceArgs']]]]] = None,
+            core_ebs_optimized: Optional[pulumi.Input[bool]] = None,
+            core_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            core_lifecycle: Optional[pulumi.Input[str]] = None,
+            core_max_size: Optional[pulumi.Input[float]] = None,
+            core_min_size: Optional[pulumi.Input[float]] = None,
+            core_scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreScalingDownPolicyArgs']]]]] = None,
+            core_scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreScalingUpPolicyArgs']]]]] = None,
+            core_unit: Optional[pulumi.Input[str]] = None,
+            custom_ami_id: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            ebs_root_volume_size: Optional[pulumi.Input[float]] = None,
+            ec2_key_name: Optional[pulumi.Input[str]] = None,
+            expose_cluster_id: Optional[pulumi.Input[bool]] = None,
+            instance_weights: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarInstanceWeightArgs']]]]] = None,
+            job_flow_role: Optional[pulumi.Input[str]] = None,
+            keep_job_flow_alive: Optional[pulumi.Input[bool]] = None,
+            log_uri: Optional[pulumi.Input[str]] = None,
+            managed_primary_security_group: Optional[pulumi.Input[str]] = None,
+            managed_replica_security_group: Optional[pulumi.Input[str]] = None,
+            master_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarMasterEbsBlockDeviceArgs']]]]] = None,
+            master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
+            master_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            master_lifecycle: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            output_cluster_id: Optional[pulumi.Input[str]] = None,
+            provisioning_timeout: Optional[pulumi.Input[pulumi.InputType['MrScalarProvisioningTimeoutArgs']]] = None,
+            region: Optional[pulumi.Input[str]] = None,
+            release_label: Optional[pulumi.Input[str]] = None,
+            repo_upgrade_on_boot: Optional[pulumi.Input[str]] = None,
+            retries: Optional[pulumi.Input[float]] = None,
+            scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarScheduledTaskArgs']]]]] = None,
+            security_config: Optional[pulumi.Input[str]] = None,
+            service_access_security_group: Optional[pulumi.Input[str]] = None,
+            service_role: Optional[pulumi.Input[str]] = None,
+            steps_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarStepsFileArgs']]]]] = None,
+            strategy: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTagArgs']]]]] = None,
+            task_desired_capacity: Optional[pulumi.Input[float]] = None,
+            task_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskEbsBlockDeviceArgs']]]]] = None,
+            task_ebs_optimized: Optional[pulumi.Input[bool]] = None,
+            task_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            task_lifecycle: Optional[pulumi.Input[str]] = None,
+            task_max_size: Optional[pulumi.Input[float]] = None,
+            task_min_size: Optional[pulumi.Input[float]] = None,
+            task_scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskScalingDownPolicyArgs']]]]] = None,
+            task_scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskScalingUpPolicyArgs']]]]] = None,
+            task_unit: Optional[pulumi.Input[str]] = None,
+            termination_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]]] = None,
+            termination_protected: Optional[pulumi.Input[bool]] = None,
+            visible_to_all_users: Optional[pulumi.Input[bool]] = None) -> 'MrScalar':
         """
         Get an existing MrScalar resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
         :param pulumi.Input[str] description: The MrScaler description.
         :param pulumi.Input[str] name: The MrScaler name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-        :param pulumi.Input[list] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
-
-        The **applications** object supports the following:
-
-          * `args` (`pulumi.Input[list]`)
-          * `name` (`pulumi.Input[str]`) - The MrScaler name.
-          * `version` (`pulumi.Input[str]`)
-
-        The **bootstrap_actions_files** object supports the following:
-
-          * `bucket` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-
-        The **configurations_files** object supports the following:
-
-          * `bucket` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-
-        The **core_ebs_block_devices** object supports the following:
-
-          * `iops` (`pulumi.Input[float]`)
-          * `sizeInGb` (`pulumi.Input[float]`)
-          * `volumeType` (`pulumi.Input[str]`)
-          * `volumesPerInstance` (`pulumi.Input[float]`)
-
-        The **core_scaling_down_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
-          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
-          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-
-        The **core_scaling_up_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
-          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
-          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-
-        The **instance_weights** object supports the following:
-
-          * `instanceType` (`pulumi.Input[str]`)
-          * `weightedCapacity` (`pulumi.Input[float]`)
-
-        The **master_ebs_block_devices** object supports the following:
-
-          * `iops` (`pulumi.Input[float]`)
-          * `sizeInGb` (`pulumi.Input[float]`)
-          * `volumeType` (`pulumi.Input[str]`)
-          * `volumesPerInstance` (`pulumi.Input[float]`)
-
-        The **provisioning_timeout** object supports the following:
-
-          * `timeout` (`pulumi.Input[float]`)
-          * `timeoutAction` (`pulumi.Input[str]`)
-
-        The **scheduled_tasks** object supports the following:
-
-          * `cron` (`pulumi.Input[str]`)
-          * `desired_capacity` (`pulumi.Input[str]`)
-          * `instanceGroupType` (`pulumi.Input[str]`)
-          * `isEnabled` (`pulumi.Input[bool]`)
-          * `maxCapacity` (`pulumi.Input[str]`)
-          * `minCapacity` (`pulumi.Input[str]`)
-          * `taskType` (`pulumi.Input[str]`)
-
-        The **steps_files** object supports the following:
-
-          * `bucket` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-
-        The **tags** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **task_ebs_block_devices** object supports the following:
-
-          * `iops` (`pulumi.Input[float]`)
-          * `sizeInGb` (`pulumi.Input[float]`)
-          * `volumeType` (`pulumi.Input[str]`)
-          * `volumesPerInstance` (`pulumi.Input[float]`)
-
-        The **task_scaling_down_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
-          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
-          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-
-        The **task_scaling_up_policies** object supports the following:
-
-          * `actionType` (`pulumi.Input[str]`)
-          * `adjustment` (`pulumi.Input[str]`)
-          * `cooldown` (`pulumi.Input[float]`)
-          * `dimensions` (`pulumi.Input[dict]`)
-          * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
-          * `maxTargetCapacity` (`pulumi.Input[str]`)
-          * `maximum` (`pulumi.Input[str]`)
-          * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
-          * `minTargetCapacity` (`pulumi.Input[str]`)
-          * `minimum` (`pulumi.Input[str]`)
-          * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
-          * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-          * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
-          * `policyName` (`pulumi.Input[str]`)
-          * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-          * `target` (`pulumi.Input[str]`)
-          * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
-          * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-
-        The **termination_policies** object supports the following:
-
-          * `statements` (`pulumi.Input[list]`)
-            * `evaluationPeriods` (`pulumi.Input[float]`) - The number of periods over which data is compared to the specified threshold.
-            * `metricName` (`pulumi.Input[str]`) - The name of the metric in CloudWatch which the statement will be based on.
-            * `namespace` (`pulumi.Input[str]`) - Must contain the value: `AWS/ElasticMapReduce`.
-            * `operator` (`pulumi.Input[str]`) - The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-            * `period` (`pulumi.Input[float]`) - The time window in seconds over which the statistic is applied.
-            * `statistic` (`pulumi.Input[str]`) - The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-            * `threshold` (`pulumi.Input[float]`) - The value that the specified statistic is compared to.
-            * `unit` (`pulumi.Input[str]`) - The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -990,8 +706,327 @@ class MrScalar(pulumi.CustomResource):
         __props__["visible_to_all_users"] = visible_to_all_users
         return MrScalar(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="additionalInfo")
+    def additional_info(self) -> Optional[str]:
+        return pulumi.get(self, "additional_info")
+
+    @property
+    @pulumi.getter(name="additionalPrimarySecurityGroups")
+    def additional_primary_security_groups(self) -> Optional[List[str]]:
+        return pulumi.get(self, "additional_primary_security_groups")
+
+    @property
+    @pulumi.getter(name="additionalReplicaSecurityGroups")
+    def additional_replica_security_groups(self) -> Optional[List[str]]:
+        return pulumi.get(self, "additional_replica_security_groups")
+
+    @property
+    @pulumi.getter
+    def applications(self) -> Optional[List['outputs.MrScalarApplication']]:
+        return pulumi.get(self, "applications")
+
+    @property
+    @pulumi.getter(name="availabilityZones")
+    def availability_zones(self) -> Optional[List[str]]:
+        return pulumi.get(self, "availability_zones")
+
+    @property
+    @pulumi.getter(name="bootstrapActionsFiles")
+    def bootstrap_actions_files(self) -> Optional[List['outputs.MrScalarBootstrapActionsFile']]:
+        return pulumi.get(self, "bootstrap_actions_files")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[str]:
+        """
+        The MrScaler cluster id.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="configurationsFiles")
+    def configurations_files(self) -> Optional[List['outputs.MrScalarConfigurationsFile']]:
+        return pulumi.get(self, "configurations_files")
+
+    @property
+    @pulumi.getter(name="coreDesiredCapacity")
+    def core_desired_capacity(self) -> Optional[float]:
+        return pulumi.get(self, "core_desired_capacity")
+
+    @property
+    @pulumi.getter(name="coreEbsBlockDevices")
+    def core_ebs_block_devices(self) -> Optional[List['outputs.MrScalarCoreEbsBlockDevice']]:
+        return pulumi.get(self, "core_ebs_block_devices")
+
+    @property
+    @pulumi.getter(name="coreEbsOptimized")
+    def core_ebs_optimized(self) -> Optional[bool]:
+        return pulumi.get(self, "core_ebs_optimized")
+
+    @property
+    @pulumi.getter(name="coreInstanceTypes")
+    def core_instance_types(self) -> Optional[List[str]]:
+        return pulumi.get(self, "core_instance_types")
+
+    @property
+    @pulumi.getter(name="coreLifecycle")
+    def core_lifecycle(self) -> Optional[str]:
+        return pulumi.get(self, "core_lifecycle")
+
+    @property
+    @pulumi.getter(name="coreMaxSize")
+    def core_max_size(self) -> Optional[float]:
+        return pulumi.get(self, "core_max_size")
+
+    @property
+    @pulumi.getter(name="coreMinSize")
+    def core_min_size(self) -> Optional[float]:
+        return pulumi.get(self, "core_min_size")
+
+    @property
+    @pulumi.getter(name="coreScalingDownPolicies")
+    def core_scaling_down_policies(self) -> Optional[List['outputs.MrScalarCoreScalingDownPolicy']]:
+        return pulumi.get(self, "core_scaling_down_policies")
+
+    @property
+    @pulumi.getter(name="coreScalingUpPolicies")
+    def core_scaling_up_policies(self) -> Optional[List['outputs.MrScalarCoreScalingUpPolicy']]:
+        return pulumi.get(self, "core_scaling_up_policies")
+
+    @property
+    @pulumi.getter(name="coreUnit")
+    def core_unit(self) -> Optional[str]:
+        return pulumi.get(self, "core_unit")
+
+    @property
+    @pulumi.getter(name="customAmiId")
+    def custom_ami_id(self) -> Optional[str]:
+        return pulumi.get(self, "custom_ami_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The MrScaler description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="ebsRootVolumeSize")
+    def ebs_root_volume_size(self) -> Optional[float]:
+        return pulumi.get(self, "ebs_root_volume_size")
+
+    @property
+    @pulumi.getter(name="ec2KeyName")
+    def ec2_key_name(self) -> Optional[str]:
+        return pulumi.get(self, "ec2_key_name")
+
+    @property
+    @pulumi.getter(name="exposeClusterId")
+    def expose_cluster_id(self) -> Optional[bool]:
+        return pulumi.get(self, "expose_cluster_id")
+
+    @property
+    @pulumi.getter(name="instanceWeights")
+    def instance_weights(self) -> Optional[List['outputs.MrScalarInstanceWeight']]:
+        return pulumi.get(self, "instance_weights")
+
+    @property
+    @pulumi.getter(name="jobFlowRole")
+    def job_flow_role(self) -> Optional[str]:
+        return pulumi.get(self, "job_flow_role")
+
+    @property
+    @pulumi.getter(name="keepJobFlowAlive")
+    def keep_job_flow_alive(self) -> Optional[bool]:
+        return pulumi.get(self, "keep_job_flow_alive")
+
+    @property
+    @pulumi.getter(name="logUri")
+    def log_uri(self) -> Optional[str]:
+        return pulumi.get(self, "log_uri")
+
+    @property
+    @pulumi.getter(name="managedPrimarySecurityGroup")
+    def managed_primary_security_group(self) -> Optional[str]:
+        return pulumi.get(self, "managed_primary_security_group")
+
+    @property
+    @pulumi.getter(name="managedReplicaSecurityGroup")
+    def managed_replica_security_group(self) -> Optional[str]:
+        return pulumi.get(self, "managed_replica_security_group")
+
+    @property
+    @pulumi.getter(name="masterEbsBlockDevices")
+    def master_ebs_block_devices(self) -> Optional[List['outputs.MrScalarMasterEbsBlockDevice']]:
+        return pulumi.get(self, "master_ebs_block_devices")
+
+    @property
+    @pulumi.getter(name="masterEbsOptimized")
+    def master_ebs_optimized(self) -> Optional[bool]:
+        return pulumi.get(self, "master_ebs_optimized")
+
+    @property
+    @pulumi.getter(name="masterInstanceTypes")
+    def master_instance_types(self) -> Optional[List[str]]:
+        return pulumi.get(self, "master_instance_types")
+
+    @property
+    @pulumi.getter(name="masterLifecycle")
+    def master_lifecycle(self) -> Optional[str]:
+        return pulumi.get(self, "master_lifecycle")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The MrScaler name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="outputClusterId")
+    def output_cluster_id(self) -> str:
+        return pulumi.get(self, "output_cluster_id")
+
+    @property
+    @pulumi.getter(name="provisioningTimeout")
+    def provisioning_timeout(self) -> Optional['outputs.MrScalarProvisioningTimeout']:
+        return pulumi.get(self, "provisioning_timeout")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The MrScaler region.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="releaseLabel")
+    def release_label(self) -> Optional[str]:
+        return pulumi.get(self, "release_label")
+
+    @property
+    @pulumi.getter(name="repoUpgradeOnBoot")
+    def repo_upgrade_on_boot(self) -> Optional[str]:
+        return pulumi.get(self, "repo_upgrade_on_boot")
+
+    @property
+    @pulumi.getter
+    def retries(self) -> Optional[float]:
+        return pulumi.get(self, "retries")
+
+    @property
+    @pulumi.getter(name="scheduledTasks")
+    def scheduled_tasks(self) -> Optional[List['outputs.MrScalarScheduledTask']]:
+        return pulumi.get(self, "scheduled_tasks")
+
+    @property
+    @pulumi.getter(name="securityConfig")
+    def security_config(self) -> Optional[str]:
+        return pulumi.get(self, "security_config")
+
+    @property
+    @pulumi.getter(name="serviceAccessSecurityGroup")
+    def service_access_security_group(self) -> Optional[str]:
+        return pulumi.get(self, "service_access_security_group")
+
+    @property
+    @pulumi.getter(name="serviceRole")
+    def service_role(self) -> Optional[str]:
+        return pulumi.get(self, "service_role")
+
+    @property
+    @pulumi.getter(name="stepsFiles")
+    def steps_files(self) -> Optional[List['outputs.MrScalarStepsFile']]:
+        return pulumi.get(self, "steps_files")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> str:
+        """
+        The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
+        """
+        return pulumi.get(self, "strategy")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List['outputs.MrScalarTag']]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="taskDesiredCapacity")
+    def task_desired_capacity(self) -> Optional[float]:
+        return pulumi.get(self, "task_desired_capacity")
+
+    @property
+    @pulumi.getter(name="taskEbsBlockDevices")
+    def task_ebs_block_devices(self) -> Optional[List['outputs.MrScalarTaskEbsBlockDevice']]:
+        return pulumi.get(self, "task_ebs_block_devices")
+
+    @property
+    @pulumi.getter(name="taskEbsOptimized")
+    def task_ebs_optimized(self) -> Optional[bool]:
+        return pulumi.get(self, "task_ebs_optimized")
+
+    @property
+    @pulumi.getter(name="taskInstanceTypes")
+    def task_instance_types(self) -> Optional[List[str]]:
+        return pulumi.get(self, "task_instance_types")
+
+    @property
+    @pulumi.getter(name="taskLifecycle")
+    def task_lifecycle(self) -> Optional[str]:
+        return pulumi.get(self, "task_lifecycle")
+
+    @property
+    @pulumi.getter(name="taskMaxSize")
+    def task_max_size(self) -> Optional[float]:
+        return pulumi.get(self, "task_max_size")
+
+    @property
+    @pulumi.getter(name="taskMinSize")
+    def task_min_size(self) -> Optional[float]:
+        return pulumi.get(self, "task_min_size")
+
+    @property
+    @pulumi.getter(name="taskScalingDownPolicies")
+    def task_scaling_down_policies(self) -> Optional[List['outputs.MrScalarTaskScalingDownPolicy']]:
+        return pulumi.get(self, "task_scaling_down_policies")
+
+    @property
+    @pulumi.getter(name="taskScalingUpPolicies")
+    def task_scaling_up_policies(self) -> Optional[List['outputs.MrScalarTaskScalingUpPolicy']]:
+        return pulumi.get(self, "task_scaling_up_policies")
+
+    @property
+    @pulumi.getter(name="taskUnit")
+    def task_unit(self) -> Optional[str]:
+        return pulumi.get(self, "task_unit")
+
+    @property
+    @pulumi.getter(name="terminationPolicies")
+    def termination_policies(self) -> Optional[List['outputs.MrScalarTerminationPolicy']]:
+        """
+        Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+        """
+        return pulumi.get(self, "termination_policies")
+
+    @property
+    @pulumi.getter(name="terminationProtected")
+    def termination_protected(self) -> Optional[bool]:
+        return pulumi.get(self, "termination_protected")
+
+    @property
+    @pulumi.getter(name="visibleToAllUsers")
+    def visible_to_all_users(self) -> Optional[bool]:
+        return pulumi.get(self, "visible_to_all_users")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

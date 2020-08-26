@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = ['OceanLaunchSpecImport']
 
 
 class OceanLaunchSpecImport(pulumi.CustomResource):
-    node_pool_name: pulumi.Output[str]
-    """
-    The node pool you wish to use in your launchSpec.
-    """
-    ocean_id: pulumi.Output[str]
-    """
-    The Ocean cluster ID required for launchSpec create.
-    """
-    def __init__(__self__, resource_name, opts=None, node_pool_name=None, ocean_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 node_pool_name: Optional[pulumi.Input[str]] = None,
+                 ocean_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a custom Spotinst Ocean GKE Launch Spec Import resource.
 
@@ -68,13 +69,17 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, node_pool_name=None, ocean_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            node_pool_name: Optional[pulumi.Input[str]] = None,
+            ocean_id: Optional[pulumi.Input[str]] = None) -> 'OceanLaunchSpecImport':
         """
         Get an existing OceanLaunchSpecImport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your launchSpec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
@@ -87,8 +92,25 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
         __props__["ocean_id"] = ocean_id
         return OceanLaunchSpecImport(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="nodePoolName")
+    def node_pool_name(self) -> str:
+        """
+        The node pool you wish to use in your launchSpec.
+        """
+        return pulumi.get(self, "node_pool_name")
+
+    @property
+    @pulumi.getter(name="oceanId")
+    def ocean_id(self) -> str:
+        """
+        The Ocean cluster ID required for launchSpec create.
+        """
+        return pulumi.get(self, "ocean_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

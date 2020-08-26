@@ -5,51 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['OceanLaunchSpec']
 
 
 class OceanLaunchSpec(pulumi.CustomResource):
-    autoscale_headrooms: pulumi.Output[list]
-    """
-    Set custom headroom per launch spec. provide list of headrooms object.
-
-      * `cpuPerUnit` (`float`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-      * `gpuPerUnit` (`float`) - Optionally configure the number of GPUS to allocate for each headroom unit.
-      * `memoryPerUnit` (`float`) - Optionally configure the amount of memory (MB) to allocate for each headroom unit.
-      * `numOfUnits` (`float`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-    """
-    labels: pulumi.Output[list]
-    """
-    Cluster's labels.
-
-      * `key` (`str`)
-      * `value` (`str`)
-    """
-    metadatas: pulumi.Output[list]
-    """
-    Cluster's metadata.
-
-      * `key` (`str`)
-      * `value` (`str`)
-    """
-    ocean_id: pulumi.Output[str]
-    """
-    The Ocean cluster ID required for launchSpec create.
-    """
-    source_image: pulumi.Output[str]
-    """
-    Image URL.
-    """
-    taints: pulumi.Output[list]
-    """
-    Cluster's taints.
-
-      * `effect` (`str`)
-      * `key` (`str`)
-      * `value` (`str`)
-    """
-    def __init__(__self__, resource_name, opts=None, autoscale_headrooms=None, labels=None, metadatas=None, ocean_id=None, source_image=None, taints=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscale_headrooms: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
+                 metadatas: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
+                 ocean_id: Optional[pulumi.Input[str]] = None,
+                 source_image: Optional[pulumi.Input[str]] = None,
+                 taints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a custom Spotinst Ocean GKE Launch Spec resource.
 
@@ -60,60 +36,37 @@ class OceanLaunchSpec(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.gke.OceanLaunchSpec("example",
-            autoscale_headrooms=[{
-                "cpuPerUnit": 1000,
-                "gpuPerUnit": 0,
-                "memoryPerUnit": 2048,
-                "numOfUnits": 5,
-            }],
-            labels=[{
-                "key": "labelKey",
-                "value": "labelVal",
-            }],
-            metadatas=[{
-                "key": "gci-update-strategy",
-                "value": "update_disabled",
-            }],
+            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
+                cpu_per_unit=1000,
+                gpu_per_unit=0,
+                memory_per_unit=2048,
+                num_of_units=5,
+            )],
+            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
+                key="labelKey",
+                value="labelVal",
+            )],
+            metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
+                key="gci-update-strategy",
+                value="update_disabled",
+            )],
             ocean_id="o-123456",
             source_image="image",
-            taints=[{
-                "effect": "taintEffect",
-                "key": "taintKey",
-                "value": "taintVal",
-            }])
+            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
+                effect="taintEffect",
+                key="taintKey",
+                value="taintVal",
+            )])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
-        :param pulumi.Input[list] labels: Cluster's labels.
-        :param pulumi.Input[list] metadatas: Cluster's metadata.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Cluster's labels.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
         :param pulumi.Input[str] source_image: Image URL.
-        :param pulumi.Input[list] taints: Cluster's taints.
-
-        The **autoscale_headrooms** object supports the following:
-
-          * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-          * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate for each headroom unit.
-          * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate for each headroom unit.
-          * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-
-        The **labels** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **metadatas** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **taints** object supports the following:
-
-          * `effect` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Cluster's taints.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -151,43 +104,28 @@ class OceanLaunchSpec(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, autoscale_headrooms=None, labels=None, metadatas=None, ocean_id=None, source_image=None, taints=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autoscale_headrooms: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+            labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
+            metadatas: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
+            ocean_id: Optional[pulumi.Input[str]] = None,
+            source_image: Optional[pulumi.Input[str]] = None,
+            taints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None) -> 'OceanLaunchSpec':
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
-        :param pulumi.Input[list] labels: Cluster's labels.
-        :param pulumi.Input[list] metadatas: Cluster's metadata.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Cluster's labels.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
         :param pulumi.Input[str] source_image: Image URL.
-        :param pulumi.Input[list] taints: Cluster's taints.
-
-        The **autoscale_headrooms** object supports the following:
-
-          * `cpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-          * `gpuPerUnit` (`pulumi.Input[float]`) - Optionally configure the number of GPUS to allocate for each headroom unit.
-          * `memoryPerUnit` (`pulumi.Input[float]`) - Optionally configure the amount of memory (MB) to allocate for each headroom unit.
-          * `numOfUnits` (`pulumi.Input[float]`) - The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-
-        The **labels** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **metadatas** object supports the following:
-
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
-
-        The **taints** object supports the following:
-
-          * `effect` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Cluster's taints.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -201,8 +139,57 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["taints"] = taints
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="autoscaleHeadrooms")
+    def autoscale_headrooms(self) -> Optional[List['outputs.OceanLaunchSpecAutoscaleHeadroom']]:
+        """
+        Set custom headroom per launch spec. provide list of headrooms object.
+        """
+        return pulumi.get(self, "autoscale_headrooms")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[List['outputs.OceanLaunchSpecLabel']]:
+        """
+        Cluster's labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> List['outputs.OceanLaunchSpecMetadata']:
+        """
+        Cluster's metadata.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter(name="oceanId")
+    def ocean_id(self) -> str:
+        """
+        The Ocean cluster ID required for launchSpec create.
+        """
+        return pulumi.get(self, "ocean_id")
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> str:
+        """
+        Image URL.
+        """
+        return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[List['outputs.OceanLaunchSpecTaint']]:
+        """
+        Cluster's taints.
+        """
+        return pulumi.get(self, "taints")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
