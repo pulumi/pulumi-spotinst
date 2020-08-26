@@ -11,6 +11,128 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a custom Spotinst Ocean AWS Launch Spec resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new SpotInst.Aws.OceanLaunchSpec("example", new SpotInst.Aws.OceanLaunchSpecArgs
+    ///         {
+    ///             AutoscaleHeadrooms = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
+    ///                 {
+    ///                     CpuPerUnit = 1000,
+    ///                     GpuPerUnit = 0,
+    ///                     MemoryPerUnit = 2048,
+    ///                     NumOfUnits = 5,
+    ///                 },
+    ///             },
+    ///             BlockDeviceMappings = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
+    ///                 {
+    ///                     DeviceName = "/dev/xvda1",
+    ///                     Ebs = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
+    ///                     {
+    ///                         DeleteOnTermination = true,
+    ///                         DynamicVolumeSize = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs
+    ///                         {
+    ///                             BaseSize = 50,
+    ///                             Resource = "CPU",
+    ///                             SizePerResourceUnit = 20,
+    ///                         },
+    ///                         Encrypted = false,
+    ///                         VolumeSize = 50,
+    ///                         VolumeType = "gp2",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ElasticIpPools = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs
+    ///                 {
+    ///                     TagSelector = new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs
+    ///                     {
+    ///                         TagKey = "key",
+    ///                         TagValue = "value",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             IamInstanceProfile = "iam-profile",
+    ///             ImageId = "ami-123456",
+    ///             InstanceTypes = 
+    ///             {
+    ///                 "m3.large",
+    ///                 "m3.xlarge",
+    ///                 "m3.2xlarge",
+    ///                 "m4.large",
+    ///                 "m4.xlarge",
+    ///                 "m4.4xlarge",
+    ///                 "m4.2xlarge",
+    ///                 "m4.10xlarge",
+    ///                 "m4.16xlarge",
+    ///                 "m5.large",
+    ///                 "m5.xlarge",
+    ///                 "m5.2xlarge",
+    ///                 "m5.4xlarge",
+    ///                 "m5.12xlarge",
+    ///                 "m5.24xlarge",
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecLabelArgs
+    ///                 {
+    ///                     Key = "fakeKey",
+    ///                     Value = "fakeValue",
+    ///                 },
+    ///             },
+    ///             OceanId = "o-123456",
+    ///             ResourceLimits = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecResourceLimitArgs
+    ///                 {
+    ///                     MaxInstanceCount = 4,
+    ///                 },
+    ///             },
+    ///             RootVolumeSize = 30,
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "sg-987654321",
+    ///             },
+    ///             SubnetIds = 
+    ///             {
+    ///                 "subnet-1234",
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecTagArgs
+    ///                 {
+    ///                     Key = "Env",
+    ///                     Value = "production",
+    ///                 },
+    ///             },
+    ///             Taints = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecTaintArgs
+    ///                 {
+    ///                     Effect = "NoExecute",
+    ///                     Key = "taint key updated",
+    ///                     Value = "taint value updated",
+    ///                 },
+    ///             },
+    ///             UserData = "echo hello world",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class OceanLaunchSpec : Pulumi.CustomResource
     {
@@ -44,6 +166,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        /// </summary>
         [Output("instanceTypes")]
         public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
@@ -200,6 +325,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
+
+        /// <summary>
+        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        /// </summary>
         public InputList<string> InstanceTypes
         {
             get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
@@ -355,6 +484,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
+
+        /// <summary>
+        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        /// </summary>
         public InputList<string> InstanceTypes
         {
             get => _instanceTypes ?? (_instanceTypes = new InputList<string>());

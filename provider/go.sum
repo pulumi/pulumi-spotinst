@@ -630,6 +630,8 @@ github.com/terraform-providers/terraform-provider-spotinst v1.23.0 h1:U5IwfswnFl
 github.com/terraform-providers/terraform-provider-spotinst v1.23.0/go.mod h1:eIzr9z8brgUhxmj9cnirEJKf3Nfj39KfMBHm5fXmD50=
 github.com/terraform-providers/terraform-provider-spotinst v1.24.0 h1:pbGZPacPfo4iIZklZhuC/oJy9LdzFUIBmkRsAFCX/ns=
 github.com/terraform-providers/terraform-provider-spotinst v1.24.0/go.mod h1:eIzr9z8brgUhxmj9cnirEJKf3Nfj39KfMBHm5fXmD50=
+github.com/terraform-providers/terraform-provider-spotinst v1.25.0 h1:hIsIptNRxu+WxIiaxOd/riUjPGc/rCpMKHWkF7M56o8=
+github.com/terraform-providers/terraform-provider-spotinst v1.25.0/go.mod h1:eIzr9z8brgUhxmj9cnirEJKf3Nfj39KfMBHm5fXmD50=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=

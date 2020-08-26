@@ -39,6 +39,81 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Provides a custom Spotinst Ocean AWS Launch Spec resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.aws.OceanLaunchSpec("example",
+            autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(
+                cpu_per_unit=1000,
+                gpu_per_unit=0,
+                memory_per_unit=2048,
+                num_of_units=5,
+            )],
+            block_device_mappings=[spotinst.aws.OceanLaunchSpecBlockDeviceMappingArgs(
+                device_name="/dev/xvda1",
+                ebs=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsArgs(
+                    delete_on_termination=True,
+                    dynamic_volume_size=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
+                        base_size=50,
+                        resource="CPU",
+                        size_per_resource_unit=20,
+                    ),
+                    encrypted=False,
+                    volume_size=50,
+                    volume_type="gp2",
+                ),
+            )],
+            elastic_ip_pools=[spotinst.aws.OceanLaunchSpecElasticIpPoolArgs(
+                tag_selector=spotinst.aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs(
+                    tag_key="key",
+                    tag_value="value",
+                ),
+            )],
+            iam_instance_profile="iam-profile",
+            image_id="ami-123456",
+            instance_types=[
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.4xlarge",
+                "m4.2xlarge",
+                "m4.10xlarge",
+                "m4.16xlarge",
+                "m5.large",
+                "m5.xlarge",
+                "m5.2xlarge",
+                "m5.4xlarge",
+                "m5.12xlarge",
+                "m5.24xlarge",
+            ],
+            labels=[spotinst.aws.OceanLaunchSpecLabelArgs(
+                key="fakeKey",
+                value="fakeValue",
+            )],
+            ocean_id="o-123456",
+            resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(
+                max_instance_count=4,
+            )],
+            root_volume_size=30,
+            security_groups=["sg-987654321"],
+            subnet_ids=["subnet-1234"],
+            tags=[spotinst.aws.OceanLaunchSpecTagArgs(
+                key="Env",
+                value="production",
+            )],
+            taints=[spotinst.aws.OceanLaunchSpecTaintArgs(
+                effect="NoExecute",
+                key="taint key updated",
+                value="taint value updated",
+            )],
+            user_data="echo hello world")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
@@ -46,6 +121,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the launch spec. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[List[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[str] name: Set Launch Specification name
         :param pulumi.Input[str] ocean_id: The ocean cluster you wish to
@@ -129,6 +205,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the launch spec. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[List[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[str] name: Set Launch Specification name
         :param pulumi.Input[str] ocean_id: The ocean cluster you wish to
@@ -204,6 +281,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instanceTypes")
     def instance_types(self) -> Optional[List[str]]:
+        """
+        A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        """
         return pulumi.get(self, "instance_types")
 
     @property
