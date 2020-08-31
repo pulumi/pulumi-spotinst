@@ -15,7 +15,7 @@ __all__ = ['MrScalar']
 
 class MrScalar(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_info: Optional[pulumi.Input[str]] = None,
                  additional_primary_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -708,37 +708,37 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalInfo")
-    def additional_info(self) -> Optional[str]:
+    def additional_info(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "additional_info")
 
     @property
     @pulumi.getter(name="additionalPrimarySecurityGroups")
-    def additional_primary_security_groups(self) -> Optional[List[str]]:
+    def additional_primary_security_groups(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "additional_primary_security_groups")
 
     @property
     @pulumi.getter(name="additionalReplicaSecurityGroups")
-    def additional_replica_security_groups(self) -> Optional[List[str]]:
+    def additional_replica_security_groups(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "additional_replica_security_groups")
 
     @property
     @pulumi.getter
-    def applications(self) -> Optional[List['outputs.MrScalarApplication']]:
+    def applications(self) -> pulumi.Output[Optional[List['outputs.MrScalarApplication']]]:
         return pulumi.get(self, "applications")
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> Optional[List[str]]:
+    def availability_zones(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "availability_zones")
 
     @property
     @pulumi.getter(name="bootstrapActionsFiles")
-    def bootstrap_actions_files(self) -> Optional[List['outputs.MrScalarBootstrapActionsFile']]:
+    def bootstrap_actions_files(self) -> pulumi.Output[Optional[List['outputs.MrScalarBootstrapActionsFile']]]:
         return pulumi.get(self, "bootstrap_actions_files")
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[str]:
+    def cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
         The MrScaler cluster id.
         """
@@ -746,67 +746,67 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configurationsFiles")
-    def configurations_files(self) -> Optional[List['outputs.MrScalarConfigurationsFile']]:
+    def configurations_files(self) -> pulumi.Output[Optional[List['outputs.MrScalarConfigurationsFile']]]:
         return pulumi.get(self, "configurations_files")
 
     @property
     @pulumi.getter(name="coreDesiredCapacity")
-    def core_desired_capacity(self) -> Optional[float]:
+    def core_desired_capacity(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "core_desired_capacity")
 
     @property
     @pulumi.getter(name="coreEbsBlockDevices")
-    def core_ebs_block_devices(self) -> Optional[List['outputs.MrScalarCoreEbsBlockDevice']]:
+    def core_ebs_block_devices(self) -> pulumi.Output[Optional[List['outputs.MrScalarCoreEbsBlockDevice']]]:
         return pulumi.get(self, "core_ebs_block_devices")
 
     @property
     @pulumi.getter(name="coreEbsOptimized")
-    def core_ebs_optimized(self) -> Optional[bool]:
+    def core_ebs_optimized(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "core_ebs_optimized")
 
     @property
     @pulumi.getter(name="coreInstanceTypes")
-    def core_instance_types(self) -> Optional[List[str]]:
+    def core_instance_types(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "core_instance_types")
 
     @property
     @pulumi.getter(name="coreLifecycle")
-    def core_lifecycle(self) -> Optional[str]:
+    def core_lifecycle(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "core_lifecycle")
 
     @property
     @pulumi.getter(name="coreMaxSize")
-    def core_max_size(self) -> Optional[float]:
+    def core_max_size(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "core_max_size")
 
     @property
     @pulumi.getter(name="coreMinSize")
-    def core_min_size(self) -> Optional[float]:
+    def core_min_size(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "core_min_size")
 
     @property
     @pulumi.getter(name="coreScalingDownPolicies")
-    def core_scaling_down_policies(self) -> Optional[List['outputs.MrScalarCoreScalingDownPolicy']]:
+    def core_scaling_down_policies(self) -> pulumi.Output[Optional[List['outputs.MrScalarCoreScalingDownPolicy']]]:
         return pulumi.get(self, "core_scaling_down_policies")
 
     @property
     @pulumi.getter(name="coreScalingUpPolicies")
-    def core_scaling_up_policies(self) -> Optional[List['outputs.MrScalarCoreScalingUpPolicy']]:
+    def core_scaling_up_policies(self) -> pulumi.Output[Optional[List['outputs.MrScalarCoreScalingUpPolicy']]]:
         return pulumi.get(self, "core_scaling_up_policies")
 
     @property
     @pulumi.getter(name="coreUnit")
-    def core_unit(self) -> Optional[str]:
+    def core_unit(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "core_unit")
 
     @property
     @pulumi.getter(name="customAmiId")
-    def custom_ami_id(self) -> Optional[str]:
+    def custom_ami_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "custom_ami_id")
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The MrScaler description.
         """
@@ -814,72 +814,72 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ebsRootVolumeSize")
-    def ebs_root_volume_size(self) -> Optional[float]:
+    def ebs_root_volume_size(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "ebs_root_volume_size")
 
     @property
     @pulumi.getter(name="ec2KeyName")
-    def ec2_key_name(self) -> Optional[str]:
+    def ec2_key_name(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "ec2_key_name")
 
     @property
     @pulumi.getter(name="exposeClusterId")
-    def expose_cluster_id(self) -> Optional[bool]:
+    def expose_cluster_id(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "expose_cluster_id")
 
     @property
     @pulumi.getter(name="instanceWeights")
-    def instance_weights(self) -> Optional[List['outputs.MrScalarInstanceWeight']]:
+    def instance_weights(self) -> pulumi.Output[Optional[List['outputs.MrScalarInstanceWeight']]]:
         return pulumi.get(self, "instance_weights")
 
     @property
     @pulumi.getter(name="jobFlowRole")
-    def job_flow_role(self) -> Optional[str]:
+    def job_flow_role(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "job_flow_role")
 
     @property
     @pulumi.getter(name="keepJobFlowAlive")
-    def keep_job_flow_alive(self) -> Optional[bool]:
+    def keep_job_flow_alive(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "keep_job_flow_alive")
 
     @property
     @pulumi.getter(name="logUri")
-    def log_uri(self) -> Optional[str]:
+    def log_uri(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "log_uri")
 
     @property
     @pulumi.getter(name="managedPrimarySecurityGroup")
-    def managed_primary_security_group(self) -> Optional[str]:
+    def managed_primary_security_group(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "managed_primary_security_group")
 
     @property
     @pulumi.getter(name="managedReplicaSecurityGroup")
-    def managed_replica_security_group(self) -> Optional[str]:
+    def managed_replica_security_group(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "managed_replica_security_group")
 
     @property
     @pulumi.getter(name="masterEbsBlockDevices")
-    def master_ebs_block_devices(self) -> Optional[List['outputs.MrScalarMasterEbsBlockDevice']]:
+    def master_ebs_block_devices(self) -> pulumi.Output[Optional[List['outputs.MrScalarMasterEbsBlockDevice']]]:
         return pulumi.get(self, "master_ebs_block_devices")
 
     @property
     @pulumi.getter(name="masterEbsOptimized")
-    def master_ebs_optimized(self) -> Optional[bool]:
+    def master_ebs_optimized(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "master_ebs_optimized")
 
     @property
     @pulumi.getter(name="masterInstanceTypes")
-    def master_instance_types(self) -> Optional[List[str]]:
+    def master_instance_types(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "master_instance_types")
 
     @property
     @pulumi.getter(name="masterLifecycle")
-    def master_lifecycle(self) -> Optional[str]:
+    def master_lifecycle(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "master_lifecycle")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The MrScaler name.
         """
@@ -887,17 +887,17 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="outputClusterId")
-    def output_cluster_id(self) -> str:
+    def output_cluster_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "output_cluster_id")
 
     @property
     @pulumi.getter(name="provisioningTimeout")
-    def provisioning_timeout(self) -> Optional['outputs.MrScalarProvisioningTimeout']:
+    def provisioning_timeout(self) -> pulumi.Output[Optional['outputs.MrScalarProvisioningTimeout']]:
         return pulumi.get(self, "provisioning_timeout")
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         The MrScaler region.
         """
@@ -905,47 +905,47 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="releaseLabel")
-    def release_label(self) -> Optional[str]:
+    def release_label(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "release_label")
 
     @property
     @pulumi.getter(name="repoUpgradeOnBoot")
-    def repo_upgrade_on_boot(self) -> Optional[str]:
+    def repo_upgrade_on_boot(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "repo_upgrade_on_boot")
 
     @property
     @pulumi.getter
-    def retries(self) -> Optional[float]:
+    def retries(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "retries")
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[List['outputs.MrScalarScheduledTask']]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.MrScalarScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property
     @pulumi.getter(name="securityConfig")
-    def security_config(self) -> Optional[str]:
+    def security_config(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "security_config")
 
     @property
     @pulumi.getter(name="serviceAccessSecurityGroup")
-    def service_access_security_group(self) -> Optional[str]:
+    def service_access_security_group(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "service_access_security_group")
 
     @property
     @pulumi.getter(name="serviceRole")
-    def service_role(self) -> Optional[str]:
+    def service_role(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "service_role")
 
     @property
     @pulumi.getter(name="stepsFiles")
-    def steps_files(self) -> Optional[List['outputs.MrScalarStepsFile']]:
+    def steps_files(self) -> pulumi.Output[Optional[List['outputs.MrScalarStepsFile']]]:
         return pulumi.get(self, "steps_files")
 
     @property
     @pulumi.getter
-    def strategy(self) -> str:
+    def strategy(self) -> pulumi.Output[str]:
         """
         The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
         """
@@ -953,62 +953,62 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List['outputs.MrScalarTag']]:
+    def tags(self) -> pulumi.Output[Optional[List['outputs.MrScalarTag']]]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="taskDesiredCapacity")
-    def task_desired_capacity(self) -> Optional[float]:
+    def task_desired_capacity(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "task_desired_capacity")
 
     @property
     @pulumi.getter(name="taskEbsBlockDevices")
-    def task_ebs_block_devices(self) -> Optional[List['outputs.MrScalarTaskEbsBlockDevice']]:
+    def task_ebs_block_devices(self) -> pulumi.Output[Optional[List['outputs.MrScalarTaskEbsBlockDevice']]]:
         return pulumi.get(self, "task_ebs_block_devices")
 
     @property
     @pulumi.getter(name="taskEbsOptimized")
-    def task_ebs_optimized(self) -> Optional[bool]:
+    def task_ebs_optimized(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "task_ebs_optimized")
 
     @property
     @pulumi.getter(name="taskInstanceTypes")
-    def task_instance_types(self) -> Optional[List[str]]:
+    def task_instance_types(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "task_instance_types")
 
     @property
     @pulumi.getter(name="taskLifecycle")
-    def task_lifecycle(self) -> Optional[str]:
+    def task_lifecycle(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "task_lifecycle")
 
     @property
     @pulumi.getter(name="taskMaxSize")
-    def task_max_size(self) -> Optional[float]:
+    def task_max_size(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "task_max_size")
 
     @property
     @pulumi.getter(name="taskMinSize")
-    def task_min_size(self) -> Optional[float]:
+    def task_min_size(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "task_min_size")
 
     @property
     @pulumi.getter(name="taskScalingDownPolicies")
-    def task_scaling_down_policies(self) -> Optional[List['outputs.MrScalarTaskScalingDownPolicy']]:
+    def task_scaling_down_policies(self) -> pulumi.Output[Optional[List['outputs.MrScalarTaskScalingDownPolicy']]]:
         return pulumi.get(self, "task_scaling_down_policies")
 
     @property
     @pulumi.getter(name="taskScalingUpPolicies")
-    def task_scaling_up_policies(self) -> Optional[List['outputs.MrScalarTaskScalingUpPolicy']]:
+    def task_scaling_up_policies(self) -> pulumi.Output[Optional[List['outputs.MrScalarTaskScalingUpPolicy']]]:
         return pulumi.get(self, "task_scaling_up_policies")
 
     @property
     @pulumi.getter(name="taskUnit")
-    def task_unit(self) -> Optional[str]:
+    def task_unit(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "task_unit")
 
     @property
     @pulumi.getter(name="terminationPolicies")
-    def termination_policies(self) -> Optional[List['outputs.MrScalarTerminationPolicy']]:
+    def termination_policies(self) -> pulumi.Output[Optional[List['outputs.MrScalarTerminationPolicy']]]:
         """
         Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         """
@@ -1016,12 +1016,12 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminationProtected")
-    def termination_protected(self) -> Optional[bool]:
+    def termination_protected(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "termination_protected")
 
     @property
     @pulumi.getter(name="visibleToAllUsers")
-    def visible_to_all_users(self) -> Optional[bool]:
+    def visible_to_all_users(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "visible_to_all_users")
 
     def translate_output_property(self, prop):

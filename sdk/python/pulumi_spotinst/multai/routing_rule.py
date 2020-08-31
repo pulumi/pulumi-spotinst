@@ -15,7 +15,7 @@ __all__ = ['RoutingRule']
 
 class RoutingRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  balancer_id: Optional[pulumi.Input[str]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
@@ -108,42 +108,42 @@ class RoutingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="balancerId")
-    def balancer_id(self) -> str:
+    def balancer_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "balancer_id")
 
     @property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> str:
+    def listener_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "listener_id")
 
     @property
     @pulumi.getter(name="middlewareIds")
-    def middleware_ids(self) -> Optional[List[str]]:
+    def middleware_ids(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "middleware_ids")
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
-    def route(self) -> str:
+    def route(self) -> pulumi.Output[str]:
         return pulumi.get(self, "route")
 
     @property
     @pulumi.getter
-    def strategy(self) -> Optional[str]:
+    def strategy(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "strategy")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List['outputs.RoutingRuleTag']]:
+    def tags(self) -> pulumi.Output[Optional[List['outputs.RoutingRuleTag']]]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="targetSetIds")
-    def target_set_ids(self) -> List[str]:
+    def target_set_ids(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "target_set_ids")
 
     def translate_output_property(self, prop):

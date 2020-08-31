@@ -15,7 +15,7 @@ __all__ = ['OceanLaunchSpec']
 
 class OceanLaunchSpec(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attributes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAttributeArgs']]]]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
@@ -152,7 +152,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[List['outputs.OceanLaunchSpecAttribute']]:
+    def attributes(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecAttribute']]]:
         """
         Optionally adds labels to instances launched in an Ocean cluster.
         """
@@ -160,7 +160,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoscaleHeadrooms")
-    def autoscale_headrooms(self) -> Optional[List['outputs.OceanLaunchSpecAutoscaleHeadroom']]:
+    def autoscale_headrooms(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecAutoscaleHeadroom']]]:
         """
         Set custom headroom per launch spec. provide list of headrooms object.
         """
@@ -168,7 +168,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
-    def iam_instance_profile(self) -> Optional[str]:
+    def iam_instance_profile(self) -> pulumi.Output[Optional[str]]:
         """
         The ARN or name of an IAM instance profile to associate with launched instances.
         """
@@ -176,7 +176,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[str]:
+    def image_id(self) -> pulumi.Output[Optional[str]]:
         """
         ID of the image used to launch the instances.
         """
@@ -184,7 +184,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The Ocean Launch Specification name.
         """
@@ -192,7 +192,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oceanId")
-    def ocean_id(self) -> str:
+    def ocean_id(self) -> pulumi.Output[str]:
         """
         The Ocean cluster ID .
         """
@@ -200,7 +200,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[List[str]]:
+    def security_group_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         One or more security group ids.
         """
@@ -208,7 +208,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List['outputs.OceanLaunchSpecTag']]:
+    def tags(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecTag']]]:
         """
         A key/value mapping of tags to assign to the resource.
         """
@@ -216,7 +216,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[str]:
+    def user_data(self) -> pulumi.Output[Optional[str]]:
         """
         Base64-encoded MIME user data to make available to the instances.
         """

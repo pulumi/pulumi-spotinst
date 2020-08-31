@@ -13,7 +13,7 @@ __all__ = ['OceanLaunchSpecImport']
 
 class OceanLaunchSpecImport(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodePoolName")
-    def node_pool_name(self) -> str:
+    def node_pool_name(self) -> pulumi.Output[str]:
         """
         The node pool you wish to use in your launchSpec.
         """
@@ -102,7 +102,7 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oceanId")
-    def ocean_id(self) -> str:
+    def ocean_id(self) -> pulumi.Output[str]:
         """
         The Ocean cluster ID required for launchSpec create.
         """

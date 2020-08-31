@@ -15,7 +15,7 @@ __all__ = ['Elastigroup']
 
 class Elastigroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[float]] = None,
@@ -449,12 +449,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customData")
-    def custom_data(self) -> Optional[str]:
+    def custom_data(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "custom_data")
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[float]:
+    def desired_capacity(self) -> pulumi.Output[Optional[float]]:
         """
         The desired number of instances the group should have at any time.
         """
@@ -462,37 +462,37 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional['outputs.ElastigroupHealthCheck']:
+    def health_check(self) -> pulumi.Output[Optional['outputs.ElastigroupHealthCheck']]:
         return pulumi.get(self, "health_check")
 
     @property
     @pulumi.getter
-    def images(self) -> Optional[List['outputs.ElastigroupImage']]:
+    def images(self) -> pulumi.Output[Optional[List['outputs.ElastigroupImage']]]:
         return pulumi.get(self, "images")
 
     @property
     @pulumi.getter(name="integrationKubernetes")
-    def integration_kubernetes(self) -> Optional['outputs.ElastigroupIntegrationKubernetes']:
+    def integration_kubernetes(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationKubernetes']]:
         return pulumi.get(self, "integration_kubernetes")
 
     @property
     @pulumi.getter(name="integrationMultaiRuntime")
-    def integration_multai_runtime(self) -> Optional['outputs.ElastigroupIntegrationMultaiRuntime']:
+    def integration_multai_runtime(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationMultaiRuntime']]:
         return pulumi.get(self, "integration_multai_runtime")
 
     @property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[List['outputs.ElastigroupLoadBalancer']]:
+    def load_balancers(self) -> pulumi.Output[Optional[List['outputs.ElastigroupLoadBalancer']]]:
         return pulumi.get(self, "load_balancers")
 
     @property
     @pulumi.getter
-    def login(self) -> Optional['outputs.ElastigroupLogin']:
+    def login(self) -> pulumi.Output[Optional['outputs.ElastigroupLogin']]:
         return pulumi.get(self, "login")
 
     @property
     @pulumi.getter(name="lowPrioritySizes")
-    def low_priority_sizes(self) -> List[str]:
+    def low_priority_sizes(self) -> pulumi.Output[List[str]]:
         """
         Available Low-Priority sizes.
         """
@@ -500,12 +500,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managedServiceIdentities")
-    def managed_service_identities(self) -> Optional[List['outputs.ElastigroupManagedServiceIdentity']]:
+    def managed_service_identities(self) -> pulumi.Output[Optional[List['outputs.ElastigroupManagedServiceIdentity']]]:
         return pulumi.get(self, "managed_service_identities")
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> float:
+    def max_size(self) -> pulumi.Output[float]:
         """
         The maximum number of instances the group should have at any time.
         """
@@ -513,7 +513,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> float:
+    def min_size(self) -> pulumi.Output[float]:
         """
         The minimum number of instances the group should have at any time.
         """
@@ -521,7 +521,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the managed identity.
         """
@@ -529,12 +529,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> 'outputs.ElastigroupNetwork':
+    def network(self) -> pulumi.Output['outputs.ElastigroupNetwork']:
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="odSizes")
-    def od_sizes(self) -> List[str]:
+    def od_sizes(self) -> pulumi.Output[List[str]]:
         """
         Available On-Demand sizes
         """
@@ -542,7 +542,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def product(self) -> str:
+    def product(self) -> pulumi.Output[str]:
         """
         Operation system type. Valid values: `"Linux"`, `"Windows"`.
         """
@@ -550,7 +550,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The region your Azure group will be created in.
         """
@@ -558,7 +558,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> str:
+    def resource_group_name(self) -> pulumi.Output[str]:
         """
         The Resource Group that the user-assigned managed identity resides in.
         """
@@ -566,22 +566,22 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
-    def scaling_down_policies(self) -> Optional[List['outputs.ElastigroupScalingDownPolicy']]:
+    def scaling_down_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingDownPolicy']]]:
         return pulumi.get(self, "scaling_down_policies")
 
     @property
     @pulumi.getter(name="scalingUpPolicies")
-    def scaling_up_policies(self) -> Optional[List['outputs.ElastigroupScalingUpPolicy']]:
+    def scaling_up_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingUpPolicy']]]:
         return pulumi.get(self, "scaling_up_policies")
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[List['outputs.ElastigroupScheduledTask']]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[str]:
+    def shutdown_script(self) -> pulumi.Output[Optional[str]]:
         """
         Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
         """
@@ -589,7 +589,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def strategy(self) -> 'outputs.ElastigroupStrategy':
+    def strategy(self) -> pulumi.Output['outputs.ElastigroupStrategy']:
         """
         Describes the deployment strategy.
         """
@@ -597,12 +597,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> Optional['outputs.ElastigroupUpdatePolicy']:
+    def update_policy(self) -> pulumi.Output[Optional['outputs.ElastigroupUpdatePolicy']]:
         return pulumi.get(self, "update_policy")
 
     @property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[str]:
+    def user_data(self) -> pulumi.Output[Optional[str]]:
         """
         Base64-encoded MIME user data to make available to the instances.
         """

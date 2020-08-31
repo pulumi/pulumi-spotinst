@@ -13,7 +13,7 @@ __all__ = ['Subscription']
 
 class Subscription(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  event_type: Optional[pulumi.Input[str]] = None,
@@ -156,7 +156,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoint(self) -> str:
+    def endpoint(self) -> pulumi.Output[str]:
         """
         The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
         """
@@ -164,7 +164,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventType")
-    def event_type(self) -> str:
+    def event_type(self) -> pulumi.Output[str]:
         """
         The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`,
         `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`,
@@ -182,7 +182,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def format(self) -> Optional[Mapping[str, Any]]:
+    def format(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
         Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
@@ -192,7 +192,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         """
         The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
         The following values are deprecated: `"http"` , `"https"`
@@ -203,7 +203,7 @@ class Subscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> str:
+    def resource_id(self) -> pulumi.Output[str]:
         """
         Spotinst Resource id (Elastigroup or Ocean ID).
         """

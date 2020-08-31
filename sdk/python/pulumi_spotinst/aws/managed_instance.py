@@ -15,7 +15,7 @@ __all__ = ['ManagedInstance']
 
 class ManagedInstance(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_healing: Optional[pulumi.Input[bool]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
@@ -399,7 +399,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoHealing")
-    def auto_healing(self) -> Optional[bool]:
+    def auto_healing(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
         """
@@ -407,7 +407,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blockDevicesMode")
-    def block_devices_mode(self) -> Optional[str]:
+    def block_devices_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
         Default: `"onLaunch"`.
@@ -416,7 +416,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuCredits")
-    def cpu_credits(self) -> Optional[str]:
+    def cpu_credits(self) -> pulumi.Output[Optional[str]]:
         """
         cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
         Default: unlimited
@@ -425,7 +425,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The ManagedInstance description.
         """
@@ -433,7 +433,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[float]:
+    def draining_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
         """
@@ -441,7 +441,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ebsOptimized")
-    def ebs_optimized(self) -> bool:
+    def ebs_optimized(self) -> pulumi.Output[bool]:
         """
         Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
         Default: false
@@ -450,7 +450,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="elasticIp")
-    def elastic_ip(self) -> Optional[str]:
+    def elastic_ip(self) -> pulumi.Output[Optional[str]]:
         """
         Elastic IP Allocation Id to associate to the instance.
         """
@@ -458,7 +458,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableMonitoring")
-    def enable_monitoring(self) -> Optional[bool]:
+    def enable_monitoring(self) -> pulumi.Output[Optional[bool]]:
         """
         Describes whether instance Enhanced Monitoring is enabled.
         Default: false
@@ -467,12 +467,12 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fallBackToOd")
-    def fall_back_to_od(self) -> Optional[bool]:
+    def fall_back_to_od(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "fall_back_to_od")
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[float]:
+    def grace_period(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
         """
@@ -480,7 +480,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[str]:
+    def health_check_type(self) -> pulumi.Output[Optional[str]]:
         """
         The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
         Default: `"EC2"`.
@@ -489,7 +489,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
-    def iam_instance_profile(self) -> Optional[str]:
+    def iam_instance_profile(self) -> pulumi.Output[Optional[str]]:
         """
         Set IAM profile to instance. Set only one of ARN or Name.
         """
@@ -497,7 +497,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> str:
+    def image_id(self) -> pulumi.Output[str]:
         """
         The ID of the image used to launch the instance.
         """
@@ -505,7 +505,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> List[str]:
+    def instance_types(self) -> pulumi.Output[List[str]]:
         """
         Comma separated list of available instance types for instance.
         """
@@ -513,12 +513,12 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="integrationRoute53")
-    def integration_route53(self) -> Optional['outputs.ManagedInstanceIntegrationRoute53']:
+    def integration_route53(self) -> pulumi.Output[Optional['outputs.ManagedInstanceIntegrationRoute53']]:
         return pulumi.get(self, "integration_route53")
 
     @property
     @pulumi.getter(name="keyPair")
-    def key_pair(self) -> Optional[str]:
+    def key_pair(self) -> pulumi.Output[Optional[str]]:
         """
         Specify a Key Pair to attach to the instances.
         """
@@ -526,7 +526,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifeCycle")
-    def life_cycle(self) -> Optional[str]:
+    def life_cycle(self) -> pulumi.Output[Optional[str]]:
         """
         Set lifecycle, valid values: `"spot"`, `"on_demand"`.
         Default `"spot"`.
@@ -535,12 +535,12 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[List['outputs.ManagedInstanceLoadBalancer']]:
+    def load_balancers(self) -> pulumi.Output[Optional[List['outputs.ManagedInstanceLoadBalancer']]]:
         return pulumi.get(self, "load_balancers")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The ManagedInstance name.
         """
@@ -548,12 +548,12 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[List['outputs.ManagedInstanceNetworkInterface']]:
+    def network_interfaces(self) -> pulumi.Output[Optional[List['outputs.ManagedInstanceNetworkInterface']]]:
         return pulumi.get(self, "network_interfaces")
 
     @property
     @pulumi.getter(name="optimizationWindows")
-    def optimization_windows(self) -> Optional[List[str]]:
+    def optimization_windows(self) -> pulumi.Output[Optional[List[str]]]:
         """
         When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         """
@@ -561,7 +561,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def orientation(self) -> Optional[str]:
+    def orientation(self) -> pulumi.Output[Optional[str]]:
         """
         Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
         Default: `"availabilityOriented"`.
@@ -570,7 +570,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="persistBlockDevices")
-    def persist_block_devices(self) -> bool:
+    def persist_block_devices(self) -> pulumi.Output[bool]:
         """
         Should the instance maintain its Data volumes.
         """
@@ -578,7 +578,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="persistPrivateIp")
-    def persist_private_ip(self) -> Optional[bool]:
+    def persist_private_ip(self) -> pulumi.Output[Optional[bool]]:
         """
         Should the instance maintain its private IP.
         """
@@ -586,7 +586,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="persistRootDevice")
-    def persist_root_device(self) -> Optional[bool]:
+    def persist_root_device(self) -> pulumi.Output[Optional[bool]]:
         """
         Should the instance maintain its root device volumes.
         """
@@ -594,7 +594,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="placementTenancy")
-    def placement_tenancy(self) -> Optional[str]:
+    def placement_tenancy(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values: `"default"`, `"dedicated"`.
         Default: default
@@ -603,7 +603,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preferredType")
-    def preferred_type(self) -> Optional[str]:
+    def preferred_type(self) -> pulumi.Output[Optional[str]]:
         """
         Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
         """
@@ -611,7 +611,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[str]:
+    def private_ip(self) -> pulumi.Output[Optional[str]]:
         """
         Private IP Allocation Id to associate to the instance.
         """
@@ -619,7 +619,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def product(self) -> str:
+    def product(self) -> pulumi.Output[str]:
         """
         Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
         """
@@ -627,7 +627,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         The AWS region your group will be created in.
         """
@@ -635,17 +635,17 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="revertToSpot")
-    def revert_to_spot(self) -> Optional['outputs.ManagedInstanceRevertToSpot']:
+    def revert_to_spot(self) -> pulumi.Output[Optional['outputs.ManagedInstanceRevertToSpot']]:
         return pulumi.get(self, "revert_to_spot")
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[List['outputs.ManagedInstanceScheduledTask']]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.ManagedInstanceScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[List[str]]:
+    def security_group_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         One or more security group IDs.
         """
@@ -653,7 +653,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[str]:
+    def shutdown_script(self) -> pulumi.Output[Optional[str]]:
         """
         The Base64-encoded shutdown script to execute prior to instance termination.
         """
@@ -661,7 +661,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> List[str]:
+    def subnet_ids(self) -> pulumi.Output[List[str]]:
         """
         A comma-separated list of subnet identifiers for your instance.
         """
@@ -669,7 +669,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List['outputs.ManagedInstanceTag']]:
+    def tags(self) -> pulumi.Output[Optional[List['outputs.ManagedInstanceTag']]]:
         """
         Set tags for the instance. Items should be unique.
         """
@@ -677,7 +677,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="unhealthyDuration")
-    def unhealthy_duration(self) -> Optional[float]:
+    def unhealthy_duration(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
         """
@@ -685,7 +685,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[str]:
+    def user_data(self) -> pulumi.Output[Optional[str]]:
         """
         The Base64-encoded MIME user data to make available to the instances.
         """
@@ -693,7 +693,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="utilizeReservedInstances")
-    def utilize_reserved_instances(self) -> Optional[bool]:
+    def utilize_reserved_instances(self) -> pulumi.Output[Optional[bool]]:
         """
         In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
         Default: `"false"`.
@@ -702,7 +702,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
+    def vpc_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "vpc_id")
 
     def translate_output_property(self, prop):

@@ -15,7 +15,7 @@ __all__ = ['OceanLaunchSpec']
 
 class OceanLaunchSpec(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscale_headrooms: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
                  labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
@@ -141,7 +141,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoscaleHeadrooms")
-    def autoscale_headrooms(self) -> Optional[List['outputs.OceanLaunchSpecAutoscaleHeadroom']]:
+    def autoscale_headrooms(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecAutoscaleHeadroom']]]:
         """
         Set custom headroom per launch spec. provide list of headrooms object.
         """
@@ -149,7 +149,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[List['outputs.OceanLaunchSpecLabel']]:
+    def labels(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecLabel']]]:
         """
         Cluster's labels.
         """
@@ -157,7 +157,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadatas(self) -> List['outputs.OceanLaunchSpecMetadata']:
+    def metadatas(self) -> pulumi.Output[List['outputs.OceanLaunchSpecMetadata']]:
         """
         Cluster's metadata.
         """
@@ -165,7 +165,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oceanId")
-    def ocean_id(self) -> str:
+    def ocean_id(self) -> pulumi.Output[str]:
         """
         The Ocean cluster ID required for launchSpec create.
         """
@@ -173,7 +173,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceImage")
-    def source_image(self) -> str:
+    def source_image(self) -> pulumi.Output[str]:
         """
         Image URL.
         """
@@ -181,7 +181,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[List['outputs.OceanLaunchSpecTaint']]:
+    def taints(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecTaint']]]:
         """
         Cluster's taints.
         """

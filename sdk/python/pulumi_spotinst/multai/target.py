@@ -15,7 +15,7 @@ __all__ = ['Target']
 
 class Target(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  balancer_id: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -104,37 +104,37 @@ class Target(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="balancerId")
-    def balancer_id(self) -> str:
+    def balancer_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "balancer_id")
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> pulumi.Output[str]:
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List['outputs.TargetTag']]:
+    def tags(self) -> pulumi.Output[Optional[List['outputs.TargetTag']]]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="targetSetId")
-    def target_set_id(self) -> str:
+    def target_set_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "target_set_id")
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> pulumi.Output[float]:
         return pulumi.get(self, "weight")
 
     def translate_output_property(self, prop):

@@ -15,7 +15,7 @@ __all__ = ['Listener']
 
 class Listener(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  balancer_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[float]] = None,
@@ -94,27 +94,27 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="balancerId")
-    def balancer_id(self) -> str:
+    def balancer_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "balancer_id")
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> pulumi.Output[float]:
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List['outputs.ListenerTag']]:
+    def tags(self) -> pulumi.Output[Optional[List['outputs.ListenerTag']]]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tlsConfig")
-    def tls_config(self) -> Optional['outputs.ListenerTlsConfig']:
+    def tls_config(self) -> pulumi.Output[Optional['outputs.ListenerTlsConfig']]:
         return pulumi.get(self, "tls_config")
 
     def translate_output_property(self, prop):

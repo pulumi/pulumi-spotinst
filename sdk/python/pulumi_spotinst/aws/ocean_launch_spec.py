@@ -15,7 +15,7 @@ __all__ = ['OceanLaunchSpec']
 
 class OceanLaunchSpec(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscale_headrooms: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
@@ -240,7 +240,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoscaleHeadrooms")
-    def autoscale_headrooms(self) -> Optional[List['outputs.OceanLaunchSpecAutoscaleHeadroom']]:
+    def autoscale_headrooms(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecAutoscaleHeadroom']]]:
         """
         Set custom headroom per launch spec. provide list of headrooms object.
         """
@@ -248,7 +248,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blockDeviceMappings")
-    def block_device_mappings(self) -> Optional[List['outputs.OceanLaunchSpecBlockDeviceMapping']]:
+    def block_device_mappings(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecBlockDeviceMapping']]]:
         """
         Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         """
@@ -256,7 +256,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="elasticIpPools")
-    def elastic_ip_pools(self) -> Optional[List['outputs.OceanLaunchSpecElasticIpPool']]:
+    def elastic_ip_pools(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecElasticIpPool']]]:
         """
         Assign an Elastic IP to the instances spun by the launch spec. Can be null.
         """
@@ -264,7 +264,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
-    def iam_instance_profile(self) -> Optional[str]:
+    def iam_instance_profile(self) -> pulumi.Output[Optional[str]]:
         """
         The ARN or name of an IAM instance profile to associate with launched instances.
         """
@@ -272,7 +272,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[str]:
+    def image_id(self) -> pulumi.Output[Optional[str]]:
         """
         ID of the image used to launch the instances.
         """
@@ -280,7 +280,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> Optional[List[str]]:
+    def instance_types(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         """
@@ -288,7 +288,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[List['outputs.OceanLaunchSpecLabel']]:
+    def labels(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecLabel']]]:
         """
         Optionally adds labels to instances launched in an Ocean cluster.
         """
@@ -296,7 +296,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Set Launch Specification name
         """
@@ -304,7 +304,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oceanId")
-    def ocean_id(self) -> str:
+    def ocean_id(self) -> pulumi.Output[str]:
         """
         The ocean cluster you wish to
         """
@@ -312,12 +312,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceLimits")
-    def resource_limits(self) -> Optional[List['outputs.OceanLaunchSpecResourceLimit']]:
+    def resource_limits(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecResourceLimit']]]:
         return pulumi.get(self, "resource_limits")
 
     @property
     @pulumi.getter(name="rootVolumeSize")
-    def root_volume_size(self) -> Optional[float]:
+    def root_volume_size(self) -> pulumi.Output[Optional[float]]:
         """
         Set root volume size (in GB).
         """
@@ -325,7 +325,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[List[str]]:
+    def security_groups(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Optionally adds security group IDs.
         """
@@ -333,7 +333,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> Optional[List[str]]:
+    def subnet_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Set subnets in launchSpec. Each element in array should be subnet ID.
         """
@@ -341,7 +341,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List['outputs.OceanLaunchSpecTag']]:
+    def tags(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecTag']]]:
         """
         A key/value mapping of tags to assign to the resource.
         """
@@ -349,7 +349,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[List['outputs.OceanLaunchSpecTaint']]:
+    def taints(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecTaint']]]:
         """
         Optionally adds labels to instances launched in an Ocean cluster.
         """
@@ -357,7 +357,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[str]:
+    def user_data(self) -> pulumi.Output[Optional[str]]:
         """
         Base64-encoded MIME user data to make available to the instances.
         """
