@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.10.0 (2020-08-31)
 * Upgrade to pulumi-terraform-bridge v2.7.3
 * Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
 * Upgrade to v1.25.0 of the SpotInst Terraform Provider
-
----
 
 ## 2.9.0 (2020-08-21)
 * Upgrade to v1.24.0 of the SpotInst Terraform Provider
