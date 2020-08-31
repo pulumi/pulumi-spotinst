@@ -15,7 +15,7 @@ __all__ = ['OceanImport']
 
 class OceanImport(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']]] = None,
                  backend_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]]] = None,
@@ -203,12 +203,12 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def autoscaler(self) -> 'outputs.OceanImportAutoscaler':
+    def autoscaler(self) -> pulumi.Output['outputs.OceanImportAutoscaler']:
         return pulumi.get(self, "autoscaler")
 
     @property
     @pulumi.getter(name="backendServices")
-    def backend_services(self) -> Optional[List['outputs.OceanImportBackendService']]:
+    def backend_services(self) -> pulumi.Output[Optional[List['outputs.OceanImportBackendService']]]:
         """
         Describes the backend service configurations.
         """
@@ -216,12 +216,12 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterControllerId")
-    def cluster_controller_id(self) -> str:
+    def cluster_controller_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "cluster_controller_id")
 
     @property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> str:
+    def cluster_name(self) -> pulumi.Output[str]:
         """
         The GKE cluster name.
         """
@@ -229,7 +229,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> float:
+    def desired_capacity(self) -> pulumi.Output[float]:
         """
         The number of instances to launch and maintain in the cluster.
         """
@@ -237,7 +237,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> str:
+    def location(self) -> pulumi.Output[str]:
         """
         The zone the master cluster is located in.
         """
@@ -245,7 +245,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> float:
+    def max_size(self) -> pulumi.Output[float]:
         """
         The upper limit of instances the cluster can scale up to.
         """
@@ -253,7 +253,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> float:
+    def min_size(self) -> pulumi.Output[float]:
         """
         The lower limit of instances the cluster can scale down to.
         """
@@ -261,12 +261,12 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[List['outputs.OceanImportScheduledTask']]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.OceanImportScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property
     @pulumi.getter
-    def whitelists(self) -> Optional[List[str]]:
+    def whitelists(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "whitelists")
 
     def translate_output_property(self, prop):

@@ -15,7 +15,7 @@ __all__ = ['Ocean']
 
 class Ocean(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
@@ -332,7 +332,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="associatePublicIpAddress")
-    def associate_public_ip_address(self) -> Optional[bool]:
+    def associate_public_ip_address(self) -> pulumi.Output[Optional[bool]]:
         """
         Configure public IP address allocation.
         """
@@ -340,12 +340,12 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def autoscaler(self) -> Optional['outputs.OceanAutoscaler']:
+    def autoscaler(self) -> pulumi.Output[Optional['outputs.OceanAutoscaler']]:
         return pulumi.get(self, "autoscaler")
 
     @property
     @pulumi.getter
-    def blacklists(self) -> Optional[List[str]]:
+    def blacklists(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         """
@@ -353,7 +353,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="controllerId")
-    def controller_id(self) -> Optional[str]:
+    def controller_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ocean cluster identifier. Example: `ocean.k8s`
         """
@@ -361,7 +361,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> float:
+    def desired_capacity(self) -> pulumi.Output[float]:
         """
         The number of instances to launch and maintain in the cluster.
         """
@@ -369,7 +369,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[float]:
+    def draining_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         """
@@ -377,7 +377,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ebsOptimized")
-    def ebs_optimized(self) -> Optional[bool]:
+    def ebs_optimized(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         """
@@ -385,7 +385,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[bool]:
+    def fallback_to_ondemand(self) -> pulumi.Output[Optional[bool]]:
         """
         If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         """
@@ -393,7 +393,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[float]:
+    def grace_period(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time, in seconds, after the instance has launched to start checking its health.
         """
@@ -401,7 +401,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
-    def iam_instance_profile(self) -> Optional[str]:
+    def iam_instance_profile(self) -> pulumi.Output[Optional[str]]:
         """
         The instance profile iam role.
         """
@@ -409,7 +409,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[str]:
+    def image_id(self) -> pulumi.Output[Optional[str]]:
         """
         ID of the image used to launch the instances.
         """
@@ -417,7 +417,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> Optional[str]:
+    def key_name(self) -> pulumi.Output[Optional[str]]:
         """
         The key pair to attach the instances.
         """
@@ -425,7 +425,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> Optional[List['outputs.OceanLoadBalancer']]:
+    def load_balancers(self) -> pulumi.Output[Optional[List['outputs.OceanLoadBalancer']]]:
         """
         - Array of load balancer objects to add to ocean cluster
         """
@@ -433,7 +433,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[float]:
+    def max_size(self) -> pulumi.Output[Optional[float]]:
         """
         The upper limit of instances the cluster can scale up to.
         """
@@ -441,7 +441,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> float:
+    def min_size(self) -> pulumi.Output[float]:
         """
         The lower limit of instances the cluster can scale down to.
         """
@@ -449,7 +449,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def monitoring(self) -> Optional[bool]:
+    def monitoring(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         """
@@ -457,7 +457,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Required if type is set to CLASSIC
         """
@@ -465,7 +465,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         The region the cluster will run in.
         """
@@ -473,7 +473,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rootVolumeSize")
-    def root_volume_size(self) -> Optional[float]:
+    def root_volume_size(self) -> pulumi.Output[Optional[float]]:
         """
         The size (in Gb) to allocate for the root volume. Minimum `20`.
         """
@@ -481,12 +481,12 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[List['outputs.OceanScheduledTask']]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.OceanScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> List[str]:
+    def security_groups(self) -> pulumi.Output[List[str]]:
         """
         One or more security group ids.
         """
@@ -494,12 +494,12 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotPercentage")
-    def spot_percentage(self) -> Optional[float]:
+    def spot_percentage(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "spot_percentage")
 
     @property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> List[str]:
+    def subnet_ids(self) -> pulumi.Output[List[str]]:
         """
         A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         """
@@ -507,7 +507,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List['outputs.OceanTag']]:
+    def tags(self) -> pulumi.Output[Optional[List['outputs.OceanTag']]]:
         """
         Optionally adds tags to instances launched in an Ocean cluster.
         """
@@ -515,12 +515,12 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> Optional['outputs.OceanUpdatePolicy']:
+    def update_policy(self) -> pulumi.Output[Optional['outputs.OceanUpdatePolicy']]:
         return pulumi.get(self, "update_policy")
 
     @property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[str]:
+    def user_data(self) -> pulumi.Output[Optional[str]]:
         """
         Base64-encoded MIME user data to make available to the instances.
         """
@@ -528,7 +528,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="utilizeReservedInstances")
-    def utilize_reserved_instances(self) -> Optional[bool]:
+    def utilize_reserved_instances(self) -> pulumi.Output[Optional[bool]]:
         """
         If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         """
@@ -536,7 +536,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def whitelists(self) -> Optional[List[str]]:
+    def whitelists(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """

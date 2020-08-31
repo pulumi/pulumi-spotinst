@@ -15,7 +15,7 @@ __all__ = ['Elastigroup']
 
 class Elastigroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backend_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -311,12 +311,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendServices")
-    def backend_services(self) -> Optional[List['outputs.ElastigroupBackendService']]:
+    def backend_services(self) -> pulumi.Output[Optional[List['outputs.ElastigroupBackendService']]]:
         return pulumi.get(self, "backend_services")
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[str]:
+    def cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the GKE cluster you wish to import.
         """
@@ -324,7 +324,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterZoneName")
-    def cluster_zone_name(self) -> str:
+    def cluster_zone_name(self) -> pulumi.Output[str]:
         """
         The zone where the cluster is hosted.
         """
@@ -332,92 +332,92 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> float:
+    def desired_capacity(self) -> pulumi.Output[float]:
         return pulumi.get(self, "desired_capacity")
 
     @property
     @pulumi.getter
-    def disks(self) -> Optional[List['outputs.ElastigroupDisk']]:
+    def disks(self) -> pulumi.Output[Optional[List['outputs.ElastigroupDisk']]]:
         return pulumi.get(self, "disks")
 
     @property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[float]:
+    def draining_timeout(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "draining_timeout")
 
     @property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[bool]:
+    def fallback_to_ondemand(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "fallback_to_ondemand")
 
     @property
     @pulumi.getter
-    def gpu(self) -> Optional[List['outputs.ElastigroupGpu']]:
+    def gpu(self) -> pulumi.Output[Optional[List['outputs.ElastigroupGpu']]]:
         return pulumi.get(self, "gpu")
 
     @property
     @pulumi.getter(name="instanceTypesCustoms")
-    def instance_types_customs(self) -> Optional[List['outputs.ElastigroupInstanceTypesCustom']]:
+    def instance_types_customs(self) -> pulumi.Output[Optional[List['outputs.ElastigroupInstanceTypesCustom']]]:
         return pulumi.get(self, "instance_types_customs")
 
     @property
     @pulumi.getter(name="instanceTypesOndemand")
-    def instance_types_ondemand(self) -> Optional[str]:
+    def instance_types_ondemand(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "instance_types_ondemand")
 
     @property
     @pulumi.getter(name="instanceTypesPreemptibles")
-    def instance_types_preemptibles(self) -> Optional[List[str]]:
+    def instance_types_preemptibles(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "instance_types_preemptibles")
 
     @property
     @pulumi.getter(name="integrationDockerSwarm")
-    def integration_docker_swarm(self) -> Optional['outputs.ElastigroupIntegrationDockerSwarm']:
+    def integration_docker_swarm(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationDockerSwarm']]:
         return pulumi.get(self, "integration_docker_swarm")
 
     @property
     @pulumi.getter(name="integrationGke")
-    def integration_gke(self) -> Optional['outputs.ElastigroupIntegrationGke']:
+    def integration_gke(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationGke']]:
         return pulumi.get(self, "integration_gke")
 
     @property
     @pulumi.getter(name="ipForwarding")
-    def ip_forwarding(self) -> Optional[bool]:
+    def ip_forwarding(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "ip_forwarding")
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[List['outputs.ElastigroupLabel']]:
+    def labels(self) -> pulumi.Output[Optional[List['outputs.ElastigroupLabel']]]:
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> float:
+    def max_size(self) -> pulumi.Output[float]:
         return pulumi.get(self, "max_size")
 
     @property
     @pulumi.getter
-    def metadatas(self) -> Optional[List['outputs.ElastigroupMetadata']]:
+    def metadatas(self) -> pulumi.Output[Optional[List['outputs.ElastigroupMetadata']]]:
         return pulumi.get(self, "metadatas")
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> float:
+    def min_size(self) -> pulumi.Output[float]:
         return pulumi.get(self, "min_size")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[List['outputs.ElastigroupNetworkInterface']]:
+    def network_interfaces(self) -> pulumi.Output[Optional[List['outputs.ElastigroupNetworkInterface']]]:
         return pulumi.get(self, "network_interfaces")
 
     @property
     @pulumi.getter(name="nodeImage")
-    def node_image(self) -> Optional[str]:
+    def node_image(self) -> pulumi.Output[Optional[str]]:
         """
         The image that will be used for the node VMs. Possible values: COS, UBUNTU.
         """
@@ -425,42 +425,42 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ondemandCount")
-    def ondemand_count(self) -> Optional[float]:
+    def ondemand_count(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "ondemand_count")
 
     @property
     @pulumi.getter(name="preemptiblePercentage")
-    def preemptible_percentage(self) -> Optional[float]:
+    def preemptible_percentage(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "preemptible_percentage")
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
-    def scaling_down_policies(self) -> Optional[List['outputs.ElastigroupScalingDownPolicy']]:
+    def scaling_down_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingDownPolicy']]]:
         return pulumi.get(self, "scaling_down_policies")
 
     @property
     @pulumi.getter(name="scalingUpPolicies")
-    def scaling_up_policies(self) -> Optional[List['outputs.ElastigroupScalingUpPolicy']]:
+    def scaling_up_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingUpPolicy']]]:
         return pulumi.get(self, "scaling_up_policies")
 
     @property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[str]:
+    def service_account(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[str]:
+    def shutdown_script(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "shutdown_script")
 
     @property
     @pulumi.getter(name="startupScript")
-    def startup_script(self) -> Optional[str]:
+    def startup_script(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "startup_script")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

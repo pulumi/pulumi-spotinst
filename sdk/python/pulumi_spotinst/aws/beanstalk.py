@@ -15,7 +15,7 @@ __all__ = ['Beanstalk']
 
 class Beanstalk(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  beanstalk_environment_id: Optional[pulumi.Input[str]] = None,
                  beanstalk_environment_name: Optional[pulumi.Input[str]] = None,
@@ -219,7 +219,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="beanstalkEnvironmentId")
-    def beanstalk_environment_id(self) -> Optional[str]:
+    def beanstalk_environment_id(self) -> pulumi.Output[Optional[str]]:
         """
         The id of an existing Beanstalk environment.
         """
@@ -227,7 +227,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="beanstalkEnvironmentName")
-    def beanstalk_environment_name(self) -> Optional[str]:
+    def beanstalk_environment_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of an existing Beanstalk environment.
         """
@@ -235,7 +235,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentPreferences")
-    def deployment_preferences(self) -> Optional['outputs.BeanstalkDeploymentPreferences']:
+    def deployment_preferences(self) -> pulumi.Output[Optional['outputs.BeanstalkDeploymentPreferences']]:
         """
         Preferences when performing a roll
         """
@@ -243,7 +243,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> float:
+    def desired_capacity(self) -> pulumi.Output[float]:
         """
         The desired number of instances the group should have at any time.
         """
@@ -251,7 +251,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypesSpots")
-    def instance_types_spots(self) -> List[str]:
+    def instance_types_spots(self) -> pulumi.Output[List[str]]:
         """
         One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
         """
@@ -259,12 +259,12 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def maintenance(self) -> Optional[str]:
+    def maintenance(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "maintenance")
 
     @property
     @pulumi.getter(name="managedActions")
-    def managed_actions(self) -> Optional['outputs.BeanstalkManagedActions']:
+    def managed_actions(self) -> pulumi.Output[Optional['outputs.BeanstalkManagedActions']]:
         """
         Managed Actions parameters
         """
@@ -272,7 +272,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> float:
+    def max_size(self) -> pulumi.Output[float]:
         """
         The maximum number of instances the group should have at any time.
         """
@@ -280,7 +280,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> float:
+    def min_size(self) -> pulumi.Output[float]:
         """
         The minimum number of instances the group should have at any time.
         """
@@ -288,7 +288,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The group name.
         """
@@ -296,7 +296,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def product(self) -> str:
+    def product(self) -> pulumi.Output[str]:
         """
         Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -305,7 +305,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> pulumi.Output[str]:
         """
         The AWS region your group will be created in. Cannot be changed after the group has been created.
         """
@@ -313,7 +313,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[List['outputs.BeanstalkScheduledTask']]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.BeanstalkScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     def translate_output_property(self, prop):

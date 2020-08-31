@@ -15,7 +15,7 @@ __all__ = ['TargetSet']
 
 class TargetSet(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  balancer_id: Optional[pulumi.Input[str]] = None,
                  deployment_id: Optional[pulumi.Input[str]] = None,
@@ -110,42 +110,42 @@ class TargetSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="balancerId")
-    def balancer_id(self) -> str:
+    def balancer_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "balancer_id")
 
     @property
     @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> str:
+    def deployment_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "deployment_id")
 
     @property
     @pulumi.getter(name="healthCheck")
-    def health_check(self) -> 'outputs.TargetSetHealthCheck':
+    def health_check(self) -> pulumi.Output['outputs.TargetSetHealthCheck']:
         return pulumi.get(self, "health_check")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List['outputs.TargetSetTag']]:
+    def tags(self) -> pulumi.Output[Optional[List['outputs.TargetSetTag']]]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> pulumi.Output[float]:
         return pulumi.get(self, "weight")
 
     def translate_output_property(self, prop):

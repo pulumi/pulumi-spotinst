@@ -15,7 +15,7 @@ __all__ = ['Elastigroup']
 
 class Elastigroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_healing: Optional[pulumi.Input[bool]] = None,
                  availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -377,12 +377,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoHealing")
-    def auto_healing(self) -> Optional[bool]:
+    def auto_healing(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "auto_healing")
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> Optional[List[str]]:
+    def availability_zones(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of availability zones for the group.
         """
@@ -390,12 +390,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendServices")
-    def backend_services(self) -> Optional[List['outputs.ElastigroupBackendService']]:
+    def backend_services(self) -> pulumi.Output[Optional[List['outputs.ElastigroupBackendService']]]:
         return pulumi.get(self, "backend_services")
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The region your GCP group will be created in.
         """
@@ -403,7 +403,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> float:
+    def desired_capacity(self) -> pulumi.Output[float]:
         """
         The desired number of instances the group should have at any time.
         """
@@ -411,12 +411,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disks(self) -> Optional[List['outputs.ElastigroupDisk']]:
+    def disks(self) -> pulumi.Output[Optional[List['outputs.ElastigroupDisk']]]:
         return pulumi.get(self, "disks")
 
     @property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[float]:
+    def draining_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         """
@@ -424,7 +424,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[bool]:
+    def fallback_to_ondemand(self) -> pulumi.Output[Optional[bool]]:
         """
         Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
         """
@@ -432,22 +432,22 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def gpu(self) -> Optional[List['outputs.ElastigroupGpu']]:
+    def gpu(self) -> pulumi.Output[Optional[List['outputs.ElastigroupGpu']]]:
         return pulumi.get(self, "gpu")
 
     @property
     @pulumi.getter(name="healthCheckGracePeriod")
-    def health_check_grace_period(self) -> Optional[float]:
+    def health_check_grace_period(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "health_check_grace_period")
 
     @property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[str]:
+    def health_check_type(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "health_check_type")
 
     @property
     @pulumi.getter(name="instanceTypesCustoms")
-    def instance_types_customs(self) -> Optional[List['outputs.ElastigroupInstanceTypesCustom']]:
+    def instance_types_customs(self) -> pulumi.Output[Optional[List['outputs.ElastigroupInstanceTypesCustom']]]:
         """
         Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         """
@@ -455,7 +455,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypesOndemand")
-    def instance_types_ondemand(self) -> Optional[str]:
+    def instance_types_ondemand(self) -> pulumi.Output[Optional[str]]:
         """
         The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         """
@@ -463,7 +463,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypesPreemptibles")
-    def instance_types_preemptibles(self) -> Optional[List[str]]:
+    def instance_types_preemptibles(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
         """
@@ -471,22 +471,22 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="integrationDockerSwarm")
-    def integration_docker_swarm(self) -> Optional['outputs.ElastigroupIntegrationDockerSwarm']:
+    def integration_docker_swarm(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationDockerSwarm']]:
         return pulumi.get(self, "integration_docker_swarm")
 
     @property
     @pulumi.getter(name="integrationGke")
-    def integration_gke(self) -> Optional['outputs.ElastigroupIntegrationGke']:
+    def integration_gke(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationGke']]:
         return pulumi.get(self, "integration_gke")
 
     @property
     @pulumi.getter(name="ipForwarding")
-    def ip_forwarding(self) -> Optional[bool]:
+    def ip_forwarding(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "ip_forwarding")
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[List['outputs.ElastigroupLabel']]:
+    def labels(self) -> pulumi.Output[Optional[List['outputs.ElastigroupLabel']]]:
         """
         Array of objects with key-value pairs.
         """
@@ -494,7 +494,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> float:
+    def max_size(self) -> pulumi.Output[float]:
         """
         The maximum number of instances the group should have at any time.
         """
@@ -502,7 +502,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadatas(self) -> Optional[List['outputs.ElastigroupMetadata']]:
+    def metadatas(self) -> pulumi.Output[Optional[List['outputs.ElastigroupMetadata']]]:
         """
         Array of objects with key-value pairs.
         """
@@ -510,7 +510,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> float:
+    def min_size(self) -> pulumi.Output[float]:
         """
         The minimum number of instances the group should have at any time.
         """
@@ -518,7 +518,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The group name.
         """
@@ -526,17 +526,17 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[List['outputs.ElastigroupNetworkInterface']]:
+    def network_interfaces(self) -> pulumi.Output[Optional[List['outputs.ElastigroupNetworkInterface']]]:
         return pulumi.get(self, "network_interfaces")
 
     @property
     @pulumi.getter(name="ondemandCount")
-    def ondemand_count(self) -> Optional[float]:
+    def ondemand_count(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "ondemand_count")
 
     @property
     @pulumi.getter(name="preemptiblePercentage")
-    def preemptible_percentage(self) -> Optional[float]:
+    def preemptible_percentage(self) -> pulumi.Output[Optional[float]]:
         """
         Percentage of Preemptible VMs to spin up from the "desired_capacity".
         """
@@ -544,22 +544,22 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
-    def scaling_down_policies(self) -> Optional[List['outputs.ElastigroupScalingDownPolicy']]:
+    def scaling_down_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingDownPolicy']]]:
         return pulumi.get(self, "scaling_down_policies")
 
     @property
     @pulumi.getter(name="scalingUpPolicies")
-    def scaling_up_policies(self) -> Optional[List['outputs.ElastigroupScalingUpPolicy']]:
+    def scaling_up_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingUpPolicy']]]:
         return pulumi.get(self, "scaling_up_policies")
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> Optional[List['outputs.ElastigroupScheduledTask']]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[str]:
+    def service_account(self) -> pulumi.Output[Optional[str]]:
         """
         The email of the service account in which the group instances will be launched.
         """
@@ -567,7 +567,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shutdownScript")
-    def shutdown_script(self) -> Optional[str]:
+    def shutdown_script(self) -> pulumi.Output[Optional[str]]:
         """
         The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         """
@@ -575,7 +575,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startupScript")
-    def startup_script(self) -> Optional[str]:
+    def startup_script(self) -> pulumi.Output[Optional[str]]:
         """
         Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         """
@@ -583,7 +583,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnets(self) -> Optional[List['outputs.ElastigroupSubnet']]:
+    def subnets(self) -> pulumi.Output[Optional[List['outputs.ElastigroupSubnet']]]:
         """
         A list of regions and subnets.
         """
@@ -591,7 +591,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Tags to mark created instances.
         """
@@ -599,7 +599,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="unhealthyDuration")
-    def unhealthy_duration(self) -> Optional[float]:
+    def unhealthy_duration(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "unhealthy_duration")
 
     def translate_output_property(self, prop):

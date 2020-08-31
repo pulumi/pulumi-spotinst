@@ -15,7 +15,7 @@ __all__ = ['HealthCheck']
 
 class HealthCheck(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check: Optional[pulumi.Input[pulumi.InputType['HealthCheckCheckArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -120,7 +120,7 @@ class HealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def check(self) -> Optional['outputs.HealthCheckCheck']:
+    def check(self) -> pulumi.Output[Optional['outputs.HealthCheckCheck']]:
         """
         Describes the check to execute.
         """
@@ -128,7 +128,7 @@ class HealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the health check.
         """
@@ -136,17 +136,17 @@ class HealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyAddress")
-    def proxy_address(self) -> str:
+    def proxy_address(self) -> pulumi.Output[str]:
         return pulumi.get(self, "proxy_address")
 
     @property
     @pulumi.getter(name="proxyPort")
-    def proxy_port(self) -> Optional[float]:
+    def proxy_port(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "proxy_port")
 
     @property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> str:
+    def resource_id(self) -> pulumi.Output[str]:
         """
         The ID of the resource to check.
         """
