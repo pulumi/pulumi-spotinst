@@ -1882,4 +1882,3 @@ export namespace multai {
         value: pulumi.Input<string>;
     }
 }
-
