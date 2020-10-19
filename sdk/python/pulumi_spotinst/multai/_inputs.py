@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,8 +22,8 @@ __all__ = [
 @pulumi.input_type
 class BalancerConnectionTimeoutsArgs:
     def __init__(__self__, *,
-                 draining: Optional[pulumi.Input[float]] = None,
-                 idle: Optional[pulumi.Input[float]] = None):
+                 draining: Optional[pulumi.Input[int]] = None,
+                 idle: Optional[pulumi.Input[int]] = None):
         if draining is not None:
             pulumi.set(__self__, "draining", draining)
         if idle is not None:
@@ -31,20 +31,20 @@ class BalancerConnectionTimeoutsArgs:
 
     @property
     @pulumi.getter
-    def draining(self) -> Optional[pulumi.Input[float]]:
+    def draining(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "draining")
 
     @draining.setter
-    def draining(self, value: Optional[pulumi.Input[float]]):
+    def draining(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "draining", value)
 
     @property
     @pulumi.getter
-    def idle(self) -> Optional[pulumi.Input[float]]:
+    def idle(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "idle")
 
     @idle.setter
-    def idle(self, value: Optional[pulumi.Input[float]]):
+    def idle(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "idle", value)
 
 
@@ -105,8 +105,8 @@ class ListenerTagArgs:
 @pulumi.input_type
 class ListenerTlsConfigArgs:
     def __init__(__self__, *,
-                 certificate_ids: pulumi.Input[List[pulumi.Input[str]]],
-                 cipher_suites: pulumi.Input[List[pulumi.Input[str]]],
+                 certificate_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 cipher_suites: pulumi.Input[Sequence[pulumi.Input[str]]],
                  max_version: pulumi.Input[str],
                  min_version: pulumi.Input[str],
                  prefer_server_cipher_suites: pulumi.Input[bool],
@@ -120,20 +120,20 @@ class ListenerTlsConfigArgs:
 
     @property
     @pulumi.getter(name="certificateIds")
-    def certificate_ids(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def certificate_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "certificate_ids")
 
     @certificate_ids.setter
-    def certificate_ids(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def certificate_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "certificate_ids", value)
 
     @property
     @pulumi.getter(name="cipherSuites")
-    def cipher_suites(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def cipher_suites(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "cipher_suites")
 
     @cipher_suites.setter
-    def cipher_suites(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def cipher_suites(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "cipher_suites", value)
 
     @property
@@ -203,13 +203,13 @@ class RoutingRuleTagArgs:
 @pulumi.input_type
 class TargetSetHealthCheckArgs:
     def __init__(__self__, *,
-                 healthy_threshold: pulumi.Input[float],
-                 interval: pulumi.Input[float],
+                 healthy_threshold: pulumi.Input[int],
+                 interval: pulumi.Input[int],
                  path: pulumi.Input[str],
                  protocol: pulumi.Input[str],
-                 timeout: pulumi.Input[float],
-                 unhealthy_threshold: pulumi.Input[float],
-                 port: Optional[pulumi.Input[float]] = None):
+                 timeout: pulumi.Input[int],
+                 unhealthy_threshold: pulumi.Input[int],
+                 port: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "path", path)
@@ -221,20 +221,20 @@ class TargetSetHealthCheckArgs:
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> pulumi.Input[float]:
+    def healthy_threshold(self) -> pulumi.Input[int]:
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
-    def healthy_threshold(self, value: pulumi.Input[float]):
+    def healthy_threshold(self, value: pulumi.Input[int]):
         pulumi.set(self, "healthy_threshold", value)
 
     @property
     @pulumi.getter
-    def interval(self) -> pulumi.Input[float]:
+    def interval(self) -> pulumi.Input[int]:
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: pulumi.Input[float]):
+    def interval(self, value: pulumi.Input[int]):
         pulumi.set(self, "interval", value)
 
     @property
@@ -257,29 +257,29 @@ class TargetSetHealthCheckArgs:
 
     @property
     @pulumi.getter
-    def timeout(self) -> pulumi.Input[float]:
+    def timeout(self) -> pulumi.Input[int]:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: pulumi.Input[float]):
+    def timeout(self, value: pulumi.Input[int]):
         pulumi.set(self, "timeout", value)
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> pulumi.Input[float]:
+    def unhealthy_threshold(self) -> pulumi.Input[int]:
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
-    def unhealthy_threshold(self, value: pulumi.Input[float]):
+    def unhealthy_threshold(self, value: pulumi.Input[int]):
         pulumi.set(self, "unhealthy_threshold", value)
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[float]]:
+    def port(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[float]]):
+    def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
 

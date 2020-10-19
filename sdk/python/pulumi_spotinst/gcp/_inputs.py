@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -38,7 +38,7 @@ class ElastigroupBackendServiceArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[str],
                  location_type: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[List[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]] = None,
                  scheme: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "service_name", service_name)
         if location_type is not None:
@@ -68,11 +68,11 @@ class ElastigroupBackendServiceArgs:
 
     @property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]:
+    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]:
         return pulumi.get(self, "named_ports")
 
     @named_ports.setter
-    def named_ports(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]):
+    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]):
         pulumi.set(self, "named_ports", value)
 
     @property
@@ -89,7 +89,7 @@ class ElastigroupBackendServiceArgs:
 class ElastigroupBackendServiceNamedPortArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 ports: pulumi.Input[List[pulumi.Input[str]]]):
+                 ports: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] name: The group name.
         """
@@ -110,11 +110,11 @@ class ElastigroupBackendServiceNamedPortArgs:
 
     @property
     @pulumi.getter
-    def ports(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def ports(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def ports(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "ports", value)
 
 
@@ -124,7 +124,7 @@ class ElastigroupDiskArgs:
                  auto_delete: Optional[pulumi.Input[bool]] = None,
                  boot: Optional[pulumi.Input[bool]] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
-                 initialize_params: Optional[pulumi.Input[List[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]] = None,
+                 initialize_params: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
@@ -175,11 +175,11 @@ class ElastigroupDiskArgs:
 
     @property
     @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]:
+    def initialize_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]:
         return pulumi.get(self, "initialize_params")
 
     @initialize_params.setter
-    def initialize_params(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]):
+    def initialize_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]):
         pulumi.set(self, "initialize_params", value)
 
     @property
@@ -262,18 +262,18 @@ class ElastigroupDiskInitializeParamArgs:
 @pulumi.input_type
 class ElastigroupGpuArgs:
     def __init__(__self__, *,
-                 count: pulumi.Input[float],
+                 count: pulumi.Input[int],
                  type: pulumi.Input[str]):
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def count(self) -> pulumi.Input[float]:
+    def count(self) -> pulumi.Input[int]:
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: pulumi.Input[float]):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
     @property
@@ -289,33 +289,33 @@ class ElastigroupGpuArgs:
 @pulumi.input_type
 class ElastigroupInstanceTypesCustomArgs:
     def __init__(__self__, *,
-                 memory_gib: pulumi.Input[float],
-                 vcpu: pulumi.Input[float]):
+                 memory_gib: pulumi.Input[int],
+                 vcpu: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] memory_gib: The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
+        :param pulumi.Input[int] memory_gib: The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         """
         pulumi.set(__self__, "memory_gib", memory_gib)
         pulumi.set(__self__, "vcpu", vcpu)
 
     @property
     @pulumi.getter(name="memoryGib")
-    def memory_gib(self) -> pulumi.Input[float]:
+    def memory_gib(self) -> pulumi.Input[int]:
         """
         The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         """
         return pulumi.get(self, "memory_gib")
 
     @memory_gib.setter
-    def memory_gib(self, value: pulumi.Input[float]):
+    def memory_gib(self, value: pulumi.Input[int]):
         pulumi.set(self, "memory_gib", value)
 
     @property
     @pulumi.getter
-    def vcpu(self) -> pulumi.Input[float]:
+    def vcpu(self) -> pulumi.Input[int]:
         return pulumi.get(self, "vcpu")
 
     @vcpu.setter
-    def vcpu(self, value: pulumi.Input[float]):
+    def vcpu(self, value: pulumi.Input[int]):
         pulumi.set(self, "vcpu", value)
 
 
@@ -323,7 +323,7 @@ class ElastigroupInstanceTypesCustomArgs:
 class ElastigroupIntegrationDockerSwarmArgs:
     def __init__(__self__, *,
                  master_host: pulumi.Input[str],
-                 master_port: pulumi.Input[float]):
+                 master_port: pulumi.Input[int]):
         pulumi.set(__self__, "master_host", master_host)
         pulumi.set(__self__, "master_port", master_port)
 
@@ -338,11 +338,11 @@ class ElastigroupIntegrationDockerSwarmArgs:
 
     @property
     @pulumi.getter(name="masterPort")
-    def master_port(self) -> pulumi.Input[float]:
+    def master_port(self) -> pulumi.Input[int]:
         return pulumi.get(self, "master_port")
 
     @master_port.setter
-    def master_port(self, value: pulumi.Input[float]):
+    def master_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "master_port", value)
 
 
@@ -350,12 +350,12 @@ class ElastigroupIntegrationDockerSwarmArgs:
 class ElastigroupIntegrationGkeArgs:
     def __init__(__self__, *,
                  auto_update: Optional[pulumi.Input[bool]] = None,
-                 autoscale_cooldown: Optional[pulumi.Input[float]] = None,
+                 autoscale_cooldown: Optional[pulumi.Input[int]] = None,
                  autoscale_down: Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleDownArgs']] = None,
                  autoscale_headroom: Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']] = None,
                  autoscale_is_auto_config: Optional[pulumi.Input[bool]] = None,
                  autoscale_is_enabled: Optional[pulumi.Input[bool]] = None,
-                 autoscale_labels: Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]] = None,
+                 autoscale_labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None):
         if auto_update is not None:
@@ -388,11 +388,11 @@ class ElastigroupIntegrationGkeArgs:
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[pulumi.Input[float]]:
+    def autoscale_cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @autoscale_cooldown.setter
-    def autoscale_cooldown(self, value: Optional[pulumi.Input[float]]):
+    def autoscale_cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autoscale_cooldown", value)
 
     @property
@@ -433,11 +433,11 @@ class ElastigroupIntegrationGkeArgs:
 
     @property
     @pulumi.getter(name="autoscaleLabels")
-    def autoscale_labels(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]:
+    def autoscale_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]:
         return pulumi.get(self, "autoscale_labels")
 
     @autoscale_labels.setter
-    def autoscale_labels(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]):
+    def autoscale_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]):
         pulumi.set(self, "autoscale_labels", value)
 
     @property
@@ -462,26 +462,26 @@ class ElastigroupIntegrationGkeArgs:
 @pulumi.input_type
 class ElastigroupIntegrationGkeAutoscaleDownArgs:
     def __init__(__self__, *,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None):
+                 evaluation_periods: Optional[pulumi.Input[int]] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
 
 @pulumi.input_type
 class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[pulumi.Input[float]] = None,
-                 memory_per_unit: Optional[pulumi.Input[float]] = None,
-                 num_of_units: Optional[pulumi.Input[float]] = None):
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None,
+                 num_of_units: Optional[pulumi.Input[int]] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -491,29 +491,29 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[pulumi.Input[float]]:
+    def num_of_units(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
-    def num_of_units(self, value: Optional[pulumi.Input[float]]):
+    def num_of_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_units", value)
 
 
@@ -632,8 +632,8 @@ class ElastigroupMetadataArgs:
 class ElastigroupNetworkInterfaceArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
-                 access_configs: Optional[pulumi.Input[List[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]] = None,
-                 alias_ip_ranges: Optional[pulumi.Input[List[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]] = None):
+                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]] = None,
+                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]] = None):
         pulumi.set(__self__, "network", network)
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -651,20 +651,20 @@ class ElastigroupNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]:
+    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]:
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]):
+    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @property
     @pulumi.getter(name="aliasIpRanges")
-    def alias_ip_ranges(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]:
+    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]:
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
-    def alias_ip_ranges(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]):
+    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
 
 
@@ -739,12 +739,12 @@ class ElastigroupScalingDownPolicyArgs:
                  threshold: pulumi.Input[float],
                  unit: pulumi.Input[str],
                  action_type: Optional[pulumi.Input[str]] = None,
-                 adjustment: Optional[pulumi.Input[float]] = None,
-                 cooldown: Optional[pulumi.Input[float]] = None,
-                 dimensions: Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]] = None,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 adjustment: Optional[pulumi.Input[int]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  statistic: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "metric_name", metric_name)
@@ -827,38 +827,38 @@ class ElastigroupScalingDownPolicyArgs:
 
     @property
     @pulumi.getter
-    def adjustment(self) -> Optional[pulumi.Input[float]]:
+    def adjustment(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
-    def adjustment(self, value: Optional[pulumi.Input[float]]):
+    def adjustment(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "adjustment", value)
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[float]]:
+    def cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[float]]):
+    def cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cooldown", value)
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -872,11 +872,11 @@ class ElastigroupScalingDownPolicyArgs:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[float]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[float]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
@@ -945,12 +945,12 @@ class ElastigroupScalingUpPolicyArgs:
                  threshold: pulumi.Input[float],
                  unit: pulumi.Input[str],
                  action_type: Optional[pulumi.Input[str]] = None,
-                 adjustment: Optional[pulumi.Input[float]] = None,
-                 cooldown: Optional[pulumi.Input[float]] = None,
-                 dimensions: Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]] = None,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 adjustment: Optional[pulumi.Input[int]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  statistic: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "metric_name", metric_name)
@@ -1033,38 +1033,38 @@ class ElastigroupScalingUpPolicyArgs:
 
     @property
     @pulumi.getter
-    def adjustment(self) -> Optional[pulumi.Input[float]]:
+    def adjustment(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "adjustment")
 
     @adjustment.setter
-    def adjustment(self, value: Optional[pulumi.Input[float]]):
+    def adjustment(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "adjustment", value)
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[float]]:
+    def cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[float]]):
+    def cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cooldown", value)
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -1078,11 +1078,11 @@ class ElastigroupScalingUpPolicyArgs:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[float]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[float]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
@@ -1222,10 +1222,10 @@ class ElastigroupScheduledTaskArgs:
 class ElastigroupSubnetArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
-                 subnet_names: pulumi.Input[List[pulumi.Input[str]]]):
+                 subnet_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] region: The region for the group of subnets.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_names: The names of the subnets in the region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_names: The names of the subnets in the region.
         """
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "subnet_names", subnet_names)
@@ -1244,14 +1244,14 @@ class ElastigroupSubnetArgs:
 
     @property
     @pulumi.getter(name="subnetNames")
-    def subnet_names(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def subnet_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The names of the subnets in the region.
         """
         return pulumi.get(self, "subnet_names")
 
     @subnet_names.setter
-    def subnet_names(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def subnet_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "subnet_names", value)
 
 

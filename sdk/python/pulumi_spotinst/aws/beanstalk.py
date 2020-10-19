@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,16 +20,16 @@ class Beanstalk(pulumi.CustomResource):
                  beanstalk_environment_id: Optional[pulumi.Input[str]] = None,
                  beanstalk_environment_name: Optional[pulumi.Input[str]] = None,
                  deployment_preferences: Optional[pulumi.Input[pulumi.InputType['BeanstalkDeploymentPreferencesArgs']]] = None,
-                 desired_capacity: Optional[pulumi.Input[float]] = None,
-                 instance_types_spots: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  maintenance: Optional[pulumi.Input[str]] = None,
                  managed_actions: Optional[pulumi.Input[pulumi.InputType['BeanstalkManagedActionsArgs']]] = None,
-                 max_size: Optional[pulumi.Input[float]] = None,
-                 min_size: Optional[pulumi.Input[float]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BeanstalkScheduledTaskArgs']]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BeanstalkScheduledTaskArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -103,11 +103,11 @@ class Beanstalk(pulumi.CustomResource):
         :param pulumi.Input[str] beanstalk_environment_id: The id of an existing Beanstalk environment.
         :param pulumi.Input[str] beanstalk_environment_name: The name of an existing Beanstalk environment.
         :param pulumi.Input[pulumi.InputType['BeanstalkDeploymentPreferencesArgs']] deployment_preferences: Preferences when performing a roll
-        :param pulumi.Input[float] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types_spots: One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
+        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
         :param pulumi.Input[pulumi.InputType['BeanstalkManagedActionsArgs']] managed_actions: Managed Actions parameters
-        :param pulumi.Input[float] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[float] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
+        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -168,16 +168,16 @@ class Beanstalk(pulumi.CustomResource):
             beanstalk_environment_id: Optional[pulumi.Input[str]] = None,
             beanstalk_environment_name: Optional[pulumi.Input[str]] = None,
             deployment_preferences: Optional[pulumi.Input[pulumi.InputType['BeanstalkDeploymentPreferencesArgs']]] = None,
-            desired_capacity: Optional[pulumi.Input[float]] = None,
-            instance_types_spots: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            desired_capacity: Optional[pulumi.Input[int]] = None,
+            instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             maintenance: Optional[pulumi.Input[str]] = None,
             managed_actions: Optional[pulumi.Input[pulumi.InputType['BeanstalkManagedActionsArgs']]] = None,
-            max_size: Optional[pulumi.Input[float]] = None,
-            min_size: Optional[pulumi.Input[float]] = None,
+            max_size: Optional[pulumi.Input[int]] = None,
+            min_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             product: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BeanstalkScheduledTaskArgs']]]]] = None) -> 'Beanstalk':
+            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BeanstalkScheduledTaskArgs']]]]] = None) -> 'Beanstalk':
         """
         Get an existing Beanstalk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -188,11 +188,11 @@ class Beanstalk(pulumi.CustomResource):
         :param pulumi.Input[str] beanstalk_environment_id: The id of an existing Beanstalk environment.
         :param pulumi.Input[str] beanstalk_environment_name: The name of an existing Beanstalk environment.
         :param pulumi.Input[pulumi.InputType['BeanstalkDeploymentPreferencesArgs']] deployment_preferences: Preferences when performing a roll
-        :param pulumi.Input[float] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types_spots: One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
+        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
         :param pulumi.Input[pulumi.InputType['BeanstalkManagedActionsArgs']] managed_actions: Managed Actions parameters
-        :param pulumi.Input[float] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[float] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
+        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -243,7 +243,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> pulumi.Output[float]:
+    def desired_capacity(self) -> pulumi.Output[int]:
         """
         The desired number of instances the group should have at any time.
         """
@@ -251,7 +251,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypesSpots")
-    def instance_types_spots(self) -> pulumi.Output[List[str]]:
+    def instance_types_spots(self) -> pulumi.Output[Sequence[str]]:
         """
         One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
         """
@@ -272,7 +272,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> pulumi.Output[float]:
+    def max_size(self) -> pulumi.Output[int]:
         """
         The maximum number of instances the group should have at any time.
         """
@@ -280,7 +280,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> pulumi.Output[float]:
+    def min_size(self) -> pulumi.Output[int]:
         """
         The minimum number of instances the group should have at any time.
         """
@@ -313,7 +313,7 @@ class Beanstalk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.BeanstalkScheduledTask']]]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.BeanstalkScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     def translate_output_property(self, prop):

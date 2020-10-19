@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,23 +21,23 @@ class ManagedInstance(pulumi.CustomResource):
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  cpu_credits: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 draining_timeout: Optional[pulumi.Input[float]] = None,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  elastic_ip: Optional[pulumi.Input[str]] = None,
                  enable_monitoring: Optional[pulumi.Input[bool]] = None,
                  fall_back_to_od: Optional[pulumi.Input[bool]] = None,
-                 grace_period: Optional[pulumi.Input[float]] = None,
+                 grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  integration_route53: Optional[pulumi.Input[pulumi.InputType['ManagedInstanceIntegrationRoute53Args']]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
                  life_cycle: Optional[pulumi.Input[str]] = None,
-                 load_balancers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedInstanceLoadBalancerArgs']]]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceLoadBalancerArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedInstanceNetworkInterfaceArgs']]]]] = None,
-                 optimization_windows: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceNetworkInterfaceArgs']]]]] = None,
+                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  orientation: Optional[pulumi.Input[str]] = None,
                  persist_block_devices: Optional[pulumi.Input[bool]] = None,
                  persist_private_ip: Optional[pulumi.Input[bool]] = None,
@@ -48,12 +48,12 @@ class ManagedInstance(pulumi.CustomResource):
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ManagedInstanceRevertToSpotArgs']]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedInstanceScheduledTaskArgs']]]]] = None,
-                 security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceScheduledTaskArgs']]]]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
-                 subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedInstanceTagArgs']]]]] = None,
-                 unhealthy_duration: Optional[pulumi.Input[float]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceTagArgs']]]]] = None,
+                 unhealthy_duration: Optional[pulumi.Input[int]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -145,23 +145,23 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
                Default: unlimited
         :param pulumi.Input[str] description: The ManagedInstance description.
-        :param pulumi.Input[float] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
+        :param pulumi.Input[int] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
                Default: false
         :param pulumi.Input[str] elastic_ip: Elastic IP Allocation Id to associate to the instance.
         :param pulumi.Input[bool] enable_monitoring: Describes whether instance Enhanced Monitoring is enabled.
                Default: false
-        :param pulumi.Input[float] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
+        :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
         :param pulumi.Input[str] health_check_type: The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
                Default: `"EC2"`.
         :param pulumi.Input[str] iam_instance_profile: Set IAM profile to instance. Set only one of ARN or Name.
         :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
         :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
         :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`.
                Default `"spot"`.
         :param pulumi.Input[str] name: The ManagedInstance name.
-        :param pulumi.Input[List[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
                Default: `"availabilityOriented"`.
         :param pulumi.Input[bool] persist_block_devices: Should the instance maintain its Data volumes.
@@ -173,11 +173,11 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedInstanceTagArgs']]]] tags: Set tags for the instance. Items should be unique.
-        :param pulumi.Input[float] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceTagArgs']]]] tags: Set tags for the instance. Items should be unique.
+        :param pulumi.Input[int] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
         :param pulumi.Input[str] user_data: The Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
                Default: `"false"`.
@@ -265,23 +265,23 @@ class ManagedInstance(pulumi.CustomResource):
             block_devices_mode: Optional[pulumi.Input[str]] = None,
             cpu_credits: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            draining_timeout: Optional[pulumi.Input[float]] = None,
+            draining_timeout: Optional[pulumi.Input[int]] = None,
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
             elastic_ip: Optional[pulumi.Input[str]] = None,
             enable_monitoring: Optional[pulumi.Input[bool]] = None,
             fall_back_to_od: Optional[pulumi.Input[bool]] = None,
-            grace_period: Optional[pulumi.Input[float]] = None,
+            grace_period: Optional[pulumi.Input[int]] = None,
             health_check_type: Optional[pulumi.Input[str]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
-            instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             integration_route53: Optional[pulumi.Input[pulumi.InputType['ManagedInstanceIntegrationRoute53Args']]] = None,
             key_pair: Optional[pulumi.Input[str]] = None,
             life_cycle: Optional[pulumi.Input[str]] = None,
-            load_balancers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedInstanceLoadBalancerArgs']]]]] = None,
+            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceLoadBalancerArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedInstanceNetworkInterfaceArgs']]]]] = None,
-            optimization_windows: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceNetworkInterfaceArgs']]]]] = None,
+            optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             orientation: Optional[pulumi.Input[str]] = None,
             persist_block_devices: Optional[pulumi.Input[bool]] = None,
             persist_private_ip: Optional[pulumi.Input[bool]] = None,
@@ -292,12 +292,12 @@ class ManagedInstance(pulumi.CustomResource):
             product: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ManagedInstanceRevertToSpotArgs']]] = None,
-            scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedInstanceScheduledTaskArgs']]]]] = None,
-            security_group_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceScheduledTaskArgs']]]]] = None,
+            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
-            subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedInstanceTagArgs']]]]] = None,
-            unhealthy_duration: Optional[pulumi.Input[float]] = None,
+            subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceTagArgs']]]]] = None,
+            unhealthy_duration: Optional[pulumi.Input[int]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'ManagedInstance':
@@ -314,23 +314,23 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
                Default: unlimited
         :param pulumi.Input[str] description: The ManagedInstance description.
-        :param pulumi.Input[float] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
+        :param pulumi.Input[int] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
                Default: false
         :param pulumi.Input[str] elastic_ip: Elastic IP Allocation Id to associate to the instance.
         :param pulumi.Input[bool] enable_monitoring: Describes whether instance Enhanced Monitoring is enabled.
                Default: false
-        :param pulumi.Input[float] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
+        :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
         :param pulumi.Input[str] health_check_type: The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
                Default: `"EC2"`.
         :param pulumi.Input[str] iam_instance_profile: Set IAM profile to instance. Set only one of ARN or Name.
         :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
         :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
         :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`.
                Default `"spot"`.
         :param pulumi.Input[str] name: The ManagedInstance name.
-        :param pulumi.Input[List[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
                Default: `"availabilityOriented"`.
         :param pulumi.Input[bool] persist_block_devices: Should the instance maintain its Data volumes.
@@ -342,11 +342,11 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ManagedInstanceTagArgs']]]] tags: Set tags for the instance. Items should be unique.
-        :param pulumi.Input[float] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceTagArgs']]]] tags: Set tags for the instance. Items should be unique.
+        :param pulumi.Input[int] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
         :param pulumi.Input[str] user_data: The Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
                Default: `"false"`.
@@ -433,7 +433,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> pulumi.Output[Optional[float]]:
+    def draining_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
         """
@@ -472,7 +472,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> pulumi.Output[Optional[float]]:
+    def grace_period(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
         """
@@ -505,7 +505,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> pulumi.Output[List[str]]:
+    def instance_types(self) -> pulumi.Output[Sequence[str]]:
         """
         Comma separated list of available instance types for instance.
         """
@@ -535,7 +535,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> pulumi.Output[Optional[List['outputs.ManagedInstanceLoadBalancer']]]:
+    def load_balancers(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceLoadBalancer']]]:
         return pulumi.get(self, "load_balancers")
 
     @property
@@ -548,12 +548,12 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> pulumi.Output[Optional[List['outputs.ManagedInstanceNetworkInterface']]]:
+    def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceNetworkInterface']]]:
         return pulumi.get(self, "network_interfaces")
 
     @property
     @pulumi.getter(name="optimizationWindows")
-    def optimization_windows(self) -> pulumi.Output[Optional[List[str]]]:
+    def optimization_windows(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         """
@@ -640,12 +640,12 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.ManagedInstanceScheduledTask']]]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         One or more security group IDs.
         """
@@ -661,7 +661,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> pulumi.Output[List[str]]:
+    def subnet_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         A comma-separated list of subnet identifiers for your instance.
         """
@@ -669,7 +669,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List['outputs.ManagedInstanceTag']]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceTag']]]:
         """
         Set tags for the instance. Items should be unique.
         """
@@ -677,7 +677,7 @@ class ManagedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="unhealthyDuration")
-    def unhealthy_duration(self) -> pulumi.Output[Optional[float]]:
+    def unhealthy_duration(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
         """

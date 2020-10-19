@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,9 +18,9 @@ class Listener(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  balancer_id: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerTagArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerTagArgs']]]]] = None,
                  tls_config: Optional[pulumi.Input[pulumi.InputType['ListenerTlsConfigArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -69,9 +69,9 @@ class Listener(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             balancer_id: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListenerTagArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerTagArgs']]]]] = None,
             tls_config: Optional[pulumi.Input[pulumi.InputType['ListenerTlsConfigArgs']]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
@@ -99,7 +99,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[float]:
+    def port(self) -> pulumi.Output[int]:
         return pulumi.get(self, "port")
 
     @property
@@ -109,7 +109,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List['outputs.ListenerTag']]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ListenerTag']]]:
         return pulumi.get(self, "tags")
 
     @property

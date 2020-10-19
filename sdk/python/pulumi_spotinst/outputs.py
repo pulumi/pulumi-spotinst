@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -15,23 +15,23 @@ __all__ = [
 @pulumi.output_type
 class HealthCheckCheck(dict):
     def __init__(__self__, *,
-                 healthy: float,
-                 interval: float,
-                 port: float,
+                 healthy: int,
+                 interval: int,
+                 port: int,
                  protocol: str,
-                 unhealthy: float,
+                 unhealthy: int,
                  end_point: Optional[str] = None,
                  endpoint: Optional[str] = None,
-                 time_out: Optional[float] = None,
-                 timeout: Optional[float] = None):
+                 time_out: Optional[int] = None,
+                 timeout: Optional[int] = None):
         """
-        :param float healthy: The number of consecutive successful health checks that must occur before declaring an instance healthy.
-        :param float interval: The amount of time (in seconds) between each health check (minimum: 10).
-        :param float port: The port of the Spotinst HCS (default: 80).
+        :param int healthy: The number of consecutive successful health checks that must occur before declaring an instance healthy.
+        :param int interval: The amount of time (in seconds) between each health check (minimum: 10).
+        :param int port: The port of the Spotinst HCS (default: 80).
         :param str protocol: The protocol to use to connect with the instance. Valid values: http, https.
-        :param float unhealthy: The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
+        :param int unhealthy: The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
         :param str endpoint: The destination for the request.
-        :param float timeout: the amount of time (in seconds) to wait when receiving a response from the health check.
+        :param int timeout: the amount of time (in seconds) to wait when receiving a response from the health check.
         """
         pulumi.set(__self__, "healthy", healthy)
         pulumi.set(__self__, "interval", interval)
@@ -49,7 +49,7 @@ class HealthCheckCheck(dict):
 
     @property
     @pulumi.getter
-    def healthy(self) -> float:
+    def healthy(self) -> int:
         """
         The number of consecutive successful health checks that must occur before declaring an instance healthy.
         """
@@ -57,7 +57,7 @@ class HealthCheckCheck(dict):
 
     @property
     @pulumi.getter
-    def interval(self) -> float:
+    def interval(self) -> int:
         """
         The amount of time (in seconds) between each health check (minimum: 10).
         """
@@ -65,7 +65,7 @@ class HealthCheckCheck(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The port of the Spotinst HCS (default: 80).
         """
@@ -81,7 +81,7 @@ class HealthCheckCheck(dict):
 
     @property
     @pulumi.getter
-    def unhealthy(self) -> float:
+    def unhealthy(self) -> int:
         """
         The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
         """
@@ -102,12 +102,12 @@ class HealthCheckCheck(dict):
 
     @property
     @pulumi.getter(name="timeOut")
-    def time_out(self) -> Optional[float]:
+    def time_out(self) -> Optional[int]:
         return pulumi.get(self, "time_out")
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> Optional[int]:
         """
         the amount of time (in seconds) to wait when receiving a response from the health check.
         """

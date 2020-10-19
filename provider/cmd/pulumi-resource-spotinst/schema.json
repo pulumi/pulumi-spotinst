@@ -41,97 +41,6 @@
         }
     },
     "types": {
-        "spotinst:/HealthCheckCheck:HealthCheckCheck": {
-            "properties": {
-                "endPoint": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "endpoint": {
-                    "type": "string",
-                    "description": "The destination for the request.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "healthy": {
-                    "type": "integer",
-                    "description": "The number of consecutive successful health checks that must occur before declaring an instance healthy.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "interval": {
-                    "type": "integer",
-                    "description": "The amount of time (in seconds) between each health check (minimum: 10).\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "port": {
-                    "type": "integer",
-                    "description": "The port of the Spotinst HCS (default: 80).\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "protocol": {
-                    "type": "string",
-                    "description": "The protocol to use to connect with the instance. Valid values: http, https.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "timeOut": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "timeout": {
-                    "type": "integer",
-                    "description": "the amount of time (in seconds) to wait when receiving a response from the health check.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "unhealthy": {
-                    "type": "integer",
-                    "description": "The number of consecutive failed health checks that must occur before declaring an instance unhealthy.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "required": [
-                "healthy",
-                "interval",
-                "port",
-                "protocol",
-                "unhealthy"
-            ]
-        },
         "spotinst:aws/BeanstalkDeploymentPreferences:BeanstalkDeploymentPreferences": {
             "properties": {
                 "automaticRoll": {
@@ -8273,6 +8182,97 @@
                 "value"
             ]
         },
+        "spotinst:index/HealthCheckCheck:HealthCheckCheck": {
+            "properties": {
+                "endPoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The destination for the request.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "healthy": {
+                    "type": "integer",
+                    "description": "The number of consecutive successful health checks that must occur before declaring an instance healthy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "interval": {
+                    "type": "integer",
+                    "description": "The amount of time (in seconds) between each health check (minimum: 10).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port of the Spotinst HCS (default: 80).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "The protocol to use to connect with the instance. Valid values: http, https.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timeOut": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "the amount of time (in seconds) to wait when receiving a response from the health check.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "unhealthy": {
+                    "type": "integer",
+                    "description": "The number of consecutive failed health checks that must occur before declaring an instance unhealthy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "healthy",
+                "interval",
+                "port",
+                "protocol",
+                "unhealthy"
+            ]
+        },
         "spotinst:multai/BalancerConnectionTimeouts:BalancerConnectionTimeouts": {
             "properties": {
                 "draining": {
@@ -13927,7 +13927,7 @@
             "description": "Provides a Spotinst Health Check resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst httpCheck = new spotinst.HealthCheck(\"http_check\", {\n    check: {\n        endpoint: \"http://endpoint.com\",\n        healthy: 1,\n        interval: 10,\n        port: 1337,\n        protocol: \"http\",\n        timeout: 10,\n        unhealthy: 1,\n    },\n    proxyAddress: \"http://proxy.com\",\n    proxyPort: 80,\n    resourceId: \"sig-123\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nhttp_check = spotinst.HealthCheck(\"httpCheck\",\n    check=spotinst.HealthCheckCheckArgs(\n        endpoint=\"http://endpoint.com\",\n        healthy=1,\n        interval=10,\n        port=1337,\n        protocol=\"http\",\n        timeout=10,\n        unhealthy=1,\n    ),\n    proxy_address=\"http://proxy.com\",\n    proxy_port=80,\n    resource_id=\"sig-123\")\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var httpCheck = new SpotInst.HealthCheck(\"httpCheck\", new SpotInst.HealthCheckArgs\n        {\n            Check = new SpotInst.Inputs.HealthCheckCheckArgs\n            {\n                Endpoint = \"http://endpoint.com\",\n                Healthy = 1,\n                Interval = 10,\n                Port = 1337,\n                Protocol = \"http\",\n                Timeout = 10,\n                Unhealthy = 1,\n            },\n            ProxyAddress = \"http://proxy.com\",\n            ProxyPort = 80,\n            ResourceId = \"sig-123\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := spotinst.NewHealthCheck(ctx, \"httpCheck\", \u0026spotinst.HealthCheckArgs{\n\t\t\tCheck: \u0026spotinst.HealthCheckCheckArgs{\n\t\t\t\tEndpoint:  pulumi.String(\"http://endpoint.com\"),\n\t\t\t\tHealthy:   pulumi.Int(1),\n\t\t\t\tInterval:  pulumi.Int(10),\n\t\t\t\tPort:      pulumi.Int(1337),\n\t\t\t\tProtocol:  pulumi.String(\"http\"),\n\t\t\t\tTimeout:   pulumi.Int(10),\n\t\t\t\tUnhealthy: pulumi.Int(1),\n\t\t\t},\n\t\t\tProxyAddress: pulumi.String(\"http://proxy.com\"),\n\t\t\tProxyPort:    pulumi.Int(80),\n\t\t\tResourceId:   pulumi.String(\"sig-123\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "check": {
-                    "$ref": "#/types/spotinst:/HealthCheckCheck:HealthCheckCheck",
+                    "$ref": "#/types/spotinst:index/HealthCheckCheck:HealthCheckCheck",
                     "description": "Describes the check to execute.\n"
                 },
                 "name": {
@@ -13952,7 +13952,7 @@
             ],
             "inputProperties": {
                 "check": {
-                    "$ref": "#/types/spotinst:/HealthCheckCheck:HealthCheckCheck",
+                    "$ref": "#/types/spotinst:index/HealthCheckCheck:HealthCheckCheck",
                     "description": "Describes the check to execute.\n"
                 },
                 "name": {
@@ -13978,7 +13978,7 @@
                 "description": "Input properties used for looking up and filtering HealthCheck resources.\n",
                 "properties": {
                     "check": {
-                        "$ref": "#/types/spotinst:/HealthCheckCheck:HealthCheckCheck",
+                        "$ref": "#/types/spotinst:index/HealthCheckCheck:HealthCheckCheck",
                         "description": "Describes the check to execute.\n"
                     },
                     "name": {

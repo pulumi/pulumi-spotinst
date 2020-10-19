@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,7 +20,7 @@ class HealthCheck(pulumi.CustomResource):
                  check: Optional[pulumi.Input[pulumi.InputType['HealthCheckCheckArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  proxy_address: Optional[pulumi.Input[str]] = None,
-                 proxy_port: Optional[pulumi.Input[float]] = None,
+                 proxy_port: Optional[pulumi.Input[int]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -94,7 +94,7 @@ class HealthCheck(pulumi.CustomResource):
             check: Optional[pulumi.Input[pulumi.InputType['HealthCheckCheckArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             proxy_address: Optional[pulumi.Input[str]] = None,
-            proxy_port: Optional[pulumi.Input[float]] = None,
+            proxy_port: Optional[pulumi.Input[int]] = None,
             resource_id: Optional[pulumi.Input[str]] = None) -> 'HealthCheck':
         """
         Get an existing HealthCheck resource's state with the given name, id, and optional extra
@@ -141,7 +141,7 @@ class HealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyPort")
-    def proxy_port(self) -> pulumi.Output[Optional[float]]:
+    def proxy_port(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "proxy_port")
 
     @property

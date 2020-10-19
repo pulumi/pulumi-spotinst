@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,26 +18,26 @@ class Elastigroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
-                 desired_capacity: Optional[pulumi.Input[float]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['ElastigroupHealthCheckArgs']]] = None,
-                 images: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupImageArgs']]]]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupImageArgs']]]]] = None,
                  integration_kubernetes: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']]] = None,
                  integration_multai_runtime: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMultaiRuntimeArgs']]] = None,
-                 load_balancers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupLoadBalancerArgs']]]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLoadBalancerArgs']]]]] = None,
                  login: Optional[pulumi.Input[pulumi.InputType['ElastigroupLoginArgs']]] = None,
-                 low_priority_sizes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 managed_service_identities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupManagedServiceIdentityArgs']]]]] = None,
-                 max_size: Optional[pulumi.Input[float]] = None,
-                 min_size: Optional[pulumi.Input[float]] = None,
+                 low_priority_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupManagedServiceIdentityArgs']]]]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['ElastigroupNetworkArgs']]] = None,
-                 od_sizes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  strategy: Optional[pulumi.Input[pulumi.InputType['ElastigroupStrategyArgs']]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['ElastigroupUpdatePolicyArgs']]] = None,
@@ -292,12 +292,12 @@ class Elastigroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[List[pulumi.Input[str]]] low_priority_sizes: Available Low-Priority sizes.
-        :param pulumi.Input[float] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[float] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] low_priority_sizes: Available Low-Priority sizes.
+        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
+        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The name of the managed identity.
-        :param pulumi.Input[List[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
         :param pulumi.Input[str] resource_group_name: The Resource Group that the user-assigned managed identity resides in.
@@ -372,26 +372,26 @@ class Elastigroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_data: Optional[pulumi.Input[str]] = None,
-            desired_capacity: Optional[pulumi.Input[float]] = None,
+            desired_capacity: Optional[pulumi.Input[int]] = None,
             health_check: Optional[pulumi.Input[pulumi.InputType['ElastigroupHealthCheckArgs']]] = None,
-            images: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupImageArgs']]]]] = None,
+            images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupImageArgs']]]]] = None,
             integration_kubernetes: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']]] = None,
             integration_multai_runtime: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMultaiRuntimeArgs']]] = None,
-            load_balancers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupLoadBalancerArgs']]]]] = None,
+            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLoadBalancerArgs']]]]] = None,
             login: Optional[pulumi.Input[pulumi.InputType['ElastigroupLoginArgs']]] = None,
-            low_priority_sizes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            managed_service_identities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupManagedServiceIdentityArgs']]]]] = None,
-            max_size: Optional[pulumi.Input[float]] = None,
-            min_size: Optional[pulumi.Input[float]] = None,
+            low_priority_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupManagedServiceIdentityArgs']]]]] = None,
+            max_size: Optional[pulumi.Input[int]] = None,
+            min_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[pulumi.InputType['ElastigroupNetworkArgs']]] = None,
-            od_sizes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             product: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
-            scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-            scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
-            scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+            scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
+            scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
+            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
             strategy: Optional[pulumi.Input[pulumi.InputType['ElastigroupStrategyArgs']]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['ElastigroupUpdatePolicyArgs']]] = None,
@@ -403,12 +403,12 @@ class Elastigroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[List[pulumi.Input[str]]] low_priority_sizes: Available Low-Priority sizes.
-        :param pulumi.Input[float] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[float] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] low_priority_sizes: Available Low-Priority sizes.
+        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
+        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The name of the managed identity.
-        :param pulumi.Input[List[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
         :param pulumi.Input[str] resource_group_name: The Resource Group that the user-assigned managed identity resides in.
@@ -454,7 +454,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> pulumi.Output[Optional[float]]:
+    def desired_capacity(self) -> pulumi.Output[Optional[int]]:
         """
         The desired number of instances the group should have at any time.
         """
@@ -467,7 +467,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def images(self) -> pulumi.Output[Optional[List['outputs.ElastigroupImage']]]:
+    def images(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupImage']]]:
         return pulumi.get(self, "images")
 
     @property
@@ -482,7 +482,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancers")
-    def load_balancers(self) -> pulumi.Output[Optional[List['outputs.ElastigroupLoadBalancer']]]:
+    def load_balancers(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupLoadBalancer']]]:
         return pulumi.get(self, "load_balancers")
 
     @property
@@ -492,7 +492,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lowPrioritySizes")
-    def low_priority_sizes(self) -> pulumi.Output[List[str]]:
+    def low_priority_sizes(self) -> pulumi.Output[Sequence[str]]:
         """
         Available Low-Priority sizes.
         """
@@ -500,12 +500,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managedServiceIdentities")
-    def managed_service_identities(self) -> pulumi.Output[Optional[List['outputs.ElastigroupManagedServiceIdentity']]]:
+    def managed_service_identities(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupManagedServiceIdentity']]]:
         return pulumi.get(self, "managed_service_identities")
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> pulumi.Output[float]:
+    def max_size(self) -> pulumi.Output[int]:
         """
         The maximum number of instances the group should have at any time.
         """
@@ -513,7 +513,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> pulumi.Output[float]:
+    def min_size(self) -> pulumi.Output[int]:
         """
         The minimum number of instances the group should have at any time.
         """
@@ -534,7 +534,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="odSizes")
-    def od_sizes(self) -> pulumi.Output[List[str]]:
+    def od_sizes(self) -> pulumi.Output[Sequence[str]]:
         """
         Available On-Demand sizes
         """
@@ -566,17 +566,17 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
-    def scaling_down_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingDownPolicy']]]:
+    def scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingDownPolicy']]]:
         return pulumi.get(self, "scaling_down_policies")
 
     @property
     @pulumi.getter(name="scalingUpPolicies")
-    def scaling_up_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingUpPolicy']]]:
+    def scaling_up_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingUpPolicy']]]:
         return pulumi.get(self, "scaling_up_policies")
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScheduledTask']]]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property

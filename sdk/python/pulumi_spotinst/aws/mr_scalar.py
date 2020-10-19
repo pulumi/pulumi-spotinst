@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,62 +18,62 @@ class MrScalar(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_info: Optional[pulumi.Input[str]] = None,
-                 additional_primary_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 additional_replica_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 applications: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarApplicationArgs']]]]] = None,
-                 availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 bootstrap_actions_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarBootstrapActionsFileArgs']]]]] = None,
+                 additional_primary_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 additional_replica_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarApplicationArgs']]]]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 bootstrap_actions_files: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarBootstrapActionsFileArgs']]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 configurations_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarConfigurationsFileArgs']]]]] = None,
-                 core_desired_capacity: Optional[pulumi.Input[float]] = None,
-                 core_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreEbsBlockDeviceArgs']]]]] = None,
+                 configurations_files: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarConfigurationsFileArgs']]]]] = None,
+                 core_desired_capacity: Optional[pulumi.Input[int]] = None,
+                 core_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarCoreEbsBlockDeviceArgs']]]]] = None,
                  core_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-                 core_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 core_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  core_lifecycle: Optional[pulumi.Input[str]] = None,
-                 core_max_size: Optional[pulumi.Input[float]] = None,
-                 core_min_size: Optional[pulumi.Input[float]] = None,
-                 core_scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreScalingDownPolicyArgs']]]]] = None,
-                 core_scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreScalingUpPolicyArgs']]]]] = None,
+                 core_max_size: Optional[pulumi.Input[int]] = None,
+                 core_min_size: Optional[pulumi.Input[int]] = None,
+                 core_scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarCoreScalingDownPolicyArgs']]]]] = None,
+                 core_scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarCoreScalingUpPolicyArgs']]]]] = None,
                  core_unit: Optional[pulumi.Input[str]] = None,
                  custom_ami_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 ebs_root_volume_size: Optional[pulumi.Input[float]] = None,
+                 ebs_root_volume_size: Optional[pulumi.Input[int]] = None,
                  ec2_key_name: Optional[pulumi.Input[str]] = None,
                  expose_cluster_id: Optional[pulumi.Input[bool]] = None,
-                 instance_weights: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarInstanceWeightArgs']]]]] = None,
+                 instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarInstanceWeightArgs']]]]] = None,
                  job_flow_role: Optional[pulumi.Input[str]] = None,
                  keep_job_flow_alive: Optional[pulumi.Input[bool]] = None,
                  log_uri: Optional[pulumi.Input[str]] = None,
                  managed_primary_security_group: Optional[pulumi.Input[str]] = None,
                  managed_replica_security_group: Optional[pulumi.Input[str]] = None,
-                 master_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarMasterEbsBlockDeviceArgs']]]]] = None,
+                 master_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarMasterEbsBlockDeviceArgs']]]]] = None,
                  master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-                 master_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  master_lifecycle: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  provisioning_timeout: Optional[pulumi.Input[pulumi.InputType['MrScalarProvisioningTimeoutArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  release_label: Optional[pulumi.Input[str]] = None,
                  repo_upgrade_on_boot: Optional[pulumi.Input[str]] = None,
-                 retries: Optional[pulumi.Input[float]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarScheduledTaskArgs']]]]] = None,
+                 retries: Optional[pulumi.Input[int]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarScheduledTaskArgs']]]]] = None,
                  security_config: Optional[pulumi.Input[str]] = None,
                  service_access_security_group: Optional[pulumi.Input[str]] = None,
                  service_role: Optional[pulumi.Input[str]] = None,
-                 steps_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarStepsFileArgs']]]]] = None,
+                 steps_files: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarStepsFileArgs']]]]] = None,
                  strategy: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTagArgs']]]]] = None,
-                 task_desired_capacity: Optional[pulumi.Input[float]] = None,
-                 task_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskEbsBlockDeviceArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTagArgs']]]]] = None,
+                 task_desired_capacity: Optional[pulumi.Input[int]] = None,
+                 task_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTaskEbsBlockDeviceArgs']]]]] = None,
                  task_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-                 task_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 task_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  task_lifecycle: Optional[pulumi.Input[str]] = None,
-                 task_max_size: Optional[pulumi.Input[float]] = None,
-                 task_min_size: Optional[pulumi.Input[float]] = None,
-                 task_scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskScalingDownPolicyArgs']]]]] = None,
-                 task_scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskScalingUpPolicyArgs']]]]] = None,
+                 task_max_size: Optional[pulumi.Input[int]] = None,
+                 task_min_size: Optional[pulumi.Input[int]] = None,
+                 task_scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTaskScalingDownPolicyArgs']]]]] = None,
+                 task_scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTaskScalingUpPolicyArgs']]]]] = None,
                  task_unit: Optional[pulumi.Input[str]] = None,
-                 termination_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]]] = None,
+                 termination_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]]] = None,
                  termination_protected: Optional[pulumi.Input[bool]] = None,
                  visible_to_all_users: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
@@ -472,7 +472,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] name: The MrScaler name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -567,37 +567,37 @@ class MrScalar(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_info: Optional[pulumi.Input[str]] = None,
-            additional_primary_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            additional_replica_security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            applications: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarApplicationArgs']]]]] = None,
-            availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            bootstrap_actions_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarBootstrapActionsFileArgs']]]]] = None,
+            additional_primary_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            additional_replica_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarApplicationArgs']]]]] = None,
+            availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            bootstrap_actions_files: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarBootstrapActionsFileArgs']]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
-            configurations_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarConfigurationsFileArgs']]]]] = None,
-            core_desired_capacity: Optional[pulumi.Input[float]] = None,
-            core_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreEbsBlockDeviceArgs']]]]] = None,
+            configurations_files: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarConfigurationsFileArgs']]]]] = None,
+            core_desired_capacity: Optional[pulumi.Input[int]] = None,
+            core_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarCoreEbsBlockDeviceArgs']]]]] = None,
             core_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-            core_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            core_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             core_lifecycle: Optional[pulumi.Input[str]] = None,
-            core_max_size: Optional[pulumi.Input[float]] = None,
-            core_min_size: Optional[pulumi.Input[float]] = None,
-            core_scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreScalingDownPolicyArgs']]]]] = None,
-            core_scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarCoreScalingUpPolicyArgs']]]]] = None,
+            core_max_size: Optional[pulumi.Input[int]] = None,
+            core_min_size: Optional[pulumi.Input[int]] = None,
+            core_scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarCoreScalingDownPolicyArgs']]]]] = None,
+            core_scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarCoreScalingUpPolicyArgs']]]]] = None,
             core_unit: Optional[pulumi.Input[str]] = None,
             custom_ami_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            ebs_root_volume_size: Optional[pulumi.Input[float]] = None,
+            ebs_root_volume_size: Optional[pulumi.Input[int]] = None,
             ec2_key_name: Optional[pulumi.Input[str]] = None,
             expose_cluster_id: Optional[pulumi.Input[bool]] = None,
-            instance_weights: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarInstanceWeightArgs']]]]] = None,
+            instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarInstanceWeightArgs']]]]] = None,
             job_flow_role: Optional[pulumi.Input[str]] = None,
             keep_job_flow_alive: Optional[pulumi.Input[bool]] = None,
             log_uri: Optional[pulumi.Input[str]] = None,
             managed_primary_security_group: Optional[pulumi.Input[str]] = None,
             managed_replica_security_group: Optional[pulumi.Input[str]] = None,
-            master_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarMasterEbsBlockDeviceArgs']]]]] = None,
+            master_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarMasterEbsBlockDeviceArgs']]]]] = None,
             master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-            master_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             master_lifecycle: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             output_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -605,25 +605,25 @@ class MrScalar(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             release_label: Optional[pulumi.Input[str]] = None,
             repo_upgrade_on_boot: Optional[pulumi.Input[str]] = None,
-            retries: Optional[pulumi.Input[float]] = None,
-            scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarScheduledTaskArgs']]]]] = None,
+            retries: Optional[pulumi.Input[int]] = None,
+            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarScheduledTaskArgs']]]]] = None,
             security_config: Optional[pulumi.Input[str]] = None,
             service_access_security_group: Optional[pulumi.Input[str]] = None,
             service_role: Optional[pulumi.Input[str]] = None,
-            steps_files: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarStepsFileArgs']]]]] = None,
+            steps_files: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarStepsFileArgs']]]]] = None,
             strategy: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTagArgs']]]]] = None,
-            task_desired_capacity: Optional[pulumi.Input[float]] = None,
-            task_ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskEbsBlockDeviceArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTagArgs']]]]] = None,
+            task_desired_capacity: Optional[pulumi.Input[int]] = None,
+            task_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTaskEbsBlockDeviceArgs']]]]] = None,
             task_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-            task_instance_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            task_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             task_lifecycle: Optional[pulumi.Input[str]] = None,
-            task_max_size: Optional[pulumi.Input[float]] = None,
-            task_min_size: Optional[pulumi.Input[float]] = None,
-            task_scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskScalingDownPolicyArgs']]]]] = None,
-            task_scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTaskScalingUpPolicyArgs']]]]] = None,
+            task_max_size: Optional[pulumi.Input[int]] = None,
+            task_min_size: Optional[pulumi.Input[int]] = None,
+            task_scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTaskScalingDownPolicyArgs']]]]] = None,
+            task_scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTaskScalingUpPolicyArgs']]]]] = None,
             task_unit: Optional[pulumi.Input[str]] = None,
-            termination_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]]] = None,
+            termination_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]]] = None,
             termination_protected: Optional[pulumi.Input[bool]] = None,
             visible_to_all_users: Optional[pulumi.Input[bool]] = None) -> 'MrScalar':
         """
@@ -638,7 +638,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] name: The MrScaler name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -713,27 +713,27 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="additionalPrimarySecurityGroups")
-    def additional_primary_security_groups(self) -> pulumi.Output[Optional[List[str]]]:
+    def additional_primary_security_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "additional_primary_security_groups")
 
     @property
     @pulumi.getter(name="additionalReplicaSecurityGroups")
-    def additional_replica_security_groups(self) -> pulumi.Output[Optional[List[str]]]:
+    def additional_replica_security_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "additional_replica_security_groups")
 
     @property
     @pulumi.getter
-    def applications(self) -> pulumi.Output[Optional[List['outputs.MrScalarApplication']]]:
+    def applications(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarApplication']]]:
         return pulumi.get(self, "applications")
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> pulumi.Output[Optional[List[str]]]:
+    def availability_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "availability_zones")
 
     @property
     @pulumi.getter(name="bootstrapActionsFiles")
-    def bootstrap_actions_files(self) -> pulumi.Output[Optional[List['outputs.MrScalarBootstrapActionsFile']]]:
+    def bootstrap_actions_files(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarBootstrapActionsFile']]]:
         return pulumi.get(self, "bootstrap_actions_files")
 
     @property
@@ -746,17 +746,17 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configurationsFiles")
-    def configurations_files(self) -> pulumi.Output[Optional[List['outputs.MrScalarConfigurationsFile']]]:
+    def configurations_files(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarConfigurationsFile']]]:
         return pulumi.get(self, "configurations_files")
 
     @property
     @pulumi.getter(name="coreDesiredCapacity")
-    def core_desired_capacity(self) -> pulumi.Output[Optional[float]]:
+    def core_desired_capacity(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "core_desired_capacity")
 
     @property
     @pulumi.getter(name="coreEbsBlockDevices")
-    def core_ebs_block_devices(self) -> pulumi.Output[Optional[List['outputs.MrScalarCoreEbsBlockDevice']]]:
+    def core_ebs_block_devices(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarCoreEbsBlockDevice']]]:
         return pulumi.get(self, "core_ebs_block_devices")
 
     @property
@@ -766,7 +766,7 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coreInstanceTypes")
-    def core_instance_types(self) -> pulumi.Output[Optional[List[str]]]:
+    def core_instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "core_instance_types")
 
     @property
@@ -776,22 +776,22 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="coreMaxSize")
-    def core_max_size(self) -> pulumi.Output[Optional[float]]:
+    def core_max_size(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "core_max_size")
 
     @property
     @pulumi.getter(name="coreMinSize")
-    def core_min_size(self) -> pulumi.Output[Optional[float]]:
+    def core_min_size(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "core_min_size")
 
     @property
     @pulumi.getter(name="coreScalingDownPolicies")
-    def core_scaling_down_policies(self) -> pulumi.Output[Optional[List['outputs.MrScalarCoreScalingDownPolicy']]]:
+    def core_scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarCoreScalingDownPolicy']]]:
         return pulumi.get(self, "core_scaling_down_policies")
 
     @property
     @pulumi.getter(name="coreScalingUpPolicies")
-    def core_scaling_up_policies(self) -> pulumi.Output[Optional[List['outputs.MrScalarCoreScalingUpPolicy']]]:
+    def core_scaling_up_policies(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarCoreScalingUpPolicy']]]:
         return pulumi.get(self, "core_scaling_up_policies")
 
     @property
@@ -814,7 +814,7 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ebsRootVolumeSize")
-    def ebs_root_volume_size(self) -> pulumi.Output[Optional[float]]:
+    def ebs_root_volume_size(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "ebs_root_volume_size")
 
     @property
@@ -829,7 +829,7 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceWeights")
-    def instance_weights(self) -> pulumi.Output[Optional[List['outputs.MrScalarInstanceWeight']]]:
+    def instance_weights(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarInstanceWeight']]]:
         return pulumi.get(self, "instance_weights")
 
     @property
@@ -859,7 +859,7 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterEbsBlockDevices")
-    def master_ebs_block_devices(self) -> pulumi.Output[Optional[List['outputs.MrScalarMasterEbsBlockDevice']]]:
+    def master_ebs_block_devices(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarMasterEbsBlockDevice']]]:
         return pulumi.get(self, "master_ebs_block_devices")
 
     @property
@@ -869,7 +869,7 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterInstanceTypes")
-    def master_instance_types(self) -> pulumi.Output[Optional[List[str]]]:
+    def master_instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "master_instance_types")
 
     @property
@@ -915,12 +915,12 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def retries(self) -> pulumi.Output[Optional[float]]:
+    def retries(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "retries")
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.MrScalarScheduledTask']]]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property
@@ -940,7 +940,7 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stepsFiles")
-    def steps_files(self) -> pulumi.Output[Optional[List['outputs.MrScalarStepsFile']]]:
+    def steps_files(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarStepsFile']]]:
         return pulumi.get(self, "steps_files")
 
     @property
@@ -953,17 +953,17 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List['outputs.MrScalarTag']]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarTag']]]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="taskDesiredCapacity")
-    def task_desired_capacity(self) -> pulumi.Output[Optional[float]]:
+    def task_desired_capacity(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "task_desired_capacity")
 
     @property
     @pulumi.getter(name="taskEbsBlockDevices")
-    def task_ebs_block_devices(self) -> pulumi.Output[Optional[List['outputs.MrScalarTaskEbsBlockDevice']]]:
+    def task_ebs_block_devices(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarTaskEbsBlockDevice']]]:
         return pulumi.get(self, "task_ebs_block_devices")
 
     @property
@@ -973,7 +973,7 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="taskInstanceTypes")
-    def task_instance_types(self) -> pulumi.Output[Optional[List[str]]]:
+    def task_instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "task_instance_types")
 
     @property
@@ -983,22 +983,22 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="taskMaxSize")
-    def task_max_size(self) -> pulumi.Output[Optional[float]]:
+    def task_max_size(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "task_max_size")
 
     @property
     @pulumi.getter(name="taskMinSize")
-    def task_min_size(self) -> pulumi.Output[Optional[float]]:
+    def task_min_size(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "task_min_size")
 
     @property
     @pulumi.getter(name="taskScalingDownPolicies")
-    def task_scaling_down_policies(self) -> pulumi.Output[Optional[List['outputs.MrScalarTaskScalingDownPolicy']]]:
+    def task_scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarTaskScalingDownPolicy']]]:
         return pulumi.get(self, "task_scaling_down_policies")
 
     @property
     @pulumi.getter(name="taskScalingUpPolicies")
-    def task_scaling_up_policies(self) -> pulumi.Output[Optional[List['outputs.MrScalarTaskScalingUpPolicy']]]:
+    def task_scaling_up_policies(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarTaskScalingUpPolicy']]]:
         return pulumi.get(self, "task_scaling_up_policies")
 
     @property
@@ -1008,7 +1008,7 @@ class MrScalar(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminationPolicies")
-    def termination_policies(self) -> pulumi.Output[Optional[List['outputs.MrScalarTerminationPolicy']]]:
+    def termination_policies(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarTerminationPolicy']]]:
         """
         Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         """
