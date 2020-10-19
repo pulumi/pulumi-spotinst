@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,14 +18,14 @@ class OceanImport(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']]] = None,
-                 backend_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]]] = None,
+                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 desired_capacity: Optional[pulumi.Input[float]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 max_size: Optional[pulumi.Input[float]] = None,
-                 min_size: Optional[pulumi.Input[float]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
-                 whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
+                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -113,12 +113,12 @@ class OceanImport(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
-        :param pulumi.Input[float] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
-        :param pulumi.Input[float] max_size: The upper limit of instances the cluster can scale up to.
-        :param pulumi.Input[float] min_size: The lower limit of instances the cluster can scale down to.
+        :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
+        :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -162,15 +162,15 @@ class OceanImport(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']]] = None,
-            backend_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]]] = None,
+            backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]]] = None,
             cluster_controller_id: Optional[pulumi.Input[str]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
-            desired_capacity: Optional[pulumi.Input[float]] = None,
+            desired_capacity: Optional[pulumi.Input[int]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            max_size: Optional[pulumi.Input[float]] = None,
-            min_size: Optional[pulumi.Input[float]] = None,
-            scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
-            whitelists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'OceanImport':
+            max_size: Optional[pulumi.Input[int]] = None,
+            min_size: Optional[pulumi.Input[int]] = None,
+            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
+            whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanImport':
         """
         Get an existing OceanImport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -178,12 +178,12 @@ class OceanImport(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
-        :param pulumi.Input[float] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
-        :param pulumi.Input[float] max_size: The upper limit of instances the cluster can scale up to.
-        :param pulumi.Input[float] min_size: The lower limit of instances the cluster can scale down to.
+        :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
+        :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -208,7 +208,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendServices")
-    def backend_services(self) -> pulumi.Output[Optional[List['outputs.OceanImportBackendService']]]:
+    def backend_services(self) -> pulumi.Output[Optional[Sequence['outputs.OceanImportBackendService']]]:
         """
         Describes the backend service configurations.
         """
@@ -229,7 +229,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> pulumi.Output[float]:
+    def desired_capacity(self) -> pulumi.Output[int]:
         """
         The number of instances to launch and maintain in the cluster.
         """
@@ -245,7 +245,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> pulumi.Output[float]:
+    def max_size(self) -> pulumi.Output[int]:
         """
         The upper limit of instances the cluster can scale up to.
         """
@@ -253,7 +253,7 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> pulumi.Output[float]:
+    def min_size(self) -> pulumi.Output[int]:
         """
         The lower limit of instances the cluster can scale down to.
         """
@@ -261,12 +261,12 @@ class OceanImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.OceanImportScheduledTask']]]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.OceanImportScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property
     @pulumi.getter
-    def whitelists(self) -> pulumi.Output[Optional[List[str]]]:
+    def whitelists(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "whitelists")
 
     def translate_output_property(self, prop):

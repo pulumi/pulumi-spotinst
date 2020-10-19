@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -117,14 +117,14 @@ __all__ = [
 class BeanstalkDeploymentPreferencesArgs:
     def __init__(__self__, *,
                  automatic_roll: Optional[pulumi.Input[bool]] = None,
-                 batch_size_percentage: Optional[pulumi.Input[float]] = None,
-                 grace_period: Optional[pulumi.Input[float]] = None,
-                 strategies: Optional[pulumi.Input[List[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgs']]]] = None):
+                 batch_size_percentage: Optional[pulumi.Input[int]] = None,
+                 grace_period: Optional[pulumi.Input[int]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgs']]]] = None):
         """
         :param pulumi.Input[bool] automatic_roll: Should roll perform automatically
-        :param pulumi.Input[float] batch_size_percentage: Percent size of each batch
-        :param pulumi.Input[float] grace_period: Amount of time to wait between batches
-        :param pulumi.Input[List[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgs']]] strategies: Strategy parameters
+        :param pulumi.Input[int] batch_size_percentage: Percent size of each batch
+        :param pulumi.Input[int] grace_period: Amount of time to wait between batches
+        :param pulumi.Input[Sequence[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgs']]] strategies: Strategy parameters
         """
         if automatic_roll is not None:
             pulumi.set(__self__, "automatic_roll", automatic_roll)
@@ -149,38 +149,38 @@ class BeanstalkDeploymentPreferencesArgs:
 
     @property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> Optional[pulumi.Input[float]]:
+    def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
         """
         Percent size of each batch
         """
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
-    def batch_size_percentage(self, value: Optional[pulumi.Input[float]]):
+    def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "batch_size_percentage", value)
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[float]]:
+    def grace_period(self) -> Optional[pulumi.Input[int]]:
         """
         Amount of time to wait between batches
         """
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[float]]):
+    def grace_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "grace_period", value)
 
     @property
     @pulumi.getter
-    def strategies(self) -> Optional[pulumi.Input[List[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgs']]]]:
+    def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgs']]]]:
         """
         Strategy parameters
         """
         return pulumi.get(self, "strategies")
 
     @strategies.setter
-    def strategies(self, value: Optional[pulumi.Input[List[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgs']]]]):
+    def strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgs']]]]):
         pulumi.set(self, "strategies", value)
 
 
@@ -501,10 +501,10 @@ class ElastigroupEbsBlockDeviceArgs:
                  device_name: pulumi.Input[str],
                  delete_on_termination: Optional[pulumi.Input[bool]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
-                 iops: Optional[pulumi.Input[float]] = None,
+                 iops: Optional[pulumi.Input[int]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 volume_size: Optional[pulumi.Input[float]] = None,
+                 volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "device_name", device_name)
         if delete_on_termination is not None:
@@ -551,11 +551,11 @@ class ElastigroupEbsBlockDeviceArgs:
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[pulumi.Input[float]]:
+    def iops(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "iops")
 
     @iops.setter
-    def iops(self, value: Optional[pulumi.Input[float]]):
+    def iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "iops", value)
 
     @property
@@ -578,11 +578,11 @@ class ElastigroupEbsBlockDeviceArgs:
 
     @property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> Optional[pulumi.Input[float]]:
+    def volume_size(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
-    def volume_size(self, value: Optional[pulumi.Input[float]]):
+    def volume_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_size", value)
 
     @property
@@ -626,10 +626,10 @@ class ElastigroupEphemeralBlockDeviceArgs:
 class ElastigroupInstanceTypesWeightArgs:
     def __init__(__self__, *,
                  instance_type: pulumi.Input[str],
-                 weight: pulumi.Input[float]):
+                 weight: pulumi.Input[int]):
         """
         :param pulumi.Input[str] instance_type: Name of instance type (String).
-        :param pulumi.Input[float] weight: Weight per instance type (Integer).
+        :param pulumi.Input[int] weight: Weight per instance type (Integer).
         """
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "weight", weight)
@@ -648,14 +648,14 @@ class ElastigroupInstanceTypesWeightArgs:
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Input[float]:
+    def weight(self) -> pulumi.Input[int]:
         """
         Weight per instance type (Integer).
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: pulumi.Input[float]):
+    def weight(self, value: pulumi.Input[int]):
         pulumi.set(self, "weight", value)
 
 
@@ -704,8 +704,8 @@ class ElastigroupIntegrationBeanstalkArgs:
 class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs:
     def __init__(__self__, *,
                  automatic_roll: Optional[pulumi.Input[bool]] = None,
-                 batch_size_percentage: Optional[pulumi.Input[float]] = None,
-                 grace_period: Optional[pulumi.Input[float]] = None,
+                 batch_size_percentage: Optional[pulumi.Input[int]] = None,
+                 grace_period: Optional[pulumi.Input[int]] = None,
                  strategy: Optional[pulumi.Input['ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs']] = None):
         if automatic_roll is not None:
             pulumi.set(__self__, "automatic_roll", automatic_roll)
@@ -727,20 +727,20 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs:
 
     @property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> Optional[pulumi.Input[float]]:
+    def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
-    def batch_size_percentage(self, value: Optional[pulumi.Input[float]]):
+    def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "batch_size_percentage", value)
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[float]]:
+    def grace_period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[float]]):
+    def grace_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "grace_period", value)
 
     @property
@@ -850,7 +850,7 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs:
 class ElastigroupIntegrationCodedeployArgs:
     def __init__(__self__, *,
                  cleanup_on_failure: pulumi.Input[bool],
-                 deployment_groups: pulumi.Input[List[pulumi.Input['ElastigroupIntegrationCodedeployDeploymentGroupArgs']]],
+                 deployment_groups: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationCodedeployDeploymentGroupArgs']]],
                  terminate_instance_on_failure: pulumi.Input[bool]):
         pulumi.set(__self__, "cleanup_on_failure", cleanup_on_failure)
         pulumi.set(__self__, "deployment_groups", deployment_groups)
@@ -867,11 +867,11 @@ class ElastigroupIntegrationCodedeployArgs:
 
     @property
     @pulumi.getter(name="deploymentGroups")
-    def deployment_groups(self) -> pulumi.Input[List[pulumi.Input['ElastigroupIntegrationCodedeployDeploymentGroupArgs']]]:
+    def deployment_groups(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationCodedeployDeploymentGroupArgs']]]:
         return pulumi.get(self, "deployment_groups")
 
     @deployment_groups.setter
-    def deployment_groups(self, value: pulumi.Input[List[pulumi.Input['ElastigroupIntegrationCodedeployDeploymentGroupArgs']]]):
+    def deployment_groups(self, value: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationCodedeployDeploymentGroupArgs']]]):
         pulumi.set(self, "deployment_groups", value)
 
     @property
@@ -915,8 +915,8 @@ class ElastigroupIntegrationCodedeployDeploymentGroupArgs:
 class ElastigroupIntegrationDockerSwarmArgs:
     def __init__(__self__, *,
                  master_host: pulumi.Input[str],
-                 master_port: pulumi.Input[float],
-                 autoscale_cooldown: Optional[pulumi.Input[float]] = None,
+                 master_port: pulumi.Input[int],
+                 autoscale_cooldown: Optional[pulumi.Input[int]] = None,
                  autoscale_down: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmAutoscaleDownArgs']] = None,
                  autoscale_headroom: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs']] = None,
                  autoscale_is_enabled: Optional[pulumi.Input[bool]] = None):
@@ -942,20 +942,20 @@ class ElastigroupIntegrationDockerSwarmArgs:
 
     @property
     @pulumi.getter(name="masterPort")
-    def master_port(self) -> pulumi.Input[float]:
+    def master_port(self) -> pulumi.Input[int]:
         return pulumi.get(self, "master_port")
 
     @master_port.setter
-    def master_port(self, value: pulumi.Input[float]):
+    def master_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "master_port", value)
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[pulumi.Input[float]]:
+    def autoscale_cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @autoscale_cooldown.setter
-    def autoscale_cooldown(self, value: Optional[pulumi.Input[float]]):
+    def autoscale_cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autoscale_cooldown", value)
 
     @property
@@ -989,26 +989,26 @@ class ElastigroupIntegrationDockerSwarmArgs:
 @pulumi.input_type
 class ElastigroupIntegrationDockerSwarmAutoscaleDownArgs:
     def __init__(__self__, *,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None):
+                 evaluation_periods: Optional[pulumi.Input[int]] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
 
 @pulumi.input_type
 class ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs:
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[pulumi.Input[float]] = None,
-                 memory_per_unit: Optional[pulumi.Input[float]] = None,
-                 num_of_units: Optional[pulumi.Input[float]] = None):
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None,
+                 num_of_units: Optional[pulumi.Input[int]] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -1018,29 +1018,29 @@ class ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs:
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[pulumi.Input[float]]:
+    def num_of_units(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
-    def num_of_units(self, value: Optional[pulumi.Input[float]]):
+    def num_of_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_units", value)
 
 
@@ -1048,8 +1048,8 @@ class ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs:
 class ElastigroupIntegrationEcsArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[str],
-                 autoscale_attributes: Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgs']]]] = None,
-                 autoscale_cooldown: Optional[pulumi.Input[float]] = None,
+                 autoscale_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgs']]]] = None,
+                 autoscale_cooldown: Optional[pulumi.Input[int]] = None,
                  autoscale_down: Optional[pulumi.Input['ElastigroupIntegrationEcsAutoscaleDownArgs']] = None,
                  autoscale_headroom: Optional[pulumi.Input['ElastigroupIntegrationEcsAutoscaleHeadroomArgs']] = None,
                  autoscale_is_auto_config: Optional[pulumi.Input[bool]] = None,
@@ -1082,20 +1082,20 @@ class ElastigroupIntegrationEcsArgs:
 
     @property
     @pulumi.getter(name="autoscaleAttributes")
-    def autoscale_attributes(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgs']]]]:
+    def autoscale_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgs']]]]:
         return pulumi.get(self, "autoscale_attributes")
 
     @autoscale_attributes.setter
-    def autoscale_attributes(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgs']]]]):
+    def autoscale_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgs']]]]):
         pulumi.set(self, "autoscale_attributes", value)
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[pulumi.Input[float]]:
+    def autoscale_cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @autoscale_cooldown.setter
-    def autoscale_cooldown(self, value: Optional[pulumi.Input[float]]):
+    def autoscale_cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autoscale_cooldown", value)
 
     @property
@@ -1174,7 +1174,7 @@ class ElastigroupIntegrationEcsAutoscaleAttributeArgs:
 @pulumi.input_type
 class ElastigroupIntegrationEcsAutoscaleDownArgs:
     def __init__(__self__, *,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
@@ -1183,11 +1183,11 @@ class ElastigroupIntegrationEcsAutoscaleDownArgs:
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -1203,9 +1203,9 @@ class ElastigroupIntegrationEcsAutoscaleDownArgs:
 @pulumi.input_type
 class ElastigroupIntegrationEcsAutoscaleHeadroomArgs:
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[pulumi.Input[float]] = None,
-                 memory_per_unit: Optional[pulumi.Input[float]] = None,
-                 num_of_units: Optional[pulumi.Input[float]] = None):
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None,
+                 num_of_units: Optional[pulumi.Input[int]] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -1215,29 +1215,29 @@ class ElastigroupIntegrationEcsAutoscaleHeadroomArgs:
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[pulumi.Input[float]]:
+    def num_of_units(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
-    def num_of_units(self, value: Optional[pulumi.Input[float]]):
+    def num_of_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_units", value)
 
 
@@ -1279,12 +1279,12 @@ class ElastigroupIntegrationGitlabRunnerArgs:
 class ElastigroupIntegrationKubernetesArgs:
     def __init__(__self__, *,
                  api_server: Optional[pulumi.Input[str]] = None,
-                 autoscale_cooldown: Optional[pulumi.Input[float]] = None,
+                 autoscale_cooldown: Optional[pulumi.Input[int]] = None,
                  autoscale_down: Optional[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleDownArgs']] = None,
                  autoscale_headroom: Optional[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs']] = None,
                  autoscale_is_auto_config: Optional[pulumi.Input[bool]] = None,
                  autoscale_is_enabled: Optional[pulumi.Input[bool]] = None,
-                 autoscale_labels: Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgs']]]] = None,
+                 autoscale_labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgs']]]] = None,
                  cluster_identifier: Optional[pulumi.Input[str]] = None,
                  integration_mode: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
@@ -1320,11 +1320,11 @@ class ElastigroupIntegrationKubernetesArgs:
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[pulumi.Input[float]]:
+    def autoscale_cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @autoscale_cooldown.setter
-    def autoscale_cooldown(self, value: Optional[pulumi.Input[float]]):
+    def autoscale_cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autoscale_cooldown", value)
 
     @property
@@ -1365,11 +1365,11 @@ class ElastigroupIntegrationKubernetesArgs:
 
     @property
     @pulumi.getter(name="autoscaleLabels")
-    def autoscale_labels(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgs']]]]:
+    def autoscale_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgs']]]]:
         return pulumi.get(self, "autoscale_labels")
 
     @autoscale_labels.setter
-    def autoscale_labels(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgs']]]]):
+    def autoscale_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgs']]]]):
         pulumi.set(self, "autoscale_labels", value)
 
     @property
@@ -1403,26 +1403,26 @@ class ElastigroupIntegrationKubernetesArgs:
 @pulumi.input_type
 class ElastigroupIntegrationKubernetesAutoscaleDownArgs:
     def __init__(__self__, *,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None):
+                 evaluation_periods: Optional[pulumi.Input[int]] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
 
 @pulumi.input_type
 class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs:
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[pulumi.Input[float]] = None,
-                 memory_per_unit: Optional[pulumi.Input[float]] = None,
-                 num_of_units: Optional[pulumi.Input[float]] = None):
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None,
+                 num_of_units: Optional[pulumi.Input[int]] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -1432,29 +1432,29 @@ class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs:
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[pulumi.Input[float]]:
+    def num_of_units(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
-    def num_of_units(self, value: Optional[pulumi.Input[float]]):
+    def num_of_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_units", value)
 
 
@@ -1521,10 +1521,10 @@ class ElastigroupIntegrationMultaiRuntimeArgs:
 class ElastigroupIntegrationNomadArgs:
     def __init__(__self__, *,
                  master_host: pulumi.Input[str],
-                 master_port: pulumi.Input[float],
+                 master_port: pulumi.Input[int],
                  acl_token: Optional[pulumi.Input[str]] = None,
-                 autoscale_constraints: Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgs']]]] = None,
-                 autoscale_cooldown: Optional[pulumi.Input[float]] = None,
+                 autoscale_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgs']]]] = None,
+                 autoscale_cooldown: Optional[pulumi.Input[int]] = None,
                  autoscale_down: Optional[pulumi.Input['ElastigroupIntegrationNomadAutoscaleDownArgs']] = None,
                  autoscale_headroom: Optional[pulumi.Input['ElastigroupIntegrationNomadAutoscaleHeadroomArgs']] = None,
                  autoscale_is_enabled: Optional[pulumi.Input[bool]] = None):
@@ -1554,11 +1554,11 @@ class ElastigroupIntegrationNomadArgs:
 
     @property
     @pulumi.getter(name="masterPort")
-    def master_port(self) -> pulumi.Input[float]:
+    def master_port(self) -> pulumi.Input[int]:
         return pulumi.get(self, "master_port")
 
     @master_port.setter
-    def master_port(self, value: pulumi.Input[float]):
+    def master_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "master_port", value)
 
     @property
@@ -1572,20 +1572,20 @@ class ElastigroupIntegrationNomadArgs:
 
     @property
     @pulumi.getter(name="autoscaleConstraints")
-    def autoscale_constraints(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgs']]]]:
+    def autoscale_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgs']]]]:
         return pulumi.get(self, "autoscale_constraints")
 
     @autoscale_constraints.setter
-    def autoscale_constraints(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgs']]]]):
+    def autoscale_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgs']]]]):
         pulumi.set(self, "autoscale_constraints", value)
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[pulumi.Input[float]]:
+    def autoscale_cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @autoscale_cooldown.setter
-    def autoscale_cooldown(self, value: Optional[pulumi.Input[float]]):
+    def autoscale_cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autoscale_cooldown", value)
 
     @property
@@ -1646,26 +1646,26 @@ class ElastigroupIntegrationNomadAutoscaleConstraintArgs:
 @pulumi.input_type
 class ElastigroupIntegrationNomadAutoscaleDownArgs:
     def __init__(__self__, *,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None):
+                 evaluation_periods: Optional[pulumi.Input[int]] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
 
 @pulumi.input_type
 class ElastigroupIntegrationNomadAutoscaleHeadroomArgs:
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[pulumi.Input[float]] = None,
-                 memory_per_unit: Optional[pulumi.Input[float]] = None,
-                 num_of_units: Optional[pulumi.Input[float]] = None):
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None,
+                 num_of_units: Optional[pulumi.Input[int]] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -1675,29 +1675,29 @@ class ElastigroupIntegrationNomadAutoscaleHeadroomArgs:
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[pulumi.Input[float]]:
+    def num_of_units(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
-    def num_of_units(self, value: Optional[pulumi.Input[float]]):
+    def num_of_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_units", value)
 
 
@@ -1754,16 +1754,16 @@ class ElastigroupIntegrationRancherArgs:
 @pulumi.input_type
 class ElastigroupIntegrationRoute53Args:
     def __init__(__self__, *,
-                 domains: pulumi.Input[List[pulumi.Input['ElastigroupIntegrationRoute53DomainArgs']]]):
+                 domains: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainArgs']]]):
         pulumi.set(__self__, "domains", domains)
 
     @property
     @pulumi.getter
-    def domains(self) -> pulumi.Input[List[pulumi.Input['ElastigroupIntegrationRoute53DomainArgs']]]:
+    def domains(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainArgs']]]:
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: pulumi.Input[List[pulumi.Input['ElastigroupIntegrationRoute53DomainArgs']]]):
+    def domains(self, value: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainArgs']]]):
         pulumi.set(self, "domains", value)
 
 
@@ -1771,7 +1771,7 @@ class ElastigroupIntegrationRoute53Args:
 class ElastigroupIntegrationRoute53DomainArgs:
     def __init__(__self__, *,
                  hosted_zone_id: pulumi.Input[str],
-                 record_sets: pulumi.Input[List[pulumi.Input['ElastigroupIntegrationRoute53DomainRecordSetArgs']]],
+                 record_sets: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainRecordSetArgs']]],
                  record_set_type: Optional[pulumi.Input[str]] = None,
                  spotinst_acct_id: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "hosted_zone_id", hosted_zone_id)
@@ -1792,11 +1792,11 @@ class ElastigroupIntegrationRoute53DomainArgs:
 
     @property
     @pulumi.getter(name="recordSets")
-    def record_sets(self) -> pulumi.Input[List[pulumi.Input['ElastigroupIntegrationRoute53DomainRecordSetArgs']]]:
+    def record_sets(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainRecordSetArgs']]]:
         return pulumi.get(self, "record_sets")
 
     @record_sets.setter
-    def record_sets(self, value: pulumi.Input[List[pulumi.Input['ElastigroupIntegrationRoute53DomainRecordSetArgs']]]):
+    def record_sets(self, value: pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationRoute53DomainRecordSetArgs']]]):
         pulumi.set(self, "record_sets", value)
 
     @property
@@ -2001,10 +2001,10 @@ class ElastigroupNetworkInterfaceArgs:
 class ElastigroupRevertToSpotArgs:
     def __init__(__self__, *,
                  perform_at: pulumi.Input[str],
-                 time_windows: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] perform_at: In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-        :param pulumi.Input[List[pulumi.Input[str]]] time_windows: Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
         """
         pulumi.set(__self__, "perform_at", perform_at)
         if time_windows is not None:
@@ -2024,14 +2024,14 @@ class ElastigroupRevertToSpotArgs:
 
     @property
     @pulumi.getter(name="timeWindows")
-    def time_windows(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def time_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
         """
         return pulumi.get(self, "time_windows")
 
     @time_windows.setter
-    def time_windows(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def time_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "time_windows", value)
 
 
@@ -2045,16 +2045,16 @@ class ElastigroupScalingDownPolicyArgs:
                  unit: pulumi.Input[str],
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
-                 cooldown: Optional[pulumi.Input[float]] = None,
-                 dimensions: Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]] = None,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  max_target_capacity: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[str]] = None,
                  min_target_capacity: Optional[pulumi.Input[str]] = None,
                  minimum: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
@@ -2159,29 +2159,29 @@ class ElastigroupScalingDownPolicyArgs:
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[float]]:
+    def cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[float]]):
+    def cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cooldown", value)
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -2240,11 +2240,11 @@ class ElastigroupScalingDownPolicyArgs:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[float]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[float]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
@@ -2356,8 +2356,8 @@ class ElastigroupScalingTargetPolicyArgs:
                  policy_name: pulumi.Input[str],
                  target: pulumi.Input[float],
                  unit: pulumi.Input[str],
-                 cooldown: Optional[pulumi.Input[float]] = None,
-                 dimensions: Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingTargetPolicyDimensionArgs']]]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingTargetPolicyDimensionArgs']]]] = None,
                  max_capacity_per_scale: Optional[pulumi.Input[str]] = None,
                  predictive_mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
@@ -2427,20 +2427,20 @@ class ElastigroupScalingTargetPolicyArgs:
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[float]]:
+    def cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[float]]):
+    def cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cooldown", value)
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingTargetPolicyDimensionArgs']]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingTargetPolicyDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingTargetPolicyDimensionArgs']]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingTargetPolicyDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
@@ -2524,16 +2524,16 @@ class ElastigroupScalingUpPolicyArgs:
                  unit: pulumi.Input[str],
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
-                 cooldown: Optional[pulumi.Input[float]] = None,
-                 dimensions: Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]] = None,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  max_target_capacity: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[str]] = None,
                  min_target_capacity: Optional[pulumi.Input[str]] = None,
                  minimum: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
@@ -2638,29 +2638,29 @@ class ElastigroupScalingUpPolicyArgs:
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[float]]:
+    def cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[float]]):
+    def cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cooldown", value)
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]:
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[List[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]):
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -2719,11 +2719,11 @@ class ElastigroupScalingUpPolicyArgs:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[float]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[float]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
@@ -2976,7 +2976,7 @@ class ElastigroupScheduledTaskArgs:
 class ElastigroupSignalArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 timeout: Optional[pulumi.Input[float]] = None):
+                 timeout: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] name: The group name.
         """
@@ -2998,11 +2998,11 @@ class ElastigroupSignalArgs:
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[float]]:
+    def timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[float]]):
+    def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -3142,12 +3142,12 @@ class ElastigroupUpdatePolicyArgs:
 @pulumi.input_type
 class ElastigroupUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
-                 batch_size_percentage: pulumi.Input[float],
-                 grace_period: Optional[pulumi.Input[float]] = None,
+                 batch_size_percentage: pulumi.Input[int],
+                 grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  strategy: Optional[pulumi.Input['ElastigroupUpdatePolicyRollConfigStrategyArgs']] = None,
-                 wait_for_roll_percentage: Optional[pulumi.Input[float]] = None,
-                 wait_for_roll_timeout: Optional[pulumi.Input[float]] = None):
+                 wait_for_roll_percentage: Optional[pulumi.Input[int]] = None,
+                 wait_for_roll_timeout: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         """
@@ -3165,20 +3165,20 @@ class ElastigroupUpdatePolicyRollConfigArgs:
 
     @property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> pulumi.Input[float]:
+    def batch_size_percentage(self) -> pulumi.Input[int]:
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
-    def batch_size_percentage(self, value: pulumi.Input[float]):
+    def batch_size_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "batch_size_percentage", value)
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[pulumi.Input[float]]:
+    def grace_period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
-    def grace_period(self, value: Optional[pulumi.Input[float]]):
+    def grace_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "grace_period", value)
 
     @property
@@ -3204,20 +3204,20 @@ class ElastigroupUpdatePolicyRollConfigArgs:
 
     @property
     @pulumi.getter(name="waitForRollPercentage")
-    def wait_for_roll_percentage(self) -> Optional[pulumi.Input[float]]:
+    def wait_for_roll_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "wait_for_roll_percentage")
 
     @wait_for_roll_percentage.setter
-    def wait_for_roll_percentage(self, value: Optional[pulumi.Input[float]]):
+    def wait_for_roll_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "wait_for_roll_percentage", value)
 
     @property
     @pulumi.getter(name="waitForRollTimeout")
-    def wait_for_roll_timeout(self) -> Optional[pulumi.Input[float]]:
+    def wait_for_roll_timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "wait_for_roll_timeout")
 
     @wait_for_roll_timeout.setter
-    def wait_for_roll_timeout(self, value: Optional[pulumi.Input[float]]):
+    def wait_for_roll_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "wait_for_roll_timeout", value)
 
 
@@ -3225,7 +3225,7 @@ class ElastigroupUpdatePolicyRollConfigArgs:
 class ElastigroupUpdatePolicyRollConfigStrategyArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
-                 batch_min_healthy_percentage: Optional[pulumi.Input[float]] = None,
+                 batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
                  on_failure: Optional[pulumi.Input['ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs']] = None,
                  should_drain_instances: Optional[pulumi.Input[bool]] = None):
         pulumi.set(__self__, "action", action)
@@ -3247,11 +3247,11 @@ class ElastigroupUpdatePolicyRollConfigStrategyArgs:
 
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
-    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[float]]:
+    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @batch_min_healthy_percentage.setter
-    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[float]]):
+    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "batch_min_healthy_percentage", value)
 
     @property
@@ -3277,12 +3277,12 @@ class ElastigroupUpdatePolicyRollConfigStrategyArgs:
 class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
     def __init__(__self__, *,
                  action_type: pulumi.Input[str],
-                 batch_num: Optional[pulumi.Input[float]] = None,
-                 draining_timeout: Optional[pulumi.Input[float]] = None,
+                 batch_num: Optional[pulumi.Input[int]] = None,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
                  should_decrement_target_capacity: Optional[pulumi.Input[bool]] = None,
                  should_handle_all_batches: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[float] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         """
         pulumi.set(__self__, "action_type", action_type)
         if batch_num is not None:
@@ -3305,23 +3305,23 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
 
     @property
     @pulumi.getter(name="batchNum")
-    def batch_num(self) -> Optional[pulumi.Input[float]]:
+    def batch_num(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "batch_num")
 
     @batch_num.setter
-    def batch_num(self, value: Optional[pulumi.Input[float]]):
+    def batch_num(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "batch_num", value)
 
     @property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[float]]:
+    def draining_timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[float]]):
+    def draining_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @property
@@ -3346,16 +3346,16 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
 @pulumi.input_type
 class ManagedInstanceIntegrationRoute53Args:
     def __init__(__self__, *,
-                 domains: pulumi.Input[List[pulumi.Input['ManagedInstanceIntegrationRoute53DomainArgs']]]):
+                 domains: pulumi.Input[Sequence[pulumi.Input['ManagedInstanceIntegrationRoute53DomainArgs']]]):
         pulumi.set(__self__, "domains", domains)
 
     @property
     @pulumi.getter
-    def domains(self) -> pulumi.Input[List[pulumi.Input['ManagedInstanceIntegrationRoute53DomainArgs']]]:
+    def domains(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedInstanceIntegrationRoute53DomainArgs']]]:
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: pulumi.Input[List[pulumi.Input['ManagedInstanceIntegrationRoute53DomainArgs']]]):
+    def domains(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedInstanceIntegrationRoute53DomainArgs']]]):
         pulumi.set(self, "domains", value)
 
 
@@ -3363,7 +3363,7 @@ class ManagedInstanceIntegrationRoute53Args:
 class ManagedInstanceIntegrationRoute53DomainArgs:
     def __init__(__self__, *,
                  hosted_zone_id: pulumi.Input[str],
-                 record_sets: pulumi.Input[List[pulumi.Input['ManagedInstanceIntegrationRoute53DomainRecordSetArgs']]],
+                 record_sets: pulumi.Input[Sequence[pulumi.Input['ManagedInstanceIntegrationRoute53DomainRecordSetArgs']]],
                  record_set_type: Optional[pulumi.Input[str]] = None,
                  spotinst_acct_id: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "hosted_zone_id", hosted_zone_id)
@@ -3384,11 +3384,11 @@ class ManagedInstanceIntegrationRoute53DomainArgs:
 
     @property
     @pulumi.getter(name="recordSets")
-    def record_sets(self) -> pulumi.Input[List[pulumi.Input['ManagedInstanceIntegrationRoute53DomainRecordSetArgs']]]:
+    def record_sets(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedInstanceIntegrationRoute53DomainRecordSetArgs']]]:
         return pulumi.get(self, "record_sets")
 
     @record_sets.setter
-    def record_sets(self, value: pulumi.Input[List[pulumi.Input['ManagedInstanceIntegrationRoute53DomainRecordSetArgs']]]):
+    def record_sets(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedInstanceIntegrationRoute53DomainRecordSetArgs']]]):
         pulumi.set(self, "record_sets", value)
 
     @property
@@ -3721,7 +3721,7 @@ class ManagedInstanceTagArgs:
 class MrScalarApplicationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 args: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The MrScaler name.
@@ -3746,11 +3746,11 @@ class MrScalarApplicationArgs:
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "args", value)
 
     @property
@@ -3820,10 +3820,10 @@ class MrScalarConfigurationsFileArgs:
 @pulumi.input_type
 class MrScalarCoreEbsBlockDeviceArgs:
     def __init__(__self__, *,
-                 size_in_gb: pulumi.Input[float],
+                 size_in_gb: pulumi.Input[int],
                  volume_type: pulumi.Input[str],
-                 iops: Optional[pulumi.Input[float]] = None,
-                 volumes_per_instance: Optional[pulumi.Input[float]] = None):
+                 iops: Optional[pulumi.Input[int]] = None,
+                 volumes_per_instance: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "size_in_gb", size_in_gb)
         pulumi.set(__self__, "volume_type", volume_type)
         if iops is not None:
@@ -3833,11 +3833,11 @@ class MrScalarCoreEbsBlockDeviceArgs:
 
     @property
     @pulumi.getter(name="sizeInGb")
-    def size_in_gb(self) -> pulumi.Input[float]:
+    def size_in_gb(self) -> pulumi.Input[int]:
         return pulumi.get(self, "size_in_gb")
 
     @size_in_gb.setter
-    def size_in_gb(self, value: pulumi.Input[float]):
+    def size_in_gb(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_in_gb", value)
 
     @property
@@ -3851,20 +3851,20 @@ class MrScalarCoreEbsBlockDeviceArgs:
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[pulumi.Input[float]]:
+    def iops(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "iops")
 
     @iops.setter
-    def iops(self, value: Optional[pulumi.Input[float]]):
+    def iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "iops", value)
 
     @property
     @pulumi.getter(name="volumesPerInstance")
-    def volumes_per_instance(self) -> Optional[pulumi.Input[float]]:
+    def volumes_per_instance(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "volumes_per_instance")
 
     @volumes_per_instance.setter
-    def volumes_per_instance(self, value: Optional[pulumi.Input[float]]):
+    def volumes_per_instance(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volumes_per_instance", value)
 
 
@@ -3878,15 +3878,15 @@ class MrScalarCoreScalingDownPolicyArgs:
                  unit: pulumi.Input[str],
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
-                 cooldown: Optional[pulumi.Input[float]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_target_capacity: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[str]] = None,
                  min_target_capacity: Optional[pulumi.Input[str]] = None,
                  minimum: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
         """
@@ -3894,9 +3894,9 @@ class MrScalarCoreScalingDownPolicyArgs:
         :param pulumi.Input[str] namespace: Must contain the value: `AWS/ElasticMapReduce`.
         :param pulumi.Input[float] threshold: The value that the specified statistic is compared to.
         :param pulumi.Input[str] unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-        :param pulumi.Input[float] evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param pulumi.Input[int] evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param pulumi.Input[str] operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param pulumi.Input[float] period: The time window in seconds over which the statistic is applied.
+        :param pulumi.Input[int] period: The time window in seconds over which the statistic is applied.
         :param pulumi.Input[str] statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -4008,11 +4008,11 @@ class MrScalarCoreScalingDownPolicyArgs:
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[float]]:
+    def cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[float]]):
+    def cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cooldown", value)
 
     @property
@@ -4026,14 +4026,14 @@ class MrScalarCoreScalingDownPolicyArgs:
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         """
         The number of periods over which data is compared to the specified threshold.
         """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -4086,14 +4086,14 @@ class MrScalarCoreScalingDownPolicyArgs:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[float]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         """
         The time window in seconds over which the statistic is applied.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[float]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
@@ -4128,15 +4128,15 @@ class MrScalarCoreScalingUpPolicyArgs:
                  unit: pulumi.Input[str],
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
-                 cooldown: Optional[pulumi.Input[float]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_target_capacity: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[str]] = None,
                  min_target_capacity: Optional[pulumi.Input[str]] = None,
                  minimum: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
         """
@@ -4144,9 +4144,9 @@ class MrScalarCoreScalingUpPolicyArgs:
         :param pulumi.Input[str] namespace: Must contain the value: `AWS/ElasticMapReduce`.
         :param pulumi.Input[float] threshold: The value that the specified statistic is compared to.
         :param pulumi.Input[str] unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-        :param pulumi.Input[float] evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param pulumi.Input[int] evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param pulumi.Input[str] operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param pulumi.Input[float] period: The time window in seconds over which the statistic is applied.
+        :param pulumi.Input[int] period: The time window in seconds over which the statistic is applied.
         :param pulumi.Input[str] statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -4258,11 +4258,11 @@ class MrScalarCoreScalingUpPolicyArgs:
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[float]]:
+    def cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[float]]):
+    def cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cooldown", value)
 
     @property
@@ -4276,14 +4276,14 @@ class MrScalarCoreScalingUpPolicyArgs:
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         """
         The number of periods over which data is compared to the specified threshold.
         """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -4336,14 +4336,14 @@ class MrScalarCoreScalingUpPolicyArgs:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[float]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         """
         The time window in seconds over which the statistic is applied.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[float]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
@@ -4372,7 +4372,7 @@ class MrScalarCoreScalingUpPolicyArgs:
 class MrScalarInstanceWeightArgs:
     def __init__(__self__, *,
                  instance_type: pulumi.Input[str],
-                 weighted_capacity: pulumi.Input[float]):
+                 weighted_capacity: pulumi.Input[int]):
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "weighted_capacity", weighted_capacity)
 
@@ -4387,21 +4387,21 @@ class MrScalarInstanceWeightArgs:
 
     @property
     @pulumi.getter(name="weightedCapacity")
-    def weighted_capacity(self) -> pulumi.Input[float]:
+    def weighted_capacity(self) -> pulumi.Input[int]:
         return pulumi.get(self, "weighted_capacity")
 
     @weighted_capacity.setter
-    def weighted_capacity(self, value: pulumi.Input[float]):
+    def weighted_capacity(self, value: pulumi.Input[int]):
         pulumi.set(self, "weighted_capacity", value)
 
 
 @pulumi.input_type
 class MrScalarMasterEbsBlockDeviceArgs:
     def __init__(__self__, *,
-                 size_in_gb: pulumi.Input[float],
+                 size_in_gb: pulumi.Input[int],
                  volume_type: pulumi.Input[str],
-                 iops: Optional[pulumi.Input[float]] = None,
-                 volumes_per_instance: Optional[pulumi.Input[float]] = None):
+                 iops: Optional[pulumi.Input[int]] = None,
+                 volumes_per_instance: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "size_in_gb", size_in_gb)
         pulumi.set(__self__, "volume_type", volume_type)
         if iops is not None:
@@ -4411,11 +4411,11 @@ class MrScalarMasterEbsBlockDeviceArgs:
 
     @property
     @pulumi.getter(name="sizeInGb")
-    def size_in_gb(self) -> pulumi.Input[float]:
+    def size_in_gb(self) -> pulumi.Input[int]:
         return pulumi.get(self, "size_in_gb")
 
     @size_in_gb.setter
-    def size_in_gb(self, value: pulumi.Input[float]):
+    def size_in_gb(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_in_gb", value)
 
     @property
@@ -4429,38 +4429,38 @@ class MrScalarMasterEbsBlockDeviceArgs:
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[pulumi.Input[float]]:
+    def iops(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "iops")
 
     @iops.setter
-    def iops(self, value: Optional[pulumi.Input[float]]):
+    def iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "iops", value)
 
     @property
     @pulumi.getter(name="volumesPerInstance")
-    def volumes_per_instance(self) -> Optional[pulumi.Input[float]]:
+    def volumes_per_instance(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "volumes_per_instance")
 
     @volumes_per_instance.setter
-    def volumes_per_instance(self, value: Optional[pulumi.Input[float]]):
+    def volumes_per_instance(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volumes_per_instance", value)
 
 
 @pulumi.input_type
 class MrScalarProvisioningTimeoutArgs:
     def __init__(__self__, *,
-                 timeout: pulumi.Input[float],
+                 timeout: pulumi.Input[int],
                  timeout_action: pulumi.Input[str]):
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "timeout_action", timeout_action)
 
     @property
     @pulumi.getter
-    def timeout(self) -> pulumi.Input[float]:
+    def timeout(self) -> pulumi.Input[int]:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: pulumi.Input[float]):
+    def timeout(self, value: pulumi.Input[int]):
         pulumi.set(self, "timeout", value)
 
     @property
@@ -4616,10 +4616,10 @@ class MrScalarTagArgs:
 @pulumi.input_type
 class MrScalarTaskEbsBlockDeviceArgs:
     def __init__(__self__, *,
-                 size_in_gb: pulumi.Input[float],
+                 size_in_gb: pulumi.Input[int],
                  volume_type: pulumi.Input[str],
-                 iops: Optional[pulumi.Input[float]] = None,
-                 volumes_per_instance: Optional[pulumi.Input[float]] = None):
+                 iops: Optional[pulumi.Input[int]] = None,
+                 volumes_per_instance: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "size_in_gb", size_in_gb)
         pulumi.set(__self__, "volume_type", volume_type)
         if iops is not None:
@@ -4629,11 +4629,11 @@ class MrScalarTaskEbsBlockDeviceArgs:
 
     @property
     @pulumi.getter(name="sizeInGb")
-    def size_in_gb(self) -> pulumi.Input[float]:
+    def size_in_gb(self) -> pulumi.Input[int]:
         return pulumi.get(self, "size_in_gb")
 
     @size_in_gb.setter
-    def size_in_gb(self, value: pulumi.Input[float]):
+    def size_in_gb(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_in_gb", value)
 
     @property
@@ -4647,20 +4647,20 @@ class MrScalarTaskEbsBlockDeviceArgs:
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[pulumi.Input[float]]:
+    def iops(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "iops")
 
     @iops.setter
-    def iops(self, value: Optional[pulumi.Input[float]]):
+    def iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "iops", value)
 
     @property
     @pulumi.getter(name="volumesPerInstance")
-    def volumes_per_instance(self) -> Optional[pulumi.Input[float]]:
+    def volumes_per_instance(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "volumes_per_instance")
 
     @volumes_per_instance.setter
-    def volumes_per_instance(self, value: Optional[pulumi.Input[float]]):
+    def volumes_per_instance(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volumes_per_instance", value)
 
 
@@ -4674,15 +4674,15 @@ class MrScalarTaskScalingDownPolicyArgs:
                  unit: pulumi.Input[str],
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
-                 cooldown: Optional[pulumi.Input[float]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_target_capacity: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[str]] = None,
                  min_target_capacity: Optional[pulumi.Input[str]] = None,
                  minimum: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
         """
@@ -4690,9 +4690,9 @@ class MrScalarTaskScalingDownPolicyArgs:
         :param pulumi.Input[str] namespace: Must contain the value: `AWS/ElasticMapReduce`.
         :param pulumi.Input[float] threshold: The value that the specified statistic is compared to.
         :param pulumi.Input[str] unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-        :param pulumi.Input[float] evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param pulumi.Input[int] evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param pulumi.Input[str] operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param pulumi.Input[float] period: The time window in seconds over which the statistic is applied.
+        :param pulumi.Input[int] period: The time window in seconds over which the statistic is applied.
         :param pulumi.Input[str] statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -4804,11 +4804,11 @@ class MrScalarTaskScalingDownPolicyArgs:
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[float]]:
+    def cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[float]]):
+    def cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cooldown", value)
 
     @property
@@ -4822,14 +4822,14 @@ class MrScalarTaskScalingDownPolicyArgs:
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         """
         The number of periods over which data is compared to the specified threshold.
         """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -4882,14 +4882,14 @@ class MrScalarTaskScalingDownPolicyArgs:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[float]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         """
         The time window in seconds over which the statistic is applied.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[float]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
@@ -4924,15 +4924,15 @@ class MrScalarTaskScalingUpPolicyArgs:
                  unit: pulumi.Input[str],
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
-                 cooldown: Optional[pulumi.Input[float]] = None,
+                 cooldown: Optional[pulumi.Input[int]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_target_capacity: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[str]] = None,
                  min_target_capacity: Optional[pulumi.Input[str]] = None,
                  minimum: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
         """
@@ -4940,9 +4940,9 @@ class MrScalarTaskScalingUpPolicyArgs:
         :param pulumi.Input[str] namespace: Must contain the value: `AWS/ElasticMapReduce`.
         :param pulumi.Input[float] threshold: The value that the specified statistic is compared to.
         :param pulumi.Input[str] unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-        :param pulumi.Input[float] evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param pulumi.Input[int] evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param pulumi.Input[str] operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param pulumi.Input[float] period: The time window in seconds over which the statistic is applied.
+        :param pulumi.Input[int] period: The time window in seconds over which the statistic is applied.
         :param pulumi.Input[str] statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -5054,11 +5054,11 @@ class MrScalarTaskScalingUpPolicyArgs:
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[float]]:
+    def cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[float]]):
+    def cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cooldown", value)
 
     @property
@@ -5072,14 +5072,14 @@ class MrScalarTaskScalingUpPolicyArgs:
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         """
         The number of periods over which data is compared to the specified threshold.
         """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -5132,14 +5132,14 @@ class MrScalarTaskScalingUpPolicyArgs:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[float]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         """
         The time window in seconds over which the statistic is applied.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[float]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
@@ -5167,16 +5167,16 @@ class MrScalarTaskScalingUpPolicyArgs:
 @pulumi.input_type
 class MrScalarTerminationPolicyArgs:
     def __init__(__self__, *,
-                 statements: pulumi.Input[List[pulumi.Input['MrScalarTerminationPolicyStatementArgs']]]):
+                 statements: pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyStatementArgs']]]):
         pulumi.set(__self__, "statements", statements)
 
     @property
     @pulumi.getter
-    def statements(self) -> pulumi.Input[List[pulumi.Input['MrScalarTerminationPolicyStatementArgs']]]:
+    def statements(self) -> pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyStatementArgs']]]:
         return pulumi.get(self, "statements")
 
     @statements.setter
-    def statements(self, value: pulumi.Input[List[pulumi.Input['MrScalarTerminationPolicyStatementArgs']]]):
+    def statements(self, value: pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyStatementArgs']]]):
         pulumi.set(self, "statements", value)
 
 
@@ -5186,18 +5186,18 @@ class MrScalarTerminationPolicyStatementArgs:
                  metric_name: pulumi.Input[str],
                  namespace: pulumi.Input[str],
                  threshold: pulumi.Input[float],
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
                  unit: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] metric_name: The name of the metric in CloudWatch which the statement will be based on.
         :param pulumi.Input[str] namespace: Must contain the value: `AWS/ElasticMapReduce`.
         :param pulumi.Input[float] threshold: The value that the specified statistic is compared to.
-        :param pulumi.Input[float] evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param pulumi.Input[int] evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param pulumi.Input[str] operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param pulumi.Input[float] period: The time window in seconds over which the statistic is applied.
+        :param pulumi.Input[int] period: The time window in seconds over which the statistic is applied.
         :param pulumi.Input[str] statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         :param pulumi.Input[str] unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
         """
@@ -5253,14 +5253,14 @@ class MrScalarTerminationPolicyStatementArgs:
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         """
         The number of periods over which data is compared to the specified threshold.
         """
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -5277,14 +5277,14 @@ class MrScalarTerminationPolicyStatementArgs:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[float]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         """
         The time window in seconds over which the statistic is applied.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[float]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
@@ -5315,8 +5315,8 @@ class MrScalarTerminationPolicyStatementArgs:
 @pulumi.input_type
 class OceanAutoscalerArgs:
     def __init__(__self__, *,
-                 auto_headroom_percentage: Optional[pulumi.Input[float]] = None,
-                 autoscale_cooldown: Optional[pulumi.Input[float]] = None,
+                 auto_headroom_percentage: Optional[pulumi.Input[int]] = None,
+                 autoscale_cooldown: Optional[pulumi.Input[int]] = None,
                  autoscale_down: Optional[pulumi.Input['OceanAutoscalerAutoscaleDownArgs']] = None,
                  autoscale_headroom: Optional[pulumi.Input['OceanAutoscalerAutoscaleHeadroomArgs']] = None,
                  autoscale_is_auto_config: Optional[pulumi.Input[bool]] = None,
@@ -5339,20 +5339,20 @@ class OceanAutoscalerArgs:
 
     @property
     @pulumi.getter(name="autoHeadroomPercentage")
-    def auto_headroom_percentage(self) -> Optional[pulumi.Input[float]]:
+    def auto_headroom_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "auto_headroom_percentage")
 
     @auto_headroom_percentage.setter
-    def auto_headroom_percentage(self, value: Optional[pulumi.Input[float]]):
+    def auto_headroom_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_headroom_percentage", value)
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[pulumi.Input[float]]:
+    def autoscale_cooldown(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @autoscale_cooldown.setter
-    def autoscale_cooldown(self, value: Optional[pulumi.Input[float]]):
+    def autoscale_cooldown(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "autoscale_cooldown", value)
 
     @property
@@ -5404,7 +5404,7 @@ class OceanAutoscalerArgs:
 @pulumi.input_type
 class OceanAutoscalerAutoscaleDownArgs:
     def __init__(__self__, *,
-                 evaluation_periods: Optional[pulumi.Input[float]] = None,
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
                  max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
@@ -5413,11 +5413,11 @@ class OceanAutoscalerAutoscaleDownArgs:
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[pulumi.Input[float]]:
+    def evaluation_periods(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "evaluation_periods")
 
     @evaluation_periods.setter
-    def evaluation_periods(self, value: Optional[pulumi.Input[float]]):
+    def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
 
     @property
@@ -5433,10 +5433,10 @@ class OceanAutoscalerAutoscaleDownArgs:
 @pulumi.input_type
 class OceanAutoscalerAutoscaleHeadroomArgs:
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[pulumi.Input[float]] = None,
-                 gpu_per_unit: Optional[pulumi.Input[float]] = None,
-                 memory_per_unit: Optional[pulumi.Input[float]] = None,
-                 num_of_units: Optional[pulumi.Input[float]] = None):
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 gpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None,
+                 num_of_units: Optional[pulumi.Input[int]] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
@@ -5448,46 +5448,46 @@ class OceanAutoscalerAutoscaleHeadroomArgs:
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @property
     @pulumi.getter(name="gpuPerUnit")
-    def gpu_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def gpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "gpu_per_unit")
 
     @gpu_per_unit.setter
-    def gpu_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def gpu_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "gpu_per_unit", value)
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[pulumi.Input[float]]:
+    def num_of_units(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
-    def num_of_units(self, value: Optional[pulumi.Input[float]]):
+    def num_of_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_units", value)
 
 
 @pulumi.input_type
 class OceanAutoscalerResourceLimitsArgs:
     def __init__(__self__, *,
-                 max_memory_gib: Optional[pulumi.Input[float]] = None,
-                 max_vcpu: Optional[pulumi.Input[float]] = None):
+                 max_memory_gib: Optional[pulumi.Input[int]] = None,
+                 max_vcpu: Optional[pulumi.Input[int]] = None):
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -5495,35 +5495,35 @@ class OceanAutoscalerResourceLimitsArgs:
 
     @property
     @pulumi.getter(name="maxMemoryGib")
-    def max_memory_gib(self) -> Optional[pulumi.Input[float]]:
+    def max_memory_gib(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_memory_gib")
 
     @max_memory_gib.setter
-    def max_memory_gib(self, value: Optional[pulumi.Input[float]]):
+    def max_memory_gib(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_memory_gib", value)
 
     @property
     @pulumi.getter(name="maxVcpu")
-    def max_vcpu(self) -> Optional[pulumi.Input[float]]:
+    def max_vcpu(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_vcpu")
 
     @max_vcpu.setter
-    def max_vcpu(self, value: Optional[pulumi.Input[float]]):
+    def max_vcpu(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_vcpu", value)
 
 
 @pulumi.input_type
 class OceanLaunchSpecAutoscaleHeadroomArgs:
     def __init__(__self__, *,
-                 num_of_units: pulumi.Input[float],
-                 cpu_per_unit: Optional[pulumi.Input[float]] = None,
-                 gpu_per_unit: Optional[pulumi.Input[float]] = None,
-                 memory_per_unit: Optional[pulumi.Input[float]] = None):
+                 num_of_units: pulumi.Input[int],
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 gpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        :param pulumi.Input[float] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        :param pulumi.Input[float] gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
-        :param pulumi.Input[float] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param pulumi.Input[int] gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
+        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
@@ -5535,50 +5535,50 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> pulumi.Input[float]:
+    def num_of_units(self) -> pulumi.Input[int]:
         """
         The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
         """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
-    def num_of_units(self, value: pulumi.Input[float]):
+    def num_of_units(self, value: pulumi.Input[int]):
         pulumi.set(self, "num_of_units", value)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         """
         Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
-    def cpu_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu_per_unit", value)
 
     @property
     @pulumi.getter(name="gpuPerUnit")
-    def gpu_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def gpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         """
         Optionally configure the number of GPUS to allocate for each headroom unit.
         """
         return pulumi.get(self, "gpu_per_unit")
 
     @gpu_per_unit.setter
-    def gpu_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def gpu_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "gpu_per_unit", value)
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[pulumi.Input[float]]:
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
         """
         Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
-    def memory_per_unit(self, value: Optional[pulumi.Input[float]]):
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
 
 
@@ -5654,19 +5654,19 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
                  delete_on_termination: Optional[pulumi.Input[bool]] = None,
                  dynamic_volume_size: Optional[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs']] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
-                 iops: Optional[pulumi.Input[float]] = None,
+                 iops: Optional[pulumi.Input[int]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
-                 volume_size: Optional[pulumi.Input[float]] = None,
+                 volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] delete_on_termination: Boolean. Flag to delete the EBS on instance termination.
         :param pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs'] dynamic_volume_size: Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
         :param pulumi.Input[bool] encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-        :param pulumi.Input[float] iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
+        :param pulumi.Input[int] iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
         :param pulumi.Input[str] kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
         :param pulumi.Input[str] snapshot_id: (Optional) String. The Snapshot ID to mount by.
-        :param pulumi.Input[float] volume_size: Int. The size, in GB of the volume.
+        :param pulumi.Input[int] volume_size: Int. The size, in GB of the volume.
         :param pulumi.Input[str] volume_type: String. The type of the volume (example: "gp2").
         """
         if delete_on_termination is not None:
@@ -5724,14 +5724,14 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[pulumi.Input[float]]:
+    def iops(self) -> Optional[pulumi.Input[int]]:
         """
         Int. The number of I/O operations per second (IOPS) that the volume supports.
         """
         return pulumi.get(self, "iops")
 
     @iops.setter
-    def iops(self, value: Optional[pulumi.Input[float]]):
+    def iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "iops", value)
 
     @property
@@ -5760,14 +5760,14 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
 
     @property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> Optional[pulumi.Input[float]]:
+    def volume_size(self) -> Optional[pulumi.Input[int]]:
         """
         Int. The size, in GB of the volume.
         """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
-    def volume_size(self, value: Optional[pulumi.Input[float]]):
+    def volume_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "volume_size", value)
 
     @property
@@ -5786,13 +5786,13 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
 @pulumi.input_type
 class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     def __init__(__self__, *,
-                 base_size: pulumi.Input[float],
+                 base_size: pulumi.Input[int],
                  resource: pulumi.Input[str],
-                 size_per_resource_unit: pulumi.Input[float]):
+                 size_per_resource_unit: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] base_size: Int. Initial size for volume. (Example: 50)
+        :param pulumi.Input[int] base_size: Int. Initial size for volume. (Example: 50)
         :param pulumi.Input[str] resource: String. Resource type to increase volume size dynamically by. (valid values: "CPU")
-        :param pulumi.Input[float] size_per_resource_unit: Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+        :param pulumi.Input[int] size_per_resource_unit: Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
         """
         pulumi.set(__self__, "base_size", base_size)
         pulumi.set(__self__, "resource", resource)
@@ -5800,14 +5800,14 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
 
     @property
     @pulumi.getter(name="baseSize")
-    def base_size(self) -> pulumi.Input[float]:
+    def base_size(self) -> pulumi.Input[int]:
         """
         Int. Initial size for volume. (Example: 50)
         """
         return pulumi.get(self, "base_size")
 
     @base_size.setter
-    def base_size(self, value: pulumi.Input[float]):
+    def base_size(self, value: pulumi.Input[int]):
         pulumi.set(self, "base_size", value)
 
     @property
@@ -5824,14 +5824,14 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
 
     @property
     @pulumi.getter(name="sizePerResourceUnit")
-    def size_per_resource_unit(self) -> pulumi.Input[float]:
+    def size_per_resource_unit(self) -> pulumi.Input[int]:
         """
         Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
         """
         return pulumi.get(self, "size_per_resource_unit")
 
     @size_per_resource_unit.setter
-    def size_per_resource_unit(self, value: pulumi.Input[float]):
+    def size_per_resource_unit(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_per_resource_unit", value)
 
 
@@ -5936,23 +5936,23 @@ class OceanLaunchSpecLabelArgs:
 @pulumi.input_type
 class OceanLaunchSpecResourceLimitArgs:
     def __init__(__self__, *,
-                 max_instance_count: Optional[pulumi.Input[float]] = None):
+                 max_instance_count: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] max_instance_count: set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+        :param pulumi.Input[int] max_instance_count: set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
         """
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
 
     @property
     @pulumi.getter(name="maxInstanceCount")
-    def max_instance_count(self) -> Optional[pulumi.Input[float]]:
+    def max_instance_count(self) -> Optional[pulumi.Input[int]]:
         """
         set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
         """
         return pulumi.get(self, "max_instance_count")
 
     @max_instance_count.setter
-    def max_instance_count(self, value: Optional[pulumi.Input[float]]):
+    def max_instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_instance_count", value)
 
 
@@ -6104,7 +6104,7 @@ class OceanLoadBalancerArgs:
 class OceanScheduledTaskArgs:
     def __init__(__self__, *,
                  shutdown_hours: Optional[pulumi.Input['OceanScheduledTaskShutdownHoursArgs']] = None,
-                 tasks: Optional[pulumi.Input[List[pulumi.Input['OceanScheduledTaskTaskArgs']]]] = None):
+                 tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]] = None):
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
         if tasks is not None:
@@ -6121,18 +6121,18 @@ class OceanScheduledTaskArgs:
 
     @property
     @pulumi.getter
-    def tasks(self) -> Optional[pulumi.Input[List[pulumi.Input['OceanScheduledTaskTaskArgs']]]]:
+    def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]]:
         return pulumi.get(self, "tasks")
 
     @tasks.setter
-    def tasks(self, value: Optional[pulumi.Input[List[pulumi.Input['OceanScheduledTaskTaskArgs']]]]):
+    def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]]):
         pulumi.set(self, "tasks", value)
 
 
 @pulumi.input_type
 class OceanScheduledTaskShutdownHoursArgs:
     def __init__(__self__, *,
-                 time_windows: pulumi.Input[List[pulumi.Input[str]]],
+                 time_windows: pulumi.Input[Sequence[pulumi.Input[str]]],
                  is_enabled: Optional[pulumi.Input[bool]] = None):
         pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
@@ -6140,11 +6140,11 @@ class OceanScheduledTaskShutdownHoursArgs:
 
     @property
     @pulumi.getter(name="timeWindows")
-    def time_windows(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def time_windows(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "time_windows")
 
     @time_windows.setter
-    def time_windows(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def time_windows(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "time_windows", value)
 
     @property
@@ -6263,16 +6263,16 @@ class OceanUpdatePolicyArgs:
 @pulumi.input_type
 class OceanUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
-                 batch_size_percentage: pulumi.Input[float]):
+                 batch_size_percentage: pulumi.Input[int]):
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> pulumi.Input[float]:
+    def batch_size_percentage(self) -> pulumi.Input[int]:
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
-    def batch_size_percentage(self, value: pulumi.Input[float]):
+    def batch_size_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "batch_size_percentage", value)
 
 

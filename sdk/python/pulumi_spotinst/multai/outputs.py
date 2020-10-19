@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -22,8 +22,8 @@ __all__ = [
 @pulumi.output_type
 class BalancerConnectionTimeouts(dict):
     def __init__(__self__, *,
-                 draining: Optional[float] = None,
-                 idle: Optional[float] = None):
+                 draining: Optional[int] = None,
+                 idle: Optional[int] = None):
         if draining is not None:
             pulumi.set(__self__, "draining", draining)
         if idle is not None:
@@ -31,12 +31,12 @@ class BalancerConnectionTimeouts(dict):
 
     @property
     @pulumi.getter
-    def draining(self) -> Optional[float]:
+    def draining(self) -> Optional[int]:
         return pulumi.get(self, "draining")
 
     @property
     @pulumi.getter
-    def idle(self) -> Optional[float]:
+    def idle(self) -> Optional[int]:
         return pulumi.get(self, "idle")
 
     def _translate_property(self, prop):
@@ -90,8 +90,8 @@ class ListenerTag(dict):
 @pulumi.output_type
 class ListenerTlsConfig(dict):
     def __init__(__self__, *,
-                 certificate_ids: List[str],
-                 cipher_suites: List[str],
+                 certificate_ids: Sequence[str],
+                 cipher_suites: Sequence[str],
                  max_version: str,
                  min_version: str,
                  prefer_server_cipher_suites: bool,
@@ -105,12 +105,12 @@ class ListenerTlsConfig(dict):
 
     @property
     @pulumi.getter(name="certificateIds")
-    def certificate_ids(self) -> List[str]:
+    def certificate_ids(self) -> Sequence[str]:
         return pulumi.get(self, "certificate_ids")
 
     @property
     @pulumi.getter(name="cipherSuites")
-    def cipher_suites(self) -> List[str]:
+    def cipher_suites(self) -> Sequence[str]:
         return pulumi.get(self, "cipher_suites")
 
     @property
@@ -162,13 +162,13 @@ class RoutingRuleTag(dict):
 @pulumi.output_type
 class TargetSetHealthCheck(dict):
     def __init__(__self__, *,
-                 healthy_threshold: float,
-                 interval: float,
+                 healthy_threshold: int,
+                 interval: int,
                  path: str,
                  protocol: str,
-                 timeout: float,
-                 unhealthy_threshold: float,
-                 port: Optional[float] = None):
+                 timeout: int,
+                 unhealthy_threshold: int,
+                 port: Optional[int] = None):
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "path", path)
@@ -180,12 +180,12 @@ class TargetSetHealthCheck(dict):
 
     @property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> float:
+    def healthy_threshold(self) -> int:
         return pulumi.get(self, "healthy_threshold")
 
     @property
     @pulumi.getter
-    def interval(self) -> float:
+    def interval(self) -> int:
         return pulumi.get(self, "interval")
 
     @property
@@ -200,17 +200,17 @@ class TargetSetHealthCheck(dict):
 
     @property
     @pulumi.getter
-    def timeout(self) -> float:
+    def timeout(self) -> int:
         return pulumi.get(self, "timeout")
 
     @property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> float:
+    def unhealthy_threshold(self) -> int:
         return pulumi.get(self, "unhealthy_threshold")
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
 
     def _translate_property(self, prop):

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,29 +17,29 @@ class Elastigroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  capacity_unit: Optional[pulumi.Input[str]] = None,
                  cpu_credits: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 desired_capacity: Optional[pulumi.Input[float]] = None,
-                 draining_timeout: Optional[pulumi.Input[float]] = None,
-                 ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupEbsBlockDeviceArgs']]]]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
+                 ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupEbsBlockDeviceArgs']]]]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
-                 elastic_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 elastic_load_balancers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 elastic_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 elastic_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_monitoring: Optional[pulumi.Input[bool]] = None,
-                 ephemeral_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupEphemeralBlockDeviceArgs']]]]] = None,
+                 ephemeral_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupEphemeralBlockDeviceArgs']]]]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-                 health_check_grace_period: Optional[pulumi.Input[float]] = None,
+                 health_check_grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
-                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[float]] = None,
+                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
-                 instance_types_preferred_spots: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 instance_types_spots: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 instance_types_weights: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]]] = None,
+                 instance_types_preferred_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]]] = None,
                  integration_beanstalk: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationBeanstalkArgs']]] = None,
                  integration_codedeploy: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']]] = None,
                  integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
@@ -53,40 +53,40 @@ class Elastigroup(pulumi.CustomResource):
                  integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
-                 max_size: Optional[pulumi.Input[float]] = None,
-                 min_size: Optional[pulumi.Input[float]] = None,
-                 multai_target_sets: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
+                 multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
-                 ondemand_count: Optional[pulumi.Input[float]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+                 ondemand_count: Optional[pulumi.Input[int]] = None,
                  orientation: Optional[pulumi.Input[str]] = None,
                  persist_block_devices: Optional[pulumi.Input[bool]] = None,
                  persist_private_ip: Optional[pulumi.Input[bool]] = None,
                  persist_root_device: Optional[pulumi.Input[bool]] = None,
                  placement_tenancy: Optional[pulumi.Input[str]] = None,
-                 preferred_availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 private_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-                 scaling_strategies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]]] = None,
-                 scaling_target_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingTargetPolicyArgs']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
-                 scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
-                 security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
+                 scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]]] = None,
+                 scaling_target_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingTargetPolicyArgs']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
-                 signals: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
+                 signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
                  spot_percentage: Optional[pulumi.Input[float]] = None,
                  stateful_deallocation: Optional[pulumi.Input[pulumi.InputType['ElastigroupStatefulDeallocationArgs']]] = None,
-                 subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
-                 target_group_arns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
+                 target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['ElastigroupUpdatePolicyArgs']]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
-                 wait_for_capacity: Optional[pulumi.Input[float]] = None,
-                 wait_for_capacity_timeout: Optional[pulumi.Input[float]] = None,
+                 wait_for_capacity: Optional[pulumi.Input[int]] = None,
+                 wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -94,52 +94,52 @@ class Elastigroup(pulumi.CustomResource):
         Create a Elastigroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input[str] description: The group description.
-        :param pulumi.Input[float] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[float] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
-        :param pulumi.Input[List[pulumi.Input[str]]] elastic_ips: A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ips: A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
         :param pulumi.Input[bool] enable_monitoring: Indicates whether monitoring is enabled for the instance.
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
-        :param pulumi.Input[float] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
+        :param pulumi.Input[int] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
         :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
-        :param pulumi.Input[float] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+        :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: The ID of the AMI used to launch the instance.
         :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types_spots: One or more instance types.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
-        :param pulumi.Input[float] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[float] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
+        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
-        :param pulumi.Input[float] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+        :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
         :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[float] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
                Note: When this parameter is set, `availability_zones` should be left unused.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
-        :param pulumi.Input[float] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
-        :param pulumi.Input[float] wait_for_capacity_timeout: Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
+        :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+        :param pulumi.Input[int] wait_for_capacity_timeout: Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -250,29 +250,29 @@ class Elastigroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             block_devices_mode: Optional[pulumi.Input[str]] = None,
             capacity_unit: Optional[pulumi.Input[str]] = None,
             cpu_credits: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            desired_capacity: Optional[pulumi.Input[float]] = None,
-            draining_timeout: Optional[pulumi.Input[float]] = None,
-            ebs_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupEbsBlockDeviceArgs']]]]] = None,
+            desired_capacity: Optional[pulumi.Input[int]] = None,
+            draining_timeout: Optional[pulumi.Input[int]] = None,
+            ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupEbsBlockDeviceArgs']]]]] = None,
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
-            elastic_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            elastic_load_balancers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            elastic_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            elastic_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             enable_monitoring: Optional[pulumi.Input[bool]] = None,
-            ephemeral_block_devices: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupEphemeralBlockDeviceArgs']]]]] = None,
+            ephemeral_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupEphemeralBlockDeviceArgs']]]]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-            health_check_grace_period: Optional[pulumi.Input[float]] = None,
+            health_check_grace_period: Optional[pulumi.Input[int]] = None,
             health_check_type: Optional[pulumi.Input[str]] = None,
-            health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[float]] = None,
+            health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             instance_types_ondemand: Optional[pulumi.Input[str]] = None,
-            instance_types_preferred_spots: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            instance_types_spots: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            instance_types_weights: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]]] = None,
+            instance_types_preferred_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]]] = None,
             integration_beanstalk: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationBeanstalkArgs']]] = None,
             integration_codedeploy: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']]] = None,
             integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
@@ -286,40 +286,40 @@ class Elastigroup(pulumi.CustomResource):
             integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             lifetime_period: Optional[pulumi.Input[str]] = None,
-            max_size: Optional[pulumi.Input[float]] = None,
-            min_size: Optional[pulumi.Input[float]] = None,
-            multai_target_sets: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
+            max_size: Optional[pulumi.Input[int]] = None,
+            min_size: Optional[pulumi.Input[int]] = None,
+            multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
-            ondemand_count: Optional[pulumi.Input[float]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+            ondemand_count: Optional[pulumi.Input[int]] = None,
             orientation: Optional[pulumi.Input[str]] = None,
             persist_block_devices: Optional[pulumi.Input[bool]] = None,
             persist_private_ip: Optional[pulumi.Input[bool]] = None,
             persist_root_device: Optional[pulumi.Input[bool]] = None,
             placement_tenancy: Optional[pulumi.Input[str]] = None,
-            preferred_availability_zones: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            private_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             product: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
-            scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-            scaling_strategies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]]] = None,
-            scaling_target_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingTargetPolicyArgs']]]]] = None,
-            scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
-            scheduled_tasks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
-            security_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
+            scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]]] = None,
+            scaling_target_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingTargetPolicyArgs']]]]] = None,
+            scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
+            scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
-            signals: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
+            signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
             spot_percentage: Optional[pulumi.Input[float]] = None,
             stateful_deallocation: Optional[pulumi.Input[pulumi.InputType['ElastigroupStatefulDeallocationArgs']]] = None,
-            subnet_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
-            target_group_arns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
+            target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['ElastigroupUpdatePolicyArgs']]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
-            wait_for_capacity: Optional[pulumi.Input[float]] = None,
-            wait_for_capacity_timeout: Optional[pulumi.Input[float]] = None) -> 'Elastigroup':
+            wait_for_capacity: Optional[pulumi.Input[int]] = None,
+            wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None) -> 'Elastigroup':
         """
         Get an existing Elastigroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -327,52 +327,52 @@ class Elastigroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input[str] description: The group description.
-        :param pulumi.Input[float] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[float] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
-        :param pulumi.Input[List[pulumi.Input[str]]] elastic_ips: A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ips: A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
         :param pulumi.Input[bool] enable_monitoring: Indicates whether monitoring is enabled for the instance.
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
-        :param pulumi.Input[float] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
+        :param pulumi.Input[int] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
         :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
-        :param pulumi.Input[float] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+        :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: The ID of the AMI used to launch the instance.
         :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
-        :param pulumi.Input[List[pulumi.Input[str]]] instance_types_spots: One or more instance types.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
-        :param pulumi.Input[float] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[float] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
+        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
-        :param pulumi.Input[float] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+        :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
         :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
-        :param pulumi.Input[List[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
-        :param pulumi.Input[List[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[float] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
-        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
                Note: When this parameter is set, `availability_zones` should be left unused.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
-        :param pulumi.Input[float] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
-        :param pulumi.Input[float] wait_for_capacity_timeout: Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
+        :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+        :param pulumi.Input[int] wait_for_capacity_timeout: Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -452,7 +452,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> pulumi.Output[Optional[List[str]]]:
+    def availability_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
         Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
@@ -491,7 +491,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> pulumi.Output[Optional[float]]:
+    def desired_capacity(self) -> pulumi.Output[Optional[int]]:
         """
         The desired number of instances the group should have at any time.
         """
@@ -499,7 +499,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> pulumi.Output[float]:
+    def draining_timeout(self) -> pulumi.Output[int]:
         """
         The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         """
@@ -507,7 +507,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ebsBlockDevices")
-    def ebs_block_devices(self) -> pulumi.Output[Optional[List['outputs.ElastigroupEbsBlockDevice']]]:
+    def ebs_block_devices(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupEbsBlockDevice']]]:
         return pulumi.get(self, "ebs_block_devices")
 
     @property
@@ -520,7 +520,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="elasticIps")
-    def elastic_ips(self) -> pulumi.Output[Optional[List[str]]]:
+    def elastic_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
         """
@@ -528,7 +528,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="elasticLoadBalancers")
-    def elastic_load_balancers(self) -> pulumi.Output[Optional[List[str]]]:
+    def elastic_load_balancers(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "elastic_load_balancers")
 
     @property
@@ -541,7 +541,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ephemeralBlockDevices")
-    def ephemeral_block_devices(self) -> pulumi.Output[Optional[List['outputs.ElastigroupEphemeralBlockDevice']]]:
+    def ephemeral_block_devices(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupEphemeralBlockDevice']]]:
         return pulumi.get(self, "ephemeral_block_devices")
 
     @property
@@ -554,7 +554,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckGracePeriod")
-    def health_check_grace_period(self) -> pulumi.Output[Optional[float]]:
+    def health_check_grace_period(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time, in seconds, after the instance has launched to starts and check its health.
         """
@@ -570,7 +570,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckUnhealthyDurationBeforeReplacement")
-    def health_check_unhealthy_duration_before_replacement(self) -> pulumi.Output[Optional[float]]:
+    def health_check_unhealthy_duration_before_replacement(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         """
@@ -602,7 +602,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypesPreferredSpots")
-    def instance_types_preferred_spots(self) -> pulumi.Output[Optional[List[str]]]:
+    def instance_types_preferred_spots(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         """
@@ -610,7 +610,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypesSpots")
-    def instance_types_spots(self) -> pulumi.Output[List[str]]:
+    def instance_types_spots(self) -> pulumi.Output[Sequence[str]]:
         """
         One or more instance types.
         """
@@ -618,7 +618,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypesWeights")
-    def instance_types_weights(self) -> pulumi.Output[Optional[List['outputs.ElastigroupInstanceTypesWeight']]]:
+    def instance_types_weights(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupInstanceTypesWeight']]]:
         """
         List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         """
@@ -694,7 +694,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> pulumi.Output[float]:
+    def max_size(self) -> pulumi.Output[int]:
         """
         The maximum number of instances the group should have at any time.
         """
@@ -702,7 +702,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> pulumi.Output[float]:
+    def min_size(self) -> pulumi.Output[int]:
         """
         The minimum number of instances the group should have at any time.
         """
@@ -710,7 +710,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multaiTargetSets")
-    def multai_target_sets(self) -> pulumi.Output[Optional[List['outputs.ElastigroupMultaiTargetSet']]]:
+    def multai_target_sets(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupMultaiTargetSet']]]:
         return pulumi.get(self, "multai_target_sets")
 
     @property
@@ -723,12 +723,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> pulumi.Output[Optional[List['outputs.ElastigroupNetworkInterface']]]:
+    def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupNetworkInterface']]]:
         return pulumi.get(self, "network_interfaces")
 
     @property
     @pulumi.getter(name="ondemandCount")
-    def ondemand_count(self) -> pulumi.Output[Optional[float]]:
+    def ondemand_count(self) -> pulumi.Output[Optional[int]]:
         """
         Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         """
@@ -767,7 +767,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preferredAvailabilityZones")
-    def preferred_availability_zones(self) -> pulumi.Output[Optional[List[str]]]:
+    def preferred_availability_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
         Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
@@ -776,7 +776,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIps")
-    def private_ips(self) -> pulumi.Output[Optional[List[str]]]:
+    def private_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "private_ips")
 
     @property
@@ -807,12 +807,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
-    def scaling_down_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingDownPolicy']]]:
+    def scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingDownPolicy']]]:
         return pulumi.get(self, "scaling_down_policies")
 
     @property
     @pulumi.getter(name="scalingStrategies")
-    def scaling_strategies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingStrategy']]]:
+    def scaling_strategies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingStrategy']]]:
         """
         Set termination policy.
         """
@@ -820,22 +820,22 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingTargetPolicies")
-    def scaling_target_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingTargetPolicy']]]:
+    def scaling_target_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingTargetPolicy']]]:
         return pulumi.get(self, "scaling_target_policies")
 
     @property
     @pulumi.getter(name="scalingUpPolicies")
-    def scaling_up_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingUpPolicy']]]:
+    def scaling_up_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingUpPolicy']]]:
         return pulumi.get(self, "scaling_up_policies")
 
     @property
     @pulumi.getter(name="scheduledTasks")
-    def scheduled_tasks(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScheduledTask']]]:
+    def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScheduledTask']]]:
         return pulumi.get(self, "scheduled_tasks")
 
     @property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> pulumi.Output[List[str]]:
+    def security_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of associated security group IDS.
         """
@@ -851,7 +851,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def signals(self) -> pulumi.Output[Optional[List['outputs.ElastigroupSignal']]]:
+    def signals(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupSignal']]]:
         return pulumi.get(self, "signals")
 
     @property
@@ -869,7 +869,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of Strings of subnet identifiers.
         Note: When this parameter is set, `availability_zones` should be left unused.
@@ -878,7 +878,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List['outputs.ElastigroupTag']]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupTag']]]:
         """
         A key/value mapping of tags to assign to the resource.
         """
@@ -886,7 +886,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetGroupArns")
-    def target_group_arns(self) -> pulumi.Output[Optional[List[str]]]:
+    def target_group_arns(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "target_group_arns")
 
     @property
@@ -912,7 +912,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForCapacity")
-    def wait_for_capacity(self) -> pulumi.Output[Optional[float]]:
+    def wait_for_capacity(self) -> pulumi.Output[Optional[int]]:
         """
         Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
         """
@@ -920,7 +920,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForCapacityTimeout")
-    def wait_for_capacity_timeout(self) -> pulumi.Output[Optional[float]]:
+    def wait_for_capacity_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
         """

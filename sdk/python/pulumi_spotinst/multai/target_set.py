@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,10 +21,10 @@ class TargetSet(pulumi.CustomResource):
                  deployment_id: Optional[pulumi.Input[str]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['TargetSetHealthCheckArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TargetSetTagArgs']]]]] = None,
-                 weight: Optional[pulumi.Input[float]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetSetTagArgs']]]]] = None,
+                 weight: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -82,10 +82,10 @@ class TargetSet(pulumi.CustomResource):
             deployment_id: Optional[pulumi.Input[str]] = None,
             health_check: Optional[pulumi.Input[pulumi.InputType['TargetSetHealthCheckArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TargetSetTagArgs']]]]] = None,
-            weight: Optional[pulumi.Input[float]] = None) -> 'TargetSet':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetSetTagArgs']]]]] = None,
+            weight: Optional[pulumi.Input[int]] = None) -> 'TargetSet':
         """
         Get an existing TargetSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -130,7 +130,7 @@ class TargetSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "port")
 
     @property
@@ -140,12 +140,12 @@ class TargetSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List['outputs.TargetSetTag']]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.TargetSetTag']]]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Output[float]:
+    def weight(self) -> pulumi.Output[int]:
         return pulumi.get(self, "weight")
 
     def translate_output_property(self, prop):

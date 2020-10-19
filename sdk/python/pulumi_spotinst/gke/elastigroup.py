@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,35 +17,35 @@ class Elastigroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]]] = None,
+                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_zone_name: Optional[pulumi.Input[str]] = None,
-                 desired_capacity: Optional[pulumi.Input[float]] = None,
-                 disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupDiskArgs']]]]] = None,
-                 draining_timeout: Optional[pulumi.Input[float]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupDiskArgs']]]]] = None,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-                 gpu: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
-                 instance_types_customs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
+                 gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
+                 instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
-                 instance_types_preemptibles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
                  integration_gke: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']]] = None,
                  ip_forwarding: Optional[pulumi.Input[bool]] = None,
-                 labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]]] = None,
-                 max_size: Optional[pulumi.Input[float]] = None,
-                 metadatas: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]]] = None,
-                 min_size: Optional[pulumi.Input[float]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
                  node_image: Optional[pulumi.Input[str]] = None,
-                 ondemand_count: Optional[pulumi.Input[float]] = None,
-                 preemptible_percentage: Optional[pulumi.Input[float]] = None,
-                 scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-                 scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
+                 ondemand_count: Optional[pulumi.Input[int]] = None,
+                 preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  startup_script: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -234,35 +234,35 @@ class Elastigroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]]] = None,
+            backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_zone_name: Optional[pulumi.Input[str]] = None,
-            desired_capacity: Optional[pulumi.Input[float]] = None,
-            disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupDiskArgs']]]]] = None,
-            draining_timeout: Optional[pulumi.Input[float]] = None,
+            desired_capacity: Optional[pulumi.Input[int]] = None,
+            disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupDiskArgs']]]]] = None,
+            draining_timeout: Optional[pulumi.Input[int]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-            gpu: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
-            instance_types_customs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
+            gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
+            instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
             instance_types_ondemand: Optional[pulumi.Input[str]] = None,
-            instance_types_preemptibles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             integration_docker_swarm: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']]] = None,
             integration_gke: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']]] = None,
             ip_forwarding: Optional[pulumi.Input[bool]] = None,
-            labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]]] = None,
-            max_size: Optional[pulumi.Input[float]] = None,
-            metadatas: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]]] = None,
-            min_size: Optional[pulumi.Input[float]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]]] = None,
+            max_size: Optional[pulumi.Input[int]] = None,
+            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]]] = None,
+            min_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
             node_image: Optional[pulumi.Input[str]] = None,
-            ondemand_count: Optional[pulumi.Input[float]] = None,
-            preemptible_percentage: Optional[pulumi.Input[float]] = None,
-            scaling_down_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
-            scaling_up_policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
+            ondemand_count: Optional[pulumi.Input[int]] = None,
+            preemptible_percentage: Optional[pulumi.Input[int]] = None,
+            scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
+            scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
             startup_script: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Elastigroup':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Elastigroup':
         """
         Get an existing Elastigroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -311,7 +311,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendServices")
-    def backend_services(self) -> pulumi.Output[Optional[List['outputs.ElastigroupBackendService']]]:
+    def backend_services(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupBackendService']]]:
         return pulumi.get(self, "backend_services")
 
     @property
@@ -332,17 +332,17 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> pulumi.Output[float]:
+    def desired_capacity(self) -> pulumi.Output[int]:
         return pulumi.get(self, "desired_capacity")
 
     @property
     @pulumi.getter
-    def disks(self) -> pulumi.Output[Optional[List['outputs.ElastigroupDisk']]]:
+    def disks(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupDisk']]]:
         return pulumi.get(self, "disks")
 
     @property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> pulumi.Output[Optional[float]]:
+    def draining_timeout(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "draining_timeout")
 
     @property
@@ -352,12 +352,12 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def gpu(self) -> pulumi.Output[Optional[List['outputs.ElastigroupGpu']]]:
+    def gpu(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupGpu']]]:
         return pulumi.get(self, "gpu")
 
     @property
     @pulumi.getter(name="instanceTypesCustoms")
-    def instance_types_customs(self) -> pulumi.Output[Optional[List['outputs.ElastigroupInstanceTypesCustom']]]:
+    def instance_types_customs(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupInstanceTypesCustom']]]:
         return pulumi.get(self, "instance_types_customs")
 
     @property
@@ -367,7 +367,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypesPreemptibles")
-    def instance_types_preemptibles(self) -> pulumi.Output[Optional[List[str]]]:
+    def instance_types_preemptibles(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "instance_types_preemptibles")
 
     @property
@@ -387,22 +387,22 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[List['outputs.ElastigroupLabel']]]:
+    def labels(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupLabel']]]:
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> pulumi.Output[float]:
+    def max_size(self) -> pulumi.Output[int]:
         return pulumi.get(self, "max_size")
 
     @property
     @pulumi.getter
-    def metadatas(self) -> pulumi.Output[Optional[List['outputs.ElastigroupMetadata']]]:
+    def metadatas(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupMetadata']]]:
         return pulumi.get(self, "metadatas")
 
     @property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> pulumi.Output[float]:
+    def min_size(self) -> pulumi.Output[int]:
         return pulumi.get(self, "min_size")
 
     @property
@@ -412,7 +412,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> pulumi.Output[Optional[List['outputs.ElastigroupNetworkInterface']]]:
+    def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupNetworkInterface']]]:
         return pulumi.get(self, "network_interfaces")
 
     @property
@@ -425,22 +425,22 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ondemandCount")
-    def ondemand_count(self) -> pulumi.Output[Optional[float]]:
+    def ondemand_count(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "ondemand_count")
 
     @property
     @pulumi.getter(name="preemptiblePercentage")
-    def preemptible_percentage(self) -> pulumi.Output[Optional[float]]:
+    def preemptible_percentage(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "preemptible_percentage")
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
-    def scaling_down_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingDownPolicy']]]:
+    def scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingDownPolicy']]]:
         return pulumi.get(self, "scaling_down_policies")
 
     @property
     @pulumi.getter(name="scalingUpPolicies")
-    def scaling_up_policies(self) -> pulumi.Output[Optional[List['outputs.ElastigroupScalingUpPolicy']]]:
+    def scaling_up_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingUpPolicy']]]:
         return pulumi.get(self, "scaling_up_policies")
 
     @property
@@ -460,7 +460,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,10 +20,10 @@ class Target(pulumi.CustomResource):
                  balancer_id: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TargetTagArgs']]]]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetTagArgs']]]]] = None,
                  target_set_id: Optional[pulumi.Input[str]] = None,
-                 weight: Optional[pulumi.Input[float]] = None,
+                 weight: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -77,10 +77,10 @@ class Target(pulumi.CustomResource):
             balancer_id: Optional[pulumi.Input[str]] = None,
             host: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['TargetTagArgs']]]]] = None,
+            port: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetTagArgs']]]]] = None,
             target_set_id: Optional[pulumi.Input[str]] = None,
-            weight: Optional[pulumi.Input[float]] = None) -> 'Target':
+            weight: Optional[pulumi.Input[int]] = None) -> 'Target':
         """
         Get an existing Target resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -119,12 +119,12 @@ class Target(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List['outputs.TargetTag']]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.TargetTag']]]:
         return pulumi.get(self, "tags")
 
     @property
@@ -134,7 +134,7 @@ class Target(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Output[float]:
+    def weight(self) -> pulumi.Output[int]:
         return pulumi.get(self, "weight")
 
     def translate_output_property(self, prop):

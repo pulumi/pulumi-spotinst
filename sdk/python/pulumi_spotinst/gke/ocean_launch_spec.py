@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,12 +17,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale_headrooms: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
-                 labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
-                 metadatas: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
+                 autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
+                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
-                 taints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -61,12 +61,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Cluster's labels.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Cluster's labels.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
         :param pulumi.Input[str] source_image: Image URL.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Cluster's taints.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Cluster's taints.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,12 +107,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscale_headrooms: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
-            labels: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
-            metadatas: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
+            autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+            labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
+            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
-            taints: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None) -> 'OceanLaunchSpec':
+            taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None) -> 'OceanLaunchSpec':
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -120,12 +120,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Cluster's labels.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Cluster's labels.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
         :param pulumi.Input[str] source_image: Image URL.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Cluster's taints.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Cluster's taints.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -141,7 +141,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoscaleHeadrooms")
-    def autoscale_headrooms(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecAutoscaleHeadroom']]]:
+    def autoscale_headrooms(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecAutoscaleHeadroom']]]:
         """
         Set custom headroom per launch spec. provide list of headrooms object.
         """
@@ -149,7 +149,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecLabel']]]:
+    def labels(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecLabel']]]:
         """
         Cluster's labels.
         """
@@ -157,7 +157,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadatas(self) -> pulumi.Output[List['outputs.OceanLaunchSpecMetadata']]:
+    def metadatas(self) -> pulumi.Output[Sequence['outputs.OceanLaunchSpecMetadata']]:
         """
         Cluster's metadata.
         """
@@ -181,7 +181,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def taints(self) -> pulumi.Output[Optional[List['outputs.OceanLaunchSpecTaint']]]:
+    def taints(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecTaint']]]:
         """
         Cluster's taints.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -118,14 +118,14 @@ __all__ = [
 class BeanstalkDeploymentPreferences(dict):
     def __init__(__self__, *,
                  automatic_roll: Optional[bool] = None,
-                 batch_size_percentage: Optional[float] = None,
-                 grace_period: Optional[float] = None,
-                 strategies: Optional[List['outputs.BeanstalkDeploymentPreferencesStrategy']] = None):
+                 batch_size_percentage: Optional[int] = None,
+                 grace_period: Optional[int] = None,
+                 strategies: Optional[Sequence['outputs.BeanstalkDeploymentPreferencesStrategy']] = None):
         """
         :param bool automatic_roll: Should roll perform automatically
-        :param float batch_size_percentage: Percent size of each batch
-        :param float grace_period: Amount of time to wait between batches
-        :param List['BeanstalkDeploymentPreferencesStrategyArgs'] strategies: Strategy parameters
+        :param int batch_size_percentage: Percent size of each batch
+        :param int grace_period: Amount of time to wait between batches
+        :param Sequence['BeanstalkDeploymentPreferencesStrategyArgs'] strategies: Strategy parameters
         """
         if automatic_roll is not None:
             pulumi.set(__self__, "automatic_roll", automatic_roll)
@@ -146,7 +146,7 @@ class BeanstalkDeploymentPreferences(dict):
 
     @property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> Optional[float]:
+    def batch_size_percentage(self) -> Optional[int]:
         """
         Percent size of each batch
         """
@@ -154,7 +154,7 @@ class BeanstalkDeploymentPreferences(dict):
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[float]:
+    def grace_period(self) -> Optional[int]:
         """
         Amount of time to wait between batches
         """
@@ -162,7 +162,7 @@ class BeanstalkDeploymentPreferences(dict):
 
     @property
     @pulumi.getter
-    def strategies(self) -> Optional[List['outputs.BeanstalkDeploymentPreferencesStrategy']]:
+    def strategies(self) -> Optional[Sequence['outputs.BeanstalkDeploymentPreferencesStrategy']]:
         """
         Strategy parameters
         """
@@ -417,10 +417,10 @@ class ElastigroupEbsBlockDevice(dict):
                  device_name: str,
                  delete_on_termination: Optional[bool] = None,
                  encrypted: Optional[bool] = None,
-                 iops: Optional[float] = None,
+                 iops: Optional[int] = None,
                  kms_key_id: Optional[str] = None,
                  snapshot_id: Optional[str] = None,
-                 volume_size: Optional[float] = None,
+                 volume_size: Optional[int] = None,
                  volume_type: Optional[str] = None):
         pulumi.set(__self__, "device_name", device_name)
         if delete_on_termination is not None:
@@ -455,7 +455,7 @@ class ElastigroupEbsBlockDevice(dict):
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[float]:
+    def iops(self) -> Optional[int]:
         return pulumi.get(self, "iops")
 
     @property
@@ -470,7 +470,7 @@ class ElastigroupEbsBlockDevice(dict):
 
     @property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> Optional[float]:
+    def volume_size(self) -> Optional[int]:
         return pulumi.get(self, "volume_size")
 
     @property
@@ -508,10 +508,10 @@ class ElastigroupEphemeralBlockDevice(dict):
 class ElastigroupInstanceTypesWeight(dict):
     def __init__(__self__, *,
                  instance_type: str,
-                 weight: float):
+                 weight: int):
         """
         :param str instance_type: Name of instance type (String).
-        :param float weight: Weight per instance type (Integer).
+        :param int weight: Weight per instance type (Integer).
         """
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "weight", weight)
@@ -526,7 +526,7 @@ class ElastigroupInstanceTypesWeight(dict):
 
     @property
     @pulumi.getter
-    def weight(self) -> float:
+    def weight(self) -> int:
         """
         Weight per instance type (Integer).
         """
@@ -572,8 +572,8 @@ class ElastigroupIntegrationBeanstalk(dict):
 class ElastigroupIntegrationBeanstalkDeploymentPreferences(dict):
     def __init__(__self__, *,
                  automatic_roll: Optional[bool] = None,
-                 batch_size_percentage: Optional[float] = None,
-                 grace_period: Optional[float] = None,
+                 batch_size_percentage: Optional[int] = None,
+                 grace_period: Optional[int] = None,
                  strategy: Optional['outputs.ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy'] = None):
         if automatic_roll is not None:
             pulumi.set(__self__, "automatic_roll", automatic_roll)
@@ -591,12 +591,12 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferences(dict):
 
     @property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> Optional[float]:
+    def batch_size_percentage(self) -> Optional[int]:
         return pulumi.get(self, "batch_size_percentage")
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[float]:
+    def grace_period(self) -> Optional[int]:
         return pulumi.get(self, "grace_period")
 
     @property
@@ -690,7 +690,7 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate(dict):
 class ElastigroupIntegrationCodedeploy(dict):
     def __init__(__self__, *,
                  cleanup_on_failure: bool,
-                 deployment_groups: List['outputs.ElastigroupIntegrationCodedeployDeploymentGroup'],
+                 deployment_groups: Sequence['outputs.ElastigroupIntegrationCodedeployDeploymentGroup'],
                  terminate_instance_on_failure: bool):
         pulumi.set(__self__, "cleanup_on_failure", cleanup_on_failure)
         pulumi.set(__self__, "deployment_groups", deployment_groups)
@@ -703,7 +703,7 @@ class ElastigroupIntegrationCodedeploy(dict):
 
     @property
     @pulumi.getter(name="deploymentGroups")
-    def deployment_groups(self) -> List['outputs.ElastigroupIntegrationCodedeployDeploymentGroup']:
+    def deployment_groups(self) -> Sequence['outputs.ElastigroupIntegrationCodedeployDeploymentGroup']:
         return pulumi.get(self, "deployment_groups")
 
     @property
@@ -741,8 +741,8 @@ class ElastigroupIntegrationCodedeployDeploymentGroup(dict):
 class ElastigroupIntegrationDockerSwarm(dict):
     def __init__(__self__, *,
                  master_host: str,
-                 master_port: float,
-                 autoscale_cooldown: Optional[float] = None,
+                 master_port: int,
+                 autoscale_cooldown: Optional[int] = None,
                  autoscale_down: Optional['outputs.ElastigroupIntegrationDockerSwarmAutoscaleDown'] = None,
                  autoscale_headroom: Optional['outputs.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom'] = None,
                  autoscale_is_enabled: Optional[bool] = None):
@@ -764,12 +764,12 @@ class ElastigroupIntegrationDockerSwarm(dict):
 
     @property
     @pulumi.getter(name="masterPort")
-    def master_port(self) -> float:
+    def master_port(self) -> int:
         return pulumi.get(self, "master_port")
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[float]:
+    def autoscale_cooldown(self) -> Optional[int]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @property
@@ -794,13 +794,13 @@ class ElastigroupIntegrationDockerSwarm(dict):
 @pulumi.output_type
 class ElastigroupIntegrationDockerSwarmAutoscaleDown(dict):
     def __init__(__self__, *,
-                 evaluation_periods: Optional[float] = None):
+                 evaluation_periods: Optional[int] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
 
     def _translate_property(self, prop):
@@ -810,9 +810,9 @@ class ElastigroupIntegrationDockerSwarmAutoscaleDown(dict):
 @pulumi.output_type
 class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom(dict):
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[float] = None,
-                 memory_per_unit: Optional[float] = None,
-                 num_of_units: Optional[float] = None):
+                 cpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None,
+                 num_of_units: Optional[int] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -822,17 +822,17 @@ class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[float]:
+    def cpu_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[float]:
+    def memory_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "memory_per_unit")
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[float]:
+    def num_of_units(self) -> Optional[int]:
         return pulumi.get(self, "num_of_units")
 
     def _translate_property(self, prop):
@@ -843,8 +843,8 @@ class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom(dict):
 class ElastigroupIntegrationEcs(dict):
     def __init__(__self__, *,
                  cluster_name: str,
-                 autoscale_attributes: Optional[List['outputs.ElastigroupIntegrationEcsAutoscaleAttribute']] = None,
-                 autoscale_cooldown: Optional[float] = None,
+                 autoscale_attributes: Optional[Sequence['outputs.ElastigroupIntegrationEcsAutoscaleAttribute']] = None,
+                 autoscale_cooldown: Optional[int] = None,
                  autoscale_down: Optional['outputs.ElastigroupIntegrationEcsAutoscaleDown'] = None,
                  autoscale_headroom: Optional['outputs.ElastigroupIntegrationEcsAutoscaleHeadroom'] = None,
                  autoscale_is_auto_config: Optional[bool] = None,
@@ -873,12 +873,12 @@ class ElastigroupIntegrationEcs(dict):
 
     @property
     @pulumi.getter(name="autoscaleAttributes")
-    def autoscale_attributes(self) -> Optional[List['outputs.ElastigroupIntegrationEcsAutoscaleAttribute']]:
+    def autoscale_attributes(self) -> Optional[Sequence['outputs.ElastigroupIntegrationEcsAutoscaleAttribute']]:
         return pulumi.get(self, "autoscale_attributes")
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[float]:
+    def autoscale_cooldown(self) -> Optional[int]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @property
@@ -935,7 +935,7 @@ class ElastigroupIntegrationEcsAutoscaleAttribute(dict):
 @pulumi.output_type
 class ElastigroupIntegrationEcsAutoscaleDown(dict):
     def __init__(__self__, *,
-                 evaluation_periods: Optional[float] = None,
+                 evaluation_periods: Optional[int] = None,
                  max_scale_down_percentage: Optional[float] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
@@ -944,7 +944,7 @@ class ElastigroupIntegrationEcsAutoscaleDown(dict):
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
 
     @property
@@ -959,9 +959,9 @@ class ElastigroupIntegrationEcsAutoscaleDown(dict):
 @pulumi.output_type
 class ElastigroupIntegrationEcsAutoscaleHeadroom(dict):
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[float] = None,
-                 memory_per_unit: Optional[float] = None,
-                 num_of_units: Optional[float] = None):
+                 cpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None,
+                 num_of_units: Optional[int] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -971,17 +971,17 @@ class ElastigroupIntegrationEcsAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[float]:
+    def cpu_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[float]:
+    def memory_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "memory_per_unit")
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[float]:
+    def num_of_units(self) -> Optional[int]:
         return pulumi.get(self, "num_of_units")
 
     def _translate_property(self, prop):
@@ -1024,12 +1024,12 @@ class ElastigroupIntegrationGitlabRunner(dict):
 class ElastigroupIntegrationKubernetes(dict):
     def __init__(__self__, *,
                  api_server: Optional[str] = None,
-                 autoscale_cooldown: Optional[float] = None,
+                 autoscale_cooldown: Optional[int] = None,
                  autoscale_down: Optional['outputs.ElastigroupIntegrationKubernetesAutoscaleDown'] = None,
                  autoscale_headroom: Optional['outputs.ElastigroupIntegrationKubernetesAutoscaleHeadroom'] = None,
                  autoscale_is_auto_config: Optional[bool] = None,
                  autoscale_is_enabled: Optional[bool] = None,
-                 autoscale_labels: Optional[List['outputs.ElastigroupIntegrationKubernetesAutoscaleLabel']] = None,
+                 autoscale_labels: Optional[Sequence['outputs.ElastigroupIntegrationKubernetesAutoscaleLabel']] = None,
                  cluster_identifier: Optional[str] = None,
                  integration_mode: Optional[str] = None,
                  token: Optional[str] = None):
@@ -1061,7 +1061,7 @@ class ElastigroupIntegrationKubernetes(dict):
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[float]:
+    def autoscale_cooldown(self) -> Optional[int]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @property
@@ -1086,7 +1086,7 @@ class ElastigroupIntegrationKubernetes(dict):
 
     @property
     @pulumi.getter(name="autoscaleLabels")
-    def autoscale_labels(self) -> Optional[List['outputs.ElastigroupIntegrationKubernetesAutoscaleLabel']]:
+    def autoscale_labels(self) -> Optional[Sequence['outputs.ElastigroupIntegrationKubernetesAutoscaleLabel']]:
         return pulumi.get(self, "autoscale_labels")
 
     @property
@@ -1111,13 +1111,13 @@ class ElastigroupIntegrationKubernetes(dict):
 @pulumi.output_type
 class ElastigroupIntegrationKubernetesAutoscaleDown(dict):
     def __init__(__self__, *,
-                 evaluation_periods: Optional[float] = None):
+                 evaluation_periods: Optional[int] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
 
     def _translate_property(self, prop):
@@ -1127,9 +1127,9 @@ class ElastigroupIntegrationKubernetesAutoscaleDown(dict):
 @pulumi.output_type
 class ElastigroupIntegrationKubernetesAutoscaleHeadroom(dict):
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[float] = None,
-                 memory_per_unit: Optional[float] = None,
-                 num_of_units: Optional[float] = None):
+                 cpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None,
+                 num_of_units: Optional[int] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -1139,17 +1139,17 @@ class ElastigroupIntegrationKubernetesAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[float]:
+    def cpu_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[float]:
+    def memory_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "memory_per_unit")
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[float]:
+    def num_of_units(self) -> Optional[int]:
         return pulumi.get(self, "num_of_units")
 
     def _translate_property(self, prop):
@@ -1212,10 +1212,10 @@ class ElastigroupIntegrationMultaiRuntime(dict):
 class ElastigroupIntegrationNomad(dict):
     def __init__(__self__, *,
                  master_host: str,
-                 master_port: float,
+                 master_port: int,
                  acl_token: Optional[str] = None,
-                 autoscale_constraints: Optional[List['outputs.ElastigroupIntegrationNomadAutoscaleConstraint']] = None,
-                 autoscale_cooldown: Optional[float] = None,
+                 autoscale_constraints: Optional[Sequence['outputs.ElastigroupIntegrationNomadAutoscaleConstraint']] = None,
+                 autoscale_cooldown: Optional[int] = None,
                  autoscale_down: Optional['outputs.ElastigroupIntegrationNomadAutoscaleDown'] = None,
                  autoscale_headroom: Optional['outputs.ElastigroupIntegrationNomadAutoscaleHeadroom'] = None,
                  autoscale_is_enabled: Optional[bool] = None):
@@ -1241,7 +1241,7 @@ class ElastigroupIntegrationNomad(dict):
 
     @property
     @pulumi.getter(name="masterPort")
-    def master_port(self) -> float:
+    def master_port(self) -> int:
         return pulumi.get(self, "master_port")
 
     @property
@@ -1251,12 +1251,12 @@ class ElastigroupIntegrationNomad(dict):
 
     @property
     @pulumi.getter(name="autoscaleConstraints")
-    def autoscale_constraints(self) -> Optional[List['outputs.ElastigroupIntegrationNomadAutoscaleConstraint']]:
+    def autoscale_constraints(self) -> Optional[Sequence['outputs.ElastigroupIntegrationNomadAutoscaleConstraint']]:
         return pulumi.get(self, "autoscale_constraints")
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[float]:
+    def autoscale_cooldown(self) -> Optional[int]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @property
@@ -1303,13 +1303,13 @@ class ElastigroupIntegrationNomadAutoscaleConstraint(dict):
 @pulumi.output_type
 class ElastigroupIntegrationNomadAutoscaleDown(dict):
     def __init__(__self__, *,
-                 evaluation_periods: Optional[float] = None):
+                 evaluation_periods: Optional[int] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
 
     def _translate_property(self, prop):
@@ -1319,9 +1319,9 @@ class ElastigroupIntegrationNomadAutoscaleDown(dict):
 @pulumi.output_type
 class ElastigroupIntegrationNomadAutoscaleHeadroom(dict):
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[float] = None,
-                 memory_per_unit: Optional[float] = None,
-                 num_of_units: Optional[float] = None):
+                 cpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None,
+                 num_of_units: Optional[int] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -1331,17 +1331,17 @@ class ElastigroupIntegrationNomadAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[float]:
+    def cpu_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[float]:
+    def memory_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "memory_per_unit")
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[float]:
+    def num_of_units(self) -> Optional[int]:
         return pulumi.get(self, "num_of_units")
 
     def _translate_property(self, prop):
@@ -1388,12 +1388,12 @@ class ElastigroupIntegrationRancher(dict):
 @pulumi.output_type
 class ElastigroupIntegrationRoute53(dict):
     def __init__(__self__, *,
-                 domains: List['outputs.ElastigroupIntegrationRoute53Domain']):
+                 domains: Sequence['outputs.ElastigroupIntegrationRoute53Domain']):
         pulumi.set(__self__, "domains", domains)
 
     @property
     @pulumi.getter
-    def domains(self) -> List['outputs.ElastigroupIntegrationRoute53Domain']:
+    def domains(self) -> Sequence['outputs.ElastigroupIntegrationRoute53Domain']:
         return pulumi.get(self, "domains")
 
     def _translate_property(self, prop):
@@ -1404,7 +1404,7 @@ class ElastigroupIntegrationRoute53(dict):
 class ElastigroupIntegrationRoute53Domain(dict):
     def __init__(__self__, *,
                  hosted_zone_id: str,
-                 record_sets: List['outputs.ElastigroupIntegrationRoute53DomainRecordSet'],
+                 record_sets: Sequence['outputs.ElastigroupIntegrationRoute53DomainRecordSet'],
                  record_set_type: Optional[str] = None,
                  spotinst_acct_id: Optional[str] = None):
         pulumi.set(__self__, "hosted_zone_id", hosted_zone_id)
@@ -1421,7 +1421,7 @@ class ElastigroupIntegrationRoute53Domain(dict):
 
     @property
     @pulumi.getter(name="recordSets")
-    def record_sets(self) -> List['outputs.ElastigroupIntegrationRoute53DomainRecordSet']:
+    def record_sets(self) -> Sequence['outputs.ElastigroupIntegrationRoute53DomainRecordSet']:
         return pulumi.get(self, "record_sets")
 
     @property
@@ -1578,10 +1578,10 @@ class ElastigroupNetworkInterface(dict):
 class ElastigroupRevertToSpot(dict):
     def __init__(__self__, *,
                  perform_at: str,
-                 time_windows: Optional[List[str]] = None):
+                 time_windows: Optional[Sequence[str]] = None):
         """
         :param str perform_at: In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-        :param List[str] time_windows: Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
+        :param Sequence[str] time_windows: Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
         """
         pulumi.set(__self__, "perform_at", perform_at)
         if time_windows is not None:
@@ -1597,7 +1597,7 @@ class ElastigroupRevertToSpot(dict):
 
     @property
     @pulumi.getter(name="timeWindows")
-    def time_windows(self) -> Optional[List[str]]:
+    def time_windows(self) -> Optional[Sequence[str]]:
         """
         Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
         """
@@ -1617,16 +1617,16 @@ class ElastigroupScalingDownPolicy(dict):
                  unit: str,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
-                 cooldown: Optional[float] = None,
-                 dimensions: Optional[List['outputs.ElastigroupScalingDownPolicyDimension']] = None,
-                 evaluation_periods: Optional[float] = None,
+                 cooldown: Optional[int] = None,
+                 dimensions: Optional[Sequence['outputs.ElastigroupScalingDownPolicyDimension']] = None,
+                 evaluation_periods: Optional[int] = None,
                  is_enabled: Optional[bool] = None,
                  max_target_capacity: Optional[str] = None,
                  maximum: Optional[str] = None,
                  min_target_capacity: Optional[str] = None,
                  minimum: Optional[str] = None,
                  operator: Optional[str] = None,
-                 period: Optional[float] = None,
+                 period: Optional[int] = None,
                  source: Optional[str] = None,
                  statistic: Optional[str] = None,
                  target: Optional[str] = None):
@@ -1703,17 +1703,17 @@ class ElastigroupScalingDownPolicy(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> Optional[int]:
         return pulumi.get(self, "cooldown")
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[List['outputs.ElastigroupScalingDownPolicyDimension']]:
+    def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingDownPolicyDimension']]:
         return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
 
     @property
@@ -1748,7 +1748,7 @@ class ElastigroupScalingDownPolicy(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> Optional[int]:
         return pulumi.get(self, "period")
 
     @property
@@ -1841,8 +1841,8 @@ class ElastigroupScalingTargetPolicy(dict):
                  policy_name: str,
                  target: float,
                  unit: str,
-                 cooldown: Optional[float] = None,
-                 dimensions: Optional[List['outputs.ElastigroupScalingTargetPolicyDimension']] = None,
+                 cooldown: Optional[int] = None,
+                 dimensions: Optional[Sequence['outputs.ElastigroupScalingTargetPolicyDimension']] = None,
                  max_capacity_per_scale: Optional[str] = None,
                  predictive_mode: Optional[str] = None,
                  source: Optional[str] = None,
@@ -1892,12 +1892,12 @@ class ElastigroupScalingTargetPolicy(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> Optional[int]:
         return pulumi.get(self, "cooldown")
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[List['outputs.ElastigroupScalingTargetPolicyDimension']]:
+    def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingTargetPolicyDimension']]:
         return pulumi.get(self, "dimensions")
 
     @property
@@ -1963,16 +1963,16 @@ class ElastigroupScalingUpPolicy(dict):
                  unit: str,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
-                 cooldown: Optional[float] = None,
-                 dimensions: Optional[List['outputs.ElastigroupScalingUpPolicyDimension']] = None,
-                 evaluation_periods: Optional[float] = None,
+                 cooldown: Optional[int] = None,
+                 dimensions: Optional[Sequence['outputs.ElastigroupScalingUpPolicyDimension']] = None,
+                 evaluation_periods: Optional[int] = None,
                  is_enabled: Optional[bool] = None,
                  max_target_capacity: Optional[str] = None,
                  maximum: Optional[str] = None,
                  min_target_capacity: Optional[str] = None,
                  minimum: Optional[str] = None,
                  operator: Optional[str] = None,
-                 period: Optional[float] = None,
+                 period: Optional[int] = None,
                  source: Optional[str] = None,
                  statistic: Optional[str] = None,
                  target: Optional[str] = None):
@@ -2049,17 +2049,17 @@ class ElastigroupScalingUpPolicy(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> Optional[int]:
         return pulumi.get(self, "cooldown")
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[List['outputs.ElastigroupScalingUpPolicyDimension']]:
+    def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingUpPolicyDimension']]:
         return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
 
     @property
@@ -2094,7 +2094,7 @@ class ElastigroupScalingUpPolicy(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> Optional[int]:
         return pulumi.get(self, "period")
 
     @property
@@ -2276,7 +2276,7 @@ class ElastigroupScheduledTask(dict):
 class ElastigroupSignal(dict):
     def __init__(__self__, *,
                  name: str,
-                 timeout: Optional[float] = None):
+                 timeout: Optional[int] = None):
         """
         :param str name: The group name.
         """
@@ -2294,7 +2294,7 @@ class ElastigroupSignal(dict):
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> Optional[int]:
         return pulumi.get(self, "timeout")
 
     def _translate_property(self, prop):
@@ -2406,12 +2406,12 @@ class ElastigroupUpdatePolicy(dict):
 @pulumi.output_type
 class ElastigroupUpdatePolicyRollConfig(dict):
     def __init__(__self__, *,
-                 batch_size_percentage: float,
-                 grace_period: Optional[float] = None,
+                 batch_size_percentage: int,
+                 grace_period: Optional[int] = None,
                  health_check_type: Optional[str] = None,
                  strategy: Optional['outputs.ElastigroupUpdatePolicyRollConfigStrategy'] = None,
-                 wait_for_roll_percentage: Optional[float] = None,
-                 wait_for_roll_timeout: Optional[float] = None):
+                 wait_for_roll_percentage: Optional[int] = None,
+                 wait_for_roll_timeout: Optional[int] = None):
         """
         :param str health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         """
@@ -2429,12 +2429,12 @@ class ElastigroupUpdatePolicyRollConfig(dict):
 
     @property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> float:
+    def batch_size_percentage(self) -> int:
         return pulumi.get(self, "batch_size_percentage")
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[float]:
+    def grace_period(self) -> Optional[int]:
         return pulumi.get(self, "grace_period")
 
     @property
@@ -2452,12 +2452,12 @@ class ElastigroupUpdatePolicyRollConfig(dict):
 
     @property
     @pulumi.getter(name="waitForRollPercentage")
-    def wait_for_roll_percentage(self) -> Optional[float]:
+    def wait_for_roll_percentage(self) -> Optional[int]:
         return pulumi.get(self, "wait_for_roll_percentage")
 
     @property
     @pulumi.getter(name="waitForRollTimeout")
-    def wait_for_roll_timeout(self) -> Optional[float]:
+    def wait_for_roll_timeout(self) -> Optional[int]:
         return pulumi.get(self, "wait_for_roll_timeout")
 
     def _translate_property(self, prop):
@@ -2468,7 +2468,7 @@ class ElastigroupUpdatePolicyRollConfig(dict):
 class ElastigroupUpdatePolicyRollConfigStrategy(dict):
     def __init__(__self__, *,
                  action: str,
-                 batch_min_healthy_percentage: Optional[float] = None,
+                 batch_min_healthy_percentage: Optional[int] = None,
                  on_failure: Optional['outputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailure'] = None,
                  should_drain_instances: Optional[bool] = None):
         pulumi.set(__self__, "action", action)
@@ -2486,7 +2486,7 @@ class ElastigroupUpdatePolicyRollConfigStrategy(dict):
 
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
-    def batch_min_healthy_percentage(self) -> Optional[float]:
+    def batch_min_healthy_percentage(self) -> Optional[int]:
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @property
@@ -2507,12 +2507,12 @@ class ElastigroupUpdatePolicyRollConfigStrategy(dict):
 class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
     def __init__(__self__, *,
                  action_type: str,
-                 batch_num: Optional[float] = None,
-                 draining_timeout: Optional[float] = None,
+                 batch_num: Optional[int] = None,
+                 draining_timeout: Optional[int] = None,
                  should_decrement_target_capacity: Optional[bool] = None,
                  should_handle_all_batches: Optional[bool] = None):
         """
-        :param float draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        :param int draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         """
         pulumi.set(__self__, "action_type", action_type)
         if batch_num is not None:
@@ -2531,12 +2531,12 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
 
     @property
     @pulumi.getter(name="batchNum")
-    def batch_num(self) -> Optional[float]:
+    def batch_num(self) -> Optional[int]:
         return pulumi.get(self, "batch_num")
 
     @property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[float]:
+    def draining_timeout(self) -> Optional[int]:
         """
         The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         """
@@ -2559,12 +2559,12 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
 @pulumi.output_type
 class ManagedInstanceIntegrationRoute53(dict):
     def __init__(__self__, *,
-                 domains: List['outputs.ManagedInstanceIntegrationRoute53Domain']):
+                 domains: Sequence['outputs.ManagedInstanceIntegrationRoute53Domain']):
         pulumi.set(__self__, "domains", domains)
 
     @property
     @pulumi.getter
-    def domains(self) -> List['outputs.ManagedInstanceIntegrationRoute53Domain']:
+    def domains(self) -> Sequence['outputs.ManagedInstanceIntegrationRoute53Domain']:
         return pulumi.get(self, "domains")
 
     def _translate_property(self, prop):
@@ -2575,7 +2575,7 @@ class ManagedInstanceIntegrationRoute53(dict):
 class ManagedInstanceIntegrationRoute53Domain(dict):
     def __init__(__self__, *,
                  hosted_zone_id: str,
-                 record_sets: List['outputs.ManagedInstanceIntegrationRoute53DomainRecordSet'],
+                 record_sets: Sequence['outputs.ManagedInstanceIntegrationRoute53DomainRecordSet'],
                  record_set_type: Optional[str] = None,
                  spotinst_acct_id: Optional[str] = None):
         pulumi.set(__self__, "hosted_zone_id", hosted_zone_id)
@@ -2592,7 +2592,7 @@ class ManagedInstanceIntegrationRoute53Domain(dict):
 
     @property
     @pulumi.getter(name="recordSets")
-    def record_sets(self) -> List['outputs.ManagedInstanceIntegrationRoute53DomainRecordSet']:
+    def record_sets(self) -> Sequence['outputs.ManagedInstanceIntegrationRoute53DomainRecordSet']:
         return pulumi.get(self, "record_sets")
 
     @property
@@ -2854,7 +2854,7 @@ class ManagedInstanceTag(dict):
 class MrScalarApplication(dict):
     def __init__(__self__, *,
                  name: str,
-                 args: Optional[List[str]] = None,
+                 args: Optional[Sequence[str]] = None,
                  version: Optional[str] = None):
         """
         :param str name: The MrScaler name.
@@ -2875,7 +2875,7 @@ class MrScalarApplication(dict):
 
     @property
     @pulumi.getter
-    def args(self) -> Optional[List[str]]:
+    def args(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "args")
 
     @property
@@ -2934,10 +2934,10 @@ class MrScalarConfigurationsFile(dict):
 @pulumi.output_type
 class MrScalarCoreEbsBlockDevice(dict):
     def __init__(__self__, *,
-                 size_in_gb: float,
+                 size_in_gb: int,
                  volume_type: str,
-                 iops: Optional[float] = None,
-                 volumes_per_instance: Optional[float] = None):
+                 iops: Optional[int] = None,
+                 volumes_per_instance: Optional[int] = None):
         pulumi.set(__self__, "size_in_gb", size_in_gb)
         pulumi.set(__self__, "volume_type", volume_type)
         if iops is not None:
@@ -2947,7 +2947,7 @@ class MrScalarCoreEbsBlockDevice(dict):
 
     @property
     @pulumi.getter(name="sizeInGb")
-    def size_in_gb(self) -> float:
+    def size_in_gb(self) -> int:
         return pulumi.get(self, "size_in_gb")
 
     @property
@@ -2957,12 +2957,12 @@ class MrScalarCoreEbsBlockDevice(dict):
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[float]:
+    def iops(self) -> Optional[int]:
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="volumesPerInstance")
-    def volumes_per_instance(self) -> Optional[float]:
+    def volumes_per_instance(self) -> Optional[int]:
         return pulumi.get(self, "volumes_per_instance")
 
     def _translate_property(self, prop):
@@ -2979,15 +2979,15 @@ class MrScalarCoreScalingDownPolicy(dict):
                  unit: str,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
-                 cooldown: Optional[float] = None,
+                 cooldown: Optional[int] = None,
                  dimensions: Optional[Mapping[str, Any]] = None,
-                 evaluation_periods: Optional[float] = None,
+                 evaluation_periods: Optional[int] = None,
                  max_target_capacity: Optional[str] = None,
                  maximum: Optional[str] = None,
                  min_target_capacity: Optional[str] = None,
                  minimum: Optional[str] = None,
                  operator: Optional[str] = None,
-                 period: Optional[float] = None,
+                 period: Optional[int] = None,
                  statistic: Optional[str] = None,
                  target: Optional[str] = None):
         """
@@ -2995,9 +2995,9 @@ class MrScalarCoreScalingDownPolicy(dict):
         :param str namespace: Must contain the value: `AWS/ElasticMapReduce`.
         :param float threshold: The value that the specified statistic is compared to.
         :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-        :param float evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param str operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param float period: The time window in seconds over which the statistic is applied.
+        :param int period: The time window in seconds over which the statistic is applied.
         :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -3081,7 +3081,7 @@ class MrScalarCoreScalingDownPolicy(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> Optional[int]:
         return pulumi.get(self, "cooldown")
 
     @property
@@ -3091,7 +3091,7 @@ class MrScalarCoreScalingDownPolicy(dict):
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         """
         The number of periods over which data is compared to the specified threshold.
         """
@@ -3127,7 +3127,7 @@ class MrScalarCoreScalingDownPolicy(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> Optional[int]:
         """
         The time window in seconds over which the statistic is applied.
         """
@@ -3160,15 +3160,15 @@ class MrScalarCoreScalingUpPolicy(dict):
                  unit: str,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
-                 cooldown: Optional[float] = None,
+                 cooldown: Optional[int] = None,
                  dimensions: Optional[Mapping[str, Any]] = None,
-                 evaluation_periods: Optional[float] = None,
+                 evaluation_periods: Optional[int] = None,
                  max_target_capacity: Optional[str] = None,
                  maximum: Optional[str] = None,
                  min_target_capacity: Optional[str] = None,
                  minimum: Optional[str] = None,
                  operator: Optional[str] = None,
-                 period: Optional[float] = None,
+                 period: Optional[int] = None,
                  statistic: Optional[str] = None,
                  target: Optional[str] = None):
         """
@@ -3176,9 +3176,9 @@ class MrScalarCoreScalingUpPolicy(dict):
         :param str namespace: Must contain the value: `AWS/ElasticMapReduce`.
         :param float threshold: The value that the specified statistic is compared to.
         :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-        :param float evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param str operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param float period: The time window in seconds over which the statistic is applied.
+        :param int period: The time window in seconds over which the statistic is applied.
         :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -3262,7 +3262,7 @@ class MrScalarCoreScalingUpPolicy(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> Optional[int]:
         return pulumi.get(self, "cooldown")
 
     @property
@@ -3272,7 +3272,7 @@ class MrScalarCoreScalingUpPolicy(dict):
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         """
         The number of periods over which data is compared to the specified threshold.
         """
@@ -3308,7 +3308,7 @@ class MrScalarCoreScalingUpPolicy(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> Optional[int]:
         """
         The time window in seconds over which the statistic is applied.
         """
@@ -3335,7 +3335,7 @@ class MrScalarCoreScalingUpPolicy(dict):
 class MrScalarInstanceWeight(dict):
     def __init__(__self__, *,
                  instance_type: str,
-                 weighted_capacity: float):
+                 weighted_capacity: int):
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "weighted_capacity", weighted_capacity)
 
@@ -3346,7 +3346,7 @@ class MrScalarInstanceWeight(dict):
 
     @property
     @pulumi.getter(name="weightedCapacity")
-    def weighted_capacity(self) -> float:
+    def weighted_capacity(self) -> int:
         return pulumi.get(self, "weighted_capacity")
 
     def _translate_property(self, prop):
@@ -3356,10 +3356,10 @@ class MrScalarInstanceWeight(dict):
 @pulumi.output_type
 class MrScalarMasterEbsBlockDevice(dict):
     def __init__(__self__, *,
-                 size_in_gb: float,
+                 size_in_gb: int,
                  volume_type: str,
-                 iops: Optional[float] = None,
-                 volumes_per_instance: Optional[float] = None):
+                 iops: Optional[int] = None,
+                 volumes_per_instance: Optional[int] = None):
         pulumi.set(__self__, "size_in_gb", size_in_gb)
         pulumi.set(__self__, "volume_type", volume_type)
         if iops is not None:
@@ -3369,7 +3369,7 @@ class MrScalarMasterEbsBlockDevice(dict):
 
     @property
     @pulumi.getter(name="sizeInGb")
-    def size_in_gb(self) -> float:
+    def size_in_gb(self) -> int:
         return pulumi.get(self, "size_in_gb")
 
     @property
@@ -3379,12 +3379,12 @@ class MrScalarMasterEbsBlockDevice(dict):
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[float]:
+    def iops(self) -> Optional[int]:
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="volumesPerInstance")
-    def volumes_per_instance(self) -> Optional[float]:
+    def volumes_per_instance(self) -> Optional[int]:
         return pulumi.get(self, "volumes_per_instance")
 
     def _translate_property(self, prop):
@@ -3394,14 +3394,14 @@ class MrScalarMasterEbsBlockDevice(dict):
 @pulumi.output_type
 class MrScalarProvisioningTimeout(dict):
     def __init__(__self__, *,
-                 timeout: float,
+                 timeout: int,
                  timeout_action: str):
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "timeout_action", timeout_action)
 
     @property
     @pulumi.getter
-    def timeout(self) -> float:
+    def timeout(self) -> int:
         return pulumi.get(self, "timeout")
 
     @property
@@ -3521,10 +3521,10 @@ class MrScalarTag(dict):
 @pulumi.output_type
 class MrScalarTaskEbsBlockDevice(dict):
     def __init__(__self__, *,
-                 size_in_gb: float,
+                 size_in_gb: int,
                  volume_type: str,
-                 iops: Optional[float] = None,
-                 volumes_per_instance: Optional[float] = None):
+                 iops: Optional[int] = None,
+                 volumes_per_instance: Optional[int] = None):
         pulumi.set(__self__, "size_in_gb", size_in_gb)
         pulumi.set(__self__, "volume_type", volume_type)
         if iops is not None:
@@ -3534,7 +3534,7 @@ class MrScalarTaskEbsBlockDevice(dict):
 
     @property
     @pulumi.getter(name="sizeInGb")
-    def size_in_gb(self) -> float:
+    def size_in_gb(self) -> int:
         return pulumi.get(self, "size_in_gb")
 
     @property
@@ -3544,12 +3544,12 @@ class MrScalarTaskEbsBlockDevice(dict):
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[float]:
+    def iops(self) -> Optional[int]:
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="volumesPerInstance")
-    def volumes_per_instance(self) -> Optional[float]:
+    def volumes_per_instance(self) -> Optional[int]:
         return pulumi.get(self, "volumes_per_instance")
 
     def _translate_property(self, prop):
@@ -3566,15 +3566,15 @@ class MrScalarTaskScalingDownPolicy(dict):
                  unit: str,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
-                 cooldown: Optional[float] = None,
+                 cooldown: Optional[int] = None,
                  dimensions: Optional[Mapping[str, Any]] = None,
-                 evaluation_periods: Optional[float] = None,
+                 evaluation_periods: Optional[int] = None,
                  max_target_capacity: Optional[str] = None,
                  maximum: Optional[str] = None,
                  min_target_capacity: Optional[str] = None,
                  minimum: Optional[str] = None,
                  operator: Optional[str] = None,
-                 period: Optional[float] = None,
+                 period: Optional[int] = None,
                  statistic: Optional[str] = None,
                  target: Optional[str] = None):
         """
@@ -3582,9 +3582,9 @@ class MrScalarTaskScalingDownPolicy(dict):
         :param str namespace: Must contain the value: `AWS/ElasticMapReduce`.
         :param float threshold: The value that the specified statistic is compared to.
         :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-        :param float evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param str operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param float period: The time window in seconds over which the statistic is applied.
+        :param int period: The time window in seconds over which the statistic is applied.
         :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -3668,7 +3668,7 @@ class MrScalarTaskScalingDownPolicy(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> Optional[int]:
         return pulumi.get(self, "cooldown")
 
     @property
@@ -3678,7 +3678,7 @@ class MrScalarTaskScalingDownPolicy(dict):
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         """
         The number of periods over which data is compared to the specified threshold.
         """
@@ -3714,7 +3714,7 @@ class MrScalarTaskScalingDownPolicy(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> Optional[int]:
         """
         The time window in seconds over which the statistic is applied.
         """
@@ -3747,15 +3747,15 @@ class MrScalarTaskScalingUpPolicy(dict):
                  unit: str,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
-                 cooldown: Optional[float] = None,
+                 cooldown: Optional[int] = None,
                  dimensions: Optional[Mapping[str, Any]] = None,
-                 evaluation_periods: Optional[float] = None,
+                 evaluation_periods: Optional[int] = None,
                  max_target_capacity: Optional[str] = None,
                  maximum: Optional[str] = None,
                  min_target_capacity: Optional[str] = None,
                  minimum: Optional[str] = None,
                  operator: Optional[str] = None,
-                 period: Optional[float] = None,
+                 period: Optional[int] = None,
                  statistic: Optional[str] = None,
                  target: Optional[str] = None):
         """
@@ -3763,9 +3763,9 @@ class MrScalarTaskScalingUpPolicy(dict):
         :param str namespace: Must contain the value: `AWS/ElasticMapReduce`.
         :param float threshold: The value that the specified statistic is compared to.
         :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-        :param float evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param str operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param float period: The time window in seconds over which the statistic is applied.
+        :param int period: The time window in seconds over which the statistic is applied.
         :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -3849,7 +3849,7 @@ class MrScalarTaskScalingUpPolicy(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> Optional[int]:
         return pulumi.get(self, "cooldown")
 
     @property
@@ -3859,7 +3859,7 @@ class MrScalarTaskScalingUpPolicy(dict):
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         """
         The number of periods over which data is compared to the specified threshold.
         """
@@ -3895,7 +3895,7 @@ class MrScalarTaskScalingUpPolicy(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> Optional[int]:
         """
         The time window in seconds over which the statistic is applied.
         """
@@ -3921,12 +3921,12 @@ class MrScalarTaskScalingUpPolicy(dict):
 @pulumi.output_type
 class MrScalarTerminationPolicy(dict):
     def __init__(__self__, *,
-                 statements: List['outputs.MrScalarTerminationPolicyStatement']):
+                 statements: Sequence['outputs.MrScalarTerminationPolicyStatement']):
         pulumi.set(__self__, "statements", statements)
 
     @property
     @pulumi.getter
-    def statements(self) -> List['outputs.MrScalarTerminationPolicyStatement']:
+    def statements(self) -> Sequence['outputs.MrScalarTerminationPolicyStatement']:
         return pulumi.get(self, "statements")
 
     def _translate_property(self, prop):
@@ -3939,18 +3939,18 @@ class MrScalarTerminationPolicyStatement(dict):
                  metric_name: str,
                  namespace: str,
                  threshold: float,
-                 evaluation_periods: Optional[float] = None,
+                 evaluation_periods: Optional[int] = None,
                  operator: Optional[str] = None,
-                 period: Optional[float] = None,
+                 period: Optional[int] = None,
                  statistic: Optional[str] = None,
                  unit: Optional[str] = None):
         """
         :param str metric_name: The name of the metric in CloudWatch which the statement will be based on.
         :param str namespace: Must contain the value: `AWS/ElasticMapReduce`.
         :param float threshold: The value that the specified statistic is compared to.
-        :param float evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param str operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param float period: The time window in seconds over which the statistic is applied.
+        :param int period: The time window in seconds over which the statistic is applied.
         :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
         """
@@ -3994,7 +3994,7 @@ class MrScalarTerminationPolicyStatement(dict):
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         """
         The number of periods over which data is compared to the specified threshold.
         """
@@ -4010,7 +4010,7 @@ class MrScalarTerminationPolicyStatement(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> Optional[int]:
         """
         The time window in seconds over which the statistic is applied.
         """
@@ -4039,8 +4039,8 @@ class MrScalarTerminationPolicyStatement(dict):
 @pulumi.output_type
 class OceanAutoscaler(dict):
     def __init__(__self__, *,
-                 auto_headroom_percentage: Optional[float] = None,
-                 autoscale_cooldown: Optional[float] = None,
+                 auto_headroom_percentage: Optional[int] = None,
+                 autoscale_cooldown: Optional[int] = None,
                  autoscale_down: Optional['outputs.OceanAutoscalerAutoscaleDown'] = None,
                  autoscale_headroom: Optional['outputs.OceanAutoscalerAutoscaleHeadroom'] = None,
                  autoscale_is_auto_config: Optional[bool] = None,
@@ -4063,12 +4063,12 @@ class OceanAutoscaler(dict):
 
     @property
     @pulumi.getter(name="autoHeadroomPercentage")
-    def auto_headroom_percentage(self) -> Optional[float]:
+    def auto_headroom_percentage(self) -> Optional[int]:
         return pulumi.get(self, "auto_headroom_percentage")
 
     @property
     @pulumi.getter(name="autoscaleCooldown")
-    def autoscale_cooldown(self) -> Optional[float]:
+    def autoscale_cooldown(self) -> Optional[int]:
         return pulumi.get(self, "autoscale_cooldown")
 
     @property
@@ -4103,7 +4103,7 @@ class OceanAutoscaler(dict):
 @pulumi.output_type
 class OceanAutoscalerAutoscaleDown(dict):
     def __init__(__self__, *,
-                 evaluation_periods: Optional[float] = None,
+                 evaluation_periods: Optional[int] = None,
                  max_scale_down_percentage: Optional[float] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
@@ -4112,7 +4112,7 @@ class OceanAutoscalerAutoscaleDown(dict):
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
 
     @property
@@ -4127,10 +4127,10 @@ class OceanAutoscalerAutoscaleDown(dict):
 @pulumi.output_type
 class OceanAutoscalerAutoscaleHeadroom(dict):
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[float] = None,
-                 gpu_per_unit: Optional[float] = None,
-                 memory_per_unit: Optional[float] = None,
-                 num_of_units: Optional[float] = None):
+                 cpu_per_unit: Optional[int] = None,
+                 gpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None,
+                 num_of_units: Optional[int] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
@@ -4142,22 +4142,22 @@ class OceanAutoscalerAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[float]:
+    def cpu_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="gpuPerUnit")
-    def gpu_per_unit(self) -> Optional[float]:
+    def gpu_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "gpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[float]:
+    def memory_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "memory_per_unit")
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[float]:
+    def num_of_units(self) -> Optional[int]:
         return pulumi.get(self, "num_of_units")
 
     def _translate_property(self, prop):
@@ -4167,8 +4167,8 @@ class OceanAutoscalerAutoscaleHeadroom(dict):
 @pulumi.output_type
 class OceanAutoscalerResourceLimits(dict):
     def __init__(__self__, *,
-                 max_memory_gib: Optional[float] = None,
-                 max_vcpu: Optional[float] = None):
+                 max_memory_gib: Optional[int] = None,
+                 max_vcpu: Optional[int] = None):
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -4176,12 +4176,12 @@ class OceanAutoscalerResourceLimits(dict):
 
     @property
     @pulumi.getter(name="maxMemoryGib")
-    def max_memory_gib(self) -> Optional[float]:
+    def max_memory_gib(self) -> Optional[int]:
         return pulumi.get(self, "max_memory_gib")
 
     @property
     @pulumi.getter(name="maxVcpu")
-    def max_vcpu(self) -> Optional[float]:
+    def max_vcpu(self) -> Optional[int]:
         return pulumi.get(self, "max_vcpu")
 
     def _translate_property(self, prop):
@@ -4191,15 +4191,15 @@ class OceanAutoscalerResourceLimits(dict):
 @pulumi.output_type
 class OceanLaunchSpecAutoscaleHeadroom(dict):
     def __init__(__self__, *,
-                 num_of_units: float,
-                 cpu_per_unit: Optional[float] = None,
-                 gpu_per_unit: Optional[float] = None,
-                 memory_per_unit: Optional[float] = None):
+                 num_of_units: int,
+                 cpu_per_unit: Optional[int] = None,
+                 gpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None):
         """
-        :param float num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        :param float cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        :param float gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
-        :param float memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        :param int cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param int gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
+        :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
@@ -4211,7 +4211,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> float:
+    def num_of_units(self) -> int:
         """
         The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
         """
@@ -4219,7 +4219,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[float]:
+    def cpu_per_unit(self) -> Optional[int]:
         """
         Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         """
@@ -4227,7 +4227,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="gpuPerUnit")
-    def gpu_per_unit(self) -> Optional[float]:
+    def gpu_per_unit(self) -> Optional[int]:
         """
         Optionally configure the number of GPUS to allocate for each headroom unit.
         """
@@ -4235,7 +4235,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[float]:
+    def memory_per_unit(self) -> Optional[int]:
         """
         Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
@@ -4304,19 +4304,19 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
                  delete_on_termination: Optional[bool] = None,
                  dynamic_volume_size: Optional['outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize'] = None,
                  encrypted: Optional[bool] = None,
-                 iops: Optional[float] = None,
+                 iops: Optional[int] = None,
                  kms_key_id: Optional[str] = None,
                  snapshot_id: Optional[str] = None,
-                 volume_size: Optional[float] = None,
+                 volume_size: Optional[int] = None,
                  volume_type: Optional[str] = None):
         """
         :param bool delete_on_termination: Boolean. Flag to delete the EBS on instance termination.
         :param 'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs' dynamic_volume_size: Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
         :param bool encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-        :param float iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
+        :param int iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
         :param str kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
         :param str snapshot_id: (Optional) String. The Snapshot ID to mount by.
-        :param float volume_size: Int. The size, in GB of the volume.
+        :param int volume_size: Int. The size, in GB of the volume.
         :param str volume_type: String. The type of the volume (example: "gp2").
         """
         if delete_on_termination is not None:
@@ -4362,7 +4362,7 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
 
     @property
     @pulumi.getter
-    def iops(self) -> Optional[float]:
+    def iops(self) -> Optional[int]:
         """
         Int. The number of I/O operations per second (IOPS) that the volume supports.
         """
@@ -4386,7 +4386,7 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
 
     @property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> Optional[float]:
+    def volume_size(self) -> Optional[int]:
         """
         Int. The size, in GB of the volume.
         """
@@ -4407,13 +4407,13 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
 @pulumi.output_type
 class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize(dict):
     def __init__(__self__, *,
-                 base_size: float,
+                 base_size: int,
                  resource: str,
-                 size_per_resource_unit: float):
+                 size_per_resource_unit: int):
         """
-        :param float base_size: Int. Initial size for volume. (Example: 50)
+        :param int base_size: Int. Initial size for volume. (Example: 50)
         :param str resource: String. Resource type to increase volume size dynamically by. (valid values: "CPU")
-        :param float size_per_resource_unit: Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+        :param int size_per_resource_unit: Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
         """
         pulumi.set(__self__, "base_size", base_size)
         pulumi.set(__self__, "resource", resource)
@@ -4421,7 +4421,7 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize(dict):
 
     @property
     @pulumi.getter(name="baseSize")
-    def base_size(self) -> float:
+    def base_size(self) -> int:
         """
         Int. Initial size for volume. (Example: 50)
         """
@@ -4437,7 +4437,7 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize(dict):
 
     @property
     @pulumi.getter(name="sizePerResourceUnit")
-    def size_per_resource_unit(self) -> float:
+    def size_per_resource_unit(self) -> int:
         """
         Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
         """
@@ -4537,16 +4537,16 @@ class OceanLaunchSpecLabel(dict):
 @pulumi.output_type
 class OceanLaunchSpecResourceLimit(dict):
     def __init__(__self__, *,
-                 max_instance_count: Optional[float] = None):
+                 max_instance_count: Optional[int] = None):
         """
-        :param float max_instance_count: set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+        :param int max_instance_count: set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
         """
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
 
     @property
     @pulumi.getter(name="maxInstanceCount")
-    def max_instance_count(self) -> Optional[float]:
+    def max_instance_count(self) -> Optional[int]:
         """
         set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
         """
@@ -4681,7 +4681,7 @@ class OceanLoadBalancer(dict):
 class OceanScheduledTask(dict):
     def __init__(__self__, *,
                  shutdown_hours: Optional['outputs.OceanScheduledTaskShutdownHours'] = None,
-                 tasks: Optional[List['outputs.OceanScheduledTaskTask']] = None):
+                 tasks: Optional[Sequence['outputs.OceanScheduledTaskTask']] = None):
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
         if tasks is not None:
@@ -4694,7 +4694,7 @@ class OceanScheduledTask(dict):
 
     @property
     @pulumi.getter
-    def tasks(self) -> Optional[List['outputs.OceanScheduledTaskTask']]:
+    def tasks(self) -> Optional[Sequence['outputs.OceanScheduledTaskTask']]:
         return pulumi.get(self, "tasks")
 
     def _translate_property(self, prop):
@@ -4704,7 +4704,7 @@ class OceanScheduledTask(dict):
 @pulumi.output_type
 class OceanScheduledTaskShutdownHours(dict):
     def __init__(__self__, *,
-                 time_windows: List[str],
+                 time_windows: Sequence[str],
                  is_enabled: Optional[bool] = None):
         pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
@@ -4712,7 +4712,7 @@ class OceanScheduledTaskShutdownHours(dict):
 
     @property
     @pulumi.getter(name="timeWindows")
-    def time_windows(self) -> List[str]:
+    def time_windows(self) -> Sequence[str]:
         return pulumi.get(self, "time_windows")
 
     @property
@@ -4811,12 +4811,12 @@ class OceanUpdatePolicy(dict):
 @pulumi.output_type
 class OceanUpdatePolicyRollConfig(dict):
     def __init__(__self__, *,
-                 batch_size_percentage: float):
+                 batch_size_percentage: int):
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> float:
+    def batch_size_percentage(self) -> int:
         return pulumi.get(self, "batch_size_percentage")
 
     def _translate_property(self, prop):

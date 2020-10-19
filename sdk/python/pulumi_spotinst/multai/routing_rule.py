@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,12 +19,12 @@ class RoutingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  balancer_id: Optional[pulumi.Input[str]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
-                 middleware_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 middleware_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  route: Optional[pulumi.Input[str]] = None,
                  strategy: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RoutingRuleTagArgs']]]]] = None,
-                 target_set_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingRuleTagArgs']]]]] = None,
+                 target_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -78,12 +78,12 @@ class RoutingRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             balancer_id: Optional[pulumi.Input[str]] = None,
             listener_id: Optional[pulumi.Input[str]] = None,
-            middleware_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            middleware_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             route: Optional[pulumi.Input[str]] = None,
             strategy: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['RoutingRuleTagArgs']]]]] = None,
-            target_set_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'RoutingRule':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingRuleTagArgs']]]]] = None,
+            target_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'RoutingRule':
         """
         Get an existing RoutingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -118,12 +118,12 @@ class RoutingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="middlewareIds")
-    def middleware_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def middleware_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "middleware_ids")
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[float]]:
+    def priority(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "priority")
 
     @property
@@ -138,12 +138,12 @@ class RoutingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List['outputs.RoutingRuleTag']]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.RoutingRuleTag']]]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="targetSetIds")
-    def target_set_ids(self) -> pulumi.Output[List[str]]:
+    def target_set_ids(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "target_set_ids")
 
     def translate_output_property(self, prop):

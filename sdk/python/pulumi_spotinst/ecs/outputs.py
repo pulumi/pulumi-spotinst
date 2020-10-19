@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -28,7 +28,7 @@ __all__ = [
 @pulumi.output_type
 class OceanAutoscaler(dict):
     def __init__(__self__, *,
-                 cooldown: Optional[float] = None,
+                 cooldown: Optional[int] = None,
                  down: Optional['outputs.OceanAutoscalerDown'] = None,
                  headroom: Optional['outputs.OceanAutoscalerHeadroom'] = None,
                  is_auto_config: Optional[bool] = None,
@@ -49,7 +49,7 @@ class OceanAutoscaler(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> Optional[int]:
         return pulumi.get(self, "cooldown")
 
     @property
@@ -100,9 +100,9 @@ class OceanAutoscalerDown(dict):
 @pulumi.output_type
 class OceanAutoscalerHeadroom(dict):
     def __init__(__self__, *,
-                 cpu_per_unit: Optional[float] = None,
-                 memory_per_unit: Optional[float] = None,
-                 num_of_units: Optional[float] = None):
+                 cpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None,
+                 num_of_units: Optional[int] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -112,17 +112,17 @@ class OceanAutoscalerHeadroom(dict):
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[float]:
+    def cpu_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[float]:
+    def memory_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "memory_per_unit")
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> Optional[float]:
+    def num_of_units(self) -> Optional[int]:
         return pulumi.get(self, "num_of_units")
 
     def _translate_property(self, prop):
@@ -132,8 +132,8 @@ class OceanAutoscalerHeadroom(dict):
 @pulumi.output_type
 class OceanAutoscalerResourceLimits(dict):
     def __init__(__self__, *,
-                 max_memory_gib: Optional[float] = None,
-                 max_vcpu: Optional[float] = None):
+                 max_memory_gib: Optional[int] = None,
+                 max_vcpu: Optional[int] = None):
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -141,12 +141,12 @@ class OceanAutoscalerResourceLimits(dict):
 
     @property
     @pulumi.getter(name="maxMemoryGib")
-    def max_memory_gib(self) -> Optional[float]:
+    def max_memory_gib(self) -> Optional[int]:
         return pulumi.get(self, "max_memory_gib")
 
     @property
     @pulumi.getter(name="maxVcpu")
-    def max_vcpu(self) -> Optional[float]:
+    def max_vcpu(self) -> Optional[int]:
         return pulumi.get(self, "max_vcpu")
 
     def _translate_property(self, prop):
@@ -188,13 +188,13 @@ class OceanLaunchSpecAttribute(dict):
 @pulumi.output_type
 class OceanLaunchSpecAutoscaleHeadroom(dict):
     def __init__(__self__, *,
-                 num_of_units: float,
-                 cpu_per_unit: Optional[float] = None,
-                 memory_per_unit: Optional[float] = None):
+                 num_of_units: int,
+                 cpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None):
         """
-        :param float num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        :param float cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
-        :param float memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        :param int cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
+        :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
@@ -204,7 +204,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> float:
+    def num_of_units(self) -> int:
         """
         The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
         """
@@ -212,7 +212,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="cpuPerUnit")
-    def cpu_per_unit(self) -> Optional[float]:
+    def cpu_per_unit(self) -> Optional[int]:
         """
         Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
         """
@@ -220,7 +220,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
 
     @property
     @pulumi.getter(name="memoryPerUnit")
-    def memory_per_unit(self) -> Optional[float]:
+    def memory_per_unit(self) -> Optional[int]:
         """
         Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
@@ -266,7 +266,7 @@ class OceanLaunchSpecTag(dict):
 class OceanScheduledTask(dict):
     def __init__(__self__, *,
                  shutdown_hours: Optional['outputs.OceanScheduledTaskShutdownHours'] = None,
-                 tasks: Optional[List['outputs.OceanScheduledTaskTask']] = None):
+                 tasks: Optional[Sequence['outputs.OceanScheduledTaskTask']] = None):
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
         if tasks is not None:
@@ -279,7 +279,7 @@ class OceanScheduledTask(dict):
 
     @property
     @pulumi.getter
-    def tasks(self) -> Optional[List['outputs.OceanScheduledTaskTask']]:
+    def tasks(self) -> Optional[Sequence['outputs.OceanScheduledTaskTask']]:
         return pulumi.get(self, "tasks")
 
     def _translate_property(self, prop):
@@ -289,7 +289,7 @@ class OceanScheduledTask(dict):
 @pulumi.output_type
 class OceanScheduledTaskShutdownHours(dict):
     def __init__(__self__, *,
-                 time_windows: List[str],
+                 time_windows: Sequence[str],
                  is_enabled: Optional[bool] = None):
         pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
@@ -297,7 +297,7 @@ class OceanScheduledTaskShutdownHours(dict):
 
     @property
     @pulumi.getter(name="timeWindows")
-    def time_windows(self) -> List[str]:
+    def time_windows(self) -> Sequence[str]:
         return pulumi.get(self, "time_windows")
 
     @property
@@ -396,12 +396,12 @@ class OceanUpdatePolicy(dict):
 @pulumi.output_type
 class OceanUpdatePolicyRollConfig(dict):
     def __init__(__self__, *,
-                 batch_size_percentage: float):
+                 batch_size_percentage: int):
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> float:
+    def batch_size_percentage(self) -> int:
         return pulumi.get(self, "batch_size_percentage")
 
     def _translate_property(self, prop):

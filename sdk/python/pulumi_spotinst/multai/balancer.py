@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,10 +18,10 @@ class Balancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_timeouts: Optional[pulumi.Input[pulumi.InputType['BalancerConnectionTimeoutsArgs']]] = None,
-                 dns_cname_aliases: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 dns_cname_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scheme: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BalancerTagArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BalancerTagArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -63,10 +63,10 @@ class Balancer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_timeouts: Optional[pulumi.Input[pulumi.InputType['BalancerConnectionTimeoutsArgs']]] = None,
-            dns_cname_aliases: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            dns_cname_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             scheme: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['BalancerTagArgs']]]]] = None) -> 'Balancer':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BalancerTagArgs']]]]] = None) -> 'Balancer':
         """
         Get an existing Balancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -93,7 +93,7 @@ class Balancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsCnameAliases")
-    def dns_cname_aliases(self) -> pulumi.Output[Optional[List[str]]]:
+    def dns_cname_aliases(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "dns_cname_aliases")
 
     @property
@@ -108,7 +108,7 @@ class Balancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List['outputs.BalancerTag']]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.BalancerTag']]]:
         return pulumi.get(self, "tags")
 
     def translate_output_property(self, prop):

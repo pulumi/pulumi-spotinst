@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 
@@ -36,7 +36,7 @@ class ElastigroupHealthCheck(dict):
     def __init__(__self__, *,
                  health_check_type: str,
                  auto_healing: Optional[bool] = None,
-                 grace_period: Optional[float] = None):
+                 grace_period: Optional[int] = None):
         pulumi.set(__self__, "health_check_type", health_check_type)
         if auto_healing is not None:
             pulumi.set(__self__, "auto_healing", auto_healing)
@@ -55,7 +55,7 @@ class ElastigroupHealthCheck(dict):
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[float]:
+    def grace_period(self) -> Optional[int]:
         return pulumi.get(self, "grace_period")
 
     def _translate_property(self, prop):
@@ -65,8 +65,8 @@ class ElastigroupHealthCheck(dict):
 @pulumi.output_type
 class ElastigroupImage(dict):
     def __init__(__self__, *,
-                 customs: Optional[List['outputs.ElastigroupImageCustom']] = None,
-                 marketplaces: Optional[List['outputs.ElastigroupImageMarketplace']] = None):
+                 customs: Optional[Sequence['outputs.ElastigroupImageCustom']] = None,
+                 marketplaces: Optional[Sequence['outputs.ElastigroupImageMarketplace']] = None):
         if customs is not None:
             pulumi.set(__self__, "customs", customs)
         if marketplaces is not None:
@@ -74,12 +74,12 @@ class ElastigroupImage(dict):
 
     @property
     @pulumi.getter
-    def customs(self) -> Optional[List['outputs.ElastigroupImageCustom']]:
+    def customs(self) -> Optional[Sequence['outputs.ElastigroupImageCustom']]:
         return pulumi.get(self, "customs")
 
     @property
     @pulumi.getter
-    def marketplaces(self) -> Optional[List['outputs.ElastigroupImageMarketplace']]:
+    def marketplaces(self) -> Optional[Sequence['outputs.ElastigroupImageMarketplace']]:
         return pulumi.get(self, "marketplaces")
 
     def _translate_property(self, prop):
@@ -281,7 +281,7 @@ class ElastigroupNetwork(dict):
                  resource_group_name: str,
                  subnet_name: str,
                  virtual_network_name: str,
-                 additional_ip_configs: Optional[List['outputs.ElastigroupNetworkAdditionalIpConfig']] = None,
+                 additional_ip_configs: Optional[Sequence['outputs.ElastigroupNetworkAdditionalIpConfig']] = None,
                  assign_public_ip: Optional[bool] = None):
         """
         :param str resource_group_name: The Resource Group that the user-assigned managed identity resides in.
@@ -314,7 +314,7 @@ class ElastigroupNetwork(dict):
 
     @property
     @pulumi.getter(name="additionalIpConfigs")
-    def additional_ip_configs(self) -> Optional[List['outputs.ElastigroupNetworkAdditionalIpConfig']]:
+    def additional_ip_configs(self) -> Optional[Sequence['outputs.ElastigroupNetworkAdditionalIpConfig']]:
         return pulumi.get(self, "additional_ip_configs")
 
     @property
@@ -364,15 +364,15 @@ class ElastigroupScalingDownPolicy(dict):
                  threshold: float,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
-                 cooldown: Optional[float] = None,
-                 dimensions: Optional[List['outputs.ElastigroupScalingDownPolicyDimension']] = None,
-                 evaluation_periods: Optional[float] = None,
+                 cooldown: Optional[int] = None,
+                 dimensions: Optional[Sequence['outputs.ElastigroupScalingDownPolicyDimension']] = None,
+                 evaluation_periods: Optional[int] = None,
                  max_target_capacity: Optional[str] = None,
                  maximum: Optional[str] = None,
                  min_target_capacity: Optional[str] = None,
                  minimum: Optional[str] = None,
                  operator: Optional[str] = None,
-                 period: Optional[float] = None,
+                 period: Optional[int] = None,
                  statistic: Optional[str] = None,
                  target: Optional[str] = None,
                  unit: Optional[str] = None):
@@ -441,17 +441,17 @@ class ElastigroupScalingDownPolicy(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> Optional[int]:
         return pulumi.get(self, "cooldown")
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[List['outputs.ElastigroupScalingDownPolicyDimension']]:
+    def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingDownPolicyDimension']]:
         return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
 
     @property
@@ -481,7 +481,7 @@ class ElastigroupScalingDownPolicy(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> Optional[int]:
         return pulumi.get(self, "period")
 
     @property
@@ -541,15 +541,15 @@ class ElastigroupScalingUpPolicy(dict):
                  threshold: float,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
-                 cooldown: Optional[float] = None,
-                 dimensions: Optional[List['outputs.ElastigroupScalingUpPolicyDimension']] = None,
-                 evaluation_periods: Optional[float] = None,
+                 cooldown: Optional[int] = None,
+                 dimensions: Optional[Sequence['outputs.ElastigroupScalingUpPolicyDimension']] = None,
+                 evaluation_periods: Optional[int] = None,
                  max_target_capacity: Optional[str] = None,
                  maximum: Optional[str] = None,
                  min_target_capacity: Optional[str] = None,
                  minimum: Optional[str] = None,
                  operator: Optional[str] = None,
-                 period: Optional[float] = None,
+                 period: Optional[int] = None,
                  statistic: Optional[str] = None,
                  target: Optional[str] = None,
                  unit: Optional[str] = None):
@@ -618,17 +618,17 @@ class ElastigroupScalingUpPolicy(dict):
 
     @property
     @pulumi.getter
-    def cooldown(self) -> Optional[float]:
+    def cooldown(self) -> Optional[int]:
         return pulumi.get(self, "cooldown")
 
     @property
     @pulumi.getter
-    def dimensions(self) -> Optional[List['outputs.ElastigroupScalingUpPolicyDimension']]:
+    def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingUpPolicyDimension']]:
         return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="evaluationPeriods")
-    def evaluation_periods(self) -> Optional[float]:
+    def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
 
     @property
@@ -658,7 +658,7 @@ class ElastigroupScalingUpPolicy(dict):
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[float]:
+    def period(self) -> Optional[int]:
         return pulumi.get(self, "period")
 
     @property
@@ -798,13 +798,13 @@ class ElastigroupScheduledTask(dict):
 @pulumi.output_type
 class ElastigroupStrategy(dict):
     def __init__(__self__, *,
-                 draining_timeout: Optional[float] = None,
-                 low_priority_percentage: Optional[float] = None,
-                 od_count: Optional[float] = None):
+                 draining_timeout: Optional[int] = None,
+                 low_priority_percentage: Optional[int] = None,
+                 od_count: Optional[int] = None):
         """
-        :param float draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        :param float low_priority_percentage: Percentage of Low Priority instances to maintain. Required if `od_count` is not specified.
-        :param float od_count: Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
+        :param int draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+        :param int low_priority_percentage: Percentage of Low Priority instances to maintain. Required if `od_count` is not specified.
+        :param int od_count: Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
         """
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
@@ -815,7 +815,7 @@ class ElastigroupStrategy(dict):
 
     @property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[float]:
+    def draining_timeout(self) -> Optional[int]:
         """
         Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
         """
@@ -823,7 +823,7 @@ class ElastigroupStrategy(dict):
 
     @property
     @pulumi.getter(name="lowPriorityPercentage")
-    def low_priority_percentage(self) -> Optional[float]:
+    def low_priority_percentage(self) -> Optional[int]:
         """
         Percentage of Low Priority instances to maintain. Required if `od_count` is not specified.
         """
@@ -831,7 +831,7 @@ class ElastigroupStrategy(dict):
 
     @property
     @pulumi.getter(name="odCount")
-    def od_count(self) -> Optional[float]:
+    def od_count(self) -> Optional[int]:
         """
         Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
         """
@@ -867,8 +867,8 @@ class ElastigroupUpdatePolicy(dict):
 @pulumi.output_type
 class ElastigroupUpdatePolicyRollConfig(dict):
     def __init__(__self__, *,
-                 batch_size_percentage: float,
-                 grace_period: Optional[float] = None,
+                 batch_size_percentage: int,
+                 grace_period: Optional[int] = None,
                  health_check_type: Optional[str] = None):
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if grace_period is not None:
@@ -878,12 +878,12 @@ class ElastigroupUpdatePolicyRollConfig(dict):
 
     @property
     @pulumi.getter(name="batchSizePercentage")
-    def batch_size_percentage(self) -> float:
+    def batch_size_percentage(self) -> int:
         return pulumi.get(self, "batch_size_percentage")
 
     @property
     @pulumi.getter(name="gracePeriod")
-    def grace_period(self) -> Optional[float]:
+    def grace_period(self) -> Optional[int]:
         return pulumi.get(self, "grace_period")
 
     @property
