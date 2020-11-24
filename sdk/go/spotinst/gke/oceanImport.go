@@ -4,6 +4,7 @@
 package gke
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -271,4 +272,43 @@ type OceanImportArgs struct {
 
 func (OceanImportArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanImportArgs)(nil)).Elem()
+}
+
+type OceanImportInput interface {
+	pulumi.Input
+
+	ToOceanImportOutput() OceanImportOutput
+	ToOceanImportOutputWithContext(ctx context.Context) OceanImportOutput
+}
+
+func (OceanImport) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImport)(nil)).Elem()
+}
+
+func (i OceanImport) ToOceanImportOutput() OceanImportOutput {
+	return i.ToOceanImportOutputWithContext(context.Background())
+}
+
+func (i OceanImport) ToOceanImportOutputWithContext(ctx context.Context) OceanImportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportOutput)
+}
+
+type OceanImportOutput struct {
+	*pulumi.OutputState
+}
+
+func (OceanImportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportOutput)(nil)).Elem()
+}
+
+func (o OceanImportOutput) ToOceanImportOutput() OceanImportOutput {
+	return o
+}
+
+func (o OceanImportOutput) ToOceanImportOutputWithContext(ctx context.Context) OceanImportOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OceanImportOutput{})
 }

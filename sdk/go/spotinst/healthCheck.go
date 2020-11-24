@@ -4,6 +4,7 @@
 package spotinst
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -142,4 +143,43 @@ type HealthCheckArgs struct {
 
 func (HealthCheckArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*healthCheckArgs)(nil)).Elem()
+}
+
+type HealthCheckInput interface {
+	pulumi.Input
+
+	ToHealthCheckOutput() HealthCheckOutput
+	ToHealthCheckOutputWithContext(ctx context.Context) HealthCheckOutput
+}
+
+func (HealthCheck) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthCheck)(nil)).Elem()
+}
+
+func (i HealthCheck) ToHealthCheckOutput() HealthCheckOutput {
+	return i.ToHealthCheckOutputWithContext(context.Background())
+}
+
+func (i HealthCheck) ToHealthCheckOutputWithContext(ctx context.Context) HealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckOutput)
+}
+
+type HealthCheckOutput struct {
+	*pulumi.OutputState
+}
+
+func (HealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthCheckOutput)(nil)).Elem()
+}
+
+func (o HealthCheckOutput) ToHealthCheckOutput() HealthCheckOutput {
+	return o
+}
+
+func (o HealthCheckOutput) ToHealthCheckOutputWithContext(ctx context.Context) HealthCheckOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HealthCheckOutput{})
 }

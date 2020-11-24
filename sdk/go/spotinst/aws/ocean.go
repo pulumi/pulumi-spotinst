@@ -4,6 +4,7 @@
 package aws
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -476,4 +477,43 @@ type OceanArgs struct {
 
 func (OceanArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanArgs)(nil)).Elem()
+}
+
+type OceanInput interface {
+	pulumi.Input
+
+	ToOceanOutput() OceanOutput
+	ToOceanOutputWithContext(ctx context.Context) OceanOutput
+}
+
+func (Ocean) ElementType() reflect.Type {
+	return reflect.TypeOf((*Ocean)(nil)).Elem()
+}
+
+func (i Ocean) ToOceanOutput() OceanOutput {
+	return i.ToOceanOutputWithContext(context.Background())
+}
+
+func (i Ocean) ToOceanOutputWithContext(ctx context.Context) OceanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanOutput)
+}
+
+type OceanOutput struct {
+	*pulumi.OutputState
+}
+
+func (OceanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanOutput)(nil)).Elem()
+}
+
+func (o OceanOutput) ToOceanOutput() OceanOutput {
+	return o
+}
+
+func (o OceanOutput) ToOceanOutputWithContext(ctx context.Context) OceanOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OceanOutput{})
 }

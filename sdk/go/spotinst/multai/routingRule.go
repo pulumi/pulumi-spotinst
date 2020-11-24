@@ -4,6 +4,7 @@
 package multai
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -113,4 +114,43 @@ type RoutingRuleArgs struct {
 
 func (RoutingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routingRuleArgs)(nil)).Elem()
+}
+
+type RoutingRuleInput interface {
+	pulumi.Input
+
+	ToRoutingRuleOutput() RoutingRuleOutput
+	ToRoutingRuleOutputWithContext(ctx context.Context) RoutingRuleOutput
+}
+
+func (RoutingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingRule)(nil)).Elem()
+}
+
+func (i RoutingRule) ToRoutingRuleOutput() RoutingRuleOutput {
+	return i.ToRoutingRuleOutputWithContext(context.Background())
+}
+
+func (i RoutingRule) ToRoutingRuleOutputWithContext(ctx context.Context) RoutingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleOutput)
+}
+
+type RoutingRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoutingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingRuleOutput)(nil)).Elem()
+}
+
+func (o RoutingRuleOutput) ToRoutingRuleOutput() RoutingRuleOutput {
+	return o
+}
+
+func (o RoutingRuleOutput) ToRoutingRuleOutputWithContext(ctx context.Context) RoutingRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RoutingRuleOutput{})
 }

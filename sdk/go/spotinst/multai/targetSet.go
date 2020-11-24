@@ -4,6 +4,7 @@
 package multai
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -116,4 +117,43 @@ type TargetSetArgs struct {
 
 func (TargetSetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetSetArgs)(nil)).Elem()
+}
+
+type TargetSetInput interface {
+	pulumi.Input
+
+	ToTargetSetOutput() TargetSetOutput
+	ToTargetSetOutputWithContext(ctx context.Context) TargetSetOutput
+}
+
+func (TargetSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSet)(nil)).Elem()
+}
+
+func (i TargetSet) ToTargetSetOutput() TargetSetOutput {
+	return i.ToTargetSetOutputWithContext(context.Background())
+}
+
+func (i TargetSet) ToTargetSetOutputWithContext(ctx context.Context) TargetSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSetOutput)
+}
+
+type TargetSetOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSetOutput)(nil)).Elem()
+}
+
+func (o TargetSetOutput) ToTargetSetOutput() TargetSetOutput {
+	return o
+}
+
+func (o TargetSetOutput) ToTargetSetOutputWithContext(ctx context.Context) TargetSetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TargetSetOutput{})
 }

@@ -4,6 +4,7 @@
 package multai
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -85,4 +86,43 @@ type BalancerArgs struct {
 
 func (BalancerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*balancerArgs)(nil)).Elem()
+}
+
+type BalancerInput interface {
+	pulumi.Input
+
+	ToBalancerOutput() BalancerOutput
+	ToBalancerOutputWithContext(ctx context.Context) BalancerOutput
+}
+
+func (Balancer) ElementType() reflect.Type {
+	return reflect.TypeOf((*Balancer)(nil)).Elem()
+}
+
+func (i Balancer) ToBalancerOutput() BalancerOutput {
+	return i.ToBalancerOutputWithContext(context.Background())
+}
+
+func (i Balancer) ToBalancerOutputWithContext(ctx context.Context) BalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BalancerOutput)
+}
+
+type BalancerOutput struct {
+	*pulumi.OutputState
+}
+
+func (BalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BalancerOutput)(nil)).Elem()
+}
+
+func (o BalancerOutput) ToBalancerOutput() BalancerOutput {
+	return o
+}
+
+func (o BalancerOutput) ToBalancerOutputWithContext(ctx context.Context) BalancerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BalancerOutput{})
 }

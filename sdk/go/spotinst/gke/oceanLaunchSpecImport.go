@@ -4,6 +4,7 @@
 package gke
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -112,4 +113,43 @@ type OceanLaunchSpecImportArgs struct {
 
 func (OceanLaunchSpecImportArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanLaunchSpecImportArgs)(nil)).Elem()
+}
+
+type OceanLaunchSpecImportInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecImportOutput() OceanLaunchSpecImportOutput
+	ToOceanLaunchSpecImportOutputWithContext(ctx context.Context) OceanLaunchSpecImportOutput
+}
+
+func (OceanLaunchSpecImport) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecImport)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecImport) ToOceanLaunchSpecImportOutput() OceanLaunchSpecImportOutput {
+	return i.ToOceanLaunchSpecImportOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecImport) ToOceanLaunchSpecImportOutputWithContext(ctx context.Context) OceanLaunchSpecImportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecImportOutput)
+}
+
+type OceanLaunchSpecImportOutput struct {
+	*pulumi.OutputState
+}
+
+func (OceanLaunchSpecImportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecImportOutput)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecImportOutput) ToOceanLaunchSpecImportOutput() OceanLaunchSpecImportOutput {
+	return o
+}
+
+func (o OceanLaunchSpecImportOutput) ToOceanLaunchSpecImportOutputWithContext(ctx context.Context) OceanLaunchSpecImportOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OceanLaunchSpecImportOutput{})
 }

@@ -15,4 +15,14 @@ import * as gcp from "./gcp";
 import * as gke from "./gke";
 import * as multai from "./multai";
 import * as types from "./types";
-export {aws, azure, config, ecs, gcp, gke, multai, types};
+
+export {
+    aws,
+    azure,
+    config,
+    ecs,
+    gcp,
+    gke,
+    multai,
+    types,
+};
