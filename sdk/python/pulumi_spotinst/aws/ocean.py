@@ -38,10 +38,11 @@ class Ocean(pulumi.CustomResource):
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 spot_percentage: Optional[pulumi.Input[float]] = None,
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
+                 use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -84,11 +85,13 @@ class Ocean(pulumi.CustomResource):
             region="us-west-2",
             root_volume_size=20,
             security_groups=["sg-987654321"],
+            spot_percentage=100,
             subnet_ids=["subnet-123456789"],
             tags=[spotinst.aws.OceanTagArgs(
                 key="fakeKey",
                 value="fakeValue",
             )],
+            use_as_template_only=True,
             user_data="echo hello world",
             utilize_reserved_instances=False,
             whitelists=[
@@ -171,8 +174,10 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
+        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -223,6 +228,7 @@ class Ocean(pulumi.CustomResource):
             __props__['subnet_ids'] = subnet_ids
             __props__['tags'] = tags
             __props__['update_policy'] = update_policy
+            __props__['use_as_template_only'] = use_as_template_only
             __props__['user_data'] = user_data
             __props__['utilize_reserved_instances'] = utilize_reserved_instances
             __props__['whitelists'] = whitelists
@@ -257,10 +263,11 @@ class Ocean(pulumi.CustomResource):
             root_volume_size: Optional[pulumi.Input[int]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            spot_percentage: Optional[pulumi.Input[float]] = None,
+            spot_percentage: Optional[pulumi.Input[int]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
+            use_as_template_only: Optional[pulumi.Input[bool]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
             whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Ocean':
@@ -290,8 +297,10 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
+        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -325,6 +334,7 @@ class Ocean(pulumi.CustomResource):
         __props__["subnet_ids"] = subnet_ids
         __props__["tags"] = tags
         __props__["update_policy"] = update_policy
+        __props__["use_as_template_only"] = use_as_template_only
         __props__["user_data"] = user_data
         __props__["utilize_reserved_instances"] = utilize_reserved_instances
         __props__["whitelists"] = whitelists
@@ -494,7 +504,10 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotPercentage")
-    def spot_percentage(self) -> pulumi.Output[Optional[float]]:
+    def spot_percentage(self) -> pulumi.Output[Optional[int]]:
+        """
+        The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        """
         return pulumi.get(self, "spot_percentage")
 
     @property
@@ -517,6 +530,14 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> pulumi.Output[Optional['outputs.OceanUpdatePolicy']]:
         return pulumi.get(self, "update_policy")
+
+    @property
+    @pulumi.getter(name="useAsTemplateOnly")
+    def use_as_template_only(self) -> pulumi.Output[Optional[bool]]:
+        """
+        launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        """
+        return pulumi.get(self, "use_as_template_only")
 
     @property
     @pulumi.getter(name="userData")

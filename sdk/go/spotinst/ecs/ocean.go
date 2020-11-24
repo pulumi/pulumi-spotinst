@@ -27,17 +27,33 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := ecs.NewOcean(ctx, "example", &ecs.OceanArgs{
 // 			AssociatePublicIpAddress: pulumi.Bool(false),
-// 			ClusterName:              pulumi.String("terraform-ecs-cluster"),
-// 			DesiredCapacity:          pulumi.Int(0),
-// 			DrainingTimeout:          pulumi.Int(120),
-// 			EbsOptimized:             pulumi.Bool(true),
-// 			IamInstanceProfile:       pulumi.String("iam-profile"),
-// 			ImageId:                  pulumi.String("ami-12345"),
-// 			KeyPair:                  pulumi.String("KeyPair"),
-// 			MaxSize:                  pulumi.Int(1),
-// 			MinSize:                  pulumi.Int(0),
-// 			Monitoring:               pulumi.Bool(true),
-// 			Region:                   pulumi.String("us-west-2"),
+// 			BlockDeviceMappings: ecs.OceanBlockDeviceMappingArray{
+// 				&ecs.OceanBlockDeviceMappingArgs{
+// 					DeviceName: pulumi.String("/dev/xvda1"),
+// 					Ebs: &ecs.OceanBlockDeviceMappingEbsArgs{
+// 						DeleteOnTermination: pulumi.Bool(true),
+// 						DynamicVolumeSize: &ecs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{
+// 							BaseSize:            pulumi.Int(50),
+// 							Resource:            pulumi.String("CPU"),
+// 							SizePerResourceUnit: pulumi.Int(20),
+// 						},
+// 						Encrypted:  pulumi.Bool(false),
+// 						VolumeSize: pulumi.Int(50),
+// 						VolumeType: pulumi.String("gp2"),
+// 					},
+// 				},
+// 			},
+// 			ClusterName:        pulumi.String("terraform-ecs-cluster"),
+// 			DesiredCapacity:    pulumi.Int(0),
+// 			DrainingTimeout:    pulumi.Int(120),
+// 			EbsOptimized:       pulumi.Bool(true),
+// 			IamInstanceProfile: pulumi.String("iam-profile"),
+// 			ImageId:            pulumi.String("ami-12345"),
+// 			KeyPair:            pulumi.String("KeyPair"),
+// 			MaxSize:            pulumi.Int(1),
+// 			MinSize:            pulumi.Int(0),
+// 			Monitoring:         pulumi.Bool(true),
+// 			Region:             pulumi.String("us-west-2"),
 // 			SecurityGroupIds: pulumi.StringArray{
 // 				pulumi.String("sg-12345"),
 // 			},
@@ -74,7 +90,7 @@ import (
 //         * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
 //         * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 //     * `down` - (Optional) Auto Scaling scale down operations.
-//         * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100
+//         * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
 //     * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
 //         * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
 //         * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
@@ -121,15 +137,11 @@ import (
 // * `scheduledTask` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
 //     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
 //         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
-//                                      Example: True
-//         * `timeWindows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-//                                       Example: Fri:15:30-Wed:14:30
+//         * `timeWindows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
 //     * `tasks` - (Optional) The scheduling tasks for the cluster.
-//         * `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
-//         * `cronExpression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-//                                          Example: 0 1 * * *.
-//         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
-//                                    Example: clusterRoll.
+//         * `isEnabled` - (Required) Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+//         * `cronExpression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+//         * `taskType` - (Required) Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
 //
 // ```go
 // package main
@@ -150,6 +162,8 @@ type Ocean struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrOutput     `pulumi:"associatePublicIpAddress"`
 	Autoscaler               OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
+	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	// The ocean cluster name.
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// The number of instances to launch and maintain in the cluster.
@@ -168,7 +182,7 @@ type Ocean struct {
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrOutput `pulumi:"monitoring"`
 	// The Ocean cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -184,7 +198,7 @@ type Ocean struct {
 	UpdatePolicy OceanUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
-	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
@@ -233,6 +247,8 @@ type oceanState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
 	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
+	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The ocean cluster name.
 	ClusterName *string `pulumi:"clusterName"`
 	// The number of instances to launch and maintain in the cluster.
@@ -251,7 +267,7 @@ type oceanState struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
 	MinSize *int `pulumi:"minSize"`
-	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring *bool `pulumi:"monitoring"`
 	// The Ocean cluster name.
 	Name *string `pulumi:"name"`
@@ -267,7 +283,7 @@ type oceanState struct {
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
-	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 	Whitelists []string `pulumi:"whitelists"`
@@ -277,6 +293,8 @@ type OceanState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
 	Autoscaler               OceanAutoscalerPtrInput
+	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	// The ocean cluster name.
 	ClusterName pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
@@ -295,7 +313,7 @@ type OceanState struct {
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntPtrInput
-	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrInput
 	// The Ocean cluster name.
 	Name pulumi.StringPtrInput
@@ -311,7 +329,7 @@ type OceanState struct {
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
-	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 	Whitelists pulumi.StringArrayInput
@@ -325,6 +343,8 @@ type oceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
 	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
+	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The ocean cluster name.
 	ClusterName string `pulumi:"clusterName"`
 	// The number of instances to launch and maintain in the cluster.
@@ -343,7 +363,7 @@ type oceanArgs struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
 	MinSize *int `pulumi:"minSize"`
-	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring *bool `pulumi:"monitoring"`
 	// The Ocean cluster name.
 	Name *string `pulumi:"name"`
@@ -359,7 +379,7 @@ type oceanArgs struct {
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
-	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 	Whitelists []string `pulumi:"whitelists"`
@@ -370,6 +390,8 @@ type OceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
 	Autoscaler               OceanAutoscalerPtrInput
+	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	// The ocean cluster name.
 	ClusterName pulumi.StringInput
 	// The number of instances to launch and maintain in the cluster.
@@ -388,7 +410,7 @@ type OceanArgs struct {
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntPtrInput
-	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrInput
 	// The Ocean cluster name.
 	Name pulumi.StringPtrInput
@@ -404,7 +426,7 @@ type OceanArgs struct {
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
-	// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
 	Whitelists pulumi.StringArrayInput

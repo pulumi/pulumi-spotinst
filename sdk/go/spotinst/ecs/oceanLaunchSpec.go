@@ -39,9 +39,42 @@ import (
 // 					NumOfUnits:    pulumi.Int(5),
 // 				},
 // 			},
+// 			BlockDeviceMappings: ecs.OceanLaunchSpecBlockDeviceMappingArray{
+// 				&ecs.OceanLaunchSpecBlockDeviceMappingArgs{
+// 					DeviceName: pulumi.String("/dev/xvda1"),
+// 					Ebs: &ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs{
+// 						DeleteOnTermination: pulumi.Bool(true),
+// 						DynamicVolumeSize: &ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{
+// 							BaseSize:            pulumi.Int(50),
+// 							Resource:            pulumi.String("CPU"),
+// 							SizePerResourceUnit: pulumi.Int(20),
+// 						},
+// 						Encrypted:  pulumi.Bool(false),
+// 						VolumeSize: pulumi.Int(50),
+// 						VolumeType: pulumi.String("gp2"),
+// 					},
+// 				},
+// 			},
 // 			IamInstanceProfile: pulumi.String("iam-profile"),
 // 			ImageId:            pulumi.String("ami-123456"),
-// 			OceanId:            pulumi.String("o-123456"),
+// 			InstanceTypes: pulumi.StringArray{
+// 				pulumi.String("m3.large"),
+// 				pulumi.String("m3.xlarge"),
+// 				pulumi.String("m3.2xlarge"),
+// 				pulumi.String("m4.large"),
+// 				pulumi.String("m4.xlarge"),
+// 				pulumi.String("m4.4xlarge"),
+// 				pulumi.String("m4.2xlarge"),
+// 				pulumi.String("m4.10xlarge"),
+// 				pulumi.String("m4.16xlarge"),
+// 				pulumi.String("m5.large"),
+// 				pulumi.String("m5.xlarge"),
+// 				pulumi.String("m5.2xlarge"),
+// 				pulumi.String("m5.4xlarge"),
+// 				pulumi.String("m5.12xlarge"),
+// 				pulumi.String("m5.24xlarge"),
+// 			},
+// 			OceanId: pulumi.String("o-123456"),
 // 			SecurityGroupIds: pulumi.StringArray{
 // 				pulumi.String("awseb-12345"),
 // 			},
@@ -67,10 +100,14 @@ type OceanLaunchSpec struct {
 	Attributes OceanLaunchSpecAttributeArrayOutput `pulumi:"attributes"`
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// The Ocean Launch Specification name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Ocean cluster ID .
@@ -118,10 +155,14 @@ type oceanLaunchSpecState struct {
 	Attributes []OceanLaunchSpecAttribute `pulumi:"attributes"`
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
+	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+	InstanceTypes []string `pulumi:"instanceTypes"`
 	// The Ocean Launch Specification name.
 	Name *string `pulumi:"name"`
 	// The Ocean cluster ID .
@@ -139,10 +180,14 @@ type OceanLaunchSpecState struct {
 	Attributes OceanLaunchSpecAttributeArrayInput
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
+	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+	InstanceTypes pulumi.StringArrayInput
 	// The Ocean Launch Specification name.
 	Name pulumi.StringPtrInput
 	// The Ocean cluster ID .
@@ -164,10 +209,14 @@ type oceanLaunchSpecArgs struct {
 	Attributes []OceanLaunchSpecAttribute `pulumi:"attributes"`
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
+	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+	InstanceTypes []string `pulumi:"instanceTypes"`
 	// The Ocean Launch Specification name.
 	Name *string `pulumi:"name"`
 	// The Ocean cluster ID .
@@ -186,10 +235,14 @@ type OceanLaunchSpecArgs struct {
 	Attributes OceanLaunchSpecAttributeArrayInput
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
+	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+	InstanceTypes pulumi.StringArrayInput
 	// The Ocean Launch Specification name.
 	Name pulumi.StringPtrInput
 	// The Ocean cluster ID .

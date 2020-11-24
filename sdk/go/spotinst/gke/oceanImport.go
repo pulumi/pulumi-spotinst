@@ -145,7 +145,8 @@ type OceanImport struct {
 	BackendServices     OceanImportBackendServiceArrayOutput `pulumi:"backendServices"`
 	ClusterControllerId pulumi.StringOutput                  `pulumi:"clusterControllerId"`
 	// The GKE cluster name.
-	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
+	ClusterName         pulumi.StringOutput `pulumi:"clusterName"`
+	ControllerClusterId pulumi.StringOutput `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
 	// The zone the master cluster is located in.
@@ -197,7 +198,8 @@ type oceanImportState struct {
 	BackendServices     []OceanImportBackendService `pulumi:"backendServices"`
 	ClusterControllerId *string                     `pulumi:"clusterControllerId"`
 	// The GKE cluster name.
-	ClusterName *string `pulumi:"clusterName"`
+	ClusterName         *string `pulumi:"clusterName"`
+	ControllerClusterId *string `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// The zone the master cluster is located in.
@@ -216,7 +218,8 @@ type OceanImportState struct {
 	BackendServices     OceanImportBackendServiceArrayInput
 	ClusterControllerId pulumi.StringPtrInput
 	// The GKE cluster name.
-	ClusterName pulumi.StringPtrInput
+	ClusterName         pulumi.StringPtrInput
+	ControllerClusterId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
 	// The zone the master cluster is located in.
@@ -238,7 +241,8 @@ type oceanImportArgs struct {
 	// Describes the backend service configurations.
 	BackendServices []OceanImportBackendService `pulumi:"backendServices"`
 	// The GKE cluster name.
-	ClusterName string `pulumi:"clusterName"`
+	ClusterName         string  `pulumi:"clusterName"`
+	ControllerClusterId *string `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// The zone the master cluster is located in.
@@ -257,7 +261,8 @@ type OceanImportArgs struct {
 	// Describes the backend service configurations.
 	BackendServices OceanImportBackendServiceArrayInput
 	// The GKE cluster name.
-	ClusterName pulumi.StringInput
+	ClusterName         pulumi.StringInput
+	ControllerClusterId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
 	// The zone the master cluster is located in.

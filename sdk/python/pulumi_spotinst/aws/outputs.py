@@ -32,6 +32,7 @@ __all__ = [
     'ElastigroupIntegrationEcsAutoscaleAttribute',
     'ElastigroupIntegrationEcsAutoscaleDown',
     'ElastigroupIntegrationEcsAutoscaleHeadroom',
+    'ElastigroupIntegrationEcsBatch',
     'ElastigroupIntegrationGitlab',
     'ElastigroupIntegrationGitlabRunner',
     'ElastigroupIntegrationKubernetes',
@@ -48,6 +49,7 @@ __all__ = [
     'ElastigroupIntegrationRoute53',
     'ElastigroupIntegrationRoute53Domain',
     'ElastigroupIntegrationRoute53DomainRecordSet',
+    'ElastigroupMetadataOptions',
     'ElastigroupMultaiTargetSet',
     'ElastigroupNetworkInterface',
     'ElastigroupRevertToSpot',
@@ -103,6 +105,7 @@ __all__ = [
     'OceanLaunchSpecElasticIpPoolTagSelector',
     'OceanLaunchSpecLabel',
     'OceanLaunchSpecResourceLimit',
+    'OceanLaunchSpecStrategy',
     'OceanLaunchSpecTag',
     'OceanLaunchSpecTaint',
     'OceanLoadBalancer',
@@ -112,6 +115,7 @@ __all__ = [
     'OceanTag',
     'OceanUpdatePolicy',
     'OceanUpdatePolicyRollConfig',
+    'SuspensionSuspension',
 ]
 
 @pulumi.output_type
@@ -794,14 +798,22 @@ class ElastigroupIntegrationDockerSwarm(dict):
 @pulumi.output_type
 class ElastigroupIntegrationDockerSwarmAutoscaleDown(dict):
     def __init__(__self__, *,
-                 evaluation_periods: Optional[int] = None):
+                 evaluation_periods: Optional[int] = None,
+                 max_scale_down_percentage: Optional[float] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+        if max_scale_down_percentage is not None:
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
+
+    @property
+    @pulumi.getter(name="maxScaleDownPercentage")
+    def max_scale_down_percentage(self) -> Optional[float]:
+        return pulumi.get(self, "max_scale_down_percentage")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -849,7 +861,8 @@ class ElastigroupIntegrationEcs(dict):
                  autoscale_headroom: Optional['outputs.ElastigroupIntegrationEcsAutoscaleHeadroom'] = None,
                  autoscale_is_auto_config: Optional[bool] = None,
                  autoscale_is_enabled: Optional[bool] = None,
-                 autoscale_scale_down_non_service_tasks: Optional[bool] = None):
+                 autoscale_scale_down_non_service_tasks: Optional[bool] = None,
+                 batch: Optional['outputs.ElastigroupIntegrationEcsBatch'] = None):
         pulumi.set(__self__, "cluster_name", cluster_name)
         if autoscale_attributes is not None:
             pulumi.set(__self__, "autoscale_attributes", autoscale_attributes)
@@ -865,6 +878,8 @@ class ElastigroupIntegrationEcs(dict):
             pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
         if autoscale_scale_down_non_service_tasks is not None:
             pulumi.set(__self__, "autoscale_scale_down_non_service_tasks", autoscale_scale_down_non_service_tasks)
+        if batch is not None:
+            pulumi.set(__self__, "batch", batch)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -905,6 +920,11 @@ class ElastigroupIntegrationEcs(dict):
     @pulumi.getter(name="autoscaleScaleDownNonServiceTasks")
     def autoscale_scale_down_non_service_tasks(self) -> Optional[bool]:
         return pulumi.get(self, "autoscale_scale_down_non_service_tasks")
+
+    @property
+    @pulumi.getter
+    def batch(self) -> Optional['outputs.ElastigroupIntegrationEcsBatch']:
+        return pulumi.get(self, "batch")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -983,6 +1003,21 @@ class ElastigroupIntegrationEcsAutoscaleHeadroom(dict):
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[int]:
         return pulumi.get(self, "num_of_units")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ElastigroupIntegrationEcsBatch(dict):
+    def __init__(__self__, *,
+                 job_queue_names: Sequence[str]):
+        pulumi.set(__self__, "job_queue_names", job_queue_names)
+
+    @property
+    @pulumi.getter(name="jobQueueNames")
+    def job_queue_names(self) -> Sequence[str]:
+        return pulumi.get(self, "job_queue_names")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1476,6 +1511,39 @@ class ElastigroupIntegrationRoute53DomainRecordSet(dict):
 
 
 @pulumi.output_type
+class ElastigroupMetadataOptions(dict):
+    def __init__(__self__, *,
+                 http_tokens: str,
+                 http_put_response_hop_limit: Optional[int] = None):
+        """
+        :param str http_tokens: The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+        :param int http_put_response_hop_limit: The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+        """
+        pulumi.set(__self__, "http_tokens", http_tokens)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> str:
+        """
+        The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[int]:
+        """
+        The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ElastigroupMultaiTargetSet(dict):
     def __init__(__self__, *,
                  balancer_id: str,
@@ -1614,7 +1682,6 @@ class ElastigroupScalingDownPolicy(dict):
                  namespace: str,
                  policy_name: str,
                  threshold: float,
-                 unit: str,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
                  cooldown: Optional[int] = None,
@@ -1629,12 +1696,12 @@ class ElastigroupScalingDownPolicy(dict):
                  period: Optional[int] = None,
                  source: Optional[str] = None,
                  statistic: Optional[str] = None,
-                 target: Optional[str] = None):
+                 target: Optional[str] = None,
+                 unit: Optional[str] = None):
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
         pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "unit", unit)
         if action_type is not None:
             pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
@@ -1665,6 +1732,8 @@ class ElastigroupScalingDownPolicy(dict):
             pulumi.set(__self__, "statistic", statistic)
         if target is not None:
             pulumi.set(__self__, "target", target)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -1685,11 +1754,6 @@ class ElastigroupScalingDownPolicy(dict):
     @pulumi.getter
     def threshold(self) -> float:
         return pulumi.get(self, "threshold")
-
-    @property
-    @pulumi.getter
-    def unit(self) -> str:
-        return pulumi.get(self, "unit")
 
     @property
     @pulumi.getter(name="actionType")
@@ -1766,6 +1830,11 @@ class ElastigroupScalingDownPolicy(dict):
     def target(self) -> Optional[str]:
         return pulumi.get(self, "target")
 
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        return pulumi.get(self, "unit")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -1840,18 +1909,17 @@ class ElastigroupScalingTargetPolicy(dict):
                  namespace: str,
                  policy_name: str,
                  target: float,
-                 unit: str,
                  cooldown: Optional[int] = None,
                  dimensions: Optional[Sequence['outputs.ElastigroupScalingTargetPolicyDimension']] = None,
                  max_capacity_per_scale: Optional[str] = None,
                  predictive_mode: Optional[str] = None,
                  source: Optional[str] = None,
-                 statistic: Optional[str] = None):
+                 statistic: Optional[str] = None,
+                 unit: Optional[str] = None):
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
         pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "unit", unit)
         if cooldown is not None:
             pulumi.set(__self__, "cooldown", cooldown)
         if dimensions is not None:
@@ -1864,6 +1932,8 @@ class ElastigroupScalingTargetPolicy(dict):
             pulumi.set(__self__, "source", source)
         if statistic is not None:
             pulumi.set(__self__, "statistic", statistic)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -1884,11 +1954,6 @@ class ElastigroupScalingTargetPolicy(dict):
     @pulumi.getter
     def target(self) -> float:
         return pulumi.get(self, "target")
-
-    @property
-    @pulumi.getter
-    def unit(self) -> str:
-        return pulumi.get(self, "unit")
 
     @property
     @pulumi.getter
@@ -1919,6 +1984,11 @@ class ElastigroupScalingTargetPolicy(dict):
     @pulumi.getter
     def statistic(self) -> Optional[str]:
         return pulumi.get(self, "statistic")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        return pulumi.get(self, "unit")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1960,7 +2030,6 @@ class ElastigroupScalingUpPolicy(dict):
                  namespace: str,
                  policy_name: str,
                  threshold: float,
-                 unit: str,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
                  cooldown: Optional[int] = None,
@@ -1975,12 +2044,12 @@ class ElastigroupScalingUpPolicy(dict):
                  period: Optional[int] = None,
                  source: Optional[str] = None,
                  statistic: Optional[str] = None,
-                 target: Optional[str] = None):
+                 target: Optional[str] = None,
+                 unit: Optional[str] = None):
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
         pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "unit", unit)
         if action_type is not None:
             pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
@@ -2011,6 +2080,8 @@ class ElastigroupScalingUpPolicy(dict):
             pulumi.set(__self__, "statistic", statistic)
         if target is not None:
             pulumi.set(__self__, "target", target)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -2031,11 +2102,6 @@ class ElastigroupScalingUpPolicy(dict):
     @pulumi.getter
     def threshold(self) -> float:
         return pulumi.get(self, "threshold")
-
-    @property
-    @pulumi.getter
-    def unit(self) -> str:
-        return pulumi.get(self, "unit")
 
     @property
     @pulumi.getter(name="actionType")
@@ -2111,6 +2177,11 @@ class ElastigroupScalingUpPolicy(dict):
     @pulumi.getter
     def target(self) -> Optional[str]:
         return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        return pulumi.get(self, "unit")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -4557,6 +4628,28 @@ class OceanLaunchSpecResourceLimit(dict):
 
 
 @pulumi.output_type
+class OceanLaunchSpecStrategy(dict):
+    def __init__(__self__, *,
+                 spot_percentage: Optional[int] = None):
+        """
+        :param int spot_percentage: When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+        """
+        if spot_percentage is not None:
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
+
+    @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> Optional[int]:
+        """
+        When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+        """
+        return pulumi.get(self, "spot_percentage")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class OceanLaunchSpecTag(dict):
     def __init__(__self__, *,
                  key: str,
@@ -4818,6 +4911,27 @@ class OceanUpdatePolicyRollConfig(dict):
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> int:
         return pulumi.get(self, "batch_size_percentage")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SuspensionSuspension(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
+        """
+        return pulumi.get(self, "name")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -74,6 +74,8 @@ type Elastigroup struct {
 	LifetimePeriod pulumi.StringPtrOutput `pulumi:"lifetimePeriod"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
+	// Data that used to configure or manage the running instances:
+	MetadataOptions ElastigroupMetadataOptionsPtrOutput `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
 	MinSize          pulumi.IntOutput                      `pulumi:"minSize"`
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayOutput `pulumi:"multaiTargetSets"`
@@ -113,7 +115,7 @@ type Elastigroup struct {
 	ShutdownScript pulumi.StringPtrOutput       `pulumi:"shutdownScript"`
 	Signals        ElastigroupSignalArrayOutput `pulumi:"signals"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage       pulumi.Float64PtrOutput                  `pulumi:"spotPercentage"`
+	SpotPercentage       pulumi.IntPtrOutput                      `pulumi:"spotPercentage"`
 	StatefulDeallocation ElastigroupStatefulDeallocationPtrOutput `pulumi:"statefulDeallocation"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
@@ -238,6 +240,8 @@ type elastigroupState struct {
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
+	// Data that used to configure or manage the running instances:
+	MetadataOptions *ElastigroupMetadataOptions `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
 	MinSize          *int                         `pulumi:"minSize"`
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
@@ -277,7 +281,7 @@ type elastigroupState struct {
 	ShutdownScript *string             `pulumi:"shutdownScript"`
 	Signals        []ElastigroupSignal `pulumi:"signals"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage       *float64                         `pulumi:"spotPercentage"`
+	SpotPercentage       *int                             `pulumi:"spotPercentage"`
 	StatefulDeallocation *ElastigroupStatefulDeallocation `pulumi:"statefulDeallocation"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
@@ -357,6 +361,8 @@ type ElastigroupState struct {
 	LifetimePeriod pulumi.StringPtrInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
+	// Data that used to configure or manage the running instances:
+	MetadataOptions ElastigroupMetadataOptionsPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize          pulumi.IntPtrInput
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
@@ -396,7 +402,7 @@ type ElastigroupState struct {
 	ShutdownScript pulumi.StringPtrInput
 	Signals        ElastigroupSignalArrayInput
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage       pulumi.Float64PtrInput
+	SpotPercentage       pulumi.IntPtrInput
 	StatefulDeallocation ElastigroupStatefulDeallocationPtrInput
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
@@ -480,6 +486,8 @@ type elastigroupArgs struct {
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
+	// Data that used to configure or manage the running instances:
+	MetadataOptions *ElastigroupMetadataOptions `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
 	MinSize          *int                         `pulumi:"minSize"`
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
@@ -519,7 +527,7 @@ type elastigroupArgs struct {
 	ShutdownScript *string             `pulumi:"shutdownScript"`
 	Signals        []ElastigroupSignal `pulumi:"signals"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage       *float64                         `pulumi:"spotPercentage"`
+	SpotPercentage       *int                             `pulumi:"spotPercentage"`
 	StatefulDeallocation *ElastigroupStatefulDeallocation `pulumi:"statefulDeallocation"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
@@ -600,6 +608,8 @@ type ElastigroupArgs struct {
 	LifetimePeriod pulumi.StringPtrInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
+	// Data that used to configure or manage the running instances:
+	MetadataOptions ElastigroupMetadataOptionsPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize          pulumi.IntPtrInput
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
@@ -639,7 +649,7 @@ type ElastigroupArgs struct {
 	ShutdownScript pulumi.StringPtrInput
 	Signals        ElastigroupSignalArrayInput
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage       pulumi.Float64PtrInput
+	SpotPercentage       pulumi.IntPtrInput
 	StatefulDeallocation ElastigroupStatefulDeallocationPtrInput
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.

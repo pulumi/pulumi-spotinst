@@ -23,7 +23,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly string? Source;
         public readonly string? Statistic;
         public readonly double Target;
-        public readonly string Unit;
+        public readonly string? Unit;
 
         [OutputConstructor]
         private ElastigroupScalingTargetPolicy(
@@ -47,7 +47,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             double target,
 
-            string unit)
+            string? unit)
         {
             Cooldown = cooldown;
             Dimensions = dimensions;

@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * * `jobFlowRole` - (Optional) The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
  * * `terminationProtected` - (Optional) Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
  * * `keepJobFlowAlive` - (Optional) Specifies whether the cluster should remain available after completing all steps.
- * * `retries` - (Optional) Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded.
+ * * `retries` - (Optional; Requires: `timeoutAction` is set to `terminateAndRetry`) Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
  *
  * <a id="task-group"></a>
  * ## Task Group (Wrap, Clone, and New strategies)
@@ -253,7 +253,7 @@ import * as utilities from "../utilities";
  *     masterLifecycle: "SPOT",
  *     provisioningTimeout: {
  *         timeout: 15,
- *         timeoutAction: "terminate",
+ *         timeoutAction: "terminateAndRetry",
  *     },
  *     region: "us-west-2",
  *     releaseLabel: "emr-5.17.0",

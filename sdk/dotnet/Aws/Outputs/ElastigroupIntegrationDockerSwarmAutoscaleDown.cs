@@ -14,11 +14,16 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationDockerSwarmAutoscaleDown
     {
         public readonly int? EvaluationPeriods;
+        public readonly double? MaxScaleDownPercentage;
 
         [OutputConstructor]
-        private ElastigroupIntegrationDockerSwarmAutoscaleDown(int? evaluationPeriods)
+        private ElastigroupIntegrationDockerSwarmAutoscaleDown(
+            int? evaluationPeriods,
+
+            double? maxScaleDownPercentage)
         {
             EvaluationPeriods = evaluationPeriods;
+            MaxScaleDownPercentage = maxScaleDownPercentage;
         }
     }
 }

@@ -20,6 +20,7 @@ class OceanImport(pulumi.CustomResource):
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']]] = None,
                  backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
+                 controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -142,6 +143,7 @@ class OceanImport(pulumi.CustomResource):
             if cluster_name is None:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__['cluster_name'] = cluster_name
+            __props__['controller_cluster_id'] = controller_cluster_id
             __props__['desired_capacity'] = desired_capacity
             if location is None:
                 raise TypeError("Missing required property 'location'")
@@ -165,6 +167,7 @@ class OceanImport(pulumi.CustomResource):
             backend_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]]] = None,
             cluster_controller_id: Optional[pulumi.Input[str]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
+            controller_cluster_id: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
             location: Optional[pulumi.Input[str]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
@@ -193,6 +196,7 @@ class OceanImport(pulumi.CustomResource):
         __props__["backend_services"] = backend_services
         __props__["cluster_controller_id"] = cluster_controller_id
         __props__["cluster_name"] = cluster_name
+        __props__["controller_cluster_id"] = controller_cluster_id
         __props__["desired_capacity"] = desired_capacity
         __props__["location"] = location
         __props__["max_size"] = max_size
@@ -226,6 +230,11 @@ class OceanImport(pulumi.CustomResource):
         The GKE cluster name.
         """
         return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="controllerClusterId")
+    def controller_cluster_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "controller_cluster_id")
 
     @property
     @pulumi.getter(name="desiredCapacity")

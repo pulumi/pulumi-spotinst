@@ -19,6 +19,7 @@ class Ocean(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
@@ -53,6 +54,20 @@ class Ocean(pulumi.CustomResource):
 
         example = spotinst.ecs.Ocean("example",
             associate_public_ip_address=False,
+            block_device_mappings=[spotinst.ecs.OceanBlockDeviceMappingArgs(
+                device_name="/dev/xvda1",
+                ebs=spotinst.ecs.OceanBlockDeviceMappingEbsArgs(
+                    delete_on_termination=True,
+                    dynamic_volume_size=spotinst.ecs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs(
+                        base_size=50,
+                        resource="CPU",
+                        size_per_resource_unit=20,
+                    ),
+                    encrypted=False,
+                    volume_size=50,
+                    volume_type="gp2",
+                ),
+            )],
             cluster_name="terraform-ecs-cluster",
             desired_capacity=0,
             draining_timeout=120,
@@ -85,7 +100,7 @@ class Ocean(pulumi.CustomResource):
                 * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
                 * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
             * `down` - (Optional) Auto Scaling scale down operations.
-                * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100
+                * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
             * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
                 * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
                 * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
@@ -112,15 +127,11 @@ class Ocean(pulumi.CustomResource):
         * `scheduled_task` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
             * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
                 * `is_enabled` - (Optional)  Flag to enable / disable the shutdown hours.
-                                             Example: True
-                * `time_windows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-                                              Example: Fri:15:30-Wed:14:30
+                * `time_windows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
             * `tasks` - (Optional) The scheduling tasks for the cluster.
-                * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
-                * `cron_expression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-                                                 Example: 0 1 * * *.
-                * `task_type` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
-                                           Example: clusterRoll.
+                * `is_enabled` - (Required) Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+                * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+                * `task_type` - (Required) Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
 
         ```python
         import pulumi
@@ -129,6 +140,7 @@ class Ocean(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] cluster_name: The ocean cluster name.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -138,14 +150,14 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
-        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
-        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
         """
         if __name__ is not None:
@@ -167,6 +179,7 @@ class Ocean(pulumi.CustomResource):
 
             __props__['associate_public_ip_address'] = associate_public_ip_address
             __props__['autoscaler'] = autoscaler
+            __props__['block_device_mappings'] = block_device_mappings
             if cluster_name is None:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__['cluster_name'] = cluster_name
@@ -207,6 +220,7 @@ class Ocean(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
             autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
+            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
             draining_timeout: Optional[pulumi.Input[int]] = None,
@@ -235,6 +249,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] cluster_name: The ocean cluster name.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -244,14 +259,14 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
-        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
-        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -260,6 +275,7 @@ class Ocean(pulumi.CustomResource):
 
         __props__["associate_public_ip_address"] = associate_public_ip_address
         __props__["autoscaler"] = autoscaler
+        __props__["block_device_mappings"] = block_device_mappings
         __props__["cluster_name"] = cluster_name
         __props__["desired_capacity"] = desired_capacity
         __props__["draining_timeout"] = draining_timeout
@@ -294,6 +310,14 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter
     def autoscaler(self) -> pulumi.Output[Optional['outputs.OceanAutoscaler']]:
         return pulumi.get(self, "autoscaler")
+
+    @property
+    @pulumi.getter(name="blockDeviceMappings")
+    def block_device_mappings(self) -> pulumi.Output[Optional[Sequence['outputs.OceanBlockDeviceMapping']]]:
+        """
+        Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        """
+        return pulumi.get(self, "block_device_mappings")
 
     @property
     @pulumi.getter(name="clusterName")
@@ -371,7 +395,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter
     def monitoring(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         """
         return pulumi.get(self, "monitoring")
 
@@ -437,7 +461,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter(name="utilizeReservedInstances")
     def utilize_reserved_instances(self) -> pulumi.Output[Optional[bool]]:
         """
-        If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         """
         return pulumi.get(self, "utilize_reserved_instances")
 

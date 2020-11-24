@@ -24,8 +24,39 @@ import * as utilities from "../utilities";
  *         memoryPerUnit: 2048,
  *         numOfUnits: 5,
  *     }],
+ *     blockDeviceMappings: [{
+ *         deviceName: "/dev/xvda1",
+ *         ebs: {
+ *             deleteOnTermination: true,
+ *             dynamicVolumeSize: {
+ *                 baseSize: 50,
+ *                 resource: "CPU",
+ *                 sizePerResourceUnit: 20,
+ *             },
+ *             encrypted: false,
+ *             volumeSize: 50,
+ *             volumeType: "gp2",
+ *         },
+ *     }],
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-123456",
+ *     instanceTypes: [
+ *         "m3.large",
+ *         "m3.xlarge",
+ *         "m3.2xlarge",
+ *         "m4.large",
+ *         "m4.xlarge",
+ *         "m4.4xlarge",
+ *         "m4.2xlarge",
+ *         "m4.10xlarge",
+ *         "m4.16xlarge",
+ *         "m5.large",
+ *         "m5.xlarge",
+ *         "m5.2xlarge",
+ *         "m5.4xlarge",
+ *         "m5.12xlarge",
+ *         "m5.24xlarge",
+ *     ],
  *     oceanId: "o-123456",
  *     securityGroupIds: ["awseb-12345"],
  *     tags: [{
@@ -73,6 +104,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly autoscaleHeadrooms!: pulumi.Output<outputs.ecs.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
     /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    public readonly blockDeviceMappings!: pulumi.Output<outputs.ecs.OceanLaunchSpecBlockDeviceMapping[] | undefined>;
+    /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
     public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
@@ -80,6 +115,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * ID of the image used to launch the instances.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
+    /**
+     * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+     */
+    public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
     /**
      * The Ocean Launch Specification name.
      */
@@ -115,8 +154,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             const state = argsOrState as OceanLaunchSpecState | undefined;
             inputs["attributes"] = state ? state.attributes : undefined;
             inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
+            inputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
+            inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
@@ -129,8 +170,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             }
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
+            inputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
+            inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
@@ -161,6 +204,10 @@ export interface OceanLaunchSpecState {
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecAutoscaleHeadroom>[]>;
     /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMapping>[]>;
+    /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
     readonly iamInstanceProfile?: pulumi.Input<string>;
@@ -168,6 +215,10 @@ export interface OceanLaunchSpecState {
      * ID of the image used to launch the instances.
      */
     readonly imageId?: pulumi.Input<string>;
+    /**
+     * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+     */
+    readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Ocean Launch Specification name.
      */
@@ -203,6 +254,10 @@ export interface OceanLaunchSpecArgs {
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecAutoscaleHeadroom>[]>;
     /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMapping>[]>;
+    /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
     readonly iamInstanceProfile?: pulumi.Input<string>;
@@ -210,6 +265,10 @@ export interface OceanLaunchSpecArgs {
      * ID of the image used to launch the instances.
      */
     readonly imageId?: pulumi.Input<string>;
+    /**
+     * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+     */
+    readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Ocean Launch Specification name.
      */

@@ -74,8 +74,8 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("threshold", required: true)]
         public Input<double> Threshold { get; set; } = null!;
 
-        [Input("unit", required: true)]
-        public Input<string> Unit { get; set; } = null!;
+        [Input("unit")]
+        public Input<string>? Unit { get; set; }
 
         public ElastigroupScalingDownPolicyArgs()
         {

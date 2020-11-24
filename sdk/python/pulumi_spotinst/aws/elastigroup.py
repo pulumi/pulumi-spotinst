@@ -54,6 +54,7 @@ class Elastigroup(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
+                 metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -77,7 +78,7 @@ class Elastigroup(pulumi.CustomResource):
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
-                 spot_percentage: Optional[pulumi.Input[float]] = None,
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
                  stateful_deallocation: Optional[pulumi.Input[pulumi.InputType['ElastigroupStatefulDeallocationArgs']]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
@@ -117,6 +118,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
+        :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
@@ -132,7 +134,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
-        :param pulumi.Input[float] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
                Note: When this parameter is set, `availability_zones` should be left unused.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
@@ -201,6 +203,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__['key_name'] = key_name
             __props__['lifetime_period'] = lifetime_period
             __props__['max_size'] = max_size
+            __props__['metadata_options'] = metadata_options
             __props__['min_size'] = min_size
             __props__['multai_target_sets'] = multai_target_sets
             __props__['name'] = name
@@ -287,6 +290,7 @@ class Elastigroup(pulumi.CustomResource):
             key_name: Optional[pulumi.Input[str]] = None,
             lifetime_period: Optional[pulumi.Input[str]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
+            metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -310,7 +314,7 @@ class Elastigroup(pulumi.CustomResource):
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             shutdown_script: Optional[pulumi.Input[str]] = None,
             signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
-            spot_percentage: Optional[pulumi.Input[float]] = None,
+            spot_percentage: Optional[pulumi.Input[int]] = None,
             stateful_deallocation: Optional[pulumi.Input[pulumi.InputType['ElastigroupStatefulDeallocationArgs']]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
@@ -350,6 +354,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
+        :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
@@ -365,7 +370,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
-        :param pulumi.Input[float] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
                Note: When this parameter is set, `availability_zones` should be left unused.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
@@ -415,6 +420,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__["key_name"] = key_name
         __props__["lifetime_period"] = lifetime_period
         __props__["max_size"] = max_size
+        __props__["metadata_options"] = metadata_options
         __props__["min_size"] = min_size
         __props__["multai_target_sets"] = multai_target_sets
         __props__["name"] = name
@@ -701,6 +707,14 @@ class Elastigroup(pulumi.CustomResource):
         return pulumi.get(self, "max_size")
 
     @property
+    @pulumi.getter(name="metadataOptions")
+    def metadata_options(self) -> pulumi.Output[Optional['outputs.ElastigroupMetadataOptions']]:
+        """
+        Data that used to configure or manage the running instances:
+        """
+        return pulumi.get(self, "metadata_options")
+
+    @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> pulumi.Output[int]:
         """
@@ -856,7 +870,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotPercentage")
-    def spot_percentage(self) -> pulumi.Output[Optional[float]]:
+    def spot_percentage(self) -> pulumi.Output[Optional[int]]:
         """
         The percentage of Spot instances that would spin up from the `desired_capacity` number.
         """

@@ -41,8 +41,46 @@ namespace Pulumi.SpotInst.Ecs
     ///                     NumOfUnits = 5,
     ///                 },
     ///             },
+    ///             BlockDeviceMappings = 
+    ///             {
+    ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
+    ///                 {
+    ///                     DeviceName = "/dev/xvda1",
+    ///                     Ebs = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
+    ///                     {
+    ///                         DeleteOnTermination = true,
+    ///                         DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs
+    ///                         {
+    ///                             BaseSize = 50,
+    ///                             Resource = "CPU",
+    ///                             SizePerResourceUnit = 20,
+    ///                         },
+    ///                         Encrypted = false,
+    ///                         VolumeSize = 50,
+    ///                         VolumeType = "gp2",
+    ///                     },
+    ///                 },
+    ///             },
     ///             IamInstanceProfile = "iam-profile",
     ///             ImageId = "ami-123456",
+    ///             InstanceTypes = 
+    ///             {
+    ///                 "m3.large",
+    ///                 "m3.xlarge",
+    ///                 "m3.2xlarge",
+    ///                 "m4.large",
+    ///                 "m4.xlarge",
+    ///                 "m4.4xlarge",
+    ///                 "m4.2xlarge",
+    ///                 "m4.10xlarge",
+    ///                 "m4.16xlarge",
+    ///                 "m5.large",
+    ///                 "m5.xlarge",
+    ///                 "m5.2xlarge",
+    ///                 "m5.4xlarge",
+    ///                 "m5.12xlarge",
+    ///                 "m5.24xlarge",
+    ///             },
     ///             OceanId = "o-123456",
     ///             SecurityGroupIds = 
     ///             {
@@ -78,6 +116,12 @@ namespace Pulumi.SpotInst.Ecs
         public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroom>> AutoscaleHeadrooms { get; private set; } = null!;
 
         /// <summary>
+        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        [Output("blockDeviceMappings")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
+
+        /// <summary>
         /// The ARN or name of an IAM instance profile to associate with launched instances.
         /// </summary>
         [Output("iamInstanceProfile")]
@@ -88,6 +132,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        /// </summary>
+        [Output("instanceTypes")]
+        public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
         /// The Ocean Launch Specification name.
@@ -189,6 +239,18 @@ namespace Pulumi.SpotInst.Ecs
             set => _autoscaleHeadrooms = value;
         }
 
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs>());
+            set => _blockDeviceMappings = value;
+        }
+
         /// <summary>
         /// The ARN or name of an IAM instance profile to associate with launched instances.
         /// </summary>
@@ -200,6 +262,18 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        [Input("instanceTypes")]
+        private InputList<string>? _instanceTypes;
+
+        /// <summary>
+        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        /// </summary>
+        public InputList<string> InstanceTypes
+        {
+            get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
+            set => _instanceTypes = value;
+        }
 
         /// <summary>
         /// The Ocean Launch Specification name.
@@ -274,6 +348,18 @@ namespace Pulumi.SpotInst.Ecs
             set => _autoscaleHeadrooms = value;
         }
 
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs>());
+            set => _blockDeviceMappings = value;
+        }
+
         /// <summary>
         /// The ARN or name of an IAM instance profile to associate with launched instances.
         /// </summary>
@@ -285,6 +371,18 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        [Input("instanceTypes")]
+        private InputList<string>? _instanceTypes;
+
+        /// <summary>
+        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        /// </summary>
+        public InputList<string> InstanceTypes
+        {
+            get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
+            set => _instanceTypes = value;
+        }
 
         /// <summary>
         /// The Ocean Launch Specification name.

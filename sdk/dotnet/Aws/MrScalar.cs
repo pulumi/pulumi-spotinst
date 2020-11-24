@@ -27,7 +27,7 @@ namespace Pulumi.SpotInst.Aws
     /// * `job_flow_role` - (Optional) The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
     /// * `termination_protected` - (Optional) Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
     /// * `keep_job_flow_alive` - (Optional) Specifies whether the cluster should remain available after completing all steps.
-    /// * `retries` - (Optional) Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded.
+    /// * `retries` - (Optional; Requires: `timeout_action` is set to `terminateAndRetry`) Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
     /// 
     /// &lt;a id="task-group"&gt;&lt;/a&gt;
     /// ## Task Group (Wrap, Clone, and New strategies)
@@ -304,7 +304,7 @@ namespace Pulumi.SpotInst.Aws
     ///             ProvisioningTimeout = new SpotInst.Aws.Inputs.MrScalarProvisioningTimeoutArgs
     ///             {
     ///                 Timeout = 15,
-    ///                 TimeoutAction = "terminate",
+    ///                 TimeoutAction = "terminateAndRetry",
     ///             },
     ///             Region = "us-west-2",
     ///             ReleaseLabel = "emr-5.17.0",

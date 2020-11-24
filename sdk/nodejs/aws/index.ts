@@ -8,3 +8,4 @@ export * from "./managedInstance";
 export * from "./mrScalar";
 export * from "./ocean";
 export * from "./oceanLaunchSpec";
+export * from "./suspension";

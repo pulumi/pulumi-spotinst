@@ -32,7 +32,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly string? Statistic;
         public readonly string? Target;
         public readonly double Threshold;
-        public readonly string Unit;
+        public readonly string? Unit;
 
         [OutputConstructor]
         private ElastigroupScalingUpPolicy(
@@ -74,7 +74,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             double threshold,
 
-            string unit)
+            string? unit)
         {
             ActionType = actionType;
             Adjustment = adjustment;
