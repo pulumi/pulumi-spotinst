@@ -190,7 +190,7 @@ class Elastigroup(pulumi.CustomResource):
 
             __props__['backend_services'] = backend_services
             if cluster_id is not None:
-                warnings.warn("Please define cluster_id under integration_gke", DeprecationWarning)
+                warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
                 pulumi.log.warn("cluster_id is deprecated: Please define cluster_id under integration_gke")
             __props__['cluster_id'] = cluster_id
             if cluster_zone_name is None:

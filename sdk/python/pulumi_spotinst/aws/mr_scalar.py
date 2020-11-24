@@ -552,7 +552,7 @@ class MrScalar(pulumi.CustomResource):
             __props__['termination_policies'] = termination_policies
             __props__['termination_protected'] = termination_protected
             if visible_to_all_users is not None:
-                warnings.warn("This field has been removed from our API and is no longer functional.", DeprecationWarning)
+                warnings.warn("""This field has been removed from our API and is no longer functional.""", DeprecationWarning)
                 pulumi.log.warn("visible_to_all_users is deprecated: This field has been removed from our API and is no longer functional.")
             __props__['visible_to_all_users'] = visible_to_all_users
             __props__['output_cluster_id'] = None

@@ -4,6 +4,7 @@
 package aws
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -326,4 +327,43 @@ type OceanLaunchSpecArgs struct {
 
 func (OceanLaunchSpecArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanLaunchSpecArgs)(nil)).Elem()
+}
+
+type OceanLaunchSpecInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecOutput() OceanLaunchSpecOutput
+	ToOceanLaunchSpecOutputWithContext(ctx context.Context) OceanLaunchSpecOutput
+}
+
+func (OceanLaunchSpec) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpec)(nil)).Elem()
+}
+
+func (i OceanLaunchSpec) ToOceanLaunchSpecOutput() OceanLaunchSpecOutput {
+	return i.ToOceanLaunchSpecOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpec) ToOceanLaunchSpecOutputWithContext(ctx context.Context) OceanLaunchSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecOutput)
+}
+
+type OceanLaunchSpecOutput struct {
+	*pulumi.OutputState
+}
+
+func (OceanLaunchSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecOutput)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecOutput) ToOceanLaunchSpecOutput() OceanLaunchSpecOutput {
+	return o
+}
+
+func (o OceanLaunchSpecOutput) ToOceanLaunchSpecOutputWithContext(ctx context.Context) OceanLaunchSpecOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OceanLaunchSpecOutput{})
 }

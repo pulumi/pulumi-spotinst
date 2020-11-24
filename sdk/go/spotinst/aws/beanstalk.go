@@ -4,6 +4,7 @@
 package aws
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -292,4 +293,43 @@ type BeanstalkArgs struct {
 
 func (BeanstalkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*beanstalkArgs)(nil)).Elem()
+}
+
+type BeanstalkInput interface {
+	pulumi.Input
+
+	ToBeanstalkOutput() BeanstalkOutput
+	ToBeanstalkOutputWithContext(ctx context.Context) BeanstalkOutput
+}
+
+func (Beanstalk) ElementType() reflect.Type {
+	return reflect.TypeOf((*Beanstalk)(nil)).Elem()
+}
+
+func (i Beanstalk) ToBeanstalkOutput() BeanstalkOutput {
+	return i.ToBeanstalkOutputWithContext(context.Background())
+}
+
+func (i Beanstalk) ToBeanstalkOutputWithContext(ctx context.Context) BeanstalkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkOutput)
+}
+
+type BeanstalkOutput struct {
+	*pulumi.OutputState
+}
+
+func (BeanstalkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BeanstalkOutput)(nil)).Elem()
+}
+
+func (o BeanstalkOutput) ToBeanstalkOutput() BeanstalkOutput {
+	return o
+}
+
+func (o BeanstalkOutput) ToBeanstalkOutputWithContext(ctx context.Context) BeanstalkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BeanstalkOutput{})
 }

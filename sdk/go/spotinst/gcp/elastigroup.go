@@ -4,6 +4,7 @@
 package gcp
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -539,4 +540,43 @@ type ElastigroupArgs struct {
 
 func (ElastigroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*elastigroupArgs)(nil)).Elem()
+}
+
+type ElastigroupInput interface {
+	pulumi.Input
+
+	ToElastigroupOutput() ElastigroupOutput
+	ToElastigroupOutputWithContext(ctx context.Context) ElastigroupOutput
+}
+
+func (Elastigroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*Elastigroup)(nil)).Elem()
+}
+
+func (i Elastigroup) ToElastigroupOutput() ElastigroupOutput {
+	return i.ToElastigroupOutputWithContext(context.Background())
+}
+
+func (i Elastigroup) ToElastigroupOutputWithContext(ctx context.Context) ElastigroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupOutput)
+}
+
+type ElastigroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ElastigroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupOutput)(nil)).Elem()
+}
+
+func (o ElastigroupOutput) ToElastigroupOutput() ElastigroupOutput {
+	return o
+}
+
+func (o ElastigroupOutput) ToElastigroupOutputWithContext(ctx context.Context) ElastigroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ElastigroupOutput{})
 }

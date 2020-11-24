@@ -4,6 +4,7 @@
 package aws
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -868,4 +869,43 @@ type MrScalarArgs struct {
 
 func (MrScalarArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mrScalarArgs)(nil)).Elem()
+}
+
+type MrScalarInput interface {
+	pulumi.Input
+
+	ToMrScalarOutput() MrScalarOutput
+	ToMrScalarOutputWithContext(ctx context.Context) MrScalarOutput
+}
+
+func (MrScalar) ElementType() reflect.Type {
+	return reflect.TypeOf((*MrScalar)(nil)).Elem()
+}
+
+func (i MrScalar) ToMrScalarOutput() MrScalarOutput {
+	return i.ToMrScalarOutputWithContext(context.Background())
+}
+
+func (i MrScalar) ToMrScalarOutputWithContext(ctx context.Context) MrScalarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MrScalarOutput)
+}
+
+type MrScalarOutput struct {
+	*pulumi.OutputState
+}
+
+func (MrScalarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MrScalarOutput)(nil)).Elem()
+}
+
+func (o MrScalarOutput) ToMrScalarOutput() MrScalarOutput {
+	return o
+}
+
+func (o MrScalarOutput) ToMrScalarOutputWithContext(ctx context.Context) MrScalarOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MrScalarOutput{})
 }
