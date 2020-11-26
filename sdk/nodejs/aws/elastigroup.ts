@@ -136,6 +136,10 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly maxSize!: pulumi.Output<number>;
     /**
+     * Data that used to configure or manage the running instances:
+     */
+    public readonly metadataOptions!: pulumi.Output<outputs.aws.ElastigroupMetadataOptions | undefined>;
+    /**
      * The minimum number of instances the group should have at any time.
      */
     public readonly minSize!: pulumi.Output<number>;
@@ -279,6 +283,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["lifetimePeriod"] = state ? state.lifetimePeriod : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
+            inputs["metadataOptions"] = state ? state.metadataOptions : undefined;
             inputs["minSize"] = state ? state.minSize : undefined;
             inputs["multaiTargetSets"] = state ? state.multaiTargetSets : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -369,6 +374,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["lifetimePeriod"] = args ? args.lifetimePeriod : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
+            inputs["metadataOptions"] = args ? args.metadataOptions : undefined;
             inputs["minSize"] = args ? args.minSize : undefined;
             inputs["multaiTargetSets"] = args ? args.multaiTargetSets : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -520,6 +526,10 @@ export interface ElastigroupState {
      * The maximum number of instances the group should have at any time.
      */
     readonly maxSize?: pulumi.Input<number>;
+    /**
+     * Data that used to configure or manage the running instances:
+     */
+    readonly metadataOptions?: pulumi.Input<inputs.aws.ElastigroupMetadataOptions>;
     /**
      * The minimum number of instances the group should have at any time.
      */
@@ -722,6 +732,10 @@ export interface ElastigroupArgs {
      * The maximum number of instances the group should have at any time.
      */
     readonly maxSize?: pulumi.Input<number>;
+    /**
+     * Data that used to configure or manage the running instances:
+     */
+    readonly metadataOptions?: pulumi.Input<inputs.aws.ElastigroupMetadataOptions>;
     /**
      * The minimum number of instances the group should have at any time.
      */

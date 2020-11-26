@@ -127,6 +127,7 @@ export class OceanImport extends pulumi.CustomResource {
      * The GKE cluster name.
      */
     public readonly clusterName!: pulumi.Output<string>;
+    public readonly controllerClusterId!: pulumi.Output<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
@@ -162,6 +163,7 @@ export class OceanImport extends pulumi.CustomResource {
             inputs["backendServices"] = state ? state.backendServices : undefined;
             inputs["clusterControllerId"] = state ? state.clusterControllerId : undefined;
             inputs["clusterName"] = state ? state.clusterName : undefined;
+            inputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
             inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             inputs["location"] = state ? state.location : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
@@ -179,6 +181,7 @@ export class OceanImport extends pulumi.CustomResource {
             inputs["autoscaler"] = args ? args.autoscaler : undefined;
             inputs["backendServices"] = args ? args.backendServices : undefined;
             inputs["clusterName"] = args ? args.clusterName : undefined;
+            inputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
             inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
@@ -212,6 +215,7 @@ export interface OceanImportState {
      * The GKE cluster name.
      */
     readonly clusterName?: pulumi.Input<string>;
+    readonly controllerClusterId?: pulumi.Input<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
@@ -245,6 +249,7 @@ export interface OceanImportArgs {
      * The GKE cluster name.
      */
     readonly clusterName: pulumi.Input<string>;
+    readonly controllerClusterId?: pulumi.Input<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */

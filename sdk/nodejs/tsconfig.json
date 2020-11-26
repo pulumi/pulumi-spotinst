@@ -20,6 +20,7 @@
         "aws/mrScalar.ts",
         "aws/ocean.ts",
         "aws/oceanLaunchSpec.ts",
+        "aws/suspension.ts",
         "azure/elastigroup.ts",
         "azure/index.ts",
         "config/index.ts",

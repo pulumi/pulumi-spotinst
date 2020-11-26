@@ -56,6 +56,7 @@ namespace Pulumi.SpotInst.Aws
     ///             {
     ///                 "sg-987654321",
     ///             },
+    ///             SpotPercentage = 100,
     ///             SubnetIds = 
     ///             {
     ///                 "subnet-123456789",
@@ -68,6 +69,7 @@ namespace Pulumi.SpotInst.Aws
     ///                     Value = "fakeValue",
     ///                 },
     ///             },
+    ///             UseAsTemplateOnly = true,
     ///             UserData = "echo hello world",
     ///             UtilizeReservedInstances = false,
     ///             Whitelists = 
@@ -280,8 +282,11 @@ namespace Pulumi.SpotInst.Aws
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
+        /// <summary>
+        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// </summary>
         [Output("spotPercentage")]
-        public Output<double?> SpotPercentage { get; private set; } = null!;
+        public Output<int?> SpotPercentage { get; private set; } = null!;
 
         /// <summary>
         /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -297,6 +302,12 @@ namespace Pulumi.SpotInst.Aws
 
         [Output("updatePolicy")]
         public Output<Outputs.OceanUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// </summary>
+        [Output("useAsTemplateOnly")]
+        public Output<bool?> UseAsTemplateOnly { get; private set; } = null!;
 
         /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.
@@ -505,8 +516,11 @@ namespace Pulumi.SpotInst.Aws
             set => _securityGroups = value;
         }
 
+        /// <summary>
+        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// </summary>
         [Input("spotPercentage")]
-        public Input<double>? SpotPercentage { get; set; }
+        public Input<int>? SpotPercentage { get; set; }
 
         [Input("subnetIds", required: true)]
         private InputList<string>? _subnetIds;
@@ -534,6 +548,12 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyArgs>? UpdatePolicy { get; set; }
+
+        /// <summary>
+        /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// </summary>
+        [Input("useAsTemplateOnly")]
+        public Input<bool>? UseAsTemplateOnly { get; set; }
 
         /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.
@@ -709,8 +729,11 @@ namespace Pulumi.SpotInst.Aws
             set => _securityGroups = value;
         }
 
+        /// <summary>
+        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// </summary>
         [Input("spotPercentage")]
-        public Input<double>? SpotPercentage { get; set; }
+        public Input<int>? SpotPercentage { get; set; }
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
@@ -738,6 +761,12 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
+
+        /// <summary>
+        /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// </summary>
+        [Input("useAsTemplateOnly")]
+        public Input<bool>? UseAsTemplateOnly { get; set; }
 
         /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.

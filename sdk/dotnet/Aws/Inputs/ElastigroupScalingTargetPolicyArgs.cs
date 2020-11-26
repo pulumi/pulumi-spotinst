@@ -47,8 +47,8 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("target", required: true)]
         public Input<double> Target { get; set; } = null!;
 
-        [Input("unit", required: true)]
-        public Input<string> Unit { get; set; } = null!;
+        [Input("unit")]
+        public Input<string>? Unit { get; set; }
 
         public ElastigroupScalingTargetPolicyArgs()
         {

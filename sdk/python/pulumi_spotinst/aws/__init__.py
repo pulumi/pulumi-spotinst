@@ -9,5 +9,6 @@ from .managed_instance import *
 from .mr_scalar import *
 from .ocean import *
 from .ocean_launch_spec import *
+from .suspension import *
 from ._inputs import *
 from . import outputs

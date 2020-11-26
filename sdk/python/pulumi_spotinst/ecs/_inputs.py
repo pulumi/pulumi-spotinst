@@ -13,8 +13,14 @@ __all__ = [
     'OceanAutoscalerDownArgs',
     'OceanAutoscalerHeadroomArgs',
     'OceanAutoscalerResourceLimitsArgs',
+    'OceanBlockDeviceMappingArgs',
+    'OceanBlockDeviceMappingEbsArgs',
+    'OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs',
     'OceanLaunchSpecAttributeArgs',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
+    'OceanLaunchSpecBlockDeviceMappingArgs',
+    'OceanLaunchSpecBlockDeviceMappingEbsArgs',
+    'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
     'OceanLaunchSpecTagArgs',
     'OceanScheduledTaskArgs',
     'OceanScheduledTaskShutdownHoursArgs',
@@ -189,6 +195,259 @@ class OceanAutoscalerResourceLimitsArgs:
 
 
 @pulumi.input_type
+class OceanBlockDeviceMappingArgs:
+    def __init__(__self__, *,
+                 device_name: pulumi.Input[str],
+                 ebs: Optional[pulumi.Input['OceanBlockDeviceMappingEbsArgs']] = None,
+                 no_device: Optional[pulumi.Input[str]] = None,
+                 virtual_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] device_name: String. Set device name. Example: `/dev/xvda1`.
+        :param pulumi.Input['OceanBlockDeviceMappingEbsArgs'] ebs: Object. Set Elastic Block Store properties.
+        :param pulumi.Input[str] no_device: String. Suppresses the specified device included in the block device mapping of the AMI.
+        """
+        pulumi.set(__self__, "device_name", device_name)
+        if ebs is not None:
+            pulumi.set(__self__, "ebs", ebs)
+        if no_device is not None:
+            pulumi.set(__self__, "no_device", no_device)
+        if virtual_name is not None:
+            pulumi.set(__self__, "virtual_name", virtual_name)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> pulumi.Input[str]:
+        """
+        String. Set device name. Example: `/dev/xvda1`.
+        """
+        return pulumi.get(self, "device_name")
+
+    @device_name.setter
+    def device_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "device_name", value)
+
+    @property
+    @pulumi.getter
+    def ebs(self) -> Optional[pulumi.Input['OceanBlockDeviceMappingEbsArgs']]:
+        """
+        Object. Set Elastic Block Store properties.
+        """
+        return pulumi.get(self, "ebs")
+
+    @ebs.setter
+    def ebs(self, value: Optional[pulumi.Input['OceanBlockDeviceMappingEbsArgs']]):
+        pulumi.set(self, "ebs", value)
+
+    @property
+    @pulumi.getter(name="noDevice")
+    def no_device(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Suppresses the specified device included in the block device mapping of the AMI.
+        """
+        return pulumi.get(self, "no_device")
+
+    @no_device.setter
+    def no_device(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "no_device", value)
+
+    @property
+    @pulumi.getter(name="virtualName")
+    def virtual_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "virtual_name")
+
+    @virtual_name.setter
+    def virtual_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "virtual_name", value)
+
+
+@pulumi.input_type
+class OceanBlockDeviceMappingEbsArgs:
+    def __init__(__self__, *,
+                 delete_on_termination: Optional[pulumi.Input[bool]] = None,
+                 dynamic_volume_size: Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs']] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 iops: Optional[pulumi.Input[int]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 volume_size: Optional[pulumi.Input[int]] = None,
+                 volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_termination: Boolean. Toggles EBS deletion upon instance termination.
+        :param pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs'] dynamic_volume_size: Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        :param pulumi.Input[bool] encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        :param pulumi.Input[int] iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
+        :param pulumi.Input[str] kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        :param pulumi.Input[str] snapshot_id: (Optional) String. The snapshot ID to mount by.
+        :param pulumi.Input[int] volume_size: Int. The size (in GB) of the volume.
+        :param pulumi.Input[str] volume_type: String. The type of the volume. Example: `gp2`.
+        """
+        if delete_on_termination is not None:
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
+        if dynamic_volume_size is not None:
+            pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if volume_size is not None:
+            pulumi.set(__self__, "volume_size", volume_size)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Toggles EBS deletion upon instance termination.
+        """
+        return pulumi.get(self, "delete_on_termination")
+
+    @delete_on_termination.setter
+    def delete_on_termination(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_on_termination", value)
+
+    @property
+    @pulumi.getter(name="dynamicVolumeSize")
+    def dynamic_volume_size(self) -> Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs']]:
+        """
+        Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        """
+        return pulumi.get(self, "dynamic_volume_size")
+
+    @dynamic_volume_size.setter
+    def dynamic_volume_size(self, value: Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs']]):
+        pulumi.set(self, "dynamic_volume_size", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Int. The number of I/O operations per second (IOPS) that the volume supports.
+        """
+        return pulumi.get(self, "iops")
+
+    @iops.setter
+    def iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "iops", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) String. The snapshot ID to mount by.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+    @property
+    @pulumi.getter(name="volumeSize")
+    def volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Int. The size (in GB) of the volume.
+        """
+        return pulumi.get(self, "volume_size")
+
+    @volume_size.setter
+    def volume_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "volume_size", value)
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. The type of the volume. Example: `gp2`.
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_type", value)
+
+
+@pulumi.input_type
+class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
+    def __init__(__self__, *,
+                 base_size: pulumi.Input[int],
+                 resource: pulumi.Input[str],
+                 size_per_resource_unit: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] base_size: Int. Initial size for volume. Example: `50`.
+        :param pulumi.Input[str] resource: String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
+        :param pulumi.Input[int] size_per_resource_unit: Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
+        """
+        pulumi.set(__self__, "base_size", base_size)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
+
+    @property
+    @pulumi.getter(name="baseSize")
+    def base_size(self) -> pulumi.Input[int]:
+        """
+        Int. Initial size for volume. Example: `50`.
+        """
+        return pulumi.get(self, "base_size")
+
+    @base_size.setter
+    def base_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "base_size", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[str]:
+        """
+        String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter(name="sizePerResourceUnit")
+    def size_per_resource_unit(self) -> pulumi.Input[int]:
+        """
+        Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
+        """
+        return pulumi.get(self, "size_per_resource_unit")
+
+    @size_per_resource_unit.setter
+    def size_per_resource_unit(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size_per_resource_unit", value)
+
+
+@pulumi.input_type
 class OceanLaunchSpecAttributeArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
@@ -277,6 +536,259 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
     @memory_per_unit.setter
     def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecBlockDeviceMappingArgs:
+    def __init__(__self__, *,
+                 device_name: pulumi.Input[str],
+                 ebs: Optional[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgs']] = None,
+                 no_device: Optional[pulumi.Input[str]] = None,
+                 virtual_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] device_name: String. Set device name. (Example: "/dev/xvda1").
+        :param pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgs'] ebs: Object. Set Elastic Block Store properties .
+        :param pulumi.Input[str] no_device: String. suppresses the specified device included in the block device mapping of the AMI.
+        """
+        pulumi.set(__self__, "device_name", device_name)
+        if ebs is not None:
+            pulumi.set(__self__, "ebs", ebs)
+        if no_device is not None:
+            pulumi.set(__self__, "no_device", no_device)
+        if virtual_name is not None:
+            pulumi.set(__self__, "virtual_name", virtual_name)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> pulumi.Input[str]:
+        """
+        String. Set device name. (Example: "/dev/xvda1").
+        """
+        return pulumi.get(self, "device_name")
+
+    @device_name.setter
+    def device_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "device_name", value)
+
+    @property
+    @pulumi.getter
+    def ebs(self) -> Optional[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgs']]:
+        """
+        Object. Set Elastic Block Store properties .
+        """
+        return pulumi.get(self, "ebs")
+
+    @ebs.setter
+    def ebs(self, value: Optional[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgs']]):
+        pulumi.set(self, "ebs", value)
+
+    @property
+    @pulumi.getter(name="noDevice")
+    def no_device(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. suppresses the specified device included in the block device mapping of the AMI.
+        """
+        return pulumi.get(self, "no_device")
+
+    @no_device.setter
+    def no_device(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "no_device", value)
+
+    @property
+    @pulumi.getter(name="virtualName")
+    def virtual_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "virtual_name")
+
+    @virtual_name.setter
+    def virtual_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "virtual_name", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecBlockDeviceMappingEbsArgs:
+    def __init__(__self__, *,
+                 delete_on_termination: Optional[pulumi.Input[bool]] = None,
+                 dynamic_volume_size: Optional[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs']] = None,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 iops: Optional[pulumi.Input[int]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 volume_size: Optional[pulumi.Input[int]] = None,
+                 volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_termination: Boolean. Flag to delete the EBS on instance termination.
+        :param pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs'] dynamic_volume_size: Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        :param pulumi.Input[bool] encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        :param pulumi.Input[int] iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
+        :param pulumi.Input[str] kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        :param pulumi.Input[str] snapshot_id: (Optional) String. The Snapshot ID to mount by.
+        :param pulumi.Input[int] volume_size: Int. The size, in GB of the volume.
+        :param pulumi.Input[str] volume_type: String. The type of the volume (example: "gp2").
+        """
+        if delete_on_termination is not None:
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
+        if dynamic_volume_size is not None:
+            pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if volume_size is not None:
+            pulumi.set(__self__, "volume_size", volume_size)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Flag to delete the EBS on instance termination.
+        """
+        return pulumi.get(self, "delete_on_termination")
+
+    @delete_on_termination.setter
+    def delete_on_termination(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_on_termination", value)
+
+    @property
+    @pulumi.getter(name="dynamicVolumeSize")
+    def dynamic_volume_size(self) -> Optional[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs']]:
+        """
+        Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+        """
+        return pulumi.get(self, "dynamic_volume_size")
+
+    @dynamic_volume_size.setter
+    def dynamic_volume_size(self, value: Optional[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs']]):
+        pulumi.set(self, "dynamic_volume_size", value)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Int. The number of I/O operations per second (IOPS) that the volume supports.
+        """
+        return pulumi.get(self, "iops")
+
+    @iops.setter
+    def iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "iops", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) String. The Snapshot ID to mount by.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+    @property
+    @pulumi.getter(name="volumeSize")
+    def volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Int. The size, in GB of the volume.
+        """
+        return pulumi.get(self, "volume_size")
+
+    @volume_size.setter
+    def volume_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "volume_size", value)
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. The type of the volume (example: "gp2").
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_type", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
+    def __init__(__self__, *,
+                 base_size: pulumi.Input[int],
+                 resource: pulumi.Input[str],
+                 size_per_resource_unit: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] base_size: Int. Initial size for volume. (Example: 50)
+        :param pulumi.Input[str] resource: String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+        :param pulumi.Input[int] size_per_resource_unit: Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+        """
+        pulumi.set(__self__, "base_size", base_size)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
+
+    @property
+    @pulumi.getter(name="baseSize")
+    def base_size(self) -> pulumi.Input[int]:
+        """
+        Int. Initial size for volume. (Example: 50)
+        """
+        return pulumi.get(self, "base_size")
+
+    @base_size.setter
+    def base_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "base_size", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[str]:
+        """
+        String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter(name="sizePerResourceUnit")
+    def size_per_resource_unit(self) -> pulumi.Input[int]:
+        """
+        Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+        """
+        return pulumi.get(self, "size_per_resource_unit")
+
+    @size_per_resource_unit.setter
+    def size_per_resource_unit(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size_per_resource_unit", value)
 
 
 @pulumi.input_type

@@ -19,8 +19,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAttributeArgs']]]]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -48,8 +50,39 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 memory_per_unit=2048,
                 num_of_units=5,
             )],
+            block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(
+                device_name="/dev/xvda1",
+                ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(
+                    delete_on_termination=True,
+                    dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
+                        base_size=50,
+                        resource="CPU",
+                        size_per_resource_unit=20,
+                    ),
+                    encrypted=False,
+                    volume_size=50,
+                    volume_type="gp2",
+                ),
+            )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
+            instance_types=[
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.4xlarge",
+                "m4.2xlarge",
+                "m4.10xlarge",
+                "m4.16xlarge",
+                "m5.large",
+                "m5.xlarge",
+                "m5.2xlarge",
+                "m5.4xlarge",
+                "m5.12xlarge",
+                "m5.24xlarge",
+            ],
             ocean_id="o-123456",
             security_group_ids=["awseb-12345"],
             tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
@@ -63,8 +96,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAttributeArgs']]]] attributes: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
@@ -90,8 +125,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
             __props__['attributes'] = attributes
             __props__['autoscale_headrooms'] = autoscale_headrooms
+            __props__['block_device_mappings'] = block_device_mappings
             __props__['iam_instance_profile'] = iam_instance_profile
             __props__['image_id'] = image_id
+            __props__['instance_types'] = instance_types
             __props__['name'] = name
             if ocean_id is None:
                 raise TypeError("Missing required property 'ocean_id'")
@@ -111,8 +148,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAttributeArgs']]]]] = None,
             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
+            instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -127,8 +166,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAttributeArgs']]]] attributes: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
@@ -141,8 +182,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         __props__["attributes"] = attributes
         __props__["autoscale_headrooms"] = autoscale_headrooms
+        __props__["block_device_mappings"] = block_device_mappings
         __props__["iam_instance_profile"] = iam_instance_profile
         __props__["image_id"] = image_id
+        __props__["instance_types"] = instance_types
         __props__["name"] = name
         __props__["ocean_id"] = ocean_id
         __props__["security_group_ids"] = security_group_ids
@@ -167,6 +210,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         return pulumi.get(self, "autoscale_headrooms")
 
     @property
+    @pulumi.getter(name="blockDeviceMappings")
+    def block_device_mappings(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecBlockDeviceMapping']]]:
+        """
+        Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        """
+        return pulumi.get(self, "block_device_mappings")
+
+    @property
     @pulumi.getter(name="iamInstanceProfile")
     def iam_instance_profile(self) -> pulumi.Output[Optional[str]]:
         """
@@ -181,6 +232,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         ID of the image used to launch the instances.
         """
         return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        """
+        return pulumi.get(self, "instance_types")
 
     @property
     @pulumi.getter

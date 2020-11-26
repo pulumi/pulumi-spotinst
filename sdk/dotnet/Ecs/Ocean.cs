@@ -25,6 +25,26 @@ namespace Pulumi.SpotInst.Ecs
     ///         var example = new SpotInst.Ecs.Ocean("example", new SpotInst.Ecs.OceanArgs
     ///         {
     ///             AssociatePublicIpAddress = false,
+    ///             BlockDeviceMappings = 
+    ///             {
+    ///                 new SpotInst.Ecs.Inputs.OceanBlockDeviceMappingArgs
+    ///                 {
+    ///                     DeviceName = "/dev/xvda1",
+    ///                     Ebs = new SpotInst.Ecs.Inputs.OceanBlockDeviceMappingEbsArgs
+    ///                     {
+    ///                         DeleteOnTermination = true,
+    ///                         DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs
+    ///                         {
+    ///                             BaseSize = 50,
+    ///                             Resource = "CPU",
+    ///                             SizePerResourceUnit = 20,
+    ///                         },
+    ///                         Encrypted = false,
+    ///                         VolumeSize = 50,
+    ///                         VolumeType = "gp2",
+    ///                     },
+    ///                 },
+    ///             },
     ///             ClusterName = "terraform-ecs-cluster",
     ///             DesiredCapacity = 0,
     ///             DrainingTimeout = 120,
@@ -74,7 +94,7 @@ namespace Pulumi.SpotInst.Ecs
     ///         * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
     ///         * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
     ///     * `down` - (Optional) Auto Scaling scale down operations.
-    ///         * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100
+    ///         * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
     ///     * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
     ///         * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
     ///         * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
@@ -117,15 +137,11 @@ namespace Pulumi.SpotInst.Ecs
     /// * `scheduled_task` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
     ///     * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
     ///         * `is_enabled` - (Optional)  Flag to enable / disable the shutdown hours.
-    ///                                      Example: True
-    ///         * `time_windows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-    ///                                       Example: Fri:15:30-Wed:14:30
+    ///         * `time_windows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
     ///     * `tasks` - (Optional) The scheduling tasks for the cluster.
-    ///         * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
-    ///         * `cron_expression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-    ///                                          Example: 0 1 * * *.
-    ///         * `task_type` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
-    ///                                    Example: clusterRoll.
+    ///         * `is_enabled` - (Required) Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+    ///         * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+    ///         * `task_type` - (Required) Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -149,6 +165,12 @@ namespace Pulumi.SpotInst.Ecs
 
         [Output("autoscaler")]
         public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
+
+        /// <summary>
+        /// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        [Output("blockDeviceMappings")]
+        public Output<ImmutableArray<Outputs.OceanBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
         /// <summary>
         /// The ocean cluster name.
@@ -205,7 +227,7 @@ namespace Pulumi.SpotInst.Ecs
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         /// </summary>
         [Output("monitoring")]
         public Output<bool?> Monitoring { get; private set; } = null!;
@@ -253,7 +275,7 @@ namespace Pulumi.SpotInst.Ecs
         public Output<string?> UserData { get; private set; } = null!;
 
         /// <summary>
-        /// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         /// </summary>
         [Output("utilizeReservedInstances")]
         public Output<bool?> UtilizeReservedInstances { get; private set; } = null!;
@@ -319,6 +341,18 @@ namespace Pulumi.SpotInst.Ecs
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerArgs>? Autoscaler { get; set; }
 
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.OceanBlockDeviceMappingArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        public InputList<Inputs.OceanBlockDeviceMappingArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanBlockDeviceMappingArgs>());
+            set => _blockDeviceMappings = value;
+        }
+
         /// <summary>
         /// The ocean cluster name.
         /// </summary>
@@ -374,7 +408,7 @@ namespace Pulumi.SpotInst.Ecs
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
@@ -445,7 +479,7 @@ namespace Pulumi.SpotInst.Ecs
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         /// </summary>
         [Input("utilizeReservedInstances")]
         public Input<bool>? UtilizeReservedInstances { get; set; }
@@ -477,6 +511,18 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerGetArgs>? Autoscaler { get; set; }
+
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.OceanBlockDeviceMappingGetArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        public InputList<Inputs.OceanBlockDeviceMappingGetArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanBlockDeviceMappingGetArgs>());
+            set => _blockDeviceMappings = value;
+        }
 
         /// <summary>
         /// The ocean cluster name.
@@ -533,7 +579,7 @@ namespace Pulumi.SpotInst.Ecs
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
@@ -604,7 +650,7 @@ namespace Pulumi.SpotInst.Ecs
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// If Reserved instances exist, OCean will utilize them before launching Spot instances.
+        /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         /// </summary>
         [Input("utilizeReservedInstances")]
         public Input<bool>? UtilizeReservedInstances { get; set; }

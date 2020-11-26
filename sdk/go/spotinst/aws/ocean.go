@@ -54,6 +54,7 @@ import (
 // 			SecurityGroups: pulumi.StringArray{
 // 				pulumi.String("sg-987654321"),
 // 			},
+// 			SpotPercentage: pulumi.Int(100),
 // 			SubnetIds: pulumi.StringArray{
 // 				pulumi.String("subnet-123456789"),
 // 			},
@@ -63,6 +64,7 @@ import (
 // 					Value: pulumi.String("fakeValue"),
 // 				},
 // 			},
+// 			UseAsTemplateOnly:        pulumi.Bool(true),
 // 			UserData:                 pulumi.String("echo hello world"),
 // 			UtilizeReservedInstances: pulumi.Bool(false),
 // 			Whitelists: pulumi.StringArray{
@@ -203,12 +205,15 @@ type Ocean struct {
 	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
-	SpotPercentage pulumi.Float64PtrOutput  `pulumi:"spotPercentage"`
+	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         OceanTagArrayOutput        `pulumi:"tags"`
 	UpdatePolicy OceanUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly pulumi.BoolPtrOutput `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -291,12 +296,15 @@ type oceanState struct {
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
-	SpotPercentage *float64 `pulumi:"spotPercentage"`
+	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	SpotPercentage *int `pulumi:"spotPercentage"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         []OceanTag         `pulumi:"tags"`
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -346,12 +354,15 @@ type OceanState struct {
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
-	SpotPercentage pulumi.Float64PtrInput
+	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	SpotPercentage pulumi.IntPtrInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         OceanTagArrayInput
 	UpdatePolicy OceanUpdatePolicyPtrInput
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -405,12 +416,15 @@ type oceanArgs struct {
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
-	SpotPercentage *float64 `pulumi:"spotPercentage"`
+	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	SpotPercentage *int `pulumi:"spotPercentage"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         []OceanTag         `pulumi:"tags"`
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -461,12 +475,15 @@ type OceanArgs struct {
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
-	SpotPercentage pulumi.Float64PtrInput
+	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	SpotPercentage pulumi.IntPtrInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         OceanTagArrayInput
 	UpdatePolicy OceanUpdatePolicyPtrInput
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.

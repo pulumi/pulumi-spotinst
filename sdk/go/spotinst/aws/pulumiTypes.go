@@ -2367,7 +2367,8 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterPort() pulumi.IntPtrOu
 }
 
 type ElastigroupIntegrationDockerSwarmAutoscaleDown struct {
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
+	EvaluationPeriods      *int     `pulumi:"evaluationPeriods"`
+	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
 // ElastigroupIntegrationDockerSwarmAutoscaleDownInput is an input type that accepts ElastigroupIntegrationDockerSwarmAutoscaleDownArgs and ElastigroupIntegrationDockerSwarmAutoscaleDownOutput values.
@@ -2382,7 +2383,8 @@ type ElastigroupIntegrationDockerSwarmAutoscaleDownInput interface {
 }
 
 type ElastigroupIntegrationDockerSwarmAutoscaleDownArgs struct {
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	EvaluationPeriods      pulumi.IntPtrInput     `pulumi:"evaluationPeriods"`
+	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
 func (ElastigroupIntegrationDockerSwarmAutoscaleDownArgs) ElementType() reflect.Type {
@@ -2465,6 +2467,10 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleDownOutput) EvaluationPeriods(
 	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
+func (o ElastigroupIntegrationDockerSwarmAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
+}
+
 type ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) ElementType() reflect.Type {
@@ -2492,6 +2498,15 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) EvaluationPerio
 		}
 		return v.EvaluationPeriods
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarmAutoscaleDown) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxScaleDownPercentage
+	}).(pulumi.Float64PtrOutput)
 }
 
 type ElastigroupIntegrationDockerSwarmAutoscaleHeadroom struct {
@@ -2660,6 +2675,7 @@ type ElastigroupIntegrationEcs struct {
 	AutoscaleIsAutoConfig             *bool                                         `pulumi:"autoscaleIsAutoConfig"`
 	AutoscaleIsEnabled                *bool                                         `pulumi:"autoscaleIsEnabled"`
 	AutoscaleScaleDownNonServiceTasks *bool                                         `pulumi:"autoscaleScaleDownNonServiceTasks"`
+	Batch                             *ElastigroupIntegrationEcsBatch               `pulumi:"batch"`
 	ClusterName                       string                                        `pulumi:"clusterName"`
 }
 
@@ -2682,6 +2698,7 @@ type ElastigroupIntegrationEcsArgs struct {
 	AutoscaleIsAutoConfig             pulumi.BoolPtrInput                                   `pulumi:"autoscaleIsAutoConfig"`
 	AutoscaleIsEnabled                pulumi.BoolPtrInput                                   `pulumi:"autoscaleIsEnabled"`
 	AutoscaleScaleDownNonServiceTasks pulumi.BoolPtrInput                                   `pulumi:"autoscaleScaleDownNonServiceTasks"`
+	Batch                             ElastigroupIntegrationEcsBatchPtrInput                `pulumi:"batch"`
 	ClusterName                       pulumi.StringInput                                    `pulumi:"clusterName"`
 }
 
@@ -2793,6 +2810,10 @@ func (o ElastigroupIntegrationEcsOutput) AutoscaleScaleDownNonServiceTasks() pul
 	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleScaleDownNonServiceTasks }).(pulumi.BoolPtrOutput)
 }
 
+func (o ElastigroupIntegrationEcsOutput) Batch() ElastigroupIntegrationEcsBatchPtrOutput {
+	return o.ApplyT(func(v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsBatch { return v.Batch }).(ElastigroupIntegrationEcsBatchPtrOutput)
+}
+
 func (o ElastigroupIntegrationEcsOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationEcs) string { return v.ClusterName }).(pulumi.StringOutput)
 }
@@ -2876,6 +2897,15 @@ func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleScaleDownNonServiceTasks() 
 		}
 		return v.AutoscaleScaleDownNonServiceTasks
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupIntegrationEcsPtrOutput) Batch() ElastigroupIntegrationEcsBatchPtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsBatch {
+		if v == nil {
+			return nil
+		}
+		return v.Batch
+	}).(ElastigroupIntegrationEcsBatchPtrOutput)
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) ClusterName() pulumi.StringPtrOutput {
@@ -3284,6 +3314,132 @@ func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi
 		}
 		return v.NumOfUnits
 	}).(pulumi.IntPtrOutput)
+}
+
+type ElastigroupIntegrationEcsBatch struct {
+	JobQueueNames []string `pulumi:"jobQueueNames"`
+}
+
+// ElastigroupIntegrationEcsBatchInput is an input type that accepts ElastigroupIntegrationEcsBatchArgs and ElastigroupIntegrationEcsBatchOutput values.
+// You can construct a concrete instance of `ElastigroupIntegrationEcsBatchInput` via:
+//
+//          ElastigroupIntegrationEcsBatchArgs{...}
+type ElastigroupIntegrationEcsBatchInput interface {
+	pulumi.Input
+
+	ToElastigroupIntegrationEcsBatchOutput() ElastigroupIntegrationEcsBatchOutput
+	ToElastigroupIntegrationEcsBatchOutputWithContext(context.Context) ElastigroupIntegrationEcsBatchOutput
+}
+
+type ElastigroupIntegrationEcsBatchArgs struct {
+	JobQueueNames pulumi.StringArrayInput `pulumi:"jobQueueNames"`
+}
+
+func (ElastigroupIntegrationEcsBatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupIntegrationEcsBatch)(nil)).Elem()
+}
+
+func (i ElastigroupIntegrationEcsBatchArgs) ToElastigroupIntegrationEcsBatchOutput() ElastigroupIntegrationEcsBatchOutput {
+	return i.ToElastigroupIntegrationEcsBatchOutputWithContext(context.Background())
+}
+
+func (i ElastigroupIntegrationEcsBatchArgs) ToElastigroupIntegrationEcsBatchOutputWithContext(ctx context.Context) ElastigroupIntegrationEcsBatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationEcsBatchOutput)
+}
+
+func (i ElastigroupIntegrationEcsBatchArgs) ToElastigroupIntegrationEcsBatchPtrOutput() ElastigroupIntegrationEcsBatchPtrOutput {
+	return i.ToElastigroupIntegrationEcsBatchPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupIntegrationEcsBatchArgs) ToElastigroupIntegrationEcsBatchPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationEcsBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationEcsBatchOutput).ToElastigroupIntegrationEcsBatchPtrOutputWithContext(ctx)
+}
+
+// ElastigroupIntegrationEcsBatchPtrInput is an input type that accepts ElastigroupIntegrationEcsBatchArgs, ElastigroupIntegrationEcsBatchPtr and ElastigroupIntegrationEcsBatchPtrOutput values.
+// You can construct a concrete instance of `ElastigroupIntegrationEcsBatchPtrInput` via:
+//
+//          ElastigroupIntegrationEcsBatchArgs{...}
+//
+//  or:
+//
+//          nil
+type ElastigroupIntegrationEcsBatchPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupIntegrationEcsBatchPtrOutput() ElastigroupIntegrationEcsBatchPtrOutput
+	ToElastigroupIntegrationEcsBatchPtrOutputWithContext(context.Context) ElastigroupIntegrationEcsBatchPtrOutput
+}
+
+type elastigroupIntegrationEcsBatchPtrType ElastigroupIntegrationEcsBatchArgs
+
+func ElastigroupIntegrationEcsBatchPtr(v *ElastigroupIntegrationEcsBatchArgs) ElastigroupIntegrationEcsBatchPtrInput {
+	return (*elastigroupIntegrationEcsBatchPtrType)(v)
+}
+
+func (*elastigroupIntegrationEcsBatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupIntegrationEcsBatch)(nil)).Elem()
+}
+
+func (i *elastigroupIntegrationEcsBatchPtrType) ToElastigroupIntegrationEcsBatchPtrOutput() ElastigroupIntegrationEcsBatchPtrOutput {
+	return i.ToElastigroupIntegrationEcsBatchPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupIntegrationEcsBatchPtrType) ToElastigroupIntegrationEcsBatchPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationEcsBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationEcsBatchPtrOutput)
+}
+
+type ElastigroupIntegrationEcsBatchOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupIntegrationEcsBatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupIntegrationEcsBatch)(nil)).Elem()
+}
+
+func (o ElastigroupIntegrationEcsBatchOutput) ToElastigroupIntegrationEcsBatchOutput() ElastigroupIntegrationEcsBatchOutput {
+	return o
+}
+
+func (o ElastigroupIntegrationEcsBatchOutput) ToElastigroupIntegrationEcsBatchOutputWithContext(ctx context.Context) ElastigroupIntegrationEcsBatchOutput {
+	return o
+}
+
+func (o ElastigroupIntegrationEcsBatchOutput) ToElastigroupIntegrationEcsBatchPtrOutput() ElastigroupIntegrationEcsBatchPtrOutput {
+	return o.ToElastigroupIntegrationEcsBatchPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupIntegrationEcsBatchOutput) ToElastigroupIntegrationEcsBatchPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationEcsBatchPtrOutput {
+	return o.ApplyT(func(v ElastigroupIntegrationEcsBatch) *ElastigroupIntegrationEcsBatch {
+		return &v
+	}).(ElastigroupIntegrationEcsBatchPtrOutput)
+}
+func (o ElastigroupIntegrationEcsBatchOutput) JobQueueNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupIntegrationEcsBatch) []string { return v.JobQueueNames }).(pulumi.StringArrayOutput)
+}
+
+type ElastigroupIntegrationEcsBatchPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupIntegrationEcsBatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupIntegrationEcsBatch)(nil)).Elem()
+}
+
+func (o ElastigroupIntegrationEcsBatchPtrOutput) ToElastigroupIntegrationEcsBatchPtrOutput() ElastigroupIntegrationEcsBatchPtrOutput {
+	return o
+}
+
+func (o ElastigroupIntegrationEcsBatchPtrOutput) ToElastigroupIntegrationEcsBatchPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationEcsBatchPtrOutput {
+	return o
+}
+
+func (o ElastigroupIntegrationEcsBatchPtrOutput) Elem() ElastigroupIntegrationEcsBatchOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsBatch) ElastigroupIntegrationEcsBatch { return *v }).(ElastigroupIntegrationEcsBatchOutput)
+}
+
+func (o ElastigroupIntegrationEcsBatchPtrOutput) JobQueueNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsBatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JobQueueNames
+	}).(pulumi.StringArrayOutput)
 }
 
 type ElastigroupIntegrationGitlab struct {
@@ -5582,6 +5738,156 @@ func (o ElastigroupIntegrationRoute53DomainRecordSetArrayOutput) Index(i pulumi.
 	}).(ElastigroupIntegrationRoute53DomainRecordSetOutput)
 }
 
+type ElastigroupMetadataOptions struct {
+	// The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
+	// The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+	HttpTokens string `pulumi:"httpTokens"`
+}
+
+// ElastigroupMetadataOptionsInput is an input type that accepts ElastigroupMetadataOptionsArgs and ElastigroupMetadataOptionsOutput values.
+// You can construct a concrete instance of `ElastigroupMetadataOptionsInput` via:
+//
+//          ElastigroupMetadataOptionsArgs{...}
+type ElastigroupMetadataOptionsInput interface {
+	pulumi.Input
+
+	ToElastigroupMetadataOptionsOutput() ElastigroupMetadataOptionsOutput
+	ToElastigroupMetadataOptionsOutputWithContext(context.Context) ElastigroupMetadataOptionsOutput
+}
+
+type ElastigroupMetadataOptionsArgs struct {
+	// The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+	HttpPutResponseHopLimit pulumi.IntPtrInput `pulumi:"httpPutResponseHopLimit"`
+	// The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+	HttpTokens pulumi.StringInput `pulumi:"httpTokens"`
+}
+
+func (ElastigroupMetadataOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupMetadataOptions)(nil)).Elem()
+}
+
+func (i ElastigroupMetadataOptionsArgs) ToElastigroupMetadataOptionsOutput() ElastigroupMetadataOptionsOutput {
+	return i.ToElastigroupMetadataOptionsOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMetadataOptionsArgs) ToElastigroupMetadataOptionsOutputWithContext(ctx context.Context) ElastigroupMetadataOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMetadataOptionsOutput)
+}
+
+func (i ElastigroupMetadataOptionsArgs) ToElastigroupMetadataOptionsPtrOutput() ElastigroupMetadataOptionsPtrOutput {
+	return i.ToElastigroupMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMetadataOptionsArgs) ToElastigroupMetadataOptionsPtrOutputWithContext(ctx context.Context) ElastigroupMetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMetadataOptionsOutput).ToElastigroupMetadataOptionsPtrOutputWithContext(ctx)
+}
+
+// ElastigroupMetadataOptionsPtrInput is an input type that accepts ElastigroupMetadataOptionsArgs, ElastigroupMetadataOptionsPtr and ElastigroupMetadataOptionsPtrOutput values.
+// You can construct a concrete instance of `ElastigroupMetadataOptionsPtrInput` via:
+//
+//          ElastigroupMetadataOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ElastigroupMetadataOptionsPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupMetadataOptionsPtrOutput() ElastigroupMetadataOptionsPtrOutput
+	ToElastigroupMetadataOptionsPtrOutputWithContext(context.Context) ElastigroupMetadataOptionsPtrOutput
+}
+
+type elastigroupMetadataOptionsPtrType ElastigroupMetadataOptionsArgs
+
+func ElastigroupMetadataOptionsPtr(v *ElastigroupMetadataOptionsArgs) ElastigroupMetadataOptionsPtrInput {
+	return (*elastigroupMetadataOptionsPtrType)(v)
+}
+
+func (*elastigroupMetadataOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupMetadataOptions)(nil)).Elem()
+}
+
+func (i *elastigroupMetadataOptionsPtrType) ToElastigroupMetadataOptionsPtrOutput() ElastigroupMetadataOptionsPtrOutput {
+	return i.ToElastigroupMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupMetadataOptionsPtrType) ToElastigroupMetadataOptionsPtrOutputWithContext(ctx context.Context) ElastigroupMetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMetadataOptionsPtrOutput)
+}
+
+type ElastigroupMetadataOptionsOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMetadataOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupMetadataOptions)(nil)).Elem()
+}
+
+func (o ElastigroupMetadataOptionsOutput) ToElastigroupMetadataOptionsOutput() ElastigroupMetadataOptionsOutput {
+	return o
+}
+
+func (o ElastigroupMetadataOptionsOutput) ToElastigroupMetadataOptionsOutputWithContext(ctx context.Context) ElastigroupMetadataOptionsOutput {
+	return o
+}
+
+func (o ElastigroupMetadataOptionsOutput) ToElastigroupMetadataOptionsPtrOutput() ElastigroupMetadataOptionsPtrOutput {
+	return o.ToElastigroupMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupMetadataOptionsOutput) ToElastigroupMetadataOptionsPtrOutputWithContext(ctx context.Context) ElastigroupMetadataOptionsPtrOutput {
+	return o.ApplyT(func(v ElastigroupMetadataOptions) *ElastigroupMetadataOptions {
+		return &v
+	}).(ElastigroupMetadataOptionsPtrOutput)
+}
+
+// The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+func (o ElastigroupMetadataOptionsOutput) HttpPutResponseHopLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupMetadataOptions) *int { return v.HttpPutResponseHopLimit }).(pulumi.IntPtrOutput)
+}
+
+// The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+func (o ElastigroupMetadataOptionsOutput) HttpTokens() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupMetadataOptions) string { return v.HttpTokens }).(pulumi.StringOutput)
+}
+
+type ElastigroupMetadataOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMetadataOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupMetadataOptions)(nil)).Elem()
+}
+
+func (o ElastigroupMetadataOptionsPtrOutput) ToElastigroupMetadataOptionsPtrOutput() ElastigroupMetadataOptionsPtrOutput {
+	return o
+}
+
+func (o ElastigroupMetadataOptionsPtrOutput) ToElastigroupMetadataOptionsPtrOutputWithContext(ctx context.Context) ElastigroupMetadataOptionsPtrOutput {
+	return o
+}
+
+func (o ElastigroupMetadataOptionsPtrOutput) Elem() ElastigroupMetadataOptionsOutput {
+	return o.ApplyT(func(v *ElastigroupMetadataOptions) ElastigroupMetadataOptions { return *v }).(ElastigroupMetadataOptionsOutput)
+}
+
+// The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+func (o ElastigroupMetadataOptionsPtrOutput) HttpPutResponseHopLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupMetadataOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPutResponseHopLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+func (o ElastigroupMetadataOptionsPtrOutput) HttpTokens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupMetadataOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpTokens
+	}).(pulumi.StringPtrOutput)
+}
+
 type ElastigroupMultaiTargetSet struct {
 	BalancerId  string `pulumi:"balancerId"`
 	TargetSetId string `pulumi:"targetSetId"`
@@ -5991,7 +6297,7 @@ type ElastigroupScalingDownPolicy struct {
 	Statistic         *string                                 `pulumi:"statistic"`
 	Target            *string                                 `pulumi:"target"`
 	Threshold         float64                                 `pulumi:"threshold"`
-	Unit              string                                  `pulumi:"unit"`
+	Unit              *string                                 `pulumi:"unit"`
 }
 
 // ElastigroupScalingDownPolicyInput is an input type that accepts ElastigroupScalingDownPolicyArgs and ElastigroupScalingDownPolicyOutput values.
@@ -6025,7 +6331,7 @@ type ElastigroupScalingDownPolicyArgs struct {
 	Statistic         pulumi.StringPtrInput                           `pulumi:"statistic"`
 	Target            pulumi.StringPtrInput                           `pulumi:"target"`
 	Threshold         pulumi.Float64Input                             `pulumi:"threshold"`
-	Unit              pulumi.StringInput                              `pulumi:"unit"`
+	Unit              pulumi.StringPtrInput                           `pulumi:"unit"`
 }
 
 func (ElastigroupScalingDownPolicyArgs) ElementType() reflect.Type {
@@ -6155,8 +6461,8 @@ func (o ElastigroupScalingDownPolicyOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
-func (o ElastigroupScalingDownPolicyOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.Unit }).(pulumi.StringOutput)
+func (o ElastigroupScalingDownPolicyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupScalingDownPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -6399,7 +6705,7 @@ type ElastigroupScalingTargetPolicy struct {
 	Source              *string                                   `pulumi:"source"`
 	Statistic           *string                                   `pulumi:"statistic"`
 	Target              float64                                   `pulumi:"target"`
-	Unit                string                                    `pulumi:"unit"`
+	Unit                *string                                   `pulumi:"unit"`
 }
 
 // ElastigroupScalingTargetPolicyInput is an input type that accepts ElastigroupScalingTargetPolicyArgs and ElastigroupScalingTargetPolicyOutput values.
@@ -6424,7 +6730,7 @@ type ElastigroupScalingTargetPolicyArgs struct {
 	Source              pulumi.StringPtrInput                             `pulumi:"source"`
 	Statistic           pulumi.StringPtrInput                             `pulumi:"statistic"`
 	Target              pulumi.Float64Input                               `pulumi:"target"`
-	Unit                pulumi.StringInput                                `pulumi:"unit"`
+	Unit                pulumi.StringPtrInput                             `pulumi:"unit"`
 }
 
 func (ElastigroupScalingTargetPolicyArgs) ElementType() reflect.Type {
@@ -6518,8 +6824,8 @@ func (o ElastigroupScalingTargetPolicyOutput) Target() pulumi.Float64Output {
 	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) float64 { return v.Target }).(pulumi.Float64Output)
 }
 
-func (o ElastigroupScalingTargetPolicyOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) string { return v.Unit }).(pulumi.StringOutput)
+func (o ElastigroupScalingTargetPolicyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupScalingTargetPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -6665,7 +6971,7 @@ type ElastigroupScalingUpPolicy struct {
 	Statistic         *string                               `pulumi:"statistic"`
 	Target            *string                               `pulumi:"target"`
 	Threshold         float64                               `pulumi:"threshold"`
-	Unit              string                                `pulumi:"unit"`
+	Unit              *string                               `pulumi:"unit"`
 }
 
 // ElastigroupScalingUpPolicyInput is an input type that accepts ElastigroupScalingUpPolicyArgs and ElastigroupScalingUpPolicyOutput values.
@@ -6699,7 +7005,7 @@ type ElastigroupScalingUpPolicyArgs struct {
 	Statistic         pulumi.StringPtrInput                         `pulumi:"statistic"`
 	Target            pulumi.StringPtrInput                         `pulumi:"target"`
 	Threshold         pulumi.Float64Input                           `pulumi:"threshold"`
-	Unit              pulumi.StringInput                            `pulumi:"unit"`
+	Unit              pulumi.StringPtrInput                         `pulumi:"unit"`
 }
 
 func (ElastigroupScalingUpPolicyArgs) ElementType() reflect.Type {
@@ -6829,8 +7135,8 @@ func (o ElastigroupScalingUpPolicyOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
-func (o ElastigroupScalingUpPolicyOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) string { return v.Unit }).(pulumi.StringOutput)
+func (o ElastigroupScalingUpPolicyOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
 type ElastigroupScalingUpPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -13353,6 +13659,103 @@ func (o OceanLaunchSpecResourceLimitArrayOutput) Index(i pulumi.IntInput) OceanL
 	}).(OceanLaunchSpecResourceLimitOutput)
 }
 
+type OceanLaunchSpecStrategy struct {
+	// When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+	SpotPercentage *int `pulumi:"spotPercentage"`
+}
+
+// OceanLaunchSpecStrategyInput is an input type that accepts OceanLaunchSpecStrategyArgs and OceanLaunchSpecStrategyOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecStrategyInput` via:
+//
+//          OceanLaunchSpecStrategyArgs{...}
+type OceanLaunchSpecStrategyInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecStrategyOutput() OceanLaunchSpecStrategyOutput
+	ToOceanLaunchSpecStrategyOutputWithContext(context.Context) OceanLaunchSpecStrategyOutput
+}
+
+type OceanLaunchSpecStrategyArgs struct {
+	// When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+	SpotPercentage pulumi.IntPtrInput `pulumi:"spotPercentage"`
+}
+
+func (OceanLaunchSpecStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecStrategy)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecStrategyArgs) ToOceanLaunchSpecStrategyOutput() OceanLaunchSpecStrategyOutput {
+	return i.ToOceanLaunchSpecStrategyOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecStrategyArgs) ToOceanLaunchSpecStrategyOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStrategyOutput)
+}
+
+// OceanLaunchSpecStrategyArrayInput is an input type that accepts OceanLaunchSpecStrategyArray and OceanLaunchSpecStrategyArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecStrategyArrayInput` via:
+//
+//          OceanLaunchSpecStrategyArray{ OceanLaunchSpecStrategyArgs{...} }
+type OceanLaunchSpecStrategyArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecStrategyArrayOutput() OceanLaunchSpecStrategyArrayOutput
+	ToOceanLaunchSpecStrategyArrayOutputWithContext(context.Context) OceanLaunchSpecStrategyArrayOutput
+}
+
+type OceanLaunchSpecStrategyArray []OceanLaunchSpecStrategyInput
+
+func (OceanLaunchSpecStrategyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecStrategy)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecStrategyArray) ToOceanLaunchSpecStrategyArrayOutput() OceanLaunchSpecStrategyArrayOutput {
+	return i.ToOceanLaunchSpecStrategyArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecStrategyArray) ToOceanLaunchSpecStrategyArrayOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStrategyArrayOutput)
+}
+
+type OceanLaunchSpecStrategyOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecStrategy)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecStrategyOutput) ToOceanLaunchSpecStrategyOutput() OceanLaunchSpecStrategyOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStrategyOutput) ToOceanLaunchSpecStrategyOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOutput {
+	return o
+}
+
+// When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+func (o OceanLaunchSpecStrategyOutput) SpotPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStrategy) *int { return v.SpotPercentage }).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecStrategyArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecStrategyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecStrategy)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecStrategyArrayOutput) ToOceanLaunchSpecStrategyArrayOutput() OceanLaunchSpecStrategyArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStrategyArrayOutput) ToOceanLaunchSpecStrategyArrayOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStrategyArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecStrategyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecStrategy {
+		return vs[0].([]OceanLaunchSpecStrategy)[vs[1].(int)]
+	}).(OceanLaunchSpecStrategyOutput)
+}
+
 type OceanLaunchSpecTag struct {
 	// The tag key.
 	Key string `pulumi:"key"`
@@ -14409,6 +14812,103 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+type SuspensionSuspension struct {
+	// The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
+	Name string `pulumi:"name"`
+}
+
+// SuspensionSuspensionInput is an input type that accepts SuspensionSuspensionArgs and SuspensionSuspensionOutput values.
+// You can construct a concrete instance of `SuspensionSuspensionInput` via:
+//
+//          SuspensionSuspensionArgs{...}
+type SuspensionSuspensionInput interface {
+	pulumi.Input
+
+	ToSuspensionSuspensionOutput() SuspensionSuspensionOutput
+	ToSuspensionSuspensionOutputWithContext(context.Context) SuspensionSuspensionOutput
+}
+
+type SuspensionSuspensionArgs struct {
+	// The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SuspensionSuspensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuspensionSuspension)(nil)).Elem()
+}
+
+func (i SuspensionSuspensionArgs) ToSuspensionSuspensionOutput() SuspensionSuspensionOutput {
+	return i.ToSuspensionSuspensionOutputWithContext(context.Background())
+}
+
+func (i SuspensionSuspensionArgs) ToSuspensionSuspensionOutputWithContext(ctx context.Context) SuspensionSuspensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuspensionSuspensionOutput)
+}
+
+// SuspensionSuspensionArrayInput is an input type that accepts SuspensionSuspensionArray and SuspensionSuspensionArrayOutput values.
+// You can construct a concrete instance of `SuspensionSuspensionArrayInput` via:
+//
+//          SuspensionSuspensionArray{ SuspensionSuspensionArgs{...} }
+type SuspensionSuspensionArrayInput interface {
+	pulumi.Input
+
+	ToSuspensionSuspensionArrayOutput() SuspensionSuspensionArrayOutput
+	ToSuspensionSuspensionArrayOutputWithContext(context.Context) SuspensionSuspensionArrayOutput
+}
+
+type SuspensionSuspensionArray []SuspensionSuspensionInput
+
+func (SuspensionSuspensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SuspensionSuspension)(nil)).Elem()
+}
+
+func (i SuspensionSuspensionArray) ToSuspensionSuspensionArrayOutput() SuspensionSuspensionArrayOutput {
+	return i.ToSuspensionSuspensionArrayOutputWithContext(context.Background())
+}
+
+func (i SuspensionSuspensionArray) ToSuspensionSuspensionArrayOutputWithContext(ctx context.Context) SuspensionSuspensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuspensionSuspensionArrayOutput)
+}
+
+type SuspensionSuspensionOutput struct{ *pulumi.OutputState }
+
+func (SuspensionSuspensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuspensionSuspension)(nil)).Elem()
+}
+
+func (o SuspensionSuspensionOutput) ToSuspensionSuspensionOutput() SuspensionSuspensionOutput {
+	return o
+}
+
+func (o SuspensionSuspensionOutput) ToSuspensionSuspensionOutputWithContext(ctx context.Context) SuspensionSuspensionOutput {
+	return o
+}
+
+// The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
+func (o SuspensionSuspensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SuspensionSuspension) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SuspensionSuspensionArrayOutput struct{ *pulumi.OutputState }
+
+func (SuspensionSuspensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SuspensionSuspension)(nil)).Elem()
+}
+
+func (o SuspensionSuspensionArrayOutput) ToSuspensionSuspensionArrayOutput() SuspensionSuspensionArrayOutput {
+	return o
+}
+
+func (o SuspensionSuspensionArrayOutput) ToSuspensionSuspensionArrayOutputWithContext(ctx context.Context) SuspensionSuspensionArrayOutput {
+	return o
+}
+
+func (o SuspensionSuspensionArrayOutput) Index(i pulumi.IntInput) SuspensionSuspensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SuspensionSuspension {
+		return vs[0].([]SuspensionSuspension)[vs[1].(int)]
+	}).(SuspensionSuspensionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BeanstalkDeploymentPreferencesOutput{})
 	pulumi.RegisterOutputType(BeanstalkDeploymentPreferencesPtrOutput{})
@@ -14454,6 +14954,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupIntegrationEcsAutoscaleDownPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationEcsAutoscaleHeadroomOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupIntegrationEcsBatchOutput{})
+	pulumi.RegisterOutputType(ElastigroupIntegrationEcsBatchPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationGitlabOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationGitlabPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationGitlabRunnerOutput{})
@@ -14486,6 +14988,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupIntegrationRoute53DomainArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationRoute53DomainRecordSetOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationRoute53DomainRecordSetArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupMetadataOptionsOutput{})
+	pulumi.RegisterOutputType(ElastigroupMetadataOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupMultaiTargetSetOutput{})
 	pulumi.RegisterOutputType(ElastigroupMultaiTargetSetArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupNetworkInterfaceOutput{})
@@ -14596,6 +15100,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecStrategyOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecStrategyArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTaintOutput{})
@@ -14614,4 +15120,6 @@ func init() {
 	pulumi.RegisterOutputType(OceanUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(OceanUpdatePolicyRollConfigOutput{})
 	pulumi.RegisterOutputType(OceanUpdatePolicyRollConfigPtrOutput{})
+	pulumi.RegisterOutputType(SuspensionSuspensionOutput{})
+	pulumi.RegisterOutputType(SuspensionSuspensionArrayOutput{})
 }

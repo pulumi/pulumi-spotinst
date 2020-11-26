@@ -29,6 +29,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
@@ -101,6 +102,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             root_volume_size=30,
             security_groups=["sg-987654321"],
+            strategies=[spotinst.aws.OceanLaunchSpecStrategyArgs(
+                spot_percentage=70,
+            )],
             subnet_ids=["subnet-1234"],
             tags=[spotinst.aws.OceanLaunchSpecTagArgs(
                 key="Env",
@@ -163,6 +167,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__['resource_limits'] = resource_limits
             __props__['root_volume_size'] = root_volume_size
             __props__['security_groups'] = security_groups
+            __props__['strategies'] = strategies
             __props__['subnet_ids'] = subnet_ids
             __props__['tags'] = tags
             __props__['taints'] = taints
@@ -189,6 +194,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
             root_volume_size: Optional[pulumi.Input[int]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
@@ -232,6 +238,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["resource_limits"] = resource_limits
         __props__["root_volume_size"] = root_volume_size
         __props__["security_groups"] = security_groups
+        __props__["strategies"] = strategies
         __props__["subnet_ids"] = subnet_ids
         __props__["tags"] = tags
         __props__["taints"] = taints
@@ -330,6 +337,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Optionally adds security group IDs.
         """
         return pulumi.get(self, "security_groups")
+
+    @property
+    @pulumi.getter
+    def strategies(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecStrategy']]]:
+        return pulumi.get(self, "strategies")
 
     @property
     @pulumi.getter(name="subnetIds")

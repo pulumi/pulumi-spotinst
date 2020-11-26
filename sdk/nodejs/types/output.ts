@@ -193,6 +193,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleDown {
         evaluationPeriods?: number;
+        maxScaleDownPercentage?: number;
     }
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
@@ -209,6 +210,7 @@ export namespace aws {
         autoscaleIsAutoConfig?: boolean;
         autoscaleIsEnabled?: boolean;
         autoscaleScaleDownNonServiceTasks?: boolean;
+        batch?: outputs.aws.ElastigroupIntegrationEcsBatch;
         clusterName: string;
     }
 
@@ -226,6 +228,10 @@ export namespace aws {
         cpuPerUnit?: number;
         memoryPerUnit?: number;
         numOfUnits?: number;
+    }
+
+    export interface ElastigroupIntegrationEcsBatch {
+        jobQueueNames: string[];
     }
 
     export interface ElastigroupIntegrationGitlab {
@@ -325,6 +331,17 @@ export namespace aws {
         usePublicIp?: boolean;
     }
 
+    export interface ElastigroupMetadataOptions {
+        /**
+         * The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+         */
+        httpPutResponseHopLimit?: number;
+        /**
+         * The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+         */
+        httpTokens: string;
+    }
+
     export interface ElastigroupMultaiTargetSet {
         balancerId: string;
         targetSetId: string;
@@ -358,7 +375,7 @@ export namespace aws {
     export interface ElastigroupScalingDownPolicy {
         actionType?: string;
         adjustment?: string;
-        cooldown: number;
+        cooldown?: number;
         dimensions?: outputs.aws.ElastigroupScalingDownPolicyDimension[];
         evaluationPeriods: number;
         isEnabled?: boolean;
@@ -372,10 +389,10 @@ export namespace aws {
         period: number;
         policyName: string;
         source: string;
-        statistic: string;
+        statistic?: string;
         target?: string;
         threshold: number;
-        unit: string;
+        unit?: string;
     }
 
     export interface ElastigroupScalingDownPolicyDimension {
@@ -398,7 +415,7 @@ export namespace aws {
     }
 
     export interface ElastigroupScalingTargetPolicy {
-        cooldown: number;
+        cooldown?: number;
         dimensions?: outputs.aws.ElastigroupScalingTargetPolicyDimension[];
         maxCapacityPerScale?: string;
         metricName: string;
@@ -406,9 +423,9 @@ export namespace aws {
         policyName: string;
         predictiveMode?: string;
         source: string;
-        statistic: string;
+        statistic?: string;
         target: number;
-        unit: string;
+        unit?: string;
     }
 
     export interface ElastigroupScalingTargetPolicyDimension {
@@ -422,7 +439,7 @@ export namespace aws {
     export interface ElastigroupScalingUpPolicy {
         actionType?: string;
         adjustment?: string;
-        cooldown: number;
+        cooldown?: number;
         dimensions?: outputs.aws.ElastigroupScalingUpPolicyDimension[];
         evaluationPeriods: number;
         isEnabled?: boolean;
@@ -436,10 +453,10 @@ export namespace aws {
         period: number;
         policyName: string;
         source: string;
-        statistic: string;
+        statistic?: string;
         target?: string;
         threshold: number;
-        unit: string;
+        unit?: string;
     }
 
     export interface ElastigroupScalingUpPolicyDimension {
@@ -1028,6 +1045,13 @@ export namespace aws {
         maxInstanceCount?: number;
     }
 
+    export interface OceanLaunchSpecStrategy {
+        /**
+         * When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+         */
+        spotPercentage?: number;
+    }
+
     export interface OceanLaunchSpecTag {
         /**
          * The tag key.
@@ -1103,6 +1127,13 @@ export namespace aws {
 
     export interface OceanUpdatePolicyRollConfig {
         batchSizePercentage: number;
+    }
+
+    export interface SuspensionSuspension {
+        /**
+         * The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
+         */
+        name: string;
     }
 }
 
@@ -1306,6 +1337,72 @@ export namespace ecs {
         maxVcpu?: number;
     }
 
+    export interface OceanBlockDeviceMapping {
+        /**
+         * String. Set device name. Example: `/dev/xvda1`.
+         */
+        deviceName: string;
+        /**
+         * Object. Set Elastic Block Store properties.
+         */
+        ebs?: outputs.ecs.OceanBlockDeviceMappingEbs;
+        /**
+         * String. Suppresses the specified device included in the block device mapping of the AMI.
+         */
+        noDevice?: string;
+        virtualName?: string;
+    }
+
+    export interface OceanBlockDeviceMappingEbs {
+        /**
+         * Boolean. Toggles EBS deletion upon instance termination.
+         */
+        deleteOnTermination: boolean;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
+        dynamicVolumeSize?: outputs.ecs.OceanBlockDeviceMappingEbsDynamicVolumeSize;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
+        encrypted: boolean;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
+        iops?: number;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
+        kmsKeyId?: string;
+        /**
+         * (Optional) String. The snapshot ID to mount by.
+         */
+        snapshotId?: string;
+        /**
+         * Int. The size (in GB) of the volume.
+         */
+        volumeSize?: number;
+        /**
+         * String. The type of the volume. Example: `gp2`.
+         */
+        volumeType: string;
+    }
+
+    export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. Example: `50`.
+         */
+        baseSize: number;
+        /**
+         * String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
+         */
+        resource: string;
+        /**
+         * Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
+         */
+        sizePerResourceUnit: number;
+    }
+
     export interface OceanLaunchSpecAttribute {
         /**
          * The label key.
@@ -1330,6 +1427,72 @@ export namespace ecs {
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
         numOfUnits: number;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMapping {
+        /**
+         * String. Set device name. (Example: "/dev/xvda1").
+         */
+        deviceName: string;
+        /**
+         * Object. Set Elastic Block Store properties .
+         */
+        ebs?: outputs.ecs.OceanLaunchSpecBlockDeviceMappingEbs;
+        /**
+         * String. suppresses the specified device included in the block device mapping of the AMI.
+         */
+        noDevice?: string;
+        virtualName?: string;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
+        deleteOnTermination: boolean;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
+        dynamicVolumeSize?: outputs.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
+        encrypted: boolean;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
+        iops?: number;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
+        kmsKeyId?: string;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
+        snapshotId?: string;
+        /**
+         * Int. The size, in GB of the volume.
+         */
+        volumeSize?: number;
+        /**
+         * String. The type of the volume (example: "gp2").
+         */
+        volumeType: string;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
+        baseSize: number;
+        /**
+         * String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+         */
+        resource: string;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+         */
+        sizePerResourceUnit: number;
     }
 
     export interface OceanLaunchSpecTag {

@@ -106,6 +106,13 @@ namespace Pulumi.SpotInst.Aws
     ///             {
     ///                 "sg-987654321",
     ///             },
+    ///             Strategies = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecStrategyArgs
+    ///                 {
+    ///                     SpotPercentage = 70,
+    ///                 },
+    ///             },
     ///             SubnetIds = 
     ///             {
     ///                 "subnet-1234",
@@ -204,6 +211,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
+
+        [Output("strategies")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecStrategy>> Strategies { get; private set; } = null!;
 
         /// <summary>
         /// Set subnets in launchSpec. Each element in array should be subnet ID.
@@ -385,6 +395,14 @@ namespace Pulumi.SpotInst.Aws
             set => _securityGroups = value;
         }
 
+        [Input("strategies")]
+        private InputList<Inputs.OceanLaunchSpecStrategyArgs>? _strategies;
+        public InputList<Inputs.OceanLaunchSpecStrategyArgs> Strategies
+        {
+            get => _strategies ?? (_strategies = new InputList<Inputs.OceanLaunchSpecStrategyArgs>());
+            set => _strategies = value;
+        }
+
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
 
@@ -542,6 +560,14 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
+        }
+
+        [Input("strategies")]
+        private InputList<Inputs.OceanLaunchSpecStrategyGetArgs>? _strategies;
+        public InputList<Inputs.OceanLaunchSpecStrategyGetArgs> Strategies
+        {
+            get => _strategies ?? (_strategies = new InputList<Inputs.OceanLaunchSpecStrategyGetArgs>());
+            set => _strategies = value;
         }
 
         [Input("subnetIds")]

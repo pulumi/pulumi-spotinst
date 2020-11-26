@@ -193,6 +193,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleDown {
         evaluationPeriods?: pulumi.Input<number>;
+        maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
@@ -209,6 +210,7 @@ export namespace aws {
         autoscaleIsAutoConfig?: pulumi.Input<boolean>;
         autoscaleIsEnabled?: pulumi.Input<boolean>;
         autoscaleScaleDownNonServiceTasks?: pulumi.Input<boolean>;
+        batch?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsBatch>;
         clusterName: pulumi.Input<string>;
     }
 
@@ -226,6 +228,10 @@ export namespace aws {
         cpuPerUnit?: pulumi.Input<number>;
         memoryPerUnit?: pulumi.Input<number>;
         numOfUnits?: pulumi.Input<number>;
+    }
+
+    export interface ElastigroupIntegrationEcsBatch {
+        jobQueueNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ElastigroupIntegrationGitlab {
@@ -325,6 +331,17 @@ export namespace aws {
         usePublicIp?: pulumi.Input<boolean>;
     }
 
+    export interface ElastigroupMetadataOptions {
+        /**
+         * The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+         */
+        httpPutResponseHopLimit?: pulumi.Input<number>;
+        /**
+         * The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+         */
+        httpTokens: pulumi.Input<string>;
+    }
+
     export interface ElastigroupMultaiTargetSet {
         balancerId: pulumi.Input<string>;
         targetSetId: pulumi.Input<string>;
@@ -375,7 +392,7 @@ export namespace aws {
         statistic?: pulumi.Input<string>;
         target?: pulumi.Input<string>;
         threshold: pulumi.Input<number>;
-        unit: pulumi.Input<string>;
+        unit?: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingDownPolicyDimension {
@@ -408,7 +425,7 @@ export namespace aws {
         source?: pulumi.Input<string>;
         statistic?: pulumi.Input<string>;
         target: pulumi.Input<number>;
-        unit: pulumi.Input<string>;
+        unit?: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingTargetPolicyDimension {
@@ -439,7 +456,7 @@ export namespace aws {
         statistic?: pulumi.Input<string>;
         target?: pulumi.Input<string>;
         threshold: pulumi.Input<number>;
-        unit: pulumi.Input<string>;
+        unit?: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingUpPolicyDimension {
@@ -1028,6 +1045,13 @@ export namespace aws {
         maxInstanceCount?: pulumi.Input<number>;
     }
 
+    export interface OceanLaunchSpecStrategy {
+        /**
+         * When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+         */
+        spotPercentage?: pulumi.Input<number>;
+    }
+
     export interface OceanLaunchSpecTag {
         /**
          * The tag key.
@@ -1103,6 +1127,13 @@ export namespace aws {
 
     export interface OceanUpdatePolicyRollConfig {
         batchSizePercentage: pulumi.Input<number>;
+    }
+
+    export interface SuspensionSuspension {
+        /**
+         * The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
+         */
+        name: pulumi.Input<string>;
     }
 }
 
@@ -1306,6 +1337,72 @@ export namespace ecs {
         maxVcpu?: pulumi.Input<number>;
     }
 
+    export interface OceanBlockDeviceMapping {
+        /**
+         * String. Set device name. Example: `/dev/xvda1`.
+         */
+        deviceName: pulumi.Input<string>;
+        /**
+         * Object. Set Elastic Block Store properties.
+         */
+        ebs?: pulumi.Input<inputs.ecs.OceanBlockDeviceMappingEbs>;
+        /**
+         * String. Suppresses the specified device included in the block device mapping of the AMI.
+         */
+        noDevice?: pulumi.Input<string>;
+        virtualName?: pulumi.Input<string>;
+    }
+
+    export interface OceanBlockDeviceMappingEbs {
+        /**
+         * Boolean. Toggles EBS deletion upon instance termination.
+         */
+        deleteOnTermination?: pulumi.Input<boolean>;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
+        dynamicVolumeSize?: pulumi.Input<inputs.ecs.OceanBlockDeviceMappingEbsDynamicVolumeSize>;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
+        encrypted?: pulumi.Input<boolean>;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
+        iops?: pulumi.Input<number>;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
+        kmsKeyId?: pulumi.Input<string>;
+        /**
+         * (Optional) String. The snapshot ID to mount by.
+         */
+        snapshotId?: pulumi.Input<string>;
+        /**
+         * Int. The size (in GB) of the volume.
+         */
+        volumeSize?: pulumi.Input<number>;
+        /**
+         * String. The type of the volume. Example: `gp2`.
+         */
+        volumeType?: pulumi.Input<string>;
+    }
+
+    export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. Example: `50`.
+         */
+        baseSize: pulumi.Input<number>;
+        /**
+         * String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
+         */
+        resource: pulumi.Input<string>;
+        /**
+         * Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
+         */
+        sizePerResourceUnit: pulumi.Input<number>;
+    }
+
     export interface OceanLaunchSpecAttribute {
         /**
          * The label key.
@@ -1330,6 +1427,72 @@ export namespace ecs {
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
         numOfUnits: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMapping {
+        /**
+         * String. Set device name. (Example: "/dev/xvda1").
+         */
+        deviceName: pulumi.Input<string>;
+        /**
+         * Object. Set Elastic Block Store properties .
+         */
+        ebs?: pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMappingEbs>;
+        /**
+         * String. suppresses the specified device included in the block device mapping of the AMI.
+         */
+        noDevice?: pulumi.Input<string>;
+        virtualName?: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
+        deleteOnTermination?: pulumi.Input<boolean>;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
+        dynamicVolumeSize?: pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize>;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
+        encrypted?: pulumi.Input<boolean>;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
+        iops?: pulumi.Input<number>;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
+        kmsKeyId?: pulumi.Input<string>;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
+        snapshotId?: pulumi.Input<string>;
+        /**
+         * Int. The size, in GB of the volume.
+         */
+        volumeSize?: pulumi.Input<number>;
+        /**
+         * String. The type of the volume (example: "gp2").
+         */
+        volumeType?: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
+        baseSize: pulumi.Input<number>;
+        /**
+         * String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+         */
+        resource: pulumi.Input<string>;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+         */
+        sizePerResourceUnit: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecTag {

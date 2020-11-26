@@ -16,6 +16,20 @@ import * as utilities from "../utilities";
  *
  * const example = new spotinst.ecs.Ocean("example", {
  *     associatePublicIpAddress: false,
+ *     blockDeviceMappings: [{
+ *         deviceName: "/dev/xvda1",
+ *         ebs: {
+ *             deleteOnTermination: true,
+ *             dynamicVolumeSize: {
+ *                 baseSize: 50,
+ *                 resource: "CPU",
+ *                 sizePerResourceUnit: 20,
+ *             },
+ *             encrypted: false,
+ *             volumeSize: 50,
+ *             volumeType: "gp2",
+ *         },
+ *     }],
  *     clusterName: "terraform-ecs-cluster",
  *     desiredCapacity: 0,
  *     drainingTimeout: 120,
@@ -49,7 +63,7 @@ import * as utilities from "../utilities";
  *         * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
  *         * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
  *     * `down` - (Optional) Auto Scaling scale down operations.
- *         * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100
+ *         * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
  *     * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
  *         * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
  *         * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
@@ -76,15 +90,11 @@ import * as utilities from "../utilities";
  * * `scheduledTask` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
  *     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
  *         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
- *                                      Example: True
- *         * `timeWindows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
- *                                       Example: Fri:15:30-Wed:14:30
+ *         * `timeWindows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
  *     * `tasks` - (Optional) The scheduling tasks for the cluster.
- *         * `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
- *         * `cronExpression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
- *                                          Example: 0 1 * * *.
- *         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
- *                                    Example: clusterRoll.
+ *         * `isEnabled` - (Required) Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+ *         * `cronExpression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+ *         * `taskType` - (Required) Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -124,6 +134,10 @@ export class Ocean extends pulumi.CustomResource {
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
     public readonly autoscaler!: pulumi.Output<outputs.ecs.OceanAutoscaler | undefined>;
     /**
+     * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    public readonly blockDeviceMappings!: pulumi.Output<outputs.ecs.OceanBlockDeviceMapping[] | undefined>;
+    /**
      * The ocean cluster name.
      */
     public readonly clusterName!: pulumi.Output<string>;
@@ -160,7 +174,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
     public readonly monitoring!: pulumi.Output<boolean | undefined>;
     /**
@@ -190,7 +204,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
-     * If Reserved instances exist, OCean will utilize them before launching Spot instances.
+     * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
     public readonly utilizeReservedInstances!: pulumi.Output<boolean | undefined>;
     /**
@@ -212,6 +226,7 @@ export class Ocean extends pulumi.CustomResource {
             const state = argsOrState as OceanState | undefined;
             inputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
             inputs["autoscaler"] = state ? state.autoscaler : undefined;
+            inputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             inputs["clusterName"] = state ? state.clusterName : undefined;
             inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             inputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
@@ -248,6 +263,7 @@ export class Ocean extends pulumi.CustomResource {
             }
             inputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
             inputs["autoscaler"] = args ? args.autoscaler : undefined;
+            inputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             inputs["clusterName"] = args ? args.clusterName : undefined;
             inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             inputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
@@ -290,6 +306,10 @@ export interface OceanState {
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
     readonly autoscaler?: pulumi.Input<inputs.ecs.OceanAutoscaler>;
     /**
+     * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.OceanBlockDeviceMapping>[]>;
+    /**
      * The ocean cluster name.
      */
     readonly clusterName?: pulumi.Input<string>;
@@ -326,7 +346,7 @@ export interface OceanState {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
     readonly monitoring?: pulumi.Input<boolean>;
     /**
@@ -356,7 +376,7 @@ export interface OceanState {
      */
     readonly userData?: pulumi.Input<string>;
     /**
-     * If Reserved instances exist, OCean will utilize them before launching Spot instances.
+     * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
     readonly utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
@@ -374,6 +394,10 @@ export interface OceanArgs {
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
     readonly autoscaler?: pulumi.Input<inputs.ecs.OceanAutoscaler>;
+    /**
+     * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.OceanBlockDeviceMapping>[]>;
     /**
      * The ocean cluster name.
      */
@@ -411,7 +435,7 @@ export interface OceanArgs {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
     readonly monitoring?: pulumi.Input<boolean>;
     /**
@@ -441,7 +465,7 @@ export interface OceanArgs {
      */
     readonly userData?: pulumi.Input<string>;
     /**
-     * If Reserved instances exist, OCean will utilize them before launching Spot instances.
+     * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
     readonly utilizeReservedInstances?: pulumi.Input<boolean>;
     /**

@@ -3,11 +3,10 @@ module github.com/pulumi/pulumi-spotinst/provider/v2
 go 1.14
 
 require (
-	github.com/hashicorp/terraform-plugin-sdk v1.12.0
+	github.com/hashicorp/terraform-plugin-sdk v1.16.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.13.2
 	github.com/pulumi/pulumi/sdk/v2 v2.13.3-0.20201109230029-a6f8b9b205cd
-	github.com/satori/go.uuid v1.2.0 // indirect
-	github.com/terraform-providers/terraform-provider-spotinst v1.25.0
+	github.com/spotinst/terraform-provider-spotinst v1.30.0
 )
 
 replace (

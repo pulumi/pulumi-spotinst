@@ -93,6 +93,11 @@ import (
 // 			SecurityGroups: pulumi.StringArray{
 // 				pulumi.String("sg-987654321"),
 // 			},
+// 			Strategies: aws.OceanLaunchSpecStrategyArray{
+// 				&aws.OceanLaunchSpecStrategyArgs{
+// 					SpotPercentage: pulumi.Int(70),
+// 				},
+// 			},
 // 			SubnetIds: pulumi.StringArray{
 // 				pulumi.String("subnet-1234"),
 // 			},
@@ -143,7 +148,8 @@ type OceanLaunchSpec struct {
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
-	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
+	SecurityGroups pulumi.StringArrayOutput           `pulumi:"securityGroups"`
+	Strategies     OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -207,7 +213,8 @@ type oceanLaunchSpecState struct {
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
-	SecurityGroups []string `pulumi:"securityGroups"`
+	SecurityGroups []string                  `pulumi:"securityGroups"`
+	Strategies     []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -242,6 +249,7 @@ type OceanLaunchSpecState struct {
 	RootVolumeSize pulumi.IntPtrInput
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayInput
+	Strategies     OceanLaunchSpecStrategyArrayInput
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
@@ -279,7 +287,8 @@ type oceanLaunchSpecArgs struct {
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
-	SecurityGroups []string `pulumi:"securityGroups"`
+	SecurityGroups []string                  `pulumi:"securityGroups"`
+	Strategies     []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -315,6 +324,7 @@ type OceanLaunchSpecArgs struct {
 	RootVolumeSize pulumi.IntPtrInput
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayInput
+	Strategies     OceanLaunchSpecStrategyArrayInput
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.

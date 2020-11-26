@@ -188,6 +188,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<int> MaxSize { get; private set; } = null!;
 
         /// <summary>
+        /// Data that used to configure or manage the running instances:
+        /// </summary>
+        [Output("metadataOptions")]
+        public Output<Outputs.ElastigroupMetadataOptions?> MetadataOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The minimum number of instances the group should have at any time.
         /// </summary>
         [Output("minSize")]
@@ -299,7 +305,7 @@ namespace Pulumi.SpotInst.Aws
         /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
         /// </summary>
         [Output("spotPercentage")]
-        public Output<double?> SpotPercentage { get; private set; } = null!;
+        public Output<int?> SpotPercentage { get; private set; } = null!;
 
         [Output("statefulDeallocation")]
         public Output<Outputs.ElastigroupStatefulDeallocation?> StatefulDeallocation { get; private set; } = null!;
@@ -615,6 +621,12 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? MaxSize { get; set; }
 
         /// <summary>
+        /// Data that used to configure or manage the running instances:
+        /// </summary>
+        [Input("metadataOptions")]
+        public Input<Inputs.ElastigroupMetadataOptionsArgs>? MetadataOptions { get; set; }
+
+        /// <summary>
         /// The minimum number of instances the group should have at any time.
         /// </summary>
         [Input("minSize")]
@@ -784,7 +796,7 @@ namespace Pulumi.SpotInst.Aws
         /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
         /// </summary>
         [Input("spotPercentage")]
-        public Input<double>? SpotPercentage { get; set; }
+        public Input<int>? SpotPercentage { get; set; }
 
         [Input("statefulDeallocation")]
         public Input<Inputs.ElastigroupStatefulDeallocationArgs>? StatefulDeallocation { get; set; }
@@ -1078,6 +1090,12 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? MaxSize { get; set; }
 
         /// <summary>
+        /// Data that used to configure or manage the running instances:
+        /// </summary>
+        [Input("metadataOptions")]
+        public Input<Inputs.ElastigroupMetadataOptionsGetArgs>? MetadataOptions { get; set; }
+
+        /// <summary>
         /// The minimum number of instances the group should have at any time.
         /// </summary>
         [Input("minSize")]
@@ -1247,7 +1265,7 @@ namespace Pulumi.SpotInst.Aws
         /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
         /// </summary>
         [Input("spotPercentage")]
-        public Input<double>? SpotPercentage { get; set; }
+        public Input<int>? SpotPercentage { get; set; }
 
         [Input("statefulDeallocation")]
         public Input<Inputs.ElastigroupStatefulDeallocationGetArgs>? StatefulDeallocation { get; set; }

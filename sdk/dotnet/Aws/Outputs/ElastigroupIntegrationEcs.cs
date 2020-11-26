@@ -20,6 +20,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly bool? AutoscaleIsAutoConfig;
         public readonly bool? AutoscaleIsEnabled;
         public readonly bool? AutoscaleScaleDownNonServiceTasks;
+        public readonly Outputs.ElastigroupIntegrationEcsBatch? Batch;
         public readonly string ClusterName;
 
         [OutputConstructor]
@@ -38,6 +39,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             bool? autoscaleScaleDownNonServiceTasks,
 
+            Outputs.ElastigroupIntegrationEcsBatch? batch,
+
             string clusterName)
         {
             AutoscaleAttributes = autoscaleAttributes;
@@ -47,6 +50,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
             AutoscaleIsAutoConfig = autoscaleIsAutoConfig;
             AutoscaleIsEnabled = autoscaleIsEnabled;
             AutoscaleScaleDownNonServiceTasks = autoscaleScaleDownNonServiceTasks;
+            Batch = batch;
             ClusterName = clusterName;
         }
     }

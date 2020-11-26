@@ -155,6 +155,9 @@ namespace Pulumi.SpotInst.Gke
         [Output("clusterName")]
         public Output<string> ClusterName { get; private set; } = null!;
 
+        [Output("controllerClusterId")]
+        public Output<string> ControllerClusterId { get; private set; } = null!;
+
         /// <summary>
         /// The number of instances to launch and maintain in the cluster.
         /// </summary>
@@ -252,6 +255,9 @@ namespace Pulumi.SpotInst.Gke
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 
+        [Input("controllerClusterId")]
+        public Input<string>? ControllerClusterId { get; set; }
+
         /// <summary>
         /// The number of instances to launch and maintain in the cluster.
         /// </summary>
@@ -322,6 +328,9 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
+
+        [Input("controllerClusterId")]
+        public Input<string>? ControllerClusterId { get; set; }
 
         /// <summary>
         /// The number of instances to launch and maintain in the cluster.

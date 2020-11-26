@@ -70,6 +70,9 @@ import * as utilities from "../utilities";
  *     }],
  *     rootVolumeSize: 30,
  *     securityGroups: ["sg-987654321"],
+ *     strategies: [{
+ *         spotPercentage: 70,
+ *     }],
  *     subnetIds: ["subnet-1234"],
  *     tags: [{
  *         key: "Env",
@@ -157,6 +160,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Optionally adds security group IDs.
      */
     public readonly securityGroups!: pulumi.Output<string[] | undefined>;
+    public readonly strategies!: pulumi.Output<outputs.aws.OceanLaunchSpecStrategy[] | undefined>;
     /**
      * Set subnets in launchSpec. Each element in array should be subnet ID.
      */
@@ -198,6 +202,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["resourceLimits"] = state ? state.resourceLimits : undefined;
             inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
+            inputs["strategies"] = state ? state.strategies : undefined;
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["taints"] = state ? state.taints : undefined;
@@ -219,6 +224,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["resourceLimits"] = args ? args.resourceLimits : undefined;
             inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
+            inputs["strategies"] = args ? args.strategies : undefined;
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["taints"] = args ? args.taints : undefined;
@@ -284,6 +290,7 @@ export interface OceanLaunchSpecState {
      * Optionally adds security group IDs.
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[]>;
     /**
      * Set subnets in launchSpec. Each element in array should be subnet ID.
      */
@@ -351,6 +358,7 @@ export interface OceanLaunchSpecArgs {
      * Optionally adds security group IDs.
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[]>;
     /**
      * Set subnets in launchSpec. Each element in array should be subnet ID.
      */

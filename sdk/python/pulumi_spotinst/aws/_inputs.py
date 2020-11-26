@@ -31,6 +31,7 @@ __all__ = [
     'ElastigroupIntegrationEcsAutoscaleAttributeArgs',
     'ElastigroupIntegrationEcsAutoscaleDownArgs',
     'ElastigroupIntegrationEcsAutoscaleHeadroomArgs',
+    'ElastigroupIntegrationEcsBatchArgs',
     'ElastigroupIntegrationGitlabArgs',
     'ElastigroupIntegrationGitlabRunnerArgs',
     'ElastigroupIntegrationKubernetesArgs',
@@ -47,6 +48,7 @@ __all__ = [
     'ElastigroupIntegrationRoute53Args',
     'ElastigroupIntegrationRoute53DomainArgs',
     'ElastigroupIntegrationRoute53DomainRecordSetArgs',
+    'ElastigroupMetadataOptionsArgs',
     'ElastigroupMultaiTargetSetArgs',
     'ElastigroupNetworkInterfaceArgs',
     'ElastigroupRevertToSpotArgs',
@@ -102,6 +104,7 @@ __all__ = [
     'OceanLaunchSpecElasticIpPoolTagSelectorArgs',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecResourceLimitArgs',
+    'OceanLaunchSpecStrategyArgs',
     'OceanLaunchSpecTagArgs',
     'OceanLaunchSpecTaintArgs',
     'OceanLoadBalancerArgs',
@@ -111,6 +114,7 @@ __all__ = [
     'OceanTagArgs',
     'OceanUpdatePolicyArgs',
     'OceanUpdatePolicyRollConfigArgs',
+    'SuspensionSuspensionArgs',
 ]
 
 @pulumi.input_type
@@ -989,9 +993,12 @@ class ElastigroupIntegrationDockerSwarmArgs:
 @pulumi.input_type
 class ElastigroupIntegrationDockerSwarmAutoscaleDownArgs:
     def __init__(__self__, *,
-                 evaluation_periods: Optional[pulumi.Input[int]] = None):
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
+                 max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+        if max_scale_down_percentage is not None:
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -1001,6 +1008,15 @@ class ElastigroupIntegrationDockerSwarmAutoscaleDownArgs:
     @evaluation_periods.setter
     def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
+
+    @property
+    @pulumi.getter(name="maxScaleDownPercentage")
+    def max_scale_down_percentage(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "max_scale_down_percentage")
+
+    @max_scale_down_percentage.setter
+    def max_scale_down_percentage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_scale_down_percentage", value)
 
 
 @pulumi.input_type
@@ -1054,7 +1070,8 @@ class ElastigroupIntegrationEcsArgs:
                  autoscale_headroom: Optional[pulumi.Input['ElastigroupIntegrationEcsAutoscaleHeadroomArgs']] = None,
                  autoscale_is_auto_config: Optional[pulumi.Input[bool]] = None,
                  autoscale_is_enabled: Optional[pulumi.Input[bool]] = None,
-                 autoscale_scale_down_non_service_tasks: Optional[pulumi.Input[bool]] = None):
+                 autoscale_scale_down_non_service_tasks: Optional[pulumi.Input[bool]] = None,
+                 batch: Optional[pulumi.Input['ElastigroupIntegrationEcsBatchArgs']] = None):
         pulumi.set(__self__, "cluster_name", cluster_name)
         if autoscale_attributes is not None:
             pulumi.set(__self__, "autoscale_attributes", autoscale_attributes)
@@ -1070,6 +1087,8 @@ class ElastigroupIntegrationEcsArgs:
             pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
         if autoscale_scale_down_non_service_tasks is not None:
             pulumi.set(__self__, "autoscale_scale_down_non_service_tasks", autoscale_scale_down_non_service_tasks)
+        if batch is not None:
+            pulumi.set(__self__, "batch", batch)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -1142,6 +1161,15 @@ class ElastigroupIntegrationEcsArgs:
     @autoscale_scale_down_non_service_tasks.setter
     def autoscale_scale_down_non_service_tasks(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "autoscale_scale_down_non_service_tasks", value)
+
+    @property
+    @pulumi.getter
+    def batch(self) -> Optional[pulumi.Input['ElastigroupIntegrationEcsBatchArgs']]:
+        return pulumi.get(self, "batch")
+
+    @batch.setter
+    def batch(self, value: Optional[pulumi.Input['ElastigroupIntegrationEcsBatchArgs']]):
+        pulumi.set(self, "batch", value)
 
 
 @pulumi.input_type
@@ -1239,6 +1267,22 @@ class ElastigroupIntegrationEcsAutoscaleHeadroomArgs:
     @num_of_units.setter
     def num_of_units(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_of_units", value)
+
+
+@pulumi.input_type
+class ElastigroupIntegrationEcsBatchArgs:
+    def __init__(__self__, *,
+                 job_queue_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(__self__, "job_queue_names", job_queue_names)
+
+    @property
+    @pulumi.getter(name="jobQueueNames")
+    def job_queue_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "job_queue_names")
+
+    @job_queue_names.setter
+    def job_queue_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "job_queue_names", value)
 
 
 @pulumi.input_type
@@ -1865,6 +1909,44 @@ class ElastigroupIntegrationRoute53DomainRecordSetArgs:
 
 
 @pulumi.input_type
+class ElastigroupMetadataOptionsArgs:
+    def __init__(__self__, *,
+                 http_tokens: pulumi.Input[str],
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] http_tokens: The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+        :param pulumi.Input[int] http_put_response_hop_limit: The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+        """
+        pulumi.set(__self__, "http_tokens", http_tokens)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> pulumi.Input[str]:
+        """
+        The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: pulumi.Input[str]):
+        pulumi.set(self, "http_tokens", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
+
+
+@pulumi.input_type
 class ElastigroupMultaiTargetSetArgs:
     def __init__(__self__, *,
                  balancer_id: pulumi.Input[str],
@@ -2042,7 +2124,6 @@ class ElastigroupScalingDownPolicyArgs:
                  namespace: pulumi.Input[str],
                  policy_name: pulumi.Input[str],
                  threshold: pulumi.Input[float],
-                 unit: pulumi.Input[str],
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
@@ -2057,12 +2138,12 @@ class ElastigroupScalingDownPolicyArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[str]] = None):
+                 target: Optional[pulumi.Input[str]] = None,
+                 unit: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
         pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "unit", unit)
         if action_type is not None:
             pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
@@ -2093,6 +2174,8 @@ class ElastigroupScalingDownPolicyArgs:
             pulumi.set(__self__, "statistic", statistic)
         if target is not None:
             pulumi.set(__self__, "target", target)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -2129,15 +2212,6 @@ class ElastigroupScalingDownPolicyArgs:
     @threshold.setter
     def threshold(self, value: pulumi.Input[float]):
         pulumi.set(self, "threshold", value)
-
-    @property
-    @pulumi.getter
-    def unit(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "unit")
-
-    @unit.setter
-    def unit(self, value: pulumi.Input[str]):
-        pulumi.set(self, "unit", value)
 
     @property
     @pulumi.getter(name="actionType")
@@ -2274,6 +2348,15 @@ class ElastigroupScalingDownPolicyArgs:
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
 
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unit", value)
+
 
 @pulumi.input_type
 class ElastigroupScalingDownPolicyDimensionArgs:
@@ -2355,18 +2438,17 @@ class ElastigroupScalingTargetPolicyArgs:
                  namespace: pulumi.Input[str],
                  policy_name: pulumi.Input[str],
                  target: pulumi.Input[float],
-                 unit: pulumi.Input[str],
                  cooldown: Optional[pulumi.Input[int]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingTargetPolicyDimensionArgs']]]] = None,
                  max_capacity_per_scale: Optional[pulumi.Input[str]] = None,
                  predictive_mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
-                 statistic: Optional[pulumi.Input[str]] = None):
+                 statistic: Optional[pulumi.Input[str]] = None,
+                 unit: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
         pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "unit", unit)
         if cooldown is not None:
             pulumi.set(__self__, "cooldown", cooldown)
         if dimensions is not None:
@@ -2379,6 +2461,8 @@ class ElastigroupScalingTargetPolicyArgs:
             pulumi.set(__self__, "source", source)
         if statistic is not None:
             pulumi.set(__self__, "statistic", statistic)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -2415,15 +2499,6 @@ class ElastigroupScalingTargetPolicyArgs:
     @target.setter
     def target(self, value: pulumi.Input[float]):
         pulumi.set(self, "target", value)
-
-    @property
-    @pulumi.getter
-    def unit(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "unit")
-
-    @unit.setter
-    def unit(self, value: pulumi.Input[str]):
-        pulumi.set(self, "unit", value)
 
     @property
     @pulumi.getter
@@ -2479,6 +2554,15 @@ class ElastigroupScalingTargetPolicyArgs:
     def statistic(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "statistic", value)
 
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unit", value)
+
 
 @pulumi.input_type
 class ElastigroupScalingTargetPolicyDimensionArgs:
@@ -2521,7 +2605,6 @@ class ElastigroupScalingUpPolicyArgs:
                  namespace: pulumi.Input[str],
                  policy_name: pulumi.Input[str],
                  threshold: pulumi.Input[float],
-                 unit: pulumi.Input[str],
                  action_type: Optional[pulumi.Input[str]] = None,
                  adjustment: Optional[pulumi.Input[str]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
@@ -2536,12 +2619,12 @@ class ElastigroupScalingUpPolicyArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  statistic: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[str]] = None):
+                 target: Optional[pulumi.Input[str]] = None,
+                 unit: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
         pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "unit", unit)
         if action_type is not None:
             pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
@@ -2572,6 +2655,8 @@ class ElastigroupScalingUpPolicyArgs:
             pulumi.set(__self__, "statistic", statistic)
         if target is not None:
             pulumi.set(__self__, "target", target)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -2608,15 +2693,6 @@ class ElastigroupScalingUpPolicyArgs:
     @threshold.setter
     def threshold(self, value: pulumi.Input[float]):
         pulumi.set(self, "threshold", value)
-
-    @property
-    @pulumi.getter
-    def unit(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "unit")
-
-    @unit.setter
-    def unit(self, value: pulumi.Input[str]):
-        pulumi.set(self, "unit", value)
 
     @property
     @pulumi.getter(name="actionType")
@@ -2752,6 +2828,15 @@ class ElastigroupScalingUpPolicyArgs:
     @target.setter
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unit", value)
 
 
 @pulumi.input_type
@@ -5957,6 +6042,29 @@ class OceanLaunchSpecResourceLimitArgs:
 
 
 @pulumi.input_type
+class OceanLaunchSpecStrategyArgs:
+    def __init__(__self__, *,
+                 spot_percentage: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] spot_percentage: When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+        """
+        if spot_percentage is not None:
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
+
+    @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+        """
+        return pulumi.get(self, "spot_percentage")
+
+    @spot_percentage.setter
+    def spot_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_percentage", value)
+
+
+@pulumi.input_type
 class OceanLaunchSpecTagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
@@ -6274,5 +6382,27 @@ class OceanUpdatePolicyRollConfigArgs:
     @batch_size_percentage.setter
     def batch_size_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "batch_size_percentage", value)
+
+
+@pulumi.input_type
+class SuspensionSuspensionArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 

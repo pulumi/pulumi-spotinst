@@ -43,11 +43,13 @@ import * as utilities from "../utilities";
  *     region: "us-west-2",
  *     rootVolumeSize: 20,
  *     securityGroups: ["sg-987654321"],
+ *     spotPercentage: 100,
  *     subnetIds: ["subnet-123456789"],
  *     tags: [{
  *         key: "fakeKey",
  *         value: "fakeValue",
  *     }],
+ *     useAsTemplateOnly: true,
  *     userData: "echo hello world",
  *     utilizeReservedInstances: false,
  *     whitelists: [
@@ -216,6 +218,9 @@ export class Ocean extends pulumi.CustomResource {
      * One or more security group ids.
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
+    /**
+     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+     */
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -226,6 +231,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.aws.OceanTag[] | undefined>;
     public readonly updatePolicy!: pulumi.Output<outputs.aws.OceanUpdatePolicy | undefined>;
+    /**
+     * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     */
+    public readonly useAsTemplateOnly!: pulumi.Output<boolean | undefined>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
@@ -276,6 +285,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
+            inputs["useAsTemplateOnly"] = state ? state.useAsTemplateOnly : undefined;
             inputs["userData"] = state ? state.userData : undefined;
             inputs["utilizeReservedInstances"] = state ? state.utilizeReservedInstances : undefined;
             inputs["whitelists"] = state ? state.whitelists : undefined;
@@ -312,6 +322,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            inputs["useAsTemplateOnly"] = args ? args.useAsTemplateOnly : undefined;
             inputs["userData"] = args ? args.userData : undefined;
             inputs["utilizeReservedInstances"] = args ? args.utilizeReservedInstances : undefined;
             inputs["whitelists"] = args ? args.whitelists : undefined;
@@ -409,6 +420,9 @@ export interface OceanState {
      * One or more security group ids.
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+     */
     readonly spotPercentage?: pulumi.Input<number>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -419,6 +433,10 @@ export interface OceanState {
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanTag>[]>;
     readonly updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy>;
+    /**
+     * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     */
+    readonly useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
@@ -515,6 +533,9 @@ export interface OceanArgs {
      * One or more security group ids.
      */
     readonly securityGroups: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+     */
     readonly spotPercentage?: pulumi.Input<number>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -525,6 +546,10 @@ export interface OceanArgs {
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanTag>[]>;
     readonly updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy>;
+    /**
+     * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     */
+    readonly useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
