@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
-    /// Provides a custom Spotinst Ocean AWS Launch Spec resource.
+    /// Manages a custom Spotinst Ocean AWS Launch Spec resource.
     /// 
     /// ## Example Usage
     /// 
@@ -24,6 +24,7 @@ namespace Pulumi.SpotInst.Aws
     ///     {
     ///         var example = new SpotInst.Aws.OceanLaunchSpec("example", new SpotInst.Aws.OceanLaunchSpecArgs
     ///         {
+    ///             AssociatePublicIpAddress = true,
     ///             AutoscaleHeadrooms = 
     ///             {
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
@@ -140,9 +141,29 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// }
     /// ```
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         this.OceanLaunchspecId = spotinst_ocean_aws_launch_spec.Example.Id;
+    ///     }
+    /// 
+    ///     [Output("oceanLaunchspecId")]
+    ///     public Output&lt;string&gt; OceanLaunchspecId { get; set; }
+    /// }
+    /// ```
     /// </summary>
     public partial class OceanLaunchSpec : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configure public IP address allocation.
+        /// </summary>
+        [Output("associatePublicIpAddress")]
+        public Output<bool?> AssociatePublicIpAddress { get; private set; } = null!;
+
         /// <summary>
         /// Set custom headroom per launch spec. provide list of headrooms object.
         /// </summary>
@@ -212,6 +233,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
+        /// <summary>
+        /// (Optional)
+        /// </summary>
         [Output("strategies")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecStrategy>> Strategies { get; private set; } = null!;
 
@@ -285,6 +309,12 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class OceanLaunchSpecArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure public IP address allocation.
+        /// </summary>
+        [Input("associatePublicIpAddress")]
+        public Input<bool>? AssociatePublicIpAddress { get; set; }
+
         [Input("autoscaleHeadrooms")]
         private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomArgs>? _autoscaleHeadrooms;
 
@@ -397,6 +427,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("strategies")]
         private InputList<Inputs.OceanLaunchSpecStrategyArgs>? _strategies;
+
+        /// <summary>
+        /// (Optional)
+        /// </summary>
         public InputList<Inputs.OceanLaunchSpecStrategyArgs> Strategies
         {
             get => _strategies ?? (_strategies = new InputList<Inputs.OceanLaunchSpecStrategyArgs>());
@@ -452,6 +486,12 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class OceanLaunchSpecState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure public IP address allocation.
+        /// </summary>
+        [Input("associatePublicIpAddress")]
+        public Input<bool>? AssociatePublicIpAddress { get; set; }
+
         [Input("autoscaleHeadrooms")]
         private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomGetArgs>? _autoscaleHeadrooms;
 
@@ -564,6 +604,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("strategies")]
         private InputList<Inputs.OceanLaunchSpecStrategyGetArgs>? _strategies;
+
+        /// <summary>
+        /// (Optional)
+        /// </summary>
         public InputList<Inputs.OceanLaunchSpecStrategyGetArgs> Strategies
         {
             get => _strategies ?? (_strategies = new InputList<Inputs.OceanLaunchSpecStrategyGetArgs>());

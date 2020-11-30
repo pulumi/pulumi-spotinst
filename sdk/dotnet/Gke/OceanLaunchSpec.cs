@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke
 {
     /// <summary>
-    /// Provides a custom Spotinst Ocean GKE Launch Spec resource.
+    /// Manages a custom Spotinst Ocean GKE Launch Spec resource.
     /// 
     /// ## Example Usage
     /// 
@@ -64,6 +64,20 @@ namespace Pulumi.SpotInst.Gke
     ///         });
     ///     }
     /// 
+    /// }
+    /// ```
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         this.OceanLaunchspecId = spotinst_ocean_gke_launch_spec.Example.Id;
+    ///     }
+    /// 
+    ///     [Output("oceanLaunchspecId")]
+    ///     public Output&lt;string&gt; OceanLaunchspecId { get; set; }
     /// }
     /// ```
     /// </summary>

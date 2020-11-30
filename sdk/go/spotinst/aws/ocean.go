@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Spotinst Ocean AWS resource.
+// Manages a Spotinst Ocean AWS resource.
 //
 // ## Example Usage
 //
@@ -75,6 +75,20 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ctx.Export("oceanId", spotinst_ocean_aws.Example.Id)
 // 		return nil
 // 	})
 // }

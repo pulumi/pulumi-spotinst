@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs
 {
     /// <summary>
-    /// Provides a custom Spotinst Ocean ECS Launch Spec resource.
+    /// Manages a custom Spotinst Ocean ECS Launch Spec resource.
     /// 
     /// ## Example Usage
     /// 
@@ -98,6 +98,20 @@ namespace Pulumi.SpotInst.Ecs
     ///         });
     ///     }
     /// 
+    /// }
+    /// ```
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         this.OceanLaunchspecId = spotinst_ocean_ecs_launch_spec.Example.Id;
+    ///     }
+    /// 
+    ///     [Output("oceanLaunchspecId")]
+    ///     public Output&lt;string&gt; OceanLaunchspecId { get; set; }
     /// }
     /// ```
     /// </summary>

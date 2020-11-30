@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Spotinst Ocean AWS resource.
+ * Manages a Spotinst Ocean AWS resource.
  *
  * ## Example Usage
  *
@@ -57,6 +57,11 @@ import * as utilities from "../utilities";
  *         "m1.small",
  *     ],
  * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanId = spotinst_ocean_aws.example.id;
  * ```
  * ## Auto Scaler
  *

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
-    /// Provides a Spotinst Ocean AWS resource.
+    /// Manages a Spotinst Ocean AWS resource.
     /// 
     /// ## Example Usage
     /// 
@@ -80,6 +80,20 @@ namespace Pulumi.SpotInst.Aws
     ///         });
     ///     }
     /// 
+    /// }
+    /// ```
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         this.OceanId = spotinst_ocean_aws.Example.Id;
+    ///     }
+    /// 
+    ///     [Output("oceanId")]
+    ///     public Output&lt;string&gt; OceanId { get; set; }
     /// }
     /// ```
     /// ## Auto Scaler

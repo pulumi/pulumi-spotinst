@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Spotinst Ocean GKE import resource.
+// Manages a Spotinst Ocean GKE resource.
 //
 // ## Example Usage
 //
@@ -69,7 +69,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ctx.Export("controllerClusterId", spotinst_ocean_gke_import.Ocean-gke-example.Cluster_controller_id)
+// 		ctx.Export("oceanId", spotinst_ocean_gke_import.Example.Id)
 // 		return nil
 // 	})
 // }

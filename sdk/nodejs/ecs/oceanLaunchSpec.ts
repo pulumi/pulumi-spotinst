@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Provides a custom Spotinst Ocean ECS Launch Spec resource.
+ * Manages a custom Spotinst Ocean ECS Launch Spec resource.
  *
  * ## Example Usage
  *
@@ -65,6 +65,11 @@ import * as utilities from "../utilities";
  *     }],
  *     userData: "echo hello world",
  * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanLaunchspecId = spotinst_ocean_ecs_launch_spec.example.id;
  * ```
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {

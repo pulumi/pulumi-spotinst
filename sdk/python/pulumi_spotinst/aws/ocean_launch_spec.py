@@ -17,6 +17,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
@@ -38,7 +39,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a custom Spotinst Ocean AWS Launch Spec resource.
+        Manages a custom Spotinst Ocean AWS Launch Spec resource.
 
         ## Example Usage
 
@@ -47,6 +48,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.aws.OceanLaunchSpec("example",
+            associate_public_ip_address=True,
             autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(
                 cpu_per_unit=1000,
                 gpu_per_unit=0,
@@ -117,9 +119,15 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             user_data="echo hello world")
         ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec["example"]["id"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the launch spec. Can be null.
@@ -131,6 +139,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The ocean cluster you wish to
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: (Optional)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in array should be subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
@@ -153,6 +162,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['associate_public_ip_address'] = associate_public_ip_address
             __props__['autoscale_headrooms'] = autoscale_headrooms
             __props__['block_device_mappings'] = block_device_mappings
             __props__['elastic_ip_pools'] = elastic_ip_pools
@@ -182,6 +192,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
             elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
@@ -206,6 +217,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the launch spec. Can be null.
@@ -217,6 +229,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The ocean cluster you wish to
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: (Optional)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in array should be subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
@@ -226,6 +239,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["associate_public_ip_address"] = associate_public_ip_address
         __props__["autoscale_headrooms"] = autoscale_headrooms
         __props__["block_device_mappings"] = block_device_mappings
         __props__["elastic_ip_pools"] = elastic_ip_pools
@@ -244,6 +258,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["taints"] = taints
         __props__["user_data"] = user_data
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="associatePublicIpAddress")
+    def associate_public_ip_address(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Configure public IP address allocation.
+        """
+        return pulumi.get(self, "associate_public_ip_address")
 
     @property
     @pulumi.getter(name="autoscaleHeadrooms")
@@ -341,6 +363,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @property
     @pulumi.getter
     def strategies(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecStrategy']]]:
+        """
+        (Optional)
+        """
         return pulumi.get(self, "strategies")
 
     @property

@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Provides a custom Spotinst Ocean GKE Launch Spec resource.
+ * Manages a custom Spotinst Ocean GKE Launch Spec resource.
  *
  * ## Example Usage
  *
@@ -37,6 +37,11 @@ import * as utilities from "../utilities";
  *         value: "taintVal",
  *     }],
  * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanLaunchspecId = spotinst_ocean_gke_launch_spec.example.id;
  * ```
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {

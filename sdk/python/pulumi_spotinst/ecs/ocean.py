@@ -44,7 +44,7 @@ class Ocean(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Spotinst Ocean ECS resource.
+        Manages a Spotinst Ocean ECS resource.
 
         ## Example Usage
 
@@ -88,6 +88,11 @@ class Ocean(pulumi.CustomResource):
             user_data="echo hello world",
             utilize_reserved_instances=False,
             whitelists=["t3.medium"])
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_ecs["example"]["id"])
         ```
         ## Auto Scaler
 

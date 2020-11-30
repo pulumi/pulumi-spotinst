@@ -1047,7 +1047,7 @@ export namespace aws {
 
     export interface OceanLaunchSpecStrategy {
         /**
-         * When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+         * (Optional; if not using `spotPercentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
          */
         spotPercentage?: number;
     }

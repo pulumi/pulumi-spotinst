@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a custom Spotinst Ocean GKE Launch Spec Import resource.
+ * Manages a custom Spotinst Ocean GKE Launch Spec Import resource.
  *
  * ## Example Usage
  *
@@ -17,6 +17,11 @@ import * as utilities from "../utilities";
  *     nodePoolName: "default-pool",
  *     oceanId: "o-123456",
  * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanLaunchspecId = spotinst_ocean_gke_launch_spec_import.example.id;
  * ```
  */
 export class OceanLaunchSpecImport extends pulumi.CustomResource {

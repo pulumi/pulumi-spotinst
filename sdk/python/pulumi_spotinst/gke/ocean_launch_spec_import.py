@@ -21,7 +21,7 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a custom Spotinst Ocean GKE Launch Spec Import resource.
+        Manages a custom Spotinst Ocean GKE Launch Spec Import resource.
 
         ## Example Usage
 
@@ -32,6 +32,11 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
         example = spotinst.gke.OceanLaunchSpecImport("example",
             node_pool_name="default-pool",
             ocean_id="o-123456")
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec_import["example"]["id"])
         ```
 
         :param str resource_name: The name of the resource.

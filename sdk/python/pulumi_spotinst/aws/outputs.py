@@ -4632,7 +4632,7 @@ class OceanLaunchSpecStrategy(dict):
     def __init__(__self__, *,
                  spot_percentage: Optional[int] = None):
         """
-        :param int spot_percentage: When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+        :param int spot_percentage: (Optional; if not using `spot_percentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
         """
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
@@ -4641,7 +4641,7 @@ class OceanLaunchSpecStrategy(dict):
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[int]:
         """
-        When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+        (Optional; if not using `spot_percentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
         """
         return pulumi.get(self, "spot_percentage")
 
