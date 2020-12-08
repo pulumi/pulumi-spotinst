@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke
 {
     /// <summary>
-    /// Provides a Spotinst Ocean GKE import resource.
+    /// Manages a Spotinst Ocean GKE resource.
     /// 
     /// ## Example Usage
     /// 
@@ -68,11 +68,11 @@ namespace Pulumi.SpotInst.Gke
     /// {
     ///     public MyStack()
     ///     {
-    ///         this.ControllerClusterId = spotinst_ocean_gke_import.Ocean_gke_example.Cluster_controller_id;
+    ///         this.OceanId = spotinst_ocean_gke_import.Example.Id;
     ///     }
     /// 
-    ///     [Output("controllerClusterId")]
-    ///     public Output&lt;string&gt; ControllerClusterId { get; set; }
+    ///     [Output("oceanId")]
+    ///     public Output&lt;string&gt; OceanId { get; set; }
     /// }
     /// ```
     /// ## scheduled task

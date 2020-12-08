@@ -31,7 +31,7 @@ class OceanImport(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Spotinst Ocean GKE import resource.
+        Manages a Spotinst Ocean GKE resource.
 
         ## Example Usage
 
@@ -66,7 +66,7 @@ class OceanImport(pulumi.CustomResource):
         ```python
         import pulumi
 
-        pulumi.export("controllerClusterId", spotinst_ocean_gke_import["ocean-gke-example"]["cluster_controller_id"])
+        pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
         ```
         ## scheduled task
 

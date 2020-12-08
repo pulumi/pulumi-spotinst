@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLaunchSpecStrategyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+        /// (Optional; if not using `spot_percentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
         /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }

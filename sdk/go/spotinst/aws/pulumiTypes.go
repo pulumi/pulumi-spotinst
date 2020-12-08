@@ -13660,7 +13660,7 @@ func (o OceanLaunchSpecResourceLimitArrayOutput) Index(i pulumi.IntInput) OceanL
 }
 
 type OceanLaunchSpecStrategy struct {
-	// When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+	// (Optional; if not using `spotPercentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
 	SpotPercentage *int `pulumi:"spotPercentage"`
 }
 
@@ -13676,7 +13676,7 @@ type OceanLaunchSpecStrategyInput interface {
 }
 
 type OceanLaunchSpecStrategyArgs struct {
-	// When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+	// (Optional; if not using `spotPercentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
 	SpotPercentage pulumi.IntPtrInput `pulumi:"spotPercentage"`
 }
 
@@ -13731,7 +13731,7 @@ func (o OceanLaunchSpecStrategyOutput) ToOceanLaunchSpecStrategyOutputWithContex
 	return o
 }
 
-// When set, Ocean will proactively try to maintain as close as possible to the percentage of spot instances out of all the Launch spec instances.
+// (Optional; if not using `spotPercentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
 func (o OceanLaunchSpecStrategyOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecStrategy) *int { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }

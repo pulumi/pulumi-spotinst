@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Provides a custom Spotinst Ocean AWS Launch Spec resource.
+ * Manages a custom Spotinst Ocean AWS Launch Spec resource.
  *
  * ## Example Usage
  *
@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const example = new spotinst.aws.OceanLaunchSpec("example", {
+ *     associatePublicIpAddress: true,
  *     autoscaleHeadrooms: [{
  *         cpuPerUnit: 1000,
  *         gpuPerUnit: 0,
@@ -86,6 +87,11 @@ import * as utilities from "../utilities";
  *     userData: "echo hello world",
  * });
  * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanLaunchspecId = spotinst_ocean_aws_launch_spec.example.id;
+ * ```
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
@@ -115,6 +121,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
         return obj['__pulumiType'] === OceanLaunchSpec.__pulumiType;
     }
 
+    /**
+     * Configure public IP address allocation.
+     */
+    public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
     /**
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
@@ -160,6 +170,9 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Optionally adds security group IDs.
      */
     public readonly securityGroups!: pulumi.Output<string[] | undefined>;
+    /**
+     * (Optional)
+     */
     public readonly strategies!: pulumi.Output<outputs.aws.OceanLaunchSpecStrategy[] | undefined>;
     /**
      * Set subnets in launchSpec. Each element in array should be subnet ID.
@@ -190,6 +203,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
+            inputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
             inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
             inputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             inputs["elasticIpPools"] = state ? state.elasticIpPools : undefined;
@@ -212,6 +226,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             if (!args || args.oceanId === undefined) {
                 throw new Error("Missing required property 'oceanId'");
             }
+            inputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
             inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
             inputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             inputs["elasticIpPools"] = args ? args.elasticIpPools : undefined;
@@ -245,6 +260,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OceanLaunchSpec resources.
  */
 export interface OceanLaunchSpecState {
+    /**
+     * Configure public IP address allocation.
+     */
+    readonly associatePublicIpAddress?: pulumi.Input<boolean>;
     /**
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
@@ -290,6 +309,9 @@ export interface OceanLaunchSpecState {
      * Optionally adds security group IDs.
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (Optional)
+     */
     readonly strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[]>;
     /**
      * Set subnets in launchSpec. Each element in array should be subnet ID.
@@ -313,6 +335,10 @@ export interface OceanLaunchSpecState {
  * The set of arguments for constructing a OceanLaunchSpec resource.
  */
 export interface OceanLaunchSpecArgs {
+    /**
+     * Configure public IP address allocation.
+     */
+    readonly associatePublicIpAddress?: pulumi.Input<boolean>;
     /**
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
@@ -358,6 +384,9 @@ export interface OceanLaunchSpecArgs {
      * Optionally adds security group IDs.
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (Optional)
+     */
     readonly strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[]>;
     /**
      * Set subnets in launchSpec. Each element in array should be subnet ID.

@@ -27,7 +27,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a custom Spotinst Ocean GKE Launch Spec resource.
+        Manages a custom Spotinst Ocean GKE Launch Spec resource.
 
         ## Example Usage
 
@@ -57,6 +57,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 key="taintKey",
                 value="taintVal",
             )])
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
         ```
 
         :param str resource_name: The name of the resource.

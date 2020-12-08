@@ -32,7 +32,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a custom Spotinst Ocean ECS Launch Spec resource.
+        Manages a custom Spotinst Ocean ECS Launch Spec resource.
 
         ## Example Usage
 
@@ -90,6 +90,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 value="production",
             )],
             user_data="echo hello world")
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
         ```
 
         :param str resource_name: The name of the resource.

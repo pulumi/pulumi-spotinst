@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a custom Spotinst Ocean AWS Launch Spec resource.
+// Manages a custom Spotinst Ocean AWS Launch Spec resource.
 //
 // ## Example Usage
 //
@@ -26,6 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := aws.NewOceanLaunchSpec(ctx, "example", &aws.OceanLaunchSpecArgs{
+// 			AssociatePublicIpAddress: pulumi.Bool(true),
 // 			AutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{
 // 				&aws.OceanLaunchSpecAutoscaleHeadroomArgs{
 // 					CpuPerUnit:    pulumi.Int(1000),
@@ -123,9 +124,25 @@ import (
 // 	})
 // }
 // ```
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ctx.Export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec.Example.Id)
+// 		return nil
+// 	})
+// }
+// ```
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
 
+	// Configure public IP address allocation.
+	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -148,8 +165,9 @@ type OceanLaunchSpec struct {
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
-	SecurityGroups pulumi.StringArrayOutput           `pulumi:"securityGroups"`
-	Strategies     OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
+	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
+	// (Optional)
+	Strategies OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -191,6 +209,8 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OceanLaunchSpec resources.
 type oceanLaunchSpecState struct {
+	// Configure public IP address allocation.
+	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -213,8 +233,9 @@ type oceanLaunchSpecState struct {
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
-	SecurityGroups []string                  `pulumi:"securityGroups"`
-	Strategies     []OceanLaunchSpecStrategy `pulumi:"strategies"`
+	SecurityGroups []string `pulumi:"securityGroups"`
+	// (Optional)
+	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -226,6 +247,8 @@ type oceanLaunchSpecState struct {
 }
 
 type OceanLaunchSpecState struct {
+	// Configure public IP address allocation.
+	AssociatePublicIpAddress pulumi.BoolPtrInput
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -249,7 +272,8 @@ type OceanLaunchSpecState struct {
 	RootVolumeSize pulumi.IntPtrInput
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayInput
-	Strategies     OceanLaunchSpecStrategyArrayInput
+	// (Optional)
+	Strategies OceanLaunchSpecStrategyArrayInput
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
@@ -265,6 +289,8 @@ func (OceanLaunchSpecState) ElementType() reflect.Type {
 }
 
 type oceanLaunchSpecArgs struct {
+	// Configure public IP address allocation.
+	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -287,8 +313,9 @@ type oceanLaunchSpecArgs struct {
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
-	SecurityGroups []string                  `pulumi:"securityGroups"`
-	Strategies     []OceanLaunchSpecStrategy `pulumi:"strategies"`
+	SecurityGroups []string `pulumi:"securityGroups"`
+	// (Optional)
+	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -301,6 +328,8 @@ type oceanLaunchSpecArgs struct {
 
 // The set of arguments for constructing a OceanLaunchSpec resource.
 type OceanLaunchSpecArgs struct {
+	// Configure public IP address allocation.
+	AssociatePublicIpAddress pulumi.BoolPtrInput
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -324,7 +353,8 @@ type OceanLaunchSpecArgs struct {
 	RootVolumeSize pulumi.IntPtrInput
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayInput
-	Strategies     OceanLaunchSpecStrategyArrayInput
+	// (Optional)
+	Strategies OceanLaunchSpecStrategyArrayInput
 	// Set subnets in launchSpec. Each element in array should be subnet ID.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.

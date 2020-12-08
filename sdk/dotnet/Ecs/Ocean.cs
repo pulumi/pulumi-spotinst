@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs
 {
     /// <summary>
-    /// Provides a Spotinst Ocean ECS resource.
+    /// Manages a Spotinst Ocean ECS resource.
     /// 
     /// ## Example Usage
     /// 
@@ -81,6 +81,20 @@ namespace Pulumi.SpotInst.Ecs
     ///         });
     ///     }
     /// 
+    /// }
+    /// ```
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         this.OceanId = spotinst_ocean_ecs.Example.Id;
+    ///     }
+    /// 
+    ///     [Output("oceanId")]
+    ///     public Output&lt;string&gt; OceanId { get; set; }
     /// }
     /// ```
     /// ## Auto Scaler

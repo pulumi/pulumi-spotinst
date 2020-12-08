@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a custom Spotinst Ocean GKE Launch Spec Import resource.
+// Manages a custom Spotinst Ocean GKE Launch Spec Import resource.
 //
 // ## Example Usage
 //
@@ -32,6 +32,20 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ctx.Export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec_import.Example.Id)
 // 		return nil
 // 	})
 // }

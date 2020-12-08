@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Spotinst Ocean ECS resource.
+ * Manages a Spotinst Ocean ECS resource.
  *
  * ## Example Usage
  *
@@ -51,6 +51,11 @@ import * as utilities from "../utilities";
  *     utilizeReservedInstances: false,
  *     whitelists: ["t3.medium"],
  * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanId = spotinst_ocean_ecs.example.id;
  * ```
  * ## Auto Scaler
  *

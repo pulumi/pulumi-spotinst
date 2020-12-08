@@ -50,7 +50,7 @@ class Ocean(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Provides a Spotinst Ocean AWS resource.
+        Manages a Spotinst Ocean AWS resource.
 
         ## Example Usage
 
@@ -98,6 +98,11 @@ class Ocean(pulumi.CustomResource):
                 "t1.micro",
                 "m1.small",
             ])
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_aws["example"]["id"])
         ```
         ## Auto Scaler
 
