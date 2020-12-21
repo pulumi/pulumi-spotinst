@@ -17,6 +17,10 @@ namespace Pulumi.SpotInst.Ecs.Inputs
 
         [Input("timeWindows", required: true)]
         private InputList<string>? _timeWindows;
+
+        /// <summary>
+        /// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        /// </summary>
         public InputList<string> TimeWindows
         {
             get => _timeWindows ?? (_timeWindows = new InputList<string>());

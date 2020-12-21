@@ -38,6 +38,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? SnapshotId;
         /// <summary>
+        /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+        /// </summary>
+        public readonly int? Throughput;
+        /// <summary>
         /// Int. The size, in GB of the volume.
         /// </summary>
         public readonly int? VolumeSize;
@@ -60,6 +64,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             string? snapshotId,
 
+            int? throughput,
+
             int? volumeSize,
 
             string? volumeType)
@@ -70,6 +76,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
             Iops = iops;
             KmsKeyId = kmsKeyId;
             SnapshotId = snapshotId;
+            Throughput = throughput;
             VolumeSize = volumeSize;
             VolumeType = volumeType;
         }

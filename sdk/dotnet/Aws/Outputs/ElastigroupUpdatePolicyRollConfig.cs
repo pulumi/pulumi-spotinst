@@ -20,7 +20,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? HealthCheckType;
         public readonly Outputs.ElastigroupUpdatePolicyRollConfigStrategy? Strategy;
-        public readonly int? WaitForRollPercentage;
+        public readonly double? WaitForRollPercentage;
         public readonly int? WaitForRollTimeout;
 
         [OutputConstructor]
@@ -33,7 +33,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             Outputs.ElastigroupUpdatePolicyRollConfigStrategy? strategy,
 
-            int? waitForRollPercentage,
+            double? waitForRollPercentage,
 
             int? waitForRollTimeout)
         {

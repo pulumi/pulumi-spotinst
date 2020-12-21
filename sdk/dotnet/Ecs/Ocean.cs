@@ -40,6 +40,7 @@ namespace Pulumi.SpotInst.Ecs
     ///                             SizePerResourceUnit = 20,
     ///                         },
     ///                         Encrypted = false,
+    ///                         Throughput = 500,
     ///                         VolumeSize = 50,
     ///                         VolumeType = "gp2",
     ///                     },
@@ -55,6 +56,16 @@ namespace Pulumi.SpotInst.Ecs
     ///             MaxSize = 1,
     ///             MinSize = 0,
     ///             Monitoring = true,
+    ///             OptimizeImages = new SpotInst.Ecs.Inputs.OceanOptimizeImagesArgs
+    ///             {
+    ///                 PerformAt = "timeWindow",
+    ///                 ShouldOptimizeEcsAmi = true,
+    ///                 TimeWindows = 
+    ///                 {
+    ///                     "Sun:02:00-Sun:12:00",
+    ///                     "Sun:05:00-Sun:16:00",
+    ///                 },
+    ///             },
     ///             Region = "us-west-2",
     ///             SecurityGroupIds = 
     ///             {
@@ -253,6 +264,12 @@ namespace Pulumi.SpotInst.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Object. Set auto image update settings.
+        /// </summary>
+        [Output("optimizeImages")]
+        public Output<Outputs.OceanOptimizeImages?> OptimizeImages { get; private set; } = null!;
+
+        /// <summary>
         /// The region the cluster will run in.
         /// </summary>
         [Output("region")]
@@ -287,6 +304,9 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
+
+        [Output("utilizeCommitments")]
+        public Output<bool?> UtilizeCommitments { get; private set; } = null!;
 
         /// <summary>
         /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -434,6 +454,12 @@ namespace Pulumi.SpotInst.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Object. Set auto image update settings.
+        /// </summary>
+        [Input("optimizeImages")]
+        public Input<Inputs.OceanOptimizeImagesArgs>? OptimizeImages { get; set; }
+
+        /// <summary>
         /// The region the cluster will run in.
         /// </summary>
         [Input("region", required: true)]
@@ -491,6 +517,9 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
+
+        [Input("utilizeCommitments")]
+        public Input<bool>? UtilizeCommitments { get; set; }
 
         /// <summary>
         /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -605,6 +634,12 @@ namespace Pulumi.SpotInst.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Object. Set auto image update settings.
+        /// </summary>
+        [Input("optimizeImages")]
+        public Input<Inputs.OceanOptimizeImagesGetArgs>? OptimizeImages { get; set; }
+
+        /// <summary>
         /// The region the cluster will run in.
         /// </summary>
         [Input("region")]
@@ -662,6 +697,9 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
+
+        [Input("utilizeCommitments")]
+        public Input<bool>? UtilizeCommitments { get; set; }
 
         /// <summary>
         /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.

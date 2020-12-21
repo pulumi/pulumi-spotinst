@@ -424,6 +424,7 @@ class ElastigroupEbsBlockDevice(dict):
                  iops: Optional[int] = None,
                  kms_key_id: Optional[str] = None,
                  snapshot_id: Optional[str] = None,
+                 throughput: Optional[int] = None,
                  volume_size: Optional[int] = None,
                  volume_type: Optional[str] = None):
         pulumi.set(__self__, "device_name", device_name)
@@ -437,6 +438,8 @@ class ElastigroupEbsBlockDevice(dict):
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if throughput is not None:
+            pulumi.set(__self__, "throughput", throughput)
         if volume_size is not None:
             pulumi.set(__self__, "volume_size", volume_size)
         if volume_type is not None:
@@ -471,6 +474,11 @@ class ElastigroupEbsBlockDevice(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
         return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter
+    def throughput(self) -> Optional[int]:
+        return pulumi.get(self, "throughput")
 
     @property
     @pulumi.getter(name="volumeSize")
@@ -2481,7 +2489,7 @@ class ElastigroupUpdatePolicyRollConfig(dict):
                  grace_period: Optional[int] = None,
                  health_check_type: Optional[str] = None,
                  strategy: Optional['outputs.ElastigroupUpdatePolicyRollConfigStrategy'] = None,
-                 wait_for_roll_percentage: Optional[int] = None,
+                 wait_for_roll_percentage: Optional[float] = None,
                  wait_for_roll_timeout: Optional[int] = None):
         """
         :param str health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
@@ -2523,7 +2531,7 @@ class ElastigroupUpdatePolicyRollConfig(dict):
 
     @property
     @pulumi.getter(name="waitForRollPercentage")
-    def wait_for_roll_percentage(self) -> Optional[int]:
+    def wait_for_roll_percentage(self) -> Optional[float]:
         return pulumi.get(self, "wait_for_roll_percentage")
 
     @property
@@ -4378,6 +4386,7 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
                  iops: Optional[int] = None,
                  kms_key_id: Optional[str] = None,
                  snapshot_id: Optional[str] = None,
+                 throughput: Optional[int] = None,
                  volume_size: Optional[int] = None,
                  volume_type: Optional[str] = None):
         """
@@ -4387,6 +4396,7 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
         :param int iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
         :param str kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
         :param str snapshot_id: (Optional) String. The Snapshot ID to mount by.
+        :param int throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
         :param int volume_size: Int. The size, in GB of the volume.
         :param str volume_type: String. The type of the volume (example: "gp2").
         """
@@ -4402,6 +4412,8 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if throughput is not None:
+            pulumi.set(__self__, "throughput", throughput)
         if volume_size is not None:
             pulumi.set(__self__, "volume_size", volume_size)
         if volume_type is not None:
@@ -4454,6 +4466,14 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
         (Optional) String. The Snapshot ID to mount by.
         """
         return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter
+    def throughput(self) -> Optional[int]:
+        """
+        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+        """
+        return pulumi.get(self, "throughput")
 
     @property
     @pulumi.getter(name="volumeSize")

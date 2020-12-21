@@ -44,6 +44,7 @@ class Ocean(pulumi.CustomResource):
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
                  use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
+                 utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
@@ -235,6 +236,7 @@ class Ocean(pulumi.CustomResource):
             __props__['update_policy'] = update_policy
             __props__['use_as_template_only'] = use_as_template_only
             __props__['user_data'] = user_data
+            __props__['utilize_commitments'] = utilize_commitments
             __props__['utilize_reserved_instances'] = utilize_reserved_instances
             __props__['whitelists'] = whitelists
         super(Ocean, __self__).__init__(
@@ -274,6 +276,7 @@ class Ocean(pulumi.CustomResource):
             update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
             use_as_template_only: Optional[pulumi.Input[bool]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
+            utilize_commitments: Optional[pulumi.Input[bool]] = None,
             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
             whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Ocean':
         """
@@ -341,6 +344,7 @@ class Ocean(pulumi.CustomResource):
         __props__["update_policy"] = update_policy
         __props__["use_as_template_only"] = use_as_template_only
         __props__["user_data"] = user_data
+        __props__["utilize_commitments"] = utilize_commitments
         __props__["utilize_reserved_instances"] = utilize_reserved_instances
         __props__["whitelists"] = whitelists
         return Ocean(resource_name, opts=opts, __props__=__props__)
@@ -551,6 +555,11 @@ class Ocean(pulumi.CustomResource):
         Base64-encoded MIME user data to make available to the instances.
         """
         return pulumi.get(self, "user_data")
+
+    @property
+    @pulumi.getter(name="utilizeCommitments")
+    def utilize_commitments(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "utilize_commitments")
 
     @property
     @pulumi.getter(name="utilizeReservedInstances")

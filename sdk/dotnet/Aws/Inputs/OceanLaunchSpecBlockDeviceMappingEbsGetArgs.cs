@@ -49,6 +49,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
+        /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+        /// </summary>
+        [Input("throughput")]
+        public Input<int>? Throughput { get; set; }
+
+        /// <summary>
         /// Int. The size, in GB of the volume.
         /// </summary>
         [Input("volumeSize")]

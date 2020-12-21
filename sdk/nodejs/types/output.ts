@@ -120,6 +120,7 @@ export namespace aws {
         iops?: number;
         kmsKeyId?: string;
         snapshotId?: string;
+        throughput?: number;
         volumeSize?: number;
         volumeType: string;
     }
@@ -985,6 +986,10 @@ export namespace aws {
          */
         snapshotId?: string;
         /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         */
+        throughput?: number;
+        /**
          * Int. The size, in GB of the volume.
          */
         volumeSize?: number;
@@ -1379,6 +1384,10 @@ export namespace ecs {
          */
         snapshotId?: string;
         /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         */
+        throughput?: number;
+        /**
          * Int. The size (in GB) of the volume.
          */
         volumeSize?: number;
@@ -1471,6 +1480,10 @@ export namespace ecs {
          */
         snapshotId?: string;
         /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         */
+        throughput?: number;
+        /**
          * Int. The size, in GB of the volume.
          */
         volumeSize?: number;
@@ -1506,6 +1519,21 @@ export namespace ecs {
         value: string;
     }
 
+    export interface OceanOptimizeImages {
+        /**
+         * String. Valid values: "always" "never" "timeWindow".
+         */
+        performAt: string;
+        /**
+         * Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+         */
+        shouldOptimizeEcsAmi: boolean;
+        /**
+         * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+         */
+        timeWindows?: string[];
+    }
+
     export interface OceanScheduledTask {
         shutdownHours?: outputs.ecs.OceanScheduledTaskShutdownHours;
         tasks?: outputs.ecs.OceanScheduledTaskTask[];
@@ -1513,6 +1541,9 @@ export namespace ecs {
 
     export interface OceanScheduledTaskShutdownHours {
         isEnabled?: boolean;
+        /**
+         * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+         */
         timeWindows: string[];
     }
 

@@ -229,7 +229,8 @@ type Ocean struct {
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly pulumi.BoolPtrOutput `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData pulumi.StringPtrOutput `pulumi:"userData"`
+	UserData           pulumi.StringPtrOutput `pulumi:"userData"`
+	UtilizeCommitments pulumi.BoolPtrOutput   `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -320,7 +321,8 @@ type oceanState struct {
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData *string `pulumi:"userData"`
+	UserData           *string `pulumi:"userData"`
+	UtilizeCommitments *bool   `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -378,7 +380,8 @@ type OceanState struct {
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData pulumi.StringPtrInput
+	UserData           pulumi.StringPtrInput
+	UtilizeCommitments pulumi.BoolPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -440,7 +443,8 @@ type oceanArgs struct {
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData *string `pulumi:"userData"`
+	UserData           *string `pulumi:"userData"`
+	UtilizeCommitments *bool   `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -499,7 +503,8 @@ type OceanArgs struct {
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData pulumi.StringPtrInput
+	UserData           pulumi.StringPtrInput
+	UtilizeCommitments pulumi.BoolPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.

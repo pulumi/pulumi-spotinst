@@ -221,6 +221,7 @@ export class Elastigroup extends pulumi.CustomResource {
      * The user data to provide when launching the instance.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
+    public readonly utilizeCommitments!: pulumi.Output<boolean | undefined>;
     /**
      * In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
      */
@@ -314,6 +315,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["targetGroupArns"] = state ? state.targetGroupArns : undefined;
             inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             inputs["userData"] = state ? state.userData : undefined;
+            inputs["utilizeCommitments"] = state ? state.utilizeCommitments : undefined;
             inputs["utilizeReservedInstances"] = state ? state.utilizeReservedInstances : undefined;
             inputs["waitForCapacity"] = state ? state.waitForCapacity : undefined;
             inputs["waitForCapacityTimeout"] = state ? state.waitForCapacityTimeout : undefined;
@@ -405,6 +407,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["targetGroupArns"] = args ? args.targetGroupArns : undefined;
             inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             inputs["userData"] = args ? args.userData : undefined;
+            inputs["utilizeCommitments"] = args ? args.utilizeCommitments : undefined;
             inputs["utilizeReservedInstances"] = args ? args.utilizeReservedInstances : undefined;
             inputs["waitForCapacity"] = args ? args.waitForCapacity : undefined;
             inputs["waitForCapacityTimeout"] = args ? args.waitForCapacityTimeout : undefined;
@@ -612,6 +615,7 @@ export interface ElastigroupState {
      * The user data to provide when launching the instance.
      */
     readonly userData?: pulumi.Input<string>;
+    readonly utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
      */
@@ -818,6 +822,7 @@ export interface ElastigroupArgs {
      * The user data to provide when launching the instance.
      */
     readonly userData?: pulumi.Input<string>;
+    readonly utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
      */

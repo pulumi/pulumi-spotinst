@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *                 sizePerResourceUnit: 20,
  *             },
  *             encrypted: false,
+ *             throughput: 500,
  *             volumeSize: 50,
  *             volumeType: "gp2",
  *         },
@@ -40,6 +41,14 @@ import * as utilities from "../utilities";
  *     maxSize: 1,
  *     minSize: 0,
  *     monitoring: true,
+ *     optimizeImages: {
+ *         performAt: "timeWindow",
+ *         shouldOptimizeEcsAmi: true,
+ *         timeWindows: [
+ *             "Sun:02:00-Sun:12:00",
+ *             "Sun:05:00-Sun:16:00",
+ *         ],
+ *     },
  *     region: "us-west-2",
  *     securityGroupIds: ["sg-12345"],
  *     subnetIds: ["subnet-12345"],
@@ -187,6 +196,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Object. Set auto image update settings.
+     */
+    public readonly optimizeImages!: pulumi.Output<outputs.ecs.OceanOptimizeImages | undefined>;
+    /**
      * The region the cluster will run in.
      */
     public readonly region!: pulumi.Output<string>;
@@ -208,6 +221,7 @@ export class Ocean extends pulumi.CustomResource {
      * Base64-encoded MIME user data to make available to the instances.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
+    public readonly utilizeCommitments!: pulumi.Output<boolean | undefined>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
@@ -243,6 +257,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["minSize"] = state ? state.minSize : undefined;
             inputs["monitoring"] = state ? state.monitoring : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["optimizeImages"] = state ? state.optimizeImages : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
@@ -250,6 +265,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
             inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             inputs["userData"] = state ? state.userData : undefined;
+            inputs["utilizeCommitments"] = state ? state.utilizeCommitments : undefined;
             inputs["utilizeReservedInstances"] = state ? state.utilizeReservedInstances : undefined;
             inputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
@@ -280,6 +296,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["minSize"] = args ? args.minSize : undefined;
             inputs["monitoring"] = args ? args.monitoring : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["optimizeImages"] = args ? args.optimizeImages : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
@@ -287,6 +304,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             inputs["userData"] = args ? args.userData : undefined;
+            inputs["utilizeCommitments"] = args ? args.utilizeCommitments : undefined;
             inputs["utilizeReservedInstances"] = args ? args.utilizeReservedInstances : undefined;
             inputs["whitelists"] = args ? args.whitelists : undefined;
         }
@@ -359,6 +377,10 @@ export interface OceanState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * Object. Set auto image update settings.
+     */
+    readonly optimizeImages?: pulumi.Input<inputs.ecs.OceanOptimizeImages>;
+    /**
      * The region the cluster will run in.
      */
     readonly region?: pulumi.Input<string>;
@@ -380,6 +402,7 @@ export interface OceanState {
      * Base64-encoded MIME user data to make available to the instances.
      */
     readonly userData?: pulumi.Input<string>;
+    readonly utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
@@ -448,6 +471,10 @@ export interface OceanArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * Object. Set auto image update settings.
+     */
+    readonly optimizeImages?: pulumi.Input<inputs.ecs.OceanOptimizeImages>;
+    /**
      * The region the cluster will run in.
      */
     readonly region: pulumi.Input<string>;
@@ -469,6 +496,7 @@ export interface OceanArgs {
      * Base64-encoded MIME user data to make available to the instances.
      */
     readonly userData?: pulumi.Input<string>;
+    readonly utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
