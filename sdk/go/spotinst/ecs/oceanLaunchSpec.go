@@ -50,6 +50,7 @@ import (
 // 							SizePerResourceUnit: pulumi.Int(20),
 // 						},
 // 						Encrypted:  pulumi.Bool(false),
+// 						Throughput: pulumi.Int(500),
 // 						VolumeSize: pulumi.Int(50),
 // 						VolumeType: pulumi.String("gp2"),
 // 					},

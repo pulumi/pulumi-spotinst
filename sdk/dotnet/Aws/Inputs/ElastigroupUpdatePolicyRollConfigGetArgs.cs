@@ -28,7 +28,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<Inputs.ElastigroupUpdatePolicyRollConfigStrategyGetArgs>? Strategy { get; set; }
 
         [Input("waitForRollPercentage")]
-        public Input<int>? WaitForRollPercentage { get; set; }
+        public Input<double>? WaitForRollPercentage { get; set; }
 
         [Input("waitForRollTimeout")]
         public Input<int>? WaitForRollTimeout { get; set; }

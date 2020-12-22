@@ -30,6 +30,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 
+        [Input("throughput")]
+        public Input<int>? Throughput { get; set; }
+
         [Input("volumeSize")]
         public Input<int>? VolumeSize { get; set; }
 

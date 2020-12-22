@@ -244,6 +244,7 @@ export class Ocean extends pulumi.CustomResource {
      * Base64-encoded MIME user data to make available to the instances.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
+    public readonly utilizeCommitments!: pulumi.Output<boolean | undefined>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
@@ -292,6 +293,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             inputs["useAsTemplateOnly"] = state ? state.useAsTemplateOnly : undefined;
             inputs["userData"] = state ? state.userData : undefined;
+            inputs["utilizeCommitments"] = state ? state.utilizeCommitments : undefined;
             inputs["utilizeReservedInstances"] = state ? state.utilizeReservedInstances : undefined;
             inputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
@@ -329,6 +331,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             inputs["useAsTemplateOnly"] = args ? args.useAsTemplateOnly : undefined;
             inputs["userData"] = args ? args.userData : undefined;
+            inputs["utilizeCommitments"] = args ? args.utilizeCommitments : undefined;
             inputs["utilizeReservedInstances"] = args ? args.utilizeReservedInstances : undefined;
             inputs["whitelists"] = args ? args.whitelists : undefined;
         }
@@ -446,6 +449,7 @@ export interface OceanState {
      * Base64-encoded MIME user data to make available to the instances.
      */
     readonly userData?: pulumi.Input<string>;
+    readonly utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
@@ -559,6 +563,7 @@ export interface OceanArgs {
      * Base64-encoded MIME user data to make available to the instances.
      */
     readonly userData?: pulumi.Input<string>;
+    readonly utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */

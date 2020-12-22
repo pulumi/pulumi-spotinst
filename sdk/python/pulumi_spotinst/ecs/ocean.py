@@ -31,6 +31,7 @@ class Ocean(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 optimize_images: Optional[pulumi.Input[pulumi.InputType['OceanOptimizeImagesArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -38,6 +39,7 @@ class Ocean(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
+                 utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
@@ -64,6 +66,7 @@ class Ocean(pulumi.CustomResource):
                         size_per_resource_unit=20,
                     ),
                     encrypted=False,
+                    throughput=500,
                     volume_size=50,
                     volume_type="gp2",
                 ),
@@ -78,6 +81,14 @@ class Ocean(pulumi.CustomResource):
             max_size=1,
             min_size=0,
             monitoring=True,
+            optimize_images=spotinst.ecs.OceanOptimizeImagesArgs(
+                perform_at="timeWindow",
+                should_optimize_ecs_ami=True,
+                time_windows=[
+                    "Sun:02:00-Sun:12:00",
+                    "Sun:05:00-Sun:16:00",
+                ],
+            ),
             region="us-west-2",
             security_group_ids=["sg-12345"],
             subnet_ids=["subnet-12345"],
@@ -157,6 +168,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: The Ocean cluster name.
+        :param pulumi.Input[pulumi.InputType['OceanOptimizeImagesArgs']] optimize_images: Object. Set auto image update settings.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -198,6 +210,7 @@ class Ocean(pulumi.CustomResource):
             __props__['min_size'] = min_size
             __props__['monitoring'] = monitoring
             __props__['name'] = name
+            __props__['optimize_images'] = optimize_images
             if region is None:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
@@ -211,6 +224,7 @@ class Ocean(pulumi.CustomResource):
             __props__['tags'] = tags
             __props__['update_policy'] = update_policy
             __props__['user_data'] = user_data
+            __props__['utilize_commitments'] = utilize_commitments
             __props__['utilize_reserved_instances'] = utilize_reserved_instances
             __props__['whitelists'] = whitelists
         super(Ocean, __self__).__init__(
@@ -237,6 +251,7 @@ class Ocean(pulumi.CustomResource):
             min_size: Optional[pulumi.Input[int]] = None,
             monitoring: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            optimize_images: Optional[pulumi.Input[pulumi.InputType['OceanOptimizeImagesArgs']]] = None,
             region: Optional[pulumi.Input[str]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -244,6 +259,7 @@ class Ocean(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
+            utilize_commitments: Optional[pulumi.Input[bool]] = None,
             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
             whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Ocean':
         """
@@ -266,6 +282,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: The Ocean cluster name.
+        :param pulumi.Input[pulumi.InputType['OceanOptimizeImagesArgs']] optimize_images: Object. Set auto image update settings.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -292,6 +309,7 @@ class Ocean(pulumi.CustomResource):
         __props__["min_size"] = min_size
         __props__["monitoring"] = monitoring
         __props__["name"] = name
+        __props__["optimize_images"] = optimize_images
         __props__["region"] = region
         __props__["scheduled_tasks"] = scheduled_tasks
         __props__["security_group_ids"] = security_group_ids
@@ -299,6 +317,7 @@ class Ocean(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["update_policy"] = update_policy
         __props__["user_data"] = user_data
+        __props__["utilize_commitments"] = utilize_commitments
         __props__["utilize_reserved_instances"] = utilize_reserved_instances
         __props__["whitelists"] = whitelists
         return Ocean(resource_name, opts=opts, __props__=__props__)
@@ -413,6 +432,14 @@ class Ocean(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="optimizeImages")
+    def optimize_images(self) -> pulumi.Output[Optional['outputs.OceanOptimizeImages']]:
+        """
+        Object. Set auto image update settings.
+        """
+        return pulumi.get(self, "optimize_images")
+
+    @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
@@ -461,6 +488,11 @@ class Ocean(pulumi.CustomResource):
         Base64-encoded MIME user data to make available to the instances.
         """
         return pulumi.get(self, "user_data")
+
+    @property
+    @pulumi.getter(name="utilizeCommitments")
+    def utilize_commitments(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "utilize_commitments")
 
     @property
     @pulumi.getter(name="utilizeReservedInstances")

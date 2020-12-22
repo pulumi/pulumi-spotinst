@@ -335,6 +335,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
+        [Output("utilizeCommitments")]
+        public Output<bool?> UtilizeCommitments { get; private set; } = null!;
+
         /// <summary>
         /// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         /// </summary>
@@ -843,6 +846,9 @@ namespace Pulumi.SpotInst.Aws
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        [Input("utilizeCommitments")]
+        public Input<bool>? UtilizeCommitments { get; set; }
+
         /// <summary>
         /// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         /// </summary>
@@ -1311,6 +1317,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
+
+        [Input("utilizeCommitments")]
+        public Input<bool>? UtilizeCommitments { get; set; }
 
         /// <summary>
         /// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.

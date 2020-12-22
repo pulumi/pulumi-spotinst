@@ -768,6 +768,8 @@ type OceanBlockDeviceMappingEbs struct {
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// (Optional) String. The snapshot ID to mount by.
 	SnapshotId *string `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+	Throughput *int `pulumi:"throughput"`
 	// Int. The size (in GB) of the volume.
 	VolumeSize *int `pulumi:"volumeSize"`
 	// String. The type of the volume. Example: `gp2`.
@@ -798,6 +800,8 @@ type OceanBlockDeviceMappingEbsArgs struct {
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// (Optional) String. The snapshot ID to mount by.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
 	// Int. The size (in GB) of the volume.
 	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
 	// String. The type of the volume. Example: `gp2`.
@@ -913,6 +917,11 @@ func (o OceanBlockDeviceMappingEbsOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+func (o OceanBlockDeviceMappingEbsOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *int { return v.Throughput }).(pulumi.IntPtrOutput)
+}
+
 // Int. The size (in GB) of the volume.
 func (o OceanBlockDeviceMappingEbsOutput) VolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
@@ -999,6 +1008,16 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.StringPtrOutput
 		}
 		return v.SnapshotId
 	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+func (o OceanBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Throughput
+	}).(pulumi.IntPtrOutput)
 }
 
 // Int. The size (in GB) of the volume.
@@ -1547,6 +1566,8 @@ type OceanLaunchSpecBlockDeviceMappingEbs struct {
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// (Optional) String. The Snapshot ID to mount by.
 	SnapshotId *string `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+	Throughput *int `pulumi:"throughput"`
 	// Int. The size, in GB of the volume.
 	VolumeSize *int `pulumi:"volumeSize"`
 	// String. The type of the volume (example: "gp2").
@@ -1577,6 +1598,8 @@ type OceanLaunchSpecBlockDeviceMappingEbsArgs struct {
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// (Optional) String. The Snapshot ID to mount by.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
 	// Int. The size, in GB of the volume.
 	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
 	// String. The type of the volume (example: "gp2").
@@ -1692,6 +1715,11 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) SnapshotId() pulumi.StringPt
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *int { return v.Throughput }).(pulumi.IntPtrOutput)
+}
+
 // Int. The size, in GB of the volume.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) VolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
@@ -1778,6 +1806,16 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.Strin
 		}
 		return v.SnapshotId
 	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Throughput
+	}).(pulumi.IntPtrOutput)
 }
 
 // Int. The size, in GB of the volume.
@@ -2077,6 +2115,175 @@ func (o OceanLaunchSpecTagArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecT
 	}).(OceanLaunchSpecTagOutput)
 }
 
+type OceanOptimizeImages struct {
+	// String. Valid values: "always" "never" "timeWindow".
+	PerformAt string `pulumi:"performAt"`
+	// Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+	ShouldOptimizeEcsAmi bool `pulumi:"shouldOptimizeEcsAmi"`
+	// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+	TimeWindows []string `pulumi:"timeWindows"`
+}
+
+// OceanOptimizeImagesInput is an input type that accepts OceanOptimizeImagesArgs and OceanOptimizeImagesOutput values.
+// You can construct a concrete instance of `OceanOptimizeImagesInput` via:
+//
+//          OceanOptimizeImagesArgs{...}
+type OceanOptimizeImagesInput interface {
+	pulumi.Input
+
+	ToOceanOptimizeImagesOutput() OceanOptimizeImagesOutput
+	ToOceanOptimizeImagesOutputWithContext(context.Context) OceanOptimizeImagesOutput
+}
+
+type OceanOptimizeImagesArgs struct {
+	// String. Valid values: "always" "never" "timeWindow".
+	PerformAt pulumi.StringInput `pulumi:"performAt"`
+	// Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+	ShouldOptimizeEcsAmi pulumi.BoolInput `pulumi:"shouldOptimizeEcsAmi"`
+	// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
+}
+
+func (OceanOptimizeImagesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanOptimizeImages)(nil)).Elem()
+}
+
+func (i OceanOptimizeImagesArgs) ToOceanOptimizeImagesOutput() OceanOptimizeImagesOutput {
+	return i.ToOceanOptimizeImagesOutputWithContext(context.Background())
+}
+
+func (i OceanOptimizeImagesArgs) ToOceanOptimizeImagesOutputWithContext(ctx context.Context) OceanOptimizeImagesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanOptimizeImagesOutput)
+}
+
+func (i OceanOptimizeImagesArgs) ToOceanOptimizeImagesPtrOutput() OceanOptimizeImagesPtrOutput {
+	return i.ToOceanOptimizeImagesPtrOutputWithContext(context.Background())
+}
+
+func (i OceanOptimizeImagesArgs) ToOceanOptimizeImagesPtrOutputWithContext(ctx context.Context) OceanOptimizeImagesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanOptimizeImagesOutput).ToOceanOptimizeImagesPtrOutputWithContext(ctx)
+}
+
+// OceanOptimizeImagesPtrInput is an input type that accepts OceanOptimizeImagesArgs, OceanOptimizeImagesPtr and OceanOptimizeImagesPtrOutput values.
+// You can construct a concrete instance of `OceanOptimizeImagesPtrInput` via:
+//
+//          OceanOptimizeImagesArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanOptimizeImagesPtrInput interface {
+	pulumi.Input
+
+	ToOceanOptimizeImagesPtrOutput() OceanOptimizeImagesPtrOutput
+	ToOceanOptimizeImagesPtrOutputWithContext(context.Context) OceanOptimizeImagesPtrOutput
+}
+
+type oceanOptimizeImagesPtrType OceanOptimizeImagesArgs
+
+func OceanOptimizeImagesPtr(v *OceanOptimizeImagesArgs) OceanOptimizeImagesPtrInput {
+	return (*oceanOptimizeImagesPtrType)(v)
+}
+
+func (*oceanOptimizeImagesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanOptimizeImages)(nil)).Elem()
+}
+
+func (i *oceanOptimizeImagesPtrType) ToOceanOptimizeImagesPtrOutput() OceanOptimizeImagesPtrOutput {
+	return i.ToOceanOptimizeImagesPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanOptimizeImagesPtrType) ToOceanOptimizeImagesPtrOutputWithContext(ctx context.Context) OceanOptimizeImagesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanOptimizeImagesPtrOutput)
+}
+
+type OceanOptimizeImagesOutput struct{ *pulumi.OutputState }
+
+func (OceanOptimizeImagesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanOptimizeImages)(nil)).Elem()
+}
+
+func (o OceanOptimizeImagesOutput) ToOceanOptimizeImagesOutput() OceanOptimizeImagesOutput {
+	return o
+}
+
+func (o OceanOptimizeImagesOutput) ToOceanOptimizeImagesOutputWithContext(ctx context.Context) OceanOptimizeImagesOutput {
+	return o
+}
+
+func (o OceanOptimizeImagesOutput) ToOceanOptimizeImagesPtrOutput() OceanOptimizeImagesPtrOutput {
+	return o.ToOceanOptimizeImagesPtrOutputWithContext(context.Background())
+}
+
+func (o OceanOptimizeImagesOutput) ToOceanOptimizeImagesPtrOutputWithContext(ctx context.Context) OceanOptimizeImagesPtrOutput {
+	return o.ApplyT(func(v OceanOptimizeImages) *OceanOptimizeImages {
+		return &v
+	}).(OceanOptimizeImagesPtrOutput)
+}
+
+// String. Valid values: "always" "never" "timeWindow".
+func (o OceanOptimizeImagesOutput) PerformAt() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanOptimizeImages) string { return v.PerformAt }).(pulumi.StringOutput)
+}
+
+// Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+func (o OceanOptimizeImagesOutput) ShouldOptimizeEcsAmi() pulumi.BoolOutput {
+	return o.ApplyT(func(v OceanOptimizeImages) bool { return v.ShouldOptimizeEcsAmi }).(pulumi.BoolOutput)
+}
+
+// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+func (o OceanOptimizeImagesOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanOptimizeImages) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+}
+
+type OceanOptimizeImagesPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanOptimizeImagesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanOptimizeImages)(nil)).Elem()
+}
+
+func (o OceanOptimizeImagesPtrOutput) ToOceanOptimizeImagesPtrOutput() OceanOptimizeImagesPtrOutput {
+	return o
+}
+
+func (o OceanOptimizeImagesPtrOutput) ToOceanOptimizeImagesPtrOutputWithContext(ctx context.Context) OceanOptimizeImagesPtrOutput {
+	return o
+}
+
+func (o OceanOptimizeImagesPtrOutput) Elem() OceanOptimizeImagesOutput {
+	return o.ApplyT(func(v *OceanOptimizeImages) OceanOptimizeImages { return *v }).(OceanOptimizeImagesOutput)
+}
+
+// String. Valid values: "always" "never" "timeWindow".
+func (o OceanOptimizeImagesPtrOutput) PerformAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanOptimizeImages) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PerformAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+func (o OceanOptimizeImagesPtrOutput) ShouldOptimizeEcsAmi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanOptimizeImages) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldOptimizeEcsAmi
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+func (o OceanOptimizeImagesPtrOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanOptimizeImages) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
+}
+
 type OceanScheduledTask struct {
 	ShutdownHours *OceanScheduledTaskShutdownHours `pulumi:"shutdownHours"`
 	Tasks         []OceanScheduledTaskTask         `pulumi:"tasks"`
@@ -2178,7 +2385,8 @@ func (o OceanScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanScheduledTa
 }
 
 type OceanScheduledTaskShutdownHours struct {
-	IsEnabled   *bool    `pulumi:"isEnabled"`
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
 	TimeWindows []string `pulumi:"timeWindows"`
 }
 
@@ -2194,7 +2402,8 @@ type OceanScheduledTaskShutdownHoursInput interface {
 }
 
 type OceanScheduledTaskShutdownHoursArgs struct {
-	IsEnabled   pulumi.BoolPtrInput     `pulumi:"isEnabled"`
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
 
@@ -2278,6 +2487,7 @@ func (o OceanScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
 func (o OceanScheduledTaskShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
 }
@@ -2309,6 +2519,7 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
 func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) []string {
 		if v == nil {
@@ -2824,6 +3035,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagArrayOutput{})
+	pulumi.RegisterOutputType(OceanOptimizeImagesOutput{})
+	pulumi.RegisterOutputType(OceanOptimizeImagesPtrOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskArrayOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskShutdownHoursOutput{})

@@ -795,6 +795,7 @@ type ElastigroupEbsBlockDevice struct {
 	Iops                *int    `pulumi:"iops"`
 	KmsKeyId            *string `pulumi:"kmsKeyId"`
 	SnapshotId          *string `pulumi:"snapshotId"`
+	Throughput          *int    `pulumi:"throughput"`
 	VolumeSize          *int    `pulumi:"volumeSize"`
 	VolumeType          *string `pulumi:"volumeType"`
 }
@@ -817,6 +818,7 @@ type ElastigroupEbsBlockDeviceArgs struct {
 	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
 	KmsKeyId            pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	SnapshotId          pulumi.StringPtrInput `pulumi:"snapshotId"`
+	Throughput          pulumi.IntPtrInput    `pulumi:"throughput"`
 	VolumeSize          pulumi.IntPtrInput    `pulumi:"volumeSize"`
 	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
 }
@@ -894,6 +896,10 @@ func (o ElastigroupEbsBlockDeviceOutput) KmsKeyId() pulumi.StringPtrOutput {
 
 func (o ElastigroupEbsBlockDeviceOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupEbsBlockDeviceOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
 func (o ElastigroupEbsBlockDeviceOutput) VolumeSize() pulumi.IntPtrOutput {
@@ -7991,7 +7997,7 @@ type ElastigroupUpdatePolicyRollConfig struct {
 	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType       *string                                    `pulumi:"healthCheckType"`
 	Strategy              *ElastigroupUpdatePolicyRollConfigStrategy `pulumi:"strategy"`
-	WaitForRollPercentage *int                                       `pulumi:"waitForRollPercentage"`
+	WaitForRollPercentage *float64                                   `pulumi:"waitForRollPercentage"`
 	WaitForRollTimeout    *int                                       `pulumi:"waitForRollTimeout"`
 }
 
@@ -8012,7 +8018,7 @@ type ElastigroupUpdatePolicyRollConfigArgs struct {
 	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType       pulumi.StringPtrInput                             `pulumi:"healthCheckType"`
 	Strategy              ElastigroupUpdatePolicyRollConfigStrategyPtrInput `pulumi:"strategy"`
-	WaitForRollPercentage pulumi.IntPtrInput                                `pulumi:"waitForRollPercentage"`
+	WaitForRollPercentage pulumi.Float64PtrInput                            `pulumi:"waitForRollPercentage"`
 	WaitForRollTimeout    pulumi.IntPtrInput                                `pulumi:"waitForRollTimeout"`
 }
 
@@ -8111,8 +8117,8 @@ func (o ElastigroupUpdatePolicyRollConfigOutput) Strategy() ElastigroupUpdatePol
 	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
-func (o ElastigroupUpdatePolicyRollConfigOutput) WaitForRollPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollPercentage }).(pulumi.IntPtrOutput)
+func (o ElastigroupUpdatePolicyRollConfigOutput) WaitForRollPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *float64 { return v.WaitForRollPercentage }).(pulumi.Float64PtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigOutput) WaitForRollTimeout() pulumi.IntPtrOutput {
@@ -8174,13 +8180,13 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Strategy() ElastigroupUpdate
 	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
-func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
+func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *float64 {
 		if v == nil {
 			return nil
 		}
 		return v.WaitForRollPercentage
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollTimeout() pulumi.IntPtrOutput {
@@ -12785,6 +12791,8 @@ type OceanLaunchSpecBlockDeviceMappingEbs struct {
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// (Optional) String. The Snapshot ID to mount by.
 	SnapshotId *string `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+	Throughput *int `pulumi:"throughput"`
 	// Int. The size, in GB of the volume.
 	VolumeSize *int `pulumi:"volumeSize"`
 	// String. The type of the volume (example: "gp2").
@@ -12815,6 +12823,8 @@ type OceanLaunchSpecBlockDeviceMappingEbsArgs struct {
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// (Optional) String. The Snapshot ID to mount by.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
 	// Int. The size, in GB of the volume.
 	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
 	// String. The type of the volume (example: "gp2").
@@ -12930,6 +12940,11 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) SnapshotId() pulumi.StringPt
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *int { return v.Throughput }).(pulumi.IntPtrOutput)
+}
+
 // Int. The size, in GB of the volume.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) VolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
@@ -13016,6 +13031,16 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.Strin
 		}
 		return v.SnapshotId
 	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Throughput
+	}).(pulumi.IntPtrOutput)
 }
 
 // Int. The size, in GB of the volume.

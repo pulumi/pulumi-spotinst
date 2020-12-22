@@ -50,6 +50,7 @@ namespace Pulumi.SpotInst.Aws
     ///                             SizePerResourceUnit = 20,
     ///                         },
     ///                         Encrypted = false,
+    ///                         Throughput = 500,
     ///                         VolumeSize = 50,
     ///                         VolumeType = "gp2",
     ///                     },

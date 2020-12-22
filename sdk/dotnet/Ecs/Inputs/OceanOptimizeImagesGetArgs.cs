@@ -10,12 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanScheduledTaskShutdownHoursArgs : Pulumi.ResourceArgs
+    public sealed class OceanOptimizeImagesGetArgs : Pulumi.ResourceArgs
     {
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
+        /// <summary>
+        /// String. Valid values: "always" "never" "timeWindow".
+        /// </summary>
+        [Input("performAt", required: true)]
+        public Input<string> PerformAt { get; set; } = null!;
 
-        [Input("timeWindows", required: true)]
+        /// <summary>
+        /// Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+        /// </summary>
+        [Input("shouldOptimizeEcsAmi", required: true)]
+        public Input<bool> ShouldOptimizeEcsAmi { get; set; } = null!;
+
+        [Input("timeWindows")]
         private InputList<string>? _timeWindows;
 
         /// <summary>
@@ -27,7 +36,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
             set => _timeWindows = value;
         }
 
-        public OceanScheduledTaskShutdownHoursArgs()
+        public OceanOptimizeImagesGetArgs()
         {
         }
     }

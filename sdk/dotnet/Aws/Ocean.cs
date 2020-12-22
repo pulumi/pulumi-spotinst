@@ -329,6 +329,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
+        [Output("utilizeCommitments")]
+        public Output<bool?> UtilizeCommitments { get; private set; } = null!;
+
         /// <summary>
         /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         /// </summary>
@@ -575,6 +578,9 @@ namespace Pulumi.SpotInst.Aws
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        [Input("utilizeCommitments")]
+        public Input<bool>? UtilizeCommitments { get; set; }
+
         /// <summary>
         /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         /// </summary>
@@ -787,6 +793,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
+
+        [Input("utilizeCommitments")]
+        public Input<bool>? UtilizeCommitments { get; set; }
 
         /// <summary>
         /// If Reserved instances exist, Ocean will utilize them before launching Spot instances.

@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *                 sizePerResourceUnit: 20,
  *             },
  *             encrypted: false,
+ *             throughput: 500,
  *             volumeSize: 50,
  *             volumeType: "gp2",
  *         },

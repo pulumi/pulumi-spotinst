@@ -22,6 +22,7 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
     'OceanLaunchSpecTagArgs',
+    'OceanOptimizeImagesArgs',
     'OceanScheduledTaskArgs',
     'OceanScheduledTaskShutdownHoursArgs',
     'OceanScheduledTaskTaskArgs',
@@ -269,6 +270,7 @@ class OceanBlockDeviceMappingEbsArgs:
                  iops: Optional[pulumi.Input[int]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
+                 throughput: Optional[pulumi.Input[int]] = None,
                  volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
@@ -278,6 +280,7 @@ class OceanBlockDeviceMappingEbsArgs:
         :param pulumi.Input[int] iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
         :param pulumi.Input[str] kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
         :param pulumi.Input[str] snapshot_id: (Optional) String. The snapshot ID to mount by.
+        :param pulumi.Input[int] throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
         :param pulumi.Input[int] volume_size: Int. The size (in GB) of the volume.
         :param pulumi.Input[str] volume_type: String. The type of the volume. Example: `gp2`.
         """
@@ -293,6 +296,8 @@ class OceanBlockDeviceMappingEbsArgs:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if throughput is not None:
+            pulumi.set(__self__, "throughput", throughput)
         if volume_size is not None:
             pulumi.set(__self__, "volume_size", volume_size)
         if volume_type is not None:
@@ -369,6 +374,18 @@ class OceanBlockDeviceMappingEbsArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snapshot_id", value)
+
+    @property
+    @pulumi.getter
+    def throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+        """
+        return pulumi.get(self, "throughput")
+
+    @throughput.setter
+    def throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "throughput", value)
 
     @property
     @pulumi.getter(name="volumeSize")
@@ -613,6 +630,7 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
                  iops: Optional[pulumi.Input[int]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
+                 throughput: Optional[pulumi.Input[int]] = None,
                  volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
@@ -622,6 +640,7 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
         :param pulumi.Input[int] iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
         :param pulumi.Input[str] kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
         :param pulumi.Input[str] snapshot_id: (Optional) String. The Snapshot ID to mount by.
+        :param pulumi.Input[int] throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
         :param pulumi.Input[int] volume_size: Int. The size, in GB of the volume.
         :param pulumi.Input[str] volume_type: String. The type of the volume (example: "gp2").
         """
@@ -637,6 +656,8 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if throughput is not None:
+            pulumi.set(__self__, "throughput", throughput)
         if volume_size is not None:
             pulumi.set(__self__, "volume_size", volume_size)
         if volume_type is not None:
@@ -713,6 +734,18 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snapshot_id", value)
+
+    @property
+    @pulumi.getter
+    def throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+        """
+        return pulumi.get(self, "throughput")
+
+    @throughput.setter
+    def throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "throughput", value)
 
     @property
     @pulumi.getter(name="volumeSize")
@@ -829,6 +862,59 @@ class OceanLaunchSpecTagArgs:
 
 
 @pulumi.input_type
+class OceanOptimizeImagesArgs:
+    def __init__(__self__, *,
+                 perform_at: pulumi.Input[str],
+                 should_optimize_ecs_ami: pulumi.Input[bool],
+                 time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] perform_at: String. Valid values: "always" "never" "timeWindow".
+        :param pulumi.Input[bool] should_optimize_ecs_ami: Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        """
+        pulumi.set(__self__, "perform_at", perform_at)
+        pulumi.set(__self__, "should_optimize_ecs_ami", should_optimize_ecs_ami)
+        if time_windows is not None:
+            pulumi.set(__self__, "time_windows", time_windows)
+
+    @property
+    @pulumi.getter(name="performAt")
+    def perform_at(self) -> pulumi.Input[str]:
+        """
+        String. Valid values: "always" "never" "timeWindow".
+        """
+        return pulumi.get(self, "perform_at")
+
+    @perform_at.setter
+    def perform_at(self, value: pulumi.Input[str]):
+        pulumi.set(self, "perform_at", value)
+
+    @property
+    @pulumi.getter(name="shouldOptimizeEcsAmi")
+    def should_optimize_ecs_ami(self) -> pulumi.Input[bool]:
+        """
+        Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+        """
+        return pulumi.get(self, "should_optimize_ecs_ami")
+
+    @should_optimize_ecs_ami.setter
+    def should_optimize_ecs_ami(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "should_optimize_ecs_ami", value)
+
+    @property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        """
+        return pulumi.get(self, "time_windows")
+
+    @time_windows.setter
+    def time_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "time_windows", value)
+
+
+@pulumi.input_type
 class OceanScheduledTaskArgs:
     def __init__(__self__, *,
                  shutdown_hours: Optional[pulumi.Input['OceanScheduledTaskShutdownHoursArgs']] = None,
@@ -862,6 +948,9 @@ class OceanScheduledTaskShutdownHoursArgs:
     def __init__(__self__, *,
                  time_windows: pulumi.Input[Sequence[pulumi.Input[str]]],
                  is_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        """
         pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
@@ -869,6 +958,9 @@ class OceanScheduledTaskShutdownHoursArgs:
     @property
     @pulumi.getter(name="timeWindows")
     def time_windows(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        """
         return pulumi.get(self, "time_windows")
 
     @time_windows.setter

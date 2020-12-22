@@ -125,7 +125,7 @@ github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24
 github.com/beorn7/perks v1.0.0/go.mod h1:KWe93zE9D1o94FZ5RNwFwVgaQK1VOXiVxmqh+CedLV8=
 github.com/bflad/gopaniccheck v0.1.0/go.mod h1:ZCj2vSr7EqVeDaqVsWN4n2MwdROx1YL+LFo47TSWtsA=
 github.com/bflad/tfproviderdocs v0.8.0/go.mod h1:gC+fjQ+tT1x1bqq+2yZ9G/y9VjRI24c6HDi+uEdgBG4=
-github.com/bflad/tfproviderlint v0.20.0/go.mod h1:0fdh7JywihC58Io8AZ+gpcmQtJggse0MCOXF2tMmnAQ=
+github.com/bflad/tfproviderlint v0.21.0/go.mod h1:0fdh7JywihC58Io8AZ+gpcmQtJggse0MCOXF2tMmnAQ=
 github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d h1:xDfNPAt8lFiC1UJrqV3uuy861HCTo708pDMbjHHdCas=
 github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d/go.mod h1:6QX/PXZ00z/TKoufEY6K/a0k6AhaJrQKdFe6OfVXsa4=
 github.com/bgentry/speakeasy v0.1.0 h1:ByYyxL9InA1OWqxJqqp2A5pYHUrCiAL6K3J+LKSsQkY=
@@ -580,10 +580,10 @@ github.com/spf13/pflag v1.0.2/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnIn
 github.com/spf13/pflag v1.0.3 h1:zPAT6CGy6wXeQ7NtTnaTerfKOsV6V6F8agHXFiazDkg=
 github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
 github.com/spf13/viper v1.4.0/go.mod h1:PTJ7Z/lr49W6bUbkmS1V3by4uWynFiR9p7+dSq/yZzE=
-github.com/spotinst/spotinst-sdk-go v1.71.0 h1:JR47HObMRyMcotJjduKxRTlqj8eX7R3xRIJtnBD0h1M=
-github.com/spotinst/spotinst-sdk-go v1.71.0/go.mod h1:sSRVZTSdUAPxeELD/urZkxcfU/DcxO1/UIdOxagqFBc=
-github.com/spotinst/terraform-provider-spotinst v1.31.0 h1:ndE/RnFrBVOAQvfkQVHuMsYnyHRUskjv4wSsosh3Mlg=
-github.com/spotinst/terraform-provider-spotinst v1.31.0/go.mod h1:L5QJReKA06hPZ9ZvrNGp8NMBcArU2SvMygm7UYipXiw=
+github.com/spotinst/spotinst-sdk-go v1.75.0 h1:4eg0J1STZPnLxPiIYYYq7DYrApIkpzBpJAgzjFIgQfs=
+github.com/spotinst/spotinst-sdk-go v1.75.0/go.mod h1:sSRVZTSdUAPxeELD/urZkxcfU/DcxO1/UIdOxagqFBc=
+github.com/spotinst/terraform-provider-spotinst v1.32.0 h1:FXr+6bpEGm1FuFuX7PfatgrXDqw3yz7fFFptiARQQU0=
+github.com/spotinst/terraform-provider-spotinst v1.32.0/go.mod h1:T4qE+QmWrbRADnf9yJqlNmxZJ1VirL1aVtcKLAPzGS0=
 github.com/src-d/gcfg v1.4.0 h1:xXbNR5AlLSA315x2UO+fTSSAXCDf+Ar38/6oyGbDKQ4=
 github.com/src-d/gcfg v1.4.0/go.mod h1:p/UMsR43ujA89BJY9duynAwIpvqEujIH/jFlfL7jWoI=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

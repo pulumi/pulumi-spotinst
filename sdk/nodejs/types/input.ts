@@ -120,6 +120,7 @@ export namespace aws {
         iops?: pulumi.Input<number>;
         kmsKeyId?: pulumi.Input<string>;
         snapshotId?: pulumi.Input<string>;
+        throughput?: pulumi.Input<number>;
         volumeSize?: pulumi.Input<number>;
         volumeType?: pulumi.Input<string>;
     }
@@ -985,6 +986,10 @@ export namespace aws {
          */
         snapshotId?: pulumi.Input<string>;
         /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         */
+        throughput?: pulumi.Input<number>;
+        /**
          * Int. The size, in GB of the volume.
          */
         volumeSize?: pulumi.Input<number>;
@@ -1379,6 +1384,10 @@ export namespace ecs {
          */
         snapshotId?: pulumi.Input<string>;
         /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         */
+        throughput?: pulumi.Input<number>;
+        /**
          * Int. The size (in GB) of the volume.
          */
         volumeSize?: pulumi.Input<number>;
@@ -1471,6 +1480,10 @@ export namespace ecs {
          */
         snapshotId?: pulumi.Input<string>;
         /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         */
+        throughput?: pulumi.Input<number>;
+        /**
          * Int. The size, in GB of the volume.
          */
         volumeSize?: pulumi.Input<number>;
@@ -1506,6 +1519,21 @@ export namespace ecs {
         value: pulumi.Input<string>;
     }
 
+    export interface OceanOptimizeImages {
+        /**
+         * String. Valid values: "always" "never" "timeWindow".
+         */
+        performAt: pulumi.Input<string>;
+        /**
+         * Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+         */
+        shouldOptimizeEcsAmi: pulumi.Input<boolean>;
+        /**
+         * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+         */
+        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface OceanScheduledTask {
         shutdownHours?: pulumi.Input<inputs.ecs.OceanScheduledTaskShutdownHours>;
         tasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTaskTask>[]>;
@@ -1513,6 +1541,9 @@ export namespace ecs {
 
     export interface OceanScheduledTaskShutdownHours {
         isEnabled?: pulumi.Input<boolean>;
+        /**
+         * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+         */
         timeWindows: pulumi.Input<pulumi.Input<string>[]>;
     }
 

@@ -85,6 +85,7 @@ class Elastigroup(pulumi.CustomResource):
                  target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['ElastigroupUpdatePolicyArgs']]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
+                 utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
                  wait_for_capacity: Optional[pulumi.Input[int]] = None,
                  wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None,
@@ -240,6 +241,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__['target_group_arns'] = target_group_arns
             __props__['update_policy'] = update_policy
             __props__['user_data'] = user_data
+            __props__['utilize_commitments'] = utilize_commitments
             __props__['utilize_reserved_instances'] = utilize_reserved_instances
             __props__['wait_for_capacity'] = wait_for_capacity
             __props__['wait_for_capacity_timeout'] = wait_for_capacity_timeout
@@ -321,6 +323,7 @@ class Elastigroup(pulumi.CustomResource):
             target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['ElastigroupUpdatePolicyArgs']]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
+            utilize_commitments: Optional[pulumi.Input[bool]] = None,
             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
             wait_for_capacity: Optional[pulumi.Input[int]] = None,
             wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None) -> 'Elastigroup':
@@ -451,6 +454,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__["target_group_arns"] = target_group_arns
         __props__["update_policy"] = update_policy
         __props__["user_data"] = user_data
+        __props__["utilize_commitments"] = utilize_commitments
         __props__["utilize_reserved_instances"] = utilize_reserved_instances
         __props__["wait_for_capacity"] = wait_for_capacity
         __props__["wait_for_capacity_timeout"] = wait_for_capacity_timeout
@@ -915,6 +919,11 @@ class Elastigroup(pulumi.CustomResource):
         The user data to provide when launching the instance.
         """
         return pulumi.get(self, "user_data")
+
+    @property
+    @pulumi.getter(name="utilizeCommitments")
+    def utilize_commitments(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "utilize_commitments")
 
     @property
     @pulumi.getter(name="utilizeReservedInstances")

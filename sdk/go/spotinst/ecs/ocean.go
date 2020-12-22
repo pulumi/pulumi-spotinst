@@ -38,6 +38,7 @@ import (
 // 							SizePerResourceUnit: pulumi.Int(20),
 // 						},
 // 						Encrypted:  pulumi.Bool(false),
+// 						Throughput: pulumi.Int(500),
 // 						VolumeSize: pulumi.Int(50),
 // 						VolumeType: pulumi.String("gp2"),
 // 					},
@@ -53,7 +54,15 @@ import (
 // 			MaxSize:            pulumi.Int(1),
 // 			MinSize:            pulumi.Int(0),
 // 			Monitoring:         pulumi.Bool(true),
-// 			Region:             pulumi.String("us-west-2"),
+// 			OptimizeImages: &ecs.OceanOptimizeImagesArgs{
+// 				PerformAt:            pulumi.String("timeWindow"),
+// 				ShouldOptimizeEcsAmi: pulumi.Bool(true),
+// 				TimeWindows: pulumi.StringArray{
+// 					pulumi.String("Sun:02:00-Sun:12:00"),
+// 					pulumi.String("Sun:05:00-Sun:16:00"),
+// 				},
+// 			},
+// 			Region: pulumi.String("us-west-2"),
 // 			SecurityGroupIds: pulumi.StringArray{
 // 				pulumi.String("sg-12345"),
 // 			},
@@ -200,6 +209,8 @@ type Ocean struct {
 	Monitoring pulumi.BoolPtrOutput `pulumi:"monitoring"`
 	// The Ocean cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Object. Set auto image update settings.
+	OptimizeImages OceanOptimizeImagesPtrOutput `pulumi:"optimizeImages"`
 	// The region the cluster will run in.
 	Region         pulumi.StringOutput           `pulumi:"region"`
 	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
@@ -211,7 +222,8 @@ type Ocean struct {
 	Tags         OceanTagArrayOutput        `pulumi:"tags"`
 	UpdatePolicy OceanUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData pulumi.StringPtrOutput `pulumi:"userData"`
+	UserData           pulumi.StringPtrOutput `pulumi:"userData"`
+	UtilizeCommitments pulumi.BoolPtrOutput   `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
@@ -285,6 +297,8 @@ type oceanState struct {
 	Monitoring *bool `pulumi:"monitoring"`
 	// The Ocean cluster name.
 	Name *string `pulumi:"name"`
+	// Object. Set auto image update settings.
+	OptimizeImages *OceanOptimizeImages `pulumi:"optimizeImages"`
 	// The region the cluster will run in.
 	Region         *string              `pulumi:"region"`
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
@@ -296,7 +310,8 @@ type oceanState struct {
 	Tags         []OceanTag         `pulumi:"tags"`
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData *string `pulumi:"userData"`
+	UserData           *string `pulumi:"userData"`
+	UtilizeCommitments *bool   `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
@@ -331,6 +346,8 @@ type OceanState struct {
 	Monitoring pulumi.BoolPtrInput
 	// The Ocean cluster name.
 	Name pulumi.StringPtrInput
+	// Object. Set auto image update settings.
+	OptimizeImages OceanOptimizeImagesPtrInput
 	// The region the cluster will run in.
 	Region         pulumi.StringPtrInput
 	ScheduledTasks OceanScheduledTaskArrayInput
@@ -342,7 +359,8 @@ type OceanState struct {
 	Tags         OceanTagArrayInput
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData pulumi.StringPtrInput
+	UserData           pulumi.StringPtrInput
+	UtilizeCommitments pulumi.BoolPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
@@ -381,6 +399,8 @@ type oceanArgs struct {
 	Monitoring *bool `pulumi:"monitoring"`
 	// The Ocean cluster name.
 	Name *string `pulumi:"name"`
+	// Object. Set auto image update settings.
+	OptimizeImages *OceanOptimizeImages `pulumi:"optimizeImages"`
 	// The region the cluster will run in.
 	Region         string               `pulumi:"region"`
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
@@ -392,7 +412,8 @@ type oceanArgs struct {
 	Tags         []OceanTag         `pulumi:"tags"`
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData *string `pulumi:"userData"`
+	UserData           *string `pulumi:"userData"`
+	UtilizeCommitments *bool   `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
@@ -428,6 +449,8 @@ type OceanArgs struct {
 	Monitoring pulumi.BoolPtrInput
 	// The Ocean cluster name.
 	Name pulumi.StringPtrInput
+	// Object. Set auto image update settings.
+	OptimizeImages OceanOptimizeImagesPtrInput
 	// The region the cluster will run in.
 	Region         pulumi.StringInput
 	ScheduledTasks OceanScheduledTaskArrayInput
@@ -439,7 +462,8 @@ type OceanArgs struct {
 	Tags         OceanTagArrayInput
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData pulumi.StringPtrInput
+	UserData           pulumi.StringPtrInput
+	UtilizeCommitments pulumi.BoolPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.

@@ -125,7 +125,8 @@ type Elastigroup struct {
 	TargetGroupArns pulumi.StringArrayOutput         `pulumi:"targetGroupArns"`
 	UpdatePolicy    ElastigroupUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
-	UserData pulumi.StringPtrOutput `pulumi:"userData"`
+	UserData           pulumi.StringPtrOutput `pulumi:"userData"`
+	UtilizeCommitments pulumi.BoolPtrOutput   `pulumi:"utilizeCommitments"`
 	// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
 	// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
@@ -291,7 +292,8 @@ type elastigroupState struct {
 	TargetGroupArns []string                 `pulumi:"targetGroupArns"`
 	UpdatePolicy    *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
-	UserData *string `pulumi:"userData"`
+	UserData           *string `pulumi:"userData"`
+	UtilizeCommitments *bool   `pulumi:"utilizeCommitments"`
 	// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
@@ -412,7 +414,8 @@ type ElastigroupState struct {
 	TargetGroupArns pulumi.StringArrayInput
 	UpdatePolicy    ElastigroupUpdatePolicyPtrInput
 	// The user data to provide when launching the instance.
-	UserData pulumi.StringPtrInput
+	UserData           pulumi.StringPtrInput
+	UtilizeCommitments pulumi.BoolPtrInput
 	// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
@@ -537,7 +540,8 @@ type elastigroupArgs struct {
 	TargetGroupArns []string                 `pulumi:"targetGroupArns"`
 	UpdatePolicy    *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
-	UserData *string `pulumi:"userData"`
+	UserData           *string `pulumi:"userData"`
+	UtilizeCommitments *bool   `pulumi:"utilizeCommitments"`
 	// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
@@ -659,7 +663,8 @@ type ElastigroupArgs struct {
 	TargetGroupArns pulumi.StringArrayInput
 	UpdatePolicy    ElastigroupUpdatePolicyPtrInput
 	// The user data to provide when launching the instance.
-	UserData pulumi.StringPtrInput
+	UserData           pulumi.StringPtrInput
+	UtilizeCommitments pulumi.BoolPtrInput
 	// In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	// Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.

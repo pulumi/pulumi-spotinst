@@ -60,6 +60,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                         size_per_resource_unit=20,
                     ),
                     encrypted=False,
+                    throughput=500,
                     volume_size=50,
                     volume_type="gp2",
                 ),

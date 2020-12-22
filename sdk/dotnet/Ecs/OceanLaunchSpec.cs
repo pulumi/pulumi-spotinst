@@ -56,6 +56,7 @@ namespace Pulumi.SpotInst.Ecs
     ///                             SizePerResourceUnit = 20,
     ///                         },
     ///                         Encrypted = false,
+    ///                         Throughput = 500,
     ///                         VolumeSize = 50,
     ///                         VolumeType = "gp2",
     ///                     },
