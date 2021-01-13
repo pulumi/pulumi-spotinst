@@ -140,12 +140,12 @@ class OceanImport(pulumi.CustomResource):
 
             __props__['autoscaler'] = autoscaler
             __props__['backend_services'] = backend_services
-            if cluster_name is None:
+            if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__['cluster_name'] = cluster_name
             __props__['controller_cluster_id'] = controller_cluster_id
             __props__['desired_capacity'] = desired_capacity
-            if location is None:
+            if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__['location'] = location
             __props__['max_size'] = max_size

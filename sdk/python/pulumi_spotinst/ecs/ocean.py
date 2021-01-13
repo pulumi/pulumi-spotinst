@@ -197,7 +197,7 @@ class Ocean(pulumi.CustomResource):
             __props__['associate_public_ip_address'] = associate_public_ip_address
             __props__['autoscaler'] = autoscaler
             __props__['block_device_mappings'] = block_device_mappings
-            if cluster_name is None:
+            if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__['cluster_name'] = cluster_name
             __props__['desired_capacity'] = desired_capacity
@@ -211,14 +211,14 @@ class Ocean(pulumi.CustomResource):
             __props__['monitoring'] = monitoring
             __props__['name'] = name
             __props__['optimize_images'] = optimize_images
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['scheduled_tasks'] = scheduled_tasks
-            if security_group_ids is None:
+            if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__['security_group_ids'] = security_group_ids
-            if subnet_ids is None:
+            if subnet_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_ids'")
             __props__['subnet_ids'] = subnet_ids
             __props__['tags'] = tags

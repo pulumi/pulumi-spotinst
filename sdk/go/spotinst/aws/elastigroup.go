@@ -138,26 +138,27 @@ type Elastigroup struct {
 // NewElastigroup registers a new resource with the given unique name, arguments, and options.
 func NewElastigroup(ctx *pulumi.Context,
 	name string, args *ElastigroupArgs, opts ...pulumi.ResourceOption) (*Elastigroup, error) {
-	if args == nil || args.FallbackToOndemand == nil {
-		return nil, errors.New("missing required argument 'FallbackToOndemand'")
-	}
-	if args == nil || args.InstanceTypesOndemand == nil {
-		return nil, errors.New("missing required argument 'InstanceTypesOndemand'")
-	}
-	if args == nil || args.InstanceTypesSpots == nil {
-		return nil, errors.New("missing required argument 'InstanceTypesSpots'")
-	}
-	if args == nil || args.Orientation == nil {
-		return nil, errors.New("missing required argument 'Orientation'")
-	}
-	if args == nil || args.Product == nil {
-		return nil, errors.New("missing required argument 'Product'")
-	}
-	if args == nil || args.SecurityGroups == nil {
-		return nil, errors.New("missing required argument 'SecurityGroups'")
-	}
 	if args == nil {
-		args = &ElastigroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FallbackToOndemand == nil {
+		return nil, errors.New("invalid value for required argument 'FallbackToOndemand'")
+	}
+	if args.InstanceTypesOndemand == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceTypesOndemand'")
+	}
+	if args.InstanceTypesSpots == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceTypesSpots'")
+	}
+	if args.Orientation == nil {
+		return nil, errors.New("invalid value for required argument 'Orientation'")
+	}
+	if args.Product == nil {
+		return nil, errors.New("invalid value for required argument 'Product'")
+	}
+	if args.SecurityGroups == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroups'")
 	}
 	var resource Elastigroup
 	err := ctx.RegisterResource("spotinst:aws/elastigroup:Elastigroup", name, args, &resource, opts...)

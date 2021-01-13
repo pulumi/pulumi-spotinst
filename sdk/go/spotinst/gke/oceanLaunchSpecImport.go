@@ -62,14 +62,15 @@ type OceanLaunchSpecImport struct {
 // NewOceanLaunchSpecImport registers a new resource with the given unique name, arguments, and options.
 func NewOceanLaunchSpecImport(ctx *pulumi.Context,
 	name string, args *OceanLaunchSpecImportArgs, opts ...pulumi.ResourceOption) (*OceanLaunchSpecImport, error) {
-	if args == nil || args.NodePoolName == nil {
-		return nil, errors.New("missing required argument 'NodePoolName'")
-	}
-	if args == nil || args.OceanId == nil {
-		return nil, errors.New("missing required argument 'OceanId'")
-	}
 	if args == nil {
-		args = &OceanLaunchSpecImportArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NodePoolName == nil {
+		return nil, errors.New("invalid value for required argument 'NodePoolName'")
+	}
+	if args.OceanId == nil {
+		return nil, errors.New("invalid value for required argument 'OceanId'")
 	}
 	var resource OceanLaunchSpecImport
 	err := ctx.RegisterResource("spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport", name, args, &resource, opts...)

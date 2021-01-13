@@ -61,10 +61,10 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if node_pool_name is None:
+            if node_pool_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_pool_name'")
             __props__['node_pool_name'] = node_pool_name
-            if ocean_id is None:
+            if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__['ocean_id'] = ocean_id
         super(OceanLaunchSpecImport, __self__).__init__(

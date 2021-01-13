@@ -58,13 +58,13 @@ export class Listener extends pulumi.CustomResource {
             inputs["tlsConfig"] = state ? state.tlsConfig : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if (!args || args.balancerId === undefined) {
+            if ((!args || args.balancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'balancerId'");
             }
-            if (!args || args.port === undefined) {
+            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'port'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
             inputs["balancerId"] = args ? args.balancerId : undefined;

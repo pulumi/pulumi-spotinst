@@ -133,25 +133,25 @@ class Beanstalk(pulumi.CustomResource):
             __props__['beanstalk_environment_id'] = beanstalk_environment_id
             __props__['beanstalk_environment_name'] = beanstalk_environment_name
             __props__['deployment_preferences'] = deployment_preferences
-            if desired_capacity is None:
+            if desired_capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'desired_capacity'")
             __props__['desired_capacity'] = desired_capacity
-            if instance_types_spots is None:
+            if instance_types_spots is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_types_spots'")
             __props__['instance_types_spots'] = instance_types_spots
             __props__['maintenance'] = maintenance
             __props__['managed_actions'] = managed_actions
-            if max_size is None:
+            if max_size is None and not opts.urn:
                 raise TypeError("Missing required property 'max_size'")
             __props__['max_size'] = max_size
-            if min_size is None:
+            if min_size is None and not opts.urn:
                 raise TypeError("Missing required property 'min_size'")
             __props__['min_size'] = min_size
             __props__['name'] = name
-            if product is None:
+            if product is None and not opts.urn:
                 raise TypeError("Missing required property 'product'")
             __props__['product'] = product
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['scheduled_tasks'] = scheduled_tasks

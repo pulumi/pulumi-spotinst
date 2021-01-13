@@ -240,14 +240,15 @@ type Ocean struct {
 // NewOcean registers a new resource with the given unique name, arguments, and options.
 func NewOcean(ctx *pulumi.Context,
 	name string, args *OceanArgs, opts ...pulumi.ResourceOption) (*Ocean, error) {
-	if args == nil || args.SecurityGroups == nil {
-		return nil, errors.New("missing required argument 'SecurityGroups'")
-	}
-	if args == nil || args.SubnetIds == nil {
-		return nil, errors.New("missing required argument 'SubnetIds'")
-	}
 	if args == nil {
-		args = &OceanArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.SecurityGroups == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroups'")
+	}
+	if args.SubnetIds == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetIds'")
 	}
 	var resource Ocean
 	err := ctx.RegisterResource("spotinst:aws/ocean:Ocean", name, args, &resource, opts...)

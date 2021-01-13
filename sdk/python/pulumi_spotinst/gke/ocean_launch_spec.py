@@ -92,13 +92,13 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
             __props__['autoscale_headrooms'] = autoscale_headrooms
             __props__['labels'] = labels
-            if metadatas is None:
+            if metadatas is None and not opts.urn:
                 raise TypeError("Missing required property 'metadatas'")
             __props__['metadatas'] = metadatas
-            if ocean_id is None:
+            if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__['ocean_id'] = ocean_id
-            if source_image is None:
+            if source_image is None and not opts.urn:
                 raise TypeError("Missing required property 'source_image'")
             __props__['source_image'] = source_image
             __props__['taints'] = taints

@@ -557,11 +557,12 @@ type MrScalar struct {
 // NewMrScalar registers a new resource with the given unique name, arguments, and options.
 func NewMrScalar(ctx *pulumi.Context,
 	name string, args *MrScalarArgs, opts ...pulumi.ResourceOption) (*MrScalar, error) {
-	if args == nil || args.Strategy == nil {
-		return nil, errors.New("missing required argument 'Strategy'")
-	}
 	if args == nil {
-		args = &MrScalarArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Strategy == nil {
+		return nil, errors.New("invalid value for required argument 'Strategy'")
 	}
 	var resource MrScalar
 	err := ctx.RegisterResource("spotinst:aws/mrScalar:MrScalar", name, args, &resource, opts...)

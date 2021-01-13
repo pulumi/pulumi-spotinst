@@ -211,10 +211,10 @@ class ManagedInstance(pulumi.CustomResource):
             __props__['grace_period'] = grace_period
             __props__['health_check_type'] = health_check_type
             __props__['iam_instance_profile'] = iam_instance_profile
-            if image_id is None:
+            if image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_id'")
             __props__['image_id'] = image_id
-            if instance_types is None:
+            if instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_types'")
             __props__['instance_types'] = instance_types
             __props__['integration_route53'] = integration_route53
@@ -225,7 +225,7 @@ class ManagedInstance(pulumi.CustomResource):
             __props__['network_interfaces'] = network_interfaces
             __props__['optimization_windows'] = optimization_windows
             __props__['orientation'] = orientation
-            if persist_block_devices is None:
+            if persist_block_devices is None and not opts.urn:
                 raise TypeError("Missing required property 'persist_block_devices'")
             __props__['persist_block_devices'] = persist_block_devices
             __props__['persist_private_ip'] = persist_private_ip
@@ -233,7 +233,7 @@ class ManagedInstance(pulumi.CustomResource):
             __props__['placement_tenancy'] = placement_tenancy
             __props__['preferred_type'] = preferred_type
             __props__['private_ip'] = private_ip
-            if product is None:
+            if product is None and not opts.urn:
                 raise TypeError("Missing required property 'product'")
             __props__['product'] = product
             __props__['region'] = region
@@ -241,14 +241,14 @@ class ManagedInstance(pulumi.CustomResource):
             __props__['scheduled_tasks'] = scheduled_tasks
             __props__['security_group_ids'] = security_group_ids
             __props__['shutdown_script'] = shutdown_script
-            if subnet_ids is None:
+            if subnet_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_ids'")
             __props__['subnet_ids'] = subnet_ids
             __props__['tags'] = tags
             __props__['unhealthy_duration'] = unhealthy_duration
             __props__['user_data'] = user_data
             __props__['utilize_reserved_instances'] = utilize_reserved_instances
-            if vpc_id is None:
+            if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__['vpc_id'] = vpc_id
         super(ManagedInstance, __self__).__init__(

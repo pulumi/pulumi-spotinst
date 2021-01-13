@@ -46,10 +46,10 @@ class Suspension(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if group_id is None:
+            if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__['group_id'] = group_id
-            if suspensions is None:
+            if suspensions is None and not opts.urn:
                 raise TypeError("Missing required property 'suspensions'")
             __props__['suspensions'] = suspensions
         super(Suspension, __self__).__init__(

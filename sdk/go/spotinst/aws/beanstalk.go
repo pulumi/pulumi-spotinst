@@ -132,26 +132,27 @@ type Beanstalk struct {
 // NewBeanstalk registers a new resource with the given unique name, arguments, and options.
 func NewBeanstalk(ctx *pulumi.Context,
 	name string, args *BeanstalkArgs, opts ...pulumi.ResourceOption) (*Beanstalk, error) {
-	if args == nil || args.DesiredCapacity == nil {
-		return nil, errors.New("missing required argument 'DesiredCapacity'")
-	}
-	if args == nil || args.InstanceTypesSpots == nil {
-		return nil, errors.New("missing required argument 'InstanceTypesSpots'")
-	}
-	if args == nil || args.MaxSize == nil {
-		return nil, errors.New("missing required argument 'MaxSize'")
-	}
-	if args == nil || args.MinSize == nil {
-		return nil, errors.New("missing required argument 'MinSize'")
-	}
-	if args == nil || args.Product == nil {
-		return nil, errors.New("missing required argument 'Product'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	if args == nil {
-		args = &BeanstalkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DesiredCapacity == nil {
+		return nil, errors.New("invalid value for required argument 'DesiredCapacity'")
+	}
+	if args.InstanceTypesSpots == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceTypesSpots'")
+	}
+	if args.MaxSize == nil {
+		return nil, errors.New("invalid value for required argument 'MaxSize'")
+	}
+	if args.MinSize == nil {
+		return nil, errors.New("invalid value for required argument 'MinSize'")
+	}
+	if args.Product == nil {
+		return nil, errors.New("invalid value for required argument 'Product'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource Beanstalk
 	err := ctx.RegisterResource("spotinst:aws/beanstalk:Beanstalk", name, args, &resource, opts...)

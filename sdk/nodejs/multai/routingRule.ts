@@ -64,16 +64,16 @@ export class RoutingRule extends pulumi.CustomResource {
             inputs["targetSetIds"] = state ? state.targetSetIds : undefined;
         } else {
             const args = argsOrState as RoutingRuleArgs | undefined;
-            if (!args || args.balancerId === undefined) {
+            if ((!args || args.balancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'balancerId'");
             }
-            if (!args || args.listenerId === undefined) {
+            if ((!args || args.listenerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            if (!args || args.route === undefined) {
+            if ((!args || args.route === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'route'");
             }
-            if (!args || args.targetSetIds === undefined) {
+            if ((!args || args.targetSetIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'targetSetIds'");
             }
             inputs["balancerId"] = args ? args.balancerId : undefined;

@@ -87,17 +87,17 @@ class Subscription(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if endpoint is None:
+            if endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint'")
             __props__['endpoint'] = endpoint
-            if event_type is None:
+            if event_type is None and not opts.urn:
                 raise TypeError("Missing required property 'event_type'")
             __props__['event_type'] = event_type
             __props__['format'] = format
-            if protocol is None:
+            if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
-            if resource_id is None:
+            if resource_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_id'")
             __props__['resource_id'] = resource_id
         super(Subscription, __self__).__init__(

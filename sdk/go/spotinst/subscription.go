@@ -80,20 +80,21 @@ type Subscription struct {
 // NewSubscription registers a new resource with the given unique name, arguments, and options.
 func NewSubscription(ctx *pulumi.Context,
 	name string, args *SubscriptionArgs, opts ...pulumi.ResourceOption) (*Subscription, error) {
-	if args == nil || args.Endpoint == nil {
-		return nil, errors.New("missing required argument 'Endpoint'")
-	}
-	if args == nil || args.EventType == nil {
-		return nil, errors.New("missing required argument 'EventType'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.ResourceId == nil {
-		return nil, errors.New("missing required argument 'ResourceId'")
-	}
 	if args == nil {
-		args = &SubscriptionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Endpoint == nil {
+		return nil, errors.New("invalid value for required argument 'Endpoint'")
+	}
+	if args.EventType == nil {
+		return nil, errors.New("invalid value for required argument 'EventType'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
 	var resource Subscription
 	err := ctx.RegisterResource("spotinst:index/subscription:Subscription", name, args, &resource, opts...)

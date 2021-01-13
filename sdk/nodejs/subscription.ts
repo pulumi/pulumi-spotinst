@@ -112,16 +112,16 @@ export class Subscription extends pulumi.CustomResource {
             inputs["resourceId"] = state ? state.resourceId : undefined;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
-            if (!args || args.endpoint === undefined) {
+            if ((!args || args.endpoint === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if (!args || args.eventType === undefined) {
+            if ((!args || args.eventType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'eventType'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if (!args || args.resourceId === undefined) {
+            if ((!args || args.resourceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceId'");
             }
             inputs["endpoint"] = args ? args.endpoint : undefined;

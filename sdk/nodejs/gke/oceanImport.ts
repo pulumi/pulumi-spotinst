@@ -171,10 +171,10 @@ export class OceanImport extends pulumi.CustomResource {
             inputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as OceanImportArgs | undefined;
-            if (!args || args.clusterName === undefined) {
+            if ((!args || args.clusterName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if (!args || args.location === undefined) {
+            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["autoscaler"] = args ? args.autoscaler : undefined;

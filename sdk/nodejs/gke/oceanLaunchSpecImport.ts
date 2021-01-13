@@ -77,10 +77,10 @@ export class OceanLaunchSpecImport extends pulumi.CustomResource {
             inputs["oceanId"] = state ? state.oceanId : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecImportArgs | undefined;
-            if (!args || args.nodePoolName === undefined) {
+            if ((!args || args.nodePoolName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodePoolName'");
             }
-            if (!args || args.oceanId === undefined) {
+            if ((!args || args.oceanId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'oceanId'");
             }
             inputs["nodePoolName"] = args ? args.nodePoolName : undefined;

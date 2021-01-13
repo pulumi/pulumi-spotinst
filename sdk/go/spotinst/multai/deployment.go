@@ -22,6 +22,7 @@ func NewDeployment(ctx *pulumi.Context,
 	if args == nil {
 		args = &DeploymentArgs{}
 	}
+
 	var resource Deployment
 	err := ctx.RegisterResource("spotinst:multai/deployment:Deployment", name, args, &resource, opts...)
 	if err != nil {

@@ -58,10 +58,10 @@ export class Suspension extends pulumi.CustomResource {
             inputs["suspensions"] = state ? state.suspensions : undefined;
         } else {
             const args = argsOrState as SuspensionArgs | undefined;
-            if (!args || args.groupId === undefined) {
+            if ((!args || args.groupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (!args || args.suspensions === undefined) {
+            if ((!args || args.suspensions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'suspensions'");
             }
             inputs["groupId"] = args ? args.groupId : undefined;

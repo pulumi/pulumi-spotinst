@@ -535,7 +535,7 @@ class MrScalar(pulumi.CustomResource):
             __props__['service_access_security_group'] = service_access_security_group
             __props__['service_role'] = service_role
             __props__['steps_files'] = steps_files
-            if strategy is None:
+            if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__['strategy'] = strategy
             __props__['tags'] = tags
@@ -551,7 +551,7 @@ class MrScalar(pulumi.CustomResource):
             __props__['task_unit'] = task_unit
             __props__['termination_policies'] = termination_policies
             __props__['termination_protected'] = termination_protected
-            if visible_to_all_users is not None:
+            if visible_to_all_users is not None and not opts.urn:
                 warnings.warn("""This field has been removed from our API and is no longer functional.""", DeprecationWarning)
                 pulumi.log.warn("visible_to_all_users is deprecated: This field has been removed from our API and is no longer functional.")
             __props__['visible_to_all_users'] = visible_to_all_users

@@ -117,13 +117,13 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["taints"] = state ? state.taints : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
-            if (!args || args.metadatas === undefined) {
+            if ((!args || args.metadatas === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'metadatas'");
             }
-            if (!args || args.oceanId === undefined) {
+            if ((!args || args.oceanId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'oceanId'");
             }
-            if (!args || args.sourceImage === undefined) {
+            if ((!args || args.sourceImage === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceImage'");
             }
             inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;

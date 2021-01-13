@@ -330,33 +330,33 @@ class Elastigroup(pulumi.CustomResource):
             __props__['integration_multai_runtime'] = integration_multai_runtime
             __props__['load_balancers'] = load_balancers
             __props__['login'] = login
-            if low_priority_sizes is None:
+            if low_priority_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'low_priority_sizes'")
             __props__['low_priority_sizes'] = low_priority_sizes
             __props__['managed_service_identities'] = managed_service_identities
             __props__['max_size'] = max_size
             __props__['min_size'] = min_size
             __props__['name'] = name
-            if network is None:
+            if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
-            if od_sizes is None:
+            if od_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'od_sizes'")
             __props__['od_sizes'] = od_sizes
-            if product is None:
+            if product is None and not opts.urn:
                 raise TypeError("Missing required property 'product'")
             __props__['product'] = product
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            if resource_group_name is None:
+            if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__['resource_group_name'] = resource_group_name
             __props__['scaling_down_policies'] = scaling_down_policies
             __props__['scaling_up_policies'] = scaling_up_policies
             __props__['scheduled_tasks'] = scheduled_tasks
             __props__['shutdown_script'] = shutdown_script
-            if strategy is None:
+            if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__['strategy'] = strategy
             __props__['update_policy'] = update_policy

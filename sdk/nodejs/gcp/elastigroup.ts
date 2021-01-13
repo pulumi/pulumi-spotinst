@@ -400,7 +400,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["unhealthyDuration"] = state ? state.unhealthyDuration : undefined;
         } else {
             const args = argsOrState as ElastigroupArgs | undefined;
-            if (!args || args.desiredCapacity === undefined) {
+            if ((!args || args.desiredCapacity === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'desiredCapacity'");
             }
             inputs["autoHealing"] = args ? args.autoHealing : undefined;

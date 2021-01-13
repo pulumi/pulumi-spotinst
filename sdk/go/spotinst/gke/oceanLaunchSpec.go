@@ -97,17 +97,18 @@ type OceanLaunchSpec struct {
 // NewOceanLaunchSpec registers a new resource with the given unique name, arguments, and options.
 func NewOceanLaunchSpec(ctx *pulumi.Context,
 	name string, args *OceanLaunchSpecArgs, opts ...pulumi.ResourceOption) (*OceanLaunchSpec, error) {
-	if args == nil || args.Metadatas == nil {
-		return nil, errors.New("missing required argument 'Metadatas'")
-	}
-	if args == nil || args.OceanId == nil {
-		return nil, errors.New("missing required argument 'OceanId'")
-	}
-	if args == nil || args.SourceImage == nil {
-		return nil, errors.New("missing required argument 'SourceImage'")
-	}
 	if args == nil {
-		args = &OceanLaunchSpecArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Metadatas == nil {
+		return nil, errors.New("invalid value for required argument 'Metadatas'")
+	}
+	if args.OceanId == nil {
+		return nil, errors.New("invalid value for required argument 'OceanId'")
+	}
+	if args.SourceImage == nil {
+		return nil, errors.New("invalid value for required argument 'SourceImage'")
 	}
 	var resource OceanLaunchSpec
 	err := ctx.RegisterResource("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec", name, args, &resource, opts...)

@@ -174,7 +174,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__['elastic_load_balancers'] = elastic_load_balancers
             __props__['enable_monitoring'] = enable_monitoring
             __props__['ephemeral_block_devices'] = ephemeral_block_devices
-            if fallback_to_ondemand is None:
+            if fallback_to_ondemand is None and not opts.urn:
                 raise TypeError("Missing required property 'fallback_to_ondemand'")
             __props__['fallback_to_ondemand'] = fallback_to_ondemand
             __props__['health_check_grace_period'] = health_check_grace_period
@@ -182,11 +182,11 @@ class Elastigroup(pulumi.CustomResource):
             __props__['health_check_unhealthy_duration_before_replacement'] = health_check_unhealthy_duration_before_replacement
             __props__['iam_instance_profile'] = iam_instance_profile
             __props__['image_id'] = image_id
-            if instance_types_ondemand is None:
+            if instance_types_ondemand is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_types_ondemand'")
             __props__['instance_types_ondemand'] = instance_types_ondemand
             __props__['instance_types_preferred_spots'] = instance_types_preferred_spots
-            if instance_types_spots is None:
+            if instance_types_spots is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_types_spots'")
             __props__['instance_types_spots'] = instance_types_spots
             __props__['instance_types_weights'] = instance_types_weights
@@ -210,7 +210,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__['name'] = name
             __props__['network_interfaces'] = network_interfaces
             __props__['ondemand_count'] = ondemand_count
-            if orientation is None:
+            if orientation is None and not opts.urn:
                 raise TypeError("Missing required property 'orientation'")
             __props__['orientation'] = orientation
             __props__['persist_block_devices'] = persist_block_devices
@@ -219,7 +219,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__['placement_tenancy'] = placement_tenancy
             __props__['preferred_availability_zones'] = preferred_availability_zones
             __props__['private_ips'] = private_ips
-            if product is None:
+            if product is None and not opts.urn:
                 raise TypeError("Missing required property 'product'")
             __props__['product'] = product
             __props__['region'] = region
@@ -229,7 +229,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__['scaling_target_policies'] = scaling_target_policies
             __props__['scaling_up_policies'] = scaling_up_policies
             __props__['scheduled_tasks'] = scheduled_tasks
-            if security_groups is None:
+            if security_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'security_groups'")
             __props__['security_groups'] = security_groups
             __props__['shutdown_script'] = shutdown_script

@@ -74,11 +74,11 @@ class HealthCheck(pulumi.CustomResource):
 
             __props__['check'] = check
             __props__['name'] = name
-            if proxy_address is None:
+            if proxy_address is None and not opts.urn:
                 raise TypeError("Missing required property 'proxy_address'")
             __props__['proxy_address'] = proxy_address
             __props__['proxy_port'] = proxy_port
-            if resource_id is None:
+            if resource_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_id'")
             __props__['resource_id'] = resource_id
         super(HealthCheck, __self__).__init__(

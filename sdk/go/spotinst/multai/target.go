@@ -26,20 +26,21 @@ type Target struct {
 // NewTarget registers a new resource with the given unique name, arguments, and options.
 func NewTarget(ctx *pulumi.Context,
 	name string, args *TargetArgs, opts ...pulumi.ResourceOption) (*Target, error) {
-	if args == nil || args.BalancerId == nil {
-		return nil, errors.New("missing required argument 'BalancerId'")
-	}
-	if args == nil || args.Host == nil {
-		return nil, errors.New("missing required argument 'Host'")
-	}
-	if args == nil || args.TargetSetId == nil {
-		return nil, errors.New("missing required argument 'TargetSetId'")
-	}
-	if args == nil || args.Weight == nil {
-		return nil, errors.New("missing required argument 'Weight'")
-	}
 	if args == nil {
-		args = &TargetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'BalancerId'")
+	}
+	if args.Host == nil {
+		return nil, errors.New("invalid value for required argument 'Host'")
+	}
+	if args.TargetSetId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetSetId'")
+	}
+	if args.Weight == nil {
+		return nil, errors.New("invalid value for required argument 'Weight'")
 	}
 	var resource Target
 	err := ctx.RegisterResource("spotinst:multai/target:Target", name, args, &resource, opts...)

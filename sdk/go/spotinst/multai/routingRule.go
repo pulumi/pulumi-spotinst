@@ -27,20 +27,21 @@ type RoutingRule struct {
 // NewRoutingRule registers a new resource with the given unique name, arguments, and options.
 func NewRoutingRule(ctx *pulumi.Context,
 	name string, args *RoutingRuleArgs, opts ...pulumi.ResourceOption) (*RoutingRule, error) {
-	if args == nil || args.BalancerId == nil {
-		return nil, errors.New("missing required argument 'BalancerId'")
-	}
-	if args == nil || args.ListenerId == nil {
-		return nil, errors.New("missing required argument 'ListenerId'")
-	}
-	if args == nil || args.Route == nil {
-		return nil, errors.New("missing required argument 'Route'")
-	}
-	if args == nil || args.TargetSetIds == nil {
-		return nil, errors.New("missing required argument 'TargetSetIds'")
-	}
 	if args == nil {
-		args = &RoutingRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'BalancerId'")
+	}
+	if args.ListenerId == nil {
+		return nil, errors.New("invalid value for required argument 'ListenerId'")
+	}
+	if args.Route == nil {
+		return nil, errors.New("invalid value for required argument 'Route'")
+	}
+	if args.TargetSetIds == nil {
+		return nil, errors.New("invalid value for required argument 'TargetSetIds'")
 	}
 	var resource RoutingRule
 	err := ctx.RegisterResource("spotinst:multai/routingRule:RoutingRule", name, args, &resource, opts...)

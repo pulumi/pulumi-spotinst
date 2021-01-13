@@ -270,16 +270,16 @@ export class Ocean extends pulumi.CustomResource {
             inputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as OceanArgs | undefined;
-            if (!args || args.clusterName === undefined) {
+            if ((!args || args.clusterName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
-            if (!args || args.securityGroupIds === undefined) {
+            if ((!args || args.securityGroupIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'securityGroupIds'");
             }
-            if (!args || args.subnetIds === undefined) {
+            if ((!args || args.subnetIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subnetIds'");
             }
             inputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;

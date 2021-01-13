@@ -23,14 +23,15 @@ type Suspension struct {
 // NewSuspension registers a new resource with the given unique name, arguments, and options.
 func NewSuspension(ctx *pulumi.Context,
 	name string, args *SuspensionArgs, opts ...pulumi.ResourceOption) (*Suspension, error) {
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
-	if args == nil || args.Suspensions == nil {
-		return nil, errors.New("missing required argument 'Suspensions'")
-	}
 	if args == nil {
-		args = &SuspensionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
+	}
+	if args.Suspensions == nil {
+		return nil, errors.New("invalid value for required argument 'Suspensions'")
 	}
 	var resource Suspension
 	err := ctx.RegisterResource("spotinst:aws/suspension:Suspension", name, args, &resource, opts...)

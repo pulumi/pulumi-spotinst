@@ -216,26 +216,27 @@ type ManagedInstance struct {
 // NewManagedInstance registers a new resource with the given unique name, arguments, and options.
 func NewManagedInstance(ctx *pulumi.Context,
 	name string, args *ManagedInstanceArgs, opts ...pulumi.ResourceOption) (*ManagedInstance, error) {
-	if args == nil || args.ImageId == nil {
-		return nil, errors.New("missing required argument 'ImageId'")
-	}
-	if args == nil || args.InstanceTypes == nil {
-		return nil, errors.New("missing required argument 'InstanceTypes'")
-	}
-	if args == nil || args.PersistBlockDevices == nil {
-		return nil, errors.New("missing required argument 'PersistBlockDevices'")
-	}
-	if args == nil || args.Product == nil {
-		return nil, errors.New("missing required argument 'Product'")
-	}
-	if args == nil || args.SubnetIds == nil {
-		return nil, errors.New("missing required argument 'SubnetIds'")
-	}
-	if args == nil || args.VpcId == nil {
-		return nil, errors.New("missing required argument 'VpcId'")
-	}
 	if args == nil {
-		args = &ManagedInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ImageId == nil {
+		return nil, errors.New("invalid value for required argument 'ImageId'")
+	}
+	if args.InstanceTypes == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceTypes'")
+	}
+	if args.PersistBlockDevices == nil {
+		return nil, errors.New("invalid value for required argument 'PersistBlockDevices'")
+	}
+	if args.Product == nil {
+		return nil, errors.New("invalid value for required argument 'Product'")
+	}
+	if args.SubnetIds == nil {
+		return nil, errors.New("invalid value for required argument 'SubnetIds'")
+	}
+	if args.VpcId == nil {
+		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
 	var resource ManagedInstance
 	err := ctx.RegisterResource("spotinst:aws/managedInstance:ManagedInstance", name, args, &resource, opts...)
