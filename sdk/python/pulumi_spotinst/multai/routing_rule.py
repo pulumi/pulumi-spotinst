@@ -50,20 +50,20 @@ class RoutingRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if balancer_id is None:
+            if balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'balancer_id'")
             __props__['balancer_id'] = balancer_id
-            if listener_id is None:
+            if listener_id is None and not opts.urn:
                 raise TypeError("Missing required property 'listener_id'")
             __props__['listener_id'] = listener_id
             __props__['middleware_ids'] = middleware_ids
             __props__['priority'] = priority
-            if route is None:
+            if route is None and not opts.urn:
                 raise TypeError("Missing required property 'route'")
             __props__['route'] = route
             __props__['strategy'] = strategy
             __props__['tags'] = tags
-            if target_set_ids is None:
+            if target_set_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'target_set_ids'")
             __props__['target_set_ids'] = target_set_ids
         super(RoutingRule, __self__).__init__(

@@ -238,10 +238,10 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ElastigroupArgs | undefined;
-            if (!args || args.clusterZoneName === undefined) {
+            if ((!args || args.clusterZoneName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterZoneName'");
             }
-            if (!args || args.desiredCapacity === undefined) {
+            if ((!args || args.desiredCapacity === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'desiredCapacity'");
             }
             inputs["backendServices"] = args ? args.backendServices : undefined;

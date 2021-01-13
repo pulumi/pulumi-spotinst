@@ -62,14 +62,15 @@ type HealthCheck struct {
 // NewHealthCheck registers a new resource with the given unique name, arguments, and options.
 func NewHealthCheck(ctx *pulumi.Context,
 	name string, args *HealthCheckArgs, opts ...pulumi.ResourceOption) (*HealthCheck, error) {
-	if args == nil || args.ProxyAddress == nil {
-		return nil, errors.New("missing required argument 'ProxyAddress'")
-	}
-	if args == nil || args.ResourceId == nil {
-		return nil, errors.New("missing required argument 'ResourceId'")
-	}
 	if args == nil {
-		args = &HealthCheckArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProxyAddress == nil {
+		return nil, errors.New("invalid value for required argument 'ProxyAddress'")
+	}
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
 	var resource HealthCheck
 	err := ctx.RegisterResource("spotinst:index/healthCheck:HealthCheck", name, args, &resource, opts...)

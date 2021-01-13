@@ -19,3 +19,44 @@ from . import (
     gke,
     multai,
 )
+
+def _register_module():
+    import pulumi
+    from . import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "spotinst:index/healthCheck:HealthCheck":
+                return HealthCheck(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "spotinst:index/subscription:Subscription":
+                return Subscription(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("spotinst", "index/healthCheck", _module_instance)
+    pulumi.runtime.register_resource_module("spotinst", "index/subscription", _module_instance)
+
+
+    class Package(pulumi.runtime.ResourcePackage):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Package._version
+
+        def construct_provider(self, name: str, typ: str, urn: str) -> pulumi.ProviderResource:
+            if typ != "pulumi:providers:spotinst":
+                raise Exception(f"unknown provider type {typ}")
+            return Provider(name, pulumi.ResourceOptions(urn=urn))
+
+
+    pulumi.runtime.register_resource_package("spotinst", Package())
+
+_register_module()

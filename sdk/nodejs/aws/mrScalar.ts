@@ -591,7 +591,7 @@ export class MrScalar extends pulumi.CustomResource {
             inputs["visibleToAllUsers"] = state ? state.visibleToAllUsers : undefined;
         } else {
             const args = argsOrState as MrScalarArgs | undefined;
-            if (!args || args.strategy === undefined) {
+            if ((!args || args.strategy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'strategy'");
             }
             inputs["additionalInfo"] = args ? args.additionalInfo : undefined;

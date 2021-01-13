@@ -26,6 +26,7 @@ func NewBalancer(ctx *pulumi.Context,
 	if args == nil {
 		args = &BalancerArgs{}
 	}
+
 	var resource Balancer
 	err := ctx.RegisterResource("spotinst:multai/balancer:Balancer", name, args, &resource, opts...)
 	if err != nil {

@@ -390,25 +390,25 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as ElastigroupArgs | undefined;
-            if (!args || args.lowPrioritySizes === undefined) {
+            if ((!args || args.lowPrioritySizes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'lowPrioritySizes'");
             }
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
-            if (!args || args.odSizes === undefined) {
+            if ((!args || args.odSizes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'odSizes'");
             }
-            if (!args || args.product === undefined) {
+            if ((!args || args.product === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'product'");
             }
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
-            if (!args || args.resourceGroupName === undefined) {
+            if ((!args || args.resourceGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if (!args || args.strategy === undefined) {
+            if ((!args || args.strategy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'strategy'");
             }
             inputs["customData"] = args ? args.customData : undefined;

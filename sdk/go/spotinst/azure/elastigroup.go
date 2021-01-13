@@ -428,29 +428,30 @@ type Elastigroup struct {
 // NewElastigroup registers a new resource with the given unique name, arguments, and options.
 func NewElastigroup(ctx *pulumi.Context,
 	name string, args *ElastigroupArgs, opts ...pulumi.ResourceOption) (*Elastigroup, error) {
-	if args == nil || args.LowPrioritySizes == nil {
-		return nil, errors.New("missing required argument 'LowPrioritySizes'")
-	}
-	if args == nil || args.Network == nil {
-		return nil, errors.New("missing required argument 'Network'")
-	}
-	if args == nil || args.OdSizes == nil {
-		return nil, errors.New("missing required argument 'OdSizes'")
-	}
-	if args == nil || args.Product == nil {
-		return nil, errors.New("missing required argument 'Product'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
-	if args == nil || args.ResourceGroupName == nil {
-		return nil, errors.New("missing required argument 'ResourceGroupName'")
-	}
-	if args == nil || args.Strategy == nil {
-		return nil, errors.New("missing required argument 'Strategy'")
-	}
 	if args == nil {
-		args = &ElastigroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LowPrioritySizes == nil {
+		return nil, errors.New("invalid value for required argument 'LowPrioritySizes'")
+	}
+	if args.Network == nil {
+		return nil, errors.New("invalid value for required argument 'Network'")
+	}
+	if args.OdSizes == nil {
+		return nil, errors.New("invalid value for required argument 'OdSizes'")
+	}
+	if args.Product == nil {
+		return nil, errors.New("invalid value for required argument 'Product'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
+	}
+	if args.ResourceGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Strategy == nil {
+		return nil, errors.New("invalid value for required argument 'Strategy'")
 	}
 	var resource Elastigroup
 	err := ctx.RegisterResource("spotinst:azure/elastigroup:Elastigroup", name, args, &resource, opts...)

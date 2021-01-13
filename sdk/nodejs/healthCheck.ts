@@ -92,10 +92,10 @@ export class HealthCheck extends pulumi.CustomResource {
             inputs["resourceId"] = state ? state.resourceId : undefined;
         } else {
             const args = argsOrState as HealthCheckArgs | undefined;
-            if (!args || args.proxyAddress === undefined) {
+            if ((!args || args.proxyAddress === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'proxyAddress'");
             }
-            if (!args || args.resourceId === undefined) {
+            if ((!args || args.resourceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceId'");
             }
             inputs["check"] = args ? args.check : undefined;

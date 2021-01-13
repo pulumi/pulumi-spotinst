@@ -171,7 +171,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
-            if (!args || args.oceanId === undefined) {
+            if ((!args || args.oceanId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'oceanId'");
             }
             inputs["attributes"] = args ? args.attributes : undefined;

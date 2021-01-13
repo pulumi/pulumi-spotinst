@@ -64,19 +64,19 @@ export class TargetSet extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as TargetSetArgs | undefined;
-            if (!args || args.balancerId === undefined) {
+            if ((!args || args.balancerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'balancerId'");
             }
-            if (!args || args.deploymentId === undefined) {
+            if ((!args || args.deploymentId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deploymentId'");
             }
-            if (!args || args.healthCheck === undefined) {
+            if ((!args || args.healthCheck === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'healthCheck'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if (!args || args.weight === undefined) {
+            if ((!args || args.weight === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'weight'");
             }
             inputs["balancerId"] = args ? args.balancerId : undefined;

@@ -196,14 +196,15 @@ type Elastigroup struct {
 // NewElastigroup registers a new resource with the given unique name, arguments, and options.
 func NewElastigroup(ctx *pulumi.Context,
 	name string, args *ElastigroupArgs, opts ...pulumi.ResourceOption) (*Elastigroup, error) {
-	if args == nil || args.ClusterZoneName == nil {
-		return nil, errors.New("missing required argument 'ClusterZoneName'")
-	}
-	if args == nil || args.DesiredCapacity == nil {
-		return nil, errors.New("missing required argument 'DesiredCapacity'")
-	}
 	if args == nil {
-		args = &ElastigroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterZoneName == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterZoneName'")
+	}
+	if args.DesiredCapacity == nil {
+		return nil, errors.New("invalid value for required argument 'DesiredCapacity'")
 	}
 	var resource Elastigroup
 	err := ctx.RegisterResource("spotinst:gke/elastigroup:Elastigroup", name, args, &resource, opts...)

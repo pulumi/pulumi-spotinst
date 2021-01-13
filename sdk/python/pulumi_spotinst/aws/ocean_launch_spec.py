@@ -172,7 +172,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__['instance_types'] = instance_types
             __props__['labels'] = labels
             __props__['name'] = name
-            if ocean_id is None:
+            if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__['ocean_id'] = ocean_id
             __props__['resource_limits'] = resource_limits

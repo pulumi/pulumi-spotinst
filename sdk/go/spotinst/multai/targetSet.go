@@ -27,23 +27,24 @@ type TargetSet struct {
 // NewTargetSet registers a new resource with the given unique name, arguments, and options.
 func NewTargetSet(ctx *pulumi.Context,
 	name string, args *TargetSetArgs, opts ...pulumi.ResourceOption) (*TargetSet, error) {
-	if args == nil || args.BalancerId == nil {
-		return nil, errors.New("missing required argument 'BalancerId'")
-	}
-	if args == nil || args.DeploymentId == nil {
-		return nil, errors.New("missing required argument 'DeploymentId'")
-	}
-	if args == nil || args.HealthCheck == nil {
-		return nil, errors.New("missing required argument 'HealthCheck'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.Weight == nil {
-		return nil, errors.New("missing required argument 'Weight'")
-	}
 	if args == nil {
-		args = &TargetSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BalancerId == nil {
+		return nil, errors.New("invalid value for required argument 'BalancerId'")
+	}
+	if args.DeploymentId == nil {
+		return nil, errors.New("invalid value for required argument 'DeploymentId'")
+	}
+	if args.HealthCheck == nil {
+		return nil, errors.New("invalid value for required argument 'HealthCheck'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.Weight == nil {
+		return nil, errors.New("invalid value for required argument 'Weight'")
 	}
 	var resource TargetSet
 	err := ctx.RegisterResource("spotinst:multai/targetSet:TargetSet", name, args, &resource, opts...)

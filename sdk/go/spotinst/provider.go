@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.Account == nil {
 		args.Account = pulumi.StringPtr(getEnvOrDefault("", nil, "SPOTINST_ACCOUNT").(string))
 	}

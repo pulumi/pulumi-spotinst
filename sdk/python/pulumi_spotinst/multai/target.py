@@ -49,19 +49,19 @@ class Target(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if balancer_id is None:
+            if balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'balancer_id'")
             __props__['balancer_id'] = balancer_id
-            if host is None:
+            if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
             __props__['host'] = host
             __props__['name'] = name
             __props__['port'] = port
             __props__['tags'] = tags
-            if target_set_id is None:
+            if target_set_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_set_id'")
             __props__['target_set_id'] = target_set_id
-            if weight is None:
+            if weight is None and not opts.urn:
                 raise TypeError("Missing required property 'weight'")
             __props__['weight'] = weight
         super(Target, __self__).__init__(

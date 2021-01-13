@@ -162,14 +162,15 @@ type OceanImport struct {
 // NewOceanImport registers a new resource with the given unique name, arguments, and options.
 func NewOceanImport(ctx *pulumi.Context,
 	name string, args *OceanImportArgs, opts ...pulumi.ResourceOption) (*OceanImport, error) {
-	if args == nil || args.ClusterName == nil {
-		return nil, errors.New("missing required argument 'ClusterName'")
-	}
-	if args == nil || args.Location == nil {
-		return nil, errors.New("missing required argument 'Location'")
-	}
 	if args == nil {
-		args = &OceanImportArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClusterName == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterName'")
+	}
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	var resource OceanImport
 	err := ctx.RegisterResource("spotinst:gke/oceanImport:OceanImport", name, args, &resource, opts...)

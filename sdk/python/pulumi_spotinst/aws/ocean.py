@@ -225,11 +225,11 @@ class Ocean(pulumi.CustomResource):
             __props__['region'] = region
             __props__['root_volume_size'] = root_volume_size
             __props__['scheduled_tasks'] = scheduled_tasks
-            if security_groups is None:
+            if security_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'security_groups'")
             __props__['security_groups'] = security_groups
             __props__['spot_percentage'] = spot_percentage
-            if subnet_ids is None:
+            if subnet_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_ids'")
             __props__['subnet_ids'] = subnet_ids
             __props__['tags'] = tags
