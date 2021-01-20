@@ -105,63 +105,11 @@ class Ocean(pulumi.CustomResource):
 
         pulumi.export("oceanId", spotinst_ocean_aws["example"]["id"])
         ```
-        ## Auto Scaler
-
-        * `autoscaler` - (Optional) Describes the Ocean Kubernetes autoscaler.
-        * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes autoscaler.
-        * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
-        * `autoscale_cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
-        * `auto_headroom_percentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
-        * `autoscale_headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-        * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        * `gpu_per_unit` - (Optional) Optionally configure the number of GPUS to allocate the headroom.
-        * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
-        * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        * `autoscale_down` - (Optional) Auto Scaling scale down operations.
-        * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
-        * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
-        * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
-        * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="update-policy"></a>
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-            * `should_roll` - (Required) Enables the roll.
-            * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
-                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="scheduled-task"></a>
-        ## scheduled task
-
-        * `scheduled_task` - (Optional) Set scheduling object.
-            * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
-                * `is_enabled` - (Optional)  Flag to enable / disable the shutdown hours.
-                                             Example: True
-                * `time_windows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-                                              Example: Fri:15:30-Wed:14:30
-            * `tasks` - (Optional) The scheduling tasks for the cluster.
-                * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
-                * `cron_expression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-                                                 Example: 0 1 * * *
-                * `task_type` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
-                                           Example: clusterRoll
-
-        ```python
-        import pulumi
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes autoscaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[str] controller_id: The ocean cluster identifier. Example: `ocean.k8s`
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
@@ -179,6 +127,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] name: Required if type is set to CLASSIC
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -287,6 +236,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes autoscaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[str] controller_id: The ocean cluster identifier. Example: `ocean.k8s`
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
@@ -304,6 +254,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] name: Required if type is set to CLASSIC
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -360,6 +311,9 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter
     def autoscaler(self) -> pulumi.Output[Optional['outputs.OceanAutoscaler']]:
+        """
+        Describes the Ocean Kubernetes autoscaler.
+        """
         return pulumi.get(self, "autoscaler")
 
     @property
@@ -501,6 +455,9 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.OceanScheduledTask']]]:
+        """
+        Set scheduling object.
+        """
         return pulumi.get(self, "scheduled_tasks")
 
     @property

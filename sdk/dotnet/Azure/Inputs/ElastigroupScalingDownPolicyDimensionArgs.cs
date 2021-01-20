@@ -13,11 +13,14 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class ElastigroupScalingDownPolicyDimensionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the managed identity.
+        /// The dimension name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The dimension value.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

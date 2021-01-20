@@ -11,194 +11,12 @@ namespace Pulumi.SpotInst.Gcp
 {
     /// <summary>
     /// Provides a Spotinst elastigroup GCP resource.
-    /// 
-    /// ## GPU
-    /// 
-    /// * `gpu` - (Optional) Defines the GPU configuration.
-    ///     * `type` - (Required) The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-    ///     * `count` - (Required) The number of GPUs. Must be 0, 2, 4, 6, 8.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="health-check"&gt;&lt;/a&gt;
-    /// ## Backend Services
-    /// 
-    /// * `backend_services` - (Optional) Describes the backend service configurations.
-    ///     * `service_name` - (Required) The name of the backend service.
-    ///     * `location_type` - (Optional) Sets which location the backend services will be active. Valid values: `regional`, `global`.
-    ///     * `scheme` - (Optional) Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
-    ///     * `named_port` - (Optional) Describes a named port and a list of ports.
-    ///         * `port_name` - (Required) The name of the port.
-    ///         * `ports` - (Required) A list of ports.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="disks"&gt;&lt;/a&gt;
-    /// ## Disks
-    /// 
-    /// * `disks` - (Optional) Array of disks associated with this instance. Persistent disks must be created before you can assign them.
-    ///     * `auto_delete` - (Optional) Specifies whether the disk will be auto-deleted when the instance is deleted.
-    ///     * `boot` - (Optional) Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
-    ///     * `device_name` - (Optional) Specifies a unique device name of your choice.
-    ///     * `interface` - (Optional, Default: `SCSI`) Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
-    ///     * `mode` - (Optional, Default: `READ_WRITE`) The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
-    ///     * `source` - (Optional) Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-    ///     * `type` - (Optional, Default: `PERSISTENT`) Specifies the type of disk, either SCRATCH or PERSISTENT.
-    ///     * `initialize_params` - (Optional) Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
-    ///         * `disk_size_gb` - (Optional) Specifies disk size in gigabytes. Must be in increments of 2.
-    ///         * `disk_type` - (Optional, Default" `pd-standard`) Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
-    ///         * `source_image` - (Optional) A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="network-interface"&gt;&lt;/a&gt;
-    /// ## Network Interfaces
-    /// 
-    /// Each of the `network_interface` attributes controls a portion of the GCP
-    /// Instance's "Network Interfaces". It's a good idea to familiarize yourself with [GCP's Network
-    /// Interfaces docs](https://cloud.google.com/vpc/docs/multiple-interfaces-concepts)
-    /// to understand the implications of using these attributes.
-    /// 
-    /// * `network_interface` - (Required, minimum 1) Array of objects representing the network configuration for the elastigroup.
-    ///     * `network` - (Required) Network resource for this group.
-    ///     * `access_configs` - (Optional) Array of configurations.
-    ///         * `name` - (Optional) Name of this access configuration.
-    ///         * `type` - (Optional) Array of configurations for this interface. Currently, only ONE_TO_ONE_NAT is supported.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="scaling-policy"&gt;&lt;/a&gt;
-    /// ## Scaling Policies
-    /// 
-    /// * `scaling_up_policy` - (Optional) Contains scaling policies for scaling the Elastigroup up.
-    /// * `scaling_down_policy` - (Optional) Contains scaling policies for scaling the Elastigroup down.
-    /// 
-    /// Each `scaling_*_policy` supports the following:
-    /// 
-    /// * `policy_name` - (Optional) Name of scaling policy.
-    /// * `metric_name` - (Optional) Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
-    /// * `statistic` - (Optional) Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
-    /// * `threshold` - (Optional) The value at which the scaling action is triggered.
-    /// * `period` - (Optional) Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-    /// * `evaluation_periods` - (Optional) Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-    /// * `cooldown` - (Optional) Time (seconds) to wait after a scaling action before resuming monitoring.
-    /// * `operator` - (Optional) The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
-    /// * `action` - (Optional) Scaling action to take when the policy is triggered.
-    ///     * `type` - (Optional) Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
-    ///     * `adjustment` - (Optional) Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
-    /// * `dimensions` - (Optional) A list of dimensions describing qualities of the metric.
-    ///     * `name` - (Required) The dimension name.
-    ///     * `value` - (Required) The dimension value.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="third-party-integrations"&gt;&lt;/a&gt;
-    /// ## Third-Party Integrations
-    /// 
-    /// * `integration_docker_swarm` - (Optional) Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-    ///     * `master_host` - (Required) IP or FQDN of one of your swarm managers.
-    ///     * `master_port` - (Required) Network port used by your swarm.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="scheduled-task"&gt;&lt;/a&gt;
-    /// ## Scheduled Tasks
-    /// 
-    /// Each `scheduled_task` supports the following:
-    /// 
-    /// * `task_type` - (Required) The task type to run. Valid values: `"setCapacity"`.
-    /// * `cron_expression` - (Optional) A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
-    /// * `is_enabled` - (Optional, Default: `true`) Setting the task to being enabled or disabled.
-    /// * `target_capacity` - (Optional) The desired number of instances the group should have.
-    /// * `min_capacity` - (Optional) The minimum number of instances the group should have.
-    /// * `max_capacity` - (Optional) The maximum number of instances the group should have.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Elastigroup : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Enable auto-replacement of unhealthy instances.
+        /// </summary>
         [Output("autoHealing")]
         public Output<bool?> AutoHealing { get; private set; } = null!;
 
@@ -208,6 +26,9 @@ namespace Pulumi.SpotInst.Gcp
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the backend service configurations.
+        /// </summary>
         [Output("backendServices")]
         public Output<ImmutableArray<Outputs.ElastigroupBackendService>> BackendServices { get; private set; } = null!;
 
@@ -238,12 +59,21 @@ namespace Pulumi.SpotInst.Gcp
         [Output("fallbackToOndemand")]
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the GPU configuration.
+        /// </summary>
         [Output("gpu")]
         public Output<ImmutableArray<Outputs.ElastigroupGpu>> Gpu { get; private set; } = null!;
 
+        /// <summary>
+        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+        /// </summary>
         [Output("healthCheckGracePeriod")]
         public Output<int?> HealthCheckGracePeriod { get; private set; } = null!;
 
+        /// <summary>
+        /// The kind of health check to perform when monitoring for unhealthiness.
+        /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
@@ -265,6 +95,9 @@ namespace Pulumi.SpotInst.Gcp
         [Output("instanceTypesPreemptibles")]
         public Output<ImmutableArray<string>> InstanceTypesPreemptibles { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+        /// </summary>
         [Output("integrationDockerSwarm")]
         public Output<Outputs.ElastigroupIntegrationDockerSwarm?> IntegrationDockerSwarm { get; private set; } = null!;
 
@@ -299,11 +132,14 @@ namespace Pulumi.SpotInst.Gcp
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// The group name.
+        /// The dimension name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Array of objects representing the network configuration for the elastigroup.
+        /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.ElastigroupNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
@@ -316,9 +152,15 @@ namespace Pulumi.SpotInst.Gcp
         [Output("preemptiblePercentage")]
         public Output<int?> PreemptiblePercentage { get; private set; } = null!;
 
+        /// <summary>
+        /// Contains scaling policies for scaling the Elastigroup down.
+        /// </summary>
         [Output("scalingDownPolicies")]
         public Output<ImmutableArray<Outputs.ElastigroupScalingDownPolicy>> ScalingDownPolicies { get; private set; } = null!;
 
+        /// <summary>
+        /// Contains scaling policies for scaling the Elastigroup up.
+        /// </summary>
         [Output("scalingUpPolicies")]
         public Output<ImmutableArray<Outputs.ElastigroupScalingUpPolicy>> ScalingUpPolicies { get; private set; } = null!;
 
@@ -355,6 +197,9 @@ namespace Pulumi.SpotInst.Gcp
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+        /// </summary>
         [Output("unhealthyDuration")]
         public Output<int?> UnhealthyDuration { get; private set; } = null!;
 
@@ -404,6 +249,9 @@ namespace Pulumi.SpotInst.Gcp
 
     public sealed class ElastigroupArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable auto-replacement of unhealthy instances.
+        /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
 
@@ -422,6 +270,10 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("backendServices")]
         private InputList<Inputs.ElastigroupBackendServiceArgs>? _backendServices;
+
+        /// <summary>
+        /// Describes the backend service configurations.
+        /// </summary>
         public InputList<Inputs.ElastigroupBackendServiceArgs> BackendServices
         {
             get => _backendServices ?? (_backendServices = new InputList<Inputs.ElastigroupBackendServiceArgs>());
@@ -462,15 +314,25 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("gpu")]
         private InputList<Inputs.ElastigroupGpuArgs>? _gpu;
+
+        /// <summary>
+        /// Defines the GPU configuration.
+        /// </summary>
         public InputList<Inputs.ElastigroupGpuArgs> Gpu
         {
             get => _gpu ?? (_gpu = new InputList<Inputs.ElastigroupGpuArgs>());
             set => _gpu = value;
         }
 
+        /// <summary>
+        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+        /// </summary>
         [Input("healthCheckGracePeriod")]
         public Input<int>? HealthCheckGracePeriod { get; set; }
 
+        /// <summary>
+        /// The kind of health check to perform when monitoring for unhealthiness.
+        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -504,6 +366,9 @@ namespace Pulumi.SpotInst.Gcp
             set => _instanceTypesPreemptibles = value;
         }
 
+        /// <summary>
+        /// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+        /// </summary>
         [Input("integrationDockerSwarm")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmArgs>? IntegrationDockerSwarm { get; set; }
 
@@ -550,13 +415,17 @@ namespace Pulumi.SpotInst.Gcp
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The group name.
+        /// The dimension name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.ElastigroupNetworkInterfaceArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// Array of objects representing the network configuration for the elastigroup.
+        /// </summary>
         public InputList<Inputs.ElastigroupNetworkInterfaceArgs> NetworkInterfaces
         {
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ElastigroupNetworkInterfaceArgs>());
@@ -574,6 +443,10 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyArgs>? _scalingDownPolicies;
+
+        /// <summary>
+        /// Contains scaling policies for scaling the Elastigroup down.
+        /// </summary>
         public InputList<Inputs.ElastigroupScalingDownPolicyArgs> ScalingDownPolicies
         {
             get => _scalingDownPolicies ?? (_scalingDownPolicies = new InputList<Inputs.ElastigroupScalingDownPolicyArgs>());
@@ -582,6 +455,10 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("scalingUpPolicies")]
         private InputList<Inputs.ElastigroupScalingUpPolicyArgs>? _scalingUpPolicies;
+
+        /// <summary>
+        /// Contains scaling policies for scaling the Elastigroup up.
+        /// </summary>
         public InputList<Inputs.ElastigroupScalingUpPolicyArgs> ScalingUpPolicies
         {
             get => _scalingUpPolicies ?? (_scalingUpPolicies = new InputList<Inputs.ElastigroupScalingUpPolicyArgs>());
@@ -638,6 +515,9 @@ namespace Pulumi.SpotInst.Gcp
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+        /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }
 
@@ -648,6 +528,9 @@ namespace Pulumi.SpotInst.Gcp
 
     public sealed class ElastigroupState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable auto-replacement of unhealthy instances.
+        /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
 
@@ -666,6 +549,10 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("backendServices")]
         private InputList<Inputs.ElastigroupBackendServiceGetArgs>? _backendServices;
+
+        /// <summary>
+        /// Describes the backend service configurations.
+        /// </summary>
         public InputList<Inputs.ElastigroupBackendServiceGetArgs> BackendServices
         {
             get => _backendServices ?? (_backendServices = new InputList<Inputs.ElastigroupBackendServiceGetArgs>());
@@ -706,15 +593,25 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("gpu")]
         private InputList<Inputs.ElastigroupGpuGetArgs>? _gpu;
+
+        /// <summary>
+        /// Defines the GPU configuration.
+        /// </summary>
         public InputList<Inputs.ElastigroupGpuGetArgs> Gpu
         {
             get => _gpu ?? (_gpu = new InputList<Inputs.ElastigroupGpuGetArgs>());
             set => _gpu = value;
         }
 
+        /// <summary>
+        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+        /// </summary>
         [Input("healthCheckGracePeriod")]
         public Input<int>? HealthCheckGracePeriod { get; set; }
 
+        /// <summary>
+        /// The kind of health check to perform when monitoring for unhealthiness.
+        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -748,6 +645,9 @@ namespace Pulumi.SpotInst.Gcp
             set => _instanceTypesPreemptibles = value;
         }
 
+        /// <summary>
+        /// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+        /// </summary>
         [Input("integrationDockerSwarm")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmGetArgs>? IntegrationDockerSwarm { get; set; }
 
@@ -794,13 +694,17 @@ namespace Pulumi.SpotInst.Gcp
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The group name.
+        /// The dimension name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.ElastigroupNetworkInterfaceGetArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// Array of objects representing the network configuration for the elastigroup.
+        /// </summary>
         public InputList<Inputs.ElastigroupNetworkInterfaceGetArgs> NetworkInterfaces
         {
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ElastigroupNetworkInterfaceGetArgs>());
@@ -818,6 +722,10 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyGetArgs>? _scalingDownPolicies;
+
+        /// <summary>
+        /// Contains scaling policies for scaling the Elastigroup down.
+        /// </summary>
         public InputList<Inputs.ElastigroupScalingDownPolicyGetArgs> ScalingDownPolicies
         {
             get => _scalingDownPolicies ?? (_scalingDownPolicies = new InputList<Inputs.ElastigroupScalingDownPolicyGetArgs>());
@@ -826,6 +734,10 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("scalingUpPolicies")]
         private InputList<Inputs.ElastigroupScalingUpPolicyGetArgs>? _scalingUpPolicies;
+
+        /// <summary>
+        /// Contains scaling policies for scaling the Elastigroup up.
+        /// </summary>
         public InputList<Inputs.ElastigroupScalingUpPolicyGetArgs> ScalingUpPolicies
         {
             get => _scalingUpPolicies ?? (_scalingUpPolicies = new InputList<Inputs.ElastigroupScalingUpPolicyGetArgs>());
@@ -882,6 +794,9 @@ namespace Pulumi.SpotInst.Gcp
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+        /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }
 

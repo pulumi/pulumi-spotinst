@@ -94,70 +94,6 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// }
     /// ```
-    /// ## Third-Party Integrations
-    /// 
-    /// * `integration_gke` - (Required) Describes the GKE integration.
-    ///   
-    ///     * `location` - (Optional) The location of your GKE cluster.
-    ///     * `cluster_id` - (Optional) The GKE cluster ID you wish to import.
-    ///     * `autoscale_is_enabled` -  (Optional, Default: `false`) Specifies whether the auto scaling feature is enabled.
-    ///     * `autoscale_is_autoconfig` - (Optional, Default: `false`) Enabling the automatic auto-scaler functionality. For more information please see: .
-    ///     * `autoscale_cooldown` - (Optional, Default: `300`) The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-    ///   
-    ///     * `autoscale_headroom` - (Optional) Headroom for the cluster.
-    ///         * `cpu_per_unit` - (Optional, Default: `0`) Cpu units for compute.
-    ///         * `memory_per_unit` - (Optional, Default: `0`) RAM units for compute.
-    ///         * `num_of_units` - (Optional, Default: `0`) Amount of units for compute.
-    ///   
-    ///     * `autoscale_down` - (Optional) Enabling scale down.
-    ///         * `evaluation_periods` - (Optional, Default: `5`) Amount of cooldown evaluation periods for scale down.
-    ///   
-    ///     * `autoscale_labels` - (Optional) Labels to assign to the resource.
-    ///         * `key` - (Optional) The label name.
-    ///         * `value` - (Optional) The label value.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="diff-suppressed-parameters"&gt;&lt;/a&gt;
-    /// ## Diff-suppressed Parameters
-    /// 
-    /// The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these
-    /// imported parameters by defining them in your template with your desired new value (including null values).
-    /// 
-    /// * `backend_services`
-    ///     * `service_name`
-    ///     * `location_type`
-    ///     * `scheme`
-    ///     * `named_port`
-    ///         * `port_name`
-    ///         * `ports`
-    /// * `labels`
-    ///     * `key`
-    ///     * `value`
-    /// * `metadata`
-    ///     * `key`
-    ///     * `value`
-    /// * `tags`
-    ///     * `key`
-    ///     * `value`
-    /// * `service_account`
-    /// * `ip_forwarding`
-    /// * `fallback_to_od`
-    /// * `subnets`
-    ///     * `region`
-    ///     * `subnet_name`
     /// </summary>
     public partial class Elastigroup : Pulumi.CustomResource
     {
@@ -165,7 +101,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<ImmutableArray<Outputs.ElastigroupBackendService>> BackendServices { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the GKE cluster you wish to import.
+        /// The GKE cluster ID you wish to import.
         /// </summary>
         [Output("clusterId")]
         public Output<string?> ClusterId { get; private set; } = null!;
@@ -203,6 +139,9 @@ namespace Pulumi.SpotInst.Gke
         [Output("integrationDockerSwarm")]
         public Output<Outputs.ElastigroupIntegrationDockerSwarm?> IntegrationDockerSwarm { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the GKE integration.
+        /// </summary>
         [Output("integrationGke")]
         public Output<Outputs.ElastigroupIntegrationGke?> IntegrationGke { get; private set; } = null!;
 
@@ -312,7 +251,7 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The name of the GKE cluster you wish to import.
+        /// The GKE cluster ID you wish to import.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -370,6 +309,9 @@ namespace Pulumi.SpotInst.Gke
         [Input("integrationDockerSwarm")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmArgs>? IntegrationDockerSwarm { get; set; }
 
+        /// <summary>
+        /// Describes the GKE integration.
+        /// </summary>
         [Input("integrationGke")]
         public Input<Inputs.ElastigroupIntegrationGkeArgs>? IntegrationGke { get; set; }
 
@@ -470,7 +412,7 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The name of the GKE cluster you wish to import.
+        /// The GKE cluster ID you wish to import.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -528,6 +470,9 @@ namespace Pulumi.SpotInst.Gke
         [Input("integrationDockerSwarm")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmGetArgs>? IntegrationDockerSwarm { get; set; }
 
+        /// <summary>
+        /// Describes the GKE integration.
+        /// </summary>
         [Input("integrationGke")]
         public Input<Inputs.ElastigroupIntegrationGkeGetArgs>? IntegrationGke { get; set; }
 

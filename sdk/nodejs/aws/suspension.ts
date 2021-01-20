@@ -5,6 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * Suspend AWS Elastigroup processes. This resource provide the capavility of
+ * suspending elastigroup processes using this provider.
+ *
+ * For supported processes please visit: [Suspend Processes API reference](https://help.spot.io/spotinst-api/elastigroup/amazon-web-services/suspend-processes/)
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * // Create a suspension for Elastigroup
+ * const resourceName = new spotinst.aws.Suspension("resource_name", {
+ *     groupId: "sig-12345678",
+ *     suspensions: [
+ *         {
+ *             name: "OUT_OF_STRATEGY",
+ *         },
+ *         {
+ *             name: "REVERT_PREFERRED",
+ *         },
+ *         {
+ *             name: "PREVENTIVE_REPLACEMENT",
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class Suspension extends pulumi.CustomResource {
     /**
      * Get an existing Suspension resource's state with the given name, ID, and optional extra

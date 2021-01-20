@@ -40,6 +40,14 @@ class OceanAutoscalerArgs:
                  is_auto_config: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_limits: Optional[pulumi.Input['OceanAutoscalerResourceLimitsArgs']] = None):
+        """
+        :param pulumi.Input[int] cooldown: Cooldown period between scaling actions.
+        :param pulumi.Input['OceanAutoscalerDownArgs'] down: Auto Scaling scale down operations.
+        :param pulumi.Input['OceanAutoscalerHeadroomArgs'] headroom: Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+        :param pulumi.Input[bool] is_auto_config: Automatically configure and optimize headroom resources.
+        :param pulumi.Input[bool] is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        :param pulumi.Input['OceanAutoscalerResourceLimitsArgs'] resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
         if cooldown is not None:
             pulumi.set(__self__, "cooldown", cooldown)
         if down is not None:
@@ -56,6 +64,9 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[pulumi.Input[int]]:
+        """
+        Cooldown period between scaling actions.
+        """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
@@ -65,6 +76,9 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter
     def down(self) -> Optional[pulumi.Input['OceanAutoscalerDownArgs']]:
+        """
+        Auto Scaling scale down operations.
+        """
         return pulumi.get(self, "down")
 
     @down.setter
@@ -74,6 +88,9 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter
     def headroom(self) -> Optional[pulumi.Input['OceanAutoscalerHeadroomArgs']]:
+        """
+        Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+        """
         return pulumi.get(self, "headroom")
 
     @headroom.setter
@@ -83,6 +100,9 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter(name="isAutoConfig")
     def is_auto_config(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Automatically configure and optimize headroom resources.
+        """
         return pulumi.get(self, "is_auto_config")
 
     @is_auto_config.setter
@@ -92,6 +112,9 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -101,6 +124,9 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter(name="resourceLimits")
     def resource_limits(self) -> Optional[pulumi.Input['OceanAutoscalerResourceLimitsArgs']]:
+        """
+        Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
         return pulumi.get(self, "resource_limits")
 
     @resource_limits.setter
@@ -112,12 +138,18 @@ class OceanAutoscalerArgs:
 class OceanAutoscalerDownArgs:
     def __init__(__self__, *,
                  max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] max_scale_down_percentage: Would represent the maximum % to scale-down. Number between 1-100.
+        """
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="maxScaleDownPercentage")
     def max_scale_down_percentage(self) -> Optional[pulumi.Input[float]]:
+        """
+        Would represent the maximum % to scale-down. Number between 1-100.
+        """
         return pulumi.get(self, "max_scale_down_percentage")
 
     @max_scale_down_percentage.setter
@@ -131,6 +163,11 @@ class OceanAutoscalerHeadroomArgs:
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None,
                  num_of_units: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MB) to allocate the headroom.
+        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -141,6 +178,9 @@ class OceanAutoscalerHeadroomArgs:
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
@@ -150,6 +190,9 @@ class OceanAutoscalerHeadroomArgs:
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the amount of memory (MB) to allocate the headroom.
+        """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
@@ -159,6 +202,9 @@ class OceanAutoscalerHeadroomArgs:
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
@@ -171,6 +217,10 @@ class OceanAutoscalerResourceLimitsArgs:
     def __init__(__self__, *,
                  max_memory_gib: Optional[pulumi.Input[int]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
+        :param pulumi.Input[int] max_vcpu: The maximum cpu in vCPU units that can be allocated to the cluster.
+        """
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -179,6 +229,9 @@ class OceanAutoscalerResourceLimitsArgs:
     @property
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum memory in GiB units that can be allocated to the cluster.
+        """
         return pulumi.get(self, "max_memory_gib")
 
     @max_memory_gib.setter
@@ -188,6 +241,9 @@ class OceanAutoscalerResourceLimitsArgs:
     @property
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum cpu in vCPU units that can be allocated to the cluster.
+        """
         return pulumi.get(self, "max_vcpu")
 
     @max_vcpu.setter
@@ -870,7 +926,7 @@ class OceanOptimizeImagesArgs:
         """
         :param pulumi.Input[str] perform_at: String. Valid values: "always" "never" "timeWindow".
         :param pulumi.Input[bool] should_optimize_ecs_ami: Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
         """
         pulumi.set(__self__, "perform_at", perform_at)
         pulumi.set(__self__, "should_optimize_ecs_ami", should_optimize_ecs_ami)
@@ -905,7 +961,7 @@ class OceanOptimizeImagesArgs:
     @pulumi.getter(name="timeWindows")
     def time_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
         """
         return pulumi.get(self, "time_windows")
 
@@ -919,6 +975,10 @@ class OceanScheduledTaskArgs:
     def __init__(__self__, *,
                  shutdown_hours: Optional[pulumi.Input['OceanScheduledTaskShutdownHoursArgs']] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]] = None):
+        """
+        :param pulumi.Input['OceanScheduledTaskShutdownHoursArgs'] shutdown_hours: Set shutdown hours for cluster object.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]] tasks: The scheduling tasks for the cluster.
+        """
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
         if tasks is not None:
@@ -927,6 +987,9 @@ class OceanScheduledTaskArgs:
     @property
     @pulumi.getter(name="shutdownHours")
     def shutdown_hours(self) -> Optional[pulumi.Input['OceanScheduledTaskShutdownHoursArgs']]:
+        """
+        Set shutdown hours for cluster object.
+        """
         return pulumi.get(self, "shutdown_hours")
 
     @shutdown_hours.setter
@@ -936,6 +999,9 @@ class OceanScheduledTaskArgs:
     @property
     @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]]:
+        """
+        The scheduling tasks for the cluster.
+        """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
@@ -949,7 +1015,8 @@ class OceanScheduledTaskShutdownHoursArgs:
                  time_windows: pulumi.Input[Sequence[pulumi.Input[str]]],
                  is_enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
+        :param pulumi.Input[bool] is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
         """
         pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
@@ -959,7 +1026,7 @@ class OceanScheduledTaskShutdownHoursArgs:
     @pulumi.getter(name="timeWindows")
     def time_windows(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+        Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
         """
         return pulumi.get(self, "time_windows")
 
@@ -970,6 +1037,9 @@ class OceanScheduledTaskShutdownHoursArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -983,6 +1053,11 @@ class OceanScheduledTaskTaskArgs:
                  cron_expression: pulumi.Input[str],
                  is_enabled: pulumi.Input[bool],
                  task_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] cron_expression: A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+        :param pulumi.Input[bool] is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        :param pulumi.Input[str] task_type: Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+        """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "task_type", task_type)
@@ -990,6 +1065,9 @@ class OceanScheduledTaskTaskArgs:
     @property
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> pulumi.Input[str]:
+        """
+        A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+        """
         return pulumi.get(self, "cron_expression")
 
     @cron_expression.setter
@@ -999,6 +1077,9 @@ class OceanScheduledTaskTaskArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Input[bool]:
+        """
+        Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -1008,6 +1089,9 @@ class OceanScheduledTaskTaskArgs:
     @property
     @pulumi.getter(name="taskType")
     def task_type(self) -> pulumi.Input[str]:
+        """
+        Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+        """
         return pulumi.get(self, "task_type")
 
     @task_type.setter
@@ -1057,6 +1141,9 @@ class OceanUpdatePolicyArgs:
     def __init__(__self__, *,
                  should_roll: pulumi.Input[bool],
                  roll_config: Optional[pulumi.Input['OceanUpdatePolicyRollConfigArgs']] = None):
+        """
+        :param pulumi.Input[bool] should_roll: Enables the roll.
+        """
         pulumi.set(__self__, "should_roll", should_roll)
         if roll_config is not None:
             pulumi.set(__self__, "roll_config", roll_config)
@@ -1064,6 +1151,9 @@ class OceanUpdatePolicyArgs:
     @property
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> pulumi.Input[bool]:
+        """
+        Enables the roll.
+        """
         return pulumi.get(self, "should_roll")
 
     @should_roll.setter
@@ -1084,11 +1174,17 @@ class OceanUpdatePolicyArgs:
 class OceanUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
                  batch_size_percentage: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> pulumi.Input[int]:
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter

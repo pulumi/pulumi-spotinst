@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     [OutputType]
     public sealed class ElastigroupGpu
     {
+        /// <summary>
+        /// The number of GPUs. Must be 0, 2, 4, 6, 8.
+        /// </summary>
         public readonly int Count;
+        /// <summary>
+        /// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

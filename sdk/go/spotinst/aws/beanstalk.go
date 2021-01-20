@@ -64,41 +64,6 @@ import (
 // 	})
 // }
 // ```
-// ## Scheduled Tasks
-//
-// Each `scheduledTask` supports the following:
-//
-// * `taskType` - (Required) The task type to run. Supported task types are: `"scale"`, `"backupAmi"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
-// * `cronExpression` - (Optional; Required if not using `frequency`) A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
-// * `startTime` - (Optional; Format: ISO 8601) Set a start time for one time tasks.
-// * `frequency` - (Optional; Required if not using `cronExpression`) The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
-// * `scaleTargetCapacity` - (Optional) The desired number of instances the group should have.
-// * `scaleMinCapacity` - (Optional) The minimum number of instances the group should have.
-// * `scaleMaxCapacity` - (Optional) The maximum number of instances the group should have.
-// * `isEnabled` - (Optional, Default: `true`) Setting the task to being enabled or disabled.
-// * `targetCapacity` - (Optional; Only valid for statefulUpdateCapacity) The desired number of instances the group should have.
-// * `minCapacity` - (Optional; Only valid for statefulUpdateCapacity) The minimum number of instances the group should have.
-// * `maxCapacity` - (Optional; Only valid for statefulUpdateCapacity) The maximum number of instances the group should have.
-// * `batchSizePercentage` - (Optional; Required when the `taskType` is `"roll"`.) The percentage size of each batch in the scheduled deployment roll.
-// * `gracePeriod` - (Optional) The period of time (seconds) to wait before checking a batch's health after it's deployment.
-// * `adjustment` - (Optional; Min 1) The number of instances to add or remove.
-// * `adjustmentPercentage` - (Optional; Min 1) The percentage of instances to add or remove.
-//
-// Usage:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
-// ```
 type Beanstalk struct {
 	pulumi.CustomResourceState
 

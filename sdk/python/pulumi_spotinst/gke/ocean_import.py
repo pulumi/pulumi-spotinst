@@ -68,58 +68,17 @@ class OceanImport(pulumi.CustomResource):
 
         pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
         ```
-        ## scheduled task
-
-        * `scheduled_task` - (Optional) Set scheduling object.
-            * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
-                * `is_enabled` - (Optional)  Flag to enable / disable the shutdown hours.
-                                             Example: True
-                * `time_windows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-                                              Example: Fri:15:30-Wed:14:30
-            * `tasks` - (Optional) The scheduling tasks for the cluster.
-                * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
-                * `cron_expression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-                                                 Example: 0 1 * * *
-                * `task_type` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
-                * `batch_size_percentage` - (Optional)  Value in % to set size of batch in roll. Valid values are 0-100
-                                                        Example: 20.
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="autoscaler"></a>
-        ## Autoscaler
-
-        * `autoscaler` - (Optional) The Ocean Kubernetes Autoscaler object.
-        * `is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Autoscaler.
-        * `is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
-        * `auto_headroom_percentage` - Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
-        * `cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
-        * `headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-        * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MiB) to allocate the headroom.
-        * `gpu_per_unit` - (Optional) How much GPU allocate for headroom unit.
-        * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        * `down` - (Optional) Auto Scaling scale down operations.
-        * `evaluation_periods` - (Optional, Default: `null`) The number of evaluation periods that should accumulate before a scale down action takes place.
-        * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
-        * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
-        * `max_vcpu` - (Optional) The maximum cpu in vCpu units that can be allocated to the cluster.
-        * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
-
-        ```python
-        import pulumi
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -181,12 +140,14 @@ class OceanImport(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -208,6 +169,9 @@ class OceanImport(pulumi.CustomResource):
     @property
     @pulumi.getter
     def autoscaler(self) -> pulumi.Output['outputs.OceanImportAutoscaler']:
+        """
+        The Ocean Kubernetes Autoscaler object.
+        """
         return pulumi.get(self, "autoscaler")
 
     @property
@@ -271,6 +235,9 @@ class OceanImport(pulumi.CustomResource):
     @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.OceanImportScheduledTask']]]:
+        """
+        Set scheduling object.
+        """
         return pulumi.get(self, "scheduled_tasks")
 
     @property

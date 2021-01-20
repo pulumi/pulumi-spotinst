@@ -15,6 +15,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 
+        /// <summary>
+        /// Would represent the maximum % to scale-down. Number between 1-100.
+        /// </summary>
         [Input("maxScaleDownPercentage")]
         public Input<double>? MaxScaleDownPercentage { get; set; }
 

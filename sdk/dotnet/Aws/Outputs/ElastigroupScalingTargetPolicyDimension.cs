@@ -14,9 +14,12 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupScalingTargetPolicyDimension
     {
         /// <summary>
-        /// The group name.
+        /// The record set name.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The dimension value.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

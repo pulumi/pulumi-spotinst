@@ -9,6 +9,46 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Aws
 {
+    /// <summary>
+    /// Suspend AWS Elastigroup processes. This resource provide the capavility of
+    /// suspending elastigroup processes using this provider.
+    /// 
+    /// For supported processes please visit: [Suspend Processes API reference](https://help.spot.io/spotinst-api/elastigroup/amazon-web-services/suspend-processes/)
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a suspension for Elastigroup
+    ///         var resourceName = new SpotInst.Aws.Suspension("resourceName", new SpotInst.Aws.SuspensionArgs
+    ///         {
+    ///             GroupId = "sig-12345678",
+    ///             Suspensions = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
+    ///                 {
+    ///                     Name = "OUT_OF_STRATEGY",
+    ///                 },
+    ///                 new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
+    ///                 {
+    ///                     Name = "REVERT_PREFERRED",
+    ///                 },
+    ///                 new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
+    ///                 {
+    ///                     Name = "PREVENTIVE_REPLACEMENT",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Suspension : Pulumi.CustomResource
     {
         /// <summary>

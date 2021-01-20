@@ -63,59 +63,6 @@ import * as utilities from "../utilities";
  *
  * export const oceanId = spotinst_ocean_aws.example.id;
  * ```
- * ## Auto Scaler
- *
- * * `autoscaler` - (Optional) Describes the Ocean Kubernetes autoscaler.
- * * `autoscaleIsEnabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes autoscaler.
- * * `autoscaleIsAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
- * * `autoscaleCooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
- * * `autoHeadroomPercentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
- * * `autoscaleHeadroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
- * * `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
- * * `gpuPerUnit` - (Optional) Optionally configure the number of GPUS to allocate the headroom.
- * * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
- * * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
- * * `autoscaleDown` - (Optional) Auto Scaling scale down operations.
- * * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
- * * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
- * * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
- * * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="update-policy"></a>
- * ## Update Policy
- *
- * * `updatePolicy` - (Optional)
- *     * `shouldRoll` - (Required) Enables the roll.
- *     * `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
- *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="scheduled-task"></a>
- * ## scheduled task
- *
- * * `scheduledTask` - (Optional) Set scheduling object.
- *     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
- *         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
- *                                      Example: True
- *         * `timeWindows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
- *                                       Example: Fri:15:30-Wed:14:30
- *     * `tasks` - (Optional) The scheduling tasks for the cluster.
- *         * `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
- *         * `cronExpression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
- *                                          Example: 0 1 * * *
- *         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
- *                                    Example: clusterRoll
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
  */
 export class Ocean extends pulumi.CustomResource {
     /**
@@ -149,6 +96,9 @@ export class Ocean extends pulumi.CustomResource {
      * Configure public IP address allocation.
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
+    /**
+     * Describes the Ocean Kubernetes autoscaler.
+     */
     public readonly autoscaler!: pulumi.Output<outputs.aws.OceanAutoscaler | undefined>;
     /**
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -218,6 +168,9 @@ export class Ocean extends pulumi.CustomResource {
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
     public readonly rootVolumeSize!: pulumi.Output<number | undefined>;
+    /**
+     * Set scheduling object.
+     */
     public readonly scheduledTasks!: pulumi.Output<outputs.aws.OceanScheduledTask[] | undefined>;
     /**
      * One or more security group ids.
@@ -354,6 +307,9 @@ export interface OceanState {
      * Configure public IP address allocation.
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
+    /**
+     * Describes the Ocean Kubernetes autoscaler.
+     */
     readonly autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     /**
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -423,6 +379,9 @@ export interface OceanState {
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
     readonly rootVolumeSize?: pulumi.Input<number>;
+    /**
+     * Set scheduling object.
+     */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
@@ -468,6 +427,9 @@ export interface OceanArgs {
      * Configure public IP address allocation.
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
+    /**
+     * Describes the Ocean Kubernetes autoscaler.
+     */
     readonly autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     /**
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -537,6 +499,9 @@ export interface OceanArgs {
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
     readonly rootVolumeSize?: pulumi.Input<number>;
+    /**
+     * Set scheduling object.
+     */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.

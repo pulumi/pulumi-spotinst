@@ -37,6 +37,11 @@ class ElastigroupHealthCheck(dict):
                  health_check_type: str,
                  auto_healing: Optional[bool] = None,
                  grace_period: Optional[int] = None):
+        """
+        :param str health_check_type: Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+        :param bool auto_healing: Enable auto-healing of unhealthy VMs.
+        :param int grace_period: Sets the grace period for new instances to become healthy.
+        """
         pulumi.set(__self__, "health_check_type", health_check_type)
         if auto_healing is not None:
             pulumi.set(__self__, "auto_healing", auto_healing)
@@ -46,16 +51,25 @@ class ElastigroupHealthCheck(dict):
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> str:
+        """
+        Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+        """
         return pulumi.get(self, "health_check_type")
 
     @property
     @pulumi.getter(name="autoHealing")
     def auto_healing(self) -> Optional[bool]:
+        """
+        Enable auto-healing of unhealthy VMs.
+        """
         return pulumi.get(self, "auto_healing")
 
     @property
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[int]:
+        """
+        Sets the grace period for new instances to become healthy.
+        """
         return pulumi.get(self, "grace_period")
 
     def _translate_property(self, prop):
@@ -92,7 +106,8 @@ class ElastigroupImageCustom(dict):
                  image_name: str,
                  resource_group_name: str):
         """
-        :param str resource_group_name: The Resource Group that the user-assigned managed identity resides in.
+        :param str image_name: Name of the custom image. Required if resource_group_name is specified.
+        :param str resource_group_name: Vnet Resource Group Name.
         """
         pulumi.set(__self__, "image_name", image_name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -100,13 +115,16 @@ class ElastigroupImageCustom(dict):
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> str:
+        """
+        Name of the custom image. Required if resource_group_name is specified.
+        """
         return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         """
-        The Resource Group that the user-assigned managed identity resides in.
+        Vnet Resource Group Name.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -120,6 +138,11 @@ class ElastigroupImageMarketplace(dict):
                  offer: str,
                  publisher: str,
                  sku: str):
+        """
+        :param str offer: Name of the image to use. Required if publisher is specified.
+        :param str publisher: Image publisher. Required if resource_group_name is not specified.
+        :param str sku: Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+        """
         pulumi.set(__self__, "offer", offer)
         pulumi.set(__self__, "publisher", publisher)
         pulumi.set(__self__, "sku", sku)
@@ -127,16 +150,25 @@ class ElastigroupImageMarketplace(dict):
     @property
     @pulumi.getter
     def offer(self) -> str:
+        """
+        Name of the image to use. Required if publisher is specified.
+        """
         return pulumi.get(self, "offer")
 
     @property
     @pulumi.getter
     def publisher(self) -> str:
+        """
+        Image publisher. Required if resource_group_name is not specified.
+        """
         return pulumi.get(self, "publisher")
 
     @property
     @pulumi.getter
     def sku(self) -> str:
+        """
+        Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+        """
         return pulumi.get(self, "sku")
 
     def _translate_property(self, prop):
@@ -147,11 +179,17 @@ class ElastigroupImageMarketplace(dict):
 class ElastigroupIntegrationKubernetes(dict):
     def __init__(__self__, *,
                  cluster_identifier: str):
+        """
+        :param str cluster_identifier: The cluster ID.
+        """
         pulumi.set(__self__, "cluster_identifier", cluster_identifier)
 
     @property
     @pulumi.getter(name="clusterIdentifier")
     def cluster_identifier(self) -> str:
+        """
+        The cluster ID.
+        """
         return pulumi.get(self, "cluster_identifier")
 
     def _translate_property(self, prop):
@@ -162,11 +200,17 @@ class ElastigroupIntegrationKubernetes(dict):
 class ElastigroupIntegrationMultaiRuntime(dict):
     def __init__(__self__, *,
                  deployment_id: str):
+        """
+        :param str deployment_id: The deployment id you want to get
+        """
         pulumi.set(__self__, "deployment_id", deployment_id)
 
     @property
     @pulumi.getter(name="deploymentId")
     def deployment_id(self) -> str:
+        """
+        The deployment id you want to get
+        """
         return pulumi.get(self, "deployment_id")
 
     def _translate_property(self, prop):
@@ -180,6 +224,11 @@ class ElastigroupLoadBalancer(dict):
                  auto_weight: Optional[bool] = None,
                  balancer_id: Optional[str] = None,
                  target_set_id: Optional[str] = None):
+        """
+        :param str type: The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        :param str balancer_id: The balancer ID.
+        :param str target_set_id: The scale set ID associated with the load balancer.
+        """
         pulumi.set(__self__, "type", type)
         if auto_weight is not None:
             pulumi.set(__self__, "auto_weight", auto_weight)
@@ -191,6 +240,9 @@ class ElastigroupLoadBalancer(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        """
         return pulumi.get(self, "type")
 
     @property
@@ -201,11 +253,17 @@ class ElastigroupLoadBalancer(dict):
     @property
     @pulumi.getter(name="balancerId")
     def balancer_id(self) -> Optional[str]:
+        """
+        The balancer ID.
+        """
         return pulumi.get(self, "balancer_id")
 
     @property
     @pulumi.getter(name="targetSetId")
     def target_set_id(self) -> Optional[str]:
+        """
+        The scale set ID associated with the load balancer.
+        """
         return pulumi.get(self, "target_set_id")
 
     def _translate_property(self, prop):
@@ -218,6 +276,11 @@ class ElastigroupLogin(dict):
                  user_name: str,
                  password: Optional[str] = None,
                  ssh_public_key: Optional[str] = None):
+        """
+        :param str user_name: Set admin access for accessing your VMs.
+        :param str password: Password for admin access to Windows VMs. Required for Windows product types.
+        :param str ssh_public_key: SSH for admin access to Linux VMs. Required for Linux product types.
+        """
         pulumi.set(__self__, "user_name", user_name)
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -227,16 +290,25 @@ class ElastigroupLogin(dict):
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> str:
+        """
+        Set admin access for accessing your VMs.
+        """
         return pulumi.get(self, "user_name")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        Password for admin access to Windows VMs. Required for Windows product types.
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="sshPublicKey")
     def ssh_public_key(self) -> Optional[str]:
+        """
+        SSH for admin access to Linux VMs. Required for Linux product types.
+        """
         return pulumi.get(self, "ssh_public_key")
 
     def _translate_property(self, prop):
@@ -249,8 +321,8 @@ class ElastigroupManagedServiceIdentity(dict):
                  name: str,
                  resource_group_name: str):
         """
-        :param str name: The name of the managed identity.
-        :param str resource_group_name: The Resource Group that the user-assigned managed identity resides in.
+        :param str name: The dimension name.
+        :param str resource_group_name: Vnet Resource Group Name.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -259,7 +331,7 @@ class ElastigroupManagedServiceIdentity(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the managed identity.
+        The dimension name.
         """
         return pulumi.get(self, "name")
 
@@ -267,7 +339,7 @@ class ElastigroupManagedServiceIdentity(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         """
-        The Resource Group that the user-assigned managed identity resides in.
+        Vnet Resource Group Name.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -284,7 +356,10 @@ class ElastigroupNetwork(dict):
                  additional_ip_configs: Optional[Sequence['outputs.ElastigroupNetworkAdditionalIpConfig']] = None,
                  assign_public_ip: Optional[bool] = None):
         """
-        :param str resource_group_name: The Resource Group that the user-assigned managed identity resides in.
+        :param str resource_group_name: Vnet Resource Group Name.
+        :param str subnet_name: ID of subnet.
+        :param str virtual_network_name: Name of Vnet.
+        :param Sequence['ElastigroupNetworkAdditionalIpConfigArgs'] additional_ip_configs: Array of additional IP configuration objects.
         """
         pulumi.set(__self__, "resource_group_name", resource_group_name)
         pulumi.set(__self__, "subnet_name", subnet_name)
@@ -298,23 +373,32 @@ class ElastigroupNetwork(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         """
-        The Resource Group that the user-assigned managed identity resides in.
+        Vnet Resource Group Name.
         """
         return pulumi.get(self, "resource_group_name")
 
     @property
     @pulumi.getter(name="subnetName")
     def subnet_name(self) -> str:
+        """
+        ID of subnet.
+        """
         return pulumi.get(self, "subnet_name")
 
     @property
     @pulumi.getter(name="virtualNetworkName")
     def virtual_network_name(self) -> str:
+        """
+        Name of Vnet.
+        """
         return pulumi.get(self, "virtual_network_name")
 
     @property
     @pulumi.getter(name="additionalIpConfigs")
     def additional_ip_configs(self) -> Optional[Sequence['outputs.ElastigroupNetworkAdditionalIpConfig']]:
+        """
+        Array of additional IP configuration objects.
+        """
         return pulumi.get(self, "additional_ip_configs")
 
     @property
@@ -332,7 +416,8 @@ class ElastigroupNetworkAdditionalIpConfig(dict):
                  name: str,
                  private_ip_version: Optional[str] = None):
         """
-        :param str name: The name of the managed identity.
+        :param str name: The dimension name.
+        :param str private_ip_version: Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
         """
         pulumi.set(__self__, "name", name)
         if private_ip_version is not None:
@@ -342,13 +427,16 @@ class ElastigroupNetworkAdditionalIpConfig(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the managed identity.
+        The dimension name.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="privateIpVersion")
     def private_ip_version(self) -> Optional[str]:
+        """
+        Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+        """
         return pulumi.get(self, "private_ip_version")
 
     def _translate_property(self, prop):
@@ -376,6 +464,26 @@ class ElastigroupScalingDownPolicy(dict):
                  statistic: Optional[str] = None,
                  target: Optional[str] = None,
                  unit: Optional[str] = None):
+        """
+        :param str metric_name: Metric to monitor by Azure metric display name.
+        :param str namespace: The namespace for the alarm's associated metric. Valid values:
+        :param str policy_name: The name of the policy.
+        :param float threshold: The value against which the specified statistic is compared.
+        :param str action_type: The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+        :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
+        :param int cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
+        :param Sequence['ElastigroupScalingDownPolicyDimensionArgs'] dimensions: A list of dimensions describing qualities of the metric. Required when `namespace` is defined AND not `"Microsoft.Compute"`.
+        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param str max_target_capacity: . The number of the desired target (and maximum) capacity
+        :param str maximum: The maximal number of instances to have in the group.
+        :param str min_target_capacity: . The number of the desired target (and minimum) capacity
+        :param str minimum: The minimal number of instances to have in the group.
+        :param str operator: The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
+        :param int period: The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        :param str statistic: The metric statistics to return. Valid values: `average`.
+        :param str target: The target number of instances to have in the group.
+        :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -412,91 +520,145 @@ class ElastigroupScalingDownPolicy(dict):
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> str:
+        """
+        Metric to monitor by Azure metric display name.
+        """
         return pulumi.get(self, "metric_name")
 
     @property
     @pulumi.getter
     def namespace(self) -> str:
+        """
+        The namespace for the alarm's associated metric. Valid values:
+        """
         return pulumi.get(self, "namespace")
 
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> str:
+        """
+        The name of the policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @property
     @pulumi.getter
     def threshold(self) -> float:
+        """
+        The value against which the specified statistic is compared.
+        """
         return pulumi.get(self, "threshold")
 
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[str]:
+        """
+        The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+        """
         return pulumi.get(self, "action_type")
 
     @property
     @pulumi.getter
     def adjustment(self) -> Optional[str]:
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
         return pulumi.get(self, "adjustment")
 
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[int]:
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
+        """
         return pulumi.get(self, "cooldown")
 
     @property
     @pulumi.getter
     def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingDownPolicyDimension']]:
+        """
+        A list of dimensions describing qualities of the metric. Required when `namespace` is defined AND not `"Microsoft.Compute"`.
+        """
         return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
+        """
+        The number of periods over which data is compared to the specified threshold.
+        """
         return pulumi.get(self, "evaluation_periods")
 
     @property
     @pulumi.getter(name="maxTargetCapacity")
     def max_target_capacity(self) -> Optional[str]:
+        """
+        . The number of the desired target (and maximum) capacity
+        """
         return pulumi.get(self, "max_target_capacity")
 
     @property
     @pulumi.getter
     def maximum(self) -> Optional[str]:
+        """
+        The maximal number of instances to have in the group.
+        """
         return pulumi.get(self, "maximum")
 
     @property
     @pulumi.getter(name="minTargetCapacity")
     def min_target_capacity(self) -> Optional[str]:
+        """
+        . The number of the desired target (and minimum) capacity
+        """
         return pulumi.get(self, "min_target_capacity")
 
     @property
     @pulumi.getter
     def minimum(self) -> Optional[str]:
+        """
+        The minimal number of instances to have in the group.
+        """
         return pulumi.get(self, "minimum")
 
     @property
     @pulumi.getter
     def operator(self) -> Optional[str]:
+        """
+        The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def period(self) -> Optional[int]:
+        """
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        """
         return pulumi.get(self, "period")
 
     @property
     @pulumi.getter
     def statistic(self) -> Optional[str]:
+        """
+        The metric statistics to return. Valid values: `average`.
+        """
         return pulumi.get(self, "statistic")
 
     @property
     @pulumi.getter
     def target(self) -> Optional[str]:
+        """
+        The target number of instances to have in the group.
+        """
         return pulumi.get(self, "target")
 
     @property
     @pulumi.getter
     def unit(self) -> Optional[str]:
+        """
+        The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        """
         return pulumi.get(self, "unit")
 
     def _translate_property(self, prop):
@@ -509,7 +671,8 @@ class ElastigroupScalingDownPolicyDimension(dict):
                  name: str,
                  value: Optional[str] = None):
         """
-        :param str name: The name of the managed identity.
+        :param str name: The dimension name.
+        :param str value: The dimension value.
         """
         pulumi.set(__self__, "name", name)
         if value is not None:
@@ -519,13 +682,16 @@ class ElastigroupScalingDownPolicyDimension(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the managed identity.
+        The dimension name.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The dimension value.
+        """
         return pulumi.get(self, "value")
 
     def _translate_property(self, prop):
@@ -553,6 +719,26 @@ class ElastigroupScalingUpPolicy(dict):
                  statistic: Optional[str] = None,
                  target: Optional[str] = None,
                  unit: Optional[str] = None):
+        """
+        :param str metric_name: Metric to monitor by Azure metric display name.
+        :param str namespace: The namespace for the alarm's associated metric. Valid values:
+        :param str policy_name: The name of the policy.
+        :param float threshold: The value against which the specified statistic is compared.
+        :param str action_type: The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+        :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
+        :param int cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
+        :param Sequence['ElastigroupScalingUpPolicyDimensionArgs'] dimensions: A list of dimensions describing qualities of the metric. Required when `namespace` is defined AND not `"Microsoft.Compute"`.
+        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param str max_target_capacity: . The number of the desired target (and maximum) capacity
+        :param str maximum: The maximal number of instances to have in the group.
+        :param str min_target_capacity: . The number of the desired target (and minimum) capacity
+        :param str minimum: The minimal number of instances to have in the group.
+        :param str operator: The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
+        :param int period: The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        :param str statistic: The metric statistics to return. Valid values: `average`.
+        :param str target: The target number of instances to have in the group.
+        :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -589,91 +775,145 @@ class ElastigroupScalingUpPolicy(dict):
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> str:
+        """
+        Metric to monitor by Azure metric display name.
+        """
         return pulumi.get(self, "metric_name")
 
     @property
     @pulumi.getter
     def namespace(self) -> str:
+        """
+        The namespace for the alarm's associated metric. Valid values:
+        """
         return pulumi.get(self, "namespace")
 
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> str:
+        """
+        The name of the policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @property
     @pulumi.getter
     def threshold(self) -> float:
+        """
+        The value against which the specified statistic is compared.
+        """
         return pulumi.get(self, "threshold")
 
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[str]:
+        """
+        The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+        """
         return pulumi.get(self, "action_type")
 
     @property
     @pulumi.getter
     def adjustment(self) -> Optional[str]:
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
         return pulumi.get(self, "adjustment")
 
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[int]:
+        """
+        The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
+        """
         return pulumi.get(self, "cooldown")
 
     @property
     @pulumi.getter
     def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingUpPolicyDimension']]:
+        """
+        A list of dimensions describing qualities of the metric. Required when `namespace` is defined AND not `"Microsoft.Compute"`.
+        """
         return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
+        """
+        The number of periods over which data is compared to the specified threshold.
+        """
         return pulumi.get(self, "evaluation_periods")
 
     @property
     @pulumi.getter(name="maxTargetCapacity")
     def max_target_capacity(self) -> Optional[str]:
+        """
+        . The number of the desired target (and maximum) capacity
+        """
         return pulumi.get(self, "max_target_capacity")
 
     @property
     @pulumi.getter
     def maximum(self) -> Optional[str]:
+        """
+        The maximal number of instances to have in the group.
+        """
         return pulumi.get(self, "maximum")
 
     @property
     @pulumi.getter(name="minTargetCapacity")
     def min_target_capacity(self) -> Optional[str]:
+        """
+        . The number of the desired target (and minimum) capacity
+        """
         return pulumi.get(self, "min_target_capacity")
 
     @property
     @pulumi.getter
     def minimum(self) -> Optional[str]:
+        """
+        The minimal number of instances to have in the group.
+        """
         return pulumi.get(self, "minimum")
 
     @property
     @pulumi.getter
     def operator(self) -> Optional[str]:
+        """
+        The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def period(self) -> Optional[int]:
+        """
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        """
         return pulumi.get(self, "period")
 
     @property
     @pulumi.getter
     def statistic(self) -> Optional[str]:
+        """
+        The metric statistics to return. Valid values: `average`.
+        """
         return pulumi.get(self, "statistic")
 
     @property
     @pulumi.getter
     def target(self) -> Optional[str]:
+        """
+        The target number of instances to have in the group.
+        """
         return pulumi.get(self, "target")
 
     @property
     @pulumi.getter
     def unit(self) -> Optional[str]:
+        """
+        The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        """
         return pulumi.get(self, "unit")
 
     def _translate_property(self, prop):
@@ -686,7 +926,8 @@ class ElastigroupScalingUpPolicyDimension(dict):
                  name: str,
                  value: Optional[str] = None):
         """
-        :param str name: The name of the managed identity.
+        :param str name: The dimension name.
+        :param str value: The dimension value.
         """
         pulumi.set(__self__, "name", name)
         if value is not None:
@@ -696,13 +937,16 @@ class ElastigroupScalingUpPolicyDimension(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the managed identity.
+        The dimension name.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The dimension value.
+        """
         return pulumi.get(self, "value")
 
     def _translate_property(self, prop):
@@ -722,6 +966,18 @@ class ElastigroupScheduledTask(dict):
                  scale_max_capacity: Optional[str] = None,
                  scale_min_capacity: Optional[str] = None,
                  scale_target_capacity: Optional[str] = None):
+        """
+        :param str cron_expression: A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
+        :param str task_type: The task type to run. Valid Values: `backup_ami`, `scale`, `scaleUp`, `roll`, `statefulUpdateCapacity`, `statefulRecycle`.
+        :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
+        :param str adjustment_percentage: The percent of instances to add/remove to/from the target capacity when scale is needed.
+        :param str batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param str grace_period: Sets the grace period for new instances to become healthy.
+        :param bool is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run.
+        :param str scale_max_capacity: The max capacity of the group. Required when ‘task_type' is ‘scale'.
+        :param str scale_min_capacity: The min capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
+        :param str scale_target_capacity: The target capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
+        """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "task_type", task_type)
         if adjustment is not None:
@@ -744,51 +1000,81 @@ class ElastigroupScheduledTask(dict):
     @property
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> str:
+        """
+        A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
+        """
         return pulumi.get(self, "cron_expression")
 
     @property
     @pulumi.getter(name="taskType")
     def task_type(self) -> str:
+        """
+        The task type to run. Valid Values: `backup_ami`, `scale`, `scaleUp`, `roll`, `statefulUpdateCapacity`, `statefulRecycle`.
+        """
         return pulumi.get(self, "task_type")
 
     @property
     @pulumi.getter
     def adjustment(self) -> Optional[str]:
+        """
+        The number of instances to add/remove to/from the target capacity when scale is needed.
+        """
         return pulumi.get(self, "adjustment")
 
     @property
     @pulumi.getter(name="adjustmentPercentage")
     def adjustment_percentage(self) -> Optional[str]:
+        """
+        The percent of instances to add/remove to/from the target capacity when scale is needed.
+        """
         return pulumi.get(self, "adjustment_percentage")
 
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[str]:
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @property
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[str]:
+        """
+        Sets the grace period for new instances to become healthy.
+        """
         return pulumi.get(self, "grace_period")
 
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[bool]:
+        """
+        Describes whether the task is enabled. When true the task should run when false it should not run.
+        """
         return pulumi.get(self, "is_enabled")
 
     @property
     @pulumi.getter(name="scaleMaxCapacity")
     def scale_max_capacity(self) -> Optional[str]:
+        """
+        The max capacity of the group. Required when ‘task_type' is ‘scale'.
+        """
         return pulumi.get(self, "scale_max_capacity")
 
     @property
     @pulumi.getter(name="scaleMinCapacity")
     def scale_min_capacity(self) -> Optional[str]:
+        """
+        The min capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
+        """
         return pulumi.get(self, "scale_min_capacity")
 
     @property
     @pulumi.getter(name="scaleTargetCapacity")
     def scale_target_capacity(self) -> Optional[str]:
+        """
+        The target capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
+        """
         return pulumi.get(self, "scale_target_capacity")
 
     def _translate_property(self, prop):
@@ -846,6 +1132,10 @@ class ElastigroupUpdatePolicy(dict):
     def __init__(__self__, *,
                  should_roll: bool,
                  roll_config: Optional['outputs.ElastigroupUpdatePolicyRollConfig'] = None):
+        """
+        :param bool should_roll: Sets the enablement of the roll option.
+        :param 'ElastigroupUpdatePolicyRollConfigArgs' roll_config: While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         pulumi.set(__self__, "should_roll", should_roll)
         if roll_config is not None:
             pulumi.set(__self__, "roll_config", roll_config)
@@ -853,11 +1143,17 @@ class ElastigroupUpdatePolicy(dict):
     @property
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> bool:
+        """
+        Sets the enablement of the roll option.
+        """
         return pulumi.get(self, "should_roll")
 
     @property
     @pulumi.getter(name="rollConfig")
     def roll_config(self) -> Optional['outputs.ElastigroupUpdatePolicyRollConfig']:
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         return pulumi.get(self, "roll_config")
 
     def _translate_property(self, prop):
@@ -870,6 +1166,11 @@ class ElastigroupUpdatePolicyRollConfig(dict):
                  batch_size_percentage: int,
                  grace_period: Optional[int] = None,
                  health_check_type: Optional[str] = None):
+        """
+        :param int batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param int grace_period: Sets the grace period for new instances to become healthy.
+        :param str health_check_type: Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+        """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if grace_period is not None:
             pulumi.set(__self__, "grace_period", grace_period)
@@ -879,16 +1180,25 @@ class ElastigroupUpdatePolicyRollConfig(dict):
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> int:
+        """
+        Sets the percentage of the instances to deploy in each batch.
+        """
         return pulumi.get(self, "batch_size_percentage")
 
     @property
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[int]:
+        """
+        Sets the grace period for new instances to become healthy.
+        """
         return pulumi.get(self, "grace_period")
 
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[str]:
+        """
+        Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+        """
         return pulumi.get(self, "health_check_type")
 
     def _translate_property(self, prop):

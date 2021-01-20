@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class OceanImportScheduledTask
     {
+        /// <summary>
+        /// Set shutdown hours for cluster object.
+        /// </summary>
         public readonly Outputs.OceanImportScheduledTaskShutdownHours? ShutdownHours;
+        /// <summary>
+        /// The scheduling tasks for the cluster.
+        /// </summary>
         public readonly ImmutableArray<Outputs.OceanImportScheduledTaskTask> Tasks;
 
         [OutputConstructor]

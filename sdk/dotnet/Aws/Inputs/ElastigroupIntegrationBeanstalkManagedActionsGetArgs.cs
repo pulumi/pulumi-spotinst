@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationBeanstalkManagedActionsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Platform Update parameters
+        /// </summary>
         [Input("platformUpdate")]
         public Input<Inputs.ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateGetArgs>? PlatformUpdate { get; set; }
 

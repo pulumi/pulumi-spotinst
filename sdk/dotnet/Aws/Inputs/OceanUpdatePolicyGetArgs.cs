@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class OceanUpdatePolicyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         [Input("rollConfig")]
         public Input<Inputs.OceanUpdatePolicyRollConfigGetArgs>? RollConfig { get; set; }
 
+        /// <summary>
+        /// Enables the roll.
+        /// </summary>
         [Input("shouldRoll", required: true)]
         public Input<bool> ShouldRoll { get; set; } = null!;
 

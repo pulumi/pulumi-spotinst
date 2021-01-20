@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy
     {
+        /// <summary>
+        /// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        /// </summary>
         public readonly string? Action;
+        /// <summary>
+        /// Specify whether to drain incoming TCP connections before terminating a server.
+        /// </summary>
         public readonly bool? ShouldDrainInstances;
 
         [OutputConstructor]

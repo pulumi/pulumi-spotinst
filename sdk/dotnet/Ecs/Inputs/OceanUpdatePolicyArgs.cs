@@ -15,6 +15,9 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         [Input("rollConfig")]
         public Input<Inputs.OceanUpdatePolicyRollConfigArgs>? RollConfig { get; set; }
 
+        /// <summary>
+        /// Enables the roll.
+        /// </summary>
         [Input("shouldRoll", required: true)]
         public Input<bool> ShouldRoll { get; set; } = null!;
 

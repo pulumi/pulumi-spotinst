@@ -23,7 +23,32 @@ class Suspension(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Suspension resource with the given unique name, props, and options.
+        Suspend AWS Elastigroup processes. This resource provide the capavility of
+        suspending elastigroup processes using this provider.
+
+        For supported processes please visit: [Suspend Processes API reference](https://help.spot.io/spotinst-api/elastigroup/amazon-web-services/suspend-processes/)
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # Create a suspension for Elastigroup
+        resource_name = spotinst.aws.Suspension("resourceName",
+            group_id="sig-12345678",
+            suspensions=[
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="OUT_OF_STRATEGY",
+                ),
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="REVERT_PREFERRED",
+                ),
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="PREVENTIVE_REPLACEMENT",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: Elastigroup ID to apply the suspensions on.

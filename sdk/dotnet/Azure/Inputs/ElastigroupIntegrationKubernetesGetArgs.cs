@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class ElastigroupIntegrationKubernetesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The cluster ID.
+        /// </summary>
         [Input("clusterIdentifier", required: true)]
         public Input<string> ClusterIdentifier { get; set; } = null!;
 

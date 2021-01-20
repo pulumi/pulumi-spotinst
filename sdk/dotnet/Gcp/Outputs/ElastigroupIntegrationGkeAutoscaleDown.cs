@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationGkeAutoscaleDown
     {
+        /// <summary>
+        /// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
+        /// </summary>
         public readonly int? EvaluationPeriods;
 
         [OutputConstructor]

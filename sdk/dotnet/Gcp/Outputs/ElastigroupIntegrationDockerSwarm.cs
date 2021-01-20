@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationDockerSwarm
     {
+        /// <summary>
+        /// IP or FQDN of one of your swarm managers.
+        /// </summary>
         public readonly string MasterHost;
+        /// <summary>
+        /// Network port used by your swarm.
+        /// </summary>
         public readonly int MasterPort;
 
         [OutputConstructor]

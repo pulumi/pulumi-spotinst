@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Provides a Spotinst AWS group resource.
 type Elastigroup struct {
 	pulumi.CustomResourceState
 
@@ -18,33 +19,35 @@ type Elastigroup struct {
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
-	BlockDevicesMode  pulumi.StringPtrOutput   `pulumi:"blockDevicesMode"`
+	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+	BlockDevicesMode pulumi.StringPtrOutput `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
 	CapacityUnit pulumi.StringOutput `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrOutput `pulumi:"cpuCredits"`
-	// The group description.
+	// The description of the network interface.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
-	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+	// Indicates (in seconds) the timeout to wait until instance are detached.
 	DrainingTimeout pulumi.IntOutput                     `pulumi:"drainingTimeout"`
 	EbsBlockDevices ElastigroupEbsBlockDeviceArrayOutput `pulumi:"ebsBlockDevices"`
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
 	EbsOptimized pulumi.BoolOutput `pulumi:"ebsOptimized"`
 	// A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-	ElasticIps           pulumi.StringArrayOutput `pulumi:"elasticIps"`
+	ElasticIps pulumi.StringArrayOutput `pulumi:"elasticIps"`
+	// List of Elastic Load Balancers names (ELB).
 	ElasticLoadBalancers pulumi.StringArrayOutput `pulumi:"elasticLoadBalancers"`
 	// Indicates whether monitoring is enabled for the instance.
 	EnableMonitoring      pulumi.BoolPtrOutput                       `pulumi:"enableMonitoring"`
 	EphemeralBlockDevices ElastigroupEphemeralBlockDeviceArrayOutput `pulumi:"ephemeralBlockDevices"`
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolOutput `pulumi:"fallbackToOndemand"`
-	// The amount of time, in seconds, after the instance has launched to starts and check its health.
+	// The amount of time, in seconds, after the instance has launched to starts and check its health
 	HealthCheckGracePeriod pulumi.IntPtrOutput `pulumi:"healthCheckGracePeriod"`
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
-	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
 	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrOutput `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
@@ -57,18 +60,28 @@ type Elastigroup struct {
 	// One or more instance types.
 	InstanceTypesSpots pulumi.StringArrayOutput `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-	InstanceTypesWeights     ElastigroupInstanceTypesWeightArrayOutput    `pulumi:"instanceTypesWeights"`
-	IntegrationBeanstalk     ElastigroupIntegrationBeanstalkPtrOutput     `pulumi:"integrationBeanstalk"`
-	IntegrationCodedeploy    ElastigroupIntegrationCodedeployPtrOutput    `pulumi:"integrationCodedeploy"`
-	IntegrationDockerSwarm   ElastigroupIntegrationDockerSwarmPtrOutput   `pulumi:"integrationDockerSwarm"`
-	IntegrationEcs           ElastigroupIntegrationEcsPtrOutput           `pulumi:"integrationEcs"`
-	IntegrationGitlab        ElastigroupIntegrationGitlabPtrOutput        `pulumi:"integrationGitlab"`
-	IntegrationKubernetes    ElastigroupIntegrationKubernetesPtrOutput    `pulumi:"integrationKubernetes"`
-	IntegrationMesosphere    ElastigroupIntegrationMesospherePtrOutput    `pulumi:"integrationMesosphere"`
+	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayOutput `pulumi:"instanceTypesWeights"`
+	IntegrationBeanstalk ElastigroupIntegrationBeanstalkPtrOutput  `pulumi:"integrationBeanstalk"`
+	// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+	IntegrationCodedeploy ElastigroupIntegrationCodedeployPtrOutput `pulumi:"integrationCodedeploy"`
+	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+	IntegrationDockerSwarm ElastigroupIntegrationDockerSwarmPtrOutput `pulumi:"integrationDockerSwarm"`
+	// Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+	IntegrationEcs ElastigroupIntegrationEcsPtrOutput `pulumi:"integrationEcs"`
+	// Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+	IntegrationGitlab ElastigroupIntegrationGitlabPtrOutput `pulumi:"integrationGitlab"`
+	// Describes the [Kubernetes](https://kubernetes.io/) integration.
+	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrOutput `pulumi:"integrationKubernetes"`
+	// Describes the [Mesosphere](https://mesosphere.com/) integration.
+	IntegrationMesosphere ElastigroupIntegrationMesospherePtrOutput `pulumi:"integrationMesosphere"`
+	// Describes the [Multai Runtime](https://spotinst.com/) integration.
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrOutput `pulumi:"integrationMultaiRuntime"`
-	IntegrationNomad         ElastigroupIntegrationNomadPtrOutput         `pulumi:"integrationNomad"`
-	IntegrationRancher       ElastigroupIntegrationRancherPtrOutput       `pulumi:"integrationRancher"`
-	IntegrationRoute53       ElastigroupIntegrationRoute53PtrOutput       `pulumi:"integrationRoute53"`
+	// Describes the [Nomad](https://www.nomadproject.io/) integration.
+	IntegrationNomad ElastigroupIntegrationNomadPtrOutput `pulumi:"integrationNomad"`
+	// Describes the [Rancher](http://rancherlabs.com/) integration.
+	IntegrationRancher ElastigroupIntegrationRancherPtrOutput `pulumi:"integrationRancher"`
+	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+	IntegrationRoute53 ElastigroupIntegrationRoute53PtrOutput `pulumi:"integrationRoute53"`
 	// The key name that should be used for the instance.
 	KeyName        pulumi.StringPtrOutput `pulumi:"keyName"`
 	LifetimePeriod pulumi.StringPtrOutput `pulumi:"lifetimePeriod"`
@@ -77,24 +90,29 @@ type Elastigroup struct {
 	// Data that used to configure or manage the running instances:
 	MetadataOptions ElastigroupMetadataOptionsPtrOutput `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
-	MinSize          pulumi.IntOutput                      `pulumi:"minSize"`
+	MinSize pulumi.IntOutput `pulumi:"minSize"`
+	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayOutput `pulumi:"multaiTargetSets"`
-	// The group name.
+	// The record set name.
 	Name              pulumi.StringOutput                    `pulumi:"name"`
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrOutput `pulumi:"ondemandCount"`
 	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
-	Orientation         pulumi.StringOutput  `pulumi:"orientation"`
+	Orientation pulumi.StringOutput `pulumi:"orientation"`
+	// Boolean, should the instance maintain its Data volumes.
 	PersistBlockDevices pulumi.BoolPtrOutput `pulumi:"persistBlockDevices"`
-	PersistPrivateIp    pulumi.BoolPtrOutput `pulumi:"persistPrivateIp"`
-	PersistRootDevice   pulumi.BoolPtrOutput `pulumi:"persistRootDevice"`
+	// Boolean, should the instance maintain its private IP.
+	PersistPrivateIp pulumi.BoolPtrOutput `pulumi:"persistPrivateIp"`
+	// Boolean, should the instance maintain its root device volumes.
+	PersistRootDevice pulumi.BoolPtrOutput `pulumi:"persistRootDevice"`
 	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
 	PlacementTenancy pulumi.StringPtrOutput `pulumi:"placementTenancy"`
 	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
 	PreferredAvailabilityZones pulumi.StringArrayOutput `pulumi:"preferredAvailabilityZones"`
-	PrivateIps                 pulumi.StringArrayOutput `pulumi:"privateIps"`
+	// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringOutput `pulumi:"product"`
@@ -121,7 +139,8 @@ type Elastigroup struct {
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
-	Tags            ElastigroupTagArrayOutput        `pulumi:"tags"`
+	Tags ElastigroupTagArrayOutput `pulumi:"tags"`
+	// List of Target Group ARNs to register the instances to.
 	TargetGroupArns pulumi.StringArrayOutput         `pulumi:"targetGroupArns"`
 	UpdatePolicy    ElastigroupUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
@@ -186,33 +205,35 @@ type elastigroupState struct {
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	BlockDevicesMode  *string  `pulumi:"blockDevicesMode"`
+	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
 	CapacityUnit *string `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits *string `pulumi:"cpuCredits"`
-	// The group description.
+	// The description of the network interface.
 	Description *string `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+	// Indicates (in seconds) the timeout to wait until instance are detached.
 	DrainingTimeout *int                        `pulumi:"drainingTimeout"`
 	EbsBlockDevices []ElastigroupEbsBlockDevice `pulumi:"ebsBlockDevices"`
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-	ElasticIps           []string `pulumi:"elasticIps"`
+	ElasticIps []string `pulumi:"elasticIps"`
+	// List of Elastic Load Balancers names (ELB).
 	ElasticLoadBalancers []string `pulumi:"elasticLoadBalancers"`
 	// Indicates whether monitoring is enabled for the instance.
 	EnableMonitoring      *bool                             `pulumi:"enableMonitoring"`
 	EphemeralBlockDevices []ElastigroupEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
-	// The amount of time, in seconds, after the instance has launched to starts and check its health.
+	// The amount of time, in seconds, after the instance has launched to starts and check its health
 	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
 	HealthCheckUnhealthyDurationBeforeReplacement *int `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
@@ -225,18 +246,28 @@ type elastigroupState struct {
 	// One or more instance types.
 	InstanceTypesSpots []string `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-	InstanceTypesWeights     []ElastigroupInstanceTypesWeight     `pulumi:"instanceTypesWeights"`
-	IntegrationBeanstalk     *ElastigroupIntegrationBeanstalk     `pulumi:"integrationBeanstalk"`
-	IntegrationCodedeploy    *ElastigroupIntegrationCodedeploy    `pulumi:"integrationCodedeploy"`
-	IntegrationDockerSwarm   *ElastigroupIntegrationDockerSwarm   `pulumi:"integrationDockerSwarm"`
-	IntegrationEcs           *ElastigroupIntegrationEcs           `pulumi:"integrationEcs"`
-	IntegrationGitlab        *ElastigroupIntegrationGitlab        `pulumi:"integrationGitlab"`
-	IntegrationKubernetes    *ElastigroupIntegrationKubernetes    `pulumi:"integrationKubernetes"`
-	IntegrationMesosphere    *ElastigroupIntegrationMesosphere    `pulumi:"integrationMesosphere"`
+	InstanceTypesWeights []ElastigroupInstanceTypesWeight `pulumi:"instanceTypesWeights"`
+	IntegrationBeanstalk *ElastigroupIntegrationBeanstalk `pulumi:"integrationBeanstalk"`
+	// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+	IntegrationCodedeploy *ElastigroupIntegrationCodedeploy `pulumi:"integrationCodedeploy"`
+	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+	IntegrationDockerSwarm *ElastigroupIntegrationDockerSwarm `pulumi:"integrationDockerSwarm"`
+	// Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+	IntegrationEcs *ElastigroupIntegrationEcs `pulumi:"integrationEcs"`
+	// Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+	IntegrationGitlab *ElastigroupIntegrationGitlab `pulumi:"integrationGitlab"`
+	// Describes the [Kubernetes](https://kubernetes.io/) integration.
+	IntegrationKubernetes *ElastigroupIntegrationKubernetes `pulumi:"integrationKubernetes"`
+	// Describes the [Mesosphere](https://mesosphere.com/) integration.
+	IntegrationMesosphere *ElastigroupIntegrationMesosphere `pulumi:"integrationMesosphere"`
+	// Describes the [Multai Runtime](https://spotinst.com/) integration.
 	IntegrationMultaiRuntime *ElastigroupIntegrationMultaiRuntime `pulumi:"integrationMultaiRuntime"`
-	IntegrationNomad         *ElastigroupIntegrationNomad         `pulumi:"integrationNomad"`
-	IntegrationRancher       *ElastigroupIntegrationRancher       `pulumi:"integrationRancher"`
-	IntegrationRoute53       *ElastigroupIntegrationRoute53       `pulumi:"integrationRoute53"`
+	// Describes the [Nomad](https://www.nomadproject.io/) integration.
+	IntegrationNomad *ElastigroupIntegrationNomad `pulumi:"integrationNomad"`
+	// Describes the [Rancher](http://rancherlabs.com/) integration.
+	IntegrationRancher *ElastigroupIntegrationRancher `pulumi:"integrationRancher"`
+	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+	IntegrationRoute53 *ElastigroupIntegrationRoute53 `pulumi:"integrationRoute53"`
 	// The key name that should be used for the instance.
 	KeyName        *string `pulumi:"keyName"`
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
@@ -245,24 +276,29 @@ type elastigroupState struct {
 	// Data that used to configure or manage the running instances:
 	MetadataOptions *ElastigroupMetadataOptions `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
-	MinSize          *int                         `pulumi:"minSize"`
+	MinSize *int `pulumi:"minSize"`
+	// Set of targets to register.
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
-	// The group name.
+	// The record set name.
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount *int `pulumi:"ondemandCount"`
 	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
-	Orientation         *string `pulumi:"orientation"`
-	PersistBlockDevices *bool   `pulumi:"persistBlockDevices"`
-	PersistPrivateIp    *bool   `pulumi:"persistPrivateIp"`
-	PersistRootDevice   *bool   `pulumi:"persistRootDevice"`
+	Orientation *string `pulumi:"orientation"`
+	// Boolean, should the instance maintain its Data volumes.
+	PersistBlockDevices *bool `pulumi:"persistBlockDevices"`
+	// Boolean, should the instance maintain its private IP.
+	PersistPrivateIp *bool `pulumi:"persistPrivateIp"`
+	// Boolean, should the instance maintain its root device volumes.
+	PersistRootDevice *bool `pulumi:"persistRootDevice"`
 	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
 	PlacementTenancy *string `pulumi:"placementTenancy"`
 	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
 	PreferredAvailabilityZones []string `pulumi:"preferredAvailabilityZones"`
-	PrivateIps                 []string `pulumi:"privateIps"`
+	// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+	PrivateIps []string `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product *string `pulumi:"product"`
@@ -289,7 +325,8 @@ type elastigroupState struct {
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
-	Tags            []ElastigroupTag         `pulumi:"tags"`
+	Tags []ElastigroupTag `pulumi:"tags"`
+	// List of Target Group ARNs to register the instances to.
 	TargetGroupArns []string                 `pulumi:"targetGroupArns"`
 	UpdatePolicy    *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
@@ -308,33 +345,35 @@ type ElastigroupState struct {
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
 	AvailabilityZones pulumi.StringArrayInput
-	BlockDevicesMode  pulumi.StringPtrInput
+	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+	BlockDevicesMode pulumi.StringPtrInput
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
 	CapacityUnit pulumi.StringPtrInput
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrInput
-	// The group description.
+	// The description of the network interface.
 	Description pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrInput
-	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+	// Indicates (in seconds) the timeout to wait until instance are detached.
 	DrainingTimeout pulumi.IntPtrInput
 	EbsBlockDevices ElastigroupEbsBlockDeviceArrayInput
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
 	EbsOptimized pulumi.BoolPtrInput
 	// A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-	ElasticIps           pulumi.StringArrayInput
+	ElasticIps pulumi.StringArrayInput
+	// List of Elastic Load Balancers names (ELB).
 	ElasticLoadBalancers pulumi.StringArrayInput
 	// Indicates whether monitoring is enabled for the instance.
 	EnableMonitoring      pulumi.BoolPtrInput
 	EphemeralBlockDevices ElastigroupEphemeralBlockDeviceArrayInput
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
-	// The amount of time, in seconds, after the instance has launched to starts and check its health.
+	// The amount of time, in seconds, after the instance has launched to starts and check its health
 	HealthCheckGracePeriod pulumi.IntPtrInput
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
 	HealthCheckType pulumi.StringPtrInput
-	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
 	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
@@ -347,18 +386,28 @@ type ElastigroupState struct {
 	// One or more instance types.
 	InstanceTypesSpots pulumi.StringArrayInput
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-	InstanceTypesWeights     ElastigroupInstanceTypesWeightArrayInput
-	IntegrationBeanstalk     ElastigroupIntegrationBeanstalkPtrInput
-	IntegrationCodedeploy    ElastigroupIntegrationCodedeployPtrInput
-	IntegrationDockerSwarm   ElastigroupIntegrationDockerSwarmPtrInput
-	IntegrationEcs           ElastigroupIntegrationEcsPtrInput
-	IntegrationGitlab        ElastigroupIntegrationGitlabPtrInput
-	IntegrationKubernetes    ElastigroupIntegrationKubernetesPtrInput
-	IntegrationMesosphere    ElastigroupIntegrationMesospherePtrInput
+	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayInput
+	IntegrationBeanstalk ElastigroupIntegrationBeanstalkPtrInput
+	// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+	IntegrationCodedeploy ElastigroupIntegrationCodedeployPtrInput
+	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+	IntegrationDockerSwarm ElastigroupIntegrationDockerSwarmPtrInput
+	// Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+	IntegrationEcs ElastigroupIntegrationEcsPtrInput
+	// Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+	IntegrationGitlab ElastigroupIntegrationGitlabPtrInput
+	// Describes the [Kubernetes](https://kubernetes.io/) integration.
+	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrInput
+	// Describes the [Mesosphere](https://mesosphere.com/) integration.
+	IntegrationMesosphere ElastigroupIntegrationMesospherePtrInput
+	// Describes the [Multai Runtime](https://spotinst.com/) integration.
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrInput
-	IntegrationNomad         ElastigroupIntegrationNomadPtrInput
-	IntegrationRancher       ElastigroupIntegrationRancherPtrInput
-	IntegrationRoute53       ElastigroupIntegrationRoute53PtrInput
+	// Describes the [Nomad](https://www.nomadproject.io/) integration.
+	IntegrationNomad ElastigroupIntegrationNomadPtrInput
+	// Describes the [Rancher](http://rancherlabs.com/) integration.
+	IntegrationRancher ElastigroupIntegrationRancherPtrInput
+	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+	IntegrationRoute53 ElastigroupIntegrationRoute53PtrInput
 	// The key name that should be used for the instance.
 	KeyName        pulumi.StringPtrInput
 	LifetimePeriod pulumi.StringPtrInput
@@ -367,24 +416,29 @@ type ElastigroupState struct {
 	// Data that used to configure or manage the running instances:
 	MetadataOptions ElastigroupMetadataOptionsPtrInput
 	// The minimum number of instances the group should have at any time.
-	MinSize          pulumi.IntPtrInput
+	MinSize pulumi.IntPtrInput
+	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
-	// The group name.
+	// The record set name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrInput
 	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
-	Orientation         pulumi.StringPtrInput
+	Orientation pulumi.StringPtrInput
+	// Boolean, should the instance maintain its Data volumes.
 	PersistBlockDevices pulumi.BoolPtrInput
-	PersistPrivateIp    pulumi.BoolPtrInput
-	PersistRootDevice   pulumi.BoolPtrInput
+	// Boolean, should the instance maintain its private IP.
+	PersistPrivateIp pulumi.BoolPtrInput
+	// Boolean, should the instance maintain its root device volumes.
+	PersistRootDevice pulumi.BoolPtrInput
 	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
 	PlacementTenancy pulumi.StringPtrInput
 	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
 	PreferredAvailabilityZones pulumi.StringArrayInput
-	PrivateIps                 pulumi.StringArrayInput
+	// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+	PrivateIps pulumi.StringArrayInput
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringPtrInput
@@ -411,7 +465,8 @@ type ElastigroupState struct {
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
-	Tags            ElastigroupTagArrayInput
+	Tags ElastigroupTagArrayInput
+	// List of Target Group ARNs to register the instances to.
 	TargetGroupArns pulumi.StringArrayInput
 	UpdatePolicy    ElastigroupUpdatePolicyPtrInput
 	// The user data to provide when launching the instance.
@@ -434,33 +489,35 @@ type elastigroupArgs struct {
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	BlockDevicesMode  *string  `pulumi:"blockDevicesMode"`
+	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
 	CapacityUnit *string `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits *string `pulumi:"cpuCredits"`
-	// The group description.
+	// The description of the network interface.
 	Description *string `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+	// Indicates (in seconds) the timeout to wait until instance are detached.
 	DrainingTimeout *int                        `pulumi:"drainingTimeout"`
 	EbsBlockDevices []ElastigroupEbsBlockDevice `pulumi:"ebsBlockDevices"`
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-	ElasticIps           []string `pulumi:"elasticIps"`
+	ElasticIps []string `pulumi:"elasticIps"`
+	// List of Elastic Load Balancers names (ELB).
 	ElasticLoadBalancers []string `pulumi:"elasticLoadBalancers"`
 	// Indicates whether monitoring is enabled for the instance.
 	EnableMonitoring      *bool                             `pulumi:"enableMonitoring"`
 	EphemeralBlockDevices []ElastigroupEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand bool `pulumi:"fallbackToOndemand"`
-	// The amount of time, in seconds, after the instance has launched to starts and check its health.
+	// The amount of time, in seconds, after the instance has launched to starts and check its health
 	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
 	HealthCheckUnhealthyDurationBeforeReplacement *int `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
@@ -473,18 +530,28 @@ type elastigroupArgs struct {
 	// One or more instance types.
 	InstanceTypesSpots []string `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-	InstanceTypesWeights     []ElastigroupInstanceTypesWeight     `pulumi:"instanceTypesWeights"`
-	IntegrationBeanstalk     *ElastigroupIntegrationBeanstalk     `pulumi:"integrationBeanstalk"`
-	IntegrationCodedeploy    *ElastigroupIntegrationCodedeploy    `pulumi:"integrationCodedeploy"`
-	IntegrationDockerSwarm   *ElastigroupIntegrationDockerSwarm   `pulumi:"integrationDockerSwarm"`
-	IntegrationEcs           *ElastigroupIntegrationEcs           `pulumi:"integrationEcs"`
-	IntegrationGitlab        *ElastigroupIntegrationGitlab        `pulumi:"integrationGitlab"`
-	IntegrationKubernetes    *ElastigroupIntegrationKubernetes    `pulumi:"integrationKubernetes"`
-	IntegrationMesosphere    *ElastigroupIntegrationMesosphere    `pulumi:"integrationMesosphere"`
+	InstanceTypesWeights []ElastigroupInstanceTypesWeight `pulumi:"instanceTypesWeights"`
+	IntegrationBeanstalk *ElastigroupIntegrationBeanstalk `pulumi:"integrationBeanstalk"`
+	// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+	IntegrationCodedeploy *ElastigroupIntegrationCodedeploy `pulumi:"integrationCodedeploy"`
+	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+	IntegrationDockerSwarm *ElastigroupIntegrationDockerSwarm `pulumi:"integrationDockerSwarm"`
+	// Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+	IntegrationEcs *ElastigroupIntegrationEcs `pulumi:"integrationEcs"`
+	// Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+	IntegrationGitlab *ElastigroupIntegrationGitlab `pulumi:"integrationGitlab"`
+	// Describes the [Kubernetes](https://kubernetes.io/) integration.
+	IntegrationKubernetes *ElastigroupIntegrationKubernetes `pulumi:"integrationKubernetes"`
+	// Describes the [Mesosphere](https://mesosphere.com/) integration.
+	IntegrationMesosphere *ElastigroupIntegrationMesosphere `pulumi:"integrationMesosphere"`
+	// Describes the [Multai Runtime](https://spotinst.com/) integration.
 	IntegrationMultaiRuntime *ElastigroupIntegrationMultaiRuntime `pulumi:"integrationMultaiRuntime"`
-	IntegrationNomad         *ElastigroupIntegrationNomad         `pulumi:"integrationNomad"`
-	IntegrationRancher       *ElastigroupIntegrationRancher       `pulumi:"integrationRancher"`
-	IntegrationRoute53       *ElastigroupIntegrationRoute53       `pulumi:"integrationRoute53"`
+	// Describes the [Nomad](https://www.nomadproject.io/) integration.
+	IntegrationNomad *ElastigroupIntegrationNomad `pulumi:"integrationNomad"`
+	// Describes the [Rancher](http://rancherlabs.com/) integration.
+	IntegrationRancher *ElastigroupIntegrationRancher `pulumi:"integrationRancher"`
+	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+	IntegrationRoute53 *ElastigroupIntegrationRoute53 `pulumi:"integrationRoute53"`
 	// The key name that should be used for the instance.
 	KeyName        *string `pulumi:"keyName"`
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
@@ -493,24 +560,29 @@ type elastigroupArgs struct {
 	// Data that used to configure or manage the running instances:
 	MetadataOptions *ElastigroupMetadataOptions `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
-	MinSize          *int                         `pulumi:"minSize"`
+	MinSize *int `pulumi:"minSize"`
+	// Set of targets to register.
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
-	// The group name.
+	// The record set name.
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount *int `pulumi:"ondemandCount"`
 	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
-	Orientation         string `pulumi:"orientation"`
-	PersistBlockDevices *bool  `pulumi:"persistBlockDevices"`
-	PersistPrivateIp    *bool  `pulumi:"persistPrivateIp"`
-	PersistRootDevice   *bool  `pulumi:"persistRootDevice"`
+	Orientation string `pulumi:"orientation"`
+	// Boolean, should the instance maintain its Data volumes.
+	PersistBlockDevices *bool `pulumi:"persistBlockDevices"`
+	// Boolean, should the instance maintain its private IP.
+	PersistPrivateIp *bool `pulumi:"persistPrivateIp"`
+	// Boolean, should the instance maintain its root device volumes.
+	PersistRootDevice *bool `pulumi:"persistRootDevice"`
 	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
 	PlacementTenancy *string `pulumi:"placementTenancy"`
 	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
 	PreferredAvailabilityZones []string `pulumi:"preferredAvailabilityZones"`
-	PrivateIps                 []string `pulumi:"privateIps"`
+	// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+	PrivateIps []string `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product string `pulumi:"product"`
@@ -537,7 +609,8 @@ type elastigroupArgs struct {
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
-	Tags            []ElastigroupTag         `pulumi:"tags"`
+	Tags []ElastigroupTag `pulumi:"tags"`
+	// List of Target Group ARNs to register the instances to.
 	TargetGroupArns []string                 `pulumi:"targetGroupArns"`
 	UpdatePolicy    *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
@@ -557,33 +630,35 @@ type ElastigroupArgs struct {
 	// Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
 	// `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
 	AvailabilityZones pulumi.StringArrayInput
-	BlockDevicesMode  pulumi.StringPtrInput
+	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+	BlockDevicesMode pulumi.StringPtrInput
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
 	CapacityUnit pulumi.StringPtrInput
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrInput
-	// The group description.
+	// The description of the network interface.
 	Description pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrInput
-	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+	// Indicates (in seconds) the timeout to wait until instance are detached.
 	DrainingTimeout pulumi.IntPtrInput
 	EbsBlockDevices ElastigroupEbsBlockDeviceArrayInput
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
 	EbsOptimized pulumi.BoolPtrInput
 	// A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-	ElasticIps           pulumi.StringArrayInput
+	ElasticIps pulumi.StringArrayInput
+	// List of Elastic Load Balancers names (ELB).
 	ElasticLoadBalancers pulumi.StringArrayInput
 	// Indicates whether monitoring is enabled for the instance.
 	EnableMonitoring      pulumi.BoolPtrInput
 	EphemeralBlockDevices ElastigroupEphemeralBlockDeviceArrayInput
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolInput
-	// The amount of time, in seconds, after the instance has launched to starts and check its health.
+	// The amount of time, in seconds, after the instance has launched to starts and check its health
 	HealthCheckGracePeriod pulumi.IntPtrInput
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
 	HealthCheckType pulumi.StringPtrInput
-	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
 	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
@@ -596,18 +671,28 @@ type ElastigroupArgs struct {
 	// One or more instance types.
 	InstanceTypesSpots pulumi.StringArrayInput
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-	InstanceTypesWeights     ElastigroupInstanceTypesWeightArrayInput
-	IntegrationBeanstalk     ElastigroupIntegrationBeanstalkPtrInput
-	IntegrationCodedeploy    ElastigroupIntegrationCodedeployPtrInput
-	IntegrationDockerSwarm   ElastigroupIntegrationDockerSwarmPtrInput
-	IntegrationEcs           ElastigroupIntegrationEcsPtrInput
-	IntegrationGitlab        ElastigroupIntegrationGitlabPtrInput
-	IntegrationKubernetes    ElastigroupIntegrationKubernetesPtrInput
-	IntegrationMesosphere    ElastigroupIntegrationMesospherePtrInput
+	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayInput
+	IntegrationBeanstalk ElastigroupIntegrationBeanstalkPtrInput
+	// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+	IntegrationCodedeploy ElastigroupIntegrationCodedeployPtrInput
+	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+	IntegrationDockerSwarm ElastigroupIntegrationDockerSwarmPtrInput
+	// Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+	IntegrationEcs ElastigroupIntegrationEcsPtrInput
+	// Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+	IntegrationGitlab ElastigroupIntegrationGitlabPtrInput
+	// Describes the [Kubernetes](https://kubernetes.io/) integration.
+	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrInput
+	// Describes the [Mesosphere](https://mesosphere.com/) integration.
+	IntegrationMesosphere ElastigroupIntegrationMesospherePtrInput
+	// Describes the [Multai Runtime](https://spotinst.com/) integration.
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrInput
-	IntegrationNomad         ElastigroupIntegrationNomadPtrInput
-	IntegrationRancher       ElastigroupIntegrationRancherPtrInput
-	IntegrationRoute53       ElastigroupIntegrationRoute53PtrInput
+	// Describes the [Nomad](https://www.nomadproject.io/) integration.
+	IntegrationNomad ElastigroupIntegrationNomadPtrInput
+	// Describes the [Rancher](http://rancherlabs.com/) integration.
+	IntegrationRancher ElastigroupIntegrationRancherPtrInput
+	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+	IntegrationRoute53 ElastigroupIntegrationRoute53PtrInput
 	// The key name that should be used for the instance.
 	KeyName        pulumi.StringPtrInput
 	LifetimePeriod pulumi.StringPtrInput
@@ -616,24 +701,29 @@ type ElastigroupArgs struct {
 	// Data that used to configure or manage the running instances:
 	MetadataOptions ElastigroupMetadataOptionsPtrInput
 	// The minimum number of instances the group should have at any time.
-	MinSize          pulumi.IntPtrInput
+	MinSize pulumi.IntPtrInput
+	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
-	// The group name.
+	// The record set name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrInput
 	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
-	Orientation         pulumi.StringInput
+	Orientation pulumi.StringInput
+	// Boolean, should the instance maintain its Data volumes.
 	PersistBlockDevices pulumi.BoolPtrInput
-	PersistPrivateIp    pulumi.BoolPtrInput
-	PersistRootDevice   pulumi.BoolPtrInput
+	// Boolean, should the instance maintain its private IP.
+	PersistPrivateIp pulumi.BoolPtrInput
+	// Boolean, should the instance maintain its root device volumes.
+	PersistRootDevice pulumi.BoolPtrInput
 	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
 	PlacementTenancy pulumi.StringPtrInput
 	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
 	PreferredAvailabilityZones pulumi.StringArrayInput
-	PrivateIps                 pulumi.StringArrayInput
+	// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+	PrivateIps pulumi.StringArrayInput
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringInput
@@ -660,7 +750,8 @@ type ElastigroupArgs struct {
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
-	Tags            ElastigroupTagArrayInput
+	Tags ElastigroupTagArrayInput
+	// List of Target Group ARNs to register the instances to.
 	TargetGroupArns pulumi.StringArrayInput
 	UpdatePolicy    ElastigroupUpdatePolicyPtrInput
 	// The user data to provide when launching the instance.

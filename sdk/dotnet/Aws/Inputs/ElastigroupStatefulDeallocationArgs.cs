@@ -12,15 +12,27 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupStatefulDeallocationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// For stateful groups: remove persistent images.
+        /// </summary>
         [Input("shouldDeleteImages")]
         public Input<bool>? ShouldDeleteImages { get; set; }
 
+        /// <summary>
+        /// For stateful groups: remove network interfaces.
+        /// </summary>
         [Input("shouldDeleteNetworkInterfaces")]
         public Input<bool>? ShouldDeleteNetworkInterfaces { get; set; }
 
+        /// <summary>
+        /// For stateful groups: remove snapshots.
+        /// </summary>
         [Input("shouldDeleteSnapshots")]
         public Input<bool>? ShouldDeleteSnapshots { get; set; }
 
+        /// <summary>
+        /// For stateful groups: remove persistent volumes.
+        /// </summary>
         [Input("shouldDeleteVolumes")]
         public Input<bool>? ShouldDeleteVolumes { get; set; }
 

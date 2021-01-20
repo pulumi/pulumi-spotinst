@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupMultaiTargetSetGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ID of Multai Load Balancer.
+        /// </summary>
         [Input("balancerId", required: true)]
         public Input<string> BalancerId { get; set; } = null!;
 
+        /// <summary>
+        /// ID of Multai target set.
+        /// </summary>
         [Input("targetSetId", required: true)]
         public Input<string> TargetSetId { get; set; } = null!;
 

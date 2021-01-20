@@ -8,176 +8,14 @@ import * as utilities from "../utilities";
 /**
  * Provides a Spotinst AWS MrScaler resource.
  *
- * ## Provisioning Timeout (Clone, New strategies)
- *
- * * `timeout` - (Optional) The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
- * * `timeoutAction` - (Optional) The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
- *
- * <a id="cluster-config"></a>
- * ## Cluster Configuration (New strategy only)
- *
- * * `logUri` - (Optional) The path to the Amazon S3 location where logs for this cluster are stored.
- * * `additionalInfo` - (Optional) This is meta information about third-party applications that third-party vendors use for testing purposes.
- * * `securityConfig` - (Optional) The name of the security configuration applied to the cluster.
- * * `serviceRole` - (Optional) The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
- * * `jobFlowRole` - (Optional) The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
- * * `terminationProtected` - (Optional) Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
- * * `keepJobFlowAlive` - (Optional) Specifies whether the cluster should remain available after completing all steps.
- * * `retries` - (Optional; Requires: `timeoutAction` is set to `terminateAndRetry`) Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
- *
- * <a id="task-group"></a>
- * ## Task Group (Wrap, Clone, and New strategies)
- *
- * * `taskInstanceTypes` - (Required) The MrScaler instance types for the task nodes.
- * * `taskTarget` - (Required) amount of instances in task group.
- * * `taskMaximum` - (Optional) maximal amount of instances in task group.
- * * `taskMinimum` - (Optional) The minimal amount of instances in task group.
- * * `taskUnit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
- * * `taskLifecycle` - (Required) The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
- * * `taskEbsOptimized` - (Optional) EBS Optimization setting for instances in group.
- * * `taskEbsBlockDevice` - (Required) This determines the ebs configuration for your task group instances. Only a single block is allowed.
- *     * `volumesPerInstance` - (Optional; Default 1) Amount of volumes per instance in the task group.
- *     * `volumeType` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
- *     * `sizeInGb` - (Required) Size of the volume, in GBs.
- *     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
- *
- * <a id="core-group"></a>
- * ## Core Group (Clone, New strategies)
- *
- * * `coreInstanceTypes` - (Required) The MrScaler instance types for the core nodes.
- * * `coreTarget` - (Required) amount of instances in core group.
- * * `coreMaximum` - (Optional) maximal amount of instances in core group.
- * * `coreMinimum` - (Optional) The minimal amount of instances in core group.
- * * `coreUnit` - (Optional, Default: `instance`) Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
- * * `coreLifecycle` - (Required) The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
- * * `coreEbsOptimized` - (Optional) EBS Optimization setting for instances in group.
- * * `coreEbsBlockDevice` - (Required) This determines the ebs configuration for your core group instances. Only a single block is allowed.
- *     * `volumesPerInstance` - (Optional; Default 1) Amount of volumes per instance in the core group.
- *     * `volumeType` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
- *     * `sizeInGb` - (Required) Size of the volume, in GBs.
- *     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
- *
- * <a id="master-group"></a>
- * ## Master Group (Clone, New strategies)
- *
- * * `masterInstanceTypes` - (Required) The MrScaler instance types for the master nodes.
- * * `masterLifecycle` - (Required) The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
- * * `masterEbsOptimized` - (Optional) EBS Optimization setting for instances in group.
- * * `masterEbsBlockDevice` - (Required) This determines the ebs configuration for your master group instances. Only a single block is allowed.
- *     * `volumesPerInstance` - (Optional; Default 1) Amount of volumes per instance in the master group.
- *     * `volumeType` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
- *     * `sizeInGb` - (Required) Size of the volume, in GBs.
- *     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
- *
- * <a id="tags"></a>
- * ## Tags (Clone, New strategies)
- *
- * * `tags` - (Optional) A list of tags to assign to the resource. You may define multiple tags.
- *     * `key` - (Required) Tag key.
- *     * `value` - (Required) Tag value.
- *
- * <a id="Optional Compute Parameters"></a>
- * ## Optional Compute Parameters (New strategy)
- *
- * * `managedPrimarySecurityGroup` - (Optional) EMR Managed Security group that will be set to the primary instance group.
- * * `managedReplicaSecurityGroup` - (Optional) EMR Managed Security group that will be set to the replica instance group.
- * * `serviceAccessSecurityGroup` - (Optional) The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
- * * `additionalPrimarySecurityGroups` - (Optional) A list of additional Amazon EC2 security group IDs for the master node.
- * * `additionalReplicaSecurityGroups` - (Optional) A list of additional Amazon EC2 security group IDs for the core and task nodes.
- * * `customAmiId` - (Optional) The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
- * * `repoUpgradeOnBoot` - (Optional) Applies only when `customAmiId` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
- * * `ec2KeyName` - (Optional) The name of an Amazon EC2 key pair that can be used to ssh to the master node.
- * * `applications` - (Optional) A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
- *     * `args` - (Optional) Arguments for EMR to pass to the application.
- *     * `name` - (Required) The application name.
- *     * `version`- (Optional)T he version of the application.
- * * `instanceWeights` - (Optional) Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
- *     * `instanceType` - (Required) The type of the instance.
- *     * `weightedCapacity` - (Required) The weight given to the associated instance type.
- *
- * <a id="availability-zone"></a>
- * ## Availability Zones (Clone, New strategies)
- *
- * * `availabilityZones` - (Required in Clone) List of AZs and their subnet Ids. See example above for usage.
- *
- * <a id="configurations"></a>
- * ## Configurations (Clone, New strategies)
- *
- * * `configurationsFile` - (Optional) Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
- *     * `bucket` - (Required) S3 Bucket name for configurations.
- *     * `key`- (Required) S3 key for configurations.
- *
- * <a id="steps"></a>
- * ## Steps (Clone, New strategies)
- *
- * * `stepsFile` - (Optional) Steps from S3.
- *     * `bucket` - (Required) S3 Bucket name for steps.
- *     * `key`- (Required) S3 key for steps.
- *
- * <a id="boostrap-actions"></a>
- * ## Bootstrap Actions (Clone, New strategies)
- *
- * * `bootstrapActionsFile` - (Optional) Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
- *     * `bucket` - (Required) S3 Bucket name for bootstrap actions.
- *     * `key`- (Required) S3 key for bootstrap actions.
- *
- * <a id="scaling-policy"></a>
- * ## Scaling Policies
- *
- * Possible task group scaling policies (Wrap, Clone, and New strategies):
- * * `taskScalingUpPolicy`
- * * `taskScalingDownPolicy`
- *
- * Possible core group scaling policies (Clone, New strategies):
- * * `coreScalingUpPolicy`
- * * `coreScalingDownPolicy`
- *
- * Each `*_scaling_*_policy` supports the following:
- *
- * * `policyName` - (Required) The name of the policy.
- * * `metricName` - (Required) The name of the metric, with or without spaces.
- * * `statistic` - (Required) The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
- * * `unit` - (Required) The unit for the metric.
- * * `threshold` - (Required) The value against which the specified statistic is compared.
- * * `adjustment` - (Optional) The number of instances to add/remove to/from the target capacity when scale is needed.
- * * `minTargetCapacity` - (Optional) Min target capacity for scale up.
- * * `maxTargetCapacity` - (Optional) Max target capacity for scale down.
- * * `namespace` - (Required) The namespace for the metric.
- * * `operator` - (Required) The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
- * * `evaluationPeriods` - (Required) The number of periods over which data is compared to the specified threshold.
- * * `period` - (Required) The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
- * * `cooldown` - (Required) The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
- * * `dimensions` - (Optional) A mapping of dimensions describing qualities of the metric.
- * * `minimum` - (Optional) The minimum to set when scale is needed.
- * * `maximum` - (Optional) The maximum to set when scale is needed.
- * * `target` - (Optional) The number of instances to set when scale is needed.
- * * `actionType` - (Required) The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
- *
- * <a id="scheduled-task"></a>
- * ## Scheduled Tasks
- *
- * * `scheduledTask` - (Optional) An array of scheduled tasks.
- * * `isEnabled` - (Optional) Enable/Disable the specified scheduling task.
- * * `taskType` - (Required) The type of task to be scheduled. Valid values: `setCapacity`.
- * * `instanceGroupType` - (Required) Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
- * * `cron` - (Required) A cron expression representing the schedule for the task.
- * * `desiredCapacity` - (Optional) New desired capacity for the elastigroup.
- * * `minCapacity` - (Optional) New min capacity for the elastigroup.
- * * `maxCapacity` - (Optional) New max capacity for the elastigroup.
- *
- * <a id="termination-policies"></a>
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
  * ### New Strategy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const terraform_MrScaler_01 = new spotinst.aws.MrScalar("Terraform-MrScaler-01", {
+ * const sample_MrScaler_01 = new spotinst.aws.MrScalar("sample-MrScaler-01", {
  *     additionalInfo: "{'test':'more information'}",
  *     additionalPrimarySecurityGroups: ["sg-456321"],
  *     additionalReplicaSecurityGroups: ["sg-123654"],
@@ -199,7 +37,7 @@ import * as utilities from "../utilities";
  *     ],
  *     availabilityZones: ["us-west-2a:subnet-123456"],
  *     bootstrapActionsFiles: [{
- *         bucket: "terraform-emr-test",
+ *         bucket: "sample-emr-test",
  *         key: "bootstrap-actions.json",
  *     }],
  *     configurationsFiles: [{
@@ -224,7 +62,7 @@ import * as utilities from "../utilities";
  *     coreUnit: "instance",
  *     // --- OPTONAL COMPUTE -----
  *     customAmiId: "ami-123456",
- *     description: "Testing MrScaler creation via Terraform",
+ *     description: "Testing MrScaler creation",
  *     ec2KeyName: "test-key",
  *     instanceWeights: [
  *         {
@@ -270,7 +108,7 @@ import * as utilities from "../utilities";
  *     // --- TAGS -------------------
  *     tags: [{
  *         key: "Creator",
- *         value: "Terraform",
+ *         value: "Pulumi",
  *     }],
  *     taskDesiredCapacity: 1,
  *     taskEbsBlockDevices: [{
@@ -297,7 +135,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const terraform_MrScaler_01 = new spotinst.aws.MrScalar("Terraform-MrScaler-01", {
+ * const sample_MrScaler_01 = new spotinst.aws.MrScalar("sample-MrScaler-01", {
  *     availabilityZones: ["us-west-2a:subnet-12345678"],
  *     clusterId: "j-123456789",
  *     coreDesiredCapacity: 1,
@@ -316,7 +154,7 @@ import * as utilities from "../utilities";
  *     coreMaxSize: 1,
  *     coreMinSize: 1,
  *     coreUnit: "instance",
- *     description: "Testing MrScaler creation via Terraform",
+ *     description: "Testing MrScaler creation",
  *     exposeClusterId: true,
  *     masterEbsBlockDevices: [{
  *         sizeInGb: 30,
@@ -332,7 +170,7 @@ import * as utilities from "../utilities";
  *     // --- TAGS -------------------
  *     tags: [{
  *         key: "Creator",
- *         value: "Terraform",
+ *         value: "Pulumi",
  *     }],
  *     taskDesiredCapacity: 1,
  *     taskEbsBlockDevices: [{
@@ -375,8 +213,8 @@ import * as utilities from "../utilities";
  *     taskUnit: "instance",
  * });
  *
- * export const mrscaler_name = terraform_MrScaler_01.name;
- * export const mrscaler_created_cluster_id = terraform_MrScaler_01.outputClusterId;
+ * export const mrscaler_name = sample_MrScaler_01.name;
+ * export const mrscaler_created_cluster_id = sample_MrScaler_01.outputClusterId;
  * ```
  * ### Wrap Strategy
  *
@@ -386,7 +224,7 @@ import * as utilities from "../utilities";
  *
  * const example_scaler_2 = new spotinst.aws.MrScalar("example-scaler-2", {
  *     clusterId: "j-27UVDEHXL4OQM",
- *     description: "created by Terraform",
+ *     description: "created by Pulumi",
  *     region: "us-west-2",
  *     strategy: "wrap",
  *     taskDesiredCapacity: 2,
@@ -435,47 +273,122 @@ export class MrScalar extends pulumi.CustomResource {
         return obj['__pulumiType'] === MrScalar.__pulumiType;
     }
 
+    /**
+     * This is meta information about third-party applications that third-party vendors use for testing purposes.
+     */
     public readonly additionalInfo!: pulumi.Output<string | undefined>;
+    /**
+     * A list of additional Amazon EC2 security group IDs for the master node.
+     */
     public readonly additionalPrimarySecurityGroups!: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of additional Amazon EC2 security group IDs for the core and task nodes.
+     */
     public readonly additionalReplicaSecurityGroups!: pulumi.Output<string[] | undefined>;
+    /**
+     * A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
+     */
     public readonly applications!: pulumi.Output<outputs.aws.MrScalarApplication[] | undefined>;
+    /**
+     * List of AZs and their subnet Ids. See example above for usage.
+     */
     public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
+    /**
+     * Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+     */
     public readonly bootstrapActionsFiles!: pulumi.Output<outputs.aws.MrScalarBootstrapActionsFile[] | undefined>;
     /**
      * The MrScaler cluster id.
      */
     public readonly clusterId!: pulumi.Output<string | undefined>;
+    /**
+     * Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+     */
     public readonly configurationsFiles!: pulumi.Output<outputs.aws.MrScalarConfigurationsFile[] | undefined>;
     public readonly coreDesiredCapacity!: pulumi.Output<number | undefined>;
+    /**
+     * This determines the ebs configuration for your core group instances. Only a single block is allowed.
+     */
     public readonly coreEbsBlockDevices!: pulumi.Output<outputs.aws.MrScalarCoreEbsBlockDevice[] | undefined>;
+    /**
+     * EBS Optimization setting for instances in group.
+     */
     public readonly coreEbsOptimized!: pulumi.Output<boolean | undefined>;
+    /**
+     * The MrScaler instance types for the core nodes.
+     */
     public readonly coreInstanceTypes!: pulumi.Output<string[] | undefined>;
+    /**
+     * The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+     */
     public readonly coreLifecycle!: pulumi.Output<string | undefined>;
     public readonly coreMaxSize!: pulumi.Output<number | undefined>;
     public readonly coreMinSize!: pulumi.Output<number | undefined>;
     public readonly coreScalingDownPolicies!: pulumi.Output<outputs.aws.MrScalarCoreScalingDownPolicy[] | undefined>;
     public readonly coreScalingUpPolicies!: pulumi.Output<outputs.aws.MrScalarCoreScalingUpPolicy[] | undefined>;
+    /**
+     * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+     */
     public readonly coreUnit!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
+     */
     public readonly customAmiId!: pulumi.Output<string | undefined>;
     /**
      * The MrScaler description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly ebsRootVolumeSize!: pulumi.Output<number | undefined>;
+    /**
+     * The name of an Amazon EC2 key pair that can be used to ssh to the master node.
+     */
     public readonly ec2KeyName!: pulumi.Output<string | undefined>;
+    /**
+     * Allow the `clusterId` to set a provider output variable.
+     */
     public readonly exposeClusterId!: pulumi.Output<boolean | undefined>;
+    /**
+     * Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
+     */
     public readonly instanceWeights!: pulumi.Output<outputs.aws.MrScalarInstanceWeight[] | undefined>;
+    /**
+     * The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
+     */
     public readonly jobFlowRole!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether the cluster should remain available after completing all steps.
+     */
     public readonly keepJobFlowAlive!: pulumi.Output<boolean | undefined>;
+    /**
+     * The path to the Amazon S3 location where logs for this cluster are stored.
+     */
     public readonly logUri!: pulumi.Output<string | undefined>;
+    /**
+     * EMR Managed Security group that will be set to the primary instance group.
+     */
     public readonly managedPrimarySecurityGroup!: pulumi.Output<string | undefined>;
+    /**
+     * EMR Managed Security group that will be set to the replica instance group.
+     */
     public readonly managedReplicaSecurityGroup!: pulumi.Output<string | undefined>;
+    /**
+     * This determines the ebs configuration for your master group instances. Only a single block is allowed.
+     */
     public readonly masterEbsBlockDevices!: pulumi.Output<outputs.aws.MrScalarMasterEbsBlockDevice[] | undefined>;
+    /**
+     * EBS Optimization setting for instances in group.
+     */
     public readonly masterEbsOptimized!: pulumi.Output<boolean | undefined>;
+    /**
+     * The MrScaler instance types for the master nodes.
+     */
     public readonly masterInstanceTypes!: pulumi.Output<string[] | undefined>;
+    /**
+     * The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+     */
     public readonly masterLifecycle!: pulumi.Output<string | undefined>;
     /**
-     * The MrScaler name.
+     * The application name.
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly outputClusterId!: pulumi.Output<string>;
@@ -485,32 +398,74 @@ export class MrScalar extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string | undefined>;
     public readonly releaseLabel!: pulumi.Output<string | undefined>;
+    /**
+     * Applies only when `customAmiId` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
+     */
     public readonly repoUpgradeOnBoot!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
+     */
     public readonly retries!: pulumi.Output<number | undefined>;
+    /**
+     * An array of scheduled tasks.
+     */
     public readonly scheduledTasks!: pulumi.Output<outputs.aws.MrScalarScheduledTask[] | undefined>;
+    /**
+     * The name of the security configuration applied to the cluster.
+     */
     public readonly securityConfig!: pulumi.Output<string | undefined>;
+    /**
+     * The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
+     */
     public readonly serviceAccessSecurityGroup!: pulumi.Output<string | undefined>;
+    /**
+     * The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
+     */
     public readonly serviceRole!: pulumi.Output<string | undefined>;
+    /**
+     * Steps from S3.
+     */
     public readonly stepsFiles!: pulumi.Output<outputs.aws.MrScalarStepsFile[] | undefined>;
     /**
      * The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
      */
     public readonly strategy!: pulumi.Output<string>;
+    /**
+     * A list of tags to assign to the resource. You may define multiple tags.
+     */
     public readonly tags!: pulumi.Output<outputs.aws.MrScalarTag[] | undefined>;
     public readonly taskDesiredCapacity!: pulumi.Output<number | undefined>;
+    /**
+     * This determines the ebs configuration for your task group instances. Only a single block is allowed.
+     */
     public readonly taskEbsBlockDevices!: pulumi.Output<outputs.aws.MrScalarTaskEbsBlockDevice[] | undefined>;
+    /**
+     * EBS Optimization setting for instances in group.
+     */
     public readonly taskEbsOptimized!: pulumi.Output<boolean | undefined>;
+    /**
+     * The MrScaler instance types for the task nodes.
+     */
     public readonly taskInstanceTypes!: pulumi.Output<string[] | undefined>;
+    /**
+     * The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+     */
     public readonly taskLifecycle!: pulumi.Output<string | undefined>;
     public readonly taskMaxSize!: pulumi.Output<number | undefined>;
     public readonly taskMinSize!: pulumi.Output<number | undefined>;
     public readonly taskScalingDownPolicies!: pulumi.Output<outputs.aws.MrScalarTaskScalingDownPolicy[] | undefined>;
     public readonly taskScalingUpPolicies!: pulumi.Output<outputs.aws.MrScalarTaskScalingUpPolicy[] | undefined>;
+    /**
+     * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+     */
     public readonly taskUnit!: pulumi.Output<string | undefined>;
     /**
      * Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
      */
     public readonly terminationPolicies!: pulumi.Output<outputs.aws.MrScalarTerminationPolicy[] | undefined>;
+    /**
+     * Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
+     */
     public readonly terminationProtected!: pulumi.Output<boolean | undefined>;
     /**
      * @deprecated This field has been removed from our API and is no longer functional.
@@ -670,47 +625,122 @@ export class MrScalar extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MrScalar resources.
  */
 export interface MrScalarState {
+    /**
+     * This is meta information about third-party applications that third-party vendors use for testing purposes.
+     */
     readonly additionalInfo?: pulumi.Input<string>;
+    /**
+     * A list of additional Amazon EC2 security group IDs for the master node.
+     */
     readonly additionalPrimarySecurityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of additional Amazon EC2 security group IDs for the core and task nodes.
+     */
     readonly additionalReplicaSecurityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
+     */
     readonly applications?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarApplication>[]>;
+    /**
+     * List of AZs and their subnet Ids. See example above for usage.
+     */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+     */
     readonly bootstrapActionsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarBootstrapActionsFile>[]>;
     /**
      * The MrScaler cluster id.
      */
     readonly clusterId?: pulumi.Input<string>;
+    /**
+     * Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+     */
     readonly configurationsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarConfigurationsFile>[]>;
     readonly coreDesiredCapacity?: pulumi.Input<number>;
+    /**
+     * This determines the ebs configuration for your core group instances. Only a single block is allowed.
+     */
     readonly coreEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreEbsBlockDevice>[]>;
+    /**
+     * EBS Optimization setting for instances in group.
+     */
     readonly coreEbsOptimized?: pulumi.Input<boolean>;
+    /**
+     * The MrScaler instance types for the core nodes.
+     */
     readonly coreInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+     */
     readonly coreLifecycle?: pulumi.Input<string>;
     readonly coreMaxSize?: pulumi.Input<number>;
     readonly coreMinSize?: pulumi.Input<number>;
     readonly coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
     readonly coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
+    /**
+     * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+     */
     readonly coreUnit?: pulumi.Input<string>;
+    /**
+     * The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
+     */
     readonly customAmiId?: pulumi.Input<string>;
     /**
      * The MrScaler description.
      */
     readonly description?: pulumi.Input<string>;
     readonly ebsRootVolumeSize?: pulumi.Input<number>;
+    /**
+     * The name of an Amazon EC2 key pair that can be used to ssh to the master node.
+     */
     readonly ec2KeyName?: pulumi.Input<string>;
+    /**
+     * Allow the `clusterId` to set a provider output variable.
+     */
     readonly exposeClusterId?: pulumi.Input<boolean>;
+    /**
+     * Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
+     */
     readonly instanceWeights?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarInstanceWeight>[]>;
+    /**
+     * The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
+     */
     readonly jobFlowRole?: pulumi.Input<string>;
+    /**
+     * Specifies whether the cluster should remain available after completing all steps.
+     */
     readonly keepJobFlowAlive?: pulumi.Input<boolean>;
+    /**
+     * The path to the Amazon S3 location where logs for this cluster are stored.
+     */
     readonly logUri?: pulumi.Input<string>;
+    /**
+     * EMR Managed Security group that will be set to the primary instance group.
+     */
     readonly managedPrimarySecurityGroup?: pulumi.Input<string>;
+    /**
+     * EMR Managed Security group that will be set to the replica instance group.
+     */
     readonly managedReplicaSecurityGroup?: pulumi.Input<string>;
+    /**
+     * This determines the ebs configuration for your master group instances. Only a single block is allowed.
+     */
     readonly masterEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarMasterEbsBlockDevice>[]>;
+    /**
+     * EBS Optimization setting for instances in group.
+     */
     readonly masterEbsOptimized?: pulumi.Input<boolean>;
+    /**
+     * The MrScaler instance types for the master nodes.
+     */
     readonly masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+     */
     readonly masterLifecycle?: pulumi.Input<string>;
     /**
-     * The MrScaler name.
+     * The application name.
      */
     readonly name?: pulumi.Input<string>;
     readonly outputClusterId?: pulumi.Input<string>;
@@ -720,32 +750,74 @@ export interface MrScalarState {
      */
     readonly region?: pulumi.Input<string>;
     readonly releaseLabel?: pulumi.Input<string>;
+    /**
+     * Applies only when `customAmiId` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
+     */
     readonly repoUpgradeOnBoot?: pulumi.Input<string>;
+    /**
+     * Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
+     */
     readonly retries?: pulumi.Input<number>;
+    /**
+     * An array of scheduled tasks.
+     */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarScheduledTask>[]>;
+    /**
+     * The name of the security configuration applied to the cluster.
+     */
     readonly securityConfig?: pulumi.Input<string>;
+    /**
+     * The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
+     */
     readonly serviceAccessSecurityGroup?: pulumi.Input<string>;
+    /**
+     * The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
+     */
     readonly serviceRole?: pulumi.Input<string>;
+    /**
+     * Steps from S3.
+     */
     readonly stepsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarStepsFile>[]>;
     /**
      * The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
      */
     readonly strategy?: pulumi.Input<string>;
+    /**
+     * A list of tags to assign to the resource. You may define multiple tags.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTag>[]>;
     readonly taskDesiredCapacity?: pulumi.Input<number>;
+    /**
+     * This determines the ebs configuration for your task group instances. Only a single block is allowed.
+     */
     readonly taskEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskEbsBlockDevice>[]>;
+    /**
+     * EBS Optimization setting for instances in group.
+     */
     readonly taskEbsOptimized?: pulumi.Input<boolean>;
+    /**
+     * The MrScaler instance types for the task nodes.
+     */
     readonly taskInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+     */
     readonly taskLifecycle?: pulumi.Input<string>;
     readonly taskMaxSize?: pulumi.Input<number>;
     readonly taskMinSize?: pulumi.Input<number>;
     readonly taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[]>;
     readonly taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[]>;
+    /**
+     * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+     */
     readonly taskUnit?: pulumi.Input<string>;
     /**
      * Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
      */
     readonly terminationPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicy>[]>;
+    /**
+     * Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
+     */
     readonly terminationProtected?: pulumi.Input<boolean>;
     /**
      * @deprecated This field has been removed from our API and is no longer functional.
@@ -757,47 +829,122 @@ export interface MrScalarState {
  * The set of arguments for constructing a MrScalar resource.
  */
 export interface MrScalarArgs {
+    /**
+     * This is meta information about third-party applications that third-party vendors use for testing purposes.
+     */
     readonly additionalInfo?: pulumi.Input<string>;
+    /**
+     * A list of additional Amazon EC2 security group IDs for the master node.
+     */
     readonly additionalPrimarySecurityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of additional Amazon EC2 security group IDs for the core and task nodes.
+     */
     readonly additionalReplicaSecurityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
+     */
     readonly applications?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarApplication>[]>;
+    /**
+     * List of AZs and their subnet Ids. See example above for usage.
+     */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+     */
     readonly bootstrapActionsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarBootstrapActionsFile>[]>;
     /**
      * The MrScaler cluster id.
      */
     readonly clusterId?: pulumi.Input<string>;
+    /**
+     * Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+     */
     readonly configurationsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarConfigurationsFile>[]>;
     readonly coreDesiredCapacity?: pulumi.Input<number>;
+    /**
+     * This determines the ebs configuration for your core group instances. Only a single block is allowed.
+     */
     readonly coreEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreEbsBlockDevice>[]>;
+    /**
+     * EBS Optimization setting for instances in group.
+     */
     readonly coreEbsOptimized?: pulumi.Input<boolean>;
+    /**
+     * The MrScaler instance types for the core nodes.
+     */
     readonly coreInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+     */
     readonly coreLifecycle?: pulumi.Input<string>;
     readonly coreMaxSize?: pulumi.Input<number>;
     readonly coreMinSize?: pulumi.Input<number>;
     readonly coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
     readonly coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
+    /**
+     * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+     */
     readonly coreUnit?: pulumi.Input<string>;
+    /**
+     * The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
+     */
     readonly customAmiId?: pulumi.Input<string>;
     /**
      * The MrScaler description.
      */
     readonly description?: pulumi.Input<string>;
     readonly ebsRootVolumeSize?: pulumi.Input<number>;
+    /**
+     * The name of an Amazon EC2 key pair that can be used to ssh to the master node.
+     */
     readonly ec2KeyName?: pulumi.Input<string>;
+    /**
+     * Allow the `clusterId` to set a provider output variable.
+     */
     readonly exposeClusterId?: pulumi.Input<boolean>;
+    /**
+     * Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
+     */
     readonly instanceWeights?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarInstanceWeight>[]>;
+    /**
+     * The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
+     */
     readonly jobFlowRole?: pulumi.Input<string>;
+    /**
+     * Specifies whether the cluster should remain available after completing all steps.
+     */
     readonly keepJobFlowAlive?: pulumi.Input<boolean>;
+    /**
+     * The path to the Amazon S3 location where logs for this cluster are stored.
+     */
     readonly logUri?: pulumi.Input<string>;
+    /**
+     * EMR Managed Security group that will be set to the primary instance group.
+     */
     readonly managedPrimarySecurityGroup?: pulumi.Input<string>;
+    /**
+     * EMR Managed Security group that will be set to the replica instance group.
+     */
     readonly managedReplicaSecurityGroup?: pulumi.Input<string>;
+    /**
+     * This determines the ebs configuration for your master group instances. Only a single block is allowed.
+     */
     readonly masterEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarMasterEbsBlockDevice>[]>;
+    /**
+     * EBS Optimization setting for instances in group.
+     */
     readonly masterEbsOptimized?: pulumi.Input<boolean>;
+    /**
+     * The MrScaler instance types for the master nodes.
+     */
     readonly masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+     */
     readonly masterLifecycle?: pulumi.Input<string>;
     /**
-     * The MrScaler name.
+     * The application name.
      */
     readonly name?: pulumi.Input<string>;
     readonly provisioningTimeout?: pulumi.Input<inputs.aws.MrScalarProvisioningTimeout>;
@@ -806,32 +953,74 @@ export interface MrScalarArgs {
      */
     readonly region?: pulumi.Input<string>;
     readonly releaseLabel?: pulumi.Input<string>;
+    /**
+     * Applies only when `customAmiId` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
+     */
     readonly repoUpgradeOnBoot?: pulumi.Input<string>;
+    /**
+     * Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
+     */
     readonly retries?: pulumi.Input<number>;
+    /**
+     * An array of scheduled tasks.
+     */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarScheduledTask>[]>;
+    /**
+     * The name of the security configuration applied to the cluster.
+     */
     readonly securityConfig?: pulumi.Input<string>;
+    /**
+     * The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
+     */
     readonly serviceAccessSecurityGroup?: pulumi.Input<string>;
+    /**
+     * The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
+     */
     readonly serviceRole?: pulumi.Input<string>;
+    /**
+     * Steps from S3.
+     */
     readonly stepsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarStepsFile>[]>;
     /**
      * The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
      */
     readonly strategy: pulumi.Input<string>;
+    /**
+     * A list of tags to assign to the resource. You may define multiple tags.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTag>[]>;
     readonly taskDesiredCapacity?: pulumi.Input<number>;
+    /**
+     * This determines the ebs configuration for your task group instances. Only a single block is allowed.
+     */
     readonly taskEbsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskEbsBlockDevice>[]>;
+    /**
+     * EBS Optimization setting for instances in group.
+     */
     readonly taskEbsOptimized?: pulumi.Input<boolean>;
+    /**
+     * The MrScaler instance types for the task nodes.
+     */
     readonly taskInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+     */
     readonly taskLifecycle?: pulumi.Input<string>;
     readonly taskMaxSize?: pulumi.Input<number>;
     readonly taskMinSize?: pulumi.Input<number>;
     readonly taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[]>;
     readonly taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[]>;
+    /**
+     * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+     */
     readonly taskUnit?: pulumi.Input<string>;
     /**
      * Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
      */
     readonly terminationPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTerminationPolicy>[]>;
+    /**
+     * Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
+     */
     readonly terminationProtected?: pulumi.Input<boolean>;
     /**
      * @deprecated This field has been removed from our API and is no longer functional.

@@ -133,133 +133,6 @@ import * as utilities from "../utilities";
  *     userData: "",
  * });
  * ```
- * ## Load Balancers
- *
- * * `loadBalancers` - (Required) Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
- * * `type` - (Required) The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
- * * `balancerId` - (Required) The balancer ID.
- * * `targetSetId` - (Required) The scale set ID associated with the load balancer.
- * * `autoWeight` - (Optional, Default: `false`)
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="image"></a>
- * ## Image
- *
- * * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
- * * `publisher` - (Optional) Image publisher. Required if resourceGroupName is not specified.
- * * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
- * * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
- * * `resourceGroupName` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
- * * `imageName` - (Optional) Name of the custom image. Required if resourceGroupName is specified.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="health-check"></a>
- * ## Health Check
- *
- * * `healthCheck` - (Optional) Describes the health check configuration.
- * * `healthCheckType` - (Optional) Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
- * * `gracePeriod` - (Optional) Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
- * * `autoHealing` - (Optional) Enable auto-healing of unhealthy VMs.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="network"></a>
- * ## Network
- *
- * * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
- * * `virtualNetworkName` - (Required) Name of Vnet.
- * * `subnetName` - (Required) ID of subnet.
- * * `resourceGroupName` - (Required) Vnet Resource Group Name.
- * * `assignPublicUp` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
- * * `additionalIpConfigs` - (Optional) Array of additional IP configuration objects.
- * * `name` - (Required) The IP configuration name.
- * * `privateIpVersion` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="login"></a>
- * ## Login
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="login"></a>
- * ## Login
- *
- * * `login` - (Required) Describes the login configuration.
- * * `userName` - (Required) Set admin access for accessing your VMs.
- * * `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Required for Linux product types.
- * * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows product types.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="scaling-policy"></a>
- * ## Scheduling
- *
- * * `scheduledTask` - (Optional) Describes the configuration of one or more scheduled tasks.
- * * `isEnabled` - (Optional, Default: `true`) Describes whether the task is enabled. When true the task should run when false it should not run.
- * * `cronExpression` - (Required) A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
- * * `taskType` - (Required) The task type to run. Valid Values: `backupAmi`, `scale`, `scaleUp`, `roll`, `statefulUpdateCapacity`, `statefulRecycle`.
- * * `scaleMinCapacity` - (Optional) The min capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
- * * `scaleMaxCapacity` - (Optional) The max capacity of the group. Required when ‘task_type' is ‘scale'.
- * * `scaleTargetCapacity` - (Optional) The target capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
- * * `adjustment` - (Optional) The number of instances to add/remove to/from the target capacity when scale is needed.
- * * `adjustmentPercentage` - (Optional) The percent of instances to add/remove to/from the target capacity when scale is needed.
- * * `batchSizePercentage` - (Optional) The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
- * * `gracePeriod` - (Optional) The time to allow instances to become healthy.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="update-policy"></a>
- * ## Update Policy
- *
- * * `updatePolicy` - (Optional)
- *   
- *     * `shouldRoll` - (Required) Sets the enablement of the roll option.
- *     * `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
- *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
- *         * `healthCheckType` - (Optional) Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
- *         * `gracePeriod` - (Optional) Sets the grace period for new instances to become healthy.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="third-party-integrations"></a>
- * ## Third-Party Integrations
- *
- * * `integrationKubernetes` - (Optional) Describes the [Kubernetes](https://kubernetes.io/) integration.
- *     * `clusterIdentifier` - (Required) The cluster ID.
- *
- * Usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * * `integrationMultaiRuntime` - (Optional) Describes the [Multai Runtime](https://spotinst.com/) integration.
- *     * `deploymentId` - (Optional) The deployment id you want to get
- *
- * Usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**
@@ -294,11 +167,29 @@ export class Elastigroup extends pulumi.CustomResource {
      * The desired number of instances the group should have at any time.
      */
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
+    /**
+     * Describes the health check configuration.
+     */
     public readonly healthCheck!: pulumi.Output<outputs.azure.ElastigroupHealthCheck | undefined>;
+    /**
+     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+     */
     public readonly images!: pulumi.Output<outputs.azure.ElastigroupImage[] | undefined>;
+    /**
+     * Describes the [Kubernetes](https://kubernetes.io/) integration.
+     */
     public readonly integrationKubernetes!: pulumi.Output<outputs.azure.ElastigroupIntegrationKubernetes | undefined>;
+    /**
+     * Describes the [Multai Runtime](https://spotinst.com/) integration.
+     */
     public readonly integrationMultaiRuntime!: pulumi.Output<outputs.azure.ElastigroupIntegrationMultaiRuntime | undefined>;
+    /**
+     * Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+     */
     public readonly loadBalancers!: pulumi.Output<outputs.azure.ElastigroupLoadBalancer[] | undefined>;
+    /**
+     * Describes the login configuration.
+     */
     public readonly login!: pulumi.Output<outputs.azure.ElastigroupLogin | undefined>;
     /**
      * Available Low-Priority sizes.
@@ -314,9 +205,12 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * The name of the managed identity.
+     * The dimension name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Defines the Virtual Network and Subnet for your Elastigroup.
+     */
     public readonly network!: pulumi.Output<outputs.azure.ElastigroupNetwork>;
     /**
      * Available On-Demand sizes
@@ -331,11 +225,14 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The Resource Group that the user-assigned managed identity resides in.
+     * Vnet Resource Group Name.
      */
     public readonly resourceGroupName!: pulumi.Output<string>;
     public readonly scalingDownPolicies!: pulumi.Output<outputs.azure.ElastigroupScalingDownPolicy[] | undefined>;
     public readonly scalingUpPolicies!: pulumi.Output<outputs.azure.ElastigroupScalingUpPolicy[] | undefined>;
+    /**
+     * Describes the configuration of one or more scheduled tasks.
+     */
     public readonly scheduledTasks!: pulumi.Output<outputs.azure.ElastigroupScheduledTask[] | undefined>;
     /**
      * Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
@@ -457,11 +354,29 @@ export interface ElastigroupState {
      * The desired number of instances the group should have at any time.
      */
     readonly desiredCapacity?: pulumi.Input<number>;
+    /**
+     * Describes the health check configuration.
+     */
     readonly healthCheck?: pulumi.Input<inputs.azure.ElastigroupHealthCheck>;
+    /**
+     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+     */
     readonly images?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImage>[]>;
+    /**
+     * Describes the [Kubernetes](https://kubernetes.io/) integration.
+     */
     readonly integrationKubernetes?: pulumi.Input<inputs.azure.ElastigroupIntegrationKubernetes>;
+    /**
+     * Describes the [Multai Runtime](https://spotinst.com/) integration.
+     */
     readonly integrationMultaiRuntime?: pulumi.Input<inputs.azure.ElastigroupIntegrationMultaiRuntime>;
+    /**
+     * Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+     */
     readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupLoadBalancer>[]>;
+    /**
+     * Describes the login configuration.
+     */
     readonly login?: pulumi.Input<inputs.azure.ElastigroupLogin>;
     /**
      * Available Low-Priority sizes.
@@ -477,9 +392,12 @@ export interface ElastigroupState {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * The name of the managed identity.
+     * The dimension name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Defines the Virtual Network and Subnet for your Elastigroup.
+     */
     readonly network?: pulumi.Input<inputs.azure.ElastigroupNetwork>;
     /**
      * Available On-Demand sizes
@@ -494,11 +412,14 @@ export interface ElastigroupState {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The Resource Group that the user-assigned managed identity resides in.
+     * Vnet Resource Group Name.
      */
     readonly resourceGroupName?: pulumi.Input<string>;
     readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;
     readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicy>[]>;
+    /**
+     * Describes the configuration of one or more scheduled tasks.
+     */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScheduledTask>[]>;
     /**
      * Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
@@ -524,11 +445,29 @@ export interface ElastigroupArgs {
      * The desired number of instances the group should have at any time.
      */
     readonly desiredCapacity?: pulumi.Input<number>;
+    /**
+     * Describes the health check configuration.
+     */
     readonly healthCheck?: pulumi.Input<inputs.azure.ElastigroupHealthCheck>;
+    /**
+     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+     */
     readonly images?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImage>[]>;
+    /**
+     * Describes the [Kubernetes](https://kubernetes.io/) integration.
+     */
     readonly integrationKubernetes?: pulumi.Input<inputs.azure.ElastigroupIntegrationKubernetes>;
+    /**
+     * Describes the [Multai Runtime](https://spotinst.com/) integration.
+     */
     readonly integrationMultaiRuntime?: pulumi.Input<inputs.azure.ElastigroupIntegrationMultaiRuntime>;
+    /**
+     * Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+     */
     readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupLoadBalancer>[]>;
+    /**
+     * Describes the login configuration.
+     */
     readonly login?: pulumi.Input<inputs.azure.ElastigroupLogin>;
     /**
      * Available Low-Priority sizes.
@@ -544,9 +483,12 @@ export interface ElastigroupArgs {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * The name of the managed identity.
+     * The dimension name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Defines the Virtual Network and Subnet for your Elastigroup.
+     */
     readonly network: pulumi.Input<inputs.azure.ElastigroupNetwork>;
     /**
      * Available On-Demand sizes
@@ -561,11 +503,14 @@ export interface ElastigroupArgs {
      */
     readonly region: pulumi.Input<string>;
     /**
-     * The Resource Group that the user-assigned managed identity resides in.
+     * Vnet Resource Group Name.
      */
     readonly resourceGroupName: pulumi.Input<string>;
     readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;
     readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicy>[]>;
+    /**
+     * Describes the configuration of one or more scheduled tasks.
+     */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScheduledTask>[]>;
     /**
      * Shutdown script for the group. Value should be passed as a string encoded at Base64 only.

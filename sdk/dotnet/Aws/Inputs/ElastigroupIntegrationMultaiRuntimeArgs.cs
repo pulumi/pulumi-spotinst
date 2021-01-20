@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationMultaiRuntimeArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The deployment id you want to get
+        /// </summary>
         [Input("deploymentId", required: true)]
         public Input<string> DeploymentId { get; set; } = null!;
 

@@ -15,6 +15,9 @@ namespace Pulumi.SpotInst.Gke.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The label value.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

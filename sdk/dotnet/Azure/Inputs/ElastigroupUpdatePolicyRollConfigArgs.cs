@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class ElastigroupUpdatePolicyRollConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Sets the percentage of the instances to deploy in each batch.
+        /// </summary>
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
 
+        /// <summary>
+        /// Sets the grace period for new instances to become healthy.
+        /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
+        /// <summary>
+        /// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 

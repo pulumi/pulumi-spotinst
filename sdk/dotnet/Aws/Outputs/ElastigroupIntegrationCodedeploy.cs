@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationCodedeploy
     {
+        /// <summary>
+        /// Cleanup automatically after a failed deploy.
+        /// </summary>
         public readonly bool CleanupOnFailure;
+        /// <summary>
+        /// Specify the deployment groups details.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationCodedeployDeploymentGroup> DeploymentGroups;
+        /// <summary>
+        /// Terminate the instance automatically after a failed deploy.
+        /// </summary>
         public readonly bool TerminateInstanceOnFailure;
 
         [OutputConstructor]

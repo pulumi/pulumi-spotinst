@@ -12,20 +12,33 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ManagedInstanceIntegrationRoute53DomainGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Route 53 Hosted Zone Id for the registered Domain.
+        /// </summary>
         [Input("hostedZoneId", required: true)]
         public Input<string> HostedZoneId { get; set; } = null!;
 
+        /// <summary>
+        /// The type of the record set. Valid values: `"a"`, `"cname"`.
+        /// </summary>
         [Input("recordSetType")]
         public Input<string>? RecordSetType { get; set; }
 
         [Input("recordSets", required: true)]
         private InputList<Inputs.ManagedInstanceIntegrationRoute53DomainRecordSetGetArgs>? _recordSets;
+
+        /// <summary>
+        /// List of record sets
+        /// </summary>
         public InputList<Inputs.ManagedInstanceIntegrationRoute53DomainRecordSetGetArgs> RecordSets
         {
             get => _recordSets ?? (_recordSets = new InputList<Inputs.ManagedInstanceIntegrationRoute53DomainRecordSetGetArgs>());
             set => _recordSets = value;
         }
 
+        /// <summary>
+        /// The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
+        /// </summary>
         [Input("spotinstAcctId")]
         public Input<string>? SpotinstAcctId { get; set; }
 

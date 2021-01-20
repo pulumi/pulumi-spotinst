@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationNomadAutoscaleHeadroomArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// How much CPU (MHz) to allocate for headroom unit.
+        /// </summary>
         [Input("cpuPerUnit")]
         public Input<int>? CpuPerUnit { get; set; }
 
+        /// <summary>
+        /// How much Memory allocate for headroom unit.
+        /// </summary>
         [Input("memoryPerUnit")]
         public Input<int>? MemoryPerUnit { get; set; }
 
+        /// <summary>
+        /// How many units of headroom to allocate.
+        /// </summary>
         [Input("numOfUnits")]
         public Input<int>? NumOfUnits { get; set; }
 

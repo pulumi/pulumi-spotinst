@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanImportAutoscalerDownGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of evaluation periods that should accumulate before a scale down action takes place.
+        /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 
+        /// <summary>
+        /// Would represent the maximum % to scale-down. Number between 1-100.
+        /// </summary>
         [Input("maxScaleDownPercentage")]
         public Input<double>? MaxScaleDownPercentage { get; set; }
 

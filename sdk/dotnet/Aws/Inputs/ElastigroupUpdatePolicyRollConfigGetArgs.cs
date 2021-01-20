@@ -12,24 +12,39 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupUpdatePolicyRollConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Sets the percentage of the instances to deploy in each batch.
+        /// </summary>
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
 
+        /// <summary>
+        /// Sets the grace period for new instances to become healthy.
+        /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
         /// <summary>
-        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        /// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
+        /// <summary>
+        /// Strategy parameters
+        /// </summary>
         [Input("strategy")]
         public Input<Inputs.ElastigroupUpdatePolicyRollConfigStrategyGetArgs>? Strategy { get; set; }
 
+        /// <summary>
+        /// For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+        /// </summary>
         [Input("waitForRollPercentage")]
         public Input<double>? WaitForRollPercentage { get; set; }
 
+        /// <summary>
+        /// For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+        /// </summary>
         [Input("waitForRollTimeout")]
         public Input<int>? WaitForRollTimeout { get; set; }
 

@@ -108,67 +108,12 @@ class Elastigroup(pulumi.CustomResource):
             node_image="COS",
             preemptible_percentage=100)
         ```
-        ## Third-Party Integrations
-
-        * `integration_gke` - (Required) Describes the GKE integration.
-          
-            * `location` - (Optional) The location of your GKE cluster.
-            * `cluster_id` - (Optional) The GKE cluster ID you wish to import.
-            * `autoscale_is_enabled` -  (Optional, Default: `false`) Specifies whether the auto scaling feature is enabled.
-            * `autoscale_is_autoconfig` - (Optional, Default: `false`) Enabling the automatic auto-scaler functionality. For more information please see: .
-            * `autoscale_cooldown` - (Optional, Default: `300`) The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-          
-            * `autoscale_headroom` - (Optional) Headroom for the cluster.
-                * `cpu_per_unit` - (Optional, Default: `0`) Cpu units for compute.
-                * `memory_per_unit` - (Optional, Default: `0`) RAM units for compute.
-                * `num_of_units` - (Optional, Default: `0`) Amount of units for compute.
-          
-            * `autoscale_down` - (Optional) Enabling scale down.
-                * `evaluation_periods` - (Optional, Default: `5`) Amount of cooldown evaluation periods for scale down.
-          
-            * `autoscale_labels` - (Optional) Labels to assign to the resource.
-                * `key` - (Optional) The label name.
-                * `value` - (Optional) The label value.
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="diff-suppressed-parameters"></a>
-        ## Diff-suppressed Parameters
-
-        The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these
-        imported parameters by defining them in your template with your desired new value (including null values).
-
-        * `backend_services`
-            * `service_name`
-            * `location_type`
-            * `scheme`
-            * `named_port`
-                * `port_name`
-                * `ports`
-        * `labels`
-            * `key`
-            * `value`
-        * `metadata`
-            * `key`
-            * `value`
-        * `tags`
-            * `key`
-            * `value`
-        * `service_account`
-        * `ip_forwarding`
-        * `fallback_to_od`
-        * `subnets`
-            * `region`
-            * `subnet_name`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
+        :param pulumi.Input[str] cluster_id: The GKE cluster ID you wish to import.
         :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
+        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']] integration_gke: Describes the GKE integration.
         :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
         """
         if __name__ is not None:
@@ -270,8 +215,9 @@ class Elastigroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
+        :param pulumi.Input[str] cluster_id: The GKE cluster ID you wish to import.
         :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
+        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']] integration_gke: Describes the GKE integration.
         :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -318,7 +264,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the GKE cluster you wish to import.
+        The GKE cluster ID you wish to import.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -378,6 +324,9 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="integrationGke")
     def integration_gke(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationGke']]:
+        """
+        Describes the GKE integration.
+        """
         return pulumi.get(self, "integration_gke")
 
     @property

@@ -13,8 +13,18 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ManagedInstanceNetworkInterface
     {
+        /// <summary>
+        /// Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
+        /// Default: false
+        /// </summary>
         public readonly bool? AssociateIpv6Address;
+        /// <summary>
+        /// Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
+        /// </summary>
         public readonly bool? AssociatePublicIpAddress;
+        /// <summary>
+        /// The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
+        /// </summary>
         public readonly string DeviceIndex;
 
         [OutputConstructor]

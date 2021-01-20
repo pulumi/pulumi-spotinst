@@ -13,8 +13,17 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom
     {
+        /// <summary>
+        /// How much CPU (MHz) to allocate for headroom unit.
+        /// </summary>
         public readonly int? CpuPerUnit;
+        /// <summary>
+        /// How much Memory allocate for headroom unit.
+        /// </summary>
         public readonly int? MemoryPerUnit;
+        /// <summary>
+        /// How many units of headroom to allocate.
+        /// </summary>
         public readonly int? NumOfUnits;
 
         [OutputConstructor]

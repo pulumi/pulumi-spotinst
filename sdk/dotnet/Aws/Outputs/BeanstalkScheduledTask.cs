@@ -13,26 +13,65 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class BeanstalkScheduledTask
     {
+        /// <summary>
+        /// The number of instances to add or remove.
+        /// </summary>
         public readonly string? Adjustment;
+        /// <summary>
+        /// The percentage of instances to add or remove.
+        /// </summary>
         public readonly string? AdjustmentPercentage;
         /// <summary>
-        /// Percent size of each batch
+        /// The percentage size of each batch in the scheduled deployment roll.
         /// </summary>
         public readonly string? BatchSizePercentage;
+        /// <summary>
+        /// A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
+        /// </summary>
         public readonly string? CronExpression;
+        /// <summary>
+        /// The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
+        /// </summary>
         public readonly string? Frequency;
         /// <summary>
-        /// Amount of time to wait between batches
+        /// The period of time (seconds) to wait before checking a batch's health after it's deployment.
         /// </summary>
         public readonly string? GracePeriod;
+        /// <summary>
+        /// Setting the task to being enabled or disabled.
+        /// </summary>
         public readonly bool? IsEnabled;
+        /// <summary>
+        /// The maximum number of instances the group should have.
+        /// </summary>
         public readonly string? MaxCapacity;
+        /// <summary>
+        /// The minimum number of instances the group should have.
+        /// </summary>
         public readonly string? MinCapacity;
+        /// <summary>
+        /// The maximum number of instances the group should have.
+        /// </summary>
         public readonly string? ScaleMaxCapacity;
+        /// <summary>
+        /// The minimum number of instances the group should have.
+        /// </summary>
         public readonly string? ScaleMinCapacity;
+        /// <summary>
+        /// The desired number of instances the group should have.
+        /// </summary>
         public readonly string? ScaleTargetCapacity;
+        /// <summary>
+        /// Set a start time for one time tasks.
+        /// </summary>
         public readonly string? StartTime;
+        /// <summary>
+        /// The desired number of instances the group should have.
+        /// </summary>
         public readonly string? TargetCapacity;
+        /// <summary>
+        /// The task type to run. Supported task types are: `"scale"`, `"backup_ami"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
+        /// </summary>
         public readonly string TaskType;
 
         [OutputConstructor]

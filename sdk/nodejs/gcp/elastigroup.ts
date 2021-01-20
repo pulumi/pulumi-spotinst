@@ -101,134 +101,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ## GPU
- *
- * * `gpu` - (Optional) Defines the GPU configuration.
- *     * `type` - (Required) The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
- *     * `count` - (Required) The number of GPUs. Must be 0, 2, 4, 6, 8.
- *
- * Usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="health-check"></a>
- * ## Backend Services
- *
- * * `backendServices` - (Optional) Describes the backend service configurations.
- *     * `serviceName` - (Required) The name of the backend service.
- *     * `locationType` - (Optional) Sets which location the backend services will be active. Valid values: `regional`, `global`.
- *     * `scheme` - (Optional) Use when `locationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
- *     * `namedPort` - (Optional) Describes a named port and a list of ports.
- *         * `portName` - (Required) The name of the port.
- *         * `ports` - (Required) A list of ports.
- *
- * Usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="disks"></a>
- * ## Disks
- *
- * * `disks` - (Optional) Array of disks associated with this instance. Persistent disks must be created before you can assign them.
- *     * `autoDelete` - (Optional) Specifies whether the disk will be auto-deleted when the instance is deleted.
- *     * `boot` - (Optional) Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
- *     * `deviceName` - (Optional) Specifies a unique device name of your choice.
- *     * `interface` - (Optional, Default: `SCSI`) Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
- *     * `mode` - (Optional, Default: `READ_WRITE`) The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
- *     * `source` - (Optional) Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
- *     * `type` - (Optional, Default: `PERSISTENT`) Specifies the type of disk, either SCRATCH or PERSISTENT.
- *     * `initializeParams` - (Optional) Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
- *         * `diskSizeGb` - (Optional) Specifies disk size in gigabytes. Must be in increments of 2.
- *         * `diskType` - (Optional, Default" `pd-standard`) Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
- *         * `sourceImage` - (Optional) A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
- *
- * Usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="network-interface"></a>
- * ## Network Interfaces
- *
- * Each of the `networkInterface` attributes controls a portion of the GCP
- * Instance's "Network Interfaces". It's a good idea to familiarize yourself with [GCP's Network
- * Interfaces docs](https://cloud.google.com/vpc/docs/multiple-interfaces-concepts)
- * to understand the implications of using these attributes.
- *
- * * `networkInterface` - (Required, minimum 1) Array of objects representing the network configuration for the elastigroup.
- *     * `network` - (Required) Network resource for this group.
- *     * `accessConfigs` - (Optional) Array of configurations.
- *         * `name` - (Optional) Name of this access configuration.
- *         * `type` - (Optional) Array of configurations for this interface. Currently, only ONE_TO_ONE_NAT is supported.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="scaling-policy"></a>
- * ## Scaling Policies
- *
- * * `scalingUpPolicy` - (Optional) Contains scaling policies for scaling the Elastigroup up.
- * * `scalingDownPolicy` - (Optional) Contains scaling policies for scaling the Elastigroup down.
- *
- * Each `scaling_*_policy` supports the following:
- *
- * * `policyName` - (Optional) Name of scaling policy.
- * * `metricName` - (Optional) Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
- * * `statistic` - (Optional) Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
- * * `threshold` - (Optional) The value at which the scaling action is triggered.
- * * `period` - (Optional) Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
- * * `evaluationPeriods` - (Optional) Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
- * * `cooldown` - (Optional) Time (seconds) to wait after a scaling action before resuming monitoring.
- * * `operator` - (Optional) The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
- * * `action` - (Optional) Scaling action to take when the policy is triggered.
- *     * `type` - (Optional) Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
- *     * `adjustment` - (Optional) Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
- * * `dimensions` - (Optional) A list of dimensions describing qualities of the metric.
- *     * `name` - (Required) The dimension name.
- *     * `value` - (Required) The dimension value.
- *
- * Usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="third-party-integrations"></a>
- * ## Third-Party Integrations
- *
- * * `integrationDockerSwarm` - (Optional) Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
- *     * `masterHost` - (Required) IP or FQDN of one of your swarm managers.
- *     * `masterPort` - (Required) Network port used by your swarm.
- *
- * Usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="scheduled-task"></a>
- * ## Scheduled Tasks
- *
- * Each `scheduledTask` supports the following:
- *
- * * `taskType` - (Required) The task type to run. Valid values: `"setCapacity"`.
- * * `cronExpression` - (Optional) A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
- * * `isEnabled` - (Optional, Default: `true`) Setting the task to being enabled or disabled.
- * * `targetCapacity` - (Optional) The desired number of instances the group should have.
- * * `minCapacity` - (Optional) The minimum number of instances the group should have.
- * * `maxCapacity` - (Optional) The maximum number of instances the group should have.
- *
- * Usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**
@@ -258,6 +130,9 @@ export class Elastigroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === Elastigroup.__pulumiType;
     }
 
+    /**
+     * Enable auto-replacement of unhealthy instances.
+     */
     public readonly autoHealing!: pulumi.Output<boolean | undefined>;
     /**
      * List of availability zones for the group.
@@ -265,6 +140,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * @deprecated This field will soon be handled by Region in Subnets
      */
     public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
+    /**
+     * Describes the backend service configurations.
+     */
     public readonly backendServices!: pulumi.Output<outputs.gcp.ElastigroupBackendService[] | undefined>;
     /**
      * The region your GCP group will be created in.
@@ -283,8 +161,17 @@ export class Elastigroup extends pulumi.CustomResource {
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
+    /**
+     * Defines the GPU configuration.
+     */
     public readonly gpu!: pulumi.Output<outputs.gcp.ElastigroupGpu[] | undefined>;
+    /**
+     * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+     */
     public readonly healthCheckGracePeriod!: pulumi.Output<number | undefined>;
+    /**
+     * The kind of health check to perform when monitoring for unhealthiness.
+     */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
@@ -298,6 +185,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
      */
     public readonly instanceTypesPreemptibles!: pulumi.Output<string[] | undefined>;
+    /**
+     * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+     */
     public readonly integrationDockerSwarm!: pulumi.Output<outputs.gcp.ElastigroupIntegrationDockerSwarm | undefined>;
     public readonly integrationGke!: pulumi.Output<outputs.gcp.ElastigroupIntegrationGke | undefined>;
     public readonly ipForwarding!: pulumi.Output<boolean | undefined>;
@@ -318,16 +208,25 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * The group name.
+     * The dimension name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Array of objects representing the network configuration for the elastigroup.
+     */
     public readonly networkInterfaces!: pulumi.Output<outputs.gcp.ElastigroupNetworkInterface[] | undefined>;
     public readonly ondemandCount!: pulumi.Output<number | undefined>;
     /**
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
     public readonly preemptiblePercentage!: pulumi.Output<number | undefined>;
+    /**
+     * Contains scaling policies for scaling the Elastigroup down.
+     */
     public readonly scalingDownPolicies!: pulumi.Output<outputs.gcp.ElastigroupScalingDownPolicy[] | undefined>;
+    /**
+     * Contains scaling policies for scaling the Elastigroup up.
+     */
     public readonly scalingUpPolicies!: pulumi.Output<outputs.gcp.ElastigroupScalingUpPolicy[] | undefined>;
     public readonly scheduledTasks!: pulumi.Output<outputs.gcp.ElastigroupScheduledTask[] | undefined>;
     /**
@@ -350,6 +249,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * Tags to mark created instances.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     */
     public readonly unhealthyDuration!: pulumi.Output<number | undefined>;
 
     /**
@@ -453,6 +355,9 @@ export class Elastigroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Elastigroup resources.
  */
 export interface ElastigroupState {
+    /**
+     * Enable auto-replacement of unhealthy instances.
+     */
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
      * List of availability zones for the group.
@@ -460,6 +365,9 @@ export interface ElastigroupState {
      * @deprecated This field will soon be handled by Region in Subnets
      */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Describes the backend service configurations.
+     */
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[]>;
     /**
      * The region your GCP group will be created in.
@@ -478,8 +386,17 @@ export interface ElastigroupState {
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
     readonly fallbackToOndemand?: pulumi.Input<boolean>;
+    /**
+     * Defines the GPU configuration.
+     */
     readonly gpu?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupGpu>[]>;
+    /**
+     * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+     */
     readonly healthCheckGracePeriod?: pulumi.Input<number>;
+    /**
+     * The kind of health check to perform when monitoring for unhealthiness.
+     */
     readonly healthCheckType?: pulumi.Input<string>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
@@ -493,6 +410,9 @@ export interface ElastigroupState {
      * The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
      */
     readonly instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+     */
     readonly integrationDockerSwarm?: pulumi.Input<inputs.gcp.ElastigroupIntegrationDockerSwarm>;
     readonly integrationGke?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGke>;
     readonly ipForwarding?: pulumi.Input<boolean>;
@@ -513,16 +433,25 @@ export interface ElastigroupState {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * The group name.
+     * The dimension name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Array of objects representing the network configuration for the elastigroup.
+     */
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterface>[]>;
     readonly ondemandCount?: pulumi.Input<number>;
     /**
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
     readonly preemptiblePercentage?: pulumi.Input<number>;
+    /**
+     * Contains scaling policies for scaling the Elastigroup down.
+     */
     readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[]>;
+    /**
+     * Contains scaling policies for scaling the Elastigroup up.
+     */
     readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicy>[]>;
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScheduledTask>[]>;
     /**
@@ -545,6 +474,9 @@ export interface ElastigroupState {
      * Tags to mark created instances.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     */
     readonly unhealthyDuration?: pulumi.Input<number>;
 }
 
@@ -552,6 +484,9 @@ export interface ElastigroupState {
  * The set of arguments for constructing a Elastigroup resource.
  */
 export interface ElastigroupArgs {
+    /**
+     * Enable auto-replacement of unhealthy instances.
+     */
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
      * List of availability zones for the group.
@@ -559,6 +494,9 @@ export interface ElastigroupArgs {
      * @deprecated This field will soon be handled by Region in Subnets
      */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Describes the backend service configurations.
+     */
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[]>;
     /**
      * The region your GCP group will be created in.
@@ -577,8 +515,17 @@ export interface ElastigroupArgs {
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
     readonly fallbackToOndemand?: pulumi.Input<boolean>;
+    /**
+     * Defines the GPU configuration.
+     */
     readonly gpu?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupGpu>[]>;
+    /**
+     * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+     */
     readonly healthCheckGracePeriod?: pulumi.Input<number>;
+    /**
+     * The kind of health check to perform when monitoring for unhealthiness.
+     */
     readonly healthCheckType?: pulumi.Input<string>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
@@ -592,6 +539,9 @@ export interface ElastigroupArgs {
      * The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
      */
     readonly instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+     */
     readonly integrationDockerSwarm?: pulumi.Input<inputs.gcp.ElastigroupIntegrationDockerSwarm>;
     readonly integrationGke?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGke>;
     readonly ipForwarding?: pulumi.Input<boolean>;
@@ -612,16 +562,25 @@ export interface ElastigroupArgs {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * The group name.
+     * The dimension name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Array of objects representing the network configuration for the elastigroup.
+     */
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterface>[]>;
     readonly ondemandCount?: pulumi.Input<number>;
     /**
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
     readonly preemptiblePercentage?: pulumi.Input<number>;
+    /**
+     * Contains scaling policies for scaling the Elastigroup down.
+     */
     readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[]>;
+    /**
+     * Contains scaling policies for scaling the Elastigroup up.
+     */
     readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicy>[]>;
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScheduledTask>[]>;
     /**
@@ -644,5 +603,8 @@ export interface ElastigroupArgs {
      * Tags to mark created instances.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     */
     readonly unhealthyDuration?: pulumi.Input<number>;
 }

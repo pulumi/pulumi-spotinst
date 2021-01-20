@@ -71,7 +71,7 @@ class Ocean(pulumi.CustomResource):
                     volume_type="gp2",
                 ),
             )],
-            cluster_name="terraform-ecs-cluster",
+            cluster_name="sample-ecs-cluster",
             desired_capacity=0,
             draining_timeout=120,
             ebs_optimized=True,
@@ -105,57 +105,11 @@ class Ocean(pulumi.CustomResource):
 
         pulumi.export("oceanId", spotinst_ocean_ecs["example"]["id"])
         ```
-        ## Auto Scaler
-
-        * `autoscaler` - (Optional) Describes the Ocean ECS autoscaler.
-            * `is_enabled` - (Optional, Default: `true`) Enable the Ocean ECS autoscaler.
-            * `is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
-            * `cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
-            * `headroom` - (Optional) Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-                * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-                * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
-                * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-            * `down` - (Optional) Auto Scaling scale down operations.
-                * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
-            * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
-                * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
-                * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="update-policy"></a>
-        ## Update Policy
-
-        * `update_policy` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
-            * `should_roll` - (Required) Enables the roll.
-            * `roll_config` - (Required)
-                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="scheduled-task"></a>
-        ## scheduled task
-
-        * `scheduled_task` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
-            * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
-                * `is_enabled` - (Optional)  Flag to enable / disable the shutdown hours.
-                * `time_windows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
-            * `tasks` - (Optional) The scheduling tasks for the cluster.
-                * `is_enabled` - (Required) Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-                * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
-                * `task_type` - (Required) Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-
-        ```python
-        import pulumi
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean ECS autoscaler.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] cluster_name: The ocean cluster name.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
@@ -170,9 +124,11 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input[pulumi.InputType['OceanOptimizeImagesArgs']] optimize_images: Object. Set auto image update settings.
         :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: While used, you can control whether the group should perform a deployment after an update to the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
+        :param pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']] update_policy: While used, you can control whether the group should perform a deployment after an update to the configuration.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
@@ -270,6 +226,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean ECS autoscaler.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] cluster_name: The ocean cluster name.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
@@ -284,9 +241,11 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input[pulumi.InputType['OceanOptimizeImagesArgs']] optimize_images: Object. Set auto image update settings.
         :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: While used, you can control whether the group should perform a deployment after an update to the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
+        :param pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']] update_policy: While used, you can control whether the group should perform a deployment after an update to the configuration.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
@@ -333,6 +292,9 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter
     def autoscaler(self) -> pulumi.Output[Optional['outputs.OceanAutoscaler']]:
+        """
+        Describes the Ocean ECS autoscaler.
+        """
         return pulumi.get(self, "autoscaler")
 
     @property
@@ -450,6 +412,9 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.OceanScheduledTask']]]:
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         return pulumi.get(self, "scheduled_tasks")
 
     @property
@@ -479,6 +444,9 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> pulumi.Output[Optional['outputs.OceanUpdatePolicy']]:
+        """
+        While used, you can control whether the group should perform a deployment after an update to the configuration.
+        """
         return pulumi.get(self, "update_policy")
 
     @property
