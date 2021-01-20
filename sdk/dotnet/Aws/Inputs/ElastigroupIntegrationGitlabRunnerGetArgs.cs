@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationGitlabRunnerGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether the integration is enabled.
+        /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
 

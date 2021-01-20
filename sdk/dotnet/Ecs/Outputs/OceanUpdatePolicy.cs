@@ -14,6 +14,9 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     public sealed class OceanUpdatePolicy
     {
         public readonly Outputs.OceanUpdatePolicyRollConfig? RollConfig;
+        /// <summary>
+        /// Enables the roll.
+        /// </summary>
         public readonly bool ShouldRoll;
 
         [OutputConstructor]

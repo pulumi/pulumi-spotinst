@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationMultaiRuntime
     {
+        /// <summary>
+        /// The deployment id you want to get
+        /// </summary>
         public readonly string DeploymentId;
 
         [OutputConstructor]

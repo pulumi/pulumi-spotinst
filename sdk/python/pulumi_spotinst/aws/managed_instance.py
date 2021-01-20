@@ -63,80 +63,6 @@ class ManagedInstance(pulumi.CustomResource):
         """
         Provides a Spotinst AWS ManagedInstance resource.
 
-        ## Network Interface - (Optional) List of network interfaces in an EC2 instance.
-
-        * `device_index` - (Optional) The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
-        * `associate_public_ip_address` - (Optional) Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
-        * `associate_ipv6_address` - (Optional) Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
-           Default: false
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="scheduled-task"></a>
-        ## Scheduled Tasks
-
-        Each `scheduled_task` supports the following:
-
-        * `is_enabled` - (Optional) Describes whether the task is enabled. When true the task should run when false it should not run.
-        * `frequency` - (Optional) Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
-        * `start_time` - (Optional) DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-           Example: 2019-05-23T10:55:09Z
-        * `cron_expression` - (Optional) A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-           Example: 0 1 * * *
-        * `task_type`- (Required) The task type to run. Valid values: "pause", "resume", "recycle".
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="load-balancers"></a>
-        ## Load Balancers
-
-           * `loadBalancersConfig` - (Optional) Load Balancers integration object.
-             
-               * `load_balancers` - (Optional) List of load balancers configs.
-                    * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
-                    * `arn` - The AWS resource ARN (Required only for ALB target groups).
-                    * `balancer_id` - The Multai load balancer ID.
-                         Default: lb-123456
-                    * `target_set_id` - The Multai load target set ID.
-                         Default: ts-123456
-                    * `auto_weight` - "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-                    * `zone_awareness` - "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
-                    * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="route53"></a>
-        ## route53
-
-           * `integration_route53` - (Optional) Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-             
-               * `domains` - (Required) Route 53 Domain configurations.
-                   * `hosted_zone_id` - (Required) The Route 53 Hosted Zone Id for the registered Domain.
-                   * `spotinst_acct_id` - (Optional) The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
-                   * `record_set_type` - (Optional, Default: `a`) The type of the record set. Valid values: `"a"`, `"cname"`.
-                   * `record_sets` - (Required) List of record sets
-                       * `name` - (Required) The record set name.
-                       * `use_public_ip` - (Optional, Default: `false`) - Designates whether the IP address should be exposed to connections outside the VPC.
-                       * `use_public_dns` - (Optional, Default: `false`) - Designates whether the DNS address should be exposed to connections outside the VPC.
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
@@ -157,10 +83,12 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] iam_instance_profile: Set IAM profile to instance. Set only one of ARN or Name.
         :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
+        :param pulumi.Input[pulumi.InputType['ManagedInstanceIntegrationRoute53Args']] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
         :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`.
                Default `"spot"`.
-        :param pulumi.Input[str] name: The ManagedInstance name.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceLoadBalancerArgs']]]] load_balancers: List of load balancers configs.
+        :param pulumi.Input[str] name: The record set name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
                Default: `"availabilityOriented"`.
@@ -326,10 +254,12 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] iam_instance_profile: Set IAM profile to instance. Set only one of ARN or Name.
         :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
+        :param pulumi.Input[pulumi.InputType['ManagedInstanceIntegrationRoute53Args']] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
         :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`.
                Default `"spot"`.
-        :param pulumi.Input[str] name: The ManagedInstance name.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceLoadBalancerArgs']]]] load_balancers: List of load balancers configs.
+        :param pulumi.Input[str] name: The record set name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
                Default: `"availabilityOriented"`.
@@ -514,6 +444,9 @@ class ManagedInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="integrationRoute53")
     def integration_route53(self) -> pulumi.Output[Optional['outputs.ManagedInstanceIntegrationRoute53']]:
+        """
+        Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+        """
         return pulumi.get(self, "integration_route53")
 
     @property
@@ -536,13 +469,16 @@ class ManagedInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="loadBalancers")
     def load_balancers(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceLoadBalancer']]]:
+        """
+        List of load balancers configs.
+        """
         return pulumi.get(self, "load_balancers")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The ManagedInstance name.
+        The record set name.
         """
         return pulumi.get(self, "name")
 

@@ -13,16 +13,49 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupScalingTargetPolicy
     {
+        /// <summary>
+        /// Integer the amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
+        /// </summary>
         public readonly int? Cooldown;
+        /// <summary>
+        /// A list of dimensions describing qualities of the metric.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupScalingTargetPolicyDimension> Dimensions;
+        /// <summary>
+        /// String, restrict the maximal number of instances which can be added in each scale-up action.
+        /// </summary>
         public readonly string? MaxCapacityPerScale;
+        /// <summary>
+        /// String, the name of the metric, with or without spaces.
+        /// </summary>
         public readonly string MetricName;
+        /// <summary>
+        /// String, the namespace for the alarm's associated metric.
+        /// </summary>
         public readonly string Namespace;
+        /// <summary>
+        /// String, the name of the policy.
+        /// </summary>
         public readonly string PolicyName;
+        /// <summary>
+        /// Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
+        /// </summary>
         public readonly string? PredictiveMode;
+        /// <summary>
+        /// String, the source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
+        /// </summary>
         public readonly string? Source;
+        /// <summary>
+        /// String, the metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+        /// </summary>
         public readonly string? Statistic;
+        /// <summary>
+        /// The target number of instances to have in the group.
+        /// </summary>
         public readonly double Target;
+        /// <summary>
+        /// String, tThe unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        /// </summary>
         public readonly string? Unit;
 
         [OutputConstructor]

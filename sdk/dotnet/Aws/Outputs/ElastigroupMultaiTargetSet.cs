@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupMultaiTargetSet
     {
+        /// <summary>
+        /// ID of Multai Load Balancer.
+        /// </summary>
         public readonly string BalancerId;
+        /// <summary>
+        /// ID of Multai target set.
+        /// </summary>
         public readonly string TargetSetId;
 
         [OutputConstructor]

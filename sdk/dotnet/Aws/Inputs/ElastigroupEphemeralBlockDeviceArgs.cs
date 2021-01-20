@@ -12,9 +12,16 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupEphemeralBlockDeviceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the block device to mount on the instance.
+        /// </summary>
         [Input("deviceName", required: true)]
         public Input<string> DeviceName { get; set; } = null!;
 
+        /// <summary>
+        /// The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
+        /// (e.g. `"ephemeral0"`).
+        /// </summary>
         [Input("virtualName", required: true)]
         public Input<string> VirtualName { get; set; } = null!;
 

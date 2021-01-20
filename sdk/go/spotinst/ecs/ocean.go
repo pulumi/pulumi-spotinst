@@ -44,7 +44,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			ClusterName:        pulumi.String("terraform-ecs-cluster"),
+// 			ClusterName:        pulumi.String("sample-ecs-cluster"),
 // 			DesiredCapacity:    pulumi.Int(0),
 // 			DrainingTimeout:    pulumi.Int(120),
 // 			EbsOptimized:       pulumi.Bool(true),
@@ -102,89 +102,13 @@ import (
 // 	})
 // }
 // ```
-// ## Auto Scaler
-//
-// * `autoscaler` - (Optional) Describes the Ocean ECS autoscaler.
-//     * `isEnabled` - (Optional, Default: `true`) Enable the Ocean ECS autoscaler.
-//     * `isAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
-//     * `cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
-//     * `headroom` - (Optional) Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-//         * `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-//         * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
-//         * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-//     * `down` - (Optional) Auto Scaling scale down operations.
-//         * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
-//     * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
-//         * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
-//         * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
-// ```
-//
-// <a id="update-policy"></a>
-// ## Update Policy
-//
-// * `updatePolicy` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
-//     * `shouldRoll` - (Required) Enables the roll.
-//     * `rollConfig` - (Required)
-//         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
-// ```
-//
-// <a id="scheduled-task"></a>
-// ## scheduled task
-//
-// * `scheduledTask` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
-//     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
-//         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
-//         * `timeWindows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
-//     * `tasks` - (Optional) The scheduling tasks for the cluster.
-//         * `isEnabled` - (Required) Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-//         * `cronExpression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
-//         * `taskType` - (Required) Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
-// ```
 type Ocean struct {
 	pulumi.CustomResourceState
 
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress pulumi.BoolPtrOutput     `pulumi:"associatePublicIpAddress"`
-	Autoscaler               OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
+	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
+	// Describes the Ocean ECS autoscaler.
+	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	// The ocean cluster name.
@@ -212,14 +136,16 @@ type Ocean struct {
 	// Object. Set auto image update settings.
 	OptimizeImages OceanOptimizeImagesPtrOutput `pulumi:"optimizeImages"`
 	// The region the cluster will run in.
-	Region         pulumi.StringOutput           `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
-	Tags         OceanTagArrayOutput        `pulumi:"tags"`
+	Tags OceanTagArrayOutput `pulumi:"tags"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData           pulumi.StringPtrOutput `pulumi:"userData"`
@@ -272,8 +198,9 @@ func GetOcean(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Ocean resources.
 type oceanState struct {
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
-	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
+	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
+	// Describes the Ocean ECS autoscaler.
+	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The ocean cluster name.
@@ -301,14 +228,16 @@ type oceanState struct {
 	// Object. Set auto image update settings.
 	OptimizeImages *OceanOptimizeImages `pulumi:"optimizeImages"`
 	// The region the cluster will run in.
-	Region         *string              `pulumi:"region"`
+	Region *string `pulumi:"region"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
-	Tags         []OceanTag         `pulumi:"tags"`
+	Tags []OceanTag `pulumi:"tags"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData           *string `pulumi:"userData"`
@@ -322,7 +251,8 @@ type oceanState struct {
 type OceanState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	Autoscaler               OceanAutoscalerPtrInput
+	// Describes the Ocean ECS autoscaler.
+	Autoscaler OceanAutoscalerPtrInput
 	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	// The ocean cluster name.
@@ -350,14 +280,16 @@ type OceanState struct {
 	// Object. Set auto image update settings.
 	OptimizeImages OceanOptimizeImagesPtrInput
 	// The region the cluster will run in.
-	Region         pulumi.StringPtrInput
+	Region pulumi.StringPtrInput
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
-	Tags         OceanTagArrayInput
+	Tags OceanTagArrayInput
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData           pulumi.StringPtrInput
@@ -374,8 +306,9 @@ func (OceanState) ElementType() reflect.Type {
 
 type oceanArgs struct {
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
-	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
+	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
+	// Describes the Ocean ECS autoscaler.
+	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The ocean cluster name.
@@ -403,14 +336,16 @@ type oceanArgs struct {
 	// Object. Set auto image update settings.
 	OptimizeImages *OceanOptimizeImages `pulumi:"optimizeImages"`
 	// The region the cluster will run in.
-	Region         string               `pulumi:"region"`
+	Region string `pulumi:"region"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
-	Tags         []OceanTag         `pulumi:"tags"`
+	Tags []OceanTag `pulumi:"tags"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData           *string `pulumi:"userData"`
@@ -425,7 +360,8 @@ type oceanArgs struct {
 type OceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	Autoscaler               OceanAutoscalerPtrInput
+	// Describes the Ocean ECS autoscaler.
+	Autoscaler OceanAutoscalerPtrInput
 	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	// The ocean cluster name.
@@ -453,14 +389,16 @@ type OceanArgs struct {
 	// Object. Set auto image update settings.
 	OptimizeImages OceanOptimizeImagesPtrInput
 	// The region the cluster will run in.
-	Region         pulumi.StringInput
+	Region pulumi.StringInput
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
-	Tags         OceanTagArrayInput
+	Tags OceanTagArrayInput
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData           pulumi.StringPtrInput

@@ -14,6 +14,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationEcsAutoscaleAttribute
     {
         public readonly string Key;
+        /// <summary>
+        /// The dimension value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

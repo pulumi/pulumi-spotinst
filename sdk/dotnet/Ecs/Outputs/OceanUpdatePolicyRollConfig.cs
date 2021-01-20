@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     [OutputType]
     public sealed class OceanUpdatePolicyRollConfig
     {
+        /// <summary>
+        /// Sets the percentage of the instances to deploy in each batch.
+        /// </summary>
         public readonly int BatchSizePercentage;
 
         [OutputConstructor]

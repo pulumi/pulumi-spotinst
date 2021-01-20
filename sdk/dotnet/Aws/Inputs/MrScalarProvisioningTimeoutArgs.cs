@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class MrScalarProvisioningTimeoutArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
+        /// </summary>
         [Input("timeout", required: true)]
         public Input<int> Timeout { get; set; } = null!;
 
+        /// <summary>
+        /// The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+        /// </summary>
         [Input("timeoutAction", required: true)]
         public Input<string> TimeoutAction { get; set; } = null!;
 

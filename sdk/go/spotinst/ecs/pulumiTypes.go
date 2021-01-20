@@ -11,11 +11,17 @@ import (
 )
 
 type OceanAutoscaler struct {
-	Cooldown       *int                           `pulumi:"cooldown"`
-	Down           *OceanAutoscalerDown           `pulumi:"down"`
-	Headroom       *OceanAutoscalerHeadroom       `pulumi:"headroom"`
-	IsAutoConfig   *bool                          `pulumi:"isAutoConfig"`
-	IsEnabled      *bool                          `pulumi:"isEnabled"`
+	// Cooldown period between scaling actions.
+	Cooldown *int `pulumi:"cooldown"`
+	// Auto Scaling scale down operations.
+	Down *OceanAutoscalerDown `pulumi:"down"`
+	// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+	Headroom *OceanAutoscalerHeadroom `pulumi:"headroom"`
+	// Automatically configure and optimize headroom resources.
+	IsAutoConfig *bool `pulumi:"isAutoConfig"`
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits *OceanAutoscalerResourceLimits `pulumi:"resourceLimits"`
 }
 
@@ -31,11 +37,17 @@ type OceanAutoscalerInput interface {
 }
 
 type OceanAutoscalerArgs struct {
-	Cooldown       pulumi.IntPtrInput                    `pulumi:"cooldown"`
-	Down           OceanAutoscalerDownPtrInput           `pulumi:"down"`
-	Headroom       OceanAutoscalerHeadroomPtrInput       `pulumi:"headroom"`
-	IsAutoConfig   pulumi.BoolPtrInput                   `pulumi:"isAutoConfig"`
-	IsEnabled      pulumi.BoolPtrInput                   `pulumi:"isEnabled"`
+	// Cooldown period between scaling actions.
+	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
+	// Auto Scaling scale down operations.
+	Down OceanAutoscalerDownPtrInput `pulumi:"down"`
+	// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
+	Headroom OceanAutoscalerHeadroomPtrInput `pulumi:"headroom"`
+	// Automatically configure and optimize headroom resources.
+	IsAutoConfig pulumi.BoolPtrInput `pulumi:"isAutoConfig"`
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits OceanAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
 }
 
@@ -115,26 +127,33 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context
 		return &v
 	}).(OceanAutoscalerPtrOutput)
 }
+
+// Cooldown period between scaling actions.
 func (o OceanAutoscalerOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
+// Auto Scaling scale down operations.
 func (o OceanAutoscalerOutput) Down() OceanAutoscalerDownPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerDown { return v.Down }).(OceanAutoscalerDownPtrOutput)
 }
 
+// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
 func (o OceanAutoscalerOutput) Headroom() OceanAutoscalerHeadroomPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerHeadroom { return v.Headroom }).(OceanAutoscalerHeadroomPtrOutput)
 }
 
+// Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.IsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 func (o OceanAutoscalerOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
 }
@@ -157,6 +176,7 @@ func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
 }
 
+// Cooldown period between scaling actions.
 func (o OceanAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *int {
 		if v == nil {
@@ -166,6 +186,7 @@ func (o OceanAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Auto Scaling scale down operations.
 func (o OceanAutoscalerPtrOutput) Down() OceanAutoscalerDownPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerDown {
 		if v == nil {
@@ -175,6 +196,7 @@ func (o OceanAutoscalerPtrOutput) Down() OceanAutoscalerDownPtrOutput {
 	}).(OceanAutoscalerDownPtrOutput)
 }
 
+// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
 func (o OceanAutoscalerPtrOutput) Headroom() OceanAutoscalerHeadroomPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerHeadroom {
 		if v == nil {
@@ -184,6 +206,7 @@ func (o OceanAutoscalerPtrOutput) Headroom() OceanAutoscalerHeadroomPtrOutput {
 	}).(OceanAutoscalerHeadroomPtrOutput)
 }
 
+// Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -193,6 +216,7 @@ func (o OceanAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 func (o OceanAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -202,6 +226,7 @@ func (o OceanAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerResourceLimits {
 		if v == nil {
@@ -212,6 +237,7 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 }
 
 type OceanAutoscalerDown struct {
+	// Would represent the maximum % to scale-down. Number between 1-100.
 	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -227,6 +253,7 @@ type OceanAutoscalerDownInput interface {
 }
 
 type OceanAutoscalerDownArgs struct {
+	// Would represent the maximum % to scale-down. Number between 1-100.
 	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -306,6 +333,8 @@ func (o OceanAutoscalerDownOutput) ToOceanAutoscalerDownPtrOutputWithContext(ctx
 		return &v
 	}).(OceanAutoscalerDownPtrOutput)
 }
+
+// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -328,6 +357,7 @@ func (o OceanAutoscalerDownPtrOutput) Elem() OceanAutoscalerDownOutput {
 	return o.ApplyT(func(v *OceanAutoscalerDown) OceanAutoscalerDown { return *v }).(OceanAutoscalerDownOutput)
 }
 
+// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerDown) *float64 {
 		if v == nil {
@@ -338,9 +368,12 @@ func (o OceanAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64Ptr
 }
 
 type OceanAutoscalerHeadroom struct {
-	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// Optionally configure the amount of memory (MB) to allocate the headroom.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    *int `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+	NumOfUnits *int `pulumi:"numOfUnits"`
 }
 
 // OceanAutoscalerHeadroomInput is an input type that accepts OceanAutoscalerHeadroomArgs and OceanAutoscalerHeadroomOutput values.
@@ -355,9 +388,12 @@ type OceanAutoscalerHeadroomInput interface {
 }
 
 type OceanAutoscalerHeadroomArgs struct {
-	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Optionally configure the amount of memory (MB) to allocate the headroom.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (OceanAutoscalerHeadroomArgs) ElementType() reflect.Type {
@@ -436,14 +472,18 @@ func (o OceanAutoscalerHeadroomOutput) ToOceanAutoscalerHeadroomPtrOutputWithCon
 		return &v
 	}).(OceanAutoscalerHeadroomPtrOutput)
 }
+
+// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -466,6 +506,7 @@ func (o OceanAutoscalerHeadroomPtrOutput) Elem() OceanAutoscalerHeadroomOutput {
 	return o.ApplyT(func(v *OceanAutoscalerHeadroom) OceanAutoscalerHeadroom { return *v }).(OceanAutoscalerHeadroomOutput)
 }
 
+// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerHeadroom) *int {
 		if v == nil {
@@ -475,6 +516,7 @@ func (o OceanAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerHeadroom) *int {
 		if v == nil {
@@ -484,6 +526,7 @@ func (o OceanAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerHeadroom) *int {
 		if v == nil {
@@ -494,8 +537,10 @@ func (o OceanAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 }
 
 type OceanAutoscalerResourceLimits struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
-	MaxVcpu      *int `pulumi:"maxVcpu"`
+	// The maximum cpu in vCPU units that can be allocated to the cluster.
+	MaxVcpu *int `pulumi:"maxVcpu"`
 }
 
 // OceanAutoscalerResourceLimitsInput is an input type that accepts OceanAutoscalerResourceLimitsArgs and OceanAutoscalerResourceLimitsOutput values.
@@ -510,8 +555,10 @@ type OceanAutoscalerResourceLimitsInput interface {
 }
 
 type OceanAutoscalerResourceLimitsArgs struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
-	MaxVcpu      pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	// The maximum cpu in vCPU units that can be allocated to the cluster.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
 }
 
 func (OceanAutoscalerResourceLimitsArgs) ElementType() reflect.Type {
@@ -590,10 +637,13 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 		return &v
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
+
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
+// The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
@@ -616,6 +666,7 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLi
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits { return *v }).(OceanAutoscalerResourceLimitsOutput)
 }
 
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -625,6 +676,7 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -2120,7 +2172,7 @@ type OceanOptimizeImages struct {
 	PerformAt string `pulumi:"performAt"`
 	// Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
 	ShouldOptimizeEcsAmi bool `pulumi:"shouldOptimizeEcsAmi"`
-	// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+	// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
 	TimeWindows []string `pulumi:"timeWindows"`
 }
 
@@ -2140,7 +2192,7 @@ type OceanOptimizeImagesArgs struct {
 	PerformAt pulumi.StringInput `pulumi:"performAt"`
 	// Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
 	ShouldOptimizeEcsAmi pulumi.BoolInput `pulumi:"shouldOptimizeEcsAmi"`
-	// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+	// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
 
@@ -2231,7 +2283,7 @@ func (o OceanOptimizeImagesOutput) ShouldOptimizeEcsAmi() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanOptimizeImages) bool { return v.ShouldOptimizeEcsAmi }).(pulumi.BoolOutput)
 }
 
-// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
 func (o OceanOptimizeImagesOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanOptimizeImages) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
 }
@@ -2274,7 +2326,7 @@ func (o OceanOptimizeImagesPtrOutput) ShouldOptimizeEcsAmi() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
 func (o OceanOptimizeImagesPtrOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanOptimizeImages) []string {
 		if v == nil {
@@ -2285,8 +2337,10 @@ func (o OceanOptimizeImagesPtrOutput) TimeWindows() pulumi.StringArrayOutput {
 }
 
 type OceanScheduledTask struct {
+	// Set shutdown hours for cluster object.
 	ShutdownHours *OceanScheduledTaskShutdownHours `pulumi:"shutdownHours"`
-	Tasks         []OceanScheduledTaskTask         `pulumi:"tasks"`
+	// The scheduling tasks for the cluster.
+	Tasks []OceanScheduledTaskTask `pulumi:"tasks"`
 }
 
 // OceanScheduledTaskInput is an input type that accepts OceanScheduledTaskArgs and OceanScheduledTaskOutput values.
@@ -2301,8 +2355,10 @@ type OceanScheduledTaskInput interface {
 }
 
 type OceanScheduledTaskArgs struct {
+	// Set shutdown hours for cluster object.
 	ShutdownHours OceanScheduledTaskShutdownHoursPtrInput `pulumi:"shutdownHours"`
-	Tasks         OceanScheduledTaskTaskArrayInput        `pulumi:"tasks"`
+	// The scheduling tasks for the cluster.
+	Tasks OceanScheduledTaskTaskArrayInput `pulumi:"tasks"`
 }
 
 func (OceanScheduledTaskArgs) ElementType() reflect.Type {
@@ -2356,10 +2412,12 @@ func (o OceanScheduledTaskOutput) ToOceanScheduledTaskOutputWithContext(ctx cont
 	return o
 }
 
+// Set shutdown hours for cluster object.
 func (o OceanScheduledTaskOutput) ShutdownHours() OceanScheduledTaskShutdownHoursPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTask) *OceanScheduledTaskShutdownHours { return v.ShutdownHours }).(OceanScheduledTaskShutdownHoursPtrOutput)
 }
 
+// The scheduling tasks for the cluster.
 func (o OceanScheduledTaskOutput) Tasks() OceanScheduledTaskTaskArrayOutput {
 	return o.ApplyT(func(v OceanScheduledTask) []OceanScheduledTaskTask { return v.Tasks }).(OceanScheduledTaskTaskArrayOutput)
 }
@@ -2385,8 +2443,9 @@ func (o OceanScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanScheduledTa
 }
 
 type OceanScheduledTaskShutdownHours struct {
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 	IsEnabled *bool `pulumi:"isEnabled"`
-	// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+	// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
 	TimeWindows []string `pulumi:"timeWindows"`
 }
 
@@ -2402,8 +2461,9 @@ type OceanScheduledTaskShutdownHoursInput interface {
 }
 
 type OceanScheduledTaskShutdownHoursArgs struct {
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+	// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
 
@@ -2483,11 +2543,13 @@ func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHours
 		return &v
 	}).(OceanScheduledTaskShutdownHoursPtrOutput)
 }
+
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 func (o OceanScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
 func (o OceanScheduledTaskShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
 }
@@ -2510,6 +2572,7 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) Elem() OceanScheduledTaskShutd
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) OceanScheduledTaskShutdownHours { return *v }).(OceanScheduledTaskShutdownHoursOutput)
 }
 
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) *bool {
 		if v == nil {
@@ -2519,7 +2582,7 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
 func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) []string {
 		if v == nil {
@@ -2530,9 +2593,12 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArr
 }
 
 type OceanScheduledTaskTask struct {
+	// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
 	CronExpression string `pulumi:"cronExpression"`
-	IsEnabled      bool   `pulumi:"isEnabled"`
-	TaskType       string `pulumi:"taskType"`
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+	IsEnabled bool `pulumi:"isEnabled"`
+	// Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+	TaskType string `pulumi:"taskType"`
 }
 
 // OceanScheduledTaskTaskInput is an input type that accepts OceanScheduledTaskTaskArgs and OceanScheduledTaskTaskOutput values.
@@ -2547,9 +2613,12 @@ type OceanScheduledTaskTaskInput interface {
 }
 
 type OceanScheduledTaskTaskArgs struct {
+	// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	IsEnabled      pulumi.BoolInput   `pulumi:"isEnabled"`
-	TaskType       pulumi.StringInput `pulumi:"taskType"`
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+	// Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+	TaskType pulumi.StringInput `pulumi:"taskType"`
 }
 
 func (OceanScheduledTaskTaskArgs) ElementType() reflect.Type {
@@ -2603,14 +2672,17 @@ func (o OceanScheduledTaskTaskOutput) ToOceanScheduledTaskTaskOutputWithContext(
 	return o
 }
 
+// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
 func (o OceanScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 func (o OceanScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
+// Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
 func (o OceanScheduledTaskTaskOutput) TaskType() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) string { return v.TaskType }).(pulumi.StringOutput)
 }
@@ -2743,7 +2815,8 @@ func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
 
 type OceanUpdatePolicy struct {
 	RollConfig *OceanUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll bool                         `pulumi:"shouldRoll"`
+	// Enables the roll.
+	ShouldRoll bool `pulumi:"shouldRoll"`
 }
 
 // OceanUpdatePolicyInput is an input type that accepts OceanUpdatePolicyArgs and OceanUpdatePolicyOutput values.
@@ -2759,7 +2832,8 @@ type OceanUpdatePolicyInput interface {
 
 type OceanUpdatePolicyArgs struct {
 	RollConfig OceanUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll pulumi.BoolInput                    `pulumi:"shouldRoll"`
+	// Enables the roll.
+	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
 }
 
 func (OceanUpdatePolicyArgs) ElementType() reflect.Type {
@@ -2842,6 +2916,7 @@ func (o OceanUpdatePolicyOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutp
 	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
+// Enables the roll.
 func (o OceanUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
@@ -2873,6 +2948,7 @@ func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrO
 	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
+// Enables the roll.
 func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
 		if v == nil {
@@ -2883,6 +2959,7 @@ func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 }
 
 type OceanUpdatePolicyRollConfig struct {
+	// Sets the percentage of the instances to deploy in each batch.
 	BatchSizePercentage int `pulumi:"batchSizePercentage"`
 }
 
@@ -2898,6 +2975,7 @@ type OceanUpdatePolicyRollConfigInput interface {
 }
 
 type OceanUpdatePolicyRollConfigArgs struct {
+	// Sets the percentage of the instances to deploy in each batch.
 	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
 }
 
@@ -2977,6 +3055,8 @@ func (o OceanUpdatePolicyRollConfigOutput) ToOceanUpdatePolicyRollConfigPtrOutpu
 		return &v
 	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
+
+// Sets the percentage of the instances to deploy in each batch.
 func (o OceanUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
@@ -2999,6 +3079,7 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) Elem() OceanUpdatePolicyRollConfig
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig { return *v }).(OceanUpdatePolicyRollConfigOutput)
 }
 
+// Sets the percentage of the instances to deploy in each batch.
 func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) *int {
 		if v == nil {

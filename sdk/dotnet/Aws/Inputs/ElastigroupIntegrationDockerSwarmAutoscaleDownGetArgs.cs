@@ -12,9 +12,16 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationDockerSwarmAutoscaleDownGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// How many evaluation periods should accumulate before a scale down action takes place.
+        /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 
+        /// <summary>
+        /// Would represent the maximum % to scale-down. Number between 1-100.  
+        /// Usage:
+        /// </summary>
         [Input("maxScaleDownPercentage")]
         public Input<double>? MaxScaleDownPercentage { get; set; }
 

@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationMesosphereArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The public IP of the DC/OS Master.
+        /// </summary>
         [Input("apiServer", required: true)]
         public Input<string> ApiServer { get; set; } = null!;
 

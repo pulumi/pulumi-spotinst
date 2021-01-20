@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Labels value.
+        /// The dimension value.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

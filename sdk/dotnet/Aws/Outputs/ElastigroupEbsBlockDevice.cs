@@ -13,14 +13,41 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupEbsBlockDevice
     {
+        /// <summary>
+        /// Whether the volume should be destroyed on instance termination.
+        /// </summary>
         public readonly bool? DeleteOnTermination;
+        /// <summary>
+        /// The name of the device to mount.
+        /// </summary>
         public readonly string DeviceName;
+        /// <summary>
+        /// Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+        /// </summary>
         public readonly bool? Encrypted;
+        /// <summary>
+        /// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `"io1"`.
+        /// </summary>
         public readonly int? Iops;
+        /// <summary>
+        /// ID for a user managed CMK under which the EBS Volume is encrypted
+        /// </summary>
         public readonly string? KmsKeyId;
+        /// <summary>
+        /// The Snapshot ID to mount.
+        /// </summary>
         public readonly string? SnapshotId;
+        /// <summary>
+        /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+        /// </summary>
         public readonly int? Throughput;
+        /// <summary>
+        /// The size of the volume in gigabytes.
+        /// </summary>
         public readonly int? VolumeSize;
+        /// <summary>
+        /// The type of volume. Can be `"standard"`, `"gp2"`, `"io1"`, `"st1"` or `"sc1"`.
+        /// </summary>
         public readonly string? VolumeType;
 
         [OutputConstructor]

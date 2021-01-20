@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class ElastigroupIntegrationGkeAutoscaleHeadroomGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cpu units for compute.
+        /// </summary>
         [Input("cpuPerUnit")]
         public Input<int>? CpuPerUnit { get; set; }
 
+        /// <summary>
+        /// RAM units for compute.
+        /// </summary>
         [Input("memoryPerUnit")]
         public Input<int>? MemoryPerUnit { get; set; }
 
+        /// <summary>
+        /// Amount of units for compute.
+        /// </summary>
         [Input("numOfUnits")]
         public Input<int>? NumOfUnits { get; set; }
 

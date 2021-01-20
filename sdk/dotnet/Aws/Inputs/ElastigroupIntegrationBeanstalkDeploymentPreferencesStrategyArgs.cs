@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        /// <summary>
+        /// Specify whether to drain incoming TCP connections before terminating a server.
+        /// </summary>
         [Input("shouldDrainInstances")]
         public Input<bool>? ShouldDrainInstances { get; set; }
 

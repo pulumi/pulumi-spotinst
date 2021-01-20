@@ -176,213 +176,6 @@ namespace Pulumi.SpotInst.Azure
     /// 
     /// }
     /// ```
-    /// ## Load Balancers
-    /// 
-    /// * `load_balancers` - (Required) Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-    /// * `type` - (Required) The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-    /// * `balancer_id` - (Required) The balancer ID.
-    /// * `target_set_id` - (Required) The scale set ID associated with the load balancer.
-    /// * `auto_weight` - (Optional, Default: `false`)
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="image"&gt;&lt;/a&gt;
-    /// ## Image
-    /// 
-    /// * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-    /// * `publisher` - (Optional) Image publisher. Required if resource_group_name is not specified.
-    /// * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
-    /// * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-    /// * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
-    /// * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="health-check"&gt;&lt;/a&gt;
-    /// ## Health Check
-    /// 
-    /// * `health_check` - (Optional) Describes the health check configuration.
-    /// * `health_check_type` - (Optional) Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-    /// * `grace_period` - (Optional) Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-    /// * `auto_healing` - (Optional) Enable auto-healing of unhealthy VMs.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="network"&gt;&lt;/a&gt;
-    /// ## Network
-    /// 
-    /// * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
-    /// * `virtual_network_name` - (Required) Name of Vnet.
-    /// * `subnet_name` - (Required) ID of subnet.
-    /// * `resource_group_name` - (Required) Vnet Resource Group Name.
-    /// * `assign_public_up` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
-    /// * `additional_ip_configs` - (Optional) Array of additional IP configuration objects.
-    /// * `name` - (Required) The IP configuration name.
-    /// * `private_ip_version` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="login"&gt;&lt;/a&gt;
-    /// ## Login
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="login"&gt;&lt;/a&gt;
-    /// ## Login
-    /// 
-    /// * `login` - (Required) Describes the login configuration.
-    /// * `user_name` - (Required) Set admin access for accessing your VMs.
-    /// * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux product types.
-    /// * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows product types.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="scaling-policy"&gt;&lt;/a&gt;
-    /// ## Scheduling
-    /// 
-    /// * `scheduled_task` - (Optional) Describes the configuration of one or more scheduled tasks.
-    /// * `is_enabled` - (Optional, Default: `true`) Describes whether the task is enabled. When true the task should run when false it should not run.
-    /// * `cron_expression` - (Required) A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
-    /// * `task_type` - (Required) The task type to run. Valid Values: `backup_ami`, `scale`, `scaleUp`, `roll`, `statefulUpdateCapacity`, `statefulRecycle`.
-    /// * `scale_min_capacity` - (Optional) The min capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
-    /// * `scale_max_capacity` - (Optional) The max capacity of the group. Required when ‘task_type' is ‘scale'.
-    /// * `scale_target_capacity` - (Optional) The target capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
-    /// * `adjustment` - (Optional) The number of instances to add/remove to/from the target capacity when scale is needed.
-    /// * `adjustment_percentage` - (Optional) The percent of instances to add/remove to/from the target capacity when scale is needed.
-    /// * `batch_size_percentage` - (Optional) The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
-    /// * `grace_period` - (Optional) The time to allow instances to become healthy.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="update-policy"&gt;&lt;/a&gt;
-    /// ## Update Policy
-    /// 
-    /// * `update_policy` - (Optional)
-    ///   
-    ///     * `should_roll` - (Required) Sets the enablement of the roll option.
-    ///     * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
-    ///         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-    ///         * `health_check_type` - (Optional) Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
-    ///         * `grace_period` - (Optional) Sets the grace period for new instances to become healthy.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="third-party-integrations"&gt;&lt;/a&gt;
-    /// ## Third-Party Integrations
-    /// 
-    /// * `integration_kubernetes` - (Optional) Describes the [Kubernetes](https://kubernetes.io/) integration.
-    ///     * `cluster_identifier` - (Required) The cluster ID.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// * `integration_multai_runtime` - (Optional) Describes the [Multai Runtime](https://spotinst.com/) integration.
-    ///     * `deployment_id` - (Optional) The deployment id you want to get
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Elastigroup : Pulumi.CustomResource
     {
@@ -395,21 +188,39 @@ namespace Pulumi.SpotInst.Azure
         [Output("desiredCapacity")]
         public Output<int?> DesiredCapacity { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the health check configuration.
+        /// </summary>
         [Output("healthCheck")]
         public Output<Outputs.ElastigroupHealthCheck?> HealthCheck { get; private set; } = null!;
 
+        /// <summary>
+        /// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+        /// </summary>
         [Output("images")]
         public Output<ImmutableArray<Outputs.ElastigroupImage>> Images { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Kubernetes](https://kubernetes.io/) integration.
+        /// </summary>
         [Output("integrationKubernetes")]
         public Output<Outputs.ElastigroupIntegrationKubernetes?> IntegrationKubernetes { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Multai Runtime](https://spotinst.com/) integration.
+        /// </summary>
         [Output("integrationMultaiRuntime")]
         public Output<Outputs.ElastigroupIntegrationMultaiRuntime?> IntegrationMultaiRuntime { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+        /// </summary>
         [Output("loadBalancers")]
         public Output<ImmutableArray<Outputs.ElastigroupLoadBalancer>> LoadBalancers { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the login configuration.
+        /// </summary>
         [Output("login")]
         public Output<Outputs.ElastigroupLogin?> Login { get; private set; } = null!;
 
@@ -435,11 +246,14 @@ namespace Pulumi.SpotInst.Azure
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the managed identity.
+        /// The dimension name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the Virtual Network and Subnet for your Elastigroup.
+        /// </summary>
         [Output("network")]
         public Output<Outputs.ElastigroupNetwork> Network { get; private set; } = null!;
 
@@ -462,7 +276,7 @@ namespace Pulumi.SpotInst.Azure
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The Resource Group that the user-assigned managed identity resides in.
+        /// Vnet Resource Group Name.
         /// </summary>
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
@@ -473,6 +287,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("scalingUpPolicies")]
         public Output<ImmutableArray<Outputs.ElastigroupScalingUpPolicy>> ScalingUpPolicies { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the configuration of one or more scheduled tasks.
+        /// </summary>
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.ElastigroupScheduledTask>> ScheduledTasks { get; private set; } = null!;
 
@@ -552,31 +369,51 @@ namespace Pulumi.SpotInst.Azure
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
+        /// <summary>
+        /// Describes the health check configuration.
+        /// </summary>
         [Input("healthCheck")]
         public Input<Inputs.ElastigroupHealthCheckArgs>? HealthCheck { get; set; }
 
         [Input("images")]
         private InputList<Inputs.ElastigroupImageArgs>? _images;
+
+        /// <summary>
+        /// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+        /// </summary>
         public InputList<Inputs.ElastigroupImageArgs> Images
         {
             get => _images ?? (_images = new InputList<Inputs.ElastigroupImageArgs>());
             set => _images = value;
         }
 
+        /// <summary>
+        /// Describes the [Kubernetes](https://kubernetes.io/) integration.
+        /// </summary>
         [Input("integrationKubernetes")]
         public Input<Inputs.ElastigroupIntegrationKubernetesArgs>? IntegrationKubernetes { get; set; }
 
+        /// <summary>
+        /// Describes the [Multai Runtime](https://spotinst.com/) integration.
+        /// </summary>
         [Input("integrationMultaiRuntime")]
         public Input<Inputs.ElastigroupIntegrationMultaiRuntimeArgs>? IntegrationMultaiRuntime { get; set; }
 
         [Input("loadBalancers")]
         private InputList<Inputs.ElastigroupLoadBalancerArgs>? _loadBalancers;
+
+        /// <summary>
+        /// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+        /// </summary>
         public InputList<Inputs.ElastigroupLoadBalancerArgs> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.ElastigroupLoadBalancerArgs>());
             set => _loadBalancers = value;
         }
 
+        /// <summary>
+        /// Describes the login configuration.
+        /// </summary>
         [Input("login")]
         public Input<Inputs.ElastigroupLoginArgs>? Login { get; set; }
 
@@ -613,11 +450,14 @@ namespace Pulumi.SpotInst.Azure
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The name of the managed identity.
+        /// The dimension name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Defines the Virtual Network and Subnet for your Elastigroup.
+        /// </summary>
         [Input("network", required: true)]
         public Input<Inputs.ElastigroupNetworkArgs> Network { get; set; } = null!;
 
@@ -646,7 +486,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The Resource Group that the user-assigned managed identity resides in.
+        /// Vnet Resource Group Name.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
@@ -669,6 +509,10 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("scheduledTasks")]
         private InputList<Inputs.ElastigroupScheduledTaskArgs>? _scheduledTasks;
+
+        /// <summary>
+        /// Describes the configuration of one or more scheduled tasks.
+        /// </summary>
         public InputList<Inputs.ElastigroupScheduledTaskArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.ElastigroupScheduledTaskArgs>());
@@ -712,31 +556,51 @@ namespace Pulumi.SpotInst.Azure
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
+        /// <summary>
+        /// Describes the health check configuration.
+        /// </summary>
         [Input("healthCheck")]
         public Input<Inputs.ElastigroupHealthCheckGetArgs>? HealthCheck { get; set; }
 
         [Input("images")]
         private InputList<Inputs.ElastigroupImageGetArgs>? _images;
+
+        /// <summary>
+        /// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+        /// </summary>
         public InputList<Inputs.ElastigroupImageGetArgs> Images
         {
             get => _images ?? (_images = new InputList<Inputs.ElastigroupImageGetArgs>());
             set => _images = value;
         }
 
+        /// <summary>
+        /// Describes the [Kubernetes](https://kubernetes.io/) integration.
+        /// </summary>
         [Input("integrationKubernetes")]
         public Input<Inputs.ElastigroupIntegrationKubernetesGetArgs>? IntegrationKubernetes { get; set; }
 
+        /// <summary>
+        /// Describes the [Multai Runtime](https://spotinst.com/) integration.
+        /// </summary>
         [Input("integrationMultaiRuntime")]
         public Input<Inputs.ElastigroupIntegrationMultaiRuntimeGetArgs>? IntegrationMultaiRuntime { get; set; }
 
         [Input("loadBalancers")]
         private InputList<Inputs.ElastigroupLoadBalancerGetArgs>? _loadBalancers;
+
+        /// <summary>
+        /// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+        /// </summary>
         public InputList<Inputs.ElastigroupLoadBalancerGetArgs> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.ElastigroupLoadBalancerGetArgs>());
             set => _loadBalancers = value;
         }
 
+        /// <summary>
+        /// Describes the login configuration.
+        /// </summary>
         [Input("login")]
         public Input<Inputs.ElastigroupLoginGetArgs>? Login { get; set; }
 
@@ -773,11 +637,14 @@ namespace Pulumi.SpotInst.Azure
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The name of the managed identity.
+        /// The dimension name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Defines the Virtual Network and Subnet for your Elastigroup.
+        /// </summary>
         [Input("network")]
         public Input<Inputs.ElastigroupNetworkGetArgs>? Network { get; set; }
 
@@ -806,7 +673,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The Resource Group that the user-assigned managed identity resides in.
+        /// Vnet Resource Group Name.
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
@@ -829,6 +696,10 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("scheduledTasks")]
         private InputList<Inputs.ElastigroupScheduledTaskGetArgs>? _scheduledTasks;
+
+        /// <summary>
+        /// Describes the configuration of one or more scheduled tasks.
+        /// </summary>
         public InputList<Inputs.ElastigroupScheduledTaskGetArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.ElastigroupScheduledTaskGetArgs>());

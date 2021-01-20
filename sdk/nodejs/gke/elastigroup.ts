@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *         }],
  *         serviceName: "backend-service",
  *     }],
- *     // cluster_id        = "terraform-acc-test-cluster" // deprecated
+ *     // cluster_id        = "sample-acc-test-cluster" // deprecated
  *     clusterZoneName: "us-central1-a",
  *     desiredCapacity: 3,
  *     // --- INSTANCE TYPES --------------------------------
@@ -69,62 +69,6 @@ import * as utilities from "../utilities";
  *     preemptiblePercentage: 100,
  * });
  * ```
- * ## Third-Party Integrations
- *
- * * `integrationGke` - (Required) Describes the GKE integration.
- *   
- *     * `location` - (Optional) The location of your GKE cluster.
- *     * `clusterId` - (Optional) The GKE cluster ID you wish to import.
- *     * `autoscaleIsEnabled` -  (Optional, Default: `false`) Specifies whether the auto scaling feature is enabled.
- *     * `autoscaleIsAutoconfig` - (Optional, Default: `false`) Enabling the automatic auto-scaler functionality. For more information please see: .
- *     * `autoscaleCooldown` - (Optional, Default: `300`) The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
- *   
- *     * `autoscaleHeadroom` - (Optional) Headroom for the cluster.
- *         * `cpuPerUnit` - (Optional, Default: `0`) Cpu units for compute.
- *         * `memoryPerUnit` - (Optional, Default: `0`) RAM units for compute.
- *         * `numOfUnits` - (Optional, Default: `0`) Amount of units for compute.
- *   
- *     * `autoscaleDown` - (Optional) Enabling scale down.
- *         * `evaluationPeriods` - (Optional, Default: `5`) Amount of cooldown evaluation periods for scale down.
- *   
- *     * `autoscaleLabels` - (Optional) Labels to assign to the resource.
- *         * `key` - (Optional) The label name.
- *         * `value` - (Optional) The label value.
- *
- * Usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="diff-suppressed-parameters"></a>
- * ## Diff-suppressed Parameters
- *
- * The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these
- * imported parameters by defining them in your template with your desired new value (including null values).
- *
- * * `backendServices`
- *     * `serviceName`
- *     * `locationType`
- *     * `scheme`
- *     * `namedPort`
- *         * `portName`
- *         * `ports`
- * * `labels`
- *     * `key`
- *     * `value`
- * * `metadata`
- *     * `key`
- *     * `value`
- * * `tags`
- *     * `key`
- *     * `value`
- * * `serviceAccount`
- * * `ipForwarding`
- * * `fallbackToOd`
- * * `subnets`
- *     * `region`
- *     * `subnetName`
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**
@@ -156,7 +100,7 @@ export class Elastigroup extends pulumi.CustomResource {
 
     public readonly backendServices!: pulumi.Output<outputs.gke.ElastigroupBackendService[] | undefined>;
     /**
-     * The name of the GKE cluster you wish to import.
+     * The GKE cluster ID you wish to import.
      *
      * @deprecated Please define cluster_id under integration_gke
      */
@@ -174,6 +118,9 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly instanceTypesOndemand!: pulumi.Output<string | undefined>;
     public readonly instanceTypesPreemptibles!: pulumi.Output<string[] | undefined>;
     public readonly integrationDockerSwarm!: pulumi.Output<outputs.gke.ElastigroupIntegrationDockerSwarm | undefined>;
+    /**
+     * Describes the GKE integration.
+     */
     public readonly integrationGke!: pulumi.Output<outputs.gke.ElastigroupIntegrationGke | undefined>;
     public readonly ipForwarding!: pulumi.Output<boolean | undefined>;
     public readonly labels!: pulumi.Output<outputs.gke.ElastigroupLabel[] | undefined>;
@@ -291,7 +238,7 @@ export class Elastigroup extends pulumi.CustomResource {
 export interface ElastigroupState {
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
-     * The name of the GKE cluster you wish to import.
+     * The GKE cluster ID you wish to import.
      *
      * @deprecated Please define cluster_id under integration_gke
      */
@@ -309,6 +256,9 @@ export interface ElastigroupState {
     readonly instanceTypesOndemand?: pulumi.Input<string>;
     readonly instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
     readonly integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm>;
+    /**
+     * Describes the GKE integration.
+     */
     readonly integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke>;
     readonly ipForwarding?: pulumi.Input<boolean>;
     readonly labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
@@ -337,7 +287,7 @@ export interface ElastigroupState {
 export interface ElastigroupArgs {
     readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
-     * The name of the GKE cluster you wish to import.
+     * The GKE cluster ID you wish to import.
      *
      * @deprecated Please define cluster_id under integration_gke
      */
@@ -355,6 +305,9 @@ export interface ElastigroupArgs {
     readonly instanceTypesOndemand?: pulumi.Input<string>;
     readonly instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
     readonly integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm>;
+    /**
+     * Describes the GKE integration.
+     */
     readonly integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke>;
     readonly ipForwarding?: pulumi.Input<boolean>;
     readonly labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;

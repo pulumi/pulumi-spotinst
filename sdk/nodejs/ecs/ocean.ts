@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *             volumeType: "gp2",
  *         },
  *     }],
- *     clusterName: "terraform-ecs-cluster",
+ *     clusterName: "sample-ecs-cluster",
  *     desiredCapacity: 0,
  *     drainingTimeout: 120,
  *     ebsOptimized: true,
@@ -66,53 +66,6 @@ import * as utilities from "../utilities";
  *
  * export const oceanId = spotinst_ocean_ecs.example.id;
  * ```
- * ## Auto Scaler
- *
- * * `autoscaler` - (Optional) Describes the Ocean ECS autoscaler.
- *     * `isEnabled` - (Optional, Default: `true`) Enable the Ocean ECS autoscaler.
- *     * `isAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
- *     * `cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
- *     * `headroom` - (Optional) Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
- *         * `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
- *         * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
- *         * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
- *     * `down` - (Optional) Auto Scaling scale down operations.
- *         * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
- *     * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
- *         * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
- *         * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="update-policy"></a>
- * ## Update Policy
- *
- * * `updatePolicy` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
- *     * `shouldRoll` - (Required) Enables the roll.
- *     * `rollConfig` - (Required)
- *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * <a id="scheduled-task"></a>
- * ## scheduled task
- *
- * * `scheduledTask` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
- *     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
- *         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
- *         * `timeWindows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
- *     * `tasks` - (Optional) The scheduling tasks for the cluster.
- *         * `isEnabled` - (Required) Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
- *         * `cronExpression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
- *         * `taskType` - (Required) Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
  */
 export class Ocean extends pulumi.CustomResource {
     /**
@@ -146,6 +99,9 @@ export class Ocean extends pulumi.CustomResource {
      * Configure public IP address allocation.
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
+    /**
+     * Describes the Ocean ECS autoscaler.
+     */
     public readonly autoscaler!: pulumi.Output<outputs.ecs.OceanAutoscaler | undefined>;
     /**
      * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -203,6 +159,9 @@ export class Ocean extends pulumi.CustomResource {
      * The region the cluster will run in.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     public readonly scheduledTasks!: pulumi.Output<outputs.ecs.OceanScheduledTask[] | undefined>;
     /**
      * One or more security group ids.
@@ -216,6 +175,9 @@ export class Ocean extends pulumi.CustomResource {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     public readonly tags!: pulumi.Output<outputs.ecs.OceanTag[] | undefined>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     public readonly updatePolicy!: pulumi.Output<outputs.ecs.OceanUpdatePolicy | undefined>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
@@ -327,6 +289,9 @@ export interface OceanState {
      * Configure public IP address allocation.
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
+    /**
+     * Describes the Ocean ECS autoscaler.
+     */
     readonly autoscaler?: pulumi.Input<inputs.ecs.OceanAutoscaler>;
     /**
      * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -384,6 +349,9 @@ export interface OceanState {
      * The region the cluster will run in.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
@@ -397,6 +365,9 @@ export interface OceanState {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanTag>[]>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     readonly updatePolicy?: pulumi.Input<inputs.ecs.OceanUpdatePolicy>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
@@ -421,6 +392,9 @@ export interface OceanArgs {
      * Configure public IP address allocation.
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
+    /**
+     * Describes the Ocean ECS autoscaler.
+     */
     readonly autoscaler?: pulumi.Input<inputs.ecs.OceanAutoscaler>;
     /**
      * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -478,6 +452,9 @@ export interface OceanArgs {
      * The region the cluster will run in.
      */
     readonly region: pulumi.Input<string>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
@@ -491,6 +468,9 @@ export interface OceanArgs {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanTag>[]>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     readonly updatePolicy?: pulumi.Input<inputs.ecs.OceanUpdatePolicy>;
     /**
      * Base64-encoded MIME user data to make available to the instances.

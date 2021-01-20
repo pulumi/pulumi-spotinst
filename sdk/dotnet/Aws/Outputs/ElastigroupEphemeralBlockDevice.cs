@@ -13,7 +13,14 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupEphemeralBlockDevice
     {
+        /// <summary>
+        /// The name of the block device to mount on the instance.
+        /// </summary>
         public readonly string DeviceName;
+        /// <summary>
+        /// The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
+        /// (e.g. `"ephemeral0"`).
+        /// </summary>
         public readonly string VirtualName;
 
         [OutputConstructor]

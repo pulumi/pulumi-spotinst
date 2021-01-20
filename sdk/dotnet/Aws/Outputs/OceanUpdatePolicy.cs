@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanUpdatePolicy
     {
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         public readonly Outputs.OceanUpdatePolicyRollConfig? RollConfig;
+        /// <summary>
+        /// Enables the roll.
+        /// </summary>
         public readonly bool ShouldRoll;
 
         [OutputConstructor]

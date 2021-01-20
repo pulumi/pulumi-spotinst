@@ -5,6 +5,106 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a Spotinst AWS group resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * // Create an Elastigroup
+ * const default_elastigroup = new spotinst.aws.Elastigroup("default-elastigroup", {
+ *     capacityUnit: "weight",
+ *     cpuCredits: "unlimited",
+ *     description: "created by Pulumi",
+ *     desiredCapacity: 0,
+ *     ebsOptimized: false,
+ *     enableMonitoring: false,
+ *     fallbackToOndemand: false,
+ *     iamInstanceProfile: "iam-profile",
+ *     imageId: "ami-a27d8fda",
+ *     instanceTypesOndemand: "m3.2xlarge",
+ *     instanceTypesPreferredSpots: ["m3.xlarge"],
+ *     instanceTypesSpots: [
+ *         "m3.xlarge",
+ *         "m3.2xlarge",
+ *     ],
+ *     instanceTypesWeights: [
+ *         {
+ *             instanceType: "c3.large",
+ *             weight: 10,
+ *         },
+ *         {
+ *             instanceType: "c4.xlarge",
+ *             weight: 16,
+ *         },
+ *     ],
+ *     keyName: "my-key.ssh",
+ *     maxSize: 0,
+ *     metadataOptions: {
+ *         httpPutResponseHopLimit: 10,
+ *         httpTokens: "optional",
+ *     },
+ *     minSize: 0,
+ *     orientation: "balanced",
+ *     placementTenancy: "default",
+ *     product: "Linux/UNIX",
+ *     region: "us-west-2",
+ *     scalingDownPolicies: [{
+ *         adjustment: "1",
+ *         cooldown: 300,
+ *         evaluationPeriods: 10,
+ *         metricName: "DefaultQueuesDepth",
+ *         namespace: "custom",
+ *         period: 60,
+ *         policyName: "Default Scaling Down Policy",
+ *         statistic: "average",
+ *         threshold: 10,
+ *         unit: "none",
+ *     }],
+ *     scalingStrategies: [{
+ *         terminateAtEndOfBillingHour: true,
+ *         terminationPolicy: "default",
+ *     }],
+ *     scalingUpPolicies: [{
+ *         adjustment: "1",
+ *         cooldown: 300,
+ *         evaluationPeriods: 5,
+ *         metricName: "DefaultQueuesDepth",
+ *         namespace: "custom",
+ *         period: 60,
+ *         policyName: "Default Scaling Up Policy",
+ *         statistic: "average",
+ *         threshold: 100,
+ *         unit: "none",
+ *     }],
+ *     securityGroups: ["sg-123456"],
+ *     subnetIds: [
+ *         "sb-123456",
+ *         "sb-456789",
+ *     ],
+ *     tags: [
+ *         {
+ *             key: "Env",
+ *             value: "production",
+ *         },
+ *         {
+ *             key: "Name",
+ *             value: "default-production",
+ *         },
+ *         {
+ *             key: "Project",
+ *             value: "app_v2",
+ *         },
+ *     ],
+ *     userData: "echo hello world",
+ *     waitForCapacity: 5,
+ *     waitForCapacityTimeout: 300,
+ * }, { ignoreChanges: ["desiredCapacity"] });
+ * ```
+ */
 export class Elastigroup extends pulumi.CustomResource {
     /**
      * Get an existing Elastigroup resource's state with the given name, ID, and optional extra
@@ -39,6 +139,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
      */
     public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
+    /**
+     * String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+     */
     public readonly blockDevicesMode!: pulumi.Output<string | undefined>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
@@ -49,7 +152,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly cpuCredits!: pulumi.Output<string | undefined>;
     /**
-     * The group description.
+     * The description of the network interface.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -57,7 +160,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
     /**
-     * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+     * Indicates (in seconds) the timeout to wait until instance are detached.
      */
     public readonly drainingTimeout!: pulumi.Output<number>;
     public readonly ebsBlockDevices!: pulumi.Output<outputs.aws.ElastigroupEbsBlockDevice[] | undefined>;
@@ -69,6 +172,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
      */
     public readonly elasticIps!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of Elastic Load Balancers names (ELB).
+     */
     public readonly elasticLoadBalancers!: pulumi.Output<string[] | undefined>;
     /**
      * Indicates whether monitoring is enabled for the instance.
@@ -80,15 +186,15 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly fallbackToOndemand!: pulumi.Output<boolean>;
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health.
+     * The amount of time, in seconds, after the instance has launched to starts and check its health
      */
     public readonly healthCheckGracePeriod!: pulumi.Output<number | undefined>;
     /**
-     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+     * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
      */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
-     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
      */
     public readonly healthCheckUnhealthyDurationBeforeReplacement!: pulumi.Output<number | undefined>;
     /**
@@ -116,15 +222,45 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly instanceTypesWeights!: pulumi.Output<outputs.aws.ElastigroupInstanceTypesWeight[] | undefined>;
     public readonly integrationBeanstalk!: pulumi.Output<outputs.aws.ElastigroupIntegrationBeanstalk | undefined>;
+    /**
+     * Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+     */
     public readonly integrationCodedeploy!: pulumi.Output<outputs.aws.ElastigroupIntegrationCodedeploy | undefined>;
+    /**
+     * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+     */
     public readonly integrationDockerSwarm!: pulumi.Output<outputs.aws.ElastigroupIntegrationDockerSwarm | undefined>;
+    /**
+     * Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+     */
     public readonly integrationEcs!: pulumi.Output<outputs.aws.ElastigroupIntegrationEcs | undefined>;
+    /**
+     * Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+     */
     public readonly integrationGitlab!: pulumi.Output<outputs.aws.ElastigroupIntegrationGitlab | undefined>;
+    /**
+     * Describes the [Kubernetes](https://kubernetes.io/) integration.
+     */
     public readonly integrationKubernetes!: pulumi.Output<outputs.aws.ElastigroupIntegrationKubernetes | undefined>;
+    /**
+     * Describes the [Mesosphere](https://mesosphere.com/) integration.
+     */
     public readonly integrationMesosphere!: pulumi.Output<outputs.aws.ElastigroupIntegrationMesosphere | undefined>;
+    /**
+     * Describes the [Multai Runtime](https://spotinst.com/) integration.
+     */
     public readonly integrationMultaiRuntime!: pulumi.Output<outputs.aws.ElastigroupIntegrationMultaiRuntime | undefined>;
+    /**
+     * Describes the [Nomad](https://www.nomadproject.io/) integration.
+     */
     public readonly integrationNomad!: pulumi.Output<outputs.aws.ElastigroupIntegrationNomad | undefined>;
+    /**
+     * Describes the [Rancher](http://rancherlabs.com/) integration.
+     */
     public readonly integrationRancher!: pulumi.Output<outputs.aws.ElastigroupIntegrationRancher | undefined>;
+    /**
+     * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+     */
     public readonly integrationRoute53!: pulumi.Output<outputs.aws.ElastigroupIntegrationRoute53 | undefined>;
     /**
      * The key name that should be used for the instance.
@@ -143,9 +279,12 @@ export class Elastigroup extends pulumi.CustomResource {
      * The minimum number of instances the group should have at any time.
      */
     public readonly minSize!: pulumi.Output<number>;
+    /**
+     * Set of targets to register.
+     */
     public readonly multaiTargetSets!: pulumi.Output<outputs.aws.ElastigroupMultaiTargetSet[] | undefined>;
     /**
-     * The group name.
+     * The record set name.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaces!: pulumi.Output<outputs.aws.ElastigroupNetworkInterface[] | undefined>;
@@ -157,8 +296,17 @@ export class Elastigroup extends pulumi.CustomResource {
      * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
      */
     public readonly orientation!: pulumi.Output<string>;
+    /**
+     * Boolean, should the instance maintain its Data volumes.
+     */
     public readonly persistBlockDevices!: pulumi.Output<boolean | undefined>;
+    /**
+     * Boolean, should the instance maintain its private IP.
+     */
     public readonly persistPrivateIp!: pulumi.Output<boolean | undefined>;
+    /**
+     * Boolean, should the instance maintain its root device volumes.
+     */
     public readonly persistRootDevice!: pulumi.Output<boolean | undefined>;
     /**
      * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
@@ -169,6 +317,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     public readonly preferredAvailabilityZones!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+     */
     public readonly privateIps!: pulumi.Output<string[] | undefined>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
@@ -215,6 +366,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * A key/value mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<outputs.aws.ElastigroupTag[] | undefined>;
+    /**
+     * List of Target Group ARNs to register the instances to.
+     */
     public readonly targetGroupArns!: pulumi.Output<string[] | undefined>;
     public readonly updatePolicy!: pulumi.Output<outputs.aws.ElastigroupUpdatePolicy | undefined>;
     /**
@@ -433,6 +587,9 @@ export interface ElastigroupState {
      * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
      */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+     */
     readonly blockDevicesMode?: pulumi.Input<string>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
@@ -443,7 +600,7 @@ export interface ElastigroupState {
      */
     readonly cpuCredits?: pulumi.Input<string>;
     /**
-     * The group description.
+     * The description of the network interface.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -451,7 +608,7 @@ export interface ElastigroupState {
      */
     readonly desiredCapacity?: pulumi.Input<number>;
     /**
-     * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+     * Indicates (in seconds) the timeout to wait until instance are detached.
      */
     readonly drainingTimeout?: pulumi.Input<number>;
     readonly ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[]>;
@@ -463,6 +620,9 @@ export interface ElastigroupState {
      * A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
      */
     readonly elasticIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of Elastic Load Balancers names (ELB).
+     */
     readonly elasticLoadBalancers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether monitoring is enabled for the instance.
@@ -474,15 +634,15 @@ export interface ElastigroupState {
      */
     readonly fallbackToOndemand?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health.
+     * The amount of time, in seconds, after the instance has launched to starts and check its health
      */
     readonly healthCheckGracePeriod?: pulumi.Input<number>;
     /**
-     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+     * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
      */
     readonly healthCheckType?: pulumi.Input<string>;
     /**
-     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
      */
     readonly healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
     /**
@@ -510,15 +670,45 @@ export interface ElastigroupState {
      */
     readonly instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[]>;
     readonly integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk>;
+    /**
+     * Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+     */
     readonly integrationCodedeploy?: pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeploy>;
+    /**
+     * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+     */
     readonly integrationDockerSwarm?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarm>;
+    /**
+     * Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+     */
     readonly integrationEcs?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcs>;
+    /**
+     * Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+     */
     readonly integrationGitlab?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlab>;
+    /**
+     * Describes the [Kubernetes](https://kubernetes.io/) integration.
+     */
     readonly integrationKubernetes?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetes>;
+    /**
+     * Describes the [Mesosphere](https://mesosphere.com/) integration.
+     */
     readonly integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere>;
+    /**
+     * Describes the [Multai Runtime](https://spotinst.com/) integration.
+     */
     readonly integrationMultaiRuntime?: pulumi.Input<inputs.aws.ElastigroupIntegrationMultaiRuntime>;
+    /**
+     * Describes the [Nomad](https://www.nomadproject.io/) integration.
+     */
     readonly integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad>;
+    /**
+     * Describes the [Rancher](http://rancherlabs.com/) integration.
+     */
     readonly integrationRancher?: pulumi.Input<inputs.aws.ElastigroupIntegrationRancher>;
+    /**
+     * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+     */
     readonly integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53>;
     /**
      * The key name that should be used for the instance.
@@ -537,9 +727,12 @@ export interface ElastigroupState {
      * The minimum number of instances the group should have at any time.
      */
     readonly minSize?: pulumi.Input<number>;
+    /**
+     * Set of targets to register.
+     */
     readonly multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
     /**
-     * The group name.
+     * The record set name.
      */
     readonly name?: pulumi.Input<string>;
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
@@ -551,8 +744,17 @@ export interface ElastigroupState {
      * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
      */
     readonly orientation?: pulumi.Input<string>;
+    /**
+     * Boolean, should the instance maintain its Data volumes.
+     */
     readonly persistBlockDevices?: pulumi.Input<boolean>;
+    /**
+     * Boolean, should the instance maintain its private IP.
+     */
     readonly persistPrivateIp?: pulumi.Input<boolean>;
+    /**
+     * Boolean, should the instance maintain its root device volumes.
+     */
     readonly persistRootDevice?: pulumi.Input<boolean>;
     /**
      * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
@@ -563,6 +765,9 @@ export interface ElastigroupState {
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     readonly preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+     */
     readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
@@ -609,6 +814,9 @@ export interface ElastigroupState {
      * A key/value mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[]>;
+    /**
+     * List of Target Group ARNs to register the instances to.
+     */
     readonly targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
     readonly updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy>;
     /**
@@ -640,6 +848,9 @@ export interface ElastigroupArgs {
      * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
      */
     readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+     */
     readonly blockDevicesMode?: pulumi.Input<string>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
@@ -650,7 +861,7 @@ export interface ElastigroupArgs {
      */
     readonly cpuCredits?: pulumi.Input<string>;
     /**
-     * The group description.
+     * The description of the network interface.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -658,7 +869,7 @@ export interface ElastigroupArgs {
      */
     readonly desiredCapacity?: pulumi.Input<number>;
     /**
-     * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+     * Indicates (in seconds) the timeout to wait until instance are detached.
      */
     readonly drainingTimeout?: pulumi.Input<number>;
     readonly ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[]>;
@@ -670,6 +881,9 @@ export interface ElastigroupArgs {
      * A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
      */
     readonly elasticIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of Elastic Load Balancers names (ELB).
+     */
     readonly elasticLoadBalancers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether monitoring is enabled for the instance.
@@ -681,15 +895,15 @@ export interface ElastigroupArgs {
      */
     readonly fallbackToOndemand: pulumi.Input<boolean>;
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health.
+     * The amount of time, in seconds, after the instance has launched to starts and check its health
      */
     readonly healthCheckGracePeriod?: pulumi.Input<number>;
     /**
-     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+     * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
      */
     readonly healthCheckType?: pulumi.Input<string>;
     /**
-     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
      */
     readonly healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
     /**
@@ -717,15 +931,45 @@ export interface ElastigroupArgs {
      */
     readonly instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[]>;
     readonly integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk>;
+    /**
+     * Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+     */
     readonly integrationCodedeploy?: pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeploy>;
+    /**
+     * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+     */
     readonly integrationDockerSwarm?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarm>;
+    /**
+     * Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+     */
     readonly integrationEcs?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcs>;
+    /**
+     * Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+     */
     readonly integrationGitlab?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlab>;
+    /**
+     * Describes the [Kubernetes](https://kubernetes.io/) integration.
+     */
     readonly integrationKubernetes?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetes>;
+    /**
+     * Describes the [Mesosphere](https://mesosphere.com/) integration.
+     */
     readonly integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere>;
+    /**
+     * Describes the [Multai Runtime](https://spotinst.com/) integration.
+     */
     readonly integrationMultaiRuntime?: pulumi.Input<inputs.aws.ElastigroupIntegrationMultaiRuntime>;
+    /**
+     * Describes the [Nomad](https://www.nomadproject.io/) integration.
+     */
     readonly integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad>;
+    /**
+     * Describes the [Rancher](http://rancherlabs.com/) integration.
+     */
     readonly integrationRancher?: pulumi.Input<inputs.aws.ElastigroupIntegrationRancher>;
+    /**
+     * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+     */
     readonly integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53>;
     /**
      * The key name that should be used for the instance.
@@ -744,9 +988,12 @@ export interface ElastigroupArgs {
      * The minimum number of instances the group should have at any time.
      */
     readonly minSize?: pulumi.Input<number>;
+    /**
+     * Set of targets to register.
+     */
     readonly multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
     /**
-     * The group name.
+     * The record set name.
      */
     readonly name?: pulumi.Input<string>;
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
@@ -758,8 +1005,17 @@ export interface ElastigroupArgs {
      * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
      */
     readonly orientation: pulumi.Input<string>;
+    /**
+     * Boolean, should the instance maintain its Data volumes.
+     */
     readonly persistBlockDevices?: pulumi.Input<boolean>;
+    /**
+     * Boolean, should the instance maintain its private IP.
+     */
     readonly persistPrivateIp?: pulumi.Input<boolean>;
+    /**
+     * Boolean, should the instance maintain its root device volumes.
+     */
     readonly persistRootDevice?: pulumi.Input<boolean>;
     /**
      * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
@@ -770,6 +1026,9 @@ export interface ElastigroupArgs {
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     readonly preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+     */
     readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
@@ -816,6 +1075,9 @@ export interface ElastigroupArgs {
      * A key/value mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[]>;
+    /**
+     * List of Target Group ARNs to register the instances to.
+     */
     readonly targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
     readonly updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy>;
     /**

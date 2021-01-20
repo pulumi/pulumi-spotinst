@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Azure.Inputs
     {
         [Input("additionalIpConfigs")]
         private InputList<Inputs.ElastigroupNetworkAdditionalIpConfigGetArgs>? _additionalIpConfigs;
+
+        /// <summary>
+        /// Array of additional IP configuration objects.
+        /// </summary>
         public InputList<Inputs.ElastigroupNetworkAdditionalIpConfigGetArgs> AdditionalIpConfigs
         {
             get => _additionalIpConfigs ?? (_additionalIpConfigs = new InputList<Inputs.ElastigroupNetworkAdditionalIpConfigGetArgs>());
@@ -24,14 +28,20 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<bool>? AssignPublicIp { get; set; }
 
         /// <summary>
-        /// The Resource Group that the user-assigned managed identity resides in.
+        /// Vnet Resource Group Name.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
 
+        /// <summary>
+        /// ID of subnet.
+        /// </summary>
         [Input("subnetName", required: true)]
         public Input<string> SubnetName { get; set; } = null!;
 
+        /// <summary>
+        /// Name of Vnet.
+        /// </summary>
         [Input("virtualNetworkName", required: true)]
         public Input<string> VirtualNetworkName { get; set; } = null!;
 

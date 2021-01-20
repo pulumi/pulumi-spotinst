@@ -11,112 +11,6 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a Spotinst AWS ManagedInstance resource.
-    /// 
-    /// ## Network Interface - (Optional) List of network interfaces in an EC2 instance.
-    /// 
-    /// * `device_index` - (Optional) The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
-    /// * `associate_public_ip_address` - (Optional) Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
-    /// * `associate_ipv6_address` - (Optional) Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
-    ///    Default: false
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="scheduled-task"&gt;&lt;/a&gt;
-    /// ## Scheduled Tasks
-    /// 
-    /// Each `scheduled_task` supports the following:
-    /// 
-    /// * `is_enabled` - (Optional) Describes whether the task is enabled. When true the task should run when false it should not run.
-    /// * `frequency` - (Optional) Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
-    /// * `start_time` - (Optional) DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-    ///    Example: 2019-05-23T10:55:09Z
-    /// * `cron_expression` - (Optional) A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-    ///    Example: 0 1 * * *
-    /// * `task_type`- (Required) The task type to run. Valid values: "pause", "resume", "recycle".
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="load-balancers"&gt;&lt;/a&gt;
-    /// ## Load Balancers
-    /// 
-    ///    * `loadBalancersConfig` - (Optional) Load Balancers integration object.
-    ///      
-    ///        * `load_balancers` - (Optional) List of load balancers configs.
-    ///             * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
-    ///             * `arn` - The AWS resource ARN (Required only for ALB target groups).
-    ///             * `balancer_id` - The Multai load balancer ID.
-    ///                  Default: lb-123456
-    ///             * `target_set_id` - The Multai load target set ID.
-    ///                  Default: ts-123456
-    ///             * `auto_weight` - "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-    ///             * `zone_awareness` - "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
-    ///             * `type` - The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &lt;a id="route53"&gt;&lt;/a&gt;
-    /// ## route53
-    /// 
-    ///    * `integration_route53` - (Optional) Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-    ///      
-    ///        * `domains` - (Required) Route 53 Domain configurations.
-    ///            * `hosted_zone_id` - (Required) The Route 53 Hosted Zone Id for the registered Domain.
-    ///            * `spotinst_acct_id` - (Optional) The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
-    ///            * `record_set_type` - (Optional, Default: `a`) The type of the record set. Valid values: `"a"`, `"cname"`.
-    ///            * `record_sets` - (Required) List of record sets
-    ///                * `name` - (Required) The record set name.
-    ///                * `use_public_ip` - (Optional, Default: `false`) - Designates whether the IP address should be exposed to connections outside the VPC.
-    ///                * `use_public_dns` - (Optional, Default: `false`) - Designates whether the DNS address should be exposed to connections outside the VPC.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ManagedInstance : Pulumi.CustomResource
     {
@@ -206,6 +100,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("instanceTypes")]
         public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+        /// </summary>
         [Output("integrationRoute53")]
         public Output<Outputs.ManagedInstanceIntegrationRoute53?> IntegrationRoute53 { get; private set; } = null!;
 
@@ -222,11 +119,14 @@ namespace Pulumi.SpotInst.Aws
         [Output("lifeCycle")]
         public Output<string?> LifeCycle { get; private set; } = null!;
 
+        /// <summary>
+        /// List of load balancers configs.
+        /// </summary>
         [Output("loadBalancers")]
         public Output<ImmutableArray<Outputs.ManagedInstanceLoadBalancer>> LoadBalancers { get; private set; } = null!;
 
         /// <summary>
-        /// The ManagedInstance name.
+        /// The record set name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -486,6 +386,9 @@ namespace Pulumi.SpotInst.Aws
             set => _instanceTypes = value;
         }
 
+        /// <summary>
+        /// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+        /// </summary>
         [Input("integrationRoute53")]
         public Input<Inputs.ManagedInstanceIntegrationRoute53Args>? IntegrationRoute53 { get; set; }
 
@@ -504,6 +407,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("loadBalancers")]
         private InputList<Inputs.ManagedInstanceLoadBalancerArgs>? _loadBalancers;
+
+        /// <summary>
+        /// List of load balancers configs.
+        /// </summary>
         public InputList<Inputs.ManagedInstanceLoadBalancerArgs> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.ManagedInstanceLoadBalancerArgs>());
@@ -511,7 +418,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The ManagedInstance name.
+        /// The record set name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -766,6 +673,9 @@ namespace Pulumi.SpotInst.Aws
             set => _instanceTypes = value;
         }
 
+        /// <summary>
+        /// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+        /// </summary>
         [Input("integrationRoute53")]
         public Input<Inputs.ManagedInstanceIntegrationRoute53GetArgs>? IntegrationRoute53 { get; set; }
 
@@ -784,6 +694,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("loadBalancers")]
         private InputList<Inputs.ManagedInstanceLoadBalancerGetArgs>? _loadBalancers;
+
+        /// <summary>
+        /// List of load balancers configs.
+        /// </summary>
         public InputList<Inputs.ManagedInstanceLoadBalancerGetArgs> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.ManagedInstanceLoadBalancerGetArgs>());
@@ -791,7 +705,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The ManagedInstance name.
+        /// The record set name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationNomadAutoscaleDownGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// How many evaluation periods should accumulate before a scale down action takes place.
+        /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 

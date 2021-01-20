@@ -12,11 +12,19 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanImportScheduledTaskShutdownHoursArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable the Ocean Kubernetes Autoscaler.
+        /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
 
         [Input("timeWindows", required: true)]
         private InputList<string>? _timeWindows;
+
+        /// <summary>
+        /// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
+        /// Example: Fri:15:30-Wed:14:30
+        /// </summary>
         public InputList<string> TimeWindows
         {
             get => _timeWindows ?? (_timeWindows = new InputList<string>());

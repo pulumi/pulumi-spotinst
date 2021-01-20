@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Ecs.Inputs
 
     public sealed class OceanUpdatePolicyRollConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Sets the percentage of the instances to deploy in each batch.
+        /// </summary>
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
 

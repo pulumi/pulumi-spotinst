@@ -14,9 +14,12 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupSignal
     {
         /// <summary>
-        /// The group name.
+        /// The name of the signal defined for the group. Valid Values: `"INSTANCE_READY"`, `"INSTANCE_READY_TO_SHUTDOWN"`
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The signals defined timeout- default is 40 minutes (1800 seconds).
+        /// </summary>
         public readonly int? Timeout;
 
         [OutputConstructor]

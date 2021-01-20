@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Aws
 {
+    /// <summary>
+    /// Provides a Spotinst AWS group resource.
+    /// </summary>
     public partial class Elastigroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -19,6 +22,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
 
+        /// <summary>
+        /// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+        /// </summary>
         [Output("blockDevicesMode")]
         public Output<string?> BlockDevicesMode { get; private set; } = null!;
 
@@ -35,7 +41,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> CpuCredits { get; private set; } = null!;
 
         /// <summary>
-        /// The group description.
+        /// The description of the network interface.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -47,7 +53,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> DesiredCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        /// Indicates (in seconds) the timeout to wait until instance are detached.
         /// </summary>
         [Output("drainingTimeout")]
         public Output<int> DrainingTimeout { get; private set; } = null!;
@@ -67,6 +73,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("elasticIps")]
         public Output<ImmutableArray<string>> ElasticIps { get; private set; } = null!;
 
+        /// <summary>
+        /// List of Elastic Load Balancers names (ELB).
+        /// </summary>
         [Output("elasticLoadBalancers")]
         public Output<ImmutableArray<string>> ElasticLoadBalancers { get; private set; } = null!;
 
@@ -86,19 +95,19 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool> FallbackToOndemand { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time, in seconds, after the instance has launched to starts and check its health.
+        /// The amount of time, in seconds, after the instance has launched to starts and check its health
         /// </summary>
         [Output("healthCheckGracePeriod")]
         public Output<int?> HealthCheckGracePeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        /// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
         /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
         /// </summary>
         [Output("healthCheckUnhealthyDurationBeforeReplacement")]
         public Output<int?> HealthCheckUnhealthyDurationBeforeReplacement { get; private set; } = null!;
@@ -142,33 +151,63 @@ namespace Pulumi.SpotInst.Aws
         [Output("integrationBeanstalk")]
         public Output<Outputs.ElastigroupIntegrationBeanstalk?> IntegrationBeanstalk { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+        /// </summary>
         [Output("integrationCodedeploy")]
         public Output<Outputs.ElastigroupIntegrationCodedeploy?> IntegrationCodedeploy { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+        /// </summary>
         [Output("integrationDockerSwarm")]
         public Output<Outputs.ElastigroupIntegrationDockerSwarm?> IntegrationDockerSwarm { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+        /// </summary>
         [Output("integrationEcs")]
         public Output<Outputs.ElastigroupIntegrationEcs?> IntegrationEcs { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+        /// </summary>
         [Output("integrationGitlab")]
         public Output<Outputs.ElastigroupIntegrationGitlab?> IntegrationGitlab { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Kubernetes](https://kubernetes.io/) integration.
+        /// </summary>
         [Output("integrationKubernetes")]
         public Output<Outputs.ElastigroupIntegrationKubernetes?> IntegrationKubernetes { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Mesosphere](https://mesosphere.com/) integration.
+        /// </summary>
         [Output("integrationMesosphere")]
         public Output<Outputs.ElastigroupIntegrationMesosphere?> IntegrationMesosphere { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Multai Runtime](https://spotinst.com/) integration.
+        /// </summary>
         [Output("integrationMultaiRuntime")]
         public Output<Outputs.ElastigroupIntegrationMultaiRuntime?> IntegrationMultaiRuntime { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Nomad](https://www.nomadproject.io/) integration.
+        /// </summary>
         [Output("integrationNomad")]
         public Output<Outputs.ElastigroupIntegrationNomad?> IntegrationNomad { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Rancher](http://rancherlabs.com/) integration.
+        /// </summary>
         [Output("integrationRancher")]
         public Output<Outputs.ElastigroupIntegrationRancher?> IntegrationRancher { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+        /// </summary>
         [Output("integrationRoute53")]
         public Output<Outputs.ElastigroupIntegrationRoute53?> IntegrationRoute53 { get; private set; } = null!;
 
@@ -199,11 +238,14 @@ namespace Pulumi.SpotInst.Aws
         [Output("minSize")]
         public Output<int> MinSize { get; private set; } = null!;
 
+        /// <summary>
+        /// Set of targets to register.
+        /// </summary>
         [Output("multaiTargetSets")]
         public Output<ImmutableArray<Outputs.ElastigroupMultaiTargetSet>> MultaiTargetSets { get; private set; } = null!;
 
         /// <summary>
-        /// The group name.
+        /// The record set name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -223,12 +265,21 @@ namespace Pulumi.SpotInst.Aws
         [Output("orientation")]
         public Output<string> Orientation { get; private set; } = null!;
 
+        /// <summary>
+        /// Boolean, should the instance maintain its Data volumes.
+        /// </summary>
         [Output("persistBlockDevices")]
         public Output<bool?> PersistBlockDevices { get; private set; } = null!;
 
+        /// <summary>
+        /// Boolean, should the instance maintain its private IP.
+        /// </summary>
         [Output("persistPrivateIp")]
         public Output<bool?> PersistPrivateIp { get; private set; } = null!;
 
+        /// <summary>
+        /// Boolean, should the instance maintain its root device volumes.
+        /// </summary>
         [Output("persistRootDevice")]
         public Output<bool?> PersistRootDevice { get; private set; } = null!;
 
@@ -245,6 +296,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("preferredAvailabilityZones")]
         public Output<ImmutableArray<string>> PreferredAvailabilityZones { get; private set; } = null!;
 
+        /// <summary>
+        /// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+        /// </summary>
         [Output("privateIps")]
         public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
 
@@ -323,6 +377,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("tags")]
         public Output<ImmutableArray<Outputs.ElastigroupTag>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// List of Target Group ARNs to register the instances to.
+        /// </summary>
         [Output("targetGroupArns")]
         public Output<ImmutableArray<string>> TargetGroupArns { get; private set; } = null!;
 
@@ -416,6 +473,9 @@ namespace Pulumi.SpotInst.Aws
             set => _availabilityZones = value;
         }
 
+        /// <summary>
+        /// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+        /// </summary>
         [Input("blockDevicesMode")]
         public Input<string>? BlockDevicesMode { get; set; }
 
@@ -432,7 +492,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? CpuCredits { get; set; }
 
         /// <summary>
-        /// The group description.
+        /// The description of the network interface.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -444,7 +504,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        /// Indicates (in seconds) the timeout to wait until instance are detached.
         /// </summary>
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
@@ -477,6 +537,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("elasticLoadBalancers")]
         private InputList<string>? _elasticLoadBalancers;
+
+        /// <summary>
+        /// List of Elastic Load Balancers names (ELB).
+        /// </summary>
         public InputList<string> ElasticLoadBalancers
         {
             get => _elasticLoadBalancers ?? (_elasticLoadBalancers = new InputList<string>());
@@ -504,19 +568,19 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool> FallbackToOndemand { get; set; } = null!;
 
         /// <summary>
-        /// The amount of time, in seconds, after the instance has launched to starts and check its health.
+        /// The amount of time, in seconds, after the instance has launched to starts and check its health
         /// </summary>
         [Input("healthCheckGracePeriod")]
         public Input<int>? HealthCheckGracePeriod { get; set; }
 
         /// <summary>
-        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        /// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
         /// </summary>
         [Input("healthCheckUnhealthyDurationBeforeReplacement")]
         public Input<int>? HealthCheckUnhealthyDurationBeforeReplacement { get; set; }
@@ -578,33 +642,63 @@ namespace Pulumi.SpotInst.Aws
         [Input("integrationBeanstalk")]
         public Input<Inputs.ElastigroupIntegrationBeanstalkArgs>? IntegrationBeanstalk { get; set; }
 
+        /// <summary>
+        /// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+        /// </summary>
         [Input("integrationCodedeploy")]
         public Input<Inputs.ElastigroupIntegrationCodedeployArgs>? IntegrationCodedeploy { get; set; }
 
+        /// <summary>
+        /// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+        /// </summary>
         [Input("integrationDockerSwarm")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmArgs>? IntegrationDockerSwarm { get; set; }
 
+        /// <summary>
+        /// Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+        /// </summary>
         [Input("integrationEcs")]
         public Input<Inputs.ElastigroupIntegrationEcsArgs>? IntegrationEcs { get; set; }
 
+        /// <summary>
+        /// Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+        /// </summary>
         [Input("integrationGitlab")]
         public Input<Inputs.ElastigroupIntegrationGitlabArgs>? IntegrationGitlab { get; set; }
 
+        /// <summary>
+        /// Describes the [Kubernetes](https://kubernetes.io/) integration.
+        /// </summary>
         [Input("integrationKubernetes")]
         public Input<Inputs.ElastigroupIntegrationKubernetesArgs>? IntegrationKubernetes { get; set; }
 
+        /// <summary>
+        /// Describes the [Mesosphere](https://mesosphere.com/) integration.
+        /// </summary>
         [Input("integrationMesosphere")]
         public Input<Inputs.ElastigroupIntegrationMesosphereArgs>? IntegrationMesosphere { get; set; }
 
+        /// <summary>
+        /// Describes the [Multai Runtime](https://spotinst.com/) integration.
+        /// </summary>
         [Input("integrationMultaiRuntime")]
         public Input<Inputs.ElastigroupIntegrationMultaiRuntimeArgs>? IntegrationMultaiRuntime { get; set; }
 
+        /// <summary>
+        /// Describes the [Nomad](https://www.nomadproject.io/) integration.
+        /// </summary>
         [Input("integrationNomad")]
         public Input<Inputs.ElastigroupIntegrationNomadArgs>? IntegrationNomad { get; set; }
 
+        /// <summary>
+        /// Describes the [Rancher](http://rancherlabs.com/) integration.
+        /// </summary>
         [Input("integrationRancher")]
         public Input<Inputs.ElastigroupIntegrationRancherArgs>? IntegrationRancher { get; set; }
 
+        /// <summary>
+        /// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+        /// </summary>
         [Input("integrationRoute53")]
         public Input<Inputs.ElastigroupIntegrationRoute53Args>? IntegrationRoute53 { get; set; }
 
@@ -637,6 +731,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("multaiTargetSets")]
         private InputList<Inputs.ElastigroupMultaiTargetSetArgs>? _multaiTargetSets;
+
+        /// <summary>
+        /// Set of targets to register.
+        /// </summary>
         public InputList<Inputs.ElastigroupMultaiTargetSetArgs> MultaiTargetSets
         {
             get => _multaiTargetSets ?? (_multaiTargetSets = new InputList<Inputs.ElastigroupMultaiTargetSetArgs>());
@@ -644,7 +742,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The group name.
+        /// The record set name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -669,12 +767,21 @@ namespace Pulumi.SpotInst.Aws
         [Input("orientation", required: true)]
         public Input<string> Orientation { get; set; } = null!;
 
+        /// <summary>
+        /// Boolean, should the instance maintain its Data volumes.
+        /// </summary>
         [Input("persistBlockDevices")]
         public Input<bool>? PersistBlockDevices { get; set; }
 
+        /// <summary>
+        /// Boolean, should the instance maintain its private IP.
+        /// </summary>
         [Input("persistPrivateIp")]
         public Input<bool>? PersistPrivateIp { get; set; }
 
+        /// <summary>
+        /// Boolean, should the instance maintain its root device volumes.
+        /// </summary>
         [Input("persistRootDevice")]
         public Input<bool>? PersistRootDevice { get; set; }
 
@@ -699,6 +806,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("privateIps")]
         private InputList<string>? _privateIps;
+
+        /// <summary>
+        /// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+        /// </summary>
         public InputList<string> PrivateIps
         {
             get => _privateIps ?? (_privateIps = new InputList<string>());
@@ -831,6 +942,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("targetGroupArns")]
         private InputList<string>? _targetGroupArns;
+
+        /// <summary>
+        /// List of Target Group ARNs to register the instances to.
+        /// </summary>
         public InputList<string> TargetGroupArns
         {
             get => _targetGroupArns ?? (_targetGroupArns = new InputList<string>());
@@ -888,6 +1003,9 @@ namespace Pulumi.SpotInst.Aws
             set => _availabilityZones = value;
         }
 
+        /// <summary>
+        /// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
+        /// </summary>
         [Input("blockDevicesMode")]
         public Input<string>? BlockDevicesMode { get; set; }
 
@@ -904,7 +1022,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? CpuCredits { get; set; }
 
         /// <summary>
-        /// The group description.
+        /// The description of the network interface.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -916,7 +1034,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        /// Indicates (in seconds) the timeout to wait until instance are detached.
         /// </summary>
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
@@ -949,6 +1067,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("elasticLoadBalancers")]
         private InputList<string>? _elasticLoadBalancers;
+
+        /// <summary>
+        /// List of Elastic Load Balancers names (ELB).
+        /// </summary>
         public InputList<string> ElasticLoadBalancers
         {
             get => _elasticLoadBalancers ?? (_elasticLoadBalancers = new InputList<string>());
@@ -976,19 +1098,19 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? FallbackToOndemand { get; set; }
 
         /// <summary>
-        /// The amount of time, in seconds, after the instance has launched to starts and check its health.
+        /// The amount of time, in seconds, after the instance has launched to starts and check its health
         /// </summary>
         [Input("healthCheckGracePeriod")]
         public Input<int>? HealthCheckGracePeriod { get; set; }
 
         /// <summary>
-        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        /// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
+        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
         /// </summary>
         [Input("healthCheckUnhealthyDurationBeforeReplacement")]
         public Input<int>? HealthCheckUnhealthyDurationBeforeReplacement { get; set; }
@@ -1050,33 +1172,63 @@ namespace Pulumi.SpotInst.Aws
         [Input("integrationBeanstalk")]
         public Input<Inputs.ElastigroupIntegrationBeanstalkGetArgs>? IntegrationBeanstalk { get; set; }
 
+        /// <summary>
+        /// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
+        /// </summary>
         [Input("integrationCodedeploy")]
         public Input<Inputs.ElastigroupIntegrationCodedeployGetArgs>? IntegrationCodedeploy { get; set; }
 
+        /// <summary>
+        /// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+        /// </summary>
         [Input("integrationDockerSwarm")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmGetArgs>? IntegrationDockerSwarm { get; set; }
 
+        /// <summary>
+        /// Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
+        /// </summary>
         [Input("integrationEcs")]
         public Input<Inputs.ElastigroupIntegrationEcsGetArgs>? IntegrationEcs { get; set; }
 
+        /// <summary>
+        /// Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+        /// </summary>
         [Input("integrationGitlab")]
         public Input<Inputs.ElastigroupIntegrationGitlabGetArgs>? IntegrationGitlab { get; set; }
 
+        /// <summary>
+        /// Describes the [Kubernetes](https://kubernetes.io/) integration.
+        /// </summary>
         [Input("integrationKubernetes")]
         public Input<Inputs.ElastigroupIntegrationKubernetesGetArgs>? IntegrationKubernetes { get; set; }
 
+        /// <summary>
+        /// Describes the [Mesosphere](https://mesosphere.com/) integration.
+        /// </summary>
         [Input("integrationMesosphere")]
         public Input<Inputs.ElastigroupIntegrationMesosphereGetArgs>? IntegrationMesosphere { get; set; }
 
+        /// <summary>
+        /// Describes the [Multai Runtime](https://spotinst.com/) integration.
+        /// </summary>
         [Input("integrationMultaiRuntime")]
         public Input<Inputs.ElastigroupIntegrationMultaiRuntimeGetArgs>? IntegrationMultaiRuntime { get; set; }
 
+        /// <summary>
+        /// Describes the [Nomad](https://www.nomadproject.io/) integration.
+        /// </summary>
         [Input("integrationNomad")]
         public Input<Inputs.ElastigroupIntegrationNomadGetArgs>? IntegrationNomad { get; set; }
 
+        /// <summary>
+        /// Describes the [Rancher](http://rancherlabs.com/) integration.
+        /// </summary>
         [Input("integrationRancher")]
         public Input<Inputs.ElastigroupIntegrationRancherGetArgs>? IntegrationRancher { get; set; }
 
+        /// <summary>
+        /// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+        /// </summary>
         [Input("integrationRoute53")]
         public Input<Inputs.ElastigroupIntegrationRoute53GetArgs>? IntegrationRoute53 { get; set; }
 
@@ -1109,6 +1261,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("multaiTargetSets")]
         private InputList<Inputs.ElastigroupMultaiTargetSetGetArgs>? _multaiTargetSets;
+
+        /// <summary>
+        /// Set of targets to register.
+        /// </summary>
         public InputList<Inputs.ElastigroupMultaiTargetSetGetArgs> MultaiTargetSets
         {
             get => _multaiTargetSets ?? (_multaiTargetSets = new InputList<Inputs.ElastigroupMultaiTargetSetGetArgs>());
@@ -1116,7 +1272,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The group name.
+        /// The record set name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1141,12 +1297,21 @@ namespace Pulumi.SpotInst.Aws
         [Input("orientation")]
         public Input<string>? Orientation { get; set; }
 
+        /// <summary>
+        /// Boolean, should the instance maintain its Data volumes.
+        /// </summary>
         [Input("persistBlockDevices")]
         public Input<bool>? PersistBlockDevices { get; set; }
 
+        /// <summary>
+        /// Boolean, should the instance maintain its private IP.
+        /// </summary>
         [Input("persistPrivateIp")]
         public Input<bool>? PersistPrivateIp { get; set; }
 
+        /// <summary>
+        /// Boolean, should the instance maintain its root device volumes.
+        /// </summary>
         [Input("persistRootDevice")]
         public Input<bool>? PersistRootDevice { get; set; }
 
@@ -1171,6 +1336,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("privateIps")]
         private InputList<string>? _privateIps;
+
+        /// <summary>
+        /// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+        /// </summary>
         public InputList<string> PrivateIps
         {
             get => _privateIps ?? (_privateIps = new InputList<string>());
@@ -1303,6 +1472,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("targetGroupArns")]
         private InputList<string>? _targetGroupArns;
+
+        /// <summary>
+        /// List of Target Group ARNs to register the instances to.
+        /// </summary>
         public InputList<string> TargetGroupArns
         {
             get => _targetGroupArns ?? (_targetGroupArns = new InputList<string>());

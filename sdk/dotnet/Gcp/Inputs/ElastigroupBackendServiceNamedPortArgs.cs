@@ -13,13 +13,17 @@ namespace Pulumi.SpotInst.Gcp.Inputs
     public sealed class ElastigroupBackendServiceNamedPortArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The group name.
+        /// The dimension name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("ports", required: true)]
         private InputList<string>? _ports;
+
+        /// <summary>
+        /// A list of ports.
+        /// </summary>
         public InputList<string> Ports
         {
             get => _ports ?? (_ports = new InputList<string>());

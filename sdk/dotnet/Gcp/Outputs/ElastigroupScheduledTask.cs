@@ -13,11 +13,29 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     [OutputType]
     public sealed class ElastigroupScheduledTask
     {
+        /// <summary>
+        /// A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
+        /// </summary>
         public readonly string? CronExpression;
+        /// <summary>
+        /// Setting the task to being enabled or disabled.
+        /// </summary>
         public readonly bool? IsEnabled;
+        /// <summary>
+        /// The maximum number of instances the group should have.
+        /// </summary>
         public readonly string? MaxCapacity;
+        /// <summary>
+        /// The minimum number of instances the group should have.
+        /// </summary>
         public readonly string? MinCapacity;
+        /// <summary>
+        /// The desired number of instances the group should have.
+        /// </summary>
         public readonly string? TargetCapacity;
+        /// <summary>
+        /// The task type to run. Valid values: `"setCapacity"`.
+        /// </summary>
         public readonly string TaskType;
 
         [OutputConstructor]

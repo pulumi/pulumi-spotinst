@@ -13,15 +13,32 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ManagedInstanceLoadBalancer
     {
+        /// <summary>
+        /// The AWS resource ARN (Required only for ALB target groups).
+        /// </summary>
         public readonly string? Arn;
+        /// <summary>
+        /// "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
+        /// </summary>
         public readonly bool? AutoWeight;
         public readonly bool? AzAwareness;
+        /// <summary>
+        /// The Multai load balancer ID.
+        /// Default: lb-123456
+        /// </summary>
         public readonly string? BalancerId;
         /// <summary>
-        /// The ManagedInstance name.
+        /// The record set name.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The Multai load target set ID.
+        /// Default: ts-123456
+        /// </summary>
         public readonly string? TargetSetId;
+        /// <summary>
+        /// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

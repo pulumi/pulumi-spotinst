@@ -12,15 +12,27 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferencesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Should roll perform automatically
+        /// </summary>
         [Input("automaticRoll")]
         public Input<bool>? AutomaticRoll { get; set; }
 
+        /// <summary>
+        /// Sets the percentage of the instances to deploy in each batch.
+        /// </summary>
         [Input("batchSizePercentage")]
         public Input<int>? BatchSizePercentage { get; set; }
 
+        /// <summary>
+        /// Sets the grace period for new instances to become healthy.
+        /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
+        /// <summary>
+        /// Strategy parameters
+        /// </summary>
         [Input("strategy")]
         public Input<Inputs.ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyGetArgs>? Strategy { get; set; }
 

@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Gcp.Inputs
 
     public sealed class ElastigroupGpuGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of GPUs. Must be 0, 2, 4, 6, 8.
+        /// </summary>
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 
+        /// <summary>
+        /// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

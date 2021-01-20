@@ -93,95 +93,13 @@ import (
 // 	})
 // }
 // ```
-// ## Auto Scaler
-//
-// * `autoscaler` - (Optional) Describes the Ocean Kubernetes autoscaler.
-// * `autoscaleIsEnabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes autoscaler.
-// * `autoscaleIsAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
-// * `autoscaleCooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
-// * `autoHeadroomPercentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
-// * `autoscaleHeadroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-// * `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-// * `gpuPerUnit` - (Optional) Optionally configure the number of GPUS to allocate the headroom.
-// * `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
-// * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-// * `autoscaleDown` - (Optional) Auto Scaling scale down operations.
-// * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
-// * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
-// * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
-// * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
-// ```
-//
-// <a id="update-policy"></a>
-// ## Update Policy
-//
-// * `updatePolicy` - (Optional)
-//     * `shouldRoll` - (Required) Enables the roll.
-//     * `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
-//         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
-// ```
-//
-// <a id="scheduled-task"></a>
-// ## scheduled task
-//
-// * `scheduledTask` - (Optional) Set scheduling object.
-//     * `shutdownHours` - (Optional) Set shutdown hours for cluster object.
-//         * `isEnabled` - (Optional)  Flag to enable / disable the shutdown hours.
-//                                      Example: True
-//         * `timeWindows` - (Required) Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-//                                       Example: Fri:15:30-Wed:14:30
-//     * `tasks` - (Optional) The scheduling tasks for the cluster.
-//         * `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
-//         * `cronExpression` - (Required) A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-//                                          Example: 0 1 * * *
-//         * `taskType` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
-//                                    Example: clusterRoll
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
-// ```
 type Ocean struct {
 	pulumi.CustomResourceState
 
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress pulumi.BoolPtrOutput     `pulumi:"associatePublicIpAddress"`
-	Autoscaler               OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
+	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
+	// Describes the Ocean Kubernetes autoscaler.
+	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayOutput `pulumi:"blacklists"`
 	// The ocean cluster identifier. Example: `ocean.k8s`
@@ -215,7 +133,8 @@ type Ocean struct {
 	// The region the cluster will run in.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize pulumi.IntPtrOutput           `pulumi:"rootVolumeSize"`
+	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
+	// Set scheduling object.
 	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
@@ -273,8 +192,9 @@ func GetOcean(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Ocean resources.
 type oceanState struct {
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
-	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
+	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
+	// Describes the Ocean Kubernetes autoscaler.
+	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists []string `pulumi:"blacklists"`
 	// The ocean cluster identifier. Example: `ocean.k8s`
@@ -308,7 +228,8 @@ type oceanState struct {
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize *int                 `pulumi:"rootVolumeSize"`
+	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	// Set scheduling object.
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -333,7 +254,8 @@ type oceanState struct {
 type OceanState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	Autoscaler               OceanAutoscalerPtrInput
+	// Describes the Ocean Kubernetes autoscaler.
+	Autoscaler OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayInput
 	// The ocean cluster identifier. Example: `ocean.k8s`
@@ -368,6 +290,7 @@ type OceanState struct {
 	Region pulumi.StringPtrInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrInput
+	// Set scheduling object.
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
@@ -395,8 +318,9 @@ func (OceanState) ElementType() reflect.Type {
 
 type oceanArgs struct {
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
-	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
+	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
+	// Describes the Ocean Kubernetes autoscaler.
+	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists []string `pulumi:"blacklists"`
 	// The ocean cluster identifier. Example: `ocean.k8s`
@@ -430,7 +354,8 @@ type oceanArgs struct {
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize *int                 `pulumi:"rootVolumeSize"`
+	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	// Set scheduling object.
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -456,7 +381,8 @@ type oceanArgs struct {
 type OceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	Autoscaler               OceanAutoscalerPtrInput
+	// Describes the Ocean Kubernetes autoscaler.
+	Autoscaler OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayInput
 	// The ocean cluster identifier. Example: `ocean.k8s`
@@ -491,6 +417,7 @@ type OceanArgs struct {
 	Region pulumi.StringPtrInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrInput
+	// Set scheduling object.
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput

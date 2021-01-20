@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Aws.Inputs
     {
         [Input("domains", required: true)]
         private InputList<Inputs.ElastigroupIntegrationRoute53DomainArgs>? _domains;
+
+        /// <summary>
+        /// Collection of one or more domains to register.
+        /// </summary>
         public InputList<Inputs.ElastigroupIntegrationRoute53DomainArgs> Domains
         {
             get => _domains ?? (_domains = new InputList<Inputs.ElastigroupIntegrationRoute53DomainArgs>());
