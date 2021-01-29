@@ -48,7 +48,7 @@ setup(name='pulumi_spotinst',
       packages=find_packages(),
       package_data={
           'pulumi_spotinst': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

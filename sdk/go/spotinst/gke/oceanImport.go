@@ -234,15 +234,15 @@ type OceanImportInput interface {
 	ToOceanImportOutputWithContext(ctx context.Context) OceanImportOutput
 }
 
-func (OceanImport) ElementType() reflect.Type {
-	return reflect.TypeOf((*OceanImport)(nil)).Elem()
+func (*OceanImport) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImport)(nil))
 }
 
-func (i OceanImport) ToOceanImportOutput() OceanImportOutput {
+func (i *OceanImport) ToOceanImportOutput() OceanImportOutput {
 	return i.ToOceanImportOutputWithContext(context.Background())
 }
 
-func (i OceanImport) ToOceanImportOutputWithContext(ctx context.Context) OceanImportOutput {
+func (i *OceanImport) ToOceanImportOutputWithContext(ctx context.Context) OceanImportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanImportOutput)
 }
 
@@ -251,7 +251,7 @@ type OceanImportOutput struct {
 }
 
 func (OceanImportOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OceanImportOutput)(nil)).Elem()
+	return reflect.TypeOf((*OceanImport)(nil))
 }
 
 func (o OceanImportOutput) ToOceanImportOutput() OceanImportOutput {

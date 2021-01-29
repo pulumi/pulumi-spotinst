@@ -76,6 +76,7 @@ namespace Pulumi.SpotInst.Gke
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:gke/oceanImport:OceanImport")]
     public partial class OceanImport : Pulumi.CustomResource
     {
         /// <summary>

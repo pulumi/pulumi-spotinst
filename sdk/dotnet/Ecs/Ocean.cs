@@ -109,6 +109,7 @@ namespace Pulumi.SpotInst.Ecs
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:ecs/ocean:Ocean")]
     public partial class Ocean : Pulumi.CustomResource
     {
         /// <summary>

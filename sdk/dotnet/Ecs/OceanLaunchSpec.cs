@@ -116,6 +116,7 @@ namespace Pulumi.SpotInst.Ecs
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : Pulumi.CustomResource
     {
         /// <summary>

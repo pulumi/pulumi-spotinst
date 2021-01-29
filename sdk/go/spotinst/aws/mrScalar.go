@@ -902,15 +902,15 @@ type MrScalarInput interface {
 	ToMrScalarOutputWithContext(ctx context.Context) MrScalarOutput
 }
 
-func (MrScalar) ElementType() reflect.Type {
-	return reflect.TypeOf((*MrScalar)(nil)).Elem()
+func (*MrScalar) ElementType() reflect.Type {
+	return reflect.TypeOf((*MrScalar)(nil))
 }
 
-func (i MrScalar) ToMrScalarOutput() MrScalarOutput {
+func (i *MrScalar) ToMrScalarOutput() MrScalarOutput {
 	return i.ToMrScalarOutputWithContext(context.Background())
 }
 
-func (i MrScalar) ToMrScalarOutputWithContext(ctx context.Context) MrScalarOutput {
+func (i *MrScalar) ToMrScalarOutputWithContext(ctx context.Context) MrScalarOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarOutput)
 }
 
@@ -919,7 +919,7 @@ type MrScalarOutput struct {
 }
 
 func (MrScalarOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MrScalarOutput)(nil)).Elem()
+	return reflect.TypeOf((*MrScalar)(nil))
 }
 
 func (o MrScalarOutput) ToMrScalarOutput() MrScalarOutput {

@@ -401,15 +401,15 @@ type ElastigroupInput interface {
 	ToElastigroupOutputWithContext(ctx context.Context) ElastigroupOutput
 }
 
-func (Elastigroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*Elastigroup)(nil)).Elem()
+func (*Elastigroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*Elastigroup)(nil))
 }
 
-func (i Elastigroup) ToElastigroupOutput() ElastigroupOutput {
+func (i *Elastigroup) ToElastigroupOutput() ElastigroupOutput {
 	return i.ToElastigroupOutputWithContext(context.Background())
 }
 
-func (i Elastigroup) ToElastigroupOutputWithContext(ctx context.Context) ElastigroupOutput {
+func (i *Elastigroup) ToElastigroupOutputWithContext(ctx context.Context) ElastigroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupOutput)
 }
 
@@ -418,7 +418,7 @@ type ElastigroupOutput struct {
 }
 
 func (ElastigroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*Elastigroup)(nil))
 }
 
 func (o ElastigroupOutput) ToElastigroupOutput() ElastigroupOutput {

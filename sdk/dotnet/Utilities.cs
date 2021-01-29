@@ -77,4 +77,11 @@ namespace Pulumi.SpotInst
             }
         }
     }
+
+    internal sealed class SpotInstResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public SpotInstResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

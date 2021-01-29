@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Multai
 {
+    [SpotInstResourceType("spotinst:multai/balancer:Balancer")]
     public partial class Balancer : Pulumi.CustomResource
     {
         [Output("connectionTimeouts")]

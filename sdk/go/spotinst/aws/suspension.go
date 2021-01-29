@@ -135,15 +135,15 @@ type SuspensionInput interface {
 	ToSuspensionOutputWithContext(ctx context.Context) SuspensionOutput
 }
 
-func (Suspension) ElementType() reflect.Type {
-	return reflect.TypeOf((*Suspension)(nil)).Elem()
+func (*Suspension) ElementType() reflect.Type {
+	return reflect.TypeOf((*Suspension)(nil))
 }
 
-func (i Suspension) ToSuspensionOutput() SuspensionOutput {
+func (i *Suspension) ToSuspensionOutput() SuspensionOutput {
 	return i.ToSuspensionOutputWithContext(context.Background())
 }
 
-func (i Suspension) ToSuspensionOutputWithContext(ctx context.Context) SuspensionOutput {
+func (i *Suspension) ToSuspensionOutputWithContext(ctx context.Context) SuspensionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SuspensionOutput)
 }
 
@@ -152,7 +152,7 @@ type SuspensionOutput struct {
 }
 
 func (SuspensionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SuspensionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Suspension)(nil))
 }
 
 func (o SuspensionOutput) ToSuspensionOutput() SuspensionOutput {

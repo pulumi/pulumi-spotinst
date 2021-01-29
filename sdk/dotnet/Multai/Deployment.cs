@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Multai
 {
+    [SpotInstResourceType("spotinst:multai/deployment:Deployment")]
     public partial class Deployment : Pulumi.CustomResource
     {
         [Output("name")]

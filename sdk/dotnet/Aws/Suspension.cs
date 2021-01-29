@@ -49,6 +49,7 @@ namespace Pulumi.SpotInst.Aws
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:aws/suspension:Suspension")]
     public partial class Suspension : Pulumi.CustomResource
     {
         /// <summary>

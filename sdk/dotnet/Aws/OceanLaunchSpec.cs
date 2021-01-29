@@ -157,6 +157,7 @@ namespace Pulumi.SpotInst.Aws
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:aws/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : Pulumi.CustomResource
     {
         /// <summary>

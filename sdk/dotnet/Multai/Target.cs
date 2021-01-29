@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Multai
 {
+    [SpotInstResourceType("spotinst:multai/target:Target")]
     public partial class Target : Pulumi.CustomResource
     {
         [Output("balancerId")]

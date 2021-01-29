@@ -43,6 +43,7 @@ namespace Pulumi.SpotInst
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:index/subscription:Subscription")]
     public partial class Subscription : Pulumi.CustomResource
     {
         /// <summary>

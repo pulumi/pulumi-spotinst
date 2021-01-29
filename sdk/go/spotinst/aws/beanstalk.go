@@ -268,15 +268,15 @@ type BeanstalkInput interface {
 	ToBeanstalkOutputWithContext(ctx context.Context) BeanstalkOutput
 }
 
-func (Beanstalk) ElementType() reflect.Type {
-	return reflect.TypeOf((*Beanstalk)(nil)).Elem()
+func (*Beanstalk) ElementType() reflect.Type {
+	return reflect.TypeOf((*Beanstalk)(nil))
 }
 
-func (i Beanstalk) ToBeanstalkOutput() BeanstalkOutput {
+func (i *Beanstalk) ToBeanstalkOutput() BeanstalkOutput {
 	return i.ToBeanstalkOutputWithContext(context.Background())
 }
 
-func (i Beanstalk) ToBeanstalkOutputWithContext(ctx context.Context) BeanstalkOutput {
+func (i *Beanstalk) ToBeanstalkOutputWithContext(ctx context.Context) BeanstalkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkOutput)
 }
 
@@ -285,7 +285,7 @@ type BeanstalkOutput struct {
 }
 
 func (BeanstalkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BeanstalkOutput)(nil)).Elem()
+	return reflect.TypeOf((*Beanstalk)(nil))
 }
 
 func (o BeanstalkOutput) ToBeanstalkOutput() BeanstalkOutput {

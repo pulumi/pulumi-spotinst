@@ -177,6 +177,7 @@ namespace Pulumi.SpotInst.Azure
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:azure/elastigroup:Elastigroup")]
     public partial class Elastigroup : Pulumi.CustomResource
     {
         [Output("customData")]

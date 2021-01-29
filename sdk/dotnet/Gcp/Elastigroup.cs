@@ -12,6 +12,7 @@ namespace Pulumi.SpotInst.Gcp
     /// <summary>
     /// Provides a Spotinst elastigroup GCP resource.
     /// </summary>
+    [SpotInstResourceType("spotinst:gcp/elastigroup:Elastigroup")]
     public partial class Elastigroup : Pulumi.CustomResource
     {
         /// <summary>

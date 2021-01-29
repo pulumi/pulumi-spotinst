@@ -81,6 +81,7 @@ namespace Pulumi.SpotInst.Gke
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : Pulumi.CustomResource
     {
         /// <summary>

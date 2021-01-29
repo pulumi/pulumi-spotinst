@@ -124,15 +124,15 @@ type RoutingRuleInput interface {
 	ToRoutingRuleOutputWithContext(ctx context.Context) RoutingRuleOutput
 }
 
-func (RoutingRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingRule)(nil)).Elem()
+func (*RoutingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingRule)(nil))
 }
 
-func (i RoutingRule) ToRoutingRuleOutput() RoutingRuleOutput {
+func (i *RoutingRule) ToRoutingRuleOutput() RoutingRuleOutput {
 	return i.ToRoutingRuleOutputWithContext(context.Background())
 }
 
-func (i RoutingRule) ToRoutingRuleOutputWithContext(ctx context.Context) RoutingRuleOutput {
+func (i *RoutingRule) ToRoutingRuleOutputWithContext(ctx context.Context) RoutingRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleOutput)
 }
 
@@ -141,7 +141,7 @@ type RoutingRuleOutput struct {
 }
 
 func (RoutingRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*RoutingRule)(nil))
 }
 
 func (o RoutingRuleOutput) ToRoutingRuleOutput() RoutingRuleOutput {
