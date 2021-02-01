@@ -95,6 +95,7 @@ namespace Pulumi.SpotInst.Gke
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:gke/elastigroup:Elastigroup")]
     public partial class Elastigroup : Pulumi.CustomResource
     {
         [Output("backendServices")]

@@ -127,15 +127,15 @@ type TargetSetInput interface {
 	ToTargetSetOutputWithContext(ctx context.Context) TargetSetOutput
 }
 
-func (TargetSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetSet)(nil)).Elem()
+func (*TargetSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSet)(nil))
 }
 
-func (i TargetSet) ToTargetSetOutput() TargetSetOutput {
+func (i *TargetSet) ToTargetSetOutput() TargetSetOutput {
 	return i.ToTargetSetOutputWithContext(context.Background())
 }
 
-func (i TargetSet) ToTargetSetOutputWithContext(ctx context.Context) TargetSetOutput {
+func (i *TargetSet) ToTargetSetOutputWithContext(ctx context.Context) TargetSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSetOutput)
 }
 
@@ -144,7 +144,7 @@ type TargetSetOutput struct {
 }
 
 func (TargetSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*TargetSet)(nil))
 }
 
 func (o TargetSetOutput) ToTargetSetOutput() TargetSetOutput {

@@ -12,6 +12,7 @@ namespace Pulumi.SpotInst.Aws
     /// <summary>
     /// Provides a Spotinst AWS ManagedInstance resource.
     /// </summary>
+    [SpotInstResourceType("spotinst:aws/managedInstance:ManagedInstance")]
     public partial class ManagedInstance : Pulumi.CustomResource
     {
         /// <summary>

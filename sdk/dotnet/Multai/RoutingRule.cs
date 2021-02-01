@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Multai
 {
+    [SpotInstResourceType("spotinst:multai/routingRule:RoutingRule")]
     public partial class RoutingRule : Pulumi.CustomResource
     {
         [Output("balancerId")]

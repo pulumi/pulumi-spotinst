@@ -96,15 +96,15 @@ type BalancerInput interface {
 	ToBalancerOutputWithContext(ctx context.Context) BalancerOutput
 }
 
-func (Balancer) ElementType() reflect.Type {
-	return reflect.TypeOf((*Balancer)(nil)).Elem()
+func (*Balancer) ElementType() reflect.Type {
+	return reflect.TypeOf((*Balancer)(nil))
 }
 
-func (i Balancer) ToBalancerOutput() BalancerOutput {
+func (i *Balancer) ToBalancerOutput() BalancerOutput {
 	return i.ToBalancerOutputWithContext(context.Background())
 }
 
-func (i Balancer) ToBalancerOutputWithContext(ctx context.Context) BalancerOutput {
+func (i *Balancer) ToBalancerOutputWithContext(ctx context.Context) BalancerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BalancerOutput)
 }
 
@@ -113,7 +113,7 @@ type BalancerOutput struct {
 }
 
 func (BalancerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BalancerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Balancer)(nil))
 }
 
 func (o BalancerOutput) ToBalancerOutput() BalancerOutput {

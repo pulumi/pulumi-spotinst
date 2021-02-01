@@ -43,6 +43,7 @@ namespace Pulumi.SpotInst
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:index/healthCheck:HealthCheck")]
     public partial class HealthCheck : Pulumi.CustomResource
     {
         /// <summary>

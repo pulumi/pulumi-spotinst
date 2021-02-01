@@ -66,6 +66,7 @@ namespace Pulumi.SpotInst.Aws
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:aws/beanstalk:Beanstalk")]
     public partial class Beanstalk : Pulumi.CustomResource
     {
         /// <summary>

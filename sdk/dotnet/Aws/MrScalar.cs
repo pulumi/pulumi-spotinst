@@ -349,6 +349,7 @@ namespace Pulumi.SpotInst.Aws
     /// }
     /// ```
     /// </summary>
+    [SpotInstResourceType("spotinst:aws/mrScalar:MrScalar")]
     public partial class MrScalar : Pulumi.CustomResource
     {
         /// <summary>
