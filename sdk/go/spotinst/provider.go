@@ -25,12 +25,6 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	if args.Account == nil {
-		args.Account = pulumi.StringPtr(getEnvOrDefault("", nil, "SPOTINST_ACCOUNT").(string))
-	}
-	if args.Token == nil {
-		args.Token = pulumi.StringPtr(getEnvOrDefault("", nil, "SPOTINST_TOKEN").(string))
-	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:spotinst", name, args, &resource, opts...)
 	if err != nil {
@@ -81,6 +75,35 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
+func (i *Provider) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *Provider) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
+type ProviderPtrInput interface {
+	pulumi.Input
+
+	ToProviderPtrOutput() ProviderPtrOutput
+	ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput
+}
+
+type providerPtrType ProviderArgs
+
+func (*providerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (i *providerPtrType) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
 type ProviderOutput struct {
 	*pulumi.OutputState
 }
@@ -97,6 +120,33 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o.ApplyT(func(v Provider) *Provider {
+		return &v
+	}).(ProviderPtrOutput)
+}
+
+type ProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProviderOutput{})
+	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

@@ -399,7 +399,8 @@ export class Elastigroup extends pulumi.CustomResource {
     constructor(name: string, args: ElastigroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ElastigroupArgs | ElastigroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ElastigroupState | undefined;
             inputs["availabilityZones"] = state ? state.availabilityZones : undefined;
             inputs["blockDevicesMode"] = state ? state.blockDevicesMode : undefined;
@@ -475,22 +476,22 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["waitForCapacityTimeout"] = state ? state.waitForCapacityTimeout : undefined;
         } else {
             const args = argsOrState as ElastigroupArgs | undefined;
-            if ((!args || args.fallbackToOndemand === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.fallbackToOndemand === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fallbackToOndemand'");
             }
-            if ((!args || args.instanceTypesOndemand === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceTypesOndemand === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceTypesOndemand'");
             }
-            if ((!args || args.instanceTypesSpots === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceTypesSpots === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceTypesSpots'");
             }
-            if ((!args || args.orientation === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.orientation === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orientation'");
             }
-            if ((!args || args.product === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.product === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'product'");
             }
-            if ((!args || args.securityGroups === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.securityGroups === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroups'");
             }
             inputs["availabilityZones"] = args ? args.availabilityZones : undefined;
@@ -566,12 +567,8 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["waitForCapacity"] = args ? args.waitForCapacity : undefined;
             inputs["waitForCapacityTimeout"] = args ? args.waitForCapacityTimeout : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Elastigroup.__pulumiType, name, inputs, opts);
     }

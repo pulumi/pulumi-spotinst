@@ -16,7 +16,7 @@ __all__ = [
 
 __config__ = pulumi.Config('spotinst')
 
-account = __config__.get('account') or (_utilities.get_env('SPOTINST_ACCOUNT') or '')
+account = __config__.get('account')
 """
 Spotinst Account ID
 """
@@ -26,7 +26,7 @@ feature_flags = __config__.get('featureFlags')
 Spotinst SDK Feature Flags
 """
 
-token = __config__.get('token') or (_utilities.get_env('SPOTINST_TOKEN') or '')
+token = __config__.get('token')
 """
 Spotinst Personal API Access Token
 """

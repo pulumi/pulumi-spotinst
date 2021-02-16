@@ -65,8 +65,6 @@ namespace Pulumi.SpotInst
 
         public ProviderArgs()
         {
-            Account = Utilities.GetEnv("SPOTINST_ACCOUNT") ?? "";
-            Token = Utilities.GetEnv("SPOTINST_TOKEN") ?? "";
         }
     }
 }

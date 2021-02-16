@@ -49,7 +49,8 @@ export class Balancer extends pulumi.CustomResource {
     constructor(name: string, args?: BalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BalancerArgs | BalancerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BalancerState | undefined;
             inputs["connectionTimeouts"] = state ? state.connectionTimeouts : undefined;
             inputs["dnsCnameAliases"] = state ? state.dnsCnameAliases : undefined;
@@ -64,12 +65,8 @@ export class Balancer extends pulumi.CustomResource {
             inputs["scheme"] = args ? args.scheme : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Balancer.__pulumiType, name, inputs, opts);
     }

@@ -246,6 +246,85 @@ func (i *OceanImport) ToOceanImportOutputWithContext(ctx context.Context) OceanI
 	return pulumi.ToOutputWithContext(ctx, i).(OceanImportOutput)
 }
 
+func (i *OceanImport) ToOceanImportPtrOutput() OceanImportPtrOutput {
+	return i.ToOceanImportPtrOutputWithContext(context.Background())
+}
+
+func (i *OceanImport) ToOceanImportPtrOutputWithContext(ctx context.Context) OceanImportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportPtrOutput)
+}
+
+type OceanImportPtrInput interface {
+	pulumi.Input
+
+	ToOceanImportPtrOutput() OceanImportPtrOutput
+	ToOceanImportPtrOutputWithContext(ctx context.Context) OceanImportPtrOutput
+}
+
+type oceanImportPtrType OceanImportArgs
+
+func (*oceanImportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImport)(nil))
+}
+
+func (i *oceanImportPtrType) ToOceanImportPtrOutput() OceanImportPtrOutput {
+	return i.ToOceanImportPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanImportPtrType) ToOceanImportPtrOutputWithContext(ctx context.Context) OceanImportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportPtrOutput)
+}
+
+// OceanImportArrayInput is an input type that accepts OceanImportArray and OceanImportArrayOutput values.
+// You can construct a concrete instance of `OceanImportArrayInput` via:
+//
+//          OceanImportArray{ OceanImportArgs{...} }
+type OceanImportArrayInput interface {
+	pulumi.Input
+
+	ToOceanImportArrayOutput() OceanImportArrayOutput
+	ToOceanImportArrayOutputWithContext(context.Context) OceanImportArrayOutput
+}
+
+type OceanImportArray []OceanImportInput
+
+func (OceanImportArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*OceanImport)(nil))
+}
+
+func (i OceanImportArray) ToOceanImportArrayOutput() OceanImportArrayOutput {
+	return i.ToOceanImportArrayOutputWithContext(context.Background())
+}
+
+func (i OceanImportArray) ToOceanImportArrayOutputWithContext(ctx context.Context) OceanImportArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportArrayOutput)
+}
+
+// OceanImportMapInput is an input type that accepts OceanImportMap and OceanImportMapOutput values.
+// You can construct a concrete instance of `OceanImportMapInput` via:
+//
+//          OceanImportMap{ "key": OceanImportArgs{...} }
+type OceanImportMapInput interface {
+	pulumi.Input
+
+	ToOceanImportMapOutput() OceanImportMapOutput
+	ToOceanImportMapOutputWithContext(context.Context) OceanImportMapOutput
+}
+
+type OceanImportMap map[string]OceanImportInput
+
+func (OceanImportMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*OceanImport)(nil))
+}
+
+func (i OceanImportMap) ToOceanImportMapOutput() OceanImportMapOutput {
+	return i.ToOceanImportMapOutputWithContext(context.Background())
+}
+
+func (i OceanImportMap) ToOceanImportMapOutputWithContext(ctx context.Context) OceanImportMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportMapOutput)
+}
+
 type OceanImportOutput struct {
 	*pulumi.OutputState
 }
@@ -262,6 +341,75 @@ func (o OceanImportOutput) ToOceanImportOutputWithContext(ctx context.Context) O
 	return o
 }
 
+func (o OceanImportOutput) ToOceanImportPtrOutput() OceanImportPtrOutput {
+	return o.ToOceanImportPtrOutputWithContext(context.Background())
+}
+
+func (o OceanImportOutput) ToOceanImportPtrOutputWithContext(ctx context.Context) OceanImportPtrOutput {
+	return o.ApplyT(func(v OceanImport) *OceanImport {
+		return &v
+	}).(OceanImportPtrOutput)
+}
+
+type OceanImportPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OceanImportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImport)(nil))
+}
+
+func (o OceanImportPtrOutput) ToOceanImportPtrOutput() OceanImportPtrOutput {
+	return o
+}
+
+func (o OceanImportPtrOutput) ToOceanImportPtrOutputWithContext(ctx context.Context) OceanImportPtrOutput {
+	return o
+}
+
+type OceanImportArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanImportArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanImport)(nil))
+}
+
+func (o OceanImportArrayOutput) ToOceanImportArrayOutput() OceanImportArrayOutput {
+	return o
+}
+
+func (o OceanImportArrayOutput) ToOceanImportArrayOutputWithContext(ctx context.Context) OceanImportArrayOutput {
+	return o
+}
+
+func (o OceanImportArrayOutput) Index(i pulumi.IntInput) OceanImportOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanImport {
+		return vs[0].([]OceanImport)[vs[1].(int)]
+	}).(OceanImportOutput)
+}
+
+type OceanImportMapOutput struct{ *pulumi.OutputState }
+
+func (OceanImportMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]OceanImport)(nil))
+}
+
+func (o OceanImportMapOutput) ToOceanImportMapOutput() OceanImportMapOutput {
+	return o
+}
+
+func (o OceanImportMapOutput) ToOceanImportMapOutputWithContext(ctx context.Context) OceanImportMapOutput {
+	return o
+}
+
+func (o OceanImportMapOutput) MapIndex(k pulumi.StringInput) OceanImportOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OceanImport {
+		return vs[0].(map[string]OceanImport)[vs[1].(string)]
+	}).(OceanImportOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(OceanImportOutput{})
+	pulumi.RegisterOutputType(OceanImportPtrOutput{})
+	pulumi.RegisterOutputType(OceanImportArrayOutput{})
+	pulumi.RegisterOutputType(OceanImportMapOutput{})
 }

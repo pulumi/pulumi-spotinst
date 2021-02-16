@@ -51,7 +51,8 @@ export class Target extends pulumi.CustomResource {
     constructor(name: string, args: TargetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetArgs | TargetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TargetState | undefined;
             inputs["balancerId"] = state ? state.balancerId : undefined;
             inputs["host"] = state ? state.host : undefined;
@@ -62,16 +63,16 @@ export class Target extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as TargetArgs | undefined;
-            if ((!args || args.balancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.balancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'balancerId'");
             }
-            if ((!args || args.host === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.host === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            if ((!args || args.targetSetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetSetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetSetId'");
             }
-            if ((!args || args.weight === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.weight === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
             inputs["balancerId"] = args ? args.balancerId : undefined;
@@ -82,12 +83,8 @@ export class Target extends pulumi.CustomResource {
             inputs["targetSetId"] = args ? args.targetSetId : undefined;
             inputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Target.__pulumiType, name, inputs, opts);
     }

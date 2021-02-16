@@ -475,6 +475,85 @@ func (i *Elastigroup) ToElastigroupOutputWithContext(ctx context.Context) Elasti
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupOutput)
 }
 
+func (i *Elastigroup) ToElastigroupPtrOutput() ElastigroupPtrOutput {
+	return i.ToElastigroupPtrOutputWithContext(context.Background())
+}
+
+func (i *Elastigroup) ToElastigroupPtrOutputWithContext(ctx context.Context) ElastigroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupPtrOutput)
+}
+
+type ElastigroupPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupPtrOutput() ElastigroupPtrOutput
+	ToElastigroupPtrOutputWithContext(ctx context.Context) ElastigroupPtrOutput
+}
+
+type elastigroupPtrType ElastigroupArgs
+
+func (*elastigroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Elastigroup)(nil))
+}
+
+func (i *elastigroupPtrType) ToElastigroupPtrOutput() ElastigroupPtrOutput {
+	return i.ToElastigroupPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupPtrType) ToElastigroupPtrOutputWithContext(ctx context.Context) ElastigroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupPtrOutput)
+}
+
+// ElastigroupArrayInput is an input type that accepts ElastigroupArray and ElastigroupArrayOutput values.
+// You can construct a concrete instance of `ElastigroupArrayInput` via:
+//
+//          ElastigroupArray{ ElastigroupArgs{...} }
+type ElastigroupArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupArrayOutput() ElastigroupArrayOutput
+	ToElastigroupArrayOutputWithContext(context.Context) ElastigroupArrayOutput
+}
+
+type ElastigroupArray []ElastigroupInput
+
+func (ElastigroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Elastigroup)(nil))
+}
+
+func (i ElastigroupArray) ToElastigroupArrayOutput() ElastigroupArrayOutput {
+	return i.ToElastigroupArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupArray) ToElastigroupArrayOutputWithContext(ctx context.Context) ElastigroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupArrayOutput)
+}
+
+// ElastigroupMapInput is an input type that accepts ElastigroupMap and ElastigroupMapOutput values.
+// You can construct a concrete instance of `ElastigroupMapInput` via:
+//
+//          ElastigroupMap{ "key": ElastigroupArgs{...} }
+type ElastigroupMapInput interface {
+	pulumi.Input
+
+	ToElastigroupMapOutput() ElastigroupMapOutput
+	ToElastigroupMapOutputWithContext(context.Context) ElastigroupMapOutput
+}
+
+type ElastigroupMap map[string]ElastigroupInput
+
+func (ElastigroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Elastigroup)(nil))
+}
+
+func (i ElastigroupMap) ToElastigroupMapOutput() ElastigroupMapOutput {
+	return i.ToElastigroupMapOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMap) ToElastigroupMapOutputWithContext(ctx context.Context) ElastigroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMapOutput)
+}
+
 type ElastigroupOutput struct {
 	*pulumi.OutputState
 }
@@ -491,6 +570,75 @@ func (o ElastigroupOutput) ToElastigroupOutputWithContext(ctx context.Context) E
 	return o
 }
 
+func (o ElastigroupOutput) ToElastigroupPtrOutput() ElastigroupPtrOutput {
+	return o.ToElastigroupPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupOutput) ToElastigroupPtrOutputWithContext(ctx context.Context) ElastigroupPtrOutput {
+	return o.ApplyT(func(v Elastigroup) *Elastigroup {
+		return &v
+	}).(ElastigroupPtrOutput)
+}
+
+type ElastigroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ElastigroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Elastigroup)(nil))
+}
+
+func (o ElastigroupPtrOutput) ToElastigroupPtrOutput() ElastigroupPtrOutput {
+	return o
+}
+
+func (o ElastigroupPtrOutput) ToElastigroupPtrOutputWithContext(ctx context.Context) ElastigroupPtrOutput {
+	return o
+}
+
+type ElastigroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Elastigroup)(nil))
+}
+
+func (o ElastigroupArrayOutput) ToElastigroupArrayOutput() ElastigroupArrayOutput {
+	return o
+}
+
+func (o ElastigroupArrayOutput) ToElastigroupArrayOutputWithContext(ctx context.Context) ElastigroupArrayOutput {
+	return o
+}
+
+func (o ElastigroupArrayOutput) Index(i pulumi.IntInput) ElastigroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Elastigroup {
+		return vs[0].([]Elastigroup)[vs[1].(int)]
+	}).(ElastigroupOutput)
+}
+
+type ElastigroupMapOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Elastigroup)(nil))
+}
+
+func (o ElastigroupMapOutput) ToElastigroupMapOutput() ElastigroupMapOutput {
+	return o
+}
+
+func (o ElastigroupMapOutput) ToElastigroupMapOutputWithContext(ctx context.Context) ElastigroupMapOutput {
+	return o
+}
+
+func (o ElastigroupMapOutput) MapIndex(k pulumi.StringInput) ElastigroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Elastigroup {
+		return vs[0].(map[string]Elastigroup)[vs[1].(string)]
+	}).(ElastigroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ElastigroupOutput{})
+	pulumi.RegisterOutputType(ElastigroupPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupMapOutput{})
 }

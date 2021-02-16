@@ -264,7 +264,8 @@ export class Elastigroup extends pulumi.CustomResource {
     constructor(name: string, args: ElastigroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ElastigroupArgs | ElastigroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ElastigroupState | undefined;
             inputs["autoHealing"] = state ? state.autoHealing : undefined;
             inputs["availabilityZones"] = state ? state.availabilityZones : undefined;
@@ -302,7 +303,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["unhealthyDuration"] = state ? state.unhealthyDuration : undefined;
         } else {
             const args = argsOrState as ElastigroupArgs | undefined;
-            if ((!args || args.desiredCapacity === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.desiredCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'desiredCapacity'");
             }
             inputs["autoHealing"] = args ? args.autoHealing : undefined;
@@ -340,12 +341,8 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["unhealthyDuration"] = args ? args.unhealthyDuration : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Elastigroup.__pulumiType, name, inputs, opts);
     }

@@ -523,6 +523,85 @@ func (i *ManagedInstance) ToManagedInstanceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceOutput)
 }
 
+func (i *ManagedInstance) ToManagedInstancePtrOutput() ManagedInstancePtrOutput {
+	return i.ToManagedInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *ManagedInstance) ToManagedInstancePtrOutputWithContext(ctx context.Context) ManagedInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstancePtrOutput)
+}
+
+type ManagedInstancePtrInput interface {
+	pulumi.Input
+
+	ToManagedInstancePtrOutput() ManagedInstancePtrOutput
+	ToManagedInstancePtrOutputWithContext(ctx context.Context) ManagedInstancePtrOutput
+}
+
+type managedInstancePtrType ManagedInstanceArgs
+
+func (*managedInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedInstance)(nil))
+}
+
+func (i *managedInstancePtrType) ToManagedInstancePtrOutput() ManagedInstancePtrOutput {
+	return i.ToManagedInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *managedInstancePtrType) ToManagedInstancePtrOutputWithContext(ctx context.Context) ManagedInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstancePtrOutput)
+}
+
+// ManagedInstanceArrayInput is an input type that accepts ManagedInstanceArray and ManagedInstanceArrayOutput values.
+// You can construct a concrete instance of `ManagedInstanceArrayInput` via:
+//
+//          ManagedInstanceArray{ ManagedInstanceArgs{...} }
+type ManagedInstanceArrayInput interface {
+	pulumi.Input
+
+	ToManagedInstanceArrayOutput() ManagedInstanceArrayOutput
+	ToManagedInstanceArrayOutputWithContext(context.Context) ManagedInstanceArrayOutput
+}
+
+type ManagedInstanceArray []ManagedInstanceInput
+
+func (ManagedInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ManagedInstance)(nil))
+}
+
+func (i ManagedInstanceArray) ToManagedInstanceArrayOutput() ManagedInstanceArrayOutput {
+	return i.ToManagedInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceArray) ToManagedInstanceArrayOutputWithContext(ctx context.Context) ManagedInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceArrayOutput)
+}
+
+// ManagedInstanceMapInput is an input type that accepts ManagedInstanceMap and ManagedInstanceMapOutput values.
+// You can construct a concrete instance of `ManagedInstanceMapInput` via:
+//
+//          ManagedInstanceMap{ "key": ManagedInstanceArgs{...} }
+type ManagedInstanceMapInput interface {
+	pulumi.Input
+
+	ToManagedInstanceMapOutput() ManagedInstanceMapOutput
+	ToManagedInstanceMapOutputWithContext(context.Context) ManagedInstanceMapOutput
+}
+
+type ManagedInstanceMap map[string]ManagedInstanceInput
+
+func (ManagedInstanceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ManagedInstance)(nil))
+}
+
+func (i ManagedInstanceMap) ToManagedInstanceMapOutput() ManagedInstanceMapOutput {
+	return i.ToManagedInstanceMapOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceMap) ToManagedInstanceMapOutputWithContext(ctx context.Context) ManagedInstanceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceMapOutput)
+}
+
 type ManagedInstanceOutput struct {
 	*pulumi.OutputState
 }
@@ -539,6 +618,75 @@ func (o ManagedInstanceOutput) ToManagedInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ManagedInstanceOutput) ToManagedInstancePtrOutput() ManagedInstancePtrOutput {
+	return o.ToManagedInstancePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedInstanceOutput) ToManagedInstancePtrOutputWithContext(ctx context.Context) ManagedInstancePtrOutput {
+	return o.ApplyT(func(v ManagedInstance) *ManagedInstance {
+		return &v
+	}).(ManagedInstancePtrOutput)
+}
+
+type ManagedInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagedInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedInstance)(nil))
+}
+
+func (o ManagedInstancePtrOutput) ToManagedInstancePtrOutput() ManagedInstancePtrOutput {
+	return o
+}
+
+func (o ManagedInstancePtrOutput) ToManagedInstancePtrOutputWithContext(ctx context.Context) ManagedInstancePtrOutput {
+	return o
+}
+
+type ManagedInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedInstance)(nil))
+}
+
+func (o ManagedInstanceArrayOutput) ToManagedInstanceArrayOutput() ManagedInstanceArrayOutput {
+	return o
+}
+
+func (o ManagedInstanceArrayOutput) ToManagedInstanceArrayOutputWithContext(ctx context.Context) ManagedInstanceArrayOutput {
+	return o
+}
+
+func (o ManagedInstanceArrayOutput) Index(i pulumi.IntInput) ManagedInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstance {
+		return vs[0].([]ManagedInstance)[vs[1].(int)]
+	}).(ManagedInstanceOutput)
+}
+
+type ManagedInstanceMapOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ManagedInstance)(nil))
+}
+
+func (o ManagedInstanceMapOutput) ToManagedInstanceMapOutput() ManagedInstanceMapOutput {
+	return o
+}
+
+func (o ManagedInstanceMapOutput) ToManagedInstanceMapOutputWithContext(ctx context.Context) ManagedInstanceMapOutput {
+	return o
+}
+
+func (o ManagedInstanceMapOutput) MapIndex(k pulumi.StringInput) ManagedInstanceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ManagedInstance {
+		return vs[0].(map[string]ManagedInstance)[vs[1].(string)]
+	}).(ManagedInstanceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ManagedInstanceOutput{})
+	pulumi.RegisterOutputType(ManagedInstancePtrOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceArrayOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceMapOutput{})
 }

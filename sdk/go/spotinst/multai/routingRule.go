@@ -136,6 +136,85 @@ func (i *RoutingRule) ToRoutingRuleOutputWithContext(ctx context.Context) Routin
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleOutput)
 }
 
+func (i *RoutingRule) ToRoutingRulePtrOutput() RoutingRulePtrOutput {
+	return i.ToRoutingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *RoutingRule) ToRoutingRulePtrOutputWithContext(ctx context.Context) RoutingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingRulePtrOutput)
+}
+
+type RoutingRulePtrInput interface {
+	pulumi.Input
+
+	ToRoutingRulePtrOutput() RoutingRulePtrOutput
+	ToRoutingRulePtrOutputWithContext(ctx context.Context) RoutingRulePtrOutput
+}
+
+type routingRulePtrType RoutingRuleArgs
+
+func (*routingRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingRule)(nil))
+}
+
+func (i *routingRulePtrType) ToRoutingRulePtrOutput() RoutingRulePtrOutput {
+	return i.ToRoutingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *routingRulePtrType) ToRoutingRulePtrOutputWithContext(ctx context.Context) RoutingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingRulePtrOutput)
+}
+
+// RoutingRuleArrayInput is an input type that accepts RoutingRuleArray and RoutingRuleArrayOutput values.
+// You can construct a concrete instance of `RoutingRuleArrayInput` via:
+//
+//          RoutingRuleArray{ RoutingRuleArgs{...} }
+type RoutingRuleArrayInput interface {
+	pulumi.Input
+
+	ToRoutingRuleArrayOutput() RoutingRuleArrayOutput
+	ToRoutingRuleArrayOutputWithContext(context.Context) RoutingRuleArrayOutput
+}
+
+type RoutingRuleArray []RoutingRuleInput
+
+func (RoutingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RoutingRule)(nil))
+}
+
+func (i RoutingRuleArray) ToRoutingRuleArrayOutput() RoutingRuleArrayOutput {
+	return i.ToRoutingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i RoutingRuleArray) ToRoutingRuleArrayOutputWithContext(ctx context.Context) RoutingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleArrayOutput)
+}
+
+// RoutingRuleMapInput is an input type that accepts RoutingRuleMap and RoutingRuleMapOutput values.
+// You can construct a concrete instance of `RoutingRuleMapInput` via:
+//
+//          RoutingRuleMap{ "key": RoutingRuleArgs{...} }
+type RoutingRuleMapInput interface {
+	pulumi.Input
+
+	ToRoutingRuleMapOutput() RoutingRuleMapOutput
+	ToRoutingRuleMapOutputWithContext(context.Context) RoutingRuleMapOutput
+}
+
+type RoutingRuleMap map[string]RoutingRuleInput
+
+func (RoutingRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RoutingRule)(nil))
+}
+
+func (i RoutingRuleMap) ToRoutingRuleMapOutput() RoutingRuleMapOutput {
+	return i.ToRoutingRuleMapOutputWithContext(context.Background())
+}
+
+func (i RoutingRuleMap) ToRoutingRuleMapOutputWithContext(ctx context.Context) RoutingRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleMapOutput)
+}
+
 type RoutingRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -152,6 +231,75 @@ func (o RoutingRuleOutput) ToRoutingRuleOutputWithContext(ctx context.Context) R
 	return o
 }
 
+func (o RoutingRuleOutput) ToRoutingRulePtrOutput() RoutingRulePtrOutput {
+	return o.ToRoutingRulePtrOutputWithContext(context.Background())
+}
+
+func (o RoutingRuleOutput) ToRoutingRulePtrOutputWithContext(ctx context.Context) RoutingRulePtrOutput {
+	return o.ApplyT(func(v RoutingRule) *RoutingRule {
+		return &v
+	}).(RoutingRulePtrOutput)
+}
+
+type RoutingRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoutingRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingRule)(nil))
+}
+
+func (o RoutingRulePtrOutput) ToRoutingRulePtrOutput() RoutingRulePtrOutput {
+	return o
+}
+
+func (o RoutingRulePtrOutput) ToRoutingRulePtrOutputWithContext(ctx context.Context) RoutingRulePtrOutput {
+	return o
+}
+
+type RoutingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (RoutingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutingRule)(nil))
+}
+
+func (o RoutingRuleArrayOutput) ToRoutingRuleArrayOutput() RoutingRuleArrayOutput {
+	return o
+}
+
+func (o RoutingRuleArrayOutput) ToRoutingRuleArrayOutputWithContext(ctx context.Context) RoutingRuleArrayOutput {
+	return o
+}
+
+func (o RoutingRuleArrayOutput) Index(i pulumi.IntInput) RoutingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutingRule {
+		return vs[0].([]RoutingRule)[vs[1].(int)]
+	}).(RoutingRuleOutput)
+}
+
+type RoutingRuleMapOutput struct{ *pulumi.OutputState }
+
+func (RoutingRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RoutingRule)(nil))
+}
+
+func (o RoutingRuleMapOutput) ToRoutingRuleMapOutput() RoutingRuleMapOutput {
+	return o
+}
+
+func (o RoutingRuleMapOutput) ToRoutingRuleMapOutputWithContext(ctx context.Context) RoutingRuleMapOutput {
+	return o
+}
+
+func (o RoutingRuleMapOutput) MapIndex(k pulumi.StringInput) RoutingRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RoutingRule {
+		return vs[0].(map[string]RoutingRule)[vs[1].(string)]
+	}).(RoutingRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RoutingRuleOutput{})
+	pulumi.RegisterOutputType(RoutingRulePtrOutput{})
+	pulumi.RegisterOutputType(RoutingRuleArrayOutput{})
+	pulumi.RegisterOutputType(RoutingRuleMapOutput{})
 }

@@ -914,6 +914,85 @@ func (i *MrScalar) ToMrScalarOutputWithContext(ctx context.Context) MrScalarOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarOutput)
 }
 
+func (i *MrScalar) ToMrScalarPtrOutput() MrScalarPtrOutput {
+	return i.ToMrScalarPtrOutputWithContext(context.Background())
+}
+
+func (i *MrScalar) ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MrScalarPtrOutput)
+}
+
+type MrScalarPtrInput interface {
+	pulumi.Input
+
+	ToMrScalarPtrOutput() MrScalarPtrOutput
+	ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput
+}
+
+type mrScalarPtrType MrScalarArgs
+
+func (*mrScalarPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MrScalar)(nil))
+}
+
+func (i *mrScalarPtrType) ToMrScalarPtrOutput() MrScalarPtrOutput {
+	return i.ToMrScalarPtrOutputWithContext(context.Background())
+}
+
+func (i *mrScalarPtrType) ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MrScalarPtrOutput)
+}
+
+// MrScalarArrayInput is an input type that accepts MrScalarArray and MrScalarArrayOutput values.
+// You can construct a concrete instance of `MrScalarArrayInput` via:
+//
+//          MrScalarArray{ MrScalarArgs{...} }
+type MrScalarArrayInput interface {
+	pulumi.Input
+
+	ToMrScalarArrayOutput() MrScalarArrayOutput
+	ToMrScalarArrayOutputWithContext(context.Context) MrScalarArrayOutput
+}
+
+type MrScalarArray []MrScalarInput
+
+func (MrScalarArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MrScalar)(nil))
+}
+
+func (i MrScalarArray) ToMrScalarArrayOutput() MrScalarArrayOutput {
+	return i.ToMrScalarArrayOutputWithContext(context.Background())
+}
+
+func (i MrScalarArray) ToMrScalarArrayOutputWithContext(ctx context.Context) MrScalarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MrScalarArrayOutput)
+}
+
+// MrScalarMapInput is an input type that accepts MrScalarMap and MrScalarMapOutput values.
+// You can construct a concrete instance of `MrScalarMapInput` via:
+//
+//          MrScalarMap{ "key": MrScalarArgs{...} }
+type MrScalarMapInput interface {
+	pulumi.Input
+
+	ToMrScalarMapOutput() MrScalarMapOutput
+	ToMrScalarMapOutputWithContext(context.Context) MrScalarMapOutput
+}
+
+type MrScalarMap map[string]MrScalarInput
+
+func (MrScalarMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MrScalar)(nil))
+}
+
+func (i MrScalarMap) ToMrScalarMapOutput() MrScalarMapOutput {
+	return i.ToMrScalarMapOutputWithContext(context.Background())
+}
+
+func (i MrScalarMap) ToMrScalarMapOutputWithContext(ctx context.Context) MrScalarMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MrScalarMapOutput)
+}
+
 type MrScalarOutput struct {
 	*pulumi.OutputState
 }
@@ -930,6 +1009,75 @@ func (o MrScalarOutput) ToMrScalarOutputWithContext(ctx context.Context) MrScala
 	return o
 }
 
+func (o MrScalarOutput) ToMrScalarPtrOutput() MrScalarPtrOutput {
+	return o.ToMrScalarPtrOutputWithContext(context.Background())
+}
+
+func (o MrScalarOutput) ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput {
+	return o.ApplyT(func(v MrScalar) *MrScalar {
+		return &v
+	}).(MrScalarPtrOutput)
+}
+
+type MrScalarPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MrScalarPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MrScalar)(nil))
+}
+
+func (o MrScalarPtrOutput) ToMrScalarPtrOutput() MrScalarPtrOutput {
+	return o
+}
+
+func (o MrScalarPtrOutput) ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput {
+	return o
+}
+
+type MrScalarArrayOutput struct{ *pulumi.OutputState }
+
+func (MrScalarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MrScalar)(nil))
+}
+
+func (o MrScalarArrayOutput) ToMrScalarArrayOutput() MrScalarArrayOutput {
+	return o
+}
+
+func (o MrScalarArrayOutput) ToMrScalarArrayOutputWithContext(ctx context.Context) MrScalarArrayOutput {
+	return o
+}
+
+func (o MrScalarArrayOutput) Index(i pulumi.IntInput) MrScalarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalar {
+		return vs[0].([]MrScalar)[vs[1].(int)]
+	}).(MrScalarOutput)
+}
+
+type MrScalarMapOutput struct{ *pulumi.OutputState }
+
+func (MrScalarMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MrScalar)(nil))
+}
+
+func (o MrScalarMapOutput) ToMrScalarMapOutput() MrScalarMapOutput {
+	return o
+}
+
+func (o MrScalarMapOutput) ToMrScalarMapOutputWithContext(ctx context.Context) MrScalarMapOutput {
+	return o
+}
+
+func (o MrScalarMapOutput) MapIndex(k pulumi.StringInput) MrScalarOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MrScalar {
+		return vs[0].(map[string]MrScalar)[vs[1].(string)]
+	}).(MrScalarOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MrScalarOutput{})
+	pulumi.RegisterOutputType(MrScalarPtrOutput{})
+	pulumi.RegisterOutputType(MrScalarArrayOutput{})
+	pulumi.RegisterOutputType(MrScalarMapOutput{})
 }

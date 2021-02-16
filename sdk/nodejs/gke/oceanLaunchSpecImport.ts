@@ -71,27 +71,24 @@ export class OceanLaunchSpecImport extends pulumi.CustomResource {
     constructor(name: string, args: OceanLaunchSpecImportArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanLaunchSpecImportArgs | OceanLaunchSpecImportState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OceanLaunchSpecImportState | undefined;
             inputs["nodePoolName"] = state ? state.nodePoolName : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecImportArgs | undefined;
-            if ((!args || args.nodePoolName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.nodePoolName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodePoolName'");
             }
-            if ((!args || args.oceanId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
             inputs["nodePoolName"] = args ? args.nodePoolName : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OceanLaunchSpecImport.__pulumiType, name, inputs, opts);
     }

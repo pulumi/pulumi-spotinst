@@ -280,6 +280,85 @@ func (i *Beanstalk) ToBeanstalkOutputWithContext(ctx context.Context) BeanstalkO
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkOutput)
 }
 
+func (i *Beanstalk) ToBeanstalkPtrOutput() BeanstalkPtrOutput {
+	return i.ToBeanstalkPtrOutputWithContext(context.Background())
+}
+
+func (i *Beanstalk) ToBeanstalkPtrOutputWithContext(ctx context.Context) BeanstalkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkPtrOutput)
+}
+
+type BeanstalkPtrInput interface {
+	pulumi.Input
+
+	ToBeanstalkPtrOutput() BeanstalkPtrOutput
+	ToBeanstalkPtrOutputWithContext(ctx context.Context) BeanstalkPtrOutput
+}
+
+type beanstalkPtrType BeanstalkArgs
+
+func (*beanstalkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Beanstalk)(nil))
+}
+
+func (i *beanstalkPtrType) ToBeanstalkPtrOutput() BeanstalkPtrOutput {
+	return i.ToBeanstalkPtrOutputWithContext(context.Background())
+}
+
+func (i *beanstalkPtrType) ToBeanstalkPtrOutputWithContext(ctx context.Context) BeanstalkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkPtrOutput)
+}
+
+// BeanstalkArrayInput is an input type that accepts BeanstalkArray and BeanstalkArrayOutput values.
+// You can construct a concrete instance of `BeanstalkArrayInput` via:
+//
+//          BeanstalkArray{ BeanstalkArgs{...} }
+type BeanstalkArrayInput interface {
+	pulumi.Input
+
+	ToBeanstalkArrayOutput() BeanstalkArrayOutput
+	ToBeanstalkArrayOutputWithContext(context.Context) BeanstalkArrayOutput
+}
+
+type BeanstalkArray []BeanstalkInput
+
+func (BeanstalkArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Beanstalk)(nil))
+}
+
+func (i BeanstalkArray) ToBeanstalkArrayOutput() BeanstalkArrayOutput {
+	return i.ToBeanstalkArrayOutputWithContext(context.Background())
+}
+
+func (i BeanstalkArray) ToBeanstalkArrayOutputWithContext(ctx context.Context) BeanstalkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkArrayOutput)
+}
+
+// BeanstalkMapInput is an input type that accepts BeanstalkMap and BeanstalkMapOutput values.
+// You can construct a concrete instance of `BeanstalkMapInput` via:
+//
+//          BeanstalkMap{ "key": BeanstalkArgs{...} }
+type BeanstalkMapInput interface {
+	pulumi.Input
+
+	ToBeanstalkMapOutput() BeanstalkMapOutput
+	ToBeanstalkMapOutputWithContext(context.Context) BeanstalkMapOutput
+}
+
+type BeanstalkMap map[string]BeanstalkInput
+
+func (BeanstalkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Beanstalk)(nil))
+}
+
+func (i BeanstalkMap) ToBeanstalkMapOutput() BeanstalkMapOutput {
+	return i.ToBeanstalkMapOutputWithContext(context.Background())
+}
+
+func (i BeanstalkMap) ToBeanstalkMapOutputWithContext(ctx context.Context) BeanstalkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkMapOutput)
+}
+
 type BeanstalkOutput struct {
 	*pulumi.OutputState
 }
@@ -296,6 +375,75 @@ func (o BeanstalkOutput) ToBeanstalkOutputWithContext(ctx context.Context) Beans
 	return o
 }
 
+func (o BeanstalkOutput) ToBeanstalkPtrOutput() BeanstalkPtrOutput {
+	return o.ToBeanstalkPtrOutputWithContext(context.Background())
+}
+
+func (o BeanstalkOutput) ToBeanstalkPtrOutputWithContext(ctx context.Context) BeanstalkPtrOutput {
+	return o.ApplyT(func(v Beanstalk) *Beanstalk {
+		return &v
+	}).(BeanstalkPtrOutput)
+}
+
+type BeanstalkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BeanstalkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Beanstalk)(nil))
+}
+
+func (o BeanstalkPtrOutput) ToBeanstalkPtrOutput() BeanstalkPtrOutput {
+	return o
+}
+
+func (o BeanstalkPtrOutput) ToBeanstalkPtrOutputWithContext(ctx context.Context) BeanstalkPtrOutput {
+	return o
+}
+
+type BeanstalkArrayOutput struct{ *pulumi.OutputState }
+
+func (BeanstalkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Beanstalk)(nil))
+}
+
+func (o BeanstalkArrayOutput) ToBeanstalkArrayOutput() BeanstalkArrayOutput {
+	return o
+}
+
+func (o BeanstalkArrayOutput) ToBeanstalkArrayOutputWithContext(ctx context.Context) BeanstalkArrayOutput {
+	return o
+}
+
+func (o BeanstalkArrayOutput) Index(i pulumi.IntInput) BeanstalkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Beanstalk {
+		return vs[0].([]Beanstalk)[vs[1].(int)]
+	}).(BeanstalkOutput)
+}
+
+type BeanstalkMapOutput struct{ *pulumi.OutputState }
+
+func (BeanstalkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Beanstalk)(nil))
+}
+
+func (o BeanstalkMapOutput) ToBeanstalkMapOutput() BeanstalkMapOutput {
+	return o
+}
+
+func (o BeanstalkMapOutput) ToBeanstalkMapOutputWithContext(ctx context.Context) BeanstalkMapOutput {
+	return o
+}
+
+func (o BeanstalkMapOutput) MapIndex(k pulumi.StringInput) BeanstalkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Beanstalk {
+		return vs[0].(map[string]Beanstalk)[vs[1].(string)]
+	}).(BeanstalkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BeanstalkOutput{})
+	pulumi.RegisterOutputType(BeanstalkPtrOutput{})
+	pulumi.RegisterOutputType(BeanstalkArrayOutput{})
+	pulumi.RegisterOutputType(BeanstalkMapOutput{})
 }

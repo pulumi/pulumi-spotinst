@@ -202,7 +202,8 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     constructor(name: string, args: OceanLaunchSpecArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanLaunchSpecArgs | OceanLaunchSpecState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
             inputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
             inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
@@ -224,7 +225,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
-            if ((!args || args.oceanId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
             inputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
@@ -246,12 +247,8 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["taints"] = args ? args.taints : undefined;
             inputs["userData"] = args ? args.userData : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OceanLaunchSpec.__pulumiType, name, inputs, opts);
     }

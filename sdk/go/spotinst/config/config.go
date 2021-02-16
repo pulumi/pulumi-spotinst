@@ -10,11 +10,7 @@ import (
 
 // Spotinst Account ID
 func GetAccount(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "spotinst:account")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "SPOTINST_ACCOUNT").(string)
+	return config.Get(ctx, "spotinst:account")
 }
 
 // Spotinst SDK Feature Flags
@@ -24,9 +20,5 @@ func GetFeatureFlags(ctx *pulumi.Context) string {
 
 // Spotinst Personal API Access Token
 func GetToken(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "spotinst:token")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "SPOTINST_TOKEN").(string)
+	return config.Get(ctx, "spotinst:token")
 }
