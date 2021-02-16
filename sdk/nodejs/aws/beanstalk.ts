@@ -132,7 +132,8 @@ export class Beanstalk extends pulumi.CustomResource {
     constructor(name: string, args: BeanstalkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BeanstalkArgs | BeanstalkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BeanstalkState | undefined;
             inputs["beanstalkEnvironmentId"] = state ? state.beanstalkEnvironmentId : undefined;
             inputs["beanstalkEnvironmentName"] = state ? state.beanstalkEnvironmentName : undefined;
@@ -149,22 +150,22 @@ export class Beanstalk extends pulumi.CustomResource {
             inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
         } else {
             const args = argsOrState as BeanstalkArgs | undefined;
-            if ((!args || args.desiredCapacity === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.desiredCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'desiredCapacity'");
             }
-            if ((!args || args.instanceTypesSpots === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceTypesSpots === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceTypesSpots'");
             }
-            if ((!args || args.maxSize === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.maxSize === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'maxSize'");
             }
-            if ((!args || args.minSize === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.minSize === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'minSize'");
             }
-            if ((!args || args.product === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.product === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'product'");
             }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["beanstalkEnvironmentId"] = args ? args.beanstalkEnvironmentId : undefined;
@@ -181,12 +182,8 @@ export class Beanstalk extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Beanstalk.__pulumiType, name, inputs, opts);
     }

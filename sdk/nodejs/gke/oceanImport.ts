@@ -119,7 +119,8 @@ export class OceanImport extends pulumi.CustomResource {
     constructor(name: string, args: OceanImportArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanImportArgs | OceanImportState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OceanImportState | undefined;
             inputs["autoscaler"] = state ? state.autoscaler : undefined;
             inputs["backendServices"] = state ? state.backendServices : undefined;
@@ -134,10 +135,10 @@ export class OceanImport extends pulumi.CustomResource {
             inputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as OceanImportArgs | undefined;
-            if ((!args || args.clusterName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["autoscaler"] = args ? args.autoscaler : undefined;
@@ -152,12 +153,8 @@ export class OceanImport extends pulumi.CustomResource {
             inputs["whitelists"] = args ? args.whitelists : undefined;
             inputs["clusterControllerId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OceanImport.__pulumiType, name, inputs, opts);
     }

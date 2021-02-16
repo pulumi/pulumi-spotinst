@@ -265,7 +265,8 @@ export class ManagedInstance extends pulumi.CustomResource {
     constructor(name: string, args: ManagedInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ManagedInstanceArgs | ManagedInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ManagedInstanceState | undefined;
             inputs["autoHealing"] = state ? state.autoHealing : undefined;
             inputs["blockDevicesMode"] = state ? state.blockDevicesMode : undefined;
@@ -309,22 +310,22 @@ export class ManagedInstance extends pulumi.CustomResource {
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ManagedInstanceArgs | undefined;
-            if ((!args || args.imageId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.imageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.instanceTypes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceTypes'");
             }
-            if ((!args || args.persistBlockDevices === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.persistBlockDevices === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'persistBlockDevices'");
             }
-            if ((!args || args.product === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.product === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'product'");
             }
-            if ((!args || args.subnetIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subnetIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetIds'");
             }
-            if ((!args || args.vpcId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["autoHealing"] = args ? args.autoHealing : undefined;
@@ -368,12 +369,8 @@ export class ManagedInstance extends pulumi.CustomResource {
             inputs["utilizeReservedInstances"] = args ? args.utilizeReservedInstances : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ManagedInstance.__pulumiType, name, inputs, opts);
     }

@@ -52,7 +52,8 @@ export class RoutingRule extends pulumi.CustomResource {
     constructor(name: string, args: RoutingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoutingRuleArgs | RoutingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RoutingRuleState | undefined;
             inputs["balancerId"] = state ? state.balancerId : undefined;
             inputs["listenerId"] = state ? state.listenerId : undefined;
@@ -64,16 +65,16 @@ export class RoutingRule extends pulumi.CustomResource {
             inputs["targetSetIds"] = state ? state.targetSetIds : undefined;
         } else {
             const args = argsOrState as RoutingRuleArgs | undefined;
-            if ((!args || args.balancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.balancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'balancerId'");
             }
-            if ((!args || args.listenerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            if ((!args || args.route === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.route === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'route'");
             }
-            if ((!args || args.targetSetIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetSetIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetSetIds'");
             }
             inputs["balancerId"] = args ? args.balancerId : undefined;
@@ -85,12 +86,8 @@ export class RoutingRule extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["targetSetIds"] = args ? args.targetSetIds : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RoutingRule.__pulumiType, name, inputs, opts);
     }

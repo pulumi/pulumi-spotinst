@@ -482,7 +482,8 @@ export class MrScalar extends pulumi.CustomResource {
     constructor(name: string, args: MrScalarArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MrScalarArgs | MrScalarState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MrScalarState | undefined;
             inputs["additionalInfo"] = state ? state.additionalInfo : undefined;
             inputs["additionalPrimarySecurityGroups"] = state ? state.additionalPrimarySecurityGroups : undefined;
@@ -546,7 +547,7 @@ export class MrScalar extends pulumi.CustomResource {
             inputs["visibleToAllUsers"] = state ? state.visibleToAllUsers : undefined;
         } else {
             const args = argsOrState as MrScalarArgs | undefined;
-            if ((!args || args.strategy === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.strategy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
             inputs["additionalInfo"] = args ? args.additionalInfo : undefined;
@@ -610,12 +611,8 @@ export class MrScalar extends pulumi.CustomResource {
             inputs["visibleToAllUsers"] = args ? args.visibleToAllUsers : undefined;
             inputs["outputClusterId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MrScalar.__pulumiType, name, inputs, opts);
     }

@@ -107,7 +107,8 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     constructor(name: string, args: OceanLaunchSpecArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanLaunchSpecArgs | OceanLaunchSpecState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
             inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -117,13 +118,13 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["taints"] = state ? state.taints : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
-            if ((!args || args.metadatas === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.metadatas === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metadatas'");
             }
-            if ((!args || args.oceanId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
-            if ((!args || args.sourceImage === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceImage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceImage'");
             }
             inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
@@ -133,12 +134,8 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["sourceImage"] = args ? args.sourceImage : undefined;
             inputs["taints"] = args ? args.taints : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OceanLaunchSpec.__pulumiType, name, inputs, opts);
     }

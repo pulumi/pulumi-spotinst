@@ -81,20 +81,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://pulumi.io",
 		GitHubOrg:   "spotinst",
 		Repository:  "https://github.com/pulumi/pulumi-spotinst",
-		Config: map[string]*tfbridge.SchemaInfo{
-			"account": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "",
-					EnvVars: []string{"SPOTINST_ACCOUNT"},
-				},
-			},
-			"token": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "",
-					EnvVars: []string{"SPOTINST_TOKEN"},
-				},
-			},
-		},
+		Config:      map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"spotinst_elastigroup_aws":            {Tok: makeResource(awsMod, "Elastigroup")},
 			"spotinst_elastigroup_aws_beanstalk":  {Tok: makeResource(awsMod, "Beanstalk")},

@@ -35,17 +35,14 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
-            inputs["account"] = (args ? args.account : undefined) || (utilities.getEnv("SPOTINST_ACCOUNT") || "");
+            inputs["account"] = args ? args.account : undefined;
             inputs["featureFlags"] = args ? args.featureFlags : undefined;
-            inputs["token"] = (args ? args.token : undefined) || (utilities.getEnv("SPOTINST_TOKEN") || "");
+            inputs["token"] = args ? args.token : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

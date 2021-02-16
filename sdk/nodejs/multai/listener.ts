@@ -49,7 +49,8 @@ export class Listener extends pulumi.CustomResource {
     constructor(name: string, args: ListenerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ListenerArgs | ListenerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
             inputs["balancerId"] = state ? state.balancerId : undefined;
             inputs["port"] = state ? state.port : undefined;
@@ -58,13 +59,13 @@ export class Listener extends pulumi.CustomResource {
             inputs["tlsConfig"] = state ? state.tlsConfig : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if ((!args || args.balancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.balancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'balancerId'");
             }
-            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
             inputs["balancerId"] = args ? args.balancerId : undefined;
@@ -73,12 +74,8 @@ export class Listener extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tlsConfig"] = args ? args.tlsConfig : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Listener.__pulumiType, name, inputs, opts);
     }

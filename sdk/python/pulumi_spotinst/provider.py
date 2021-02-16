@@ -50,12 +50,8 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if account is None:
-                account = (_utilities.get_env('SPOTINST_ACCOUNT') or '')
             __props__['account'] = account
             __props__['feature_flags'] = feature_flags
-            if token is None:
-                token = (_utilities.get_env('SPOTINST_TOKEN') or '')
             __props__['token'] = token
         super(Provider, __self__).__init__(
             'spotinst',

@@ -52,7 +52,8 @@ export class TargetSet extends pulumi.CustomResource {
     constructor(name: string, args: TargetSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetSetArgs | TargetSetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TargetSetState | undefined;
             inputs["balancerId"] = state ? state.balancerId : undefined;
             inputs["deploymentId"] = state ? state.deploymentId : undefined;
@@ -64,19 +65,19 @@ export class TargetSet extends pulumi.CustomResource {
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as TargetSetArgs | undefined;
-            if ((!args || args.balancerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.balancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'balancerId'");
             }
-            if ((!args || args.deploymentId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.deploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deploymentId'");
             }
-            if ((!args || args.healthCheck === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.healthCheck === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'healthCheck'");
             }
-            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.weight === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.weight === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
             inputs["balancerId"] = args ? args.balancerId : undefined;
@@ -88,12 +89,8 @@ export class TargetSet extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetSet.__pulumiType, name, inputs, opts);
     }

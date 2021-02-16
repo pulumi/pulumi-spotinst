@@ -103,7 +103,8 @@ export class Subscription extends pulumi.CustomResource {
     constructor(name: string, args: SubscriptionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubscriptionArgs | SubscriptionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SubscriptionState | undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
             inputs["eventType"] = state ? state.eventType : undefined;
@@ -112,16 +113,16 @@ export class Subscription extends pulumi.CustomResource {
             inputs["resourceId"] = state ? state.resourceId : undefined;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.endpoint === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.eventType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.eventType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'eventType'");
             }
-            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.resourceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
             inputs["endpoint"] = args ? args.endpoint : undefined;
@@ -130,12 +131,8 @@ export class Subscription extends pulumi.CustomResource {
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["resourceId"] = args ? args.resourceId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Subscription.__pulumiType, name, inputs, opts);
     }

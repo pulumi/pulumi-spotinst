@@ -83,7 +83,8 @@ export class HealthCheck extends pulumi.CustomResource {
     constructor(name: string, args: HealthCheckArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HealthCheckArgs | HealthCheckState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HealthCheckState | undefined;
             inputs["check"] = state ? state.check : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -92,10 +93,10 @@ export class HealthCheck extends pulumi.CustomResource {
             inputs["resourceId"] = state ? state.resourceId : undefined;
         } else {
             const args = argsOrState as HealthCheckArgs | undefined;
-            if ((!args || args.proxyAddress === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.proxyAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'proxyAddress'");
             }
-            if ((!args || args.resourceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
             inputs["check"] = args ? args.check : undefined;
@@ -104,12 +105,8 @@ export class HealthCheck extends pulumi.CustomResource {
             inputs["proxyPort"] = args ? args.proxyPort : undefined;
             inputs["resourceId"] = args ? args.resourceId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HealthCheck.__pulumiType, name, inputs, opts);
     }
