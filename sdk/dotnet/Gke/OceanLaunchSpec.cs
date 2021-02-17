@@ -51,6 +51,7 @@ namespace Pulumi.SpotInst.Gke
     ///                 },
     ///             },
     ///             OceanId = "o-123456",
+    ///             RestrictScaleDown = true,
     ///             SourceImage = "image",
     ///             Taints = 
     ///             {
@@ -107,6 +108,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Output("oceanId")]
         public Output<string> OceanId { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// </summary>
+        [Output("restrictScaleDown")]
+        public Output<bool?> RestrictScaleDown { get; private set; } = null!;
 
         /// <summary>
         /// Image URL.
@@ -209,6 +216,12 @@ namespace Pulumi.SpotInst.Gke
         public Input<string> OceanId { get; set; } = null!;
 
         /// <summary>
+        /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// </summary>
+        [Input("restrictScaleDown")]
+        public Input<bool>? RestrictScaleDown { get; set; }
+
+        /// <summary>
         /// Image URL.
         /// </summary>
         [Input("sourceImage", required: true)]
@@ -274,6 +287,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
+
+        /// <summary>
+        /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// </summary>
+        [Input("restrictScaleDown")]
+        public Input<bool>? RestrictScaleDown { get; set; }
 
         /// <summary>
         /// Image URL.

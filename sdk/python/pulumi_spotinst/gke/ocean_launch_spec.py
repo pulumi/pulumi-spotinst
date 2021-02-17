@@ -21,6 +21,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
+                 restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
                  __props__=None,
@@ -51,6 +52,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 value="update_disabled",
             )],
             ocean_id="o-123456",
+            restrict_scale_down=True,
             source_image="image",
             taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
                 effect="taintEffect",
@@ -70,6 +72,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Cluster's labels.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Cluster's taints.
         """
@@ -98,6 +101,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__['ocean_id'] = ocean_id
+            __props__['restrict_scale_down'] = restrict_scale_down
             if source_image is None and not opts.urn:
                 raise TypeError("Missing required property 'source_image'")
             __props__['source_image'] = source_image
@@ -116,6 +120,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
+            restrict_scale_down: Optional[pulumi.Input[bool]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None) -> 'OceanLaunchSpec':
         """
@@ -129,6 +134,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Cluster's labels.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Cluster's taints.
         """
@@ -140,6 +146,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["labels"] = labels
         __props__["metadatas"] = metadatas
         __props__["ocean_id"] = ocean_id
+        __props__["restrict_scale_down"] = restrict_scale_down
         __props__["source_image"] = source_image
         __props__["taints"] = taints
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)
@@ -175,6 +182,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         The Ocean cluster ID required for launchSpec create.
         """
         return pulumi.get(self, "ocean_id")
+
+    @property
+    @pulumi.getter(name="restrictScaleDown")
+    def restrict_scale_down(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        """
+        return pulumi.get(self, "restrict_scale_down")
 
     @property
     @pulumi.getter(name="sourceImage")

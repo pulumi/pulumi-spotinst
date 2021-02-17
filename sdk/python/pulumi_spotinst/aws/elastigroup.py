@@ -56,6 +56,7 @@ class Elastigroup(pulumi.CustomResource):
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
+                 minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
@@ -134,6 +135,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The record set name.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
@@ -225,6 +227,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__['max_size'] = max_size
             __props__['metadata_options'] = metadata_options
             __props__['min_size'] = min_size
+            __props__['minimum_instance_lifetime'] = minimum_instance_lifetime
             __props__['multai_target_sets'] = multai_target_sets
             __props__['name'] = name
             __props__['network_interfaces'] = network_interfaces
@@ -313,6 +316,7 @@ class Elastigroup(pulumi.CustomResource):
             max_size: Optional[pulumi.Input[int]] = None,
             metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
+            minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
             multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
@@ -390,6 +394,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The record set name.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
@@ -462,6 +467,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__["max_size"] = max_size
         __props__["metadata_options"] = metadata_options
         __props__["min_size"] = min_size
+        __props__["minimum_instance_lifetime"] = minimum_instance_lifetime
         __props__["multai_target_sets"] = multai_target_sets
         __props__["name"] = name
         __props__["network_interfaces"] = network_interfaces
@@ -798,6 +804,14 @@ class Elastigroup(pulumi.CustomResource):
         The minimum number of instances the group should have at any time.
         """
         return pulumi.get(self, "min_size")
+
+    @property
+    @pulumi.getter(name="minimumInstanceLifetime")
+    def minimum_instance_lifetime(self) -> pulumi.Output[Optional[int]]:
+        """
+        Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        """
+        return pulumi.get(self, "minimum_instance_lifetime")
 
     @property
     @pulumi.getter(name="multaiTargetSets")

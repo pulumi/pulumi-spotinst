@@ -48,6 +48,7 @@ import * as utilities from "../utilities";
  *         httpTokens: "optional",
  *     },
  *     minSize: 0,
+ *     minimumInstanceLifetime: 12,
  *     orientation: "balanced",
  *     placementTenancy: "default",
  *     product: "Linux/UNIX",
@@ -280,6 +281,10 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
+     * Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+     */
+    public readonly minimumInstanceLifetime!: pulumi.Output<number | undefined>;
+    /**
      * Set of targets to register.
      */
     public readonly multaiTargetSets!: pulumi.Output<outputs.aws.ElastigroupMultaiTargetSet[] | undefined>;
@@ -441,6 +446,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["maxSize"] = state ? state.maxSize : undefined;
             inputs["metadataOptions"] = state ? state.metadataOptions : undefined;
             inputs["minSize"] = state ? state.minSize : undefined;
+            inputs["minimumInstanceLifetime"] = state ? state.minimumInstanceLifetime : undefined;
             inputs["multaiTargetSets"] = state ? state.multaiTargetSets : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
@@ -533,6 +539,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["maxSize"] = args ? args.maxSize : undefined;
             inputs["metadataOptions"] = args ? args.metadataOptions : undefined;
             inputs["minSize"] = args ? args.minSize : undefined;
+            inputs["minimumInstanceLifetime"] = args ? args.minimumInstanceLifetime : undefined;
             inputs["multaiTargetSets"] = args ? args.multaiTargetSets : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
@@ -724,6 +731,10 @@ export interface ElastigroupState {
      * The minimum number of instances the group should have at any time.
      */
     readonly minSize?: pulumi.Input<number>;
+    /**
+     * Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+     */
+    readonly minimumInstanceLifetime?: pulumi.Input<number>;
     /**
      * Set of targets to register.
      */
@@ -985,6 +996,10 @@ export interface ElastigroupArgs {
      * The minimum number of instances the group should have at any time.
      */
     readonly minSize?: pulumi.Input<number>;
+    /**
+     * Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+     */
+    readonly minimumInstanceLifetime?: pulumi.Input<number>;
     /**
      * Set of targets to register.
      */

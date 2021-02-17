@@ -28,6 +28,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
+                 restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
@@ -103,6 +104,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(
                 max_instance_count=4,
             )],
+            restrict_scale_down=True,
             root_volume_size=30,
             security_groups=["sg-987654321"],
             strategies=[spotinst.aws.OceanLaunchSpecStrategyArgs(
@@ -138,6 +140,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[str] name: Set Launch Specification name
         :param pulumi.Input[str] ocean_id: The ocean cluster you wish to
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: (Optional)
@@ -176,6 +179,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ocean_id'")
             __props__['ocean_id'] = ocean_id
             __props__['resource_limits'] = resource_limits
+            __props__['restrict_scale_down'] = restrict_scale_down
             __props__['root_volume_size'] = root_volume_size
             __props__['security_groups'] = security_groups
             __props__['strategies'] = strategies
@@ -204,6 +208,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
             resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
+            restrict_scale_down: Optional[pulumi.Input[bool]] = None,
             root_volume_size: Optional[pulumi.Input[int]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
@@ -228,6 +233,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[str] name: Set Launch Specification name
         :param pulumi.Input[str] ocean_id: The ocean cluster you wish to
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: (Optional)
@@ -251,6 +257,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["name"] = name
         __props__["ocean_id"] = ocean_id
         __props__["resource_limits"] = resource_limits
+        __props__["restrict_scale_down"] = restrict_scale_down
         __props__["root_volume_size"] = root_volume_size
         __props__["security_groups"] = security_groups
         __props__["strategies"] = strategies
@@ -344,6 +351,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter(name="resourceLimits")
     def resource_limits(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecResourceLimit']]]:
         return pulumi.get(self, "resource_limits")
+
+    @property
+    @pulumi.getter(name="restrictScaleDown")
+    def restrict_scale_down(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        """
+        return pulumi.get(self, "restrict_scale_down")
 
     @property
     @pulumi.getter(name="rootVolumeSize")

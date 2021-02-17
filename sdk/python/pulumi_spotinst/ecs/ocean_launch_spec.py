@@ -25,6 +25,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
+                 restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
@@ -85,6 +86,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 "m5.24xlarge",
             ],
             ocean_id="o-123456",
+            restrict_scale_down=True,
             security_group_ids=["awseb-12345"],
             tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
                 key="Env",
@@ -108,6 +110,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
@@ -139,6 +142,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__['ocean_id'] = ocean_id
+            __props__['restrict_scale_down'] = restrict_scale_down
             __props__['security_group_ids'] = security_group_ids
             __props__['tags'] = tags
             __props__['user_data'] = user_data
@@ -160,6 +164,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
+            restrict_scale_down: Optional[pulumi.Input[bool]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None) -> 'OceanLaunchSpec':
@@ -178,6 +183,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
@@ -194,6 +200,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["instance_types"] = instance_types
         __props__["name"] = name
         __props__["ocean_id"] = ocean_id
+        __props__["restrict_scale_down"] = restrict_scale_down
         __props__["security_group_ids"] = security_group_ids
         __props__["tags"] = tags
         __props__["user_data"] = user_data
@@ -262,6 +269,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         The Ocean cluster ID .
         """
         return pulumi.get(self, "ocean_id")
+
+    @property
+    @pulumi.getter(name="restrictScaleDown")
+    def restrict_scale_down(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        """
+        return pulumi.get(self, "restrict_scale_down")
 
     @property
     @pulumi.getter(name="securityGroupIds")
