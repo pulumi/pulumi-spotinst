@@ -75,7 +75,8 @@ import (
 // 				pulumi.String("m5.12xlarge"),
 // 				pulumi.String("m5.24xlarge"),
 // 			},
-// 			OceanId: pulumi.String("o-123456"),
+// 			OceanId:           pulumi.String("o-123456"),
+// 			RestrictScaleDown: pulumi.Bool(true),
 // 			SecurityGroupIds: pulumi.StringArray{
 // 				pulumi.String("awseb-12345"),
 // 			},
@@ -127,6 +128,8 @@ type OceanLaunchSpec struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Ocean cluster ID .
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
+	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -183,6 +186,8 @@ type oceanLaunchSpecState struct {
 	Name *string `pulumi:"name"`
 	// The Ocean cluster ID .
 	OceanId *string `pulumi:"oceanId"`
+	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -208,6 +213,8 @@ type OceanLaunchSpecState struct {
 	Name pulumi.StringPtrInput
 	// The Ocean cluster ID .
 	OceanId pulumi.StringPtrInput
+	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	RestrictScaleDown pulumi.BoolPtrInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
@@ -237,6 +244,8 @@ type oceanLaunchSpecArgs struct {
 	Name *string `pulumi:"name"`
 	// The Ocean cluster ID .
 	OceanId string `pulumi:"oceanId"`
+	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -263,6 +272,8 @@ type OceanLaunchSpecArgs struct {
 	Name pulumi.StringPtrInput
 	// The Ocean cluster ID .
 	OceanId pulumi.StringInput
+	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	RestrictScaleDown pulumi.BoolPtrInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.

@@ -91,7 +91,8 @@ import (
 // 					MaxInstanceCount: pulumi.Int(4),
 // 				},
 // 			},
-// 			RootVolumeSize: pulumi.Int(30),
+// 			RestrictScaleDown: pulumi.Bool(true),
+// 			RootVolumeSize:    pulumi.Int(30),
 // 			SecurityGroups: pulumi.StringArray{
 // 				pulumi.String("sg-987654321"),
 // 			},
@@ -163,6 +164,8 @@ type OceanLaunchSpec struct {
 	// The ocean cluster you wish to
 	OceanId        pulumi.StringOutput                     `pulumi:"oceanId"`
 	ResourceLimits OceanLaunchSpecResourceLimitArrayOutput `pulumi:"resourceLimits"`
+	// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
@@ -232,6 +235,8 @@ type oceanLaunchSpecState struct {
 	// The ocean cluster you wish to
 	OceanId        *string                        `pulumi:"oceanId"`
 	ResourceLimits []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
+	// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
@@ -270,6 +275,8 @@ type OceanLaunchSpecState struct {
 	// The ocean cluster you wish to
 	OceanId        pulumi.StringPtrInput
 	ResourceLimits OceanLaunchSpecResourceLimitArrayInput
+	// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
 	// Optionally adds security group IDs.
@@ -312,6 +319,8 @@ type oceanLaunchSpecArgs struct {
 	// The ocean cluster you wish to
 	OceanId        string                         `pulumi:"oceanId"`
 	ResourceLimits []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
+	// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
@@ -351,6 +360,8 @@ type OceanLaunchSpecArgs struct {
 	// The ocean cluster you wish to
 	OceanId        pulumi.StringInput
 	ResourceLimits OceanLaunchSpecResourceLimitArrayInput
+	// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
 	// Optionally adds security group IDs.

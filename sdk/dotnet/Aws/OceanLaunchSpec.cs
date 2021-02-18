@@ -103,6 +103,7 @@ namespace Pulumi.SpotInst.Aws
     ///                     MaxInstanceCount = 4,
     ///                 },
     ///             },
+    ///             RestrictScaleDown = true,
     ///             RootVolumeSize = 30,
     ///             SecurityGroups = 
     ///             {
@@ -222,6 +223,12 @@ namespace Pulumi.SpotInst.Aws
 
         [Output("resourceLimits")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecResourceLimit>> ResourceLimits { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// </summary>
+        [Output("restrictScaleDown")]
+        public Output<bool?> RestrictScaleDown { get; private set; } = null!;
 
         /// <summary>
         /// Set root volume size (in GB).
@@ -410,6 +417,12 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
+        /// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// </summary>
+        [Input("restrictScaleDown")]
+        public Input<bool>? RestrictScaleDown { get; set; }
+
+        /// <summary>
         /// Set root volume size (in GB).
         /// </summary>
         [Input("rootVolumeSize")]
@@ -585,6 +598,12 @@ namespace Pulumi.SpotInst.Aws
             get => _resourceLimits ?? (_resourceLimits = new InputList<Inputs.OceanLaunchSpecResourceLimitGetArgs>());
             set => _resourceLimits = value;
         }
+
+        /// <summary>
+        /// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// </summary>
+        [Input("restrictScaleDown")]
+        public Input<bool>? RestrictScaleDown { get; set; }
 
         /// <summary>
         /// Set root volume size (in GB).

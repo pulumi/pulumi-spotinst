@@ -59,6 +59,7 @@ import * as utilities from "../utilities";
  *         "m5.24xlarge",
  *     ],
  *     oceanId: "o-123456",
+ *     restrictScaleDown: true,
  *     securityGroupIds: ["awseb-12345"],
  *     tags: [{
  *         key: "Env",
@@ -134,6 +135,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly oceanId!: pulumi.Output<string>;
     /**
+     * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     */
+    public readonly restrictScaleDown!: pulumi.Output<boolean | undefined>;
+    /**
      * One or more security group ids.
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
@@ -167,6 +172,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
+            inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
@@ -183,6 +189,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
+            inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
@@ -230,6 +237,10 @@ export interface OceanLaunchSpecState {
      * The Ocean cluster ID .
      */
     readonly oceanId?: pulumi.Input<string>;
+    /**
+     * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     */
+    readonly restrictScaleDown?: pulumi.Input<boolean>;
     /**
      * One or more security group ids.
      */
@@ -280,6 +291,10 @@ export interface OceanLaunchSpecArgs {
      * The Ocean cluster ID .
      */
     readonly oceanId: pulumi.Input<string>;
+    /**
+     * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     */
+    readonly restrictScaleDown?: pulumi.Input<boolean>;
     /**
      * One or more security group ids.
      */

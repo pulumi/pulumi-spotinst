@@ -91,6 +91,8 @@ type Elastigroup struct {
 	MetadataOptions ElastigroupMetadataOptionsPtrOutput `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
+	// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+	MinimumInstanceLifetime pulumi.IntPtrOutput `pulumi:"minimumInstanceLifetime"`
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayOutput `pulumi:"multaiTargetSets"`
 	// The record set name.
@@ -277,6 +279,8 @@ type elastigroupState struct {
 	MetadataOptions *ElastigroupMetadataOptions `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
+	// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+	MinimumInstanceLifetime *int `pulumi:"minimumInstanceLifetime"`
 	// Set of targets to register.
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
 	// The record set name.
@@ -417,6 +421,8 @@ type ElastigroupState struct {
 	MetadataOptions ElastigroupMetadataOptionsPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
+	// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+	MinimumInstanceLifetime pulumi.IntPtrInput
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
 	// The record set name.
@@ -561,6 +567,8 @@ type elastigroupArgs struct {
 	MetadataOptions *ElastigroupMetadataOptions `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
+	// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+	MinimumInstanceLifetime *int `pulumi:"minimumInstanceLifetime"`
 	// Set of targets to register.
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
 	// The record set name.
@@ -702,6 +710,8 @@ type ElastigroupArgs struct {
 	MetadataOptions ElastigroupMetadataOptionsPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
+	// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+	MinimumInstanceLifetime pulumi.IntPtrInput
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
 	// The record set name.

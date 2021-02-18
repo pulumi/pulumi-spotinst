@@ -70,6 +70,7 @@ import * as utilities from "../utilities";
  *     resourceLimits: [{
  *         maxInstanceCount: 4,
  *     }],
+ *     restrictScaleDown: true,
  *     rootVolumeSize: 30,
  *     securityGroups: ["sg-987654321"],
  *     strategies: [{
@@ -164,6 +165,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     public readonly oceanId!: pulumi.Output<string>;
     public readonly resourceLimits!: pulumi.Output<outputs.aws.OceanLaunchSpecResourceLimit[] | undefined>;
     /**
+     * Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     */
+    public readonly restrictScaleDown!: pulumi.Output<boolean | undefined>;
+    /**
      * Set root volume size (in GB).
      */
     public readonly rootVolumeSize!: pulumi.Output<number | undefined>;
@@ -216,6 +221,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
             inputs["resourceLimits"] = state ? state.resourceLimits : undefined;
+            inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
             inputs["strategies"] = state ? state.strategies : undefined;
@@ -239,6 +245,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
             inputs["resourceLimits"] = args ? args.resourceLimits : undefined;
+            inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["strategies"] = args ? args.strategies : undefined;
@@ -299,6 +306,10 @@ export interface OceanLaunchSpecState {
      */
     readonly oceanId?: pulumi.Input<string>;
     readonly resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[]>;
+    /**
+     * Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     */
+    readonly restrictScaleDown?: pulumi.Input<boolean>;
     /**
      * Set root volume size (in GB).
      */
@@ -374,6 +385,10 @@ export interface OceanLaunchSpecArgs {
      */
     readonly oceanId: pulumi.Input<string>;
     readonly resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[]>;
+    /**
+     * Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     */
+    readonly restrictScaleDown?: pulumi.Input<boolean>;
     /**
      * Set root volume size (in GB).
      */

@@ -83,6 +83,7 @@ namespace Pulumi.SpotInst.Ecs
     ///                 "m5.24xlarge",
     ///             },
     ///             OceanId = "o-123456",
+    ///             RestrictScaleDown = true,
     ///             SecurityGroupIds = 
     ///             {
     ///                 "awseb-12345",
@@ -166,6 +167,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("oceanId")]
         public Output<string> OceanId { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// </summary>
+        [Output("restrictScaleDown")]
+        public Output<bool?> RestrictScaleDown { get; private set; } = null!;
 
         /// <summary>
         /// One or more security group ids.
@@ -303,6 +310,12 @@ namespace Pulumi.SpotInst.Ecs
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
 
+        /// <summary>
+        /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// </summary>
+        [Input("restrictScaleDown")]
+        public Input<bool>? RestrictScaleDown { get; set; }
+
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
 
@@ -411,6 +424,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
+
+        /// <summary>
+        /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// </summary>
+        [Input("restrictScaleDown")]
+        public Input<bool>? RestrictScaleDown { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;

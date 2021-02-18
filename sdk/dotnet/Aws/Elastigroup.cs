@@ -240,6 +240,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        /// </summary>
+        [Output("minimumInstanceLifetime")]
+        public Output<int?> MinimumInstanceLifetime { get; private set; } = null!;
+
+        /// <summary>
         /// Set of targets to register.
         /// </summary>
         [Output("multaiTargetSets")]
@@ -729,6 +735,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
+
+        /// <summary>
+        /// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        /// </summary>
+        [Input("minimumInstanceLifetime")]
+        public Input<int>? MinimumInstanceLifetime { get; set; }
 
         [Input("multaiTargetSets")]
         private InputList<Inputs.ElastigroupMultaiTargetSetArgs>? _multaiTargetSets;
@@ -1259,6 +1271,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
+
+        /// <summary>
+        /// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        /// </summary>
+        [Input("minimumInstanceLifetime")]
+        public Input<int>? MinimumInstanceLifetime { get; set; }
 
         [Input("multaiTargetSets")]
         private InputList<Inputs.ElastigroupMultaiTargetSetGetArgs>? _multaiTargetSets;
