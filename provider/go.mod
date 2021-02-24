@@ -13,7 +13,7 @@ replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	github.com/spotinst/terraform-provider-spotinst => github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210217212615-8b541b2a8008
+	github.com/spotinst/terraform-provider-spotinst => github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210224112555-1b9f0923c1f4
 	golang.org/x/crypto => golang.org/x/crypto v0.0.0-20200117160349-530e935923ad
 	golang.org/x/sys => golang.org/x/sys v0.0.0-20190412213103-97732733099d
 )

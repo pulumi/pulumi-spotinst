@@ -550,8 +550,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.20.1-0.20210212181059-f4b0fa86fedc h1:3fFCltL
 github.com/pulumi/pulumi/sdk/v2 v2.20.1-0.20210212181059-f4b0fa86fedc/go.mod h1:fCFhRV6NmidWetmgDPA76efL+s0JqLlS54JJIwfOt+o=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Dik4Qe/+xguB8JagPyXNlbOnRiXGmq/PSPQTGunYnTk=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
-github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210217212615-8b541b2a8008 h1:YIr4HsTY4ga591xIxjAhFBP4QV4j2AHSgwTzkcVR99s=
-github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210217212615-8b541b2a8008/go.mod h1:o+S3gVMQGGv4JvmSL2XPtH51Ts5owAHOFArgCxh+/Ug=
+github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210224112555-1b9f0923c1f4 h1:GVfcgglUbVkIa1COJvPwaEDRweB7TLPM1P7QFVoiG0s=
+github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210224112555-1b9f0923c1f4/go.mod h1:o+S3gVMQGGv4JvmSL2XPtH51Ts5owAHOFArgCxh+/Ug=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
