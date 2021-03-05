@@ -21,6 +21,7 @@ class Elastigroup(pulumi.CustomResource):
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  capacity_unit: Optional[pulumi.Input[str]] = None,
                  cpu_credits: Optional[pulumi.Input[str]] = None,
+                 cpu_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
@@ -104,6 +105,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] block_devices_mode: String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
+        :param pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']] cpu_options: The CPU options for the instances that are launched within the group:
         :param pulumi.Input[str] description: The description of the network interface.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] draining_timeout: Indicates (in seconds) the timeout to wait until instance are detached.
@@ -186,6 +188,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__['block_devices_mode'] = block_devices_mode
             __props__['capacity_unit'] = capacity_unit
             __props__['cpu_credits'] = cpu_credits
+            __props__['cpu_options'] = cpu_options
             __props__['description'] = description
             __props__['desired_capacity'] = desired_capacity
             __props__['draining_timeout'] = draining_timeout
@@ -281,6 +284,7 @@ class Elastigroup(pulumi.CustomResource):
             block_devices_mode: Optional[pulumi.Input[str]] = None,
             capacity_unit: Optional[pulumi.Input[str]] = None,
             cpu_credits: Optional[pulumi.Input[str]] = None,
+            cpu_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
             draining_timeout: Optional[pulumi.Input[int]] = None,
@@ -363,6 +367,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] block_devices_mode: String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
+        :param pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']] cpu_options: The CPU options for the instances that are launched within the group:
         :param pulumi.Input[str] description: The description of the network interface.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] draining_timeout: Indicates (in seconds) the timeout to wait until instance are detached.
@@ -432,6 +437,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__["block_devices_mode"] = block_devices_mode
         __props__["capacity_unit"] = capacity_unit
         __props__["cpu_credits"] = cpu_credits
+        __props__["cpu_options"] = cpu_options
         __props__["description"] = description
         __props__["desired_capacity"] = desired_capacity
         __props__["draining_timeout"] = draining_timeout
@@ -536,6 +542,14 @@ class Elastigroup(pulumi.CustomResource):
         Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         """
         return pulumi.get(self, "cpu_credits")
+
+    @property
+    @pulumi.getter(name="cpuOptions")
+    def cpu_options(self) -> pulumi.Output[Optional['outputs.ElastigroupCpuOptions']]:
+        """
+        The CPU options for the instances that are launched within the group:
+        """
+        return pulumi.get(self, "cpu_options")
 
     @property
     @pulumi.getter

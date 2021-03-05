@@ -11,17 +11,17 @@ namespace Pulumi.SpotInst.Aws.Outputs
 {
 
     [OutputType]
-    public sealed class OceanLaunchSpecStrategy
+    public sealed class ElastigroupCpuOptions
     {
         /// <summary>
-        /// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+        /// The ability to define the number of threads per core in instances that allow this.
         /// </summary>
-        public readonly int? SpotPercentage;
+        public readonly int ThreadsPerCore;
 
         [OutputConstructor]
-        private OceanLaunchSpecStrategy(int? spotPercentage)
+        private ElastigroupCpuOptions(int threadsPerCore)
         {
-            SpotPercentage = spotPercentage;
+            ThreadsPerCore = threadsPerCore;
         }
     }
 }

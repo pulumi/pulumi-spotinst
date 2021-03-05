@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLaunchSpecTagArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The tag key.
+        /// The taint key.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The tag value.
+        /// The taint value.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

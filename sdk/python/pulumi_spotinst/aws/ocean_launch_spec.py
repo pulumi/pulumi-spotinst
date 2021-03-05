@@ -143,7 +143,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: (Optional)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in array should be subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
@@ -236,7 +235,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: (Optional)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in array should be subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
@@ -379,9 +377,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @property
     @pulumi.getter
     def strategies(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecStrategy']]]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "strategies")
 
     @property

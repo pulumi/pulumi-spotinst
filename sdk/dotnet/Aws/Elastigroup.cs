@@ -42,6 +42,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> CpuCredits { get; private set; } = null!;
 
         /// <summary>
+        /// The CPU options for the instances that are launched within the group:
+        /// </summary>
+        [Output("cpuOptions")]
+        public Output<Outputs.ElastigroupCpuOptions?> CpuOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the network interface.
         /// </summary>
         [Output("description")]
@@ -497,6 +503,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("cpuCredits")]
         public Input<string>? CpuCredits { get; set; }
+
+        /// <summary>
+        /// The CPU options for the instances that are launched within the group:
+        /// </summary>
+        [Input("cpuOptions")]
+        public Input<Inputs.ElastigroupCpuOptionsArgs>? CpuOptions { get; set; }
 
         /// <summary>
         /// The description of the network interface.
@@ -1033,6 +1045,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("cpuCredits")]
         public Input<string>? CpuCredits { get; set; }
+
+        /// <summary>
+        /// The CPU options for the instances that are launched within the group:
+        /// </summary>
+        [Input("cpuOptions")]
+        public Input<Inputs.ElastigroupCpuOptionsGetArgs>? CpuOptions { get; set; }
 
         /// <summary>
         /// The description of the network interface.

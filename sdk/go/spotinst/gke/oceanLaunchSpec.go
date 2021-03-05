@@ -83,17 +83,17 @@ type OceanLaunchSpec struct {
 
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
-	// Cluster's labels.
+	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayOutput `pulumi:"metadatas"`
 	// The Ocean cluster ID required for launchSpec create.
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
-	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// Image URL.
 	SourceImage pulumi.StringOutput `pulumi:"sourceImage"`
-	// Cluster's taints.
+	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints OceanLaunchSpecTaintArrayOutput `pulumi:"taints"`
 }
 
@@ -137,34 +137,34 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 type oceanLaunchSpecState struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
-	// Cluster's labels.
+	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
 	// The Ocean cluster ID required for launchSpec create.
 	OceanId *string `pulumi:"oceanId"`
-	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Image URL.
 	SourceImage *string `pulumi:"sourceImage"`
-	// Cluster's taints.
+	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
 }
 
 type OceanLaunchSpecState struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
-	// Cluster's labels.
+	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
 	// The Ocean cluster ID required for launchSpec create.
 	OceanId pulumi.StringPtrInput
-	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Image URL.
 	SourceImage pulumi.StringPtrInput
-	// Cluster's taints.
+	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints OceanLaunchSpecTaintArrayInput
 }
 
@@ -175,17 +175,17 @@ func (OceanLaunchSpecState) ElementType() reflect.Type {
 type oceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
-	// Cluster's labels.
+	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
 	// The Ocean cluster ID required for launchSpec create.
 	OceanId string `pulumi:"oceanId"`
-	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Image URL.
 	SourceImage string `pulumi:"sourceImage"`
-	// Cluster's taints.
+	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
 }
 
@@ -193,17 +193,17 @@ type oceanLaunchSpecArgs struct {
 type OceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
-	// Cluster's labels.
+	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
 	// The Ocean cluster ID required for launchSpec create.
 	OceanId pulumi.StringInput
-	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Image URL.
 	SourceImage pulumi.StringInput
-	// Cluster's taints.
+	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints OceanLaunchSpecTaintArrayInput
 }
 

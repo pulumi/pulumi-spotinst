@@ -14,6 +14,7 @@ __all__ = [
     'BeanstalkManagedActionsArgs',
     'BeanstalkManagedActionsPlatformUpdateArgs',
     'BeanstalkScheduledTaskArgs',
+    'ElastigroupCpuOptionsArgs',
     'ElastigroupEbsBlockDeviceArgs',
     'ElastigroupEphemeralBlockDeviceArgs',
     'ElastigroupInstanceTypesWeightArgs',
@@ -549,6 +550,28 @@ class BeanstalkScheduledTaskArgs:
     @target_capacity.setter
     def target_capacity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_capacity", value)
+
+
+@pulumi.input_type
+class ElastigroupCpuOptionsArgs:
+    def __init__(__self__, *,
+                 threads_per_core: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] threads_per_core: The ability to define the number of threads per core in instances that allow this.
+        """
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> pulumi.Input[int]:
+        """
+        The ability to define the number of threads per core in instances that allow this.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: pulumi.Input[int]):
+        pulumi.set(self, "threads_per_core", value)
 
 
 @pulumi.input_type
@@ -4281,8 +4304,9 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
                  should_decrement_target_capacity: Optional[pulumi.Input[bool]] = None,
                  should_handle_all_batches: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] action_type: Decrementing the group target capacity after detaching the instances.
+        :param pulumi.Input[str] action_type: Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
         :param pulumi.Input[int] draining_timeout: Indicates (in seconds) the timeout to wait until instance are detached.
+        :param pulumi.Input[bool] should_decrement_target_capacity: Decrementing the group target capacity after detaching the instances.
         :param pulumi.Input[bool] should_handle_all_batches: Indicator if the action should apply to all batches of the deployment or only the latest batch.
         """
         pulumi.set(__self__, "action_type", action_type)
@@ -4299,7 +4323,7 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
     @pulumi.getter(name="actionType")
     def action_type(self) -> pulumi.Input[str]:
         """
-        Decrementing the group target capacity after detaching the instances.
+        Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
         """
         return pulumi.get(self, "action_type")
 
@@ -4331,6 +4355,9 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
     @property
     @pulumi.getter(name="shouldDecrementTargetCapacity")
     def should_decrement_target_capacity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Decrementing the group target capacity after detaching the instances.
+        """
         return pulumi.get(self, "should_decrement_target_capacity")
 
     @should_decrement_target_capacity.setter
@@ -7399,8 +7426,8 @@ class OceanLaunchSpecLabelArgs:
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] key: The tag key.
-        :param pulumi.Input[str] value: The tag value.
+        :param pulumi.Input[str] key: The taint key.
+        :param pulumi.Input[str] value: The taint value.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -7409,7 +7436,7 @@ class OceanLaunchSpecLabelArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The tag key.
+        The taint key.
         """
         return pulumi.get(self, "key")
 
@@ -7421,7 +7448,7 @@ class OceanLaunchSpecLabelArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        The tag value.
+        The taint value.
         """
         return pulumi.get(self, "value")
 
@@ -7458,7 +7485,7 @@ class OceanLaunchSpecStrategyArgs:
     def __init__(__self__, *,
                  spot_percentage: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] spot_percentage: (Optional; if not using `spot_percentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+        :param pulumi.Input[int] spot_percentage: When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
         """
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
@@ -7467,7 +7494,7 @@ class OceanLaunchSpecStrategyArgs:
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         """
-        (Optional; if not using `spot_percentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+        When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
         """
         return pulumi.get(self, "spot_percentage")
 
@@ -7482,8 +7509,8 @@ class OceanLaunchSpecTagArgs:
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] key: The tag key.
-        :param pulumi.Input[str] value: The tag value.
+        :param pulumi.Input[str] key: The taint key.
+        :param pulumi.Input[str] value: The taint value.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -7492,7 +7519,7 @@ class OceanLaunchSpecTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The tag key.
+        The taint key.
         """
         return pulumi.get(self, "key")
 
@@ -7504,7 +7531,7 @@ class OceanLaunchSpecTagArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        The tag value.
+        The taint value.
         """
         return pulumi.get(self, "value")
 
@@ -7521,8 +7548,8 @@ class OceanLaunchSpecTaintArgs:
                  value: pulumi.Input[str]):
         """
         :param pulumi.Input[str] effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
-        :param pulumi.Input[str] key: The tag key.
-        :param pulumi.Input[str] value: The tag value.
+        :param pulumi.Input[str] key: The taint key.
+        :param pulumi.Input[str] value: The taint value.
         """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
@@ -7544,7 +7571,7 @@ class OceanLaunchSpecTaintArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The tag key.
+        The taint key.
         """
         return pulumi.get(self, "key")
 
@@ -7556,7 +7583,7 @@ class OceanLaunchSpecTaintArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        The tag value.
+        The taint value.
         """
         return pulumi.get(self, "value")
 

@@ -25,6 +25,8 @@ type Elastigroup struct {
 	CapacityUnit pulumi.StringOutput `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrOutput `pulumi:"cpuCredits"`
+	// The CPU options for the instances that are launched within the group:
+	CpuOptions ElastigroupCpuOptionsPtrOutput `pulumi:"cpuOptions"`
 	// The description of the network interface.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
@@ -213,6 +215,8 @@ type elastigroupState struct {
 	CapacityUnit *string `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits *string `pulumi:"cpuCredits"`
+	// The CPU options for the instances that are launched within the group:
+	CpuOptions *ElastigroupCpuOptions `pulumi:"cpuOptions"`
 	// The description of the network interface.
 	Description *string `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
@@ -355,6 +359,8 @@ type ElastigroupState struct {
 	CapacityUnit pulumi.StringPtrInput
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrInput
+	// The CPU options for the instances that are launched within the group:
+	CpuOptions ElastigroupCpuOptionsPtrInput
 	// The description of the network interface.
 	Description pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
@@ -501,6 +507,8 @@ type elastigroupArgs struct {
 	CapacityUnit *string `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits *string `pulumi:"cpuCredits"`
+	// The CPU options for the instances that are launched within the group:
+	CpuOptions *ElastigroupCpuOptions `pulumi:"cpuOptions"`
 	// The description of the network interface.
 	Description *string `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
@@ -644,6 +652,8 @@ type ElastigroupArgs struct {
 	CapacityUnit pulumi.StringPtrInput
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrInput
+	// The CPU options for the instances that are launched within the group:
+	CpuOptions ElastigroupCpuOptionsPtrInput
 	// The description of the network interface.
 	Description pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.

@@ -10,21 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecLabelArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupCpuOptionsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The taint key.
+        /// The ability to define the number of threads per core in instances that allow this.
         /// </summary>
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
+        [Input("threadsPerCore", required: true)]
+        public Input<int> ThreadsPerCore { get; set; } = null!;
 
-        /// <summary>
-        /// The taint value.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public OceanLaunchSpecLabelArgs()
+        public ElastigroupCpuOptionsArgs()
         {
         }
     }

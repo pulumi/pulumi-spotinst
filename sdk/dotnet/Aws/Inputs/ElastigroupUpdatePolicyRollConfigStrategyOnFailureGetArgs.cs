@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ElastigroupUpdatePolicyRollConfigStrategyOnFailureGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Decrementing the group target capacity after detaching the instances.
+        /// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
         /// </summary>
         [Input("actionType", required: true)]
         public Input<string> ActionType { get; set; } = null!;
@@ -27,6 +27,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
 
+        /// <summary>
+        /// Decrementing the group target capacity after detaching the instances.
+        /// </summary>
         [Input("shouldDecrementTargetCapacity")]
         public Input<bool>? ShouldDecrementTargetCapacity { get; set; }
 

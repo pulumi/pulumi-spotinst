@@ -95,7 +95,8 @@ type OceanImport struct {
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
-	Whitelists     pulumi.StringArrayOutput            `pulumi:"whitelists"`
+	// Instance types allowed in the Ocean cluster.
+	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
 
 // NewOceanImport registers a new resource with the given unique name, arguments, and options.
@@ -151,7 +152,8 @@ type oceanImportState struct {
 	MinSize *int `pulumi:"minSize"`
 	// Set scheduling object.
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
-	Whitelists     []string                   `pulumi:"whitelists"`
+	// Instance types allowed in the Ocean cluster.
+	Whitelists []string `pulumi:"whitelists"`
 }
 
 type OceanImportState struct {
@@ -173,7 +175,8 @@ type OceanImportState struct {
 	MinSize pulumi.IntPtrInput
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
-	Whitelists     pulumi.StringArrayInput
+	// Instance types allowed in the Ocean cluster.
+	Whitelists pulumi.StringArrayInput
 }
 
 func (OceanImportState) ElementType() reflect.Type {
@@ -198,7 +201,8 @@ type oceanImportArgs struct {
 	MinSize *int `pulumi:"minSize"`
 	// Set scheduling object.
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
-	Whitelists     []string                   `pulumi:"whitelists"`
+	// Instance types allowed in the Ocean cluster.
+	Whitelists []string `pulumi:"whitelists"`
 }
 
 // The set of arguments for constructing a OceanImport resource.
@@ -220,7 +224,8 @@ type OceanImportArgs struct {
 	MinSize pulumi.IntPtrInput
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
-	Whitelists     pulumi.StringArrayInput
+	// Instance types allowed in the Ocean cluster.
+	Whitelists pulumi.StringArrayInput
 }
 
 func (OceanImportArgs) ElementType() reflect.Type {

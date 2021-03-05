@@ -176,9 +176,6 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Optionally adds security group IDs.
      */
     public readonly securityGroups!: pulumi.Output<string[] | undefined>;
-    /**
-     * (Optional)
-     */
     public readonly strategies!: pulumi.Output<outputs.aws.OceanLaunchSpecStrategy[] | undefined>;
     /**
      * Set subnets in launchSpec. Each element in array should be subnet ID.
@@ -318,9 +315,6 @@ export interface OceanLaunchSpecState {
      * Optionally adds security group IDs.
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional)
-     */
     readonly strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[]>;
     /**
      * Set subnets in launchSpec. Each element in array should be subnet ID.
@@ -397,9 +391,6 @@ export interface OceanLaunchSpecArgs {
      * Optionally adds security group IDs.
      */
     readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (Optional)
-     */
     readonly strategies?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecStrategy>[]>;
     /**
      * Set subnets in launchSpec. Each element in array should be subnet ID.

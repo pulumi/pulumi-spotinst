@@ -152,6 +152,13 @@ export namespace aws {
         taskType: pulumi.Input<string>;
     }
 
+    export interface ElastigroupCpuOptions {
+        /**
+         * The ability to define the number of threads per core in instances that allow this.
+         */
+        threadsPerCore: pulumi.Input<number>;
+    }
+
     export interface ElastigroupEbsBlockDevice {
         /**
          * Whether the volume should be destroyed on instance termination.
@@ -1150,7 +1157,7 @@ export namespace aws {
 
     export interface ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
         /**
-         * Decrementing the group target capacity after detaching the instances.
+         * Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
          */
         actionType: pulumi.Input<string>;
         batchNum?: pulumi.Input<number>;
@@ -1158,6 +1165,9 @@ export namespace aws {
          * Indicates (in seconds) the timeout to wait until instance are detached.
          */
         drainingTimeout?: pulumi.Input<number>;
+        /**
+         * Decrementing the group target capacity after detaching the instances.
+         */
         shouldDecrementTargetCapacity?: pulumi.Input<boolean>;
         /**
          * Indicator if the action should apply to all batches of the deployment or only the latest batch.
@@ -1982,11 +1992,11 @@ export namespace aws {
 
     export interface OceanLaunchSpecLabel {
         /**
-         * The tag key.
+         * The taint key.
          */
         key: pulumi.Input<string>;
         /**
-         * The tag value.
+         * The taint value.
          */
         value: pulumi.Input<string>;
     }
@@ -2000,18 +2010,18 @@ export namespace aws {
 
     export interface OceanLaunchSpecStrategy {
         /**
-         * (Optional; if not using `spotPercentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+         * When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
          */
         spotPercentage?: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecTag {
         /**
-         * The tag key.
+         * The taint key.
          */
         key: pulumi.Input<string>;
         /**
-         * The tag value.
+         * The taint value.
          */
         value: pulumi.Input<string>;
     }
@@ -2022,11 +2032,11 @@ export namespace aws {
          */
         effect: pulumi.Input<string>;
         /**
-         * The tag key.
+         * The taint key.
          */
         key: pulumi.Input<string>;
         /**
-         * The tag value.
+         * The taint value.
          */
         value: pulumi.Input<string>;
     }
@@ -3541,7 +3551,7 @@ export namespace gke {
          */
         gpuPerUnit?: pulumi.Input<number>;
         /**
-         * Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
          */
         memoryPerUnit?: pulumi.Input<number>;
         /**
@@ -3551,18 +3561,39 @@ export namespace gke {
     }
 
     export interface OceanLaunchSpecLabel {
+        /**
+         * The label key.
+         */
         key: pulumi.Input<string>;
+        /**
+         * The label value.
+         */
         value: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecMetadata {
+        /**
+         * The label key.
+         */
         key: pulumi.Input<string>;
+        /**
+         * The label value.
+         */
         value: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecTaint {
+        /**
+         * The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
+         */
         effect: pulumi.Input<string>;
+        /**
+         * The label key.
+         */
         key: pulumi.Input<string>;
+        /**
+         * The label value.
+         */
         value: pulumi.Input<string>;
     }
 }

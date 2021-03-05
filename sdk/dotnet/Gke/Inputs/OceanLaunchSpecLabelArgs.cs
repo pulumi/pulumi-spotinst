@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanLaunchSpecLabelArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The label key.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The label value.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

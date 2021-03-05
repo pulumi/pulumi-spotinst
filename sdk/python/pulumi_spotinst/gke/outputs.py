@@ -1366,7 +1366,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
         :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
         :param int cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         :param int gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
-        :param int memory_per_unit: Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+        :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
@@ -1404,7 +1404,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
         """
-        Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         return pulumi.get(self, "memory_per_unit")
 
@@ -1417,17 +1417,27 @@ class OceanLaunchSpecLabel(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
+        """
+        :param str key: The label key.
+        :param str value: The label value.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The label key.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The label value.
+        """
         return pulumi.get(self, "value")
 
     def _translate_property(self, prop):
@@ -1439,17 +1449,27 @@ class OceanLaunchSpecMetadata(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
+        """
+        :param str key: The label key.
+        :param str value: The label value.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The label key.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The label value.
+        """
         return pulumi.get(self, "value")
 
     def _translate_property(self, prop):
@@ -1462,6 +1482,11 @@ class OceanLaunchSpecTaint(dict):
                  effect: str,
                  key: str,
                  value: str):
+        """
+        :param str effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
+        :param str key: The label key.
+        :param str value: The label value.
+        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -1469,16 +1494,25 @@ class OceanLaunchSpecTaint(dict):
     @property
     @pulumi.getter
     def effect(self) -> str:
+        """
+        The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
+        """
         return pulumi.get(self, "effect")
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The label key.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The label value.
+        """
         return pulumi.get(self, "value")
 
     def _translate_property(self, prop):

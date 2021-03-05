@@ -18,6 +18,9 @@ import * as utilities from "../utilities";
  * const default_elastigroup = new spotinst.aws.Elastigroup("default-elastigroup", {
  *     capacityUnit: "weight",
  *     cpuCredits: "unlimited",
+ *     cpuOptions: {
+ *         threadsPerCore: 1,
+ *     },
  *     description: "created by Pulumi",
  *     desiredCapacity: 0,
  *     ebsOptimized: false,
@@ -152,6 +155,10 @@ export class Elastigroup extends pulumi.CustomResource {
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
     public readonly cpuCredits!: pulumi.Output<string | undefined>;
+    /**
+     * The CPU options for the instances that are launched within the group:
+     */
+    public readonly cpuOptions!: pulumi.Output<outputs.aws.ElastigroupCpuOptions | undefined>;
     /**
      * The description of the network interface.
      */
@@ -411,6 +418,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["blockDevicesMode"] = state ? state.blockDevicesMode : undefined;
             inputs["capacityUnit"] = state ? state.capacityUnit : undefined;
             inputs["cpuCredits"] = state ? state.cpuCredits : undefined;
+            inputs["cpuOptions"] = state ? state.cpuOptions : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             inputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
@@ -504,6 +512,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["blockDevicesMode"] = args ? args.blockDevicesMode : undefined;
             inputs["capacityUnit"] = args ? args.capacityUnit : undefined;
             inputs["cpuCredits"] = args ? args.cpuCredits : undefined;
+            inputs["cpuOptions"] = args ? args.cpuOptions : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             inputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
@@ -603,6 +612,10 @@ export interface ElastigroupState {
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
     readonly cpuCredits?: pulumi.Input<string>;
+    /**
+     * The CPU options for the instances that are launched within the group:
+     */
+    readonly cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions>;
     /**
      * The description of the network interface.
      */
@@ -868,6 +881,10 @@ export interface ElastigroupArgs {
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
     readonly cpuCredits?: pulumi.Input<string>;
+    /**
+     * The CPU options for the instances that are launched within the group:
+     */
+    readonly cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions>;
     /**
      * The description of the network interface.
      */
