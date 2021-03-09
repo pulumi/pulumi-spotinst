@@ -242,9 +242,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Output("strategies")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecStrategy>> Strategies { get; private set; } = null!;
 
@@ -442,10 +439,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("strategies")]
         private InputList<Inputs.OceanLaunchSpecStrategyArgs>? _strategies;
-
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         public InputList<Inputs.OceanLaunchSpecStrategyArgs> Strategies
         {
             get => _strategies ?? (_strategies = new InputList<Inputs.OceanLaunchSpecStrategyArgs>());
@@ -625,10 +618,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("strategies")]
         private InputList<Inputs.OceanLaunchSpecStrategyGetArgs>? _strategies;
-
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         public InputList<Inputs.OceanLaunchSpecStrategyGetArgs> Strategies
         {
             get => _strategies ?? (_strategies = new InputList<Inputs.OceanLaunchSpecStrategyGetArgs>());

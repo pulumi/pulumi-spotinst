@@ -107,6 +107,9 @@ export class OceanImport extends pulumi.CustomResource {
      * Set scheduling object.
      */
     public readonly scheduledTasks!: pulumi.Output<outputs.gke.OceanImportScheduledTask[] | undefined>;
+    /**
+     * Instance types allowed in the Ocean cluster.
+     */
     public readonly whitelists!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -198,6 +201,9 @@ export interface OceanImportState {
      * Set scheduling object.
      */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    /**
+     * Instance types allowed in the Ocean cluster.
+     */
     readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -238,5 +244,8 @@ export interface OceanImportArgs {
      * Set scheduling object.
      */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    /**
+     * Instance types allowed in the Ocean cluster.
+     */
     readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

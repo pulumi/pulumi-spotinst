@@ -3915,7 +3915,7 @@ type OceanLaunchSpecAutoscaleHeadroom struct {
 	CpuPerUnit *int `pulumi:"cpuPerUnit"`
 	// Optionally configure the number of GPUS to allocate for each headroom unit.
 	GpuPerUnit *int `pulumi:"gpuPerUnit"`
-	// Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
 	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
 	NumOfUnits int `pulumi:"numOfUnits"`
@@ -3937,7 +3937,7 @@ type OceanLaunchSpecAutoscaleHeadroomArgs struct {
 	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
 	// Optionally configure the number of GPUS to allocate for each headroom unit.
 	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
-	// Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
 	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
 	NumOfUnits pulumi.IntInput `pulumi:"numOfUnits"`
@@ -4004,7 +4004,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput
 	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 func (o OceanLaunchSpecAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
@@ -4035,7 +4035,9 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 }
 
 type OceanLaunchSpecLabel struct {
-	Key   string `pulumi:"key"`
+	// The label key.
+	Key string `pulumi:"key"`
+	// The label value.
 	Value string `pulumi:"value"`
 }
 
@@ -4051,7 +4053,9 @@ type OceanLaunchSpecLabelInput interface {
 }
 
 type OceanLaunchSpecLabelArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// The label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The label value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -4106,10 +4110,12 @@ func (o OceanLaunchSpecLabelOutput) ToOceanLaunchSpecLabelOutputWithContext(ctx 
 	return o
 }
 
+// The label key.
 func (o OceanLaunchSpecLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The label value.
 func (o OceanLaunchSpecLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -4135,7 +4141,9 @@ func (o OceanLaunchSpecLabelArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 }
 
 type OceanLaunchSpecMetadata struct {
-	Key   string `pulumi:"key"`
+	// The label key.
+	Key string `pulumi:"key"`
+	// The label value.
 	Value string `pulumi:"value"`
 }
 
@@ -4151,7 +4159,9 @@ type OceanLaunchSpecMetadataInput interface {
 }
 
 type OceanLaunchSpecMetadataArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// The label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The label value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -4206,10 +4216,12 @@ func (o OceanLaunchSpecMetadataOutput) ToOceanLaunchSpecMetadataOutputWithContex
 	return o
 }
 
+// The label key.
 func (o OceanLaunchSpecMetadataOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecMetadata) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The label value.
 func (o OceanLaunchSpecMetadataOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecMetadata) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -4235,9 +4247,12 @@ func (o OceanLaunchSpecMetadataArrayOutput) Index(i pulumi.IntInput) OceanLaunch
 }
 
 type OceanLaunchSpecTaint struct {
+	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 	Effect string `pulumi:"effect"`
-	Key    string `pulumi:"key"`
-	Value  string `pulumi:"value"`
+	// The label key.
+	Key string `pulumi:"key"`
+	// The label value.
+	Value string `pulumi:"value"`
 }
 
 // OceanLaunchSpecTaintInput is an input type that accepts OceanLaunchSpecTaintArgs and OceanLaunchSpecTaintOutput values.
@@ -4252,9 +4267,12 @@ type OceanLaunchSpecTaintInput interface {
 }
 
 type OceanLaunchSpecTaintArgs struct {
+	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	Key    pulumi.StringInput `pulumi:"key"`
-	Value  pulumi.StringInput `pulumi:"value"`
+	// The label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The label value.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (OceanLaunchSpecTaintArgs) ElementType() reflect.Type {
@@ -4308,14 +4326,17 @@ func (o OceanLaunchSpecTaintOutput) ToOceanLaunchSpecTaintOutputWithContext(ctx 
 	return o
 }
 
+// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 func (o OceanLaunchSpecTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
+// The label key.
 func (o OceanLaunchSpecTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The label value.
 func (o OceanLaunchSpecTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Value }).(pulumi.StringOutput)
 }

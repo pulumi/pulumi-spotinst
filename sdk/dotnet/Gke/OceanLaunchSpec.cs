@@ -92,7 +92,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroom>> AutoscaleHeadrooms { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster's labels.
+        /// Optionally adds labels to instances launched in an Ocean cluster.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecLabel>> Labels { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<string> OceanId { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Output("restrictScaleDown")]
         public Output<bool?> RestrictScaleDown { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<string> SourceImage { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster's taints.
+        /// Optionally adds labels to instances launched in an Ocean cluster.
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecTaint>> Taints { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.SpotInst.Gke
         private InputList<Inputs.OceanLaunchSpecLabelArgs>? _labels;
 
         /// <summary>
-        /// Cluster's labels.
+        /// Optionally adds labels to instances launched in an Ocean cluster.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecLabelArgs> Labels
         {
@@ -216,7 +216,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<string> OceanId { get; set; } = null!;
 
         /// <summary>
-        /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Input("restrictScaleDown")]
         public Input<bool>? RestrictScaleDown { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.SpotInst.Gke
         private InputList<Inputs.OceanLaunchSpecTaintArgs>? _taints;
 
         /// <summary>
-        /// Cluster's taints.
+        /// Optionally adds labels to instances launched in an Ocean cluster.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecTaintArgs> Taints
         {
@@ -262,7 +262,7 @@ namespace Pulumi.SpotInst.Gke
         private InputList<Inputs.OceanLaunchSpecLabelGetArgs>? _labels;
 
         /// <summary>
-        /// Cluster's labels.
+        /// Optionally adds labels to instances launched in an Ocean cluster.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecLabelGetArgs> Labels
         {
@@ -289,7 +289,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<string>? OceanId { get; set; }
 
         /// <summary>
-        /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Input("restrictScaleDown")]
         public Input<bool>? RestrictScaleDown { get; set; }
@@ -304,7 +304,7 @@ namespace Pulumi.SpotInst.Gke
         private InputList<Inputs.OceanLaunchSpecTaintGetArgs>? _taints;
 
         /// <summary>
-        /// Cluster's taints.
+        /// Optionally adds labels to instances launched in an Ocean cluster.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecTaintGetArgs> Taints
         {

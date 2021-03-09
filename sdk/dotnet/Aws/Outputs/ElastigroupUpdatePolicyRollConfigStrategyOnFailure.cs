@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupUpdatePolicyRollConfigStrategyOnFailure
     {
         /// <summary>
-        /// Decrementing the group target capacity after detaching the instances.
+        /// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
         /// </summary>
         public readonly string ActionType;
         public readonly int? BatchNum;
@@ -22,6 +22,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// Indicates (in seconds) the timeout to wait until instance are detached.
         /// </summary>
         public readonly int? DrainingTimeout;
+        /// <summary>
+        /// Decrementing the group target capacity after detaching the instances.
+        /// </summary>
         public readonly bool? ShouldDecrementTargetCapacity;
         /// <summary>
         /// Indicator if the action should apply to all batches of the deployment or only the latest batch.

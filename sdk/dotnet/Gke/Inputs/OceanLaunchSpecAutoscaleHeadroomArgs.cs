@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public Input<int>? GpuPerUnit { get; set; }
 
         /// <summary>
-        /// Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+        /// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         /// </summary>
         [Input("memoryPerUnit")]
         public Input<int>? MemoryPerUnit { get; set; }

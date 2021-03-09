@@ -15,6 +15,7 @@ __all__ = [
     'BeanstalkManagedActions',
     'BeanstalkManagedActionsPlatformUpdate',
     'BeanstalkScheduledTask',
+    'ElastigroupCpuOptions',
     'ElastigroupEbsBlockDevice',
     'ElastigroupEphemeralBlockDevice',
     'ElastigroupInstanceTypesWeight',
@@ -462,6 +463,27 @@ class BeanstalkScheduledTask(dict):
         The desired number of instances the group should have.
         """
         return pulumi.get(self, "target_capacity")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ElastigroupCpuOptions(dict):
+    def __init__(__self__, *,
+                 threads_per_core: int):
+        """
+        :param int threads_per_core: The ability to define the number of threads per core in instances that allow this.
+        """
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        """
+        The ability to define the number of threads per core in instances that allow this.
+        """
+        return pulumi.get(self, "threads_per_core")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -3493,8 +3515,9 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
                  should_decrement_target_capacity: Optional[bool] = None,
                  should_handle_all_batches: Optional[bool] = None):
         """
-        :param str action_type: Decrementing the group target capacity after detaching the instances.
+        :param str action_type: Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
         :param int draining_timeout: Indicates (in seconds) the timeout to wait until instance are detached.
+        :param bool should_decrement_target_capacity: Decrementing the group target capacity after detaching the instances.
         :param bool should_handle_all_batches: Indicator if the action should apply to all batches of the deployment or only the latest batch.
         """
         pulumi.set(__self__, "action_type", action_type)
@@ -3511,7 +3534,7 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
     @pulumi.getter(name="actionType")
     def action_type(self) -> str:
         """
-        Decrementing the group target capacity after detaching the instances.
+        Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
         """
         return pulumi.get(self, "action_type")
 
@@ -3531,6 +3554,9 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
     @property
     @pulumi.getter(name="shouldDecrementTargetCapacity")
     def should_decrement_target_capacity(self) -> Optional[bool]:
+        """
+        Decrementing the group target capacity after detaching the instances.
+        """
         return pulumi.get(self, "should_decrement_target_capacity")
 
     @property
@@ -5983,8 +6009,8 @@ class OceanLaunchSpecLabel(dict):
                  key: str,
                  value: str):
         """
-        :param str key: The tag key.
-        :param str value: The tag value.
+        :param str key: The taint key.
+        :param str value: The taint value.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -5993,7 +6019,7 @@ class OceanLaunchSpecLabel(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The tag key.
+        The taint key.
         """
         return pulumi.get(self, "key")
 
@@ -6001,7 +6027,7 @@ class OceanLaunchSpecLabel(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The tag value.
+        The taint value.
         """
         return pulumi.get(self, "value")
 
@@ -6036,7 +6062,7 @@ class OceanLaunchSpecStrategy(dict):
     def __init__(__self__, *,
                  spot_percentage: Optional[int] = None):
         """
-        :param int spot_percentage: (Optional; if not using `spot_percentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+        :param int spot_percentage: When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
         """
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
@@ -6045,7 +6071,7 @@ class OceanLaunchSpecStrategy(dict):
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[int]:
         """
-        (Optional; if not using `spot_percentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+        When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
         """
         return pulumi.get(self, "spot_percentage")
 
@@ -6059,8 +6085,8 @@ class OceanLaunchSpecTag(dict):
                  key: str,
                  value: str):
         """
-        :param str key: The tag key.
-        :param str value: The tag value.
+        :param str key: The taint key.
+        :param str value: The taint value.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -6069,7 +6095,7 @@ class OceanLaunchSpecTag(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The tag key.
+        The taint key.
         """
         return pulumi.get(self, "key")
 
@@ -6077,7 +6103,7 @@ class OceanLaunchSpecTag(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The tag value.
+        The taint value.
         """
         return pulumi.get(self, "value")
 
@@ -6093,8 +6119,8 @@ class OceanLaunchSpecTaint(dict):
                  value: str):
         """
         :param str effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
-        :param str key: The tag key.
-        :param str value: The tag value.
+        :param str key: The taint key.
+        :param str value: The taint value.
         """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
@@ -6112,7 +6138,7 @@ class OceanLaunchSpecTaint(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The tag key.
+        The taint key.
         """
         return pulumi.get(self, "key")
 
@@ -6120,7 +6146,7 @@ class OceanLaunchSpecTaint(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The tag value.
+        The taint value.
         """
         return pulumi.get(self, "value")
 

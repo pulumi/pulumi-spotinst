@@ -285,6 +285,23 @@
                 "taskType"
             ]
         },
+        "spotinst:aws/ElastigroupCpuOptions:ElastigroupCpuOptions": {
+            "properties": {
+                "threadsPerCore": {
+                    "type": "integer",
+                    "description": "The ability to define the number of threads per core in instances that allow this.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "threadsPerCore"
+            ]
+        },
         "spotinst:aws/ElastigroupEbsBlockDevice:ElastigroupEbsBlockDevice": {
             "properties": {
                 "deleteOnTermination": {
@@ -2689,7 +2706,7 @@
             "properties": {
                 "actionType": {
                     "type": "string",
-                    "description": "Decrementing the group target capacity after detaching the instances.\n",
+                    "description": "Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2715,6 +2732,7 @@
                 },
                 "shouldDecrementTargetCapacity": {
                     "type": "boolean",
+                    "description": "Decrementing the group target capacity after detaching the instances.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4735,7 +4753,7 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The tag key.\n",
+                    "description": "The taint key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4744,7 +4762,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The tag value.\n",
+                    "description": "The taint value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4776,7 +4794,7 @@
             "properties": {
                 "spotPercentage": {
                     "type": "integer",
-                    "description": "(Optional; if not using `spot_percentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.\n",
+                    "description": "When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4790,7 +4808,7 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The tag key.\n",
+                    "description": "The taint key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4799,7 +4817,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The tag value.\n",
+                    "description": "The taint value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4826,7 +4844,7 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "The tag key.\n",
+                    "description": "The taint key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4835,7 +4853,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The tag value.\n",
+                    "description": "The taint value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9060,7 +9078,7 @@
                 },
                 "memoryPerUnit": {
                     "type": "integer",
-                    "description": "Optionally configure the amount of memory (MB) to allocate for each headroom unit.\n",
+                    "description": "Optionally configure the amount of memory (MiB) to allocate for each headroom unit.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9086,6 +9104,7 @@
             "properties": {
                 "key": {
                     "type": "string",
+                    "description": "The label key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9094,6 +9113,7 @@
                 },
                 "value": {
                     "type": "string",
+                    "description": "The label value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9111,6 +9131,7 @@
             "properties": {
                 "key": {
                     "type": "string",
+                    "description": "The label key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9119,6 +9140,7 @@
                 },
                 "value": {
                     "type": "string",
+                    "description": "The label value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9136,6 +9158,7 @@
             "properties": {
                 "effect": {
                     "type": "string",
+                    "description": "The effect of the taint. Valid values: `\"NoSchedule\"`, `\"PreferNoSchedule\"`, `\"NoExecute\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9144,6 +9167,7 @@
                 },
                 "key": {
                     "type": "string",
+                    "description": "The label key.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9152,6 +9176,7 @@
                 },
                 "value": {
                     "type": "string",
+                    "description": "The label value.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9770,7 +9795,7 @@
             }
         },
         "spotinst:aws/elastigroup:Elastigroup": {
-            "description": "Provides a Spotinst AWS group resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create an Elastigroup\nconst default_elastigroup = new spotinst.aws.Elastigroup(\"default-elastigroup\", {\n    capacityUnit: \"weight\",\n    cpuCredits: \"unlimited\",\n    description: \"created by Pulumi\",\n    desiredCapacity: 0,\n    ebsOptimized: false,\n    enableMonitoring: false,\n    fallbackToOndemand: false,\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-a27d8fda\",\n    instanceTypesOndemand: \"m3.2xlarge\",\n    instanceTypesPreferredSpots: [\"m3.xlarge\"],\n    instanceTypesSpots: [\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n    ],\n    instanceTypesWeights: [\n        {\n            instanceType: \"c3.large\",\n            weight: 10,\n        },\n        {\n            instanceType: \"c4.xlarge\",\n            weight: 16,\n        },\n    ],\n    keyName: \"my-key.ssh\",\n    maxSize: 0,\n    metadataOptions: {\n        httpPutResponseHopLimit: 10,\n        httpTokens: \"optional\",\n    },\n    minSize: 0,\n    minimumInstanceLifetime: 12,\n    orientation: \"balanced\",\n    placementTenancy: \"default\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    scalingDownPolicies: [{\n        adjustment: \"1\",\n        cooldown: 300,\n        evaluationPeriods: 10,\n        metricName: \"DefaultQueuesDepth\",\n        namespace: \"custom\",\n        period: 60,\n        policyName: \"Default Scaling Down Policy\",\n        statistic: \"average\",\n        threshold: 10,\n        unit: \"none\",\n    }],\n    scalingStrategies: [{\n        terminateAtEndOfBillingHour: true,\n        terminationPolicy: \"default\",\n    }],\n    scalingUpPolicies: [{\n        adjustment: \"1\",\n        cooldown: 300,\n        evaluationPeriods: 5,\n        metricName: \"DefaultQueuesDepth\",\n        namespace: \"custom\",\n        period: 60,\n        policyName: \"Default Scaling Up Policy\",\n        statistic: \"average\",\n        threshold: 100,\n        unit: \"none\",\n    }],\n    securityGroups: [\"sg-123456\"],\n    subnetIds: [\n        \"sb-123456\",\n        \"sb-456789\",\n    ],\n    tags: [\n        {\n            key: \"Env\",\n            value: \"production\",\n        },\n        {\n            key: \"Name\",\n            value: \"default-production\",\n        },\n        {\n            key: \"Project\",\n            value: \"app_v2\",\n        },\n    ],\n    userData: \"echo hello world\",\n    waitForCapacity: 5,\n    waitForCapacityTimeout: 300,\n}, { ignoreChanges: [\"desiredCapacity\"] });\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Spotinst AWS group resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create an Elastigroup\nconst default_elastigroup = new spotinst.aws.Elastigroup(\"default-elastigroup\", {\n    capacityUnit: \"weight\",\n    cpuCredits: \"unlimited\",\n    cpuOptions: {\n        threadsPerCore: 1,\n    },\n    description: \"created by Pulumi\",\n    desiredCapacity: 0,\n    ebsOptimized: false,\n    enableMonitoring: false,\n    fallbackToOndemand: false,\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-a27d8fda\",\n    instanceTypesOndemand: \"m3.2xlarge\",\n    instanceTypesPreferredSpots: [\"m3.xlarge\"],\n    instanceTypesSpots: [\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n    ],\n    instanceTypesWeights: [\n        {\n            instanceType: \"c3.large\",\n            weight: 10,\n        },\n        {\n            instanceType: \"c4.xlarge\",\n            weight: 16,\n        },\n    ],\n    keyName: \"my-key.ssh\",\n    maxSize: 0,\n    metadataOptions: {\n        httpPutResponseHopLimit: 10,\n        httpTokens: \"optional\",\n    },\n    minSize: 0,\n    minimumInstanceLifetime: 12,\n    orientation: \"balanced\",\n    placementTenancy: \"default\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    scalingDownPolicies: [{\n        adjustment: \"1\",\n        cooldown: 300,\n        evaluationPeriods: 10,\n        metricName: \"DefaultQueuesDepth\",\n        namespace: \"custom\",\n        period: 60,\n        policyName: \"Default Scaling Down Policy\",\n        statistic: \"average\",\n        threshold: 10,\n        unit: \"none\",\n    }],\n    scalingStrategies: [{\n        terminateAtEndOfBillingHour: true,\n        terminationPolicy: \"default\",\n    }],\n    scalingUpPolicies: [{\n        adjustment: \"1\",\n        cooldown: 300,\n        evaluationPeriods: 5,\n        metricName: \"DefaultQueuesDepth\",\n        namespace: \"custom\",\n        period: 60,\n        policyName: \"Default Scaling Up Policy\",\n        statistic: \"average\",\n        threshold: 100,\n        unit: \"none\",\n    }],\n    securityGroups: [\"sg-123456\"],\n    subnetIds: [\n        \"sb-123456\",\n        \"sb-456789\",\n    ],\n    tags: [\n        {\n            key: \"Env\",\n            value: \"production\",\n        },\n        {\n            key: \"Name\",\n            value: \"default-production\",\n        },\n        {\n            key: \"Project\",\n            value: \"app_v2\",\n        },\n    ],\n    userData: \"echo hello world\",\n    waitForCapacity: 5,\n    waitForCapacityTimeout: 300,\n}, { ignoreChanges: [\"desiredCapacity\"] });\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "availabilityZones": {
                     "type": "array",
@@ -9790,6 +9815,10 @@
                 "cpuCredits": {
                     "type": "string",
                     "description": "Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.\n"
+                },
+                "cpuOptions": {
+                    "$ref": "#/types/spotinst:aws/ElastigroupCpuOptions:ElastigroupCpuOptions",
+                    "description": "The CPU options for the instances that are launched within the group:\n"
                 },
                 "description": {
                     "type": "string",
@@ -10152,6 +10181,10 @@
                     "type": "string",
                     "description": "Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.\n"
                 },
+                "cpuOptions": {
+                    "$ref": "#/types/spotinst:aws/ElastigroupCpuOptions:ElastigroupCpuOptions",
+                    "description": "The CPU options for the instances that are launched within the group:\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the network interface.\n"
@@ -10508,6 +10541,10 @@
                     "cpuCredits": {
                         "type": "string",
                         "description": "Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.\n"
+                    },
+                    "cpuOptions": {
+                        "$ref": "#/types/spotinst:aws/ElastigroupCpuOptions:ElastigroupCpuOptions",
+                        "description": "The CPU options for the instances that are launched within the group:\n"
                     },
                     "description": {
                         "type": "string",
@@ -12816,8 +12853,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/OceanLaunchSpecStrategy:OceanLaunchSpecStrategy"
-                    },
-                    "description": "(Optional)\n"
+                    }
                 },
                 "subnetIds": {
                     "type": "array",
@@ -12930,8 +12966,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/OceanLaunchSpecStrategy:OceanLaunchSpecStrategy"
-                    },
-                    "description": "(Optional)\n"
+                    }
                 },
                 "subnetIds": {
                     "type": "array",
@@ -13045,8 +13080,7 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:aws/OceanLaunchSpecStrategy:OceanLaunchSpecStrategy"
-                        },
-                        "description": "(Optional)\n"
+                        }
                     },
                     "subnetIds": {
                         "type": "array",
@@ -15114,7 +15148,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Instance types allowed in the Ocean cluster.\n"
                 }
             },
             "required": [
@@ -15173,7 +15208,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Instance types allowed in the Ocean cluster.\n"
                 }
             },
             "requiredInputs": [
@@ -15231,7 +15267,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Instance types allowed in the Ocean cluster.\n"
                     }
                 },
                 "type": "object"
@@ -15252,7 +15289,7 @@
                     "items": {
                         "$ref": "#/types/spotinst:gke/OceanLaunchSpecLabel:OceanLaunchSpecLabel"
                     },
-                    "description": "Cluster's labels.\n"
+                    "description": "Optionally adds labels to instances launched in an Ocean cluster.\n"
                 },
                 "metadatas": {
                     "type": "array",
@@ -15267,7 +15304,7 @@
                 },
                 "restrictScaleDown": {
                     "type": "boolean",
-                    "description": "Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
+                    "description": "Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
                 },
                 "sourceImage": {
                     "type": "string",
@@ -15278,7 +15315,7 @@
                     "items": {
                         "$ref": "#/types/spotinst:gke/OceanLaunchSpecTaint:OceanLaunchSpecTaint"
                     },
-                    "description": "Cluster's taints.\n"
+                    "description": "Optionally adds labels to instances launched in an Ocean cluster.\n"
                 }
             },
             "required": [
@@ -15299,7 +15336,7 @@
                     "items": {
                         "$ref": "#/types/spotinst:gke/OceanLaunchSpecLabel:OceanLaunchSpecLabel"
                     },
-                    "description": "Cluster's labels.\n"
+                    "description": "Optionally adds labels to instances launched in an Ocean cluster.\n"
                 },
                 "metadatas": {
                     "type": "array",
@@ -15314,7 +15351,7 @@
                 },
                 "restrictScaleDown": {
                     "type": "boolean",
-                    "description": "Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
+                    "description": "Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
                 },
                 "sourceImage": {
                     "type": "string",
@@ -15325,7 +15362,7 @@
                     "items": {
                         "$ref": "#/types/spotinst:gke/OceanLaunchSpecTaint:OceanLaunchSpecTaint"
                     },
-                    "description": "Cluster's taints.\n"
+                    "description": "Optionally adds labels to instances launched in an Ocean cluster.\n"
                 }
             },
             "requiredInputs": [
@@ -15348,7 +15385,7 @@
                         "items": {
                             "$ref": "#/types/spotinst:gke/OceanLaunchSpecLabel:OceanLaunchSpecLabel"
                         },
-                        "description": "Cluster's labels.\n"
+                        "description": "Optionally adds labels to instances launched in an Ocean cluster.\n"
                     },
                     "metadatas": {
                         "type": "array",
@@ -15363,7 +15400,7 @@
                     },
                     "restrictScaleDown": {
                         "type": "boolean",
-                        "description": "Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
+                        "description": "Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
                     },
                     "sourceImage": {
                         "type": "string",
@@ -15374,7 +15411,7 @@
                         "items": {
                             "$ref": "#/types/spotinst:gke/OceanLaunchSpecTaint:OceanLaunchSpecTaint"
                         },
-                        "description": "Cluster's taints.\n"
+                        "description": "Optionally adds labels to instances launched in an Ocean cluster.\n"
                     }
                 },
                 "type": "object"

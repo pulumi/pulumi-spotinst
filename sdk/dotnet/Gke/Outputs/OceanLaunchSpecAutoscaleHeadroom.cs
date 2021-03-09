@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// </summary>
         public readonly int? GpuPerUnit;
         /// <summary>
-        /// Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+        /// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         /// </summary>
         public readonly int? MemoryPerUnit;
         /// <summary>

@@ -12,12 +12,21 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanLaunchSpecTaintArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
+        /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
 
+        /// <summary>
+        /// The label key.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The label value.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

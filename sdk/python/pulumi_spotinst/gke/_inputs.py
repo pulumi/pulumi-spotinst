@@ -1718,7 +1718,7 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
         :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
         :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         :param pulumi.Input[int] gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
-        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
@@ -1768,7 +1768,7 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
         """
-        Optionally configure the amount of memory (MB) to allocate for each headroom unit.
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         return pulumi.get(self, "memory_per_unit")
 
@@ -1782,12 +1782,19 @@ class OceanLaunchSpecLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: The label key.
+        :param pulumi.Input[str] value: The label value.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The label key.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1797,6 +1804,9 @@ class OceanLaunchSpecLabelArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The label value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1809,12 +1819,19 @@ class OceanLaunchSpecMetadataArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: The label key.
+        :param pulumi.Input[str] value: The label value.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The label key.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1824,6 +1841,9 @@ class OceanLaunchSpecMetadataArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The label value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1837,6 +1857,11 @@ class OceanLaunchSpecTaintArgs:
                  effect: pulumi.Input[str],
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
+        :param pulumi.Input[str] key: The label key.
+        :param pulumi.Input[str] value: The label value.
+        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -1844,6 +1869,9 @@ class OceanLaunchSpecTaintArgs:
     @property
     @pulumi.getter
     def effect(self) -> pulumi.Input[str]:
+        """
+        The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -1853,6 +1881,9 @@ class OceanLaunchSpecTaintArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The label key.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1862,6 +1893,9 @@ class OceanLaunchSpecTaintArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The label value.
+        """
         return pulumi.get(self, "value")
 
     @value.setter

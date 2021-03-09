@@ -18,11 +18,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string Effect;
         /// <summary>
-        /// The tag key.
+        /// The taint key.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The tag value.
+        /// The taint value.
         /// </summary>
         public readonly string Value;
 

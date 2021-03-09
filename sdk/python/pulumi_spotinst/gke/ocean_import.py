@@ -79,6 +79,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -148,6 +149,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -243,6 +245,9 @@ class OceanImport(pulumi.CustomResource):
     @property
     @pulumi.getter
     def whitelists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Instance types allowed in the Ocean cluster.
+        """
         return pulumi.get(self, "whitelists")
 
     def translate_output_property(self, prop):

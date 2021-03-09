@@ -827,6 +827,137 @@ func (o BeanstalkScheduledTaskArrayOutput) Index(i pulumi.IntInput) BeanstalkSch
 	}).(BeanstalkScheduledTaskOutput)
 }
 
+type ElastigroupCpuOptions struct {
+	// The ability to define the number of threads per core in instances that allow this.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+}
+
+// ElastigroupCpuOptionsInput is an input type that accepts ElastigroupCpuOptionsArgs and ElastigroupCpuOptionsOutput values.
+// You can construct a concrete instance of `ElastigroupCpuOptionsInput` via:
+//
+//          ElastigroupCpuOptionsArgs{...}
+type ElastigroupCpuOptionsInput interface {
+	pulumi.Input
+
+	ToElastigroupCpuOptionsOutput() ElastigroupCpuOptionsOutput
+	ToElastigroupCpuOptionsOutputWithContext(context.Context) ElastigroupCpuOptionsOutput
+}
+
+type ElastigroupCpuOptionsArgs struct {
+	// The ability to define the number of threads per core in instances that allow this.
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+}
+
+func (ElastigroupCpuOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupCpuOptions)(nil)).Elem()
+}
+
+func (i ElastigroupCpuOptionsArgs) ToElastigroupCpuOptionsOutput() ElastigroupCpuOptionsOutput {
+	return i.ToElastigroupCpuOptionsOutputWithContext(context.Background())
+}
+
+func (i ElastigroupCpuOptionsArgs) ToElastigroupCpuOptionsOutputWithContext(ctx context.Context) ElastigroupCpuOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupCpuOptionsOutput)
+}
+
+func (i ElastigroupCpuOptionsArgs) ToElastigroupCpuOptionsPtrOutput() ElastigroupCpuOptionsPtrOutput {
+	return i.ToElastigroupCpuOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupCpuOptionsArgs) ToElastigroupCpuOptionsPtrOutputWithContext(ctx context.Context) ElastigroupCpuOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupCpuOptionsOutput).ToElastigroupCpuOptionsPtrOutputWithContext(ctx)
+}
+
+// ElastigroupCpuOptionsPtrInput is an input type that accepts ElastigroupCpuOptionsArgs, ElastigroupCpuOptionsPtr and ElastigroupCpuOptionsPtrOutput values.
+// You can construct a concrete instance of `ElastigroupCpuOptionsPtrInput` via:
+//
+//          ElastigroupCpuOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ElastigroupCpuOptionsPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupCpuOptionsPtrOutput() ElastigroupCpuOptionsPtrOutput
+	ToElastigroupCpuOptionsPtrOutputWithContext(context.Context) ElastigroupCpuOptionsPtrOutput
+}
+
+type elastigroupCpuOptionsPtrType ElastigroupCpuOptionsArgs
+
+func ElastigroupCpuOptionsPtr(v *ElastigroupCpuOptionsArgs) ElastigroupCpuOptionsPtrInput {
+	return (*elastigroupCpuOptionsPtrType)(v)
+}
+
+func (*elastigroupCpuOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupCpuOptions)(nil)).Elem()
+}
+
+func (i *elastigroupCpuOptionsPtrType) ToElastigroupCpuOptionsPtrOutput() ElastigroupCpuOptionsPtrOutput {
+	return i.ToElastigroupCpuOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupCpuOptionsPtrType) ToElastigroupCpuOptionsPtrOutputWithContext(ctx context.Context) ElastigroupCpuOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupCpuOptionsPtrOutput)
+}
+
+type ElastigroupCpuOptionsOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupCpuOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupCpuOptions)(nil)).Elem()
+}
+
+func (o ElastigroupCpuOptionsOutput) ToElastigroupCpuOptionsOutput() ElastigroupCpuOptionsOutput {
+	return o
+}
+
+func (o ElastigroupCpuOptionsOutput) ToElastigroupCpuOptionsOutputWithContext(ctx context.Context) ElastigroupCpuOptionsOutput {
+	return o
+}
+
+func (o ElastigroupCpuOptionsOutput) ToElastigroupCpuOptionsPtrOutput() ElastigroupCpuOptionsPtrOutput {
+	return o.ToElastigroupCpuOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupCpuOptionsOutput) ToElastigroupCpuOptionsPtrOutputWithContext(ctx context.Context) ElastigroupCpuOptionsPtrOutput {
+	return o.ApplyT(func(v ElastigroupCpuOptions) *ElastigroupCpuOptions {
+		return &v
+	}).(ElastigroupCpuOptionsPtrOutput)
+}
+
+// The ability to define the number of threads per core in instances that allow this.
+func (o ElastigroupCpuOptionsOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupCpuOptions) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+type ElastigroupCpuOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupCpuOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupCpuOptions)(nil)).Elem()
+}
+
+func (o ElastigroupCpuOptionsPtrOutput) ToElastigroupCpuOptionsPtrOutput() ElastigroupCpuOptionsPtrOutput {
+	return o
+}
+
+func (o ElastigroupCpuOptionsPtrOutput) ToElastigroupCpuOptionsPtrOutputWithContext(ctx context.Context) ElastigroupCpuOptionsPtrOutput {
+	return o
+}
+
+func (o ElastigroupCpuOptionsPtrOutput) Elem() ElastigroupCpuOptionsOutput {
+	return o.ApplyT(func(v *ElastigroupCpuOptions) ElastigroupCpuOptions { return *v }).(ElastigroupCpuOptionsOutput)
+}
+
+// The ability to define the number of threads per core in instances that allow this.
+func (o ElastigroupCpuOptionsPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupCpuOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
+}
+
 type ElastigroupEbsBlockDevice struct {
 	// Whether the volume should be destroyed on instance termination.
 	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
@@ -9117,11 +9248,12 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) ShouldDrainInstances
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategyOnFailure struct {
-	// Decrementing the group target capacity after detaching the instances.
+	// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
 	ActionType string `pulumi:"actionType"`
 	BatchNum   *int   `pulumi:"batchNum"`
 	// Indicates (in seconds) the timeout to wait until instance are detached.
-	DrainingTimeout               *int  `pulumi:"drainingTimeout"`
+	DrainingTimeout *int `pulumi:"drainingTimeout"`
+	// Decrementing the group target capacity after detaching the instances.
 	ShouldDecrementTargetCapacity *bool `pulumi:"shouldDecrementTargetCapacity"`
 	// Indicator if the action should apply to all batches of the deployment or only the latest batch.
 	ShouldHandleAllBatches *bool `pulumi:"shouldHandleAllBatches"`
@@ -9139,11 +9271,12 @@ type ElastigroupUpdatePolicyRollConfigStrategyOnFailureInput interface {
 }
 
 type ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs struct {
-	// Decrementing the group target capacity after detaching the instances.
+	// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
 	ActionType pulumi.StringInput `pulumi:"actionType"`
 	BatchNum   pulumi.IntPtrInput `pulumi:"batchNum"`
 	// Indicates (in seconds) the timeout to wait until instance are detached.
-	DrainingTimeout               pulumi.IntPtrInput  `pulumi:"drainingTimeout"`
+	DrainingTimeout pulumi.IntPtrInput `pulumi:"drainingTimeout"`
+	// Decrementing the group target capacity after detaching the instances.
 	ShouldDecrementTargetCapacity pulumi.BoolPtrInput `pulumi:"shouldDecrementTargetCapacity"`
 	// Indicator if the action should apply to all batches of the deployment or only the latest batch.
 	ShouldHandleAllBatches pulumi.BoolPtrInput `pulumi:"shouldHandleAllBatches"`
@@ -9226,7 +9359,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ToElastigroupU
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput)
 }
 
-// Decrementing the group target capacity after detaching the instances.
+// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) string { return v.ActionType }).(pulumi.StringOutput)
 }
@@ -9240,6 +9373,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) DrainingTimeou
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Decrementing the group target capacity after detaching the instances.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ShouldDecrementTargetCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool {
 		return v.ShouldDecrementTargetCapacity
@@ -9271,7 +9405,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) Elem() Elas
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput)
 }
 
-// Decrementing the group target capacity after detaching the instances.
+// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *string {
 		if v == nil {
@@ -9300,6 +9434,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) DrainingTim
 	}).(pulumi.IntPtrOutput)
 }
 
+// Decrementing the group target capacity after detaching the instances.
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ShouldDecrementTargetCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool {
 		if v == nil {
@@ -14592,9 +14727,9 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagValue() pulumi.Stri
 }
 
 type OceanLaunchSpecLabel struct {
-	// The tag key.
+	// The taint key.
 	Key string `pulumi:"key"`
-	// The tag value.
+	// The taint value.
 	Value string `pulumi:"value"`
 }
 
@@ -14610,9 +14745,9 @@ type OceanLaunchSpecLabelInput interface {
 }
 
 type OceanLaunchSpecLabelArgs struct {
-	// The tag key.
+	// The taint key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The tag value.
+	// The taint value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -14667,12 +14802,12 @@ func (o OceanLaunchSpecLabelOutput) ToOceanLaunchSpecLabelOutputWithContext(ctx 
 	return o
 }
 
-// The tag key.
+// The taint key.
 func (o OceanLaunchSpecLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The tag value.
+// The taint value.
 func (o OceanLaunchSpecLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -14795,7 +14930,7 @@ func (o OceanLaunchSpecResourceLimitArrayOutput) Index(i pulumi.IntInput) OceanL
 }
 
 type OceanLaunchSpecStrategy struct {
-	// (Optional; if not using `spotPercentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+	// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
 	SpotPercentage *int `pulumi:"spotPercentage"`
 }
 
@@ -14811,7 +14946,7 @@ type OceanLaunchSpecStrategyInput interface {
 }
 
 type OceanLaunchSpecStrategyArgs struct {
-	// (Optional; if not using `spotPercentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+	// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
 	SpotPercentage pulumi.IntPtrInput `pulumi:"spotPercentage"`
 }
 
@@ -14866,7 +15001,7 @@ func (o OceanLaunchSpecStrategyOutput) ToOceanLaunchSpecStrategyOutputWithContex
 	return o
 }
 
-// (Optional; if not using `spotPercentege` under `ocean strategy`) When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
 func (o OceanLaunchSpecStrategyOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecStrategy) *int { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }
@@ -14892,9 +15027,9 @@ func (o OceanLaunchSpecStrategyArrayOutput) Index(i pulumi.IntInput) OceanLaunch
 }
 
 type OceanLaunchSpecTag struct {
-	// The tag key.
+	// The taint key.
 	Key string `pulumi:"key"`
-	// The tag value.
+	// The taint value.
 	Value string `pulumi:"value"`
 }
 
@@ -14910,9 +15045,9 @@ type OceanLaunchSpecTagInput interface {
 }
 
 type OceanLaunchSpecTagArgs struct {
-	// The tag key.
+	// The taint key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The tag value.
+	// The taint value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -14967,12 +15102,12 @@ func (o OceanLaunchSpecTagOutput) ToOceanLaunchSpecTagOutputWithContext(ctx cont
 	return o
 }
 
-// The tag key.
+// The taint key.
 func (o OceanLaunchSpecTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The tag value.
+// The taint value.
 func (o OceanLaunchSpecTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -15000,9 +15135,9 @@ func (o OceanLaunchSpecTagArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecT
 type OceanLaunchSpecTaint struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 	Effect string `pulumi:"effect"`
-	// The tag key.
+	// The taint key.
 	Key string `pulumi:"key"`
-	// The tag value.
+	// The taint value.
 	Value string `pulumi:"value"`
 }
 
@@ -15020,9 +15155,9 @@ type OceanLaunchSpecTaintInput interface {
 type OceanLaunchSpecTaintArgs struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// The tag key.
+	// The taint key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The tag value.
+	// The taint value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -15082,12 +15217,12 @@ func (o OceanLaunchSpecTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// The tag key.
+// The taint key.
 func (o OceanLaunchSpecTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The tag value.
+// The taint value.
 func (o OceanLaunchSpecTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -16103,6 +16238,8 @@ func init() {
 	pulumi.RegisterOutputType(BeanstalkManagedActionsPlatformUpdatePtrOutput{})
 	pulumi.RegisterOutputType(BeanstalkScheduledTaskOutput{})
 	pulumi.RegisterOutputType(BeanstalkScheduledTaskArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupCpuOptionsOutput{})
+	pulumi.RegisterOutputType(ElastigroupCpuOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupEbsBlockDeviceOutput{})
 	pulumi.RegisterOutputType(ElastigroupEbsBlockDeviceArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupEphemeralBlockDeviceOutput{})

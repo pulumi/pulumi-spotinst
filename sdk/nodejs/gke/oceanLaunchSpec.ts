@@ -78,7 +78,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly autoscaleHeadrooms!: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
     /**
-     * Cluster's labels.
+     * Optionally adds labels to instances launched in an Ocean cluster.
      */
     public readonly labels!: pulumi.Output<outputs.gke.OceanLaunchSpecLabel[] | undefined>;
     /**
@@ -90,7 +90,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly oceanId!: pulumi.Output<string>;
     /**
-     * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     public readonly restrictScaleDown!: pulumi.Output<boolean | undefined>;
     /**
@@ -98,7 +98,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly sourceImage!: pulumi.Output<string>;
     /**
-     * Cluster's taints.
+     * Optionally adds labels to instances launched in an Ocean cluster.
      */
     public readonly taints!: pulumi.Output<outputs.gke.OceanLaunchSpecTaint[] | undefined>;
 
@@ -157,7 +157,7 @@ export interface OceanLaunchSpecState {
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[]>;
     /**
-     * Cluster's labels.
+     * Optionally adds labels to instances launched in an Ocean cluster.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecLabel>[]>;
     /**
@@ -169,7 +169,7 @@ export interface OceanLaunchSpecState {
      */
     readonly oceanId?: pulumi.Input<string>;
     /**
-     * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     readonly restrictScaleDown?: pulumi.Input<boolean>;
     /**
@@ -177,7 +177,7 @@ export interface OceanLaunchSpecState {
      */
     readonly sourceImage?: pulumi.Input<string>;
     /**
-     * Cluster's taints.
+     * Optionally adds labels to instances launched in an Ocean cluster.
      */
     readonly taints?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecTaint>[]>;
 }
@@ -191,7 +191,7 @@ export interface OceanLaunchSpecArgs {
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[]>;
     /**
-     * Cluster's labels.
+     * Optionally adds labels to instances launched in an Ocean cluster.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecLabel>[]>;
     /**
@@ -203,7 +203,7 @@ export interface OceanLaunchSpecArgs {
      */
     readonly oceanId: pulumi.Input<string>;
     /**
-     * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+     * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     readonly restrictScaleDown?: pulumi.Input<boolean>;
     /**
@@ -211,7 +211,7 @@ export interface OceanLaunchSpecArgs {
      */
     readonly sourceImage: pulumi.Input<string>;
     /**
-     * Cluster's taints.
+     * Optionally adds labels to instances launched in an Ocean cluster.
      */
     readonly taints?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecTaint>[]>;
 }
