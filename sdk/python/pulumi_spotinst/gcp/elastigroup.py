@@ -109,7 +109,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__['auto_healing'] = auto_healing
             if availability_zones is not None and not opts.urn:
                 warnings.warn("""This field will soon be handled by Region in Subnets""", DeprecationWarning)
-                pulumi.log.warn("availability_zones is deprecated: This field will soon be handled by Region in Subnets")
+                pulumi.log.warn("""availability_zones is deprecated: This field will soon be handled by Region in Subnets""")
             __props__['availability_zones'] = availability_zones
             __props__['backend_services'] = backend_services
             __props__['description'] = description
