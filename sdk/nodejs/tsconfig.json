@@ -28,6 +28,7 @@
         "ecs/index.ts",
         "ecs/ocean.ts",
         "ecs/oceanLaunchSpec.ts",
+        "elastigroupAzureV3.ts",
         "gcp/elastigroup.ts",
         "gcp/index.ts",
         "gke/elastigroup.ts",

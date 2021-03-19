@@ -9191,6 +9191,293 @@
                 "value"
             ]
         },
+        "spotinst:index/ElastigroupAzureV3Image:ElastigroupAzureV3Image": {
+            "properties": {
+                "customs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3ImageCustom:ElastigroupAzureV3ImageCustom"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "marketplaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3ImageMarketplace:ElastigroupAzureV3ImageMarketplace"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:index/ElastigroupAzureV3ImageCustom:ElastigroupAzureV3ImageCustom": {
+            "properties": {
+                "imageName": {
+                    "type": "string",
+                    "description": "Name of the custom image. Required if resource_group_name is specified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceGroupName": {
+                    "type": "string",
+                    "description": "Vnet Resource Group Name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "imageName",
+                "resourceGroupName"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3ImageMarketplace:ElastigroupAzureV3ImageMarketplace": {
+            "properties": {
+                "offer": {
+                    "type": "string",
+                    "description": "Name of the image to use. Required if publisher is specified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "publisher": {
+                    "type": "string",
+                    "description": "Image publisher. Required if resource_group_name is not specified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "offer",
+                "publisher",
+                "sku",
+                "version"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3Login:ElastigroupAzureV3Login": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Password for admin access to Windows VMs. Required for Windows OS types.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sshPublicKey": {
+                    "type": "string",
+                    "description": "SSH for admin access to Linux VMs. Required for Linux OS types.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "Set admin access for accessing your VMs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "userName"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3Network:ElastigroupAzureV3Network": {
+            "properties": {
+                "networkInterfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3NetworkNetworkInterface:ElastigroupAzureV3NetworkNetworkInterface"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceGroupName": {
+                    "type": "string",
+                    "description": "Vnet Resource Group Name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "virtualNetworkName": {
+                    "type": "string",
+                    "description": "Name of Vnet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "networkInterfaces",
+                "resourceGroupName",
+                "virtualNetworkName"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3NetworkNetworkInterface:ElastigroupAzureV3NetworkNetworkInterface": {
+            "properties": {
+                "additionalIpConfigs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig:ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig"
+                    },
+                    "description": "Array of additional IP configuration objects.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "assignPublicIp": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isPrimary": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetName": {
+                    "type": "string",
+                    "description": "ID of subnet.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "assignPublicIp",
+                "isPrimary",
+                "subnetName"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig:ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The IP configuration name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateIpVersion": {
+                    "type": "string",
+                    "description": "Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "spotinst:index/ElastigroupAzureV3Strategy:ElastigroupAzureV3Strategy": {
+            "properties": {
+                "drainingTimeout": {
+                    "type": "integer",
+                    "description": "Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fallbackToOnDemand": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "odCount": {
+                    "type": "integer",
+                    "description": "Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "spotPercentage": {
+                    "type": "integer",
+                    "description": "TODO\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "spotinst:index/HealthCheckCheck:HealthCheckCheck": {
             "properties": {
                 "endPoint": {
@@ -15457,6 +15744,223 @@
                     "oceanId": {
                         "type": "string",
                         "description": "The Ocean cluster ID required for launchSpec create.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3": {
+            "description": "Provides a Spotinst elastigroup Azure resource.\n",
+            "properties": {
+                "desiredCapacity": {
+                    "type": "integer",
+                    "description": "The desired number of instances the group should have at any time.\n"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Image:ElastigroupAzureV3Image"
+                    },
+                    "description": "Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.\n"
+                },
+                "login": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3Login:ElastigroupAzureV3Login",
+                    "description": "Describes the login configuration.\n"
+                },
+                "maxSize": {
+                    "type": "integer",
+                    "description": "The maximum number of instances the group should have at any time.\n"
+                },
+                "minSize": {
+                    "type": "integer",
+                    "description": "The minimum number of instances the group should have at any time.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The IP configuration name.\n"
+                },
+                "network": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3Network:ElastigroupAzureV3Network",
+                    "description": "Defines the Virtual Network and Subnet for your Elastigroup.\n"
+                },
+                "odSizes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Available On-Demand sizes\n"
+                },
+                "os": {
+                    "type": "string",
+                    "description": "Operation system type. Valid values: `\"Linux\"`, `\"Windows\"`.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region your Azure group will be created in.\n"
+                },
+                "resourceGroupName": {
+                    "type": "string",
+                    "description": "Vnet Resource Group Name.\n"
+                },
+                "spotSizes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Available Low-Priority sizes.\n"
+                },
+                "strategy": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3Strategy:ElastigroupAzureV3Strategy",
+                    "description": "Describes the deployment strategy.\n"
+                }
+            },
+            "required": [
+                "maxSize",
+                "minSize",
+                "name",
+                "network",
+                "odSizes",
+                "os",
+                "region",
+                "resourceGroupName",
+                "spotSizes",
+                "strategy"
+            ],
+            "inputProperties": {
+                "desiredCapacity": {
+                    "type": "integer",
+                    "description": "The desired number of instances the group should have at any time.\n"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Image:ElastigroupAzureV3Image"
+                    },
+                    "description": "Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.\n"
+                },
+                "login": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3Login:ElastigroupAzureV3Login",
+                    "description": "Describes the login configuration.\n"
+                },
+                "maxSize": {
+                    "type": "integer",
+                    "description": "The maximum number of instances the group should have at any time.\n"
+                },
+                "minSize": {
+                    "type": "integer",
+                    "description": "The minimum number of instances the group should have at any time.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The IP configuration name.\n"
+                },
+                "network": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3Network:ElastigroupAzureV3Network",
+                    "description": "Defines the Virtual Network and Subnet for your Elastigroup.\n"
+                },
+                "odSizes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Available On-Demand sizes\n"
+                },
+                "os": {
+                    "type": "string",
+                    "description": "Operation system type. Valid values: `\"Linux\"`, `\"Windows\"`.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region your Azure group will be created in.\n"
+                },
+                "resourceGroupName": {
+                    "type": "string",
+                    "description": "Vnet Resource Group Name.\n"
+                },
+                "spotSizes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Available Low-Priority sizes.\n"
+                },
+                "strategy": {
+                    "$ref": "#/types/spotinst:index/ElastigroupAzureV3Strategy:ElastigroupAzureV3Strategy",
+                    "description": "Describes the deployment strategy.\n"
+                }
+            },
+            "requiredInputs": [
+                "network",
+                "odSizes",
+                "os",
+                "region",
+                "resourceGroupName",
+                "spotSizes",
+                "strategy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ElastigroupAzureV3 resources.\n",
+                "properties": {
+                    "desiredCapacity": {
+                        "type": "integer",
+                        "description": "The desired number of instances the group should have at any time.\n"
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:index/ElastigroupAzureV3Image:ElastigroupAzureV3Image"
+                        },
+                        "description": "Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.\n"
+                    },
+                    "login": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Login:ElastigroupAzureV3Login",
+                        "description": "Describes the login configuration.\n"
+                    },
+                    "maxSize": {
+                        "type": "integer",
+                        "description": "The maximum number of instances the group should have at any time.\n"
+                    },
+                    "minSize": {
+                        "type": "integer",
+                        "description": "The minimum number of instances the group should have at any time.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The IP configuration name.\n"
+                    },
+                    "network": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Network:ElastigroupAzureV3Network",
+                        "description": "Defines the Virtual Network and Subnet for your Elastigroup.\n"
+                    },
+                    "odSizes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Available On-Demand sizes\n"
+                    },
+                    "os": {
+                        "type": "string",
+                        "description": "Operation system type. Valid values: `\"Linux\"`, `\"Windows\"`.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region your Azure group will be created in.\n"
+                    },
+                    "resourceGroupName": {
+                        "type": "string",
+                        "description": "Vnet Resource Group Name.\n"
+                    },
+                    "spotSizes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Available Low-Priority sizes.\n"
+                    },
+                    "strategy": {
+                        "$ref": "#/types/spotinst:index/ElastigroupAzureV3Strategy:ElastigroupAzureV3Strategy",
+                        "description": "Describes the deployment strategy.\n"
                     }
                 },
                 "type": "object"

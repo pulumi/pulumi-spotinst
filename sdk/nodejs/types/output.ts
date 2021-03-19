@@ -4,6 +4,105 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface ElastigroupAzureV3Image {
+    customs?: outputs.ElastigroupAzureV3ImageCustom[];
+    marketplaces?: outputs.ElastigroupAzureV3ImageMarketplace[];
+}
+
+export interface ElastigroupAzureV3ImageCustom {
+    /**
+     * Name of the custom image. Required if resourceGroupName is specified.
+     */
+    imageName: string;
+    /**
+     * Vnet Resource Group Name.
+     */
+    resourceGroupName: string;
+}
+
+export interface ElastigroupAzureV3ImageMarketplace {
+    /**
+     * Name of the image to use. Required if publisher is specified.
+     */
+    offer: string;
+    /**
+     * Image publisher. Required if resourceGroupName is not specified.
+     */
+    publisher: string;
+    /**
+     * Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+     */
+    sku: string;
+    version: string;
+}
+
+export interface ElastigroupAzureV3Login {
+    /**
+     * Password for admin access to Windows VMs. Required for Windows OS types.
+     */
+    password?: string;
+    /**
+     * SSH for admin access to Linux VMs. Required for Linux OS types.
+     */
+    sshPublicKey?: string;
+    /**
+     * Set admin access for accessing your VMs.
+     */
+    userName: string;
+}
+
+export interface ElastigroupAzureV3Network {
+    networkInterfaces: outputs.ElastigroupAzureV3NetworkNetworkInterface[];
+    /**
+     * Vnet Resource Group Name.
+     */
+    resourceGroupName: string;
+    /**
+     * Name of Vnet.
+     */
+    virtualNetworkName: string;
+}
+
+export interface ElastigroupAzureV3NetworkNetworkInterface {
+    /**
+     * Array of additional IP configuration objects.
+     */
+    additionalIpConfigs?: outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig[];
+    assignPublicIp: boolean;
+    isPrimary: boolean;
+    /**
+     * ID of subnet.
+     */
+    subnetName: string;
+}
+
+export interface ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
+    /**
+     * The IP configuration name.
+     */
+    name: string;
+    /**
+     * Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+     */
+    privateIpVersion?: string;
+}
+
+export interface ElastigroupAzureV3Strategy {
+    /**
+     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+     */
+    drainingTimeout?: number;
+    fallbackToOnDemand?: boolean;
+    /**
+     * Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
+     */
+    odCount?: number;
+    /**
+     * TODO
+     */
+    spotPercentage?: number;
+}
+
 export interface HealthCheckCheck {
     endPoint?: string;
     /**

@@ -116,6 +116,7 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_ocean_gke_launch_spec_import": {Tok: makeResource(gkeMod, "OceanLaunchSpecImport")},
 			"spotinst_subscription":                 {Tok: makeResource(mainMod, "Subscription")},
 			"spotinst_health_check":                 {Tok: makeResource(mainMod, "HealthCheck")},
+			"spotinst_elastigroup_azure_v3":         {Tok: makeResource(mainMod, "ElastigroupAzureV3")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{

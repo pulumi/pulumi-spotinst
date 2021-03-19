@@ -20,6 +20,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3":
+		r, err = NewElastigroupAzureV3(ctx, name, nil, pulumi.URN_(urn))
 	case "spotinst:index/healthCheck:HealthCheck":
 		r, err = NewHealthCheck(ctx, name, nil, pulumi.URN_(urn))
 	case "spotinst:index/subscription:Subscription":
@@ -52,6 +54,11 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"index/elastigroupAzureV3",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"spotinst",
 		"index/healthCheck",
