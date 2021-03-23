@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./elastigroupAzureV3";
 export * from "./healthCheck";
 export * from "./provider";
 export * from "./subscription";
@@ -31,6 +32,7 @@ export {
 };
 
 // Import resources to register:
+import { ElastigroupAzureV3 } from "./elastigroupAzureV3";
 import { HealthCheck } from "./healthCheck";
 import { Subscription } from "./subscription";
 
@@ -38,6 +40,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3":
+                return new ElastigroupAzureV3(name, <any>undefined, { urn })
             case "spotinst:index/healthCheck:HealthCheck":
                 return new HealthCheck(name, <any>undefined, { urn })
             case "spotinst:index/subscription:Subscription":
@@ -47,6 +51,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("spotinst", "index/elastigroupAzureV3", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/healthCheck", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/subscription", _module)
 

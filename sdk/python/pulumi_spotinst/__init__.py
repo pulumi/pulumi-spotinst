@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .elastigroup_azure_v3 import *
 from .health_check import *
 from .provider import *
 from .subscription import *
@@ -32,7 +33,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "spotinst:index/healthCheck:HealthCheck":
+            if typ == "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3":
+                return ElastigroupAzureV3(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "spotinst:index/healthCheck:HealthCheck":
                 return HealthCheck(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "spotinst:index/subscription:Subscription":
                 return Subscription(name, pulumi.ResourceOptions(urn=urn))
@@ -41,6 +44,7 @@ def _register_module():
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("spotinst", "index/elastigroupAzureV3", _module_instance)
     pulumi.runtime.register_resource_module("spotinst", "index/healthCheck", _module_instance)
     pulumi.runtime.register_resource_module("spotinst", "index/subscription", _module_instance)
 

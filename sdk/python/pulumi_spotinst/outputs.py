@@ -7,10 +7,343 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
+from . import outputs
 
 __all__ = [
+    'ElastigroupAzureV3Image',
+    'ElastigroupAzureV3ImageCustom',
+    'ElastigroupAzureV3ImageMarketplace',
+    'ElastigroupAzureV3Login',
+    'ElastigroupAzureV3Network',
+    'ElastigroupAzureV3NetworkNetworkInterface',
+    'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig',
+    'ElastigroupAzureV3Strategy',
     'HealthCheckCheck',
 ]
+
+@pulumi.output_type
+class ElastigroupAzureV3Image(dict):
+    def __init__(__self__, *,
+                 customs: Optional[Sequence['outputs.ElastigroupAzureV3ImageCustom']] = None,
+                 marketplaces: Optional[Sequence['outputs.ElastigroupAzureV3ImageMarketplace']] = None):
+        if customs is not None:
+            pulumi.set(__self__, "customs", customs)
+        if marketplaces is not None:
+            pulumi.set(__self__, "marketplaces", marketplaces)
+
+    @property
+    @pulumi.getter
+    def customs(self) -> Optional[Sequence['outputs.ElastigroupAzureV3ImageCustom']]:
+        return pulumi.get(self, "customs")
+
+    @property
+    @pulumi.getter
+    def marketplaces(self) -> Optional[Sequence['outputs.ElastigroupAzureV3ImageMarketplace']]:
+        return pulumi.get(self, "marketplaces")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ElastigroupAzureV3ImageCustom(dict):
+    def __init__(__self__, *,
+                 image_name: str,
+                 resource_group_name: str):
+        """
+        :param str image_name: Name of the custom image. Required if resource_group_name is specified.
+        :param str resource_group_name: Vnet Resource Group Name.
+        """
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> str:
+        """
+        Name of the custom image. Required if resource_group_name is specified.
+        """
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        Vnet Resource Group Name.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ElastigroupAzureV3ImageMarketplace(dict):
+    def __init__(__self__, *,
+                 offer: str,
+                 publisher: str,
+                 sku: str,
+                 version: str):
+        """
+        :param str offer: Name of the image to use. Required if publisher is specified.
+        :param str publisher: Image publisher. Required if resource_group_name is not specified.
+        :param str sku: Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+        """
+        pulumi.set(__self__, "offer", offer)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "sku", sku)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def offer(self) -> str:
+        """
+        Name of the image to use. Required if publisher is specified.
+        """
+        return pulumi.get(self, "offer")
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> str:
+        """
+        Image publisher. Required if resource_group_name is not specified.
+        """
+        return pulumi.get(self, "publisher")
+
+    @property
+    @pulumi.getter
+    def sku(self) -> str:
+        """
+        Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+        """
+        return pulumi.get(self, "sku")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ElastigroupAzureV3Login(dict):
+    def __init__(__self__, *,
+                 user_name: str,
+                 password: Optional[str] = None,
+                 ssh_public_key: Optional[str] = None):
+        """
+        :param str user_name: Set admin access for accessing your VMs.
+        :param str password: Password for admin access to Windows VMs. Required for Windows OS types.
+        :param str ssh_public_key: SSH for admin access to Linux VMs. Required for Linux OS types.
+        """
+        pulumi.set(__self__, "user_name", user_name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if ssh_public_key is not None:
+            pulumi.set(__self__, "ssh_public_key", ssh_public_key)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        Set admin access for accessing your VMs.
+        """
+        return pulumi.get(self, "user_name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for admin access to Windows VMs. Required for Windows OS types.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="sshPublicKey")
+    def ssh_public_key(self) -> Optional[str]:
+        """
+        SSH for admin access to Linux VMs. Required for Linux OS types.
+        """
+        return pulumi.get(self, "ssh_public_key")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ElastigroupAzureV3Network(dict):
+    def __init__(__self__, *,
+                 network_interfaces: Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterface'],
+                 resource_group_name: str,
+                 virtual_network_name: str):
+        """
+        :param str resource_group_name: Vnet Resource Group Name.
+        :param str virtual_network_name: Name of Vnet.
+        """
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "virtual_network_name", virtual_network_name)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterface']:
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        Vnet Resource Group Name.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @property
+    @pulumi.getter(name="virtualNetworkName")
+    def virtual_network_name(self) -> str:
+        """
+        Name of Vnet.
+        """
+        return pulumi.get(self, "virtual_network_name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ElastigroupAzureV3NetworkNetworkInterface(dict):
+    def __init__(__self__, *,
+                 assign_public_ip: bool,
+                 is_primary: bool,
+                 subnet_name: str,
+                 additional_ip_configs: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig']] = None):
+        """
+        :param str subnet_name: ID of subnet.
+        :param Sequence['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs'] additional_ip_configs: Array of additional IP configuration objects.
+        """
+        pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        pulumi.set(__self__, "is_primary", is_primary)
+        pulumi.set(__self__, "subnet_name", subnet_name)
+        if additional_ip_configs is not None:
+            pulumi.set(__self__, "additional_ip_configs", additional_ip_configs)
+
+    @property
+    @pulumi.getter(name="assignPublicIp")
+    def assign_public_ip(self) -> bool:
+        return pulumi.get(self, "assign_public_ip")
+
+    @property
+    @pulumi.getter(name="isPrimary")
+    def is_primary(self) -> bool:
+        return pulumi.get(self, "is_primary")
+
+    @property
+    @pulumi.getter(name="subnetName")
+    def subnet_name(self) -> str:
+        """
+        ID of subnet.
+        """
+        return pulumi.get(self, "subnet_name")
+
+    @property
+    @pulumi.getter(name="additionalIpConfigs")
+    def additional_ip_configs(self) -> Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig']]:
+        """
+        Array of additional IP configuration objects.
+        """
+        return pulumi.get(self, "additional_ip_configs")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 private_ip_version: Optional[str] = None):
+        """
+        :param str name: The IP configuration name.
+        :param str private_ip_version: Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+        """
+        pulumi.set(__self__, "name", name)
+        if private_ip_version is not None:
+            pulumi.set(__self__, "private_ip_version", private_ip_version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The IP configuration name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="privateIpVersion")
+    def private_ip_version(self) -> Optional[str]:
+        """
+        Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+        """
+        return pulumi.get(self, "private_ip_version")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ElastigroupAzureV3Strategy(dict):
+    def __init__(__self__, *,
+                 draining_timeout: Optional[int] = None,
+                 fallback_to_on_demand: Optional[bool] = None,
+                 od_count: Optional[int] = None,
+                 spot_percentage: Optional[int] = None):
+        """
+        :param int draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+        :param int od_count: Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
+        :param int spot_percentage: TODO
+        """
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if fallback_to_on_demand is not None:
+            pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
+        if od_count is not None:
+            pulumi.set(__self__, "od_count", od_count)
+        if spot_percentage is not None:
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[int]:
+        """
+        Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @property
+    @pulumi.getter(name="fallbackToOnDemand")
+    def fallback_to_on_demand(self) -> Optional[bool]:
+        return pulumi.get(self, "fallback_to_on_demand")
+
+    @property
+    @pulumi.getter(name="odCount")
+    def od_count(self) -> Optional[int]:
+        """
+        Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
+        """
+        return pulumi.get(self, "od_count")
+
+    @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> Optional[int]:
+        """
+        TODO
+        """
+        return pulumi.get(self, "spot_percentage")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class HealthCheckCheck(dict):

@@ -4,6 +4,105 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface ElastigroupAzureV3Image {
+    customs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageCustom>[]>;
+    marketplaces?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageMarketplace>[]>;
+}
+
+export interface ElastigroupAzureV3ImageCustom {
+    /**
+     * Name of the custom image. Required if resourceGroupName is specified.
+     */
+    imageName: pulumi.Input<string>;
+    /**
+     * Vnet Resource Group Name.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3ImageMarketplace {
+    /**
+     * Name of the image to use. Required if publisher is specified.
+     */
+    offer: pulumi.Input<string>;
+    /**
+     * Image publisher. Required if resourceGroupName is not specified.
+     */
+    publisher: pulumi.Input<string>;
+    /**
+     * Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+     */
+    sku: pulumi.Input<string>;
+    version: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3Login {
+    /**
+     * Password for admin access to Windows VMs. Required for Windows OS types.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * SSH for admin access to Linux VMs. Required for Linux OS types.
+     */
+    sshPublicKey?: pulumi.Input<string>;
+    /**
+     * Set admin access for accessing your VMs.
+     */
+    userName: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3Network {
+    networkInterfaces: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterface>[]>;
+    /**
+     * Vnet Resource Group Name.
+     */
+    resourceGroupName: pulumi.Input<string>;
+    /**
+     * Name of Vnet.
+     */
+    virtualNetworkName: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3NetworkNetworkInterface {
+    /**
+     * Array of additional IP configuration objects.
+     */
+    additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig>[]>;
+    assignPublicIp: pulumi.Input<boolean>;
+    isPrimary: pulumi.Input<boolean>;
+    /**
+     * ID of subnet.
+     */
+    subnetName: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
+    /**
+     * The IP configuration name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+     */
+    privateIpVersion?: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3Strategy {
+    /**
+     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+     */
+    drainingTimeout?: pulumi.Input<number>;
+    fallbackToOnDemand?: pulumi.Input<boolean>;
+    /**
+     * Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
+     */
+    odCount?: pulumi.Input<number>;
+    /**
+     * TODO
+     */
+    spotPercentage?: pulumi.Input<number>;
+}
+
 export interface HealthCheckCheck {
     endPoint?: pulumi.Input<string>;
     /**

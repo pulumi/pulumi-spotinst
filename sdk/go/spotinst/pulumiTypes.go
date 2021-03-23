@@ -10,6 +10,1078 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type ElastigroupAzureV3Image struct {
+	Customs      []ElastigroupAzureV3ImageCustom      `pulumi:"customs"`
+	Marketplaces []ElastigroupAzureV3ImageMarketplace `pulumi:"marketplaces"`
+}
+
+// ElastigroupAzureV3ImageInput is an input type that accepts ElastigroupAzureV3ImageArgs and ElastigroupAzureV3ImageOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ImageInput` via:
+//
+//          ElastigroupAzureV3ImageArgs{...}
+type ElastigroupAzureV3ImageInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ImageOutput() ElastigroupAzureV3ImageOutput
+	ToElastigroupAzureV3ImageOutputWithContext(context.Context) ElastigroupAzureV3ImageOutput
+}
+
+type ElastigroupAzureV3ImageArgs struct {
+	Customs      ElastigroupAzureV3ImageCustomArrayInput      `pulumi:"customs"`
+	Marketplaces ElastigroupAzureV3ImageMarketplaceArrayInput `pulumi:"marketplaces"`
+}
+
+func (ElastigroupAzureV3ImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Image)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ImageArgs) ToElastigroupAzureV3ImageOutput() ElastigroupAzureV3ImageOutput {
+	return i.ToElastigroupAzureV3ImageOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ImageArgs) ToElastigroupAzureV3ImageOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageOutput)
+}
+
+// ElastigroupAzureV3ImageArrayInput is an input type that accepts ElastigroupAzureV3ImageArray and ElastigroupAzureV3ImageArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ImageArrayInput` via:
+//
+//          ElastigroupAzureV3ImageArray{ ElastigroupAzureV3ImageArgs{...} }
+type ElastigroupAzureV3ImageArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ImageArrayOutput() ElastigroupAzureV3ImageArrayOutput
+	ToElastigroupAzureV3ImageArrayOutputWithContext(context.Context) ElastigroupAzureV3ImageArrayOutput
+}
+
+type ElastigroupAzureV3ImageArray []ElastigroupAzureV3ImageInput
+
+func (ElastigroupAzureV3ImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3Image)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ImageArray) ToElastigroupAzureV3ImageArrayOutput() ElastigroupAzureV3ImageArrayOutput {
+	return i.ToElastigroupAzureV3ImageArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ImageArray) ToElastigroupAzureV3ImageArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageArrayOutput)
+}
+
+type ElastigroupAzureV3ImageOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Image)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ImageOutput) ToElastigroupAzureV3ImageOutput() ElastigroupAzureV3ImageOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageOutput) ToElastigroupAzureV3ImageOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageOutput) Customs() ElastigroupAzureV3ImageCustomArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Image) []ElastigroupAzureV3ImageCustom { return v.Customs }).(ElastigroupAzureV3ImageCustomArrayOutput)
+}
+
+func (o ElastigroupAzureV3ImageOutput) Marketplaces() ElastigroupAzureV3ImageMarketplaceArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Image) []ElastigroupAzureV3ImageMarketplace { return v.Marketplaces }).(ElastigroupAzureV3ImageMarketplaceArrayOutput)
+}
+
+type ElastigroupAzureV3ImageArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3Image)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ImageArrayOutput) ToElastigroupAzureV3ImageArrayOutput() ElastigroupAzureV3ImageArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageArrayOutput) ToElastigroupAzureV3ImageArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3Image {
+		return vs[0].([]ElastigroupAzureV3Image)[vs[1].(int)]
+	}).(ElastigroupAzureV3ImageOutput)
+}
+
+type ElastigroupAzureV3ImageCustom struct {
+	// Name of the custom image. Required if resourceGroupName is specified.
+	ImageName string `pulumi:"imageName"`
+	// Vnet Resource Group Name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+// ElastigroupAzureV3ImageCustomInput is an input type that accepts ElastigroupAzureV3ImageCustomArgs and ElastigroupAzureV3ImageCustomOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ImageCustomInput` via:
+//
+//          ElastigroupAzureV3ImageCustomArgs{...}
+type ElastigroupAzureV3ImageCustomInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ImageCustomOutput() ElastigroupAzureV3ImageCustomOutput
+	ToElastigroupAzureV3ImageCustomOutputWithContext(context.Context) ElastigroupAzureV3ImageCustomOutput
+}
+
+type ElastigroupAzureV3ImageCustomArgs struct {
+	// Name of the custom image. Required if resourceGroupName is specified.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// Vnet Resource Group Name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (ElastigroupAzureV3ImageCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ImageCustom)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ImageCustomArgs) ToElastigroupAzureV3ImageCustomOutput() ElastigroupAzureV3ImageCustomOutput {
+	return i.ToElastigroupAzureV3ImageCustomOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ImageCustomArgs) ToElastigroupAzureV3ImageCustomOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageCustomOutput)
+}
+
+// ElastigroupAzureV3ImageCustomArrayInput is an input type that accepts ElastigroupAzureV3ImageCustomArray and ElastigroupAzureV3ImageCustomArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ImageCustomArrayInput` via:
+//
+//          ElastigroupAzureV3ImageCustomArray{ ElastigroupAzureV3ImageCustomArgs{...} }
+type ElastigroupAzureV3ImageCustomArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ImageCustomArrayOutput() ElastigroupAzureV3ImageCustomArrayOutput
+	ToElastigroupAzureV3ImageCustomArrayOutputWithContext(context.Context) ElastigroupAzureV3ImageCustomArrayOutput
+}
+
+type ElastigroupAzureV3ImageCustomArray []ElastigroupAzureV3ImageCustomInput
+
+func (ElastigroupAzureV3ImageCustomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ImageCustom)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ImageCustomArray) ToElastigroupAzureV3ImageCustomArrayOutput() ElastigroupAzureV3ImageCustomArrayOutput {
+	return i.ToElastigroupAzureV3ImageCustomArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ImageCustomArray) ToElastigroupAzureV3ImageCustomArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageCustomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageCustomArrayOutput)
+}
+
+type ElastigroupAzureV3ImageCustomOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ImageCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ImageCustom)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ImageCustomOutput) ToElastigroupAzureV3ImageCustomOutput() ElastigroupAzureV3ImageCustomOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageCustomOutput) ToElastigroupAzureV3ImageCustomOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageCustomOutput {
+	return o
+}
+
+// Name of the custom image. Required if resourceGroupName is specified.
+func (o ElastigroupAzureV3ImageCustomOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageCustom) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// Vnet Resource Group Name.
+func (o ElastigroupAzureV3ImageCustomOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageCustom) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3ImageCustomArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ImageCustomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ImageCustom)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ImageCustomArrayOutput) ToElastigroupAzureV3ImageCustomArrayOutput() ElastigroupAzureV3ImageCustomArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageCustomArrayOutput) ToElastigroupAzureV3ImageCustomArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageCustomArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageCustomArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ImageCustomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3ImageCustom {
+		return vs[0].([]ElastigroupAzureV3ImageCustom)[vs[1].(int)]
+	}).(ElastigroupAzureV3ImageCustomOutput)
+}
+
+type ElastigroupAzureV3ImageMarketplace struct {
+	// Name of the image to use. Required if publisher is specified.
+	Offer string `pulumi:"offer"`
+	// Image publisher. Required if resourceGroupName is not specified.
+	Publisher string `pulumi:"publisher"`
+	// Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+	Sku     string `pulumi:"sku"`
+	Version string `pulumi:"version"`
+}
+
+// ElastigroupAzureV3ImageMarketplaceInput is an input type that accepts ElastigroupAzureV3ImageMarketplaceArgs and ElastigroupAzureV3ImageMarketplaceOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ImageMarketplaceInput` via:
+//
+//          ElastigroupAzureV3ImageMarketplaceArgs{...}
+type ElastigroupAzureV3ImageMarketplaceInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ImageMarketplaceOutput() ElastigroupAzureV3ImageMarketplaceOutput
+	ToElastigroupAzureV3ImageMarketplaceOutputWithContext(context.Context) ElastigroupAzureV3ImageMarketplaceOutput
+}
+
+type ElastigroupAzureV3ImageMarketplaceArgs struct {
+	// Name of the image to use. Required if publisher is specified.
+	Offer pulumi.StringInput `pulumi:"offer"`
+	// Image publisher. Required if resourceGroupName is not specified.
+	Publisher pulumi.StringInput `pulumi:"publisher"`
+	// Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+	Sku     pulumi.StringInput `pulumi:"sku"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (ElastigroupAzureV3ImageMarketplaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ImageMarketplace)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ImageMarketplaceArgs) ToElastigroupAzureV3ImageMarketplaceOutput() ElastigroupAzureV3ImageMarketplaceOutput {
+	return i.ToElastigroupAzureV3ImageMarketplaceOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ImageMarketplaceArgs) ToElastigroupAzureV3ImageMarketplaceOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageMarketplaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageMarketplaceOutput)
+}
+
+// ElastigroupAzureV3ImageMarketplaceArrayInput is an input type that accepts ElastigroupAzureV3ImageMarketplaceArray and ElastigroupAzureV3ImageMarketplaceArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ImageMarketplaceArrayInput` via:
+//
+//          ElastigroupAzureV3ImageMarketplaceArray{ ElastigroupAzureV3ImageMarketplaceArgs{...} }
+type ElastigroupAzureV3ImageMarketplaceArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ImageMarketplaceArrayOutput() ElastigroupAzureV3ImageMarketplaceArrayOutput
+	ToElastigroupAzureV3ImageMarketplaceArrayOutputWithContext(context.Context) ElastigroupAzureV3ImageMarketplaceArrayOutput
+}
+
+type ElastigroupAzureV3ImageMarketplaceArray []ElastigroupAzureV3ImageMarketplaceInput
+
+func (ElastigroupAzureV3ImageMarketplaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ImageMarketplace)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ImageMarketplaceArray) ToElastigroupAzureV3ImageMarketplaceArrayOutput() ElastigroupAzureV3ImageMarketplaceArrayOutput {
+	return i.ToElastigroupAzureV3ImageMarketplaceArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ImageMarketplaceArray) ToElastigroupAzureV3ImageMarketplaceArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageMarketplaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageMarketplaceArrayOutput)
+}
+
+type ElastigroupAzureV3ImageMarketplaceOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ImageMarketplaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ImageMarketplace)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ImageMarketplaceOutput) ToElastigroupAzureV3ImageMarketplaceOutput() ElastigroupAzureV3ImageMarketplaceOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageMarketplaceOutput) ToElastigroupAzureV3ImageMarketplaceOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageMarketplaceOutput {
+	return o
+}
+
+// Name of the image to use. Required if publisher is specified.
+func (o ElastigroupAzureV3ImageMarketplaceOutput) Offer() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageMarketplace) string { return v.Offer }).(pulumi.StringOutput)
+}
+
+// Image publisher. Required if resourceGroupName is not specified.
+func (o ElastigroupAzureV3ImageMarketplaceOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageMarketplace) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+// Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+func (o ElastigroupAzureV3ImageMarketplaceOutput) Sku() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageMarketplace) string { return v.Sku }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupAzureV3ImageMarketplaceOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ImageMarketplace) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3ImageMarketplaceArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ImageMarketplaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ImageMarketplace)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ImageMarketplaceArrayOutput) ToElastigroupAzureV3ImageMarketplaceArrayOutput() ElastigroupAzureV3ImageMarketplaceArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageMarketplaceArrayOutput) ToElastigroupAzureV3ImageMarketplaceArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageMarketplaceArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ImageMarketplaceArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ImageMarketplaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3ImageMarketplace {
+		return vs[0].([]ElastigroupAzureV3ImageMarketplace)[vs[1].(int)]
+	}).(ElastigroupAzureV3ImageMarketplaceOutput)
+}
+
+type ElastigroupAzureV3Login struct {
+	// Password for admin access to Windows VMs. Required for Windows OS types.
+	Password *string `pulumi:"password"`
+	// SSH for admin access to Linux VMs. Required for Linux OS types.
+	SshPublicKey *string `pulumi:"sshPublicKey"`
+	// Set admin access for accessing your VMs.
+	UserName string `pulumi:"userName"`
+}
+
+// ElastigroupAzureV3LoginInput is an input type that accepts ElastigroupAzureV3LoginArgs and ElastigroupAzureV3LoginOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3LoginInput` via:
+//
+//          ElastigroupAzureV3LoginArgs{...}
+type ElastigroupAzureV3LoginInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3LoginOutput() ElastigroupAzureV3LoginOutput
+	ToElastigroupAzureV3LoginOutputWithContext(context.Context) ElastigroupAzureV3LoginOutput
+}
+
+type ElastigroupAzureV3LoginArgs struct {
+	// Password for admin access to Windows VMs. Required for Windows OS types.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// SSH for admin access to Linux VMs. Required for Linux OS types.
+	SshPublicKey pulumi.StringPtrInput `pulumi:"sshPublicKey"`
+	// Set admin access for accessing your VMs.
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (ElastigroupAzureV3LoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Login)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3LoginArgs) ToElastigroupAzureV3LoginOutput() ElastigroupAzureV3LoginOutput {
+	return i.ToElastigroupAzureV3LoginOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3LoginArgs) ToElastigroupAzureV3LoginOutputWithContext(ctx context.Context) ElastigroupAzureV3LoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3LoginOutput)
+}
+
+func (i ElastigroupAzureV3LoginArgs) ToElastigroupAzureV3LoginPtrOutput() ElastigroupAzureV3LoginPtrOutput {
+	return i.ToElastigroupAzureV3LoginPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3LoginArgs) ToElastigroupAzureV3LoginPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3LoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3LoginOutput).ToElastigroupAzureV3LoginPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3LoginPtrInput is an input type that accepts ElastigroupAzureV3LoginArgs, ElastigroupAzureV3LoginPtr and ElastigroupAzureV3LoginPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3LoginPtrInput` via:
+//
+//          ElastigroupAzureV3LoginArgs{...}
+//
+//  or:
+//
+//          nil
+type ElastigroupAzureV3LoginPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3LoginPtrOutput() ElastigroupAzureV3LoginPtrOutput
+	ToElastigroupAzureV3LoginPtrOutputWithContext(context.Context) ElastigroupAzureV3LoginPtrOutput
+}
+
+type elastigroupAzureV3LoginPtrType ElastigroupAzureV3LoginArgs
+
+func ElastigroupAzureV3LoginPtr(v *ElastigroupAzureV3LoginArgs) ElastigroupAzureV3LoginPtrInput {
+	return (*elastigroupAzureV3LoginPtrType)(v)
+}
+
+func (*elastigroupAzureV3LoginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3Login)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3LoginPtrType) ToElastigroupAzureV3LoginPtrOutput() ElastigroupAzureV3LoginPtrOutput {
+	return i.ToElastigroupAzureV3LoginPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3LoginPtrType) ToElastigroupAzureV3LoginPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3LoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3LoginPtrOutput)
+}
+
+type ElastigroupAzureV3LoginOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3LoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Login)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3LoginOutput) ToElastigroupAzureV3LoginOutput() ElastigroupAzureV3LoginOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3LoginOutput) ToElastigroupAzureV3LoginOutputWithContext(ctx context.Context) ElastigroupAzureV3LoginOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3LoginOutput) ToElastigroupAzureV3LoginPtrOutput() ElastigroupAzureV3LoginPtrOutput {
+	return o.ToElastigroupAzureV3LoginPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3LoginOutput) ToElastigroupAzureV3LoginPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3LoginPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Login) *ElastigroupAzureV3Login {
+		return &v
+	}).(ElastigroupAzureV3LoginPtrOutput)
+}
+
+// Password for admin access to Windows VMs. Required for Windows OS types.
+func (o ElastigroupAzureV3LoginOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Login) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// SSH for admin access to Linux VMs. Required for Linux OS types.
+func (o ElastigroupAzureV3LoginOutput) SshPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Login) *string { return v.SshPublicKey }).(pulumi.StringPtrOutput)
+}
+
+// Set admin access for accessing your VMs.
+func (o ElastigroupAzureV3LoginOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Login) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3LoginPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3LoginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3Login)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3LoginPtrOutput) ToElastigroupAzureV3LoginPtrOutput() ElastigroupAzureV3LoginPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3LoginPtrOutput) ToElastigroupAzureV3LoginPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3LoginPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3LoginPtrOutput) Elem() ElastigroupAzureV3LoginOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Login) ElastigroupAzureV3Login { return *v }).(ElastigroupAzureV3LoginOutput)
+}
+
+// Password for admin access to Windows VMs. Required for Windows OS types.
+func (o ElastigroupAzureV3LoginPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Login) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH for admin access to Linux VMs. Required for Linux OS types.
+func (o ElastigroupAzureV3LoginPtrOutput) SshPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Login) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SshPublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set admin access for accessing your VMs.
+func (o ElastigroupAzureV3LoginPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Login) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3Network struct {
+	NetworkInterfaces []ElastigroupAzureV3NetworkNetworkInterface `pulumi:"networkInterfaces"`
+	// Vnet Resource Group Name.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Name of Vnet.
+	VirtualNetworkName string `pulumi:"virtualNetworkName"`
+}
+
+// ElastigroupAzureV3NetworkInput is an input type that accepts ElastigroupAzureV3NetworkArgs and ElastigroupAzureV3NetworkOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3NetworkInput` via:
+//
+//          ElastigroupAzureV3NetworkArgs{...}
+type ElastigroupAzureV3NetworkInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3NetworkOutput() ElastigroupAzureV3NetworkOutput
+	ToElastigroupAzureV3NetworkOutputWithContext(context.Context) ElastigroupAzureV3NetworkOutput
+}
+
+type ElastigroupAzureV3NetworkArgs struct {
+	NetworkInterfaces ElastigroupAzureV3NetworkNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// Vnet Resource Group Name.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Name of Vnet.
+	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
+}
+
+func (ElastigroupAzureV3NetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Network)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3NetworkArgs) ToElastigroupAzureV3NetworkOutput() ElastigroupAzureV3NetworkOutput {
+	return i.ToElastigroupAzureV3NetworkOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3NetworkArgs) ToElastigroupAzureV3NetworkOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkOutput)
+}
+
+func (i ElastigroupAzureV3NetworkArgs) ToElastigroupAzureV3NetworkPtrOutput() ElastigroupAzureV3NetworkPtrOutput {
+	return i.ToElastigroupAzureV3NetworkPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3NetworkArgs) ToElastigroupAzureV3NetworkPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkOutput).ToElastigroupAzureV3NetworkPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3NetworkPtrInput is an input type that accepts ElastigroupAzureV3NetworkArgs, ElastigroupAzureV3NetworkPtr and ElastigroupAzureV3NetworkPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3NetworkPtrInput` via:
+//
+//          ElastigroupAzureV3NetworkArgs{...}
+//
+//  or:
+//
+//          nil
+type ElastigroupAzureV3NetworkPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3NetworkPtrOutput() ElastigroupAzureV3NetworkPtrOutput
+	ToElastigroupAzureV3NetworkPtrOutputWithContext(context.Context) ElastigroupAzureV3NetworkPtrOutput
+}
+
+type elastigroupAzureV3NetworkPtrType ElastigroupAzureV3NetworkArgs
+
+func ElastigroupAzureV3NetworkPtr(v *ElastigroupAzureV3NetworkArgs) ElastigroupAzureV3NetworkPtrInput {
+	return (*elastigroupAzureV3NetworkPtrType)(v)
+}
+
+func (*elastigroupAzureV3NetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3Network)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3NetworkPtrType) ToElastigroupAzureV3NetworkPtrOutput() ElastigroupAzureV3NetworkPtrOutput {
+	return i.ToElastigroupAzureV3NetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3NetworkPtrType) ToElastigroupAzureV3NetworkPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkPtrOutput)
+}
+
+type ElastigroupAzureV3NetworkOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3NetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Network)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3NetworkOutput) ToElastigroupAzureV3NetworkOutput() ElastigroupAzureV3NetworkOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkOutput) ToElastigroupAzureV3NetworkOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkOutput) ToElastigroupAzureV3NetworkPtrOutput() ElastigroupAzureV3NetworkPtrOutput {
+	return o.ToElastigroupAzureV3NetworkPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3NetworkOutput) ToElastigroupAzureV3NetworkPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Network) *ElastigroupAzureV3Network {
+		return &v
+	}).(ElastigroupAzureV3NetworkPtrOutput)
+}
+func (o ElastigroupAzureV3NetworkOutput) NetworkInterfaces() ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Network) []ElastigroupAzureV3NetworkNetworkInterface {
+		return v.NetworkInterfaces
+	}).(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput)
+}
+
+// Vnet Resource Group Name.
+func (o ElastigroupAzureV3NetworkOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Network) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// Name of Vnet.
+func (o ElastigroupAzureV3NetworkOutput) VirtualNetworkName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Network) string { return v.VirtualNetworkName }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3NetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3NetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3Network)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3NetworkPtrOutput) ToElastigroupAzureV3NetworkPtrOutput() ElastigroupAzureV3NetworkPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkPtrOutput) ToElastigroupAzureV3NetworkPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkPtrOutput) Elem() ElastigroupAzureV3NetworkOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Network) ElastigroupAzureV3Network { return *v }).(ElastigroupAzureV3NetworkOutput)
+}
+
+func (o ElastigroupAzureV3NetworkPtrOutput) NetworkInterfaces() ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Network) []ElastigroupAzureV3NetworkNetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput)
+}
+
+// Vnet Resource Group Name.
+func (o ElastigroupAzureV3NetworkPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Network) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of Vnet.
+func (o ElastigroupAzureV3NetworkPtrOutput) VirtualNetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Network) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterface struct {
+	// Array of additional IP configuration objects.
+	AdditionalIpConfigs []ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig `pulumi:"additionalIpConfigs"`
+	AssignPublicIp      bool                                                          `pulumi:"assignPublicIp"`
+	IsPrimary           bool                                                          `pulumi:"isPrimary"`
+	// ID of subnet.
+	SubnetName string `pulumi:"subnetName"`
+}
+
+// ElastigroupAzureV3NetworkNetworkInterfaceInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceArgs and ElastigroupAzureV3NetworkNetworkInterfaceOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceInput` via:
+//
+//          ElastigroupAzureV3NetworkNetworkInterfaceArgs{...}
+type ElastigroupAzureV3NetworkNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3NetworkNetworkInterfaceOutput() ElastigroupAzureV3NetworkNetworkInterfaceOutput
+	ToElastigroupAzureV3NetworkNetworkInterfaceOutputWithContext(context.Context) ElastigroupAzureV3NetworkNetworkInterfaceOutput
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceArgs struct {
+	// Array of additional IP configuration objects.
+	AdditionalIpConfigs ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput `pulumi:"additionalIpConfigs"`
+	AssignPublicIp      pulumi.BoolInput                                                      `pulumi:"assignPublicIp"`
+	IsPrimary           pulumi.BoolInput                                                      `pulumi:"isPrimary"`
+	// ID of subnet.
+	SubnetName pulumi.StringInput `pulumi:"subnetName"`
+}
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterface)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceArgs) ToElastigroupAzureV3NetworkNetworkInterfaceOutput() ElastigroupAzureV3NetworkNetworkInterfaceOutput {
+	return i.ToElastigroupAzureV3NetworkNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceArgs) ToElastigroupAzureV3NetworkNetworkInterfaceOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceOutput)
+}
+
+// ElastigroupAzureV3NetworkNetworkInterfaceArrayInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceArray and ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceArrayInput` via:
+//
+//          ElastigroupAzureV3NetworkNetworkInterfaceArray{ ElastigroupAzureV3NetworkNetworkInterfaceArgs{...} }
+type ElastigroupAzureV3NetworkNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3NetworkNetworkInterfaceArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput
+	ToElastigroupAzureV3NetworkNetworkInterfaceArrayOutputWithContext(context.Context) ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceArray []ElastigroupAzureV3NetworkNetworkInterfaceInput
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3NetworkNetworkInterface)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceArray) ToElastigroupAzureV3NetworkNetworkInterfaceArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput {
+	return i.ToElastigroupAzureV3NetworkNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceArray) ToElastigroupAzureV3NetworkNetworkInterfaceArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterface)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) ToElastigroupAzureV3NetworkNetworkInterfaceOutput() ElastigroupAzureV3NetworkNetworkInterfaceOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) ToElastigroupAzureV3NetworkNetworkInterfaceOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceOutput {
+	return o
+}
+
+// Array of additional IP configuration objects.
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) AdditionalIpConfigs() ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) []ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
+		return v.AdditionalIpConfigs
+	}).(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput)
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) AssignPublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) bool { return v.AssignPublicIp }).(pulumi.BoolOutput)
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) IsPrimary() pulumi.BoolOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) bool { return v.IsPrimary }).(pulumi.BoolOutput)
+}
+
+// ID of subnet.
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) SubnetName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) string { return v.SubnetName }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3NetworkNetworkInterface)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3NetworkNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3NetworkNetworkInterface {
+		return vs[0].([]ElastigroupAzureV3NetworkNetworkInterface)[vs[1].(int)]
+	}).(ElastigroupAzureV3NetworkNetworkInterfaceOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig struct {
+	// The IP configuration name.
+	Name string `pulumi:"name"`
+	// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+	PrivateIpVersion *string `pulumi:"privateIpVersion"`
+}
+
+// ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs and ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigInput` via:
+//
+//          ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{...}
+type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput() ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput
+	ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(context.Context) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs struct {
+	// The IP configuration name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+	PrivateIpVersion pulumi.StringPtrInput `pulumi:"privateIpVersion"`
+}
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs) ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput() ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput {
+	return i.ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs) ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput)
+}
+
+// ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray and ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput` via:
+//
+//          ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{ ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{...} }
+type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput
+	ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(context.Context) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray []ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigInput
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray) ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
+	return i.ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray) ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput() ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput {
+	return o
+}
+
+// The IP configuration name.
+func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) PrivateIpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig) *string { return v.PrivateIpVersion }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
+		return vs[0].([]ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig)[vs[1].(int)]
+	}).(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput)
+}
+
+type ElastigroupAzureV3Strategy struct {
+	// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+	DrainingTimeout    *int  `pulumi:"drainingTimeout"`
+	FallbackToOnDemand *bool `pulumi:"fallbackToOnDemand"`
+	// Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
+	OdCount *int `pulumi:"odCount"`
+	// TODO
+	SpotPercentage *int `pulumi:"spotPercentage"`
+}
+
+// ElastigroupAzureV3StrategyInput is an input type that accepts ElastigroupAzureV3StrategyArgs and ElastigroupAzureV3StrategyOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3StrategyInput` via:
+//
+//          ElastigroupAzureV3StrategyArgs{...}
+type ElastigroupAzureV3StrategyInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3StrategyOutput() ElastigroupAzureV3StrategyOutput
+	ToElastigroupAzureV3StrategyOutputWithContext(context.Context) ElastigroupAzureV3StrategyOutput
+}
+
+type ElastigroupAzureV3StrategyArgs struct {
+	// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+	DrainingTimeout    pulumi.IntPtrInput  `pulumi:"drainingTimeout"`
+	FallbackToOnDemand pulumi.BoolPtrInput `pulumi:"fallbackToOnDemand"`
+	// Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
+	OdCount pulumi.IntPtrInput `pulumi:"odCount"`
+	// TODO
+	SpotPercentage pulumi.IntPtrInput `pulumi:"spotPercentage"`
+}
+
+func (ElastigroupAzureV3StrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Strategy)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3StrategyArgs) ToElastigroupAzureV3StrategyOutput() ElastigroupAzureV3StrategyOutput {
+	return i.ToElastigroupAzureV3StrategyOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3StrategyArgs) ToElastigroupAzureV3StrategyOutputWithContext(ctx context.Context) ElastigroupAzureV3StrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3StrategyOutput)
+}
+
+func (i ElastigroupAzureV3StrategyArgs) ToElastigroupAzureV3StrategyPtrOutput() ElastigroupAzureV3StrategyPtrOutput {
+	return i.ToElastigroupAzureV3StrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3StrategyArgs) ToElastigroupAzureV3StrategyPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3StrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3StrategyOutput).ToElastigroupAzureV3StrategyPtrOutputWithContext(ctx)
+}
+
+// ElastigroupAzureV3StrategyPtrInput is an input type that accepts ElastigroupAzureV3StrategyArgs, ElastigroupAzureV3StrategyPtr and ElastigroupAzureV3StrategyPtrOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3StrategyPtrInput` via:
+//
+//          ElastigroupAzureV3StrategyArgs{...}
+//
+//  or:
+//
+//          nil
+type ElastigroupAzureV3StrategyPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3StrategyPtrOutput() ElastigroupAzureV3StrategyPtrOutput
+	ToElastigroupAzureV3StrategyPtrOutputWithContext(context.Context) ElastigroupAzureV3StrategyPtrOutput
+}
+
+type elastigroupAzureV3StrategyPtrType ElastigroupAzureV3StrategyArgs
+
+func ElastigroupAzureV3StrategyPtr(v *ElastigroupAzureV3StrategyArgs) ElastigroupAzureV3StrategyPtrInput {
+	return (*elastigroupAzureV3StrategyPtrType)(v)
+}
+
+func (*elastigroupAzureV3StrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3Strategy)(nil)).Elem()
+}
+
+func (i *elastigroupAzureV3StrategyPtrType) ToElastigroupAzureV3StrategyPtrOutput() ElastigroupAzureV3StrategyPtrOutput {
+	return i.ToElastigroupAzureV3StrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupAzureV3StrategyPtrType) ToElastigroupAzureV3StrategyPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3StrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3StrategyPtrOutput)
+}
+
+type ElastigroupAzureV3StrategyOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3StrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3Strategy)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3StrategyOutput) ToElastigroupAzureV3StrategyOutput() ElastigroupAzureV3StrategyOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3StrategyOutput) ToElastigroupAzureV3StrategyOutputWithContext(ctx context.Context) ElastigroupAzureV3StrategyOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3StrategyOutput) ToElastigroupAzureV3StrategyPtrOutput() ElastigroupAzureV3StrategyPtrOutput {
+	return o.ToElastigroupAzureV3StrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupAzureV3StrategyOutput) ToElastigroupAzureV3StrategyPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3StrategyPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Strategy) *ElastigroupAzureV3Strategy {
+		return &v
+	}).(ElastigroupAzureV3StrategyPtrOutput)
+}
+
+// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+func (o ElastigroupAzureV3StrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Strategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3StrategyOutput) FallbackToOnDemand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Strategy) *bool { return v.FallbackToOnDemand }).(pulumi.BoolPtrOutput)
+}
+
+// Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
+func (o ElastigroupAzureV3StrategyOutput) OdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Strategy) *int { return v.OdCount }).(pulumi.IntPtrOutput)
+}
+
+// TODO
+func (o ElastigroupAzureV3StrategyOutput) SpotPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3Strategy) *int { return v.SpotPercentage }).(pulumi.IntPtrOutput)
+}
+
+type ElastigroupAzureV3StrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3StrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupAzureV3Strategy)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3StrategyPtrOutput) ToElastigroupAzureV3StrategyPtrOutput() ElastigroupAzureV3StrategyPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3StrategyPtrOutput) ToElastigroupAzureV3StrategyPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3StrategyPtrOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3StrategyPtrOutput) Elem() ElastigroupAzureV3StrategyOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Strategy) ElastigroupAzureV3Strategy { return *v }).(ElastigroupAzureV3StrategyOutput)
+}
+
+// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+func (o ElastigroupAzureV3StrategyPtrOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Strategy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DrainingTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupAzureV3StrategyPtrOutput) FallbackToOnDemand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Strategy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FallbackToOnDemand
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
+func (o ElastigroupAzureV3StrategyPtrOutput) OdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Strategy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// TODO
+func (o ElastigroupAzureV3StrategyPtrOutput) SpotPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3Strategy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SpotPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
 type HealthCheckCheck struct {
 	EndPoint *string `pulumi:"endPoint"`
 	// The destination for the request.
@@ -285,6 +1357,22 @@ func (o HealthCheckCheckPtrOutput) Unhealthy() pulumi.IntPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(ElastigroupAzureV3ImageOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ImageArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ImageCustomOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ImageCustomArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ImageMarketplaceOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ImageMarketplaceArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3LoginOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3LoginPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3StrategyOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3StrategyPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckPtrOutput{})
 }
