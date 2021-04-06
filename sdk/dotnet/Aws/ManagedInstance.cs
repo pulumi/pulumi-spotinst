@@ -22,6 +22,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> AutoHealing { get; private set; } = null!;
 
         /// <summary>
+        /// Attributes controls a portion of the AWS:
+        /// </summary>
+        [Output("blockDeviceMappings")]
+        public Output<ImmutableArray<Outputs.ManagedInstanceBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
+
+        /// <summary>
         /// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
         /// Default: `"onLaunch"`.
         /// </summary>
@@ -30,7 +36,6 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        /// Default: unlimited
         /// </summary>
         [Output("cpuCredits")]
         public Output<string?> CpuCredits { get; private set; } = null!;
@@ -301,6 +306,18 @@ namespace Pulumi.SpotInst.Aws
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
 
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.ManagedInstanceBlockDeviceMappingArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Attributes controls a portion of the AWS:
+        /// </summary>
+        public InputList<Inputs.ManagedInstanceBlockDeviceMappingArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.ManagedInstanceBlockDeviceMappingArgs>());
+            set => _blockDeviceMappings = value;
+        }
+
         /// <summary>
         /// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
         /// Default: `"onLaunch"`.
@@ -310,7 +327,6 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        /// Default: unlimited
         /// </summary>
         [Input("cpuCredits")]
         public Input<string>? CpuCredits { get; set; }
@@ -588,6 +604,18 @@ namespace Pulumi.SpotInst.Aws
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
 
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.ManagedInstanceBlockDeviceMappingGetArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Attributes controls a portion of the AWS:
+        /// </summary>
+        public InputList<Inputs.ManagedInstanceBlockDeviceMappingGetArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.ManagedInstanceBlockDeviceMappingGetArgs>());
+            set => _blockDeviceMappings = value;
+        }
+
         /// <summary>
         /// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
         /// Default: `"onLaunch"`.
@@ -597,7 +625,6 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        /// Default: unlimited
         /// </summary>
         [Input("cpuCredits")]
         public Input<string>? CpuCredits { get; set; }

@@ -851,6 +851,7 @@
                 },
                 "batch": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationEcsBatch:ElastigroupIntegrationEcsBatch",
+                    "description": "Batch configuration object:\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -960,6 +961,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "description": "Array of strings.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2753,6 +2755,89 @@
             "required": [
                 "actionType"
             ]
+        },
+        "spotinst:aws/ManagedInstanceBlockDeviceMapping:ManagedInstanceBlockDeviceMapping": {
+            "properties": {
+                "deviceName": {
+                    "type": "string",
+                    "description": "The name of the device to mount.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebs": {
+                    "$ref": "#/types/spotinst:aws/ManagedInstanceBlockDeviceMappingEbs:ManagedInstanceBlockDeviceMappingEbs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "deviceName"
+            ]
+        },
+        "spotinst:aws/ManagedInstanceBlockDeviceMappingEbs:ManagedInstanceBlockDeviceMappingEbs": {
+            "properties": {
+                "deleteOnTermination": {
+                    "type": "boolean",
+                    "description": "Whether the volume should be destroyed on instance termination.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "iops": {
+                    "type": "integer",
+                    "description": "The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `\"io1\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "throughput": {
+                    "type": "integer",
+                    "description": "The amount of data transferred to or from a storage device per second. Valid only if `volume_type` is set to `\"gp3\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeSize": {
+                    "type": "integer",
+                    "description": "The size of the volume in gigabytes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeType": {
+                    "type": "string",
+                    "description": "The type of volume. Can be `\"standard\"`, `\"gp2\"`, `\"gp3\"`, `\"io1\"`, `\"st1\"` or `\"sc1\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deleteOnTermination",
+                        "volumeType"
+                    ]
+                }
+            }
         },
         "spotinst:aws/ManagedInstanceIntegrationRoute53:ManagedInstanceIntegrationRoute53": {
             "properties": {
@@ -11164,11 +11249,18 @@
             }
         },
         "spotinst:aws/managedInstance:ManagedInstance": {
-            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Pulumi\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvdcz\",\n        ebs: {\n            deleteOnTermination: true,\n            iops: 100,\n            throughput: 125,\n            volumeSize: 50,\n            volumeType: \"gp3\",\n        },\n    }],\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Pulumi\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "autoHealing": {
                     "type": "boolean",
                     "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `\"true\"`.\n"
+                },
+                "blockDeviceMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ManagedInstanceBlockDeviceMapping:ManagedInstanceBlockDeviceMapping"
+                    },
+                    "description": "Attributes controls a portion of the AWS:\n"
                 },
                 "blockDevicesMode": {
                     "type": "string",
@@ -11176,7 +11268,7 @@
                 },
                 "cpuCredits": {
                     "type": "string",
-                    "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\nDefault: unlimited\n"
+                    "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -11361,13 +11453,20 @@
                     "type": "boolean",
                     "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `\"true\"`.\n"
                 },
+                "blockDeviceMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ManagedInstanceBlockDeviceMapping:ManagedInstanceBlockDeviceMapping"
+                    },
+                    "description": "Attributes controls a portion of the AWS:\n"
+                },
                 "blockDevicesMode": {
                     "type": "string",
                     "description": "Determine the way we attach the data volumes to the data devices. Valid values: `\"reattach\"`, `\"onLaunch\"`.\nDefault: `\"onLaunch\"`.\n"
                 },
                 "cpuCredits": {
                     "type": "string",
-                    "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\nDefault: unlimited\n"
+                    "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -11552,13 +11651,20 @@
                         "type": "boolean",
                         "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `\"true\"`.\n"
                     },
+                    "blockDeviceMappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/ManagedInstanceBlockDeviceMapping:ManagedInstanceBlockDeviceMapping"
+                        },
+                        "description": "Attributes controls a portion of the AWS:\n"
+                    },
                     "blockDevicesMode": {
                         "type": "string",
                         "description": "Determine the way we attach the data volumes to the data devices. Valid values: `\"reattach\"`, `\"onLaunch\"`.\nDefault: `\"onLaunch\"`.\n"
                     },
                     "cpuCredits": {
                         "type": "string",
-                        "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\nDefault: unlimited\n"
+                        "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\n"
                     },
                     "description": {
                         "type": "string",

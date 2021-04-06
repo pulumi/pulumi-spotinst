@@ -11,17 +11,22 @@ namespace Pulumi.SpotInst.Aws.Outputs
 {
 
     [OutputType]
-    public sealed class ElastigroupIntegrationEcsBatch
+    public sealed class ManagedInstanceBlockDeviceMapping
     {
         /// <summary>
-        /// Array of strings.
+        /// The name of the device to mount.
         /// </summary>
-        public readonly ImmutableArray<string> JobQueueNames;
+        public readonly string DeviceName;
+        public readonly Outputs.ManagedInstanceBlockDeviceMappingEbs? Ebs;
 
         [OutputConstructor]
-        private ElastigroupIntegrationEcsBatch(ImmutableArray<string> jobQueueNames)
+        private ManagedInstanceBlockDeviceMapping(
+            string deviceName,
+
+            Outputs.ManagedInstanceBlockDeviceMappingEbs? ebs)
         {
-            JobQueueNames = jobQueueNames;
+            DeviceName = deviceName;
+            Ebs = ebs;
         }
     }
 }

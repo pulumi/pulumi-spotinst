@@ -17,6 +17,16 @@ import * as utilities from "../utilities";
  * // Create a Manged Instance
  * const default_managed_instance = new spotinst.aws.ManagedInstance("default-managed-instance", {
  *     autoHealing: true,
+ *     blockDeviceMappings: [{
+ *         deviceName: "/dev/xvdcz",
+ *         ebs: {
+ *             deleteOnTermination: true,
+ *             iops: 100,
+ *             throughput: 125,
+ *             volumeSize: 50,
+ *             volumeType: "gp3",
+ *         },
+ *     }],
  *     blockDevicesMode: "reattach",
  *     cpuCredits: "standard",
  *     description: "created by Pulumi",
@@ -105,13 +115,16 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly autoHealing!: pulumi.Output<boolean | undefined>;
     /**
+     * Attributes controls a portion of the AWS:
+     */
+    public readonly blockDeviceMappings!: pulumi.Output<outputs.aws.ManagedInstanceBlockDeviceMapping[] | undefined>;
+    /**
      * Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
      * Default: `"onLaunch"`.
      */
     public readonly blockDevicesMode!: pulumi.Output<string | undefined>;
     /**
      * cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-     * Default: unlimited
      */
     public readonly cpuCredits!: pulumi.Output<string | undefined>;
     /**
@@ -269,6 +282,7 @@ export class ManagedInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ManagedInstanceState | undefined;
             inputs["autoHealing"] = state ? state.autoHealing : undefined;
+            inputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             inputs["blockDevicesMode"] = state ? state.blockDevicesMode : undefined;
             inputs["cpuCredits"] = state ? state.cpuCredits : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -329,6 +343,7 @@ export class ManagedInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpcId'");
             }
             inputs["autoHealing"] = args ? args.autoHealing : undefined;
+            inputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             inputs["blockDevicesMode"] = args ? args.blockDevicesMode : undefined;
             inputs["cpuCredits"] = args ? args.cpuCredits : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -385,13 +400,16 @@ export interface ManagedInstanceState {
      */
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
+     * Attributes controls a portion of the AWS:
+     */
+    readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceBlockDeviceMapping>[]>;
+    /**
      * Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
      * Default: `"onLaunch"`.
      */
     readonly blockDevicesMode?: pulumi.Input<string>;
     /**
      * cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-     * Default: unlimited
      */
     readonly cpuCredits?: pulumi.Input<string>;
     /**
@@ -545,13 +563,16 @@ export interface ManagedInstanceArgs {
      */
     readonly autoHealing?: pulumi.Input<boolean>;
     /**
+     * Attributes controls a portion of the AWS:
+     */
+    readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceBlockDeviceMapping>[]>;
+    /**
      * Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
      * Default: `"onLaunch"`.
      */
     readonly blockDevicesMode?: pulumi.Input<string>;
     /**
      * cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-     * Default: unlimited
      */
     readonly cpuCredits?: pulumi.Input<string>;
     /**
