@@ -83,11 +83,13 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:  "https://github.com/pulumi/pulumi-spotinst",
 		Config:      map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"spotinst_elastigroup_aws":            {Tok: makeResource(awsMod, "Elastigroup")},
-			"spotinst_elastigroup_aws_beanstalk":  {Tok: makeResource(awsMod, "Beanstalk")},
-			"spotinst_elastigroup_aws_suspension": {Tok: makeResource(awsMod, "Suspension")},
-			"spotinst_managed_instance_aws":       {Tok: makeResource(awsMod, "ManagedInstance")},
-			"spotinst_elastigroup_azure":          {Tok: makeResource(azureMod, "Elastigroup")},
+			"spotinst_elastigroup_aws":              {Tok: makeResource(awsMod, "Elastigroup")},
+			"spotinst_elastigroup_aws_beanstalk":    {Tok: makeResource(awsMod, "Beanstalk")},
+			"spotinst_elastigroup_aws_suspension":   {Tok: makeResource(awsMod, "Suspension")},
+			"spotinst_managed_instance_aws":         {Tok: makeResource(awsMod, "ManagedInstance")},
+			"spotinst_elastigroup_azure":            {Tok: makeResource(azureMod, "Elastigroup")},
+			"spotinst_ocean_aks":                    {Tok: makeResource(azureMod, "Ocean")},
+			"spotinst_ocean_aks_virtual_node_group": {Tok: makeResource(azureMod, "OceanVirtualNodeGroup")},
 			"spotinst_elastigroup_gcp": {
 				Tok: makeResource(gcpMod, "Elastigroup"),
 				Fields: map[string]*tfbridge.SchemaInfo{

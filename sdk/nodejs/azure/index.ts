@@ -6,9 +6,13 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./elastigroup";
+export * from "./ocean";
+export * from "./oceanVirtualNodeGroup";
 
 // Import resources to register:
 import { Elastigroup } from "./elastigroup";
+import { Ocean } from "./ocean";
+import { OceanVirtualNodeGroup } from "./oceanVirtualNodeGroup";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,9 +20,15 @@ const _module = {
         switch (type) {
             case "spotinst:azure/elastigroup:Elastigroup":
                 return new Elastigroup(name, <any>undefined, { urn })
+            case "spotinst:azure/ocean:Ocean":
+                return new Ocean(name, <any>undefined, { urn })
+            case "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup":
+                return new OceanVirtualNodeGroup(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("spotinst", "azure/elastigroup", _module)
+pulumi.runtime.registerResourceModule("spotinst", "azure/ocean", _module)
+pulumi.runtime.registerResourceModule("spotinst", "azure/oceanVirtualNodeGroup", _module)

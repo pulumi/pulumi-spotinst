@@ -2658,6 +2658,95 @@ export namespace azure {
          */
         healthCheckType?: pulumi.Input<string>;
     }
+
+    export interface OceanVirtualNodeGroupAutoscale {
+        autoscaleHeadroom?: pulumi.Input<inputs.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom>;
+    }
+
+    export interface OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
+        /**
+         * Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * How many GPU cores should be allocated for headroom unit.
+         */
+        gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Configure the amount of memory (MiB) to allocate the headroom.
+         */
+        memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+         */
+        numOfUnits: pulumi.Input<number>;
+    }
+
+    export interface OceanVirtualNodeGroupLabel {
+        /**
+         * Tag Key for Vms in the cluster.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Tag Value for VMs in the cluster.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface OceanVirtualNodeGroupLaunchSpecification {
+        /**
+         * Specify OS disk specification other than default.
+         */
+        osDisk?: pulumi.Input<inputs.azure.OceanVirtualNodeGroupLaunchSpecificationOsDisk>;
+        /**
+         * Additional key-value pairs to be used to tag the VMs in the virtual node group.
+         */
+        tags?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupLaunchSpecificationTag>[]>;
+    }
+
+    export interface OceanVirtualNodeGroupLaunchSpecificationOsDisk {
+        /**
+         * The size of the OS disk in GB, Required if dataDisks is specified.
+         */
+        sizeGb: pulumi.Input<number>;
+        /**
+         * The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface OceanVirtualNodeGroupLaunchSpecificationTag {
+        /**
+         * Tag Key for Vms in the cluster.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Tag Value for VMs in the cluster.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface OceanVirtualNodeGroupResourceLimit {
+        /**
+         * Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.
+         */
+        maxInstanceCount?: pulumi.Input<number>;
+    }
+
+    export interface OceanVirtualNodeGroupTaint {
+        /**
+         * The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
+         */
+        effect: pulumi.Input<string>;
+        /**
+         * Tag Key for Vms in the cluster.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Tag Value for VMs in the cluster.
+         */
+        value: pulumi.Input<string>;
+    }
 }
 
 export namespace ecs {

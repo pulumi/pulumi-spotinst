@@ -28,6 +28,14 @@ __all__ = [
     'ElastigroupStrategyArgs',
     'ElastigroupUpdatePolicyArgs',
     'ElastigroupUpdatePolicyRollConfigArgs',
+    'OceanVirtualNodeGroupAutoscaleArgs',
+    'OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs',
+    'OceanVirtualNodeGroupLabelArgs',
+    'OceanVirtualNodeGroupLaunchSpecificationArgs',
+    'OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs',
+    'OceanVirtualNodeGroupLaunchSpecificationTagArgs',
+    'OceanVirtualNodeGroupResourceLimitArgs',
+    'OceanVirtualNodeGroupTaintArgs',
 ]
 
 @pulumi.input_type
@@ -1489,5 +1497,321 @@ class ElastigroupUpdatePolicyRollConfigArgs:
     @health_check_type.setter
     def health_check_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "health_check_type", value)
+
+
+@pulumi.input_type
+class OceanVirtualNodeGroupAutoscaleArgs:
+    def __init__(__self__, *,
+                 autoscale_headroom: Optional[pulumi.Input['OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs']] = None):
+        if autoscale_headroom is not None:
+            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
+
+    @property
+    @pulumi.getter(name="autoscaleHeadroom")
+    def autoscale_headroom(self) -> Optional[pulumi.Input['OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs']]:
+        return pulumi.get(self, "autoscale_headroom")
+
+    @autoscale_headroom.setter
+    def autoscale_headroom(self, value: Optional[pulumi.Input['OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs']]):
+        pulumi.set(self, "autoscale_headroom", value)
+
+
+@pulumi.input_type
+class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs:
+    def __init__(__self__, *,
+                 num_of_units: pulumi.Input[int],
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 gpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] num_of_units: The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+        :param pulumi.Input[int] cpu_per_unit: Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param pulumi.Input[int] gpu_per_unit: How many GPU cores should be allocated for headroom unit.
+        :param pulumi.Input[int] memory_per_unit: Configure the amount of memory (MiB) to allocate the headroom.
+        """
+        pulumi.set(__self__, "num_of_units", num_of_units)
+        if cpu_per_unit is not None:
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+        if gpu_per_unit is not None:
+            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
+        if memory_per_unit is not None:
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+
+    @property
+    @pulumi.getter(name="numOfUnits")
+    def num_of_units(self) -> pulumi.Input[int]:
+        """
+        The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+        """
+        return pulumi.get(self, "num_of_units")
+
+    @num_of_units.setter
+    def num_of_units(self, value: pulumi.Input[int]):
+        pulumi.set(self, "num_of_units", value)
+
+    @property
+    @pulumi.getter(name="cpuPerUnit")
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        return pulumi.get(self, "cpu_per_unit")
+
+    @cpu_per_unit.setter
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_per_unit", value)
+
+    @property
+    @pulumi.getter(name="gpuPerUnit")
+    def gpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        How many GPU cores should be allocated for headroom unit.
+        """
+        return pulumi.get(self, "gpu_per_unit")
+
+    @gpu_per_unit.setter
+    def gpu_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "gpu_per_unit", value)
+
+    @property
+    @pulumi.getter(name="memoryPerUnit")
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Configure the amount of memory (MiB) to allocate the headroom.
+        """
+        return pulumi.get(self, "memory_per_unit")
+
+    @memory_per_unit.setter
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_per_unit", value)
+
+
+@pulumi.input_type
+class OceanVirtualNodeGroupLabelArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: Tag Key for Vms in the cluster.
+        :param pulumi.Input[str] value: Tag Value for VMs in the cluster.
+        """
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Tag Key for Vms in the cluster.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Tag Value for VMs in the cluster.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanVirtualNodeGroupLaunchSpecificationArgs:
+    def __init__(__self__, *,
+                 os_disk: Optional[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs']] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationTagArgs']]]] = None):
+        """
+        :param pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs'] os_disk: Specify OS disk specification other than default.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationTagArgs']]] tags: Additional key-value pairs to be used to tag the VMs in the virtual node group.
+        """
+        if os_disk is not None:
+            pulumi.set(__self__, "os_disk", os_disk)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="osDisk")
+    def os_disk(self) -> Optional[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs']]:
+        """
+        Specify OS disk specification other than default.
+        """
+        return pulumi.get(self, "os_disk")
+
+    @os_disk.setter
+    def os_disk(self, value: Optional[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs']]):
+        pulumi.set(self, "os_disk", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationTagArgs']]]]:
+        """
+        Additional key-value pairs to be used to tag the VMs in the virtual node group.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs:
+    def __init__(__self__, *,
+                 size_gb: pulumi.Input[int],
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] size_gb: The size of the OS disk in GB, Required if dataDisks is specified.
+        :param pulumi.Input[str] type: The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+        """
+        pulumi.set(__self__, "size_gb", size_gb)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> pulumi.Input[int]:
+        """
+        The size of the OS disk in GB, Required if dataDisks is specified.
+        """
+        return pulumi.get(self, "size_gb")
+
+    @size_gb.setter
+    def size_gb(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size_gb", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class OceanVirtualNodeGroupLaunchSpecificationTagArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: Tag Key for Vms in the cluster.
+        :param pulumi.Input[str] value: Tag Value for VMs in the cluster.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Tag Key for Vms in the cluster.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Tag Value for VMs in the cluster.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanVirtualNodeGroupResourceLimitArgs:
+    def __init__(__self__, *,
+                 max_instance_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_instance_count: Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.
+        """
+        if max_instance_count is not None:
+            pulumi.set(__self__, "max_instance_count", max_instance_count)
+
+    @property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.
+        """
+        return pulumi.get(self, "max_instance_count")
+
+    @max_instance_count.setter
+    def max_instance_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_instance_count", value)
+
+
+@pulumi.input_type
+class OceanVirtualNodeGroupTaintArgs:
+    def __init__(__self__, *,
+                 effect: pulumi.Input[str],
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
+        :param pulumi.Input[str] key: Tag Key for Vms in the cluster.
+        :param pulumi.Input[str] value: Tag Value for VMs in the cluster.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> pulumi.Input[str]:
+        """
+        The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: pulumi.Input[str]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Tag Key for Vms in the cluster.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Tag Value for VMs in the cluster.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
