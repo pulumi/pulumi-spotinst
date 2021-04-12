@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "spotinst:gke/elastigroup:Elastigroup":
-		r, err = NewElastigroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &Elastigroup{}
 	case "spotinst:gke/oceanImport:OceanImport":
-		r, err = NewOceanImport(ctx, name, nil, pulumi.URN_(urn))
+		r = &OceanImport{}
 	case "spotinst:gke/oceanLaunchSpec:OceanLaunchSpec":
-		r, err = NewOceanLaunchSpec(ctx, name, nil, pulumi.URN_(urn))
+		r = &OceanLaunchSpec{}
 	case "spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport":
-		r, err = NewOceanLaunchSpecImport(ctx, name, nil, pulumi.URN_(urn))
+		r = &OceanLaunchSpecImport{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

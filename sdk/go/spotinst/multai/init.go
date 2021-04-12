@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "spotinst:multai/balancer:Balancer":
-		r, err = NewBalancer(ctx, name, nil, pulumi.URN_(urn))
+		r = &Balancer{}
 	case "spotinst:multai/deployment:Deployment":
-		r, err = NewDeployment(ctx, name, nil, pulumi.URN_(urn))
+		r = &Deployment{}
 	case "spotinst:multai/listener:Listener":
-		r, err = NewListener(ctx, name, nil, pulumi.URN_(urn))
+		r = &Listener{}
 	case "spotinst:multai/routingRule:RoutingRule":
-		r, err = NewRoutingRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &RoutingRule{}
 	case "spotinst:multai/target:Target":
-		r, err = NewTarget(ctx, name, nil, pulumi.URN_(urn))
+		r = &Target{}
 	case "spotinst:multai/targetSet:TargetSet":
-		r, err = NewTargetSet(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetSet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

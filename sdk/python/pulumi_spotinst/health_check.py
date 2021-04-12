@@ -5,15 +5,93 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['HealthCheck']
+__all__ = ['HealthCheckArgs', 'HealthCheck']
+
+@pulumi.input_type
+class HealthCheckArgs:
+    def __init__(__self__, *,
+                 proxy_address: pulumi.Input[str],
+                 resource_id: pulumi.Input[str],
+                 check: Optional[pulumi.Input['HealthCheckCheckArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 proxy_port: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a HealthCheck resource.
+        :param pulumi.Input[str] resource_id: The ID of the resource to check.
+        :param pulumi.Input['HealthCheckCheckArgs'] check: Describes the check to execute.
+        :param pulumi.Input[str] name: The name of the health check.
+        """
+        pulumi.set(__self__, "proxy_address", proxy_address)
+        pulumi.set(__self__, "resource_id", resource_id)
+        if check is not None:
+            pulumi.set(__self__, "check", check)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if proxy_port is not None:
+            pulumi.set(__self__, "proxy_port", proxy_port)
+
+    @property
+    @pulumi.getter(name="proxyAddress")
+    def proxy_address(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "proxy_address")
+
+    @proxy_address.setter
+    def proxy_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "proxy_address", value)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the resource to check.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter
+    def check(self) -> Optional[pulumi.Input['HealthCheckCheckArgs']]:
+        """
+        Describes the check to execute.
+        """
+        return pulumi.get(self, "check")
+
+    @check.setter
+    def check(self, value: Optional[pulumi.Input['HealthCheckCheckArgs']]):
+        pulumi.set(self, "check", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the health check.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="proxyPort")
+    def proxy_port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "proxy_port")
+
+    @proxy_port.setter
+    def proxy_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "proxy_port", value)
 
 
 class HealthCheck(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +133,59 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the health check.
         :param pulumi.Input[str] resource_id: The ID of the resource to check.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: HealthCheckArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Spotinst Health Check resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        http_check = spotinst.HealthCheck("httpCheck",
+            check=spotinst.HealthCheckCheckArgs(
+                endpoint="http://endpoint.com",
+                healthy=1,
+                interval=10,
+                port=1337,
+                protocol="http",
+                timeout=10,
+                unhealthy=1,
+            ),
+            proxy_address="http://proxy.com",
+            proxy_port=80,
+            resource_id="sig-123")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param HealthCheckArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(HealthCheckArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 check: Optional[pulumi.Input[pulumi.InputType['HealthCheckCheckArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 proxy_address: Optional[pulumi.Input[str]] = None,
+                 proxy_port: Optional[pulumi.Input[int]] = None,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

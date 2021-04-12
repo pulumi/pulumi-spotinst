@@ -5,15 +5,318 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OceanLaunchSpec']
+__all__ = ['OceanLaunchSpecArgs', 'OceanLaunchSpec']
+
+@pulumi.input_type
+class OceanLaunchSpecArgs:
+    def __init__(__self__, *,
+                 ocean_id: pulumi.Input[str],
+                 associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
+                 elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
+                 iam_instance_profile: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]] = None,
+                 restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 root_volume_size: Optional[pulumi.Input[int]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OceanLaunchSpec resource.
+        :param pulumi.Input[str] ocean_id: The ocean cluster you wish to
+        :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+        :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
+        :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
+        :param pulumi.Input[str] name: Set Launch Specification name
+        :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in array should be subnet ID.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in an Ocean cluster.
+        :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
+        """
+        pulumi.set(__self__, "ocean_id", ocean_id)
+        if associate_public_ip_address is not None:
+            pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
+        if autoscale_headrooms is not None:
+            pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
+        if block_device_mappings is not None:
+            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        if elastic_ip_pools is not None:
+            pulumi.set(__self__, "elastic_ip_pools", elastic_ip_pools)
+        if iam_instance_profile is not None:
+            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if instance_types is not None:
+            pulumi.set(__self__, "instance_types", instance_types)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_limits is not None:
+            pulumi.set(__self__, "resource_limits", resource_limits)
+        if restrict_scale_down is not None:
+            pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
+        if root_volume_size is not None:
+            pulumi.set(__self__, "root_volume_size", root_volume_size)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if strategies is not None:
+            pulumi.set(__self__, "strategies", strategies)
+        if subnet_ids is not None:
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+
+    @property
+    @pulumi.getter(name="oceanId")
+    def ocean_id(self) -> pulumi.Input[str]:
+        """
+        The ocean cluster you wish to
+        """
+        return pulumi.get(self, "ocean_id")
+
+    @ocean_id.setter
+    def ocean_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ocean_id", value)
+
+    @property
+    @pulumi.getter(name="associatePublicIpAddress")
+    def associate_public_ip_address(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Configure public IP address allocation.
+        """
+        return pulumi.get(self, "associate_public_ip_address")
+
+    @associate_public_ip_address.setter
+    def associate_public_ip_address(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "associate_public_ip_address", value)
+
+    @property
+    @pulumi.getter(name="autoscaleHeadrooms")
+    def autoscale_headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]]:
+        """
+        Set custom headroom per launch spec. provide list of headrooms object.
+        """
+        return pulumi.get(self, "autoscale_headrooms")
+
+    @autoscale_headrooms.setter
+    def autoscale_headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]]):
+        pulumi.set(self, "autoscale_headrooms", value)
+
+    @property
+    @pulumi.getter(name="blockDeviceMappings")
+    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]]:
+        """
+        Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        """
+        return pulumi.get(self, "block_device_mappings")
+
+    @block_device_mappings.setter
+    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]]):
+        pulumi.set(self, "block_device_mappings", value)
+
+    @property
+    @pulumi.getter(name="elasticIpPools")
+    def elastic_ip_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]]:
+        """
+        Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+        """
+        return pulumi.get(self, "elastic_ip_pools")
+
+    @elastic_ip_pools.setter
+    def elastic_ip_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]]):
+        pulumi.set(self, "elastic_ip_pools", value)
+
+    @property
+    @pulumi.getter(name="iamInstanceProfile")
+    def iam_instance_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ARN or name of an IAM instance profile to associate with launched instances.
+        """
+        return pulumi.get(self, "iam_instance_profile")
+
+    @iam_instance_profile.setter
+    def iam_instance_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_instance_profile", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the image used to launch the instances.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        """
+        return pulumi.get(self, "instance_types")
+
+    @instance_types.setter
+    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_types", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]]:
+        """
+        Optionally adds labels to instances launched in an Ocean cluster.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set Launch Specification name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceLimits")
+    def resource_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]]:
+        return pulumi.get(self, "resource_limits")
+
+    @resource_limits.setter
+    def resource_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]]):
+        pulumi.set(self, "resource_limits", value)
+
+    @property
+    @pulumi.getter(name="restrictScaleDown")
+    def restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        """
+        return pulumi.get(self, "restrict_scale_down")
+
+    @restrict_scale_down.setter
+    def restrict_scale_down(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restrict_scale_down", value)
+
+    @property
+    @pulumi.getter(name="rootVolumeSize")
+    def root_volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Set root volume size (in GB).
+        """
+        return pulumi.get(self, "root_volume_size")
+
+    @root_volume_size.setter
+    def root_volume_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "root_volume_size", value)
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optionally adds security group IDs.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_groups", value)
+
+    @property
+    @pulumi.getter
+    def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]]:
+        return pulumi.get(self, "strategies")
+
+    @strategies.setter
+    def strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]]):
+        pulumi.set(self, "strategies", value)
+
+    @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set subnets in launchSpec. Each element in array should be subnet ID.
+        """
+        return pulumi.get(self, "subnet_ids")
+
+    @subnet_ids.setter
+    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subnet_ids", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]]:
+        """
+        A key/value mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]]:
+        """
+        Optionally adds labels to instances launched in an Ocean cluster.
+        """
+        return pulumi.get(self, "taints")
+
+    @taints.setter
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]]):
+        pulumi.set(self, "taints", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Base64-encoded MIME user data to make available to the instances.
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
 
 
 class OceanLaunchSpec(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -148,6 +451,138 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OceanLaunchSpecArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a custom Spotinst Ocean AWS Launch Spec resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.aws.OceanLaunchSpec("example",
+            associate_public_ip_address=True,
+            autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(
+                cpu_per_unit=1000,
+                gpu_per_unit=0,
+                memory_per_unit=2048,
+                num_of_units=5,
+            )],
+            block_device_mappings=[spotinst.aws.OceanLaunchSpecBlockDeviceMappingArgs(
+                device_name="/dev/xvda1",
+                ebs=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsArgs(
+                    delete_on_termination=True,
+                    dynamic_volume_size=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
+                        base_size=50,
+                        resource="CPU",
+                        size_per_resource_unit=20,
+                    ),
+                    encrypted=False,
+                    throughput=500,
+                    volume_size=50,
+                    volume_type="gp2",
+                ),
+            )],
+            elastic_ip_pools=[spotinst.aws.OceanLaunchSpecElasticIpPoolArgs(
+                tag_selector=spotinst.aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs(
+                    tag_key="key",
+                    tag_value="value",
+                ),
+            )],
+            iam_instance_profile="iam-profile",
+            image_id="ami-123456",
+            instance_types=[
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.4xlarge",
+                "m4.2xlarge",
+                "m4.10xlarge",
+                "m4.16xlarge",
+                "m5.large",
+                "m5.xlarge",
+                "m5.2xlarge",
+                "m5.4xlarge",
+                "m5.12xlarge",
+                "m5.24xlarge",
+            ],
+            labels=[spotinst.aws.OceanLaunchSpecLabelArgs(
+                key="fakeKey",
+                value="fakeValue",
+            )],
+            ocean_id="o-123456",
+            resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(
+                max_instance_count=4,
+            )],
+            restrict_scale_down=True,
+            root_volume_size=30,
+            security_groups=["sg-987654321"],
+            strategies=[spotinst.aws.OceanLaunchSpecStrategyArgs(
+                spot_percentage=70,
+            )],
+            subnet_ids=["subnet-1234"],
+            tags=[spotinst.aws.OceanLaunchSpecTagArgs(
+                key="Env",
+                value="production",
+            )],
+            taints=[spotinst.aws.OceanLaunchSpecTaintArgs(
+                effect="NoExecute",
+                key="taint key updated",
+                value="taint value updated",
+            )],
+            user_data="echo hello world")
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec["example"]["id"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OceanLaunchSpecArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
+                 elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
+                 iam_instance_profile: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ocean_id: Optional[pulumi.Input[str]] = None,
+                 resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
+                 restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 root_volume_size: Optional[pulumi.Input[int]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
