@@ -2845,6 +2845,978 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) HealthCheckType() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type OceanVirtualNodeGroupAutoscale struct {
+	AutoscaleHeadroom *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
+}
+
+// OceanVirtualNodeGroupAutoscaleInput is an input type that accepts OceanVirtualNodeGroupAutoscaleArgs and OceanVirtualNodeGroupAutoscaleOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupAutoscaleInput` via:
+//
+//          OceanVirtualNodeGroupAutoscaleArgs{...}
+type OceanVirtualNodeGroupAutoscaleInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupAutoscaleOutput() OceanVirtualNodeGroupAutoscaleOutput
+	ToOceanVirtualNodeGroupAutoscaleOutputWithContext(context.Context) OceanVirtualNodeGroupAutoscaleOutput
+}
+
+type OceanVirtualNodeGroupAutoscaleArgs struct {
+	AutoscaleHeadroom OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
+}
+
+func (OceanVirtualNodeGroupAutoscaleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupAutoscale)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupAutoscaleArgs) ToOceanVirtualNodeGroupAutoscaleOutput() OceanVirtualNodeGroupAutoscaleOutput {
+	return i.ToOceanVirtualNodeGroupAutoscaleOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupAutoscaleArgs) ToOceanVirtualNodeGroupAutoscaleOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleOutput)
+}
+
+// OceanVirtualNodeGroupAutoscaleArrayInput is an input type that accepts OceanVirtualNodeGroupAutoscaleArray and OceanVirtualNodeGroupAutoscaleArrayOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupAutoscaleArrayInput` via:
+//
+//          OceanVirtualNodeGroupAutoscaleArray{ OceanVirtualNodeGroupAutoscaleArgs{...} }
+type OceanVirtualNodeGroupAutoscaleArrayInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupAutoscaleArrayOutput() OceanVirtualNodeGroupAutoscaleArrayOutput
+	ToOceanVirtualNodeGroupAutoscaleArrayOutputWithContext(context.Context) OceanVirtualNodeGroupAutoscaleArrayOutput
+}
+
+type OceanVirtualNodeGroupAutoscaleArray []OceanVirtualNodeGroupAutoscaleInput
+
+func (OceanVirtualNodeGroupAutoscaleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupAutoscale)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupAutoscaleArray) ToOceanVirtualNodeGroupAutoscaleArrayOutput() OceanVirtualNodeGroupAutoscaleArrayOutput {
+	return i.ToOceanVirtualNodeGroupAutoscaleArrayOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupAutoscaleArray) ToOceanVirtualNodeGroupAutoscaleArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleArrayOutput)
+}
+
+type OceanVirtualNodeGroupAutoscaleOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupAutoscaleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupAutoscale)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupAutoscaleOutput) ToOceanVirtualNodeGroupAutoscaleOutput() OceanVirtualNodeGroupAutoscaleOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleOutput) ToOceanVirtualNodeGroupAutoscaleOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleOutput) AutoscaleHeadroom() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscale) *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
+		return v.AutoscaleHeadroom
+	}).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput)
+}
+
+type OceanVirtualNodeGroupAutoscaleArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupAutoscaleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupAutoscale)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupAutoscaleArrayOutput) ToOceanVirtualNodeGroupAutoscaleArrayOutput() OceanVirtualNodeGroupAutoscaleArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleArrayOutput) ToOceanVirtualNodeGroupAutoscaleArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupAutoscaleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanVirtualNodeGroupAutoscale {
+		return vs[0].([]OceanVirtualNodeGroupAutoscale)[vs[1].(int)]
+	}).(OceanVirtualNodeGroupAutoscaleOutput)
+}
+
+type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom struct {
+	// Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// How many GPU cores should be allocated for headroom unit.
+	GpuPerUnit *int `pulumi:"gpuPerUnit"`
+	// Configure the amount of memory (MiB) to allocate the headroom.
+	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
+	// The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+	NumOfUnits int `pulumi:"numOfUnits"`
+}
+
+// OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomInput is an input type that accepts OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs and OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomInput` via:
+//
+//          OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{...}
+type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput
+	ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutputWithContext(context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput
+}
+
+type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs struct {
+	// Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// How many GPU cores should be allocated for headroom unit.
+	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Configure the amount of memory (MiB) to allocate the headroom.
+	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
+	// The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+	NumOfUnits pulumi.IntInput `pulumi:"numOfUnits"`
+}
+
+func (OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput {
+	return i.ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput)
+}
+
+func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+	return i.ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput).ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(ctx)
+}
+
+// OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput is an input type that accepts OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs, OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtr and OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput` via:
+//
+//          OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput
+	ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput
+}
+
+type oceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrType OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs
+
+func OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtr(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput {
+	return (*oceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrType)(v)
+}
+
+func (*oceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom)(nil)).Elem()
+}
+
+func (i *oceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrType) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+	return i.ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrType) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput)
+}
+
+type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+	return o.ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(context.Background())
+}
+
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
+		return &v
+	}).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput)
+}
+
+// Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+}
+
+// How many GPU cores should be allocated for headroom unit.
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
+}
+
+// Configure the amount of memory (MiB) to allocate the headroom.
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+}
+
+// The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
+}
+
+type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) Elem() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
+		return *v
+	}).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput)
+}
+
+// Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuPerUnit
+	}).(pulumi.IntPtrOutput)
+}
+
+// How many GPU cores should be allocated for headroom unit.
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GpuPerUnit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configure the amount of memory (MiB) to allocate the headroom.
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryPerUnit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NumOfUnits
+	}).(pulumi.IntPtrOutput)
+}
+
+type OceanVirtualNodeGroupLabel struct {
+	// Tag Key for Vms in the cluster.
+	Key string `pulumi:"key"`
+	// Tag Value for VMs in the cluster.
+	Value *string `pulumi:"value"`
+}
+
+// OceanVirtualNodeGroupLabelInput is an input type that accepts OceanVirtualNodeGroupLabelArgs and OceanVirtualNodeGroupLabelOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupLabelInput` via:
+//
+//          OceanVirtualNodeGroupLabelArgs{...}
+type OceanVirtualNodeGroupLabelInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupLabelOutput() OceanVirtualNodeGroupLabelOutput
+	ToOceanVirtualNodeGroupLabelOutputWithContext(context.Context) OceanVirtualNodeGroupLabelOutput
+}
+
+type OceanVirtualNodeGroupLabelArgs struct {
+	// Tag Key for Vms in the cluster.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Tag Value for VMs in the cluster.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (OceanVirtualNodeGroupLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupLabel)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupLabelArgs) ToOceanVirtualNodeGroupLabelOutput() OceanVirtualNodeGroupLabelOutput {
+	return i.ToOceanVirtualNodeGroupLabelOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupLabelArgs) ToOceanVirtualNodeGroupLabelOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLabelOutput)
+}
+
+// OceanVirtualNodeGroupLabelArrayInput is an input type that accepts OceanVirtualNodeGroupLabelArray and OceanVirtualNodeGroupLabelArrayOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupLabelArrayInput` via:
+//
+//          OceanVirtualNodeGroupLabelArray{ OceanVirtualNodeGroupLabelArgs{...} }
+type OceanVirtualNodeGroupLabelArrayInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupLabelArrayOutput() OceanVirtualNodeGroupLabelArrayOutput
+	ToOceanVirtualNodeGroupLabelArrayOutputWithContext(context.Context) OceanVirtualNodeGroupLabelArrayOutput
+}
+
+type OceanVirtualNodeGroupLabelArray []OceanVirtualNodeGroupLabelInput
+
+func (OceanVirtualNodeGroupLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupLabel)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupLabelArray) ToOceanVirtualNodeGroupLabelArrayOutput() OceanVirtualNodeGroupLabelArrayOutput {
+	return i.ToOceanVirtualNodeGroupLabelArrayOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupLabelArray) ToOceanVirtualNodeGroupLabelArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLabelArrayOutput)
+}
+
+type OceanVirtualNodeGroupLabelOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupLabel)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupLabelOutput) ToOceanVirtualNodeGroupLabelOutput() OceanVirtualNodeGroupLabelOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLabelOutput) ToOceanVirtualNodeGroupLabelOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLabelOutput {
+	return o
+}
+
+// Tag Key for Vms in the cluster.
+func (o OceanVirtualNodeGroupLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Tag Value for VMs in the cluster.
+func (o OceanVirtualNodeGroupLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type OceanVirtualNodeGroupLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupLabel)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupLabelArrayOutput) ToOceanVirtualNodeGroupLabelArrayOutput() OceanVirtualNodeGroupLabelArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLabelArrayOutput) ToOceanVirtualNodeGroupLabelArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLabelArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLabelArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanVirtualNodeGroupLabel {
+		return vs[0].([]OceanVirtualNodeGroupLabel)[vs[1].(int)]
+	}).(OceanVirtualNodeGroupLabelOutput)
+}
+
+type OceanVirtualNodeGroupLaunchSpecification struct {
+	// Specify OS disk specification other than default.
+	OsDisk *OceanVirtualNodeGroupLaunchSpecificationOsDisk `pulumi:"osDisk"`
+	// Additional key-value pairs to be used to tag the VMs in the virtual node group.
+	Tags []OceanVirtualNodeGroupLaunchSpecificationTag `pulumi:"tags"`
+}
+
+// OceanVirtualNodeGroupLaunchSpecificationInput is an input type that accepts OceanVirtualNodeGroupLaunchSpecificationArgs and OceanVirtualNodeGroupLaunchSpecificationOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupLaunchSpecificationInput` via:
+//
+//          OceanVirtualNodeGroupLaunchSpecificationArgs{...}
+type OceanVirtualNodeGroupLaunchSpecificationInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupLaunchSpecificationOutput() OceanVirtualNodeGroupLaunchSpecificationOutput
+	ToOceanVirtualNodeGroupLaunchSpecificationOutputWithContext(context.Context) OceanVirtualNodeGroupLaunchSpecificationOutput
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationArgs struct {
+	// Specify OS disk specification other than default.
+	OsDisk OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrInput `pulumi:"osDisk"`
+	// Additional key-value pairs to be used to tag the VMs in the virtual node group.
+	Tags OceanVirtualNodeGroupLaunchSpecificationTagArrayInput `pulumi:"tags"`
+}
+
+func (OceanVirtualNodeGroupLaunchSpecificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupLaunchSpecification)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationArgs) ToOceanVirtualNodeGroupLaunchSpecificationOutput() OceanVirtualNodeGroupLaunchSpecificationOutput {
+	return i.ToOceanVirtualNodeGroupLaunchSpecificationOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationArgs) ToOceanVirtualNodeGroupLaunchSpecificationOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationOutput)
+}
+
+// OceanVirtualNodeGroupLaunchSpecificationArrayInput is an input type that accepts OceanVirtualNodeGroupLaunchSpecificationArray and OceanVirtualNodeGroupLaunchSpecificationArrayOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupLaunchSpecificationArrayInput` via:
+//
+//          OceanVirtualNodeGroupLaunchSpecificationArray{ OceanVirtualNodeGroupLaunchSpecificationArgs{...} }
+type OceanVirtualNodeGroupLaunchSpecificationArrayInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupLaunchSpecificationArrayOutput() OceanVirtualNodeGroupLaunchSpecificationArrayOutput
+	ToOceanVirtualNodeGroupLaunchSpecificationArrayOutputWithContext(context.Context) OceanVirtualNodeGroupLaunchSpecificationArrayOutput
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationArray []OceanVirtualNodeGroupLaunchSpecificationInput
+
+func (OceanVirtualNodeGroupLaunchSpecificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupLaunchSpecification)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationArray) ToOceanVirtualNodeGroupLaunchSpecificationArrayOutput() OceanVirtualNodeGroupLaunchSpecificationArrayOutput {
+	return i.ToOceanVirtualNodeGroupLaunchSpecificationArrayOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationArray) ToOceanVirtualNodeGroupLaunchSpecificationArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationArrayOutput)
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupLaunchSpecificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupLaunchSpecification)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOutput) ToOceanVirtualNodeGroupLaunchSpecificationOutput() OceanVirtualNodeGroupLaunchSpecificationOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOutput) ToOceanVirtualNodeGroupLaunchSpecificationOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOutput {
+	return o
+}
+
+// Specify OS disk specification other than default.
+func (o OceanVirtualNodeGroupLaunchSpecificationOutput) OsDisk() OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecification) *OceanVirtualNodeGroupLaunchSpecificationOsDisk {
+		return v.OsDisk
+	}).(OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput)
+}
+
+// Additional key-value pairs to be used to tag the VMs in the virtual node group.
+func (o OceanVirtualNodeGroupLaunchSpecificationOutput) Tags() OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecification) []OceanVirtualNodeGroupLaunchSpecificationTag {
+		return v.Tags
+	}).(OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput)
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupLaunchSpecificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupLaunchSpecification)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationArrayOutput) ToOceanVirtualNodeGroupLaunchSpecificationArrayOutput() OceanVirtualNodeGroupLaunchSpecificationArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationArrayOutput) ToOceanVirtualNodeGroupLaunchSpecificationArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupLaunchSpecificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanVirtualNodeGroupLaunchSpecification {
+		return vs[0].([]OceanVirtualNodeGroupLaunchSpecification)[vs[1].(int)]
+	}).(OceanVirtualNodeGroupLaunchSpecificationOutput)
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationOsDisk struct {
+	// The size of the OS disk in GB, Required if dataDisks is specified.
+	SizeGb int `pulumi:"sizeGb"`
+	// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+	Type *string `pulumi:"type"`
+}
+
+// OceanVirtualNodeGroupLaunchSpecificationOsDiskInput is an input type that accepts OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs and OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupLaunchSpecificationOsDiskInput` via:
+//
+//          OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs{...}
+type OceanVirtualNodeGroupLaunchSpecificationOsDiskInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupLaunchSpecificationOsDiskOutput() OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput
+	ToOceanVirtualNodeGroupLaunchSpecificationOsDiskOutputWithContext(context.Context) OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs struct {
+	// The size of the OS disk in GB, Required if dataDisks is specified.
+	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
+	// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupLaunchSpecificationOsDisk)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskOutput() OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput {
+	return i.ToOceanVirtualNodeGroupLaunchSpecificationOsDiskOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput)
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput() OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
+	return i.ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput).ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(ctx)
+}
+
+// OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrInput is an input type that accepts OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs, OceanVirtualNodeGroupLaunchSpecificationOsDiskPtr and OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrInput` via:
+//
+//          OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput() OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput
+	ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(context.Context) OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput
+}
+
+type oceanVirtualNodeGroupLaunchSpecificationOsDiskPtrType OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs
+
+func OceanVirtualNodeGroupLaunchSpecificationOsDiskPtr(v *OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrInput {
+	return (*oceanVirtualNodeGroupLaunchSpecificationOsDiskPtrType)(v)
+}
+
+func (*oceanVirtualNodeGroupLaunchSpecificationOsDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanVirtualNodeGroupLaunchSpecificationOsDisk)(nil)).Elem()
+}
+
+func (i *oceanVirtualNodeGroupLaunchSpecificationOsDiskPtrType) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput() OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
+	return i.ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanVirtualNodeGroupLaunchSpecificationOsDiskPtrType) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput)
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupLaunchSpecificationOsDisk)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskOutput() OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput() OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
+	return o.ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationOsDisk) *OceanVirtualNodeGroupLaunchSpecificationOsDisk {
+		return &v
+	}).(OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput)
+}
+
+// The size of the OS disk in GB, Required if dataDisks is specified.
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) SizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationOsDisk) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationOsDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanVirtualNodeGroupLaunchSpecificationOsDisk)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput() OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) Elem() OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroupLaunchSpecificationOsDisk) OceanVirtualNodeGroupLaunchSpecificationOsDisk {
+		return *v
+	}).(OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput)
+}
+
+// The size of the OS disk in GB, Required if dataDisks is specified.
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroupLaunchSpecificationOsDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroupLaunchSpecificationOsDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationTag struct {
+	// Tag Key for Vms in the cluster.
+	Key *string `pulumi:"key"`
+	// Tag Value for VMs in the cluster.
+	Value *string `pulumi:"value"`
+}
+
+// OceanVirtualNodeGroupLaunchSpecificationTagInput is an input type that accepts OceanVirtualNodeGroupLaunchSpecificationTagArgs and OceanVirtualNodeGroupLaunchSpecificationTagOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupLaunchSpecificationTagInput` via:
+//
+//          OceanVirtualNodeGroupLaunchSpecificationTagArgs{...}
+type OceanVirtualNodeGroupLaunchSpecificationTagInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupLaunchSpecificationTagOutput() OceanVirtualNodeGroupLaunchSpecificationTagOutput
+	ToOceanVirtualNodeGroupLaunchSpecificationTagOutputWithContext(context.Context) OceanVirtualNodeGroupLaunchSpecificationTagOutput
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationTagArgs struct {
+	// Tag Key for Vms in the cluster.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Tag Value for VMs in the cluster.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (OceanVirtualNodeGroupLaunchSpecificationTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupLaunchSpecificationTag)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationTagArgs) ToOceanVirtualNodeGroupLaunchSpecificationTagOutput() OceanVirtualNodeGroupLaunchSpecificationTagOutput {
+	return i.ToOceanVirtualNodeGroupLaunchSpecificationTagOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationTagArgs) ToOceanVirtualNodeGroupLaunchSpecificationTagOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationTagOutput)
+}
+
+// OceanVirtualNodeGroupLaunchSpecificationTagArrayInput is an input type that accepts OceanVirtualNodeGroupLaunchSpecificationTagArray and OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupLaunchSpecificationTagArrayInput` via:
+//
+//          OceanVirtualNodeGroupLaunchSpecificationTagArray{ OceanVirtualNodeGroupLaunchSpecificationTagArgs{...} }
+type OceanVirtualNodeGroupLaunchSpecificationTagArrayInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupLaunchSpecificationTagArrayOutput() OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput
+	ToOceanVirtualNodeGroupLaunchSpecificationTagArrayOutputWithContext(context.Context) OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationTagArray []OceanVirtualNodeGroupLaunchSpecificationTagInput
+
+func (OceanVirtualNodeGroupLaunchSpecificationTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupLaunchSpecificationTag)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationTagArray) ToOceanVirtualNodeGroupLaunchSpecificationTagArrayOutput() OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput {
+	return i.ToOceanVirtualNodeGroupLaunchSpecificationTagArrayOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupLaunchSpecificationTagArray) ToOceanVirtualNodeGroupLaunchSpecificationTagArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput)
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationTagOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupLaunchSpecificationTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupLaunchSpecificationTag)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationTagOutput) ToOceanVirtualNodeGroupLaunchSpecificationTagOutput() OceanVirtualNodeGroupLaunchSpecificationTagOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationTagOutput) ToOceanVirtualNodeGroupLaunchSpecificationTagOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationTagOutput {
+	return o
+}
+
+// Tag Key for Vms in the cluster.
+func (o OceanVirtualNodeGroupLaunchSpecificationTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Tag Value for VMs in the cluster.
+func (o OceanVirtualNodeGroupLaunchSpecificationTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupLaunchSpecificationTag)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput) ToOceanVirtualNodeGroupLaunchSpecificationTagArrayOutput() OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput) ToOceanVirtualNodeGroupLaunchSpecificationTagArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupLaunchSpecificationTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanVirtualNodeGroupLaunchSpecificationTag {
+		return vs[0].([]OceanVirtualNodeGroupLaunchSpecificationTag)[vs[1].(int)]
+	}).(OceanVirtualNodeGroupLaunchSpecificationTagOutput)
+}
+
+type OceanVirtualNodeGroupResourceLimit struct {
+	// Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.
+	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
+}
+
+// OceanVirtualNodeGroupResourceLimitInput is an input type that accepts OceanVirtualNodeGroupResourceLimitArgs and OceanVirtualNodeGroupResourceLimitOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupResourceLimitInput` via:
+//
+//          OceanVirtualNodeGroupResourceLimitArgs{...}
+type OceanVirtualNodeGroupResourceLimitInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupResourceLimitOutput() OceanVirtualNodeGroupResourceLimitOutput
+	ToOceanVirtualNodeGroupResourceLimitOutputWithContext(context.Context) OceanVirtualNodeGroupResourceLimitOutput
+}
+
+type OceanVirtualNodeGroupResourceLimitArgs struct {
+	// Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.
+	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
+}
+
+func (OceanVirtualNodeGroupResourceLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupResourceLimit)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupResourceLimitArgs) ToOceanVirtualNodeGroupResourceLimitOutput() OceanVirtualNodeGroupResourceLimitOutput {
+	return i.ToOceanVirtualNodeGroupResourceLimitOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupResourceLimitArgs) ToOceanVirtualNodeGroupResourceLimitOutputWithContext(ctx context.Context) OceanVirtualNodeGroupResourceLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupResourceLimitOutput)
+}
+
+// OceanVirtualNodeGroupResourceLimitArrayInput is an input type that accepts OceanVirtualNodeGroupResourceLimitArray and OceanVirtualNodeGroupResourceLimitArrayOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupResourceLimitArrayInput` via:
+//
+//          OceanVirtualNodeGroupResourceLimitArray{ OceanVirtualNodeGroupResourceLimitArgs{...} }
+type OceanVirtualNodeGroupResourceLimitArrayInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupResourceLimitArrayOutput() OceanVirtualNodeGroupResourceLimitArrayOutput
+	ToOceanVirtualNodeGroupResourceLimitArrayOutputWithContext(context.Context) OceanVirtualNodeGroupResourceLimitArrayOutput
+}
+
+type OceanVirtualNodeGroupResourceLimitArray []OceanVirtualNodeGroupResourceLimitInput
+
+func (OceanVirtualNodeGroupResourceLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupResourceLimit)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupResourceLimitArray) ToOceanVirtualNodeGroupResourceLimitArrayOutput() OceanVirtualNodeGroupResourceLimitArrayOutput {
+	return i.ToOceanVirtualNodeGroupResourceLimitArrayOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupResourceLimitArray) ToOceanVirtualNodeGroupResourceLimitArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupResourceLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupResourceLimitArrayOutput)
+}
+
+type OceanVirtualNodeGroupResourceLimitOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupResourceLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupResourceLimit)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupResourceLimitOutput) ToOceanVirtualNodeGroupResourceLimitOutput() OceanVirtualNodeGroupResourceLimitOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupResourceLimitOutput) ToOceanVirtualNodeGroupResourceLimitOutputWithContext(ctx context.Context) OceanVirtualNodeGroupResourceLimitOutput {
+	return o
+}
+
+// Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.
+func (o OceanVirtualNodeGroupResourceLimitOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupResourceLimit) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
+}
+
+type OceanVirtualNodeGroupResourceLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupResourceLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupResourceLimit)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupResourceLimitArrayOutput) ToOceanVirtualNodeGroupResourceLimitArrayOutput() OceanVirtualNodeGroupResourceLimitArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupResourceLimitArrayOutput) ToOceanVirtualNodeGroupResourceLimitArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupResourceLimitArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupResourceLimitArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupResourceLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanVirtualNodeGroupResourceLimit {
+		return vs[0].([]OceanVirtualNodeGroupResourceLimit)[vs[1].(int)]
+	}).(OceanVirtualNodeGroupResourceLimitOutput)
+}
+
+type OceanVirtualNodeGroupTaint struct {
+	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
+	Effect string `pulumi:"effect"`
+	// Tag Key for Vms in the cluster.
+	Key string `pulumi:"key"`
+	// Tag Value for VMs in the cluster.
+	Value string `pulumi:"value"`
+}
+
+// OceanVirtualNodeGroupTaintInput is an input type that accepts OceanVirtualNodeGroupTaintArgs and OceanVirtualNodeGroupTaintOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupTaintInput` via:
+//
+//          OceanVirtualNodeGroupTaintArgs{...}
+type OceanVirtualNodeGroupTaintInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupTaintOutput() OceanVirtualNodeGroupTaintOutput
+	ToOceanVirtualNodeGroupTaintOutputWithContext(context.Context) OceanVirtualNodeGroupTaintOutput
+}
+
+type OceanVirtualNodeGroupTaintArgs struct {
+	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// Tag Key for Vms in the cluster.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Tag Value for VMs in the cluster.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (OceanVirtualNodeGroupTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupTaint)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupTaintArgs) ToOceanVirtualNodeGroupTaintOutput() OceanVirtualNodeGroupTaintOutput {
+	return i.ToOceanVirtualNodeGroupTaintOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupTaintArgs) ToOceanVirtualNodeGroupTaintOutputWithContext(ctx context.Context) OceanVirtualNodeGroupTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupTaintOutput)
+}
+
+// OceanVirtualNodeGroupTaintArrayInput is an input type that accepts OceanVirtualNodeGroupTaintArray and OceanVirtualNodeGroupTaintArrayOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupTaintArrayInput` via:
+//
+//          OceanVirtualNodeGroupTaintArray{ OceanVirtualNodeGroupTaintArgs{...} }
+type OceanVirtualNodeGroupTaintArrayInput interface {
+	pulumi.Input
+
+	ToOceanVirtualNodeGroupTaintArrayOutput() OceanVirtualNodeGroupTaintArrayOutput
+	ToOceanVirtualNodeGroupTaintArrayOutputWithContext(context.Context) OceanVirtualNodeGroupTaintArrayOutput
+}
+
+type OceanVirtualNodeGroupTaintArray []OceanVirtualNodeGroupTaintInput
+
+func (OceanVirtualNodeGroupTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupTaint)(nil)).Elem()
+}
+
+func (i OceanVirtualNodeGroupTaintArray) ToOceanVirtualNodeGroupTaintArrayOutput() OceanVirtualNodeGroupTaintArrayOutput {
+	return i.ToOceanVirtualNodeGroupTaintArrayOutputWithContext(context.Background())
+}
+
+func (i OceanVirtualNodeGroupTaintArray) ToOceanVirtualNodeGroupTaintArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupTaintArrayOutput)
+}
+
+type OceanVirtualNodeGroupTaintOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVirtualNodeGroupTaint)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupTaintOutput) ToOceanVirtualNodeGroupTaintOutput() OceanVirtualNodeGroupTaintOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupTaintOutput) ToOceanVirtualNodeGroupTaintOutputWithContext(ctx context.Context) OceanVirtualNodeGroupTaintOutput {
+	return o
+}
+
+// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
+func (o OceanVirtualNodeGroupTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// Tag Key for Vms in the cluster.
+func (o OceanVirtualNodeGroupTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Tag Value for VMs in the cluster.
+func (o OceanVirtualNodeGroupTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type OceanVirtualNodeGroupTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanVirtualNodeGroupTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupTaint)(nil)).Elem()
+}
+
+func (o OceanVirtualNodeGroupTaintArrayOutput) ToOceanVirtualNodeGroupTaintArrayOutput() OceanVirtualNodeGroupTaintArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupTaintArrayOutput) ToOceanVirtualNodeGroupTaintArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupTaintArrayOutput {
+	return o
+}
+
+func (o OceanVirtualNodeGroupTaintArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanVirtualNodeGroupTaint {
+		return vs[0].([]OceanVirtualNodeGroupTaint)[vs[1].(int)]
+	}).(OceanVirtualNodeGroupTaintOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ElastigroupHealthCheckOutput{})
 	pulumi.RegisterOutputType(ElastigroupHealthCheckPtrOutput{})
@@ -2884,4 +3856,20 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigOutput{})
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigPtrOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleArrayOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupLabelOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupLabelArrayOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupLaunchSpecificationOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupLaunchSpecificationArrayOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupLaunchSpecificationTagOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupResourceLimitOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupResourceLimitArrayOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupTaintOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupTaintArrayOutput{})
 }

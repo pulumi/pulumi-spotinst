@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "spotinst:azure/elastigroup:Elastigroup":
 		r, err = NewElastigroup(ctx, name, nil, pulumi.URN_(urn))
+	case "spotinst:azure/ocean:Ocean":
+		r, err = NewOcean(ctx, name, nil, pulumi.URN_(urn))
+	case "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup":
+		r, err = NewOceanVirtualNodeGroup(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,6 +42,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"spotinst",
 		"azure/elastigroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"azure/ocean",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"azure/oceanVirtualNodeGroup",
 		&module{version},
 	)
 }

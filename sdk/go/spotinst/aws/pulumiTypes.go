@@ -3011,8 +3011,9 @@ type ElastigroupIntegrationEcs struct {
 	// Specifies whether the auto scaling feature is enabled.
 	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
 	// Determines whether to scale down non-service tasks.
-	AutoscaleScaleDownNonServiceTasks *bool                           `pulumi:"autoscaleScaleDownNonServiceTasks"`
-	Batch                             *ElastigroupIntegrationEcsBatch `pulumi:"batch"`
+	AutoscaleScaleDownNonServiceTasks *bool `pulumi:"autoscaleScaleDownNonServiceTasks"`
+	// Batch configuration object:
+	Batch *ElastigroupIntegrationEcsBatch `pulumi:"batch"`
 	// The name of the EC2 Container Service cluster.
 	ClusterName string `pulumi:"clusterName"`
 }
@@ -3042,8 +3043,9 @@ type ElastigroupIntegrationEcsArgs struct {
 	// Specifies whether the auto scaling feature is enabled.
 	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
 	// Determines whether to scale down non-service tasks.
-	AutoscaleScaleDownNonServiceTasks pulumi.BoolPtrInput                    `pulumi:"autoscaleScaleDownNonServiceTasks"`
-	Batch                             ElastigroupIntegrationEcsBatchPtrInput `pulumi:"batch"`
+	AutoscaleScaleDownNonServiceTasks pulumi.BoolPtrInput `pulumi:"autoscaleScaleDownNonServiceTasks"`
+	// Batch configuration object:
+	Batch ElastigroupIntegrationEcsBatchPtrInput `pulumi:"batch"`
 	// The name of the EC2 Container Service cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 }
@@ -3164,6 +3166,7 @@ func (o ElastigroupIntegrationEcsOutput) AutoscaleScaleDownNonServiceTasks() pul
 	return o.ApplyT(func(v ElastigroupIntegrationEcs) *bool { return v.AutoscaleScaleDownNonServiceTasks }).(pulumi.BoolPtrOutput)
 }
 
+// Batch configuration object:
 func (o ElastigroupIntegrationEcsOutput) Batch() ElastigroupIntegrationEcsBatchPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsBatch { return v.Batch }).(ElastigroupIntegrationEcsBatchPtrOutput)
 }
@@ -3261,6 +3264,7 @@ func (o ElastigroupIntegrationEcsPtrOutput) AutoscaleScaleDownNonServiceTasks() 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Batch configuration object:
 func (o ElastigroupIntegrationEcsPtrOutput) Batch() ElastigroupIntegrationEcsBatchPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationEcs) *ElastigroupIntegrationEcsBatch {
 		if v == nil {
@@ -3709,6 +3713,7 @@ func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi
 }
 
 type ElastigroupIntegrationEcsBatch struct {
+	// Array of strings.
 	JobQueueNames []string `pulumi:"jobQueueNames"`
 }
 
@@ -3724,6 +3729,7 @@ type ElastigroupIntegrationEcsBatchInput interface {
 }
 
 type ElastigroupIntegrationEcsBatchArgs struct {
+	// Array of strings.
 	JobQueueNames pulumi.StringArrayInput `pulumi:"jobQueueNames"`
 }
 
@@ -3803,6 +3809,8 @@ func (o ElastigroupIntegrationEcsBatchOutput) ToElastigroupIntegrationEcsBatchPt
 		return &v
 	}).(ElastigroupIntegrationEcsBatchPtrOutput)
 }
+
+// Array of strings.
 func (o ElastigroupIntegrationEcsBatchOutput) JobQueueNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationEcsBatch) []string { return v.JobQueueNames }).(pulumi.StringArrayOutput)
 }
@@ -3825,6 +3833,7 @@ func (o ElastigroupIntegrationEcsBatchPtrOutput) Elem() ElastigroupIntegrationEc
 	return o.ApplyT(func(v *ElastigroupIntegrationEcsBatch) ElastigroupIntegrationEcsBatch { return *v }).(ElastigroupIntegrationEcsBatchOutput)
 }
 
+// Array of strings.
 func (o ElastigroupIntegrationEcsBatchPtrOutput) JobQueueNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationEcsBatch) []string {
 		if v == nil {
@@ -9452,6 +9461,316 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ShouldHandl
 		}
 		return v.ShouldHandleAllBatches
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ManagedInstanceBlockDeviceMapping struct {
+	// The name of the device to mount.
+	DeviceName string                                `pulumi:"deviceName"`
+	Ebs        *ManagedInstanceBlockDeviceMappingEbs `pulumi:"ebs"`
+}
+
+// ManagedInstanceBlockDeviceMappingInput is an input type that accepts ManagedInstanceBlockDeviceMappingArgs and ManagedInstanceBlockDeviceMappingOutput values.
+// You can construct a concrete instance of `ManagedInstanceBlockDeviceMappingInput` via:
+//
+//          ManagedInstanceBlockDeviceMappingArgs{...}
+type ManagedInstanceBlockDeviceMappingInput interface {
+	pulumi.Input
+
+	ToManagedInstanceBlockDeviceMappingOutput() ManagedInstanceBlockDeviceMappingOutput
+	ToManagedInstanceBlockDeviceMappingOutputWithContext(context.Context) ManagedInstanceBlockDeviceMappingOutput
+}
+
+type ManagedInstanceBlockDeviceMappingArgs struct {
+	// The name of the device to mount.
+	DeviceName pulumi.StringInput                           `pulumi:"deviceName"`
+	Ebs        ManagedInstanceBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
+}
+
+func (ManagedInstanceBlockDeviceMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceBlockDeviceMapping)(nil)).Elem()
+}
+
+func (i ManagedInstanceBlockDeviceMappingArgs) ToManagedInstanceBlockDeviceMappingOutput() ManagedInstanceBlockDeviceMappingOutput {
+	return i.ToManagedInstanceBlockDeviceMappingOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceBlockDeviceMappingArgs) ToManagedInstanceBlockDeviceMappingOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceBlockDeviceMappingOutput)
+}
+
+// ManagedInstanceBlockDeviceMappingArrayInput is an input type that accepts ManagedInstanceBlockDeviceMappingArray and ManagedInstanceBlockDeviceMappingArrayOutput values.
+// You can construct a concrete instance of `ManagedInstanceBlockDeviceMappingArrayInput` via:
+//
+//          ManagedInstanceBlockDeviceMappingArray{ ManagedInstanceBlockDeviceMappingArgs{...} }
+type ManagedInstanceBlockDeviceMappingArrayInput interface {
+	pulumi.Input
+
+	ToManagedInstanceBlockDeviceMappingArrayOutput() ManagedInstanceBlockDeviceMappingArrayOutput
+	ToManagedInstanceBlockDeviceMappingArrayOutputWithContext(context.Context) ManagedInstanceBlockDeviceMappingArrayOutput
+}
+
+type ManagedInstanceBlockDeviceMappingArray []ManagedInstanceBlockDeviceMappingInput
+
+func (ManagedInstanceBlockDeviceMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedInstanceBlockDeviceMapping)(nil)).Elem()
+}
+
+func (i ManagedInstanceBlockDeviceMappingArray) ToManagedInstanceBlockDeviceMappingArrayOutput() ManagedInstanceBlockDeviceMappingArrayOutput {
+	return i.ToManagedInstanceBlockDeviceMappingArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceBlockDeviceMappingArray) ToManagedInstanceBlockDeviceMappingArrayOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceBlockDeviceMappingArrayOutput)
+}
+
+type ManagedInstanceBlockDeviceMappingOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceBlockDeviceMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceBlockDeviceMapping)(nil)).Elem()
+}
+
+func (o ManagedInstanceBlockDeviceMappingOutput) ToManagedInstanceBlockDeviceMappingOutput() ManagedInstanceBlockDeviceMappingOutput {
+	return o
+}
+
+func (o ManagedInstanceBlockDeviceMappingOutput) ToManagedInstanceBlockDeviceMappingOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingOutput {
+	return o
+}
+
+// The name of the device to mount.
+func (o ManagedInstanceBlockDeviceMappingOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMapping) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+func (o ManagedInstanceBlockDeviceMappingOutput) Ebs() ManagedInstanceBlockDeviceMappingEbsPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMapping) *ManagedInstanceBlockDeviceMappingEbs { return v.Ebs }).(ManagedInstanceBlockDeviceMappingEbsPtrOutput)
+}
+
+type ManagedInstanceBlockDeviceMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceBlockDeviceMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedInstanceBlockDeviceMapping)(nil)).Elem()
+}
+
+func (o ManagedInstanceBlockDeviceMappingArrayOutput) ToManagedInstanceBlockDeviceMappingArrayOutput() ManagedInstanceBlockDeviceMappingArrayOutput {
+	return o
+}
+
+func (o ManagedInstanceBlockDeviceMappingArrayOutput) ToManagedInstanceBlockDeviceMappingArrayOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingArrayOutput {
+	return o
+}
+
+func (o ManagedInstanceBlockDeviceMappingArrayOutput) Index(i pulumi.IntInput) ManagedInstanceBlockDeviceMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstanceBlockDeviceMapping {
+		return vs[0].([]ManagedInstanceBlockDeviceMapping)[vs[1].(int)]
+	}).(ManagedInstanceBlockDeviceMappingOutput)
+}
+
+type ManagedInstanceBlockDeviceMappingEbs struct {
+	// Whether the volume should be destroyed on instance termination.
+	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
+	// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
+	Iops *int `pulumi:"iops"`
+	// The amount of data transferred to or from a storage device per second. Valid only if `volumeType` is set to `"gp3"`.
+	Throughput *int `pulumi:"throughput"`
+	// The size of the volume in gigabytes.
+	VolumeSize *int `pulumi:"volumeSize"`
+	// The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
+	VolumeType *string `pulumi:"volumeType"`
+}
+
+// ManagedInstanceBlockDeviceMappingEbsInput is an input type that accepts ManagedInstanceBlockDeviceMappingEbsArgs and ManagedInstanceBlockDeviceMappingEbsOutput values.
+// You can construct a concrete instance of `ManagedInstanceBlockDeviceMappingEbsInput` via:
+//
+//          ManagedInstanceBlockDeviceMappingEbsArgs{...}
+type ManagedInstanceBlockDeviceMappingEbsInput interface {
+	pulumi.Input
+
+	ToManagedInstanceBlockDeviceMappingEbsOutput() ManagedInstanceBlockDeviceMappingEbsOutput
+	ToManagedInstanceBlockDeviceMappingEbsOutputWithContext(context.Context) ManagedInstanceBlockDeviceMappingEbsOutput
+}
+
+type ManagedInstanceBlockDeviceMappingEbsArgs struct {
+	// Whether the volume should be destroyed on instance termination.
+	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
+	// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The amount of data transferred to or from a storage device per second. Valid only if `volumeType` is set to `"gp3"`.
+	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
+	// The size of the volume in gigabytes.
+	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
+	// The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (ManagedInstanceBlockDeviceMappingEbsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceBlockDeviceMappingEbs)(nil)).Elem()
+}
+
+func (i ManagedInstanceBlockDeviceMappingEbsArgs) ToManagedInstanceBlockDeviceMappingEbsOutput() ManagedInstanceBlockDeviceMappingEbsOutput {
+	return i.ToManagedInstanceBlockDeviceMappingEbsOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceBlockDeviceMappingEbsArgs) ToManagedInstanceBlockDeviceMappingEbsOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingEbsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceBlockDeviceMappingEbsOutput)
+}
+
+func (i ManagedInstanceBlockDeviceMappingEbsArgs) ToManagedInstanceBlockDeviceMappingEbsPtrOutput() ManagedInstanceBlockDeviceMappingEbsPtrOutput {
+	return i.ToManagedInstanceBlockDeviceMappingEbsPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceBlockDeviceMappingEbsArgs) ToManagedInstanceBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingEbsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceBlockDeviceMappingEbsOutput).ToManagedInstanceBlockDeviceMappingEbsPtrOutputWithContext(ctx)
+}
+
+// ManagedInstanceBlockDeviceMappingEbsPtrInput is an input type that accepts ManagedInstanceBlockDeviceMappingEbsArgs, ManagedInstanceBlockDeviceMappingEbsPtr and ManagedInstanceBlockDeviceMappingEbsPtrOutput values.
+// You can construct a concrete instance of `ManagedInstanceBlockDeviceMappingEbsPtrInput` via:
+//
+//          ManagedInstanceBlockDeviceMappingEbsArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedInstanceBlockDeviceMappingEbsPtrInput interface {
+	pulumi.Input
+
+	ToManagedInstanceBlockDeviceMappingEbsPtrOutput() ManagedInstanceBlockDeviceMappingEbsPtrOutput
+	ToManagedInstanceBlockDeviceMappingEbsPtrOutputWithContext(context.Context) ManagedInstanceBlockDeviceMappingEbsPtrOutput
+}
+
+type managedInstanceBlockDeviceMappingEbsPtrType ManagedInstanceBlockDeviceMappingEbsArgs
+
+func ManagedInstanceBlockDeviceMappingEbsPtr(v *ManagedInstanceBlockDeviceMappingEbsArgs) ManagedInstanceBlockDeviceMappingEbsPtrInput {
+	return (*managedInstanceBlockDeviceMappingEbsPtrType)(v)
+}
+
+func (*managedInstanceBlockDeviceMappingEbsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedInstanceBlockDeviceMappingEbs)(nil)).Elem()
+}
+
+func (i *managedInstanceBlockDeviceMappingEbsPtrType) ToManagedInstanceBlockDeviceMappingEbsPtrOutput() ManagedInstanceBlockDeviceMappingEbsPtrOutput {
+	return i.ToManagedInstanceBlockDeviceMappingEbsPtrOutputWithContext(context.Background())
+}
+
+func (i *managedInstanceBlockDeviceMappingEbsPtrType) ToManagedInstanceBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingEbsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceBlockDeviceMappingEbsPtrOutput)
+}
+
+type ManagedInstanceBlockDeviceMappingEbsOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceBlockDeviceMappingEbsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceBlockDeviceMappingEbs)(nil)).Elem()
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) ToManagedInstanceBlockDeviceMappingEbsOutput() ManagedInstanceBlockDeviceMappingEbsOutput {
+	return o
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) ToManagedInstanceBlockDeviceMappingEbsOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingEbsOutput {
+	return o
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) ToManagedInstanceBlockDeviceMappingEbsPtrOutput() ManagedInstanceBlockDeviceMappingEbsPtrOutput {
+	return o.ToManagedInstanceBlockDeviceMappingEbsPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) ToManagedInstanceBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingEbsPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *ManagedInstanceBlockDeviceMappingEbs {
+		return &v
+	}).(ManagedInstanceBlockDeviceMappingEbsPtrOutput)
+}
+
+// Whether the volume should be destroyed on instance termination.
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
+}
+
+// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The amount of data transferred to or from a storage device per second. Valid only if `volumeType` is set to `"gp3"`.
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *int { return v.Throughput }).(pulumi.IntPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) VolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
+}
+
+// The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type ManagedInstanceBlockDeviceMappingEbsPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceBlockDeviceMappingEbsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedInstanceBlockDeviceMappingEbs)(nil)).Elem()
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) ToManagedInstanceBlockDeviceMappingEbsPtrOutput() ManagedInstanceBlockDeviceMappingEbsPtrOutput {
+	return o
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) ToManagedInstanceBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingEbsPtrOutput {
+	return o
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Elem() ManagedInstanceBlockDeviceMappingEbsOutput {
+	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) ManagedInstanceBlockDeviceMappingEbs { return *v }).(ManagedInstanceBlockDeviceMappingEbsOutput)
+}
+
+// Whether the volume should be destroyed on instance termination.
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOnTermination
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Iops
+	}).(pulumi.IntPtrOutput)
+}
+
+// The amount of data transferred to or from a storage device per second. Valid only if `volumeType` is set to `"gp3"`.
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Throughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) VolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeType
+	}).(pulumi.StringPtrOutput)
 }
 
 type ManagedInstanceIntegrationRoute53 struct {
@@ -16346,6 +16665,10 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput{})
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceBlockDeviceMappingOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceBlockDeviceMappingArrayOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceBlockDeviceMappingEbsOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceBlockDeviceMappingEbsPtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceIntegrationRoute53Output{})
 	pulumi.RegisterOutputType(ManagedInstanceIntegrationRoute53PtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceIntegrationRoute53DomainOutput{})

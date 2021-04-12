@@ -493,6 +493,9 @@ export namespace aws {
          * Determines whether to scale down non-service tasks.
          */
         autoscaleScaleDownNonServiceTasks?: boolean;
+        /**
+         * Batch configuration object:
+         */
         batch?: outputs.aws.ElastigroupIntegrationEcsBatch;
         /**
          * The name of the EC2 Container Service cluster.
@@ -536,6 +539,9 @@ export namespace aws {
     }
 
     export interface ElastigroupIntegrationEcsBatch {
+        /**
+         * Array of strings.
+         */
         jobQueueNames: string[];
     }
 
@@ -1272,6 +1278,37 @@ export namespace aws {
          * Indicator if the action should apply to all batches of the deployment or only the latest batch.
          */
         shouldHandleAllBatches?: boolean;
+    }
+
+    export interface ManagedInstanceBlockDeviceMapping {
+        /**
+         * The name of the device to mount.
+         */
+        deviceName: string;
+        ebs?: outputs.aws.ManagedInstanceBlockDeviceMappingEbs;
+    }
+
+    export interface ManagedInstanceBlockDeviceMappingEbs {
+        /**
+         * Whether the volume should be destroyed on instance termination.
+         */
+        deleteOnTermination: boolean;
+        /**
+         * The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
+         */
+        iops?: number;
+        /**
+         * The amount of data transferred to or from a storage device per second. Valid only if `volumeType` is set to `"gp3"`.
+         */
+        throughput?: number;
+        /**
+         * The size of the volume in gigabytes.
+         */
+        volumeSize?: number;
+        /**
+         * The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
+         */
+        volumeType: string;
     }
 
     export interface ManagedInstanceIntegrationRoute53 {
@@ -2620,6 +2657,95 @@ export namespace azure {
          * Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
          */
         healthCheckType?: string;
+    }
+
+    export interface OceanVirtualNodeGroupAutoscale {
+        autoscaleHeadroom?: outputs.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom;
+    }
+
+    export interface OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
+        /**
+         * Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: number;
+        /**
+         * How many GPU cores should be allocated for headroom unit.
+         */
+        gpuPerUnit?: number;
+        /**
+         * Configure the amount of memory (MiB) to allocate the headroom.
+         */
+        memoryPerUnit?: number;
+        /**
+         * The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
+         */
+        numOfUnits: number;
+    }
+
+    export interface OceanVirtualNodeGroupLabel {
+        /**
+         * Tag Key for Vms in the cluster.
+         */
+        key: string;
+        /**
+         * Tag Value for VMs in the cluster.
+         */
+        value?: string;
+    }
+
+    export interface OceanVirtualNodeGroupLaunchSpecification {
+        /**
+         * Specify OS disk specification other than default.
+         */
+        osDisk?: outputs.azure.OceanVirtualNodeGroupLaunchSpecificationOsDisk;
+        /**
+         * Additional key-value pairs to be used to tag the VMs in the virtual node group.
+         */
+        tags?: outputs.azure.OceanVirtualNodeGroupLaunchSpecificationTag[];
+    }
+
+    export interface OceanVirtualNodeGroupLaunchSpecificationOsDisk {
+        /**
+         * The size of the OS disk in GB, Required if dataDisks is specified.
+         */
+        sizeGb: number;
+        /**
+         * The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+         */
+        type?: string;
+    }
+
+    export interface OceanVirtualNodeGroupLaunchSpecificationTag {
+        /**
+         * Tag Key for Vms in the cluster.
+         */
+        key?: string;
+        /**
+         * Tag Value for VMs in the cluster.
+         */
+        value?: string;
+    }
+
+    export interface OceanVirtualNodeGroupResourceLimit {
+        /**
+         * Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.
+         */
+        maxInstanceCount?: number;
+    }
+
+    export interface OceanVirtualNodeGroupTaint {
+        /**
+         * The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
+         */
+        effect: string;
+        /**
+         * Tag Key for Vms in the cluster.
+         */
+        key: string;
+        /**
+         * Tag Value for VMs in the cluster.
+         */
+        value: string;
     }
 }
 

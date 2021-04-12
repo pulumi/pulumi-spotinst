@@ -41,6 +41,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// Determines whether to scale down non-service tasks.
         /// </summary>
         public readonly bool? AutoscaleScaleDownNonServiceTasks;
+        /// <summary>
+        /// Batch configuration object:
+        /// </summary>
         public readonly Outputs.ElastigroupIntegrationEcsBatch? Batch;
         /// <summary>
         /// The name of the EC2 Container Service cluster.

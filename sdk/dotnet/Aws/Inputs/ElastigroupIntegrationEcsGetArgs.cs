@@ -60,6 +60,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("autoscaleScaleDownNonServiceTasks")]
         public Input<bool>? AutoscaleScaleDownNonServiceTasks { get; set; }
 
+        /// <summary>
+        /// Batch configuration object:
+        /// </summary>
         [Input("batch")]
         public Input<Inputs.ElastigroupIntegrationEcsBatchGetArgs>? Batch { get; set; }
 

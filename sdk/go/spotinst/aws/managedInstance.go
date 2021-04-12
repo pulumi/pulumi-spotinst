@@ -17,11 +17,12 @@ type ManagedInstance struct {
 
 	// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
 	AutoHealing pulumi.BoolPtrOutput `pulumi:"autoHealing"`
+	// Attributes controls a portion of the AWS:
+	BlockDeviceMappings ManagedInstanceBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
 	// Default: `"onLaunch"`.
 	BlockDevicesMode pulumi.StringPtrOutput `pulumi:"blockDevicesMode"`
 	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-	// Default: unlimited
 	CpuCredits pulumi.StringPtrOutput `pulumi:"cpuCredits"`
 	// The ManagedInstance description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -150,11 +151,12 @@ func GetManagedInstance(ctx *pulumi.Context,
 type managedInstanceState struct {
 	// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
 	AutoHealing *bool `pulumi:"autoHealing"`
+	// Attributes controls a portion of the AWS:
+	BlockDeviceMappings []ManagedInstanceBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
 	// Default: `"onLaunch"`.
 	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
 	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-	// Default: unlimited
 	CpuCredits *string `pulumi:"cpuCredits"`
 	// The ManagedInstance description.
 	Description *string `pulumi:"description"`
@@ -237,11 +239,12 @@ type managedInstanceState struct {
 type ManagedInstanceState struct {
 	// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
 	AutoHealing pulumi.BoolPtrInput
+	// Attributes controls a portion of the AWS:
+	BlockDeviceMappings ManagedInstanceBlockDeviceMappingArrayInput
 	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
 	// Default: `"onLaunch"`.
 	BlockDevicesMode pulumi.StringPtrInput
 	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-	// Default: unlimited
 	CpuCredits pulumi.StringPtrInput
 	// The ManagedInstance description.
 	Description pulumi.StringPtrInput
@@ -328,11 +331,12 @@ func (ManagedInstanceState) ElementType() reflect.Type {
 type managedInstanceArgs struct {
 	// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
 	AutoHealing *bool `pulumi:"autoHealing"`
+	// Attributes controls a portion of the AWS:
+	BlockDeviceMappings []ManagedInstanceBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
 	// Default: `"onLaunch"`.
 	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
 	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-	// Default: unlimited
 	CpuCredits *string `pulumi:"cpuCredits"`
 	// The ManagedInstance description.
 	Description *string `pulumi:"description"`
@@ -416,11 +420,12 @@ type managedInstanceArgs struct {
 type ManagedInstanceArgs struct {
 	// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
 	AutoHealing pulumi.BoolPtrInput
+	// Attributes controls a portion of the AWS:
+	BlockDeviceMappings ManagedInstanceBlockDeviceMappingArrayInput
 	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
 	// Default: `"onLaunch"`.
 	BlockDevicesMode pulumi.StringPtrInput
 	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-	// Default: unlimited
 	CpuCredits pulumi.StringPtrInput
 	// The ManagedInstance description.
 	Description pulumi.StringPtrInput

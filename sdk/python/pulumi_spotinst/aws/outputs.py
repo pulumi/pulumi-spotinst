@@ -69,6 +69,8 @@ __all__ = [
     'ElastigroupUpdatePolicyRollConfig',
     'ElastigroupUpdatePolicyRollConfigStrategy',
     'ElastigroupUpdatePolicyRollConfigStrategyOnFailure',
+    'ManagedInstanceBlockDeviceMapping',
+    'ManagedInstanceBlockDeviceMappingEbs',
     'ManagedInstanceIntegrationRoute53',
     'ManagedInstanceIntegrationRoute53Domain',
     'ManagedInstanceIntegrationRoute53DomainRecordSet',
@@ -1132,6 +1134,7 @@ class ElastigroupIntegrationEcs(dict):
         :param bool autoscale_is_auto_config: Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
         :param bool autoscale_is_enabled: Specifies whether the auto scaling feature is enabled.
         :param bool autoscale_scale_down_non_service_tasks: Determines whether to scale down non-service tasks.
+        :param 'ElastigroupIntegrationEcsBatchArgs' batch: Batch configuration object:
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
         if autoscale_attributes is not None:
@@ -1218,6 +1221,9 @@ class ElastigroupIntegrationEcs(dict):
     @property
     @pulumi.getter
     def batch(self) -> Optional['outputs.ElastigroupIntegrationEcsBatch']:
+        """
+        Batch configuration object:
+        """
         return pulumi.get(self, "batch")
 
     def _translate_property(self, prop):
@@ -1338,11 +1344,17 @@ class ElastigroupIntegrationEcsAutoscaleHeadroom(dict):
 class ElastigroupIntegrationEcsBatch(dict):
     def __init__(__self__, *,
                  job_queue_names: Sequence[str]):
+        """
+        :param Sequence[str] job_queue_names: Array of strings.
+        """
         pulumi.set(__self__, "job_queue_names", job_queue_names)
 
     @property
     @pulumi.getter(name="jobQueueNames")
     def job_queue_names(self) -> Sequence[str]:
+        """
+        Array of strings.
+        """
         return pulumi.get(self, "job_queue_names")
 
     def _translate_property(self, prop):
@@ -3566,6 +3578,105 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
         Indicator if the action should apply to all batches of the deployment or only the latest batch.
         """
         return pulumi.get(self, "should_handle_all_batches")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ManagedInstanceBlockDeviceMapping(dict):
+    def __init__(__self__, *,
+                 device_name: str,
+                 ebs: Optional['outputs.ManagedInstanceBlockDeviceMappingEbs'] = None):
+        """
+        :param str device_name: The name of the device to mount.
+        """
+        pulumi.set(__self__, "device_name", device_name)
+        if ebs is not None:
+            pulumi.set(__self__, "ebs", ebs)
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        The name of the device to mount.
+        """
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter
+    def ebs(self) -> Optional['outputs.ManagedInstanceBlockDeviceMappingEbs']:
+        return pulumi.get(self, "ebs")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ManagedInstanceBlockDeviceMappingEbs(dict):
+    def __init__(__self__, *,
+                 delete_on_termination: Optional[bool] = None,
+                 iops: Optional[int] = None,
+                 throughput: Optional[int] = None,
+                 volume_size: Optional[int] = None,
+                 volume_type: Optional[str] = None):
+        """
+        :param bool delete_on_termination: Whether the volume should be destroyed on instance termination.
+        :param int iops: The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `"io1"`.
+        :param int throughput: The amount of data transferred to or from a storage device per second. Valid only if `volume_type` is set to `"gp3"`.
+        :param int volume_size: The size of the volume in gigabytes.
+        :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
+        """
+        if delete_on_termination is not None:
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
+        if iops is not None:
+            pulumi.set(__self__, "iops", iops)
+        if throughput is not None:
+            pulumi.set(__self__, "throughput", throughput)
+        if volume_size is not None:
+            pulumi.set(__self__, "volume_size", volume_size)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter(name="deleteOnTermination")
+    def delete_on_termination(self) -> Optional[bool]:
+        """
+        Whether the volume should be destroyed on instance termination.
+        """
+        return pulumi.get(self, "delete_on_termination")
+
+    @property
+    @pulumi.getter
+    def iops(self) -> Optional[int]:
+        """
+        The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `"io1"`.
+        """
+        return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter
+    def throughput(self) -> Optional[int]:
+        """
+        The amount of data transferred to or from a storage device per second. Valid only if `volume_type` is set to `"gp3"`.
+        """
+        return pulumi.get(self, "throughput")
+
+    @property
+    @pulumi.getter(name="volumeSize")
+    def volume_size(self) -> Optional[int]:
+        """
+        The size of the volume in gigabytes.
+        """
+        return pulumi.get(self, "volume_size")
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[str]:
+        """
+        The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
+        """
+        return pulumi.get(self, "volume_type")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

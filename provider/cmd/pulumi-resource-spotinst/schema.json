@@ -851,6 +851,7 @@
                 },
                 "batch": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationEcsBatch:ElastigroupIntegrationEcsBatch",
+                    "description": "Batch configuration object:\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -960,6 +961,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "description": "Array of strings.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2753,6 +2755,89 @@
             "required": [
                 "actionType"
             ]
+        },
+        "spotinst:aws/ManagedInstanceBlockDeviceMapping:ManagedInstanceBlockDeviceMapping": {
+            "properties": {
+                "deviceName": {
+                    "type": "string",
+                    "description": "The name of the device to mount.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebs": {
+                    "$ref": "#/types/spotinst:aws/ManagedInstanceBlockDeviceMappingEbs:ManagedInstanceBlockDeviceMappingEbs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "deviceName"
+            ]
+        },
+        "spotinst:aws/ManagedInstanceBlockDeviceMappingEbs:ManagedInstanceBlockDeviceMappingEbs": {
+            "properties": {
+                "deleteOnTermination": {
+                    "type": "boolean",
+                    "description": "Whether the volume should be destroyed on instance termination.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "iops": {
+                    "type": "integer",
+                    "description": "The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `\"io1\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "throughput": {
+                    "type": "integer",
+                    "description": "The amount of data transferred to or from a storage device per second. Valid only if `volume_type` is set to `\"gp3\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeSize": {
+                    "type": "integer",
+                    "description": "The size of the volume in gigabytes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "volumeType": {
+                    "type": "string",
+                    "description": "The type of volume. Can be `\"standard\"`, `\"gp2\"`, `\"gp3\"`, `\"io1\"`, `\"st1\"` or `\"sc1\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deleteOnTermination",
+                        "volumeType"
+                    ]
+                }
+            }
         },
         "spotinst:aws/ManagedInstanceIntegrationRoute53:ManagedInstanceIntegrationRoute53": {
             "properties": {
@@ -6051,6 +6136,215 @@
             "type": "object",
             "required": [
                 "batchSizePercentage"
+            ]
+        },
+        "spotinst:azure/OceanVirtualNodeGroupAutoscale:OceanVirtualNodeGroupAutoscale": {
+            "properties": {
+                "autoscaleHeadroom": {
+                    "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom:OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom:OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom": {
+            "properties": {
+                "cpuPerUnit": {
+                    "type": "integer",
+                    "description": "Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gpuPerUnit": {
+                    "type": "integer",
+                    "description": "How many GPU cores should be allocated for headroom unit.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "memoryPerUnit": {
+                    "type": "integer",
+                    "description": "Configure the amount of memory (MiB) to allocate the headroom.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numOfUnits": {
+                    "type": "integer",
+                    "description": "The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "numOfUnits"
+            ]
+        },
+        "spotinst:azure/OceanVirtualNodeGroupLabel:OceanVirtualNodeGroupLabel": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Tag Key for Vms in the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Tag Value for VMs in the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
+        "spotinst:azure/OceanVirtualNodeGroupLaunchSpecification:OceanVirtualNodeGroupLaunchSpecification": {
+            "properties": {
+                "osDisk": {
+                    "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupLaunchSpecificationOsDisk:OceanVirtualNodeGroupLaunchSpecificationOsDisk",
+                    "description": "Specify OS disk specification other than default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupLaunchSpecificationTag:OceanVirtualNodeGroupLaunchSpecificationTag"
+                    },
+                    "description": "Additional key-value pairs to be used to tag the VMs in the virtual node group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanVirtualNodeGroupLaunchSpecificationOsDisk:OceanVirtualNodeGroupLaunchSpecificationOsDisk": {
+            "properties": {
+                "sizeGb": {
+                    "type": "integer",
+                    "description": "The size of the OS disk in GB, Required if dataDisks is specified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the OS disk. Valid values: `\"Standard_LRS\"`, `\"Premium_LRS\"`, `\"StandardSSD_LRS\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "sizeGb"
+            ]
+        },
+        "spotinst:azure/OceanVirtualNodeGroupLaunchSpecificationTag:OceanVirtualNodeGroupLaunchSpecificationTag": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Tag Key for Vms in the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Tag Value for VMs in the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanVirtualNodeGroupResourceLimit:OceanVirtualNodeGroupResourceLimit": {
+            "properties": {
+                "maxInstanceCount": {
+                    "type": "integer",
+                    "description": "Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanVirtualNodeGroupTaint:OceanVirtualNodeGroupTaint": {
+            "properties": {
+                "effect": {
+                    "type": "string",
+                    "description": "The effect of the taint. Valid values: `\"NoSchedule\"`, `\"PreferNoSchedule\"`, `\"NoExecute\"`, `\"PreferNoExecute\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Tag Key for Vms in the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Tag Value for VMs in the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "effect",
+                "key",
+                "value"
             ]
         },
         "spotinst:ecs/OceanAutoscaler:OceanAutoscaler": {
@@ -11164,11 +11458,18 @@
             }
         },
         "spotinst:aws/managedInstance:ManagedInstance": {
-            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Pulumi\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvdcz\",\n        ebs: {\n            deleteOnTermination: true,\n            iops: 100,\n            throughput: 125,\n            volumeSize: 50,\n            volumeType: \"gp3\",\n        },\n    }],\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Pulumi\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "autoHealing": {
                     "type": "boolean",
                     "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `\"true\"`.\n"
+                },
+                "blockDeviceMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ManagedInstanceBlockDeviceMapping:ManagedInstanceBlockDeviceMapping"
+                    },
+                    "description": "Attributes controls a portion of the AWS:\n"
                 },
                 "blockDevicesMode": {
                     "type": "string",
@@ -11176,7 +11477,7 @@
                 },
                 "cpuCredits": {
                     "type": "string",
-                    "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\nDefault: unlimited\n"
+                    "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -11361,13 +11662,20 @@
                     "type": "boolean",
                     "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `\"true\"`.\n"
                 },
+                "blockDeviceMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ManagedInstanceBlockDeviceMapping:ManagedInstanceBlockDeviceMapping"
+                    },
+                    "description": "Attributes controls a portion of the AWS:\n"
+                },
                 "blockDevicesMode": {
                     "type": "string",
                     "description": "Determine the way we attach the data volumes to the data devices. Valid values: `\"reattach\"`, `\"onLaunch\"`.\nDefault: `\"onLaunch\"`.\n"
                 },
                 "cpuCredits": {
                     "type": "string",
-                    "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\nDefault: unlimited\n"
+                    "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -11552,13 +11860,20 @@
                         "type": "boolean",
                         "description": "Enable the auto healing which auto replaces the instance in case the health check fails, default: `\"true\"`.\n"
                     },
+                    "blockDeviceMappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/ManagedInstanceBlockDeviceMapping:ManagedInstanceBlockDeviceMapping"
+                        },
+                        "description": "Attributes controls a portion of the AWS:\n"
+                    },
                     "blockDevicesMode": {
                         "type": "string",
                         "description": "Determine the way we attach the data volumes to the data devices. Valid values: `\"reattach\"`, `\"onLaunch\"`.\nDefault: `\"onLaunch\"`.\n"
                     },
                     "cpuCredits": {
                         "type": "string",
-                        "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\nDefault: unlimited\n"
+                        "description": "cpuCredits can have one of two values: `\"unlimited\"`, `\"standard\"`.\n"
                     },
                     "description": {
                         "type": "string",
@@ -13838,6 +14153,267 @@
                     "userData": {
                         "type": "string",
                         "description": "Base64-encoded MIME user data to make available to the instances.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:azure/ocean:Ocean": {
+            "description": "Manages a Spotinst Ocean AKS resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.azure.Ocean(\"example\", {\n    // --- AKS -----------------------------------------------------------\n    acdIdentifier: \"acd-12345\",\n    aksName: \"AKSName\",\n    aksResourceGroupName: \"ResourceGroupName\",\n    controllerClusterId: \"controller-cluster-id\",\n    // --- LOGIN ---------------------------------------------------------\n    sshPublicKey: \"ssh-rsa [... redacted ...] generated-by-azure\",\n    userName: \"some-name\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.azure.Ocean(\"example\",\n    acd_identifier=\"acd-12345\",\n    aks_name=\"AKSName\",\n    aks_resource_group_name=\"ResourceGroupName\",\n    controller_cluster_id=\"controller-cluster-id\",\n    ssh_public_key=\"ssh-rsa [... redacted ...] generated-by-azure\",\n    user_name=\"some-name\")\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new SpotInst.Azure.Ocean(\"example\", new SpotInst.Azure.OceanArgs\n        {\n            AcdIdentifier = \"acd-12345\",\n            AksName = \"AKSName\",\n            AksResourceGroupName = \"ResourceGroupName\",\n            ControllerClusterId = \"controller-cluster-id\",\n            SshPublicKey = \"ssh-rsa [... redacted ...] generated-by-azure\",\n            UserName = \"some-name\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/azure\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azure.NewOcean(ctx, \"example\", \u0026azure.OceanArgs{\n\t\t\tAcdIdentifier:        pulumi.String(\"acd-12345\"),\n\t\t\tAksName:              pulumi.String(\"AKSName\"),\n\t\t\tAksResourceGroupName: pulumi.String(\"ResourceGroupName\"),\n\t\t\tControllerClusterId:  pulumi.String(\"controller-cluster-id\"),\n\t\t\tSshPublicKey:         pulumi.String(\"ssh-rsa [... redacted ...] generated-by-azure\"),\n\t\t\tUserName:             pulumi.String(\"some-name\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const oceanId = spotinst_ocean_aks_.example.id;\n```\n```python\nimport pulumi\n\npulumi.export(\"oceanId\", spotinst_ocean_aks_[\"example\"][\"id\"])\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        this.OceanId = spotinst_ocean_aks_.Example.Id;\n    }\n\n    [Output(\"oceanId\")]\n    public Output\u003cstring\u003e OceanId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"oceanId\", spotinst_ocean_aks_.Example.Id)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "acdIdentifier": {
+                    "type": "string",
+                    "description": "The AKS identifier.\n"
+                },
+                "aksName": {
+                    "type": "string",
+                    "description": "The AKS cluster name.\n"
+                },
+                "aksResourceGroupName": {
+                    "type": "string",
+                    "description": "Name of the Resource Group for AKS cluster.\n"
+                },
+                "controllerClusterId": {
+                    "type": "string",
+                    "description": "The Ocean controller cluster.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The Ocean cluster name.\n"
+                },
+                "sshPublicKey": {
+                    "type": "string",
+                    "description": "SSH public key for admin access to Linux VMs.\n"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "Username for admin access to VMs.\n"
+                }
+            },
+            "required": [
+                "acdIdentifier",
+                "aksName",
+                "aksResourceGroupName",
+                "controllerClusterId",
+                "name",
+                "sshPublicKey",
+                "userName"
+            ],
+            "inputProperties": {
+                "acdIdentifier": {
+                    "type": "string",
+                    "description": "The AKS identifier.\n"
+                },
+                "aksName": {
+                    "type": "string",
+                    "description": "The AKS cluster name.\n"
+                },
+                "aksResourceGroupName": {
+                    "type": "string",
+                    "description": "Name of the Resource Group for AKS cluster.\n"
+                },
+                "controllerClusterId": {
+                    "type": "string",
+                    "description": "The Ocean controller cluster.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The Ocean cluster name.\n"
+                },
+                "sshPublicKey": {
+                    "type": "string",
+                    "description": "SSH public key for admin access to Linux VMs.\n"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "Username for admin access to VMs.\n"
+                }
+            },
+            "requiredInputs": [
+                "acdIdentifier",
+                "aksName",
+                "aksResourceGroupName",
+                "sshPublicKey"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Ocean resources.\n",
+                "properties": {
+                    "acdIdentifier": {
+                        "type": "string",
+                        "description": "The AKS identifier.\n"
+                    },
+                    "aksName": {
+                        "type": "string",
+                        "description": "The AKS cluster name.\n"
+                    },
+                    "aksResourceGroupName": {
+                        "type": "string",
+                        "description": "Name of the Resource Group for AKS cluster.\n"
+                    },
+                    "controllerClusterId": {
+                        "type": "string",
+                        "description": "The Ocean controller cluster.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The Ocean cluster name.\n"
+                    },
+                    "sshPublicKey": {
+                        "type": "string",
+                        "description": "SSH public key for admin access to Linux VMs.\n"
+                    },
+                    "userName": {
+                        "type": "string",
+                        "description": "Username for admin access to VMs.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup": {
+            "description": "Manages a Spotinst Ocean AKS Virtual Node Group resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.azure.OceanVirtualNodeGroup(\"example\", {\n    autoscales: [{\n        autoscaleHeadroom: {\n            cpuPerUnit: 4,\n            gpuPerUnit: 8,\n            memoryPerUnit: 100,\n            numOfUnits: 16,\n        },\n    }],\n    labels: [{\n        key: \"label_key\",\n        value: \"label_value\",\n    }],\n    launchSpecifications: [{\n        osDisk: {\n            sizeGb: 100,\n            type: \"Standard_LRS\",\n        },\n        tags: [{\n            key: \"label_key\",\n            value: \"label_value\",\n        }],\n    }],\n    oceanId: \"o-12345\",\n    resourceLimits: [{\n        maxInstanceCount: 4,\n    }],\n    taints: [{\n        effect: \"NoSchedule\",\n        key: \"taint_key\",\n        value: \"taint_value\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.azure.OceanVirtualNodeGroup(\"example\",\n    autoscales=[spotinst.azure.OceanVirtualNodeGroupAutoscaleArgs(\n        autoscale_headroom=spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(\n            cpu_per_unit=4,\n            gpu_per_unit=8,\n            memory_per_unit=100,\n            num_of_units=16,\n        ),\n    )],\n    labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(\n        key=\"label_key\",\n        value=\"label_value\",\n    )],\n    launch_specifications=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationArgs(\n        os_disk=spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs(\n            size_gb=100,\n            type=\"Standard_LRS\",\n        ),\n        tags=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationTagArgs(\n            key=\"label_key\",\n            value=\"label_value\",\n        )],\n    )],\n    ocean_id=\"o-12345\",\n    resource_limits=[spotinst.azure.OceanVirtualNodeGroupResourceLimitArgs(\n        max_instance_count=4,\n    )],\n    taints=[spotinst.azure.OceanVirtualNodeGroupTaintArgs(\n        effect=\"NoSchedule\",\n        key=\"taint_key\",\n        value=\"taint_value\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new SpotInst.Azure.OceanVirtualNodeGroup(\"example\", new SpotInst.Azure.OceanVirtualNodeGroupArgs\n        {\n            Autoscales = \n            {\n                new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleArgs\n                {\n                    AutoscaleHeadroom = new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs\n                    {\n                        CpuPerUnit = 4,\n                        GpuPerUnit = 8,\n                        MemoryPerUnit = 100,\n                        NumOfUnits = 16,\n                    },\n                },\n            },\n            Labels = \n            {\n                new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLabelArgs\n                {\n                    Key = \"label_key\",\n                    Value = \"label_value\",\n                },\n            },\n            LaunchSpecifications = \n            {\n                new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationArgs\n                {\n                    OsDisk = new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs\n                    {\n                        SizeGb = 100,\n                        Type = \"Standard_LRS\",\n                    },\n                    Tags = \n                    {\n                        new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationTagArgs\n                        {\n                            Key = \"label_key\",\n                            Value = \"label_value\",\n                        },\n                    },\n                },\n            },\n            OceanId = \"o-12345\",\n            ResourceLimits = \n            {\n                new SpotInst.Azure.Inputs.OceanVirtualNodeGroupResourceLimitArgs\n                {\n                    MaxInstanceCount = 4,\n                },\n            },\n            Taints = \n            {\n                new SpotInst.Azure.Inputs.OceanVirtualNodeGroupTaintArgs\n                {\n                    Effect = \"NoSchedule\",\n                    Key = \"taint_key\",\n                    Value = \"taint_value\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v2/go/spotinst/azure\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azure.NewOceanVirtualNodeGroup(ctx, \"example\", \u0026azure.OceanVirtualNodeGroupArgs{\n\t\t\tAutoscales: azure.OceanVirtualNodeGroupAutoscaleArray{\n\t\t\t\t\u0026azure.OceanVirtualNodeGroupAutoscaleArgs{\n\t\t\t\t\tAutoscaleHeadroom: \u0026azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{\n\t\t\t\t\t\tCpuPerUnit:    pulumi.Int(4),\n\t\t\t\t\t\tGpuPerUnit:    pulumi.Int(8),\n\t\t\t\t\t\tMemoryPerUnit: pulumi.Int(100),\n\t\t\t\t\t\tNumOfUnits:    pulumi.Int(16),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tLabels: azure.OceanVirtualNodeGroupLabelArray{\n\t\t\t\t\u0026azure.OceanVirtualNodeGroupLabelArgs{\n\t\t\t\t\tKey:   pulumi.String(\"label_key\"),\n\t\t\t\t\tValue: pulumi.String(\"label_value\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tLaunchSpecifications: azure.OceanVirtualNodeGroupLaunchSpecificationArray{\n\t\t\t\t\u0026azure.OceanVirtualNodeGroupLaunchSpecificationArgs{\n\t\t\t\t\tOsDisk: \u0026azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs{\n\t\t\t\t\t\tSizeGb: pulumi.Int(100),\n\t\t\t\t\t\tType:   pulumi.String(\"Standard_LRS\"),\n\t\t\t\t\t},\n\t\t\t\t\tTags: azure.OceanVirtualNodeGroupLaunchSpecificationTagArray{\n\t\t\t\t\t\t\u0026azure.OceanVirtualNodeGroupLaunchSpecificationTagArgs{\n\t\t\t\t\t\t\tKey:   pulumi.String(\"label_key\"),\n\t\t\t\t\t\t\tValue: pulumi.String(\"label_value\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tOceanId: pulumi.String(\"o-12345\"),\n\t\t\tResourceLimits: azure.OceanVirtualNodeGroupResourceLimitArray{\n\t\t\t\t\u0026azure.OceanVirtualNodeGroupResourceLimitArgs{\n\t\t\t\t\tMaxInstanceCount: pulumi.Int(4),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTaints: azure.OceanVirtualNodeGroupTaintArray{\n\t\t\t\t\u0026azure.OceanVirtualNodeGroupTaintArgs{\n\t\t\t\t\tEffect: pulumi.String(\"NoSchedule\"),\n\t\t\t\t\tKey:    pulumi.String(\"taint_key\"),\n\t\t\t\t\tValue:  pulumi.String(\"taint_value\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const oceanId = spotinst_ocean_aks_.example.id;\n```\n```python\nimport pulumi\n\npulumi.export(\"oceanId\", spotinst_ocean_aks_[\"example\"][\"id\"])\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        this.OceanId = spotinst_ocean_aks_.Example.Id;\n    }\n\n    [Output(\"oceanId\")]\n    public Output\u003cstring\u003e OceanId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"oceanId\", spotinst_ocean_aks_.Example.Id)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "autoscales": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupAutoscale:OceanVirtualNodeGroupAutoscale"
+                    },
+                    "description": ".\n"
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupLabel:OceanVirtualNodeGroupLabel"
+                    },
+                    "description": "Additional labels for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.\n"
+                },
+                "launchSpecifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupLaunchSpecification:OceanVirtualNodeGroupLaunchSpecification"
+                    },
+                    "description": ".\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Set name for the virtual node group.\n"
+                },
+                "oceanId": {
+                    "type": "string",
+                    "description": "The Ocean cluster ID.\n"
+                },
+                "resourceLimits": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupResourceLimit:OceanVirtualNodeGroupResourceLimit"
+                    },
+                    "description": ".\n"
+                },
+                "taints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupTaint:OceanVirtualNodeGroupTaint"
+                    },
+                    "description": "Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.\n"
+                }
+            },
+            "required": [
+                "name",
+                "oceanId"
+            ],
+            "inputProperties": {
+                "autoscales": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupAutoscale:OceanVirtualNodeGroupAutoscale"
+                    },
+                    "description": ".\n"
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupLabel:OceanVirtualNodeGroupLabel"
+                    },
+                    "description": "Additional labels for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.\n"
+                },
+                "launchSpecifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupLaunchSpecification:OceanVirtualNodeGroupLaunchSpecification"
+                    },
+                    "description": ".\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Set name for the virtual node group.\n"
+                },
+                "oceanId": {
+                    "type": "string",
+                    "description": "The Ocean cluster ID.\n"
+                },
+                "resourceLimits": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupResourceLimit:OceanVirtualNodeGroupResourceLimit"
+                    },
+                    "description": ".\n"
+                },
+                "taints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupTaint:OceanVirtualNodeGroupTaint"
+                    },
+                    "description": "Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.\n"
+                }
+            },
+            "requiredInputs": [
+                "oceanId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OceanVirtualNodeGroup resources.\n",
+                "properties": {
+                    "autoscales": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupAutoscale:OceanVirtualNodeGroupAutoscale"
+                        },
+                        "description": ".\n"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupLabel:OceanVirtualNodeGroupLabel"
+                        },
+                        "description": "Additional labels for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.\n"
+                    },
+                    "launchSpecifications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupLaunchSpecification:OceanVirtualNodeGroupLaunchSpecification"
+                        },
+                        "description": ".\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Set name for the virtual node group.\n"
+                    },
+                    "oceanId": {
+                        "type": "string",
+                        "description": "The Ocean cluster ID.\n"
+                    },
+                    "resourceLimits": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupResourceLimit:OceanVirtualNodeGroupResourceLimit"
+                        },
+                        "description": ".\n"
+                    },
+                    "taints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:azure/OceanVirtualNodeGroupTaint:OceanVirtualNodeGroupTaint"
+                        },
+                        "description": "Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.\n"
                     }
                 },
                 "type": "object"

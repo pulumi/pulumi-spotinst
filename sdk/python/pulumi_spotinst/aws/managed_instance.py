@@ -18,6 +18,7 @@ class ManagedInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_healing: Optional[pulumi.Input[bool]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceBlockDeviceMappingArgs']]]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  cpu_credits: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -66,10 +67,10 @@ class ManagedInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceBlockDeviceMappingArgs']]]] block_device_mappings: Attributes controls a portion of the AWS:
         :param pulumi.Input[str] block_devices_mode: Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
                Default: `"onLaunch"`.
         :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-               Default: unlimited
         :param pulumi.Input[str] description: The ManagedInstance description.
         :param pulumi.Input[int] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
@@ -128,6 +129,7 @@ class ManagedInstance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['auto_healing'] = auto_healing
+            __props__['block_device_mappings'] = block_device_mappings
             __props__['block_devices_mode'] = block_devices_mode
             __props__['cpu_credits'] = cpu_credits
             __props__['description'] = description
@@ -190,6 +192,7 @@ class ManagedInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_healing: Optional[pulumi.Input[bool]] = None,
+            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceBlockDeviceMappingArgs']]]]] = None,
             block_devices_mode: Optional[pulumi.Input[str]] = None,
             cpu_credits: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -237,10 +240,10 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceBlockDeviceMappingArgs']]]] block_device_mappings: Attributes controls a portion of the AWS:
         :param pulumi.Input[str] block_devices_mode: Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
                Default: `"onLaunch"`.
         :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-               Default: unlimited
         :param pulumi.Input[str] description: The ManagedInstance description.
         :param pulumi.Input[int] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
@@ -286,6 +289,7 @@ class ManagedInstance(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["auto_healing"] = auto_healing
+        __props__["block_device_mappings"] = block_device_mappings
         __props__["block_devices_mode"] = block_devices_mode
         __props__["cpu_credits"] = cpu_credits
         __props__["description"] = description
@@ -336,6 +340,14 @@ class ManagedInstance(pulumi.CustomResource):
         return pulumi.get(self, "auto_healing")
 
     @property
+    @pulumi.getter(name="blockDeviceMappings")
+    def block_device_mappings(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceBlockDeviceMapping']]]:
+        """
+        Attributes controls a portion of the AWS:
+        """
+        return pulumi.get(self, "block_device_mappings")
+
+    @property
     @pulumi.getter(name="blockDevicesMode")
     def block_devices_mode(self) -> pulumi.Output[Optional[str]]:
         """
@@ -349,7 +361,6 @@ class ManagedInstance(pulumi.CustomResource):
     def cpu_credits(self) -> pulumi.Output[Optional[str]]:
         """
         cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        Default: unlimited
         """
         return pulumi.get(self, "cpu_credits")
 

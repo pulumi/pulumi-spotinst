@@ -3,9 +3,12 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 SNAKE_TO_CAMEL_CASE_TABLE = {
+    "acd_identifier": "acdIdentifier",
     "additional_info": "additionalInfo",
     "additional_primary_security_groups": "additionalPrimarySecurityGroups",
     "additional_replica_security_groups": "additionalReplicaSecurityGroups",
+    "aks_name": "aksName",
+    "aks_resource_group_name": "aksResourceGroupName",
     "associate_public_ip_address": "associatePublicIpAddress",
     "auto_healing": "autoHealing",
     "autoscale_headrooms": "autoscaleHeadrooms",
@@ -93,6 +96,7 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
     "keep_job_flow_alive": "keepJobFlowAlive",
     "key_name": "keyName",
     "key_pair": "keyPair",
+    "launch_specifications": "launchSpecifications",
     "life_cycle": "lifeCycle",
     "lifetime_period": "lifetimePeriod",
     "listener_id": "listenerId",
@@ -157,6 +161,7 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
     "source_image": "sourceImage",
     "spot_percentage": "spotPercentage",
     "spot_sizes": "spotSizes",
+    "ssh_public_key": "sshPublicKey",
     "startup_script": "startupScript",
     "stateful_deallocation": "statefulDeallocation",
     "steps_files": "stepsFiles",
@@ -181,6 +186,7 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
     "update_policy": "updatePolicy",
     "use_as_template_only": "useAsTemplateOnly",
     "user_data": "userData",
+    "user_name": "userName",
     "utilize_commitments": "utilizeCommitments",
     "utilize_reserved_instances": "utilizeReservedInstances",
     "visible_to_all_users": "visibleToAllUsers",
@@ -190,9 +196,12 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
 }
 
 CAMEL_TO_SNAKE_CASE_TABLE = {
+    "acdIdentifier": "acd_identifier",
     "additionalInfo": "additional_info",
     "additionalPrimarySecurityGroups": "additional_primary_security_groups",
     "additionalReplicaSecurityGroups": "additional_replica_security_groups",
+    "aksName": "aks_name",
+    "aksResourceGroupName": "aks_resource_group_name",
     "associatePublicIpAddress": "associate_public_ip_address",
     "autoHealing": "auto_healing",
     "autoscaleHeadrooms": "autoscale_headrooms",
@@ -280,6 +289,7 @@ CAMEL_TO_SNAKE_CASE_TABLE = {
     "keepJobFlowAlive": "keep_job_flow_alive",
     "keyName": "key_name",
     "keyPair": "key_pair",
+    "launchSpecifications": "launch_specifications",
     "lifeCycle": "life_cycle",
     "lifetimePeriod": "lifetime_period",
     "listenerId": "listener_id",
@@ -344,6 +354,7 @@ CAMEL_TO_SNAKE_CASE_TABLE = {
     "sourceImage": "source_image",
     "spotPercentage": "spot_percentage",
     "spotSizes": "spot_sizes",
+    "sshPublicKey": "ssh_public_key",
     "startupScript": "startup_script",
     "statefulDeallocation": "stateful_deallocation",
     "stepsFiles": "steps_files",
@@ -368,6 +379,7 @@ CAMEL_TO_SNAKE_CASE_TABLE = {
     "updatePolicy": "update_policy",
     "useAsTemplateOnly": "use_as_template_only",
     "userData": "user_data",
+    "userName": "user_name",
     "utilizeCommitments": "utilize_commitments",
     "utilizeReservedInstances": "utilize_reserved_instances",
     "visibleToAllUsers": "visible_to_all_users",

@@ -4,6 +4,8 @@
 
 # Export this package's modules as members:
 from .elastigroup import *
+from .ocean import *
+from .ocean_virtual_node_group import *
 from ._inputs import *
 from . import outputs
 
@@ -21,11 +23,17 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "spotinst:azure/elastigroup:Elastigroup":
                 return Elastigroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "spotinst:azure/ocean:Ocean":
+                return Ocean(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup":
+                return OceanVirtualNodeGroup(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("spotinst", "azure/elastigroup", _module_instance)
+    pulumi.runtime.register_resource_module("spotinst", "azure/ocean", _module_instance)
+    pulumi.runtime.register_resource_module("spotinst", "azure/oceanVirtualNodeGroup", _module_instance)
 
 _register_module()
