@@ -5,15 +5,115 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RoutingRule']
+__all__ = ['RoutingRuleArgs', 'RoutingRule']
+
+@pulumi.input_type
+class RoutingRuleArgs:
+    def __init__(__self__, *,
+                 balancer_id: pulumi.Input[str],
+                 listener_id: pulumi.Input[str],
+                 route: pulumi.Input[str],
+                 target_set_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 middleware_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 strategy: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingRuleTagArgs']]]] = None):
+        """
+        The set of arguments for constructing a RoutingRule resource.
+        """
+        pulumi.set(__self__, "balancer_id", balancer_id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "route", route)
+        pulumi.set(__self__, "target_set_ids", target_set_ids)
+        if middleware_ids is not None:
+            pulumi.set(__self__, "middleware_ids", middleware_ids)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="balancerId")
+    def balancer_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "balancer_id")
+
+    @balancer_id.setter
+    def balancer_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "balancer_id", value)
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "listener_id")
+
+    @listener_id.setter
+    def listener_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "listener_id", value)
+
+    @property
+    @pulumi.getter
+    def route(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "route")
+
+    @route.setter
+    def route(self, value: pulumi.Input[str]):
+        pulumi.set(self, "route", value)
+
+    @property
+    @pulumi.getter(name="targetSetIds")
+    def target_set_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "target_set_ids")
+
+    @target_set_ids.setter
+    def target_set_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "target_set_ids", value)
+
+    @property
+    @pulumi.getter(name="middlewareIds")
+    def middleware_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "middleware_ids")
+
+    @middleware_ids.setter
+    def middleware_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "middleware_ids", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "strategy")
+
+    @strategy.setter
+    def strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strategy", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoutingRuleTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingRuleTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 class RoutingRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +133,40 @@ class RoutingRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RoutingRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a RoutingRule resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param RoutingRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoutingRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 balancer_id: Optional[pulumi.Input[str]] = None,
+                 listener_id: Optional[pulumi.Input[str]] = None,
+                 middleware_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 route: Optional[pulumi.Input[str]] = None,
+                 strategy: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingRuleTagArgs']]]]] = None,
+                 target_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

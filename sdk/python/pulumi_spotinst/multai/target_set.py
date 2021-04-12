@@ -5,15 +5,114 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TargetSet']
+__all__ = ['TargetSetArgs', 'TargetSet']
+
+@pulumi.input_type
+class TargetSetArgs:
+    def __init__(__self__, *,
+                 balancer_id: pulumi.Input[str],
+                 deployment_id: pulumi.Input[str],
+                 health_check: pulumi.Input['TargetSetHealthCheckArgs'],
+                 protocol: pulumi.Input[str],
+                 weight: pulumi.Input[int],
+                 name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetSetTagArgs']]]] = None):
+        """
+        The set of arguments for constructing a TargetSet resource.
+        """
+        pulumi.set(__self__, "balancer_id", balancer_id)
+        pulumi.set(__self__, "deployment_id", deployment_id)
+        pulumi.set(__self__, "health_check", health_check)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "weight", weight)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="balancerId")
+    def balancer_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "balancer_id")
+
+    @balancer_id.setter
+    def balancer_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "balancer_id", value)
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "deployment_id")
+
+    @deployment_id.setter
+    def deployment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deployment_id", value)
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> pulumi.Input['TargetSetHealthCheckArgs']:
+        return pulumi.get(self, "health_check")
+
+    @health_check.setter
+    def health_check(self, value: pulumi.Input['TargetSetHealthCheckArgs']):
+        pulumi.set(self, "health_check", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[int]):
+        pulumi.set(self, "weight", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TargetSetTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TargetSetTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 class TargetSet(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +132,40 @@ class TargetSet(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TargetSetArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a TargetSet resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param TargetSetArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TargetSetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 balancer_id: Optional[pulumi.Input[str]] = None,
+                 deployment_id: Optional[pulumi.Input[str]] = None,
+                 health_check: Optional[pulumi.Input[pulumi.InputType['TargetSetHealthCheckArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetSetTagArgs']]]]] = None,
+                 weight: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

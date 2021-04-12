@@ -5,13 +5,127 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Subscription']
+__all__ = ['SubscriptionArgs', 'Subscription']
+
+@pulumi.input_type
+class SubscriptionArgs:
+    def __init__(__self__, *,
+                 endpoint: pulumi.Input[str],
+                 event_type: pulumi.Input[str],
+                 protocol: pulumi.Input[str],
+                 resource_id: pulumi.Input[str],
+                 format: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        The set of arguments for constructing a Subscription resource.
+        :param pulumi.Input[str] endpoint: The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
+        :param pulumi.Input[str] event_type: The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`,
+               `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`,
+               `"GROUP_UPDATED"`,
+               `"AWS_EMR_PROVISION_TIMEOUT"`,
+               `"GROUP_BEANSTALK_INIT_READY"`,
+               `"AZURE_VM_TERMINATED"`,
+               `"AZURE_VM_TERMINATE"`,
+               `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
+               `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
+               `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
+               Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+        :param pulumi.Input[str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+               The following values are deprecated: `"http"` , `"https"`
+               You can use the generic `"web"` protocol instead.
+               `"aws-sns"` is only supported with AWS provider
+        :param pulumi.Input[str] resource_id: Spotinst Resource id (Elastigroup or Ocean ID).
+        :param pulumi.Input[Mapping[str, Any]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
+               Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
+               Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "resource_id", resource_id)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[str]:
+        """
+        The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> pulumi.Input[str]:
+        """
+        The event to send the notification when triggered. Valid values: `"AWS_EC2_INSTANCE_TERMINATE"`, `"AWS_EC2_INSTANCE_TERMINATED"`, `"AWS_EC2_INSTANCE_LAUNCH"`, `"AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT"`, `"AWS_EC2_CANT_SPIN_OD"`, `"AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB"`, `"GROUP_ROLL_FAILED"`, `"GROUP_ROLL_FINISHED"`,
+        `"CANT_SCALE_UP_GROUP_MAX_CAPACITY"`,
+        `"GROUP_UPDATED"`,
+        `"AWS_EMR_PROVISION_TIMEOUT"`,
+        `"GROUP_BEANSTALK_INIT_READY"`,
+        `"AZURE_VM_TERMINATED"`,
+        `"AZURE_VM_TERMINATE"`,
+        `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
+        `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
+        `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
+        Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+        """
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "event_type", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[str]:
+        """
+        The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        The following values are deprecated: `"http"` , `"https"`
+        You can use the generic `"web"` protocol instead.
+        `"aws-sns"` is only supported with AWS provider
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[str]:
+        """
+        Spotinst Resource id (Elastigroup or Ocean ID).
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
+        Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
+        Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "format", value)
 
 
 class Subscription(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -70,6 +184,59 @@ class Subscription(pulumi.CustomResource):
                `"aws-sns"` is only supported with AWS provider
         :param pulumi.Input[str] resource_id: Spotinst Resource id (Elastigroup or Ocean ID).
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SubscriptionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Spotinst subscription resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # Create a Subscription
+        default_subscription = spotinst.Subscription("default-subscription",
+            endpoint="http://endpoint.com",
+            event_type="AWS_EC2_INSTANCE_LAUNCH",
+            format={
+                "event": "%event%",
+                "instance_id": "%instance-id%",
+                "resource_id": "%resource-id%",
+                "resource_name": "%resource-name%",
+                "tags": "foo,baz,baz",
+            },
+            protocol="http",
+            resource_id=spotinst_elastigroup_aws["my-eg"]["id"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SubscriptionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SubscriptionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 event_type: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

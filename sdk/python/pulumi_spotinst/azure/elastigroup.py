@@ -5,15 +5,396 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Elastigroup']
+__all__ = ['ElastigroupArgs', 'Elastigroup']
+
+@pulumi.input_type
+class ElastigroupArgs:
+    def __init__(__self__, *,
+                 low_priority_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 network: pulumi.Input['ElastigroupNetworkArgs'],
+                 od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 product: pulumi.Input[str],
+                 region: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 strategy: pulumi.Input['ElastigroupStrategyArgs'],
+                 custom_data: Optional[pulumi.Input[str]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 health_check: Optional[pulumi.Input['ElastigroupHealthCheckArgs']] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]]] = None,
+                 integration_kubernetes: Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']] = None,
+                 integration_multai_runtime: Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLoadBalancerArgs']]]] = None,
+                 login: Optional[pulumi.Input['ElastigroupLoginArgs']] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupManagedServiceIdentityArgs']]]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
+                 shutdown_script: Optional[pulumi.Input[str]] = None,
+                 update_policy: Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']] = None,
+                 user_data: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Elastigroup resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] low_priority_sizes: Available Low-Priority sizes.
+        :param pulumi.Input['ElastigroupNetworkArgs'] network: Defines the Virtual Network and Subnet for your Elastigroup.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
+        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        :param pulumi.Input[str] region: The region your Azure group will be created in.
+        :param pulumi.Input[str] resource_group_name: Vnet Resource Group Name.
+        :param pulumi.Input['ElastigroupStrategyArgs'] strategy: Describes the deployment strategy.
+        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input['ElastigroupHealthCheckArgs'] health_check: Describes the health check configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]] images: Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+        :param pulumi.Input['ElastigroupIntegrationKubernetesArgs'] integration_kubernetes: Describes the [Kubernetes](https://kubernetes.io/) integration.
+        :param pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs'] integration_multai_runtime: Describes the [Multai Runtime](https://spotinst.com/) integration.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupLoadBalancerArgs']]] load_balancers: Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+        :param pulumi.Input['ElastigroupLoginArgs'] login: Describes the login configuration.
+        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
+        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[str] name: The dimension name.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]] scheduled_tasks: Describes the configuration of one or more scheduled tasks.
+        :param pulumi.Input[str] shutdown_script: Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
+        :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
+        """
+        pulumi.set(__self__, "low_priority_sizes", low_priority_sizes)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "od_sizes", od_sizes)
+        pulumi.set(__self__, "product", product)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "strategy", strategy)
+        if custom_data is not None:
+            pulumi.set(__self__, "custom_data", custom_data)
+        if desired_capacity is not None:
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if health_check is not None:
+            pulumi.set(__self__, "health_check", health_check)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if integration_kubernetes is not None:
+            pulumi.set(__self__, "integration_kubernetes", integration_kubernetes)
+        if integration_multai_runtime is not None:
+            pulumi.set(__self__, "integration_multai_runtime", integration_multai_runtime)
+        if load_balancers is not None:
+            pulumi.set(__self__, "load_balancers", load_balancers)
+        if login is not None:
+            pulumi.set(__self__, "login", login)
+        if managed_service_identities is not None:
+            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
+        if max_size is not None:
+            pulumi.set(__self__, "max_size", max_size)
+        if min_size is not None:
+            pulumi.set(__self__, "min_size", min_size)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if scaling_down_policies is not None:
+            pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
+        if scaling_up_policies is not None:
+            pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
+        if scheduled_tasks is not None:
+            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+        if shutdown_script is not None:
+            pulumi.set(__self__, "shutdown_script", shutdown_script)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+
+    @property
+    @pulumi.getter(name="lowPrioritySizes")
+    def low_priority_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Available Low-Priority sizes.
+        """
+        return pulumi.get(self, "low_priority_sizes")
+
+    @low_priority_sizes.setter
+    def low_priority_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "low_priority_sizes", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input['ElastigroupNetworkArgs']:
+        """
+        Defines the Virtual Network and Subnet for your Elastigroup.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input['ElastigroupNetworkArgs']):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="odSizes")
+    def od_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Available On-Demand sizes
+        """
+        return pulumi.get(self, "od_sizes")
+
+    @od_sizes.setter
+    def od_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "od_sizes", value)
+
+    @property
+    @pulumi.getter
+    def product(self) -> pulumi.Input[str]:
+        """
+        Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        """
+        return pulumi.get(self, "product")
+
+    @product.setter
+    def product(self, value: pulumi.Input[str]):
+        pulumi.set(self, "product", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        The region your Azure group will be created in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        Vnet Resource Group Name.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> pulumi.Input['ElastigroupStrategyArgs']:
+        """
+        Describes the deployment strategy.
+        """
+        return pulumi.get(self, "strategy")
+
+    @strategy.setter
+    def strategy(self, value: pulumi.Input['ElastigroupStrategyArgs']):
+        pulumi.set(self, "strategy", value)
+
+    @property
+    @pulumi.getter(name="customData")
+    def custom_data(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "custom_data")
+
+    @custom_data.setter
+    def custom_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_data", value)
+
+    @property
+    @pulumi.getter(name="desiredCapacity")
+    def desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The desired number of instances the group should have at any time.
+        """
+        return pulumi.get(self, "desired_capacity")
+
+    @desired_capacity.setter
+    def desired_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> Optional[pulumi.Input['ElastigroupHealthCheckArgs']]:
+        """
+        Describes the health check configuration.
+        """
+        return pulumi.get(self, "health_check")
+
+    @health_check.setter
+    def health_check(self, value: Optional[pulumi.Input['ElastigroupHealthCheckArgs']]):
+        pulumi.set(self, "health_check", value)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]]]:
+        """
+        Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+        """
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]]]):
+        pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter(name="integrationKubernetes")
+    def integration_kubernetes(self) -> Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']]:
+        """
+        Describes the [Kubernetes](https://kubernetes.io/) integration.
+        """
+        return pulumi.get(self, "integration_kubernetes")
+
+    @integration_kubernetes.setter
+    def integration_kubernetes(self, value: Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']]):
+        pulumi.set(self, "integration_kubernetes", value)
+
+    @property
+    @pulumi.getter(name="integrationMultaiRuntime")
+    def integration_multai_runtime(self) -> Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']]:
+        """
+        Describes the [Multai Runtime](https://spotinst.com/) integration.
+        """
+        return pulumi.get(self, "integration_multai_runtime")
+
+    @integration_multai_runtime.setter
+    def integration_multai_runtime(self, value: Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']]):
+        pulumi.set(self, "integration_multai_runtime", value)
+
+    @property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLoadBalancerArgs']]]]:
+        """
+        Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+        """
+        return pulumi.get(self, "load_balancers")
+
+    @load_balancers.setter
+    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLoadBalancerArgs']]]]):
+        pulumi.set(self, "load_balancers", value)
+
+    @property
+    @pulumi.getter
+    def login(self) -> Optional[pulumi.Input['ElastigroupLoginArgs']]:
+        """
+        Describes the login configuration.
+        """
+        return pulumi.get(self, "login")
+
+    @login.setter
+    def login(self, value: Optional[pulumi.Input['ElastigroupLoginArgs']]):
+        pulumi.set(self, "login", value)
+
+    @property
+    @pulumi.getter(name="managedServiceIdentities")
+    def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupManagedServiceIdentityArgs']]]]:
+        return pulumi.get(self, "managed_service_identities")
+
+    @managed_service_identities.setter
+    def managed_service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupManagedServiceIdentityArgs']]]]):
+        pulumi.set(self, "managed_service_identities", value)
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of instances the group should have at any time.
+        """
+        return pulumi.get(self, "max_size")
+
+    @max_size.setter
+    def max_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_size", value)
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of instances the group should have at any time.
+        """
+        return pulumi.get(self, "min_size")
+
+    @min_size.setter
+    def min_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_size", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dimension name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="scalingDownPolicies")
+    def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
+        return pulumi.get(self, "scaling_down_policies")
+
+    @scaling_down_policies.setter
+    def scaling_down_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]):
+        pulumi.set(self, "scaling_down_policies", value)
+
+    @property
+    @pulumi.getter(name="scalingUpPolicies")
+    def scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]:
+        return pulumi.get(self, "scaling_up_policies")
+
+    @scaling_up_policies.setter
+    def scaling_up_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]):
+        pulumi.set(self, "scaling_up_policies", value)
+
+    @property
+    @pulumi.getter(name="scheduledTasks")
+    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]]:
+        """
+        Describes the configuration of one or more scheduled tasks.
+        """
+        return pulumi.get(self, "scheduled_tasks")
+
+    @scheduled_tasks.setter
+    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]]):
+        pulumi.set(self, "scheduled_tasks", value)
+
+    @property
+    @pulumi.getter(name="shutdownScript")
+    def shutdown_script(self) -> Optional[pulumi.Input[str]]:
+        """
+        Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
+        """
+        return pulumi.get(self, "shutdown_script")
+
+    @shutdown_script.setter
+    def shutdown_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shutdown_script", value)
+
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Base64-encoded MIME user data to make available to the instances.
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
 
 
 class Elastigroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -186,6 +567,173 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ElastigroupStrategyArgs']] strategy: Describes the deployment strategy.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ElastigroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Spotinst elastigroup Azure resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        test_azure_group = spotinst.azure.Elastigroup("testAzureGroup",
+            desired_capacity=1,
+            health_check=spotinst.azure.ElastigroupHealthCheckArgs(
+                auto_healing=True,
+                grace_period=120,
+                health_check_type="INSTANCE_STATE",
+            ),
+            images=[spotinst.azure.ElastigroupImageArgs(
+                marketplaces=[spotinst.azure.ElastigroupImageMarketplaceArgs(
+                    offer="UbuntuServer",
+                    publisher="Canonical",
+                    sku="16.04-LTS",
+                )],
+            )],
+            load_balancers=[spotinst.azure.ElastigroupLoadBalancerArgs(
+                auto_weight=True,
+                balancer_id="lb-1ee2e3q",
+                target_set_id="ts-3eq",
+                type="MULTAI_TARGET_SET",
+            )],
+            login=spotinst.azure.ElastigroupLoginArgs(
+                ssh_public_key="33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+                user_name="admin",
+            ),
+            low_priority_sizes=[
+                "standard_a1_v1",
+                "standard_a1_v2",
+            ],
+            managed_service_identities=[spotinst.azure.ElastigroupManagedServiceIdentityArgs(
+                name="example-identity",
+                resource_group_name="spotinst-azure",
+            )],
+            max_size=1,
+            min_size=0,
+            network=spotinst.azure.ElastigroupNetworkArgs(
+                assign_public_ip=True,
+                resource_group_name="subnetResourceGroup",
+                subnet_name="my-subnet-name",
+                virtual_network_name="vname",
+            ),
+            od_sizes=[
+                "standard_a1_v1",
+                "standard_a1_v2",
+            ],
+            product="Linux",
+            region="eastus",
+            resource_group_name="spotinst-azure",
+            scaling_down_policies=[spotinst.azure.ElastigroupScalingDownPolicyArgs(
+                action_type="adjustment",
+                adjustment="MIN(5,10)",
+                cooldown=60,
+                dimensions=[spotinst.azure.ElastigroupScalingDownPolicyDimensionArgs(
+                    name="name-1",
+                    value="value-1",
+                )],
+                evaluation_periods=10,
+                metric_name="CPUUtilization",
+                namespace="Microsoft.Compute",
+                operator="gt",
+                period=60,
+                policy_name="policy-name",
+                statistic="average",
+                threshold=10,
+                unit="percent",
+            )],
+            scaling_up_policies=[spotinst.azure.ElastigroupScalingUpPolicyArgs(
+                action_type="setMinTarget",
+                cooldown=60,
+                dimensions=[
+                    spotinst.azure.ElastigroupScalingUpPolicyDimensionArgs(
+                        name="resourceName",
+                        value="resource-name",
+                    ),
+                    spotinst.azure.ElastigroupScalingUpPolicyDimensionArgs(
+                        name="resourceGroupName",
+                        value="resource-group-name",
+                    ),
+                ],
+                evaluation_periods=10,
+                metric_name="CPUUtilization",
+                min_target_capacity="1",
+                namespace="Microsoft.Compute",
+                operator="gt",
+                period=60,
+                policy_name="policy-name",
+                statistic="average",
+                threshold=10,
+                unit="percent",
+            )],
+            scheduled_tasks=[spotinst.azure.ElastigroupScheduledTaskArgs(
+                adjustment="2",
+                adjustment_percentage="50",
+                batch_size_percentage="33",
+                cron_expression="* * * * *",
+                grace_period=300,
+                is_enabled=True,
+                scale_max_capacity="8",
+                scale_min_capacity="5",
+                scale_target_capacity="6",
+                task_type="scale",
+            )],
+            shutdown_script="",
+            strategy=spotinst.azure.ElastigroupStrategyArgs(
+                draining_timeout=300,
+                od_count=1,
+            ),
+            user_data="")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ElastigroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ElastigroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_data: Optional[pulumi.Input[str]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 health_check: Optional[pulumi.Input[pulumi.InputType['ElastigroupHealthCheckArgs']]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupImageArgs']]]]] = None,
+                 integration_kubernetes: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']]] = None,
+                 integration_multai_runtime: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMultaiRuntimeArgs']]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLoadBalancerArgs']]]]] = None,
+                 login: Optional[pulumi.Input[pulumi.InputType['ElastigroupLoginArgs']]] = None,
+                 low_priority_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupManagedServiceIdentityArgs']]]]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[pulumi.InputType['ElastigroupNetworkArgs']]] = None,
+                 od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 product: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
+                 shutdown_script: Optional[pulumi.Input[str]] = None,
+                 strategy: Optional[pulumi.Input[pulumi.InputType['ElastigroupStrategyArgs']]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['ElastigroupUpdatePolicyArgs']]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

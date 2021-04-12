@@ -21,15 +21,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "spotinst:index/elastigroupAzureV3:ElastigroupAzureV3":
-		r, err = NewElastigroupAzureV3(ctx, name, nil, pulumi.URN_(urn))
+		r = &ElastigroupAzureV3{}
 	case "spotinst:index/healthCheck:HealthCheck":
-		r, err = NewHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &HealthCheck{}
 	case "spotinst:index/subscription:Subscription":
-		r, err = NewSubscription(ctx, name, nil, pulumi.URN_(urn))
+		r = &Subscription{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -46,7 +47,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {

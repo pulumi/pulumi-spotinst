@@ -5,15 +5,53 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Suspension']
+__all__ = ['SuspensionArgs', 'Suspension']
+
+@pulumi.input_type
+class SuspensionArgs:
+    def __init__(__self__, *,
+                 group_id: pulumi.Input[str],
+                 suspensions: pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]):
+        """
+        The set of arguments for constructing a Suspension resource.
+        :param pulumi.Input[str] group_id: Elastigroup ID to apply the suspensions on.
+        :param pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]] suspensions: block of single process to suspend.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "suspensions", suspensions)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        """
+        Elastigroup ID to apply the suspensions on.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def suspensions(self) -> pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]:
+        """
+        block of single process to suspend.
+        """
+        return pulumi.get(self, "suspensions")
+
+    @suspensions.setter
+    def suspensions(self, value: pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]):
+        pulumi.set(self, "suspensions", value)
 
 
 class Suspension(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -54,6 +92,59 @@ class Suspension(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: Elastigroup ID to apply the suspensions on.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SuspensionSuspensionArgs']]]] suspensions: block of single process to suspend.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SuspensionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Suspend AWS Elastigroup processes. This resource provide the capavility of
+        suspending elastigroup processes using this provider.
+
+        For supported processes please visit: [Suspend Processes API reference](https://help.spot.io/spotinst-api/elastigroup/amazon-web-services/suspend-processes/)
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # Create a suspension for Elastigroup
+        resource_name = spotinst.aws.Suspension("resourceName",
+            group_id="sig-12345678",
+            suspensions=[
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="OUT_OF_STRATEGY",
+                ),
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="REVERT_PREFERRED",
+                ),
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="PREVENTIVE_REPLACEMENT",
+                ),
+            ])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SuspensionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SuspensionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 suspensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SuspensionSuspensionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

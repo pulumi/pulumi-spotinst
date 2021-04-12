@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "spotinst:azure/elastigroup:Elastigroup":
-		r, err = NewElastigroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &Elastigroup{}
 	case "spotinst:azure/ocean:Ocean":
-		r, err = NewOcean(ctx, name, nil, pulumi.URN_(urn))
+		r = &Ocean{}
 	case "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup":
-		r, err = NewOceanVirtualNodeGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &OceanVirtualNodeGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

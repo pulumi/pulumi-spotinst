@@ -5,15 +5,134 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OceanVirtualNodeGroup']
+__all__ = ['OceanVirtualNodeGroupArgs', 'OceanVirtualNodeGroup']
+
+@pulumi.input_type
+class OceanVirtualNodeGroupArgs:
+    def __init__(__self__, *,
+                 ocean_id: pulumi.Input[str],
+                 autoscales: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupAutoscaleArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLabelArgs']]]] = None,
+                 launch_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupResourceLimitArgs']]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]]] = None):
+        """
+        The set of arguments for constructing a OceanVirtualNodeGroup resource.
+        :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupAutoscaleArgs']]] autoscales: .
+        :param pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLabelArgs']]] labels: Additional labels for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationArgs']]] launch_specifications: .
+        :param pulumi.Input[str] name: Set name for the virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupResourceLimitArgs']]] resource_limits: .
+        :param pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]] taints: Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
+        """
+        pulumi.set(__self__, "ocean_id", ocean_id)
+        if autoscales is not None:
+            pulumi.set(__self__, "autoscales", autoscales)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if launch_specifications is not None:
+            pulumi.set(__self__, "launch_specifications", launch_specifications)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_limits is not None:
+            pulumi.set(__self__, "resource_limits", resource_limits)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
+
+    @property
+    @pulumi.getter(name="oceanId")
+    def ocean_id(self) -> pulumi.Input[str]:
+        """
+        The Ocean cluster ID.
+        """
+        return pulumi.get(self, "ocean_id")
+
+    @ocean_id.setter
+    def ocean_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ocean_id", value)
+
+    @property
+    @pulumi.getter
+    def autoscales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupAutoscaleArgs']]]]:
+        """
+        .
+        """
+        return pulumi.get(self, "autoscales")
+
+    @autoscales.setter
+    def autoscales(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupAutoscaleArgs']]]]):
+        pulumi.set(self, "autoscales", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLabelArgs']]]]:
+        """
+        Additional labels for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="launchSpecifications")
+    def launch_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationArgs']]]]:
+        """
+        .
+        """
+        return pulumi.get(self, "launch_specifications")
+
+    @launch_specifications.setter
+    def launch_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationArgs']]]]):
+        pulumi.set(self, "launch_specifications", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set name for the virtual node group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceLimits")
+    def resource_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupResourceLimitArgs']]]]:
+        """
+        .
+        """
+        return pulumi.get(self, "resource_limits")
+
+    @resource_limits.setter
+    def resource_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupResourceLimitArgs']]]]):
+        pulumi.set(self, "resource_limits", value)
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]]]:
+        """
+        Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
+        """
+        return pulumi.get(self, "taints")
+
+    @taints.setter
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]]]):
+        pulumi.set(self, "taints", value)
 
 
 class OceanVirtualNodeGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -86,6 +205,86 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVirtualNodeGroupResourceLimitArgs']]]] resource_limits: .
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVirtualNodeGroupTaintArgs']]]] taints: Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OceanVirtualNodeGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a Spotinst Ocean AKS Virtual Node Group resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.OceanVirtualNodeGroup("example",
+            autoscales=[spotinst.azure.OceanVirtualNodeGroupAutoscaleArgs(
+                autoscale_headroom=spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(
+                    cpu_per_unit=4,
+                    gpu_per_unit=8,
+                    memory_per_unit=100,
+                    num_of_units=16,
+                ),
+            )],
+            labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(
+                key="label_key",
+                value="label_value",
+            )],
+            launch_specifications=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationArgs(
+                os_disk=spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs(
+                    size_gb=100,
+                    type="Standard_LRS",
+                ),
+                tags=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationTagArgs(
+                    key="label_key",
+                    value="label_value",
+                )],
+            )],
+            ocean_id="o-12345",
+            resource_limits=[spotinst.azure.OceanVirtualNodeGroupResourceLimitArgs(
+                max_instance_count=4,
+            )],
+            taints=[spotinst.azure.OceanVirtualNodeGroupTaintArgs(
+                effect="NoSchedule",
+                key="taint_key",
+                value="taint_value",
+            )])
+        ```
+
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_aks_["example"]["id"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param OceanVirtualNodeGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OceanVirtualNodeGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVirtualNodeGroupAutoscaleArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVirtualNodeGroupLabelArgs']]]]] = None,
+                 launch_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVirtualNodeGroupLaunchSpecificationArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ocean_id: Optional[pulumi.Input[str]] = None,
+                 resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVirtualNodeGroupResourceLimitArgs']]]]] = None,
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVirtualNodeGroupTaintArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
