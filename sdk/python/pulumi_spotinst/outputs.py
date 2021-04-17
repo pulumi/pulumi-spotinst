@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 
 __all__ = [
@@ -41,12 +41,28 @@ class ElastigroupAzureV3Image(dict):
     def marketplaces(self) -> Optional[Sequence['outputs.ElastigroupAzureV3ImageMarketplace']]:
         return pulumi.get(self, "marketplaces")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupAzureV3ImageCustom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageName":
+            suggest = "image_name"
+        elif key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3ImageCustom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3ImageCustom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3ImageCustom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image_name: str,
                  resource_group_name: str):
@@ -72,9 +88,6 @@ class ElastigroupAzureV3ImageCustom(dict):
         Vnet Resource Group Name.
         """
         return pulumi.get(self, "resource_group_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -123,12 +136,28 @@ class ElastigroupAzureV3ImageMarketplace(dict):
     def version(self) -> str:
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupAzureV3Login(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+        elif key == "sshPublicKey":
+            suggest = "ssh_public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3Login. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3Login.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3Login.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  user_name: str,
                  password: Optional[str] = None,
@@ -168,12 +197,30 @@ class ElastigroupAzureV3Login(dict):
         """
         return pulumi.get(self, "ssh_public_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupAzureV3Network(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkInterfaces":
+            suggest = "network_interfaces"
+        elif key == "resourceGroupName":
+            suggest = "resource_group_name"
+        elif key == "virtualNetworkName":
+            suggest = "virtual_network_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3Network. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3Network.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3Network.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  network_interfaces: Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterface'],
                  resource_group_name: str,
@@ -207,12 +254,32 @@ class ElastigroupAzureV3Network(dict):
         """
         return pulumi.get(self, "virtual_network_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupAzureV3NetworkNetworkInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignPublicIp":
+            suggest = "assign_public_ip"
+        elif key == "isPrimary":
+            suggest = "is_primary"
+        elif key == "subnetName":
+            suggest = "subnet_name"
+        elif key == "additionalIpConfigs":
+            suggest = "additional_ip_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3NetworkNetworkInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3NetworkNetworkInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3NetworkNetworkInterface.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  assign_public_ip: bool,
                  is_primary: bool,
@@ -254,12 +321,26 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
         """
         return pulumi.get(self, "additional_ip_configs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateIpVersion":
+            suggest = "private_ip_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  private_ip_version: Optional[str] = None):
@@ -287,12 +368,32 @@ class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig(dict):
         """
         return pulumi.get(self, "private_ip_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupAzureV3Strategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "drainingTimeout":
+            suggest = "draining_timeout"
+        elif key == "fallbackToOnDemand":
+            suggest = "fallback_to_on_demand"
+        elif key == "odCount":
+            suggest = "od_count"
+        elif key == "spotPercentage":
+            suggest = "spot_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3Strategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3Strategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3Strategy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  draining_timeout: Optional[int] = None,
                  fallback_to_on_demand: Optional[bool] = None,
@@ -341,12 +442,28 @@ class ElastigroupAzureV3Strategy(dict):
         """
         return pulumi.get(self, "spot_percentage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HealthCheckCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endPoint":
+            suggest = "end_point"
+        elif key == "timeOut":
+            suggest = "time_out"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HealthCheckCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HealthCheckCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HealthCheckCheck.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  healthy: int,
                  interval: int,
@@ -445,8 +562,5 @@ class HealthCheckCheck(dict):
         the amount of time (in seconds) to wait when receiving a response from the health check.
         """
         return pulumi.get(self, "timeout")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'BalancerConnectionTimeouts',
@@ -39,9 +39,6 @@ class BalancerConnectionTimeouts(dict):
     def idle(self) -> Optional[int]:
         return pulumi.get(self, "idle")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BalancerTag(dict):
@@ -60,9 +57,6 @@ class BalancerTag(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -83,12 +77,36 @@ class ListenerTag(dict):
     def value(self) -> str:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ListenerTlsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateIds":
+            suggest = "certificate_ids"
+        elif key == "cipherSuites":
+            suggest = "cipher_suites"
+        elif key == "maxVersion":
+            suggest = "max_version"
+        elif key == "minVersion":
+            suggest = "min_version"
+        elif key == "preferServerCipherSuites":
+            suggest = "prefer_server_cipher_suites"
+        elif key == "sessionTicketsDisabled":
+            suggest = "session_tickets_disabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListenerTlsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListenerTlsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListenerTlsConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate_ids: Sequence[str],
                  cipher_suites: Sequence[str],
@@ -133,9 +151,6 @@ class ListenerTlsConfig(dict):
     def session_tickets_disabled(self) -> bool:
         return pulumi.get(self, "session_tickets_disabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RoutingRuleTag(dict):
@@ -155,12 +170,28 @@ class RoutingRuleTag(dict):
     def value(self) -> str:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TargetSetHealthCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthyThreshold":
+            suggest = "healthy_threshold"
+        elif key == "unhealthyThreshold":
+            suggest = "unhealthy_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TargetSetHealthCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TargetSetHealthCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TargetSetHealthCheck.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  healthy_threshold: int,
                  interval: int,
@@ -213,9 +244,6 @@ class TargetSetHealthCheck(dict):
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TargetSetTag(dict):
@@ -235,9 +263,6 @@ class TargetSetTag(dict):
     def value(self) -> str:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TargetTag(dict):
@@ -256,8 +281,5 @@ class TargetTag(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

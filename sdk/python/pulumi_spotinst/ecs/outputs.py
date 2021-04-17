@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -34,6 +34,27 @@ __all__ = [
 
 @pulumi.output_type
 class OceanAutoscaler(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isAutoConfig":
+            suggest = "is_auto_config"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "resourceLimits":
+            suggest = "resource_limits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanAutoscaler. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanAutoscaler.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanAutoscaler.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cooldown: Optional[int] = None,
                  down: Optional['outputs.OceanAutoscalerDown'] = None,
@@ -110,12 +131,26 @@ class OceanAutoscaler(dict):
         """
         return pulumi.get(self, "resource_limits")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanAutoscalerDown(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxScaleDownPercentage":
+            suggest = "max_scale_down_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanAutoscalerDown. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanAutoscalerDown.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanAutoscalerDown.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_scale_down_percentage: Optional[float] = None):
         """
@@ -132,12 +167,30 @@ class OceanAutoscalerDown(dict):
         """
         return pulumi.get(self, "max_scale_down_percentage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanAutoscalerHeadroom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuPerUnit":
+            suggest = "cpu_per_unit"
+        elif key == "memoryPerUnit":
+            suggest = "memory_per_unit"
+        elif key == "numOfUnits":
+            suggest = "num_of_units"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanAutoscalerHeadroom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanAutoscalerHeadroom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanAutoscalerHeadroom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpu_per_unit: Optional[int] = None,
                  memory_per_unit: Optional[int] = None,
@@ -178,12 +231,28 @@ class OceanAutoscalerHeadroom(dict):
         """
         return pulumi.get(self, "num_of_units")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanAutoscalerResourceLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxMemoryGib":
+            suggest = "max_memory_gib"
+        elif key == "maxVcpu":
+            suggest = "max_vcpu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanAutoscalerResourceLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanAutoscalerResourceLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanAutoscalerResourceLimits.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_memory_gib: Optional[int] = None,
                  max_vcpu: Optional[int] = None):
@@ -212,12 +281,30 @@ class OceanAutoscalerResourceLimits(dict):
         """
         return pulumi.get(self, "max_vcpu")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanBlockDeviceMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceName":
+            suggest = "device_name"
+        elif key == "noDevice":
+            suggest = "no_device"
+        elif key == "virtualName":
+            suggest = "virtual_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanBlockDeviceMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanBlockDeviceMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanBlockDeviceMapping.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device_name: str,
                  ebs: Optional['outputs.OceanBlockDeviceMappingEbs'] = None,
@@ -265,12 +352,36 @@ class OceanBlockDeviceMapping(dict):
     def virtual_name(self) -> Optional[str]:
         return pulumi.get(self, "virtual_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanBlockDeviceMappingEbs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteOnTermination":
+            suggest = "delete_on_termination"
+        elif key == "dynamicVolumeSize":
+            suggest = "dynamic_volume_size"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
+        elif key == "snapshotId":
+            suggest = "snapshot_id"
+        elif key == "volumeSize":
+            suggest = "volume_size"
+        elif key == "volumeType":
+            suggest = "volume_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanBlockDeviceMappingEbs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanBlockDeviceMappingEbs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanBlockDeviceMappingEbs.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  delete_on_termination: Optional[bool] = None,
                  dynamic_volume_size: Optional['outputs.OceanBlockDeviceMappingEbsDynamicVolumeSize'] = None,
@@ -383,12 +494,28 @@ class OceanBlockDeviceMappingEbs(dict):
         """
         return pulumi.get(self, "volume_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanBlockDeviceMappingEbsDynamicVolumeSize(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseSize":
+            suggest = "base_size"
+        elif key == "sizePerResourceUnit":
+            suggest = "size_per_resource_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanBlockDeviceMappingEbsDynamicVolumeSize. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanBlockDeviceMappingEbsDynamicVolumeSize.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanBlockDeviceMappingEbsDynamicVolumeSize.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_size: int,
                  resource: str,
@@ -426,9 +553,6 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSize(dict):
         """
         return pulumi.get(self, "size_per_resource_unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanLaunchSpecAttribute(dict):
@@ -458,12 +582,30 @@ class OceanLaunchSpecAttribute(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanLaunchSpecAutoscaleHeadroom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numOfUnits":
+            suggest = "num_of_units"
+        elif key == "cpuPerUnit":
+            suggest = "cpu_per_unit"
+        elif key == "memoryPerUnit":
+            suggest = "memory_per_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecAutoscaleHeadroom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecAutoscaleHeadroom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecAutoscaleHeadroom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_of_units: int,
                  cpu_per_unit: Optional[int] = None,
@@ -503,12 +645,30 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
         """
         return pulumi.get(self, "memory_per_unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanLaunchSpecBlockDeviceMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceName":
+            suggest = "device_name"
+        elif key == "noDevice":
+            suggest = "no_device"
+        elif key == "virtualName":
+            suggest = "virtual_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecBlockDeviceMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecBlockDeviceMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecBlockDeviceMapping.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device_name: str,
                  ebs: Optional['outputs.OceanLaunchSpecBlockDeviceMappingEbs'] = None,
@@ -556,12 +716,36 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
     def virtual_name(self) -> Optional[str]:
         return pulumi.get(self, "virtual_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanLaunchSpecBlockDeviceMappingEbs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteOnTermination":
+            suggest = "delete_on_termination"
+        elif key == "dynamicVolumeSize":
+            suggest = "dynamic_volume_size"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
+        elif key == "snapshotId":
+            suggest = "snapshot_id"
+        elif key == "volumeSize":
+            suggest = "volume_size"
+        elif key == "volumeType":
+            suggest = "volume_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecBlockDeviceMappingEbs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecBlockDeviceMappingEbs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecBlockDeviceMappingEbs.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  delete_on_termination: Optional[bool] = None,
                  dynamic_volume_size: Optional['outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize'] = None,
@@ -674,12 +858,28 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
         """
         return pulumi.get(self, "volume_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseSize":
+            suggest = "base_size"
+        elif key == "sizePerResourceUnit":
+            suggest = "size_per_resource_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_size: int,
                  resource: str,
@@ -717,9 +917,6 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize(dict):
         """
         return pulumi.get(self, "size_per_resource_unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanLaunchSpecTag(dict):
@@ -749,12 +946,30 @@ class OceanLaunchSpecTag(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanOptimizeImages(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "performAt":
+            suggest = "perform_at"
+        elif key == "shouldOptimizeEcsAmi":
+            suggest = "should_optimize_ecs_ami"
+        elif key == "timeWindows":
+            suggest = "time_windows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanOptimizeImages. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanOptimizeImages.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanOptimizeImages.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  perform_at: str,
                  should_optimize_ecs_ami: bool,
@@ -793,12 +1008,26 @@ class OceanOptimizeImages(dict):
         """
         return pulumi.get(self, "time_windows")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanScheduledTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shutdownHours":
+            suggest = "shutdown_hours"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanScheduledTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanScheduledTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanScheduledTask.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  shutdown_hours: Optional['outputs.OceanScheduledTaskShutdownHours'] = None,
                  tasks: Optional[Sequence['outputs.OceanScheduledTaskTask']] = None):
@@ -827,12 +1056,28 @@ class OceanScheduledTask(dict):
         """
         return pulumi.get(self, "tasks")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanScheduledTaskShutdownHours(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeWindows":
+            suggest = "time_windows"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanScheduledTaskShutdownHours. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanScheduledTaskShutdownHours.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanScheduledTaskShutdownHours.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  time_windows: Sequence[str],
                  is_enabled: Optional[bool] = None):
@@ -860,12 +1105,30 @@ class OceanScheduledTaskShutdownHours(dict):
         """
         return pulumi.get(self, "is_enabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanScheduledTaskTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronExpression":
+            suggest = "cron_expression"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "taskType":
+            suggest = "task_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanScheduledTaskTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanScheduledTaskTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanScheduledTaskTask.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cron_expression: str,
                  is_enabled: bool,
@@ -903,9 +1166,6 @@ class OceanScheduledTaskTask(dict):
         """
         return pulumi.get(self, "task_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanTag(dict):
@@ -935,12 +1195,28 @@ class OceanTag(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanUpdatePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shouldRoll":
+            suggest = "should_roll"
+        elif key == "rollConfig":
+            suggest = "roll_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanUpdatePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanUpdatePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanUpdatePolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  should_roll: bool,
                  roll_config: Optional['outputs.OceanUpdatePolicyRollConfig'] = None):
@@ -964,12 +1240,26 @@ class OceanUpdatePolicy(dict):
     def roll_config(self) -> Optional['outputs.OceanUpdatePolicyRollConfig']:
         return pulumi.get(self, "roll_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanUpdatePolicyRollConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchSizePercentage":
+            suggest = "batch_size_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanUpdatePolicyRollConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanUpdatePolicyRollConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanUpdatePolicyRollConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  batch_size_percentage: int):
         """
@@ -984,8 +1274,5 @@ class OceanUpdatePolicyRollConfig(dict):
         Sets the percentage of the instances to deploy in each batch.
         """
         return pulumi.get(self, "batch_size_percentage")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

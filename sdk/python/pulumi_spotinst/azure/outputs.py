@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -41,6 +41,27 @@ __all__ = [
 
 @pulumi.output_type
 class ElastigroupHealthCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthCheckType":
+            suggest = "health_check_type"
+        elif key == "autoHealing":
+            suggest = "auto_healing"
+        elif key == "gracePeriod":
+            suggest = "grace_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupHealthCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupHealthCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupHealthCheck.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  health_check_type: str,
                  auto_healing: Optional[bool] = None,
@@ -80,9 +101,6 @@ class ElastigroupHealthCheck(dict):
         """
         return pulumi.get(self, "grace_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupImage(dict):
@@ -104,12 +122,28 @@ class ElastigroupImage(dict):
     def marketplaces(self) -> Optional[Sequence['outputs.ElastigroupImageMarketplace']]:
         return pulumi.get(self, "marketplaces")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupImageCustom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageName":
+            suggest = "image_name"
+        elif key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupImageCustom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupImageCustom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupImageCustom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image_name: str,
                  resource_group_name: str):
@@ -135,9 +169,6 @@ class ElastigroupImageCustom(dict):
         Vnet Resource Group Name.
         """
         return pulumi.get(self, "resource_group_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -179,12 +210,26 @@ class ElastigroupImageMarketplace(dict):
         """
         return pulumi.get(self, "sku")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupIntegrationKubernetes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterIdentifier":
+            suggest = "cluster_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupIntegrationKubernetes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupIntegrationKubernetes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupIntegrationKubernetes.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_identifier: str):
         """
@@ -200,12 +245,26 @@ class ElastigroupIntegrationKubernetes(dict):
         """
         return pulumi.get(self, "cluster_identifier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupIntegrationMultaiRuntime(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deploymentId":
+            suggest = "deployment_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupIntegrationMultaiRuntime. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupIntegrationMultaiRuntime.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupIntegrationMultaiRuntime.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  deployment_id: str):
         """
@@ -221,12 +280,30 @@ class ElastigroupIntegrationMultaiRuntime(dict):
         """
         return pulumi.get(self, "deployment_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupLoadBalancer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoWeight":
+            suggest = "auto_weight"
+        elif key == "balancerId":
+            suggest = "balancer_id"
+        elif key == "targetSetId":
+            suggest = "target_set_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupLoadBalancer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupLoadBalancer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupLoadBalancer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  auto_weight: Optional[bool] = None,
@@ -274,12 +351,28 @@ class ElastigroupLoadBalancer(dict):
         """
         return pulumi.get(self, "target_set_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupLogin(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+        elif key == "sshPublicKey":
+            suggest = "ssh_public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupLogin. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupLogin.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupLogin.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  user_name: str,
                  password: Optional[str] = None,
@@ -319,12 +412,26 @@ class ElastigroupLogin(dict):
         """
         return pulumi.get(self, "ssh_public_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupManagedServiceIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupManagedServiceIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupManagedServiceIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupManagedServiceIdentity.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  resource_group_name: str):
@@ -351,12 +458,34 @@ class ElastigroupManagedServiceIdentity(dict):
         """
         return pulumi.get(self, "resource_group_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+        elif key == "subnetName":
+            suggest = "subnet_name"
+        elif key == "virtualNetworkName":
+            suggest = "virtual_network_name"
+        elif key == "additionalIpConfigs":
+            suggest = "additional_ip_configs"
+        elif key == "assignPublicIp":
+            suggest = "assign_public_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupNetwork.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_group_name: str,
                  subnet_name: str,
@@ -414,12 +543,26 @@ class ElastigroupNetwork(dict):
     def assign_public_ip(self) -> Optional[bool]:
         return pulumi.get(self, "assign_public_ip")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupNetworkAdditionalIpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateIpVersion":
+            suggest = "private_ip_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupNetworkAdditionalIpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupNetworkAdditionalIpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupNetworkAdditionalIpConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  private_ip_version: Optional[str] = None):
@@ -447,12 +590,36 @@ class ElastigroupNetworkAdditionalIpConfig(dict):
         """
         return pulumi.get(self, "private_ip_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupScalingDownPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricName":
+            suggest = "metric_name"
+        elif key == "policyName":
+            suggest = "policy_name"
+        elif key == "actionType":
+            suggest = "action_type"
+        elif key == "evaluationPeriods":
+            suggest = "evaluation_periods"
+        elif key == "maxTargetCapacity":
+            suggest = "max_target_capacity"
+        elif key == "minTargetCapacity":
+            suggest = "min_target_capacity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupScalingDownPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupScalingDownPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupScalingDownPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  metric_name: str,
                  namespace: str,
@@ -669,9 +836,6 @@ class ElastigroupScalingDownPolicy(dict):
         """
         return pulumi.get(self, "unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupScalingDownPolicyDimension(dict):
@@ -702,12 +866,36 @@ class ElastigroupScalingDownPolicyDimension(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupScalingUpPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricName":
+            suggest = "metric_name"
+        elif key == "policyName":
+            suggest = "policy_name"
+        elif key == "actionType":
+            suggest = "action_type"
+        elif key == "evaluationPeriods":
+            suggest = "evaluation_periods"
+        elif key == "maxTargetCapacity":
+            suggest = "max_target_capacity"
+        elif key == "minTargetCapacity":
+            suggest = "min_target_capacity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupScalingUpPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupScalingUpPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupScalingUpPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  metric_name: str,
                  namespace: str,
@@ -924,9 +1112,6 @@ class ElastigroupScalingUpPolicy(dict):
         """
         return pulumi.get(self, "unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupScalingUpPolicyDimension(dict):
@@ -957,12 +1142,42 @@ class ElastigroupScalingUpPolicyDimension(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupScheduledTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronExpression":
+            suggest = "cron_expression"
+        elif key == "taskType":
+            suggest = "task_type"
+        elif key == "adjustmentPercentage":
+            suggest = "adjustment_percentage"
+        elif key == "batchSizePercentage":
+            suggest = "batch_size_percentage"
+        elif key == "gracePeriod":
+            suggest = "grace_period"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "scaleMaxCapacity":
+            suggest = "scale_max_capacity"
+        elif key == "scaleMinCapacity":
+            suggest = "scale_min_capacity"
+        elif key == "scaleTargetCapacity":
+            suggest = "scale_target_capacity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupScheduledTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupScheduledTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupScheduledTask.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cron_expression: str,
                  task_type: str,
@@ -1085,12 +1300,30 @@ class ElastigroupScheduledTask(dict):
         """
         return pulumi.get(self, "scale_target_capacity")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "drainingTimeout":
+            suggest = "draining_timeout"
+        elif key == "lowPriorityPercentage":
+            suggest = "low_priority_percentage"
+        elif key == "odCount":
+            suggest = "od_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupStrategy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  draining_timeout: Optional[int] = None,
                  low_priority_percentage: Optional[int] = None,
@@ -1131,12 +1364,28 @@ class ElastigroupStrategy(dict):
         """
         return pulumi.get(self, "od_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupUpdatePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shouldRoll":
+            suggest = "should_roll"
+        elif key == "rollConfig":
+            suggest = "roll_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupUpdatePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupUpdatePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupUpdatePolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  should_roll: bool,
                  roll_config: Optional['outputs.ElastigroupUpdatePolicyRollConfig'] = None):
@@ -1164,12 +1413,30 @@ class ElastigroupUpdatePolicy(dict):
         """
         return pulumi.get(self, "roll_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ElastigroupUpdatePolicyRollConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchSizePercentage":
+            suggest = "batch_size_percentage"
+        elif key == "gracePeriod":
+            suggest = "grace_period"
+        elif key == "healthCheckType":
+            suggest = "health_check_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupUpdatePolicyRollConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupUpdatePolicyRollConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupUpdatePolicyRollConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  batch_size_percentage: int,
                  grace_period: Optional[int] = None,
@@ -1209,12 +1476,26 @@ class ElastigroupUpdatePolicyRollConfig(dict):
         """
         return pulumi.get(self, "health_check_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanVirtualNodeGroupAutoscale(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscaleHeadroom":
+            suggest = "autoscale_headroom"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanVirtualNodeGroupAutoscale. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanVirtualNodeGroupAutoscale.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanVirtualNodeGroupAutoscale.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autoscale_headroom: Optional['outputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom'] = None):
         if autoscale_headroom is not None:
@@ -1225,12 +1506,32 @@ class OceanVirtualNodeGroupAutoscale(dict):
     def autoscale_headroom(self) -> Optional['outputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom']:
         return pulumi.get(self, "autoscale_headroom")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numOfUnits":
+            suggest = "num_of_units"
+        elif key == "cpuPerUnit":
+            suggest = "cpu_per_unit"
+        elif key == "gpuPerUnit":
+            suggest = "gpu_per_unit"
+        elif key == "memoryPerUnit":
+            suggest = "memory_per_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_of_units: int,
                  cpu_per_unit: Optional[int] = None,
@@ -1282,9 +1583,6 @@ class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom(dict):
         """
         return pulumi.get(self, "memory_per_unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanVirtualNodeGroupLabel(dict):
@@ -1315,12 +1613,26 @@ class OceanVirtualNodeGroupLabel(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanVirtualNodeGroupLaunchSpecification(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "osDisk":
+            suggest = "os_disk"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanVirtualNodeGroupLaunchSpecification. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanVirtualNodeGroupLaunchSpecification.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanVirtualNodeGroupLaunchSpecification.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  os_disk: Optional['outputs.OceanVirtualNodeGroupLaunchSpecificationOsDisk'] = None,
                  tags: Optional[Sequence['outputs.OceanVirtualNodeGroupLaunchSpecificationTag']] = None):
@@ -1349,12 +1661,26 @@ class OceanVirtualNodeGroupLaunchSpecification(dict):
         """
         return pulumi.get(self, "tags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanVirtualNodeGroupLaunchSpecificationOsDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanVirtualNodeGroupLaunchSpecificationOsDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanVirtualNodeGroupLaunchSpecificationOsDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanVirtualNodeGroupLaunchSpecificationOsDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  size_gb: int,
                  type: Optional[str] = None):
@@ -1381,9 +1707,6 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDisk(dict):
         The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1416,12 +1739,26 @@ class OceanVirtualNodeGroupLaunchSpecificationTag(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OceanVirtualNodeGroupResourceLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxInstanceCount":
+            suggest = "max_instance_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanVirtualNodeGroupResourceLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanVirtualNodeGroupResourceLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanVirtualNodeGroupResourceLimit.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_instance_count: Optional[int] = None):
         """
@@ -1437,9 +1774,6 @@ class OceanVirtualNodeGroupResourceLimit(dict):
         Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.
         """
         return pulumi.get(self, "max_instance_count")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1480,8 +1814,5 @@ class OceanVirtualNodeGroupTaint(dict):
         Tag Value for VMs in the cluster.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
