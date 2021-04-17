@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -22,6 +22,74 @@ class BalancerArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['BalancerTagArgs']]]] = None):
         """
         The set of arguments for constructing a Balancer resource.
+        """
+        if connection_timeouts is not None:
+            pulumi.set(__self__, "connection_timeouts", connection_timeouts)
+        if dns_cname_aliases is not None:
+            pulumi.set(__self__, "dns_cname_aliases", dns_cname_aliases)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="connectionTimeouts")
+    def connection_timeouts(self) -> Optional[pulumi.Input['BalancerConnectionTimeoutsArgs']]:
+        return pulumi.get(self, "connection_timeouts")
+
+    @connection_timeouts.setter
+    def connection_timeouts(self, value: Optional[pulumi.Input['BalancerConnectionTimeoutsArgs']]):
+        pulumi.set(self, "connection_timeouts", value)
+
+    @property
+    @pulumi.getter(name="dnsCnameAliases")
+    def dns_cname_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "dns_cname_aliases")
+
+    @dns_cname_aliases.setter
+    def dns_cname_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_cname_aliases", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BalancerTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BalancerTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _BalancerState:
+    def __init__(__self__, *,
+                 connection_timeouts: Optional[pulumi.Input['BalancerConnectionTimeoutsArgs']] = None,
+                 dns_cname_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['BalancerTagArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering Balancer resources.
         """
         if connection_timeouts is not None:
             pulumi.set(__self__, "connection_timeouts", connection_timeouts)
@@ -144,13 +212,13 @@ class Balancer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BalancerArgs.__new__(BalancerArgs)
 
-            __props__['connection_timeouts'] = connection_timeouts
-            __props__['dns_cname_aliases'] = dns_cname_aliases
-            __props__['name'] = name
-            __props__['scheme'] = scheme
-            __props__['tags'] = tags
+            __props__.__dict__["connection_timeouts"] = connection_timeouts
+            __props__.__dict__["dns_cname_aliases"] = dns_cname_aliases
+            __props__.__dict__["name"] = name
+            __props__.__dict__["scheme"] = scheme
+            __props__.__dict__["tags"] = tags
         super(Balancer, __self__).__init__(
             'spotinst:multai/balancer:Balancer',
             resource_name,
@@ -176,13 +244,13 @@ class Balancer(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _BalancerState.__new__(_BalancerState)
 
-        __props__["connection_timeouts"] = connection_timeouts
-        __props__["dns_cname_aliases"] = dns_cname_aliases
-        __props__["name"] = name
-        __props__["scheme"] = scheme
-        __props__["tags"] = tags
+        __props__.__dict__["connection_timeouts"] = connection_timeouts
+        __props__.__dict__["dns_cname_aliases"] = dns_cname_aliases
+        __props__.__dict__["name"] = name
+        __props__.__dict__["scheme"] = scheme
+        __props__.__dict__["tags"] = tags
         return Balancer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -209,10 +277,4 @@ class Balancer(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.BalancerTag']]]:
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

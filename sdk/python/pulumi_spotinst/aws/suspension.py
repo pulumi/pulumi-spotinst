@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -47,6 +47,46 @@ class SuspensionArgs:
 
     @suspensions.setter
     def suspensions(self, value: pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]):
+        pulumi.set(self, "suspensions", value)
+
+
+@pulumi.input_type
+class _SuspensionState:
+    def __init__(__self__, *,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 suspensions: Optional[pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering Suspension resources.
+        :param pulumi.Input[str] group_id: Elastigroup ID to apply the suspensions on.
+        :param pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]] suspensions: block of single process to suspend.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if suspensions is not None:
+            pulumi.set(__self__, "suspensions", suspensions)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Elastigroup ID to apply the suspensions on.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def suspensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]]:
+        """
+        block of single process to suspend.
+        """
+        return pulumi.get(self, "suspensions")
+
+    @suspensions.setter
+    def suspensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]]):
         pulumi.set(self, "suspensions", value)
 
 
@@ -160,14 +200,14 @@ class Suspension(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SuspensionArgs.__new__(SuspensionArgs)
 
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
+            __props__.__dict__["group_id"] = group_id
             if suspensions is None and not opts.urn:
                 raise TypeError("Missing required property 'suspensions'")
-            __props__['suspensions'] = suspensions
+            __props__.__dict__["suspensions"] = suspensions
         super(Suspension, __self__).__init__(
             'spotinst:aws/suspension:Suspension',
             resource_name,
@@ -192,10 +232,10 @@ class Suspension(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SuspensionState.__new__(_SuspensionState)
 
-        __props__["group_id"] = group_id
-        __props__["suspensions"] = suspensions
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["suspensions"] = suspensions
         return Suspension(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -213,10 +253,4 @@ class Suspension(pulumi.CustomResource):
         block of single process to suspend.
         """
         return pulumi.get(self, "suspensions")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

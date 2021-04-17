@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -490,6 +490,486 @@ class OceanArgs:
         pulumi.set(self, "whitelists", value)
 
 
+@pulumi.input_type
+class _OceanState:
+    def __init__(__self__, *,
+                 associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
+                 blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 controller_id: Optional[pulumi.Input[str]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
+                 ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 grace_period: Optional[pulumi.Input[int]] = None,
+                 iam_instance_profile: Optional[pulumi.Input[str]] = None,
+                 image_id: Optional[pulumi.Input[str]] = None,
+                 key_name: Optional[pulumi.Input[str]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
+                 monitoring: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 root_volume_size: Optional[pulumi.Input[int]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
+                 use_as_template_only: Optional[pulumi.Input[bool]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
+                 utilize_commitments: Optional[pulumi.Input[bool]] = None,
+                 utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
+                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Ocean resources.
+        :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes autoscaler.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
+        :param pulumi.Input[str] controller_id: The ocean cluster identifier. Example: `ocean.k8s`
+        :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
+        :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+        :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
+        :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
+        :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[str] key_name: The key pair to attach the instances.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: - Array of load balancer objects to add to ocean cluster
+        :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
+        :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
+        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        :param pulumi.Input[str] name: Required if type is set to CLASSIC
+        :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
+        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
+        :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
+        """
+        if associate_public_ip_address is not None:
+            pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
+        if autoscaler is not None:
+            pulumi.set(__self__, "autoscaler", autoscaler)
+        if blacklists is not None:
+            pulumi.set(__self__, "blacklists", blacklists)
+        if controller_id is not None:
+            pulumi.set(__self__, "controller_id", controller_id)
+        if desired_capacity is not None:
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if ebs_optimized is not None:
+            pulumi.set(__self__, "ebs_optimized", ebs_optimized)
+        if fallback_to_ondemand is not None:
+            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+        if iam_instance_profile is not None:
+            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if key_name is not None:
+            pulumi.set(__self__, "key_name", key_name)
+        if load_balancers is not None:
+            pulumi.set(__self__, "load_balancers", load_balancers)
+        if max_size is not None:
+            pulumi.set(__self__, "max_size", max_size)
+        if min_size is not None:
+            pulumi.set(__self__, "min_size", min_size)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if root_volume_size is not None:
+            pulumi.set(__self__, "root_volume_size", root_volume_size)
+        if scheduled_tasks is not None:
+            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if spot_percentage is not None:
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
+        if subnet_ids is not None:
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
+        if use_as_template_only is not None:
+            pulumi.set(__self__, "use_as_template_only", use_as_template_only)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if utilize_commitments is not None:
+            pulumi.set(__self__, "utilize_commitments", utilize_commitments)
+        if utilize_reserved_instances is not None:
+            pulumi.set(__self__, "utilize_reserved_instances", utilize_reserved_instances)
+        if whitelists is not None:
+            pulumi.set(__self__, "whitelists", whitelists)
+
+    @property
+    @pulumi.getter(name="associatePublicIpAddress")
+    def associate_public_ip_address(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Configure public IP address allocation.
+        """
+        return pulumi.get(self, "associate_public_ip_address")
+
+    @associate_public_ip_address.setter
+    def associate_public_ip_address(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "associate_public_ip_address", value)
+
+    @property
+    @pulumi.getter
+    def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
+        """
+        Describes the Ocean Kubernetes autoscaler.
+        """
+        return pulumi.get(self, "autoscaler")
+
+    @autoscaler.setter
+    def autoscaler(self, value: Optional[pulumi.Input['OceanAutoscalerArgs']]):
+        pulumi.set(self, "autoscaler", value)
+
+    @property
+    @pulumi.getter
+    def blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
+        """
+        return pulumi.get(self, "blacklists")
+
+    @blacklists.setter
+    def blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "blacklists", value)
+
+    @property
+    @pulumi.getter(name="controllerId")
+    def controller_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ocean cluster identifier. Example: `ocean.k8s`
+        """
+        return pulumi.get(self, "controller_id")
+
+    @controller_id.setter
+    def controller_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "controller_id", value)
+
+    @property
+    @pulumi.getter(name="desiredCapacity")
+    def desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of instances to launch and maintain in the cluster.
+        """
+        return pulumi.get(self, "desired_capacity")
+
+    @desired_capacity.setter
+    def desired_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "draining_timeout", value)
+
+    @property
+    @pulumi.getter(name="ebsOptimized")
+    def ebs_optimized(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
+        """
+        return pulumi.get(self, "ebs_optimized")
+
+    @ebs_optimized.setter
+    def ebs_optimized(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ebs_optimized", value)
+
+    @property
+    @pulumi.getter(name="fallbackToOndemand")
+    def fallback_to_ondemand(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
+        """
+        return pulumi.get(self, "fallback_to_ondemand")
+
+    @fallback_to_ondemand.setter
+    def fallback_to_ondemand(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fallback_to_ondemand", value)
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in seconds, after the instance has launched to start checking its health.
+        """
+        return pulumi.get(self, "grace_period")
+
+    @grace_period.setter
+    def grace_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "grace_period", value)
+
+    @property
+    @pulumi.getter(name="iamInstanceProfile")
+    def iam_instance_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance profile iam role.
+        """
+        return pulumi.get(self, "iam_instance_profile")
+
+    @iam_instance_profile.setter
+    def iam_instance_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_instance_profile", value)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the image used to launch the instances.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key pair to attach the instances.
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_name", value)
+
+    @property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]:
+        """
+        - Array of load balancer objects to add to ocean cluster
+        """
+        return pulumi.get(self, "load_balancers")
+
+    @load_balancers.setter
+    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]):
+        pulumi.set(self, "load_balancers", value)
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The upper limit of instances the cluster can scale up to.
+        """
+        return pulumi.get(self, "max_size")
+
+    @max_size.setter
+    def max_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_size", value)
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The lower limit of instances the cluster can scale down to.
+        """
+        return pulumi.get(self, "min_size")
+
+    @min_size.setter
+    def min_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_size", value)
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @monitoring.setter
+    def monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "monitoring", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if type is set to CLASSIC
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region the cluster will run in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="rootVolumeSize")
+    def root_volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size (in Gb) to allocate for the root volume. Minimum `20`.
+        """
+        return pulumi.get(self, "root_volume_size")
+
+    @root_volume_size.setter
+    def root_volume_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "root_volume_size", value)
+
+    @property
+    @pulumi.getter(name="scheduledTasks")
+    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]:
+        """
+        Set scheduling object.
+        """
+        return pulumi.get(self, "scheduled_tasks")
+
+    @scheduled_tasks.setter
+    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]]):
+        pulumi.set(self, "scheduled_tasks", value)
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more security group ids.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_groups", value)
+
+    @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        """
+        return pulumi.get(self, "spot_percentage")
+
+    @spot_percentage.setter
+    def spot_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_percentage", value)
+
+    @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        """
+        return pulumi.get(self, "subnet_ids")
+
+    @subnet_ids.setter
+    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subnet_ids", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]:
+        """
+        Optionally adds tags to instances launched in an Ocean cluster.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
+    @pulumi.getter(name="useAsTemplateOnly")
+    def use_as_template_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        """
+        return pulumi.get(self, "use_as_template_only")
+
+    @use_as_template_only.setter
+    def use_as_template_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_as_template_only", value)
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Base64-encoded MIME user data to make available to the instances.
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+    @property
+    @pulumi.getter(name="utilizeCommitments")
+    def utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "utilize_commitments")
+
+    @utilize_commitments.setter
+    def utilize_commitments(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "utilize_commitments", value)
+
+    @property
+    @pulumi.getter(name="utilizeReservedInstances")
+    def utilize_reserved_instances(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If Reserved instances exist, Ocean will utilize them before launching Spot instances.
+        """
+        return pulumi.get(self, "utilize_reserved_instances")
+
+    @utilize_reserved_instances.setter
+    def utilize_reserved_instances(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "utilize_reserved_instances", value)
+
+    @property
+    @pulumi.getter
+    def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
+        """
+        return pulumi.get(self, "whitelists")
+
+    @whitelists.setter
+    def whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "whitelists", value)
+
+
 class Ocean(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -740,42 +1220,42 @@ class Ocean(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OceanArgs.__new__(OceanArgs)
 
-            __props__['associate_public_ip_address'] = associate_public_ip_address
-            __props__['autoscaler'] = autoscaler
-            __props__['blacklists'] = blacklists
-            __props__['controller_id'] = controller_id
-            __props__['desired_capacity'] = desired_capacity
-            __props__['draining_timeout'] = draining_timeout
-            __props__['ebs_optimized'] = ebs_optimized
-            __props__['fallback_to_ondemand'] = fallback_to_ondemand
-            __props__['grace_period'] = grace_period
-            __props__['iam_instance_profile'] = iam_instance_profile
-            __props__['image_id'] = image_id
-            __props__['key_name'] = key_name
-            __props__['load_balancers'] = load_balancers
-            __props__['max_size'] = max_size
-            __props__['min_size'] = min_size
-            __props__['monitoring'] = monitoring
-            __props__['name'] = name
-            __props__['region'] = region
-            __props__['root_volume_size'] = root_volume_size
-            __props__['scheduled_tasks'] = scheduled_tasks
+            __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
+            __props__.__dict__["autoscaler"] = autoscaler
+            __props__.__dict__["blacklists"] = blacklists
+            __props__.__dict__["controller_id"] = controller_id
+            __props__.__dict__["desired_capacity"] = desired_capacity
+            __props__.__dict__["draining_timeout"] = draining_timeout
+            __props__.__dict__["ebs_optimized"] = ebs_optimized
+            __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+            __props__.__dict__["grace_period"] = grace_period
+            __props__.__dict__["iam_instance_profile"] = iam_instance_profile
+            __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["key_name"] = key_name
+            __props__.__dict__["load_balancers"] = load_balancers
+            __props__.__dict__["max_size"] = max_size
+            __props__.__dict__["min_size"] = min_size
+            __props__.__dict__["monitoring"] = monitoring
+            __props__.__dict__["name"] = name
+            __props__.__dict__["region"] = region
+            __props__.__dict__["root_volume_size"] = root_volume_size
+            __props__.__dict__["scheduled_tasks"] = scheduled_tasks
             if security_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'security_groups'")
-            __props__['security_groups'] = security_groups
-            __props__['spot_percentage'] = spot_percentage
+            __props__.__dict__["security_groups"] = security_groups
+            __props__.__dict__["spot_percentage"] = spot_percentage
             if subnet_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_ids'")
-            __props__['subnet_ids'] = subnet_ids
-            __props__['tags'] = tags
-            __props__['update_policy'] = update_policy
-            __props__['use_as_template_only'] = use_as_template_only
-            __props__['user_data'] = user_data
-            __props__['utilize_commitments'] = utilize_commitments
-            __props__['utilize_reserved_instances'] = utilize_reserved_instances
-            __props__['whitelists'] = whitelists
+            __props__.__dict__["subnet_ids"] = subnet_ids
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["update_policy"] = update_policy
+            __props__.__dict__["use_as_template_only"] = use_as_template_only
+            __props__.__dict__["user_data"] = user_data
+            __props__.__dict__["utilize_commitments"] = utilize_commitments
+            __props__.__dict__["utilize_reserved_instances"] = utilize_reserved_instances
+            __props__.__dict__["whitelists"] = whitelists
         super(Ocean, __self__).__init__(
             'spotinst:aws/ocean:Ocean',
             resource_name,
@@ -854,38 +1334,38 @@ class Ocean(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _OceanState.__new__(_OceanState)
 
-        __props__["associate_public_ip_address"] = associate_public_ip_address
-        __props__["autoscaler"] = autoscaler
-        __props__["blacklists"] = blacklists
-        __props__["controller_id"] = controller_id
-        __props__["desired_capacity"] = desired_capacity
-        __props__["draining_timeout"] = draining_timeout
-        __props__["ebs_optimized"] = ebs_optimized
-        __props__["fallback_to_ondemand"] = fallback_to_ondemand
-        __props__["grace_period"] = grace_period
-        __props__["iam_instance_profile"] = iam_instance_profile
-        __props__["image_id"] = image_id
-        __props__["key_name"] = key_name
-        __props__["load_balancers"] = load_balancers
-        __props__["max_size"] = max_size
-        __props__["min_size"] = min_size
-        __props__["monitoring"] = monitoring
-        __props__["name"] = name
-        __props__["region"] = region
-        __props__["root_volume_size"] = root_volume_size
-        __props__["scheduled_tasks"] = scheduled_tasks
-        __props__["security_groups"] = security_groups
-        __props__["spot_percentage"] = spot_percentage
-        __props__["subnet_ids"] = subnet_ids
-        __props__["tags"] = tags
-        __props__["update_policy"] = update_policy
-        __props__["use_as_template_only"] = use_as_template_only
-        __props__["user_data"] = user_data
-        __props__["utilize_commitments"] = utilize_commitments
-        __props__["utilize_reserved_instances"] = utilize_reserved_instances
-        __props__["whitelists"] = whitelists
+        __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
+        __props__.__dict__["autoscaler"] = autoscaler
+        __props__.__dict__["blacklists"] = blacklists
+        __props__.__dict__["controller_id"] = controller_id
+        __props__.__dict__["desired_capacity"] = desired_capacity
+        __props__.__dict__["draining_timeout"] = draining_timeout
+        __props__.__dict__["ebs_optimized"] = ebs_optimized
+        __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+        __props__.__dict__["grace_period"] = grace_period
+        __props__.__dict__["iam_instance_profile"] = iam_instance_profile
+        __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["key_name"] = key_name
+        __props__.__dict__["load_balancers"] = load_balancers
+        __props__.__dict__["max_size"] = max_size
+        __props__.__dict__["min_size"] = min_size
+        __props__.__dict__["monitoring"] = monitoring
+        __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
+        __props__.__dict__["root_volume_size"] = root_volume_size
+        __props__.__dict__["scheduled_tasks"] = scheduled_tasks
+        __props__.__dict__["security_groups"] = security_groups
+        __props__.__dict__["spot_percentage"] = spot_percentage
+        __props__.__dict__["subnet_ids"] = subnet_ids
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["update_policy"] = update_policy
+        __props__.__dict__["use_as_template_only"] = use_as_template_only
+        __props__.__dict__["user_data"] = user_data
+        __props__.__dict__["utilize_commitments"] = utilize_commitments
+        __props__.__dict__["utilize_reserved_instances"] = utilize_reserved_instances
+        __props__.__dict__["whitelists"] = whitelists
         return Ocean(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1121,10 +1601,4 @@ class Ocean(pulumi.CustomResource):
         Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """
         return pulumi.get(self, "whitelists")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

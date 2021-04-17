@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -910,6 +910,917 @@ class MrScalarArgs:
         pulumi.set(self, "visible_to_all_users", value)
 
 
+@pulumi.input_type
+class _MrScalarState:
+    def __init__(__self__, *,
+                 additional_info: Optional[pulumi.Input[str]] = None,
+                 additional_primary_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 additional_replica_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 applications: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarApplicationArgs']]]] = None,
+                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 bootstrap_actions_files: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarBootstrapActionsFileArgs']]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 configurations_files: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarConfigurationsFileArgs']]]] = None,
+                 core_desired_capacity: Optional[pulumi.Input[int]] = None,
+                 core_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreEbsBlockDeviceArgs']]]] = None,
+                 core_ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 core_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 core_lifecycle: Optional[pulumi.Input[str]] = None,
+                 core_max_size: Optional[pulumi.Input[int]] = None,
+                 core_min_size: Optional[pulumi.Input[int]] = None,
+                 core_scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingDownPolicyArgs']]]] = None,
+                 core_scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingUpPolicyArgs']]]] = None,
+                 core_unit: Optional[pulumi.Input[str]] = None,
+                 custom_ami_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ebs_root_volume_size: Optional[pulumi.Input[int]] = None,
+                 ec2_key_name: Optional[pulumi.Input[str]] = None,
+                 expose_cluster_id: Optional[pulumi.Input[bool]] = None,
+                 instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarInstanceWeightArgs']]]] = None,
+                 job_flow_role: Optional[pulumi.Input[str]] = None,
+                 keep_job_flow_alive: Optional[pulumi.Input[bool]] = None,
+                 log_uri: Optional[pulumi.Input[str]] = None,
+                 managed_primary_security_group: Optional[pulumi.Input[str]] = None,
+                 managed_replica_security_group: Optional[pulumi.Input[str]] = None,
+                 master_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarMasterEbsBlockDeviceArgs']]]] = None,
+                 master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 master_lifecycle: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 output_cluster_id: Optional[pulumi.Input[str]] = None,
+                 provisioning_timeout: Optional[pulumi.Input['MrScalarProvisioningTimeoutArgs']] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 release_label: Optional[pulumi.Input[str]] = None,
+                 repo_upgrade_on_boot: Optional[pulumi.Input[str]] = None,
+                 retries: Optional[pulumi.Input[int]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarScheduledTaskArgs']]]] = None,
+                 security_config: Optional[pulumi.Input[str]] = None,
+                 service_access_security_group: Optional[pulumi.Input[str]] = None,
+                 service_role: Optional[pulumi.Input[str]] = None,
+                 steps_files: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarStepsFileArgs']]]] = None,
+                 strategy: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTagArgs']]]] = None,
+                 task_desired_capacity: Optional[pulumi.Input[int]] = None,
+                 task_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskEbsBlockDeviceArgs']]]] = None,
+                 task_ebs_optimized: Optional[pulumi.Input[bool]] = None,
+                 task_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 task_lifecycle: Optional[pulumi.Input[str]] = None,
+                 task_max_size: Optional[pulumi.Input[int]] = None,
+                 task_min_size: Optional[pulumi.Input[int]] = None,
+                 task_scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingDownPolicyArgs']]]] = None,
+                 task_scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingUpPolicyArgs']]]] = None,
+                 task_unit: Optional[pulumi.Input[str]] = None,
+                 termination_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]]] = None,
+                 termination_protected: Optional[pulumi.Input[bool]] = None,
+                 visible_to_all_users: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering MrScalar resources.
+        :param pulumi.Input[str] additional_info: This is meta information about third-party applications that third-party vendors use for testing purposes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_primary_security_groups: A list of additional Amazon EC2 security group IDs for the master node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_replica_security_groups: A list of additional Amazon EC2 security group IDs for the core and task nodes.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarApplicationArgs']]] applications: A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of AZs and their subnet Ids. See example above for usage.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarBootstrapActionsFileArgs']]] bootstrap_actions_files: Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+        :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarConfigurationsFileArgs']]] configurations_files: Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarCoreEbsBlockDeviceArgs']]] core_ebs_block_devices: This determines the ebs configuration for your core group instances. Only a single block is allowed.
+        :param pulumi.Input[bool] core_ebs_optimized: EBS Optimization setting for instances in group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] core_instance_types: The MrScaler instance types for the core nodes.
+        :param pulumi.Input[str] core_lifecycle: The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[str] core_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+        :param pulumi.Input[str] custom_ami_id: The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
+        :param pulumi.Input[str] description: The MrScaler description.
+        :param pulumi.Input[str] ec2_key_name: The name of an Amazon EC2 key pair that can be used to ssh to the master node.
+        :param pulumi.Input[bool] expose_cluster_id: Allow the `cluster_id` to set a provider output variable.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarInstanceWeightArgs']]] instance_weights: Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
+        :param pulumi.Input[str] job_flow_role: The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
+        :param pulumi.Input[bool] keep_job_flow_alive: Specifies whether the cluster should remain available after completing all steps.
+        :param pulumi.Input[str] log_uri: The path to the Amazon S3 location where logs for this cluster are stored.
+        :param pulumi.Input[str] managed_primary_security_group: EMR Managed Security group that will be set to the primary instance group.
+        :param pulumi.Input[str] managed_replica_security_group: EMR Managed Security group that will be set to the replica instance group.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarMasterEbsBlockDeviceArgs']]] master_ebs_block_devices: This determines the ebs configuration for your master group instances. Only a single block is allowed.
+        :param pulumi.Input[bool] master_ebs_optimized: EBS Optimization setting for instances in group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The MrScaler instance types for the master nodes.
+        :param pulumi.Input[str] master_lifecycle: The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[str] name: The application name.
+        :param pulumi.Input[str] region: The MrScaler region.
+        :param pulumi.Input[str] repo_upgrade_on_boot: Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
+        :param pulumi.Input[int] retries: Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarScheduledTaskArgs']]] scheduled_tasks: An array of scheduled tasks.
+        :param pulumi.Input[str] security_config: The name of the security configuration applied to the cluster.
+        :param pulumi.Input[str] service_access_security_group: The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
+        :param pulumi.Input[str] service_role: The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarStepsFileArgs']]] steps_files: Steps from S3.
+        :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarTagArgs']]] tags: A list of tags to assign to the resource. You may define multiple tags.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarTaskEbsBlockDeviceArgs']]] task_ebs_block_devices: This determines the ebs configuration for your task group instances. Only a single block is allowed.
+        :param pulumi.Input[bool] task_ebs_optimized: EBS Optimization setting for instances in group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] task_instance_types: The MrScaler instance types for the task nodes.
+        :param pulumi.Input[str] task_lifecycle: The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[str] task_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+        :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
+        """
+        if additional_info is not None:
+            pulumi.set(__self__, "additional_info", additional_info)
+        if additional_primary_security_groups is not None:
+            pulumi.set(__self__, "additional_primary_security_groups", additional_primary_security_groups)
+        if additional_replica_security_groups is not None:
+            pulumi.set(__self__, "additional_replica_security_groups", additional_replica_security_groups)
+        if applications is not None:
+            pulumi.set(__self__, "applications", applications)
+        if availability_zones is not None:
+            pulumi.set(__self__, "availability_zones", availability_zones)
+        if bootstrap_actions_files is not None:
+            pulumi.set(__self__, "bootstrap_actions_files", bootstrap_actions_files)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if configurations_files is not None:
+            pulumi.set(__self__, "configurations_files", configurations_files)
+        if core_desired_capacity is not None:
+            pulumi.set(__self__, "core_desired_capacity", core_desired_capacity)
+        if core_ebs_block_devices is not None:
+            pulumi.set(__self__, "core_ebs_block_devices", core_ebs_block_devices)
+        if core_ebs_optimized is not None:
+            pulumi.set(__self__, "core_ebs_optimized", core_ebs_optimized)
+        if core_instance_types is not None:
+            pulumi.set(__self__, "core_instance_types", core_instance_types)
+        if core_lifecycle is not None:
+            pulumi.set(__self__, "core_lifecycle", core_lifecycle)
+        if core_max_size is not None:
+            pulumi.set(__self__, "core_max_size", core_max_size)
+        if core_min_size is not None:
+            pulumi.set(__self__, "core_min_size", core_min_size)
+        if core_scaling_down_policies is not None:
+            pulumi.set(__self__, "core_scaling_down_policies", core_scaling_down_policies)
+        if core_scaling_up_policies is not None:
+            pulumi.set(__self__, "core_scaling_up_policies", core_scaling_up_policies)
+        if core_unit is not None:
+            pulumi.set(__self__, "core_unit", core_unit)
+        if custom_ami_id is not None:
+            pulumi.set(__self__, "custom_ami_id", custom_ami_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ebs_root_volume_size is not None:
+            pulumi.set(__self__, "ebs_root_volume_size", ebs_root_volume_size)
+        if ec2_key_name is not None:
+            pulumi.set(__self__, "ec2_key_name", ec2_key_name)
+        if expose_cluster_id is not None:
+            pulumi.set(__self__, "expose_cluster_id", expose_cluster_id)
+        if instance_weights is not None:
+            pulumi.set(__self__, "instance_weights", instance_weights)
+        if job_flow_role is not None:
+            pulumi.set(__self__, "job_flow_role", job_flow_role)
+        if keep_job_flow_alive is not None:
+            pulumi.set(__self__, "keep_job_flow_alive", keep_job_flow_alive)
+        if log_uri is not None:
+            pulumi.set(__self__, "log_uri", log_uri)
+        if managed_primary_security_group is not None:
+            pulumi.set(__self__, "managed_primary_security_group", managed_primary_security_group)
+        if managed_replica_security_group is not None:
+            pulumi.set(__self__, "managed_replica_security_group", managed_replica_security_group)
+        if master_ebs_block_devices is not None:
+            pulumi.set(__self__, "master_ebs_block_devices", master_ebs_block_devices)
+        if master_ebs_optimized is not None:
+            pulumi.set(__self__, "master_ebs_optimized", master_ebs_optimized)
+        if master_instance_types is not None:
+            pulumi.set(__self__, "master_instance_types", master_instance_types)
+        if master_lifecycle is not None:
+            pulumi.set(__self__, "master_lifecycle", master_lifecycle)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if output_cluster_id is not None:
+            pulumi.set(__self__, "output_cluster_id", output_cluster_id)
+        if provisioning_timeout is not None:
+            pulumi.set(__self__, "provisioning_timeout", provisioning_timeout)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if release_label is not None:
+            pulumi.set(__self__, "release_label", release_label)
+        if repo_upgrade_on_boot is not None:
+            pulumi.set(__self__, "repo_upgrade_on_boot", repo_upgrade_on_boot)
+        if retries is not None:
+            pulumi.set(__self__, "retries", retries)
+        if scheduled_tasks is not None:
+            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+        if security_config is not None:
+            pulumi.set(__self__, "security_config", security_config)
+        if service_access_security_group is not None:
+            pulumi.set(__self__, "service_access_security_group", service_access_security_group)
+        if service_role is not None:
+            pulumi.set(__self__, "service_role", service_role)
+        if steps_files is not None:
+            pulumi.set(__self__, "steps_files", steps_files)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if task_desired_capacity is not None:
+            pulumi.set(__self__, "task_desired_capacity", task_desired_capacity)
+        if task_ebs_block_devices is not None:
+            pulumi.set(__self__, "task_ebs_block_devices", task_ebs_block_devices)
+        if task_ebs_optimized is not None:
+            pulumi.set(__self__, "task_ebs_optimized", task_ebs_optimized)
+        if task_instance_types is not None:
+            pulumi.set(__self__, "task_instance_types", task_instance_types)
+        if task_lifecycle is not None:
+            pulumi.set(__self__, "task_lifecycle", task_lifecycle)
+        if task_max_size is not None:
+            pulumi.set(__self__, "task_max_size", task_max_size)
+        if task_min_size is not None:
+            pulumi.set(__self__, "task_min_size", task_min_size)
+        if task_scaling_down_policies is not None:
+            pulumi.set(__self__, "task_scaling_down_policies", task_scaling_down_policies)
+        if task_scaling_up_policies is not None:
+            pulumi.set(__self__, "task_scaling_up_policies", task_scaling_up_policies)
+        if task_unit is not None:
+            pulumi.set(__self__, "task_unit", task_unit)
+        if termination_policies is not None:
+            pulumi.set(__self__, "termination_policies", termination_policies)
+        if termination_protected is not None:
+            pulumi.set(__self__, "termination_protected", termination_protected)
+        if visible_to_all_users is not None:
+            warnings.warn("""This field has been removed from our API and is no longer functional.""", DeprecationWarning)
+            pulumi.log.warn("""visible_to_all_users is deprecated: This field has been removed from our API and is no longer functional.""")
+        if visible_to_all_users is not None:
+            pulumi.set(__self__, "visible_to_all_users", visible_to_all_users)
+
+    @property
+    @pulumi.getter(name="additionalInfo")
+    def additional_info(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is meta information about third-party applications that third-party vendors use for testing purposes.
+        """
+        return pulumi.get(self, "additional_info")
+
+    @additional_info.setter
+    def additional_info(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additional_info", value)
+
+    @property
+    @pulumi.getter(name="additionalPrimarySecurityGroups")
+    def additional_primary_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of additional Amazon EC2 security group IDs for the master node.
+        """
+        return pulumi.get(self, "additional_primary_security_groups")
+
+    @additional_primary_security_groups.setter
+    def additional_primary_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_primary_security_groups", value)
+
+    @property
+    @pulumi.getter(name="additionalReplicaSecurityGroups")
+    def additional_replica_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of additional Amazon EC2 security group IDs for the core and task nodes.
+        """
+        return pulumi.get(self, "additional_replica_security_groups")
+
+    @additional_replica_security_groups.setter
+    def additional_replica_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_replica_security_groups", value)
+
+    @property
+    @pulumi.getter
+    def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarApplicationArgs']]]]:
+        """
+        A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
+        """
+        return pulumi.get(self, "applications")
+
+    @applications.setter
+    def applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarApplicationArgs']]]]):
+        pulumi.set(self, "applications", value)
+
+    @property
+    @pulumi.getter(name="availabilityZones")
+    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of AZs and their subnet Ids. See example above for usage.
+        """
+        return pulumi.get(self, "availability_zones")
+
+    @availability_zones.setter
+    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "availability_zones", value)
+
+    @property
+    @pulumi.getter(name="bootstrapActionsFiles")
+    def bootstrap_actions_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarBootstrapActionsFileArgs']]]]:
+        """
+        Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+        """
+        return pulumi.get(self, "bootstrap_actions_files")
+
+    @bootstrap_actions_files.setter
+    def bootstrap_actions_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarBootstrapActionsFileArgs']]]]):
+        pulumi.set(self, "bootstrap_actions_files", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MrScaler cluster id.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="configurationsFiles")
+    def configurations_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarConfigurationsFileArgs']]]]:
+        """
+        Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+        """
+        return pulumi.get(self, "configurations_files")
+
+    @configurations_files.setter
+    def configurations_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarConfigurationsFileArgs']]]]):
+        pulumi.set(self, "configurations_files", value)
+
+    @property
+    @pulumi.getter(name="coreDesiredCapacity")
+    def core_desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "core_desired_capacity")
+
+    @core_desired_capacity.setter
+    def core_desired_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "core_desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="coreEbsBlockDevices")
+    def core_ebs_block_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreEbsBlockDeviceArgs']]]]:
+        """
+        This determines the ebs configuration for your core group instances. Only a single block is allowed.
+        """
+        return pulumi.get(self, "core_ebs_block_devices")
+
+    @core_ebs_block_devices.setter
+    def core_ebs_block_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreEbsBlockDeviceArgs']]]]):
+        pulumi.set(self, "core_ebs_block_devices", value)
+
+    @property
+    @pulumi.getter(name="coreEbsOptimized")
+    def core_ebs_optimized(self) -> Optional[pulumi.Input[bool]]:
+        """
+        EBS Optimization setting for instances in group.
+        """
+        return pulumi.get(self, "core_ebs_optimized")
+
+    @core_ebs_optimized.setter
+    def core_ebs_optimized(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "core_ebs_optimized", value)
+
+    @property
+    @pulumi.getter(name="coreInstanceTypes")
+    def core_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The MrScaler instance types for the core nodes.
+        """
+        return pulumi.get(self, "core_instance_types")
+
+    @core_instance_types.setter
+    def core_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "core_instance_types", value)
+
+    @property
+    @pulumi.getter(name="coreLifecycle")
+    def core_lifecycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        """
+        return pulumi.get(self, "core_lifecycle")
+
+    @core_lifecycle.setter
+    def core_lifecycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "core_lifecycle", value)
+
+    @property
+    @pulumi.getter(name="coreMaxSize")
+    def core_max_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "core_max_size")
+
+    @core_max_size.setter
+    def core_max_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "core_max_size", value)
+
+    @property
+    @pulumi.getter(name="coreMinSize")
+    def core_min_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "core_min_size")
+
+    @core_min_size.setter
+    def core_min_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "core_min_size", value)
+
+    @property
+    @pulumi.getter(name="coreScalingDownPolicies")
+    def core_scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingDownPolicyArgs']]]]:
+        return pulumi.get(self, "core_scaling_down_policies")
+
+    @core_scaling_down_policies.setter
+    def core_scaling_down_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingDownPolicyArgs']]]]):
+        pulumi.set(self, "core_scaling_down_policies", value)
+
+    @property
+    @pulumi.getter(name="coreScalingUpPolicies")
+    def core_scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingUpPolicyArgs']]]]:
+        return pulumi.get(self, "core_scaling_up_policies")
+
+    @core_scaling_up_policies.setter
+    def core_scaling_up_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingUpPolicyArgs']]]]):
+        pulumi.set(self, "core_scaling_up_policies", value)
+
+    @property
+    @pulumi.getter(name="coreUnit")
+    def core_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+        """
+        return pulumi.get(self, "core_unit")
+
+    @core_unit.setter
+    def core_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "core_unit", value)
+
+    @property
+    @pulumi.getter(name="customAmiId")
+    def custom_ami_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
+        """
+        return pulumi.get(self, "custom_ami_id")
+
+    @custom_ami_id.setter
+    def custom_ami_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_ami_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MrScaler description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ebsRootVolumeSize")
+    def ebs_root_volume_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_root_volume_size")
+
+    @ebs_root_volume_size.setter
+    def ebs_root_volume_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_root_volume_size", value)
+
+    @property
+    @pulumi.getter(name="ec2KeyName")
+    def ec2_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of an Amazon EC2 key pair that can be used to ssh to the master node.
+        """
+        return pulumi.get(self, "ec2_key_name")
+
+    @ec2_key_name.setter
+    def ec2_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ec2_key_name", value)
+
+    @property
+    @pulumi.getter(name="exposeClusterId")
+    def expose_cluster_id(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow the `cluster_id` to set a provider output variable.
+        """
+        return pulumi.get(self, "expose_cluster_id")
+
+    @expose_cluster_id.setter
+    def expose_cluster_id(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "expose_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="instanceWeights")
+    def instance_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarInstanceWeightArgs']]]]:
+        """
+        Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
+        """
+        return pulumi.get(self, "instance_weights")
+
+    @instance_weights.setter
+    def instance_weights(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarInstanceWeightArgs']]]]):
+        pulumi.set(self, "instance_weights", value)
+
+    @property
+    @pulumi.getter(name="jobFlowRole")
+    def job_flow_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
+        """
+        return pulumi.get(self, "job_flow_role")
+
+    @job_flow_role.setter
+    def job_flow_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_flow_role", value)
+
+    @property
+    @pulumi.getter(name="keepJobFlowAlive")
+    def keep_job_flow_alive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the cluster should remain available after completing all steps.
+        """
+        return pulumi.get(self, "keep_job_flow_alive")
+
+    @keep_job_flow_alive.setter
+    def keep_job_flow_alive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_job_flow_alive", value)
+
+    @property
+    @pulumi.getter(name="logUri")
+    def log_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the Amazon S3 location where logs for this cluster are stored.
+        """
+        return pulumi.get(self, "log_uri")
+
+    @log_uri.setter
+    def log_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_uri", value)
+
+    @property
+    @pulumi.getter(name="managedPrimarySecurityGroup")
+    def managed_primary_security_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        EMR Managed Security group that will be set to the primary instance group.
+        """
+        return pulumi.get(self, "managed_primary_security_group")
+
+    @managed_primary_security_group.setter
+    def managed_primary_security_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "managed_primary_security_group", value)
+
+    @property
+    @pulumi.getter(name="managedReplicaSecurityGroup")
+    def managed_replica_security_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        EMR Managed Security group that will be set to the replica instance group.
+        """
+        return pulumi.get(self, "managed_replica_security_group")
+
+    @managed_replica_security_group.setter
+    def managed_replica_security_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "managed_replica_security_group", value)
+
+    @property
+    @pulumi.getter(name="masterEbsBlockDevices")
+    def master_ebs_block_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarMasterEbsBlockDeviceArgs']]]]:
+        """
+        This determines the ebs configuration for your master group instances. Only a single block is allowed.
+        """
+        return pulumi.get(self, "master_ebs_block_devices")
+
+    @master_ebs_block_devices.setter
+    def master_ebs_block_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarMasterEbsBlockDeviceArgs']]]]):
+        pulumi.set(self, "master_ebs_block_devices", value)
+
+    @property
+    @pulumi.getter(name="masterEbsOptimized")
+    def master_ebs_optimized(self) -> Optional[pulumi.Input[bool]]:
+        """
+        EBS Optimization setting for instances in group.
+        """
+        return pulumi.get(self, "master_ebs_optimized")
+
+    @master_ebs_optimized.setter
+    def master_ebs_optimized(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "master_ebs_optimized", value)
+
+    @property
+    @pulumi.getter(name="masterInstanceTypes")
+    def master_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The MrScaler instance types for the master nodes.
+        """
+        return pulumi.get(self, "master_instance_types")
+
+    @master_instance_types.setter
+    def master_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "master_instance_types", value)
+
+    @property
+    @pulumi.getter(name="masterLifecycle")
+    def master_lifecycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        """
+        return pulumi.get(self, "master_lifecycle")
+
+    @master_lifecycle.setter
+    def master_lifecycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_lifecycle", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The application name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="outputClusterId")
+    def output_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "output_cluster_id")
+
+    @output_cluster_id.setter
+    def output_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="provisioningTimeout")
+    def provisioning_timeout(self) -> Optional[pulumi.Input['MrScalarProvisioningTimeoutArgs']]:
+        return pulumi.get(self, "provisioning_timeout")
+
+    @provisioning_timeout.setter
+    def provisioning_timeout(self, value: Optional[pulumi.Input['MrScalarProvisioningTimeoutArgs']]):
+        pulumi.set(self, "provisioning_timeout", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MrScaler region.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="releaseLabel")
+    def release_label(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "release_label")
+
+    @release_label.setter
+    def release_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "release_label", value)
+
+    @property
+    @pulumi.getter(name="repoUpgradeOnBoot")
+    def repo_upgrade_on_boot(self) -> Optional[pulumi.Input[str]]:
+        """
+        Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
+        """
+        return pulumi.get(self, "repo_upgrade_on_boot")
+
+    @repo_upgrade_on_boot.setter
+    def repo_upgrade_on_boot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_upgrade_on_boot", value)
+
+    @property
+    @pulumi.getter
+    def retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
+        """
+        return pulumi.get(self, "retries")
+
+    @retries.setter
+    def retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retries", value)
+
+    @property
+    @pulumi.getter(name="scheduledTasks")
+    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarScheduledTaskArgs']]]]:
+        """
+        An array of scheduled tasks.
+        """
+        return pulumi.get(self, "scheduled_tasks")
+
+    @scheduled_tasks.setter
+    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarScheduledTaskArgs']]]]):
+        pulumi.set(self, "scheduled_tasks", value)
+
+    @property
+    @pulumi.getter(name="securityConfig")
+    def security_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security configuration applied to the cluster.
+        """
+        return pulumi.get(self, "security_config")
+
+    @security_config.setter
+    def security_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_config", value)
+
+    @property
+    @pulumi.getter(name="serviceAccessSecurityGroup")
+    def service_access_security_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
+        """
+        return pulumi.get(self, "service_access_security_group")
+
+    @service_access_security_group.setter
+    def service_access_security_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_access_security_group", value)
+
+    @property
+    @pulumi.getter(name="serviceRole")
+    def service_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
+        """
+        return pulumi.get(self, "service_role")
+
+    @service_role.setter
+    def service_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_role", value)
+
+    @property
+    @pulumi.getter(name="stepsFiles")
+    def steps_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarStepsFileArgs']]]]:
+        """
+        Steps from S3.
+        """
+        return pulumi.get(self, "steps_files")
+
+    @steps_files.setter
+    def steps_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarStepsFileArgs']]]]):
+        pulumi.set(self, "steps_files", value)
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
+        """
+        return pulumi.get(self, "strategy")
+
+    @strategy.setter
+    def strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strategy", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTagArgs']]]]:
+        """
+        A list of tags to assign to the resource. You may define multiple tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="taskDesiredCapacity")
+    def task_desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "task_desired_capacity")
+
+    @task_desired_capacity.setter
+    def task_desired_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "task_desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="taskEbsBlockDevices")
+    def task_ebs_block_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskEbsBlockDeviceArgs']]]]:
+        """
+        This determines the ebs configuration for your task group instances. Only a single block is allowed.
+        """
+        return pulumi.get(self, "task_ebs_block_devices")
+
+    @task_ebs_block_devices.setter
+    def task_ebs_block_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskEbsBlockDeviceArgs']]]]):
+        pulumi.set(self, "task_ebs_block_devices", value)
+
+    @property
+    @pulumi.getter(name="taskEbsOptimized")
+    def task_ebs_optimized(self) -> Optional[pulumi.Input[bool]]:
+        """
+        EBS Optimization setting for instances in group.
+        """
+        return pulumi.get(self, "task_ebs_optimized")
+
+    @task_ebs_optimized.setter
+    def task_ebs_optimized(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "task_ebs_optimized", value)
+
+    @property
+    @pulumi.getter(name="taskInstanceTypes")
+    def task_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The MrScaler instance types for the task nodes.
+        """
+        return pulumi.get(self, "task_instance_types")
+
+    @task_instance_types.setter
+    def task_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "task_instance_types", value)
+
+    @property
+    @pulumi.getter(name="taskLifecycle")
+    def task_lifecycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        """
+        return pulumi.get(self, "task_lifecycle")
+
+    @task_lifecycle.setter
+    def task_lifecycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "task_lifecycle", value)
+
+    @property
+    @pulumi.getter(name="taskMaxSize")
+    def task_max_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "task_max_size")
+
+    @task_max_size.setter
+    def task_max_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "task_max_size", value)
+
+    @property
+    @pulumi.getter(name="taskMinSize")
+    def task_min_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "task_min_size")
+
+    @task_min_size.setter
+    def task_min_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "task_min_size", value)
+
+    @property
+    @pulumi.getter(name="taskScalingDownPolicies")
+    def task_scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingDownPolicyArgs']]]]:
+        return pulumi.get(self, "task_scaling_down_policies")
+
+    @task_scaling_down_policies.setter
+    def task_scaling_down_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingDownPolicyArgs']]]]):
+        pulumi.set(self, "task_scaling_down_policies", value)
+
+    @property
+    @pulumi.getter(name="taskScalingUpPolicies")
+    def task_scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingUpPolicyArgs']]]]:
+        return pulumi.get(self, "task_scaling_up_policies")
+
+    @task_scaling_up_policies.setter
+    def task_scaling_up_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingUpPolicyArgs']]]]):
+        pulumi.set(self, "task_scaling_up_policies", value)
+
+    @property
+    @pulumi.getter(name="taskUnit")
+    def task_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
+        """
+        return pulumi.get(self, "task_unit")
+
+    @task_unit.setter
+    def task_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "task_unit", value)
+
+    @property
+    @pulumi.getter(name="terminationPolicies")
+    def termination_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]]]:
+        """
+        Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
+        """
+        return pulumi.get(self, "termination_policies")
+
+    @termination_policies.setter
+    def termination_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]]]):
+        pulumi.set(self, "termination_policies", value)
+
+    @property
+    @pulumi.getter(name="terminationProtected")
+    def termination_protected(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
+        """
+        return pulumi.get(self, "termination_protected")
+
+    @termination_protected.setter
+    def termination_protected(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "termination_protected", value)
+
+    @property
+    @pulumi.getter(name="visibleToAllUsers")
+    def visible_to_all_users(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "visible_to_all_users")
+
+    @visible_to_all_users.setter
+    def visible_to_all_users(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible_to_all_users", value)
+
+
 class MrScalar(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1571,73 +2482,73 @@ class MrScalar(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = MrScalarArgs.__new__(MrScalarArgs)
 
-            __props__['additional_info'] = additional_info
-            __props__['additional_primary_security_groups'] = additional_primary_security_groups
-            __props__['additional_replica_security_groups'] = additional_replica_security_groups
-            __props__['applications'] = applications
-            __props__['availability_zones'] = availability_zones
-            __props__['bootstrap_actions_files'] = bootstrap_actions_files
-            __props__['cluster_id'] = cluster_id
-            __props__['configurations_files'] = configurations_files
-            __props__['core_desired_capacity'] = core_desired_capacity
-            __props__['core_ebs_block_devices'] = core_ebs_block_devices
-            __props__['core_ebs_optimized'] = core_ebs_optimized
-            __props__['core_instance_types'] = core_instance_types
-            __props__['core_lifecycle'] = core_lifecycle
-            __props__['core_max_size'] = core_max_size
-            __props__['core_min_size'] = core_min_size
-            __props__['core_scaling_down_policies'] = core_scaling_down_policies
-            __props__['core_scaling_up_policies'] = core_scaling_up_policies
-            __props__['core_unit'] = core_unit
-            __props__['custom_ami_id'] = custom_ami_id
-            __props__['description'] = description
-            __props__['ebs_root_volume_size'] = ebs_root_volume_size
-            __props__['ec2_key_name'] = ec2_key_name
-            __props__['expose_cluster_id'] = expose_cluster_id
-            __props__['instance_weights'] = instance_weights
-            __props__['job_flow_role'] = job_flow_role
-            __props__['keep_job_flow_alive'] = keep_job_flow_alive
-            __props__['log_uri'] = log_uri
-            __props__['managed_primary_security_group'] = managed_primary_security_group
-            __props__['managed_replica_security_group'] = managed_replica_security_group
-            __props__['master_ebs_block_devices'] = master_ebs_block_devices
-            __props__['master_ebs_optimized'] = master_ebs_optimized
-            __props__['master_instance_types'] = master_instance_types
-            __props__['master_lifecycle'] = master_lifecycle
-            __props__['name'] = name
-            __props__['provisioning_timeout'] = provisioning_timeout
-            __props__['region'] = region
-            __props__['release_label'] = release_label
-            __props__['repo_upgrade_on_boot'] = repo_upgrade_on_boot
-            __props__['retries'] = retries
-            __props__['scheduled_tasks'] = scheduled_tasks
-            __props__['security_config'] = security_config
-            __props__['service_access_security_group'] = service_access_security_group
-            __props__['service_role'] = service_role
-            __props__['steps_files'] = steps_files
+            __props__.__dict__["additional_info"] = additional_info
+            __props__.__dict__["additional_primary_security_groups"] = additional_primary_security_groups
+            __props__.__dict__["additional_replica_security_groups"] = additional_replica_security_groups
+            __props__.__dict__["applications"] = applications
+            __props__.__dict__["availability_zones"] = availability_zones
+            __props__.__dict__["bootstrap_actions_files"] = bootstrap_actions_files
+            __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["configurations_files"] = configurations_files
+            __props__.__dict__["core_desired_capacity"] = core_desired_capacity
+            __props__.__dict__["core_ebs_block_devices"] = core_ebs_block_devices
+            __props__.__dict__["core_ebs_optimized"] = core_ebs_optimized
+            __props__.__dict__["core_instance_types"] = core_instance_types
+            __props__.__dict__["core_lifecycle"] = core_lifecycle
+            __props__.__dict__["core_max_size"] = core_max_size
+            __props__.__dict__["core_min_size"] = core_min_size
+            __props__.__dict__["core_scaling_down_policies"] = core_scaling_down_policies
+            __props__.__dict__["core_scaling_up_policies"] = core_scaling_up_policies
+            __props__.__dict__["core_unit"] = core_unit
+            __props__.__dict__["custom_ami_id"] = custom_ami_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["ebs_root_volume_size"] = ebs_root_volume_size
+            __props__.__dict__["ec2_key_name"] = ec2_key_name
+            __props__.__dict__["expose_cluster_id"] = expose_cluster_id
+            __props__.__dict__["instance_weights"] = instance_weights
+            __props__.__dict__["job_flow_role"] = job_flow_role
+            __props__.__dict__["keep_job_flow_alive"] = keep_job_flow_alive
+            __props__.__dict__["log_uri"] = log_uri
+            __props__.__dict__["managed_primary_security_group"] = managed_primary_security_group
+            __props__.__dict__["managed_replica_security_group"] = managed_replica_security_group
+            __props__.__dict__["master_ebs_block_devices"] = master_ebs_block_devices
+            __props__.__dict__["master_ebs_optimized"] = master_ebs_optimized
+            __props__.__dict__["master_instance_types"] = master_instance_types
+            __props__.__dict__["master_lifecycle"] = master_lifecycle
+            __props__.__dict__["name"] = name
+            __props__.__dict__["provisioning_timeout"] = provisioning_timeout
+            __props__.__dict__["region"] = region
+            __props__.__dict__["release_label"] = release_label
+            __props__.__dict__["repo_upgrade_on_boot"] = repo_upgrade_on_boot
+            __props__.__dict__["retries"] = retries
+            __props__.__dict__["scheduled_tasks"] = scheduled_tasks
+            __props__.__dict__["security_config"] = security_config
+            __props__.__dict__["service_access_security_group"] = service_access_security_group
+            __props__.__dict__["service_role"] = service_role
+            __props__.__dict__["steps_files"] = steps_files
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
-            __props__['strategy'] = strategy
-            __props__['tags'] = tags
-            __props__['task_desired_capacity'] = task_desired_capacity
-            __props__['task_ebs_block_devices'] = task_ebs_block_devices
-            __props__['task_ebs_optimized'] = task_ebs_optimized
-            __props__['task_instance_types'] = task_instance_types
-            __props__['task_lifecycle'] = task_lifecycle
-            __props__['task_max_size'] = task_max_size
-            __props__['task_min_size'] = task_min_size
-            __props__['task_scaling_down_policies'] = task_scaling_down_policies
-            __props__['task_scaling_up_policies'] = task_scaling_up_policies
-            __props__['task_unit'] = task_unit
-            __props__['termination_policies'] = termination_policies
-            __props__['termination_protected'] = termination_protected
+            __props__.__dict__["strategy"] = strategy
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["task_desired_capacity"] = task_desired_capacity
+            __props__.__dict__["task_ebs_block_devices"] = task_ebs_block_devices
+            __props__.__dict__["task_ebs_optimized"] = task_ebs_optimized
+            __props__.__dict__["task_instance_types"] = task_instance_types
+            __props__.__dict__["task_lifecycle"] = task_lifecycle
+            __props__.__dict__["task_max_size"] = task_max_size
+            __props__.__dict__["task_min_size"] = task_min_size
+            __props__.__dict__["task_scaling_down_policies"] = task_scaling_down_policies
+            __props__.__dict__["task_scaling_up_policies"] = task_scaling_up_policies
+            __props__.__dict__["task_unit"] = task_unit
+            __props__.__dict__["termination_policies"] = termination_policies
+            __props__.__dict__["termination_protected"] = termination_protected
             if visible_to_all_users is not None and not opts.urn:
                 warnings.warn("""This field has been removed from our API and is no longer functional.""", DeprecationWarning)
                 pulumi.log.warn("""visible_to_all_users is deprecated: This field has been removed from our API and is no longer functional.""")
-            __props__['visible_to_all_users'] = visible_to_all_users
-            __props__['output_cluster_id'] = None
+            __props__.__dict__["visible_to_all_users"] = visible_to_all_users
+            __props__.__dict__["output_cluster_id"] = None
         super(MrScalar, __self__).__init__(
             'spotinst:aws/mrScalar:MrScalar',
             resource_name,
@@ -1763,68 +2674,68 @@ class MrScalar(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _MrScalarState.__new__(_MrScalarState)
 
-        __props__["additional_info"] = additional_info
-        __props__["additional_primary_security_groups"] = additional_primary_security_groups
-        __props__["additional_replica_security_groups"] = additional_replica_security_groups
-        __props__["applications"] = applications
-        __props__["availability_zones"] = availability_zones
-        __props__["bootstrap_actions_files"] = bootstrap_actions_files
-        __props__["cluster_id"] = cluster_id
-        __props__["configurations_files"] = configurations_files
-        __props__["core_desired_capacity"] = core_desired_capacity
-        __props__["core_ebs_block_devices"] = core_ebs_block_devices
-        __props__["core_ebs_optimized"] = core_ebs_optimized
-        __props__["core_instance_types"] = core_instance_types
-        __props__["core_lifecycle"] = core_lifecycle
-        __props__["core_max_size"] = core_max_size
-        __props__["core_min_size"] = core_min_size
-        __props__["core_scaling_down_policies"] = core_scaling_down_policies
-        __props__["core_scaling_up_policies"] = core_scaling_up_policies
-        __props__["core_unit"] = core_unit
-        __props__["custom_ami_id"] = custom_ami_id
-        __props__["description"] = description
-        __props__["ebs_root_volume_size"] = ebs_root_volume_size
-        __props__["ec2_key_name"] = ec2_key_name
-        __props__["expose_cluster_id"] = expose_cluster_id
-        __props__["instance_weights"] = instance_weights
-        __props__["job_flow_role"] = job_flow_role
-        __props__["keep_job_flow_alive"] = keep_job_flow_alive
-        __props__["log_uri"] = log_uri
-        __props__["managed_primary_security_group"] = managed_primary_security_group
-        __props__["managed_replica_security_group"] = managed_replica_security_group
-        __props__["master_ebs_block_devices"] = master_ebs_block_devices
-        __props__["master_ebs_optimized"] = master_ebs_optimized
-        __props__["master_instance_types"] = master_instance_types
-        __props__["master_lifecycle"] = master_lifecycle
-        __props__["name"] = name
-        __props__["output_cluster_id"] = output_cluster_id
-        __props__["provisioning_timeout"] = provisioning_timeout
-        __props__["region"] = region
-        __props__["release_label"] = release_label
-        __props__["repo_upgrade_on_boot"] = repo_upgrade_on_boot
-        __props__["retries"] = retries
-        __props__["scheduled_tasks"] = scheduled_tasks
-        __props__["security_config"] = security_config
-        __props__["service_access_security_group"] = service_access_security_group
-        __props__["service_role"] = service_role
-        __props__["steps_files"] = steps_files
-        __props__["strategy"] = strategy
-        __props__["tags"] = tags
-        __props__["task_desired_capacity"] = task_desired_capacity
-        __props__["task_ebs_block_devices"] = task_ebs_block_devices
-        __props__["task_ebs_optimized"] = task_ebs_optimized
-        __props__["task_instance_types"] = task_instance_types
-        __props__["task_lifecycle"] = task_lifecycle
-        __props__["task_max_size"] = task_max_size
-        __props__["task_min_size"] = task_min_size
-        __props__["task_scaling_down_policies"] = task_scaling_down_policies
-        __props__["task_scaling_up_policies"] = task_scaling_up_policies
-        __props__["task_unit"] = task_unit
-        __props__["termination_policies"] = termination_policies
-        __props__["termination_protected"] = termination_protected
-        __props__["visible_to_all_users"] = visible_to_all_users
+        __props__.__dict__["additional_info"] = additional_info
+        __props__.__dict__["additional_primary_security_groups"] = additional_primary_security_groups
+        __props__.__dict__["additional_replica_security_groups"] = additional_replica_security_groups
+        __props__.__dict__["applications"] = applications
+        __props__.__dict__["availability_zones"] = availability_zones
+        __props__.__dict__["bootstrap_actions_files"] = bootstrap_actions_files
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["configurations_files"] = configurations_files
+        __props__.__dict__["core_desired_capacity"] = core_desired_capacity
+        __props__.__dict__["core_ebs_block_devices"] = core_ebs_block_devices
+        __props__.__dict__["core_ebs_optimized"] = core_ebs_optimized
+        __props__.__dict__["core_instance_types"] = core_instance_types
+        __props__.__dict__["core_lifecycle"] = core_lifecycle
+        __props__.__dict__["core_max_size"] = core_max_size
+        __props__.__dict__["core_min_size"] = core_min_size
+        __props__.__dict__["core_scaling_down_policies"] = core_scaling_down_policies
+        __props__.__dict__["core_scaling_up_policies"] = core_scaling_up_policies
+        __props__.__dict__["core_unit"] = core_unit
+        __props__.__dict__["custom_ami_id"] = custom_ami_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["ebs_root_volume_size"] = ebs_root_volume_size
+        __props__.__dict__["ec2_key_name"] = ec2_key_name
+        __props__.__dict__["expose_cluster_id"] = expose_cluster_id
+        __props__.__dict__["instance_weights"] = instance_weights
+        __props__.__dict__["job_flow_role"] = job_flow_role
+        __props__.__dict__["keep_job_flow_alive"] = keep_job_flow_alive
+        __props__.__dict__["log_uri"] = log_uri
+        __props__.__dict__["managed_primary_security_group"] = managed_primary_security_group
+        __props__.__dict__["managed_replica_security_group"] = managed_replica_security_group
+        __props__.__dict__["master_ebs_block_devices"] = master_ebs_block_devices
+        __props__.__dict__["master_ebs_optimized"] = master_ebs_optimized
+        __props__.__dict__["master_instance_types"] = master_instance_types
+        __props__.__dict__["master_lifecycle"] = master_lifecycle
+        __props__.__dict__["name"] = name
+        __props__.__dict__["output_cluster_id"] = output_cluster_id
+        __props__.__dict__["provisioning_timeout"] = provisioning_timeout
+        __props__.__dict__["region"] = region
+        __props__.__dict__["release_label"] = release_label
+        __props__.__dict__["repo_upgrade_on_boot"] = repo_upgrade_on_boot
+        __props__.__dict__["retries"] = retries
+        __props__.__dict__["scheduled_tasks"] = scheduled_tasks
+        __props__.__dict__["security_config"] = security_config
+        __props__.__dict__["service_access_security_group"] = service_access_security_group
+        __props__.__dict__["service_role"] = service_role
+        __props__.__dict__["steps_files"] = steps_files
+        __props__.__dict__["strategy"] = strategy
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["task_desired_capacity"] = task_desired_capacity
+        __props__.__dict__["task_ebs_block_devices"] = task_ebs_block_devices
+        __props__.__dict__["task_ebs_optimized"] = task_ebs_optimized
+        __props__.__dict__["task_instance_types"] = task_instance_types
+        __props__.__dict__["task_lifecycle"] = task_lifecycle
+        __props__.__dict__["task_max_size"] = task_max_size
+        __props__.__dict__["task_min_size"] = task_min_size
+        __props__.__dict__["task_scaling_down_policies"] = task_scaling_down_policies
+        __props__.__dict__["task_scaling_up_policies"] = task_scaling_up_policies
+        __props__.__dict__["task_unit"] = task_unit
+        __props__.__dict__["termination_policies"] = termination_policies
+        __props__.__dict__["termination_protected"] = termination_protected
+        __props__.__dict__["visible_to_all_users"] = visible_to_all_users
         return MrScalar(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2261,10 +3172,4 @@ class MrScalar(pulumi.CustomResource):
     @pulumi.getter(name="visibleToAllUsers")
     def visible_to_all_users(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "visible_to_all_users")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

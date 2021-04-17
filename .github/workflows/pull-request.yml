@@ -14,6 +14,7 @@ env:
   SPOTINST_ACCOUNT: ${{ secrets.SPOTINST_ACCOUNT }}
   SPOTINST_TOKEN: ${{ secrets.SPOTINST_TOKEN }}
   TRAVIS_OS_NAME: linux
+  VERSION_PREFIX: 3.0.0
 jobs:
   build_sdk:
     name: build_sdk

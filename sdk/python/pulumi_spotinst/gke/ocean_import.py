@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -124,6 +124,182 @@ class OceanImportArgs:
     @desired_capacity.setter
     def desired_capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The upper limit of instances the cluster can scale up to.
+        """
+        return pulumi.get(self, "max_size")
+
+    @max_size.setter
+    def max_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_size", value)
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The lower limit of instances the cluster can scale down to.
+        """
+        return pulumi.get(self, "min_size")
+
+    @min_size.setter
+    def min_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_size", value)
+
+    @property
+    @pulumi.getter(name="scheduledTasks")
+    def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]:
+        """
+        Set scheduling object.
+        """
+        return pulumi.get(self, "scheduled_tasks")
+
+    @scheduled_tasks.setter
+    def scheduled_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]):
+        pulumi.set(self, "scheduled_tasks", value)
+
+    @property
+    @pulumi.getter
+    def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Instance types allowed in the Ocean cluster.
+        """
+        return pulumi.get(self, "whitelists")
+
+    @whitelists.setter
+    def whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "whitelists", value)
+
+
+@pulumi.input_type
+class _OceanImportState:
+    def __init__(__self__, *,
+                 autoscaler: Optional[pulumi.Input['OceanImportAutoscalerArgs']] = None,
+                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]] = None,
+                 cluster_controller_id: Optional[pulumi.Input[str]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 controller_cluster_id: Optional[pulumi.Input[str]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
+                 scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
+                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering OceanImport resources.
+        :param pulumi.Input['OceanImportAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]] backend_services: Describes the backend service configurations.
+        :param pulumi.Input[str] cluster_name: The GKE cluster name.
+        :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[str] location: The zone the master cluster is located in.
+        :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
+        :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
+        """
+        if autoscaler is not None:
+            pulumi.set(__self__, "autoscaler", autoscaler)
+        if backend_services is not None:
+            pulumi.set(__self__, "backend_services", backend_services)
+        if cluster_controller_id is not None:
+            pulumi.set(__self__, "cluster_controller_id", cluster_controller_id)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if controller_cluster_id is not None:
+            pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
+        if desired_capacity is not None:
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if max_size is not None:
+            pulumi.set(__self__, "max_size", max_size)
+        if min_size is not None:
+            pulumi.set(__self__, "min_size", min_size)
+        if scheduled_tasks is not None:
+            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+        if whitelists is not None:
+            pulumi.set(__self__, "whitelists", whitelists)
+
+    @property
+    @pulumi.getter
+    def autoscaler(self) -> Optional[pulumi.Input['OceanImportAutoscalerArgs']]:
+        """
+        The Ocean Kubernetes Autoscaler object.
+        """
+        return pulumi.get(self, "autoscaler")
+
+    @autoscaler.setter
+    def autoscaler(self, value: Optional[pulumi.Input['OceanImportAutoscalerArgs']]):
+        pulumi.set(self, "autoscaler", value)
+
+    @property
+    @pulumi.getter(name="backendServices")
+    def backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]]:
+        """
+        Describes the backend service configurations.
+        """
+        return pulumi.get(self, "backend_services")
+
+    @backend_services.setter
+    def backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]]):
+        pulumi.set(self, "backend_services", value)
+
+    @property
+    @pulumi.getter(name="clusterControllerId")
+    def cluster_controller_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cluster_controller_id")
+
+    @cluster_controller_id.setter
+    def cluster_controller_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_controller_id", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE cluster name.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="controllerClusterId")
+    def controller_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "controller_cluster_id")
+
+    @controller_cluster_id.setter
+    def controller_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "controller_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="desiredCapacity")
+    def desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of instances to launch and maintain in the cluster.
+        """
+        return pulumi.get(self, "desired_capacity")
+
+    @desired_capacity.setter
+    def desired_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone the master cluster is located in.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="maxSize")
@@ -331,23 +507,23 @@ class OceanImport(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OceanImportArgs.__new__(OceanImportArgs)
 
-            __props__['autoscaler'] = autoscaler
-            __props__['backend_services'] = backend_services
+            __props__.__dict__["autoscaler"] = autoscaler
+            __props__.__dict__["backend_services"] = backend_services
             if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
-            __props__['cluster_name'] = cluster_name
-            __props__['controller_cluster_id'] = controller_cluster_id
-            __props__['desired_capacity'] = desired_capacity
+            __props__.__dict__["cluster_name"] = cluster_name
+            __props__.__dict__["controller_cluster_id"] = controller_cluster_id
+            __props__.__dict__["desired_capacity"] = desired_capacity
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
-            __props__['location'] = location
-            __props__['max_size'] = max_size
-            __props__['min_size'] = min_size
-            __props__['scheduled_tasks'] = scheduled_tasks
-            __props__['whitelists'] = whitelists
-            __props__['cluster_controller_id'] = None
+            __props__.__dict__["location"] = location
+            __props__.__dict__["max_size"] = max_size
+            __props__.__dict__["min_size"] = min_size
+            __props__.__dict__["scheduled_tasks"] = scheduled_tasks
+            __props__.__dict__["whitelists"] = whitelists
+            __props__.__dict__["cluster_controller_id"] = None
         super(OceanImport, __self__).__init__(
             'spotinst:gke/oceanImport:OceanImport',
             resource_name,
@@ -388,19 +564,19 @@ class OceanImport(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _OceanImportState.__new__(_OceanImportState)
 
-        __props__["autoscaler"] = autoscaler
-        __props__["backend_services"] = backend_services
-        __props__["cluster_controller_id"] = cluster_controller_id
-        __props__["cluster_name"] = cluster_name
-        __props__["controller_cluster_id"] = controller_cluster_id
-        __props__["desired_capacity"] = desired_capacity
-        __props__["location"] = location
-        __props__["max_size"] = max_size
-        __props__["min_size"] = min_size
-        __props__["scheduled_tasks"] = scheduled_tasks
-        __props__["whitelists"] = whitelists
+        __props__.__dict__["autoscaler"] = autoscaler
+        __props__.__dict__["backend_services"] = backend_services
+        __props__.__dict__["cluster_controller_id"] = cluster_controller_id
+        __props__.__dict__["cluster_name"] = cluster_name
+        __props__.__dict__["controller_cluster_id"] = controller_cluster_id
+        __props__.__dict__["desired_capacity"] = desired_capacity
+        __props__.__dict__["location"] = location
+        __props__.__dict__["max_size"] = max_size
+        __props__.__dict__["min_size"] = min_size
+        __props__.__dict__["scheduled_tasks"] = scheduled_tasks
+        __props__.__dict__["whitelists"] = whitelists
         return OceanImport(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -484,10 +660,4 @@ class OceanImport(pulumi.CustomResource):
         Instance types allowed in the Ocean cluster.
         """
         return pulumi.get(self, "whitelists")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

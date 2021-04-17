@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -152,6 +152,381 @@ class ElastigroupArgs:
     @cluster_id.setter
     def cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]]:
+        return pulumi.get(self, "disks")
+
+    @disks.setter
+    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]]):
+        pulumi.set(self, "disks", value)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "draining_timeout", value)
+
+    @property
+    @pulumi.getter(name="fallbackToOndemand")
+    def fallback_to_ondemand(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "fallback_to_ondemand")
+
+    @fallback_to_ondemand.setter
+    def fallback_to_ondemand(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fallback_to_ondemand", value)
+
+    @property
+    @pulumi.getter
+    def gpu(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]:
+        return pulumi.get(self, "gpu")
+
+    @gpu.setter
+    def gpu(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]):
+        pulumi.set(self, "gpu", value)
+
+    @property
+    @pulumi.getter(name="instanceTypesCustoms")
+    def instance_types_customs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]:
+        return pulumi.get(self, "instance_types_customs")
+
+    @instance_types_customs.setter
+    def instance_types_customs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]]):
+        pulumi.set(self, "instance_types_customs", value)
+
+    @property
+    @pulumi.getter(name="instanceTypesOndemand")
+    def instance_types_ondemand(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_types_ondemand")
+
+    @instance_types_ondemand.setter
+    def instance_types_ondemand(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_types_ondemand", value)
+
+    @property
+    @pulumi.getter(name="instanceTypesPreemptibles")
+    def instance_types_preemptibles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "instance_types_preemptibles")
+
+    @instance_types_preemptibles.setter
+    def instance_types_preemptibles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_types_preemptibles", value)
+
+    @property
+    @pulumi.getter(name="integrationDockerSwarm")
+    def integration_docker_swarm(self) -> Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']]:
+        return pulumi.get(self, "integration_docker_swarm")
+
+    @integration_docker_swarm.setter
+    def integration_docker_swarm(self, value: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']]):
+        pulumi.set(self, "integration_docker_swarm", value)
+
+    @property
+    @pulumi.getter(name="integrationGke")
+    def integration_gke(self) -> Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']]:
+        """
+        Describes the GKE integration.
+        """
+        return pulumi.get(self, "integration_gke")
+
+    @integration_gke.setter
+    def integration_gke(self, value: Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']]):
+        pulumi.set(self, "integration_gke", value)
+
+    @property
+    @pulumi.getter(name="ipForwarding")
+    def ip_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "ip_forwarding")
+
+    @ip_forwarding.setter
+    def ip_forwarding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ip_forwarding", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_size")
+
+    @max_size.setter
+    def max_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_size", value)
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]]:
+        return pulumi.get(self, "metadatas")
+
+    @metadatas.setter
+    def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]]):
+        pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_size")
+
+    @min_size.setter
+    def min_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_size", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]:
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter(name="nodeImage")
+    def node_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image that will be used for the node VMs. Possible values: COS, UBUNTU.
+        """
+        return pulumi.get(self, "node_image")
+
+    @node_image.setter
+    def node_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_image", value)
+
+    @property
+    @pulumi.getter(name="ondemandCount")
+    def ondemand_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ondemand_count")
+
+    @ondemand_count.setter
+    def ondemand_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ondemand_count", value)
+
+    @property
+    @pulumi.getter(name="preemptiblePercentage")
+    def preemptible_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "preemptible_percentage")
+
+    @preemptible_percentage.setter
+    def preemptible_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "preemptible_percentage", value)
+
+    @property
+    @pulumi.getter(name="scalingDownPolicies")
+    def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
+        return pulumi.get(self, "scaling_down_policies")
+
+    @scaling_down_policies.setter
+    def scaling_down_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]):
+        pulumi.set(self, "scaling_down_policies", value)
+
+    @property
+    @pulumi.getter(name="scalingUpPolicies")
+    def scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]:
+        return pulumi.get(self, "scaling_up_policies")
+
+    @scaling_up_policies.setter
+    def scaling_up_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]):
+        pulumi.set(self, "scaling_up_policies", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="shutdownScript")
+    def shutdown_script(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shutdown_script")
+
+    @shutdown_script.setter
+    def shutdown_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shutdown_script", value)
+
+    @property
+    @pulumi.getter(name="startupScript")
+    def startup_script(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "startup_script")
+
+    @startup_script.setter
+    def startup_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "startup_script", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _ElastigroupState:
+    def __init__(__self__, *,
+                 backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_zone_name: Optional[pulumi.Input[str]] = None,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]] = None,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 gpu: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
+                 instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
+                 instance_types_ondemand: Optional[pulumi.Input[str]] = None,
+                 instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 integration_docker_swarm: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']] = None,
+                 integration_gke: Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']] = None,
+                 ip_forwarding: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
+                 node_image: Optional[pulumi.Input[str]] = None,
+                 ondemand_count: Optional[pulumi.Input[int]] = None,
+                 preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
+                 scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 shutdown_script: Optional[pulumi.Input[str]] = None,
+                 startup_script: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Elastigroup resources.
+        :param pulumi.Input[str] cluster_id: The GKE cluster ID you wish to import.
+        :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
+        :param pulumi.Input['ElastigroupIntegrationGkeArgs'] integration_gke: Describes the GKE integration.
+        :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
+        """
+        if backend_services is not None:
+            pulumi.set(__self__, "backend_services", backend_services)
+        if cluster_id is not None:
+            warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
+            pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if cluster_zone_name is not None:
+            pulumi.set(__self__, "cluster_zone_name", cluster_zone_name)
+        if desired_capacity is not None:
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if fallback_to_ondemand is not None:
+            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+        if gpu is not None:
+            pulumi.set(__self__, "gpu", gpu)
+        if instance_types_customs is not None:
+            pulumi.set(__self__, "instance_types_customs", instance_types_customs)
+        if instance_types_ondemand is not None:
+            pulumi.set(__self__, "instance_types_ondemand", instance_types_ondemand)
+        if instance_types_preemptibles is not None:
+            pulumi.set(__self__, "instance_types_preemptibles", instance_types_preemptibles)
+        if integration_docker_swarm is not None:
+            pulumi.set(__self__, "integration_docker_swarm", integration_docker_swarm)
+        if integration_gke is not None:
+            pulumi.set(__self__, "integration_gke", integration_gke)
+        if ip_forwarding is not None:
+            pulumi.set(__self__, "ip_forwarding", ip_forwarding)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if max_size is not None:
+            pulumi.set(__self__, "max_size", max_size)
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
+        if min_size is not None:
+            pulumi.set(__self__, "min_size", min_size)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if node_image is not None:
+            pulumi.set(__self__, "node_image", node_image)
+        if ondemand_count is not None:
+            pulumi.set(__self__, "ondemand_count", ondemand_count)
+        if preemptible_percentage is not None:
+            pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+        if scaling_down_policies is not None:
+            pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
+        if scaling_up_policies is not None:
+            pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if shutdown_script is not None:
+            pulumi.set(__self__, "shutdown_script", shutdown_script)
+        if startup_script is not None:
+            pulumi.set(__self__, "startup_script", startup_script)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="backendServices")
+    def backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]:
+        return pulumi.get(self, "backend_services")
+
+    @backend_services.setter
+    def backend_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]):
+        pulumi.set(self, "backend_services", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE cluster ID you wish to import.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="clusterZoneName")
+    def cluster_zone_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone where the cluster is hosted.
+        """
+        return pulumi.get(self, "cluster_zone_name")
+
+    @cluster_zone_name.setter
+    def cluster_zone_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_zone_name", value)
+
+    @property
+    @pulumi.getter(name="desiredCapacity")
+    def desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "desired_capacity")
+
+    @desired_capacity.setter
+    def desired_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "desired_capacity", value)
 
     @property
     @pulumi.getter
@@ -617,44 +992,44 @@ class Elastigroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ElastigroupArgs.__new__(ElastigroupArgs)
 
-            __props__['backend_services'] = backend_services
+            __props__.__dict__["backend_services"] = backend_services
             if cluster_id is not None and not opts.urn:
                 warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
                 pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
-            __props__['cluster_id'] = cluster_id
+            __props__.__dict__["cluster_id"] = cluster_id
             if cluster_zone_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_zone_name'")
-            __props__['cluster_zone_name'] = cluster_zone_name
+            __props__.__dict__["cluster_zone_name"] = cluster_zone_name
             if desired_capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'desired_capacity'")
-            __props__['desired_capacity'] = desired_capacity
-            __props__['disks'] = disks
-            __props__['draining_timeout'] = draining_timeout
-            __props__['fallback_to_ondemand'] = fallback_to_ondemand
-            __props__['gpu'] = gpu
-            __props__['instance_types_customs'] = instance_types_customs
-            __props__['instance_types_ondemand'] = instance_types_ondemand
-            __props__['instance_types_preemptibles'] = instance_types_preemptibles
-            __props__['integration_docker_swarm'] = integration_docker_swarm
-            __props__['integration_gke'] = integration_gke
-            __props__['ip_forwarding'] = ip_forwarding
-            __props__['labels'] = labels
-            __props__['max_size'] = max_size
-            __props__['metadatas'] = metadatas
-            __props__['min_size'] = min_size
-            __props__['name'] = name
-            __props__['network_interfaces'] = network_interfaces
-            __props__['node_image'] = node_image
-            __props__['ondemand_count'] = ondemand_count
-            __props__['preemptible_percentage'] = preemptible_percentage
-            __props__['scaling_down_policies'] = scaling_down_policies
-            __props__['scaling_up_policies'] = scaling_up_policies
-            __props__['service_account'] = service_account
-            __props__['shutdown_script'] = shutdown_script
-            __props__['startup_script'] = startup_script
-            __props__['tags'] = tags
+            __props__.__dict__["desired_capacity"] = desired_capacity
+            __props__.__dict__["disks"] = disks
+            __props__.__dict__["draining_timeout"] = draining_timeout
+            __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+            __props__.__dict__["gpu"] = gpu
+            __props__.__dict__["instance_types_customs"] = instance_types_customs
+            __props__.__dict__["instance_types_ondemand"] = instance_types_ondemand
+            __props__.__dict__["instance_types_preemptibles"] = instance_types_preemptibles
+            __props__.__dict__["integration_docker_swarm"] = integration_docker_swarm
+            __props__.__dict__["integration_gke"] = integration_gke
+            __props__.__dict__["ip_forwarding"] = ip_forwarding
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["max_size"] = max_size
+            __props__.__dict__["metadatas"] = metadatas
+            __props__.__dict__["min_size"] = min_size
+            __props__.__dict__["name"] = name
+            __props__.__dict__["network_interfaces"] = network_interfaces
+            __props__.__dict__["node_image"] = node_image
+            __props__.__dict__["ondemand_count"] = ondemand_count
+            __props__.__dict__["preemptible_percentage"] = preemptible_percentage
+            __props__.__dict__["scaling_down_policies"] = scaling_down_policies
+            __props__.__dict__["scaling_up_policies"] = scaling_up_policies
+            __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["shutdown_script"] = shutdown_script
+            __props__.__dict__["startup_script"] = startup_script
+            __props__.__dict__["tags"] = tags
         super(Elastigroup, __self__).__init__(
             'spotinst:gke/elastigroup:Elastigroup',
             resource_name,
@@ -708,37 +1083,37 @@ class Elastigroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ElastigroupState.__new__(_ElastigroupState)
 
-        __props__["backend_services"] = backend_services
-        __props__["cluster_id"] = cluster_id
-        __props__["cluster_zone_name"] = cluster_zone_name
-        __props__["desired_capacity"] = desired_capacity
-        __props__["disks"] = disks
-        __props__["draining_timeout"] = draining_timeout
-        __props__["fallback_to_ondemand"] = fallback_to_ondemand
-        __props__["gpu"] = gpu
-        __props__["instance_types_customs"] = instance_types_customs
-        __props__["instance_types_ondemand"] = instance_types_ondemand
-        __props__["instance_types_preemptibles"] = instance_types_preemptibles
-        __props__["integration_docker_swarm"] = integration_docker_swarm
-        __props__["integration_gke"] = integration_gke
-        __props__["ip_forwarding"] = ip_forwarding
-        __props__["labels"] = labels
-        __props__["max_size"] = max_size
-        __props__["metadatas"] = metadatas
-        __props__["min_size"] = min_size
-        __props__["name"] = name
-        __props__["network_interfaces"] = network_interfaces
-        __props__["node_image"] = node_image
-        __props__["ondemand_count"] = ondemand_count
-        __props__["preemptible_percentage"] = preemptible_percentage
-        __props__["scaling_down_policies"] = scaling_down_policies
-        __props__["scaling_up_policies"] = scaling_up_policies
-        __props__["service_account"] = service_account
-        __props__["shutdown_script"] = shutdown_script
-        __props__["startup_script"] = startup_script
-        __props__["tags"] = tags
+        __props__.__dict__["backend_services"] = backend_services
+        __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["cluster_zone_name"] = cluster_zone_name
+        __props__.__dict__["desired_capacity"] = desired_capacity
+        __props__.__dict__["disks"] = disks
+        __props__.__dict__["draining_timeout"] = draining_timeout
+        __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+        __props__.__dict__["gpu"] = gpu
+        __props__.__dict__["instance_types_customs"] = instance_types_customs
+        __props__.__dict__["instance_types_ondemand"] = instance_types_ondemand
+        __props__.__dict__["instance_types_preemptibles"] = instance_types_preemptibles
+        __props__.__dict__["integration_docker_swarm"] = integration_docker_swarm
+        __props__.__dict__["integration_gke"] = integration_gke
+        __props__.__dict__["ip_forwarding"] = ip_forwarding
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["max_size"] = max_size
+        __props__.__dict__["metadatas"] = metadatas
+        __props__.__dict__["min_size"] = min_size
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network_interfaces"] = network_interfaces
+        __props__.__dict__["node_image"] = node_image
+        __props__.__dict__["ondemand_count"] = ondemand_count
+        __props__.__dict__["preemptible_percentage"] = preemptible_percentage
+        __props__.__dict__["scaling_down_policies"] = scaling_down_policies
+        __props__.__dict__["scaling_up_policies"] = scaling_up_policies
+        __props__.__dict__["service_account"] = service_account
+        __props__.__dict__["shutdown_script"] = shutdown_script
+        __props__.__dict__["startup_script"] = startup_script
+        __props__.__dict__["tags"] = tags
         return Elastigroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -897,10 +1272,4 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

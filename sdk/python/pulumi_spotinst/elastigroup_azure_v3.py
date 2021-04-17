@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -221,6 +221,222 @@ class ElastigroupAzureV3Args:
         pulumi.set(self, "name", value)
 
 
+@pulumi.input_type
+class _ElastigroupAzureV3State:
+    def __init__(__self__, *,
+                 desired_capacity: Optional[pulumi.Input[int]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
+                 login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']] = None,
+                 od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 os: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 strategy: Optional[pulumi.Input['ElastigroupAzureV3StrategyArgs']] = None):
+        """
+        Input properties used for looking up and filtering ElastigroupAzureV3 resources.
+        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]] images: Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+        :param pulumi.Input['ElastigroupAzureV3LoginArgs'] login: Describes the login configuration.
+        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
+        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[str] name: The IP configuration name.
+        :param pulumi.Input['ElastigroupAzureV3NetworkArgs'] network: Defines the Virtual Network and Subnet for your Elastigroup.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
+        :param pulumi.Input[str] os: Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        :param pulumi.Input[str] region: The region your Azure group will be created in.
+        :param pulumi.Input[str] resource_group_name: Vnet Resource Group Name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
+        :param pulumi.Input['ElastigroupAzureV3StrategyArgs'] strategy: Describes the deployment strategy.
+        """
+        if desired_capacity is not None:
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if login is not None:
+            pulumi.set(__self__, "login", login)
+        if max_size is not None:
+            pulumi.set(__self__, "max_size", max_size)
+        if min_size is not None:
+            pulumi.set(__self__, "min_size", min_size)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if od_sizes is not None:
+            pulumi.set(__self__, "od_sizes", od_sizes)
+        if os is not None:
+            pulumi.set(__self__, "os", os)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if spot_sizes is not None:
+            pulumi.set(__self__, "spot_sizes", spot_sizes)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="desiredCapacity")
+    def desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The desired number of instances the group should have at any time.
+        """
+        return pulumi.get(self, "desired_capacity")
+
+    @desired_capacity.setter
+    def desired_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]:
+        """
+        Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+        """
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]):
+        pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter
+    def login(self) -> Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']]:
+        """
+        Describes the login configuration.
+        """
+        return pulumi.get(self, "login")
+
+    @login.setter
+    def login(self, value: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']]):
+        pulumi.set(self, "login", value)
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of instances the group should have at any time.
+        """
+        return pulumi.get(self, "max_size")
+
+    @max_size.setter
+    def max_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_size", value)
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of instances the group should have at any time.
+        """
+        return pulumi.get(self, "min_size")
+
+    @min_size.setter
+    def min_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_size", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP configuration name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']]:
+        """
+        Defines the Virtual Network and Subnet for your Elastigroup.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="odSizes")
+    def od_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Available On-Demand sizes
+        """
+        return pulumi.get(self, "od_sizes")
+
+    @od_sizes.setter
+    def od_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "od_sizes", value)
+
+    @property
+    @pulumi.getter
+    def os(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        """
+        return pulumi.get(self, "os")
+
+    @os.setter
+    def os(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region your Azure group will be created in.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Vnet Resource Group Name.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="spotSizes")
+    def spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Available Low-Priority sizes.
+        """
+        return pulumi.get(self, "spot_sizes")
+
+    @spot_sizes.setter
+    def spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "spot_sizes", value)
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[pulumi.Input['ElastigroupAzureV3StrategyArgs']]:
+        """
+        Describes the deployment strategy.
+        """
+        return pulumi.get(self, "strategy")
+
+    @strategy.setter
+    def strategy(self, value: Optional[pulumi.Input['ElastigroupAzureV3StrategyArgs']]):
+        pulumi.set(self, "strategy", value)
+
+
 class ElastigroupAzureV3(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -316,35 +532,35 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ElastigroupAzureV3Args.__new__(ElastigroupAzureV3Args)
 
-            __props__['desired_capacity'] = desired_capacity
-            __props__['images'] = images
-            __props__['login'] = login
-            __props__['max_size'] = max_size
-            __props__['min_size'] = min_size
-            __props__['name'] = name
+            __props__.__dict__["desired_capacity"] = desired_capacity
+            __props__.__dict__["images"] = images
+            __props__.__dict__["login"] = login
+            __props__.__dict__["max_size"] = max_size
+            __props__.__dict__["min_size"] = min_size
+            __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
-            __props__['network'] = network
+            __props__.__dict__["network"] = network
             if od_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'od_sizes'")
-            __props__['od_sizes'] = od_sizes
+            __props__.__dict__["od_sizes"] = od_sizes
             if os is None and not opts.urn:
                 raise TypeError("Missing required property 'os'")
-            __props__['os'] = os
+            __props__.__dict__["os"] = os
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
+            __props__.__dict__["region"] = region
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
-            __props__['resource_group_name'] = resource_group_name
+            __props__.__dict__["resource_group_name"] = resource_group_name
             if spot_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'spot_sizes'")
-            __props__['spot_sizes'] = spot_sizes
+            __props__.__dict__["spot_sizes"] = spot_sizes
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
-            __props__['strategy'] = strategy
+            __props__.__dict__["strategy"] = strategy
         super(ElastigroupAzureV3, __self__).__init__(
             'spotinst:index/elastigroupAzureV3:ElastigroupAzureV3',
             resource_name,
@@ -391,21 +607,21 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ElastigroupAzureV3State.__new__(_ElastigroupAzureV3State)
 
-        __props__["desired_capacity"] = desired_capacity
-        __props__["images"] = images
-        __props__["login"] = login
-        __props__["max_size"] = max_size
-        __props__["min_size"] = min_size
-        __props__["name"] = name
-        __props__["network"] = network
-        __props__["od_sizes"] = od_sizes
-        __props__["os"] = os
-        __props__["region"] = region
-        __props__["resource_group_name"] = resource_group_name
-        __props__["spot_sizes"] = spot_sizes
-        __props__["strategy"] = strategy
+        __props__.__dict__["desired_capacity"] = desired_capacity
+        __props__.__dict__["images"] = images
+        __props__.__dict__["login"] = login
+        __props__.__dict__["max_size"] = max_size
+        __props__.__dict__["min_size"] = min_size
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
+        __props__.__dict__["od_sizes"] = od_sizes
+        __props__.__dict__["os"] = os
+        __props__.__dict__["region"] = region
+        __props__.__dict__["resource_group_name"] = resource_group_name
+        __props__.__dict__["spot_sizes"] = spot_sizes
+        __props__.__dict__["strategy"] = strategy
         return ElastigroupAzureV3(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -511,10 +727,4 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         Describes the deployment strategy.
         """
         return pulumi.get(self, "strategy")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
