@@ -365,9 +365,7 @@ class OceanImport(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Manages a Spotinst Ocean GKE resource.
 
@@ -489,15 +487,7 @@ class OceanImport(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
