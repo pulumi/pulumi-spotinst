@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fspotinst.svg)](https://www.npmjs.com/package/@pulumi/spotinst)
 [![Python version](https://badge.fury.io/py/pulumi-spotinst.svg)](https://pypi.org/project/pulumi-spotinst)
 [![NuGet version](https://badge.fury.io/nu/pulumi.spotinst.svg)](https://badge.fury.io/nu/pulumi.spotinst)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-spotinst/sdk/v2/go)](https://pkg.go.dev/github.com/pulumi/pulumi-spotinst/sdk/v2/go)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-spotinst/sdk/v3/go)](https://pkg.go.dev/github.com/pulumi/pulumi-spotinst/sdk/v3/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-spotinst/blob/master/LICENSE)
 
 # Spotinst Resource Provider
@@ -35,7 +35,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-spotinst/sdk/v2/go/...
+    $ go get github.com/pulumi/pulumi-spotinst/sdk/v3/go/...
 
 ### .NET
 
