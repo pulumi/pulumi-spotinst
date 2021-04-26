@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly int? CpuPerUnit;
         /// <summary>
-        /// Optionally configure the number of GPUS to allocate the headroom.
+        /// Optionally configure the number of GPUs to allocate the headroom.
         /// </summary>
         public readonly int? GpuPerUnit;
         /// <summary>

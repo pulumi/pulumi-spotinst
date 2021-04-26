@@ -13380,7 +13380,7 @@ type OceanAutoscaler struct {
 	AutoscaleHeadroom *OceanAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
 	// Automatically configure and optimize headroom resources.
 	AutoscaleIsAutoConfig *bool `pulumi:"autoscaleIsAutoConfig"`
-	// Enable the Ocean Kubernetes autoscaler.
+	// Enable the Ocean Kubernetes Auto Scaler.
 	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
 	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits *OceanAutoscalerResourceLimits `pulumi:"resourceLimits"`
@@ -13408,7 +13408,7 @@ type OceanAutoscalerArgs struct {
 	AutoscaleHeadroom OceanAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
 	// Automatically configure and optimize headroom resources.
 	AutoscaleIsAutoConfig pulumi.BoolPtrInput `pulumi:"autoscaleIsAutoConfig"`
-	// Enable the Ocean Kubernetes autoscaler.
+	// Enable the Ocean Kubernetes Auto Scaler.
 	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
 	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits OceanAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
@@ -13516,7 +13516,7 @@ func (o OceanAutoscalerOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
-// Enable the Ocean Kubernetes autoscaler.
+// Enable the Ocean Kubernetes Auto Scaler.
 func (o OceanAutoscalerOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -13594,7 +13594,7 @@ func (o OceanAutoscalerPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enable the Ocean Kubernetes autoscaler.
+// Enable the Ocean Kubernetes Auto Scaler.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -13762,7 +13762,7 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.F
 type OceanAutoscalerAutoscaleHeadroom struct {
 	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 	CpuPerUnit *int `pulumi:"cpuPerUnit"`
-	// Optionally configure the number of GPUS to allocate the headroom.
+	// Optionally configure the number of GPUs to allocate the headroom.
 	GpuPerUnit *int `pulumi:"gpuPerUnit"`
 	// Optionally configure the amount of memory (MB) to allocate the headroom.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
@@ -13784,7 +13784,7 @@ type OceanAutoscalerAutoscaleHeadroomInput interface {
 type OceanAutoscalerAutoscaleHeadroomArgs struct {
 	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	// Optionally configure the number of GPUS to allocate the headroom.
+	// Optionally configure the number of GPUs to allocate the headroom.
 	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
 	// Optionally configure the amount of memory (MB) to allocate the headroom.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
@@ -13874,7 +13874,7 @@ func (o OceanAutoscalerAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the number of GPUS to allocate the headroom.
+// Optionally configure the number of GPUs to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
@@ -13917,7 +13917,7 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the number of GPUS to allocate the headroom.
+// Optionally configure the number of GPUs to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -14222,11 +14222,11 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 }
 
 type OceanLaunchSpecBlockDeviceMapping struct {
-	// String. Set device name. (Example: "/dev/xvda1").
+	// String. Set device name. (Example: `/dev/xvda1`).
 	DeviceName string `pulumi:"deviceName"`
 	// Object. Set Elastic Block Store properties .
 	Ebs *OceanLaunchSpecBlockDeviceMappingEbs `pulumi:"ebs"`
-	// String. suppresses the specified device included in the block device mapping of the AMI.
+	// String. Suppresses the specified device included in the block device mapping of the AMI.
 	NoDevice    *string `pulumi:"noDevice"`
 	VirtualName *string `pulumi:"virtualName"`
 }
@@ -14243,11 +14243,11 @@ type OceanLaunchSpecBlockDeviceMappingInput interface {
 }
 
 type OceanLaunchSpecBlockDeviceMappingArgs struct {
-	// String. Set device name. (Example: "/dev/xvda1").
+	// String. Set device name. (Example: `/dev/xvda1`).
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// Object. Set Elastic Block Store properties .
 	Ebs OceanLaunchSpecBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
-	// String. suppresses the specified device included in the block device mapping of the AMI.
+	// String. Suppresses the specified device included in the block device mapping of the AMI.
 	NoDevice    pulumi.StringPtrInput `pulumi:"noDevice"`
 	VirtualName pulumi.StringPtrInput `pulumi:"virtualName"`
 }
@@ -14303,7 +14303,7 @@ func (o OceanLaunchSpecBlockDeviceMappingOutput) ToOceanLaunchSpecBlockDeviceMap
 	return o
 }
 
-// String. Set device name. (Example: "/dev/xvda1").
+// String. Set device name. (Example: `/dev/xvda1`).
 func (o OceanLaunchSpecBlockDeviceMappingOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMapping) string { return v.DeviceName }).(pulumi.StringOutput)
 }
@@ -14313,7 +14313,7 @@ func (o OceanLaunchSpecBlockDeviceMappingOutput) Ebs() OceanLaunchSpecBlockDevic
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMapping) *OceanLaunchSpecBlockDeviceMappingEbs { return v.Ebs }).(OceanLaunchSpecBlockDeviceMappingEbsPtrOutput)
 }
 
-// String. suppresses the specified device included in the block device mapping of the AMI.
+// String. Suppresses the specified device included in the block device mapping of the AMI.
 func (o OceanLaunchSpecBlockDeviceMappingOutput) NoDevice() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMapping) *string { return v.NoDevice }).(pulumi.StringPtrOutput)
 }
@@ -14355,11 +14355,11 @@ type OceanLaunchSpecBlockDeviceMappingEbs struct {
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// (Optional) String. The Snapshot ID to mount by.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
 	Throughput *int `pulumi:"throughput"`
 	// Int. The size, in GB of the volume.
 	VolumeSize *int `pulumi:"volumeSize"`
-	// String. The type of the volume (example: "gp2").
+	// String. The type of the volume. (Example: `gp2`).
 	VolumeType *string `pulumi:"volumeType"`
 }
 
@@ -14387,11 +14387,11 @@ type OceanLaunchSpecBlockDeviceMappingEbsArgs struct {
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// (Optional) String. The Snapshot ID to mount by.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
-	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
 	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
 	// Int. The size, in GB of the volume.
 	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
-	// String. The type of the volume (example: "gp2").
+	// String. The type of the volume. (Example: `gp2`).
 	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
@@ -14504,7 +14504,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) SnapshotId() pulumi.StringPt
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
-// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
@@ -14514,7 +14514,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) VolumeSize() pulumi.IntPtrOu
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
 }
 
-// String. The type of the volume (example: "gp2").
+// String. The type of the volume. (Example: `gp2`).
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
 }
@@ -14597,7 +14597,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *int {
 		if v == nil {
@@ -14617,7 +14617,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) VolumeSize() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// String. The type of the volume (example: "gp2").
+// String. The type of the volume. (Example: `gp2`).
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) *string {
 		if v == nil {
@@ -14630,9 +14630,9 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.Strin
 type OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize struct {
 	// Int. Initial size for volume. (Example: 50)
 	BaseSize int `pulumi:"baseSize"`
-	// String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+	// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
 	Resource string `pulumi:"resource"`
-	// Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+	// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
 	SizePerResourceUnit int `pulumi:"sizePerResourceUnit"`
 }
 
@@ -14650,9 +14650,9 @@ type OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput interface {
 type OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs struct {
 	// Int. Initial size for volume. (Example: 50)
 	BaseSize pulumi.IntInput `pulumi:"baseSize"`
-	// String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+	// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
 	Resource pulumi.StringInput `pulumi:"resource"`
-	// Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+	// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
 	SizePerResourceUnit pulumi.IntInput `pulumi:"sizePerResourceUnit"`
 }
 
@@ -14738,12 +14738,12 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) BaseSize() 
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) int { return v.BaseSize }).(pulumi.IntOutput)
 }
 
-// String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) string { return v.Resource }).(pulumi.StringOutput)
 }
 
-// Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) SizePerResourceUnit() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) int { return v.SizePerResourceUnit }).(pulumi.IntOutput)
 }
@@ -14778,7 +14778,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) BaseSize
 	}).(pulumi.IntPtrOutput)
 }
 
-// String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) *string {
 		if v == nil {
@@ -14788,7 +14788,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Resource
 	}).(pulumi.StringPtrOutput)
 }
 
-// Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) *int {
 		if v == nil {
@@ -14799,7 +14799,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerR
 }
 
 type OceanLaunchSpecElasticIpPool struct {
-	// Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+	// A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
 	TagSelector *OceanLaunchSpecElasticIpPoolTagSelector `pulumi:"tagSelector"`
 }
 
@@ -14815,7 +14815,7 @@ type OceanLaunchSpecElasticIpPoolInput interface {
 }
 
 type OceanLaunchSpecElasticIpPoolArgs struct {
-	// Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+	// A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
 	TagSelector OceanLaunchSpecElasticIpPoolTagSelectorPtrInput `pulumi:"tagSelector"`
 }
 
@@ -14870,7 +14870,7 @@ func (o OceanLaunchSpecElasticIpPoolOutput) ToOceanLaunchSpecElasticIpPoolOutput
 	return o
 }
 
-// Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+// A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
 func (o OceanLaunchSpecElasticIpPoolOutput) TagSelector() OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecElasticIpPool) *OceanLaunchSpecElasticIpPoolTagSelector { return v.TagSelector }).(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput)
 }
@@ -14896,7 +14896,7 @@ func (o OceanLaunchSpecElasticIpPoolArrayOutput) Index(i pulumi.IntInput) OceanL
 }
 
 type OceanLaunchSpecElasticIpPoolTagSelector struct {
-	// Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+	// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
 	TagKey string `pulumi:"tagKey"`
 	// Elastic IP tag value. Can be null.
 	TagValue *string `pulumi:"tagValue"`
@@ -14914,7 +14914,7 @@ type OceanLaunchSpecElasticIpPoolTagSelectorInput interface {
 }
 
 type OceanLaunchSpecElasticIpPoolTagSelectorArgs struct {
-	// Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+	// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
 	TagKey pulumi.StringInput `pulumi:"tagKey"`
 	// Elastic IP tag value. Can be null.
 	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
@@ -14997,7 +14997,7 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) ToOceanLaunchSpecElasticI
 	}).(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput)
 }
 
-// Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
 func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) TagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecElasticIpPoolTagSelector) string { return v.TagKey }).(pulumi.StringOutput)
 }
@@ -15025,7 +15025,7 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) Elem() OceanLaunchSpec
 	return o.ApplyT(func(v *OceanLaunchSpecElasticIpPoolTagSelector) OceanLaunchSpecElasticIpPoolTagSelector { return *v }).(OceanLaunchSpecElasticIpPoolTagSelectorOutput)
 }
 
-// Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
 func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecElasticIpPoolTagSelector) *string {
 		if v == nil {
@@ -15152,7 +15152,7 @@ func (o OceanLaunchSpecLabelArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 }
 
 type OceanLaunchSpecResourceLimit struct {
-	// set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+	// Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
 }
 
@@ -15168,7 +15168,7 @@ type OceanLaunchSpecResourceLimitInput interface {
 }
 
 type OceanLaunchSpecResourceLimitArgs struct {
-	// set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+	// Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
 }
 
@@ -15223,7 +15223,7 @@ func (o OceanLaunchSpecResourceLimitOutput) ToOceanLaunchSpecResourceLimitOutput
 	return o
 }
 
-// set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+// Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
 func (o OceanLaunchSpecResourceLimitOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecResourceLimit) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
 }
@@ -15249,7 +15249,7 @@ func (o OceanLaunchSpecResourceLimitArrayOutput) Index(i pulumi.IntInput) OceanL
 }
 
 type OceanLaunchSpecStrategy struct {
-	// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+	// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
 	SpotPercentage *int `pulumi:"spotPercentage"`
 }
 
@@ -15265,7 +15265,7 @@ type OceanLaunchSpecStrategyInput interface {
 }
 
 type OceanLaunchSpecStrategyArgs struct {
-	// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+	// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
 	SpotPercentage pulumi.IntPtrInput `pulumi:"spotPercentage"`
 }
 
@@ -15320,7 +15320,7 @@ func (o OceanLaunchSpecStrategyOutput) ToOceanLaunchSpecStrategyOutputWithContex
 	return o
 }
 
-// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
 func (o OceanLaunchSpecStrategyOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecStrategy) *int { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }
@@ -15567,11 +15567,11 @@ func (o OceanLaunchSpecTaintArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 }
 
 type OceanLoadBalancer struct {
-	// Required if type is set to TARGET_GROUP
+	// Required if type is set to `TARGET_GROUP`
 	Arn *string `pulumi:"arn"`
-	// Required if type is set to CLASSIC
+	// Required if type is set to `CLASSIC`
 	Name *string `pulumi:"name"`
-	// Can be set to CLASSIC or TARGET_GROUP
+	// Can be set to `CLASSIC` or `TARGET_GROUP`
 	Type *string `pulumi:"type"`
 }
 
@@ -15587,11 +15587,11 @@ type OceanLoadBalancerInput interface {
 }
 
 type OceanLoadBalancerArgs struct {
-	// Required if type is set to TARGET_GROUP
+	// Required if type is set to `TARGET_GROUP`
 	Arn pulumi.StringPtrInput `pulumi:"arn"`
-	// Required if type is set to CLASSIC
+	// Required if type is set to `CLASSIC`
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Can be set to CLASSIC or TARGET_GROUP
+	// Can be set to `CLASSIC` or `TARGET_GROUP`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -15646,17 +15646,17 @@ func (o OceanLoadBalancerOutput) ToOceanLoadBalancerOutputWithContext(ctx contex
 	return o
 }
 
-// Required if type is set to TARGET_GROUP
+// Required if type is set to `TARGET_GROUP`
 func (o OceanLoadBalancerOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
 
-// Required if type is set to CLASSIC
+// Required if type is set to `CLASSIC`
 func (o OceanLoadBalancerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Can be set to CLASSIC or TARGET_GROUP
+// Can be set to `CLASSIC` or `TARGET_GROUP`
 func (o OceanLoadBalancerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLoadBalancer) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -15788,10 +15788,9 @@ func (o OceanScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanScheduledTa
 }
 
 type OceanScheduledTaskShutdownHours struct {
-	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 	IsEnabled *bool `pulumi:"isEnabled"`
-	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-	// Example: Fri:15:30-Wed:14:30
+	// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
 	TimeWindows []string `pulumi:"timeWindows"`
 }
 
@@ -15807,10 +15806,9 @@ type OceanScheduledTaskShutdownHoursInput interface {
 }
 
 type OceanScheduledTaskShutdownHoursArgs struct {
-	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-	// Example: Fri:15:30-Wed:14:30
+	// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
 
@@ -15891,13 +15889,12 @@ func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHours
 	}).(OceanScheduledTaskShutdownHoursPtrOutput)
 }
 
-// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 func (o OceanScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-// Example: Fri:15:30-Wed:14:30
+// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
 func (o OceanScheduledTaskShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
 }
@@ -15920,7 +15917,7 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) Elem() OceanScheduledTaskShutd
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) OceanScheduledTaskShutdownHours { return *v }).(OceanScheduledTaskShutdownHoursOutput)
 }
 
-// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) *bool {
 		if v == nil {
@@ -15930,8 +15927,7 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-// Example: Fri:15:30-Wed:14:30
+// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
 func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) []string {
 		if v == nil {
@@ -15942,13 +15938,11 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArr
 }
 
 type OceanScheduledTaskTask struct {
-	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-	// Example: 0 1 * * *
+	// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
 	CronExpression string `pulumi:"cronExpression"`
-	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 	IsEnabled bool `pulumi:"isEnabled"`
-	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
-	// Example: clusterRoll
+	// Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
 	TaskType string `pulumi:"taskType"`
 }
 
@@ -15964,13 +15958,11 @@ type OceanScheduledTaskTaskInput interface {
 }
 
 type OceanScheduledTaskTaskArgs struct {
-	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-	// Example: 0 1 * * *
+	// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
-	// Example: clusterRoll
+	// Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
 	TaskType pulumi.StringInput `pulumi:"taskType"`
 }
 
@@ -16025,19 +16017,17 @@ func (o OceanScheduledTaskTaskOutput) ToOceanScheduledTaskTaskOutputWithContext(
 	return o
 }
 
-// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-// Example: 0 1 * * *
+// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
 func (o OceanScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 func (o OceanScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
-// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
-// Example: clusterRoll
+// Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
 func (o OceanScheduledTaskTaskOutput) TaskType() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) string { return v.TaskType }).(pulumi.StringOutput)
 }

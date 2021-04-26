@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanLaunchSpecElasticIpPool
     {
         /// <summary>
-        /// Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+        /// A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
         /// </summary>
         public readonly Outputs.OceanLaunchSpecElasticIpPoolTagSelector? TagSelector;
 

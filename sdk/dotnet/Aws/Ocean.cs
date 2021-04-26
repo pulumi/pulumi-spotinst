@@ -107,7 +107,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> AssociatePublicIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Describes the Ocean Kubernetes autoscaler.
+        /// Describes the Ocean Kubernetes Auto Scaler.
         /// </summary>
         [Output("autoscaler")]
         public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<string>> Blacklists { get; private set; } = null!;
 
         /// <summary>
-        /// The ocean cluster identifier. Example: `ocean.k8s`
+        /// The Ocean cluster identifier. Example: `ocean.k8s`
         /// </summary>
         [Output("controllerId")]
         public Output<string?> ControllerId { get; private set; } = null!;
@@ -191,13 +191,13 @@ namespace Pulumi.SpotInst.Aws
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         /// </summary>
         [Output("monitoring")]
         public Output<bool?> Monitoring { get; private set; } = null!;
 
         /// <summary>
-        /// Required if type is set to CLASSIC
+        /// Required if type is set to `CLASSIC`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> SpotPercentage { get; private set; } = null!;
 
         /// <summary>
-        /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
         /// <summary>
-        /// Describes the Ocean Kubernetes autoscaler.
+        /// Describes the Ocean Kubernetes Auto Scaler.
         /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerArgs>? Autoscaler { get; set; }
@@ -345,7 +345,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The ocean cluster identifier. Example: `ocean.k8s`
+        /// The Ocean cluster identifier. Example: `ocean.k8s`
         /// </summary>
         [Input("controllerId")]
         public Input<string>? ControllerId { get; set; }
@@ -423,13 +423,13 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// Required if type is set to CLASSIC
+        /// Required if type is set to `CLASSIC`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -480,7 +480,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _subnetIds;
 
         /// <summary>
-        /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         /// </summary>
         public InputList<string> SubnetIds
         {
@@ -550,7 +550,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
         /// <summary>
-        /// Describes the Ocean Kubernetes autoscaler.
+        /// Describes the Ocean Kubernetes Auto Scaler.
         /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerGetArgs>? Autoscaler { get; set; }
@@ -568,7 +568,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The ocean cluster identifier. Example: `ocean.k8s`
+        /// The Ocean cluster identifier. Example: `ocean.k8s`
         /// </summary>
         [Input("controllerId")]
         public Input<string>? ControllerId { get; set; }
@@ -646,13 +646,13 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        /// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         /// </summary>
         [Input("monitoring")]
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// Required if type is set to CLASSIC
+        /// Required if type is set to `CLASSIC`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -703,7 +703,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _subnetIds;
 
         /// <summary>
-        /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         /// </summary>
         public InputList<string> SubnetIds
         {

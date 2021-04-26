@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLaunchSpecBlockDeviceMappingGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Set device name. (Example: "/dev/xvda1").
+        /// String. Set device name. (Example: `/dev/xvda1`).
         /// </summary>
         [Input("deviceName", required: true)]
         public Input<string> DeviceName { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<Inputs.OceanLaunchSpecBlockDeviceMappingEbsGetArgs>? Ebs { get; set; }
 
         /// <summary>
-        /// String. suppresses the specified device included in the block device mapping of the AMI.
+        /// String. Suppresses the specified device included in the block device mapping of the AMI.
         /// </summary>
         [Input("noDevice")]
         public Input<string>? NoDevice { get; set; }

@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? CpuPerUnit { get; set; }
 
         /// <summary>
-        /// Optionally configure the number of GPUS to allocate the headroom.
+        /// Optionally configure the number of GPUs to allocate the headroom.
         /// </summary>
         [Input("gpuPerUnit")]
         public Input<int>? GpuPerUnit { get; set; }

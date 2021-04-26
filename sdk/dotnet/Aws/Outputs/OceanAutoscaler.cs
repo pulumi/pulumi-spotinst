@@ -34,7 +34,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? AutoscaleIsAutoConfig;
         /// <summary>
-        /// Enable the Ocean Kubernetes autoscaler.
+        /// Enable the Ocean Kubernetes Auto Scaler.
         /// </summary>
         public readonly bool? AutoscaleIsEnabled;
         /// <summary>

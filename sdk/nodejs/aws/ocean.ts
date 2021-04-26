@@ -20,11 +20,11 @@ import * as utilities from "../utilities";
  *     desiredCapacity: 2,
  *     drainingTimeout: 120,
  *     ebsOptimized: true,
- *     // --- STRATEGY --------------------
+ *     // region STRATEGY
  *     fallbackToOndemand: true,
  *     gracePeriod: 600,
  *     iamInstanceProfile: "iam-profile",
- *     // --- LAUNCH CONFIGURATION --------------
+ *     // region LAUNCH CONFIGURATION
  *     imageId: "ami-123456",
  *     keyName: "fake key",
  *     loadBalancers: [
@@ -97,7 +97,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
     /**
-     * Describes the Ocean Kubernetes autoscaler.
+     * Describes the Ocean Kubernetes Auto Scaler.
      */
     public readonly autoscaler!: pulumi.Output<outputs.aws.OceanAutoscaler | undefined>;
     /**
@@ -105,7 +105,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly blacklists!: pulumi.Output<string[] | undefined>;
     /**
-     * The ocean cluster identifier. Example: `ocean.k8s`
+     * The Ocean cluster identifier. Example: `ocean.k8s`
      */
     public readonly controllerId!: pulumi.Output<string | undefined>;
     /**
@@ -153,11 +153,11 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
     public readonly monitoring!: pulumi.Output<boolean | undefined>;
     /**
-     * Required if type is set to CLASSIC
+     * Required if type is set to `CLASSIC`
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -181,7 +181,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     /**
-     * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+     * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      */
     public readonly subnetIds!: pulumi.Output<string[]>;
     /**
@@ -305,7 +305,7 @@ export interface OceanState {
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
     /**
-     * Describes the Ocean Kubernetes autoscaler.
+     * Describes the Ocean Kubernetes Auto Scaler.
      */
     readonly autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     /**
@@ -313,7 +313,7 @@ export interface OceanState {
      */
     readonly blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ocean cluster identifier. Example: `ocean.k8s`
+     * The Ocean cluster identifier. Example: `ocean.k8s`
      */
     readonly controllerId?: pulumi.Input<string>;
     /**
@@ -361,11 +361,11 @@ export interface OceanState {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
     readonly monitoring?: pulumi.Input<boolean>;
     /**
-     * Required if type is set to CLASSIC
+     * Required if type is set to `CLASSIC`
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -389,7 +389,7 @@ export interface OceanState {
      */
     readonly spotPercentage?: pulumi.Input<number>;
     /**
-     * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+     * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      */
     readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -425,7 +425,7 @@ export interface OceanArgs {
      */
     readonly associatePublicIpAddress?: pulumi.Input<boolean>;
     /**
-     * Describes the Ocean Kubernetes autoscaler.
+     * Describes the Ocean Kubernetes Auto Scaler.
      */
     readonly autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     /**
@@ -433,7 +433,7 @@ export interface OceanArgs {
      */
     readonly blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ocean cluster identifier. Example: `ocean.k8s`
+     * The Ocean cluster identifier. Example: `ocean.k8s`
      */
     readonly controllerId?: pulumi.Input<string>;
     /**
@@ -481,11 +481,11 @@ export interface OceanArgs {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+     * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
     readonly monitoring?: pulumi.Input<boolean>;
     /**
-     * Required if type is set to CLASSIC
+     * Required if type is set to `CLASSIC`
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -509,7 +509,7 @@ export interface OceanArgs {
      */
     readonly spotPercentage?: pulumi.Input<number>;
     /**
-     * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+     * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      */
     readonly subnetIds: pulumi.Input<pulumi.Input<string>[]>;
     /**

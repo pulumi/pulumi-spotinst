@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLaunchSpecElasticIpPoolTagSelectorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+        /// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
         /// </summary>
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;

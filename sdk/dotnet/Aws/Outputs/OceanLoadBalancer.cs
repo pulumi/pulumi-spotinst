@@ -14,15 +14,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanLoadBalancer
     {
         /// <summary>
-        /// Required if type is set to TARGET_GROUP
+        /// Required if type is set to `TARGET_GROUP`
         /// </summary>
         public readonly string? Arn;
         /// <summary>
-        /// Required if type is set to CLASSIC
+        /// Required if type is set to `CLASSIC`
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Can be set to CLASSIC or TARGET_GROUP
+        /// Can be set to `CLASSIC` or `TARGET_GROUP`
         /// </summary>
         public readonly string? Type;
 

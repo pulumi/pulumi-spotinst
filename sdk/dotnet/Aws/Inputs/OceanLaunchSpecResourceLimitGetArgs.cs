@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLaunchSpecResourceLimitGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+        /// Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
         /// </summary>
         [Input("maxInstanceCount")]
         public Input<int>? MaxInstanceCount { get; set; }

@@ -14,17 +14,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanScheduledTaskTask
     {
         /// <summary>
-        /// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-        /// Example: 0 1 * * *
+        /// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
         /// </summary>
         public readonly string CronExpression;
         /// <summary>
-        /// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+        /// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
         /// </summary>
         public readonly bool IsEnabled;
         /// <summary>
-        /// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
-        /// Example: clusterRoll
+        /// Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
         /// </summary>
         public readonly string TaskType;
 

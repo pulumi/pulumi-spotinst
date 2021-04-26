@@ -43,7 +43,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? AutoscaleIsAutoConfig { get; set; }
 
         /// <summary>
-        /// Enable the Ocean Kubernetes autoscaler.
+        /// Enable the Ocean Kubernetes Auto Scaler.
         /// </summary>
         [Input("autoscaleIsEnabled")]
         public Input<bool>? AutoscaleIsEnabled { get; set; }
