@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLaunchSpecElasticIpPoolGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+        /// A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
         /// </summary>
         [Input("tagSelector")]
         public Input<Inputs.OceanLaunchSpecElasticIpPoolTagSelectorGetArgs>? TagSelector { get; set; }

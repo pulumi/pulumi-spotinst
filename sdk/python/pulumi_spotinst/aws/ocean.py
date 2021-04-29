@@ -48,11 +48,11 @@ class OceanArgs:
         """
         The set of arguments for constructing a Ocean resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes autoscaler.
+        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-        :param pulumi.Input[str] controller_id: The ocean cluster identifier. Example: `ocean.k8s`
+        :param pulumi.Input[str] controller_id: The Ocean cluster identifier. Example: `ocean.k8s`
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
@@ -64,8 +64,8 @@ class OceanArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: - Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
-        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to CLASSIC
+        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
@@ -151,7 +151,7 @@ class OceanArgs:
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         """
         return pulumi.get(self, "subnet_ids")
 
@@ -175,7 +175,7 @@ class OceanArgs:
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
         """
-        Describes the Ocean Kubernetes autoscaler.
+        Describes the Ocean Kubernetes Auto Scaler.
         """
         return pulumi.get(self, "autoscaler")
 
@@ -199,7 +199,7 @@ class OceanArgs:
     @pulumi.getter(name="controllerId")
     def controller_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ocean cluster identifier. Example: `ocean.k8s`
+        The Ocean cluster identifier. Example: `ocean.k8s`
         """
         return pulumi.get(self, "controller_id")
 
@@ -343,7 +343,7 @@ class OceanArgs:
     @pulumi.getter
     def monitoring(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         """
         return pulumi.get(self, "monitoring")
 
@@ -355,7 +355,7 @@ class OceanArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required if type is set to CLASSIC
+        Required if type is set to `CLASSIC`
         """
         return pulumi.get(self, "name")
 
@@ -526,9 +526,9 @@ class _OceanState:
         """
         Input properties used for looking up and filtering Ocean resources.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes autoscaler.
+        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-        :param pulumi.Input[str] controller_id: The ocean cluster identifier. Example: `ocean.k8s`
+        :param pulumi.Input[str] controller_id: The Ocean cluster identifier. Example: `ocean.k8s`
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
@@ -540,14 +540,14 @@ class _OceanState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: - Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
-        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to CLASSIC
+        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
@@ -631,7 +631,7 @@ class _OceanState:
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
         """
-        Describes the Ocean Kubernetes autoscaler.
+        Describes the Ocean Kubernetes Auto Scaler.
         """
         return pulumi.get(self, "autoscaler")
 
@@ -655,7 +655,7 @@ class _OceanState:
     @pulumi.getter(name="controllerId")
     def controller_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ocean cluster identifier. Example: `ocean.k8s`
+        The Ocean cluster identifier. Example: `ocean.k8s`
         """
         return pulumi.get(self, "controller_id")
 
@@ -799,7 +799,7 @@ class _OceanState:
     @pulumi.getter
     def monitoring(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         """
         return pulumi.get(self, "monitoring")
 
@@ -811,7 +811,7 @@ class _OceanState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required if type is set to CLASSIC
+        Required if type is set to `CLASSIC`
         """
         return pulumi.get(self, "name")
 
@@ -883,7 +883,7 @@ class _OceanState:
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         """
         return pulumi.get(self, "subnet_ids")
 
@@ -1065,9 +1065,9 @@ class Ocean(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes autoscaler.
+        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-        :param pulumi.Input[str] controller_id: The ocean cluster identifier. Example: `ocean.k8s`
+        :param pulumi.Input[str] controller_id: The Ocean cluster identifier. Example: `ocean.k8s`
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
@@ -1079,14 +1079,14 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: - Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
-        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to CLASSIC
+        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
@@ -1294,9 +1294,9 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes autoscaler.
+        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-        :param pulumi.Input[str] controller_id: The ocean cluster identifier. Example: `ocean.k8s`
+        :param pulumi.Input[str] controller_id: The Ocean cluster identifier. Example: `ocean.k8s`
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
@@ -1308,14 +1308,14 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: - Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
-        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to CLASSIC
+        :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
@@ -1370,7 +1370,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter
     def autoscaler(self) -> pulumi.Output[Optional['outputs.OceanAutoscaler']]:
         """
-        Describes the Ocean Kubernetes autoscaler.
+        Describes the Ocean Kubernetes Auto Scaler.
         """
         return pulumi.get(self, "autoscaler")
 
@@ -1386,7 +1386,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter(name="controllerId")
     def controller_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ocean cluster identifier. Example: `ocean.k8s`
+        The Ocean cluster identifier. Example: `ocean.k8s`
         """
         return pulumi.get(self, "controller_id")
 
@@ -1482,7 +1482,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter
     def monitoring(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         """
         return pulumi.get(self, "monitoring")
 
@@ -1490,7 +1490,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required if type is set to CLASSIC
+        Required if type is set to `CLASSIC`
         """
         return pulumi.get(self, "name")
 
@@ -1538,7 +1538,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+        A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         """
         return pulumi.get(self, "subnet_ids")
 

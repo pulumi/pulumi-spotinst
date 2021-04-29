@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
-    /// Manages a custom Spotinst Ocean AWS Launch Spec resource.
+    /// Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
     /// 
     /// ## Example Usage
     /// 
@@ -29,7 +29,7 @@ namespace Pulumi.SpotInst.Aws
     ///             {
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
     ///                 {
-    ///                     CpuPerUnit = 1000,
+    ///                     CpuPerNit = 1000,
     ///                     GpuPerUnit = 0,
     ///                     MemoryPerUnit = 2048,
     ///                     NumOfUnits = 5,
@@ -71,28 +71,17 @@ namespace Pulumi.SpotInst.Aws
     ///             ImageId = "ami-123456",
     ///             InstanceTypes = 
     ///             {
-    ///                 "m3.large",
-    ///                 "m3.xlarge",
-    ///                 "m3.2xlarge",
     ///                 "m4.large",
     ///                 "m4.xlarge",
-    ///                 "m4.4xlarge",
     ///                 "m4.2xlarge",
-    ///                 "m4.10xlarge",
-    ///                 "m4.16xlarge",
-    ///                 "m5.large",
-    ///                 "m5.xlarge",
-    ///                 "m5.2xlarge",
-    ///                 "m5.4xlarge",
-    ///                 "m5.12xlarge",
-    ///                 "m5.24xlarge",
+    ///                 "m4.4xlarge",
     ///             },
     ///             Labels = 
     ///             {
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecLabelArgs
     ///                 {
-    ///                     Key = "fakeKey",
-    ///                     Value = "fakeValue",
+    ///                     Key = "key1",
+    ///                     Value = "value1",
     ///                 },
     ///             },
     ///             OceanId = "o-123456",
@@ -133,11 +122,11 @@ namespace Pulumi.SpotInst.Aws
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecTaintArgs
     ///                 {
     ///                     Effect = "NoExecute",
-    ///                     Key = "taint key updated",
-    ///                     Value = "taint value updated",
+    ///                     Key = "key1",
+    ///                     Value = "value1",
     ///                 },
     ///             },
-    ///             UserData = "echo hello world",
+    ///             UserData = "echo Hello, world!",
     ///         });
     ///     }
     /// 
@@ -168,7 +157,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> AssociatePublicIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Set custom headroom per launch spec. provide list of headrooms object.
+        /// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         /// </summary>
         [Output("autoscaleHeadrooms")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroom>> AutoscaleHeadrooms { get; private set; } = null!;
@@ -180,7 +169,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLaunchSpecBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
         /// <summary>
-        /// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+        /// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         /// </summary>
         [Output("elasticIpPools")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecElasticIpPool>> ElasticIpPools { get; private set; } = null!;
@@ -198,25 +187,25 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         /// </summary>
         [Output("instanceTypes")]
         public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Optionally adds labels to instances launched in an Ocean cluster.
+        /// Optionally adds labels to instances launched in the cluster.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecLabel>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Set Launch Specification name
+        /// The name of the Virtual Node Group.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ocean cluster you wish to
+        /// The ID of the Ocean cluster.
         /// </summary>
         [Output("oceanId")]
         public Output<string> OceanId { get; private set; } = null!;
@@ -225,7 +214,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLaunchSpecResourceLimit>> ResourceLimits { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Output("restrictScaleDown")]
         public Output<bool?> RestrictScaleDown { get; private set; } = null!;
@@ -246,7 +235,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLaunchSpecStrategy>> Strategies { get; private set; } = null!;
 
         /// <summary>
-        /// Set subnets in launchSpec. Each element in array should be subnet ID.
+        /// A list of subnet IDs.
         /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
@@ -258,7 +247,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLaunchSpecTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Optionally adds labels to instances launched in an Ocean cluster.
+        /// Optionally adds labels to instances launched in the cluster.
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecTaint>> Taints { get; private set; } = null!;
@@ -325,7 +314,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomArgs>? _autoscaleHeadrooms;
 
         /// <summary>
-        /// Set custom headroom per launch spec. provide list of headrooms object.
+        /// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomArgs> AutoscaleHeadrooms
         {
@@ -349,7 +338,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.OceanLaunchSpecElasticIpPoolArgs>? _elasticIpPools;
 
         /// <summary>
-        /// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+        /// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecElasticIpPoolArgs> ElasticIpPools
         {
@@ -373,7 +362,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _instanceTypes;
 
         /// <summary>
-        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         /// </summary>
         public InputList<string> InstanceTypes
         {
@@ -385,7 +374,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.OceanLaunchSpecLabelArgs>? _labels;
 
         /// <summary>
-        /// Optionally adds labels to instances launched in an Ocean cluster.
+        /// Optionally adds labels to instances launched in the cluster.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecLabelArgs> Labels
         {
@@ -394,13 +383,13 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Set Launch Specification name
+        /// The name of the Virtual Node Group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ocean cluster you wish to
+        /// The ID of the Ocean cluster.
         /// </summary>
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
@@ -414,7 +403,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Input("restrictScaleDown")]
         public Input<bool>? RestrictScaleDown { get; set; }
@@ -449,7 +438,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _subnetIds;
 
         /// <summary>
-        /// Set subnets in launchSpec. Each element in array should be subnet ID.
+        /// A list of subnet IDs.
         /// </summary>
         public InputList<string> SubnetIds
         {
@@ -473,7 +462,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.OceanLaunchSpecTaintArgs>? _taints;
 
         /// <summary>
-        /// Optionally adds labels to instances launched in an Ocean cluster.
+        /// Optionally adds labels to instances launched in the cluster.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecTaintArgs> Taints
         {
@@ -504,7 +493,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomGetArgs>? _autoscaleHeadrooms;
 
         /// <summary>
-        /// Set custom headroom per launch spec. provide list of headrooms object.
+        /// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomGetArgs> AutoscaleHeadrooms
         {
@@ -528,7 +517,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.OceanLaunchSpecElasticIpPoolGetArgs>? _elasticIpPools;
 
         /// <summary>
-        /// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+        /// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecElasticIpPoolGetArgs> ElasticIpPools
         {
@@ -552,7 +541,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _instanceTypes;
 
         /// <summary>
-        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+        /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         /// </summary>
         public InputList<string> InstanceTypes
         {
@@ -564,7 +553,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.OceanLaunchSpecLabelGetArgs>? _labels;
 
         /// <summary>
-        /// Optionally adds labels to instances launched in an Ocean cluster.
+        /// Optionally adds labels to instances launched in the cluster.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecLabelGetArgs> Labels
         {
@@ -573,13 +562,13 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Set Launch Specification name
+        /// The name of the Virtual Node Group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ocean cluster you wish to
+        /// The ID of the Ocean cluster.
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
@@ -593,7 +582,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        /// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Input("restrictScaleDown")]
         public Input<bool>? RestrictScaleDown { get; set; }
@@ -628,7 +617,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _subnetIds;
 
         /// <summary>
-        /// Set subnets in launchSpec. Each element in array should be subnet ID.
+        /// A list of subnet IDs.
         /// </summary>
         public InputList<string> SubnetIds
         {
@@ -652,7 +641,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.OceanLaunchSpecTaintGetArgs>? _taints;
 
         /// <summary>
-        /// Optionally adds labels to instances launched in an Ocean cluster.
+        /// Optionally adds labels to instances launched in the cluster.
         /// </summary>
         public InputList<Inputs.OceanLaunchSpecTaintGetArgs> Taints
         {

@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanLaunchSpecBlockDeviceMapping
     {
         /// <summary>
-        /// String. Set device name. (Example: "/dev/xvda1").
+        /// String. Set device name. (Example: `/dev/xvda1`).
         /// </summary>
         public readonly string DeviceName;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly Outputs.OceanLaunchSpecBlockDeviceMappingEbs? Ebs;
         /// <summary>
-        /// String. suppresses the specified device included in the block device mapping of the AMI.
+        /// String. Suppresses the specified device included in the block device mapping of the AMI.
         /// </summary>
         public readonly string? NoDevice;
         public readonly string? VirtualName;

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a custom Spotinst Ocean AWS Launch Spec resource.
+// Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
 //
 // ## Example Usage
 //
@@ -29,7 +29,7 @@ import (
 // 			AssociatePublicIpAddress: pulumi.Bool(true),
 // 			AutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{
 // 				&aws.OceanLaunchSpecAutoscaleHeadroomArgs{
-// 					CpuPerUnit:    pulumi.Int(1000),
+// 					CpuPerNit:     pulumi.Float64(1000),
 // 					GpuPerUnit:    pulumi.Int(0),
 // 					MemoryPerUnit: pulumi.Int(2048),
 // 					NumOfUnits:    pulumi.Int(5),
@@ -63,26 +63,15 @@ import (
 // 			IamInstanceProfile: pulumi.String("iam-profile"),
 // 			ImageId:            pulumi.String("ami-123456"),
 // 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.String("m3.large"),
-// 				pulumi.String("m3.xlarge"),
-// 				pulumi.String("m3.2xlarge"),
 // 				pulumi.String("m4.large"),
 // 				pulumi.String("m4.xlarge"),
-// 				pulumi.String("m4.4xlarge"),
 // 				pulumi.String("m4.2xlarge"),
-// 				pulumi.String("m4.10xlarge"),
-// 				pulumi.String("m4.16xlarge"),
-// 				pulumi.String("m5.large"),
-// 				pulumi.String("m5.xlarge"),
-// 				pulumi.String("m5.2xlarge"),
-// 				pulumi.String("m5.4xlarge"),
-// 				pulumi.String("m5.12xlarge"),
-// 				pulumi.String("m5.24xlarge"),
+// 				pulumi.String("m4.4xlarge"),
 // 			},
 // 			Labels: aws.OceanLaunchSpecLabelArray{
 // 				&aws.OceanLaunchSpecLabelArgs{
-// 					Key:   pulumi.String("fakeKey"),
-// 					Value: pulumi.String("fakeValue"),
+// 					Key:   pulumi.String("key1"),
+// 					Value: pulumi.String("value1"),
 // 				},
 // 			},
 // 			OceanId: pulumi.String("o-123456"),
@@ -113,11 +102,11 @@ import (
 // 			Taints: aws.OceanLaunchSpecTaintArray{
 // 				&aws.OceanLaunchSpecTaintArgs{
 // 					Effect: pulumi.String("NoExecute"),
-// 					Key:    pulumi.String("taint key updated"),
-// 					Value:  pulumi.String("taint value updated"),
+// 					Key:    pulumi.String("key1"),
+// 					Value:  pulumi.String("value1"),
 // 				},
 // 			},
-// 			UserData: pulumi.String("echo hello world"),
+// 			UserData: pulumi.String("echo Hello, world!"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -145,37 +134,37 @@ type OceanLaunchSpec struct {
 
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
-	// Set custom headroom per launch spec. provide list of headrooms object.
+	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
-	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayOutput `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
-	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
-	// Optionally adds labels to instances launched in an Ocean cluster.
+	// Optionally adds labels to instances launched in the cluster.
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
-	// Set Launch Specification name
+	// The name of the Virtual Node Group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ocean cluster you wish to
+	// The ID of the Ocean cluster.
 	OceanId        pulumi.StringOutput                     `pulumi:"oceanId"`
 	ResourceLimits OceanLaunchSpecResourceLimitArrayOutput `pulumi:"resourceLimits"`
-	// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayOutput           `pulumi:"securityGroups"`
 	Strategies     OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
-	// Set subnets in launchSpec. Each element in array should be subnet ID.
+	// A list of subnet IDs.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags OceanLaunchSpecTagArrayOutput `pulumi:"tags"`
-	// Optionally adds labels to instances launched in an Ocean cluster.
+	// Optionally adds labels to instances launched in the cluster.
 	Taints OceanLaunchSpecTaintArrayOutput `pulumi:"taints"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
@@ -215,37 +204,37 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 type oceanLaunchSpecState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	// Set custom headroom per launch spec. provide list of headrooms object.
+	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
-	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
-	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// Optionally adds labels to instances launched in an Ocean cluster.
+	// Optionally adds labels to instances launched in the cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
-	// Set Launch Specification name
+	// The name of the Virtual Node Group.
 	Name *string `pulumi:"name"`
-	// The ocean cluster you wish to
+	// The ID of the Ocean cluster.
 	OceanId        *string                        `pulumi:"oceanId"`
 	ResourceLimits []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
-	// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
 	SecurityGroups []string                  `pulumi:"securityGroups"`
 	Strategies     []OceanLaunchSpecStrategy `pulumi:"strategies"`
-	// Set subnets in launchSpec. Each element in array should be subnet ID.
+	// A list of subnet IDs.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags []OceanLaunchSpecTag `pulumi:"tags"`
-	// Optionally adds labels to instances launched in an Ocean cluster.
+	// Optionally adds labels to instances launched in the cluster.
 	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
@@ -254,37 +243,37 @@ type oceanLaunchSpecState struct {
 type OceanLaunchSpecState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	// Set custom headroom per launch spec. provide list of headrooms object.
+	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
-	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
-	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayInput
-	// Optionally adds labels to instances launched in an Ocean cluster.
+	// Optionally adds labels to instances launched in the cluster.
 	Labels OceanLaunchSpecLabelArrayInput
-	// Set Launch Specification name
+	// The name of the Virtual Node Group.
 	Name pulumi.StringPtrInput
-	// The ocean cluster you wish to
+	// The ID of the Ocean cluster.
 	OceanId        pulumi.StringPtrInput
 	ResourceLimits OceanLaunchSpecResourceLimitArrayInput
-	// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayInput
 	Strategies     OceanLaunchSpecStrategyArrayInput
-	// Set subnets in launchSpec. Each element in array should be subnet ID.
+	// A list of subnet IDs.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
 	Tags OceanLaunchSpecTagArrayInput
-	// Optionally adds labels to instances launched in an Ocean cluster.
+	// Optionally adds labels to instances launched in the cluster.
 	Taints OceanLaunchSpecTaintArrayInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
@@ -297,37 +286,37 @@ func (OceanLaunchSpecState) ElementType() reflect.Type {
 type oceanLaunchSpecArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	// Set custom headroom per launch spec. provide list of headrooms object.
+	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
-	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
-	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// Optionally adds labels to instances launched in an Ocean cluster.
+	// Optionally adds labels to instances launched in the cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
-	// Set Launch Specification name
+	// The name of the Virtual Node Group.
 	Name *string `pulumi:"name"`
-	// The ocean cluster you wish to
+	// The ID of the Ocean cluster.
 	OceanId        string                         `pulumi:"oceanId"`
 	ResourceLimits []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
-	// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Optionally adds security group IDs.
 	SecurityGroups []string                  `pulumi:"securityGroups"`
 	Strategies     []OceanLaunchSpecStrategy `pulumi:"strategies"`
-	// Set subnets in launchSpec. Each element in array should be subnet ID.
+	// A list of subnet IDs.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags []OceanLaunchSpecTag `pulumi:"tags"`
-	// Optionally adds labels to instances launched in an Ocean cluster.
+	// Optionally adds labels to instances launched in the cluster.
 	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
@@ -337,37 +326,37 @@ type oceanLaunchSpecArgs struct {
 type OceanLaunchSpecArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	// Set custom headroom per launch spec. provide list of headrooms object.
+	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
-	// Assign an Elastic IP to the instances spun by the launch spec. Can be null.
+	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
-	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayInput
-	// Optionally adds labels to instances launched in an Ocean cluster.
+	// Optionally adds labels to instances launched in the cluster.
 	Labels OceanLaunchSpecLabelArrayInput
-	// Set Launch Specification name
+	// The name of the Virtual Node Group.
 	Name pulumi.StringPtrInput
-	// The ocean cluster you wish to
+	// The ID of the Ocean cluster.
 	OceanId        pulumi.StringInput
 	ResourceLimits OceanLaunchSpecResourceLimitArrayInput
-	// Boolean. When set to "True", VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayInput
 	Strategies     OceanLaunchSpecStrategyArrayInput
-	// Set subnets in launchSpec. Each element in array should be subnet ID.
+	// A list of subnet IDs.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
 	Tags OceanLaunchSpecTagArrayInput
-	// Optionally adds labels to instances launched in an Ocean cluster.
+	// Optionally adds labels to instances launched in the cluster.
 	Taints OceanLaunchSpecTaintArrayInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput

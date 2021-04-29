@@ -98,11 +98,11 @@ type Ocean struct {
 
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean Kubernetes autoscaler.
+	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayOutput `pulumi:"blacklists"`
-	// The ocean cluster identifier. Example: `ocean.k8s`
+	// The Ocean cluster identifier. Example: `ocean.k8s`
 	ControllerId pulumi.StringPtrOutput `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
@@ -126,9 +126,9 @@ type Ocean struct {
 	MaxSize pulumi.IntPtrOutput `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrOutput `pulumi:"monitoring"`
-	// Required if type is set to CLASSIC
+	// Required if type is set to `CLASSIC`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region the cluster will run in.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -140,7 +140,7 @@ type Ocean struct {
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
-	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         OceanTagArrayOutput        `pulumi:"tags"`
@@ -193,11 +193,11 @@ func GetOcean(ctx *pulumi.Context,
 type oceanState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean Kubernetes autoscaler.
+	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists []string `pulumi:"blacklists"`
-	// The ocean cluster identifier. Example: `ocean.k8s`
+	// The Ocean cluster identifier. Example: `ocean.k8s`
 	ControllerId *string `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
@@ -221,9 +221,9 @@ type oceanState struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
 	MinSize *int `pulumi:"minSize"`
-	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring *bool `pulumi:"monitoring"`
-	// Required if type is set to CLASSIC
+	// Required if type is set to `CLASSIC`
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
@@ -235,7 +235,7 @@ type oceanState struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 	SpotPercentage *int `pulumi:"spotPercentage"`
-	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         []OceanTag         `pulumi:"tags"`
@@ -254,11 +254,11 @@ type oceanState struct {
 type OceanState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	// Describes the Ocean Kubernetes autoscaler.
+	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayInput
-	// The ocean cluster identifier. Example: `ocean.k8s`
+	// The Ocean cluster identifier. Example: `ocean.k8s`
 	ControllerId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
@@ -282,9 +282,9 @@ type OceanState struct {
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntPtrInput
-	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrInput
-	// Required if type is set to CLASSIC
+	// Required if type is set to `CLASSIC`
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
@@ -296,7 +296,7 @@ type OceanState struct {
 	SecurityGroups pulumi.StringArrayInput
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 	SpotPercentage pulumi.IntPtrInput
-	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         OceanTagArrayInput
@@ -319,11 +319,11 @@ func (OceanState) ElementType() reflect.Type {
 type oceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean Kubernetes autoscaler.
+	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists []string `pulumi:"blacklists"`
-	// The ocean cluster identifier. Example: `ocean.k8s`
+	// The Ocean cluster identifier. Example: `ocean.k8s`
 	ControllerId *string `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
@@ -347,9 +347,9 @@ type oceanArgs struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
 	MinSize *int `pulumi:"minSize"`
-	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring *bool `pulumi:"monitoring"`
-	// Required if type is set to CLASSIC
+	// Required if type is set to `CLASSIC`
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
@@ -361,7 +361,7 @@ type oceanArgs struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 	SpotPercentage *int `pulumi:"spotPercentage"`
-	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         []OceanTag         `pulumi:"tags"`
@@ -381,11 +381,11 @@ type oceanArgs struct {
 type OceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	// Describes the Ocean Kubernetes autoscaler.
+	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayInput
-	// The ocean cluster identifier. Example: `ocean.k8s`
+	// The Ocean cluster identifier. Example: `ocean.k8s`
 	ControllerId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
@@ -409,9 +409,9 @@ type OceanArgs struct {
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntPtrInput
-	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrInput
-	// Required if type is set to CLASSIC
+	// Required if type is set to `CLASSIC`
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
@@ -423,7 +423,7 @@ type OceanArgs struct {
 	SecurityGroups pulumi.StringArrayInput
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 	SpotPercentage pulumi.IntPtrInput
-	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
 	Tags         OceanTagArrayInput

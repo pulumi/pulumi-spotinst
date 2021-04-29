@@ -1972,7 +1972,7 @@ export namespace aws {
          */
         autoscaleIsAutoConfig?: boolean;
         /**
-         * Enable the Ocean Kubernetes autoscaler.
+         * Enable the Ocean Kubernetes Auto Scaler.
          */
         autoscaleIsEnabled?: boolean;
         /**
@@ -1995,7 +1995,7 @@ export namespace aws {
          */
         cpuPerUnit?: number;
         /**
-         * Optionally configure the number of GPUS to allocate the headroom.
+         * Optionally configure the number of GPUs to allocate the headroom.
          */
         gpuPerUnit?: number;
         /**
@@ -2040,7 +2040,7 @@ export namespace aws {
 
     export interface OceanLaunchSpecBlockDeviceMapping {
         /**
-         * String. Set device name. (Example: "/dev/xvda1").
+         * String. Set device name. (Example: `/dev/xvda1`).
          */
         deviceName: string;
         /**
@@ -2048,7 +2048,7 @@ export namespace aws {
          */
         ebs?: outputs.aws.OceanLaunchSpecBlockDeviceMappingEbs;
         /**
-         * String. suppresses the specified device included in the block device mapping of the AMI.
+         * String. Suppresses the specified device included in the block device mapping of the AMI.
          */
         noDevice?: string;
         virtualName?: string;
@@ -2080,7 +2080,7 @@ export namespace aws {
          */
         snapshotId?: string;
         /**
-         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
          */
         throughput?: number;
         /**
@@ -2088,7 +2088,7 @@ export namespace aws {
          */
         volumeSize?: number;
         /**
-         * String. The type of the volume (example: "gp2").
+         * String. The type of the volume. (Example: `gp2`).
          */
         volumeType: string;
     }
@@ -2099,25 +2099,25 @@ export namespace aws {
          */
         baseSize: number;
         /**
-         * String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+         * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
          */
         resource: string;
         /**
-         * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+         * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
          */
         sizePerResourceUnit: number;
     }
 
     export interface OceanLaunchSpecElasticIpPool {
         /**
-         * Key-value object, which defines an Elastic IP from the customer pool. Can be null.
+         * A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
          */
         tagSelector?: outputs.aws.OceanLaunchSpecElasticIpPoolTagSelector;
     }
 
     export interface OceanLaunchSpecElasticIpPoolTagSelector {
         /**
-         * Elastic IP tag key. The launch spec will consider all elastic IPs tagged with this tag as a part of the elastic IP pool to use.
+         * Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
          */
         tagKey: string;
         /**
@@ -2139,14 +2139,14 @@ export namespace aws {
 
     export interface OceanLaunchSpecResourceLimit {
         /**
-         * set a maximum number of instances per launch specification. Can be null. If set, value must be greater than or equal to 0.
+         * Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
          */
         maxInstanceCount?: number;
     }
 
     export interface OceanLaunchSpecStrategy {
         /**
-         * When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Launch Spec instances.
+         * When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
          */
         spotPercentage?: number;
     }
@@ -2179,15 +2179,15 @@ export namespace aws {
 
     export interface OceanLoadBalancer {
         /**
-         * Required if type is set to TARGET_GROUP
+         * Required if type is set to `TARGET_GROUP`
          */
         arn?: string;
         /**
-         * Required if type is set to CLASSIC
+         * Required if type is set to `CLASSIC`
          */
         name?: string;
         /**
-         * Can be set to CLASSIC or TARGET_GROUP
+         * Can be set to `CLASSIC` or `TARGET_GROUP`
          */
         type?: string;
     }
@@ -2205,29 +2205,26 @@ export namespace aws {
 
     export interface OceanScheduledTaskShutdownHours {
         /**
-         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
          */
         isEnabled?: boolean;
         /**
-         * Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-         * Example: Fri:15:30-Wed:14:30
+         * Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
          */
         timeWindows: string[];
     }
 
     export interface OceanScheduledTaskTask {
         /**
-         * A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-         * Example: 0 1 * * *
+         * A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
          */
         cronExpression: string;
         /**
-         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
+         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
          */
         isEnabled: boolean;
         /**
-         * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object
-         * Example: clusterRoll
+         * Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
          */
         taskType: string;
     }

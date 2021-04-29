@@ -18,11 +18,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly int BaseSize;
         /// <summary>
-        /// String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+        /// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
         /// </summary>
         public readonly string Resource;
         /// <summary>
-        /// Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+        /// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
         /// </summary>
         public readonly int SizePerResourceUnit;
 
