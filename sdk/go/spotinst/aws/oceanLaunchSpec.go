@@ -52,6 +52,9 @@ import (
 // 					},
 // 				},
 // 			},
+// 			CreateOptions: &aws.OceanLaunchSpecCreateOptionsArgs{
+// 				InitialNodes: pulumi.Int(1),
+// 			},
 // 			ElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{
 // 				&aws.OceanLaunchSpecElasticIpPoolArgs{
 // 					TagSelector: &aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{
@@ -138,6 +141,7 @@ type OceanLaunchSpec struct {
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
+	CreateOptions       OceanLaunchSpecCreateOptionsPtrOutput        `pulumi:"createOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayOutput `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -208,6 +212,7 @@ type oceanLaunchSpecState struct {
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
+	CreateOptions       *OceanLaunchSpecCreateOptions       `pulumi:"createOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -247,6 +252,7 @@ type OceanLaunchSpecState struct {
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
+	CreateOptions       OceanLaunchSpecCreateOptionsPtrInput
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -290,6 +296,7 @@ type oceanLaunchSpecArgs struct {
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
+	CreateOptions       *OceanLaunchSpecCreateOptions       `pulumi:"createOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -330,6 +337,7 @@ type OceanLaunchSpecArgs struct {
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
+	CreateOptions       OceanLaunchSpecCreateOptionsPtrInput
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.

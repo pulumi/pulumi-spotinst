@@ -103,6 +103,7 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMappingArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
+    'OceanLaunchSpecCreateOptionsArgs',
     'OceanLaunchSpecElasticIpPoolArgs',
     'OceanLaunchSpecElasticIpPoolTagSelectorArgs',
     'OceanLaunchSpecLabelArgs',
@@ -7490,6 +7491,28 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @size_per_resource_unit.setter
     def size_per_resource_unit(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_per_resource_unit", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecCreateOptionsArgs:
+    def __init__(__self__, *,
+                 initial_nodes: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+        """
+        pulumi.set(__self__, "initial_nodes", initial_nodes)
+
+    @property
+    @pulumi.getter(name="initialNodes")
+    def initial_nodes(self) -> pulumi.Input[int]:
+        """
+        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+        """
+        return pulumi.get(self, "initial_nodes")
+
+    @initial_nodes.setter
+    def initial_nodes(self, value: pulumi.Input[int]):
+        pulumi.set(self, "initial_nodes", value)
 
 
 @pulumi.input_type

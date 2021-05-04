@@ -37,6 +37,9 @@ import * as utilities from "../utilities";
  *             volumeType: "gp2",
  *         },
  *     }],
+ *     createOptions: {
+ *         initialNodes: 1,
+ *     },
  *     elasticIpPools: [{
  *         tagSelector: {
  *             tagKey: "key",
@@ -124,6 +127,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
     public readonly blockDeviceMappings!: pulumi.Output<outputs.aws.OceanLaunchSpecBlockDeviceMapping[] | undefined>;
+    public readonly createOptions!: pulumi.Output<outputs.aws.OceanLaunchSpecCreateOptions | undefined>;
     /**
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */
@@ -199,6 +203,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
             inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
             inputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
+            inputs["createOptions"] = state ? state.createOptions : undefined;
             inputs["elasticIpPools"] = state ? state.elasticIpPools : undefined;
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
@@ -223,6 +228,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
             inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
             inputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
+            inputs["createOptions"] = args ? args.createOptions : undefined;
             inputs["elasticIpPools"] = args ? args.elasticIpPools : undefined;
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
@@ -263,6 +269,7 @@ export interface OceanLaunchSpecState {
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
     readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[]>;
+    readonly createOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecCreateOptions>;
     /**
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */
@@ -339,6 +346,7 @@ export interface OceanLaunchSpecArgs {
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
     readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[]>;
+    readonly createOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecCreateOptions>;
     /**
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */

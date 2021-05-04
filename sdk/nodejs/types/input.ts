@@ -2108,6 +2108,13 @@ export namespace aws {
         sizePerResourceUnit: pulumi.Input<number>;
     }
 
+    export interface OceanLaunchSpecCreateOptions {
+        /**
+         * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+         */
+        initialNodes: pulumi.Input<number>;
+    }
+
     export interface OceanLaunchSpecElasticIpPool {
         /**
          * A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
