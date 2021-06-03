@@ -369,6 +369,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     public readonly statefulDeallocation!: pulumi.Output<outputs.aws.ElastigroupStatefulDeallocation | undefined>;
+    public readonly statefulInstanceActions!: pulumi.Output<outputs.aws.ElastigroupStatefulInstanceAction[] | undefined>;
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
@@ -479,6 +480,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["signals"] = state ? state.signals : undefined;
             inputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             inputs["statefulDeallocation"] = state ? state.statefulDeallocation : undefined;
+            inputs["statefulInstanceActions"] = state ? state.statefulInstanceActions : undefined;
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["targetGroupArns"] = state ? state.targetGroupArns : undefined;
@@ -573,6 +575,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["signals"] = args ? args.signals : undefined;
             inputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             inputs["statefulDeallocation"] = args ? args.statefulDeallocation : undefined;
+            inputs["statefulInstanceActions"] = args ? args.statefulInstanceActions : undefined;
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["targetGroupArns"] = args ? args.targetGroupArns : undefined;
@@ -826,6 +829,7 @@ export interface ElastigroupState {
      */
     readonly spotPercentage?: pulumi.Input<number>;
     readonly statefulDeallocation?: pulumi.Input<inputs.aws.ElastigroupStatefulDeallocation>;
+    readonly statefulInstanceActions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupStatefulInstanceAction>[]>;
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
@@ -1095,6 +1099,7 @@ export interface ElastigroupArgs {
      */
     readonly spotPercentage?: pulumi.Input<number>;
     readonly statefulDeallocation?: pulumi.Input<inputs.aws.ElastigroupStatefulDeallocation>;
+    readonly statefulInstanceActions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupStatefulInstanceAction>[]>;
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.

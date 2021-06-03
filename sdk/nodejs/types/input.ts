@@ -1187,6 +1187,17 @@ export namespace aws {
         shouldDeleteVolumes?: pulumi.Input<boolean>;
     }
 
+    export interface ElastigroupStatefulInstanceAction {
+        /**
+         * String, Stateful Instance ID on which the action should be performed.
+         */
+        statefulInstanceId: pulumi.Input<string>;
+        /**
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         */
+        type: pulumi.Input<string>;
+    }
+
     export interface ElastigroupTag {
         key?: pulumi.Input<string>;
         /**
@@ -3809,6 +3820,13 @@ export namespace gke {
          * The label value.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecStrategy {
+        /**
+         * Defines the desired preemptible percentage for this launch specification.
+         */
+        preemptiblePercentage?: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecTaint {

@@ -49,6 +49,7 @@ import * as utilities from "../utilities";
  *     ],
  *     keyPair: "labs-oregon",
  *     lifeCycle: "on_demand",
+ *     minimumInstanceLifetime: 1,
  *     optimizationWindows: ["Mon:03:00-Wed:02:20"],
  *     orientation: "balanced",
  *     persistBlockDevices: true,
@@ -188,6 +189,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      * List of load balancers configs.
      */
     public readonly loadBalancers!: pulumi.Output<outputs.aws.ManagedInstanceLoadBalancer[] | undefined>;
+    public readonly minimumInstanceLifetime!: pulumi.Output<number | undefined>;
     /**
      * The record set name.
      */
@@ -300,6 +302,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             inputs["keyPair"] = state ? state.keyPair : undefined;
             inputs["lifeCycle"] = state ? state.lifeCycle : undefined;
             inputs["loadBalancers"] = state ? state.loadBalancers : undefined;
+            inputs["minimumInstanceLifetime"] = state ? state.minimumInstanceLifetime : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["optimizationWindows"] = state ? state.optimizationWindows : undefined;
@@ -361,6 +364,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             inputs["keyPair"] = args ? args.keyPair : undefined;
             inputs["lifeCycle"] = args ? args.lifeCycle : undefined;
             inputs["loadBalancers"] = args ? args.loadBalancers : undefined;
+            inputs["minimumInstanceLifetime"] = args ? args.minimumInstanceLifetime : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["optimizationWindows"] = args ? args.optimizationWindows : undefined;
@@ -473,6 +477,7 @@ export interface ManagedInstanceState {
      * List of load balancers configs.
      */
     readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceLoadBalancer>[]>;
+    readonly minimumInstanceLifetime?: pulumi.Input<number>;
     /**
      * The record set name.
      */
@@ -636,6 +641,7 @@ export interface ManagedInstanceArgs {
      * List of load balancers configs.
      */
     readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceLoadBalancer>[]>;
+    readonly minimumInstanceLifetime?: pulumi.Input<number>;
     /**
      * The record set name.
      */

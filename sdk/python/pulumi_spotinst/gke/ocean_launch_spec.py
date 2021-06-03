@@ -21,15 +21,17 @@ class OceanLaunchSpecArgs:
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None):
         """
         The set of arguments for constructing a OceanLaunchSpec resource.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
+        :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
         pulumi.set(__self__, "metadatas", metadatas)
@@ -41,6 +43,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "labels", labels)
         if restrict_scale_down is not None:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
+        if strategies is not None:
+            pulumi.set(__self__, "strategies", strategies)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
 
@@ -60,7 +64,7 @@ class OceanLaunchSpecArgs:
     @pulumi.getter(name="oceanId")
     def ocean_id(self) -> pulumi.Input[str]:
         """
-        The Ocean cluster ID required for launchSpec create.
+        The Ocean cluster ID.
         """
         return pulumi.get(self, "ocean_id")
 
@@ -118,6 +122,18 @@ class OceanLaunchSpecArgs:
 
     @property
     @pulumi.getter
+    def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]]:
+        """
+        The Ocean Launch Spec Strategy object.
+        """
+        return pulumi.get(self, "strategies")
+
+    @strategies.setter
+    def strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]]):
+        pulumi.set(self, "strategies", value)
+
+    @property
+    @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]]:
         """
         Optionally adds labels to instances launched in an Ocean cluster.
@@ -138,15 +154,17 @@ class _OceanLaunchSpecState:
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None):
         """
         Input properties used for looking up and filtering OceanLaunchSpec resources.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
+        :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[str] source_image: Image URL.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
         if autoscale_headrooms is not None:
@@ -161,6 +179,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if source_image is not None:
             pulumi.set(__self__, "source_image", source_image)
+        if strategies is not None:
+            pulumi.set(__self__, "strategies", strategies)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
 
@@ -204,7 +224,7 @@ class _OceanLaunchSpecState:
     @pulumi.getter(name="oceanId")
     def ocean_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Ocean cluster ID required for launchSpec create.
+        The Ocean cluster ID.
         """
         return pulumi.get(self, "ocean_id")
 
@@ -238,6 +258,18 @@ class _OceanLaunchSpecState:
 
     @property
     @pulumi.getter
+    def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]]:
+        """
+        The Ocean Launch Spec Strategy object.
+        """
+        return pulumi.get(self, "strategies")
+
+    @strategies.setter
+    def strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]]):
+        pulumi.set(self, "strategies", value)
+
+    @property
+    @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]]:
         """
         Optionally adds labels to instances launched in an Ocean cluster.
@@ -260,6 +292,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
                  __props__=None):
         """
@@ -289,6 +322,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ocean_id="o-123456",
             restrict_scale_down=True,
             source_image="image",
+            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
+                preemptible_percentage=30,
+            )],
             taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
                 effect="taintEffect",
                 key="taintKey",
@@ -306,9 +342,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
+        :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[str] source_image: Image URL.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
         ...
@@ -344,6 +381,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ocean_id="o-123456",
             restrict_scale_down=True,
             source_image="image",
+            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
+                preemptible_percentage=30,
+            )],
             taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
                 effect="taintEffect",
                 key="taintKey",
@@ -377,6 +417,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -402,6 +443,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             if source_image is None and not opts.urn:
                 raise TypeError("Missing required property 'source_image'")
             __props__.__dict__["source_image"] = source_image
+            __props__.__dict__["strategies"] = strategies
             __props__.__dict__["taints"] = taints
         super(OceanLaunchSpec, __self__).__init__(
             'spotinst:gke/oceanLaunchSpec:OceanLaunchSpec',
@@ -419,6 +461,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ocean_id: Optional[pulumi.Input[str]] = None,
             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
+            strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None) -> 'OceanLaunchSpec':
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
@@ -430,9 +473,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
+        :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[str] source_image: Image URL.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -445,6 +489,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["ocean_id"] = ocean_id
         __props__.__dict__["restrict_scale_down"] = restrict_scale_down
         __props__.__dict__["source_image"] = source_image
+        __props__.__dict__["strategies"] = strategies
         __props__.__dict__["taints"] = taints
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)
 
@@ -476,7 +521,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter(name="oceanId")
     def ocean_id(self) -> pulumi.Output[str]:
         """
-        The Ocean cluster ID required for launchSpec create.
+        The Ocean cluster ID.
         """
         return pulumi.get(self, "ocean_id")
 
@@ -495,6 +540,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Image URL.
         """
         return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter
+    def strategies(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecStrategy']]]:
+        """
+        The Ocean Launch Spec Strategy object.
+        """
+        return pulumi.get(self, "strategies")
 
     @property
     @pulumi.getter

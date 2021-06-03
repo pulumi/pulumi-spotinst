@@ -64,6 +64,7 @@ __all__ = [
     'ElastigroupScheduledTask',
     'ElastigroupSignal',
     'ElastigroupStatefulDeallocation',
+    'ElastigroupStatefulInstanceAction',
     'ElastigroupTag',
     'ElastigroupUpdatePolicy',
     'ElastigroupUpdatePolicyRollConfig',
@@ -4124,6 +4125,52 @@ class ElastigroupStatefulDeallocation(dict):
         For stateful groups: remove persistent volumes.
         """
         return pulumi.get(self, "should_delete_volumes")
+
+
+@pulumi.output_type
+class ElastigroupStatefulInstanceAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statefulInstanceId":
+            suggest = "stateful_instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupStatefulInstanceAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupStatefulInstanceAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupStatefulInstanceAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 stateful_instance_id: str,
+                 type: str):
+        """
+        :param str stateful_instance_id: String, Stateful Instance ID on which the action should be performed.
+        :param str type: String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        """
+        pulumi.set(__self__, "stateful_instance_id", stateful_instance_id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="statefulInstanceId")
+    def stateful_instance_id(self) -> str:
+        """
+        String, Stateful Instance ID on which the action should be performed.
+        """
+        return pulumi.get(self, "stateful_instance_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

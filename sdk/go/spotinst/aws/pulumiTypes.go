@@ -8545,6 +8545,112 @@ func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteVolumes() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ElastigroupStatefulInstanceAction struct {
+	// String, Stateful Instance ID on which the action should be performed.
+	StatefulInstanceId string `pulumi:"statefulInstanceId"`
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+	Type string `pulumi:"type"`
+}
+
+// ElastigroupStatefulInstanceActionInput is an input type that accepts ElastigroupStatefulInstanceActionArgs and ElastigroupStatefulInstanceActionOutput values.
+// You can construct a concrete instance of `ElastigroupStatefulInstanceActionInput` via:
+//
+//          ElastigroupStatefulInstanceActionArgs{...}
+type ElastigroupStatefulInstanceActionInput interface {
+	pulumi.Input
+
+	ToElastigroupStatefulInstanceActionOutput() ElastigroupStatefulInstanceActionOutput
+	ToElastigroupStatefulInstanceActionOutputWithContext(context.Context) ElastigroupStatefulInstanceActionOutput
+}
+
+type ElastigroupStatefulInstanceActionArgs struct {
+	// String, Stateful Instance ID on which the action should be performed.
+	StatefulInstanceId pulumi.StringInput `pulumi:"statefulInstanceId"`
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ElastigroupStatefulInstanceActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupStatefulInstanceAction)(nil)).Elem()
+}
+
+func (i ElastigroupStatefulInstanceActionArgs) ToElastigroupStatefulInstanceActionOutput() ElastigroupStatefulInstanceActionOutput {
+	return i.ToElastigroupStatefulInstanceActionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupStatefulInstanceActionArgs) ToElastigroupStatefulInstanceActionOutputWithContext(ctx context.Context) ElastigroupStatefulInstanceActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupStatefulInstanceActionOutput)
+}
+
+// ElastigroupStatefulInstanceActionArrayInput is an input type that accepts ElastigroupStatefulInstanceActionArray and ElastigroupStatefulInstanceActionArrayOutput values.
+// You can construct a concrete instance of `ElastigroupStatefulInstanceActionArrayInput` via:
+//
+//          ElastigroupStatefulInstanceActionArray{ ElastigroupStatefulInstanceActionArgs{...} }
+type ElastigroupStatefulInstanceActionArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupStatefulInstanceActionArrayOutput() ElastigroupStatefulInstanceActionArrayOutput
+	ToElastigroupStatefulInstanceActionArrayOutputWithContext(context.Context) ElastigroupStatefulInstanceActionArrayOutput
+}
+
+type ElastigroupStatefulInstanceActionArray []ElastigroupStatefulInstanceActionInput
+
+func (ElastigroupStatefulInstanceActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupStatefulInstanceAction)(nil)).Elem()
+}
+
+func (i ElastigroupStatefulInstanceActionArray) ToElastigroupStatefulInstanceActionArrayOutput() ElastigroupStatefulInstanceActionArrayOutput {
+	return i.ToElastigroupStatefulInstanceActionArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupStatefulInstanceActionArray) ToElastigroupStatefulInstanceActionArrayOutputWithContext(ctx context.Context) ElastigroupStatefulInstanceActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupStatefulInstanceActionArrayOutput)
+}
+
+type ElastigroupStatefulInstanceActionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupStatefulInstanceActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupStatefulInstanceAction)(nil)).Elem()
+}
+
+func (o ElastigroupStatefulInstanceActionOutput) ToElastigroupStatefulInstanceActionOutput() ElastigroupStatefulInstanceActionOutput {
+	return o
+}
+
+func (o ElastigroupStatefulInstanceActionOutput) ToElastigroupStatefulInstanceActionOutputWithContext(ctx context.Context) ElastigroupStatefulInstanceActionOutput {
+	return o
+}
+
+// String, Stateful Instance ID on which the action should be performed.
+func (o ElastigroupStatefulInstanceActionOutput) StatefulInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupStatefulInstanceAction) string { return v.StatefulInstanceId }).(pulumi.StringOutput)
+}
+
+// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+func (o ElastigroupStatefulInstanceActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupStatefulInstanceAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ElastigroupStatefulInstanceActionArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupStatefulInstanceActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupStatefulInstanceAction)(nil)).Elem()
+}
+
+func (o ElastigroupStatefulInstanceActionArrayOutput) ToElastigroupStatefulInstanceActionArrayOutput() ElastigroupStatefulInstanceActionArrayOutput {
+	return o
+}
+
+func (o ElastigroupStatefulInstanceActionArrayOutput) ToElastigroupStatefulInstanceActionArrayOutputWithContext(ctx context.Context) ElastigroupStatefulInstanceActionArrayOutput {
+	return o
+}
+
+func (o ElastigroupStatefulInstanceActionArrayOutput) Index(i pulumi.IntInput) ElastigroupStatefulInstanceActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupStatefulInstanceAction {
+		return vs[0].([]ElastigroupStatefulInstanceAction)[vs[1].(int)]
+	}).(ElastigroupStatefulInstanceActionOutput)
+}
+
 type ElastigroupTag struct {
 	Key *string `pulumi:"key"`
 	// The dimension value.
@@ -16776,6 +16882,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupSignalArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupStatefulDeallocationOutput{})
 	pulumi.RegisterOutputType(ElastigroupStatefulDeallocationPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupStatefulInstanceActionOutput{})
+	pulumi.RegisterOutputType(ElastigroupStatefulInstanceActionArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupTagOutput{})
 	pulumi.RegisterOutputType(ElastigroupTagArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyOutput{})

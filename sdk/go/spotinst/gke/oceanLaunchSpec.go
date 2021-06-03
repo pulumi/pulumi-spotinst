@@ -49,6 +49,11 @@ import (
 // 			OceanId:           pulumi.String("o-123456"),
 // 			RestrictScaleDown: pulumi.Bool(true),
 // 			SourceImage:       pulumi.String("image"),
+// 			Strategies: gke.OceanLaunchSpecStrategyArray{
+// 				&gke.OceanLaunchSpecStrategyArgs{
+// 					PreemptiblePercentage: pulumi.Int(30),
+// 				},
+// 			},
 // 			Taints: gke.OceanLaunchSpecTaintArray{
 // 				&gke.OceanLaunchSpecTaintArgs{
 // 					Effect: pulumi.String("taintEffect"),
@@ -87,12 +92,14 @@ type OceanLaunchSpec struct {
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayOutput `pulumi:"metadatas"`
-	// The Ocean cluster ID required for launchSpec create.
+	// The Ocean cluster ID.
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// Image URL.
 	SourceImage pulumi.StringOutput `pulumi:"sourceImage"`
+	// The Ocean Launch Spec Strategy object.
+	Strategies OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints OceanLaunchSpecTaintArrayOutput `pulumi:"taints"`
 }
@@ -141,12 +148,14 @@ type oceanLaunchSpecState struct {
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
-	// The Ocean cluster ID required for launchSpec create.
+	// The Ocean cluster ID.
 	OceanId *string `pulumi:"oceanId"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Image URL.
 	SourceImage *string `pulumi:"sourceImage"`
+	// The Ocean Launch Spec Strategy object.
+	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
 }
@@ -158,12 +167,14 @@ type OceanLaunchSpecState struct {
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
-	// The Ocean cluster ID required for launchSpec create.
+	// The Ocean cluster ID.
 	OceanId pulumi.StringPtrInput
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Image URL.
 	SourceImage pulumi.StringPtrInput
+	// The Ocean Launch Spec Strategy object.
+	Strategies OceanLaunchSpecStrategyArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints OceanLaunchSpecTaintArrayInput
 }
@@ -179,12 +190,14 @@ type oceanLaunchSpecArgs struct {
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
-	// The Ocean cluster ID required for launchSpec create.
+	// The Ocean cluster ID.
 	OceanId string `pulumi:"oceanId"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Image URL.
 	SourceImage string `pulumi:"sourceImage"`
+	// The Ocean Launch Spec Strategy object.
+	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
 }
@@ -197,12 +210,14 @@ type OceanLaunchSpecArgs struct {
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
-	// The Ocean cluster ID required for launchSpec create.
+	// The Ocean cluster ID.
 	OceanId pulumi.StringInput
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Image URL.
 	SourceImage pulumi.StringInput
+	// The Ocean Launch Spec Strategy object.
+	Strategies OceanLaunchSpecStrategyArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints OceanLaunchSpecTaintArrayInput
 }

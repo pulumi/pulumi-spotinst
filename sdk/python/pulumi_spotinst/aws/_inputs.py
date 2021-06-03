@@ -63,6 +63,7 @@ __all__ = [
     'ElastigroupScheduledTaskArgs',
     'ElastigroupSignalArgs',
     'ElastigroupStatefulDeallocationArgs',
+    'ElastigroupStatefulInstanceActionArgs',
     'ElastigroupTagArgs',
     'ElastigroupUpdatePolicyArgs',
     'ElastigroupUpdatePolicyRollConfigArgs',
@@ -4030,6 +4031,43 @@ class ElastigroupStatefulDeallocationArgs:
     @should_delete_volumes.setter
     def should_delete_volumes(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "should_delete_volumes", value)
+
+
+@pulumi.input_type
+class ElastigroupStatefulInstanceActionArgs:
+    def __init__(__self__, *,
+                 stateful_instance_id: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] stateful_instance_id: String, Stateful Instance ID on which the action should be performed.
+        :param pulumi.Input[str] type: String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        """
+        pulumi.set(__self__, "stateful_instance_id", stateful_instance_id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="statefulInstanceId")
+    def stateful_instance_id(self) -> pulumi.Input[str]:
+        """
+        String, Stateful Instance ID on which the action should be performed.
+        """
+        return pulumi.get(self, "stateful_instance_id")
+
+    @stateful_instance_id.setter
+    def stateful_instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "stateful_instance_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

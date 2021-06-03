@@ -377,6 +377,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("statefulDeallocation")]
         public Output<Outputs.ElastigroupStatefulDeallocation?> StatefulDeallocation { get; private set; } = null!;
 
+        [Output("statefulInstanceActions")]
+        public Output<ImmutableArray<Outputs.ElastigroupStatefulInstanceAction>> StatefulInstanceActions { get; private set; } = null!;
+
         /// <summary>
         /// List of Strings of subnet identifiers.
         /// Note: When this parameter is set, `availability_zones` should be left unused.
@@ -940,6 +943,14 @@ namespace Pulumi.SpotInst.Aws
         [Input("statefulDeallocation")]
         public Input<Inputs.ElastigroupStatefulDeallocationArgs>? StatefulDeallocation { get; set; }
 
+        [Input("statefulInstanceActions")]
+        private InputList<Inputs.ElastigroupStatefulInstanceActionArgs>? _statefulInstanceActions;
+        public InputList<Inputs.ElastigroupStatefulInstanceActionArgs> StatefulInstanceActions
+        {
+            get => _statefulInstanceActions ?? (_statefulInstanceActions = new InputList<Inputs.ElastigroupStatefulInstanceActionArgs>());
+            set => _statefulInstanceActions = value;
+        }
+
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
 
@@ -1481,6 +1492,14 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("statefulDeallocation")]
         public Input<Inputs.ElastigroupStatefulDeallocationGetArgs>? StatefulDeallocation { get; set; }
+
+        [Input("statefulInstanceActions")]
+        private InputList<Inputs.ElastigroupStatefulInstanceActionGetArgs>? _statefulInstanceActions;
+        public InputList<Inputs.ElastigroupStatefulInstanceActionGetArgs> StatefulInstanceActions
+        {
+            get => _statefulInstanceActions ?? (_statefulInstanceActions = new InputList<Inputs.ElastigroupStatefulInstanceActionGetArgs>());
+            set => _statefulInstanceActions = value;
+        }
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;

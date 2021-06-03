@@ -53,6 +53,13 @@ namespace Pulumi.SpotInst.Gke
     ///             OceanId = "o-123456",
     ///             RestrictScaleDown = true,
     ///             SourceImage = "image",
+    ///             Strategies = 
+    ///             {
+    ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecStrategyArgs
+    ///                 {
+    ///                     PreemptiblePercentage = 30,
+    ///                 },
+    ///             },
     ///             Taints = 
     ///             {
     ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecTaintArgs
@@ -104,7 +111,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<ImmutableArray<Outputs.OceanLaunchSpecMetadata>> Metadatas { get; private set; } = null!;
 
         /// <summary>
-        /// The Ocean cluster ID required for launchSpec create.
+        /// The Ocean cluster ID.
         /// </summary>
         [Output("oceanId")]
         public Output<string> OceanId { get; private set; } = null!;
@@ -120,6 +127,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Output("sourceImage")]
         public Output<string> SourceImage { get; private set; } = null!;
+
+        /// <summary>
+        /// The Ocean Launch Spec Strategy object.
+        /// </summary>
+        [Output("strategies")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecStrategy>> Strategies { get; private set; } = null!;
 
         /// <summary>
         /// Optionally adds labels to instances launched in an Ocean cluster.
@@ -210,7 +223,7 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The Ocean cluster ID required for launchSpec create.
+        /// The Ocean cluster ID.
         /// </summary>
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
@@ -226,6 +239,18 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("sourceImage", required: true)]
         public Input<string> SourceImage { get; set; } = null!;
+
+        [Input("strategies")]
+        private InputList<Inputs.OceanLaunchSpecStrategyArgs>? _strategies;
+
+        /// <summary>
+        /// The Ocean Launch Spec Strategy object.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecStrategyArgs> Strategies
+        {
+            get => _strategies ?? (_strategies = new InputList<Inputs.OceanLaunchSpecStrategyArgs>());
+            set => _strategies = value;
+        }
 
         [Input("taints")]
         private InputList<Inputs.OceanLaunchSpecTaintArgs>? _taints;
@@ -283,7 +308,7 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The Ocean cluster ID required for launchSpec create.
+        /// The Ocean cluster ID.
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
@@ -299,6 +324,18 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("sourceImage")]
         public Input<string>? SourceImage { get; set; }
+
+        [Input("strategies")]
+        private InputList<Inputs.OceanLaunchSpecStrategyGetArgs>? _strategies;
+
+        /// <summary>
+        /// The Ocean Launch Spec Strategy object.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecStrategyGetArgs> Strategies
+        {
+            get => _strategies ?? (_strategies = new InputList<Inputs.OceanLaunchSpecStrategyGetArgs>());
+            set => _strategies = value;
+        }
 
         [Input("taints")]
         private InputList<Inputs.OceanLaunchSpecTaintGetArgs>? _taints;

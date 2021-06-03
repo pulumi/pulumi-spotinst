@@ -42,6 +42,7 @@ __all__ = [
     'OceanLaunchSpecAutoscaleHeadroom',
     'OceanLaunchSpecLabel',
     'OceanLaunchSpecMetadata',
+    'OceanLaunchSpecStrategy',
     'OceanLaunchSpecTaint',
 ]
 
@@ -1817,6 +1818,42 @@ class OceanLaunchSpecMetadata(dict):
         The label value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanLaunchSpecStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preemptiblePercentage":
+            suggest = "preemptible_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 preemptible_percentage: Optional[int] = None):
+        """
+        :param int preemptible_percentage: Defines the desired preemptible percentage for this launch specification.
+        """
+        if preemptible_percentage is not None:
+            pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+
+    @property
+    @pulumi.getter(name="preemptiblePercentage")
+    def preemptible_percentage(self) -> Optional[int]:
+        """
+        Defines the desired preemptible percentage for this launch specification.
+        """
+        return pulumi.get(self, "preemptible_percentage")
 
 
 @pulumi.output_type

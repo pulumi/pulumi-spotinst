@@ -1187,6 +1187,17 @@ export namespace aws {
         shouldDeleteVolumes?: boolean;
     }
 
+    export interface ElastigroupStatefulInstanceAction {
+        /**
+         * String, Stateful Instance ID on which the action should be performed.
+         */
+        statefulInstanceId: string;
+        /**
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         */
+        type: string;
+    }
+
     export interface ElastigroupTag {
         key?: string;
         /**
@@ -3809,6 +3820,13 @@ export namespace gke {
          * The label value.
          */
         value: string;
+    }
+
+    export interface OceanLaunchSpecStrategy {
+        /**
+         * Defines the desired preemptible percentage for this launch specification.
+         */
+        preemptiblePercentage?: number;
     }
 
     export interface OceanLaunchSpecTaint {
