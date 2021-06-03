@@ -8545,6 +8545,112 @@ func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteVolumes() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ElastigroupStatefulInstanceAction struct {
+	// String, Stateful Instance ID on which the action should be performed.
+	StatefulInstanceId string `pulumi:"statefulInstanceId"`
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+	Type string `pulumi:"type"`
+}
+
+// ElastigroupStatefulInstanceActionInput is an input type that accepts ElastigroupStatefulInstanceActionArgs and ElastigroupStatefulInstanceActionOutput values.
+// You can construct a concrete instance of `ElastigroupStatefulInstanceActionInput` via:
+//
+//          ElastigroupStatefulInstanceActionArgs{...}
+type ElastigroupStatefulInstanceActionInput interface {
+	pulumi.Input
+
+	ToElastigroupStatefulInstanceActionOutput() ElastigroupStatefulInstanceActionOutput
+	ToElastigroupStatefulInstanceActionOutputWithContext(context.Context) ElastigroupStatefulInstanceActionOutput
+}
+
+type ElastigroupStatefulInstanceActionArgs struct {
+	// String, Stateful Instance ID on which the action should be performed.
+	StatefulInstanceId pulumi.StringInput `pulumi:"statefulInstanceId"`
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ElastigroupStatefulInstanceActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupStatefulInstanceAction)(nil)).Elem()
+}
+
+func (i ElastigroupStatefulInstanceActionArgs) ToElastigroupStatefulInstanceActionOutput() ElastigroupStatefulInstanceActionOutput {
+	return i.ToElastigroupStatefulInstanceActionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupStatefulInstanceActionArgs) ToElastigroupStatefulInstanceActionOutputWithContext(ctx context.Context) ElastigroupStatefulInstanceActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupStatefulInstanceActionOutput)
+}
+
+// ElastigroupStatefulInstanceActionArrayInput is an input type that accepts ElastigroupStatefulInstanceActionArray and ElastigroupStatefulInstanceActionArrayOutput values.
+// You can construct a concrete instance of `ElastigroupStatefulInstanceActionArrayInput` via:
+//
+//          ElastigroupStatefulInstanceActionArray{ ElastigroupStatefulInstanceActionArgs{...} }
+type ElastigroupStatefulInstanceActionArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupStatefulInstanceActionArrayOutput() ElastigroupStatefulInstanceActionArrayOutput
+	ToElastigroupStatefulInstanceActionArrayOutputWithContext(context.Context) ElastigroupStatefulInstanceActionArrayOutput
+}
+
+type ElastigroupStatefulInstanceActionArray []ElastigroupStatefulInstanceActionInput
+
+func (ElastigroupStatefulInstanceActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupStatefulInstanceAction)(nil)).Elem()
+}
+
+func (i ElastigroupStatefulInstanceActionArray) ToElastigroupStatefulInstanceActionArrayOutput() ElastigroupStatefulInstanceActionArrayOutput {
+	return i.ToElastigroupStatefulInstanceActionArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupStatefulInstanceActionArray) ToElastigroupStatefulInstanceActionArrayOutputWithContext(ctx context.Context) ElastigroupStatefulInstanceActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupStatefulInstanceActionArrayOutput)
+}
+
+type ElastigroupStatefulInstanceActionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupStatefulInstanceActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupStatefulInstanceAction)(nil)).Elem()
+}
+
+func (o ElastigroupStatefulInstanceActionOutput) ToElastigroupStatefulInstanceActionOutput() ElastigroupStatefulInstanceActionOutput {
+	return o
+}
+
+func (o ElastigroupStatefulInstanceActionOutput) ToElastigroupStatefulInstanceActionOutputWithContext(ctx context.Context) ElastigroupStatefulInstanceActionOutput {
+	return o
+}
+
+// String, Stateful Instance ID on which the action should be performed.
+func (o ElastigroupStatefulInstanceActionOutput) StatefulInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupStatefulInstanceAction) string { return v.StatefulInstanceId }).(pulumi.StringOutput)
+}
+
+// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+func (o ElastigroupStatefulInstanceActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupStatefulInstanceAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ElastigroupStatefulInstanceActionArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupStatefulInstanceActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupStatefulInstanceAction)(nil)).Elem()
+}
+
+func (o ElastigroupStatefulInstanceActionArrayOutput) ToElastigroupStatefulInstanceActionArrayOutput() ElastigroupStatefulInstanceActionArrayOutput {
+	return o
+}
+
+func (o ElastigroupStatefulInstanceActionArrayOutput) ToElastigroupStatefulInstanceActionArrayOutputWithContext(ctx context.Context) ElastigroupStatefulInstanceActionArrayOutput {
+	return o
+}
+
+func (o ElastigroupStatefulInstanceActionArrayOutput) Index(i pulumi.IntInput) ElastigroupStatefulInstanceActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupStatefulInstanceAction {
+		return vs[0].([]ElastigroupStatefulInstanceAction)[vs[1].(int)]
+	}).(ElastigroupStatefulInstanceActionOutput)
+}
+
 type ElastigroupTag struct {
 	Key *string `pulumi:"key"`
 	// The dimension value.
@@ -14798,6 +14904,137 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerR
 	}).(pulumi.IntPtrOutput)
 }
 
+type OceanLaunchSpecCreateOptions struct {
+	// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+	InitialNodes int `pulumi:"initialNodes"`
+}
+
+// OceanLaunchSpecCreateOptionsInput is an input type that accepts OceanLaunchSpecCreateOptionsArgs and OceanLaunchSpecCreateOptionsOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecCreateOptionsInput` via:
+//
+//          OceanLaunchSpecCreateOptionsArgs{...}
+type OceanLaunchSpecCreateOptionsInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecCreateOptionsOutput() OceanLaunchSpecCreateOptionsOutput
+	ToOceanLaunchSpecCreateOptionsOutputWithContext(context.Context) OceanLaunchSpecCreateOptionsOutput
+}
+
+type OceanLaunchSpecCreateOptionsArgs struct {
+	// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+	InitialNodes pulumi.IntInput `pulumi:"initialNodes"`
+}
+
+func (OceanLaunchSpecCreateOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecCreateOptions)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecCreateOptionsArgs) ToOceanLaunchSpecCreateOptionsOutput() OceanLaunchSpecCreateOptionsOutput {
+	return i.ToOceanLaunchSpecCreateOptionsOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecCreateOptionsArgs) ToOceanLaunchSpecCreateOptionsOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecCreateOptionsOutput)
+}
+
+func (i OceanLaunchSpecCreateOptionsArgs) ToOceanLaunchSpecCreateOptionsPtrOutput() OceanLaunchSpecCreateOptionsPtrOutput {
+	return i.ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecCreateOptionsArgs) ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecCreateOptionsOutput).ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecCreateOptionsPtrInput is an input type that accepts OceanLaunchSpecCreateOptionsArgs, OceanLaunchSpecCreateOptionsPtr and OceanLaunchSpecCreateOptionsPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecCreateOptionsPtrInput` via:
+//
+//          OceanLaunchSpecCreateOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLaunchSpecCreateOptionsPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecCreateOptionsPtrOutput() OceanLaunchSpecCreateOptionsPtrOutput
+	ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(context.Context) OceanLaunchSpecCreateOptionsPtrOutput
+}
+
+type oceanLaunchSpecCreateOptionsPtrType OceanLaunchSpecCreateOptionsArgs
+
+func OceanLaunchSpecCreateOptionsPtr(v *OceanLaunchSpecCreateOptionsArgs) OceanLaunchSpecCreateOptionsPtrInput {
+	return (*oceanLaunchSpecCreateOptionsPtrType)(v)
+}
+
+func (*oceanLaunchSpecCreateOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecCreateOptions)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecCreateOptionsPtrType) ToOceanLaunchSpecCreateOptionsPtrOutput() OceanLaunchSpecCreateOptionsPtrOutput {
+	return i.ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecCreateOptionsPtrType) ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecCreateOptionsPtrOutput)
+}
+
+type OceanLaunchSpecCreateOptionsOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecCreateOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecCreateOptions)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsOutput() OceanLaunchSpecCreateOptionsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsPtrOutput() OceanLaunchSpecCreateOptionsPtrOutput {
+	return o.ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecCreateOptions) *OceanLaunchSpecCreateOptions {
+		return &v
+	}).(OceanLaunchSpecCreateOptionsPtrOutput)
+}
+
+// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+func (o OceanLaunchSpecCreateOptionsOutput) InitialNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanLaunchSpecCreateOptions) int { return v.InitialNodes }).(pulumi.IntOutput)
+}
+
+type OceanLaunchSpecCreateOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecCreateOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecCreateOptions)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecCreateOptionsPtrOutput) ToOceanLaunchSpecCreateOptionsPtrOutput() OceanLaunchSpecCreateOptionsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCreateOptionsPtrOutput) ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCreateOptionsPtrOutput) Elem() OceanLaunchSpecCreateOptionsOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecCreateOptions) OceanLaunchSpecCreateOptions { return *v }).(OceanLaunchSpecCreateOptionsOutput)
+}
+
+// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+func (o OceanLaunchSpecCreateOptionsPtrOutput) InitialNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecCreateOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.InitialNodes
+	}).(pulumi.IntPtrOutput)
+}
+
 type OceanLaunchSpecElasticIpPool struct {
 	// A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
 	TagSelector *OceanLaunchSpecElasticIpPoolTagSelector `pulumi:"tagSelector"`
@@ -16645,6 +16882,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupSignalArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupStatefulDeallocationOutput{})
 	pulumi.RegisterOutputType(ElastigroupStatefulDeallocationPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupStatefulInstanceActionOutput{})
+	pulumi.RegisterOutputType(ElastigroupStatefulInstanceActionArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupTagOutput{})
 	pulumi.RegisterOutputType(ElastigroupTagArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyOutput{})
@@ -16725,6 +16964,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolTagSelectorOutput{})

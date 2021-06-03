@@ -32,6 +32,9 @@ import * as utilities from "../utilities";
  *     oceanId: "o-123456",
  *     restrictScaleDown: true,
  *     sourceImage: "image",
+ *     strategies: [{
+ *         preemptiblePercentage: 30,
+ *     }],
  *     taints: [{
  *         effect: "taintEffect",
  *         key: "taintKey",
@@ -86,7 +89,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly metadatas!: pulumi.Output<outputs.gke.OceanLaunchSpecMetadata[]>;
     /**
-     * The Ocean cluster ID required for launchSpec create.
+     * The Ocean cluster ID.
      */
     public readonly oceanId!: pulumi.Output<string>;
     /**
@@ -97,6 +100,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Image URL.
      */
     public readonly sourceImage!: pulumi.Output<string>;
+    /**
+     * The Ocean Launch Spec Strategy object.
+     */
+    public readonly strategies!: pulumi.Output<outputs.gke.OceanLaunchSpecStrategy[] | undefined>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
@@ -121,6 +128,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["oceanId"] = state ? state.oceanId : undefined;
             inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             inputs["sourceImage"] = state ? state.sourceImage : undefined;
+            inputs["strategies"] = state ? state.strategies : undefined;
             inputs["taints"] = state ? state.taints : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
@@ -139,6 +147,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["oceanId"] = args ? args.oceanId : undefined;
             inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             inputs["sourceImage"] = args ? args.sourceImage : undefined;
+            inputs["strategies"] = args ? args.strategies : undefined;
             inputs["taints"] = args ? args.taints : undefined;
         }
         if (!opts.version) {
@@ -165,7 +174,7 @@ export interface OceanLaunchSpecState {
      */
     readonly metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
     /**
-     * The Ocean cluster ID required for launchSpec create.
+     * The Ocean cluster ID.
      */
     readonly oceanId?: pulumi.Input<string>;
     /**
@@ -176,6 +185,10 @@ export interface OceanLaunchSpecState {
      * Image URL.
      */
     readonly sourceImage?: pulumi.Input<string>;
+    /**
+     * The Ocean Launch Spec Strategy object.
+     */
+    readonly strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecStrategy>[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
@@ -199,7 +212,7 @@ export interface OceanLaunchSpecArgs {
      */
     readonly metadatas: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
     /**
-     * The Ocean cluster ID required for launchSpec create.
+     * The Ocean cluster ID.
      */
     readonly oceanId: pulumi.Input<string>;
     /**
@@ -210,6 +223,10 @@ export interface OceanLaunchSpecArgs {
      * Image URL.
      */
     readonly sourceImage: pulumi.Input<string>;
+    /**
+     * The Ocean Launch Spec Strategy object.
+     */
+    readonly strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecStrategy>[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */

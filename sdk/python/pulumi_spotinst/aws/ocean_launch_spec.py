@@ -19,6 +19,7 @@ class OceanLaunchSpecArgs:
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
+                 create_options: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -61,6 +62,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
         if block_device_mappings is not None:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        if create_options is not None:
+            pulumi.set(__self__, "create_options", create_options)
         if elastic_ip_pools is not None:
             pulumi.set(__self__, "elastic_ip_pools", elastic_ip_pools)
         if iam_instance_profile is not None:
@@ -139,6 +142,15 @@ class OceanLaunchSpecArgs:
     @block_device_mappings.setter
     def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
+
+    @property
+    @pulumi.getter(name="createOptions")
+    def create_options(self) -> Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']]:
+        return pulumi.get(self, "create_options")
+
+    @create_options.setter
+    def create_options(self, value: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']]):
+        pulumi.set(self, "create_options", value)
 
     @property
     @pulumi.getter(name="elasticIpPools")
@@ -321,6 +333,7 @@ class _OceanLaunchSpecState:
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
+                 create_options: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -363,6 +376,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
         if block_device_mappings is not None:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        if create_options is not None:
+            pulumi.set(__self__, "create_options", create_options)
         if elastic_ip_pools is not None:
             pulumi.set(__self__, "elastic_ip_pools", elastic_ip_pools)
         if iam_instance_profile is not None:
@@ -431,6 +446,15 @@ class _OceanLaunchSpecState:
     @block_device_mappings.setter
     def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
+
+    @property
+    @pulumi.getter(name="createOptions")
+    def create_options(self) -> Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']]:
+        return pulumi.get(self, "create_options")
+
+    @create_options.setter
+    def create_options(self, value: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']]):
+        pulumi.set(self, "create_options", value)
 
     @property
     @pulumi.getter(name="elasticIpPools")
@@ -627,6 +651,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
+                 create_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecCreateOptionsArgs']]] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -676,6 +701,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     volume_type="gp2",
                 ),
             )],
+            create_options=spotinst.aws.OceanLaunchSpecCreateOptionsArgs(
+                initial_nodes=1,
+            ),
             elastic_ip_pools=[spotinst.aws.OceanLaunchSpecElasticIpPoolArgs(
                 tag_selector=spotinst.aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs(
                     tag_key="key",
@@ -780,6 +808,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     volume_type="gp2",
                 ),
             )],
+            create_options=spotinst.aws.OceanLaunchSpecCreateOptionsArgs(
+                initial_nodes=1,
+            ),
             elastic_ip_pools=[spotinst.aws.OceanLaunchSpecElasticIpPoolArgs(
                 tag_selector=spotinst.aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs(
                     tag_key="key",
@@ -844,6 +875,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
+                 create_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecCreateOptionsArgs']]] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -875,6 +907,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
             __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
             __props__.__dict__["block_device_mappings"] = block_device_mappings
+            __props__.__dict__["create_options"] = create_options
             __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
@@ -906,6 +939,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
+            create_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecCreateOptionsArgs']]] = None,
             elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
@@ -954,6 +988,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
         __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
         __props__.__dict__["block_device_mappings"] = block_device_mappings
+        __props__.__dict__["create_options"] = create_options
         __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
@@ -995,6 +1030,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         """
         return pulumi.get(self, "block_device_mappings")
+
+    @property
+    @pulumi.getter(name="createOptions")
+    def create_options(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecCreateOptions']]:
+        return pulumi.get(self, "create_options")
 
     @property
     @pulumi.getter(name="elasticIpPools")

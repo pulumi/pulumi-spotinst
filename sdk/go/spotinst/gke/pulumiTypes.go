@@ -4246,6 +4246,103 @@ func (o OceanLaunchSpecMetadataArrayOutput) Index(i pulumi.IntInput) OceanLaunch
 	}).(OceanLaunchSpecMetadataOutput)
 }
 
+type OceanLaunchSpecStrategy struct {
+	// Defines the desired preemptible percentage for this launch specification.
+	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
+}
+
+// OceanLaunchSpecStrategyInput is an input type that accepts OceanLaunchSpecStrategyArgs and OceanLaunchSpecStrategyOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecStrategyInput` via:
+//
+//          OceanLaunchSpecStrategyArgs{...}
+type OceanLaunchSpecStrategyInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecStrategyOutput() OceanLaunchSpecStrategyOutput
+	ToOceanLaunchSpecStrategyOutputWithContext(context.Context) OceanLaunchSpecStrategyOutput
+}
+
+type OceanLaunchSpecStrategyArgs struct {
+	// Defines the desired preemptible percentage for this launch specification.
+	PreemptiblePercentage pulumi.IntPtrInput `pulumi:"preemptiblePercentage"`
+}
+
+func (OceanLaunchSpecStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecStrategy)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecStrategyArgs) ToOceanLaunchSpecStrategyOutput() OceanLaunchSpecStrategyOutput {
+	return i.ToOceanLaunchSpecStrategyOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecStrategyArgs) ToOceanLaunchSpecStrategyOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStrategyOutput)
+}
+
+// OceanLaunchSpecStrategyArrayInput is an input type that accepts OceanLaunchSpecStrategyArray and OceanLaunchSpecStrategyArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecStrategyArrayInput` via:
+//
+//          OceanLaunchSpecStrategyArray{ OceanLaunchSpecStrategyArgs{...} }
+type OceanLaunchSpecStrategyArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecStrategyArrayOutput() OceanLaunchSpecStrategyArrayOutput
+	ToOceanLaunchSpecStrategyArrayOutputWithContext(context.Context) OceanLaunchSpecStrategyArrayOutput
+}
+
+type OceanLaunchSpecStrategyArray []OceanLaunchSpecStrategyInput
+
+func (OceanLaunchSpecStrategyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecStrategy)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecStrategyArray) ToOceanLaunchSpecStrategyArrayOutput() OceanLaunchSpecStrategyArrayOutput {
+	return i.ToOceanLaunchSpecStrategyArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecStrategyArray) ToOceanLaunchSpecStrategyArrayOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStrategyArrayOutput)
+}
+
+type OceanLaunchSpecStrategyOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecStrategy)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecStrategyOutput) ToOceanLaunchSpecStrategyOutput() OceanLaunchSpecStrategyOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStrategyOutput) ToOceanLaunchSpecStrategyOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyOutput {
+	return o
+}
+
+// Defines the desired preemptible percentage for this launch specification.
+func (o OceanLaunchSpecStrategyOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStrategy) *int { return v.PreemptiblePercentage }).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecStrategyArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecStrategyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecStrategy)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecStrategyArrayOutput) ToOceanLaunchSpecStrategyArrayOutput() OceanLaunchSpecStrategyArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStrategyArrayOutput) ToOceanLaunchSpecStrategyArrayOutputWithContext(ctx context.Context) OceanLaunchSpecStrategyArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStrategyArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecStrategyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecStrategy {
+		return vs[0].([]OceanLaunchSpecStrategy)[vs[1].(int)]
+	}).(OceanLaunchSpecStrategyOutput)
+}
+
 type OceanLaunchSpecTaint struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 	Effect string `pulumi:"effect"`
@@ -4426,6 +4523,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecMetadataOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecMetadataArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecStrategyOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecStrategyArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTaintOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTaintArrayOutput{})
 }

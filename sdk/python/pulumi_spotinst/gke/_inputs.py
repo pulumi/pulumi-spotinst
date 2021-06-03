@@ -41,6 +41,7 @@ __all__ = [
     'OceanLaunchSpecAutoscaleHeadroomArgs',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecMetadataArgs',
+    'OceanLaunchSpecStrategyArgs',
     'OceanLaunchSpecTaintArgs',
 ]
 
@@ -1849,6 +1850,29 @@ class OceanLaunchSpecMetadataArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecStrategyArgs:
+    def __init__(__self__, *,
+                 preemptible_percentage: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] preemptible_percentage: Defines the desired preemptible percentage for this launch specification.
+        """
+        if preemptible_percentage is not None:
+            pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+
+    @property
+    @pulumi.getter(name="preemptiblePercentage")
+    def preemptible_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the desired preemptible percentage for this launch specification.
+        """
+        return pulumi.get(self, "preemptible_percentage")
+
+    @preemptible_percentage.setter
+    def preemptible_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "preemptible_percentage", value)
 
 
 @pulumi.input_type

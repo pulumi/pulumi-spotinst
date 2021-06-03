@@ -1187,6 +1187,17 @@ export namespace aws {
         shouldDeleteVolumes?: boolean;
     }
 
+    export interface ElastigroupStatefulInstanceAction {
+        /**
+         * String, Stateful Instance ID on which the action should be performed.
+         */
+        statefulInstanceId: string;
+        /**
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         */
+        type: string;
+    }
+
     export interface ElastigroupTag {
         key?: string;
         /**
@@ -2106,6 +2117,13 @@ export namespace aws {
          * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
          */
         sizePerResourceUnit: number;
+    }
+
+    export interface OceanLaunchSpecCreateOptions {
+        /**
+         * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+         */
+        initialNodes: number;
     }
 
     export interface OceanLaunchSpecElasticIpPool {
@@ -3802,6 +3820,13 @@ export namespace gke {
          * The label value.
          */
         value: string;
+    }
+
+    export interface OceanLaunchSpecStrategy {
+        /**
+         * Defines the desired preemptible percentage for this launch specification.
+         */
+        preemptiblePercentage?: number;
     }
 
     export interface OceanLaunchSpecTaint {

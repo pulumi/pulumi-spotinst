@@ -131,6 +131,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("loadBalancers")]
         public Output<ImmutableArray<Outputs.ManagedInstanceLoadBalancer>> LoadBalancers { get; private set; } = null!;
 
+        [Output("minimumInstanceLifetime")]
+        public Output<int?> MinimumInstanceLifetime { get; private set; } = null!;
+
         /// <summary>
         /// The record set name.
         /// </summary>
@@ -434,6 +437,9 @@ namespace Pulumi.SpotInst.Aws
             set => _loadBalancers = value;
         }
 
+        [Input("minimumInstanceLifetime")]
+        public Input<int>? MinimumInstanceLifetime { get; set; }
+
         /// <summary>
         /// The record set name.
         /// </summary>
@@ -731,6 +737,9 @@ namespace Pulumi.SpotInst.Aws
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.ManagedInstanceLoadBalancerGetArgs>());
             set => _loadBalancers = value;
         }
+
+        [Input("minimumInstanceLifetime")]
+        public Input<int>? MinimumInstanceLifetime { get; set; }
 
         /// <summary>
         /// The record set name.

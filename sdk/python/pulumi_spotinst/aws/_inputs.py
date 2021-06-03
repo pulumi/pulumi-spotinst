@@ -63,6 +63,7 @@ __all__ = [
     'ElastigroupScheduledTaskArgs',
     'ElastigroupSignalArgs',
     'ElastigroupStatefulDeallocationArgs',
+    'ElastigroupStatefulInstanceActionArgs',
     'ElastigroupTagArgs',
     'ElastigroupUpdatePolicyArgs',
     'ElastigroupUpdatePolicyRollConfigArgs',
@@ -103,6 +104,7 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMappingArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
+    'OceanLaunchSpecCreateOptionsArgs',
     'OceanLaunchSpecElasticIpPoolArgs',
     'OceanLaunchSpecElasticIpPoolTagSelectorArgs',
     'OceanLaunchSpecLabelArgs',
@@ -4032,6 +4034,43 @@ class ElastigroupStatefulDeallocationArgs:
 
 
 @pulumi.input_type
+class ElastigroupStatefulInstanceActionArgs:
+    def __init__(__self__, *,
+                 stateful_instance_id: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] stateful_instance_id: String, Stateful Instance ID on which the action should be performed.
+        :param pulumi.Input[str] type: String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        """
+        pulumi.set(__self__, "stateful_instance_id", stateful_instance_id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="statefulInstanceId")
+    def stateful_instance_id(self) -> pulumi.Input[str]:
+        """
+        String, Stateful Instance ID on which the action should be performed.
+        """
+        return pulumi.get(self, "stateful_instance_id")
+
+    @stateful_instance_id.setter
+    def stateful_instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "stateful_instance_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class ElastigroupTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
@@ -7490,6 +7529,28 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @size_per_resource_unit.setter
     def size_per_resource_unit(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_per_resource_unit", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecCreateOptionsArgs:
+    def __init__(__self__, *,
+                 initial_nodes: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+        """
+        pulumi.set(__self__, "initial_nodes", initial_nodes)
+
+    @property
+    @pulumi.getter(name="initialNodes")
+    def initial_nodes(self) -> pulumi.Input[int]:
+        """
+        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+        """
+        return pulumi.get(self, "initial_nodes")
+
+    @initial_nodes.setter
+    def initial_nodes(self, value: pulumi.Input[int]):
+        pulumi.set(self, "initial_nodes", value)
 
 
 @pulumi.input_type

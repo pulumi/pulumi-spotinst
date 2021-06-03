@@ -64,6 +64,7 @@ __all__ = [
     'ElastigroupScheduledTask',
     'ElastigroupSignal',
     'ElastigroupStatefulDeallocation',
+    'ElastigroupStatefulInstanceAction',
     'ElastigroupTag',
     'ElastigroupUpdatePolicy',
     'ElastigroupUpdatePolicyRollConfig',
@@ -104,6 +105,7 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMapping',
     'OceanLaunchSpecBlockDeviceMappingEbs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize',
+    'OceanLaunchSpecCreateOptions',
     'OceanLaunchSpecElasticIpPool',
     'OceanLaunchSpecElasticIpPoolTagSelector',
     'OceanLaunchSpecLabel',
@@ -4126,6 +4128,52 @@ class ElastigroupStatefulDeallocation(dict):
 
 
 @pulumi.output_type
+class ElastigroupStatefulInstanceAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statefulInstanceId":
+            suggest = "stateful_instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupStatefulInstanceAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupStatefulInstanceAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupStatefulInstanceAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 stateful_instance_id: str,
+                 type: str):
+        """
+        :param str stateful_instance_id: String, Stateful Instance ID on which the action should be performed.
+        :param str type: String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        """
+        pulumi.set(__self__, "stateful_instance_id", stateful_instance_id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="statefulInstanceId")
+    def stateful_instance_id(self) -> str:
+        """
+        String, Stateful Instance ID on which the action should be performed.
+        """
+        return pulumi.get(self, "stateful_instance_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class ElastigroupTag(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
@@ -7459,6 +7507,41 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize(dict):
         Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
         """
         return pulumi.get(self, "size_per_resource_unit")
+
+
+@pulumi.output_type
+class OceanLaunchSpecCreateOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialNodes":
+            suggest = "initial_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecCreateOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecCreateOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecCreateOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_nodes: int):
+        """
+        :param int initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+        """
+        pulumi.set(__self__, "initial_nodes", initial_nodes)
+
+    @property
+    @pulumi.getter(name="initialNodes")
+    def initial_nodes(self) -> int:
+        """
+        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+        """
+        return pulumi.get(self, "initial_nodes")
 
 
 @pulumi.output_type

@@ -80,6 +80,7 @@ class ElastigroupArgs:
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSignalArgs']]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  stateful_deallocation: Optional[pulumi.Input['ElastigroupStatefulDeallocationArgs']] = None,
+                 stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupStatefulInstanceActionArgs']]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupTagArgs']]]] = None,
                  target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -283,6 +284,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if stateful_deallocation is not None:
             pulumi.set(__self__, "stateful_deallocation", stateful_deallocation)
+        if stateful_instance_actions is not None:
+            pulumi.set(__self__, "stateful_instance_actions", stateful_instance_actions)
         if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
@@ -1055,6 +1058,15 @@ class ElastigroupArgs:
         pulumi.set(self, "stateful_deallocation", value)
 
     @property
+    @pulumi.getter(name="statefulInstanceActions")
+    def stateful_instance_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupStatefulInstanceActionArgs']]]]:
+        return pulumi.get(self, "stateful_instance_actions")
+
+    @stateful_instance_actions.setter
+    def stateful_instance_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupStatefulInstanceActionArgs']]]]):
+        pulumi.set(self, "stateful_instance_actions", value)
+
+    @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1226,6 +1238,7 @@ class _ElastigroupState:
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSignalArgs']]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  stateful_deallocation: Optional[pulumi.Input['ElastigroupStatefulDeallocationArgs']] = None,
+                 stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupStatefulInstanceActionArgs']]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupTagArgs']]]] = None,
                  target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1435,6 +1448,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if stateful_deallocation is not None:
             pulumi.set(__self__, "stateful_deallocation", stateful_deallocation)
+        if stateful_instance_actions is not None:
+            pulumi.set(__self__, "stateful_instance_actions", stateful_instance_actions)
         if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
@@ -2207,6 +2222,15 @@ class _ElastigroupState:
         pulumi.set(self, "stateful_deallocation", value)
 
     @property
+    @pulumi.getter(name="statefulInstanceActions")
+    def stateful_instance_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupStatefulInstanceActionArgs']]]]:
+        return pulumi.get(self, "stateful_instance_actions")
+
+    @stateful_instance_actions.setter
+    def stateful_instance_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupStatefulInstanceActionArgs']]]]):
+        pulumi.set(self, "stateful_instance_actions", value)
+
+    @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -2380,6 +2404,7 @@ class Elastigroup(pulumi.CustomResource):
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  stateful_deallocation: Optional[pulumi.Input[pulumi.InputType['ElastigroupStatefulDeallocationArgs']]] = None,
+                 stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupStatefulInstanceActionArgs']]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
                  target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2552,6 +2577,7 @@ class Elastigroup(pulumi.CustomResource):
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  stateful_deallocation: Optional[pulumi.Input[pulumi.InputType['ElastigroupStatefulDeallocationArgs']]] = None,
+                 stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupStatefulInstanceActionArgs']]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
                  target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2650,6 +2676,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["signals"] = signals
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["stateful_deallocation"] = stateful_deallocation
+            __props__.__dict__["stateful_instance_actions"] = stateful_instance_actions
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target_group_arns"] = target_group_arns
@@ -2734,6 +2761,7 @@ class Elastigroup(pulumi.CustomResource):
             signals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSignalArgs']]]]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
             stateful_deallocation: Optional[pulumi.Input[pulumi.InputType['ElastigroupStatefulDeallocationArgs']]] = None,
+            stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupStatefulInstanceActionArgs']]]]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]]] = None,
             target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2887,6 +2915,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["signals"] = signals
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["stateful_deallocation"] = stateful_deallocation
+        __props__.__dict__["stateful_instance_actions"] = stateful_instance_actions
         __props__.__dict__["subnet_ids"] = subnet_ids
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_group_arns"] = target_group_arns
@@ -3389,6 +3418,11 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="statefulDeallocation")
     def stateful_deallocation(self) -> pulumi.Output[Optional['outputs.ElastigroupStatefulDeallocation']]:
         return pulumi.get(self, "stateful_deallocation")
+
+    @property
+    @pulumi.getter(name="statefulInstanceActions")
+    def stateful_instance_actions(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupStatefulInstanceAction']]]:
+        return pulumi.get(self, "stateful_instance_actions")
 
     @property
     @pulumi.getter(name="subnetIds")

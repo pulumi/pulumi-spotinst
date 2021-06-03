@@ -137,8 +137,9 @@ type Elastigroup struct {
 	ShutdownScript pulumi.StringPtrOutput       `pulumi:"shutdownScript"`
 	Signals        ElastigroupSignalArrayOutput `pulumi:"signals"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage       pulumi.IntPtrOutput                      `pulumi:"spotPercentage"`
-	StatefulDeallocation ElastigroupStatefulDeallocationPtrOutput `pulumi:"statefulDeallocation"`
+	SpotPercentage          pulumi.IntPtrOutput                          `pulumi:"spotPercentage"`
+	StatefulDeallocation    ElastigroupStatefulDeallocationPtrOutput     `pulumi:"statefulDeallocation"`
+	StatefulInstanceActions ElastigroupStatefulInstanceActionArrayOutput `pulumi:"statefulInstanceActions"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
@@ -327,8 +328,9 @@ type elastigroupState struct {
 	ShutdownScript *string             `pulumi:"shutdownScript"`
 	Signals        []ElastigroupSignal `pulumi:"signals"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage       *int                             `pulumi:"spotPercentage"`
-	StatefulDeallocation *ElastigroupStatefulDeallocation `pulumi:"statefulDeallocation"`
+	SpotPercentage          *int                                `pulumi:"spotPercentage"`
+	StatefulDeallocation    *ElastigroupStatefulDeallocation    `pulumi:"statefulDeallocation"`
+	StatefulInstanceActions []ElastigroupStatefulInstanceAction `pulumi:"statefulInstanceActions"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds []string `pulumi:"subnetIds"`
@@ -471,8 +473,9 @@ type ElastigroupState struct {
 	ShutdownScript pulumi.StringPtrInput
 	Signals        ElastigroupSignalArrayInput
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage       pulumi.IntPtrInput
-	StatefulDeallocation ElastigroupStatefulDeallocationPtrInput
+	SpotPercentage          pulumi.IntPtrInput
+	StatefulDeallocation    ElastigroupStatefulDeallocationPtrInput
+	StatefulInstanceActions ElastigroupStatefulInstanceActionArrayInput
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds pulumi.StringArrayInput
@@ -619,8 +622,9 @@ type elastigroupArgs struct {
 	ShutdownScript *string             `pulumi:"shutdownScript"`
 	Signals        []ElastigroupSignal `pulumi:"signals"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage       *int                             `pulumi:"spotPercentage"`
-	StatefulDeallocation *ElastigroupStatefulDeallocation `pulumi:"statefulDeallocation"`
+	SpotPercentage          *int                                `pulumi:"spotPercentage"`
+	StatefulDeallocation    *ElastigroupStatefulDeallocation    `pulumi:"statefulDeallocation"`
+	StatefulInstanceActions []ElastigroupStatefulInstanceAction `pulumi:"statefulInstanceActions"`
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds []string `pulumi:"subnetIds"`
@@ -764,8 +768,9 @@ type ElastigroupArgs struct {
 	ShutdownScript pulumi.StringPtrInput
 	Signals        ElastigroupSignalArrayInput
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
-	SpotPercentage       pulumi.IntPtrInput
-	StatefulDeallocation ElastigroupStatefulDeallocationPtrInput
+	SpotPercentage          pulumi.IntPtrInput
+	StatefulDeallocation    ElastigroupStatefulDeallocationPtrInput
+	StatefulInstanceActions ElastigroupStatefulInstanceActionArrayInput
 	// List of Strings of subnet identifiers.
 	// Note: When this parameter is set, `availabilityZones` should be left unused.
 	SubnetIds pulumi.StringArrayInput

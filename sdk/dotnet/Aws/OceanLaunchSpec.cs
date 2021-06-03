@@ -56,6 +56,10 @@ namespace Pulumi.SpotInst.Aws
     ///                     },
     ///                 },
     ///             },
+    ///             CreateOptions = new SpotInst.Aws.Inputs.OceanLaunchSpecCreateOptionsArgs
+    ///             {
+    ///                 InitialNodes = 1,
+    ///             },
     ///             ElasticIpPools = 
     ///             {
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs
@@ -167,6 +171,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("blockDeviceMappings")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
+
+        [Output("createOptions")]
+        public Output<Outputs.OceanLaunchSpecCreateOptions?> CreateOptions { get; private set; } = null!;
 
         /// <summary>
         /// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
@@ -333,6 +340,9 @@ namespace Pulumi.SpotInst.Aws
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs>());
             set => _blockDeviceMappings = value;
         }
+
+        [Input("createOptions")]
+        public Input<Inputs.OceanLaunchSpecCreateOptionsArgs>? CreateOptions { get; set; }
 
         [Input("elasticIpPools")]
         private InputList<Inputs.OceanLaunchSpecElasticIpPoolArgs>? _elasticIpPools;
@@ -512,6 +522,9 @@ namespace Pulumi.SpotInst.Aws
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs>());
             set => _blockDeviceMappings = value;
         }
+
+        [Input("createOptions")]
+        public Input<Inputs.OceanLaunchSpecCreateOptionsGetArgs>? CreateOptions { get; set; }
 
         [Input("elasticIpPools")]
         private InputList<Inputs.OceanLaunchSpecElasticIpPoolGetArgs>? _elasticIpPools;
