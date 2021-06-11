@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['OceanArgs', 'Ocean']
 
@@ -17,29 +19,77 @@ class OceanArgs:
                  aks_name: pulumi.Input[str],
                  aks_resource_group_name: pulumi.Input[str],
                  ssh_public_key: pulumi.Input[str],
+                 autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
+                 custom_data: Optional[pulumi.Input[str]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input['OceanExtensionArgs']]]] = None,
+                 health: Optional[pulumi.Input['OceanHealthArgs']] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 user_name: Optional[pulumi.Input[str]] = None):
+                 network: Optional[pulumi.Input['OceanNetworkArgs']] = None,
+                 os_disk: Optional[pulumi.Input['OceanOsDiskArgs']] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None,
+                 vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None):
         """
         The set of arguments for constructing a Ocean resource.
         :param pulumi.Input[str] acd_identifier: The AKS identifier.
         :param pulumi.Input[str] aks_name: The AKS cluster name.
-        :param pulumi.Input[str] aks_resource_group_name: Name of the Resource Group for AKS cluster.
+        :param pulumi.Input[str] aks_resource_group_name: Name of the Azure Resource Group where the AKS cluster is located.
         :param pulumi.Input[str] ssh_public_key: SSH public key for admin access to Linux VMs.
-        :param pulumi.Input[str] controller_cluster_id: The Ocean controller cluster.
-        :param pulumi.Input[str] name: The Ocean cluster name.
+        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
+        :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+        :param pulumi.Input[str] custom_data: Must contain a valid Base64 encoded string.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanExtensionArgs']]] extensions: List of Azure extension objects.
+        :param pulumi.Input['OceanHealthArgs'] health: The Ocean AKS Health object.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]] images: Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Configure Load Balancer.
+        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input['OceanNetworkArgs'] network: Define the Virtual Network and Subnet.
+        :param pulumi.Input['OceanOsDiskArgs'] os_disk: OS disk specifications.
+        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]] strategies: The Ocean AKS strategy object.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
         :param pulumi.Input[str] user_name: Username for admin access to VMs.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]] vm_sizes: The types of virtual machines that may or may not be a part of the Ocean cluster.
         """
         pulumi.set(__self__, "acd_identifier", acd_identifier)
         pulumi.set(__self__, "aks_name", aks_name)
         pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
         pulumi.set(__self__, "ssh_public_key", ssh_public_key)
+        if autoscaler is not None:
+            pulumi.set(__self__, "autoscaler", autoscaler)
         if controller_cluster_id is not None:
             pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
+        if custom_data is not None:
+            pulumi.set(__self__, "custom_data", custom_data)
+        if extensions is not None:
+            pulumi.set(__self__, "extensions", extensions)
+        if health is not None:
+            pulumi.set(__self__, "health", health)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if load_balancers is not None:
+            pulumi.set(__self__, "load_balancers", load_balancers)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if os_disk is not None:
+            pulumi.set(__self__, "os_disk", os_disk)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if strategies is not None:
+            pulumi.set(__self__, "strategies", strategies)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if user_name is not None:
             pulumi.set(__self__, "user_name", user_name)
+        if vm_sizes is not None:
+            pulumi.set(__self__, "vm_sizes", vm_sizes)
 
     @property
     @pulumi.getter(name="acdIdentifier")
@@ -69,7 +119,7 @@ class OceanArgs:
     @pulumi.getter(name="aksResourceGroupName")
     def aks_resource_group_name(self) -> pulumi.Input[str]:
         """
-        Name of the Resource Group for AKS cluster.
+        Name of the Azure Resource Group where the AKS cluster is located.
         """
         return pulumi.get(self, "aks_resource_group_name")
 
@@ -90,10 +140,22 @@ class OceanArgs:
         pulumi.set(self, "ssh_public_key", value)
 
     @property
+    @pulumi.getter
+    def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
+        """
+        The Ocean Kubernetes Autoscaler object.
+        """
+        return pulumi.get(self, "autoscaler")
+
+    @autoscaler.setter
+    def autoscaler(self, value: Optional[pulumi.Input['OceanAutoscalerArgs']]):
+        pulumi.set(self, "autoscaler", value)
+
+    @property
     @pulumi.getter(name="controllerClusterId")
     def controller_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Ocean controller cluster.
+        A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         """
         return pulumi.get(self, "controller_cluster_id")
 
@@ -102,16 +164,136 @@ class OceanArgs:
         pulumi.set(self, "controller_cluster_id", value)
 
     @property
+    @pulumi.getter(name="customData")
+    def custom_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must contain a valid Base64 encoded string.
+        """
+        return pulumi.get(self, "custom_data")
+
+    @custom_data.setter
+    def custom_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_data", value)
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanExtensionArgs']]]]:
+        """
+        List of Azure extension objects.
+        """
+        return pulumi.get(self, "extensions")
+
+    @extensions.setter
+    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanExtensionArgs']]]]):
+        pulumi.set(self, "extensions", value)
+
+    @property
+    @pulumi.getter
+    def health(self) -> Optional[pulumi.Input['OceanHealthArgs']]:
+        """
+        The Ocean AKS Health object.
+        """
+        return pulumi.get(self, "health")
+
+    @health.setter
+    def health(self, value: Optional[pulumi.Input['OceanHealthArgs']]):
+        pulumi.set(self, "health", value)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]]]:
+        """
+        Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+        """
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]]]):
+        pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]:
+        """
+        Configure Load Balancer.
+        """
+        return pulumi.get(self, "load_balancers")
+
+    @load_balancers.setter
+    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]):
+        pulumi.set(self, "load_balancers", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Ocean cluster name.
+        Name of the Load Balancer.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['OceanNetworkArgs']]:
+        """
+        Define the Virtual Network and Subnet.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['OceanNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="osDisk")
+    def os_disk(self) -> Optional[pulumi.Input['OceanOsDiskArgs']]:
+        """
+        OS disk specifications.
+        """
+        return pulumi.get(self, "os_disk")
+
+    @os_disk.setter
+    def os_disk(self, value: Optional[pulumi.Input['OceanOsDiskArgs']]):
+        pulumi.set(self, "os_disk", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Resource Group name of the Load Balancer.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]]]:
+        """
+        The Ocean AKS strategy object.
+        """
+        return pulumi.get(self, "strategies")
+
+    @strategies.setter
+    def strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]]]):
+        pulumi.set(self, "strategies", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]:
+        """
+        Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="userName")
@@ -125,6 +307,18 @@ class OceanArgs:
     def user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_name", value)
 
+    @property
+    @pulumi.getter(name="vmSizes")
+    def vm_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]]:
+        """
+        The types of virtual machines that may or may not be a part of the Ocean cluster.
+        """
+        return pulumi.get(self, "vm_sizes")
+
+    @vm_sizes.setter
+    def vm_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]]):
+        pulumi.set(self, "vm_sizes", value)
+
 
 @pulumi.input_type
 class _OceanState:
@@ -132,19 +326,43 @@ class _OceanState:
                  acd_identifier: Optional[pulumi.Input[str]] = None,
                  aks_name: Optional[pulumi.Input[str]] = None,
                  aks_resource_group_name: Optional[pulumi.Input[str]] = None,
+                 autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
+                 custom_data: Optional[pulumi.Input[str]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input['OceanExtensionArgs']]]] = None,
+                 health: Optional[pulumi.Input['OceanHealthArgs']] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input['OceanNetworkArgs']] = None,
+                 os_disk: Optional[pulumi.Input['OceanOsDiskArgs']] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
                  ssh_public_key: Optional[pulumi.Input[str]] = None,
-                 user_name: Optional[pulumi.Input[str]] = None):
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None,
+                 vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None):
         """
         Input properties used for looking up and filtering Ocean resources.
         :param pulumi.Input[str] acd_identifier: The AKS identifier.
         :param pulumi.Input[str] aks_name: The AKS cluster name.
-        :param pulumi.Input[str] aks_resource_group_name: Name of the Resource Group for AKS cluster.
-        :param pulumi.Input[str] controller_cluster_id: The Ocean controller cluster.
-        :param pulumi.Input[str] name: The Ocean cluster name.
+        :param pulumi.Input[str] aks_resource_group_name: Name of the Azure Resource Group where the AKS cluster is located.
+        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
+        :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+        :param pulumi.Input[str] custom_data: Must contain a valid Base64 encoded string.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanExtensionArgs']]] extensions: List of Azure extension objects.
+        :param pulumi.Input['OceanHealthArgs'] health: The Ocean AKS Health object.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]] images: Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Configure Load Balancer.
+        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input['OceanNetworkArgs'] network: Define the Virtual Network and Subnet.
+        :param pulumi.Input['OceanOsDiskArgs'] os_disk: OS disk specifications.
+        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
         :param pulumi.Input[str] ssh_public_key: SSH public key for admin access to Linux VMs.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]] strategies: The Ocean AKS strategy object.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
         :param pulumi.Input[str] user_name: Username for admin access to VMs.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]] vm_sizes: The types of virtual machines that may or may not be a part of the Ocean cluster.
         """
         if acd_identifier is not None:
             pulumi.set(__self__, "acd_identifier", acd_identifier)
@@ -152,14 +370,38 @@ class _OceanState:
             pulumi.set(__self__, "aks_name", aks_name)
         if aks_resource_group_name is not None:
             pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
+        if autoscaler is not None:
+            pulumi.set(__self__, "autoscaler", autoscaler)
         if controller_cluster_id is not None:
             pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
+        if custom_data is not None:
+            pulumi.set(__self__, "custom_data", custom_data)
+        if extensions is not None:
+            pulumi.set(__self__, "extensions", extensions)
+        if health is not None:
+            pulumi.set(__self__, "health", health)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if load_balancers is not None:
+            pulumi.set(__self__, "load_balancers", load_balancers)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if os_disk is not None:
+            pulumi.set(__self__, "os_disk", os_disk)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
         if ssh_public_key is not None:
             pulumi.set(__self__, "ssh_public_key", ssh_public_key)
+        if strategies is not None:
+            pulumi.set(__self__, "strategies", strategies)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if user_name is not None:
             pulumi.set(__self__, "user_name", user_name)
+        if vm_sizes is not None:
+            pulumi.set(__self__, "vm_sizes", vm_sizes)
 
     @property
     @pulumi.getter(name="acdIdentifier")
@@ -189,7 +431,7 @@ class _OceanState:
     @pulumi.getter(name="aksResourceGroupName")
     def aks_resource_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Resource Group for AKS cluster.
+        Name of the Azure Resource Group where the AKS cluster is located.
         """
         return pulumi.get(self, "aks_resource_group_name")
 
@@ -198,10 +440,22 @@ class _OceanState:
         pulumi.set(self, "aks_resource_group_name", value)
 
     @property
+    @pulumi.getter
+    def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
+        """
+        The Ocean Kubernetes Autoscaler object.
+        """
+        return pulumi.get(self, "autoscaler")
+
+    @autoscaler.setter
+    def autoscaler(self, value: Optional[pulumi.Input['OceanAutoscalerArgs']]):
+        pulumi.set(self, "autoscaler", value)
+
+    @property
     @pulumi.getter(name="controllerClusterId")
     def controller_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Ocean controller cluster.
+        A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         """
         return pulumi.get(self, "controller_cluster_id")
 
@@ -210,16 +464,112 @@ class _OceanState:
         pulumi.set(self, "controller_cluster_id", value)
 
     @property
+    @pulumi.getter(name="customData")
+    def custom_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must contain a valid Base64 encoded string.
+        """
+        return pulumi.get(self, "custom_data")
+
+    @custom_data.setter
+    def custom_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_data", value)
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanExtensionArgs']]]]:
+        """
+        List of Azure extension objects.
+        """
+        return pulumi.get(self, "extensions")
+
+    @extensions.setter
+    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanExtensionArgs']]]]):
+        pulumi.set(self, "extensions", value)
+
+    @property
+    @pulumi.getter
+    def health(self) -> Optional[pulumi.Input['OceanHealthArgs']]:
+        """
+        The Ocean AKS Health object.
+        """
+        return pulumi.get(self, "health")
+
+    @health.setter
+    def health(self, value: Optional[pulumi.Input['OceanHealthArgs']]):
+        pulumi.set(self, "health", value)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]]]:
+        """
+        Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+        """
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]]]):
+        pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]:
+        """
+        Configure Load Balancer.
+        """
+        return pulumi.get(self, "load_balancers")
+
+    @load_balancers.setter
+    def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]]):
+        pulumi.set(self, "load_balancers", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Ocean cluster name.
+        Name of the Load Balancer.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['OceanNetworkArgs']]:
+        """
+        Define the Virtual Network and Subnet.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['OceanNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="osDisk")
+    def os_disk(self) -> Optional[pulumi.Input['OceanOsDiskArgs']]:
+        """
+        OS disk specifications.
+        """
+        return pulumi.get(self, "os_disk")
+
+    @os_disk.setter
+    def os_disk(self, value: Optional[pulumi.Input['OceanOsDiskArgs']]):
+        pulumi.set(self, "os_disk", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Resource Group name of the Load Balancer.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_name", value)
 
     @property
     @pulumi.getter(name="sshPublicKey")
@@ -234,6 +584,30 @@ class _OceanState:
         pulumi.set(self, "ssh_public_key", value)
 
     @property
+    @pulumi.getter
+    def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]]]:
+        """
+        The Ocean AKS strategy object.
+        """
+        return pulumi.get(self, "strategies")
+
+    @strategies.setter
+    def strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]]]):
+        pulumi.set(self, "strategies", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]:
+        """
+        Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -245,6 +619,18 @@ class _OceanState:
     def user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_name", value)
 
+    @property
+    @pulumi.getter(name="vmSizes")
+    def vm_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]]:
+        """
+        The types of virtual machines that may or may not be a part of the Ocean cluster.
+        """
+        return pulumi.get(self, "vm_sizes")
+
+    @vm_sizes.setter
+    def vm_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]]):
+        pulumi.set(self, "vm_sizes", value)
+
 
 class Ocean(pulumi.CustomResource):
     @overload
@@ -254,44 +640,46 @@ class Ocean(pulumi.CustomResource):
                  acd_identifier: Optional[pulumi.Input[str]] = None,
                  aks_name: Optional[pulumi.Input[str]] = None,
                  aks_resource_group_name: Optional[pulumi.Input[str]] = None,
+                 autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
+                 custom_data: Optional[pulumi.Input[str]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanExtensionArgs']]]]] = None,
+                 health: Optional[pulumi.Input[pulumi.InputType['OceanHealthArgs']]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImageArgs']]]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[pulumi.InputType['OceanNetworkArgs']]] = None,
+                 os_disk: Optional[pulumi.Input[pulumi.InputType['OceanOsDiskArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
                  ssh_public_key: Optional[pulumi.Input[str]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanStrategyArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
+                 vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]]] = None,
                  __props__=None):
         """
-        Manages a Spotinst Ocean AKS resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.azure.Ocean("example",
-            acd_identifier="acd-12345",
-            aks_name="AKSName",
-            aks_resource_group_name="ResourceGroupName",
-            controller_cluster_id="controller-cluster-id",
-            ssh_public_key="ssh-rsa [... redacted ...] generated-by-azure",
-            user_name="some-name")
-        ```
-
-        ```python
-        import pulumi
-
-        pulumi.export("oceanId", spotinst_ocean_aks_["example"]["id"])
-        ```
-
+        Create a Ocean resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acd_identifier: The AKS identifier.
         :param pulumi.Input[str] aks_name: The AKS cluster name.
-        :param pulumi.Input[str] aks_resource_group_name: Name of the Resource Group for AKS cluster.
-        :param pulumi.Input[str] controller_cluster_id: The Ocean controller cluster.
-        :param pulumi.Input[str] name: The Ocean cluster name.
+        :param pulumi.Input[str] aks_resource_group_name: Name of the Azure Resource Group where the AKS cluster is located.
+        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
+        :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+        :param pulumi.Input[str] custom_data: Must contain a valid Base64 encoded string.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanExtensionArgs']]]] extensions: List of Azure extension objects.
+        :param pulumi.Input[pulumi.InputType['OceanHealthArgs']] health: The Ocean AKS Health object.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImageArgs']]]] images: Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: Configure Load Balancer.
+        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input[pulumi.InputType['OceanNetworkArgs']] network: Define the Virtual Network and Subnet.
+        :param pulumi.Input[pulumi.InputType['OceanOsDiskArgs']] os_disk: OS disk specifications.
+        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
         :param pulumi.Input[str] ssh_public_key: SSH public key for admin access to Linux VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanStrategyArgs']]]] strategies: The Ocean AKS strategy object.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
         :param pulumi.Input[str] user_name: Username for admin access to VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]] vm_sizes: The types of virtual machines that may or may not be a part of the Ocean cluster.
         """
         ...
     @overload
@@ -300,29 +688,7 @@ class Ocean(pulumi.CustomResource):
                  args: OceanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Spotinst Ocean AKS resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.azure.Ocean("example",
-            acd_identifier="acd-12345",
-            aks_name="AKSName",
-            aks_resource_group_name="ResourceGroupName",
-            controller_cluster_id="controller-cluster-id",
-            ssh_public_key="ssh-rsa [... redacted ...] generated-by-azure",
-            user_name="some-name")
-        ```
-
-        ```python
-        import pulumi
-
-        pulumi.export("oceanId", spotinst_ocean_aks_["example"]["id"])
-        ```
-
+        Create a Ocean resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -341,10 +707,22 @@ class Ocean(pulumi.CustomResource):
                  acd_identifier: Optional[pulumi.Input[str]] = None,
                  aks_name: Optional[pulumi.Input[str]] = None,
                  aks_resource_group_name: Optional[pulumi.Input[str]] = None,
+                 autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
+                 custom_data: Optional[pulumi.Input[str]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanExtensionArgs']]]]] = None,
+                 health: Optional[pulumi.Input[pulumi.InputType['OceanHealthArgs']]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImageArgs']]]]] = None,
+                 load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[pulumi.InputType['OceanNetworkArgs']]] = None,
+                 os_disk: Optional[pulumi.Input[pulumi.InputType['OceanOsDiskArgs']]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
                  ssh_public_key: Optional[pulumi.Input[str]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanStrategyArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
+                 vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -366,12 +744,24 @@ class Ocean(pulumi.CustomResource):
             if aks_resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'aks_resource_group_name'")
             __props__.__dict__["aks_resource_group_name"] = aks_resource_group_name
+            __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["controller_cluster_id"] = controller_cluster_id
+            __props__.__dict__["custom_data"] = custom_data
+            __props__.__dict__["extensions"] = extensions
+            __props__.__dict__["health"] = health
+            __props__.__dict__["images"] = images
+            __props__.__dict__["load_balancers"] = load_balancers
             __props__.__dict__["name"] = name
+            __props__.__dict__["network"] = network
+            __props__.__dict__["os_disk"] = os_disk
+            __props__.__dict__["resource_group_name"] = resource_group_name
             if ssh_public_key is None and not opts.urn:
                 raise TypeError("Missing required property 'ssh_public_key'")
             __props__.__dict__["ssh_public_key"] = ssh_public_key
+            __props__.__dict__["strategies"] = strategies
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["user_name"] = user_name
+            __props__.__dict__["vm_sizes"] = vm_sizes
         super(Ocean, __self__).__init__(
             'spotinst:azure/ocean:Ocean',
             resource_name,
@@ -385,10 +775,22 @@ class Ocean(pulumi.CustomResource):
             acd_identifier: Optional[pulumi.Input[str]] = None,
             aks_name: Optional[pulumi.Input[str]] = None,
             aks_resource_group_name: Optional[pulumi.Input[str]] = None,
+            autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
             controller_cluster_id: Optional[pulumi.Input[str]] = None,
+            custom_data: Optional[pulumi.Input[str]] = None,
+            extensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanExtensionArgs']]]]] = None,
+            health: Optional[pulumi.Input[pulumi.InputType['OceanHealthArgs']]] = None,
+            images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImageArgs']]]]] = None,
+            load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[pulumi.InputType['OceanNetworkArgs']]] = None,
+            os_disk: Optional[pulumi.Input[pulumi.InputType['OceanOsDiskArgs']]] = None,
+            resource_group_name: Optional[pulumi.Input[str]] = None,
             ssh_public_key: Optional[pulumi.Input[str]] = None,
-            user_name: Optional[pulumi.Input[str]] = None) -> 'Ocean':
+            strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanStrategyArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
+            user_name: Optional[pulumi.Input[str]] = None,
+            vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]]] = None) -> 'Ocean':
         """
         Get an existing Ocean resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -398,11 +800,23 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acd_identifier: The AKS identifier.
         :param pulumi.Input[str] aks_name: The AKS cluster name.
-        :param pulumi.Input[str] aks_resource_group_name: Name of the Resource Group for AKS cluster.
-        :param pulumi.Input[str] controller_cluster_id: The Ocean controller cluster.
-        :param pulumi.Input[str] name: The Ocean cluster name.
+        :param pulumi.Input[str] aks_resource_group_name: Name of the Azure Resource Group where the AKS cluster is located.
+        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
+        :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+        :param pulumi.Input[str] custom_data: Must contain a valid Base64 encoded string.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanExtensionArgs']]]] extensions: List of Azure extension objects.
+        :param pulumi.Input[pulumi.InputType['OceanHealthArgs']] health: The Ocean AKS Health object.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImageArgs']]]] images: Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: Configure Load Balancer.
+        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input[pulumi.InputType['OceanNetworkArgs']] network: Define the Virtual Network and Subnet.
+        :param pulumi.Input[pulumi.InputType['OceanOsDiskArgs']] os_disk: OS disk specifications.
+        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
         :param pulumi.Input[str] ssh_public_key: SSH public key for admin access to Linux VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanStrategyArgs']]]] strategies: The Ocean AKS strategy object.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
         :param pulumi.Input[str] user_name: Username for admin access to VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]] vm_sizes: The types of virtual machines that may or may not be a part of the Ocean cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -411,10 +825,22 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["acd_identifier"] = acd_identifier
         __props__.__dict__["aks_name"] = aks_name
         __props__.__dict__["aks_resource_group_name"] = aks_resource_group_name
+        __props__.__dict__["autoscaler"] = autoscaler
         __props__.__dict__["controller_cluster_id"] = controller_cluster_id
+        __props__.__dict__["custom_data"] = custom_data
+        __props__.__dict__["extensions"] = extensions
+        __props__.__dict__["health"] = health
+        __props__.__dict__["images"] = images
+        __props__.__dict__["load_balancers"] = load_balancers
         __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
+        __props__.__dict__["os_disk"] = os_disk
+        __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["ssh_public_key"] = ssh_public_key
+        __props__.__dict__["strategies"] = strategies
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["user_name"] = user_name
+        __props__.__dict__["vm_sizes"] = vm_sizes
         return Ocean(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -437,25 +863,97 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter(name="aksResourceGroupName")
     def aks_resource_group_name(self) -> pulumi.Output[str]:
         """
-        Name of the Resource Group for AKS cluster.
+        Name of the Azure Resource Group where the AKS cluster is located.
         """
         return pulumi.get(self, "aks_resource_group_name")
+
+    @property
+    @pulumi.getter
+    def autoscaler(self) -> pulumi.Output[Optional['outputs.OceanAutoscaler']]:
+        """
+        The Ocean Kubernetes Autoscaler object.
+        """
+        return pulumi.get(self, "autoscaler")
 
     @property
     @pulumi.getter(name="controllerClusterId")
     def controller_cluster_id(self) -> pulumi.Output[str]:
         """
-        The Ocean controller cluster.
+        A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         """
         return pulumi.get(self, "controller_cluster_id")
+
+    @property
+    @pulumi.getter(name="customData")
+    def custom_data(self) -> pulumi.Output[str]:
+        """
+        Must contain a valid Base64 encoded string.
+        """
+        return pulumi.get(self, "custom_data")
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> pulumi.Output[Sequence['outputs.OceanExtension']]:
+        """
+        List of Azure extension objects.
+        """
+        return pulumi.get(self, "extensions")
+
+    @property
+    @pulumi.getter
+    def health(self) -> pulumi.Output['outputs.OceanHealth']:
+        """
+        The Ocean AKS Health object.
+        """
+        return pulumi.get(self, "health")
+
+    @property
+    @pulumi.getter
+    def images(self) -> pulumi.Output[Sequence['outputs.OceanImage']]:
+        """
+        Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+        """
+        return pulumi.get(self, "images")
+
+    @property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> pulumi.Output[Sequence['outputs.OceanLoadBalancer']]:
+        """
+        Configure Load Balancer.
+        """
+        return pulumi.get(self, "load_balancers")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The Ocean cluster name.
+        Name of the Load Balancer.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output['outputs.OceanNetwork']:
+        """
+        Define the Virtual Network and Subnet.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="osDisk")
+    def os_disk(self) -> pulumi.Output[Optional['outputs.OceanOsDisk']]:
+        """
+        OS disk specifications.
+        """
+        return pulumi.get(self, "os_disk")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Output[str]:
+        """
+        The Resource Group name of the Load Balancer.
+        """
+        return pulumi.get(self, "resource_group_name")
 
     @property
     @pulumi.getter(name="sshPublicKey")
@@ -466,10 +964,34 @@ class Ocean(pulumi.CustomResource):
         return pulumi.get(self, "ssh_public_key")
 
     @property
+    @pulumi.getter
+    def strategies(self) -> pulumi.Output[Optional[Sequence['outputs.OceanStrategy']]]:
+        """
+        The Ocean AKS strategy object.
+        """
+        return pulumi.get(self, "strategies")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.OceanTag']]]:
+        """
+        Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[str]:
         """
         Username for admin access to VMs.
         """
         return pulumi.get(self, "user_name")
+
+    @property
+    @pulumi.getter(name="vmSizes")
+    def vm_sizes(self) -> pulumi.Output[Optional[Sequence['outputs.OceanVmSize']]]:
+        """
+        The types of virtual machines that may or may not be a part of the Ocean cluster.
+        """
+        return pulumi.get(self, "vm_sizes")
 

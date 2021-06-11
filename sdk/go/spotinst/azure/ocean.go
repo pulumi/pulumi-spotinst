@@ -11,50 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a Spotinst Ocean AKS resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azure.NewOcean(ctx, "example", &azure.OceanArgs{
-// 			AcdIdentifier:        pulumi.String("acd-12345"),
-// 			AksName:              pulumi.String("AKSName"),
-// 			AksResourceGroupName: pulumi.String("ResourceGroupName"),
-// 			ControllerClusterId:  pulumi.String("controller-cluster-id"),
-// 			SshPublicKey:         pulumi.String("ssh-rsa [... redacted ...] generated-by-azure"),
-// 			UserName:             pulumi.String("some-name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ctx.Export("oceanId", spotinst_ocean_aks_.Example.Id)
-// 		return nil
-// 	})
-// }
-// ```
 type Ocean struct {
 	pulumi.CustomResourceState
 
@@ -62,16 +18,40 @@ type Ocean struct {
 	AcdIdentifier pulumi.StringOutput `pulumi:"acdIdentifier"`
 	// The AKS cluster name.
 	AksName pulumi.StringOutput `pulumi:"aksName"`
-	// Name of the Resource Group for AKS cluster.
+	// Name of the Azure Resource Group where the AKS cluster is located.
 	AksResourceGroupName pulumi.StringOutput `pulumi:"aksResourceGroupName"`
-	// The Ocean controller cluster.
+	// The Ocean Kubernetes Autoscaler object.
+	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId pulumi.StringOutput `pulumi:"controllerClusterId"`
-	// The Ocean cluster name.
+	// Must contain a valid Base64 encoded string.
+	CustomData pulumi.StringOutput `pulumi:"customData"`
+	// List of Azure extension objects.
+	Extensions OceanExtensionArrayOutput `pulumi:"extensions"`
+	// The Ocean AKS Health object.
+	Health OceanHealthOutput `pulumi:"health"`
+	// Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+	Images OceanImageArrayOutput `pulumi:"images"`
+	// Configure Load Balancer.
+	LoadBalancers OceanLoadBalancerArrayOutput `pulumi:"loadBalancers"`
+	// Name of the Load Balancer.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Define the Virtual Network and Subnet.
+	Network OceanNetworkOutput `pulumi:"network"`
+	// OS disk specifications.
+	OsDisk OceanOsDiskPtrOutput `pulumi:"osDisk"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
 	// SSH public key for admin access to Linux VMs.
 	SshPublicKey pulumi.StringOutput `pulumi:"sshPublicKey"`
+	// The Ocean AKS strategy object.
+	Strategies OceanStrategyArrayOutput `pulumi:"strategies"`
+	// Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+	Tags OceanTagArrayOutput `pulumi:"tags"`
 	// Username for admin access to VMs.
 	UserName pulumi.StringOutput `pulumi:"userName"`
+	// The types of virtual machines that may or may not be a part of the Ocean cluster.
+	VmSizes OceanVmSizeArrayOutput `pulumi:"vmSizes"`
 }
 
 // NewOcean registers a new resource with the given unique name, arguments, and options.
@@ -119,16 +99,40 @@ type oceanState struct {
 	AcdIdentifier *string `pulumi:"acdIdentifier"`
 	// The AKS cluster name.
 	AksName *string `pulumi:"aksName"`
-	// Name of the Resource Group for AKS cluster.
+	// Name of the Azure Resource Group where the AKS cluster is located.
 	AksResourceGroupName *string `pulumi:"aksResourceGroupName"`
-	// The Ocean controller cluster.
+	// The Ocean Kubernetes Autoscaler object.
+	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId *string `pulumi:"controllerClusterId"`
-	// The Ocean cluster name.
+	// Must contain a valid Base64 encoded string.
+	CustomData *string `pulumi:"customData"`
+	// List of Azure extension objects.
+	Extensions []OceanExtension `pulumi:"extensions"`
+	// The Ocean AKS Health object.
+	Health *OceanHealth `pulumi:"health"`
+	// Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+	Images []OceanImage `pulumi:"images"`
+	// Configure Load Balancer.
+	LoadBalancers []OceanLoadBalancer `pulumi:"loadBalancers"`
+	// Name of the Load Balancer.
 	Name *string `pulumi:"name"`
+	// Define the Virtual Network and Subnet.
+	Network *OceanNetwork `pulumi:"network"`
+	// OS disk specifications.
+	OsDisk *OceanOsDisk `pulumi:"osDisk"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName *string `pulumi:"resourceGroupName"`
 	// SSH public key for admin access to Linux VMs.
 	SshPublicKey *string `pulumi:"sshPublicKey"`
+	// The Ocean AKS strategy object.
+	Strategies []OceanStrategy `pulumi:"strategies"`
+	// Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+	Tags []OceanTag `pulumi:"tags"`
 	// Username for admin access to VMs.
 	UserName *string `pulumi:"userName"`
+	// The types of virtual machines that may or may not be a part of the Ocean cluster.
+	VmSizes []OceanVmSize `pulumi:"vmSizes"`
 }
 
 type OceanState struct {
@@ -136,16 +140,40 @@ type OceanState struct {
 	AcdIdentifier pulumi.StringPtrInput
 	// The AKS cluster name.
 	AksName pulumi.StringPtrInput
-	// Name of the Resource Group for AKS cluster.
+	// Name of the Azure Resource Group where the AKS cluster is located.
 	AksResourceGroupName pulumi.StringPtrInput
-	// The Ocean controller cluster.
+	// The Ocean Kubernetes Autoscaler object.
+	Autoscaler OceanAutoscalerPtrInput
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId pulumi.StringPtrInput
-	// The Ocean cluster name.
+	// Must contain a valid Base64 encoded string.
+	CustomData pulumi.StringPtrInput
+	// List of Azure extension objects.
+	Extensions OceanExtensionArrayInput
+	// The Ocean AKS Health object.
+	Health OceanHealthPtrInput
+	// Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+	Images OceanImageArrayInput
+	// Configure Load Balancer.
+	LoadBalancers OceanLoadBalancerArrayInput
+	// Name of the Load Balancer.
 	Name pulumi.StringPtrInput
+	// Define the Virtual Network and Subnet.
+	Network OceanNetworkPtrInput
+	// OS disk specifications.
+	OsDisk OceanOsDiskPtrInput
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName pulumi.StringPtrInput
 	// SSH public key for admin access to Linux VMs.
 	SshPublicKey pulumi.StringPtrInput
+	// The Ocean AKS strategy object.
+	Strategies OceanStrategyArrayInput
+	// Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+	Tags OceanTagArrayInput
 	// Username for admin access to VMs.
 	UserName pulumi.StringPtrInput
+	// The types of virtual machines that may or may not be a part of the Ocean cluster.
+	VmSizes OceanVmSizeArrayInput
 }
 
 func (OceanState) ElementType() reflect.Type {
@@ -157,16 +185,40 @@ type oceanArgs struct {
 	AcdIdentifier string `pulumi:"acdIdentifier"`
 	// The AKS cluster name.
 	AksName string `pulumi:"aksName"`
-	// Name of the Resource Group for AKS cluster.
+	// Name of the Azure Resource Group where the AKS cluster is located.
 	AksResourceGroupName string `pulumi:"aksResourceGroupName"`
-	// The Ocean controller cluster.
+	// The Ocean Kubernetes Autoscaler object.
+	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId *string `pulumi:"controllerClusterId"`
-	// The Ocean cluster name.
+	// Must contain a valid Base64 encoded string.
+	CustomData *string `pulumi:"customData"`
+	// List of Azure extension objects.
+	Extensions []OceanExtension `pulumi:"extensions"`
+	// The Ocean AKS Health object.
+	Health *OceanHealth `pulumi:"health"`
+	// Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+	Images []OceanImage `pulumi:"images"`
+	// Configure Load Balancer.
+	LoadBalancers []OceanLoadBalancer `pulumi:"loadBalancers"`
+	// Name of the Load Balancer.
 	Name *string `pulumi:"name"`
+	// Define the Virtual Network and Subnet.
+	Network *OceanNetwork `pulumi:"network"`
+	// OS disk specifications.
+	OsDisk *OceanOsDisk `pulumi:"osDisk"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName *string `pulumi:"resourceGroupName"`
 	// SSH public key for admin access to Linux VMs.
 	SshPublicKey string `pulumi:"sshPublicKey"`
+	// The Ocean AKS strategy object.
+	Strategies []OceanStrategy `pulumi:"strategies"`
+	// Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+	Tags []OceanTag `pulumi:"tags"`
 	// Username for admin access to VMs.
 	UserName *string `pulumi:"userName"`
+	// The types of virtual machines that may or may not be a part of the Ocean cluster.
+	VmSizes []OceanVmSize `pulumi:"vmSizes"`
 }
 
 // The set of arguments for constructing a Ocean resource.
@@ -175,16 +227,40 @@ type OceanArgs struct {
 	AcdIdentifier pulumi.StringInput
 	// The AKS cluster name.
 	AksName pulumi.StringInput
-	// Name of the Resource Group for AKS cluster.
+	// Name of the Azure Resource Group where the AKS cluster is located.
 	AksResourceGroupName pulumi.StringInput
-	// The Ocean controller cluster.
+	// The Ocean Kubernetes Autoscaler object.
+	Autoscaler OceanAutoscalerPtrInput
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId pulumi.StringPtrInput
-	// The Ocean cluster name.
+	// Must contain a valid Base64 encoded string.
+	CustomData pulumi.StringPtrInput
+	// List of Azure extension objects.
+	Extensions OceanExtensionArrayInput
+	// The Ocean AKS Health object.
+	Health OceanHealthPtrInput
+	// Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+	Images OceanImageArrayInput
+	// Configure Load Balancer.
+	LoadBalancers OceanLoadBalancerArrayInput
+	// Name of the Load Balancer.
 	Name pulumi.StringPtrInput
+	// Define the Virtual Network and Subnet.
+	Network OceanNetworkPtrInput
+	// OS disk specifications.
+	OsDisk OceanOsDiskPtrInput
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName pulumi.StringPtrInput
 	// SSH public key for admin access to Linux VMs.
 	SshPublicKey pulumi.StringInput
+	// The Ocean AKS strategy object.
+	Strategies OceanStrategyArrayInput
+	// Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+	Tags OceanTagArrayInput
 	// Username for admin access to VMs.
 	UserName pulumi.StringPtrInput
+	// The types of virtual machines that may or may not be a part of the Ocean cluster.
+	VmSizes OceanVmSizeArrayInput
 }
 
 func (OceanArgs) ElementType() reflect.Type {

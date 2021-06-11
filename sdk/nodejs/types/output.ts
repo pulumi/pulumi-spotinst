@@ -15,7 +15,8 @@ export interface ElastigroupAzureV3ImageCustom {
      */
     imageName: string;
     /**
-     * Vnet Resource Group Name.
+     * - The resource group of the Application Security Group.
+     * }
      */
     resourceGroupName: string;
 }
@@ -54,7 +55,8 @@ export interface ElastigroupAzureV3Login {
 export interface ElastigroupAzureV3Network {
     networkInterfaces: outputs.ElastigroupAzureV3NetworkNetworkInterface[];
     /**
-     * Vnet Resource Group Name.
+     * - The resource group of the Application Security Group.
+     * }
      */
     resourceGroupName: string;
     /**
@@ -68,6 +70,10 @@ export interface ElastigroupAzureV3NetworkNetworkInterface {
      * Array of additional IP configuration objects.
      */
     additionalIpConfigs?: outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig[];
+    /**
+     * - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+     */
+    applicationSecurityGroups?: outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup[];
     assignPublicIp: boolean;
     isPrimary: boolean;
     /**
@@ -78,13 +84,25 @@ export interface ElastigroupAzureV3NetworkNetworkInterface {
 
 export interface ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
     /**
-     * The IP configuration name.
+     * - The name of the Application Security group.
      */
     name: string;
     /**
-     * Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+     * Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
      */
     privateIpVersion?: string;
+}
+
+export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
+    /**
+     * - The name of the Application Security group.
+     */
+    name: string;
+    /**
+     * - The resource group of the Application Security Group.
+     * }
+     */
+    resourceGroupName: string;
 }
 
 export interface ElastigroupAzureV3Strategy {
@@ -2674,6 +2692,230 @@ export namespace azure {
         healthCheckType?: string;
     }
 
+    export interface OceanAutoscaler {
+        /**
+         * Auto Scaling scale down operations.
+         */
+        autoscaleDown: outputs.azure.OceanAutoscalerAutoscaleDown;
+        /**
+         * Spare Resource Capacity Management feature enables fast assignment of Pods without having to wait for new resources to be launched.
+         */
+        autoscaleHeadroom: outputs.azure.OceanAutoscalerAutoscaleHeadroom;
+        /**
+         * Enable the Ocean Kubernetes Autoscaler.
+         */
+        autoscaleIsEnabled: boolean;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
+        resourceLimits: outputs.azure.OceanAutoscalerResourceLimits;
+    }
+
+    export interface OceanAutoscalerAutoscaleDown {
+        /**
+         * Would represent the maximum % to scale-down.
+         */
+        maxScaleDownPercentage: number;
+    }
+
+    export interface OceanAutoscalerAutoscaleHeadroom {
+        /**
+         * Automatic headroom configuration.
+         */
+        automatic: outputs.azure.OceanAutoscalerAutoscaleHeadroomAutomatic;
+    }
+
+    export interface OceanAutoscalerAutoscaleHeadroomAutomatic {
+        /**
+         * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+         */
+        isEnabled: boolean;
+        /**
+         * Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+         */
+        percentage: number;
+    }
+
+    export interface OceanAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
+        maxMemoryGib: number;
+        /**
+         * The maximum cpu in vCpu units that can be allocated to the cluster.
+         */
+        maxVcpu?: number;
+    }
+
+    export interface OceanExtension {
+        /**
+         * API version of the extension.
+         */
+        apiVersion: string;
+        /**
+         * Toggles whether auto upgrades are allowed.
+         */
+        minorVersionAutoUpgrade: boolean;
+        /**
+         * Name of the Load Balancer.
+         */
+        name: string;
+        /**
+         * Image publisher.
+         */
+        publisher: string;
+        /**
+         * The type of load balancer. Supported value: `loadBalancer`
+         */
+        type: string;
+    }
+
+    export interface OceanHealth {
+        /**
+         * The amount of time to wait, in seconds, from the moment the instance has launched before monitoring its health checks.
+         */
+        gracePeriod?: number;
+    }
+
+    export interface OceanImage {
+        /**
+         * Select an image from Azure's Marketplace image catalogue.
+         */
+        marketplaces: outputs.azure.OceanImageMarketplace[];
+    }
+
+    export interface OceanImageMarketplace {
+        /**
+         * Image name.
+         */
+        offer: string;
+        /**
+         * Image publisher.
+         */
+        publisher: string;
+        /**
+         * Image Stock Keeping Unit (which is the specific version of the image).
+         */
+        sku: string;
+        /**
+         * Image version.
+         */
+        version: string;
+    }
+
+    export interface OceanLoadBalancer {
+        /**
+         * Names of the Backend Pools to register the Cluster VMs to. Each Backend Pool is a separate load balancer.
+         */
+        backendPoolNames: string[];
+        /**
+         * Supported values: `Standard`, `Basic`.
+         */
+        loadBalancerSku: string;
+        /**
+         * Name of the Load Balancer.
+         */
+        name: string;
+        /**
+         * The Resource Group name of the Load Balancer.
+         */
+        resourceGroupName: string;
+        /**
+         * The type of load balancer. Supported value: `loadBalancer`
+         */
+        type: string;
+    }
+
+    export interface OceanNetwork {
+        /**
+         * A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
+         */
+        networkInterfaces: outputs.azure.OceanNetworkNetworkInterface[];
+        /**
+         * The Resource Group name of the Load Balancer.
+         */
+        resourceGroupName: string;
+        /**
+         * Virtual network.
+         */
+        virtualNetworkName: string;
+    }
+
+    export interface OceanNetworkNetworkInterface {
+        /**
+         * Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
+         */
+        additionalIpConfigs: outputs.azure.OceanNetworkNetworkInterfaceAdditionalIpConfig[];
+        /**
+         * Assign public IP.
+         */
+        assignPublicIp: boolean;
+        /**
+         * Defines whether the network interface is primary or not.
+         */
+        isPrimary: boolean;
+        securityGroup: outputs.azure.OceanNetworkNetworkInterfaceSecurityGroup;
+        /**
+         * Subnet name.
+         */
+        subnetName: string;
+    }
+
+    export interface OceanNetworkNetworkInterfaceAdditionalIpConfig {
+        /**
+         * Name of the Load Balancer.
+         */
+        name: string;
+        /**
+         * Supported values: `IPv4`, `IPv6`.
+         */
+        privateIpVersion: string;
+    }
+
+    export interface OceanNetworkNetworkInterfaceSecurityGroup {
+        /**
+         * Name of the Load Balancer.
+         */
+        name: string;
+        /**
+         * The Resource Group name of the Load Balancer.
+         */
+        resourceGroupName: string;
+    }
+
+    export interface OceanOsDisk {
+        /**
+         * The size of the OS disk in GB.
+         */
+        sizeGb: number;
+        /**
+         * The type of load balancer. Supported value: `loadBalancer`
+         */
+        type?: string;
+    }
+
+    export interface OceanStrategy {
+        /**
+         * If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+         */
+        fallbackToOndemand?: boolean;
+        /**
+         * Percentage of Spot VMs to maintain.
+         */
+        spotPercentage?: number;
+    }
+
+    export interface OceanTag {
+        /**
+         * Tag key.
+         */
+        key?: string;
+        /**
+         * Tag value.
+         */
+        value?: string;
+    }
+
     export interface OceanVirtualNodeGroupAutoscale {
         autoscaleHeadroom?: outputs.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom;
     }
@@ -2761,6 +3003,13 @@ export namespace azure {
          * Tag Value for VMs in the cluster.
          */
         value: string;
+    }
+
+    export interface OceanVmSize {
+        /**
+         * VM types allowed in the Ocean cluster.
+         */
+        whitelists?: string[];
     }
 }
 

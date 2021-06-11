@@ -18,7 +18,8 @@ namespace Pulumi.SpotInst.Outputs
         /// </summary>
         public readonly string ImageName;
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// - The resource group of the Application Security Group.
+        /// }
         /// </summary>
         public readonly string ResourceGroupName;
 

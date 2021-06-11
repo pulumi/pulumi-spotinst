@@ -29,6 +29,23 @@ __all__ = [
     'ElastigroupStrategy',
     'ElastigroupUpdatePolicy',
     'ElastigroupUpdatePolicyRollConfig',
+    'OceanAutoscaler',
+    'OceanAutoscalerAutoscaleDown',
+    'OceanAutoscalerAutoscaleHeadroom',
+    'OceanAutoscalerAutoscaleHeadroomAutomatic',
+    'OceanAutoscalerResourceLimits',
+    'OceanExtension',
+    'OceanHealth',
+    'OceanImage',
+    'OceanImageMarketplace',
+    'OceanLoadBalancer',
+    'OceanNetwork',
+    'OceanNetworkNetworkInterface',
+    'OceanNetworkNetworkInterfaceAdditionalIpConfig',
+    'OceanNetworkNetworkInterfaceSecurityGroup',
+    'OceanOsDisk',
+    'OceanStrategy',
+    'OceanTag',
     'OceanVirtualNodeGroupAutoscale',
     'OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom',
     'OceanVirtualNodeGroupLabel',
@@ -37,6 +54,7 @@ __all__ = [
     'OceanVirtualNodeGroupLaunchSpecificationTag',
     'OceanVirtualNodeGroupResourceLimit',
     'OceanVirtualNodeGroupTaint',
+    'OceanVmSize',
 ]
 
 @pulumi.output_type
@@ -1478,6 +1496,897 @@ class ElastigroupUpdatePolicyRollConfig(dict):
 
 
 @pulumi.output_type
+class OceanAutoscaler(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscaleDown":
+            suggest = "autoscale_down"
+        elif key == "autoscaleHeadroom":
+            suggest = "autoscale_headroom"
+        elif key == "autoscaleIsEnabled":
+            suggest = "autoscale_is_enabled"
+        elif key == "resourceLimits":
+            suggest = "resource_limits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanAutoscaler. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanAutoscaler.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanAutoscaler.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 autoscale_down: Optional['outputs.OceanAutoscalerAutoscaleDown'] = None,
+                 autoscale_headroom: Optional['outputs.OceanAutoscalerAutoscaleHeadroom'] = None,
+                 autoscale_is_enabled: Optional[bool] = None,
+                 resource_limits: Optional['outputs.OceanAutoscalerResourceLimits'] = None):
+        """
+        :param 'OceanAutoscalerAutoscaleDownArgs' autoscale_down: Auto Scaling scale down operations.
+        :param 'OceanAutoscalerAutoscaleHeadroomArgs' autoscale_headroom: Spare Resource Capacity Management feature enables fast assignment of Pods without having to wait for new resources to be launched.
+        :param bool autoscale_is_enabled: Enable the Ocean Kubernetes Autoscaler.
+        :param 'OceanAutoscalerResourceLimitsArgs' resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
+        if autoscale_down is not None:
+            pulumi.set(__self__, "autoscale_down", autoscale_down)
+        if autoscale_headroom is not None:
+            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
+        if autoscale_is_enabled is not None:
+            pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
+        if resource_limits is not None:
+            pulumi.set(__self__, "resource_limits", resource_limits)
+
+    @property
+    @pulumi.getter(name="autoscaleDown")
+    def autoscale_down(self) -> Optional['outputs.OceanAutoscalerAutoscaleDown']:
+        """
+        Auto Scaling scale down operations.
+        """
+        return pulumi.get(self, "autoscale_down")
+
+    @property
+    @pulumi.getter(name="autoscaleHeadroom")
+    def autoscale_headroom(self) -> Optional['outputs.OceanAutoscalerAutoscaleHeadroom']:
+        """
+        Spare Resource Capacity Management feature enables fast assignment of Pods without having to wait for new resources to be launched.
+        """
+        return pulumi.get(self, "autoscale_headroom")
+
+    @property
+    @pulumi.getter(name="autoscaleIsEnabled")
+    def autoscale_is_enabled(self) -> Optional[bool]:
+        """
+        Enable the Ocean Kubernetes Autoscaler.
+        """
+        return pulumi.get(self, "autoscale_is_enabled")
+
+    @property
+    @pulumi.getter(name="resourceLimits")
+    def resource_limits(self) -> Optional['outputs.OceanAutoscalerResourceLimits']:
+        """
+        Optionally set upper and lower bounds on the resource usage of the cluster.
+        """
+        return pulumi.get(self, "resource_limits")
+
+
+@pulumi.output_type
+class OceanAutoscalerAutoscaleDown(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxScaleDownPercentage":
+            suggest = "max_scale_down_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanAutoscalerAutoscaleDown. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanAutoscalerAutoscaleDown.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanAutoscalerAutoscaleDown.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_scale_down_percentage: Optional[float] = None):
+        """
+        :param float max_scale_down_percentage: Would represent the maximum % to scale-down.
+        """
+        if max_scale_down_percentage is not None:
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
+
+    @property
+    @pulumi.getter(name="maxScaleDownPercentage")
+    def max_scale_down_percentage(self) -> Optional[float]:
+        """
+        Would represent the maximum % to scale-down.
+        """
+        return pulumi.get(self, "max_scale_down_percentage")
+
+
+@pulumi.output_type
+class OceanAutoscalerAutoscaleHeadroom(dict):
+    def __init__(__self__, *,
+                 automatic: Optional['outputs.OceanAutoscalerAutoscaleHeadroomAutomatic'] = None):
+        """
+        :param 'OceanAutoscalerAutoscaleHeadroomAutomaticArgs' automatic: Automatic headroom configuration.
+        """
+        if automatic is not None:
+            pulumi.set(__self__, "automatic", automatic)
+
+    @property
+    @pulumi.getter
+    def automatic(self) -> Optional['outputs.OceanAutoscalerAutoscaleHeadroomAutomatic']:
+        """
+        Automatic headroom configuration.
+        """
+        return pulumi.get(self, "automatic")
+
+
+@pulumi.output_type
+class OceanAutoscalerAutoscaleHeadroomAutomatic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanAutoscalerAutoscaleHeadroomAutomatic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanAutoscalerAutoscaleHeadroomAutomatic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanAutoscalerAutoscaleHeadroomAutomatic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_enabled: Optional[bool] = None,
+                 percentage: Optional[int] = None):
+        """
+        :param bool is_enabled: Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+        :param int percentage: Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+        """
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[bool]:
+        """
+        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[int]:
+        """
+        Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+        """
+        return pulumi.get(self, "percentage")
+
+
+@pulumi.output_type
+class OceanAutoscalerResourceLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxMemoryGib":
+            suggest = "max_memory_gib"
+        elif key == "maxVcpu":
+            suggest = "max_vcpu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanAutoscalerResourceLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanAutoscalerResourceLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanAutoscalerResourceLimits.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_memory_gib: Optional[int] = None,
+                 max_vcpu: Optional[int] = None):
+        """
+        :param int max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
+        :param int max_vcpu: The maximum cpu in vCpu units that can be allocated to the cluster.
+        """
+        if max_memory_gib is not None:
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+        if max_vcpu is not None:
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
+
+    @property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[int]:
+        """
+        The maximum memory in GiB units that can be allocated to the cluster.
+        """
+        return pulumi.get(self, "max_memory_gib")
+
+    @property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[int]:
+        """
+        The maximum cpu in vCpu units that can be allocated to the cluster.
+        """
+        return pulumi.get(self, "max_vcpu")
+
+
+@pulumi.output_type
+class OceanExtension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiVersion":
+            suggest = "api_version"
+        elif key == "minorVersionAutoUpgrade":
+            suggest = "minor_version_auto_upgrade"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanExtension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanExtension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanExtension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_version: Optional[str] = None,
+                 minor_version_auto_upgrade: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 publisher: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str api_version: API version of the extension.
+        :param bool minor_version_auto_upgrade: Toggles whether auto upgrades are allowed.
+        :param str name: Name of the Load Balancer.
+        :param str publisher: Image publisher.
+        :param str type: The type of load balancer. Supported value: `loadBalancer`
+        """
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if minor_version_auto_upgrade is not None:
+            pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if publisher is not None:
+            pulumi.set(__self__, "publisher", publisher)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[str]:
+        """
+        API version of the extension.
+        """
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter(name="minorVersionAutoUpgrade")
+    def minor_version_auto_upgrade(self) -> Optional[bool]:
+        """
+        Toggles whether auto upgrades are allowed.
+        """
+        return pulumi.get(self, "minor_version_auto_upgrade")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the Load Balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> Optional[str]:
+        """
+        Image publisher.
+        """
+        return pulumi.get(self, "publisher")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of load balancer. Supported value: `loadBalancer`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OceanHealth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gracePeriod":
+            suggest = "grace_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanHealth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanHealth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanHealth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 grace_period: Optional[int] = None):
+        """
+        :param int grace_period: The amount of time to wait, in seconds, from the moment the instance has launched before monitoring its health checks.
+        """
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[int]:
+        """
+        The amount of time to wait, in seconds, from the moment the instance has launched before monitoring its health checks.
+        """
+        return pulumi.get(self, "grace_period")
+
+
+@pulumi.output_type
+class OceanImage(dict):
+    def __init__(__self__, *,
+                 marketplaces: Optional[Sequence['outputs.OceanImageMarketplace']] = None):
+        """
+        :param Sequence['OceanImageMarketplaceArgs'] marketplaces: Select an image from Azure's Marketplace image catalogue.
+        """
+        if marketplaces is not None:
+            pulumi.set(__self__, "marketplaces", marketplaces)
+
+    @property
+    @pulumi.getter
+    def marketplaces(self) -> Optional[Sequence['outputs.OceanImageMarketplace']]:
+        """
+        Select an image from Azure's Marketplace image catalogue.
+        """
+        return pulumi.get(self, "marketplaces")
+
+
+@pulumi.output_type
+class OceanImageMarketplace(dict):
+    def __init__(__self__, *,
+                 offer: Optional[str] = None,
+                 publisher: Optional[str] = None,
+                 sku: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str offer: Image name.
+        :param str publisher: Image publisher.
+        :param str sku: Image Stock Keeping Unit (which is the specific version of the image).
+        :param str version: Image version.
+        """
+        if offer is not None:
+            pulumi.set(__self__, "offer", offer)
+        if publisher is not None:
+            pulumi.set(__self__, "publisher", publisher)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def offer(self) -> Optional[str]:
+        """
+        Image name.
+        """
+        return pulumi.get(self, "offer")
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> Optional[str]:
+        """
+        Image publisher.
+        """
+        return pulumi.get(self, "publisher")
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[str]:
+        """
+        Image Stock Keeping Unit (which is the specific version of the image).
+        """
+        return pulumi.get(self, "sku")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Image version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class OceanLoadBalancer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendPoolNames":
+            suggest = "backend_pool_names"
+        elif key == "loadBalancerSku":
+            suggest = "load_balancer_sku"
+        elif key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLoadBalancer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLoadBalancer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLoadBalancer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backend_pool_names: Optional[Sequence[str]] = None,
+                 load_balancer_sku: Optional[str] = None,
+                 name: Optional[str] = None,
+                 resource_group_name: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param Sequence[str] backend_pool_names: Names of the Backend Pools to register the Cluster VMs to. Each Backend Pool is a separate load balancer.
+        :param str load_balancer_sku: Supported values: `Standard`, `Basic`.
+        :param str name: Name of the Load Balancer.
+        :param str resource_group_name: The Resource Group name of the Load Balancer.
+        :param str type: The type of load balancer. Supported value: `loadBalancer`
+        """
+        if backend_pool_names is not None:
+            pulumi.set(__self__, "backend_pool_names", backend_pool_names)
+        if load_balancer_sku is not None:
+            pulumi.set(__self__, "load_balancer_sku", load_balancer_sku)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="backendPoolNames")
+    def backend_pool_names(self) -> Optional[Sequence[str]]:
+        """
+        Names of the Backend Pools to register the Cluster VMs to. Each Backend Pool is a separate load balancer.
+        """
+        return pulumi.get(self, "backend_pool_names")
+
+    @property
+    @pulumi.getter(name="loadBalancerSku")
+    def load_balancer_sku(self) -> Optional[str]:
+        """
+        Supported values: `Standard`, `Basic`.
+        """
+        return pulumi.get(self, "load_balancer_sku")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the Load Balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[str]:
+        """
+        The Resource Group name of the Load Balancer.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of load balancer. Supported value: `loadBalancer`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OceanNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkInterfaces":
+            suggest = "network_interfaces"
+        elif key == "resourceGroupName":
+            suggest = "resource_group_name"
+        elif key == "virtualNetworkName":
+            suggest = "virtual_network_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_interfaces: Optional[Sequence['outputs.OceanNetworkNetworkInterface']] = None,
+                 resource_group_name: Optional[str] = None,
+                 virtual_network_name: Optional[str] = None):
+        """
+        :param Sequence['OceanNetworkNetworkInterfaceArgs'] network_interfaces: A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
+        :param str resource_group_name: The Resource Group name of the Load Balancer.
+        :param str virtual_network_name: Virtual network.
+        """
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if virtual_network_name is not None:
+            pulumi.set(__self__, "virtual_network_name", virtual_network_name)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[Sequence['outputs.OceanNetworkNetworkInterface']]:
+        """
+        A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[str]:
+        """
+        The Resource Group name of the Load Balancer.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @property
+    @pulumi.getter(name="virtualNetworkName")
+    def virtual_network_name(self) -> Optional[str]:
+        """
+        Virtual network.
+        """
+        return pulumi.get(self, "virtual_network_name")
+
+
+@pulumi.output_type
+class OceanNetworkNetworkInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalIpConfigs":
+            suggest = "additional_ip_configs"
+        elif key == "assignPublicIp":
+            suggest = "assign_public_ip"
+        elif key == "isPrimary":
+            suggest = "is_primary"
+        elif key == "securityGroup":
+            suggest = "security_group"
+        elif key == "subnetName":
+            suggest = "subnet_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNetworkNetworkInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNetworkNetworkInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNetworkNetworkInterface.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_ip_configs: Optional[Sequence['outputs.OceanNetworkNetworkInterfaceAdditionalIpConfig']] = None,
+                 assign_public_ip: Optional[bool] = None,
+                 is_primary: Optional[bool] = None,
+                 security_group: Optional['outputs.OceanNetworkNetworkInterfaceSecurityGroup'] = None,
+                 subnet_name: Optional[str] = None):
+        """
+        :param Sequence['OceanNetworkNetworkInterfaceAdditionalIpConfigArgs'] additional_ip_configs: Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
+        :param bool assign_public_ip: Assign public IP.
+        :param bool is_primary: Defines whether the network interface is primary or not.
+        :param str subnet_name: Subnet name.
+        """
+        if additional_ip_configs is not None:
+            pulumi.set(__self__, "additional_ip_configs", additional_ip_configs)
+        if assign_public_ip is not None:
+            pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        if is_primary is not None:
+            pulumi.set(__self__, "is_primary", is_primary)
+        if security_group is not None:
+            pulumi.set(__self__, "security_group", security_group)
+        if subnet_name is not None:
+            pulumi.set(__self__, "subnet_name", subnet_name)
+
+    @property
+    @pulumi.getter(name="additionalIpConfigs")
+    def additional_ip_configs(self) -> Optional[Sequence['outputs.OceanNetworkNetworkInterfaceAdditionalIpConfig']]:
+        """
+        Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
+        """
+        return pulumi.get(self, "additional_ip_configs")
+
+    @property
+    @pulumi.getter(name="assignPublicIp")
+    def assign_public_ip(self) -> Optional[bool]:
+        """
+        Assign public IP.
+        """
+        return pulumi.get(self, "assign_public_ip")
+
+    @property
+    @pulumi.getter(name="isPrimary")
+    def is_primary(self) -> Optional[bool]:
+        """
+        Defines whether the network interface is primary or not.
+        """
+        return pulumi.get(self, "is_primary")
+
+    @property
+    @pulumi.getter(name="securityGroup")
+    def security_group(self) -> Optional['outputs.OceanNetworkNetworkInterfaceSecurityGroup']:
+        return pulumi.get(self, "security_group")
+
+    @property
+    @pulumi.getter(name="subnetName")
+    def subnet_name(self) -> Optional[str]:
+        """
+        Subnet name.
+        """
+        return pulumi.get(self, "subnet_name")
+
+
+@pulumi.output_type
+class OceanNetworkNetworkInterfaceAdditionalIpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateIpVersion":
+            suggest = "private_ip_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNetworkNetworkInterfaceAdditionalIpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNetworkNetworkInterfaceAdditionalIpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNetworkNetworkInterfaceAdditionalIpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 private_ip_version: Optional[str] = None):
+        """
+        :param str name: Name of the Load Balancer.
+        :param str private_ip_version: Supported values: `IPv4`, `IPv6`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if private_ip_version is not None:
+            pulumi.set(__self__, "private_ip_version", private_ip_version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the Load Balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="privateIpVersion")
+    def private_ip_version(self) -> Optional[str]:
+        """
+        Supported values: `IPv4`, `IPv6`.
+        """
+        return pulumi.get(self, "private_ip_version")
+
+
+@pulumi.output_type
+class OceanNetworkNetworkInterfaceSecurityGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNetworkNetworkInterfaceSecurityGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNetworkNetworkInterfaceSecurityGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNetworkNetworkInterfaceSecurityGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 resource_group_name: Optional[str] = None):
+        """
+        :param str name: Name of the Load Balancer.
+        :param str resource_group_name: The Resource Group name of the Load Balancer.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the Load Balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[str]:
+        """
+        The Resource Group name of the Load Balancer.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+
+@pulumi.output_type
+class OceanOsDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanOsDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanOsDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanOsDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 size_gb: int,
+                 type: Optional[str] = None):
+        """
+        :param int size_gb: The size of the OS disk in GB.
+        :param str type: The type of load balancer. Supported value: `loadBalancer`
+        """
+        pulumi.set(__self__, "size_gb", size_gb)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> int:
+        """
+        The size of the OS disk in GB.
+        """
+        return pulumi.get(self, "size_gb")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of load balancer. Supported value: `loadBalancer`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OceanStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fallbackToOndemand":
+            suggest = "fallback_to_ondemand"
+        elif key == "spotPercentage":
+            suggest = "spot_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fallback_to_ondemand: Optional[bool] = None,
+                 spot_percentage: Optional[int] = None):
+        """
+        :param bool fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        :param int spot_percentage: Percentage of Spot VMs to maintain.
+        """
+        if fallback_to_ondemand is not None:
+            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+        if spot_percentage is not None:
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
+
+    @property
+    @pulumi.getter(name="fallbackToOndemand")
+    def fallback_to_ondemand(self) -> Optional[bool]:
+        """
+        If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+        """
+        return pulumi.get(self, "fallback_to_ondemand")
+
+    @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> Optional[int]:
+        """
+        Percentage of Spot VMs to maintain.
+        """
+        return pulumi.get(self, "spot_percentage")
+
+
+@pulumi.output_type
+class OceanTag(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: Tag key.
+        :param str value: Tag value.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Tag value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class OceanVirtualNodeGroupAutoscale(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1814,5 +2723,24 @@ class OceanVirtualNodeGroupTaint(dict):
         Tag Value for VMs in the cluster.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanVmSize(dict):
+    def __init__(__self__, *,
+                 whitelists: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] whitelists: VM types allowed in the Ocean cluster.
+        """
+        if whitelists is not None:
+            pulumi.set(__self__, "whitelists", whitelists)
+
+    @property
+    @pulumi.getter
+    def whitelists(self) -> Optional[Sequence[str]]:
+        """
+        VM types allowed in the Ocean cluster.
+        """
+        return pulumi.get(self, "whitelists")
 
 

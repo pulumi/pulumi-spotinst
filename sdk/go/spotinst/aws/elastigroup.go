@@ -21,7 +21,7 @@ type Elastigroup struct {
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
 	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
 	BlockDevicesMode pulumi.StringPtrOutput `pulumi:"blockDevicesMode"`
-	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
 	CapacityUnit pulumi.StringOutput `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrOutput `pulumi:"cpuCredits"`
@@ -93,7 +93,7 @@ type Elastigroup struct {
 	MetadataOptions ElastigroupMetadataOptionsPtrOutput `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+	// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
 	MinimumInstanceLifetime pulumi.IntPtrOutput `pulumi:"minimumInstanceLifetime"`
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayOutput `pulumi:"multaiTargetSets"`
@@ -102,7 +102,7 @@ type Elastigroup struct {
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrOutput `pulumi:"ondemandCount"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+	// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
 	Orientation pulumi.StringOutput `pulumi:"orientation"`
 	// Boolean, should the instance maintain its Data volumes.
 	PersistBlockDevices pulumi.BoolPtrOutput `pulumi:"persistBlockDevices"`
@@ -110,7 +110,7 @@ type Elastigroup struct {
 	PersistPrivateIp pulumi.BoolPtrOutput `pulumi:"persistPrivateIp"`
 	// Boolean, should the instance maintain its root device volumes.
 	PersistRootDevice pulumi.BoolPtrOutput `pulumi:"persistRootDevice"`
-	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
 	PlacementTenancy pulumi.StringPtrOutput `pulumi:"placementTenancy"`
 	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
@@ -212,7 +212,7 @@ type elastigroupState struct {
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
 	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
-	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
 	CapacityUnit *string `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits *string `pulumi:"cpuCredits"`
@@ -284,7 +284,7 @@ type elastigroupState struct {
 	MetadataOptions *ElastigroupMetadataOptions `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+	// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
 	MinimumInstanceLifetime *int `pulumi:"minimumInstanceLifetime"`
 	// Set of targets to register.
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
@@ -293,7 +293,7 @@ type elastigroupState struct {
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount *int `pulumi:"ondemandCount"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+	// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
 	Orientation *string `pulumi:"orientation"`
 	// Boolean, should the instance maintain its Data volumes.
 	PersistBlockDevices *bool `pulumi:"persistBlockDevices"`
@@ -301,7 +301,7 @@ type elastigroupState struct {
 	PersistPrivateIp *bool `pulumi:"persistPrivateIp"`
 	// Boolean, should the instance maintain its root device volumes.
 	PersistRootDevice *bool `pulumi:"persistRootDevice"`
-	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
 	PlacementTenancy *string `pulumi:"placementTenancy"`
 	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
@@ -357,7 +357,7 @@ type ElastigroupState struct {
 	AvailabilityZones pulumi.StringArrayInput
 	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
 	BlockDevicesMode pulumi.StringPtrInput
-	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
 	CapacityUnit pulumi.StringPtrInput
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrInput
@@ -429,7 +429,7 @@ type ElastigroupState struct {
 	MetadataOptions ElastigroupMetadataOptionsPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+	// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
 	MinimumInstanceLifetime pulumi.IntPtrInput
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
@@ -438,7 +438,7 @@ type ElastigroupState struct {
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrInput
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+	// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
 	Orientation pulumi.StringPtrInput
 	// Boolean, should the instance maintain its Data volumes.
 	PersistBlockDevices pulumi.BoolPtrInput
@@ -446,7 +446,7 @@ type ElastigroupState struct {
 	PersistPrivateIp pulumi.BoolPtrInput
 	// Boolean, should the instance maintain its root device volumes.
 	PersistRootDevice pulumi.BoolPtrInput
-	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
 	PlacementTenancy pulumi.StringPtrInput
 	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
@@ -506,7 +506,7 @@ type elastigroupArgs struct {
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
 	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
-	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
 	CapacityUnit *string `pulumi:"capacityUnit"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits *string `pulumi:"cpuCredits"`
@@ -578,7 +578,7 @@ type elastigroupArgs struct {
 	MetadataOptions *ElastigroupMetadataOptions `pulumi:"metadataOptions"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+	// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
 	MinimumInstanceLifetime *int `pulumi:"minimumInstanceLifetime"`
 	// Set of targets to register.
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
@@ -587,7 +587,7 @@ type elastigroupArgs struct {
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount *int `pulumi:"ondemandCount"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+	// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
 	Orientation string `pulumi:"orientation"`
 	// Boolean, should the instance maintain its Data volumes.
 	PersistBlockDevices *bool `pulumi:"persistBlockDevices"`
@@ -595,7 +595,7 @@ type elastigroupArgs struct {
 	PersistPrivateIp *bool `pulumi:"persistPrivateIp"`
 	// Boolean, should the instance maintain its root device volumes.
 	PersistRootDevice *bool `pulumi:"persistRootDevice"`
-	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
 	PlacementTenancy *string `pulumi:"placementTenancy"`
 	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
@@ -652,7 +652,7 @@ type ElastigroupArgs struct {
 	AvailabilityZones pulumi.StringArrayInput
 	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
 	BlockDevicesMode pulumi.StringPtrInput
-	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
 	CapacityUnit pulumi.StringPtrInput
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrInput
@@ -724,7 +724,7 @@ type ElastigroupArgs struct {
 	MetadataOptions ElastigroupMetadataOptionsPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+	// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
 	MinimumInstanceLifetime pulumi.IntPtrInput
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
@@ -733,7 +733,7 @@ type ElastigroupArgs struct {
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrInput
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+	// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
 	Orientation pulumi.StringInput
 	// Boolean, should the instance maintain its Data volumes.
 	PersistBlockDevices pulumi.BoolPtrInput
@@ -741,7 +741,7 @@ type ElastigroupArgs struct {
 	PersistPrivateIp pulumi.BoolPtrInput
 	// Boolean, should the instance maintain its root device volumes.
 	PersistRootDevice pulumi.BoolPtrInput
-	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+	// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
 	PlacementTenancy pulumi.StringPtrInput
 	// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
 	// Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.

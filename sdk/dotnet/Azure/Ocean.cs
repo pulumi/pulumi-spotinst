@@ -9,48 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Azure
 {
-    /// <summary>
-    /// Manages a Spotinst Ocean AKS resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new SpotInst.Azure.Ocean("example", new SpotInst.Azure.OceanArgs
-    ///         {
-    ///             AcdIdentifier = "acd-12345",
-    ///             AksName = "AKSName",
-    ///             AksResourceGroupName = "ResourceGroupName",
-    ///             ControllerClusterId = "controller-cluster-id",
-    ///             SshPublicKey = "ssh-rsa [... redacted ...] generated-by-azure",
-    ///             UserName = "some-name",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         this.OceanId = spotinst_ocean_aks_.Example.Id;
-    ///     }
-    /// 
-    ///     [Output("oceanId")]
-    ///     public Output&lt;string&gt; OceanId { get; set; }
-    /// }
-    /// ```
-    /// </summary>
     [SpotInstResourceType("spotinst:azure/ocean:Ocean")]
     public partial class Ocean : Pulumi.CustomResource
     {
@@ -67,22 +25,76 @@ namespace Pulumi.SpotInst.Azure
         public Output<string> AksName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Resource Group for AKS cluster.
+        /// Name of the Azure Resource Group where the AKS cluster is located.
         /// </summary>
         [Output("aksResourceGroupName")]
         public Output<string> AksResourceGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The Ocean controller cluster.
+        /// The Ocean Kubernetes Autoscaler object.
+        /// </summary>
+        [Output("autoscaler")]
+        public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
+
+        /// <summary>
+        /// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         /// </summary>
         [Output("controllerClusterId")]
         public Output<string> ControllerClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The Ocean cluster name.
+        /// Must contain a valid Base64 encoded string.
+        /// </summary>
+        [Output("customData")]
+        public Output<string> CustomData { get; private set; } = null!;
+
+        /// <summary>
+        /// List of Azure extension objects.
+        /// </summary>
+        [Output("extensions")]
+        public Output<ImmutableArray<Outputs.OceanExtension>> Extensions { get; private set; } = null!;
+
+        /// <summary>
+        /// The Ocean AKS Health object.
+        /// </summary>
+        [Output("health")]
+        public Output<Outputs.OceanHealth> Health { get; private set; } = null!;
+
+        /// <summary>
+        /// Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+        /// </summary>
+        [Output("images")]
+        public Output<ImmutableArray<Outputs.OceanImage>> Images { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure Load Balancer.
+        /// </summary>
+        [Output("loadBalancers")]
+        public Output<ImmutableArray<Outputs.OceanLoadBalancer>> LoadBalancers { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the Load Balancer.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Define the Virtual Network and Subnet.
+        /// </summary>
+        [Output("network")]
+        public Output<Outputs.OceanNetwork> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// OS disk specifications.
+        /// </summary>
+        [Output("osDisk")]
+        public Output<Outputs.OceanOsDisk?> OsDisk { get; private set; } = null!;
+
+        /// <summary>
+        /// The Resource Group name of the Load Balancer.
+        /// </summary>
+        [Output("resourceGroupName")]
+        public Output<string> ResourceGroupName { get; private set; } = null!;
 
         /// <summary>
         /// SSH public key for admin access to Linux VMs.
@@ -91,10 +103,28 @@ namespace Pulumi.SpotInst.Azure
         public Output<string> SshPublicKey { get; private set; } = null!;
 
         /// <summary>
+        /// The Ocean AKS strategy object.
+        /// </summary>
+        [Output("strategies")]
+        public Output<ImmutableArray<Outputs.OceanStrategy>> Strategies { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.OceanTag>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Username for admin access to VMs.
         /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
+
+        /// <summary>
+        /// The types of virtual machines that may or may not be a part of the Ocean cluster.
+        /// </summary>
+        [Output("vmSizes")]
+        public Output<ImmutableArray<Outputs.OceanVmSize>> VmSizes { get; private set; } = null!;
 
 
         /// <summary>
@@ -155,22 +185,94 @@ namespace Pulumi.SpotInst.Azure
         public Input<string> AksName { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Resource Group for AKS cluster.
+        /// Name of the Azure Resource Group where the AKS cluster is located.
         /// </summary>
         [Input("aksResourceGroupName", required: true)]
         public Input<string> AksResourceGroupName { get; set; } = null!;
 
         /// <summary>
-        /// The Ocean controller cluster.
+        /// The Ocean Kubernetes Autoscaler object.
+        /// </summary>
+        [Input("autoscaler")]
+        public Input<Inputs.OceanAutoscalerArgs>? Autoscaler { get; set; }
+
+        /// <summary>
+        /// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         /// </summary>
         [Input("controllerClusterId")]
         public Input<string>? ControllerClusterId { get; set; }
 
         /// <summary>
-        /// The Ocean cluster name.
+        /// Must contain a valid Base64 encoded string.
+        /// </summary>
+        [Input("customData")]
+        public Input<string>? CustomData { get; set; }
+
+        [Input("extensions")]
+        private InputList<Inputs.OceanExtensionArgs>? _extensions;
+
+        /// <summary>
+        /// List of Azure extension objects.
+        /// </summary>
+        public InputList<Inputs.OceanExtensionArgs> Extensions
+        {
+            get => _extensions ?? (_extensions = new InputList<Inputs.OceanExtensionArgs>());
+            set => _extensions = value;
+        }
+
+        /// <summary>
+        /// The Ocean AKS Health object.
+        /// </summary>
+        [Input("health")]
+        public Input<Inputs.OceanHealthArgs>? Health { get; set; }
+
+        [Input("images")]
+        private InputList<Inputs.OceanImageArgs>? _images;
+
+        /// <summary>
+        /// Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+        /// </summary>
+        public InputList<Inputs.OceanImageArgs> Images
+        {
+            get => _images ?? (_images = new InputList<Inputs.OceanImageArgs>());
+            set => _images = value;
+        }
+
+        [Input("loadBalancers")]
+        private InputList<Inputs.OceanLoadBalancerArgs>? _loadBalancers;
+
+        /// <summary>
+        /// Configure Load Balancer.
+        /// </summary>
+        public InputList<Inputs.OceanLoadBalancerArgs> LoadBalancers
+        {
+            get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.OceanLoadBalancerArgs>());
+            set => _loadBalancers = value;
+        }
+
+        /// <summary>
+        /// Name of the Load Balancer.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Define the Virtual Network and Subnet.
+        /// </summary>
+        [Input("network")]
+        public Input<Inputs.OceanNetworkArgs>? Network { get; set; }
+
+        /// <summary>
+        /// OS disk specifications.
+        /// </summary>
+        [Input("osDisk")]
+        public Input<Inputs.OceanOsDiskArgs>? OsDisk { get; set; }
+
+        /// <summary>
+        /// The Resource Group name of the Load Balancer.
+        /// </summary>
+        [Input("resourceGroupName")]
+        public Input<string>? ResourceGroupName { get; set; }
 
         /// <summary>
         /// SSH public key for admin access to Linux VMs.
@@ -178,11 +280,47 @@ namespace Pulumi.SpotInst.Azure
         [Input("sshPublicKey", required: true)]
         public Input<string> SshPublicKey { get; set; } = null!;
 
+        [Input("strategies")]
+        private InputList<Inputs.OceanStrategyArgs>? _strategies;
+
+        /// <summary>
+        /// The Ocean AKS strategy object.
+        /// </summary>
+        public InputList<Inputs.OceanStrategyArgs> Strategies
+        {
+            get => _strategies ?? (_strategies = new InputList<Inputs.OceanStrategyArgs>());
+            set => _strategies = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.OceanTagArgs>? _tags;
+
+        /// <summary>
+        /// Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+        /// </summary>
+        public InputList<Inputs.OceanTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.OceanTagArgs>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Username for admin access to VMs.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
+
+        [Input("vmSizes")]
+        private InputList<Inputs.OceanVmSizeArgs>? _vmSizes;
+
+        /// <summary>
+        /// The types of virtual machines that may or may not be a part of the Ocean cluster.
+        /// </summary>
+        public InputList<Inputs.OceanVmSizeArgs> VmSizes
+        {
+            get => _vmSizes ?? (_vmSizes = new InputList<Inputs.OceanVmSizeArgs>());
+            set => _vmSizes = value;
+        }
 
         public OceanArgs()
         {
@@ -204,22 +342,94 @@ namespace Pulumi.SpotInst.Azure
         public Input<string>? AksName { get; set; }
 
         /// <summary>
-        /// Name of the Resource Group for AKS cluster.
+        /// Name of the Azure Resource Group where the AKS cluster is located.
         /// </summary>
         [Input("aksResourceGroupName")]
         public Input<string>? AksResourceGroupName { get; set; }
 
         /// <summary>
-        /// The Ocean controller cluster.
+        /// The Ocean Kubernetes Autoscaler object.
+        /// </summary>
+        [Input("autoscaler")]
+        public Input<Inputs.OceanAutoscalerGetArgs>? Autoscaler { get; set; }
+
+        /// <summary>
+        /// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         /// </summary>
         [Input("controllerClusterId")]
         public Input<string>? ControllerClusterId { get; set; }
 
         /// <summary>
-        /// The Ocean cluster name.
+        /// Must contain a valid Base64 encoded string.
+        /// </summary>
+        [Input("customData")]
+        public Input<string>? CustomData { get; set; }
+
+        [Input("extensions")]
+        private InputList<Inputs.OceanExtensionGetArgs>? _extensions;
+
+        /// <summary>
+        /// List of Azure extension objects.
+        /// </summary>
+        public InputList<Inputs.OceanExtensionGetArgs> Extensions
+        {
+            get => _extensions ?? (_extensions = new InputList<Inputs.OceanExtensionGetArgs>());
+            set => _extensions = value;
+        }
+
+        /// <summary>
+        /// The Ocean AKS Health object.
+        /// </summary>
+        [Input("health")]
+        public Input<Inputs.OceanHealthGetArgs>? Health { get; set; }
+
+        [Input("images")]
+        private InputList<Inputs.OceanImageGetArgs>? _images;
+
+        /// <summary>
+        /// Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+        /// </summary>
+        public InputList<Inputs.OceanImageGetArgs> Images
+        {
+            get => _images ?? (_images = new InputList<Inputs.OceanImageGetArgs>());
+            set => _images = value;
+        }
+
+        [Input("loadBalancers")]
+        private InputList<Inputs.OceanLoadBalancerGetArgs>? _loadBalancers;
+
+        /// <summary>
+        /// Configure Load Balancer.
+        /// </summary>
+        public InputList<Inputs.OceanLoadBalancerGetArgs> LoadBalancers
+        {
+            get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.OceanLoadBalancerGetArgs>());
+            set => _loadBalancers = value;
+        }
+
+        /// <summary>
+        /// Name of the Load Balancer.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Define the Virtual Network and Subnet.
+        /// </summary>
+        [Input("network")]
+        public Input<Inputs.OceanNetworkGetArgs>? Network { get; set; }
+
+        /// <summary>
+        /// OS disk specifications.
+        /// </summary>
+        [Input("osDisk")]
+        public Input<Inputs.OceanOsDiskGetArgs>? OsDisk { get; set; }
+
+        /// <summary>
+        /// The Resource Group name of the Load Balancer.
+        /// </summary>
+        [Input("resourceGroupName")]
+        public Input<string>? ResourceGroupName { get; set; }
 
         /// <summary>
         /// SSH public key for admin access to Linux VMs.
@@ -227,11 +437,47 @@ namespace Pulumi.SpotInst.Azure
         [Input("sshPublicKey")]
         public Input<string>? SshPublicKey { get; set; }
 
+        [Input("strategies")]
+        private InputList<Inputs.OceanStrategyGetArgs>? _strategies;
+
+        /// <summary>
+        /// The Ocean AKS strategy object.
+        /// </summary>
+        public InputList<Inputs.OceanStrategyGetArgs> Strategies
+        {
+            get => _strategies ?? (_strategies = new InputList<Inputs.OceanStrategyGetArgs>());
+            set => _strategies = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.OceanTagGetArgs>? _tags;
+
+        /// <summary>
+        /// Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+        /// </summary>
+        public InputList<Inputs.OceanTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.OceanTagGetArgs>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Username for admin access to VMs.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
+
+        [Input("vmSizes")]
+        private InputList<Inputs.OceanVmSizeGetArgs>? _vmSizes;
+
+        /// <summary>
+        /// The types of virtual machines that may or may not be a part of the Ocean cluster.
+        /// </summary>
+        public InputList<Inputs.OceanVmSizeGetArgs> VmSizes
+        {
+            get => _vmSizes ?? (_vmSizes = new InputList<Inputs.OceanVmSizeGetArgs>());
+            set => _vmSizes = value;
+        }
 
         public OceanState()
         {

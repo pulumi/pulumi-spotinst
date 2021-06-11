@@ -30,7 +30,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> BlockDevicesMode { get; private set; } = null!;
 
         /// <summary>
-        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         /// </summary>
         [Output("capacityUnit")]
         public Output<string> CapacityUnit { get; private set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        /// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         /// </summary>
         [Output("minimumInstanceLifetime")]
         public Output<int?> MinimumInstanceLifetime { get; private set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> OndemandCount { get; private set; } = null!;
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+        /// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         /// </summary>
         [Output("orientation")]
         public Output<string> Orientation { get; private set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> PersistRootDevice { get; private set; } = null!;
 
         /// <summary>
-        /// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+        /// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         /// </summary>
         [Output("placementTenancy")]
         public Output<string?> PlacementTenancy { get; private set; } = null!;
@@ -496,7 +496,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? BlockDevicesMode { get; set; }
 
         /// <summary>
-        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         /// </summary>
         [Input("capacityUnit")]
         public Input<string>? CapacityUnit { get; set; }
@@ -752,7 +752,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        /// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         /// </summary>
         [Input("minimumInstanceLifetime")]
         public Input<int>? MinimumInstanceLifetime { get; set; }
@@ -790,7 +790,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? OndemandCount { get; set; }
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+        /// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         /// </summary>
         [Input("orientation", required: true)]
         public Input<string> Orientation { get; set; } = null!;
@@ -814,7 +814,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? PersistRootDevice { get; set; }
 
         /// <summary>
-        /// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+        /// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         /// </summary>
         [Input("placementTenancy")]
         public Input<string>? PlacementTenancy { get; set; }
@@ -1046,7 +1046,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? BlockDevicesMode { get; set; }
 
         /// <summary>
-        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+        /// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         /// </summary>
         [Input("capacityUnit")]
         public Input<string>? CapacityUnit { get; set; }
@@ -1302,7 +1302,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        /// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         /// </summary>
         [Input("minimumInstanceLifetime")]
         public Input<int>? MinimumInstanceLifetime { get; set; }
@@ -1340,7 +1340,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? OndemandCount { get; set; }
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+        /// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         /// </summary>
         [Input("orientation")]
         public Input<string>? Orientation { get; set; }
@@ -1364,7 +1364,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? PersistRootDevice { get; set; }
 
         /// <summary>
-        /// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+        /// Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         /// </summary>
         [Input("placementTenancy")]
         public Input<string>? PlacementTenancy { get; set; }

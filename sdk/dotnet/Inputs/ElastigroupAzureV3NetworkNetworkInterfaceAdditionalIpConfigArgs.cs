@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Inputs
     public sealed class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP configuration name.
+        /// - The name of the Application Security group.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+        /// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
         /// </summary>
         [Input("privateIpVersion")]
         public Input<string>? PrivateIpVersion { get; set; }

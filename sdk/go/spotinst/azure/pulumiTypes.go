@@ -2845,6 +2845,2301 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) HealthCheckType() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type OceanAutoscaler struct {
+	// Auto Scaling scale down operations.
+	AutoscaleDown *OceanAutoscalerAutoscaleDown `pulumi:"autoscaleDown"`
+	// Spare Resource Capacity Management feature enables fast assignment of Pods without having to wait for new resources to be launched.
+	AutoscaleHeadroom *OceanAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
+	// Enable the Ocean Kubernetes Autoscaler.
+	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
+	// Optionally set upper and lower bounds on the resource usage of the cluster.
+	ResourceLimits *OceanAutoscalerResourceLimits `pulumi:"resourceLimits"`
+}
+
+// OceanAutoscalerInput is an input type that accepts OceanAutoscalerArgs and OceanAutoscalerOutput values.
+// You can construct a concrete instance of `OceanAutoscalerInput` via:
+//
+//          OceanAutoscalerArgs{...}
+type OceanAutoscalerInput interface {
+	pulumi.Input
+
+	ToOceanAutoscalerOutput() OceanAutoscalerOutput
+	ToOceanAutoscalerOutputWithContext(context.Context) OceanAutoscalerOutput
+}
+
+type OceanAutoscalerArgs struct {
+	// Auto Scaling scale down operations.
+	AutoscaleDown OceanAutoscalerAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
+	// Spare Resource Capacity Management feature enables fast assignment of Pods without having to wait for new resources to be launched.
+	AutoscaleHeadroom OceanAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
+	// Enable the Ocean Kubernetes Autoscaler.
+	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
+	// Optionally set upper and lower bounds on the resource usage of the cluster.
+	ResourceLimits OceanAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
+}
+
+func (OceanAutoscalerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAutoscaler)(nil)).Elem()
+}
+
+func (i OceanAutoscalerArgs) ToOceanAutoscalerOutput() OceanAutoscalerOutput {
+	return i.ToOceanAutoscalerOutputWithContext(context.Background())
+}
+
+func (i OceanAutoscalerArgs) ToOceanAutoscalerOutputWithContext(ctx context.Context) OceanAutoscalerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerOutput)
+}
+
+func (i OceanAutoscalerArgs) ToOceanAutoscalerPtrOutput() OceanAutoscalerPtrOutput {
+	return i.ToOceanAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i OceanAutoscalerArgs) ToOceanAutoscalerPtrOutputWithContext(ctx context.Context) OceanAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerOutput).ToOceanAutoscalerPtrOutputWithContext(ctx)
+}
+
+// OceanAutoscalerPtrInput is an input type that accepts OceanAutoscalerArgs, OceanAutoscalerPtr and OceanAutoscalerPtrOutput values.
+// You can construct a concrete instance of `OceanAutoscalerPtrInput` via:
+//
+//          OceanAutoscalerArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanAutoscalerPtrInput interface {
+	pulumi.Input
+
+	ToOceanAutoscalerPtrOutput() OceanAutoscalerPtrOutput
+	ToOceanAutoscalerPtrOutputWithContext(context.Context) OceanAutoscalerPtrOutput
+}
+
+type oceanAutoscalerPtrType OceanAutoscalerArgs
+
+func OceanAutoscalerPtr(v *OceanAutoscalerArgs) OceanAutoscalerPtrInput {
+	return (*oceanAutoscalerPtrType)(v)
+}
+
+func (*oceanAutoscalerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanAutoscaler)(nil)).Elem()
+}
+
+func (i *oceanAutoscalerPtrType) ToOceanAutoscalerPtrOutput() OceanAutoscalerPtrOutput {
+	return i.ToOceanAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanAutoscalerPtrType) ToOceanAutoscalerPtrOutputWithContext(ctx context.Context) OceanAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerPtrOutput)
+}
+
+type OceanAutoscalerOutput struct{ *pulumi.OutputState }
+
+func (OceanAutoscalerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAutoscaler)(nil)).Elem()
+}
+
+func (o OceanAutoscalerOutput) ToOceanAutoscalerOutput() OceanAutoscalerOutput {
+	return o
+}
+
+func (o OceanAutoscalerOutput) ToOceanAutoscalerOutputWithContext(ctx context.Context) OceanAutoscalerOutput {
+	return o
+}
+
+func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutput() OceanAutoscalerPtrOutput {
+	return o.ToOceanAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context.Context) OceanAutoscalerPtrOutput {
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscaler {
+		return &v
+	}).(OceanAutoscalerPtrOutput)
+}
+
+// Auto Scaling scale down operations.
+func (o OceanAutoscalerOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleDown { return v.AutoscaleDown }).(OceanAutoscalerAutoscaleDownPtrOutput)
+}
+
+// Spare Resource Capacity Management feature enables fast assignment of Pods without having to wait for new resources to be launched.
+func (o OceanAutoscalerOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom { return v.AutoscaleHeadroom }).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
+}
+
+// Enable the Ocean Kubernetes Autoscaler.
+func (o OceanAutoscalerOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optionally set upper and lower bounds on the resource usage of the cluster.
+func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
+	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
+}
+
+type OceanAutoscalerPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanAutoscalerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanAutoscaler)(nil)).Elem()
+}
+
+func (o OceanAutoscalerPtrOutput) ToOceanAutoscalerPtrOutput() OceanAutoscalerPtrOutput {
+	return o
+}
+
+func (o OceanAutoscalerPtrOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context.Context) OceanAutoscalerPtrOutput {
+	return o
+}
+
+func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
+	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
+}
+
+// Auto Scaling scale down operations.
+func (o OceanAutoscalerPtrOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerAutoscaleDown {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleDown
+	}).(OceanAutoscalerAutoscaleDownPtrOutput)
+}
+
+// Spare Resource Capacity Management feature enables fast assignment of Pods without having to wait for new resources to be launched.
+func (o OceanAutoscalerPtrOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleHeadroom
+	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
+}
+
+// Enable the Ocean Kubernetes Autoscaler.
+func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscaleIsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optionally set upper and lower bounds on the resource usage of the cluster.
+func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerResourceLimits {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLimits
+	}).(OceanAutoscalerResourceLimitsPtrOutput)
+}
+
+type OceanAutoscalerAutoscaleDown struct {
+	// Would represent the maximum % to scale-down.
+	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
+}
+
+// OceanAutoscalerAutoscaleDownInput is an input type that accepts OceanAutoscalerAutoscaleDownArgs and OceanAutoscalerAutoscaleDownOutput values.
+// You can construct a concrete instance of `OceanAutoscalerAutoscaleDownInput` via:
+//
+//          OceanAutoscalerAutoscaleDownArgs{...}
+type OceanAutoscalerAutoscaleDownInput interface {
+	pulumi.Input
+
+	ToOceanAutoscalerAutoscaleDownOutput() OceanAutoscalerAutoscaleDownOutput
+	ToOceanAutoscalerAutoscaleDownOutputWithContext(context.Context) OceanAutoscalerAutoscaleDownOutput
+}
+
+type OceanAutoscalerAutoscaleDownArgs struct {
+	// Would represent the maximum % to scale-down.
+	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
+}
+
+func (OceanAutoscalerAutoscaleDownArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAutoscalerAutoscaleDown)(nil)).Elem()
+}
+
+func (i OceanAutoscalerAutoscaleDownArgs) ToOceanAutoscalerAutoscaleDownOutput() OceanAutoscalerAutoscaleDownOutput {
+	return i.ToOceanAutoscalerAutoscaleDownOutputWithContext(context.Background())
+}
+
+func (i OceanAutoscalerAutoscaleDownArgs) ToOceanAutoscalerAutoscaleDownOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleDownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleDownOutput)
+}
+
+func (i OceanAutoscalerAutoscaleDownArgs) ToOceanAutoscalerAutoscaleDownPtrOutput() OceanAutoscalerAutoscaleDownPtrOutput {
+	return i.ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(context.Background())
+}
+
+func (i OceanAutoscalerAutoscaleDownArgs) ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleDownPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleDownOutput).ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(ctx)
+}
+
+// OceanAutoscalerAutoscaleDownPtrInput is an input type that accepts OceanAutoscalerAutoscaleDownArgs, OceanAutoscalerAutoscaleDownPtr and OceanAutoscalerAutoscaleDownPtrOutput values.
+// You can construct a concrete instance of `OceanAutoscalerAutoscaleDownPtrInput` via:
+//
+//          OceanAutoscalerAutoscaleDownArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanAutoscalerAutoscaleDownPtrInput interface {
+	pulumi.Input
+
+	ToOceanAutoscalerAutoscaleDownPtrOutput() OceanAutoscalerAutoscaleDownPtrOutput
+	ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(context.Context) OceanAutoscalerAutoscaleDownPtrOutput
+}
+
+type oceanAutoscalerAutoscaleDownPtrType OceanAutoscalerAutoscaleDownArgs
+
+func OceanAutoscalerAutoscaleDownPtr(v *OceanAutoscalerAutoscaleDownArgs) OceanAutoscalerAutoscaleDownPtrInput {
+	return (*oceanAutoscalerAutoscaleDownPtrType)(v)
+}
+
+func (*oceanAutoscalerAutoscaleDownPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanAutoscalerAutoscaleDown)(nil)).Elem()
+}
+
+func (i *oceanAutoscalerAutoscaleDownPtrType) ToOceanAutoscalerAutoscaleDownPtrOutput() OceanAutoscalerAutoscaleDownPtrOutput {
+	return i.ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanAutoscalerAutoscaleDownPtrType) ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleDownPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleDownPtrOutput)
+}
+
+type OceanAutoscalerAutoscaleDownOutput struct{ *pulumi.OutputState }
+
+func (OceanAutoscalerAutoscaleDownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAutoscalerAutoscaleDown)(nil)).Elem()
+}
+
+func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownOutput() OceanAutoscalerAutoscaleDownOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleDownOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownPtrOutput() OceanAutoscalerAutoscaleDownPtrOutput {
+	return o.ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(context.Background())
+}
+
+func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleDownPtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *OceanAutoscalerAutoscaleDown {
+		return &v
+	}).(OceanAutoscalerAutoscaleDownPtrOutput)
+}
+
+// Would represent the maximum % to scale-down.
+func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
+}
+
+type OceanAutoscalerAutoscaleDownPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanAutoscalerAutoscaleDownPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanAutoscalerAutoscaleDown)(nil)).Elem()
+}
+
+func (o OceanAutoscalerAutoscaleDownPtrOutput) ToOceanAutoscalerAutoscaleDownPtrOutput() OceanAutoscalerAutoscaleDownPtrOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleDownPtrOutput) ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleDownPtrOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleDownPtrOutput) Elem() OceanAutoscalerAutoscaleDownOutput {
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) OceanAutoscalerAutoscaleDown { return *v }).(OceanAutoscalerAutoscaleDownOutput)
+}
+
+// Would represent the maximum % to scale-down.
+func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxScaleDownPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+type OceanAutoscalerAutoscaleHeadroom struct {
+	// Automatic headroom configuration.
+	Automatic *OceanAutoscalerAutoscaleHeadroomAutomatic `pulumi:"automatic"`
+}
+
+// OceanAutoscalerAutoscaleHeadroomInput is an input type that accepts OceanAutoscalerAutoscaleHeadroomArgs and OceanAutoscalerAutoscaleHeadroomOutput values.
+// You can construct a concrete instance of `OceanAutoscalerAutoscaleHeadroomInput` via:
+//
+//          OceanAutoscalerAutoscaleHeadroomArgs{...}
+type OceanAutoscalerAutoscaleHeadroomInput interface {
+	pulumi.Input
+
+	ToOceanAutoscalerAutoscaleHeadroomOutput() OceanAutoscalerAutoscaleHeadroomOutput
+	ToOceanAutoscalerAutoscaleHeadroomOutputWithContext(context.Context) OceanAutoscalerAutoscaleHeadroomOutput
+}
+
+type OceanAutoscalerAutoscaleHeadroomArgs struct {
+	// Automatic headroom configuration.
+	Automatic OceanAutoscalerAutoscaleHeadroomAutomaticPtrInput `pulumi:"automatic"`
+}
+
+func (OceanAutoscalerAutoscaleHeadroomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAutoscalerAutoscaleHeadroom)(nil)).Elem()
+}
+
+func (i OceanAutoscalerAutoscaleHeadroomArgs) ToOceanAutoscalerAutoscaleHeadroomOutput() OceanAutoscalerAutoscaleHeadroomOutput {
+	return i.ToOceanAutoscalerAutoscaleHeadroomOutputWithContext(context.Background())
+}
+
+func (i OceanAutoscalerAutoscaleHeadroomArgs) ToOceanAutoscalerAutoscaleHeadroomOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomOutput)
+}
+
+func (i OceanAutoscalerAutoscaleHeadroomArgs) ToOceanAutoscalerAutoscaleHeadroomPtrOutput() OceanAutoscalerAutoscaleHeadroomPtrOutput {
+	return i.ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(context.Background())
+}
+
+func (i OceanAutoscalerAutoscaleHeadroomArgs) ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomOutput).ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(ctx)
+}
+
+// OceanAutoscalerAutoscaleHeadroomPtrInput is an input type that accepts OceanAutoscalerAutoscaleHeadroomArgs, OceanAutoscalerAutoscaleHeadroomPtr and OceanAutoscalerAutoscaleHeadroomPtrOutput values.
+// You can construct a concrete instance of `OceanAutoscalerAutoscaleHeadroomPtrInput` via:
+//
+//          OceanAutoscalerAutoscaleHeadroomArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanAutoscalerAutoscaleHeadroomPtrInput interface {
+	pulumi.Input
+
+	ToOceanAutoscalerAutoscaleHeadroomPtrOutput() OceanAutoscalerAutoscaleHeadroomPtrOutput
+	ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(context.Context) OceanAutoscalerAutoscaleHeadroomPtrOutput
+}
+
+type oceanAutoscalerAutoscaleHeadroomPtrType OceanAutoscalerAutoscaleHeadroomArgs
+
+func OceanAutoscalerAutoscaleHeadroomPtr(v *OceanAutoscalerAutoscaleHeadroomArgs) OceanAutoscalerAutoscaleHeadroomPtrInput {
+	return (*oceanAutoscalerAutoscaleHeadroomPtrType)(v)
+}
+
+func (*oceanAutoscalerAutoscaleHeadroomPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanAutoscalerAutoscaleHeadroom)(nil)).Elem()
+}
+
+func (i *oceanAutoscalerAutoscaleHeadroomPtrType) ToOceanAutoscalerAutoscaleHeadroomPtrOutput() OceanAutoscalerAutoscaleHeadroomPtrOutput {
+	return i.ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanAutoscalerAutoscaleHeadroomPtrType) ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
+}
+
+type OceanAutoscalerAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
+
+func (OceanAutoscalerAutoscaleHeadroomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAutoscalerAutoscaleHeadroom)(nil)).Elem()
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadroomOutput() OceanAutoscalerAutoscaleHeadroomOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadroomOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadroomPtrOutput() OceanAutoscalerAutoscaleHeadroomPtrOutput {
+	return o.ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(context.Background())
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomPtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *OceanAutoscalerAutoscaleHeadroom {
+		return &v
+	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
+}
+
+// Automatic headroom configuration.
+func (o OceanAutoscalerAutoscaleHeadroomOutput) Automatic() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *OceanAutoscalerAutoscaleHeadroomAutomatic {
+		return v.Automatic
+	}).(OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
+}
+
+type OceanAutoscalerAutoscaleHeadroomPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanAutoscalerAutoscaleHeadroomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanAutoscalerAutoscaleHeadroom)(nil)).Elem()
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) ToOceanAutoscalerAutoscaleHeadroomPtrOutput() OceanAutoscalerAutoscaleHeadroomPtrOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomPtrOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanAutoscalerAutoscaleHeadroomOutput {
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) OceanAutoscalerAutoscaleHeadroom { return *v }).(OceanAutoscalerAutoscaleHeadroomOutput)
+}
+
+// Automatic headroom configuration.
+func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Automatic() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *OceanAutoscalerAutoscaleHeadroomAutomatic {
+		if v == nil {
+			return nil
+		}
+		return v.Automatic
+	}).(OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
+}
+
+type OceanAutoscalerAutoscaleHeadroomAutomatic struct {
+	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+	Percentage *int `pulumi:"percentage"`
+}
+
+// OceanAutoscalerAutoscaleHeadroomAutomaticInput is an input type that accepts OceanAutoscalerAutoscaleHeadroomAutomaticArgs and OceanAutoscalerAutoscaleHeadroomAutomaticOutput values.
+// You can construct a concrete instance of `OceanAutoscalerAutoscaleHeadroomAutomaticInput` via:
+//
+//          OceanAutoscalerAutoscaleHeadroomAutomaticArgs{...}
+type OceanAutoscalerAutoscaleHeadroomAutomaticInput interface {
+	pulumi.Input
+
+	ToOceanAutoscalerAutoscaleHeadroomAutomaticOutput() OceanAutoscalerAutoscaleHeadroomAutomaticOutput
+	ToOceanAutoscalerAutoscaleHeadroomAutomaticOutputWithContext(context.Context) OceanAutoscalerAutoscaleHeadroomAutomaticOutput
+}
+
+type OceanAutoscalerAutoscaleHeadroomAutomaticArgs struct {
+	// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
+}
+
+func (OceanAutoscalerAutoscaleHeadroomAutomaticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAutoscalerAutoscaleHeadroomAutomatic)(nil)).Elem()
+}
+
+func (i OceanAutoscalerAutoscaleHeadroomAutomaticArgs) ToOceanAutoscalerAutoscaleHeadroomAutomaticOutput() OceanAutoscalerAutoscaleHeadroomAutomaticOutput {
+	return i.ToOceanAutoscalerAutoscaleHeadroomAutomaticOutputWithContext(context.Background())
+}
+
+func (i OceanAutoscalerAutoscaleHeadroomAutomaticArgs) ToOceanAutoscalerAutoscaleHeadroomAutomaticOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomAutomaticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomAutomaticOutput)
+}
+
+func (i OceanAutoscalerAutoscaleHeadroomAutomaticArgs) ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
+	return i.ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(context.Background())
+}
+
+func (i OceanAutoscalerAutoscaleHeadroomAutomaticArgs) ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomAutomaticOutput).ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(ctx)
+}
+
+// OceanAutoscalerAutoscaleHeadroomAutomaticPtrInput is an input type that accepts OceanAutoscalerAutoscaleHeadroomAutomaticArgs, OceanAutoscalerAutoscaleHeadroomAutomaticPtr and OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput values.
+// You can construct a concrete instance of `OceanAutoscalerAutoscaleHeadroomAutomaticPtrInput` via:
+//
+//          OceanAutoscalerAutoscaleHeadroomAutomaticArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanAutoscalerAutoscaleHeadroomAutomaticPtrInput interface {
+	pulumi.Input
+
+	ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput
+	ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(context.Context) OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput
+}
+
+type oceanAutoscalerAutoscaleHeadroomAutomaticPtrType OceanAutoscalerAutoscaleHeadroomAutomaticArgs
+
+func OceanAutoscalerAutoscaleHeadroomAutomaticPtr(v *OceanAutoscalerAutoscaleHeadroomAutomaticArgs) OceanAutoscalerAutoscaleHeadroomAutomaticPtrInput {
+	return (*oceanAutoscalerAutoscaleHeadroomAutomaticPtrType)(v)
+}
+
+func (*oceanAutoscalerAutoscaleHeadroomAutomaticPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanAutoscalerAutoscaleHeadroomAutomatic)(nil)).Elem()
+}
+
+func (i *oceanAutoscalerAutoscaleHeadroomAutomaticPtrType) ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
+	return i.ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanAutoscalerAutoscaleHeadroomAutomaticPtrType) ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
+}
+
+type OceanAutoscalerAutoscaleHeadroomAutomaticOutput struct{ *pulumi.OutputState }
+
+func (OceanAutoscalerAutoscaleHeadroomAutomaticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAutoscalerAutoscaleHeadroomAutomatic)(nil)).Elem()
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanAutoscalerAutoscaleHeadroomAutomaticOutput() OceanAutoscalerAutoscaleHeadroomAutomaticOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanAutoscalerAutoscaleHeadroomAutomaticOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomAutomaticOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
+	return o.ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(context.Background())
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroomAutomatic) *OceanAutoscalerAutoscaleHeadroomAutomatic {
+		return &v
+	}).(OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
+}
+
+// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroomAutomatic) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroomAutomatic) *int { return v.Percentage }).(pulumi.IntPtrOutput)
+}
+
+type OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanAutoscalerAutoscaleHeadroomAutomatic)(nil)).Elem()
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
+	return o
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Elem() OceanAutoscalerAutoscaleHeadroomAutomaticOutput {
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroomAutomatic) OceanAutoscalerAutoscaleHeadroomAutomatic {
+		return *v
+	}).(OceanAutoscalerAutoscaleHeadroomAutomaticOutput)
+}
+
+// Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroomAutomatic) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroomAutomatic) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.IntPtrOutput)
+}
+
+type OceanAutoscalerResourceLimits struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
+	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
+	// The maximum cpu in vCpu units that can be allocated to the cluster.
+	MaxVcpu *int `pulumi:"maxVcpu"`
+}
+
+// OceanAutoscalerResourceLimitsInput is an input type that accepts OceanAutoscalerResourceLimitsArgs and OceanAutoscalerResourceLimitsOutput values.
+// You can construct a concrete instance of `OceanAutoscalerResourceLimitsInput` via:
+//
+//          OceanAutoscalerResourceLimitsArgs{...}
+type OceanAutoscalerResourceLimitsInput interface {
+	pulumi.Input
+
+	ToOceanAutoscalerResourceLimitsOutput() OceanAutoscalerResourceLimitsOutput
+	ToOceanAutoscalerResourceLimitsOutputWithContext(context.Context) OceanAutoscalerResourceLimitsOutput
+}
+
+type OceanAutoscalerResourceLimitsArgs struct {
+	// The maximum memory in GiB units that can be allocated to the cluster.
+	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
+	// The maximum cpu in vCpu units that can be allocated to the cluster.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
+}
+
+func (OceanAutoscalerResourceLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAutoscalerResourceLimits)(nil)).Elem()
+}
+
+func (i OceanAutoscalerResourceLimitsArgs) ToOceanAutoscalerResourceLimitsOutput() OceanAutoscalerResourceLimitsOutput {
+	return i.ToOceanAutoscalerResourceLimitsOutputWithContext(context.Background())
+}
+
+func (i OceanAutoscalerResourceLimitsArgs) ToOceanAutoscalerResourceLimitsOutputWithContext(ctx context.Context) OceanAutoscalerResourceLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerResourceLimitsOutput)
+}
+
+func (i OceanAutoscalerResourceLimitsArgs) ToOceanAutoscalerResourceLimitsPtrOutput() OceanAutoscalerResourceLimitsPtrOutput {
+	return i.ToOceanAutoscalerResourceLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanAutoscalerResourceLimitsArgs) ToOceanAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanAutoscalerResourceLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerResourceLimitsOutput).ToOceanAutoscalerResourceLimitsPtrOutputWithContext(ctx)
+}
+
+// OceanAutoscalerResourceLimitsPtrInput is an input type that accepts OceanAutoscalerResourceLimitsArgs, OceanAutoscalerResourceLimitsPtr and OceanAutoscalerResourceLimitsPtrOutput values.
+// You can construct a concrete instance of `OceanAutoscalerResourceLimitsPtrInput` via:
+//
+//          OceanAutoscalerResourceLimitsArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanAutoscalerResourceLimitsPtrInput interface {
+	pulumi.Input
+
+	ToOceanAutoscalerResourceLimitsPtrOutput() OceanAutoscalerResourceLimitsPtrOutput
+	ToOceanAutoscalerResourceLimitsPtrOutputWithContext(context.Context) OceanAutoscalerResourceLimitsPtrOutput
+}
+
+type oceanAutoscalerResourceLimitsPtrType OceanAutoscalerResourceLimitsArgs
+
+func OceanAutoscalerResourceLimitsPtr(v *OceanAutoscalerResourceLimitsArgs) OceanAutoscalerResourceLimitsPtrInput {
+	return (*oceanAutoscalerResourceLimitsPtrType)(v)
+}
+
+func (*oceanAutoscalerResourceLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanAutoscalerResourceLimits)(nil)).Elem()
+}
+
+func (i *oceanAutoscalerResourceLimitsPtrType) ToOceanAutoscalerResourceLimitsPtrOutput() OceanAutoscalerResourceLimitsPtrOutput {
+	return i.ToOceanAutoscalerResourceLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanAutoscalerResourceLimitsPtrType) ToOceanAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanAutoscalerResourceLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerResourceLimitsPtrOutput)
+}
+
+type OceanAutoscalerResourceLimitsOutput struct{ *pulumi.OutputState }
+
+func (OceanAutoscalerResourceLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanAutoscalerResourceLimits)(nil)).Elem()
+}
+
+func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsOutput() OceanAutoscalerResourceLimitsOutput {
+	return o
+}
+
+func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsOutputWithContext(ctx context.Context) OceanAutoscalerResourceLimitsOutput {
+	return o
+}
+
+func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrOutput() OceanAutoscalerResourceLimitsPtrOutput {
+	return o.ToOceanAutoscalerResourceLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanAutoscalerResourceLimitsPtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *OceanAutoscalerResourceLimits {
+		return &v
+	}).(OceanAutoscalerResourceLimitsPtrOutput)
+}
+
+// The maximum memory in GiB units that can be allocated to the cluster.
+func (o OceanAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
+}
+
+// The maximum cpu in vCpu units that can be allocated to the cluster.
+func (o OceanAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+}
+
+type OceanAutoscalerResourceLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanAutoscalerResourceLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanAutoscalerResourceLimits)(nil)).Elem()
+}
+
+func (o OceanAutoscalerResourceLimitsPtrOutput) ToOceanAutoscalerResourceLimitsPtrOutput() OceanAutoscalerResourceLimitsPtrOutput {
+	return o
+}
+
+func (o OceanAutoscalerResourceLimitsPtrOutput) ToOceanAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanAutoscalerResourceLimitsPtrOutput {
+	return o
+}
+
+func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLimitsOutput {
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits { return *v }).(OceanAutoscalerResourceLimitsOutput)
+}
+
+// The maximum memory in GiB units that can be allocated to the cluster.
+func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemoryGib
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum cpu in vCpu units that can be allocated to the cluster.
+func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
+type OceanExtension struct {
+	// API version of the extension.
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Toggles whether auto upgrades are allowed.
+	MinorVersionAutoUpgrade *bool `pulumi:"minorVersionAutoUpgrade"`
+	// Name of the Load Balancer.
+	Name *string `pulumi:"name"`
+	// Image publisher.
+	Publisher *string `pulumi:"publisher"`
+	// The type of load balancer. Supported value: `loadBalancer`
+	Type *string `pulumi:"type"`
+}
+
+// OceanExtensionInput is an input type that accepts OceanExtensionArgs and OceanExtensionOutput values.
+// You can construct a concrete instance of `OceanExtensionInput` via:
+//
+//          OceanExtensionArgs{...}
+type OceanExtensionInput interface {
+	pulumi.Input
+
+	ToOceanExtensionOutput() OceanExtensionOutput
+	ToOceanExtensionOutputWithContext(context.Context) OceanExtensionOutput
+}
+
+type OceanExtensionArgs struct {
+	// API version of the extension.
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Toggles whether auto upgrades are allowed.
+	MinorVersionAutoUpgrade pulumi.BoolPtrInput `pulumi:"minorVersionAutoUpgrade"`
+	// Name of the Load Balancer.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Image publisher.
+	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
+	// The type of load balancer. Supported value: `loadBalancer`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (OceanExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanExtension)(nil)).Elem()
+}
+
+func (i OceanExtensionArgs) ToOceanExtensionOutput() OceanExtensionOutput {
+	return i.ToOceanExtensionOutputWithContext(context.Background())
+}
+
+func (i OceanExtensionArgs) ToOceanExtensionOutputWithContext(ctx context.Context) OceanExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanExtensionOutput)
+}
+
+// OceanExtensionArrayInput is an input type that accepts OceanExtensionArray and OceanExtensionArrayOutput values.
+// You can construct a concrete instance of `OceanExtensionArrayInput` via:
+//
+//          OceanExtensionArray{ OceanExtensionArgs{...} }
+type OceanExtensionArrayInput interface {
+	pulumi.Input
+
+	ToOceanExtensionArrayOutput() OceanExtensionArrayOutput
+	ToOceanExtensionArrayOutputWithContext(context.Context) OceanExtensionArrayOutput
+}
+
+type OceanExtensionArray []OceanExtensionInput
+
+func (OceanExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanExtension)(nil)).Elem()
+}
+
+func (i OceanExtensionArray) ToOceanExtensionArrayOutput() OceanExtensionArrayOutput {
+	return i.ToOceanExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i OceanExtensionArray) ToOceanExtensionArrayOutputWithContext(ctx context.Context) OceanExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanExtensionArrayOutput)
+}
+
+type OceanExtensionOutput struct{ *pulumi.OutputState }
+
+func (OceanExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanExtension)(nil)).Elem()
+}
+
+func (o OceanExtensionOutput) ToOceanExtensionOutput() OceanExtensionOutput {
+	return o
+}
+
+func (o OceanExtensionOutput) ToOceanExtensionOutputWithContext(ctx context.Context) OceanExtensionOutput {
+	return o
+}
+
+// API version of the extension.
+func (o OceanExtensionOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanExtension) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Toggles whether auto upgrades are allowed.
+func (o OceanExtensionOutput) MinorVersionAutoUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanExtension) *bool { return v.MinorVersionAutoUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the Load Balancer.
+func (o OceanExtensionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanExtension) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Image publisher.
+func (o OceanExtensionOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanExtension) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// The type of load balancer. Supported value: `loadBalancer`
+func (o OceanExtensionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanExtension) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type OceanExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanExtension)(nil)).Elem()
+}
+
+func (o OceanExtensionArrayOutput) ToOceanExtensionArrayOutput() OceanExtensionArrayOutput {
+	return o
+}
+
+func (o OceanExtensionArrayOutput) ToOceanExtensionArrayOutputWithContext(ctx context.Context) OceanExtensionArrayOutput {
+	return o
+}
+
+func (o OceanExtensionArrayOutput) Index(i pulumi.IntInput) OceanExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanExtension {
+		return vs[0].([]OceanExtension)[vs[1].(int)]
+	}).(OceanExtensionOutput)
+}
+
+type OceanHealth struct {
+	// The amount of time to wait, in seconds, from the moment the instance has launched before monitoring its health checks.
+	GracePeriod *int `pulumi:"gracePeriod"`
+}
+
+// OceanHealthInput is an input type that accepts OceanHealthArgs and OceanHealthOutput values.
+// You can construct a concrete instance of `OceanHealthInput` via:
+//
+//          OceanHealthArgs{...}
+type OceanHealthInput interface {
+	pulumi.Input
+
+	ToOceanHealthOutput() OceanHealthOutput
+	ToOceanHealthOutputWithContext(context.Context) OceanHealthOutput
+}
+
+type OceanHealthArgs struct {
+	// The amount of time to wait, in seconds, from the moment the instance has launched before monitoring its health checks.
+	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
+}
+
+func (OceanHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanHealth)(nil)).Elem()
+}
+
+func (i OceanHealthArgs) ToOceanHealthOutput() OceanHealthOutput {
+	return i.ToOceanHealthOutputWithContext(context.Background())
+}
+
+func (i OceanHealthArgs) ToOceanHealthOutputWithContext(ctx context.Context) OceanHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanHealthOutput)
+}
+
+func (i OceanHealthArgs) ToOceanHealthPtrOutput() OceanHealthPtrOutput {
+	return i.ToOceanHealthPtrOutputWithContext(context.Background())
+}
+
+func (i OceanHealthArgs) ToOceanHealthPtrOutputWithContext(ctx context.Context) OceanHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanHealthOutput).ToOceanHealthPtrOutputWithContext(ctx)
+}
+
+// OceanHealthPtrInput is an input type that accepts OceanHealthArgs, OceanHealthPtr and OceanHealthPtrOutput values.
+// You can construct a concrete instance of `OceanHealthPtrInput` via:
+//
+//          OceanHealthArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanHealthPtrInput interface {
+	pulumi.Input
+
+	ToOceanHealthPtrOutput() OceanHealthPtrOutput
+	ToOceanHealthPtrOutputWithContext(context.Context) OceanHealthPtrOutput
+}
+
+type oceanHealthPtrType OceanHealthArgs
+
+func OceanHealthPtr(v *OceanHealthArgs) OceanHealthPtrInput {
+	return (*oceanHealthPtrType)(v)
+}
+
+func (*oceanHealthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanHealth)(nil)).Elem()
+}
+
+func (i *oceanHealthPtrType) ToOceanHealthPtrOutput() OceanHealthPtrOutput {
+	return i.ToOceanHealthPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanHealthPtrType) ToOceanHealthPtrOutputWithContext(ctx context.Context) OceanHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanHealthPtrOutput)
+}
+
+type OceanHealthOutput struct{ *pulumi.OutputState }
+
+func (OceanHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanHealth)(nil)).Elem()
+}
+
+func (o OceanHealthOutput) ToOceanHealthOutput() OceanHealthOutput {
+	return o
+}
+
+func (o OceanHealthOutput) ToOceanHealthOutputWithContext(ctx context.Context) OceanHealthOutput {
+	return o
+}
+
+func (o OceanHealthOutput) ToOceanHealthPtrOutput() OceanHealthPtrOutput {
+	return o.ToOceanHealthPtrOutputWithContext(context.Background())
+}
+
+func (o OceanHealthOutput) ToOceanHealthPtrOutputWithContext(ctx context.Context) OceanHealthPtrOutput {
+	return o.ApplyT(func(v OceanHealth) *OceanHealth {
+		return &v
+	}).(OceanHealthPtrOutput)
+}
+
+// The amount of time to wait, in seconds, from the moment the instance has launched before monitoring its health checks.
+func (o OceanHealthOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanHealth) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+type OceanHealthPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanHealthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanHealth)(nil)).Elem()
+}
+
+func (o OceanHealthPtrOutput) ToOceanHealthPtrOutput() OceanHealthPtrOutput {
+	return o
+}
+
+func (o OceanHealthPtrOutput) ToOceanHealthPtrOutputWithContext(ctx context.Context) OceanHealthPtrOutput {
+	return o
+}
+
+func (o OceanHealthPtrOutput) Elem() OceanHealthOutput {
+	return o.ApplyT(func(v *OceanHealth) OceanHealth { return *v }).(OceanHealthOutput)
+}
+
+// The amount of time to wait, in seconds, from the moment the instance has launched before monitoring its health checks.
+func (o OceanHealthPtrOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanHealth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriod
+	}).(pulumi.IntPtrOutput)
+}
+
+type OceanImage struct {
+	// Select an image from Azure's Marketplace image catalogue.
+	Marketplaces []OceanImageMarketplace `pulumi:"marketplaces"`
+}
+
+// OceanImageInput is an input type that accepts OceanImageArgs and OceanImageOutput values.
+// You can construct a concrete instance of `OceanImageInput` via:
+//
+//          OceanImageArgs{...}
+type OceanImageInput interface {
+	pulumi.Input
+
+	ToOceanImageOutput() OceanImageOutput
+	ToOceanImageOutputWithContext(context.Context) OceanImageOutput
+}
+
+type OceanImageArgs struct {
+	// Select an image from Azure's Marketplace image catalogue.
+	Marketplaces OceanImageMarketplaceArrayInput `pulumi:"marketplaces"`
+}
+
+func (OceanImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImage)(nil)).Elem()
+}
+
+func (i OceanImageArgs) ToOceanImageOutput() OceanImageOutput {
+	return i.ToOceanImageOutputWithContext(context.Background())
+}
+
+func (i OceanImageArgs) ToOceanImageOutputWithContext(ctx context.Context) OceanImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImageOutput)
+}
+
+// OceanImageArrayInput is an input type that accepts OceanImageArray and OceanImageArrayOutput values.
+// You can construct a concrete instance of `OceanImageArrayInput` via:
+//
+//          OceanImageArray{ OceanImageArgs{...} }
+type OceanImageArrayInput interface {
+	pulumi.Input
+
+	ToOceanImageArrayOutput() OceanImageArrayOutput
+	ToOceanImageArrayOutputWithContext(context.Context) OceanImageArrayOutput
+}
+
+type OceanImageArray []OceanImageInput
+
+func (OceanImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanImage)(nil)).Elem()
+}
+
+func (i OceanImageArray) ToOceanImageArrayOutput() OceanImageArrayOutput {
+	return i.ToOceanImageArrayOutputWithContext(context.Background())
+}
+
+func (i OceanImageArray) ToOceanImageArrayOutputWithContext(ctx context.Context) OceanImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImageArrayOutput)
+}
+
+type OceanImageOutput struct{ *pulumi.OutputState }
+
+func (OceanImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImage)(nil)).Elem()
+}
+
+func (o OceanImageOutput) ToOceanImageOutput() OceanImageOutput {
+	return o
+}
+
+func (o OceanImageOutput) ToOceanImageOutputWithContext(ctx context.Context) OceanImageOutput {
+	return o
+}
+
+// Select an image from Azure's Marketplace image catalogue.
+func (o OceanImageOutput) Marketplaces() OceanImageMarketplaceArrayOutput {
+	return o.ApplyT(func(v OceanImage) []OceanImageMarketplace { return v.Marketplaces }).(OceanImageMarketplaceArrayOutput)
+}
+
+type OceanImageArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanImage)(nil)).Elem()
+}
+
+func (o OceanImageArrayOutput) ToOceanImageArrayOutput() OceanImageArrayOutput {
+	return o
+}
+
+func (o OceanImageArrayOutput) ToOceanImageArrayOutputWithContext(ctx context.Context) OceanImageArrayOutput {
+	return o
+}
+
+func (o OceanImageArrayOutput) Index(i pulumi.IntInput) OceanImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanImage {
+		return vs[0].([]OceanImage)[vs[1].(int)]
+	}).(OceanImageOutput)
+}
+
+type OceanImageMarketplace struct {
+	// Image name.
+	Offer *string `pulumi:"offer"`
+	// Image publisher.
+	Publisher *string `pulumi:"publisher"`
+	// Image Stock Keeping Unit (which is the specific version of the image).
+	Sku *string `pulumi:"sku"`
+	// Image version.
+	Version *string `pulumi:"version"`
+}
+
+// OceanImageMarketplaceInput is an input type that accepts OceanImageMarketplaceArgs and OceanImageMarketplaceOutput values.
+// You can construct a concrete instance of `OceanImageMarketplaceInput` via:
+//
+//          OceanImageMarketplaceArgs{...}
+type OceanImageMarketplaceInput interface {
+	pulumi.Input
+
+	ToOceanImageMarketplaceOutput() OceanImageMarketplaceOutput
+	ToOceanImageMarketplaceOutputWithContext(context.Context) OceanImageMarketplaceOutput
+}
+
+type OceanImageMarketplaceArgs struct {
+	// Image name.
+	Offer pulumi.StringPtrInput `pulumi:"offer"`
+	// Image publisher.
+	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
+	// Image Stock Keeping Unit (which is the specific version of the image).
+	Sku pulumi.StringPtrInput `pulumi:"sku"`
+	// Image version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (OceanImageMarketplaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImageMarketplace)(nil)).Elem()
+}
+
+func (i OceanImageMarketplaceArgs) ToOceanImageMarketplaceOutput() OceanImageMarketplaceOutput {
+	return i.ToOceanImageMarketplaceOutputWithContext(context.Background())
+}
+
+func (i OceanImageMarketplaceArgs) ToOceanImageMarketplaceOutputWithContext(ctx context.Context) OceanImageMarketplaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImageMarketplaceOutput)
+}
+
+// OceanImageMarketplaceArrayInput is an input type that accepts OceanImageMarketplaceArray and OceanImageMarketplaceArrayOutput values.
+// You can construct a concrete instance of `OceanImageMarketplaceArrayInput` via:
+//
+//          OceanImageMarketplaceArray{ OceanImageMarketplaceArgs{...} }
+type OceanImageMarketplaceArrayInput interface {
+	pulumi.Input
+
+	ToOceanImageMarketplaceArrayOutput() OceanImageMarketplaceArrayOutput
+	ToOceanImageMarketplaceArrayOutputWithContext(context.Context) OceanImageMarketplaceArrayOutput
+}
+
+type OceanImageMarketplaceArray []OceanImageMarketplaceInput
+
+func (OceanImageMarketplaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanImageMarketplace)(nil)).Elem()
+}
+
+func (i OceanImageMarketplaceArray) ToOceanImageMarketplaceArrayOutput() OceanImageMarketplaceArrayOutput {
+	return i.ToOceanImageMarketplaceArrayOutputWithContext(context.Background())
+}
+
+func (i OceanImageMarketplaceArray) ToOceanImageMarketplaceArrayOutputWithContext(ctx context.Context) OceanImageMarketplaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImageMarketplaceArrayOutput)
+}
+
+type OceanImageMarketplaceOutput struct{ *pulumi.OutputState }
+
+func (OceanImageMarketplaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImageMarketplace)(nil)).Elem()
+}
+
+func (o OceanImageMarketplaceOutput) ToOceanImageMarketplaceOutput() OceanImageMarketplaceOutput {
+	return o
+}
+
+func (o OceanImageMarketplaceOutput) ToOceanImageMarketplaceOutputWithContext(ctx context.Context) OceanImageMarketplaceOutput {
+	return o
+}
+
+// Image name.
+func (o OceanImageMarketplaceOutput) Offer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanImageMarketplace) *string { return v.Offer }).(pulumi.StringPtrOutput)
+}
+
+// Image publisher.
+func (o OceanImageMarketplaceOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanImageMarketplace) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// Image Stock Keeping Unit (which is the specific version of the image).
+func (o OceanImageMarketplaceOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanImageMarketplace) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+// Image version.
+func (o OceanImageMarketplaceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanImageMarketplace) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type OceanImageMarketplaceArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanImageMarketplaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanImageMarketplace)(nil)).Elem()
+}
+
+func (o OceanImageMarketplaceArrayOutput) ToOceanImageMarketplaceArrayOutput() OceanImageMarketplaceArrayOutput {
+	return o
+}
+
+func (o OceanImageMarketplaceArrayOutput) ToOceanImageMarketplaceArrayOutputWithContext(ctx context.Context) OceanImageMarketplaceArrayOutput {
+	return o
+}
+
+func (o OceanImageMarketplaceArrayOutput) Index(i pulumi.IntInput) OceanImageMarketplaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanImageMarketplace {
+		return vs[0].([]OceanImageMarketplace)[vs[1].(int)]
+	}).(OceanImageMarketplaceOutput)
+}
+
+type OceanLoadBalancer struct {
+	// Names of the Backend Pools to register the Cluster VMs to. Each Backend Pool is a separate load balancer.
+	BackendPoolNames []string `pulumi:"backendPoolNames"`
+	// Supported values: `Standard`, `Basic`.
+	LoadBalancerSku *string `pulumi:"loadBalancerSku"`
+	// Name of the Load Balancer.
+	Name *string `pulumi:"name"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName *string `pulumi:"resourceGroupName"`
+	// The type of load balancer. Supported value: `loadBalancer`
+	Type *string `pulumi:"type"`
+}
+
+// OceanLoadBalancerInput is an input type that accepts OceanLoadBalancerArgs and OceanLoadBalancerOutput values.
+// You can construct a concrete instance of `OceanLoadBalancerInput` via:
+//
+//          OceanLoadBalancerArgs{...}
+type OceanLoadBalancerInput interface {
+	pulumi.Input
+
+	ToOceanLoadBalancerOutput() OceanLoadBalancerOutput
+	ToOceanLoadBalancerOutputWithContext(context.Context) OceanLoadBalancerOutput
+}
+
+type OceanLoadBalancerArgs struct {
+	// Names of the Backend Pools to register the Cluster VMs to. Each Backend Pool is a separate load balancer.
+	BackendPoolNames pulumi.StringArrayInput `pulumi:"backendPoolNames"`
+	// Supported values: `Standard`, `Basic`.
+	LoadBalancerSku pulumi.StringPtrInput `pulumi:"loadBalancerSku"`
+	// Name of the Load Balancer.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
+	// The type of load balancer. Supported value: `loadBalancer`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (OceanLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLoadBalancer)(nil)).Elem()
+}
+
+func (i OceanLoadBalancerArgs) ToOceanLoadBalancerOutput() OceanLoadBalancerOutput {
+	return i.ToOceanLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i OceanLoadBalancerArgs) ToOceanLoadBalancerOutputWithContext(ctx context.Context) OceanLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLoadBalancerOutput)
+}
+
+// OceanLoadBalancerArrayInput is an input type that accepts OceanLoadBalancerArray and OceanLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `OceanLoadBalancerArrayInput` via:
+//
+//          OceanLoadBalancerArray{ OceanLoadBalancerArgs{...} }
+type OceanLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToOceanLoadBalancerArrayOutput() OceanLoadBalancerArrayOutput
+	ToOceanLoadBalancerArrayOutputWithContext(context.Context) OceanLoadBalancerArrayOutput
+}
+
+type OceanLoadBalancerArray []OceanLoadBalancerInput
+
+func (OceanLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLoadBalancer)(nil)).Elem()
+}
+
+func (i OceanLoadBalancerArray) ToOceanLoadBalancerArrayOutput() OceanLoadBalancerArrayOutput {
+	return i.ToOceanLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLoadBalancerArray) ToOceanLoadBalancerArrayOutputWithContext(ctx context.Context) OceanLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLoadBalancerArrayOutput)
+}
+
+type OceanLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (OceanLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLoadBalancer)(nil)).Elem()
+}
+
+func (o OceanLoadBalancerOutput) ToOceanLoadBalancerOutput() OceanLoadBalancerOutput {
+	return o
+}
+
+func (o OceanLoadBalancerOutput) ToOceanLoadBalancerOutputWithContext(ctx context.Context) OceanLoadBalancerOutput {
+	return o
+}
+
+// Names of the Backend Pools to register the Cluster VMs to. Each Backend Pool is a separate load balancer.
+func (o OceanLoadBalancerOutput) BackendPoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLoadBalancer) []string { return v.BackendPoolNames }).(pulumi.StringArrayOutput)
+}
+
+// Supported values: `Standard`, `Basic`.
+func (o OceanLoadBalancerOutput) LoadBalancerSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLoadBalancer) *string { return v.LoadBalancerSku }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Load Balancer.
+func (o OceanLoadBalancerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Resource Group name of the Load Balancer.
+func (o OceanLoadBalancerOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLoadBalancer) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The type of load balancer. Supported value: `loadBalancer`
+func (o OceanLoadBalancerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLoadBalancer) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type OceanLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLoadBalancer)(nil)).Elem()
+}
+
+func (o OceanLoadBalancerArrayOutput) ToOceanLoadBalancerArrayOutput() OceanLoadBalancerArrayOutput {
+	return o
+}
+
+func (o OceanLoadBalancerArrayOutput) ToOceanLoadBalancerArrayOutputWithContext(ctx context.Context) OceanLoadBalancerArrayOutput {
+	return o
+}
+
+func (o OceanLoadBalancerArrayOutput) Index(i pulumi.IntInput) OceanLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLoadBalancer {
+		return vs[0].([]OceanLoadBalancer)[vs[1].(int)]
+	}).(OceanLoadBalancerOutput)
+}
+
+type OceanNetwork struct {
+	// A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
+	NetworkInterfaces []OceanNetworkNetworkInterface `pulumi:"networkInterfaces"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName *string `pulumi:"resourceGroupName"`
+	// Virtual network.
+	VirtualNetworkName *string `pulumi:"virtualNetworkName"`
+}
+
+// OceanNetworkInput is an input type that accepts OceanNetworkArgs and OceanNetworkOutput values.
+// You can construct a concrete instance of `OceanNetworkInput` via:
+//
+//          OceanNetworkArgs{...}
+type OceanNetworkInput interface {
+	pulumi.Input
+
+	ToOceanNetworkOutput() OceanNetworkOutput
+	ToOceanNetworkOutputWithContext(context.Context) OceanNetworkOutput
+}
+
+type OceanNetworkArgs struct {
+	// A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
+	NetworkInterfaces OceanNetworkNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
+	// Virtual network.
+	VirtualNetworkName pulumi.StringPtrInput `pulumi:"virtualNetworkName"`
+}
+
+func (OceanNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNetwork)(nil)).Elem()
+}
+
+func (i OceanNetworkArgs) ToOceanNetworkOutput() OceanNetworkOutput {
+	return i.ToOceanNetworkOutputWithContext(context.Background())
+}
+
+func (i OceanNetworkArgs) ToOceanNetworkOutputWithContext(ctx context.Context) OceanNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkOutput)
+}
+
+func (i OceanNetworkArgs) ToOceanNetworkPtrOutput() OceanNetworkPtrOutput {
+	return i.ToOceanNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNetworkArgs) ToOceanNetworkPtrOutputWithContext(ctx context.Context) OceanNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkOutput).ToOceanNetworkPtrOutputWithContext(ctx)
+}
+
+// OceanNetworkPtrInput is an input type that accepts OceanNetworkArgs, OceanNetworkPtr and OceanNetworkPtrOutput values.
+// You can construct a concrete instance of `OceanNetworkPtrInput` via:
+//
+//          OceanNetworkArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanNetworkPtrInput interface {
+	pulumi.Input
+
+	ToOceanNetworkPtrOutput() OceanNetworkPtrOutput
+	ToOceanNetworkPtrOutputWithContext(context.Context) OceanNetworkPtrOutput
+}
+
+type oceanNetworkPtrType OceanNetworkArgs
+
+func OceanNetworkPtr(v *OceanNetworkArgs) OceanNetworkPtrInput {
+	return (*oceanNetworkPtrType)(v)
+}
+
+func (*oceanNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNetwork)(nil)).Elem()
+}
+
+func (i *oceanNetworkPtrType) ToOceanNetworkPtrOutput() OceanNetworkPtrOutput {
+	return i.ToOceanNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNetworkPtrType) ToOceanNetworkPtrOutputWithContext(ctx context.Context) OceanNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkPtrOutput)
+}
+
+type OceanNetworkOutput struct{ *pulumi.OutputState }
+
+func (OceanNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNetwork)(nil)).Elem()
+}
+
+func (o OceanNetworkOutput) ToOceanNetworkOutput() OceanNetworkOutput {
+	return o
+}
+
+func (o OceanNetworkOutput) ToOceanNetworkOutputWithContext(ctx context.Context) OceanNetworkOutput {
+	return o
+}
+
+func (o OceanNetworkOutput) ToOceanNetworkPtrOutput() OceanNetworkPtrOutput {
+	return o.ToOceanNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNetworkOutput) ToOceanNetworkPtrOutputWithContext(ctx context.Context) OceanNetworkPtrOutput {
+	return o.ApplyT(func(v OceanNetwork) *OceanNetwork {
+		return &v
+	}).(OceanNetworkPtrOutput)
+}
+
+// A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
+func (o OceanNetworkOutput) NetworkInterfaces() OceanNetworkNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v OceanNetwork) []OceanNetworkNetworkInterface { return v.NetworkInterfaces }).(OceanNetworkNetworkInterfaceArrayOutput)
+}
+
+// The Resource Group name of the Load Balancer.
+func (o OceanNetworkOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNetwork) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Virtual network.
+func (o OceanNetworkOutput) VirtualNetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNetwork) *string { return v.VirtualNetworkName }).(pulumi.StringPtrOutput)
+}
+
+type OceanNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNetwork)(nil)).Elem()
+}
+
+func (o OceanNetworkPtrOutput) ToOceanNetworkPtrOutput() OceanNetworkPtrOutput {
+	return o
+}
+
+func (o OceanNetworkPtrOutput) ToOceanNetworkPtrOutputWithContext(ctx context.Context) OceanNetworkPtrOutput {
+	return o
+}
+
+func (o OceanNetworkPtrOutput) Elem() OceanNetworkOutput {
+	return o.ApplyT(func(v *OceanNetwork) OceanNetwork { return *v }).(OceanNetworkOutput)
+}
+
+// A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
+func (o OceanNetworkPtrOutput) NetworkInterfaces() OceanNetworkNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *OceanNetwork) []OceanNetworkNetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(OceanNetworkNetworkInterfaceArrayOutput)
+}
+
+// The Resource Group name of the Load Balancer.
+func (o OceanNetworkPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual network.
+func (o OceanNetworkPtrOutput) VirtualNetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualNetworkName
+	}).(pulumi.StringPtrOutput)
+}
+
+type OceanNetworkNetworkInterface struct {
+	// Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
+	AdditionalIpConfigs []OceanNetworkNetworkInterfaceAdditionalIpConfig `pulumi:"additionalIpConfigs"`
+	// Assign public IP.
+	AssignPublicIp *bool `pulumi:"assignPublicIp"`
+	// Defines whether the network interface is primary or not.
+	IsPrimary     *bool                                      `pulumi:"isPrimary"`
+	SecurityGroup *OceanNetworkNetworkInterfaceSecurityGroup `pulumi:"securityGroup"`
+	// Subnet name.
+	SubnetName *string `pulumi:"subnetName"`
+}
+
+// OceanNetworkNetworkInterfaceInput is an input type that accepts OceanNetworkNetworkInterfaceArgs and OceanNetworkNetworkInterfaceOutput values.
+// You can construct a concrete instance of `OceanNetworkNetworkInterfaceInput` via:
+//
+//          OceanNetworkNetworkInterfaceArgs{...}
+type OceanNetworkNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToOceanNetworkNetworkInterfaceOutput() OceanNetworkNetworkInterfaceOutput
+	ToOceanNetworkNetworkInterfaceOutputWithContext(context.Context) OceanNetworkNetworkInterfaceOutput
+}
+
+type OceanNetworkNetworkInterfaceArgs struct {
+	// Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
+	AdditionalIpConfigs OceanNetworkNetworkInterfaceAdditionalIpConfigArrayInput `pulumi:"additionalIpConfigs"`
+	// Assign public IP.
+	AssignPublicIp pulumi.BoolPtrInput `pulumi:"assignPublicIp"`
+	// Defines whether the network interface is primary or not.
+	IsPrimary     pulumi.BoolPtrInput                               `pulumi:"isPrimary"`
+	SecurityGroup OceanNetworkNetworkInterfaceSecurityGroupPtrInput `pulumi:"securityGroup"`
+	// Subnet name.
+	SubnetName pulumi.StringPtrInput `pulumi:"subnetName"`
+}
+
+func (OceanNetworkNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNetworkNetworkInterface)(nil)).Elem()
+}
+
+func (i OceanNetworkNetworkInterfaceArgs) ToOceanNetworkNetworkInterfaceOutput() OceanNetworkNetworkInterfaceOutput {
+	return i.ToOceanNetworkNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i OceanNetworkNetworkInterfaceArgs) ToOceanNetworkNetworkInterfaceOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceOutput)
+}
+
+// OceanNetworkNetworkInterfaceArrayInput is an input type that accepts OceanNetworkNetworkInterfaceArray and OceanNetworkNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `OceanNetworkNetworkInterfaceArrayInput` via:
+//
+//          OceanNetworkNetworkInterfaceArray{ OceanNetworkNetworkInterfaceArgs{...} }
+type OceanNetworkNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToOceanNetworkNetworkInterfaceArrayOutput() OceanNetworkNetworkInterfaceArrayOutput
+	ToOceanNetworkNetworkInterfaceArrayOutputWithContext(context.Context) OceanNetworkNetworkInterfaceArrayOutput
+}
+
+type OceanNetworkNetworkInterfaceArray []OceanNetworkNetworkInterfaceInput
+
+func (OceanNetworkNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNetworkNetworkInterface)(nil)).Elem()
+}
+
+func (i OceanNetworkNetworkInterfaceArray) ToOceanNetworkNetworkInterfaceArrayOutput() OceanNetworkNetworkInterfaceArrayOutput {
+	return i.ToOceanNetworkNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNetworkNetworkInterfaceArray) ToOceanNetworkNetworkInterfaceArrayOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceArrayOutput)
+}
+
+type OceanNetworkNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (OceanNetworkNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNetworkNetworkInterface)(nil)).Elem()
+}
+
+func (o OceanNetworkNetworkInterfaceOutput) ToOceanNetworkNetworkInterfaceOutput() OceanNetworkNetworkInterfaceOutput {
+	return o
+}
+
+func (o OceanNetworkNetworkInterfaceOutput) ToOceanNetworkNetworkInterfaceOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceOutput {
+	return o
+}
+
+// Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
+func (o OceanNetworkNetworkInterfaceOutput) AdditionalIpConfigs() OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
+	return o.ApplyT(func(v OceanNetworkNetworkInterface) []OceanNetworkNetworkInterfaceAdditionalIpConfig {
+		return v.AdditionalIpConfigs
+	}).(OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput)
+}
+
+// Assign public IP.
+func (o OceanNetworkNetworkInterfaceOutput) AssignPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNetworkNetworkInterface) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the network interface is primary or not.
+func (o OceanNetworkNetworkInterfaceOutput) IsPrimary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNetworkNetworkInterface) *bool { return v.IsPrimary }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNetworkNetworkInterfaceOutput) SecurityGroup() OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
+	return o.ApplyT(func(v OceanNetworkNetworkInterface) *OceanNetworkNetworkInterfaceSecurityGroup {
+		return v.SecurityGroup
+	}).(OceanNetworkNetworkInterfaceSecurityGroupPtrOutput)
+}
+
+// Subnet name.
+func (o OceanNetworkNetworkInterfaceOutput) SubnetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNetworkNetworkInterface) *string { return v.SubnetName }).(pulumi.StringPtrOutput)
+}
+
+type OceanNetworkNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNetworkNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNetworkNetworkInterface)(nil)).Elem()
+}
+
+func (o OceanNetworkNetworkInterfaceArrayOutput) ToOceanNetworkNetworkInterfaceArrayOutput() OceanNetworkNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o OceanNetworkNetworkInterfaceArrayOutput) ToOceanNetworkNetworkInterfaceArrayOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o OceanNetworkNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) OceanNetworkNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNetworkNetworkInterface {
+		return vs[0].([]OceanNetworkNetworkInterface)[vs[1].(int)]
+	}).(OceanNetworkNetworkInterfaceOutput)
+}
+
+type OceanNetworkNetworkInterfaceAdditionalIpConfig struct {
+	// Name of the Load Balancer.
+	Name *string `pulumi:"name"`
+	// Supported values: `IPv4`, `IPv6`.
+	PrivateIpVersion *string `pulumi:"privateIpVersion"`
+}
+
+// OceanNetworkNetworkInterfaceAdditionalIpConfigInput is an input type that accepts OceanNetworkNetworkInterfaceAdditionalIpConfigArgs and OceanNetworkNetworkInterfaceAdditionalIpConfigOutput values.
+// You can construct a concrete instance of `OceanNetworkNetworkInterfaceAdditionalIpConfigInput` via:
+//
+//          OceanNetworkNetworkInterfaceAdditionalIpConfigArgs{...}
+type OceanNetworkNetworkInterfaceAdditionalIpConfigInput interface {
+	pulumi.Input
+
+	ToOceanNetworkNetworkInterfaceAdditionalIpConfigOutput() OceanNetworkNetworkInterfaceAdditionalIpConfigOutput
+	ToOceanNetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(context.Context) OceanNetworkNetworkInterfaceAdditionalIpConfigOutput
+}
+
+type OceanNetworkNetworkInterfaceAdditionalIpConfigArgs struct {
+	// Name of the Load Balancer.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Supported values: `IPv4`, `IPv6`.
+	PrivateIpVersion pulumi.StringPtrInput `pulumi:"privateIpVersion"`
+}
+
+func (OceanNetworkNetworkInterfaceAdditionalIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNetworkNetworkInterfaceAdditionalIpConfig)(nil)).Elem()
+}
+
+func (i OceanNetworkNetworkInterfaceAdditionalIpConfigArgs) ToOceanNetworkNetworkInterfaceAdditionalIpConfigOutput() OceanNetworkNetworkInterfaceAdditionalIpConfigOutput {
+	return i.ToOceanNetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(context.Background())
+}
+
+func (i OceanNetworkNetworkInterfaceAdditionalIpConfigArgs) ToOceanNetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceAdditionalIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceAdditionalIpConfigOutput)
+}
+
+// OceanNetworkNetworkInterfaceAdditionalIpConfigArrayInput is an input type that accepts OceanNetworkNetworkInterfaceAdditionalIpConfigArray and OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput values.
+// You can construct a concrete instance of `OceanNetworkNetworkInterfaceAdditionalIpConfigArrayInput` via:
+//
+//          OceanNetworkNetworkInterfaceAdditionalIpConfigArray{ OceanNetworkNetworkInterfaceAdditionalIpConfigArgs{...} }
+type OceanNetworkNetworkInterfaceAdditionalIpConfigArrayInput interface {
+	pulumi.Input
+
+	ToOceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput() OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput
+	ToOceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(context.Context) OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput
+}
+
+type OceanNetworkNetworkInterfaceAdditionalIpConfigArray []OceanNetworkNetworkInterfaceAdditionalIpConfigInput
+
+func (OceanNetworkNetworkInterfaceAdditionalIpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNetworkNetworkInterfaceAdditionalIpConfig)(nil)).Elem()
+}
+
+func (i OceanNetworkNetworkInterfaceAdditionalIpConfigArray) ToOceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput() OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
+	return i.ToOceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNetworkNetworkInterfaceAdditionalIpConfigArray) ToOceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput)
+}
+
+type OceanNetworkNetworkInterfaceAdditionalIpConfigOutput struct{ *pulumi.OutputState }
+
+func (OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNetworkNetworkInterfaceAdditionalIpConfig)(nil)).Elem()
+}
+
+func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) ToOceanNetworkNetworkInterfaceAdditionalIpConfigOutput() OceanNetworkNetworkInterfaceAdditionalIpConfigOutput {
+	return o
+}
+
+func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) ToOceanNetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceAdditionalIpConfigOutput {
+	return o
+}
+
+// Name of the Load Balancer.
+func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNetworkNetworkInterfaceAdditionalIpConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Supported values: `IPv4`, `IPv6`.
+func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) PrivateIpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNetworkNetworkInterfaceAdditionalIpConfig) *string { return v.PrivateIpVersion }).(pulumi.StringPtrOutput)
+}
+
+type OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNetworkNetworkInterfaceAdditionalIpConfig)(nil)).Elem()
+}
+
+func (o OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ToOceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput() OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
+	return o
+}
+
+func (o OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ToOceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
+	return o
+}
+
+func (o OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput) Index(i pulumi.IntInput) OceanNetworkNetworkInterfaceAdditionalIpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNetworkNetworkInterfaceAdditionalIpConfig {
+		return vs[0].([]OceanNetworkNetworkInterfaceAdditionalIpConfig)[vs[1].(int)]
+	}).(OceanNetworkNetworkInterfaceAdditionalIpConfigOutput)
+}
+
+type OceanNetworkNetworkInterfaceSecurityGroup struct {
+	// Name of the Load Balancer.
+	Name *string `pulumi:"name"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName *string `pulumi:"resourceGroupName"`
+}
+
+// OceanNetworkNetworkInterfaceSecurityGroupInput is an input type that accepts OceanNetworkNetworkInterfaceSecurityGroupArgs and OceanNetworkNetworkInterfaceSecurityGroupOutput values.
+// You can construct a concrete instance of `OceanNetworkNetworkInterfaceSecurityGroupInput` via:
+//
+//          OceanNetworkNetworkInterfaceSecurityGroupArgs{...}
+type OceanNetworkNetworkInterfaceSecurityGroupInput interface {
+	pulumi.Input
+
+	ToOceanNetworkNetworkInterfaceSecurityGroupOutput() OceanNetworkNetworkInterfaceSecurityGroupOutput
+	ToOceanNetworkNetworkInterfaceSecurityGroupOutputWithContext(context.Context) OceanNetworkNetworkInterfaceSecurityGroupOutput
+}
+
+type OceanNetworkNetworkInterfaceSecurityGroupArgs struct {
+	// Name of the Load Balancer.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
+}
+
+func (OceanNetworkNetworkInterfaceSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNetworkNetworkInterfaceSecurityGroup)(nil)).Elem()
+}
+
+func (i OceanNetworkNetworkInterfaceSecurityGroupArgs) ToOceanNetworkNetworkInterfaceSecurityGroupOutput() OceanNetworkNetworkInterfaceSecurityGroupOutput {
+	return i.ToOceanNetworkNetworkInterfaceSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i OceanNetworkNetworkInterfaceSecurityGroupArgs) ToOceanNetworkNetworkInterfaceSecurityGroupOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceSecurityGroupOutput)
+}
+
+func (i OceanNetworkNetworkInterfaceSecurityGroupArgs) ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutput() OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
+	return i.ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNetworkNetworkInterfaceSecurityGroupArgs) ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceSecurityGroupOutput).ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(ctx)
+}
+
+// OceanNetworkNetworkInterfaceSecurityGroupPtrInput is an input type that accepts OceanNetworkNetworkInterfaceSecurityGroupArgs, OceanNetworkNetworkInterfaceSecurityGroupPtr and OceanNetworkNetworkInterfaceSecurityGroupPtrOutput values.
+// You can construct a concrete instance of `OceanNetworkNetworkInterfaceSecurityGroupPtrInput` via:
+//
+//          OceanNetworkNetworkInterfaceSecurityGroupArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanNetworkNetworkInterfaceSecurityGroupPtrInput interface {
+	pulumi.Input
+
+	ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutput() OceanNetworkNetworkInterfaceSecurityGroupPtrOutput
+	ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(context.Context) OceanNetworkNetworkInterfaceSecurityGroupPtrOutput
+}
+
+type oceanNetworkNetworkInterfaceSecurityGroupPtrType OceanNetworkNetworkInterfaceSecurityGroupArgs
+
+func OceanNetworkNetworkInterfaceSecurityGroupPtr(v *OceanNetworkNetworkInterfaceSecurityGroupArgs) OceanNetworkNetworkInterfaceSecurityGroupPtrInput {
+	return (*oceanNetworkNetworkInterfaceSecurityGroupPtrType)(v)
+}
+
+func (*oceanNetworkNetworkInterfaceSecurityGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNetworkNetworkInterfaceSecurityGroup)(nil)).Elem()
+}
+
+func (i *oceanNetworkNetworkInterfaceSecurityGroupPtrType) ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutput() OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
+	return i.ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNetworkNetworkInterfaceSecurityGroupPtrType) ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceSecurityGroupPtrOutput)
+}
+
+type OceanNetworkNetworkInterfaceSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (OceanNetworkNetworkInterfaceSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNetworkNetworkInterfaceSecurityGroup)(nil)).Elem()
+}
+
+func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) ToOceanNetworkNetworkInterfaceSecurityGroupOutput() OceanNetworkNetworkInterfaceSecurityGroupOutput {
+	return o
+}
+
+func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) ToOceanNetworkNetworkInterfaceSecurityGroupOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceSecurityGroupOutput {
+	return o
+}
+
+func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutput() OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
+	return o.ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
+	return o.ApplyT(func(v OceanNetworkNetworkInterfaceSecurityGroup) *OceanNetworkNetworkInterfaceSecurityGroup {
+		return &v
+	}).(OceanNetworkNetworkInterfaceSecurityGroupPtrOutput)
+}
+
+// Name of the Load Balancer.
+func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNetworkNetworkInterfaceSecurityGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Resource Group name of the Load Balancer.
+func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNetworkNetworkInterfaceSecurityGroup) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+type OceanNetworkNetworkInterfaceSecurityGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNetworkNetworkInterfaceSecurityGroup)(nil)).Elem()
+}
+
+func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutput() OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
+	return o
+}
+
+func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
+	return o
+}
+
+func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) Elem() OceanNetworkNetworkInterfaceSecurityGroupOutput {
+	return o.ApplyT(func(v *OceanNetworkNetworkInterfaceSecurityGroup) OceanNetworkNetworkInterfaceSecurityGroup {
+		return *v
+	}).(OceanNetworkNetworkInterfaceSecurityGroupOutput)
+}
+
+// Name of the Load Balancer.
+func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNetworkNetworkInterfaceSecurityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Resource Group name of the Load Balancer.
+func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNetworkNetworkInterfaceSecurityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+type OceanOsDisk struct {
+	// The size of the OS disk in GB.
+	SizeGb int `pulumi:"sizeGb"`
+	// The type of load balancer. Supported value: `loadBalancer`
+	Type *string `pulumi:"type"`
+}
+
+// OceanOsDiskInput is an input type that accepts OceanOsDiskArgs and OceanOsDiskOutput values.
+// You can construct a concrete instance of `OceanOsDiskInput` via:
+//
+//          OceanOsDiskArgs{...}
+type OceanOsDiskInput interface {
+	pulumi.Input
+
+	ToOceanOsDiskOutput() OceanOsDiskOutput
+	ToOceanOsDiskOutputWithContext(context.Context) OceanOsDiskOutput
+}
+
+type OceanOsDiskArgs struct {
+	// The size of the OS disk in GB.
+	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
+	// The type of load balancer. Supported value: `loadBalancer`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (OceanOsDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanOsDisk)(nil)).Elem()
+}
+
+func (i OceanOsDiskArgs) ToOceanOsDiskOutput() OceanOsDiskOutput {
+	return i.ToOceanOsDiskOutputWithContext(context.Background())
+}
+
+func (i OceanOsDiskArgs) ToOceanOsDiskOutputWithContext(ctx context.Context) OceanOsDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanOsDiskOutput)
+}
+
+func (i OceanOsDiskArgs) ToOceanOsDiskPtrOutput() OceanOsDiskPtrOutput {
+	return i.ToOceanOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (i OceanOsDiskArgs) ToOceanOsDiskPtrOutputWithContext(ctx context.Context) OceanOsDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanOsDiskOutput).ToOceanOsDiskPtrOutputWithContext(ctx)
+}
+
+// OceanOsDiskPtrInput is an input type that accepts OceanOsDiskArgs, OceanOsDiskPtr and OceanOsDiskPtrOutput values.
+// You can construct a concrete instance of `OceanOsDiskPtrInput` via:
+//
+//          OceanOsDiskArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanOsDiskPtrInput interface {
+	pulumi.Input
+
+	ToOceanOsDiskPtrOutput() OceanOsDiskPtrOutput
+	ToOceanOsDiskPtrOutputWithContext(context.Context) OceanOsDiskPtrOutput
+}
+
+type oceanOsDiskPtrType OceanOsDiskArgs
+
+func OceanOsDiskPtr(v *OceanOsDiskArgs) OceanOsDiskPtrInput {
+	return (*oceanOsDiskPtrType)(v)
+}
+
+func (*oceanOsDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanOsDisk)(nil)).Elem()
+}
+
+func (i *oceanOsDiskPtrType) ToOceanOsDiskPtrOutput() OceanOsDiskPtrOutput {
+	return i.ToOceanOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanOsDiskPtrType) ToOceanOsDiskPtrOutputWithContext(ctx context.Context) OceanOsDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanOsDiskPtrOutput)
+}
+
+type OceanOsDiskOutput struct{ *pulumi.OutputState }
+
+func (OceanOsDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanOsDisk)(nil)).Elem()
+}
+
+func (o OceanOsDiskOutput) ToOceanOsDiskOutput() OceanOsDiskOutput {
+	return o
+}
+
+func (o OceanOsDiskOutput) ToOceanOsDiskOutputWithContext(ctx context.Context) OceanOsDiskOutput {
+	return o
+}
+
+func (o OceanOsDiskOutput) ToOceanOsDiskPtrOutput() OceanOsDiskPtrOutput {
+	return o.ToOceanOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (o OceanOsDiskOutput) ToOceanOsDiskPtrOutputWithContext(ctx context.Context) OceanOsDiskPtrOutput {
+	return o.ApplyT(func(v OceanOsDisk) *OceanOsDisk {
+		return &v
+	}).(OceanOsDiskPtrOutput)
+}
+
+// The size of the OS disk in GB.
+func (o OceanOsDiskOutput) SizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanOsDisk) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+// The type of load balancer. Supported value: `loadBalancer`
+func (o OceanOsDiskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanOsDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type OceanOsDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanOsDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanOsDisk)(nil)).Elem()
+}
+
+func (o OceanOsDiskPtrOutput) ToOceanOsDiskPtrOutput() OceanOsDiskPtrOutput {
+	return o
+}
+
+func (o OceanOsDiskPtrOutput) ToOceanOsDiskPtrOutputWithContext(ctx context.Context) OceanOsDiskPtrOutput {
+	return o
+}
+
+func (o OceanOsDiskPtrOutput) Elem() OceanOsDiskOutput {
+	return o.ApplyT(func(v *OceanOsDisk) OceanOsDisk { return *v }).(OceanOsDiskOutput)
+}
+
+// The size of the OS disk in GB.
+func (o OceanOsDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanOsDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of load balancer. Supported value: `loadBalancer`
+func (o OceanOsDiskPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanOsDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type OceanStrategy struct {
+	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
+	// Percentage of Spot VMs to maintain.
+	SpotPercentage *int `pulumi:"spotPercentage"`
+}
+
+// OceanStrategyInput is an input type that accepts OceanStrategyArgs and OceanStrategyOutput values.
+// You can construct a concrete instance of `OceanStrategyInput` via:
+//
+//          OceanStrategyArgs{...}
+type OceanStrategyInput interface {
+	pulumi.Input
+
+	ToOceanStrategyOutput() OceanStrategyOutput
+	ToOceanStrategyOutputWithContext(context.Context) OceanStrategyOutput
+}
+
+type OceanStrategyArgs struct {
+	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+	FallbackToOndemand pulumi.BoolPtrInput `pulumi:"fallbackToOndemand"`
+	// Percentage of Spot VMs to maintain.
+	SpotPercentage pulumi.IntPtrInput `pulumi:"spotPercentage"`
+}
+
+func (OceanStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanStrategy)(nil)).Elem()
+}
+
+func (i OceanStrategyArgs) ToOceanStrategyOutput() OceanStrategyOutput {
+	return i.ToOceanStrategyOutputWithContext(context.Background())
+}
+
+func (i OceanStrategyArgs) ToOceanStrategyOutputWithContext(ctx context.Context) OceanStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanStrategyOutput)
+}
+
+// OceanStrategyArrayInput is an input type that accepts OceanStrategyArray and OceanStrategyArrayOutput values.
+// You can construct a concrete instance of `OceanStrategyArrayInput` via:
+//
+//          OceanStrategyArray{ OceanStrategyArgs{...} }
+type OceanStrategyArrayInput interface {
+	pulumi.Input
+
+	ToOceanStrategyArrayOutput() OceanStrategyArrayOutput
+	ToOceanStrategyArrayOutputWithContext(context.Context) OceanStrategyArrayOutput
+}
+
+type OceanStrategyArray []OceanStrategyInput
+
+func (OceanStrategyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanStrategy)(nil)).Elem()
+}
+
+func (i OceanStrategyArray) ToOceanStrategyArrayOutput() OceanStrategyArrayOutput {
+	return i.ToOceanStrategyArrayOutputWithContext(context.Background())
+}
+
+func (i OceanStrategyArray) ToOceanStrategyArrayOutputWithContext(ctx context.Context) OceanStrategyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanStrategyArrayOutput)
+}
+
+type OceanStrategyOutput struct{ *pulumi.OutputState }
+
+func (OceanStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanStrategy)(nil)).Elem()
+}
+
+func (o OceanStrategyOutput) ToOceanStrategyOutput() OceanStrategyOutput {
+	return o
+}
+
+func (o OceanStrategyOutput) ToOceanStrategyOutputWithContext(ctx context.Context) OceanStrategyOutput {
+	return o
+}
+
+// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+func (o OceanStrategyOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanStrategy) *bool { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
+}
+
+// Percentage of Spot VMs to maintain.
+func (o OceanStrategyOutput) SpotPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanStrategy) *int { return v.SpotPercentage }).(pulumi.IntPtrOutput)
+}
+
+type OceanStrategyArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanStrategyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanStrategy)(nil)).Elem()
+}
+
+func (o OceanStrategyArrayOutput) ToOceanStrategyArrayOutput() OceanStrategyArrayOutput {
+	return o
+}
+
+func (o OceanStrategyArrayOutput) ToOceanStrategyArrayOutputWithContext(ctx context.Context) OceanStrategyArrayOutput {
+	return o
+}
+
+func (o OceanStrategyArrayOutput) Index(i pulumi.IntInput) OceanStrategyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanStrategy {
+		return vs[0].([]OceanStrategy)[vs[1].(int)]
+	}).(OceanStrategyOutput)
+}
+
+type OceanTag struct {
+	// Tag key.
+	Key *string `pulumi:"key"`
+	// Tag value.
+	Value *string `pulumi:"value"`
+}
+
+// OceanTagInput is an input type that accepts OceanTagArgs and OceanTagOutput values.
+// You can construct a concrete instance of `OceanTagInput` via:
+//
+//          OceanTagArgs{...}
+type OceanTagInput interface {
+	pulumi.Input
+
+	ToOceanTagOutput() OceanTagOutput
+	ToOceanTagOutputWithContext(context.Context) OceanTagOutput
+}
+
+type OceanTagArgs struct {
+	// Tag key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Tag value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (OceanTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanTag)(nil)).Elem()
+}
+
+func (i OceanTagArgs) ToOceanTagOutput() OceanTagOutput {
+	return i.ToOceanTagOutputWithContext(context.Background())
+}
+
+func (i OceanTagArgs) ToOceanTagOutputWithContext(ctx context.Context) OceanTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanTagOutput)
+}
+
+// OceanTagArrayInput is an input type that accepts OceanTagArray and OceanTagArrayOutput values.
+// You can construct a concrete instance of `OceanTagArrayInput` via:
+//
+//          OceanTagArray{ OceanTagArgs{...} }
+type OceanTagArrayInput interface {
+	pulumi.Input
+
+	ToOceanTagArrayOutput() OceanTagArrayOutput
+	ToOceanTagArrayOutputWithContext(context.Context) OceanTagArrayOutput
+}
+
+type OceanTagArray []OceanTagInput
+
+func (OceanTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanTag)(nil)).Elem()
+}
+
+func (i OceanTagArray) ToOceanTagArrayOutput() OceanTagArrayOutput {
+	return i.ToOceanTagArrayOutputWithContext(context.Background())
+}
+
+func (i OceanTagArray) ToOceanTagArrayOutputWithContext(ctx context.Context) OceanTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanTagArrayOutput)
+}
+
+type OceanTagOutput struct{ *pulumi.OutputState }
+
+func (OceanTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanTag)(nil)).Elem()
+}
+
+func (o OceanTagOutput) ToOceanTagOutput() OceanTagOutput {
+	return o
+}
+
+func (o OceanTagOutput) ToOceanTagOutputWithContext(ctx context.Context) OceanTagOutput {
+	return o
+}
+
+// Tag key.
+func (o OceanTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Tag value.
+func (o OceanTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type OceanTagArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanTag)(nil)).Elem()
+}
+
+func (o OceanTagArrayOutput) ToOceanTagArrayOutput() OceanTagArrayOutput {
+	return o
+}
+
+func (o OceanTagArrayOutput) ToOceanTagArrayOutputWithContext(ctx context.Context) OceanTagArrayOutput {
+	return o
+}
+
+func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanTag {
+		return vs[0].([]OceanTag)[vs[1].(int)]
+	}).(OceanTagOutput)
+}
+
 type OceanVirtualNodeGroupAutoscale struct {
 	AutoscaleHeadroom *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
 }
@@ -3817,6 +6112,103 @@ func (o OceanVirtualNodeGroupTaintArrayOutput) Index(i pulumi.IntInput) OceanVir
 	}).(OceanVirtualNodeGroupTaintOutput)
 }
 
+type OceanVmSize struct {
+	// VM types allowed in the Ocean cluster.
+	Whitelists []string `pulumi:"whitelists"`
+}
+
+// OceanVmSizeInput is an input type that accepts OceanVmSizeArgs and OceanVmSizeOutput values.
+// You can construct a concrete instance of `OceanVmSizeInput` via:
+//
+//          OceanVmSizeArgs{...}
+type OceanVmSizeInput interface {
+	pulumi.Input
+
+	ToOceanVmSizeOutput() OceanVmSizeOutput
+	ToOceanVmSizeOutputWithContext(context.Context) OceanVmSizeOutput
+}
+
+type OceanVmSizeArgs struct {
+	// VM types allowed in the Ocean cluster.
+	Whitelists pulumi.StringArrayInput `pulumi:"whitelists"`
+}
+
+func (OceanVmSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVmSize)(nil)).Elem()
+}
+
+func (i OceanVmSizeArgs) ToOceanVmSizeOutput() OceanVmSizeOutput {
+	return i.ToOceanVmSizeOutputWithContext(context.Background())
+}
+
+func (i OceanVmSizeArgs) ToOceanVmSizeOutputWithContext(ctx context.Context) OceanVmSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVmSizeOutput)
+}
+
+// OceanVmSizeArrayInput is an input type that accepts OceanVmSizeArray and OceanVmSizeArrayOutput values.
+// You can construct a concrete instance of `OceanVmSizeArrayInput` via:
+//
+//          OceanVmSizeArray{ OceanVmSizeArgs{...} }
+type OceanVmSizeArrayInput interface {
+	pulumi.Input
+
+	ToOceanVmSizeArrayOutput() OceanVmSizeArrayOutput
+	ToOceanVmSizeArrayOutputWithContext(context.Context) OceanVmSizeArrayOutput
+}
+
+type OceanVmSizeArray []OceanVmSizeInput
+
+func (OceanVmSizeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVmSize)(nil)).Elem()
+}
+
+func (i OceanVmSizeArray) ToOceanVmSizeArrayOutput() OceanVmSizeArrayOutput {
+	return i.ToOceanVmSizeArrayOutputWithContext(context.Background())
+}
+
+func (i OceanVmSizeArray) ToOceanVmSizeArrayOutputWithContext(ctx context.Context) OceanVmSizeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVmSizeArrayOutput)
+}
+
+type OceanVmSizeOutput struct{ *pulumi.OutputState }
+
+func (OceanVmSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanVmSize)(nil)).Elem()
+}
+
+func (o OceanVmSizeOutput) ToOceanVmSizeOutput() OceanVmSizeOutput {
+	return o
+}
+
+func (o OceanVmSizeOutput) ToOceanVmSizeOutputWithContext(ctx context.Context) OceanVmSizeOutput {
+	return o
+}
+
+// VM types allowed in the Ocean cluster.
+func (o OceanVmSizeOutput) Whitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanVmSize) []string { return v.Whitelists }).(pulumi.StringArrayOutput)
+}
+
+type OceanVmSizeArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanVmSizeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVmSize)(nil)).Elem()
+}
+
+func (o OceanVmSizeArrayOutput) ToOceanVmSizeArrayOutput() OceanVmSizeArrayOutput {
+	return o
+}
+
+func (o OceanVmSizeArrayOutput) ToOceanVmSizeArrayOutputWithContext(ctx context.Context) OceanVmSizeArrayOutput {
+	return o
+}
+
+func (o OceanVmSizeArrayOutput) Index(i pulumi.IntInput) OceanVmSizeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanVmSize {
+		return vs[0].([]OceanVmSize)[vs[1].(int)]
+	}).(OceanVmSizeOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ElastigroupHealthCheckOutput{})
 	pulumi.RegisterOutputType(ElastigroupHealthCheckPtrOutput{})
@@ -3856,6 +6248,40 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigOutput{})
 	pulumi.RegisterOutputType(ElastigroupUpdatePolicyRollConfigPtrOutput{})
+	pulumi.RegisterOutputType(OceanAutoscalerOutput{})
+	pulumi.RegisterOutputType(OceanAutoscalerPtrOutput{})
+	pulumi.RegisterOutputType(OceanAutoscalerAutoscaleDownOutput{})
+	pulumi.RegisterOutputType(OceanAutoscalerAutoscaleDownPtrOutput{})
+	pulumi.RegisterOutputType(OceanAutoscalerAutoscaleHeadroomOutput{})
+	pulumi.RegisterOutputType(OceanAutoscalerAutoscaleHeadroomPtrOutput{})
+	pulumi.RegisterOutputType(OceanAutoscalerAutoscaleHeadroomAutomaticOutput{})
+	pulumi.RegisterOutputType(OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput{})
+	pulumi.RegisterOutputType(OceanAutoscalerResourceLimitsOutput{})
+	pulumi.RegisterOutputType(OceanAutoscalerResourceLimitsPtrOutput{})
+	pulumi.RegisterOutputType(OceanExtensionOutput{})
+	pulumi.RegisterOutputType(OceanExtensionArrayOutput{})
+	pulumi.RegisterOutputType(OceanHealthOutput{})
+	pulumi.RegisterOutputType(OceanHealthPtrOutput{})
+	pulumi.RegisterOutputType(OceanImageOutput{})
+	pulumi.RegisterOutputType(OceanImageArrayOutput{})
+	pulumi.RegisterOutputType(OceanImageMarketplaceOutput{})
+	pulumi.RegisterOutputType(OceanImageMarketplaceArrayOutput{})
+	pulumi.RegisterOutputType(OceanLoadBalancerOutput{})
+	pulumi.RegisterOutputType(OceanLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(OceanNetworkOutput{})
+	pulumi.RegisterOutputType(OceanNetworkPtrOutput{})
+	pulumi.RegisterOutputType(OceanNetworkNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(OceanNetworkNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(OceanNetworkNetworkInterfaceAdditionalIpConfigOutput{})
+	pulumi.RegisterOutputType(OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput{})
+	pulumi.RegisterOutputType(OceanNetworkNetworkInterfaceSecurityGroupOutput{})
+	pulumi.RegisterOutputType(OceanNetworkNetworkInterfaceSecurityGroupPtrOutput{})
+	pulumi.RegisterOutputType(OceanOsDiskOutput{})
+	pulumi.RegisterOutputType(OceanOsDiskPtrOutput{})
+	pulumi.RegisterOutputType(OceanStrategyOutput{})
+	pulumi.RegisterOutputType(OceanStrategyArrayOutput{})
+	pulumi.RegisterOutputType(OceanTagOutput{})
+	pulumi.RegisterOutputType(OceanTagArrayOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleArrayOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput{})
@@ -3872,4 +6298,6 @@ func init() {
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupResourceLimitArrayOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupTaintOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupTaintArrayOutput{})
+	pulumi.RegisterOutputType(OceanVmSizeOutput{})
+	pulumi.RegisterOutputType(OceanVmSizeArrayOutput{})
 }

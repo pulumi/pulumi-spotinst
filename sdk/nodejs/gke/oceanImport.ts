@@ -5,46 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Spotinst Ocean GKE resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const example = new spotinst.gke.OceanImport("example", {
- *     backendServices: [{
- *         locationType: "regional",
- *         namedPorts: [{
- *             name: "http",
- *             ports: [
- *                 "80",
- *                 "8080",
- *             ],
- *         }],
- *         scheme: "INTERNAL",
- *         serviceName: "example-backend-service",
- *     }],
- *     clusterName: "example-cluster-name",
- *     desiredCapacity: 0,
- *     location: "us-central1-a",
- *     maxSize: 2,
- *     minSize: 0,
- *     whitelists: [
- *         "n1-standard-1",
- *         "n1-standard-2",
- *     ],
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanId = spotinst_ocean_gke_import.example.id;
- * ```
- */
 export class OceanImport extends pulumi.CustomResource {
     /**
      * Get an existing OceanImport resource's state with the given name, ID, and optional extra

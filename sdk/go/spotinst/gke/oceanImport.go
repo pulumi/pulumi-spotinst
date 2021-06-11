@@ -11,69 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a Spotinst Ocean GKE resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/gke"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gke.NewOceanImport(ctx, "example", &gke.OceanImportArgs{
-// 			BackendServices: gke.OceanImportBackendServiceArray{
-// 				&gke.OceanImportBackendServiceArgs{
-// 					LocationType: pulumi.String("regional"),
-// 					NamedPorts: gke.OceanImportBackendServiceNamedPortArray{
-// 						&gke.OceanImportBackendServiceNamedPortArgs{
-// 							Name: pulumi.String("http"),
-// 							Ports: pulumi.StringArray{
-// 								pulumi.String("80"),
-// 								pulumi.String("8080"),
-// 							},
-// 						},
-// 					},
-// 					Scheme:      pulumi.String("INTERNAL"),
-// 					ServiceName: pulumi.String("example-backend-service"),
-// 				},
-// 			},
-// 			ClusterName:     pulumi.String("example-cluster-name"),
-// 			DesiredCapacity: pulumi.Int(0),
-// 			Location:        pulumi.String("us-central1-a"),
-// 			MaxSize:         pulumi.Int(2),
-// 			MinSize:         pulumi.Int(0),
-// 			Whitelists: pulumi.StringArray{
-// 				pulumi.String("n1-standard-1"),
-// 				pulumi.String("n1-standard-2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ctx.Export("oceanId", spotinst_ocean_gke_import.Example.Id)
-// 		return nil
-// 	})
-// }
-// ```
 type OceanImport struct {
 	pulumi.CustomResourceState
 

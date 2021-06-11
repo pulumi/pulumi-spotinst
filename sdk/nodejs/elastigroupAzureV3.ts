@@ -7,6 +7,71 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Spotinst elastigroup Azure resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const testAzureGroup = new spotinst.ElastigroupAzureV3("test_azure_group", {
+ *     desiredCapacity: 1,
+ *     // --- IMAGE ---------------------------------------------------------
+ *     images: [{
+ *         marketplaces: [{
+ *             offer: "UbuntuServer",
+ *             publisher: "Canonical",
+ *             sku: "18.04-LTS",
+ *             version: "latest",
+ *         }],
+ *     }],
+ *     // --- LOGIN ---------------------------------------------------------
+ *     login: {
+ *         sshPublicKey: "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+ *         userName: "admin",
+ *     },
+ *     maxSize: 1,
+ *     // --- CAPACITY ------------------------------------------------------
+ *     minSize: 0,
+ *     // --- NETWORK -------------------------------------------------------
+ *     network: {
+ *         networkInterfaces: [{
+ *             additionalIpConfigs: [{
+ *                 PrivateIPVersion: "IPv4",
+ *                 name: "SecondaryIPConfig",
+ *             }],
+ *             applicationSecurityGroups: [{
+ *                 name: "ApplicationSecurityGroupName",
+ *                 resourceGroupName: "ResourceGroup",
+ *             }],
+ *             assignPublicIp: false,
+ *             isPrimary: true,
+ *             subnetName: "default",
+ *         }],
+ *         resourceGroupName: "ResourceGroup",
+ *         virtualNetworkName: "VirtualNetworkName",
+ *     },
+ *     // --- INSTANCE TYPES ------------------------------------------------
+ *     odSizes: [
+ *         "standard_a1_v1",
+ *         "standard_a1_v2",
+ *     ],
+ *     os: "Linux",
+ *     region: "eastus",
+ *     resourceGroupName: "spotinst-azure",
+ *     spotSizes: [
+ *         "standard_a1_v1",
+ *         "standard_a1_v2",
+ *     ],
+ *     // --- STRATEGY ------------------------------------------------------
+ *     strategy: {
+ *         drainingTimeout: 300,
+ *         fallbackToOnDemand: true,
+ *         odCount: 1,
+ *         spotPercentage: 65,
+ *     },
+ * });
+ * ```
  */
 export class ElastigroupAzureV3 extends pulumi.CustomResource {
     /**
@@ -57,7 +122,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * The IP configuration name.
+     * - The name of the Application Security group.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -69,7 +134,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      */
     public readonly odSizes!: pulumi.Output<string[]>;
     /**
-     * Operation system type. Valid values: `"Linux"`, `"Windows"`.
+     * Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
      */
     public readonly os!: pulumi.Output<string>;
     /**
@@ -77,7 +142,8 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Vnet Resource Group Name.
+     * - The resource group of the Application Security Group.
+     * }
      */
     public readonly resourceGroupName!: pulumi.Output<string>;
     /**
@@ -184,7 +250,7 @@ export interface ElastigroupAzureV3State {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * The IP configuration name.
+     * - The name of the Application Security group.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -196,7 +262,7 @@ export interface ElastigroupAzureV3State {
      */
     readonly odSizes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Operation system type. Valid values: `"Linux"`, `"Windows"`.
+     * Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
      */
     readonly os?: pulumi.Input<string>;
     /**
@@ -204,7 +270,8 @@ export interface ElastigroupAzureV3State {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * Vnet Resource Group Name.
+     * - The resource group of the Application Security Group.
+     * }
      */
     readonly resourceGroupName?: pulumi.Input<string>;
     /**
@@ -242,7 +309,7 @@ export interface ElastigroupAzureV3Args {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * The IP configuration name.
+     * - The name of the Application Security group.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -254,7 +321,7 @@ export interface ElastigroupAzureV3Args {
      */
     readonly odSizes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Operation system type. Valid values: `"Linux"`, `"Windows"`.
+     * Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
      */
     readonly os: pulumi.Input<string>;
     /**
@@ -262,7 +329,8 @@ export interface ElastigroupAzureV3Args {
      */
     readonly region: pulumi.Input<string>;
     /**
-     * Vnet Resource Group Name.
+     * - The resource group of the Application Security Group.
+     * }
      */
     readonly resourceGroupName: pulumi.Input<string>;
     /**

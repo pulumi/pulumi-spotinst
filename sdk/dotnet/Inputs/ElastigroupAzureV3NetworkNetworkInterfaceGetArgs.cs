@@ -24,6 +24,18 @@ namespace Pulumi.SpotInst.Inputs
             set => _additionalIpConfigs = value;
         }
 
+        [Input("applicationSecurityGroups")]
+        private InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupGetArgs>? _applicationSecurityGroups;
+
+        /// <summary>
+        /// - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+        /// </summary>
+        public InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupGetArgs> ApplicationSecurityGroups
+        {
+            get => _applicationSecurityGroups ?? (_applicationSecurityGroups = new InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupGetArgs>());
+            set => _applicationSecurityGroups = value;
+        }
+
         [Input("assignPublicIp", required: true)]
         public Input<bool> AssignPublicIp { get; set; } = null!;
 
