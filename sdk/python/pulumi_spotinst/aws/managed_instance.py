@@ -38,6 +38,7 @@ class ManagedInstanceArgs:
                  key_pair: Optional[pulumi.Input[str]] = None,
                  life_cycle: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]] = None,
+                 managed_instance_action: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]] = None,
@@ -144,6 +145,8 @@ class ManagedInstanceArgs:
             pulumi.set(__self__, "life_cycle", life_cycle)
         if load_balancers is not None:
             pulumi.set(__self__, "load_balancers", load_balancers)
+        if managed_instance_action is not None:
+            pulumi.set(__self__, "managed_instance_action", managed_instance_action)
         if minimum_instance_lifetime is not None:
             pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
         if name is not None:
@@ -459,6 +462,15 @@ class ManagedInstanceArgs:
         pulumi.set(self, "load_balancers", value)
 
     @property
+    @pulumi.getter(name="managedInstanceAction")
+    def managed_instance_action(self) -> Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']]:
+        return pulumi.get(self, "managed_instance_action")
+
+    @managed_instance_action.setter
+    def managed_instance_action(self, value: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']]):
+        pulumi.set(self, "managed_instance_action", value)
+
+    @property
     @pulumi.getter(name="minimumInstanceLifetime")
     def minimum_instance_lifetime(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "minimum_instance_lifetime")
@@ -700,6 +712,7 @@ class _ManagedInstanceState:
                  key_pair: Optional[pulumi.Input[str]] = None,
                  life_cycle: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]] = None,
+                 managed_instance_action: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]] = None,
@@ -808,6 +821,8 @@ class _ManagedInstanceState:
             pulumi.set(__self__, "life_cycle", life_cycle)
         if load_balancers is not None:
             pulumi.set(__self__, "load_balancers", load_balancers)
+        if managed_instance_action is not None:
+            pulumi.set(__self__, "managed_instance_action", managed_instance_action)
         if minimum_instance_lifetime is not None:
             pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
         if name is not None:
@@ -1084,6 +1099,15 @@ class _ManagedInstanceState:
     @load_balancers.setter
     def load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]]):
         pulumi.set(self, "load_balancers", value)
+
+    @property
+    @pulumi.getter(name="managedInstanceAction")
+    def managed_instance_action(self) -> Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']]:
+        return pulumi.get(self, "managed_instance_action")
+
+    @managed_instance_action.setter
+    def managed_instance_action(self, value: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']]):
+        pulumi.set(self, "managed_instance_action", value)
 
     @property
     @pulumi.getter(name="minimumInstanceLifetime")
@@ -1374,6 +1398,7 @@ class ManagedInstance(pulumi.CustomResource):
                  key_pair: Optional[pulumi.Input[str]] = None,
                  life_cycle: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceLoadBalancerArgs']]]]] = None,
+                 managed_instance_action: Optional[pulumi.Input[pulumi.InputType['ManagedInstanceManagedInstanceActionArgs']]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceNetworkInterfaceArgs']]]]] = None,
@@ -1400,6 +1425,17 @@ class ManagedInstance(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a Spotinst AWS ManagedInstance resource.
+
+        ## Managed Instance Action
+
+        * `managed_instance_action` - (Optional)
+            * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1457,6 +1493,17 @@ class ManagedInstance(pulumi.CustomResource):
         """
         Provides a Spotinst AWS ManagedInstance resource.
 
+        ## Managed Instance Action
+
+        * `managed_instance_action` - (Optional)
+            * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+
         :param str resource_name: The name of the resource.
         :param ManagedInstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1491,6 +1538,7 @@ class ManagedInstance(pulumi.CustomResource):
                  key_pair: Optional[pulumi.Input[str]] = None,
                  life_cycle: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceLoadBalancerArgs']]]]] = None,
+                 managed_instance_action: Optional[pulumi.Input[pulumi.InputType['ManagedInstanceManagedInstanceActionArgs']]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceNetworkInterfaceArgs']]]]] = None,
@@ -1549,6 +1597,7 @@ class ManagedInstance(pulumi.CustomResource):
             __props__.__dict__["key_pair"] = key_pair
             __props__.__dict__["life_cycle"] = life_cycle
             __props__.__dict__["load_balancers"] = load_balancers
+            __props__.__dict__["managed_instance_action"] = managed_instance_action
             __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
@@ -1609,6 +1658,7 @@ class ManagedInstance(pulumi.CustomResource):
             key_pair: Optional[pulumi.Input[str]] = None,
             life_cycle: Optional[pulumi.Input[str]] = None,
             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceLoadBalancerArgs']]]]] = None,
+            managed_instance_action: Optional[pulumi.Input[pulumi.InputType['ManagedInstanceManagedInstanceActionArgs']]] = None,
             minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceNetworkInterfaceArgs']]]]] = None,
@@ -1707,6 +1757,7 @@ class ManagedInstance(pulumi.CustomResource):
         __props__.__dict__["key_pair"] = key_pair
         __props__.__dict__["life_cycle"] = life_cycle
         __props__.__dict__["load_balancers"] = load_balancers
+        __props__.__dict__["managed_instance_action"] = managed_instance_action
         __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
@@ -1885,6 +1936,11 @@ class ManagedInstance(pulumi.CustomResource):
         List of load balancers configs.
         """
         return pulumi.get(self, "load_balancers")
+
+    @property
+    @pulumi.getter(name="managedInstanceAction")
+    def managed_instance_action(self) -> pulumi.Output[Optional['outputs.ManagedInstanceManagedInstanceAction']]:
+        return pulumi.get(self, "managed_instance_action")
 
     @property
     @pulumi.getter(name="minimumInstanceLifetime")

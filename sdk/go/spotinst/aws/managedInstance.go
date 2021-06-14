@@ -12,6 +12,27 @@ import (
 )
 
 // Provides a Spotinst AWS ManagedInstance resource.
+//
+// ## Managed Instance Action
+//
+// * `managedInstanceAction` - (Optional)
+//     * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
 type ManagedInstance struct {
 	pulumi.CustomResourceState
 
@@ -56,8 +77,9 @@ type ManagedInstance struct {
 	// Default `"spot"`.
 	LifeCycle pulumi.StringPtrOutput `pulumi:"lifeCycle"`
 	// List of load balancers configs.
-	LoadBalancers           ManagedInstanceLoadBalancerArrayOutput `pulumi:"loadBalancers"`
-	MinimumInstanceLifetime pulumi.IntPtrOutput                    `pulumi:"minimumInstanceLifetime"`
+	LoadBalancers           ManagedInstanceLoadBalancerArrayOutput        `pulumi:"loadBalancers"`
+	ManagedInstanceAction   ManagedInstanceManagedInstanceActionPtrOutput `pulumi:"managedInstanceAction"`
+	MinimumInstanceLifetime pulumi.IntPtrOutput                           `pulumi:"minimumInstanceLifetime"`
 	// The record set name.
 	Name              pulumi.StringOutput                        `pulumi:"name"`
 	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
@@ -191,8 +213,9 @@ type managedInstanceState struct {
 	// Default `"spot"`.
 	LifeCycle *string `pulumi:"lifeCycle"`
 	// List of load balancers configs.
-	LoadBalancers           []ManagedInstanceLoadBalancer `pulumi:"loadBalancers"`
-	MinimumInstanceLifetime *int                          `pulumi:"minimumInstanceLifetime"`
+	LoadBalancers           []ManagedInstanceLoadBalancer         `pulumi:"loadBalancers"`
+	ManagedInstanceAction   *ManagedInstanceManagedInstanceAction `pulumi:"managedInstanceAction"`
+	MinimumInstanceLifetime *int                                  `pulumi:"minimumInstanceLifetime"`
 	// The record set name.
 	Name              *string                           `pulumi:"name"`
 	NetworkInterfaces []ManagedInstanceNetworkInterface `pulumi:"networkInterfaces"`
@@ -281,6 +304,7 @@ type ManagedInstanceState struct {
 	LifeCycle pulumi.StringPtrInput
 	// List of load balancers configs.
 	LoadBalancers           ManagedInstanceLoadBalancerArrayInput
+	ManagedInstanceAction   ManagedInstanceManagedInstanceActionPtrInput
 	MinimumInstanceLifetime pulumi.IntPtrInput
 	// The record set name.
 	Name              pulumi.StringPtrInput
@@ -373,8 +397,9 @@ type managedInstanceArgs struct {
 	// Default `"spot"`.
 	LifeCycle *string `pulumi:"lifeCycle"`
 	// List of load balancers configs.
-	LoadBalancers           []ManagedInstanceLoadBalancer `pulumi:"loadBalancers"`
-	MinimumInstanceLifetime *int                          `pulumi:"minimumInstanceLifetime"`
+	LoadBalancers           []ManagedInstanceLoadBalancer         `pulumi:"loadBalancers"`
+	ManagedInstanceAction   *ManagedInstanceManagedInstanceAction `pulumi:"managedInstanceAction"`
+	MinimumInstanceLifetime *int                                  `pulumi:"minimumInstanceLifetime"`
 	// The record set name.
 	Name              *string                           `pulumi:"name"`
 	NetworkInterfaces []ManagedInstanceNetworkInterface `pulumi:"networkInterfaces"`
@@ -464,6 +489,7 @@ type ManagedInstanceArgs struct {
 	LifeCycle pulumi.StringPtrInput
 	// List of load balancers configs.
 	LoadBalancers           ManagedInstanceLoadBalancerArrayInput
+	ManagedInstanceAction   ManagedInstanceManagedInstanceActionPtrInput
 	MinimumInstanceLifetime pulumi.IntPtrInput
 	// The record set name.
 	Name              pulumi.StringPtrInput

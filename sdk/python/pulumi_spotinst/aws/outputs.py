@@ -76,6 +76,7 @@ __all__ = [
     'ManagedInstanceIntegrationRoute53Domain',
     'ManagedInstanceIntegrationRoute53DomainRecordSet',
     'ManagedInstanceLoadBalancer',
+    'ManagedInstanceManagedInstanceAction',
     'ManagedInstanceNetworkInterface',
     'ManagedInstanceRevertToSpot',
     'ManagedInstanceScheduledTask',
@@ -4938,6 +4939,24 @@ class ManagedInstanceLoadBalancer(dict):
         Default: ts-123456
         """
         return pulumi.get(self, "target_set_id")
+
+
+@pulumi.output_type
+class ManagedInstanceManagedInstanceAction(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

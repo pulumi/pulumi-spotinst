@@ -75,6 +75,7 @@ __all__ = [
     'ManagedInstanceIntegrationRoute53DomainArgs',
     'ManagedInstanceIntegrationRoute53DomainRecordSetArgs',
     'ManagedInstanceLoadBalancerArgs',
+    'ManagedInstanceManagedInstanceActionArgs',
     'ManagedInstanceNetworkInterfaceArgs',
     'ManagedInstanceRevertToSpotArgs',
     'ManagedInstanceScheduledTaskArgs',
@@ -4810,6 +4811,28 @@ class ManagedInstanceLoadBalancerArgs:
     @target_set_id.setter
     def target_set_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_set_id", value)
+
+
+@pulumi.input_type
+class ManagedInstanceManagedInstanceActionArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] type: The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

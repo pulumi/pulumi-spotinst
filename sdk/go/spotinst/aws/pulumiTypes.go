@@ -10405,6 +10405,137 @@ func (o ManagedInstanceLoadBalancerArrayOutput) Index(i pulumi.IntInput) Managed
 	}).(ManagedInstanceLoadBalancerOutput)
 }
 
+type ManagedInstanceManagedInstanceAction struct {
+	// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+	Type string `pulumi:"type"`
+}
+
+// ManagedInstanceManagedInstanceActionInput is an input type that accepts ManagedInstanceManagedInstanceActionArgs and ManagedInstanceManagedInstanceActionOutput values.
+// You can construct a concrete instance of `ManagedInstanceManagedInstanceActionInput` via:
+//
+//          ManagedInstanceManagedInstanceActionArgs{...}
+type ManagedInstanceManagedInstanceActionInput interface {
+	pulumi.Input
+
+	ToManagedInstanceManagedInstanceActionOutput() ManagedInstanceManagedInstanceActionOutput
+	ToManagedInstanceManagedInstanceActionOutputWithContext(context.Context) ManagedInstanceManagedInstanceActionOutput
+}
+
+type ManagedInstanceManagedInstanceActionArgs struct {
+	// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ManagedInstanceManagedInstanceActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceManagedInstanceAction)(nil)).Elem()
+}
+
+func (i ManagedInstanceManagedInstanceActionArgs) ToManagedInstanceManagedInstanceActionOutput() ManagedInstanceManagedInstanceActionOutput {
+	return i.ToManagedInstanceManagedInstanceActionOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceManagedInstanceActionArgs) ToManagedInstanceManagedInstanceActionOutputWithContext(ctx context.Context) ManagedInstanceManagedInstanceActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceManagedInstanceActionOutput)
+}
+
+func (i ManagedInstanceManagedInstanceActionArgs) ToManagedInstanceManagedInstanceActionPtrOutput() ManagedInstanceManagedInstanceActionPtrOutput {
+	return i.ToManagedInstanceManagedInstanceActionPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceManagedInstanceActionArgs) ToManagedInstanceManagedInstanceActionPtrOutputWithContext(ctx context.Context) ManagedInstanceManagedInstanceActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceManagedInstanceActionOutput).ToManagedInstanceManagedInstanceActionPtrOutputWithContext(ctx)
+}
+
+// ManagedInstanceManagedInstanceActionPtrInput is an input type that accepts ManagedInstanceManagedInstanceActionArgs, ManagedInstanceManagedInstanceActionPtr and ManagedInstanceManagedInstanceActionPtrOutput values.
+// You can construct a concrete instance of `ManagedInstanceManagedInstanceActionPtrInput` via:
+//
+//          ManagedInstanceManagedInstanceActionArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedInstanceManagedInstanceActionPtrInput interface {
+	pulumi.Input
+
+	ToManagedInstanceManagedInstanceActionPtrOutput() ManagedInstanceManagedInstanceActionPtrOutput
+	ToManagedInstanceManagedInstanceActionPtrOutputWithContext(context.Context) ManagedInstanceManagedInstanceActionPtrOutput
+}
+
+type managedInstanceManagedInstanceActionPtrType ManagedInstanceManagedInstanceActionArgs
+
+func ManagedInstanceManagedInstanceActionPtr(v *ManagedInstanceManagedInstanceActionArgs) ManagedInstanceManagedInstanceActionPtrInput {
+	return (*managedInstanceManagedInstanceActionPtrType)(v)
+}
+
+func (*managedInstanceManagedInstanceActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedInstanceManagedInstanceAction)(nil)).Elem()
+}
+
+func (i *managedInstanceManagedInstanceActionPtrType) ToManagedInstanceManagedInstanceActionPtrOutput() ManagedInstanceManagedInstanceActionPtrOutput {
+	return i.ToManagedInstanceManagedInstanceActionPtrOutputWithContext(context.Background())
+}
+
+func (i *managedInstanceManagedInstanceActionPtrType) ToManagedInstanceManagedInstanceActionPtrOutputWithContext(ctx context.Context) ManagedInstanceManagedInstanceActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceManagedInstanceActionPtrOutput)
+}
+
+type ManagedInstanceManagedInstanceActionOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceManagedInstanceActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceManagedInstanceAction)(nil)).Elem()
+}
+
+func (o ManagedInstanceManagedInstanceActionOutput) ToManagedInstanceManagedInstanceActionOutput() ManagedInstanceManagedInstanceActionOutput {
+	return o
+}
+
+func (o ManagedInstanceManagedInstanceActionOutput) ToManagedInstanceManagedInstanceActionOutputWithContext(ctx context.Context) ManagedInstanceManagedInstanceActionOutput {
+	return o
+}
+
+func (o ManagedInstanceManagedInstanceActionOutput) ToManagedInstanceManagedInstanceActionPtrOutput() ManagedInstanceManagedInstanceActionPtrOutput {
+	return o.ToManagedInstanceManagedInstanceActionPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedInstanceManagedInstanceActionOutput) ToManagedInstanceManagedInstanceActionPtrOutputWithContext(ctx context.Context) ManagedInstanceManagedInstanceActionPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceManagedInstanceAction) *ManagedInstanceManagedInstanceAction {
+		return &v
+	}).(ManagedInstanceManagedInstanceActionPtrOutput)
+}
+
+// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+func (o ManagedInstanceManagedInstanceActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedInstanceManagedInstanceAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ManagedInstanceManagedInstanceActionPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceManagedInstanceActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedInstanceManagedInstanceAction)(nil)).Elem()
+}
+
+func (o ManagedInstanceManagedInstanceActionPtrOutput) ToManagedInstanceManagedInstanceActionPtrOutput() ManagedInstanceManagedInstanceActionPtrOutput {
+	return o
+}
+
+func (o ManagedInstanceManagedInstanceActionPtrOutput) ToManagedInstanceManagedInstanceActionPtrOutputWithContext(ctx context.Context) ManagedInstanceManagedInstanceActionPtrOutput {
+	return o
+}
+
+func (o ManagedInstanceManagedInstanceActionPtrOutput) Elem() ManagedInstanceManagedInstanceActionOutput {
+	return o.ApplyT(func(v *ManagedInstanceManagedInstanceAction) ManagedInstanceManagedInstanceAction { return *v }).(ManagedInstanceManagedInstanceActionOutput)
+}
+
+// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+func (o ManagedInstanceManagedInstanceActionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceManagedInstanceAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type ManagedInstanceNetworkInterface struct {
 	// Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
 	// Default: false
@@ -16906,6 +17037,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceLoadBalancerOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceManagedInstanceActionOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceManagedInstanceActionPtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceRevertToSpotOutput{})

@@ -3039,6 +3039,23 @@
                 "type"
             ]
         },
+        "spotinst:aws/ManagedInstanceManagedInstanceAction:ManagedInstanceManagedInstanceAction": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
         "spotinst:aws/ManagedInstanceNetworkInterface:ManagedInstanceNetworkInterface": {
             "properties": {
                 "associateIpv6Address": {
@@ -12199,7 +12216,7 @@
             }
         },
         "spotinst:aws/managedInstance:ManagedInstance": {
-            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvdcz\",\n        ebs: {\n            deleteOnTermination: true,\n            iops: 100,\n            throughput: 125,\n            volumeSize: 50,\n            volumeType: \"gp3\",\n        },\n    }],\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Pulumi\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    minimumInstanceLifetime: 1,\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvdcz\",\n        ebs: {\n            deleteOnTermination: true,\n            iops: 100,\n            throughput: 125,\n            volumeSize: 50,\n            volumeType: \"gp3\",\n        },\n    }],\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Pulumi\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    minimumInstanceLifetime: 1,\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n{{% /example %}}\n{{% /examples %}}\n## Managed Instance Action\n\n* `managed_instance_action` - (Optional)\n    * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "autoHealing": {
                     "type": "boolean",
@@ -12284,6 +12301,9 @@
                         "$ref": "#/types/spotinst:aws/ManagedInstanceLoadBalancer:ManagedInstanceLoadBalancer"
                     },
                     "description": "List of load balancers configs.\n"
+                },
+                "managedInstanceAction": {
+                    "$ref": "#/types/spotinst:aws/ManagedInstanceManagedInstanceAction:ManagedInstanceManagedInstanceAction"
                 },
                 "minimumInstanceLifetime": {
                     "type": "integer"
@@ -12486,6 +12506,9 @@
                     },
                     "description": "List of load balancers configs.\n"
                 },
+                "managedInstanceAction": {
+                    "$ref": "#/types/spotinst:aws/ManagedInstanceManagedInstanceAction:ManagedInstanceManagedInstanceAction"
+                },
                 "minimumInstanceLifetime": {
                     "type": "integer"
                 },
@@ -12686,6 +12709,9 @@
                             "$ref": "#/types/spotinst:aws/ManagedInstanceLoadBalancer:ManagedInstanceLoadBalancer"
                         },
                         "description": "List of load balancers configs.\n"
+                    },
+                    "managedInstanceAction": {
+                        "$ref": "#/types/spotinst:aws/ManagedInstanceManagedInstanceAction:ManagedInstanceManagedInstanceAction"
                     },
                     "minimumInstanceLifetime": {
                         "type": "integer"

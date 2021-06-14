@@ -11,6 +11,25 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a Spotinst AWS ManagedInstance resource.
+    /// 
+    /// ## Managed Instance Action
+    /// 
+    /// * `managed_instance_action` - (Optional)
+    ///     * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+    /// 
+    /// Usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/managedInstance:ManagedInstance")]
     public partial class ManagedInstance : Pulumi.CustomResource
@@ -130,6 +149,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("loadBalancers")]
         public Output<ImmutableArray<Outputs.ManagedInstanceLoadBalancer>> LoadBalancers { get; private set; } = null!;
+
+        [Output("managedInstanceAction")]
+        public Output<Outputs.ManagedInstanceManagedInstanceAction?> ManagedInstanceAction { get; private set; } = null!;
 
         [Output("minimumInstanceLifetime")]
         public Output<int?> MinimumInstanceLifetime { get; private set; } = null!;
@@ -437,6 +459,9 @@ namespace Pulumi.SpotInst.Aws
             set => _loadBalancers = value;
         }
 
+        [Input("managedInstanceAction")]
+        public Input<Inputs.ManagedInstanceManagedInstanceActionArgs>? ManagedInstanceAction { get; set; }
+
         [Input("minimumInstanceLifetime")]
         public Input<int>? MinimumInstanceLifetime { get; set; }
 
@@ -737,6 +762,9 @@ namespace Pulumi.SpotInst.Aws
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.ManagedInstanceLoadBalancerGetArgs>());
             set => _loadBalancers = value;
         }
+
+        [Input("managedInstanceAction")]
+        public Input<Inputs.ManagedInstanceManagedInstanceActionGetArgs>? ManagedInstanceAction { get; set; }
 
         [Input("minimumInstanceLifetime")]
         public Input<int>? MinimumInstanceLifetime { get; set; }

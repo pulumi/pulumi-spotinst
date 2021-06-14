@@ -1411,6 +1411,13 @@ export namespace aws {
         type: string;
     }
 
+    export interface ManagedInstanceManagedInstanceAction {
+        /**
+         * The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+         */
+        type: string;
+    }
+
     export interface ManagedInstanceNetworkInterface {
         /**
          * Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
