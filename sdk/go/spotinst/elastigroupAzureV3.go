@@ -12,6 +12,87 @@ import (
 )
 
 // Provides a Spotinst elastigroup Azure resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := spotinst.NewElastigroupAzureV3(ctx, "testAzureGroup", &spotinst.ElastigroupAzureV3Args{
+// 			DesiredCapacity: pulumi.Int(1),
+// 			Images: spotinst.ElastigroupAzureV3ImageArray{
+// 				&spotinst.ElastigroupAzureV3ImageArgs{
+// 					Marketplaces: spotinst.ElastigroupAzureV3ImageMarketplaceArray{
+// 						&spotinst.ElastigroupAzureV3ImageMarketplaceArgs{
+// 							Offer:     pulumi.String("UbuntuServer"),
+// 							Publisher: pulumi.String("Canonical"),
+// 							Sku:       pulumi.String("18.04-LTS"),
+// 							Version:   pulumi.String("latest"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Login: &spotinst.ElastigroupAzureV3LoginArgs{
+// 				SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
+// 				UserName:     pulumi.String("admin"),
+// 			},
+// 			MaxSize: pulumi.Int(1),
+// 			MinSize: pulumi.Int(0),
+// 			Network: &spotinst.ElastigroupAzureV3NetworkArgs{
+// 				NetworkInterfaces: spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArray{
+// 					&spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArgs{
+// 						AdditionalIpConfigs: spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{
+// 							&spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{
+// 								PrivateIPVersion: pulumi.String("IPv4"),
+// 								Name:             pulumi.String("SecondaryIPConfig"),
+// 							},
+// 						},
+// 						ApplicationSecurityGroup: pulumi.StringMapArray{
+// 							pulumi.StringMap{
+// 								"name":              pulumi.String("ApplicationSecurityGroupName"),
+// 								"resourceGroupName": pulumi.String("ResourceGroup"),
+// 							},
+// 						},
+// 						AssignPublicIp: pulumi.Bool(false),
+// 						IsPrimary:      pulumi.Bool(true),
+// 						SubnetName:     pulumi.String("default"),
+// 					},
+// 				},
+// 				ResourceGroupName:  pulumi.String("ResourceGroup"),
+// 				VirtualNetworkName: pulumi.String("VirtualNetworkName"),
+// 			},
+// 			OdSizes: pulumi.StringArray{
+// 				pulumi.String("standard_a1_v1"),
+// 				pulumi.String("standard_a1_v2"),
+// 			},
+// 			Os:                pulumi.String("Linux"),
+// 			Region:            pulumi.String("eastus"),
+// 			ResourceGroupName: pulumi.String("spotinst-azure"),
+// 			SpotSizes: pulumi.StringArray{
+// 				pulumi.String("standard_a1_v1"),
+// 				pulumi.String("standard_a1_v2"),
+// 			},
+// 			Strategy: &spotinst.ElastigroupAzureV3StrategyArgs{
+// 				DrainingTimeout:    pulumi.Int(300),
+// 				FallbackToOnDemand: pulumi.Bool(true),
+// 				OdCount:            pulumi.Int(1),
+// 				SpotPercentage:     pulumi.Int(65),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ElastigroupAzureV3 struct {
 	pulumi.CustomResourceState
 
@@ -25,17 +106,18 @@ type ElastigroupAzureV3 struct {
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// The IP configuration name.
+	// - The name of the Application Security group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defines the Virtual Network and Subnet for your Elastigroup.
 	Network ElastigroupAzureV3NetworkOutput `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayOutput `pulumi:"odSizes"`
-	// Operation system type. Valid values: `"Linux"`, `"Windows"`.
+	// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
 	Os pulumi.StringOutput `pulumi:"os"`
 	// The region your Azure group will be created in.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Vnet Resource Group Name.
+	// - The resource group of the Application Security Group.
+	//   }
 	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
 	// Available Low-Priority sizes.
 	SpotSizes pulumi.StringArrayOutput `pulumi:"spotSizes"`
@@ -103,17 +185,18 @@ type elastigroupAzureV3State struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// The IP configuration name.
+	// - The name of the Application Security group.
 	Name *string `pulumi:"name"`
 	// Defines the Virtual Network and Subnet for your Elastigroup.
 	Network *ElastigroupAzureV3Network `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes []string `pulumi:"odSizes"`
-	// Operation system type. Valid values: `"Linux"`, `"Windows"`.
+	// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
 	Os *string `pulumi:"os"`
 	// The region your Azure group will be created in.
 	Region *string `pulumi:"region"`
-	// Vnet Resource Group Name.
+	// - The resource group of the Application Security Group.
+	//   }
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
 	// Available Low-Priority sizes.
 	SpotSizes []string `pulumi:"spotSizes"`
@@ -132,17 +215,18 @@ type ElastigroupAzureV3State struct {
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// The IP configuration name.
+	// - The name of the Application Security group.
 	Name pulumi.StringPtrInput
 	// Defines the Virtual Network and Subnet for your Elastigroup.
 	Network ElastigroupAzureV3NetworkPtrInput
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayInput
-	// Operation system type. Valid values: `"Linux"`, `"Windows"`.
+	// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
 	Os pulumi.StringPtrInput
 	// The region your Azure group will be created in.
 	Region pulumi.StringPtrInput
-	// Vnet Resource Group Name.
+	// - The resource group of the Application Security Group.
+	//   }
 	ResourceGroupName pulumi.StringPtrInput
 	// Available Low-Priority sizes.
 	SpotSizes pulumi.StringArrayInput
@@ -165,17 +249,18 @@ type elastigroupAzureV3Args struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// The IP configuration name.
+	// - The name of the Application Security group.
 	Name *string `pulumi:"name"`
 	// Defines the Virtual Network and Subnet for your Elastigroup.
 	Network ElastigroupAzureV3Network `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes []string `pulumi:"odSizes"`
-	// Operation system type. Valid values: `"Linux"`, `"Windows"`.
+	// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
 	Os string `pulumi:"os"`
 	// The region your Azure group will be created in.
 	Region string `pulumi:"region"`
-	// Vnet Resource Group Name.
+	// - The resource group of the Application Security Group.
+	//   }
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Available Low-Priority sizes.
 	SpotSizes []string `pulumi:"spotSizes"`
@@ -195,17 +280,18 @@ type ElastigroupAzureV3Args struct {
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// The IP configuration name.
+	// - The name of the Application Security group.
 	Name pulumi.StringPtrInput
 	// Defines the Virtual Network and Subnet for your Elastigroup.
 	Network ElastigroupAzureV3NetworkInput
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayInput
-	// Operation system type. Valid values: `"Linux"`, `"Windows"`.
+	// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
 	Os pulumi.StringInput
 	// The region your Azure group will be created in.
 	Region pulumi.StringInput
-	// Vnet Resource Group Name.
+	// - The resource group of the Application Security Group.
+	//   }
 	ResourceGroupName pulumi.StringInput
 	// Available Low-Priority sizes.
 	SpotSizes pulumi.StringArrayInput

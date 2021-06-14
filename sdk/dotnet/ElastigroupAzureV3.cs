@@ -11,6 +11,98 @@ namespace Pulumi.SpotInst
 {
     /// <summary>
     /// Provides a Spotinst elastigroup Azure resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var testAzureGroup = new SpotInst.ElastigroupAzureV3("testAzureGroup", new SpotInst.ElastigroupAzureV3Args
+    ///         {
+    ///             DesiredCapacity = 1,
+    ///             Images = 
+    ///             {
+    ///                 new SpotInst.Inputs.ElastigroupAzureV3ImageArgs
+    ///                 {
+    ///                     Marketplaces = 
+    ///                     {
+    ///                         new SpotInst.Inputs.ElastigroupAzureV3ImageMarketplaceArgs
+    ///                         {
+    ///                             Offer = "UbuntuServer",
+    ///                             Publisher = "Canonical",
+    ///                             Sku = "18.04-LTS",
+    ///                             Version = "latest",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Login = new SpotInst.Inputs.ElastigroupAzureV3LoginArgs
+    ///             {
+    ///                 SshPublicKey = "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+    ///                 UserName = "admin",
+    ///             },
+    ///             MaxSize = 1,
+    ///             MinSize = 0,
+    ///             Network = new SpotInst.Inputs.ElastigroupAzureV3NetworkArgs
+    ///             {
+    ///                 NetworkInterfaces = 
+    ///                 {
+    ///                     new SpotInst.Inputs.ElastigroupAzureV3NetworkNetworkInterfaceArgs
+    ///                     {
+    ///                         AdditionalIpConfigs = 
+    ///                         {
+    ///                             new SpotInst.Inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs
+    ///                             {
+    ///                                 PrivateIPVersion = "IPv4",
+    ///                                 Name = "SecondaryIPConfig",
+    ///                             },
+    ///                         },
+    ///                         ApplicationSecurityGroup = 
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "name", "ApplicationSecurityGroupName" },
+    ///                                 { "resourceGroupName", "ResourceGroup" },
+    ///                             },
+    ///                         },
+    ///                         AssignPublicIp = false,
+    ///                         IsPrimary = true,
+    ///                         SubnetName = "default",
+    ///                     },
+    ///                 },
+    ///                 ResourceGroupName = "ResourceGroup",
+    ///                 VirtualNetworkName = "VirtualNetworkName",
+    ///             },
+    ///             OdSizes = 
+    ///             {
+    ///                 "standard_a1_v1",
+    ///                 "standard_a1_v2",
+    ///             },
+    ///             Os = "Linux",
+    ///             Region = "eastus",
+    ///             ResourceGroupName = "spotinst-azure",
+    ///             SpotSizes = 
+    ///             {
+    ///                 "standard_a1_v1",
+    ///                 "standard_a1_v2",
+    ///             },
+    ///             Strategy = new SpotInst.Inputs.ElastigroupAzureV3StrategyArgs
+    ///             {
+    ///                 DrainingTimeout = 300,
+    ///                 FallbackToOnDemand = true,
+    ///                 OdCount = 1,
+    ///                 SpotPercentage = 65,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:index/elastigroupAzureV3:ElastigroupAzureV3")]
     public partial class ElastigroupAzureV3 : Pulumi.CustomResource
@@ -46,7 +138,7 @@ namespace Pulumi.SpotInst
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// The IP configuration name.
+        /// - The name of the Application Security group.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -64,7 +156,7 @@ namespace Pulumi.SpotInst
         public Output<ImmutableArray<string>> OdSizes { get; private set; } = null!;
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        /// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         /// </summary>
         [Output("os")]
         public Output<string> Os { get; private set; } = null!;
@@ -76,7 +168,8 @@ namespace Pulumi.SpotInst
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// - The resource group of the Application Security Group.
+        /// }
         /// </summary>
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
@@ -176,7 +269,7 @@ namespace Pulumi.SpotInst
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The IP configuration name.
+        /// - The name of the Application Security group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -200,7 +293,7 @@ namespace Pulumi.SpotInst
         }
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        /// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         /// </summary>
         [Input("os", required: true)]
         public Input<string> Os { get; set; } = null!;
@@ -212,7 +305,8 @@ namespace Pulumi.SpotInst
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// - The resource group of the Application Security Group.
+        /// }
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
@@ -279,7 +373,7 @@ namespace Pulumi.SpotInst
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The IP configuration name.
+        /// - The name of the Application Security group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -303,7 +397,7 @@ namespace Pulumi.SpotInst
         }
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        /// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         /// </summary>
         [Input("os")]
         public Input<string>? Os { get; set; }
@@ -315,7 +409,8 @@ namespace Pulumi.SpotInst
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// - The resource group of the Application Security Group.
+        /// }
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }

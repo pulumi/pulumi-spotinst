@@ -19,7 +19,8 @@ namespace Pulumi.SpotInst.Inputs
         public Input<string> ImageName { get; set; } = null!;
 
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// - The resource group of the Application Security Group.
+        /// }
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;

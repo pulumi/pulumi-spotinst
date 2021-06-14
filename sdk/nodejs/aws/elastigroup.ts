@@ -36,11 +36,11 @@ import * as utilities from "../utilities";
  *     ],
  *     instanceTypesWeights: [
  *         {
- *             instanceType: "c3.large",
+ *             instanceType: "m3.xlarge",
  *             weight: 10,
  *         },
  *         {
- *             instanceType: "c4.xlarge",
+ *             instanceType: "m3.2xlarge",
  *             weight: 16,
  *         },
  *     ],
@@ -148,7 +148,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly blockDevicesMode!: pulumi.Output<string | undefined>;
     /**
-     * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+     * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
     public readonly capacityUnit!: pulumi.Output<string>;
     /**
@@ -288,7 +288,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+     * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
     public readonly minimumInstanceLifetime!: pulumi.Output<number | undefined>;
     /**
@@ -305,7 +305,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly ondemandCount!: pulumi.Output<number | undefined>;
     /**
-     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+     * Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
      */
     public readonly orientation!: pulumi.Output<string>;
     /**
@@ -321,7 +321,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly persistRootDevice!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+     * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
      */
     public readonly placementTenancy!: pulumi.Output<string | undefined>;
     /**
@@ -608,7 +608,7 @@ export interface ElastigroupState {
      */
     readonly blockDevicesMode?: pulumi.Input<string>;
     /**
-     * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+     * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
     readonly capacityUnit?: pulumi.Input<string>;
     /**
@@ -748,7 +748,7 @@ export interface ElastigroupState {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+     * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
     readonly minimumInstanceLifetime?: pulumi.Input<number>;
     /**
@@ -765,7 +765,7 @@ export interface ElastigroupState {
      */
     readonly ondemandCount?: pulumi.Input<number>;
     /**
-     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+     * Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
      */
     readonly orientation?: pulumi.Input<string>;
     /**
@@ -781,7 +781,7 @@ export interface ElastigroupState {
      */
     readonly persistRootDevice?: pulumi.Input<boolean>;
     /**
-     * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+     * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
      */
     readonly placementTenancy?: pulumi.Input<string>;
     /**
@@ -878,7 +878,7 @@ export interface ElastigroupArgs {
      */
     readonly blockDevicesMode?: pulumi.Input<string>;
     /**
-     * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+     * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
     readonly capacityUnit?: pulumi.Input<string>;
     /**
@@ -1018,7 +1018,7 @@ export interface ElastigroupArgs {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
-     * Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+     * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
     readonly minimumInstanceLifetime?: pulumi.Input<number>;
     /**
@@ -1035,7 +1035,7 @@ export interface ElastigroupArgs {
      */
     readonly ondemandCount?: pulumi.Input<number>;
     /**
-     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+     * Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
      */
     readonly orientation: pulumi.Input<string>;
     /**
@@ -1051,7 +1051,7 @@ export interface ElastigroupArgs {
      */
     readonly persistRootDevice?: pulumi.Input<boolean>;
     /**
-     * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+     * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
      */
     readonly placementTenancy?: pulumi.Input<string>;
     /**

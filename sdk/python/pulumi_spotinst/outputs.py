@@ -17,6 +17,7 @@ __all__ = [
     'ElastigroupAzureV3Network',
     'ElastigroupAzureV3NetworkNetworkInterface',
     'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig',
+    'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup',
     'ElastigroupAzureV3Strategy',
     'HealthCheckCheck',
 ]
@@ -68,7 +69,8 @@ class ElastigroupAzureV3ImageCustom(dict):
                  resource_group_name: str):
         """
         :param str image_name: Name of the custom image. Required if resource_group_name is specified.
-        :param str resource_group_name: Vnet Resource Group Name.
+        :param str resource_group_name: - The resource group of the Application Security Group.
+               }
         """
         pulumi.set(__self__, "image_name", image_name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -85,7 +87,8 @@ class ElastigroupAzureV3ImageCustom(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         """
-        Vnet Resource Group Name.
+        - The resource group of the Application Security Group.
+        }
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -226,7 +229,8 @@ class ElastigroupAzureV3Network(dict):
                  resource_group_name: str,
                  virtual_network_name: str):
         """
-        :param str resource_group_name: Vnet Resource Group Name.
+        :param str resource_group_name: - The resource group of the Application Security Group.
+               }
         :param str virtual_network_name: Name of Vnet.
         """
         pulumi.set(__self__, "network_interfaces", network_interfaces)
@@ -242,7 +246,8 @@ class ElastigroupAzureV3Network(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         """
-        Vnet Resource Group Name.
+        - The resource group of the Application Security Group.
+        }
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -268,6 +273,8 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
             suggest = "subnet_name"
         elif key == "additionalIpConfigs":
             suggest = "additional_ip_configs"
+        elif key == "applicationSecurityGroups":
+            suggest = "application_security_groups"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3NetworkNetworkInterface. Access the value via the '{suggest}' property getter instead.")
@@ -284,16 +291,20 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
                  assign_public_ip: bool,
                  is_primary: bool,
                  subnet_name: str,
-                 additional_ip_configs: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig']] = None):
+                 additional_ip_configs: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig']] = None,
+                 application_security_groups: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup']] = None):
         """
         :param str subnet_name: ID of subnet.
         :param Sequence['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs'] additional_ip_configs: Array of additional IP configuration objects.
+        :param Sequence['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs'] application_security_groups: - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
         """
         pulumi.set(__self__, "assign_public_ip", assign_public_ip)
         pulumi.set(__self__, "is_primary", is_primary)
         pulumi.set(__self__, "subnet_name", subnet_name)
         if additional_ip_configs is not None:
             pulumi.set(__self__, "additional_ip_configs", additional_ip_configs)
+        if application_security_groups is not None:
+            pulumi.set(__self__, "application_security_groups", application_security_groups)
 
     @property
     @pulumi.getter(name="assignPublicIp")
@@ -321,6 +332,14 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
         """
         return pulumi.get(self, "additional_ip_configs")
 
+    @property
+    @pulumi.getter(name="applicationSecurityGroups")
+    def application_security_groups(self) -> Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup']]:
+        """
+        - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+        """
+        return pulumi.get(self, "application_security_groups")
+
 
 @pulumi.output_type
 class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig(dict):
@@ -345,8 +364,8 @@ class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig(dict):
                  name: str,
                  private_ip_version: Optional[str] = None):
         """
-        :param str name: The IP configuration name.
-        :param str private_ip_version: Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+        :param str name: - The name of the Application Security group.
+        :param str private_ip_version: Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
         """
         pulumi.set(__self__, "name", name)
         if private_ip_version is not None:
@@ -356,7 +375,7 @@ class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The IP configuration name.
+        - The name of the Application Security group.
         """
         return pulumi.get(self, "name")
 
@@ -364,9 +383,57 @@ class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig(dict):
     @pulumi.getter(name="privateIpVersion")
     def private_ip_version(self) -> Optional[str]:
         """
-        Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+        Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
         """
         return pulumi.get(self, "private_ip_version")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_group_name: str):
+        """
+        :param str name: - The name of the Application Security group.
+        :param str resource_group_name: - The resource group of the Application Security Group.
+               }
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        - The name of the Application Security group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        - The resource group of the Application Security Group.
+        }
+        """
+        return pulumi.get(self, "resource_group_name")
 
 
 @pulumi.output_type

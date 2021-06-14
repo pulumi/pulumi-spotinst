@@ -17,6 +17,10 @@ namespace Pulumi.SpotInst.Outputs
         /// Array of additional IP configuration objects.
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig> AdditionalIpConfigs;
+        /// <summary>
+        /// - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> ApplicationSecurityGroups;
         public readonly bool AssignPublicIp;
         public readonly bool IsPrimary;
         /// <summary>
@@ -28,6 +32,8 @@ namespace Pulumi.SpotInst.Outputs
         private ElastigroupAzureV3NetworkNetworkInterface(
             ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig> additionalIpConfigs,
 
+            ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> applicationSecurityGroups,
+
             bool assignPublicIp,
 
             bool isPrimary,
@@ -35,6 +41,7 @@ namespace Pulumi.SpotInst.Outputs
             string subnetName)
         {
             AdditionalIpConfigs = additionalIpConfigs;
+            ApplicationSecurityGroups = applicationSecurityGroups;
             AssignPublicIp = assignPublicIp;
             IsPrimary = isPrimary;
             SubnetName = subnetName;

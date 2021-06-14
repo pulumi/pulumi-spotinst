@@ -11,88 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a Spotinst Ocean AWS resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.NewOcean(ctx, "example", &aws.OceanArgs{
-// 			AssociatePublicIpAddress: pulumi.Bool(true),
-// 			ControllerId:             pulumi.String("fakeClusterId"),
-// 			DesiredCapacity:          pulumi.Int(2),
-// 			DrainingTimeout:          pulumi.Int(120),
-// 			EbsOptimized:             pulumi.Bool(true),
-// 			FallbackToOndemand:       pulumi.Bool(true),
-// 			GracePeriod:              pulumi.Int(600),
-// 			IamInstanceProfile:       pulumi.String("iam-profile"),
-// 			ImageId:                  pulumi.String("ami-123456"),
-// 			KeyName:                  pulumi.String("fake key"),
-// 			LoadBalancers: aws.OceanLoadBalancerArray{
-// 				&aws.OceanLoadBalancerArgs{
-// 					Arn:  pulumi.String("arn:aws:elasticloadbalancing:us-west-2:fake-arn"),
-// 					Type: pulumi.String("TARGET_GROUP"),
-// 				},
-// 				&aws.OceanLoadBalancerArgs{
-// 					Name: pulumi.String("AntonK"),
-// 					Type: pulumi.String("CLASSIC"),
-// 				},
-// 			},
-// 			MaxSize:        pulumi.Int(2),
-// 			MinSize:        pulumi.Int(1),
-// 			Monitoring:     pulumi.Bool(true),
-// 			Region:         pulumi.String("us-west-2"),
-// 			RootVolumeSize: pulumi.Int(20),
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.String("sg-987654321"),
-// 			},
-// 			SpotPercentage: pulumi.Int(100),
-// 			SubnetIds: pulumi.StringArray{
-// 				pulumi.String("subnet-123456789"),
-// 			},
-// 			Tags: aws.OceanTagArray{
-// 				&aws.OceanTagArgs{
-// 					Key:   pulumi.String("fakeKey"),
-// 					Value: pulumi.String("fakeValue"),
-// 				},
-// 			},
-// 			UseAsTemplateOnly:        pulumi.Bool(true),
-// 			UserData:                 pulumi.String("echo hello world"),
-// 			UtilizeReservedInstances: pulumi.Bool(false),
-// 			Whitelists: pulumi.StringArray{
-// 				pulumi.String("t1.micro"),
-// 				pulumi.String("m1.small"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ctx.Export("oceanId", spotinst_ocean_aws.Example.Id)
-// 		return nil
-// 	})
-// }
-// ```
 type Ocean struct {
 	pulumi.CustomResourceState
 
@@ -102,7 +20,7 @@ type Ocean struct {
 	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayOutput `pulumi:"blacklists"`
-	// The Ocean cluster identifier. Example: `ocean.k8s`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrOutput `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
@@ -197,7 +115,7 @@ type oceanState struct {
 	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists []string `pulumi:"blacklists"`
-	// The Ocean cluster identifier. Example: `ocean.k8s`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId *string `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
@@ -258,7 +176,7 @@ type OceanState struct {
 	Autoscaler OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayInput
-	// The Ocean cluster identifier. Example: `ocean.k8s`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
@@ -323,7 +241,7 @@ type oceanArgs struct {
 	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists []string `pulumi:"blacklists"`
-	// The Ocean cluster identifier. Example: `ocean.k8s`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId *string `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
@@ -385,7 +303,7 @@ type OceanArgs struct {
 	Autoscaler OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayInput
-	// The Ocean cluster identifier. Example: `ocean.k8s`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput

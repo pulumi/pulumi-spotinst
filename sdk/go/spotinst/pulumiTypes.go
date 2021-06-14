@@ -113,7 +113,8 @@ func (o ElastigroupAzureV3ImageArrayOutput) Index(i pulumi.IntInput) Elastigroup
 type ElastigroupAzureV3ImageCustom struct {
 	// Name of the custom image. Required if resourceGroupName is specified.
 	ImageName string `pulumi:"imageName"`
-	// Vnet Resource Group Name.
+	// - The resource group of the Application Security Group.
+	//   }
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -131,7 +132,8 @@ type ElastigroupAzureV3ImageCustomInput interface {
 type ElastigroupAzureV3ImageCustomArgs struct {
 	// Name of the custom image. Required if resourceGroupName is specified.
 	ImageName pulumi.StringInput `pulumi:"imageName"`
-	// Vnet Resource Group Name.
+	// - The resource group of the Application Security Group.
+	//   }
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -191,7 +193,8 @@ func (o ElastigroupAzureV3ImageCustomOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ImageCustom) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
-// Vnet Resource Group Name.
+// - The resource group of the Application Security Group.
+//   }
 func (o ElastigroupAzureV3ImageCustomOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ImageCustom) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -508,7 +511,8 @@ func (o ElastigroupAzureV3LoginPtrOutput) UserName() pulumi.StringPtrOutput {
 
 type ElastigroupAzureV3Network struct {
 	NetworkInterfaces []ElastigroupAzureV3NetworkNetworkInterface `pulumi:"networkInterfaces"`
-	// Vnet Resource Group Name.
+	// - The resource group of the Application Security Group.
+	//   }
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Vnet.
 	VirtualNetworkName string `pulumi:"virtualNetworkName"`
@@ -527,7 +531,8 @@ type ElastigroupAzureV3NetworkInput interface {
 
 type ElastigroupAzureV3NetworkArgs struct {
 	NetworkInterfaces ElastigroupAzureV3NetworkNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
-	// Vnet Resource Group Name.
+	// - The resource group of the Application Security Group.
+	//   }
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of Vnet.
 	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
@@ -615,7 +620,8 @@ func (o ElastigroupAzureV3NetworkOutput) NetworkInterfaces() ElastigroupAzureV3N
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput)
 }
 
-// Vnet Resource Group Name.
+// - The resource group of the Application Security Group.
+//   }
 func (o ElastigroupAzureV3NetworkOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3Network) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -652,7 +658,8 @@ func (o ElastigroupAzureV3NetworkPtrOutput) NetworkInterfaces() ElastigroupAzure
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput)
 }
 
-// Vnet Resource Group Name.
+// - The resource group of the Application Security Group.
+//   }
 func (o ElastigroupAzureV3NetworkPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3Network) *string {
 		if v == nil {
@@ -675,8 +682,10 @@ func (o ElastigroupAzureV3NetworkPtrOutput) VirtualNetworkName() pulumi.StringPt
 type ElastigroupAzureV3NetworkNetworkInterface struct {
 	// Array of additional IP configuration objects.
 	AdditionalIpConfigs []ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig `pulumi:"additionalIpConfigs"`
-	AssignPublicIp      bool                                                          `pulumi:"assignPublicIp"`
-	IsPrimary           bool                                                          `pulumi:"isPrimary"`
+	// - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+	ApplicationSecurityGroups []ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup `pulumi:"applicationSecurityGroups"`
+	AssignPublicIp            bool                                                                `pulumi:"assignPublicIp"`
+	IsPrimary                 bool                                                                `pulumi:"isPrimary"`
 	// ID of subnet.
 	SubnetName string `pulumi:"subnetName"`
 }
@@ -695,8 +704,10 @@ type ElastigroupAzureV3NetworkNetworkInterfaceInput interface {
 type ElastigroupAzureV3NetworkNetworkInterfaceArgs struct {
 	// Array of additional IP configuration objects.
 	AdditionalIpConfigs ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput `pulumi:"additionalIpConfigs"`
-	AssignPublicIp      pulumi.BoolInput                                                      `pulumi:"assignPublicIp"`
-	IsPrimary           pulumi.BoolInput                                                      `pulumi:"isPrimary"`
+	// - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+	ApplicationSecurityGroups ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput `pulumi:"applicationSecurityGroups"`
+	AssignPublicIp            pulumi.BoolInput                                                            `pulumi:"assignPublicIp"`
+	IsPrimary                 pulumi.BoolInput                                                            `pulumi:"isPrimary"`
 	// ID of subnet.
 	SubnetName pulumi.StringInput `pulumi:"subnetName"`
 }
@@ -759,6 +770,13 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) AdditionalIpConfigs() E
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput)
 }
 
+// - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) ApplicationSecurityGroups() ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) []ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
+		return v.ApplicationSecurityGroups
+	}).(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput)
+}
+
 func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) AssignPublicIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) bool { return v.AssignPublicIp }).(pulumi.BoolOutput)
 }
@@ -793,9 +811,9 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput) Index(i pulumi.Int
 }
 
 type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig struct {
-	// The IP configuration name.
+	// - The name of the Application Security group.
 	Name string `pulumi:"name"`
-	// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+	// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
 	PrivateIpVersion *string `pulumi:"privateIpVersion"`
 }
 
@@ -811,9 +829,9 @@ type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigInput interface 
 }
 
 type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs struct {
-	// The IP configuration name.
+	// - The name of the Application Security group.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+	// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
 	PrivateIpVersion pulumi.StringPtrInput `pulumi:"privateIpVersion"`
 }
 
@@ -868,12 +886,12 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) ToEla
 	return o
 }
 
-// The IP configuration name.
+// - The name of the Application Security group.
 func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
 func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) PrivateIpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig) *string { return v.PrivateIpVersion }).(pulumi.StringPtrOutput)
 }
@@ -896,6 +914,117 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
 		return vs[0].([]ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig)[vs[1].(int)]
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup struct {
+	// - The name of the Application Security group.
+	Name string `pulumi:"name"`
+	// - The resource group of the Application Security Group.
+	//   }
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+// ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs and ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput` via:
+//
+//          ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{...}
+type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput() ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput
+	ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(context.Context) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs struct {
+	// - The name of the Application Security group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// - The resource group of the Application Security Group.
+	//   }
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs) ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput() ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput {
+	return i.ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs) ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput)
+}
+
+// ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray and ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput` via:
+//
+//          ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray{ ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{...} }
+type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput
+	ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(context.Context) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray []ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray) ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
+	return i.ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray) ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput() ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput {
+	return o
+}
+
+// - The name of the Application Security group.
+func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// - The resource group of the Application Security Group.
+//   }
+func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup) string {
+		return v.ResourceGroupName
+	}).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput() ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
+		return vs[0].([]ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup)[vs[1].(int)]
+	}).(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput)
 }
 
 type ElastigroupAzureV3Strategy struct {
@@ -1371,6 +1500,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3StrategyOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3StrategyPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckOutput{})

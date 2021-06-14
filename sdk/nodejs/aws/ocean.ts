@@ -5,65 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Spotinst Ocean AWS resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const example = new spotinst.aws.Ocean("example", {
- *     associatePublicIpAddress: true,
- *     controllerId: "fakeClusterId",
- *     desiredCapacity: 2,
- *     drainingTimeout: 120,
- *     ebsOptimized: true,
- *     // region STRATEGY
- *     fallbackToOndemand: true,
- *     gracePeriod: 600,
- *     iamInstanceProfile: "iam-profile",
- *     // region LAUNCH CONFIGURATION
- *     imageId: "ami-123456",
- *     keyName: "fake key",
- *     loadBalancers: [
- *         {
- *             arn: "arn:aws:elasticloadbalancing:us-west-2:fake-arn",
- *             type: "TARGET_GROUP",
- *         },
- *         {
- *             name: "AntonK",
- *             type: "CLASSIC",
- *         },
- *     ],
- *     maxSize: 2,
- *     minSize: 1,
- *     monitoring: true,
- *     region: "us-west-2",
- *     rootVolumeSize: 20,
- *     securityGroups: ["sg-987654321"],
- *     spotPercentage: 100,
- *     subnetIds: ["subnet-123456789"],
- *     tags: [{
- *         key: "fakeKey",
- *         value: "fakeValue",
- *     }],
- *     useAsTemplateOnly: true,
- *     userData: "echo hello world",
- *     utilizeReservedInstances: false,
- *     whitelists: [
- *         "t1.micro",
- *         "m1.small",
- *     ],
- * });
- * ```
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanId = spotinst_ocean_aws.example.id;
- * ```
- */
 export class Ocean extends pulumi.CustomResource {
     /**
      * Get an existing Ocean resource's state with the given name, ID, and optional extra
@@ -105,7 +46,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly blacklists!: pulumi.Output<string[] | undefined>;
     /**
-     * The Ocean cluster identifier. Example: `ocean.k8s`
+     * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
     public readonly controllerId!: pulumi.Output<string | undefined>;
     /**
@@ -313,7 +254,7 @@ export interface OceanState {
      */
     readonly blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Ocean cluster identifier. Example: `ocean.k8s`
+     * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
     readonly controllerId?: pulumi.Input<string>;
     /**
@@ -433,7 +374,7 @@ export interface OceanArgs {
      */
     readonly blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Ocean cluster identifier. Example: `ocean.k8s`
+     * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
     readonly controllerId?: pulumi.Input<string>;
     /**

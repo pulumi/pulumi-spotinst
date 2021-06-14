@@ -367,44 +367,7 @@ class OceanImport(pulumi.CustomResource):
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Manages a Spotinst Ocean GKE resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gke.OceanImport("example",
-            backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
-                location_type="regional",
-                named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
-                    name="http",
-                    ports=[
-                        "80",
-                        "8080",
-                    ],
-                )],
-                scheme="INTERNAL",
-                service_name="example-backend-service",
-            )],
-            cluster_name="example-cluster-name",
-            desired_capacity=0,
-            location="us-central1-a",
-            max_size=2,
-            min_size=0,
-            whitelists=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ])
-        ```
-
-        ```python
-        import pulumi
-
-        pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
-        ```
-
+        Create a OceanImport resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -424,44 +387,7 @@ class OceanImport(pulumi.CustomResource):
                  args: OceanImportArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Spotinst Ocean GKE resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gke.OceanImport("example",
-            backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
-                location_type="regional",
-                named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
-                    name="http",
-                    ports=[
-                        "80",
-                        "8080",
-                    ],
-                )],
-                scheme="INTERNAL",
-                service_name="example-backend-service",
-            )],
-            cluster_name="example-cluster-name",
-            desired_capacity=0,
-            location="us-central1-a",
-            max_size=2,
-            min_size=0,
-            whitelists=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ])
-        ```
-
-        ```python
-        import pulumi
-
-        pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
-        ```
-
+        Create a OceanImport resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param OceanImportArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

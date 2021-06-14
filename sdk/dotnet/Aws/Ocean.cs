@@ -9,94 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Aws
 {
-    /// <summary>
-    /// Manages a Spotinst Ocean AWS resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new SpotInst.Aws.Ocean("example", new SpotInst.Aws.OceanArgs
-    ///         {
-    ///             AssociatePublicIpAddress = true,
-    ///             ControllerId = "fakeClusterId",
-    ///             DesiredCapacity = 2,
-    ///             DrainingTimeout = 120,
-    ///             EbsOptimized = true,
-    ///             FallbackToOndemand = true,
-    ///             GracePeriod = 600,
-    ///             IamInstanceProfile = "iam-profile",
-    ///             ImageId = "ami-123456",
-    ///             KeyName = "fake key",
-    ///             LoadBalancers = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanLoadBalancerArgs
-    ///                 {
-    ///                     Arn = "arn:aws:elasticloadbalancing:us-west-2:fake-arn",
-    ///                     Type = "TARGET_GROUP",
-    ///                 },
-    ///                 new SpotInst.Aws.Inputs.OceanLoadBalancerArgs
-    ///                 {
-    ///                     Name = "AntonK",
-    ///                     Type = "CLASSIC",
-    ///                 },
-    ///             },
-    ///             MaxSize = 2,
-    ///             MinSize = 1,
-    ///             Monitoring = true,
-    ///             Region = "us-west-2",
-    ///             RootVolumeSize = 20,
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "sg-987654321",
-    ///             },
-    ///             SpotPercentage = 100,
-    ///             SubnetIds = 
-    ///             {
-    ///                 "subnet-123456789",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanTagArgs
-    ///                 {
-    ///                     Key = "fakeKey",
-    ///                     Value = "fakeValue",
-    ///                 },
-    ///             },
-    ///             UseAsTemplateOnly = true,
-    ///             UserData = "echo hello world",
-    ///             UtilizeReservedInstances = false,
-    ///             Whitelists = 
-    ///             {
-    ///                 "t1.micro",
-    ///                 "m1.small",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         this.OceanId = spotinst_ocean_aws.Example.Id;
-    ///     }
-    /// 
-    ///     [Output("oceanId")]
-    ///     public Output&lt;string&gt; OceanId { get; set; }
-    /// }
-    /// ```
-    /// </summary>
     [SpotInstResourceType("spotinst:aws/ocean:Ocean")]
     public partial class Ocean : Pulumi.CustomResource
     {
@@ -119,7 +31,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<string>> Blacklists { get; private set; } = null!;
 
         /// <summary>
-        /// The Ocean cluster identifier. Example: `ocean.k8s`
+        /// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         /// </summary>
         [Output("controllerId")]
         public Output<string?> ControllerId { get; private set; } = null!;
@@ -345,7 +257,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The Ocean cluster identifier. Example: `ocean.k8s`
+        /// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         /// </summary>
         [Input("controllerId")]
         public Input<string>? ControllerId { get; set; }
@@ -568,7 +480,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The Ocean cluster identifier. Example: `ocean.k8s`
+        /// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         /// </summary>
         [Input("controllerId")]
         public Input<string>? ControllerId { get; set; }

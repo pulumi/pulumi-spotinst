@@ -95,7 +95,7 @@ class ElastigroupArgs:
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types.
-        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
@@ -103,7 +103,7 @@ class ElastigroupArgs:
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
         :param pulumi.Input[str] block_devices_mode: String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
-        :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+        :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input['ElastigroupCpuOptionsArgs'] cpu_options: The CPU options for the instances that are launched within the group:
         :param pulumi.Input[str] description: The description of the network interface.
@@ -134,14 +134,14 @@ class ElastigroupArgs:
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The record set name.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
         :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
         :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
-        :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+        :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
@@ -345,7 +345,7 @@ class ElastigroupArgs:
     @pulumi.getter
     def orientation(self) -> pulumi.Input[str]:
         """
-        Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+        Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         """
         return pulumi.get(self, "orientation")
 
@@ -408,7 +408,7 @@ class ElastigroupArgs:
     @pulumi.getter(name="capacityUnit")
     def capacity_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+        The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         """
         return pulumi.get(self, "capacity_unit")
 
@@ -816,7 +816,7 @@ class ElastigroupArgs:
     @pulumi.getter(name="minimumInstanceLifetime")
     def minimum_instance_lifetime(self) -> Optional[pulumi.Input[int]]:
         """
-        Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         """
         return pulumi.get(self, "minimum_instance_lifetime")
 
@@ -909,7 +909,7 @@ class ElastigroupArgs:
     @pulumi.getter(name="placementTenancy")
     def placement_tenancy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+        Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         """
         return pulumi.get(self, "placement_tenancy")
 
@@ -1254,7 +1254,7 @@ class _ElastigroupState:
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
         :param pulumi.Input[str] block_devices_mode: String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
-        :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+        :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input['ElastigroupCpuOptionsArgs'] cpu_options: The CPU options for the instances that are launched within the group:
         :param pulumi.Input[str] description: The description of the network interface.
@@ -1288,15 +1288,15 @@ class _ElastigroupState:
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The record set name.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
-        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
         :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
         :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
-        :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+        :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
@@ -1499,7 +1499,7 @@ class _ElastigroupState:
     @pulumi.getter(name="capacityUnit")
     def capacity_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+        The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         """
         return pulumi.get(self, "capacity_unit")
 
@@ -1943,7 +1943,7 @@ class _ElastigroupState:
     @pulumi.getter(name="minimumInstanceLifetime")
     def minimum_instance_lifetime(self) -> Optional[pulumi.Input[int]]:
         """
-        Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         """
         return pulumi.get(self, "minimum_instance_lifetime")
 
@@ -2000,7 +2000,7 @@ class _ElastigroupState:
     @pulumi.getter
     def orientation(self) -> Optional[pulumi.Input[str]]:
         """
-        Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+        Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         """
         return pulumi.get(self, "orientation")
 
@@ -2048,7 +2048,7 @@ class _ElastigroupState:
     @pulumi.getter(name="placementTenancy")
     def placement_tenancy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+        Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         """
         return pulumi.get(self, "placement_tenancy")
 
@@ -2424,7 +2424,7 @@ class Elastigroup(pulumi.CustomResource):
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
         :param pulumi.Input[str] block_devices_mode: String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
-        :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+        :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']] cpu_options: The CPU options for the instances that are launched within the group:
         :param pulumi.Input[str] description: The description of the network interface.
@@ -2458,15 +2458,15 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The record set name.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
-        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
         :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
         :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
-        :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+        :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
@@ -2782,7 +2782,7 @@ class Elastigroup(pulumi.CustomResource):
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
         :param pulumi.Input[str] block_devices_mode: String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
-        :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+        :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']] cpu_options: The CPU options for the instances that are launched within the group:
         :param pulumi.Input[str] description: The description of the network interface.
@@ -2816,15 +2816,15 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The record set name.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
-        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
         :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
         :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
-        :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+        :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
@@ -2949,7 +2949,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="capacityUnit")
     def capacity_unit(self) -> pulumi.Output[str]:
         """
-        The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs.
+        The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         """
         return pulumi.get(self, "capacity_unit")
 
@@ -3241,7 +3241,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="minimumInstanceLifetime")
     def minimum_instance_lifetime(self) -> pulumi.Output[Optional[int]]:
         """
-        Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
+        Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         """
         return pulumi.get(self, "minimum_instance_lifetime")
 
@@ -3278,7 +3278,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter
     def orientation(self) -> pulumi.Output[str]:
         """
-        Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"equalAzDistribution"`, `"availabilityOriented"`.
+        Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         """
         return pulumi.get(self, "orientation")
 
@@ -3310,7 +3310,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="placementTenancy")
     def placement_tenancy(self) -> pulumi.Output[Optional[str]]:
         """
-        Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used.
+        Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         """
         return pulumi.get(self, "placement_tenancy")
 

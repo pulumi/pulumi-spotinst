@@ -32,9 +32,10 @@ class ElastigroupAzureV3Args:
         The set of arguments for constructing a ElastigroupAzureV3 resource.
         :param pulumi.Input['ElastigroupAzureV3NetworkArgs'] network: Defines the Virtual Network and Subnet for your Elastigroup.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
-        :param pulumi.Input[str] os: Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Vnet Resource Group Name.
+        :param pulumi.Input[str] resource_group_name: - The resource group of the Application Security Group.
+               }
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         :param pulumi.Input['ElastigroupAzureV3StrategyArgs'] strategy: Describes the deployment strategy.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
@@ -42,7 +43,7 @@ class ElastigroupAzureV3Args:
         :param pulumi.Input['ElastigroupAzureV3LoginArgs'] login: Describes the login configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: The IP configuration name.
+        :param pulumi.Input[str] name: - The name of the Application Security group.
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "od_sizes", od_sizes)
@@ -92,7 +93,7 @@ class ElastigroupAzureV3Args:
     @pulumi.getter
     def os(self) -> pulumi.Input[str]:
         """
-        Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         """
         return pulumi.get(self, "os")
 
@@ -116,7 +117,8 @@ class ElastigroupAzureV3Args:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Input[str]:
         """
-        Vnet Resource Group Name.
+        - The resource group of the Application Security Group.
+        }
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -212,7 +214,7 @@ class ElastigroupAzureV3Args:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP configuration name.
+        - The name of the Application Security group.
         """
         return pulumi.get(self, "name")
 
@@ -244,12 +246,13 @@ class _ElastigroupAzureV3State:
         :param pulumi.Input['ElastigroupAzureV3LoginArgs'] login: Describes the login configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: The IP configuration name.
+        :param pulumi.Input[str] name: - The name of the Application Security group.
         :param pulumi.Input['ElastigroupAzureV3NetworkArgs'] network: Defines the Virtual Network and Subnet for your Elastigroup.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
-        :param pulumi.Input[str] os: Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Vnet Resource Group Name.
+        :param pulumi.Input[str] resource_group_name: - The resource group of the Application Security Group.
+               }
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         :param pulumi.Input['ElastigroupAzureV3StrategyArgs'] strategy: Describes the deployment strategy.
         """
@@ -344,7 +347,7 @@ class _ElastigroupAzureV3State:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP configuration name.
+        - The name of the Application Security group.
         """
         return pulumi.get(self, "name")
 
@@ -380,7 +383,7 @@ class _ElastigroupAzureV3State:
     @pulumi.getter
     def os(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         """
         return pulumi.get(self, "os")
 
@@ -404,7 +407,8 @@ class _ElastigroupAzureV3State:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Vnet Resource Group Name.
+        - The resource group of the Application Security Group.
+        }
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -459,6 +463,64 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         """
         Provides a Spotinst elastigroup Azure resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        test_azure_group = spotinst.ElastigroupAzureV3("testAzureGroup",
+            desired_capacity=1,
+            images=[spotinst.ElastigroupAzureV3ImageArgs(
+                marketplaces=[spotinst.ElastigroupAzureV3ImageMarketplaceArgs(
+                    offer="UbuntuServer",
+                    publisher="Canonical",
+                    sku="18.04-LTS",
+                    version="latest",
+                )],
+            )],
+            login=spotinst.ElastigroupAzureV3LoginArgs(
+                ssh_public_key="33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+                user_name="admin",
+            ),
+            max_size=1,
+            min_size=0,
+            network=spotinst.ElastigroupAzureV3NetworkArgs(
+                network_interfaces=[{
+                    "additionalIpConfigs": [{
+                        "PrivateIPVersion": "IPv4",
+                        "name": "SecondaryIPConfig",
+                    }],
+                    "applicationSecurityGroup": [{
+                        "name": "ApplicationSecurityGroupName",
+                        "resource_group_name": "ResourceGroup",
+                    }],
+                    "assignPublicIp": False,
+                    "isPrimary": True,
+                    "subnetName": "default",
+                }],
+                resource_group_name="ResourceGroup",
+                virtual_network_name="VirtualNetworkName",
+            ),
+            od_sizes=[
+                "standard_a1_v1",
+                "standard_a1_v2",
+            ],
+            os="Linux",
+            region="eastus",
+            resource_group_name="spotinst-azure",
+            spot_sizes=[
+                "standard_a1_v1",
+                "standard_a1_v2",
+            ],
+            strategy=spotinst.ElastigroupAzureV3StrategyArgs(
+                draining_timeout=300,
+                fallback_to_on_demand=True,
+                od_count=1,
+                spot_percentage=65,
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
@@ -466,12 +528,13 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']] login: Describes the login configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: The IP configuration name.
+        :param pulumi.Input[str] name: - The name of the Application Security group.
         :param pulumi.Input[pulumi.InputType['ElastigroupAzureV3NetworkArgs']] network: Defines the Virtual Network and Subnet for your Elastigroup.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
-        :param pulumi.Input[str] os: Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Vnet Resource Group Name.
+        :param pulumi.Input[str] resource_group_name: - The resource group of the Application Security Group.
+               }
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         :param pulumi.Input[pulumi.InputType['ElastigroupAzureV3StrategyArgs']] strategy: Describes the deployment strategy.
         """
@@ -483,6 +546,64 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst elastigroup Azure resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        test_azure_group = spotinst.ElastigroupAzureV3("testAzureGroup",
+            desired_capacity=1,
+            images=[spotinst.ElastigroupAzureV3ImageArgs(
+                marketplaces=[spotinst.ElastigroupAzureV3ImageMarketplaceArgs(
+                    offer="UbuntuServer",
+                    publisher="Canonical",
+                    sku="18.04-LTS",
+                    version="latest",
+                )],
+            )],
+            login=spotinst.ElastigroupAzureV3LoginArgs(
+                ssh_public_key="33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+                user_name="admin",
+            ),
+            max_size=1,
+            min_size=0,
+            network=spotinst.ElastigroupAzureV3NetworkArgs(
+                network_interfaces=[{
+                    "additionalIpConfigs": [{
+                        "PrivateIPVersion": "IPv4",
+                        "name": "SecondaryIPConfig",
+                    }],
+                    "applicationSecurityGroup": [{
+                        "name": "ApplicationSecurityGroupName",
+                        "resource_group_name": "ResourceGroup",
+                    }],
+                    "assignPublicIp": False,
+                    "isPrimary": True,
+                    "subnetName": "default",
+                }],
+                resource_group_name="ResourceGroup",
+                virtual_network_name="VirtualNetworkName",
+            ),
+            od_sizes=[
+                "standard_a1_v1",
+                "standard_a1_v2",
+            ],
+            os="Linux",
+            region="eastus",
+            resource_group_name="spotinst-azure",
+            spot_sizes=[
+                "standard_a1_v1",
+                "standard_a1_v2",
+            ],
+            strategy=spotinst.ElastigroupAzureV3StrategyArgs(
+                draining_timeout=300,
+                fallback_to_on_demand=True,
+                od_count=1,
+                spot_percentage=65,
+            ))
+        ```
 
         :param str resource_name: The name of the resource.
         :param ElastigroupAzureV3Args args: The arguments to use to populate this resource's properties.
@@ -586,12 +707,13 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']] login: Describes the login configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: The IP configuration name.
+        :param pulumi.Input[str] name: - The name of the Application Security group.
         :param pulumi.Input[pulumi.InputType['ElastigroupAzureV3NetworkArgs']] network: Defines the Virtual Network and Subnet for your Elastigroup.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
-        :param pulumi.Input[str] os: Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Vnet Resource Group Name.
+        :param pulumi.Input[str] resource_group_name: - The resource group of the Application Security Group.
+               }
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         :param pulumi.Input[pulumi.InputType['ElastigroupAzureV3StrategyArgs']] strategy: Describes the deployment strategy.
         """
@@ -658,7 +780,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The IP configuration name.
+        - The name of the Application Security group.
         """
         return pulumi.get(self, "name")
 
@@ -682,7 +804,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     @pulumi.getter
     def os(self) -> pulumi.Output[str]:
         """
-        Operation system type. Valid values: `"Linux"`, `"Windows"`.
+        Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         """
         return pulumi.get(self, "os")
 
@@ -698,7 +820,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Output[str]:
         """
-        Vnet Resource Group Name.
+        - The resource group of the Application Security Group.
+        }
         """
         return pulumi.get(self, "resource_group_name")
 

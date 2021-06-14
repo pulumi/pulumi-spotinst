@@ -15,7 +15,8 @@ namespace Pulumi.SpotInst.Outputs
     {
         public readonly ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterface> NetworkInterfaces;
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// - The resource group of the Application Security Group.
+        /// }
         /// </summary>
         public readonly string ResourceGroupName;
         /// <summary>

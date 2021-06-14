@@ -15,7 +15,8 @@ export interface ElastigroupAzureV3ImageCustom {
      */
     imageName: pulumi.Input<string>;
     /**
-     * Vnet Resource Group Name.
+     * - The resource group of the Application Security Group.
+     * }
      */
     resourceGroupName: pulumi.Input<string>;
 }
@@ -54,7 +55,8 @@ export interface ElastigroupAzureV3Login {
 export interface ElastigroupAzureV3Network {
     networkInterfaces: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterface>[]>;
     /**
-     * Vnet Resource Group Name.
+     * - The resource group of the Application Security Group.
+     * }
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -68,6 +70,10 @@ export interface ElastigroupAzureV3NetworkNetworkInterface {
      * Array of additional IP configuration objects.
      */
     additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig>[]>;
+    /**
+     * - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+     */
+    applicationSecurityGroups?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup>[]>;
     assignPublicIp: pulumi.Input<boolean>;
     isPrimary: pulumi.Input<boolean>;
     /**
@@ -78,13 +84,25 @@ export interface ElastigroupAzureV3NetworkNetworkInterface {
 
 export interface ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
     /**
-     * The IP configuration name.
+     * - The name of the Application Security group.
      */
     name: pulumi.Input<string>;
     /**
-     * Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+     * Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
      */
     privateIpVersion?: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
+    /**
+     * - The name of the Application Security group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * - The resource group of the Application Security Group.
+     * }
+     */
+    resourceGroupName: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3Strategy {
@@ -1393,6 +1411,13 @@ export namespace aws {
         type: pulumi.Input<string>;
     }
 
+    export interface ManagedInstanceManagedInstanceAction {
+        /**
+         * The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+         */
+        type: pulumi.Input<string>;
+    }
+
     export interface ManagedInstanceNetworkInterface {
         /**
          * Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
@@ -2674,6 +2699,230 @@ export namespace azure {
         healthCheckType?: pulumi.Input<string>;
     }
 
+    export interface OceanAutoscaler {
+        /**
+         * Auto Scaling scale down operations.
+         */
+        autoscaleDown?: pulumi.Input<inputs.azure.OceanAutoscalerAutoscaleDown>;
+        /**
+         * Spare Resource Capacity Management feature enables fast assignment of Pods without having to wait for new resources to be launched.
+         */
+        autoscaleHeadroom?: pulumi.Input<inputs.azure.OceanAutoscalerAutoscaleHeadroom>;
+        /**
+         * Enable the Ocean Kubernetes Autoscaler.
+         */
+        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optionally set upper and lower bounds on the resource usage of the cluster.
+         */
+        resourceLimits?: pulumi.Input<inputs.azure.OceanAutoscalerResourceLimits>;
+    }
+
+    export interface OceanAutoscalerAutoscaleDown {
+        /**
+         * Would represent the maximum % to scale-down.
+         */
+        maxScaleDownPercentage?: pulumi.Input<number>;
+    }
+
+    export interface OceanAutoscalerAutoscaleHeadroom {
+        /**
+         * Automatic headroom configuration.
+         */
+        automatic?: pulumi.Input<inputs.azure.OceanAutoscalerAutoscaleHeadroomAutomatic>;
+    }
+
+    export interface OceanAutoscalerAutoscaleHeadroomAutomatic {
+        /**
+         * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
+         */
+        isEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
+         */
+        percentage?: pulumi.Input<number>;
+    }
+
+    export interface OceanAutoscalerResourceLimits {
+        /**
+         * The maximum memory in GiB units that can be allocated to the cluster.
+         */
+        maxMemoryGib?: pulumi.Input<number>;
+        /**
+         * The maximum cpu in vCpu units that can be allocated to the cluster.
+         */
+        maxVcpu?: pulumi.Input<number>;
+    }
+
+    export interface OceanExtension {
+        /**
+         * API version of the extension.
+         */
+        apiVersion?: pulumi.Input<string>;
+        /**
+         * Toggles whether auto upgrades are allowed.
+         */
+        minorVersionAutoUpgrade?: pulumi.Input<boolean>;
+        /**
+         * Name of the Load Balancer.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Image publisher.
+         */
+        publisher?: pulumi.Input<string>;
+        /**
+         * The type of load balancer. Supported value: `loadBalancer`
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface OceanHealth {
+        /**
+         * The amount of time to wait, in seconds, from the moment the instance has launched before monitoring its health checks.
+         */
+        gracePeriod?: pulumi.Input<number>;
+    }
+
+    export interface OceanImage {
+        /**
+         * Select an image from Azure's Marketplace image catalogue.
+         */
+        marketplaces?: pulumi.Input<pulumi.Input<inputs.azure.OceanImageMarketplace>[]>;
+    }
+
+    export interface OceanImageMarketplace {
+        /**
+         * Image name.
+         */
+        offer?: pulumi.Input<string>;
+        /**
+         * Image publisher.
+         */
+        publisher?: pulumi.Input<string>;
+        /**
+         * Image Stock Keeping Unit (which is the specific version of the image).
+         */
+        sku?: pulumi.Input<string>;
+        /**
+         * Image version.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface OceanLoadBalancer {
+        /**
+         * Names of the Backend Pools to register the Cluster VMs to. Each Backend Pool is a separate load balancer.
+         */
+        backendPoolNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Supported values: `Standard`, `Basic`.
+         */
+        loadBalancerSku?: pulumi.Input<string>;
+        /**
+         * Name of the Load Balancer.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The Resource Group name of the Load Balancer.
+         */
+        resourceGroupName?: pulumi.Input<string>;
+        /**
+         * The type of load balancer. Supported value: `loadBalancer`
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface OceanNetwork {
+        /**
+         * A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
+         */
+        networkInterfaces?: pulumi.Input<pulumi.Input<inputs.azure.OceanNetworkNetworkInterface>[]>;
+        /**
+         * The Resource Group name of the Load Balancer.
+         */
+        resourceGroupName?: pulumi.Input<string>;
+        /**
+         * Virtual network.
+         */
+        virtualNetworkName?: pulumi.Input<string>;
+    }
+
+    export interface OceanNetworkNetworkInterface {
+        /**
+         * Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
+         */
+        additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNetworkNetworkInterfaceAdditionalIpConfig>[]>;
+        /**
+         * Assign public IP.
+         */
+        assignPublicIp?: pulumi.Input<boolean>;
+        /**
+         * Defines whether the network interface is primary or not.
+         */
+        isPrimary?: pulumi.Input<boolean>;
+        securityGroup?: pulumi.Input<inputs.azure.OceanNetworkNetworkInterfaceSecurityGroup>;
+        /**
+         * Subnet name.
+         */
+        subnetName?: pulumi.Input<string>;
+    }
+
+    export interface OceanNetworkNetworkInterfaceAdditionalIpConfig {
+        /**
+         * Name of the Load Balancer.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Supported values: `IPv4`, `IPv6`.
+         */
+        privateIpVersion?: pulumi.Input<string>;
+    }
+
+    export interface OceanNetworkNetworkInterfaceSecurityGroup {
+        /**
+         * Name of the Load Balancer.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The Resource Group name of the Load Balancer.
+         */
+        resourceGroupName?: pulumi.Input<string>;
+    }
+
+    export interface OceanOsDisk {
+        /**
+         * The size of the OS disk in GB.
+         */
+        sizeGb: pulumi.Input<number>;
+        /**
+         * The type of load balancer. Supported value: `loadBalancer`
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface OceanStrategy {
+        /**
+         * If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
+         */
+        fallbackToOndemand?: pulumi.Input<boolean>;
+        /**
+         * Percentage of Spot VMs to maintain.
+         */
+        spotPercentage?: pulumi.Input<number>;
+    }
+
+    export interface OceanTag {
+        /**
+         * Tag key.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Tag value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface OceanVirtualNodeGroupAutoscale {
         autoscaleHeadroom?: pulumi.Input<inputs.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom>;
     }
@@ -2761,6 +3010,13 @@ export namespace azure {
          * Tag Value for VMs in the cluster.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface OceanVmSize {
+        /**
+         * VM types allowed in the Ocean cluster.
+         */
+        whitelists?: pulumi.Input<pulumi.Input<string>[]>;
     }
 }
 
