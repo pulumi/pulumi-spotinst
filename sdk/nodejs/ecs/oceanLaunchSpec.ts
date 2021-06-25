@@ -61,6 +61,7 @@ import * as utilities from "../utilities";
  *     oceanId: "o-123456",
  *     restrictScaleDown: true,
  *     securityGroupIds: ["awseb-12345"],
+ *     subnetIds: ["subnet-12345"],
  *     tags: [{
  *         key: "Env",
  *         value: "production",
@@ -143,6 +144,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
+     * Set subnets in launchSpec. Each element in the array should be a subnet ID.
+     */
+    public readonly subnetIds!: pulumi.Output<string[] | undefined>;
+    /**
      * A key/value mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<outputs.ecs.OceanLaunchSpecTag[] | undefined>;
@@ -174,6 +179,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["oceanId"] = state ? state.oceanId : undefined;
             inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            inputs["subnetIds"] = state ? state.subnetIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
         } else {
@@ -191,6 +197,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["oceanId"] = args ? args.oceanId : undefined;
             inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            inputs["subnetIds"] = args ? args.subnetIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
         }
@@ -246,6 +253,10 @@ export interface OceanLaunchSpecState {
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Set subnets in launchSpec. Each element in the array should be a subnet ID.
+     */
+    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * A key/value mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecTag>[]>;
@@ -299,6 +310,10 @@ export interface OceanLaunchSpecArgs {
      * One or more security group ids.
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set subnets in launchSpec. Each element in the array should be a subnet ID.
+     */
+    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A key/value mapping of tags to assign to the resource.
      */

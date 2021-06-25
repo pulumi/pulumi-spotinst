@@ -88,6 +88,10 @@ namespace Pulumi.SpotInst.Ecs
     ///             {
     ///                 "awseb-12345",
     ///             },
+    ///             SubnetIds = 
+    ///             {
+    ///                 "subnet-12345",
+    ///             },
     ///             Tags = 
     ///             {
     ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecTagArgs
@@ -179,6 +183,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+        /// </summary>
+        [Output("subnetIds")]
+        public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
 
         /// <summary>
         /// A key/value mapping of tags to assign to the resource.
@@ -328,6 +338,18 @@ namespace Pulumi.SpotInst.Ecs
             set => _securityGroupIds = value;
         }
 
+        [Input("subnetIds")]
+        private InputList<string>? _subnetIds;
+
+        /// <summary>
+        /// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+        /// </summary>
+        public InputList<string> SubnetIds
+        {
+            get => _subnetIds ?? (_subnetIds = new InputList<string>());
+            set => _subnetIds = value;
+        }
+
         [Input("tags")]
         private InputList<Inputs.OceanLaunchSpecTagArgs>? _tags;
 
@@ -441,6 +463,18 @@ namespace Pulumi.SpotInst.Ecs
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
+        }
+
+        [Input("subnetIds")]
+        private InputList<string>? _subnetIds;
+
+        /// <summary>
+        /// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+        /// </summary>
+        public InputList<string> SubnetIds
+        {
+            get => _subnetIds ?? (_subnetIds = new InputList<string>());
+            set => _subnetIds = value;
         }
 
         [Input("tags")]

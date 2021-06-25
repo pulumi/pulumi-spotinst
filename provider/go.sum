@@ -805,6 +805,8 @@ github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210611163201-5a70c310d
 github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210611163201-5a70c310d4d4/go.mod h1:kX6FWWHLUYGWi50TAKz1eQYpk91ML3Uk7U+OChLnO+0=
 github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210614101350-dc32b00f2c39 h1:ECmp4BVfiKfhQmehzQaYUmLCq2fsxuf63h1/FHyiIYw=
 github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210614101350-dc32b00f2c39/go.mod h1:kX6FWWHLUYGWi50TAKz1eQYpk91ML3Uk7U+OChLnO+0=
+github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210625171317-81b3139cb089 h1:ZxF9foprghQ3N0Jacsmxhsz3J4/hF7O2J6KXf3sUlkM=
+github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20210625171317-81b3139cb089/go.mod h1:Og60WbiBPY2UQuzu5t6/9SzJIsrbQIvr4d2X2ty31uk=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
@@ -868,6 +870,8 @@ github.com/spotinst/spotinst-sdk-go v1.89.0 h1:VRgnhUwrI2XwzZLHQyzLguGS4z5Ok5wgy
 github.com/spotinst/spotinst-sdk-go v1.89.0/go.mod h1:RuKksd1/RyQogMCxKFI5B75NeFRcgl3W+26DVX6S4m0=
 github.com/spotinst/spotinst-sdk-go v1.91.0 h1:j+oSXGkkbPTasqlmzzJMmQwcxWO3/Oqspj9g7huuaoI=
 github.com/spotinst/spotinst-sdk-go v1.91.0/go.mod h1:RuKksd1/RyQogMCxKFI5B75NeFRcgl3W+26DVX6S4m0=
+github.com/spotinst/spotinst-sdk-go v1.93.0 h1:hYYvB8hRHEE1JElB4Cw+bAUlDGiyLD07YdpWJkMtyFM=
+github.com/spotinst/spotinst-sdk-go v1.93.0/go.mod h1:RuKksd1/RyQogMCxKFI5B75NeFRcgl3W+26DVX6S4m0=
 github.com/src-d/gcfg v1.4.0 h1:xXbNR5AlLSA315x2UO+fTSSAXCDf+Ar38/6oyGbDKQ4=
 github.com/src-d/gcfg v1.4.0/go.mod h1:p/UMsR43ujA89BJY9duynAwIpvqEujIH/jFlfL7jWoI=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

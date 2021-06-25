@@ -80,6 +80,9 @@ import (
 // 			SecurityGroupIds: pulumi.StringArray{
 // 				pulumi.String("awseb-12345"),
 // 			},
+// 			SubnetIds: pulumi.StringArray{
+// 				pulumi.String("subnet-12345"),
+// 			},
 // 			Tags: ecs.OceanLaunchSpecTagArray{
 // 				&ecs.OceanLaunchSpecTagArgs{
 // 					Key:   pulumi.String("Env"),
@@ -132,6 +135,8 @@ type OceanLaunchSpec struct {
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags OceanLaunchSpecTagArrayOutput `pulumi:"tags"`
 	// Base64-encoded MIME user data to make available to the instances.
@@ -190,6 +195,8 @@ type oceanLaunchSpecState struct {
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags []OceanLaunchSpecTag `pulumi:"tags"`
 	// Base64-encoded MIME user data to make available to the instances.
@@ -217,6 +224,8 @@ type OceanLaunchSpecState struct {
 	RestrictScaleDown pulumi.BoolPtrInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
+	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
 	Tags OceanLaunchSpecTagArrayInput
 	// Base64-encoded MIME user data to make available to the instances.
@@ -248,6 +257,8 @@ type oceanLaunchSpecArgs struct {
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
 	Tags []OceanLaunchSpecTag `pulumi:"tags"`
 	// Base64-encoded MIME user data to make available to the instances.
@@ -276,6 +287,8 @@ type OceanLaunchSpecArgs struct {
 	RestrictScaleDown pulumi.BoolPtrInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
+	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
 	Tags OceanLaunchSpecTagArrayInput
 	// Base64-encoded MIME user data to make available to the instances.

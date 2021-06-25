@@ -25,6 +25,7 @@ class OceanLaunchSpecArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None):
         """
@@ -39,6 +40,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in the array should be a subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
@@ -61,6 +63,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if subnet_ids is not None:
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_data is not None:
@@ -187,6 +191,18 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set subnets in launchSpec. Each element in the array should be a subnet ID.
+        """
+        return pulumi.get(self, "subnet_ids")
+
+    @subnet_ids.setter
+    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subnet_ids", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]]:
         """
@@ -224,6 +240,7 @@ class _OceanLaunchSpecState:
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None):
         """
@@ -238,6 +255,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in the array should be a subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
@@ -261,6 +279,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if subnet_ids is not None:
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_data is not None:
@@ -387,6 +407,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set subnets in launchSpec. Each element in the array should be a subnet ID.
+        """
+        return pulumi.get(self, "subnet_ids")
+
+    @subnet_ids.setter
+    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subnet_ids", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]]:
         """
@@ -426,6 +458,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -485,6 +518,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ocean_id="o-123456",
             restrict_scale_down=True,
             security_group_ids=["awseb-12345"],
+            subnet_ids=["subnet-12345"],
             tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
                 key="Env",
                 value="production",
@@ -509,6 +543,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in the array should be a subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
@@ -574,6 +609,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ocean_id="o-123456",
             restrict_scale_down=True,
             security_group_ids=["awseb-12345"],
+            subnet_ids=["subnet-12345"],
             tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
                 key="Env",
                 value="production",
@@ -611,6 +647,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -637,6 +674,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["ocean_id"] = ocean_id
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_data"] = user_data
         super(OceanLaunchSpec, __self__).__init__(
@@ -659,6 +697,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ocean_id: Optional[pulumi.Input[str]] = None,
             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None) -> 'OceanLaunchSpec':
         """
@@ -678,6 +717,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in the array should be a subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
@@ -695,6 +735,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["ocean_id"] = ocean_id
         __props__.__dict__["restrict_scale_down"] = restrict_scale_down
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["subnet_ids"] = subnet_ids
         __props__.__dict__["tags"] = tags
         __props__.__dict__["user_data"] = user_data
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)
@@ -778,6 +819,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         One or more security group ids.
         """
         return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Set subnets in launchSpec. Each element in the array should be a subnet ID.
+        """
+        return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter
