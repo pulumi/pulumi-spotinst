@@ -15,20 +15,20 @@ namespace Pulumi.SpotInst.Gke.Inputs
         /// <summary>
         /// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
         /// </summary>
-        [Input("effect", required: true)]
-        public Input<string> Effect { get; set; } = null!;
+        [Input("effect")]
+        public Input<string>? Effect { get; set; }
 
         /// <summary>
         /// The label key.
         /// </summary>
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
+        [Input("key")]
+        public Input<string>? Key { get; set; }
 
         /// <summary>
         /// The label value.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public OceanLaunchSpecTaintArgs()
         {

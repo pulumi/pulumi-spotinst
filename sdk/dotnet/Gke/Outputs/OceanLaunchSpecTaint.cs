@@ -16,23 +16,23 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// <summary>
         /// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
         /// </summary>
-        public readonly string Effect;
+        public readonly string? Effect;
         /// <summary>
         /// The label key.
         /// </summary>
-        public readonly string Key;
+        public readonly string? Key;
         /// <summary>
         /// The label value.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private OceanLaunchSpecTaint(
-            string effect,
+            string? effect,
 
-            string key,
+            string? key,
 
-            string value)
+            string? value)
         {
             Effect = effect;
             Key = key;

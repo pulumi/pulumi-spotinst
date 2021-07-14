@@ -89,6 +89,7 @@ import * as utilities from "../utilities";
  *     // --- MASTER GROUP -------------
  *     masterInstanceTypes: ["c3.xlarge"],
  *     masterLifecycle: "SPOT",
+ *     masterTarget: 1,
  *     provisioningTimeout: {
  *         timeout: 15,
  *         timeoutAction: "terminateAndRetry",
@@ -165,6 +166,7 @@ import * as utilities from "../utilities";
  *     // --- MASTER GROUP -------------
  *     masterInstanceTypes: ["c3.xlarge"],
  *     masterLifecycle: "SPOT",
+ *     masterTarget: 1,
  *     region: "us-west-2",
  *     strategy: "clone",
  *     // --- TAGS -------------------
@@ -388,6 +390,10 @@ export class MrScalar extends pulumi.CustomResource {
      */
     public readonly masterLifecycle!: pulumi.Output<string | undefined>;
     /**
+     * Number of instances in the master group.
+     */
+    public readonly masterTarget!: pulumi.Output<number | undefined>;
+    /**
      * The application name.
      */
     public readonly name!: pulumi.Output<string>;
@@ -518,6 +524,7 @@ export class MrScalar extends pulumi.CustomResource {
             inputs["masterEbsOptimized"] = state ? state.masterEbsOptimized : undefined;
             inputs["masterInstanceTypes"] = state ? state.masterInstanceTypes : undefined;
             inputs["masterLifecycle"] = state ? state.masterLifecycle : undefined;
+            inputs["masterTarget"] = state ? state.masterTarget : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["outputClusterId"] = state ? state.outputClusterId : undefined;
             inputs["provisioningTimeout"] = state ? state.provisioningTimeout : undefined;
@@ -583,6 +590,7 @@ export class MrScalar extends pulumi.CustomResource {
             inputs["masterEbsOptimized"] = args ? args.masterEbsOptimized : undefined;
             inputs["masterInstanceTypes"] = args ? args.masterInstanceTypes : undefined;
             inputs["masterLifecycle"] = args ? args.masterLifecycle : undefined;
+            inputs["masterTarget"] = args ? args.masterTarget : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["provisioningTimeout"] = args ? args.provisioningTimeout : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -736,6 +744,10 @@ export interface MrScalarState {
      * The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
      */
     readonly masterLifecycle?: pulumi.Input<string>;
+    /**
+     * Number of instances in the master group.
+     */
+    readonly masterTarget?: pulumi.Input<number>;
     /**
      * The application name.
      */
@@ -940,6 +952,10 @@ export interface MrScalarArgs {
      * The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
      */
     readonly masterLifecycle?: pulumi.Input<string>;
+    /**
+     * Number of instances in the master group.
+     */
+    readonly masterTarget?: pulumi.Input<number>;
     /**
      * The application name.
      */

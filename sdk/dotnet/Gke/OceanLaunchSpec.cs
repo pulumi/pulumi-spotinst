@@ -12,82 +12,7 @@ namespace Pulumi.SpotInst.Gke
     /// <summary>
     /// Manages a custom Spotinst Ocean GKE Launch Spec resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new SpotInst.Gke.OceanLaunchSpec("example", new SpotInst.Gke.OceanLaunchSpecArgs
-    ///         {
-    ///             AutoscaleHeadrooms = 
-    ///             {
-    ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
-    ///                 {
-    ///                     CpuPerUnit = 1000,
-    ///                     GpuPerUnit = 0,
-    ///                     MemoryPerUnit = 2048,
-    ///                     NumOfUnits = 5,
-    ///                 },
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecLabelArgs
-    ///                 {
-    ///                     Key = "labelKey",
-    ///                     Value = "labelVal",
-    ///                 },
-    ///             },
-    ///             Metadatas = 
-    ///             {
-    ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecMetadataArgs
-    ///                 {
-    ///                     Key = "gci-update-strategy",
-    ///                     Value = "update_disabled",
-    ///                 },
-    ///             },
-    ///             OceanId = "o-123456",
-    ///             RestrictScaleDown = true,
-    ///             SourceImage = "image",
-    ///             Strategies = 
-    ///             {
-    ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecStrategyArgs
-    ///                 {
-    ///                     PreemptiblePercentage = 30,
-    ///                 },
-    ///             },
-    ///             Taints = 
-    ///             {
-    ///                 new SpotInst.Gke.Inputs.OceanLaunchSpecTaintArgs
-    ///                 {
-    ///                     Effect = "taintEffect",
-    ///                     Key = "taintKey",
-    ///                     Value = "taintVal",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         this.OceanLaunchspecId = spotinst_ocean_gke_launch_spec.Example.Id;
-    ///     }
-    /// 
-    ///     [Output("oceanLaunchspecId")]
-    ///     public Output&lt;string&gt; OceanLaunchspecId { get; set; }
-    /// }
-    /// ```
+    /// &gt; This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : Pulumi.CustomResource
@@ -97,6 +22,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Output("autoscaleHeadrooms")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroom>> AutoscaleHeadrooms { get; private set; } = null!;
+
+        /// <summary>
+        /// List of supported machine types for the Launch Spec.
+        /// </summary>
+        [Output("instanceTypes")]
+        public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
         /// Optionally adds labels to instances launched in an Ocean cluster.
@@ -111,6 +42,12 @@ namespace Pulumi.SpotInst.Gke
         public Output<ImmutableArray<Outputs.OceanLaunchSpecMetadata>> Metadatas { get; private set; } = null!;
 
         /// <summary>
+        /// The node pool you wish to use in your Launch Spec.
+        /// </summary>
+        [Output("nodePoolName")]
+        public Output<string?> NodePoolName { get; private set; } = null!;
+
+        /// <summary>
         /// The Ocean cluster ID.
         /// </summary>
         [Output("oceanId")]
@@ -120,7 +57,19 @@ namespace Pulumi.SpotInst.Gke
         /// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Output("restrictScaleDown")]
-        public Output<bool?> RestrictScaleDown { get; private set; } = null!;
+        public Output<bool> RestrictScaleDown { get; private set; } = null!;
+
+        /// <summary>
+        /// Root volume size (in GB).
+        /// </summary>
+        [Output("rootVolumeSize")]
+        public Output<int> RootVolumeSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        /// </summary>
+        [Output("rootVolumeType")]
+        public Output<string> RootVolumeType { get; private set; } = null!;
 
         /// <summary>
         /// Image URL.
@@ -198,6 +147,18 @@ namespace Pulumi.SpotInst.Gke
             set => _autoscaleHeadrooms = value;
         }
 
+        [Input("instanceTypes")]
+        private InputList<string>? _instanceTypes;
+
+        /// <summary>
+        /// List of supported machine types for the Launch Spec.
+        /// </summary>
+        public InputList<string> InstanceTypes
+        {
+            get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
+            set => _instanceTypes = value;
+        }
+
         [Input("labels")]
         private InputList<Inputs.OceanLaunchSpecLabelArgs>? _labels;
 
@@ -210,7 +171,7 @@ namespace Pulumi.SpotInst.Gke
             set => _labels = value;
         }
 
-        [Input("metadatas", required: true)]
+        [Input("metadatas")]
         private InputList<Inputs.OceanLaunchSpecMetadataArgs>? _metadatas;
 
         /// <summary>
@@ -221,6 +182,12 @@ namespace Pulumi.SpotInst.Gke
             get => _metadatas ?? (_metadatas = new InputList<Inputs.OceanLaunchSpecMetadataArgs>());
             set => _metadatas = value;
         }
+
+        /// <summary>
+        /// The node pool you wish to use in your Launch Spec.
+        /// </summary>
+        [Input("nodePoolName")]
+        public Input<string>? NodePoolName { get; set; }
 
         /// <summary>
         /// The Ocean cluster ID.
@@ -235,10 +202,22 @@ namespace Pulumi.SpotInst.Gke
         public Input<bool>? RestrictScaleDown { get; set; }
 
         /// <summary>
+        /// Root volume size (in GB).
+        /// </summary>
+        [Input("rootVolumeSize")]
+        public Input<int>? RootVolumeSize { get; set; }
+
+        /// <summary>
+        /// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        /// </summary>
+        [Input("rootVolumeType")]
+        public Input<string>? RootVolumeType { get; set; }
+
+        /// <summary>
         /// Image URL.
         /// </summary>
-        [Input("sourceImage", required: true)]
-        public Input<string> SourceImage { get; set; } = null!;
+        [Input("sourceImage")]
+        public Input<string>? SourceImage { get; set; }
 
         [Input("strategies")]
         private InputList<Inputs.OceanLaunchSpecStrategyArgs>? _strategies;
@@ -283,6 +262,18 @@ namespace Pulumi.SpotInst.Gke
             set => _autoscaleHeadrooms = value;
         }
 
+        [Input("instanceTypes")]
+        private InputList<string>? _instanceTypes;
+
+        /// <summary>
+        /// List of supported machine types for the Launch Spec.
+        /// </summary>
+        public InputList<string> InstanceTypes
+        {
+            get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
+            set => _instanceTypes = value;
+        }
+
         [Input("labels")]
         private InputList<Inputs.OceanLaunchSpecLabelGetArgs>? _labels;
 
@@ -308,6 +299,12 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
+        /// The node pool you wish to use in your Launch Spec.
+        /// </summary>
+        [Input("nodePoolName")]
+        public Input<string>? NodePoolName { get; set; }
+
+        /// <summary>
         /// The Ocean cluster ID.
         /// </summary>
         [Input("oceanId")]
@@ -318,6 +315,18 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("restrictScaleDown")]
         public Input<bool>? RestrictScaleDown { get; set; }
+
+        /// <summary>
+        /// Root volume size (in GB).
+        /// </summary>
+        [Input("rootVolumeSize")]
+        public Input<int>? RootVolumeSize { get; set; }
+
+        /// <summary>
+        /// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        /// </summary>
+        [Input("rootVolumeType")]
+        public Input<string>? RootVolumeType { get; set; }
 
         /// <summary>
         /// Image URL.

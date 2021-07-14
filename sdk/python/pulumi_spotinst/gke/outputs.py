@@ -1765,18 +1765,20 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
 @pulumi.output_type
 class OceanLaunchSpecLabel(dict):
     def __init__(__self__, *,
-                 key: str,
-                 value: str):
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
         """
         :param str key: The label key.
         :param str value: The label value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> Optional[str]:
         """
         The label key.
         """
@@ -1784,7 +1786,7 @@ class OceanLaunchSpecLabel(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> Optional[str]:
         """
         The label value.
         """
@@ -1794,18 +1796,20 @@ class OceanLaunchSpecLabel(dict):
 @pulumi.output_type
 class OceanLaunchSpecMetadata(dict):
     def __init__(__self__, *,
-                 key: str,
-                 value: str):
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
         """
         :param str key: The label key.
         :param str value: The label value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> Optional[str]:
         """
         The label key.
         """
@@ -1813,7 +1817,7 @@ class OceanLaunchSpecMetadata(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> Optional[str]:
         """
         The label value.
         """
@@ -1859,21 +1863,24 @@ class OceanLaunchSpecStrategy(dict):
 @pulumi.output_type
 class OceanLaunchSpecTaint(dict):
     def __init__(__self__, *,
-                 effect: str,
-                 key: str,
-                 value: str):
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
         """
         :param str effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
         :param str key: The label key.
         :param str value: The label value.
         """
-        pulumi.set(__self__, "effect", effect)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def effect(self) -> str:
+    def effect(self) -> Optional[str]:
         """
         The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
         """
@@ -1881,7 +1888,7 @@ class OceanLaunchSpecTaint(dict):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> Optional[str]:
         """
         The label key.
         """
@@ -1889,7 +1896,7 @@ class OceanLaunchSpecTaint(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> Optional[str]:
         """
         The label value.
         """

@@ -1781,74 +1781,78 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
 @pulumi.input_type
 class OceanLaunchSpecLabelArgs:
     def __init__(__self__, *,
-                 key: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] key: The label key.
         :param pulumi.Input[str] value: The label value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def key(self) -> pulumi.Input[str]:
+    def key(self) -> Optional[pulumi.Input[str]]:
         """
         The label key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: pulumi.Input[str]):
+    def key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
+    def value(self) -> Optional[pulumi.Input[str]]:
         """
         The label value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[str]):
+    def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
 class OceanLaunchSpecMetadataArgs:
     def __init__(__self__, *,
-                 key: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] key: The label key.
         :param pulumi.Input[str] value: The label value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def key(self) -> pulumi.Input[str]:
+    def key(self) -> Optional[pulumi.Input[str]]:
         """
         The label key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: pulumi.Input[str]):
+    def key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
+    def value(self) -> Optional[pulumi.Input[str]]:
         """
         The label value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[str]):
+    def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
 
@@ -1878,52 +1882,55 @@ class OceanLaunchSpecStrategyArgs:
 @pulumi.input_type
 class OceanLaunchSpecTaintArgs:
     def __init__(__self__, *,
-                 effect: pulumi.Input[str],
-                 key: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 effect: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
         :param pulumi.Input[str] key: The label key.
         :param pulumi.Input[str] value: The label value.
         """
-        pulumi.set(__self__, "effect", effect)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def effect(self) -> pulumi.Input[str]:
+    def effect(self) -> Optional[pulumi.Input[str]]:
         """
         The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: pulumi.Input[str]):
+    def effect(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "effect", value)
 
     @property
     @pulumi.getter
-    def key(self) -> pulumi.Input[str]:
+    def key(self) -> Optional[pulumi.Input[str]]:
         """
         The label key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: pulumi.Input[str]):
+    def key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
+    def value(self) -> Optional[pulumi.Input[str]]:
         """
         The label value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[str]):
+    def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
 

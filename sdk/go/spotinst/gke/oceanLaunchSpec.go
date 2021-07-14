@@ -13,89 +13,28 @@ import (
 
 // Manages a custom Spotinst Ocean GKE Launch Spec resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/gke"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gke.NewOceanLaunchSpec(ctx, "example", &gke.OceanLaunchSpecArgs{
-// 			AutoscaleHeadrooms: gke.OceanLaunchSpecAutoscaleHeadroomArray{
-// 				&gke.OceanLaunchSpecAutoscaleHeadroomArgs{
-// 					CpuPerUnit:    pulumi.Int(1000),
-// 					GpuPerUnit:    pulumi.Int(0),
-// 					MemoryPerUnit: pulumi.Int(2048),
-// 					NumOfUnits:    pulumi.Int(5),
-// 				},
-// 			},
-// 			Labels: gke.OceanLaunchSpecLabelArray{
-// 				&gke.OceanLaunchSpecLabelArgs{
-// 					Key:   pulumi.String("labelKey"),
-// 					Value: pulumi.String("labelVal"),
-// 				},
-// 			},
-// 			Metadatas: gke.OceanLaunchSpecMetadataArray{
-// 				&gke.OceanLaunchSpecMetadataArgs{
-// 					Key:   pulumi.String("gci-update-strategy"),
-// 					Value: pulumi.String("update_disabled"),
-// 				},
-// 			},
-// 			OceanId:           pulumi.String("o-123456"),
-// 			RestrictScaleDown: pulumi.Bool(true),
-// 			SourceImage:       pulumi.String("image"),
-// 			Strategies: gke.OceanLaunchSpecStrategyArray{
-// 				&gke.OceanLaunchSpecStrategyArgs{
-// 					PreemptiblePercentage: pulumi.Int(30),
-// 				},
-// 			},
-// 			Taints: gke.OceanLaunchSpecTaintArray{
-// 				&gke.OceanLaunchSpecTaintArgs{
-// 					Effect: pulumi.String("taintEffect"),
-// 					Key:    pulumi.String("taintKey"),
-// 					Value:  pulumi.String("taintVal"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ctx.Export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec.Example.Id)
-// 		return nil
-// 	})
-// }
-// ```
+// > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `nodePoolName`.
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
 
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
+	// List of supported machine types for the Launch Spec.
+	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayOutput `pulumi:"metadatas"`
+	// The node pool you wish to use in your Launch Spec.
+	NodePoolName pulumi.StringPtrOutput `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
-	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
+	RestrictScaleDown pulumi.BoolOutput `pulumi:"restrictScaleDown"`
+	// Root volume size (in GB).
+	RootVolumeSize pulumi.IntOutput `pulumi:"rootVolumeSize"`
+	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+	RootVolumeType pulumi.StringOutput `pulumi:"rootVolumeType"`
 	// Image URL.
 	SourceImage pulumi.StringOutput `pulumi:"sourceImage"`
 	// The Ocean Launch Spec Strategy object.
@@ -111,14 +50,8 @@ func NewOceanLaunchSpec(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Metadatas == nil {
-		return nil, errors.New("invalid value for required argument 'Metadatas'")
-	}
 	if args.OceanId == nil {
 		return nil, errors.New("invalid value for required argument 'OceanId'")
-	}
-	if args.SourceImage == nil {
-		return nil, errors.New("invalid value for required argument 'SourceImage'")
 	}
 	var resource OceanLaunchSpec
 	err := ctx.RegisterResource("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec", name, args, &resource, opts...)
@@ -144,14 +77,22 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 type oceanLaunchSpecState struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// List of supported machine types for the Launch Spec.
+	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
+	// The node pool you wish to use in your Launch Spec.
+	NodePoolName *string `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
 	OceanId *string `pulumi:"oceanId"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
+	// Root volume size (in GB).
+	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+	RootVolumeType *string `pulumi:"rootVolumeType"`
 	// Image URL.
 	SourceImage *string `pulumi:"sourceImage"`
 	// The Ocean Launch Spec Strategy object.
@@ -163,14 +104,22 @@ type oceanLaunchSpecState struct {
 type OceanLaunchSpecState struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// List of supported machine types for the Launch Spec.
+	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
+	// The node pool you wish to use in your Launch Spec.
+	NodePoolName pulumi.StringPtrInput
 	// The Ocean cluster ID.
 	OceanId pulumi.StringPtrInput
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
+	// Root volume size (in GB).
+	RootVolumeSize pulumi.IntPtrInput
+	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+	RootVolumeType pulumi.StringPtrInput
 	// Image URL.
 	SourceImage pulumi.StringPtrInput
 	// The Ocean Launch Spec Strategy object.
@@ -186,16 +135,24 @@ func (OceanLaunchSpecState) ElementType() reflect.Type {
 type oceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// List of supported machine types for the Launch Spec.
+	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
+	// The node pool you wish to use in your Launch Spec.
+	NodePoolName *string `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
 	OceanId string `pulumi:"oceanId"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
+	// Root volume size (in GB).
+	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+	RootVolumeType *string `pulumi:"rootVolumeType"`
 	// Image URL.
-	SourceImage string `pulumi:"sourceImage"`
+	SourceImage *string `pulumi:"sourceImage"`
 	// The Ocean Launch Spec Strategy object.
 	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -206,16 +163,24 @@ type oceanLaunchSpecArgs struct {
 type OceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// List of supported machine types for the Launch Spec.
+	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
+	// The node pool you wish to use in your Launch Spec.
+	NodePoolName pulumi.StringPtrInput
 	// The Ocean cluster ID.
 	OceanId pulumi.StringInput
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
+	// Root volume size (in GB).
+	RootVolumeSize pulumi.IntPtrInput
+	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+	RootVolumeType pulumi.StringPtrInput
 	// Image URL.
-	SourceImage pulumi.StringInput
+	SourceImage pulumi.StringPtrInput
 	// The Ocean Launch Spec Strategy object.
 	Strategies OceanLaunchSpecStrategyArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.

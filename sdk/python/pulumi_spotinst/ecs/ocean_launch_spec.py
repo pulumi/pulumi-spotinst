@@ -33,7 +33,6 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAttributeArgs']]] attributes: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
-        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
@@ -109,9 +108,6 @@ class OceanLaunchSpecArgs:
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]]:
-        """
-        Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-        """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
@@ -247,7 +243,6 @@ class _OceanLaunchSpecState:
         Input properties used for looking up and filtering OceanLaunchSpec resources.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAttributeArgs']]] attributes: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
-        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
@@ -313,9 +308,6 @@ class _OceanLaunchSpecState:
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]]:
-        """
-        Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-        """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
@@ -530,12 +522,29 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
         ```
+        ## Block Devices
+
+        * `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+            * `device_name` - (Optional) String. Set device name. (Example: "/dev/xvda1").
+            * `ebs`- (Optional) Object. Set Elastic Block Store properties .
+                * `delete_on_termination`- (Optional) Boolean. Flag to delete the EBS on instance termination.
+                * `encrypted`- (Optional) Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+                * `iops`- (Required for requests to create io1 volumes; it is not used in requests to create gp2, st1, sc1, or standard volumes) Int. The number of I/O operations per second (IOPS) that the volume supports.
+                * `kms_key_id`- (Optional) String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+                * `snapshot_id`- (Optional) (Optional) String. The Snapshot ID to mount by.
+                * `volume_type`- (Optional, Default: `"standard"`) String. The type of the volume (example: "gp2").
+                * `volume_size`- (Optional) Int. The size, in GB of the volume.
+                * `throughput`- (Optional) The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+                * `dynamic_volume_size`- (Optional) Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+                    * `base_size`- (Required) Int. Initial size for volume. (Example: 50)
+                    * `resource`- (Required) String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+                    * `size_per_resource_unit`- (Required) Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+                * `no_device`- (Optional) String. suppresses the specified device included in the block device mapping of the AMI.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAttributeArgs']]]] attributes: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
@@ -621,6 +630,24 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
         ```
+        ## Block Devices
+
+        * `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+            * `device_name` - (Optional) String. Set device name. (Example: "/dev/xvda1").
+            * `ebs`- (Optional) Object. Set Elastic Block Store properties .
+                * `delete_on_termination`- (Optional) Boolean. Flag to delete the EBS on instance termination.
+                * `encrypted`- (Optional) Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+                * `iops`- (Required for requests to create io1 volumes; it is not used in requests to create gp2, st1, sc1, or standard volumes) Int. The number of I/O operations per second (IOPS) that the volume supports.
+                * `kms_key_id`- (Optional) String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+                * `snapshot_id`- (Optional) (Optional) String. The Snapshot ID to mount by.
+                * `volume_type`- (Optional, Default: `"standard"`) String. The type of the volume (example: "gp2").
+                * `volume_size`- (Optional) Int. The size, in GB of the volume.
+                * `throughput`- (Optional) The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+                * `dynamic_volume_size`- (Optional) Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+                    * `base_size`- (Required) Int. Initial size for volume. (Example: 50)
+                    * `resource`- (Required) String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+                    * `size_per_resource_unit`- (Required) Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+                * `no_device`- (Optional) String. suppresses the specified device included in the block device mapping of the AMI.
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.
@@ -709,7 +736,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAttributeArgs']]]] attributes: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
@@ -759,9 +785,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecBlockDeviceMapping']]]:
-        """
-        Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-        """
         return pulumi.get(self, "block_device_mappings")
 
     @property

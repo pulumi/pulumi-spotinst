@@ -3178,72 +3178,27 @@ export namespace ecs {
     }
 
     export interface OceanLaunchSpecBlockDeviceMapping {
-        /**
-         * String. Set device name. (Example: "/dev/xvda1").
-         */
         deviceName: pulumi.Input<string>;
-        /**
-         * Object. Set Elastic Block Store properties .
-         */
         ebs?: pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMappingEbs>;
-        /**
-         * String. suppresses the specified device included in the block device mapping of the AMI.
-         */
         noDevice?: pulumi.Input<string>;
         virtualName?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbs {
-        /**
-         * Boolean. Flag to delete the EBS on instance termination.
-         */
         deleteOnTermination?: pulumi.Input<boolean>;
-        /**
-         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
-         */
         dynamicVolumeSize?: pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize>;
-        /**
-         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-         */
         encrypted?: pulumi.Input<boolean>;
-        /**
-         * Int. The number of I/O operations per second (IOPS) that the volume supports.
-         */
         iops?: pulumi.Input<number>;
-        /**
-         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-         */
         kmsKeyId?: pulumi.Input<string>;
-        /**
-         * (Optional) String. The Snapshot ID to mount by.
-         */
         snapshotId?: pulumi.Input<string>;
-        /**
-         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
-         */
         throughput?: pulumi.Input<number>;
-        /**
-         * Int. The size, in GB of the volume.
-         */
         volumeSize?: pulumi.Input<number>;
-        /**
-         * String. The type of the volume (example: "gp2").
-         */
         volumeType?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
-        /**
-         * Int. Initial size for volume. (Example: 50)
-         */
         baseSize: pulumi.Input<number>;
-        /**
-         * String. Resource type to increase volume size dynamically by. (valid values: "CPU")
-         */
         resource: pulumi.Input<string>;
-        /**
-         * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
-         */
         sizePerResourceUnit: pulumi.Input<number>;
     }
 
@@ -4060,22 +4015,22 @@ export namespace gke {
         /**
          * The label key.
          */
-        key: pulumi.Input<string>;
+        key?: pulumi.Input<string>;
         /**
          * The label value.
          */
-        value: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecMetadata {
         /**
          * The label key.
          */
-        key: pulumi.Input<string>;
+        key?: pulumi.Input<string>;
         /**
          * The label value.
          */
-        value: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecStrategy {
@@ -4089,15 +4044,15 @@ export namespace gke {
         /**
          * The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
          */
-        effect: pulumi.Input<string>;
+        effect?: pulumi.Input<string>;
         /**
          * The label key.
          */
-        key: pulumi.Input<string>;
+        key?: pulumi.Input<string>;
         /**
          * The label value.
          */
-        value: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
     }
 }
 
