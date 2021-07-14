@@ -15,50 +15,56 @@ __all__ = ['OceanLaunchSpecArgs', 'OceanLaunchSpec']
 @pulumi.input_type
 class OceanLaunchSpecArgs:
     def __init__(__self__, *,
-                 metadatas: pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]],
                  ocean_id: pulumi.Input[str],
-                 source_image: pulumi.Input[str],
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
+                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
+                 node_pool_name: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 root_volume_size: Optional[pulumi.Input[int]] = None,
+                 root_volume_type: Optional[pulumi.Input[str]] = None,
+                 source_image: Optional[pulumi.Input[str]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None):
         """
         The set of arguments for constructing a OceanLaunchSpec resource.
-        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
-        :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
+        :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
+        :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
-        pulumi.set(__self__, "metadatas", metadatas)
         pulumi.set(__self__, "ocean_id", ocean_id)
-        pulumi.set(__self__, "source_image", source_image)
         if autoscale_headrooms is not None:
             pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
+        if instance_types is not None:
+            pulumi.set(__self__, "instance_types", instance_types)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
+        if node_pool_name is not None:
+            pulumi.set(__self__, "node_pool_name", node_pool_name)
         if restrict_scale_down is not None:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
+        if root_volume_size is not None:
+            pulumi.set(__self__, "root_volume_size", root_volume_size)
+        if root_volume_type is not None:
+            pulumi.set(__self__, "root_volume_type", root_volume_type)
+        if source_image is not None:
+            pulumi.set(__self__, "source_image", source_image)
         if strategies is not None:
             pulumi.set(__self__, "strategies", strategies)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
-
-    @property
-    @pulumi.getter
-    def metadatas(self) -> pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]:
-        """
-        Cluster's metadata.
-        """
-        return pulumi.get(self, "metadatas")
-
-    @metadatas.setter
-    def metadatas(self, value: pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]):
-        pulumi.set(self, "metadatas", value)
 
     @property
     @pulumi.getter(name="oceanId")
@@ -73,18 +79,6 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "ocean_id", value)
 
     @property
-    @pulumi.getter(name="sourceImage")
-    def source_image(self) -> pulumi.Input[str]:
-        """
-        Image URL.
-        """
-        return pulumi.get(self, "source_image")
-
-    @source_image.setter
-    def source_image(self, value: pulumi.Input[str]):
-        pulumi.set(self, "source_image", value)
-
-    @property
     @pulumi.getter(name="autoscaleHeadrooms")
     def autoscale_headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]]:
         """
@@ -95,6 +89,18 @@ class OceanLaunchSpecArgs:
     @autoscale_headrooms.setter
     def autoscale_headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]]):
         pulumi.set(self, "autoscale_headrooms", value)
+
+    @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of supported machine types for the Launch Spec.
+        """
+        return pulumi.get(self, "instance_types")
+
+    @instance_types.setter
+    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_types", value)
 
     @property
     @pulumi.getter
@@ -109,6 +115,30 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]]:
+        """
+        Cluster's metadata.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @metadatas.setter
+    def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]]):
+        pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter(name="nodePoolName")
+    def node_pool_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The node pool you wish to use in your Launch Spec.
+        """
+        return pulumi.get(self, "node_pool_name")
+
+    @node_pool_name.setter
+    def node_pool_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_pool_name", value)
+
+    @property
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -119,6 +149,42 @@ class OceanLaunchSpecArgs:
     @restrict_scale_down.setter
     def restrict_scale_down(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "restrict_scale_down", value)
+
+    @property
+    @pulumi.getter(name="rootVolumeSize")
+    def root_volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Root volume size (in GB).
+        """
+        return pulumi.get(self, "root_volume_size")
+
+    @root_volume_size.setter
+    def root_volume_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "root_volume_size", value)
+
+    @property
+    @pulumi.getter(name="rootVolumeType")
+    def root_volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        """
+        return pulumi.get(self, "root_volume_type")
+
+    @root_volume_type.setter
+    def root_volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "root_volume_type", value)
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image URL.
+        """
+        return pulumi.get(self, "source_image")
+
+    @source_image.setter
+    def source_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_image", value)
 
     @property
     @pulumi.getter
@@ -149,34 +215,50 @@ class OceanLaunchSpecArgs:
 class _OceanLaunchSpecState:
     def __init__(__self__, *,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
+                 node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 root_volume_size: Optional[pulumi.Input[int]] = None,
+                 root_volume_type: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None):
         """
         Input properties used for looking up and filtering OceanLaunchSpec resources.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
+        :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
+        :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
         :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
         if autoscale_headrooms is not None:
             pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
+        if instance_types is not None:
+            pulumi.set(__self__, "instance_types", instance_types)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
+        if node_pool_name is not None:
+            pulumi.set(__self__, "node_pool_name", node_pool_name)
         if ocean_id is not None:
             pulumi.set(__self__, "ocean_id", ocean_id)
         if restrict_scale_down is not None:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
+        if root_volume_size is not None:
+            pulumi.set(__self__, "root_volume_size", root_volume_size)
+        if root_volume_type is not None:
+            pulumi.set(__self__, "root_volume_type", root_volume_type)
         if source_image is not None:
             pulumi.set(__self__, "source_image", source_image)
         if strategies is not None:
@@ -195,6 +277,18 @@ class _OceanLaunchSpecState:
     @autoscale_headrooms.setter
     def autoscale_headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]]):
         pulumi.set(self, "autoscale_headrooms", value)
+
+    @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of supported machine types for the Launch Spec.
+        """
+        return pulumi.get(self, "instance_types")
+
+    @instance_types.setter
+    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_types", value)
 
     @property
     @pulumi.getter
@@ -221,6 +315,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "metadatas", value)
 
     @property
+    @pulumi.getter(name="nodePoolName")
+    def node_pool_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The node pool you wish to use in your Launch Spec.
+        """
+        return pulumi.get(self, "node_pool_name")
+
+    @node_pool_name.setter
+    def node_pool_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_pool_name", value)
+
+    @property
     @pulumi.getter(name="oceanId")
     def ocean_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -243,6 +349,30 @@ class _OceanLaunchSpecState:
     @restrict_scale_down.setter
     def restrict_scale_down(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "restrict_scale_down", value)
+
+    @property
+    @pulumi.getter(name="rootVolumeSize")
+    def root_volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Root volume size (in GB).
+        """
+        return pulumi.get(self, "root_volume_size")
+
+    @root_volume_size.setter
+    def root_volume_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "root_volume_size", value)
+
+    @property
+    @pulumi.getter(name="rootVolumeType")
+    def root_volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        """
+        return pulumi.get(self, "root_volume_type")
+
+    @root_volume_type.setter
+    def root_volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "root_volume_type", value)
 
     @property
     @pulumi.getter(name="sourceImage")
@@ -287,10 +417,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
+                 node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 root_volume_size: Optional[pulumi.Input[int]] = None,
+                 root_volume_type: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
@@ -298,52 +432,19 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Manages a custom Spotinst Ocean GKE Launch Spec resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gke.OceanLaunchSpec("example",
-            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                gpu_per_unit=0,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
-                key="labelKey",
-                value="labelVal",
-            )],
-            metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
-                key="gci-update-strategy",
-                value="update_disabled",
-            )],
-            ocean_id="o-123456",
-            restrict_scale_down=True,
-            source_image="image",
-            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
-                preemptible_percentage=30,
-            )],
-            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
-                effect="taintEffect",
-                key="taintKey",
-                value="taintVal",
-            )])
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
-        ```
+        > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
+        :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
+        :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
         :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
@@ -357,44 +458,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Manages a custom Spotinst Ocean GKE Launch Spec resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gke.OceanLaunchSpec("example",
-            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                gpu_per_unit=0,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
-                key="labelKey",
-                value="labelVal",
-            )],
-            metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
-                key="gci-update-strategy",
-                value="update_disabled",
-            )],
-            ocean_id="o-123456",
-            restrict_scale_down=True,
-            source_image="image",
-            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
-                preemptible_percentage=30,
-            )],
-            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
-                effect="taintEffect",
-                key="taintKey",
-                value="taintVal",
-            )])
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
-        ```
+        > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.
@@ -412,10 +476,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
+                 node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 root_volume_size: Optional[pulumi.Input[int]] = None,
+                 root_volume_type: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
@@ -432,16 +500,16 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__ = OceanLaunchSpecArgs.__new__(OceanLaunchSpecArgs)
 
             __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
+            __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["labels"] = labels
-            if metadatas is None and not opts.urn:
-                raise TypeError("Missing required property 'metadatas'")
             __props__.__dict__["metadatas"] = metadatas
+            __props__.__dict__["node_pool_name"] = node_pool_name
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__.__dict__["ocean_id"] = ocean_id
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
-            if source_image is None and not opts.urn:
-                raise TypeError("Missing required property 'source_image'")
+            __props__.__dict__["root_volume_size"] = root_volume_size
+            __props__.__dict__["root_volume_type"] = root_volume_type
             __props__.__dict__["source_image"] = source_image
             __props__.__dict__["strategies"] = strategies
             __props__.__dict__["taints"] = taints
@@ -456,10 +524,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+            instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
+            node_pool_name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+            root_volume_size: Optional[pulumi.Input[int]] = None,
+            root_volume_type: Optional[pulumi.Input[str]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
             strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None) -> 'OceanLaunchSpec':
@@ -471,10 +543,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
+        :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
+        :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
         :param pulumi.Input[str] source_image: Image URL.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
@@ -484,10 +560,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__ = _OceanLaunchSpecState.__new__(_OceanLaunchSpecState)
 
         __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
+        __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["labels"] = labels
         __props__.__dict__["metadatas"] = metadatas
+        __props__.__dict__["node_pool_name"] = node_pool_name
         __props__.__dict__["ocean_id"] = ocean_id
         __props__.__dict__["restrict_scale_down"] = restrict_scale_down
+        __props__.__dict__["root_volume_size"] = root_volume_size
+        __props__.__dict__["root_volume_type"] = root_volume_type
         __props__.__dict__["source_image"] = source_image
         __props__.__dict__["strategies"] = strategies
         __props__.__dict__["taints"] = taints
@@ -502,8 +582,16 @@ class OceanLaunchSpec(pulumi.CustomResource):
         return pulumi.get(self, "autoscale_headrooms")
 
     @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of supported machine types for the Launch Spec.
+        """
+        return pulumi.get(self, "instance_types")
+
+    @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecLabel']]]:
+    def labels(self) -> pulumi.Output[Sequence['outputs.OceanLaunchSpecLabel']]:
         """
         Optionally adds labels to instances launched in an Ocean cluster.
         """
@@ -518,6 +606,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         return pulumi.get(self, "metadatas")
 
     @property
+    @pulumi.getter(name="nodePoolName")
+    def node_pool_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The node pool you wish to use in your Launch Spec.
+        """
+        return pulumi.get(self, "node_pool_name")
+
+    @property
     @pulumi.getter(name="oceanId")
     def ocean_id(self) -> pulumi.Output[str]:
         """
@@ -527,11 +623,27 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="restrictScaleDown")
-    def restrict_scale_down(self) -> pulumi.Output[Optional[bool]]:
+    def restrict_scale_down(self) -> pulumi.Output[bool]:
         """
         Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         """
         return pulumi.get(self, "restrict_scale_down")
+
+    @property
+    @pulumi.getter(name="rootVolumeSize")
+    def root_volume_size(self) -> pulumi.Output[int]:
+        """
+        Root volume size (in GB).
+        """
+        return pulumi.get(self, "root_volume_size")
+
+    @property
+    @pulumi.getter(name="rootVolumeType")
+    def root_volume_type(self) -> pulumi.Output[str]:
+        """
+        Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        """
+        return pulumi.get(self, "root_volume_type")
 
     @property
     @pulumi.getter(name="sourceImage")
@@ -551,7 +663,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def taints(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecTaint']]]:
+    def taints(self) -> pulumi.Output[Sequence['outputs.OceanLaunchSpecTaint']]:
         """
         Optionally adds labels to instances launched in an Ocean cluster.
         """

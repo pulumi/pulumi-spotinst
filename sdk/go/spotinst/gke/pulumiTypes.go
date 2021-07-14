@@ -4036,9 +4036,9 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 
 type OceanLaunchSpecLabel struct {
 	// The label key.
-	Key string `pulumi:"key"`
+	Key *string `pulumi:"key"`
 	// The label value.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // OceanLaunchSpecLabelInput is an input type that accepts OceanLaunchSpecLabelArgs and OceanLaunchSpecLabelOutput values.
@@ -4054,9 +4054,9 @@ type OceanLaunchSpecLabelInput interface {
 
 type OceanLaunchSpecLabelArgs struct {
 	// The label key.
-	Key pulumi.StringInput `pulumi:"key"`
+	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The label value.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (OceanLaunchSpecLabelArgs) ElementType() reflect.Type {
@@ -4111,13 +4111,13 @@ func (o OceanLaunchSpecLabelOutput) ToOceanLaunchSpecLabelOutputWithContext(ctx 
 }
 
 // The label key.
-func (o OceanLaunchSpecLabelOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v OceanLaunchSpecLabel) string { return v.Key }).(pulumi.StringOutput)
+func (o OceanLaunchSpecLabelOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecLabel) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 // The label value.
-func (o OceanLaunchSpecLabelOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v OceanLaunchSpecLabel) string { return v.Value }).(pulumi.StringOutput)
+func (o OceanLaunchSpecLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type OceanLaunchSpecLabelArrayOutput struct{ *pulumi.OutputState }
@@ -4142,9 +4142,9 @@ func (o OceanLaunchSpecLabelArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 
 type OceanLaunchSpecMetadata struct {
 	// The label key.
-	Key string `pulumi:"key"`
+	Key *string `pulumi:"key"`
 	// The label value.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // OceanLaunchSpecMetadataInput is an input type that accepts OceanLaunchSpecMetadataArgs and OceanLaunchSpecMetadataOutput values.
@@ -4160,9 +4160,9 @@ type OceanLaunchSpecMetadataInput interface {
 
 type OceanLaunchSpecMetadataArgs struct {
 	// The label key.
-	Key pulumi.StringInput `pulumi:"key"`
+	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The label value.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (OceanLaunchSpecMetadataArgs) ElementType() reflect.Type {
@@ -4217,13 +4217,13 @@ func (o OceanLaunchSpecMetadataOutput) ToOceanLaunchSpecMetadataOutputWithContex
 }
 
 // The label key.
-func (o OceanLaunchSpecMetadataOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v OceanLaunchSpecMetadata) string { return v.Key }).(pulumi.StringOutput)
+func (o OceanLaunchSpecMetadataOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecMetadata) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 // The label value.
-func (o OceanLaunchSpecMetadataOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v OceanLaunchSpecMetadata) string { return v.Value }).(pulumi.StringOutput)
+func (o OceanLaunchSpecMetadataOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecMetadata) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type OceanLaunchSpecMetadataArrayOutput struct{ *pulumi.OutputState }
@@ -4345,11 +4345,11 @@ func (o OceanLaunchSpecStrategyArrayOutput) Index(i pulumi.IntInput) OceanLaunch
 
 type OceanLaunchSpecTaint struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
-	Effect string `pulumi:"effect"`
+	Effect *string `pulumi:"effect"`
 	// The label key.
-	Key string `pulumi:"key"`
+	Key *string `pulumi:"key"`
 	// The label value.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // OceanLaunchSpecTaintInput is an input type that accepts OceanLaunchSpecTaintArgs and OceanLaunchSpecTaintOutput values.
@@ -4365,11 +4365,11 @@ type OceanLaunchSpecTaintInput interface {
 
 type OceanLaunchSpecTaintArgs struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
-	Effect pulumi.StringInput `pulumi:"effect"`
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
 	// The label key.
-	Key pulumi.StringInput `pulumi:"key"`
+	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The label value.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (OceanLaunchSpecTaintArgs) ElementType() reflect.Type {
@@ -4424,18 +4424,18 @@ func (o OceanLaunchSpecTaintOutput) ToOceanLaunchSpecTaintOutputWithContext(ctx 
 }
 
 // The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
-func (o OceanLaunchSpecTaintOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Effect }).(pulumi.StringOutput)
+func (o OceanLaunchSpecTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
 // The label key.
-func (o OceanLaunchSpecTaintOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Key }).(pulumi.StringOutput)
+func (o OceanLaunchSpecTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 // The label value.
-func (o OceanLaunchSpecTaintOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v OceanLaunchSpecTaint) string { return v.Value }).(pulumi.StringOutput)
+func (o OceanLaunchSpecTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type OceanLaunchSpecTaintArrayOutput struct{ *pulumi.OutputState }

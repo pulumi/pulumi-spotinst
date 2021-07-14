@@ -15,14 +15,14 @@ namespace Pulumi.SpotInst.Gke.Inputs
         /// <summary>
         /// The label key.
         /// </summary>
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
+        [Input("key")]
+        public Input<string>? Key { get; set; }
 
         /// <summary>
         /// The label value.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public OceanLaunchSpecLabelArgs()
         {

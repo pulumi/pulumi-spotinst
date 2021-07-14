@@ -26,6 +26,7 @@ class OceanLaunchSpecArgs:
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
@@ -47,6 +48,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
@@ -76,6 +78,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if preferred_spot_types is not None:
+            pulumi.set(__self__, "preferred_spot_types", preferred_spot_types)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
         if restrict_scale_down is not None:
@@ -225,6 +229,18 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="preferredSpotTypes")
+    def preferred_spot_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        """
+        return pulumi.get(self, "preferred_spot_types")
+
+    @preferred_spot_types.setter
+    def preferred_spot_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "preferred_spot_types", value)
+
+    @property
     @pulumi.getter(name="resourceLimits")
     def resource_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]]:
         return pulumi.get(self, "resource_limits")
@@ -341,6 +357,7 @@ class _OceanLaunchSpecState:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
+                 preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
@@ -362,6 +379,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
@@ -392,6 +410,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "name", name)
         if ocean_id is not None:
             pulumi.set(__self__, "ocean_id", ocean_id)
+        if preferred_spot_types is not None:
+            pulumi.set(__self__, "preferred_spot_types", preferred_spot_types)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
         if restrict_scale_down is not None:
@@ -541,6 +561,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "ocean_id", value)
 
     @property
+    @pulumi.getter(name="preferredSpotTypes")
+    def preferred_spot_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        """
+        return pulumi.get(self, "preferred_spot_types")
+
+    @preferred_spot_types.setter
+    def preferred_spot_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "preferred_spot_types", value)
+
+    @property
     @pulumi.getter(name="resourceLimits")
     def resource_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]]:
         return pulumi.get(self, "resource_limits")
@@ -659,6 +691,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
+                 preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
@@ -681,7 +714,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         example = spotinst.aws.OceanLaunchSpec("example",
             associate_public_ip_address=True,
             autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_nit=1000,
+                cpu_per_unit=1000,
                 gpu_per_unit=0,
                 memory_per_unit=2048,
                 num_of_units=5,
@@ -723,6 +756,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 value="value1",
             )],
             ocean_id="o-123456",
+            preferred_spot_types=[
+                "m4.large",
+                "m4.xlarge",
+            ],
             resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(
                 max_instance_count=4,
             )],
@@ -762,6 +799,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
@@ -788,7 +826,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         example = spotinst.aws.OceanLaunchSpec("example",
             associate_public_ip_address=True,
             autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_nit=1000,
+                cpu_per_unit=1000,
                 gpu_per_unit=0,
                 memory_per_unit=2048,
                 num_of_units=5,
@@ -830,6 +868,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 value="value1",
             )],
             ocean_id="o-123456",
+            preferred_spot_types=[
+                "m4.large",
+                "m4.xlarge",
+            ],
             resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(
                 max_instance_count=4,
             )],
@@ -883,6 +925,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
+                 preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
@@ -917,6 +960,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__.__dict__["ocean_id"] = ocean_id
+            __props__.__dict__["preferred_spot_types"] = preferred_spot_types
             __props__.__dict__["resource_limits"] = resource_limits
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["root_volume_size"] = root_volume_size
@@ -947,6 +991,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
+            preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
             root_volume_size: Optional[pulumi.Input[int]] = None,
@@ -973,6 +1018,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
@@ -996,6 +1042,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["ocean_id"] = ocean_id
+        __props__.__dict__["preferred_spot_types"] = preferred_spot_types
         __props__.__dict__["resource_limits"] = resource_limits
         __props__.__dict__["restrict_scale_down"] = restrict_scale_down
         __props__.__dict__["root_volume_size"] = root_volume_size
@@ -1091,6 +1138,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         The ID of the Ocean cluster.
         """
         return pulumi.get(self, "ocean_id")
+
+    @property
+    @pulumi.getter(name="preferredSpotTypes")
+    def preferred_spot_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        """
+        return pulumi.get(self, "preferred_spot_types")
 
     @property
     @pulumi.getter(name="resourceLimits")

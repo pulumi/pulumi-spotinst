@@ -88,6 +88,10 @@ namespace Pulumi.SpotInst.Ecs
     ///             {
     ///                 "awseb-12345",
     ///             },
+    ///             SubnetIds = 
+    ///             {
+    ///                 "subnet-12345",
+    ///             },
     ///             Tags = 
     ///             {
     ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecTagArgs
@@ -116,6 +120,24 @@ namespace Pulumi.SpotInst.Ecs
     ///     public Output&lt;string&gt; OceanLaunchspecId { get; set; }
     /// }
     /// ```
+    /// ## Block Devices
+    /// 
+    /// * `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+    ///     * `device_name` - (Optional) String. Set device name. (Example: "/dev/xvda1").
+    ///     * `ebs`- (Optional) Object. Set Elastic Block Store properties .
+    ///         * `delete_on_termination`- (Optional) Boolean. Flag to delete the EBS on instance termination.
+    ///         * `encrypted`- (Optional) Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+    ///         * `iops`- (Required for requests to create io1 volumes; it is not used in requests to create gp2, st1, sc1, or standard volumes) Int. The number of I/O operations per second (IOPS) that the volume supports.
+    ///         * `kms_key_id`- (Optional) String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+    ///         * `snapshot_id`- (Optional) (Optional) String. The Snapshot ID to mount by.
+    ///         * `volume_type`- (Optional, Default: `"standard"`) String. The type of the volume (example: "gp2").
+    ///         * `volume_size`- (Optional) Int. The size, in GB of the volume.
+    ///         * `throughput`- (Optional) The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+    ///         * `dynamic_volume_size`- (Optional) Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+    ///             * `base_size`- (Required) Int. Initial size for volume. (Example: 50)
+    ///             * `resource`- (Required) String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+    ///             * `size_per_resource_unit`- (Required) Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+    ///         * `no_device`- (Optional) String. suppresses the specified device included in the block device mapping of the AMI.
     /// </summary>
     [SpotInstResourceType("spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : Pulumi.CustomResource
@@ -132,9 +154,6 @@ namespace Pulumi.SpotInst.Ecs
         [Output("autoscaleHeadrooms")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroom>> AutoscaleHeadrooms { get; private set; } = null!;
 
-        /// <summary>
-        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-        /// </summary>
         [Output("blockDeviceMappings")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
@@ -179,6 +198,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+        /// </summary>
+        [Output("subnetIds")]
+        public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
 
         /// <summary>
         /// A key/value mapping of tags to assign to the resource.
@@ -264,10 +289,6 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("blockDeviceMappings")]
         private InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs>? _blockDeviceMappings;
-
-        /// <summary>
-        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-        /// </summary>
         public InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs> BlockDeviceMappings
         {
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs>());
@@ -328,6 +349,18 @@ namespace Pulumi.SpotInst.Ecs
             set => _securityGroupIds = value;
         }
 
+        [Input("subnetIds")]
+        private InputList<string>? _subnetIds;
+
+        /// <summary>
+        /// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+        /// </summary>
+        public InputList<string> SubnetIds
+        {
+            get => _subnetIds ?? (_subnetIds = new InputList<string>());
+            set => _subnetIds = value;
+        }
+
         [Input("tags")]
         private InputList<Inputs.OceanLaunchSpecTagArgs>? _tags;
 
@@ -379,10 +412,6 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("blockDeviceMappings")]
         private InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs>? _blockDeviceMappings;
-
-        /// <summary>
-        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-        /// </summary>
         public InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs> BlockDeviceMappings
         {
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs>());
@@ -441,6 +470,18 @@ namespace Pulumi.SpotInst.Ecs
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
+        }
+
+        [Input("subnetIds")]
+        private InputList<string>? _subnetIds;
+
+        /// <summary>
+        /// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+        /// </summary>
+        public InputList<string> SubnetIds
+        {
+            get => _subnetIds ?? (_subnetIds = new InputList<string>());
+            set => _subnetIds = value;
         }
 
         [Input("tags")]

@@ -3178,72 +3178,27 @@ export namespace ecs {
     }
 
     export interface OceanLaunchSpecBlockDeviceMapping {
-        /**
-         * String. Set device name. (Example: "/dev/xvda1").
-         */
         deviceName: string;
-        /**
-         * Object. Set Elastic Block Store properties .
-         */
         ebs?: outputs.ecs.OceanLaunchSpecBlockDeviceMappingEbs;
-        /**
-         * String. suppresses the specified device included in the block device mapping of the AMI.
-         */
         noDevice?: string;
         virtualName?: string;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbs {
-        /**
-         * Boolean. Flag to delete the EBS on instance termination.
-         */
         deleteOnTermination: boolean;
-        /**
-         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
-         */
         dynamicVolumeSize?: outputs.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize;
-        /**
-         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-         */
         encrypted: boolean;
-        /**
-         * Int. The number of I/O operations per second (IOPS) that the volume supports.
-         */
         iops?: number;
-        /**
-         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-         */
         kmsKeyId?: string;
-        /**
-         * (Optional) String. The Snapshot ID to mount by.
-         */
         snapshotId?: string;
-        /**
-         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
-         */
         throughput?: number;
-        /**
-         * Int. The size, in GB of the volume.
-         */
         volumeSize?: number;
-        /**
-         * String. The type of the volume (example: "gp2").
-         */
         volumeType: string;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
-        /**
-         * Int. Initial size for volume. (Example: 50)
-         */
         baseSize: number;
-        /**
-         * String. Resource type to increase volume size dynamically by. (valid values: "CPU")
-         */
         resource: string;
-        /**
-         * Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
-         */
         sizePerResourceUnit: number;
     }
 

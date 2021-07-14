@@ -16,17 +16,17 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// <summary>
         /// The label key.
         /// </summary>
-        public readonly string Key;
+        public readonly string? Key;
         /// <summary>
         /// The label value.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private OceanLaunchSpecLabel(
-            string key,
+            string? key,
 
-            string value)
+            string? value)
         {
             Key = key;
             Value = value;

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = new spotinst.aws.OceanLaunchSpec("example", {
  *     associatePublicIpAddress: true,
  *     autoscaleHeadrooms: [{
- *         cpuPerNit: 1000,
+ *         cpuPerUnit: 1000,
  *         gpuPerUnit: 0,
  *         memoryPerUnit: 2048,
  *         numOfUnits: 5,
@@ -59,6 +59,10 @@ import * as utilities from "../utilities";
  *         value: "value1",
  *     }],
  *     oceanId: "o-123456",
+ *     preferredSpotTypes: [
+ *         "m4.large",
+ *         "m4.xlarge",
+ *     ],
  *     resourceLimits: [{
  *         maxInstanceCount: 4,
  *     }],
@@ -156,6 +160,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * The ID of the Ocean cluster.
      */
     public readonly oceanId!: pulumi.Output<string>;
+    /**
+     * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     */
+    public readonly preferredSpotTypes!: pulumi.Output<string[] | undefined>;
     public readonly resourceLimits!: pulumi.Output<outputs.aws.OceanLaunchSpecResourceLimit[] | undefined>;
     /**
      * Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
@@ -211,6 +219,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
+            inputs["preferredSpotTypes"] = state ? state.preferredSpotTypes : undefined;
             inputs["resourceLimits"] = state ? state.resourceLimits : undefined;
             inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
@@ -236,6 +245,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
+            inputs["preferredSpotTypes"] = args ? args.preferredSpotTypes : undefined;
             inputs["resourceLimits"] = args ? args.resourceLimits : undefined;
             inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
@@ -298,6 +308,10 @@ export interface OceanLaunchSpecState {
      * The ID of the Ocean cluster.
      */
     readonly oceanId?: pulumi.Input<string>;
+    /**
+     * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     */
+    readonly preferredSpotTypes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[]>;
     /**
      * Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
@@ -375,6 +389,10 @@ export interface OceanLaunchSpecArgs {
      * The ID of the Ocean cluster.
      */
     readonly oceanId: pulumi.Input<string>;
+    /**
+     * A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     */
+    readonly preferredSpotTypes?: pulumi.Input<pulumi.Input<string>[]>;
     readonly resourceLimits?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecResourceLimit>[]>;
     /**
      * Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.

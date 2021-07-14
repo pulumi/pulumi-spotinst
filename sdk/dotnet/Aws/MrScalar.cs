@@ -131,6 +131,7 @@ namespace Pulumi.SpotInst.Aws
     ///                 "c3.xlarge",
     ///             },
     ///             MasterLifecycle = "SPOT",
+    ///             MasterTarget = 1,
     ///             ProvisioningTimeout = new SpotInst.Aws.Inputs.MrScalarProvisioningTimeoutArgs
     ///             {
     ///                 Timeout = 15,
@@ -240,6 +241,7 @@ namespace Pulumi.SpotInst.Aws
     ///                 "c3.xlarge",
     ///             },
     ///             MasterLifecycle = "SPOT",
+    ///             MasterTarget = 1,
     ///             Region = "us-west-2",
     ///             Strategy = "clone",
     ///             Tags = 
@@ -531,6 +533,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("masterLifecycle")]
         public Output<string?> MasterLifecycle { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of instances in the master group.
+        /// </summary>
+        [Output("masterTarget")]
+        public Output<int?> MasterTarget { get; private set; } = null!;
 
         /// <summary>
         /// The application name.
@@ -968,6 +976,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("masterLifecycle")]
         public Input<string>? MasterLifecycle { get; set; }
+
+        /// <summary>
+        /// Number of instances in the master group.
+        /// </summary>
+        [Input("masterTarget")]
+        public Input<int>? MasterTarget { get; set; }
 
         /// <summary>
         /// The application name.
@@ -1409,6 +1423,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("masterLifecycle")]
         public Input<string>? MasterLifecycle { get; set; }
+
+        /// <summary>
+        /// Number of instances in the master group.
+        /// </summary>
+        [Input("masterTarget")]
+        public Input<int>? MasterTarget { get; set; }
 
         /// <summary>
         /// The application name.

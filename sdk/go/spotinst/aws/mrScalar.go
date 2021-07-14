@@ -112,6 +112,7 @@ import (
 // 				pulumi.String("c3.xlarge"),
 // 			},
 // 			MasterLifecycle: pulumi.String("SPOT"),
+// 			MasterTarget:    pulumi.Int(1),
 // 			ProvisioningTimeout: &aws.MrScalarProvisioningTimeoutArgs{
 // 				Timeout:       pulumi.Int(15),
 // 				TimeoutAction: pulumi.String("terminateAndRetry"),
@@ -210,6 +211,7 @@ import (
 // 				pulumi.String("c3.xlarge"),
 // 			},
 // 			MasterLifecycle: pulumi.String("SPOT"),
+// 			MasterTarget:    pulumi.Int(1),
 // 			Region:          pulumi.String("us-west-2"),
 // 			Strategy:        pulumi.String("clone"),
 // 			Tags: aws.MrScalarTagArray{
@@ -373,6 +375,8 @@ type MrScalar struct {
 	MasterInstanceTypes pulumi.StringArrayOutput `pulumi:"masterInstanceTypes"`
 	// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 	MasterLifecycle pulumi.StringPtrOutput `pulumi:"masterLifecycle"`
+	// Number of instances in the master group.
+	MasterTarget pulumi.IntPtrOutput `pulumi:"masterTarget"`
 	// The application name.
 	Name                pulumi.StringOutput                  `pulumi:"name"`
 	OutputClusterId     pulumi.StringOutput                  `pulumi:"outputClusterId"`
@@ -513,6 +517,8 @@ type mrScalarState struct {
 	MasterInstanceTypes []string `pulumi:"masterInstanceTypes"`
 	// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 	MasterLifecycle *string `pulumi:"masterLifecycle"`
+	// Number of instances in the master group.
+	MasterTarget *int `pulumi:"masterTarget"`
 	// The application name.
 	Name                *string                      `pulumi:"name"`
 	OutputClusterId     *string                      `pulumi:"outputClusterId"`
@@ -622,6 +628,8 @@ type MrScalarState struct {
 	MasterInstanceTypes pulumi.StringArrayInput
 	// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 	MasterLifecycle pulumi.StringPtrInput
+	// Number of instances in the master group.
+	MasterTarget pulumi.IntPtrInput
 	// The application name.
 	Name                pulumi.StringPtrInput
 	OutputClusterId     pulumi.StringPtrInput
@@ -735,6 +743,8 @@ type mrScalarArgs struct {
 	MasterInstanceTypes []string `pulumi:"masterInstanceTypes"`
 	// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 	MasterLifecycle *string `pulumi:"masterLifecycle"`
+	// Number of instances in the master group.
+	MasterTarget *int `pulumi:"masterTarget"`
 	// The application name.
 	Name                *string                      `pulumi:"name"`
 	ProvisioningTimeout *MrScalarProvisioningTimeout `pulumi:"provisioningTimeout"`
@@ -844,6 +854,8 @@ type MrScalarArgs struct {
 	MasterInstanceTypes pulumi.StringArrayInput
 	// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 	MasterLifecycle pulumi.StringPtrInput
+	// Number of instances in the master group.
+	MasterTarget pulumi.IntPtrInput
 	// The application name.
 	Name                pulumi.StringPtrInput
 	ProvisioningTimeout MrScalarProvisioningTimeoutPtrInput

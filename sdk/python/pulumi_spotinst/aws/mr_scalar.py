@@ -49,6 +49,7 @@ class MrScalarArgs:
                  master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  master_lifecycle: Optional[pulumi.Input[str]] = None,
+                 master_target: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  provisioning_timeout: Optional[pulumi.Input['MrScalarProvisioningTimeoutArgs']] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -104,6 +105,7 @@ class MrScalarArgs:
         :param pulumi.Input[bool] master_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The MrScaler instance types for the master nodes.
         :param pulumi.Input[str] master_lifecycle: The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] master_target: Number of instances in the master group.
         :param pulumi.Input[str] name: The application name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] repo_upgrade_on_boot: Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
@@ -189,6 +191,8 @@ class MrScalarArgs:
             pulumi.set(__self__, "master_instance_types", master_instance_types)
         if master_lifecycle is not None:
             pulumi.set(__self__, "master_lifecycle", master_lifecycle)
+        if master_target is not None:
+            pulumi.set(__self__, "master_target", master_target)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if provisioning_timeout is not None:
@@ -634,6 +638,18 @@ class MrScalarArgs:
         pulumi.set(self, "master_lifecycle", value)
 
     @property
+    @pulumi.getter(name="masterTarget")
+    def master_target(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of instances in the master group.
+        """
+        return pulumi.get(self, "master_target")
+
+    @master_target.setter
+    def master_target(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "master_target", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -946,6 +962,7 @@ class _MrScalarState:
                  master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  master_lifecycle: Optional[pulumi.Input[str]] = None,
+                 master_target: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_cluster_id: Optional[pulumi.Input[str]] = None,
                  provisioning_timeout: Optional[pulumi.Input['MrScalarProvisioningTimeoutArgs']] = None,
@@ -1002,6 +1019,7 @@ class _MrScalarState:
         :param pulumi.Input[bool] master_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The MrScaler instance types for the master nodes.
         :param pulumi.Input[str] master_lifecycle: The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] master_target: Number of instances in the master group.
         :param pulumi.Input[str] name: The application name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] repo_upgrade_on_boot: Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
@@ -1087,6 +1105,8 @@ class _MrScalarState:
             pulumi.set(__self__, "master_instance_types", master_instance_types)
         if master_lifecycle is not None:
             pulumi.set(__self__, "master_lifecycle", master_lifecycle)
+        if master_target is not None:
+            pulumi.set(__self__, "master_target", master_target)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if output_cluster_id is not None:
@@ -1524,6 +1544,18 @@ class _MrScalarState:
         pulumi.set(self, "master_lifecycle", value)
 
     @property
+    @pulumi.getter(name="masterTarget")
+    def master_target(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of instances in the master group.
+        """
+        return pulumi.get(self, "master_target")
+
+    @master_target.setter
+    def master_target(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "master_target", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1859,6 +1891,7 @@ class MrScalar(pulumi.CustomResource):
                  master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  master_lifecycle: Optional[pulumi.Input[str]] = None,
+                 master_target: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  provisioning_timeout: Optional[pulumi.Input[pulumi.InputType['MrScalarProvisioningTimeoutArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -1966,6 +1999,7 @@ class MrScalar(pulumi.CustomResource):
             master_ebs_optimized=True,
             master_instance_types=["c3.xlarge"],
             master_lifecycle="SPOT",
+            master_target=1,
             provisioning_timeout=spotinst.aws.MrScalarProvisioningTimeoutArgs(
                 timeout=15,
                 timeout_action="terminateAndRetry",
@@ -2037,6 +2071,7 @@ class MrScalar(pulumi.CustomResource):
             master_ebs_optimized=True,
             master_instance_types=["c3.xlarge"],
             master_lifecycle="SPOT",
+            master_target=1,
             region="us-west-2",
             strategy="clone",
             tags=[spotinst.aws.MrScalarTagArgs(
@@ -2139,6 +2174,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[bool] master_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The MrScaler instance types for the master nodes.
         :param pulumi.Input[str] master_lifecycle: The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] master_target: Number of instances in the master group.
         :param pulumi.Input[str] name: The application name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] repo_upgrade_on_boot: Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
@@ -2244,6 +2280,7 @@ class MrScalar(pulumi.CustomResource):
             master_ebs_optimized=True,
             master_instance_types=["c3.xlarge"],
             master_lifecycle="SPOT",
+            master_target=1,
             provisioning_timeout=spotinst.aws.MrScalarProvisioningTimeoutArgs(
                 timeout=15,
                 timeout_action="terminateAndRetry",
@@ -2315,6 +2352,7 @@ class MrScalar(pulumi.CustomResource):
             master_ebs_optimized=True,
             master_instance_types=["c3.xlarge"],
             master_lifecycle="SPOT",
+            master_target=1,
             region="us-west-2",
             strategy="clone",
             tags=[spotinst.aws.MrScalarTagArgs(
@@ -2436,6 +2474,7 @@ class MrScalar(pulumi.CustomResource):
                  master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  master_lifecycle: Optional[pulumi.Input[str]] = None,
+                 master_target: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  provisioning_timeout: Optional[pulumi.Input[pulumi.InputType['MrScalarProvisioningTimeoutArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -2507,6 +2546,7 @@ class MrScalar(pulumi.CustomResource):
             __props__.__dict__["master_ebs_optimized"] = master_ebs_optimized
             __props__.__dict__["master_instance_types"] = master_instance_types
             __props__.__dict__["master_lifecycle"] = master_lifecycle
+            __props__.__dict__["master_target"] = master_target
             __props__.__dict__["name"] = name
             __props__.__dict__["provisioning_timeout"] = provisioning_timeout
             __props__.__dict__["region"] = region
@@ -2582,6 +2622,7 @@ class MrScalar(pulumi.CustomResource):
             master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
             master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             master_lifecycle: Optional[pulumi.Input[str]] = None,
+            master_target: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             output_cluster_id: Optional[pulumi.Input[str]] = None,
             provisioning_timeout: Optional[pulumi.Input[pulumi.InputType['MrScalarProvisioningTimeoutArgs']]] = None,
@@ -2643,6 +2684,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[bool] master_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The MrScaler instance types for the master nodes.
         :param pulumi.Input[str] master_lifecycle: The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] master_target: Number of instances in the master group.
         :param pulumi.Input[str] name: The application name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] repo_upgrade_on_boot: Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
@@ -2699,6 +2741,7 @@ class MrScalar(pulumi.CustomResource):
         __props__.__dict__["master_ebs_optimized"] = master_ebs_optimized
         __props__.__dict__["master_instance_types"] = master_instance_types
         __props__.__dict__["master_lifecycle"] = master_lifecycle
+        __props__.__dict__["master_target"] = master_target
         __props__.__dict__["name"] = name
         __props__.__dict__["output_cluster_id"] = output_cluster_id
         __props__.__dict__["provisioning_timeout"] = provisioning_timeout
@@ -2973,6 +3016,14 @@ class MrScalar(pulumi.CustomResource):
         The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         """
         return pulumi.get(self, "master_lifecycle")
+
+    @property
+    @pulumi.getter(name="masterTarget")
+    def master_target(self) -> pulumi.Output[Optional[int]]:
+        """
+        Number of instances in the master group.
+        """
+        return pulumi.get(self, "master_target")
 
     @property
     @pulumi.getter
