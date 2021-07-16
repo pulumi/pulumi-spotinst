@@ -74,6 +74,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly loadBalancers!: pulumi.Output<outputs.azure.OceanLoadBalancer[]>;
     /**
+     * List of Managed Service Identity objects.
+     */
+    public readonly managedServiceIdentities!: pulumi.Output<outputs.azure.OceanManagedServiceIdentity[] | undefined>;
+    /**
      * Name of the Load Balancer.
      */
     public readonly name!: pulumi.Output<string>;
@@ -133,6 +137,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["health"] = state ? state.health : undefined;
             inputs["images"] = state ? state.images : undefined;
             inputs["loadBalancers"] = state ? state.loadBalancers : undefined;
+            inputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["osDisk"] = state ? state.osDisk : undefined;
@@ -166,6 +171,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["health"] = args ? args.health : undefined;
             inputs["images"] = args ? args.images : undefined;
             inputs["loadBalancers"] = args ? args.loadBalancers : undefined;
+            inputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["osDisk"] = args ? args.osDisk : undefined;
@@ -227,6 +233,10 @@ export interface OceanState {
      * Configure Load Balancer.
      */
     readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.OceanLoadBalancer>[]>;
+    /**
+     * List of Managed Service Identity objects.
+     */
+    readonly managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.OceanManagedServiceIdentity>[]>;
     /**
      * Name of the Load Balancer.
      */
@@ -309,6 +319,10 @@ export interface OceanArgs {
      * Configure Load Balancer.
      */
     readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.OceanLoadBalancer>[]>;
+    /**
+     * List of Managed Service Identity objects.
+     */
+    readonly managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.OceanManagedServiceIdentity>[]>;
     /**
      * Name of the Load Balancer.
      */

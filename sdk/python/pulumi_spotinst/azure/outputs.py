@@ -39,6 +39,7 @@ __all__ = [
     'OceanImage',
     'OceanImageMarketplace',
     'OceanLoadBalancer',
+    'OceanManagedServiceIdentity',
     'OceanNetwork',
     'OceanNetworkNetworkInterface',
     'OceanNetworkNetworkInterfaceAdditionalIpConfig',
@@ -2008,6 +2009,52 @@ class OceanLoadBalancer(dict):
         The type of load balancer. Supported value: `loadBalancer`
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OceanManagedServiceIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanManagedServiceIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanManagedServiceIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanManagedServiceIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_group_name: str):
+        """
+        :param str name: Name of the Load Balancer.
+        :param str resource_group_name: The Resource Group name of the Load Balancer.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the Load Balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        The Resource Group name of the Load Balancer.
+        """
+        return pulumi.get(self, "resource_group_name")
 
 
 @pulumi.output_type

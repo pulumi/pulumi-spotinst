@@ -26,6 +26,7 @@ class OceanArgs:
                  health: Optional[pulumi.Input['OceanHealthArgs']] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input['OceanNetworkArgs']] = None,
                  os_disk: Optional[pulumi.Input['OceanOsDiskArgs']] = None,
@@ -47,6 +48,7 @@ class OceanArgs:
         :param pulumi.Input['OceanHealthArgs'] health: The Ocean AKS Health object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]] images: Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Configure Load Balancer.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[str] name: Name of the Load Balancer.
         :param pulumi.Input['OceanNetworkArgs'] network: Define the Virtual Network and Subnet.
         :param pulumi.Input['OceanOsDiskArgs'] os_disk: OS disk specifications.
@@ -74,6 +76,8 @@ class OceanArgs:
             pulumi.set(__self__, "images", images)
         if load_balancers is not None:
             pulumi.set(__self__, "load_balancers", load_balancers)
+        if managed_service_identities is not None:
+            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -224,6 +228,18 @@ class OceanArgs:
         pulumi.set(self, "load_balancers", value)
 
     @property
+    @pulumi.getter(name="managedServiceIdentities")
+    def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]]]:
+        """
+        List of Managed Service Identity objects.
+        """
+        return pulumi.get(self, "managed_service_identities")
+
+    @managed_service_identities.setter
+    def managed_service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]]]):
+        pulumi.set(self, "managed_service_identities", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -333,6 +349,7 @@ class _OceanState:
                  health: Optional[pulumi.Input['OceanHealthArgs']] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input['OceanNetworkArgs']] = None,
                  os_disk: Optional[pulumi.Input['OceanOsDiskArgs']] = None,
@@ -354,6 +371,7 @@ class _OceanState:
         :param pulumi.Input['OceanHealthArgs'] health: The Ocean AKS Health object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]] images: Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Configure Load Balancer.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[str] name: Name of the Load Balancer.
         :param pulumi.Input['OceanNetworkArgs'] network: Define the Virtual Network and Subnet.
         :param pulumi.Input['OceanOsDiskArgs'] os_disk: OS disk specifications.
@@ -384,6 +402,8 @@ class _OceanState:
             pulumi.set(__self__, "images", images)
         if load_balancers is not None:
             pulumi.set(__self__, "load_balancers", load_balancers)
+        if managed_service_identities is not None:
+            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -524,6 +544,18 @@ class _OceanState:
         pulumi.set(self, "load_balancers", value)
 
     @property
+    @pulumi.getter(name="managedServiceIdentities")
+    def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]]]:
+        """
+        List of Managed Service Identity objects.
+        """
+        return pulumi.get(self, "managed_service_identities")
+
+    @managed_service_identities.setter
+    def managed_service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]]]):
+        pulumi.set(self, "managed_service_identities", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -647,6 +679,7 @@ class Ocean(pulumi.CustomResource):
                  health: Optional[pulumi.Input[pulumi.InputType['OceanHealthArgs']]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImageArgs']]]]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanManagedServiceIdentityArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['OceanNetworkArgs']]] = None,
                  os_disk: Optional[pulumi.Input[pulumi.InputType['OceanOsDiskArgs']]] = None,
@@ -671,6 +704,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OceanHealthArgs']] health: The Ocean AKS Health object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImageArgs']]]] images: Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: Configure Load Balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanManagedServiceIdentityArgs']]]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[str] name: Name of the Load Balancer.
         :param pulumi.Input[pulumi.InputType['OceanNetworkArgs']] network: Define the Virtual Network and Subnet.
         :param pulumi.Input[pulumi.InputType['OceanOsDiskArgs']] os_disk: OS disk specifications.
@@ -714,6 +748,7 @@ class Ocean(pulumi.CustomResource):
                  health: Optional[pulumi.Input[pulumi.InputType['OceanHealthArgs']]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImageArgs']]]]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanManagedServiceIdentityArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['OceanNetworkArgs']]] = None,
                  os_disk: Optional[pulumi.Input[pulumi.InputType['OceanOsDiskArgs']]] = None,
@@ -751,6 +786,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["health"] = health
             __props__.__dict__["images"] = images
             __props__.__dict__["load_balancers"] = load_balancers
+            __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["os_disk"] = os_disk
@@ -782,6 +818,7 @@ class Ocean(pulumi.CustomResource):
             health: Optional[pulumi.Input[pulumi.InputType['OceanHealthArgs']]] = None,
             images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImageArgs']]]]] = None,
             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
+            managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanManagedServiceIdentityArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[pulumi.InputType['OceanNetworkArgs']]] = None,
             os_disk: Optional[pulumi.Input[pulumi.InputType['OceanOsDiskArgs']]] = None,
@@ -808,6 +845,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OceanHealthArgs']] health: The Ocean AKS Health object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImageArgs']]]] images: Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: Configure Load Balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanManagedServiceIdentityArgs']]]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[str] name: Name of the Load Balancer.
         :param pulumi.Input[pulumi.InputType['OceanNetworkArgs']] network: Define the Virtual Network and Subnet.
         :param pulumi.Input[pulumi.InputType['OceanOsDiskArgs']] os_disk: OS disk specifications.
@@ -832,6 +870,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["health"] = health
         __props__.__dict__["images"] = images
         __props__.__dict__["load_balancers"] = load_balancers
+        __props__.__dict__["managed_service_identities"] = managed_service_identities
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["os_disk"] = os_disk
@@ -922,6 +961,14 @@ class Ocean(pulumi.CustomResource):
         Configure Load Balancer.
         """
         return pulumi.get(self, "load_balancers")
+
+    @property
+    @pulumi.getter(name="managedServiceIdentities")
+    def managed_service_identities(self) -> pulumi.Output[Optional[Sequence['outputs.OceanManagedServiceIdentity']]]:
+        """
+        List of Managed Service Identity objects.
+        """
+        return pulumi.get(self, "managed_service_identities")
 
     @property
     @pulumi.getter

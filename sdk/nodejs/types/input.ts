@@ -2833,6 +2833,17 @@ export namespace azure {
         type?: pulumi.Input<string>;
     }
 
+    export interface OceanManagedServiceIdentity {
+        /**
+         * Name of the Load Balancer.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The Resource Group name of the Load Balancer.
+         */
+        resourceGroupName: pulumi.Input<string>;
+    }
+
     export interface OceanNetwork {
         /**
          * A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.

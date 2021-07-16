@@ -73,6 +73,12 @@ namespace Pulumi.SpotInst.Azure
         public Output<ImmutableArray<Outputs.OceanLoadBalancer>> LoadBalancers { get; private set; } = null!;
 
         /// <summary>
+        /// List of Managed Service Identity objects.
+        /// </summary>
+        [Output("managedServiceIdentities")]
+        public Output<ImmutableArray<Outputs.OceanManagedServiceIdentity>> ManagedServiceIdentities { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the Load Balancer.
         /// </summary>
         [Output("name")]
@@ -250,6 +256,18 @@ namespace Pulumi.SpotInst.Azure
             set => _loadBalancers = value;
         }
 
+        [Input("managedServiceIdentities")]
+        private InputList<Inputs.OceanManagedServiceIdentityArgs>? _managedServiceIdentities;
+
+        /// <summary>
+        /// List of Managed Service Identity objects.
+        /// </summary>
+        public InputList<Inputs.OceanManagedServiceIdentityArgs> ManagedServiceIdentities
+        {
+            get => _managedServiceIdentities ?? (_managedServiceIdentities = new InputList<Inputs.OceanManagedServiceIdentityArgs>());
+            set => _managedServiceIdentities = value;
+        }
+
         /// <summary>
         /// Name of the Load Balancer.
         /// </summary>
@@ -405,6 +423,18 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.OceanLoadBalancerGetArgs>());
             set => _loadBalancers = value;
+        }
+
+        [Input("managedServiceIdentities")]
+        private InputList<Inputs.OceanManagedServiceIdentityGetArgs>? _managedServiceIdentities;
+
+        /// <summary>
+        /// List of Managed Service Identity objects.
+        /// </summary>
+        public InputList<Inputs.OceanManagedServiceIdentityGetArgs> ManagedServiceIdentities
+        {
+            get => _managedServiceIdentities ?? (_managedServiceIdentities = new InputList<Inputs.OceanManagedServiceIdentityGetArgs>());
+            set => _managedServiceIdentities = value;
         }
 
         /// <summary>

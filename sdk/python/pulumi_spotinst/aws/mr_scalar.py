@@ -86,10 +86,13 @@ class MrScalarArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarBootstrapActionsFileArgs']]] bootstrap_actions_files: Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
         :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarConfigurationsFileArgs']]] configurations_files: Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+        :param pulumi.Input[int] core_desired_capacity: amount of instances in core group.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarCoreEbsBlockDeviceArgs']]] core_ebs_block_devices: This determines the ebs configuration for your core group instances. Only a single block is allowed.
         :param pulumi.Input[bool] core_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] core_instance_types: The MrScaler instance types for the core nodes.
         :param pulumi.Input[str] core_lifecycle: The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] core_max_size: maximal amount of instances in core group.
+        :param pulumi.Input[int] core_min_size: The minimal amount of instances in core group.
         :param pulumi.Input[str] core_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[str] custom_ami_id: The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
         :param pulumi.Input[str] description: The MrScaler description.
@@ -116,10 +119,13 @@ class MrScalarArgs:
         :param pulumi.Input[str] service_role: The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarStepsFileArgs']]] steps_files: Steps from S3.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTagArgs']]] tags: A list of tags to assign to the resource. You may define multiple tags.
+        :param pulumi.Input[int] task_desired_capacity: amount of instances in task group.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTaskEbsBlockDeviceArgs']]] task_ebs_block_devices: This determines the ebs configuration for your task group instances. Only a single block is allowed.
         :param pulumi.Input[bool] task_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] task_instance_types: The MrScaler instance types for the task nodes.
         :param pulumi.Input[str] task_lifecycle: The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] task_max_size: maximal amount of instances in task group.
+        :param pulumi.Input[int] task_min_size: The minimal amount of instances in task group.
         :param pulumi.Input[str] task_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
@@ -358,6 +364,9 @@ class MrScalarArgs:
     @property
     @pulumi.getter(name="coreDesiredCapacity")
     def core_desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        amount of instances in core group.
+        """
         return pulumi.get(self, "core_desired_capacity")
 
     @core_desired_capacity.setter
@@ -415,6 +424,9 @@ class MrScalarArgs:
     @property
     @pulumi.getter(name="coreMaxSize")
     def core_max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        maximal amount of instances in core group.
+        """
         return pulumi.get(self, "core_max_size")
 
     @core_max_size.setter
@@ -424,6 +436,9 @@ class MrScalarArgs:
     @property
     @pulumi.getter(name="coreMinSize")
     def core_min_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimal amount of instances in core group.
+        """
         return pulumi.get(self, "core_min_size")
 
     @core_min_size.setter
@@ -790,6 +805,9 @@ class MrScalarArgs:
     @property
     @pulumi.getter(name="taskDesiredCapacity")
     def task_desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        amount of instances in task group.
+        """
         return pulumi.get(self, "task_desired_capacity")
 
     @task_desired_capacity.setter
@@ -847,6 +865,9 @@ class MrScalarArgs:
     @property
     @pulumi.getter(name="taskMaxSize")
     def task_max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        maximal amount of instances in task group.
+        """
         return pulumi.get(self, "task_max_size")
 
     @task_max_size.setter
@@ -856,6 +877,9 @@ class MrScalarArgs:
     @property
     @pulumi.getter(name="taskMinSize")
     def task_min_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimal amount of instances in task group.
+        """
         return pulumi.get(self, "task_min_size")
 
     @task_min_size.setter
@@ -1000,10 +1024,13 @@ class _MrScalarState:
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarBootstrapActionsFileArgs']]] bootstrap_actions_files: Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
         :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarConfigurationsFileArgs']]] configurations_files: Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+        :param pulumi.Input[int] core_desired_capacity: amount of instances in core group.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarCoreEbsBlockDeviceArgs']]] core_ebs_block_devices: This determines the ebs configuration for your core group instances. Only a single block is allowed.
         :param pulumi.Input[bool] core_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] core_instance_types: The MrScaler instance types for the core nodes.
         :param pulumi.Input[str] core_lifecycle: The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] core_max_size: maximal amount of instances in core group.
+        :param pulumi.Input[int] core_min_size: The minimal amount of instances in core group.
         :param pulumi.Input[str] core_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[str] custom_ami_id: The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
         :param pulumi.Input[str] description: The MrScaler description.
@@ -1031,10 +1058,13 @@ class _MrScalarState:
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarStepsFileArgs']]] steps_files: Steps from S3.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTagArgs']]] tags: A list of tags to assign to the resource. You may define multiple tags.
+        :param pulumi.Input[int] task_desired_capacity: amount of instances in task group.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTaskEbsBlockDeviceArgs']]] task_ebs_block_devices: This determines the ebs configuration for your task group instances. Only a single block is allowed.
         :param pulumi.Input[bool] task_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] task_instance_types: The MrScaler instance types for the task nodes.
         :param pulumi.Input[str] task_lifecycle: The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] task_max_size: maximal amount of instances in task group.
+        :param pulumi.Input[int] task_min_size: The minimal amount of instances in task group.
         :param pulumi.Input[str] task_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
@@ -1264,6 +1294,9 @@ class _MrScalarState:
     @property
     @pulumi.getter(name="coreDesiredCapacity")
     def core_desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        amount of instances in core group.
+        """
         return pulumi.get(self, "core_desired_capacity")
 
     @core_desired_capacity.setter
@@ -1321,6 +1354,9 @@ class _MrScalarState:
     @property
     @pulumi.getter(name="coreMaxSize")
     def core_max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        maximal amount of instances in core group.
+        """
         return pulumi.get(self, "core_max_size")
 
     @core_max_size.setter
@@ -1330,6 +1366,9 @@ class _MrScalarState:
     @property
     @pulumi.getter(name="coreMinSize")
     def core_min_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimal amount of instances in core group.
+        """
         return pulumi.get(self, "core_min_size")
 
     @core_min_size.setter
@@ -1717,6 +1756,9 @@ class _MrScalarState:
     @property
     @pulumi.getter(name="taskDesiredCapacity")
     def task_desired_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        amount of instances in task group.
+        """
         return pulumi.get(self, "task_desired_capacity")
 
     @task_desired_capacity.setter
@@ -1774,6 +1816,9 @@ class _MrScalarState:
     @property
     @pulumi.getter(name="taskMaxSize")
     def task_max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        maximal amount of instances in task group.
+        """
         return pulumi.get(self, "task_max_size")
 
     @task_max_size.setter
@@ -1783,6 +1828,9 @@ class _MrScalarState:
     @property
     @pulumi.getter(name="taskMinSize")
     def task_min_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimal amount of instances in task group.
+        """
         return pulumi.get(self, "task_min_size")
 
     @task_min_size.setter
@@ -2155,10 +2203,13 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarBootstrapActionsFileArgs']]]] bootstrap_actions_files: Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
         :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarConfigurationsFileArgs']]]] configurations_files: Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+        :param pulumi.Input[int] core_desired_capacity: amount of instances in core group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarCoreEbsBlockDeviceArgs']]]] core_ebs_block_devices: This determines the ebs configuration for your core group instances. Only a single block is allowed.
         :param pulumi.Input[bool] core_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] core_instance_types: The MrScaler instance types for the core nodes.
         :param pulumi.Input[str] core_lifecycle: The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] core_max_size: maximal amount of instances in core group.
+        :param pulumi.Input[int] core_min_size: The minimal amount of instances in core group.
         :param pulumi.Input[str] core_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[str] custom_ami_id: The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
         :param pulumi.Input[str] description: The MrScaler description.
@@ -2186,10 +2237,13 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarStepsFileArgs']]]] steps_files: Steps from S3.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTagArgs']]]] tags: A list of tags to assign to the resource. You may define multiple tags.
+        :param pulumi.Input[int] task_desired_capacity: amount of instances in task group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTaskEbsBlockDeviceArgs']]]] task_ebs_block_devices: This determines the ebs configuration for your task group instances. Only a single block is allowed.
         :param pulumi.Input[bool] task_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] task_instance_types: The MrScaler instance types for the task nodes.
         :param pulumi.Input[str] task_lifecycle: The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] task_max_size: maximal amount of instances in task group.
+        :param pulumi.Input[int] task_min_size: The minimal amount of instances in task group.
         :param pulumi.Input[str] task_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
@@ -2665,10 +2719,13 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarBootstrapActionsFileArgs']]]] bootstrap_actions_files: Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
         :param pulumi.Input[str] cluster_id: The MrScaler cluster id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarConfigurationsFileArgs']]]] configurations_files: Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+        :param pulumi.Input[int] core_desired_capacity: amount of instances in core group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarCoreEbsBlockDeviceArgs']]]] core_ebs_block_devices: This determines the ebs configuration for your core group instances. Only a single block is allowed.
         :param pulumi.Input[bool] core_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] core_instance_types: The MrScaler instance types for the core nodes.
         :param pulumi.Input[str] core_lifecycle: The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] core_max_size: maximal amount of instances in core group.
+        :param pulumi.Input[int] core_min_size: The minimal amount of instances in core group.
         :param pulumi.Input[str] core_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[str] custom_ami_id: The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
         :param pulumi.Input[str] description: The MrScaler description.
@@ -2696,10 +2753,13 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarStepsFileArgs']]]] steps_files: Steps from S3.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTagArgs']]]] tags: A list of tags to assign to the resource. You may define multiple tags.
+        :param pulumi.Input[int] task_desired_capacity: amount of instances in task group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTaskEbsBlockDeviceArgs']]]] task_ebs_block_devices: This determines the ebs configuration for your task group instances. Only a single block is allowed.
         :param pulumi.Input[bool] task_ebs_optimized: EBS Optimization setting for instances in group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] task_instance_types: The MrScaler instance types for the task nodes.
         :param pulumi.Input[str] task_lifecycle: The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+        :param pulumi.Input[int] task_max_size: maximal amount of instances in task group.
+        :param pulumi.Input[int] task_min_size: The minimal amount of instances in task group.
         :param pulumi.Input[str] task_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
@@ -2838,6 +2898,9 @@ class MrScalar(pulumi.CustomResource):
     @property
     @pulumi.getter(name="coreDesiredCapacity")
     def core_desired_capacity(self) -> pulumi.Output[Optional[int]]:
+        """
+        amount of instances in core group.
+        """
         return pulumi.get(self, "core_desired_capacity")
 
     @property
@@ -2875,11 +2938,17 @@ class MrScalar(pulumi.CustomResource):
     @property
     @pulumi.getter(name="coreMaxSize")
     def core_max_size(self) -> pulumi.Output[Optional[int]]:
+        """
+        maximal amount of instances in core group.
+        """
         return pulumi.get(self, "core_max_size")
 
     @property
     @pulumi.getter(name="coreMinSize")
     def core_min_size(self) -> pulumi.Output[Optional[int]]:
+        """
+        The minimal amount of instances in core group.
+        """
         return pulumi.get(self, "core_min_size")
 
     @property
@@ -3131,6 +3200,9 @@ class MrScalar(pulumi.CustomResource):
     @property
     @pulumi.getter(name="taskDesiredCapacity")
     def task_desired_capacity(self) -> pulumi.Output[Optional[int]]:
+        """
+        amount of instances in task group.
+        """
         return pulumi.get(self, "task_desired_capacity")
 
     @property
@@ -3168,11 +3240,17 @@ class MrScalar(pulumi.CustomResource):
     @property
     @pulumi.getter(name="taskMaxSize")
     def task_max_size(self) -> pulumi.Output[Optional[int]]:
+        """
+        maximal amount of instances in task group.
+        """
         return pulumi.get(self, "task_max_size")
 
     @property
     @pulumi.getter(name="taskMinSize")
     def task_min_size(self) -> pulumi.Output[Optional[int]]:
+        """
+        The minimal amount of instances in task group.
+        """
         return pulumi.get(self, "task_min_size")
 
     @property

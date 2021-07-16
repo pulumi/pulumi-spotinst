@@ -307,6 +307,9 @@ export class MrScalar extends pulumi.CustomResource {
      * Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
      */
     public readonly configurationsFiles!: pulumi.Output<outputs.aws.MrScalarConfigurationsFile[] | undefined>;
+    /**
+     * amount of instances in core group.
+     */
     public readonly coreDesiredCapacity!: pulumi.Output<number | undefined>;
     /**
      * This determines the ebs configuration for your core group instances. Only a single block is allowed.
@@ -324,7 +327,13 @@ export class MrScalar extends pulumi.CustomResource {
      * The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
      */
     public readonly coreLifecycle!: pulumi.Output<string | undefined>;
+    /**
+     * maximal amount of instances in core group.
+     */
     public readonly coreMaxSize!: pulumi.Output<number | undefined>;
+    /**
+     * The minimal amount of instances in core group.
+     */
     public readonly coreMinSize!: pulumi.Output<number | undefined>;
     public readonly coreScalingDownPolicies!: pulumi.Output<outputs.aws.MrScalarCoreScalingDownPolicy[] | undefined>;
     public readonly coreScalingUpPolicies!: pulumi.Output<outputs.aws.MrScalarCoreScalingUpPolicy[] | undefined>;
@@ -440,6 +449,9 @@ export class MrScalar extends pulumi.CustomResource {
      * A list of tags to assign to the resource. You may define multiple tags.
      */
     public readonly tags!: pulumi.Output<outputs.aws.MrScalarTag[] | undefined>;
+    /**
+     * amount of instances in task group.
+     */
     public readonly taskDesiredCapacity!: pulumi.Output<number | undefined>;
     /**
      * This determines the ebs configuration for your task group instances. Only a single block is allowed.
@@ -457,7 +469,13 @@ export class MrScalar extends pulumi.CustomResource {
      * The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
      */
     public readonly taskLifecycle!: pulumi.Output<string | undefined>;
+    /**
+     * maximal amount of instances in task group.
+     */
     public readonly taskMaxSize!: pulumi.Output<number | undefined>;
+    /**
+     * The minimal amount of instances in task group.
+     */
     public readonly taskMinSize!: pulumi.Output<number | undefined>;
     public readonly taskScalingDownPolicies!: pulumi.Output<outputs.aws.MrScalarTaskScalingDownPolicy[] | undefined>;
     public readonly taskScalingUpPolicies!: pulumi.Output<outputs.aws.MrScalarTaskScalingUpPolicy[] | undefined>;
@@ -662,6 +680,9 @@ export interface MrScalarState {
      * Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
      */
     readonly configurationsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarConfigurationsFile>[]>;
+    /**
+     * amount of instances in core group.
+     */
     readonly coreDesiredCapacity?: pulumi.Input<number>;
     /**
      * This determines the ebs configuration for your core group instances. Only a single block is allowed.
@@ -679,7 +700,13 @@ export interface MrScalarState {
      * The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
      */
     readonly coreLifecycle?: pulumi.Input<string>;
+    /**
+     * maximal amount of instances in core group.
+     */
     readonly coreMaxSize?: pulumi.Input<number>;
+    /**
+     * The minimal amount of instances in core group.
+     */
     readonly coreMinSize?: pulumi.Input<number>;
     readonly coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
     readonly coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
@@ -795,6 +822,9 @@ export interface MrScalarState {
      * A list of tags to assign to the resource. You may define multiple tags.
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTag>[]>;
+    /**
+     * amount of instances in task group.
+     */
     readonly taskDesiredCapacity?: pulumi.Input<number>;
     /**
      * This determines the ebs configuration for your task group instances. Only a single block is allowed.
@@ -812,7 +842,13 @@ export interface MrScalarState {
      * The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
      */
     readonly taskLifecycle?: pulumi.Input<string>;
+    /**
+     * maximal amount of instances in task group.
+     */
     readonly taskMaxSize?: pulumi.Input<number>;
+    /**
+     * The minimal amount of instances in task group.
+     */
     readonly taskMinSize?: pulumi.Input<number>;
     readonly taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[]>;
     readonly taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[]>;
@@ -870,6 +906,9 @@ export interface MrScalarArgs {
      * Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
      */
     readonly configurationsFiles?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarConfigurationsFile>[]>;
+    /**
+     * amount of instances in core group.
+     */
     readonly coreDesiredCapacity?: pulumi.Input<number>;
     /**
      * This determines the ebs configuration for your core group instances. Only a single block is allowed.
@@ -887,7 +926,13 @@ export interface MrScalarArgs {
      * The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
      */
     readonly coreLifecycle?: pulumi.Input<string>;
+    /**
+     * maximal amount of instances in core group.
+     */
     readonly coreMaxSize?: pulumi.Input<number>;
+    /**
+     * The minimal amount of instances in core group.
+     */
     readonly coreMinSize?: pulumi.Input<number>;
     readonly coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
     readonly coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
@@ -1002,6 +1047,9 @@ export interface MrScalarArgs {
      * A list of tags to assign to the resource. You may define multiple tags.
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTag>[]>;
+    /**
+     * amount of instances in task group.
+     */
     readonly taskDesiredCapacity?: pulumi.Input<number>;
     /**
      * This determines the ebs configuration for your task group instances. Only a single block is allowed.
@@ -1019,7 +1067,13 @@ export interface MrScalarArgs {
      * The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
      */
     readonly taskLifecycle?: pulumi.Input<string>;
+    /**
+     * maximal amount of instances in task group.
+     */
     readonly taskMaxSize?: pulumi.Input<number>;
+    /**
+     * The minimal amount of instances in task group.
+     */
     readonly taskMinSize?: pulumi.Input<number>;
     readonly taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[]>;
     readonly taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[]>;

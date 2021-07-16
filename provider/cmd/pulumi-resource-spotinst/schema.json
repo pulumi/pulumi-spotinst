@@ -6567,6 +6567,33 @@
                 }
             }
         },
+        "spotinst:azure/OceanManagedServiceIdentity:OceanManagedServiceIdentity": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Load Balancer.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceGroupName": {
+                    "type": "string",
+                    "description": "The Resource Group name of the Load Balancer.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "resourceGroupName"
+            ]
+        },
         "spotinst:azure/OceanNetwork:OceanNetwork": {
             "properties": {
                 "networkInterfaces": {
@@ -12873,7 +12900,8 @@
                     "description": "Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)\n"
                 },
                 "coreDesiredCapacity": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "amount of instances in core group.\n"
                 },
                 "coreEbsBlockDevices": {
                     "type": "array",
@@ -12898,10 +12926,12 @@
                     "description": "The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.\n"
                 },
                 "coreMaxSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "maximal amount of instances in core group.\n"
                 },
                 "coreMinSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimal amount of instances in core group.\n"
                 },
                 "coreScalingDownPolicies": {
                     "type": "array",
@@ -13054,7 +13084,8 @@
                     "description": "A list of tags to assign to the resource. You may define multiple tags.\n"
                 },
                 "taskDesiredCapacity": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "amount of instances in task group.\n"
                 },
                 "taskEbsBlockDevices": {
                     "type": "array",
@@ -13079,10 +13110,12 @@
                     "description": "The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.\n"
                 },
                 "taskMaxSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "maximal amount of instances in task group.\n"
                 },
                 "taskMinSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimal amount of instances in task group.\n"
                 },
                 "taskScalingDownPolicies": {
                     "type": "array",
@@ -13173,7 +13206,8 @@
                     "description": "Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)\n"
                 },
                 "coreDesiredCapacity": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "amount of instances in core group.\n"
                 },
                 "coreEbsBlockDevices": {
                     "type": "array",
@@ -13198,10 +13232,12 @@
                     "description": "The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.\n"
                 },
                 "coreMaxSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "maximal amount of instances in core group.\n"
                 },
                 "coreMinSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimal amount of instances in core group.\n"
                 },
                 "coreScalingDownPolicies": {
                     "type": "array",
@@ -13351,7 +13387,8 @@
                     "description": "A list of tags to assign to the resource. You may define multiple tags.\n"
                 },
                 "taskDesiredCapacity": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "amount of instances in task group.\n"
                 },
                 "taskEbsBlockDevices": {
                     "type": "array",
@@ -13376,10 +13413,12 @@
                     "description": "The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.\n"
                 },
                 "taskMaxSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "maximal amount of instances in task group.\n"
                 },
                 "taskMinSize": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The minimal amount of instances in task group.\n"
                 },
                 "taskScalingDownPolicies": {
                     "type": "array",
@@ -13470,7 +13509,8 @@
                         "description": "Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)\n"
                     },
                     "coreDesiredCapacity": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "amount of instances in core group.\n"
                     },
                     "coreEbsBlockDevices": {
                         "type": "array",
@@ -13495,10 +13535,12 @@
                         "description": "The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.\n"
                     },
                     "coreMaxSize": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "maximal amount of instances in core group.\n"
                     },
                     "coreMinSize": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The minimal amount of instances in core group.\n"
                     },
                     "coreScalingDownPolicies": {
                         "type": "array",
@@ -13651,7 +13693,8 @@
                         "description": "A list of tags to assign to the resource. You may define multiple tags.\n"
                     },
                     "taskDesiredCapacity": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "amount of instances in task group.\n"
                     },
                     "taskEbsBlockDevices": {
                         "type": "array",
@@ -13676,10 +13719,12 @@
                         "description": "The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.\n"
                     },
                     "taskMaxSize": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "maximal amount of instances in task group.\n"
                     },
                     "taskMinSize": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The minimal amount of instances in task group.\n"
                     },
                     "taskScalingDownPolicies": {
                         "type": "array",
@@ -15023,6 +15068,13 @@
                     },
                     "description": "Configure Load Balancer.\n"
                 },
+                "managedServiceIdentities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanManagedServiceIdentity:OceanManagedServiceIdentity"
+                    },
+                    "description": "List of Managed Service Identity objects.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the Load Balancer.\n"
@@ -15135,6 +15187,13 @@
                     },
                     "description": "Configure Load Balancer.\n"
                 },
+                "managedServiceIdentities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanManagedServiceIdentity:OceanManagedServiceIdentity"
+                    },
+                    "description": "List of Managed Service Identity objects.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the Load Balancer.\n"
@@ -15238,6 +15297,13 @@
                             "$ref": "#/types/spotinst:azure/OceanLoadBalancer:OceanLoadBalancer"
                         },
                         "description": "Configure Load Balancer.\n"
+                    },
+                    "managedServiceIdentities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:azure/OceanManagedServiceIdentity:OceanManagedServiceIdentity"
+                        },
+                        "description": "List of Managed Service Identity objects.\n"
                     },
                     "name": {
                         "type": "string",
