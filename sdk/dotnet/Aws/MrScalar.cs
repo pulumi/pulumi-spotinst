@@ -131,6 +131,7 @@ namespace Pulumi.SpotInst.Aws
     ///                 "c3.xlarge",
     ///             },
     ///             MasterLifecycle = "SPOT",
+    ///             MasterTarget = 1,
     ///             ProvisioningTimeout = new SpotInst.Aws.Inputs.MrScalarProvisioningTimeoutArgs
     ///             {
     ///                 Timeout = 15,
@@ -240,6 +241,7 @@ namespace Pulumi.SpotInst.Aws
     ///                 "c3.xlarge",
     ///             },
     ///             MasterLifecycle = "SPOT",
+    ///             MasterTarget = 1,
     ///             Region = "us-west-2",
     ///             Strategy = "clone",
     ///             Tags = 
@@ -400,6 +402,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("configurationsFiles")]
         public Output<ImmutableArray<Outputs.MrScalarConfigurationsFile>> ConfigurationsFiles { get; private set; } = null!;
 
+        /// <summary>
+        /// amount of instances in core group.
+        /// </summary>
         [Output("coreDesiredCapacity")]
         public Output<int?> CoreDesiredCapacity { get; private set; } = null!;
 
@@ -427,9 +432,15 @@ namespace Pulumi.SpotInst.Aws
         [Output("coreLifecycle")]
         public Output<string?> CoreLifecycle { get; private set; } = null!;
 
+        /// <summary>
+        /// maximal amount of instances in core group.
+        /// </summary>
         [Output("coreMaxSize")]
         public Output<int?> CoreMaxSize { get; private set; } = null!;
 
+        /// <summary>
+        /// The minimal amount of instances in core group.
+        /// </summary>
         [Output("coreMinSize")]
         public Output<int?> CoreMinSize { get; private set; } = null!;
 
@@ -533,6 +544,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> MasterLifecycle { get; private set; } = null!;
 
         /// <summary>
+        /// Number of instances in the master group.
+        /// </summary>
+        [Output("masterTarget")]
+        public Output<int?> MasterTarget { get; private set; } = null!;
+
+        /// <summary>
         /// The application name.
         /// </summary>
         [Output("name")]
@@ -607,6 +624,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("tags")]
         public Output<ImmutableArray<Outputs.MrScalarTag>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// amount of instances in task group.
+        /// </summary>
         [Output("taskDesiredCapacity")]
         public Output<int?> TaskDesiredCapacity { get; private set; } = null!;
 
@@ -634,9 +654,15 @@ namespace Pulumi.SpotInst.Aws
         [Output("taskLifecycle")]
         public Output<string?> TaskLifecycle { get; private set; } = null!;
 
+        /// <summary>
+        /// maximal amount of instances in task group.
+        /// </summary>
         [Output("taskMaxSize")]
         public Output<int?> TaskMaxSize { get; private set; } = null!;
 
+        /// <summary>
+        /// The minimal amount of instances in task group.
+        /// </summary>
         [Output("taskMinSize")]
         public Output<int?> TaskMinSize { get; private set; } = null!;
 
@@ -797,6 +823,9 @@ namespace Pulumi.SpotInst.Aws
             set => _configurationsFiles = value;
         }
 
+        /// <summary>
+        /// amount of instances in core group.
+        /// </summary>
         [Input("coreDesiredCapacity")]
         public Input<int>? CoreDesiredCapacity { get; set; }
 
@@ -836,9 +865,15 @@ namespace Pulumi.SpotInst.Aws
         [Input("coreLifecycle")]
         public Input<string>? CoreLifecycle { get; set; }
 
+        /// <summary>
+        /// maximal amount of instances in core group.
+        /// </summary>
         [Input("coreMaxSize")]
         public Input<int>? CoreMaxSize { get; set; }
 
+        /// <summary>
+        /// The minimal amount of instances in core group.
+        /// </summary>
         [Input("coreMinSize")]
         public Input<int>? CoreMinSize { get; set; }
 
@@ -970,6 +1005,12 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? MasterLifecycle { get; set; }
 
         /// <summary>
+        /// Number of instances in the master group.
+        /// </summary>
+        [Input("masterTarget")]
+        public Input<int>? MasterTarget { get; set; }
+
+        /// <summary>
         /// The application name.
         /// </summary>
         [Input("name")]
@@ -1059,6 +1100,9 @@ namespace Pulumi.SpotInst.Aws
             set => _tags = value;
         }
 
+        /// <summary>
+        /// amount of instances in task group.
+        /// </summary>
         [Input("taskDesiredCapacity")]
         public Input<int>? TaskDesiredCapacity { get; set; }
 
@@ -1098,9 +1142,15 @@ namespace Pulumi.SpotInst.Aws
         [Input("taskLifecycle")]
         public Input<string>? TaskLifecycle { get; set; }
 
+        /// <summary>
+        /// maximal amount of instances in task group.
+        /// </summary>
         [Input("taskMaxSize")]
         public Input<int>? TaskMaxSize { get; set; }
 
+        /// <summary>
+        /// The minimal amount of instances in task group.
+        /// </summary>
         [Input("taskMinSize")]
         public Input<int>? TaskMinSize { get; set; }
 
@@ -1238,6 +1288,9 @@ namespace Pulumi.SpotInst.Aws
             set => _configurationsFiles = value;
         }
 
+        /// <summary>
+        /// amount of instances in core group.
+        /// </summary>
         [Input("coreDesiredCapacity")]
         public Input<int>? CoreDesiredCapacity { get; set; }
 
@@ -1277,9 +1330,15 @@ namespace Pulumi.SpotInst.Aws
         [Input("coreLifecycle")]
         public Input<string>? CoreLifecycle { get; set; }
 
+        /// <summary>
+        /// maximal amount of instances in core group.
+        /// </summary>
         [Input("coreMaxSize")]
         public Input<int>? CoreMaxSize { get; set; }
 
+        /// <summary>
+        /// The minimal amount of instances in core group.
+        /// </summary>
         [Input("coreMinSize")]
         public Input<int>? CoreMinSize { get; set; }
 
@@ -1411,6 +1470,12 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? MasterLifecycle { get; set; }
 
         /// <summary>
+        /// Number of instances in the master group.
+        /// </summary>
+        [Input("masterTarget")]
+        public Input<int>? MasterTarget { get; set; }
+
+        /// <summary>
         /// The application name.
         /// </summary>
         [Input("name")]
@@ -1503,6 +1568,9 @@ namespace Pulumi.SpotInst.Aws
             set => _tags = value;
         }
 
+        /// <summary>
+        /// amount of instances in task group.
+        /// </summary>
         [Input("taskDesiredCapacity")]
         public Input<int>? TaskDesiredCapacity { get; set; }
 
@@ -1542,9 +1610,15 @@ namespace Pulumi.SpotInst.Aws
         [Input("taskLifecycle")]
         public Input<string>? TaskLifecycle { get; set; }
 
+        /// <summary>
+        /// maximal amount of instances in task group.
+        /// </summary>
         [Input("taskMaxSize")]
         public Input<int>? TaskMaxSize { get; set; }
 
+        /// <summary>
+        /// The minimal amount of instances in task group.
+        /// </summary>
         [Input("taskMinSize")]
         public Input<int>? TaskMinSize { get; set; }
 

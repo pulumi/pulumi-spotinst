@@ -29,7 +29,7 @@ namespace Pulumi.SpotInst.Aws
     ///             {
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
     ///                 {
-    ///                     CpuPerNit = 1000,
+    ///                     CpuPerUnit = 1000,
     ///                     GpuPerUnit = 0,
     ///                     MemoryPerUnit = 2048,
     ///                     NumOfUnits = 5,
@@ -89,6 +89,11 @@ namespace Pulumi.SpotInst.Aws
     ///                 },
     ///             },
     ///             OceanId = "o-123456",
+    ///             PreferredSpotTypes = 
+    ///             {
+    ///                 "m4.large",
+    ///                 "m4.xlarge",
+    ///             },
     ///             ResourceLimits = 
     ///             {
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecResourceLimitArgs
@@ -216,6 +221,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("oceanId")]
         public Output<string> OceanId { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        /// </summary>
+        [Output("preferredSpotTypes")]
+        public Output<ImmutableArray<string>> PreferredSpotTypes { get; private set; } = null!;
 
         [Output("resourceLimits")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecResourceLimit>> ResourceLimits { get; private set; } = null!;
@@ -404,6 +415,18 @@ namespace Pulumi.SpotInst.Aws
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
 
+        [Input("preferredSpotTypes")]
+        private InputList<string>? _preferredSpotTypes;
+
+        /// <summary>
+        /// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        /// </summary>
+        public InputList<string> PreferredSpotTypes
+        {
+            get => _preferredSpotTypes ?? (_preferredSpotTypes = new InputList<string>());
+            set => _preferredSpotTypes = value;
+        }
+
         [Input("resourceLimits")]
         private InputList<Inputs.OceanLaunchSpecResourceLimitArgs>? _resourceLimits;
         public InputList<Inputs.OceanLaunchSpecResourceLimitArgs> ResourceLimits
@@ -585,6 +608,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
+
+        [Input("preferredSpotTypes")]
+        private InputList<string>? _preferredSpotTypes;
+
+        /// <summary>
+        /// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        /// </summary>
+        public InputList<string> PreferredSpotTypes
+        {
+            get => _preferredSpotTypes ?? (_preferredSpotTypes = new InputList<string>());
+            set => _preferredSpotTypes = value;
+        }
 
         [Input("resourceLimits")]
         private InputList<Inputs.OceanLaunchSpecResourceLimitGetArgs>? _resourceLimits;

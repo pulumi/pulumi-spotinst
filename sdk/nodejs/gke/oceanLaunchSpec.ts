@@ -8,45 +8,7 @@ import * as utilities from "../utilities";
 /**
  * Manages a custom Spotinst Ocean GKE Launch Spec resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const example = new spotinst.gke.OceanLaunchSpec("example", {
- *     autoscaleHeadrooms: [{
- *         cpuPerUnit: 1000,
- *         gpuPerUnit: 0,
- *         memoryPerUnit: 2048,
- *         numOfUnits: 5,
- *     }],
- *     labels: [{
- *         key: "labelKey",
- *         value: "labelVal",
- *     }],
- *     metadatas: [{
- *         key: "gci-update-strategy",
- *         value: "update_disabled",
- *     }],
- *     oceanId: "o-123456",
- *     restrictScaleDown: true,
- *     sourceImage: "image",
- *     strategies: [{
- *         preemptiblePercentage: 30,
- *     }],
- *     taints: [{
- *         effect: "taintEffect",
- *         key: "taintKey",
- *         value: "taintVal",
- *     }],
- * });
- * ```
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanLaunchspecId = spotinst_ocean_gke_launch_spec.example.id;
- * ```
+ * > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `nodePoolName`.
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
@@ -81,13 +43,21 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly autoscaleHeadrooms!: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
     /**
+     * List of supported machine types for the Launch Spec.
+     */
+    public readonly instanceTypes!: pulumi.Output<string[]>;
+    /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
-    public readonly labels!: pulumi.Output<outputs.gke.OceanLaunchSpecLabel[] | undefined>;
+    public readonly labels!: pulumi.Output<outputs.gke.OceanLaunchSpecLabel[]>;
     /**
      * Cluster's metadata.
      */
     public readonly metadatas!: pulumi.Output<outputs.gke.OceanLaunchSpecMetadata[]>;
+    /**
+     * The node pool you wish to use in your Launch Spec.
+     */
+    public readonly nodePoolName!: pulumi.Output<string | undefined>;
     /**
      * The Ocean cluster ID.
      */
@@ -95,7 +65,15 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
      * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
-    public readonly restrictScaleDown!: pulumi.Output<boolean | undefined>;
+    public readonly restrictScaleDown!: pulumi.Output<boolean>;
+    /**
+     * Root volume size (in GB).
+     */
+    public readonly rootVolumeSize!: pulumi.Output<number>;
+    /**
+     * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+     */
+    public readonly rootVolumeType!: pulumi.Output<string>;
     /**
      * Image URL.
      */
@@ -107,7 +85,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
-    public readonly taints!: pulumi.Output<outputs.gke.OceanLaunchSpecTaint[] | undefined>;
+    public readonly taints!: pulumi.Output<outputs.gke.OceanLaunchSpecTaint[]>;
 
     /**
      * Create a OceanLaunchSpec resource with the given unique name, arguments, and options.
@@ -123,29 +101,31 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
             inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
+            inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["metadatas"] = state ? state.metadatas : undefined;
+            inputs["nodePoolName"] = state ? state.nodePoolName : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
             inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
+            inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
+            inputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
             inputs["sourceImage"] = state ? state.sourceImage : undefined;
             inputs["strategies"] = state ? state.strategies : undefined;
             inputs["taints"] = state ? state.taints : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
-            if ((!args || args.metadatas === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'metadatas'");
-            }
             if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
-            if ((!args || args.sourceImage === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sourceImage'");
-            }
             inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
+            inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["metadatas"] = args ? args.metadatas : undefined;
+            inputs["nodePoolName"] = args ? args.nodePoolName : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
             inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
+            inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
+            inputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
             inputs["sourceImage"] = args ? args.sourceImage : undefined;
             inputs["strategies"] = args ? args.strategies : undefined;
             inputs["taints"] = args ? args.taints : undefined;
@@ -166,6 +146,10 @@ export interface OceanLaunchSpecState {
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[]>;
     /**
+     * List of supported machine types for the Launch Spec.
+     */
+    readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecLabel>[]>;
@@ -174,6 +158,10 @@ export interface OceanLaunchSpecState {
      */
     readonly metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
     /**
+     * The node pool you wish to use in your Launch Spec.
+     */
+    readonly nodePoolName?: pulumi.Input<string>;
+    /**
      * The Ocean cluster ID.
      */
     readonly oceanId?: pulumi.Input<string>;
@@ -181,6 +169,14 @@ export interface OceanLaunchSpecState {
      * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     readonly restrictScaleDown?: pulumi.Input<boolean>;
+    /**
+     * Root volume size (in GB).
+     */
+    readonly rootVolumeSize?: pulumi.Input<number>;
+    /**
+     * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+     */
+    readonly rootVolumeType?: pulumi.Input<string>;
     /**
      * Image URL.
      */
@@ -204,13 +200,21 @@ export interface OceanLaunchSpecArgs {
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[]>;
     /**
+     * List of supported machine types for the Launch Spec.
+     */
+    readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecLabel>[]>;
     /**
      * Cluster's metadata.
      */
-    readonly metadatas: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
+    readonly metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
+    /**
+     * The node pool you wish to use in your Launch Spec.
+     */
+    readonly nodePoolName?: pulumi.Input<string>;
     /**
      * The Ocean cluster ID.
      */
@@ -220,9 +224,17 @@ export interface OceanLaunchSpecArgs {
      */
     readonly restrictScaleDown?: pulumi.Input<boolean>;
     /**
+     * Root volume size (in GB).
+     */
+    readonly rootVolumeSize?: pulumi.Input<number>;
+    /**
+     * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+     */
+    readonly rootVolumeType?: pulumi.Input<string>;
+    /**
      * Image URL.
      */
-    readonly sourceImage: pulumi.Input<string>;
+    readonly sourceImage?: pulumi.Input<string>;
     /**
      * The Ocean Launch Spec Strategy object.
      */

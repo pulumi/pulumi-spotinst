@@ -4217,6 +4217,112 @@ func (o OceanLoadBalancerArrayOutput) Index(i pulumi.IntInput) OceanLoadBalancer
 	}).(OceanLoadBalancerOutput)
 }
 
+type OceanManagedServiceIdentity struct {
+	// Name of the Load Balancer.
+	Name string `pulumi:"name"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+// OceanManagedServiceIdentityInput is an input type that accepts OceanManagedServiceIdentityArgs and OceanManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `OceanManagedServiceIdentityInput` via:
+//
+//          OceanManagedServiceIdentityArgs{...}
+type OceanManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToOceanManagedServiceIdentityOutput() OceanManagedServiceIdentityOutput
+	ToOceanManagedServiceIdentityOutputWithContext(context.Context) OceanManagedServiceIdentityOutput
+}
+
+type OceanManagedServiceIdentityArgs struct {
+	// Name of the Load Balancer.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Resource Group name of the Load Balancer.
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (OceanManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i OceanManagedServiceIdentityArgs) ToOceanManagedServiceIdentityOutput() OceanManagedServiceIdentityOutput {
+	return i.ToOceanManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i OceanManagedServiceIdentityArgs) ToOceanManagedServiceIdentityOutputWithContext(ctx context.Context) OceanManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanManagedServiceIdentityOutput)
+}
+
+// OceanManagedServiceIdentityArrayInput is an input type that accepts OceanManagedServiceIdentityArray and OceanManagedServiceIdentityArrayOutput values.
+// You can construct a concrete instance of `OceanManagedServiceIdentityArrayInput` via:
+//
+//          OceanManagedServiceIdentityArray{ OceanManagedServiceIdentityArgs{...} }
+type OceanManagedServiceIdentityArrayInput interface {
+	pulumi.Input
+
+	ToOceanManagedServiceIdentityArrayOutput() OceanManagedServiceIdentityArrayOutput
+	ToOceanManagedServiceIdentityArrayOutputWithContext(context.Context) OceanManagedServiceIdentityArrayOutput
+}
+
+type OceanManagedServiceIdentityArray []OceanManagedServiceIdentityInput
+
+func (OceanManagedServiceIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i OceanManagedServiceIdentityArray) ToOceanManagedServiceIdentityArrayOutput() OceanManagedServiceIdentityArrayOutput {
+	return i.ToOceanManagedServiceIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i OceanManagedServiceIdentityArray) ToOceanManagedServiceIdentityArrayOutputWithContext(ctx context.Context) OceanManagedServiceIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanManagedServiceIdentityArrayOutput)
+}
+
+type OceanManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (OceanManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o OceanManagedServiceIdentityOutput) ToOceanManagedServiceIdentityOutput() OceanManagedServiceIdentityOutput {
+	return o
+}
+
+func (o OceanManagedServiceIdentityOutput) ToOceanManagedServiceIdentityOutputWithContext(ctx context.Context) OceanManagedServiceIdentityOutput {
+	return o
+}
+
+// Name of the Load Balancer.
+func (o OceanManagedServiceIdentityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanManagedServiceIdentity) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Resource Group name of the Load Balancer.
+func (o OceanManagedServiceIdentityOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanManagedServiceIdentity) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+type OceanManagedServiceIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanManagedServiceIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o OceanManagedServiceIdentityArrayOutput) ToOceanManagedServiceIdentityArrayOutput() OceanManagedServiceIdentityArrayOutput {
+	return o
+}
+
+func (o OceanManagedServiceIdentityArrayOutput) ToOceanManagedServiceIdentityArrayOutputWithContext(ctx context.Context) OceanManagedServiceIdentityArrayOutput {
+	return o
+}
+
+func (o OceanManagedServiceIdentityArrayOutput) Index(i pulumi.IntInput) OceanManagedServiceIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanManagedServiceIdentity {
+		return vs[0].([]OceanManagedServiceIdentity)[vs[1].(int)]
+	}).(OceanManagedServiceIdentityOutput)
+}
+
 type OceanNetwork struct {
 	// A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
 	NetworkInterfaces []OceanNetworkNetworkInterface `pulumi:"networkInterfaces"`
@@ -6268,6 +6374,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanImageMarketplaceArrayOutput{})
 	pulumi.RegisterOutputType(OceanLoadBalancerOutput{})
 	pulumi.RegisterOutputType(OceanLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(OceanManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(OceanManagedServiceIdentityArrayOutput{})
 	pulumi.RegisterOutputType(OceanNetworkOutput{})
 	pulumi.RegisterOutputType(OceanNetworkPtrOutput{})
 	pulumi.RegisterOutputType(OceanNetworkNetworkInterfaceOutput{})

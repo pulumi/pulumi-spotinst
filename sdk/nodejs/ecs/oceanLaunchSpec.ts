@@ -61,6 +61,7 @@ import * as utilities from "../utilities";
  *     oceanId: "o-123456",
  *     restrictScaleDown: true,
  *     securityGroupIds: ["awseb-12345"],
+ *     subnetIds: ["subnet-12345"],
  *     tags: [{
  *         key: "Env",
  *         value: "production",
@@ -73,6 +74,24 @@ import * as utilities from "../utilities";
  *
  * export const oceanLaunchspecId = spotinst_ocean_ecs_launch_spec.example.id;
  * ```
+ * ## Block Devices
+ *
+ * * `blockDeviceMappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+ *     * `deviceName` - (Optional) String. Set device name. (Example: "/dev/xvda1").
+ *     * `ebs`- (Optional) Object. Set Elastic Block Store properties .
+ *         * `deleteOnTermination`- (Optional) Boolean. Flag to delete the EBS on instance termination.
+ *         * `encrypted`- (Optional) Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+ *         * `iops`- (Required for requests to create io1 volumes; it is not used in requests to create gp2, st1, sc1, or standard volumes) Int. The number of I/O operations per second (IOPS) that the volume supports.
+ *         * `kmsKeyId`- (Optional) String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+ *         * `snapshotId`- (Optional) (Optional) String. The Snapshot ID to mount by.
+ *         * `volumeType`- (Optional, Default: `"standard"`) String. The type of the volume (example: "gp2").
+ *         * `volumeSize`- (Optional) Int. The size, in GB of the volume.
+ *         * `throughput`- (Optional) The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+ *         * `dynamicVolumeSize`- (Optional) Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+ *             * `baseSize`- (Required) Int. Initial size for volume. (Example: 50)
+ *             * `resource`- (Required) String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+ *             * `sizePerResourceUnit`- (Required) Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+ *         * `noDevice`- (Optional) String. suppresses the specified device included in the block device mapping of the AMI.
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
@@ -110,9 +129,6 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
     public readonly autoscaleHeadrooms!: pulumi.Output<outputs.ecs.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
-    /**
-     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-     */
     public readonly blockDeviceMappings!: pulumi.Output<outputs.ecs.OceanLaunchSpecBlockDeviceMapping[] | undefined>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
@@ -142,6 +158,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * One or more security group ids.
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * Set subnets in launchSpec. Each element in the array should be a subnet ID.
+     */
+    public readonly subnetIds!: pulumi.Output<string[] | undefined>;
     /**
      * A key/value mapping of tags to assign to the resource.
      */
@@ -174,6 +194,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["oceanId"] = state ? state.oceanId : undefined;
             inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            inputs["subnetIds"] = state ? state.subnetIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
         } else {
@@ -191,6 +212,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["oceanId"] = args ? args.oceanId : undefined;
             inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            inputs["subnetIds"] = args ? args.subnetIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
         }
@@ -213,9 +235,6 @@ export interface OceanLaunchSpecState {
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecAutoscaleHeadroom>[]>;
-    /**
-     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-     */
     readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMapping>[]>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
@@ -246,6 +265,10 @@ export interface OceanLaunchSpecState {
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Set subnets in launchSpec. Each element in the array should be a subnet ID.
+     */
+    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * A key/value mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecTag>[]>;
@@ -267,9 +290,6 @@ export interface OceanLaunchSpecArgs {
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
     readonly autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecAutoscaleHeadroom>[]>;
-    /**
-     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-     */
     readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMapping>[]>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
@@ -299,6 +319,10 @@ export interface OceanLaunchSpecArgs {
      * One or more security group ids.
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set subnets in launchSpec. Each element in the array should be a subnet ID.
+     */
+    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A key/value mapping of tags to assign to the resource.
      */

@@ -34,6 +34,8 @@ type Ocean struct {
 	Images OceanImageArrayOutput `pulumi:"images"`
 	// Configure Load Balancer.
 	LoadBalancers OceanLoadBalancerArrayOutput `pulumi:"loadBalancers"`
+	// List of Managed Service Identity objects.
+	ManagedServiceIdentities OceanManagedServiceIdentityArrayOutput `pulumi:"managedServiceIdentities"`
 	// Name of the Load Balancer.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Define the Virtual Network and Subnet.
@@ -115,6 +117,8 @@ type oceanState struct {
 	Images []OceanImage `pulumi:"images"`
 	// Configure Load Balancer.
 	LoadBalancers []OceanLoadBalancer `pulumi:"loadBalancers"`
+	// List of Managed Service Identity objects.
+	ManagedServiceIdentities []OceanManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	// Name of the Load Balancer.
 	Name *string `pulumi:"name"`
 	// Define the Virtual Network and Subnet.
@@ -156,6 +160,8 @@ type OceanState struct {
 	Images OceanImageArrayInput
 	// Configure Load Balancer.
 	LoadBalancers OceanLoadBalancerArrayInput
+	// List of Managed Service Identity objects.
+	ManagedServiceIdentities OceanManagedServiceIdentityArrayInput
 	// Name of the Load Balancer.
 	Name pulumi.StringPtrInput
 	// Define the Virtual Network and Subnet.
@@ -201,6 +207,8 @@ type oceanArgs struct {
 	Images []OceanImage `pulumi:"images"`
 	// Configure Load Balancer.
 	LoadBalancers []OceanLoadBalancer `pulumi:"loadBalancers"`
+	// List of Managed Service Identity objects.
+	ManagedServiceIdentities []OceanManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	// Name of the Load Balancer.
 	Name *string `pulumi:"name"`
 	// Define the Virtual Network and Subnet.
@@ -243,6 +251,8 @@ type OceanArgs struct {
 	Images OceanImageArrayInput
 	// Configure Load Balancer.
 	LoadBalancers OceanLoadBalancerArrayInput
+	// List of Managed Service Identity objects.
+	ManagedServiceIdentities OceanManagedServiceIdentityArrayInput
 	// Name of the Load Balancer.
 	Name pulumi.StringPtrInput
 	// Define the Virtual Network and Subnet.

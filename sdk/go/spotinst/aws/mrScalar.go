@@ -112,6 +112,7 @@ import (
 // 				pulumi.String("c3.xlarge"),
 // 			},
 // 			MasterLifecycle: pulumi.String("SPOT"),
+// 			MasterTarget:    pulumi.Int(1),
 // 			ProvisioningTimeout: &aws.MrScalarProvisioningTimeoutArgs{
 // 				Timeout:       pulumi.Int(15),
 // 				TimeoutAction: pulumi.String("terminateAndRetry"),
@@ -210,6 +211,7 @@ import (
 // 				pulumi.String("c3.xlarge"),
 // 			},
 // 			MasterLifecycle: pulumi.String("SPOT"),
+// 			MasterTarget:    pulumi.Int(1),
 // 			Region:          pulumi.String("us-west-2"),
 // 			Strategy:        pulumi.String("clone"),
 // 			Tags: aws.MrScalarTagArray{
@@ -329,7 +331,8 @@ type MrScalar struct {
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
 	ConfigurationsFiles MrScalarConfigurationsFileArrayOutput `pulumi:"configurationsFiles"`
-	CoreDesiredCapacity pulumi.IntPtrOutput                   `pulumi:"coreDesiredCapacity"`
+	// amount of instances in core group.
+	CoreDesiredCapacity pulumi.IntPtrOutput `pulumi:"coreDesiredCapacity"`
 	// This determines the ebs configuration for your core group instances. Only a single block is allowed.
 	CoreEbsBlockDevices MrScalarCoreEbsBlockDeviceArrayOutput `pulumi:"coreEbsBlockDevices"`
 	// EBS Optimization setting for instances in group.
@@ -337,8 +340,10 @@ type MrScalar struct {
 	// The MrScaler instance types for the core nodes.
 	CoreInstanceTypes pulumi.StringArrayOutput `pulumi:"coreInstanceTypes"`
 	// The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-	CoreLifecycle           pulumi.StringPtrOutput                   `pulumi:"coreLifecycle"`
-	CoreMaxSize             pulumi.IntPtrOutput                      `pulumi:"coreMaxSize"`
+	CoreLifecycle pulumi.StringPtrOutput `pulumi:"coreLifecycle"`
+	// maximal amount of instances in core group.
+	CoreMaxSize pulumi.IntPtrOutput `pulumi:"coreMaxSize"`
+	// The minimal amount of instances in core group.
 	CoreMinSize             pulumi.IntPtrOutput                      `pulumi:"coreMinSize"`
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayOutput `pulumi:"coreScalingDownPolicies"`
 	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayOutput   `pulumi:"coreScalingUpPolicies"`
@@ -373,6 +378,8 @@ type MrScalar struct {
 	MasterInstanceTypes pulumi.StringArrayOutput `pulumi:"masterInstanceTypes"`
 	// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 	MasterLifecycle pulumi.StringPtrOutput `pulumi:"masterLifecycle"`
+	// Number of instances in the master group.
+	MasterTarget pulumi.IntPtrOutput `pulumi:"masterTarget"`
 	// The application name.
 	Name                pulumi.StringOutput                  `pulumi:"name"`
 	OutputClusterId     pulumi.StringOutput                  `pulumi:"outputClusterId"`
@@ -397,8 +404,9 @@ type MrScalar struct {
 	// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
 	Strategy pulumi.StringOutput `pulumi:"strategy"`
 	// A list of tags to assign to the resource. You may define multiple tags.
-	Tags                MrScalarTagArrayOutput `pulumi:"tags"`
-	TaskDesiredCapacity pulumi.IntPtrOutput    `pulumi:"taskDesiredCapacity"`
+	Tags MrScalarTagArrayOutput `pulumi:"tags"`
+	// amount of instances in task group.
+	TaskDesiredCapacity pulumi.IntPtrOutput `pulumi:"taskDesiredCapacity"`
 	// This determines the ebs configuration for your task group instances. Only a single block is allowed.
 	TaskEbsBlockDevices MrScalarTaskEbsBlockDeviceArrayOutput `pulumi:"taskEbsBlockDevices"`
 	// EBS Optimization setting for instances in group.
@@ -406,8 +414,10 @@ type MrScalar struct {
 	// The MrScaler instance types for the task nodes.
 	TaskInstanceTypes pulumi.StringArrayOutput `pulumi:"taskInstanceTypes"`
 	// The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-	TaskLifecycle           pulumi.StringPtrOutput                   `pulumi:"taskLifecycle"`
-	TaskMaxSize             pulumi.IntPtrOutput                      `pulumi:"taskMaxSize"`
+	TaskLifecycle pulumi.StringPtrOutput `pulumi:"taskLifecycle"`
+	// maximal amount of instances in task group.
+	TaskMaxSize pulumi.IntPtrOutput `pulumi:"taskMaxSize"`
+	// The minimal amount of instances in task group.
 	TaskMinSize             pulumi.IntPtrOutput                      `pulumi:"taskMinSize"`
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayOutput `pulumi:"taskScalingDownPolicies"`
 	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayOutput   `pulumi:"taskScalingUpPolicies"`
@@ -469,7 +479,8 @@ type mrScalarState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
 	ConfigurationsFiles []MrScalarConfigurationsFile `pulumi:"configurationsFiles"`
-	CoreDesiredCapacity *int                         `pulumi:"coreDesiredCapacity"`
+	// amount of instances in core group.
+	CoreDesiredCapacity *int `pulumi:"coreDesiredCapacity"`
 	// This determines the ebs configuration for your core group instances. Only a single block is allowed.
 	CoreEbsBlockDevices []MrScalarCoreEbsBlockDevice `pulumi:"coreEbsBlockDevices"`
 	// EBS Optimization setting for instances in group.
@@ -477,8 +488,10 @@ type mrScalarState struct {
 	// The MrScaler instance types for the core nodes.
 	CoreInstanceTypes []string `pulumi:"coreInstanceTypes"`
 	// The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-	CoreLifecycle           *string                         `pulumi:"coreLifecycle"`
-	CoreMaxSize             *int                            `pulumi:"coreMaxSize"`
+	CoreLifecycle *string `pulumi:"coreLifecycle"`
+	// maximal amount of instances in core group.
+	CoreMaxSize *int `pulumi:"coreMaxSize"`
+	// The minimal amount of instances in core group.
 	CoreMinSize             *int                            `pulumi:"coreMinSize"`
 	CoreScalingDownPolicies []MrScalarCoreScalingDownPolicy `pulumi:"coreScalingDownPolicies"`
 	CoreScalingUpPolicies   []MrScalarCoreScalingUpPolicy   `pulumi:"coreScalingUpPolicies"`
@@ -513,6 +526,8 @@ type mrScalarState struct {
 	MasterInstanceTypes []string `pulumi:"masterInstanceTypes"`
 	// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 	MasterLifecycle *string `pulumi:"masterLifecycle"`
+	// Number of instances in the master group.
+	MasterTarget *int `pulumi:"masterTarget"`
 	// The application name.
 	Name                *string                      `pulumi:"name"`
 	OutputClusterId     *string                      `pulumi:"outputClusterId"`
@@ -537,8 +552,9 @@ type mrScalarState struct {
 	// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
 	Strategy *string `pulumi:"strategy"`
 	// A list of tags to assign to the resource. You may define multiple tags.
-	Tags                []MrScalarTag `pulumi:"tags"`
-	TaskDesiredCapacity *int          `pulumi:"taskDesiredCapacity"`
+	Tags []MrScalarTag `pulumi:"tags"`
+	// amount of instances in task group.
+	TaskDesiredCapacity *int `pulumi:"taskDesiredCapacity"`
 	// This determines the ebs configuration for your task group instances. Only a single block is allowed.
 	TaskEbsBlockDevices []MrScalarTaskEbsBlockDevice `pulumi:"taskEbsBlockDevices"`
 	// EBS Optimization setting for instances in group.
@@ -546,8 +562,10 @@ type mrScalarState struct {
 	// The MrScaler instance types for the task nodes.
 	TaskInstanceTypes []string `pulumi:"taskInstanceTypes"`
 	// The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-	TaskLifecycle           *string                         `pulumi:"taskLifecycle"`
-	TaskMaxSize             *int                            `pulumi:"taskMaxSize"`
+	TaskLifecycle *string `pulumi:"taskLifecycle"`
+	// maximal amount of instances in task group.
+	TaskMaxSize *int `pulumi:"taskMaxSize"`
+	// The minimal amount of instances in task group.
 	TaskMinSize             *int                            `pulumi:"taskMinSize"`
 	TaskScalingDownPolicies []MrScalarTaskScalingDownPolicy `pulumi:"taskScalingDownPolicies"`
 	TaskScalingUpPolicies   []MrScalarTaskScalingUpPolicy   `pulumi:"taskScalingUpPolicies"`
@@ -578,6 +596,7 @@ type MrScalarState struct {
 	ClusterId pulumi.StringPtrInput
 	// Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
 	ConfigurationsFiles MrScalarConfigurationsFileArrayInput
+	// amount of instances in core group.
 	CoreDesiredCapacity pulumi.IntPtrInput
 	// This determines the ebs configuration for your core group instances. Only a single block is allowed.
 	CoreEbsBlockDevices MrScalarCoreEbsBlockDeviceArrayInput
@@ -586,8 +605,10 @@ type MrScalarState struct {
 	// The MrScaler instance types for the core nodes.
 	CoreInstanceTypes pulumi.StringArrayInput
 	// The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-	CoreLifecycle           pulumi.StringPtrInput
-	CoreMaxSize             pulumi.IntPtrInput
+	CoreLifecycle pulumi.StringPtrInput
+	// maximal amount of instances in core group.
+	CoreMaxSize pulumi.IntPtrInput
+	// The minimal amount of instances in core group.
 	CoreMinSize             pulumi.IntPtrInput
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayInput
 	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayInput
@@ -622,6 +643,8 @@ type MrScalarState struct {
 	MasterInstanceTypes pulumi.StringArrayInput
 	// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 	MasterLifecycle pulumi.StringPtrInput
+	// Number of instances in the master group.
+	MasterTarget pulumi.IntPtrInput
 	// The application name.
 	Name                pulumi.StringPtrInput
 	OutputClusterId     pulumi.StringPtrInput
@@ -646,7 +669,8 @@ type MrScalarState struct {
 	// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
 	Strategy pulumi.StringPtrInput
 	// A list of tags to assign to the resource. You may define multiple tags.
-	Tags                MrScalarTagArrayInput
+	Tags MrScalarTagArrayInput
+	// amount of instances in task group.
 	TaskDesiredCapacity pulumi.IntPtrInput
 	// This determines the ebs configuration for your task group instances. Only a single block is allowed.
 	TaskEbsBlockDevices MrScalarTaskEbsBlockDeviceArrayInput
@@ -655,8 +679,10 @@ type MrScalarState struct {
 	// The MrScaler instance types for the task nodes.
 	TaskInstanceTypes pulumi.StringArrayInput
 	// The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-	TaskLifecycle           pulumi.StringPtrInput
-	TaskMaxSize             pulumi.IntPtrInput
+	TaskLifecycle pulumi.StringPtrInput
+	// maximal amount of instances in task group.
+	TaskMaxSize pulumi.IntPtrInput
+	// The minimal amount of instances in task group.
 	TaskMinSize             pulumi.IntPtrInput
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayInput
 	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayInput
@@ -691,7 +717,8 @@ type mrScalarArgs struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
 	ConfigurationsFiles []MrScalarConfigurationsFile `pulumi:"configurationsFiles"`
-	CoreDesiredCapacity *int                         `pulumi:"coreDesiredCapacity"`
+	// amount of instances in core group.
+	CoreDesiredCapacity *int `pulumi:"coreDesiredCapacity"`
 	// This determines the ebs configuration for your core group instances. Only a single block is allowed.
 	CoreEbsBlockDevices []MrScalarCoreEbsBlockDevice `pulumi:"coreEbsBlockDevices"`
 	// EBS Optimization setting for instances in group.
@@ -699,8 +726,10 @@ type mrScalarArgs struct {
 	// The MrScaler instance types for the core nodes.
 	CoreInstanceTypes []string `pulumi:"coreInstanceTypes"`
 	// The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-	CoreLifecycle           *string                         `pulumi:"coreLifecycle"`
-	CoreMaxSize             *int                            `pulumi:"coreMaxSize"`
+	CoreLifecycle *string `pulumi:"coreLifecycle"`
+	// maximal amount of instances in core group.
+	CoreMaxSize *int `pulumi:"coreMaxSize"`
+	// The minimal amount of instances in core group.
 	CoreMinSize             *int                            `pulumi:"coreMinSize"`
 	CoreScalingDownPolicies []MrScalarCoreScalingDownPolicy `pulumi:"coreScalingDownPolicies"`
 	CoreScalingUpPolicies   []MrScalarCoreScalingUpPolicy   `pulumi:"coreScalingUpPolicies"`
@@ -735,6 +764,8 @@ type mrScalarArgs struct {
 	MasterInstanceTypes []string `pulumi:"masterInstanceTypes"`
 	// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 	MasterLifecycle *string `pulumi:"masterLifecycle"`
+	// Number of instances in the master group.
+	MasterTarget *int `pulumi:"masterTarget"`
 	// The application name.
 	Name                *string                      `pulumi:"name"`
 	ProvisioningTimeout *MrScalarProvisioningTimeout `pulumi:"provisioningTimeout"`
@@ -758,8 +789,9 @@ type mrScalarArgs struct {
 	// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
 	Strategy string `pulumi:"strategy"`
 	// A list of tags to assign to the resource. You may define multiple tags.
-	Tags                []MrScalarTag `pulumi:"tags"`
-	TaskDesiredCapacity *int          `pulumi:"taskDesiredCapacity"`
+	Tags []MrScalarTag `pulumi:"tags"`
+	// amount of instances in task group.
+	TaskDesiredCapacity *int `pulumi:"taskDesiredCapacity"`
 	// This determines the ebs configuration for your task group instances. Only a single block is allowed.
 	TaskEbsBlockDevices []MrScalarTaskEbsBlockDevice `pulumi:"taskEbsBlockDevices"`
 	// EBS Optimization setting for instances in group.
@@ -767,8 +799,10 @@ type mrScalarArgs struct {
 	// The MrScaler instance types for the task nodes.
 	TaskInstanceTypes []string `pulumi:"taskInstanceTypes"`
 	// The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-	TaskLifecycle           *string                         `pulumi:"taskLifecycle"`
-	TaskMaxSize             *int                            `pulumi:"taskMaxSize"`
+	TaskLifecycle *string `pulumi:"taskLifecycle"`
+	// maximal amount of instances in task group.
+	TaskMaxSize *int `pulumi:"taskMaxSize"`
+	// The minimal amount of instances in task group.
 	TaskMinSize             *int                            `pulumi:"taskMinSize"`
 	TaskScalingDownPolicies []MrScalarTaskScalingDownPolicy `pulumi:"taskScalingDownPolicies"`
 	TaskScalingUpPolicies   []MrScalarTaskScalingUpPolicy   `pulumi:"taskScalingUpPolicies"`
@@ -800,6 +834,7 @@ type MrScalarArgs struct {
 	ClusterId pulumi.StringPtrInput
 	// Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
 	ConfigurationsFiles MrScalarConfigurationsFileArrayInput
+	// amount of instances in core group.
 	CoreDesiredCapacity pulumi.IntPtrInput
 	// This determines the ebs configuration for your core group instances. Only a single block is allowed.
 	CoreEbsBlockDevices MrScalarCoreEbsBlockDeviceArrayInput
@@ -808,8 +843,10 @@ type MrScalarArgs struct {
 	// The MrScaler instance types for the core nodes.
 	CoreInstanceTypes pulumi.StringArrayInput
 	// The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-	CoreLifecycle           pulumi.StringPtrInput
-	CoreMaxSize             pulumi.IntPtrInput
+	CoreLifecycle pulumi.StringPtrInput
+	// maximal amount of instances in core group.
+	CoreMaxSize pulumi.IntPtrInput
+	// The minimal amount of instances in core group.
 	CoreMinSize             pulumi.IntPtrInput
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayInput
 	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayInput
@@ -844,6 +881,8 @@ type MrScalarArgs struct {
 	MasterInstanceTypes pulumi.StringArrayInput
 	// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
 	MasterLifecycle pulumi.StringPtrInput
+	// Number of instances in the master group.
+	MasterTarget pulumi.IntPtrInput
 	// The application name.
 	Name                pulumi.StringPtrInput
 	ProvisioningTimeout MrScalarProvisioningTimeoutPtrInput
@@ -867,7 +906,8 @@ type MrScalarArgs struct {
 	// The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
 	Strategy pulumi.StringInput
 	// A list of tags to assign to the resource. You may define multiple tags.
-	Tags                MrScalarTagArrayInput
+	Tags MrScalarTagArrayInput
+	// amount of instances in task group.
 	TaskDesiredCapacity pulumi.IntPtrInput
 	// This determines the ebs configuration for your task group instances. Only a single block is allowed.
 	TaskEbsBlockDevices MrScalarTaskEbsBlockDeviceArrayInput
@@ -876,8 +916,10 @@ type MrScalarArgs struct {
 	// The MrScaler instance types for the task nodes.
 	TaskInstanceTypes pulumi.StringArrayInput
 	// The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-	TaskLifecycle           pulumi.StringPtrInput
-	TaskMaxSize             pulumi.IntPtrInput
+	TaskLifecycle pulumi.StringPtrInput
+	// maximal amount of instances in task group.
+	TaskMaxSize pulumi.IntPtrInput
+	// The minimal amount of instances in task group.
 	TaskMinSize             pulumi.IntPtrInput
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayInput
 	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayInput

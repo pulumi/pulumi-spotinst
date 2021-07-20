@@ -7,29 +7,29 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.SpotInst.Gke.Outputs
+namespace Pulumi.SpotInst.Azure.Outputs
 {
 
     [OutputType]
-    public sealed class OceanLaunchSpecMetadata
+    public sealed class OceanManagedServiceIdentity
     {
         /// <summary>
-        /// The label key.
+        /// Name of the Load Balancer.
         /// </summary>
-        public readonly string? Key;
+        public readonly string Name;
         /// <summary>
-        /// The label value.
+        /// The Resource Group name of the Load Balancer.
         /// </summary>
-        public readonly string? Value;
+        public readonly string ResourceGroupName;
 
         [OutputConstructor]
-        private OceanLaunchSpecMetadata(
-            string? key,
+        private OceanManagedServiceIdentity(
+            string name,
 
-            string? value)
+            string resourceGroupName)
         {
-            Key = key;
-            Value = value;
+            Name = name;
+            ResourceGroupName = resourceGroupName;
         }
     }
 }

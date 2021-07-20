@@ -38,6 +38,7 @@ __all__ = [
     'OceanImageArgs',
     'OceanImageMarketplaceArgs',
     'OceanLoadBalancerArgs',
+    'OceanManagedServiceIdentityArgs',
     'OceanNetworkArgs',
     'OceanNetworkNetworkInterfaceArgs',
     'OceanNetworkNetworkInterfaceAdditionalIpConfigArgs',
@@ -2001,6 +2002,43 @@ class OceanLoadBalancerArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class OceanManagedServiceIdentityArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the Load Balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        The Resource Group name of the Load Balancer.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
 
 
 @pulumi.input_type

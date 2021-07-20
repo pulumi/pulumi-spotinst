@@ -29,7 +29,7 @@ import (
 // 			AssociatePublicIpAddress: pulumi.Bool(true),
 // 			AutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{
 // 				&aws.OceanLaunchSpecAutoscaleHeadroomArgs{
-// 					CpuPerNit:     pulumi.Float64(1000),
+// 					CpuPerUnit:    pulumi.Int(1000),
 // 					GpuPerUnit:    pulumi.Int(0),
 // 					MemoryPerUnit: pulumi.Int(2048),
 // 					NumOfUnits:    pulumi.Int(5),
@@ -78,6 +78,10 @@ import (
 // 				},
 // 			},
 // 			OceanId: pulumi.String("o-123456"),
+// 			PreferredSpotTypes: pulumi.StringArray{
+// 				pulumi.String("m4.large"),
+// 				pulumi.String("m4.xlarge"),
+// 			},
 // 			ResourceLimits: aws.OceanLaunchSpecResourceLimitArray{
 // 				&aws.OceanLaunchSpecResourceLimitArgs{
 // 					MaxInstanceCount: pulumi.Int(4),
@@ -155,8 +159,10 @@ type OceanLaunchSpec struct {
 	// The name of the Virtual Node Group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the Ocean cluster.
-	OceanId        pulumi.StringOutput                     `pulumi:"oceanId"`
-	ResourceLimits OceanLaunchSpecResourceLimitArrayOutput `pulumi:"resourceLimits"`
+	OceanId pulumi.StringOutput `pulumi:"oceanId"`
+	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredSpotTypes pulumi.StringArrayOutput                `pulumi:"preferredSpotTypes"`
+	ResourceLimits     OceanLaunchSpecResourceLimitArrayOutput `pulumi:"resourceLimits"`
 	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
@@ -226,8 +232,10 @@ type oceanLaunchSpecState struct {
 	// The name of the Virtual Node Group.
 	Name *string `pulumi:"name"`
 	// The ID of the Ocean cluster.
-	OceanId        *string                        `pulumi:"oceanId"`
-	ResourceLimits []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
+	OceanId *string `pulumi:"oceanId"`
+	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredSpotTypes []string                       `pulumi:"preferredSpotTypes"`
+	ResourceLimits     []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
 	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
@@ -266,8 +274,10 @@ type OceanLaunchSpecState struct {
 	// The name of the Virtual Node Group.
 	Name pulumi.StringPtrInput
 	// The ID of the Ocean cluster.
-	OceanId        pulumi.StringPtrInput
-	ResourceLimits OceanLaunchSpecResourceLimitArrayInput
+	OceanId pulumi.StringPtrInput
+	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredSpotTypes pulumi.StringArrayInput
+	ResourceLimits     OceanLaunchSpecResourceLimitArrayInput
 	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
@@ -310,8 +320,10 @@ type oceanLaunchSpecArgs struct {
 	// The name of the Virtual Node Group.
 	Name *string `pulumi:"name"`
 	// The ID of the Ocean cluster.
-	OceanId        string                         `pulumi:"oceanId"`
-	ResourceLimits []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
+	OceanId string `pulumi:"oceanId"`
+	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredSpotTypes []string                       `pulumi:"preferredSpotTypes"`
+	ResourceLimits     []OceanLaunchSpecResourceLimit `pulumi:"resourceLimits"`
 	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
@@ -351,8 +363,10 @@ type OceanLaunchSpecArgs struct {
 	// The name of the Virtual Node Group.
 	Name pulumi.StringPtrInput
 	// The ID of the Ocean cluster.
-	OceanId        pulumi.StringInput
-	ResourceLimits OceanLaunchSpecResourceLimitArrayInput
+	OceanId pulumi.StringInput
+	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredSpotTypes pulumi.StringArrayInput
+	ResourceLimits     OceanLaunchSpecResourceLimitArrayInput
 	// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
