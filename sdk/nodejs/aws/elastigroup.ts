@@ -56,6 +56,12 @@ import * as utilities from "../utilities";
  *     placementTenancy: "default",
  *     product: "Linux/UNIX",
  *     region: "us-west-2",
+ *     resourceTagSpecifications: [{
+ *         shouldTagAmis: true,
+ *         shouldTagEnis: true,
+ *         shouldTagSnapshots: true,
+ *         shouldTagVolumes: true,
+ *     }],
  *     scalingDownPolicies: [{
  *         adjustment: "1",
  *         cooldown: 300,
@@ -325,7 +331,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly placementTenancy!: pulumi.Output<string | undefined>;
     /**
-     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     public readonly preferredAvailabilityZones!: pulumi.Output<string[] | undefined>;
@@ -334,7 +340,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly privateIps!: pulumi.Output<string[] | undefined>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     public readonly product!: pulumi.Output<string>;
@@ -343,6 +349,10 @@ export class Elastigroup extends pulumi.CustomResource {
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
     public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * User will specify which resources should be tagged with group tags.
+     */
+    public readonly resourceTagSpecifications!: pulumi.Output<outputs.aws.ElastigroupResourceTagSpecification[] | undefined>;
     /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */
@@ -469,6 +479,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["privateIps"] = state ? state.privateIps : undefined;
             inputs["product"] = state ? state.product : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["resourceTagSpecifications"] = state ? state.resourceTagSpecifications : undefined;
             inputs["revertToSpot"] = state ? state.revertToSpot : undefined;
             inputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
             inputs["scalingStrategies"] = state ? state.scalingStrategies : undefined;
@@ -564,6 +575,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["privateIps"] = args ? args.privateIps : undefined;
             inputs["product"] = args ? args.product : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["resourceTagSpecifications"] = args ? args.resourceTagSpecifications : undefined;
             inputs["revertToSpot"] = args ? args.revertToSpot : undefined;
             inputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
             inputs["scalingStrategies"] = args ? args.scalingStrategies : undefined;
@@ -785,7 +797,7 @@ export interface ElastigroupState {
      */
     readonly placementTenancy?: pulumi.Input<string>;
     /**
-     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     readonly preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
@@ -794,7 +806,7 @@ export interface ElastigroupState {
      */
     readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     readonly product?: pulumi.Input<string>;
@@ -803,6 +815,10 @@ export interface ElastigroupState {
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * User will specify which resources should be tagged with group tags.
+     */
+    readonly resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[]>;
     /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */
@@ -1055,7 +1071,7 @@ export interface ElastigroupArgs {
      */
     readonly placementTenancy?: pulumi.Input<string>;
     /**
-     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     readonly preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1064,7 +1080,7 @@ export interface ElastigroupArgs {
      */
     readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     readonly product: pulumi.Input<string>;
@@ -1073,6 +1089,10 @@ export interface ElastigroupArgs {
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * User will specify which resources should be tagged with group tags.
+     */
+    readonly resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[]>;
     /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */

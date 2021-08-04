@@ -34,7 +34,7 @@ export class Ocean extends pulumi.CustomResource {
     }
 
     /**
-     * The AKS identifier.
+     * The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
      */
     public readonly acdIdentifier!: pulumi.Output<string>;
     /**
@@ -194,7 +194,7 @@ export class Ocean extends pulumi.CustomResource {
  */
 export interface OceanState {
     /**
-     * The AKS identifier.
+     * The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
      */
     readonly acdIdentifier?: pulumi.Input<string>;
     /**
@@ -280,7 +280,7 @@ export interface OceanState {
  */
 export interface OceanArgs {
     /**
-     * The AKS identifier.
+     * The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
      */
     readonly acdIdentifier: pulumi.Input<string>;
     /**

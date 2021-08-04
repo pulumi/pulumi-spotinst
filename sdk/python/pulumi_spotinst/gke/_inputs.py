@@ -41,6 +41,9 @@ __all__ = [
     'OceanLaunchSpecAutoscaleHeadroomArgs',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecMetadataArgs',
+    'OceanLaunchSpecResourceLimitsArgs',
+    'OceanLaunchSpecShieldedInstanceConfigArgs',
+    'OceanLaunchSpecStorageArgs',
     'OceanLaunchSpecStrategyArgs',
     'OceanLaunchSpecTaintArgs',
 ]
@@ -1854,6 +1857,91 @@ class OceanLaunchSpecMetadataArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecResourceLimitsArgs:
+    def __init__(__self__, *,
+                 max_instance_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_instance_count: Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+        """
+        if max_instance_count is not None:
+            pulumi.set(__self__, "max_instance_count", max_instance_count)
+
+    @property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+        """
+        return pulumi.get(self, "max_instance_count")
+
+    @max_instance_count.setter
+    def max_instance_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_instance_count", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecShieldedInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
+                 enable_secure_boot: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_integrity_monitoring: Boolean. Enable the integrity monitoring parameter on the GCP instances.
+        :param pulumi.Input[bool] enable_secure_boot: Boolean. Enable the secure boot parameter on the GCP instances.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Enable the integrity monitoring parameter on the GCP instances.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @enable_integrity_monitoring.setter
+    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_integrity_monitoring", value)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Enable the secure boot parameter on the GCP instances.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecStorageArgs:
+    def __init__(__self__, *,
+                 local_ssd_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] local_ssd_count: Defines the number of local SSDs to be attached per node for this VNG.
+        """
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Defines the number of local SSDs to be attached per node for this VNG.
+        """
+        return pulumi.get(self, "local_ssd_count")
+
+    @local_ssd_count.setter
+    def local_ssd_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "local_ssd_count", value)
 
 
 @pulumi.input_type

@@ -23,6 +23,7 @@ class OceanImportArgs:
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
+                 root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -34,6 +35,7 @@ class OceanImportArgs:
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
+        :param pulumi.Input[str] root_volume_type: The root volume disk type.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
         """
@@ -51,6 +53,8 @@ class OceanImportArgs:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
+        if root_volume_type is not None:
+            pulumi.set(__self__, "root_volume_type", root_volume_type)
         if scheduled_tasks is not None:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if whitelists is not None:
@@ -150,6 +154,18 @@ class OceanImportArgs:
         pulumi.set(self, "min_size", value)
 
     @property
+    @pulumi.getter(name="rootVolumeType")
+    def root_volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The root volume disk type.
+        """
+        return pulumi.get(self, "root_volume_type")
+
+    @root_volume_type.setter
+    def root_volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "root_volume_type", value)
+
+    @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]:
         """
@@ -186,6 +202,7 @@ class _OceanImportState:
                  location: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
+                 root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -197,6 +214,7 @@ class _OceanImportState:
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
+        :param pulumi.Input[str] root_volume_type: The root volume disk type.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
         """
@@ -218,6 +236,8 @@ class _OceanImportState:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
+        if root_volume_type is not None:
+            pulumi.set(__self__, "root_volume_type", root_volume_type)
         if scheduled_tasks is not None:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if whitelists is not None:
@@ -326,6 +346,18 @@ class _OceanImportState:
         pulumi.set(self, "min_size", value)
 
     @property
+    @pulumi.getter(name="rootVolumeType")
+    def root_volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The root volume disk type.
+        """
+        return pulumi.get(self, "root_volume_type")
+
+    @root_volume_type.setter
+    def root_volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "root_volume_type", value)
+
+    @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]:
         """
@@ -363,6 +395,7 @@ class OceanImport(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
+                 root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -377,6 +410,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
+        :param pulumi.Input[str] root_volume_type: The root volume disk type.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
         """
@@ -411,6 +445,7 @@ class OceanImport(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
+                 root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -437,6 +472,7 @@ class OceanImport(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
+            __props__.__dict__["root_volume_type"] = root_volume_type
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
             __props__.__dict__["whitelists"] = whitelists
             __props__.__dict__["cluster_controller_id"] = None
@@ -459,6 +495,7 @@ class OceanImport(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
+            root_volume_type: Optional[pulumi.Input[str]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
             whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanImport':
         """
@@ -475,6 +512,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
+        :param pulumi.Input[str] root_volume_type: The root volume disk type.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
         """
@@ -491,6 +529,7 @@ class OceanImport(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["min_size"] = min_size
+        __props__.__dict__["root_volume_type"] = root_volume_type
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
         __props__.__dict__["whitelists"] = whitelists
         return OceanImport(resource_name, opts=opts, __props__=__props__)
@@ -560,6 +599,14 @@ class OceanImport(pulumi.CustomResource):
         The lower limit of instances the cluster can scale down to.
         """
         return pulumi.get(self, "min_size")
+
+    @property
+    @pulumi.getter(name="rootVolumeType")
+    def root_volume_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The root volume disk type.
+        """
+        return pulumi.get(self, "root_volume_type")
 
     @property
     @pulumi.getter(name="scheduledTasks")

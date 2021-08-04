@@ -227,6 +227,12 @@ namespace Pulumi.SpotInst.Aws
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// User will specify which resources should be tagged with group tags.
+        /// </summary>
+        [Output("resourceTagSpecifications")]
+        public Output<ImmutableArray<Outputs.ManagedInstanceResourceTagSpecification>> ResourceTagSpecifications { get; private set; } = null!;
+
         [Output("revertToSpot")]
         public Output<Outputs.ManagedInstanceRevertToSpot?> RevertToSpot { get; private set; } = null!;
 
@@ -547,6 +553,18 @@ namespace Pulumi.SpotInst.Aws
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("resourceTagSpecifications")]
+        private InputList<Inputs.ManagedInstanceResourceTagSpecificationArgs>? _resourceTagSpecifications;
+
+        /// <summary>
+        /// User will specify which resources should be tagged with group tags.
+        /// </summary>
+        public InputList<Inputs.ManagedInstanceResourceTagSpecificationArgs> ResourceTagSpecifications
+        {
+            get => _resourceTagSpecifications ?? (_resourceTagSpecifications = new InputList<Inputs.ManagedInstanceResourceTagSpecificationArgs>());
+            set => _resourceTagSpecifications = value;
+        }
+
         [Input("revertToSpot")]
         public Input<Inputs.ManagedInstanceRevertToSpotArgs>? RevertToSpot { get; set; }
 
@@ -850,6 +868,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("resourceTagSpecifications")]
+        private InputList<Inputs.ManagedInstanceResourceTagSpecificationGetArgs>? _resourceTagSpecifications;
+
+        /// <summary>
+        /// User will specify which resources should be tagged with group tags.
+        /// </summary>
+        public InputList<Inputs.ManagedInstanceResourceTagSpecificationGetArgs> ResourceTagSpecifications
+        {
+            get => _resourceTagSpecifications ?? (_resourceTagSpecifications = new InputList<Inputs.ManagedInstanceResourceTagSpecificationGetArgs>());
+            set => _resourceTagSpecifications = value;
+        }
 
         [Input("revertToSpot")]
         public Input<Inputs.ManagedInstanceRevertToSpotGetArgs>? RevertToSpot { get; set; }

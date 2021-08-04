@@ -29,14 +29,22 @@ type OceanLaunchSpec struct {
 	NodePoolName pulumi.StringPtrOutput `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
+	// The Ocean virtual node group resource limits object.
+	ResourceLimits OceanLaunchSpecResourceLimitsPtrOutput `pulumi:"resourceLimits"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolOutput `pulumi:"restrictScaleDown"`
 	// Root volume size (in GB).
 	RootVolumeSize pulumi.IntOutput `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
 	RootVolumeType pulumi.StringOutput `pulumi:"rootVolumeType"`
+	// The account used by applications running on the VM to call GCP APIs.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	// The Ocean shielded instance configuration object.
+	ShieldedInstanceConfig OceanLaunchSpecShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
 	// Image URL.
 	SourceImage pulumi.StringOutput `pulumi:"sourceImage"`
+	// The Ocean virtual node group storage object.
+	Storage OceanLaunchSpecStorageOutput `pulumi:"storage"`
 	// The Ocean Launch Spec Strategy object.
 	Strategies OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -87,14 +95,22 @@ type oceanLaunchSpecState struct {
 	NodePoolName *string `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
 	OceanId *string `pulumi:"oceanId"`
+	// The Ocean virtual node group resource limits object.
+	ResourceLimits *OceanLaunchSpecResourceLimits `pulumi:"resourceLimits"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
 	RootVolumeType *string `pulumi:"rootVolumeType"`
+	// The account used by applications running on the VM to call GCP APIs.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The Ocean shielded instance configuration object.
+	ShieldedInstanceConfig *OceanLaunchSpecShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Image URL.
 	SourceImage *string `pulumi:"sourceImage"`
+	// The Ocean virtual node group storage object.
+	Storage *OceanLaunchSpecStorage `pulumi:"storage"`
 	// The Ocean Launch Spec Strategy object.
 	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -114,14 +130,22 @@ type OceanLaunchSpecState struct {
 	NodePoolName pulumi.StringPtrInput
 	// The Ocean cluster ID.
 	OceanId pulumi.StringPtrInput
+	// The Ocean virtual node group resource limits object.
+	ResourceLimits OceanLaunchSpecResourceLimitsPtrInput
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
 	RootVolumeType pulumi.StringPtrInput
+	// The account used by applications running on the VM to call GCP APIs.
+	ServiceAccount pulumi.StringPtrInput
+	// The Ocean shielded instance configuration object.
+	ShieldedInstanceConfig OceanLaunchSpecShieldedInstanceConfigPtrInput
 	// Image URL.
 	SourceImage pulumi.StringPtrInput
+	// The Ocean virtual node group storage object.
+	Storage OceanLaunchSpecStoragePtrInput
 	// The Ocean Launch Spec Strategy object.
 	Strategies OceanLaunchSpecStrategyArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -145,14 +169,22 @@ type oceanLaunchSpecArgs struct {
 	NodePoolName *string `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
 	OceanId string `pulumi:"oceanId"`
+	// The Ocean virtual node group resource limits object.
+	ResourceLimits *OceanLaunchSpecResourceLimits `pulumi:"resourceLimits"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
 	RootVolumeType *string `pulumi:"rootVolumeType"`
+	// The account used by applications running on the VM to call GCP APIs.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The Ocean shielded instance configuration object.
+	ShieldedInstanceConfig *OceanLaunchSpecShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Image URL.
 	SourceImage *string `pulumi:"sourceImage"`
+	// The Ocean virtual node group storage object.
+	Storage *OceanLaunchSpecStorage `pulumi:"storage"`
 	// The Ocean Launch Spec Strategy object.
 	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -173,14 +205,22 @@ type OceanLaunchSpecArgs struct {
 	NodePoolName pulumi.StringPtrInput
 	// The Ocean cluster ID.
 	OceanId pulumi.StringInput
+	// The Ocean virtual node group resource limits object.
+	ResourceLimits OceanLaunchSpecResourceLimitsPtrInput
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
 	RootVolumeType pulumi.StringPtrInput
+	// The account used by applications running on the VM to call GCP APIs.
+	ServiceAccount pulumi.StringPtrInput
+	// The Ocean shielded instance configuration object.
+	ShieldedInstanceConfig OceanLaunchSpecShieldedInstanceConfigPtrInput
 	// Image URL.
 	SourceImage pulumi.StringPtrInput
+	// The Ocean virtual node group storage object.
+	Storage OceanLaunchSpecStoragePtrInput
 	// The Ocean Launch Spec Strategy object.
 	Strategies OceanLaunchSpecStrategyArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.

@@ -64,6 +64,10 @@ export class OceanImport extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
+     * The root volume disk type.
+     */
+    public readonly rootVolumeType!: pulumi.Output<string | undefined>;
+    /**
      * Set scheduling object.
      */
     public readonly scheduledTasks!: pulumi.Output<outputs.gke.OceanImportScheduledTask[] | undefined>;
@@ -94,6 +98,7 @@ export class OceanImport extends pulumi.CustomResource {
             inputs["location"] = state ? state.location : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
             inputs["minSize"] = state ? state.minSize : undefined;
+            inputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
             inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
             inputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
@@ -112,6 +117,7 @@ export class OceanImport extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
             inputs["minSize"] = args ? args.minSize : undefined;
+            inputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
             inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
             inputs["whitelists"] = args ? args.whitelists : undefined;
             inputs["clusterControllerId"] = undefined /*out*/;
@@ -158,6 +164,10 @@ export interface OceanImportState {
      */
     readonly minSize?: pulumi.Input<number>;
     /**
+     * The root volume disk type.
+     */
+    readonly rootVolumeType?: pulumi.Input<string>;
+    /**
      * Set scheduling object.
      */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
@@ -200,6 +210,10 @@ export interface OceanImportArgs {
      * The lower limit of instances the cluster can scale down to.
      */
     readonly minSize?: pulumi.Input<number>;
+    /**
+     * The root volume disk type.
+     */
+    readonly rootVolumeType?: pulumi.Input<string>;
     /**
      * Set scheduling object.
      */

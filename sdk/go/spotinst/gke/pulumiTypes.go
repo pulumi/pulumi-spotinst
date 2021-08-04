@@ -4246,6 +4246,418 @@ func (o OceanLaunchSpecMetadataArrayOutput) Index(i pulumi.IntInput) OceanLaunch
 	}).(OceanLaunchSpecMetadataOutput)
 }
 
+type OceanLaunchSpecResourceLimits struct {
+	// Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
+}
+
+// OceanLaunchSpecResourceLimitsInput is an input type that accepts OceanLaunchSpecResourceLimitsArgs and OceanLaunchSpecResourceLimitsOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecResourceLimitsInput` via:
+//
+//          OceanLaunchSpecResourceLimitsArgs{...}
+type OceanLaunchSpecResourceLimitsInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecResourceLimitsOutput() OceanLaunchSpecResourceLimitsOutput
+	ToOceanLaunchSpecResourceLimitsOutputWithContext(context.Context) OceanLaunchSpecResourceLimitsOutput
+}
+
+type OceanLaunchSpecResourceLimitsArgs struct {
+	// Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
+}
+
+func (OceanLaunchSpecResourceLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecResourceLimits)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecResourceLimitsArgs) ToOceanLaunchSpecResourceLimitsOutput() OceanLaunchSpecResourceLimitsOutput {
+	return i.ToOceanLaunchSpecResourceLimitsOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecResourceLimitsArgs) ToOceanLaunchSpecResourceLimitsOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecResourceLimitsOutput)
+}
+
+func (i OceanLaunchSpecResourceLimitsArgs) ToOceanLaunchSpecResourceLimitsPtrOutput() OceanLaunchSpecResourceLimitsPtrOutput {
+	return i.ToOceanLaunchSpecResourceLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecResourceLimitsArgs) ToOceanLaunchSpecResourceLimitsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecResourceLimitsOutput).ToOceanLaunchSpecResourceLimitsPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecResourceLimitsPtrInput is an input type that accepts OceanLaunchSpecResourceLimitsArgs, OceanLaunchSpecResourceLimitsPtr and OceanLaunchSpecResourceLimitsPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecResourceLimitsPtrInput` via:
+//
+//          OceanLaunchSpecResourceLimitsArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLaunchSpecResourceLimitsPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecResourceLimitsPtrOutput() OceanLaunchSpecResourceLimitsPtrOutput
+	ToOceanLaunchSpecResourceLimitsPtrOutputWithContext(context.Context) OceanLaunchSpecResourceLimitsPtrOutput
+}
+
+type oceanLaunchSpecResourceLimitsPtrType OceanLaunchSpecResourceLimitsArgs
+
+func OceanLaunchSpecResourceLimitsPtr(v *OceanLaunchSpecResourceLimitsArgs) OceanLaunchSpecResourceLimitsPtrInput {
+	return (*oceanLaunchSpecResourceLimitsPtrType)(v)
+}
+
+func (*oceanLaunchSpecResourceLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecResourceLimits)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecResourceLimitsPtrType) ToOceanLaunchSpecResourceLimitsPtrOutput() OceanLaunchSpecResourceLimitsPtrOutput {
+	return i.ToOceanLaunchSpecResourceLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecResourceLimitsPtrType) ToOceanLaunchSpecResourceLimitsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecResourceLimitsPtrOutput)
+}
+
+type OceanLaunchSpecResourceLimitsOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecResourceLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecResourceLimits)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecResourceLimitsOutput) ToOceanLaunchSpecResourceLimitsOutput() OceanLaunchSpecResourceLimitsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecResourceLimitsOutput) ToOceanLaunchSpecResourceLimitsOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecResourceLimitsOutput) ToOceanLaunchSpecResourceLimitsPtrOutput() OceanLaunchSpecResourceLimitsPtrOutput {
+	return o.ToOceanLaunchSpecResourceLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecResourceLimitsOutput) ToOceanLaunchSpecResourceLimitsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitsPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecResourceLimits) *OceanLaunchSpecResourceLimits {
+		return &v
+	}).(OceanLaunchSpecResourceLimitsPtrOutput)
+}
+
+// Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+func (o OceanLaunchSpecResourceLimitsOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecResourceLimits) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecResourceLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecResourceLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecResourceLimits)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecResourceLimitsPtrOutput) ToOceanLaunchSpecResourceLimitsPtrOutput() OceanLaunchSpecResourceLimitsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecResourceLimitsPtrOutput) ToOceanLaunchSpecResourceLimitsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecResourceLimitsPtrOutput) Elem() OceanLaunchSpecResourceLimitsOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecResourceLimits) OceanLaunchSpecResourceLimits { return *v }).(OceanLaunchSpecResourceLimitsOutput)
+}
+
+// Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+func (o OceanLaunchSpecResourceLimitsPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecResourceLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecShieldedInstanceConfig struct {
+	// Boolean. Enable the integrity monitoring parameter on the GCP instances.
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// Boolean. Enable the secure boot parameter on the GCP instances.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+}
+
+// OceanLaunchSpecShieldedInstanceConfigInput is an input type that accepts OceanLaunchSpecShieldedInstanceConfigArgs and OceanLaunchSpecShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecShieldedInstanceConfigInput` via:
+//
+//          OceanLaunchSpecShieldedInstanceConfigArgs{...}
+type OceanLaunchSpecShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecShieldedInstanceConfigOutput() OceanLaunchSpecShieldedInstanceConfigOutput
+	ToOceanLaunchSpecShieldedInstanceConfigOutputWithContext(context.Context) OceanLaunchSpecShieldedInstanceConfigOutput
+}
+
+type OceanLaunchSpecShieldedInstanceConfigArgs struct {
+	// Boolean. Enable the integrity monitoring parameter on the GCP instances.
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// Boolean. Enable the secure boot parameter on the GCP instances.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+}
+
+func (OceanLaunchSpecShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecShieldedInstanceConfigArgs) ToOceanLaunchSpecShieldedInstanceConfigOutput() OceanLaunchSpecShieldedInstanceConfigOutput {
+	return i.ToOceanLaunchSpecShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecShieldedInstanceConfigArgs) ToOceanLaunchSpecShieldedInstanceConfigOutputWithContext(ctx context.Context) OceanLaunchSpecShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecShieldedInstanceConfigOutput)
+}
+
+func (i OceanLaunchSpecShieldedInstanceConfigArgs) ToOceanLaunchSpecShieldedInstanceConfigPtrOutput() OceanLaunchSpecShieldedInstanceConfigPtrOutput {
+	return i.ToOceanLaunchSpecShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecShieldedInstanceConfigArgs) ToOceanLaunchSpecShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecShieldedInstanceConfigOutput).ToOceanLaunchSpecShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecShieldedInstanceConfigPtrInput is an input type that accepts OceanLaunchSpecShieldedInstanceConfigArgs, OceanLaunchSpecShieldedInstanceConfigPtr and OceanLaunchSpecShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecShieldedInstanceConfigPtrInput` via:
+//
+//          OceanLaunchSpecShieldedInstanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLaunchSpecShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecShieldedInstanceConfigPtrOutput() OceanLaunchSpecShieldedInstanceConfigPtrOutput
+	ToOceanLaunchSpecShieldedInstanceConfigPtrOutputWithContext(context.Context) OceanLaunchSpecShieldedInstanceConfigPtrOutput
+}
+
+type oceanLaunchSpecShieldedInstanceConfigPtrType OceanLaunchSpecShieldedInstanceConfigArgs
+
+func OceanLaunchSpecShieldedInstanceConfigPtr(v *OceanLaunchSpecShieldedInstanceConfigArgs) OceanLaunchSpecShieldedInstanceConfigPtrInput {
+	return (*oceanLaunchSpecShieldedInstanceConfigPtrType)(v)
+}
+
+func (*oceanLaunchSpecShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecShieldedInstanceConfigPtrType) ToOceanLaunchSpecShieldedInstanceConfigPtrOutput() OceanLaunchSpecShieldedInstanceConfigPtrOutput {
+	return i.ToOceanLaunchSpecShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecShieldedInstanceConfigPtrType) ToOceanLaunchSpecShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecShieldedInstanceConfigPtrOutput)
+}
+
+type OceanLaunchSpecShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecShieldedInstanceConfigOutput) ToOceanLaunchSpecShieldedInstanceConfigOutput() OceanLaunchSpecShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o OceanLaunchSpecShieldedInstanceConfigOutput) ToOceanLaunchSpecShieldedInstanceConfigOutputWithContext(ctx context.Context) OceanLaunchSpecShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o OceanLaunchSpecShieldedInstanceConfigOutput) ToOceanLaunchSpecShieldedInstanceConfigPtrOutput() OceanLaunchSpecShieldedInstanceConfigPtrOutput {
+	return o.ToOceanLaunchSpecShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecShieldedInstanceConfigOutput) ToOceanLaunchSpecShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecShieldedInstanceConfig) *OceanLaunchSpecShieldedInstanceConfig {
+		return &v
+	}).(OceanLaunchSpecShieldedInstanceConfigPtrOutput)
+}
+
+// Boolean. Enable the integrity monitoring parameter on the GCP instances.
+func (o OceanLaunchSpecShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Enable the secure boot parameter on the GCP instances.
+func (o OceanLaunchSpecShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+type OceanLaunchSpecShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecShieldedInstanceConfigPtrOutput) ToOceanLaunchSpecShieldedInstanceConfigPtrOutput() OceanLaunchSpecShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecShieldedInstanceConfigPtrOutput) ToOceanLaunchSpecShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecShieldedInstanceConfigPtrOutput) Elem() OceanLaunchSpecShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecShieldedInstanceConfig) OceanLaunchSpecShieldedInstanceConfig { return *v }).(OceanLaunchSpecShieldedInstanceConfigOutput)
+}
+
+// Boolean. Enable the integrity monitoring parameter on the GCP instances.
+func (o OceanLaunchSpecShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Enable the secure boot parameter on the GCP instances.
+func (o OceanLaunchSpecShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+type OceanLaunchSpecStorage struct {
+	// Defines the number of local SSDs to be attached per node for this VNG.
+	LocalSsdCount *int `pulumi:"localSsdCount"`
+}
+
+// OceanLaunchSpecStorageInput is an input type that accepts OceanLaunchSpecStorageArgs and OceanLaunchSpecStorageOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecStorageInput` via:
+//
+//          OceanLaunchSpecStorageArgs{...}
+type OceanLaunchSpecStorageInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecStorageOutput() OceanLaunchSpecStorageOutput
+	ToOceanLaunchSpecStorageOutputWithContext(context.Context) OceanLaunchSpecStorageOutput
+}
+
+type OceanLaunchSpecStorageArgs struct {
+	// Defines the number of local SSDs to be attached per node for this VNG.
+	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+}
+
+func (OceanLaunchSpecStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecStorage)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecStorageArgs) ToOceanLaunchSpecStorageOutput() OceanLaunchSpecStorageOutput {
+	return i.ToOceanLaunchSpecStorageOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecStorageArgs) ToOceanLaunchSpecStorageOutputWithContext(ctx context.Context) OceanLaunchSpecStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStorageOutput)
+}
+
+func (i OceanLaunchSpecStorageArgs) ToOceanLaunchSpecStoragePtrOutput() OceanLaunchSpecStoragePtrOutput {
+	return i.ToOceanLaunchSpecStoragePtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecStorageArgs) ToOceanLaunchSpecStoragePtrOutputWithContext(ctx context.Context) OceanLaunchSpecStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStorageOutput).ToOceanLaunchSpecStoragePtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecStoragePtrInput is an input type that accepts OceanLaunchSpecStorageArgs, OceanLaunchSpecStoragePtr and OceanLaunchSpecStoragePtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecStoragePtrInput` via:
+//
+//          OceanLaunchSpecStorageArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLaunchSpecStoragePtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecStoragePtrOutput() OceanLaunchSpecStoragePtrOutput
+	ToOceanLaunchSpecStoragePtrOutputWithContext(context.Context) OceanLaunchSpecStoragePtrOutput
+}
+
+type oceanLaunchSpecStoragePtrType OceanLaunchSpecStorageArgs
+
+func OceanLaunchSpecStoragePtr(v *OceanLaunchSpecStorageArgs) OceanLaunchSpecStoragePtrInput {
+	return (*oceanLaunchSpecStoragePtrType)(v)
+}
+
+func (*oceanLaunchSpecStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecStorage)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecStoragePtrType) ToOceanLaunchSpecStoragePtrOutput() OceanLaunchSpecStoragePtrOutput {
+	return i.ToOceanLaunchSpecStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecStoragePtrType) ToOceanLaunchSpecStoragePtrOutputWithContext(ctx context.Context) OceanLaunchSpecStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecStoragePtrOutput)
+}
+
+type OceanLaunchSpecStorageOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecStorage)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecStorageOutput) ToOceanLaunchSpecStorageOutput() OceanLaunchSpecStorageOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStorageOutput) ToOceanLaunchSpecStorageOutputWithContext(ctx context.Context) OceanLaunchSpecStorageOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStorageOutput) ToOceanLaunchSpecStoragePtrOutput() OceanLaunchSpecStoragePtrOutput {
+	return o.ToOceanLaunchSpecStoragePtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecStorageOutput) ToOceanLaunchSpecStoragePtrOutputWithContext(ctx context.Context) OceanLaunchSpecStoragePtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStorage) *OceanLaunchSpecStorage {
+		return &v
+	}).(OceanLaunchSpecStoragePtrOutput)
+}
+
+// Defines the number of local SSDs to be attached per node for this VNG.
+func (o OceanLaunchSpecStorageOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStorage) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecStorage)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecStoragePtrOutput) ToOceanLaunchSpecStoragePtrOutput() OceanLaunchSpecStoragePtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStoragePtrOutput) ToOceanLaunchSpecStoragePtrOutputWithContext(ctx context.Context) OceanLaunchSpecStoragePtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecStoragePtrOutput) Elem() OceanLaunchSpecStorageOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecStorage) OceanLaunchSpecStorage { return *v }).(OceanLaunchSpecStorageOutput)
+}
+
+// Defines the number of local SSDs to be attached per node for this VNG.
+func (o OceanLaunchSpecStoragePtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecStorage) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
+}
+
 type OceanLaunchSpecStrategy struct {
 	// Defines the desired preemptible percentage for this launch specification.
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
@@ -4523,6 +4935,12 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecMetadataOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecMetadataArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitsOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecStorageOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecStoragePtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecStrategyOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecStrategyArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTaintOutput{})

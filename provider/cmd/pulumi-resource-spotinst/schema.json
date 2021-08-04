@@ -1651,6 +1651,47 @@
                 }
             }
         },
+        "spotinst:aws/ElastigroupResourceTagSpecification:ElastigroupResourceTagSpecification": {
+            "properties": {
+                "shouldTagAmis": {
+                    "type": "boolean",
+                    "description": "Tag specification for AMI resources.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shouldTagEnis": {
+                    "type": "boolean",
+                    "description": "Tag specification for ENI resources.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shouldTagSnapshots": {
+                    "type": "boolean",
+                    "description": "Tag specification for Snapshot resources.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shouldTagVolumes": {
+                    "type": "boolean",
+                    "description": "Tag specification for Volume resources.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "spotinst:aws/ElastigroupRevertToSpot:ElastigroupRevertToSpot": {
             "properties": {
                 "performAt": {
@@ -3090,6 +3131,47 @@
             "required": [
                 "deviceIndex"
             ]
+        },
+        "spotinst:aws/ManagedInstanceResourceTagSpecification:ManagedInstanceResourceTagSpecification": {
+            "properties": {
+                "shouldTagAmis": {
+                    "type": "boolean",
+                    "description": "Tag specification for AMI resources.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shouldTagEnis": {
+                    "type": "boolean",
+                    "description": "Tag specification for ENI resources.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shouldTagSnapshots": {
+                    "type": "boolean",
+                    "description": "Tag specification for Snapshot resources.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shouldTagVolumes": {
+                    "type": "boolean",
+                    "description": "Tag specification for Volume resources.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "spotinst:aws/ManagedInstanceRevertToSpot:ManagedInstanceRevertToSpot": {
             "properties": {
@@ -4701,10 +4783,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "deviceName"
-            ]
+            "type": "object"
         },
         "spotinst:aws/OceanLaunchSpecBlockDeviceMappingEbs:OceanLaunchSpecBlockDeviceMappingEbs": {
             "properties": {
@@ -10155,6 +10234,72 @@
                 }
             }
         },
+        "spotinst:gke/OceanLaunchSpecResourceLimits:OceanLaunchSpecResourceLimits": {
+            "properties": {
+                "maxInstanceCount": {
+                    "type": "integer",
+                    "description": "Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:gke/OceanLaunchSpecShieldedInstanceConfig:OceanLaunchSpecShieldedInstanceConfig": {
+            "properties": {
+                "enableIntegrityMonitoring": {
+                    "type": "boolean",
+                    "description": "Boolean. Enable the integrity monitoring parameter on the GCP instances.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableSecureBoot": {
+                    "type": "boolean",
+                    "description": "Boolean. Enable the secure boot parameter on the GCP instances.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enableIntegrityMonitoring",
+                        "enableSecureBoot"
+                    ]
+                }
+            }
+        },
+        "spotinst:gke/OceanLaunchSpecStorage:OceanLaunchSpecStorage": {
+            "properties": {
+                "localSsdCount": {
+                    "type": "integer",
+                    "description": "Defines the number of local SSDs to be attached per node for this VNG.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "localSsdCount"
+                    ]
+                }
+            }
+        },
         "spotinst:gke/OceanLaunchSpecStrategy:OceanLaunchSpecStrategy": {
             "properties": {
                 "preemptiblePercentage": {
@@ -11140,7 +11285,7 @@
             }
         },
         "spotinst:aws/elastigroup:Elastigroup": {
-            "description": "Provides a Spotinst AWS group resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create an Elastigroup\nconst default_elastigroup = new spotinst.aws.Elastigroup(\"default-elastigroup\", {\n    capacityUnit: \"weight\",\n    cpuCredits: \"unlimited\",\n    cpuOptions: {\n        threadsPerCore: 1,\n    },\n    description: \"created by Pulumi\",\n    desiredCapacity: 0,\n    ebsOptimized: false,\n    enableMonitoring: false,\n    fallbackToOndemand: false,\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-a27d8fda\",\n    instanceTypesOndemand: \"m3.2xlarge\",\n    instanceTypesPreferredSpots: [\"m3.xlarge\"],\n    instanceTypesSpots: [\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n    ],\n    instanceTypesWeights: [\n        {\n            instanceType: \"m3.xlarge\",\n            weight: 10,\n        },\n        {\n            instanceType: \"m3.2xlarge\",\n            weight: 16,\n        },\n    ],\n    keyName: \"my-key.ssh\",\n    maxSize: 0,\n    metadataOptions: {\n        httpPutResponseHopLimit: 10,\n        httpTokens: \"optional\",\n    },\n    minSize: 0,\n    minimumInstanceLifetime: 12,\n    orientation: \"balanced\",\n    placementTenancy: \"default\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    scalingDownPolicies: [{\n        adjustment: \"1\",\n        cooldown: 300,\n        evaluationPeriods: 10,\n        metricName: \"DefaultQueuesDepth\",\n        namespace: \"custom\",\n        period: 60,\n        policyName: \"Default Scaling Down Policy\",\n        statistic: \"average\",\n        threshold: 10,\n        unit: \"none\",\n    }],\n    scalingStrategies: [{\n        terminateAtEndOfBillingHour: true,\n        terminationPolicy: \"default\",\n    }],\n    scalingUpPolicies: [{\n        adjustment: \"1\",\n        cooldown: 300,\n        evaluationPeriods: 5,\n        metricName: \"DefaultQueuesDepth\",\n        namespace: \"custom\",\n        period: 60,\n        policyName: \"Default Scaling Up Policy\",\n        statistic: \"average\",\n        threshold: 100,\n        unit: \"none\",\n    }],\n    securityGroups: [\"sg-123456\"],\n    subnetIds: [\n        \"sb-123456\",\n        \"sb-456789\",\n    ],\n    tags: [\n        {\n            key: \"Env\",\n            value: \"production\",\n        },\n        {\n            key: \"Name\",\n            value: \"default-production\",\n        },\n        {\n            key: \"Project\",\n            value: \"app_v2\",\n        },\n    ],\n    userData: \"echo hello world\",\n    waitForCapacity: 5,\n    waitForCapacityTimeout: 300,\n}, { ignoreChanges: [\"desiredCapacity\"] });\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Spotinst AWS group resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create an Elastigroup\nconst default_elastigroup = new spotinst.aws.Elastigroup(\"default-elastigroup\", {\n    capacityUnit: \"weight\",\n    cpuCredits: \"unlimited\",\n    cpuOptions: {\n        threadsPerCore: 1,\n    },\n    description: \"created by Pulumi\",\n    desiredCapacity: 0,\n    ebsOptimized: false,\n    enableMonitoring: false,\n    fallbackToOndemand: false,\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-a27d8fda\",\n    instanceTypesOndemand: \"m3.2xlarge\",\n    instanceTypesPreferredSpots: [\"m3.xlarge\"],\n    instanceTypesSpots: [\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n    ],\n    instanceTypesWeights: [\n        {\n            instanceType: \"m3.xlarge\",\n            weight: 10,\n        },\n        {\n            instanceType: \"m3.2xlarge\",\n            weight: 16,\n        },\n    ],\n    keyName: \"my-key.ssh\",\n    maxSize: 0,\n    metadataOptions: {\n        httpPutResponseHopLimit: 10,\n        httpTokens: \"optional\",\n    },\n    minSize: 0,\n    minimumInstanceLifetime: 12,\n    orientation: \"balanced\",\n    placementTenancy: \"default\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    resourceTagSpecifications: [{\n        shouldTagAmis: true,\n        shouldTagEnis: true,\n        shouldTagSnapshots: true,\n        shouldTagVolumes: true,\n    }],\n    scalingDownPolicies: [{\n        adjustment: \"1\",\n        cooldown: 300,\n        evaluationPeriods: 10,\n        metricName: \"DefaultQueuesDepth\",\n        namespace: \"custom\",\n        period: 60,\n        policyName: \"Default Scaling Down Policy\",\n        statistic: \"average\",\n        threshold: 10,\n        unit: \"none\",\n    }],\n    scalingStrategies: [{\n        terminateAtEndOfBillingHour: true,\n        terminationPolicy: \"default\",\n    }],\n    scalingUpPolicies: [{\n        adjustment: \"1\",\n        cooldown: 300,\n        evaluationPeriods: 5,\n        metricName: \"DefaultQueuesDepth\",\n        namespace: \"custom\",\n        period: 60,\n        policyName: \"Default Scaling Up Policy\",\n        statistic: \"average\",\n        threshold: 100,\n        unit: \"none\",\n    }],\n    securityGroups: [\"sg-123456\"],\n    subnetIds: [\n        \"sb-123456\",\n        \"sb-456789\",\n    ],\n    tags: [\n        {\n            key: \"Env\",\n            value: \"production\",\n        },\n        {\n            key: \"Name\",\n            value: \"default-production\",\n        },\n        {\n            key: \"Project\",\n            value: \"app_v2\",\n        },\n    ],\n    userData: \"echo hello world\",\n    waitForCapacity: 5,\n    waitForCapacityTimeout: 300,\n}, { ignoreChanges: [\"desiredCapacity\"] });\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "availabilityZones": {
                     "type": "array",
@@ -11372,7 +11517,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. \nNote: Must be a sublist of `availability_zones` and `orientation` value must not be `\"equalAzDistribution\"`.\n"
+                    "description": "The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.\nNote: Must be a sublist of `availability_zones` and `orientation` value must not be `\"equalAzDistribution\"`.\n"
                 },
                 "privateIps": {
                     "type": "array",
@@ -11383,11 +11528,18 @@
                 },
                 "product": {
                     "type": "string",
-                    "description": "Operation system type. Valid values: `\"Linux/UNIX\"`, `\"SUSE Linux\"`, `\"Windows\"`. \nFor EC2 Classic instances:  `\"Linux/UNIX (Amazon VPC)\"`, `\"SUSE Linux (Amazon VPC)\"`, `\"Windows (Amazon VPC)\"`.\n"
+                    "description": "Operation system type. Valid values: `\"Linux/UNIX\"`, `\"SUSE Linux\"`, `\"Windows\"`.\nFor EC2 Classic instances:  `\"Linux/UNIX (Amazon VPC)\"`, `\"SUSE Linux (Amazon VPC)\"`, `\"Windows (Amazon VPC)\"`.\n"
                 },
                 "region": {
                     "type": "string",
                     "description": "The AWS region your group will be created in.\nNote: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).\n"
+                },
+                "resourceTagSpecifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ElastigroupResourceTagSpecification:ElastigroupResourceTagSpecification"
+                    },
+                    "description": "User will specify which resources should be tagged with group tags.\n"
                 },
                 "revertToSpot": {
                     "$ref": "#/types/spotinst:aws/ElastigroupRevertToSpot:ElastigroupRevertToSpot",
@@ -11743,7 +11895,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. \nNote: Must be a sublist of `availability_zones` and `orientation` value must not be `\"equalAzDistribution\"`.\n"
+                    "description": "The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.\nNote: Must be a sublist of `availability_zones` and `orientation` value must not be `\"equalAzDistribution\"`.\n"
                 },
                 "privateIps": {
                     "type": "array",
@@ -11754,11 +11906,18 @@
                 },
                 "product": {
                     "type": "string",
-                    "description": "Operation system type. Valid values: `\"Linux/UNIX\"`, `\"SUSE Linux\"`, `\"Windows\"`. \nFor EC2 Classic instances:  `\"Linux/UNIX (Amazon VPC)\"`, `\"SUSE Linux (Amazon VPC)\"`, `\"Windows (Amazon VPC)\"`.\n"
+                    "description": "Operation system type. Valid values: `\"Linux/UNIX\"`, `\"SUSE Linux\"`, `\"Windows\"`.\nFor EC2 Classic instances:  `\"Linux/UNIX (Amazon VPC)\"`, `\"SUSE Linux (Amazon VPC)\"`, `\"Windows (Amazon VPC)\"`.\n"
                 },
                 "region": {
                     "type": "string",
                     "description": "The AWS region your group will be created in.\nNote: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).\n"
+                },
+                "resourceTagSpecifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ElastigroupResourceTagSpecification:ElastigroupResourceTagSpecification"
+                    },
+                    "description": "User will specify which resources should be tagged with group tags.\n"
                 },
                 "revertToSpot": {
                     "$ref": "#/types/spotinst:aws/ElastigroupRevertToSpot:ElastigroupRevertToSpot",
@@ -12110,7 +12269,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. \nNote: Must be a sublist of `availability_zones` and `orientation` value must not be `\"equalAzDistribution\"`.\n"
+                        "description": "The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.\nNote: Must be a sublist of `availability_zones` and `orientation` value must not be `\"equalAzDistribution\"`.\n"
                     },
                     "privateIps": {
                         "type": "array",
@@ -12121,11 +12280,18 @@
                     },
                     "product": {
                         "type": "string",
-                        "description": "Operation system type. Valid values: `\"Linux/UNIX\"`, `\"SUSE Linux\"`, `\"Windows\"`. \nFor EC2 Classic instances:  `\"Linux/UNIX (Amazon VPC)\"`, `\"SUSE Linux (Amazon VPC)\"`, `\"Windows (Amazon VPC)\"`.\n"
+                        "description": "Operation system type. Valid values: `\"Linux/UNIX\"`, `\"SUSE Linux\"`, `\"Windows\"`.\nFor EC2 Classic instances:  `\"Linux/UNIX (Amazon VPC)\"`, `\"SUSE Linux (Amazon VPC)\"`, `\"Windows (Amazon VPC)\"`.\n"
                     },
                     "region": {
                         "type": "string",
                         "description": "The AWS region your group will be created in.\nNote: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).\n"
+                    },
+                    "resourceTagSpecifications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/ElastigroupResourceTagSpecification:ElastigroupResourceTagSpecification"
+                        },
+                        "description": "User will specify which resources should be tagged with group tags.\n"
                     },
                     "revertToSpot": {
                         "$ref": "#/types/spotinst:aws/ElastigroupRevertToSpot:ElastigroupRevertToSpot",
@@ -12240,7 +12406,7 @@
             }
         },
         "spotinst:aws/managedInstance:ManagedInstance": {
-            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvdcz\",\n        ebs: {\n            deleteOnTermination: true,\n            iops: 100,\n            throughput: 125,\n            volumeSize: 50,\n            volumeType: \"gp3\",\n        },\n    }],\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Pulumi\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    minimumInstanceLifetime: 1,\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n{{% /example %}}\n{{% /examples %}}\n## Managed Instance Action\n\n* `managed_instance_action` - (Optional)\n    * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n",
+            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvdcz\",\n        ebs: {\n            deleteOnTermination: true,\n            iops: 100,\n            throughput: 125,\n            volumeSize: 50,\n            volumeType: \"gp3\",\n        },\n    }],\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Pulumi\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    minimumInstanceLifetime: 1,\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    resourceTagSpecifications: [{\n        shouldTagAmis: true,\n        shouldTagEnis: true,\n        shouldTagSnapshots: true,\n        shouldTagVolumes: true,\n    }],\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n{{% /example %}}\n{{% /examples %}}\n## Managed Instance Action\n\n* `managed_instance_action` - (Optional)\n    * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "autoHealing": {
                     "type": "boolean",
@@ -12384,6 +12550,13 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region your group will be created in.\n"
+                },
+                "resourceTagSpecifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ManagedInstanceResourceTagSpecification:ManagedInstanceResourceTagSpecification"
+                    },
+                    "description": "User will specify which resources should be tagged with group tags.\n"
                 },
                 "revertToSpot": {
                     "$ref": "#/types/spotinst:aws/ManagedInstanceRevertToSpot:ManagedInstanceRevertToSpot"
@@ -12589,6 +12762,13 @@
                     "type": "string",
                     "description": "The AWS region your group will be created in.\n"
                 },
+                "resourceTagSpecifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ManagedInstanceResourceTagSpecification:ManagedInstanceResourceTagSpecification"
+                    },
+                    "description": "User will specify which resources should be tagged with group tags.\n"
+                },
                 "revertToSpot": {
                     "$ref": "#/types/spotinst:aws/ManagedInstanceRevertToSpot:ManagedInstanceRevertToSpot"
                 },
@@ -12792,6 +12972,13 @@
                     "region": {
                         "type": "string",
                         "description": "The AWS region your group will be created in.\n"
+                    },
+                    "resourceTagSpecifications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/ManagedInstanceResourceTagSpecification:ManagedInstanceResourceTagSpecification"
+                        },
+                        "description": "User will specify which resources should be tagged with group tags.\n"
                     },
                     "revertToSpot": {
                         "$ref": "#/types/spotinst:aws/ManagedInstanceRevertToSpot:ManagedInstanceRevertToSpot"
@@ -15021,7 +15208,7 @@
             "properties": {
                 "acdIdentifier": {
                     "type": "string",
-                    "description": "The AKS identifier.\n"
+                    "description": "The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.\n"
                 },
                 "aksName": {
                     "type": "string",
@@ -15140,7 +15327,7 @@
             "inputProperties": {
                 "acdIdentifier": {
                     "type": "string",
-                    "description": "The AKS identifier.\n"
+                    "description": "The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.\n"
                 },
                 "aksName": {
                     "type": "string",
@@ -15251,7 +15438,7 @@
                 "properties": {
                     "acdIdentifier": {
                         "type": "string",
-                        "description": "The AKS identifier.\n"
+                        "description": "The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.\n"
                     },
                     "aksName": {
                         "type": "string",
@@ -17101,6 +17288,10 @@
                     "type": "integer",
                     "description": "The lower limit of instances the cluster can scale down to.\n"
                 },
+                "rootVolumeType": {
+                    "type": "string",
+                    "description": "The root volume disk type.\n"
+                },
                 "scheduledTasks": {
                     "type": "array",
                     "items": {
@@ -17161,6 +17352,10 @@
                     "type": "integer",
                     "description": "The lower limit of instances the cluster can scale down to.\n"
                 },
+                "rootVolumeType": {
+                    "type": "string",
+                    "description": "The root volume disk type.\n"
+                },
                 "scheduledTasks": {
                     "type": "array",
                     "items": {
@@ -17220,6 +17415,10 @@
                         "type": "integer",
                         "description": "The lower limit of instances the cluster can scale down to.\n"
                     },
+                    "rootVolumeType": {
+                        "type": "string",
+                        "description": "The root volume disk type.\n"
+                    },
                     "scheduledTasks": {
                         "type": "array",
                         "items": {
@@ -17277,6 +17476,10 @@
                     "type": "string",
                     "description": "The Ocean cluster ID.\n"
                 },
+                "resourceLimits": {
+                    "$ref": "#/types/spotinst:gke/OceanLaunchSpecResourceLimits:OceanLaunchSpecResourceLimits",
+                    "description": "The Ocean virtual node group resource limits object.\n"
+                },
                 "restrictScaleDown": {
                     "type": "boolean",
                     "description": "Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
@@ -17289,9 +17492,21 @@
                     "type": "string",
                     "description": "Root volume disk type. Valid values: `\"pd-standard\"`, `\"pd-ssd\"`.\n"
                 },
+                "serviceAccount": {
+                    "type": "string",
+                    "description": "The account used by applications running on the VM to call GCP APIs.\n"
+                },
+                "shieldedInstanceConfig": {
+                    "$ref": "#/types/spotinst:gke/OceanLaunchSpecShieldedInstanceConfig:OceanLaunchSpecShieldedInstanceConfig",
+                    "description": "The Ocean shielded instance configuration object.\n"
+                },
                 "sourceImage": {
                     "type": "string",
                     "description": "Image URL.\n"
+                },
+                "storage": {
+                    "$ref": "#/types/spotinst:gke/OceanLaunchSpecStorage:OceanLaunchSpecStorage",
+                    "description": "The Ocean virtual node group storage object.\n"
                 },
                 "strategies": {
                     "type": "array",
@@ -17316,7 +17531,10 @@
                 "restrictScaleDown",
                 "rootVolumeSize",
                 "rootVolumeType",
+                "serviceAccount",
+                "shieldedInstanceConfig",
                 "sourceImage",
+                "storage",
                 "taints"
             ],
             "inputProperties": {
@@ -17356,6 +17574,10 @@
                     "type": "string",
                     "description": "The Ocean cluster ID.\n"
                 },
+                "resourceLimits": {
+                    "$ref": "#/types/spotinst:gke/OceanLaunchSpecResourceLimits:OceanLaunchSpecResourceLimits",
+                    "description": "The Ocean virtual node group resource limits object.\n"
+                },
                 "restrictScaleDown": {
                     "type": "boolean",
                     "description": "Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
@@ -17368,9 +17590,21 @@
                     "type": "string",
                     "description": "Root volume disk type. Valid values: `\"pd-standard\"`, `\"pd-ssd\"`.\n"
                 },
+                "serviceAccount": {
+                    "type": "string",
+                    "description": "The account used by applications running on the VM to call GCP APIs.\n"
+                },
+                "shieldedInstanceConfig": {
+                    "$ref": "#/types/spotinst:gke/OceanLaunchSpecShieldedInstanceConfig:OceanLaunchSpecShieldedInstanceConfig",
+                    "description": "The Ocean shielded instance configuration object.\n"
+                },
                 "sourceImage": {
                     "type": "string",
                     "description": "Image URL.\n"
+                },
+                "storage": {
+                    "$ref": "#/types/spotinst:gke/OceanLaunchSpecStorage:OceanLaunchSpecStorage",
+                    "description": "The Ocean virtual node group storage object.\n"
                 },
                 "strategies": {
                     "type": "array",
@@ -17429,6 +17663,10 @@
                         "type": "string",
                         "description": "The Ocean cluster ID.\n"
                     },
+                    "resourceLimits": {
+                        "$ref": "#/types/spotinst:gke/OceanLaunchSpecResourceLimits:OceanLaunchSpecResourceLimits",
+                        "description": "The Ocean virtual node group resource limits object.\n"
+                    },
                     "restrictScaleDown": {
                         "type": "boolean",
                         "description": "Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.\n"
@@ -17441,9 +17679,21 @@
                         "type": "string",
                         "description": "Root volume disk type. Valid values: `\"pd-standard\"`, `\"pd-ssd\"`.\n"
                     },
+                    "serviceAccount": {
+                        "type": "string",
+                        "description": "The account used by applications running on the VM to call GCP APIs.\n"
+                    },
+                    "shieldedInstanceConfig": {
+                        "$ref": "#/types/spotinst:gke/OceanLaunchSpecShieldedInstanceConfig:OceanLaunchSpecShieldedInstanceConfig",
+                        "description": "The Ocean shielded instance configuration object.\n"
+                    },
                     "sourceImage": {
                         "type": "string",
                         "description": "Image URL.\n"
+                    },
+                    "storage": {
+                        "$ref": "#/types/spotinst:gke/OceanLaunchSpecStorage:OceanLaunchSpecStorage",
+                        "description": "The Ocean virtual node group storage object.\n"
                     },
                     "strategies": {
                         "type": "array",

@@ -15,8 +15,8 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// <summary>
         /// String. Set device name. (Example: `/dev/xvda1`).
         /// </summary>
-        [Input("deviceName", required: true)]
-        public Input<string> DeviceName { get; set; } = null!;
+        [Input("deviceName")]
+        public Input<string>? DeviceName { get; set; }
 
         /// <summary>
         /// Object. Set Elastic Block Store properties .

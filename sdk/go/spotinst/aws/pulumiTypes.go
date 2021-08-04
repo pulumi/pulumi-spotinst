@@ -6731,6 +6731,130 @@ func (o ElastigroupNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Elastig
 	}).(ElastigroupNetworkInterfaceOutput)
 }
 
+type ElastigroupResourceTagSpecification struct {
+	// Tag specification for AMI resources.
+	ShouldTagAmis *bool `pulumi:"shouldTagAmis"`
+	// Tag specification for ENI resources.
+	ShouldTagEnis *bool `pulumi:"shouldTagEnis"`
+	// Tag specification for Snapshot resources.
+	ShouldTagSnapshots *bool `pulumi:"shouldTagSnapshots"`
+	// Tag specification for Volume resources.
+	ShouldTagVolumes *bool `pulumi:"shouldTagVolumes"`
+}
+
+// ElastigroupResourceTagSpecificationInput is an input type that accepts ElastigroupResourceTagSpecificationArgs and ElastigroupResourceTagSpecificationOutput values.
+// You can construct a concrete instance of `ElastigroupResourceTagSpecificationInput` via:
+//
+//          ElastigroupResourceTagSpecificationArgs{...}
+type ElastigroupResourceTagSpecificationInput interface {
+	pulumi.Input
+
+	ToElastigroupResourceTagSpecificationOutput() ElastigroupResourceTagSpecificationOutput
+	ToElastigroupResourceTagSpecificationOutputWithContext(context.Context) ElastigroupResourceTagSpecificationOutput
+}
+
+type ElastigroupResourceTagSpecificationArgs struct {
+	// Tag specification for AMI resources.
+	ShouldTagAmis pulumi.BoolPtrInput `pulumi:"shouldTagAmis"`
+	// Tag specification for ENI resources.
+	ShouldTagEnis pulumi.BoolPtrInput `pulumi:"shouldTagEnis"`
+	// Tag specification for Snapshot resources.
+	ShouldTagSnapshots pulumi.BoolPtrInput `pulumi:"shouldTagSnapshots"`
+	// Tag specification for Volume resources.
+	ShouldTagVolumes pulumi.BoolPtrInput `pulumi:"shouldTagVolumes"`
+}
+
+func (ElastigroupResourceTagSpecificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupResourceTagSpecification)(nil)).Elem()
+}
+
+func (i ElastigroupResourceTagSpecificationArgs) ToElastigroupResourceTagSpecificationOutput() ElastigroupResourceTagSpecificationOutput {
+	return i.ToElastigroupResourceTagSpecificationOutputWithContext(context.Background())
+}
+
+func (i ElastigroupResourceTagSpecificationArgs) ToElastigroupResourceTagSpecificationOutputWithContext(ctx context.Context) ElastigroupResourceTagSpecificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupResourceTagSpecificationOutput)
+}
+
+// ElastigroupResourceTagSpecificationArrayInput is an input type that accepts ElastigroupResourceTagSpecificationArray and ElastigroupResourceTagSpecificationArrayOutput values.
+// You can construct a concrete instance of `ElastigroupResourceTagSpecificationArrayInput` via:
+//
+//          ElastigroupResourceTagSpecificationArray{ ElastigroupResourceTagSpecificationArgs{...} }
+type ElastigroupResourceTagSpecificationArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupResourceTagSpecificationArrayOutput() ElastigroupResourceTagSpecificationArrayOutput
+	ToElastigroupResourceTagSpecificationArrayOutputWithContext(context.Context) ElastigroupResourceTagSpecificationArrayOutput
+}
+
+type ElastigroupResourceTagSpecificationArray []ElastigroupResourceTagSpecificationInput
+
+func (ElastigroupResourceTagSpecificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupResourceTagSpecification)(nil)).Elem()
+}
+
+func (i ElastigroupResourceTagSpecificationArray) ToElastigroupResourceTagSpecificationArrayOutput() ElastigroupResourceTagSpecificationArrayOutput {
+	return i.ToElastigroupResourceTagSpecificationArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupResourceTagSpecificationArray) ToElastigroupResourceTagSpecificationArrayOutputWithContext(ctx context.Context) ElastigroupResourceTagSpecificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupResourceTagSpecificationArrayOutput)
+}
+
+type ElastigroupResourceTagSpecificationOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupResourceTagSpecificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupResourceTagSpecification)(nil)).Elem()
+}
+
+func (o ElastigroupResourceTagSpecificationOutput) ToElastigroupResourceTagSpecificationOutput() ElastigroupResourceTagSpecificationOutput {
+	return o
+}
+
+func (o ElastigroupResourceTagSpecificationOutput) ToElastigroupResourceTagSpecificationOutputWithContext(ctx context.Context) ElastigroupResourceTagSpecificationOutput {
+	return o
+}
+
+// Tag specification for AMI resources.
+func (o ElastigroupResourceTagSpecificationOutput) ShouldTagAmis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupResourceTagSpecification) *bool { return v.ShouldTagAmis }).(pulumi.BoolPtrOutput)
+}
+
+// Tag specification for ENI resources.
+func (o ElastigroupResourceTagSpecificationOutput) ShouldTagEnis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupResourceTagSpecification) *bool { return v.ShouldTagEnis }).(pulumi.BoolPtrOutput)
+}
+
+// Tag specification for Snapshot resources.
+func (o ElastigroupResourceTagSpecificationOutput) ShouldTagSnapshots() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupResourceTagSpecification) *bool { return v.ShouldTagSnapshots }).(pulumi.BoolPtrOutput)
+}
+
+// Tag specification for Volume resources.
+func (o ElastigroupResourceTagSpecificationOutput) ShouldTagVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElastigroupResourceTagSpecification) *bool { return v.ShouldTagVolumes }).(pulumi.BoolPtrOutput)
+}
+
+type ElastigroupResourceTagSpecificationArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupResourceTagSpecificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupResourceTagSpecification)(nil)).Elem()
+}
+
+func (o ElastigroupResourceTagSpecificationArrayOutput) ToElastigroupResourceTagSpecificationArrayOutput() ElastigroupResourceTagSpecificationArrayOutput {
+	return o
+}
+
+func (o ElastigroupResourceTagSpecificationArrayOutput) ToElastigroupResourceTagSpecificationArrayOutputWithContext(ctx context.Context) ElastigroupResourceTagSpecificationArrayOutput {
+	return o
+}
+
+func (o ElastigroupResourceTagSpecificationArrayOutput) Index(i pulumi.IntInput) ElastigroupResourceTagSpecificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupResourceTagSpecification {
+		return vs[0].([]ElastigroupResourceTagSpecification)[vs[1].(int)]
+	}).(ElastigroupResourceTagSpecificationOutput)
+}
+
 type ElastigroupRevertToSpot struct {
 	// Actions to perform (options: timeWindow, never)
 	PerformAt string `pulumi:"performAt"`
@@ -10654,6 +10778,130 @@ func (o ManagedInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Man
 	}).(ManagedInstanceNetworkInterfaceOutput)
 }
 
+type ManagedInstanceResourceTagSpecification struct {
+	// Tag specification for AMI resources.
+	ShouldTagAmis *bool `pulumi:"shouldTagAmis"`
+	// Tag specification for ENI resources.
+	ShouldTagEnis *bool `pulumi:"shouldTagEnis"`
+	// Tag specification for Snapshot resources.
+	ShouldTagSnapshots *bool `pulumi:"shouldTagSnapshots"`
+	// Tag specification for Volume resources.
+	ShouldTagVolumes *bool `pulumi:"shouldTagVolumes"`
+}
+
+// ManagedInstanceResourceTagSpecificationInput is an input type that accepts ManagedInstanceResourceTagSpecificationArgs and ManagedInstanceResourceTagSpecificationOutput values.
+// You can construct a concrete instance of `ManagedInstanceResourceTagSpecificationInput` via:
+//
+//          ManagedInstanceResourceTagSpecificationArgs{...}
+type ManagedInstanceResourceTagSpecificationInput interface {
+	pulumi.Input
+
+	ToManagedInstanceResourceTagSpecificationOutput() ManagedInstanceResourceTagSpecificationOutput
+	ToManagedInstanceResourceTagSpecificationOutputWithContext(context.Context) ManagedInstanceResourceTagSpecificationOutput
+}
+
+type ManagedInstanceResourceTagSpecificationArgs struct {
+	// Tag specification for AMI resources.
+	ShouldTagAmis pulumi.BoolPtrInput `pulumi:"shouldTagAmis"`
+	// Tag specification for ENI resources.
+	ShouldTagEnis pulumi.BoolPtrInput `pulumi:"shouldTagEnis"`
+	// Tag specification for Snapshot resources.
+	ShouldTagSnapshots pulumi.BoolPtrInput `pulumi:"shouldTagSnapshots"`
+	// Tag specification for Volume resources.
+	ShouldTagVolumes pulumi.BoolPtrInput `pulumi:"shouldTagVolumes"`
+}
+
+func (ManagedInstanceResourceTagSpecificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceResourceTagSpecification)(nil)).Elem()
+}
+
+func (i ManagedInstanceResourceTagSpecificationArgs) ToManagedInstanceResourceTagSpecificationOutput() ManagedInstanceResourceTagSpecificationOutput {
+	return i.ToManagedInstanceResourceTagSpecificationOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceResourceTagSpecificationArgs) ToManagedInstanceResourceTagSpecificationOutputWithContext(ctx context.Context) ManagedInstanceResourceTagSpecificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceResourceTagSpecificationOutput)
+}
+
+// ManagedInstanceResourceTagSpecificationArrayInput is an input type that accepts ManagedInstanceResourceTagSpecificationArray and ManagedInstanceResourceTagSpecificationArrayOutput values.
+// You can construct a concrete instance of `ManagedInstanceResourceTagSpecificationArrayInput` via:
+//
+//          ManagedInstanceResourceTagSpecificationArray{ ManagedInstanceResourceTagSpecificationArgs{...} }
+type ManagedInstanceResourceTagSpecificationArrayInput interface {
+	pulumi.Input
+
+	ToManagedInstanceResourceTagSpecificationArrayOutput() ManagedInstanceResourceTagSpecificationArrayOutput
+	ToManagedInstanceResourceTagSpecificationArrayOutputWithContext(context.Context) ManagedInstanceResourceTagSpecificationArrayOutput
+}
+
+type ManagedInstanceResourceTagSpecificationArray []ManagedInstanceResourceTagSpecificationInput
+
+func (ManagedInstanceResourceTagSpecificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedInstanceResourceTagSpecification)(nil)).Elem()
+}
+
+func (i ManagedInstanceResourceTagSpecificationArray) ToManagedInstanceResourceTagSpecificationArrayOutput() ManagedInstanceResourceTagSpecificationArrayOutput {
+	return i.ToManagedInstanceResourceTagSpecificationArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceResourceTagSpecificationArray) ToManagedInstanceResourceTagSpecificationArrayOutputWithContext(ctx context.Context) ManagedInstanceResourceTagSpecificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceResourceTagSpecificationArrayOutput)
+}
+
+type ManagedInstanceResourceTagSpecificationOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceResourceTagSpecificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceResourceTagSpecification)(nil)).Elem()
+}
+
+func (o ManagedInstanceResourceTagSpecificationOutput) ToManagedInstanceResourceTagSpecificationOutput() ManagedInstanceResourceTagSpecificationOutput {
+	return o
+}
+
+func (o ManagedInstanceResourceTagSpecificationOutput) ToManagedInstanceResourceTagSpecificationOutputWithContext(ctx context.Context) ManagedInstanceResourceTagSpecificationOutput {
+	return o
+}
+
+// Tag specification for AMI resources.
+func (o ManagedInstanceResourceTagSpecificationOutput) ShouldTagAmis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceTagSpecification) *bool { return v.ShouldTagAmis }).(pulumi.BoolPtrOutput)
+}
+
+// Tag specification for ENI resources.
+func (o ManagedInstanceResourceTagSpecificationOutput) ShouldTagEnis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceTagSpecification) *bool { return v.ShouldTagEnis }).(pulumi.BoolPtrOutput)
+}
+
+// Tag specification for Snapshot resources.
+func (o ManagedInstanceResourceTagSpecificationOutput) ShouldTagSnapshots() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceTagSpecification) *bool { return v.ShouldTagSnapshots }).(pulumi.BoolPtrOutput)
+}
+
+// Tag specification for Volume resources.
+func (o ManagedInstanceResourceTagSpecificationOutput) ShouldTagVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceResourceTagSpecification) *bool { return v.ShouldTagVolumes }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedInstanceResourceTagSpecificationArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceResourceTagSpecificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedInstanceResourceTagSpecification)(nil)).Elem()
+}
+
+func (o ManagedInstanceResourceTagSpecificationArrayOutput) ToManagedInstanceResourceTagSpecificationArrayOutput() ManagedInstanceResourceTagSpecificationArrayOutput {
+	return o
+}
+
+func (o ManagedInstanceResourceTagSpecificationArrayOutput) ToManagedInstanceResourceTagSpecificationArrayOutputWithContext(ctx context.Context) ManagedInstanceResourceTagSpecificationArrayOutput {
+	return o
+}
+
+func (o ManagedInstanceResourceTagSpecificationArrayOutput) Index(i pulumi.IntInput) ManagedInstanceResourceTagSpecificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstanceResourceTagSpecification {
+		return vs[0].([]ManagedInstanceResourceTagSpecification)[vs[1].(int)]
+	}).(ManagedInstanceResourceTagSpecificationOutput)
+}
+
 type ManagedInstanceRevertToSpot struct {
 	// Valid values: `"always"`, `"never"`, `"timeWindow"`.
 	// Default `"never"`.
@@ -14460,7 +14708,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 
 type OceanLaunchSpecBlockDeviceMapping struct {
 	// String. Set device name. (Example: `/dev/xvda1`).
-	DeviceName string `pulumi:"deviceName"`
+	DeviceName *string `pulumi:"deviceName"`
 	// Object. Set Elastic Block Store properties .
 	Ebs *OceanLaunchSpecBlockDeviceMappingEbs `pulumi:"ebs"`
 	// String. Suppresses the specified device included in the block device mapping of the AMI.
@@ -14481,7 +14729,7 @@ type OceanLaunchSpecBlockDeviceMappingInput interface {
 
 type OceanLaunchSpecBlockDeviceMappingArgs struct {
 	// String. Set device name. (Example: `/dev/xvda1`).
-	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
 	// Object. Set Elastic Block Store properties .
 	Ebs OceanLaunchSpecBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
 	// String. Suppresses the specified device included in the block device mapping of the AMI.
@@ -14541,8 +14789,8 @@ func (o OceanLaunchSpecBlockDeviceMappingOutput) ToOceanLaunchSpecBlockDeviceMap
 }
 
 // String. Set device name. (Example: `/dev/xvda1`).
-func (o OceanLaunchSpecBlockDeviceMappingOutput) DeviceName() pulumi.StringOutput {
-	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMapping) string { return v.DeviceName }).(pulumi.StringOutput)
+func (o OceanLaunchSpecBlockDeviceMappingOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMapping) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
 }
 
 // Object. Set Elastic Block Store properties .
@@ -16991,6 +17239,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupMultaiTargetSetArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ElastigroupNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupResourceTagSpecificationOutput{})
+	pulumi.RegisterOutputType(ElastigroupResourceTagSpecificationArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupRevertToSpotOutput{})
 	pulumi.RegisterOutputType(ElastigroupRevertToSpotPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyOutput{})
@@ -17041,6 +17291,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedInstanceManagedInstanceActionPtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceResourceTagSpecificationOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceResourceTagSpecificationArrayOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceRevertToSpotOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceRevertToSpotPtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceScheduledTaskOutput{})

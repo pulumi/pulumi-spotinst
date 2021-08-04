@@ -21,10 +21,14 @@ class OceanLaunchSpecArgs:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
+                 resource_limits: Optional[pulumi.Input['OceanLaunchSpecResourceLimitsArgs']] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs']] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
+                 storage: Optional[pulumi.Input['OceanLaunchSpecStorageArgs']] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None):
         """
@@ -35,10 +39,14 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
+        :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
         :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[str] service_account: The account used by applications running on the VM to call GCP APIs.
+        :param pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs'] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[str] source_image: Image URL.
+        :param pulumi.Input['OceanLaunchSpecStorageArgs'] storage: The Ocean virtual node group storage object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
@@ -53,14 +61,22 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "metadatas", metadatas)
         if node_pool_name is not None:
             pulumi.set(__self__, "node_pool_name", node_pool_name)
+        if resource_limits is not None:
+            pulumi.set(__self__, "resource_limits", resource_limits)
         if restrict_scale_down is not None:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if root_volume_size is not None:
             pulumi.set(__self__, "root_volume_size", root_volume_size)
         if root_volume_type is not None:
             pulumi.set(__self__, "root_volume_type", root_volume_type)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if source_image is not None:
             pulumi.set(__self__, "source_image", source_image)
+        if storage is not None:
+            pulumi.set(__self__, "storage", storage)
         if strategies is not None:
             pulumi.set(__self__, "strategies", strategies)
         if taints is not None:
@@ -139,6 +155,18 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "node_pool_name", value)
 
     @property
+    @pulumi.getter(name="resourceLimits")
+    def resource_limits(self) -> Optional[pulumi.Input['OceanLaunchSpecResourceLimitsArgs']]:
+        """
+        The Ocean virtual node group resource limits object.
+        """
+        return pulumi.get(self, "resource_limits")
+
+    @resource_limits.setter
+    def resource_limits(self, value: Optional[pulumi.Input['OceanLaunchSpecResourceLimitsArgs']]):
+        pulumi.set(self, "resource_limits", value)
+
+    @property
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -175,6 +203,30 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "root_volume_type", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account used by applications running on the VM to call GCP APIs.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs']]:
+        """
+        The Ocean shielded instance configuration object.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> Optional[pulumi.Input[str]]:
         """
@@ -185,6 +237,18 @@ class OceanLaunchSpecArgs:
     @source_image.setter
     def source_image(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_image", value)
+
+    @property
+    @pulumi.getter
+    def storage(self) -> Optional[pulumi.Input['OceanLaunchSpecStorageArgs']]:
+        """
+        The Ocean virtual node group storage object.
+        """
+        return pulumi.get(self, "storage")
+
+    @storage.setter
+    def storage(self, value: Optional[pulumi.Input['OceanLaunchSpecStorageArgs']]):
+        pulumi.set(self, "storage", value)
 
     @property
     @pulumi.getter
@@ -220,10 +284,14 @@ class _OceanLaunchSpecState:
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
+                 resource_limits: Optional[pulumi.Input['OceanLaunchSpecResourceLimitsArgs']] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs']] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
+                 storage: Optional[pulumi.Input['OceanLaunchSpecStorageArgs']] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None):
         """
@@ -234,10 +302,14 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
+        :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
         :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[str] service_account: The account used by applications running on the VM to call GCP APIs.
+        :param pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs'] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[str] source_image: Image URL.
+        :param pulumi.Input['OceanLaunchSpecStorageArgs'] storage: The Ocean virtual node group storage object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
@@ -253,14 +325,22 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "node_pool_name", node_pool_name)
         if ocean_id is not None:
             pulumi.set(__self__, "ocean_id", ocean_id)
+        if resource_limits is not None:
+            pulumi.set(__self__, "resource_limits", resource_limits)
         if restrict_scale_down is not None:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if root_volume_size is not None:
             pulumi.set(__self__, "root_volume_size", root_volume_size)
         if root_volume_type is not None:
             pulumi.set(__self__, "root_volume_type", root_volume_type)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if source_image is not None:
             pulumi.set(__self__, "source_image", source_image)
+        if storage is not None:
+            pulumi.set(__self__, "storage", storage)
         if strategies is not None:
             pulumi.set(__self__, "strategies", strategies)
         if taints is not None:
@@ -339,6 +419,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "ocean_id", value)
 
     @property
+    @pulumi.getter(name="resourceLimits")
+    def resource_limits(self) -> Optional[pulumi.Input['OceanLaunchSpecResourceLimitsArgs']]:
+        """
+        The Ocean virtual node group resource limits object.
+        """
+        return pulumi.get(self, "resource_limits")
+
+    @resource_limits.setter
+    def resource_limits(self, value: Optional[pulumi.Input['OceanLaunchSpecResourceLimitsArgs']]):
+        pulumi.set(self, "resource_limits", value)
+
+    @property
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -375,6 +467,30 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "root_volume_type", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account used by applications running on the VM to call GCP APIs.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs']]:
+        """
+        The Ocean shielded instance configuration object.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> Optional[pulumi.Input[str]]:
         """
@@ -385,6 +501,18 @@ class _OceanLaunchSpecState:
     @source_image.setter
     def source_image(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_image", value)
+
+    @property
+    @pulumi.getter
+    def storage(self) -> Optional[pulumi.Input['OceanLaunchSpecStorageArgs']]:
+        """
+        The Ocean virtual node group storage object.
+        """
+        return pulumi.get(self, "storage")
+
+    @storage.setter
+    def storage(self, value: Optional[pulumi.Input['OceanLaunchSpecStorageArgs']]):
+        pulumi.set(self, "storage", value)
 
     @property
     @pulumi.getter
@@ -422,10 +550,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
+                 resource_limits: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecShieldedInstanceConfigArgs']]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
+                 storage: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecStorageArgs']]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
                  __props__=None):
@@ -442,10 +574,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
         :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[str] service_account: The account used by applications running on the VM to call GCP APIs.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecShieldedInstanceConfigArgs']] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[str] source_image: Image URL.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecStorageArgs']] storage: The Ocean virtual node group storage object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
@@ -481,10 +617,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
+                 resource_limits: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecShieldedInstanceConfigArgs']]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
+                 storage: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecStorageArgs']]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
                  __props__=None):
@@ -507,10 +647,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__.__dict__["ocean_id"] = ocean_id
+            __props__.__dict__["resource_limits"] = resource_limits
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["root_volume_size"] = root_volume_size
             __props__.__dict__["root_volume_type"] = root_volume_type
+            __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["source_image"] = source_image
+            __props__.__dict__["storage"] = storage
             __props__.__dict__["strategies"] = strategies
             __props__.__dict__["taints"] = taints
         super(OceanLaunchSpec, __self__).__init__(
@@ -529,10 +673,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
             node_pool_name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
+            resource_limits: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']]] = None,
             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
             root_volume_size: Optional[pulumi.Input[int]] = None,
             root_volume_type: Optional[pulumi.Input[str]] = None,
+            service_account: Optional[pulumi.Input[str]] = None,
+            shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecShieldedInstanceConfigArgs']]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
+            storage: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecStorageArgs']]] = None,
             strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None) -> 'OceanLaunchSpec':
         """
@@ -548,10 +696,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
         :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[str] service_account: The account used by applications running on the VM to call GCP APIs.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecShieldedInstanceConfigArgs']] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[str] source_image: Image URL.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecStorageArgs']] storage: The Ocean virtual node group storage object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
@@ -565,10 +717,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["metadatas"] = metadatas
         __props__.__dict__["node_pool_name"] = node_pool_name
         __props__.__dict__["ocean_id"] = ocean_id
+        __props__.__dict__["resource_limits"] = resource_limits
         __props__.__dict__["restrict_scale_down"] = restrict_scale_down
         __props__.__dict__["root_volume_size"] = root_volume_size
         __props__.__dict__["root_volume_type"] = root_volume_type
+        __props__.__dict__["service_account"] = service_account
+        __props__.__dict__["shielded_instance_config"] = shielded_instance_config
         __props__.__dict__["source_image"] = source_image
+        __props__.__dict__["storage"] = storage
         __props__.__dict__["strategies"] = strategies
         __props__.__dict__["taints"] = taints
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)
@@ -622,6 +778,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         return pulumi.get(self, "ocean_id")
 
     @property
+    @pulumi.getter(name="resourceLimits")
+    def resource_limits(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecResourceLimits']]:
+        """
+        The Ocean virtual node group resource limits object.
+        """
+        return pulumi.get(self, "resource_limits")
+
+    @property
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> pulumi.Output[bool]:
         """
@@ -646,12 +810,36 @@ class OceanLaunchSpec(pulumi.CustomResource):
         return pulumi.get(self, "root_volume_type")
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[str]:
+        """
+        The account used by applications running on the VM to call GCP APIs.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> pulumi.Output['outputs.OceanLaunchSpecShieldedInstanceConfig']:
+        """
+        The Ocean shielded instance configuration object.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @property
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> pulumi.Output[str]:
         """
         Image URL.
         """
         return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter
+    def storage(self) -> pulumi.Output['outputs.OceanLaunchSpecStorage']:
+        """
+        The Ocean virtual node group storage object.
+        """
+        return pulumi.get(self, "storage")
 
     @property
     @pulumi.getter

@@ -61,6 +61,12 @@ namespace Pulumi.SpotInst.Gke
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
+        /// The root volume disk type.
+        /// </summary>
+        [Output("rootVolumeType")]
+        public Output<string?> RootVolumeType { get; private set; } = null!;
+
+        /// <summary>
         /// Set scheduling object.
         /// </summary>
         [Output("scheduledTasks")]
@@ -169,6 +175,12 @@ namespace Pulumi.SpotInst.Gke
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
 
+        /// <summary>
+        /// The root volume disk type.
+        /// </summary>
+        [Input("rootVolumeType")]
+        public Input<string>? RootVolumeType { get; set; }
+
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanImportScheduledTaskArgs>? _scheduledTasks;
 
@@ -253,6 +265,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
+
+        /// <summary>
+        /// The root volume disk type.
+        /// </summary>
+        [Input("rootVolumeType")]
+        public Input<string>? RootVolumeType { get; set; }
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanImportScheduledTaskGetArgs>? _scheduledTasks;

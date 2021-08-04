@@ -50,6 +50,7 @@ class ManagedInstanceArgs:
                  preferred_type: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]] = None,
                  revert_to_spot: Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -97,6 +98,7 @@ class ManagedInstanceArgs:
         :param pulumi.Input[str] preferred_type: Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
         :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]] tags: Set tags for the instance. Items should be unique.
@@ -169,6 +171,8 @@ class ManagedInstanceArgs:
             pulumi.set(__self__, "private_ip", private_ip)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resource_tag_specifications is not None:
+            pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
             pulumi.set(__self__, "revert_to_spot", revert_to_spot)
         if scheduled_tasks is not None:
@@ -599,6 +603,18 @@ class ManagedInstanceArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="resourceTagSpecifications")
+    def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]:
+        """
+        User will specify which resources should be tagged with group tags.
+        """
+        return pulumi.get(self, "resource_tag_specifications")
+
+    @resource_tag_specifications.setter
+    def resource_tag_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]):
+        pulumi.set(self, "resource_tag_specifications", value)
+
+    @property
     @pulumi.getter(name="revertToSpot")
     def revert_to_spot(self) -> Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']]:
         return pulumi.get(self, "revert_to_spot")
@@ -726,6 +742,7 @@ class _ManagedInstanceState:
                  private_ip: Optional[pulumi.Input[str]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]] = None,
                  revert_to_spot: Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -774,6 +791,7 @@ class _ManagedInstanceState:
         :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
@@ -849,6 +867,8 @@ class _ManagedInstanceState:
             pulumi.set(__self__, "product", product)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resource_tag_specifications is not None:
+            pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
             pulumi.set(__self__, "revert_to_spot", revert_to_spot)
         if scheduled_tasks is not None:
@@ -1262,6 +1282,18 @@ class _ManagedInstanceState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="resourceTagSpecifications")
+    def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]:
+        """
+        User will specify which resources should be tagged with group tags.
+        """
+        return pulumi.get(self, "resource_tag_specifications")
+
+    @resource_tag_specifications.setter
+    def resource_tag_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]]):
+        pulumi.set(self, "resource_tag_specifications", value)
+
+    @property
     @pulumi.getter(name="revertToSpot")
     def revert_to_spot(self) -> Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']]:
         return pulumi.get(self, "revert_to_spot")
@@ -1412,6 +1444,7 @@ class ManagedInstance(pulumi.CustomResource):
                  private_ip: Optional[pulumi.Input[str]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceResourceTagSpecificationArgs']]]]] = None,
                  revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ManagedInstanceRevertToSpotArgs']]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceScheduledTaskArgs']]]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1475,6 +1508,7 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceResourceTagSpecificationArgs']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
@@ -1552,6 +1586,7 @@ class ManagedInstance(pulumi.CustomResource):
                  private_ip: Optional[pulumi.Input[str]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceResourceTagSpecificationArgs']]]]] = None,
                  revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ManagedInstanceRevertToSpotArgs']]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceScheduledTaskArgs']]]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1615,6 +1650,7 @@ class ManagedInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'product'")
             __props__.__dict__["product"] = product
             __props__.__dict__["region"] = region
+            __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
             __props__.__dict__["revert_to_spot"] = revert_to_spot
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
             __props__.__dict__["security_group_ids"] = security_group_ids
@@ -1672,6 +1708,7 @@ class ManagedInstance(pulumi.CustomResource):
             private_ip: Optional[pulumi.Input[str]] = None,
             product: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceResourceTagSpecificationArgs']]]]] = None,
             revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ManagedInstanceRevertToSpotArgs']]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceScheduledTaskArgs']]]]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1725,6 +1762,7 @@ class ManagedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceResourceTagSpecificationArgs']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
@@ -1771,6 +1809,7 @@ class ManagedInstance(pulumi.CustomResource):
         __props__.__dict__["private_ip"] = private_ip
         __props__.__dict__["product"] = product
         __props__.__dict__["region"] = region
+        __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
         __props__.__dict__["revert_to_spot"] = revert_to_spot
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
         __props__.__dict__["security_group_ids"] = security_group_ids
@@ -2041,6 +2080,14 @@ class ManagedInstance(pulumi.CustomResource):
         The AWS region your group will be created in.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="resourceTagSpecifications")
+    def resource_tag_specifications(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceResourceTagSpecification']]]:
+        """
+        User will specify which resources should be tagged with group tags.
+        """
+        return pulumi.get(self, "resource_tag_specifications")
 
     @property
     @pulumi.getter(name="revertToSpot")

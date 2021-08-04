@@ -844,6 +844,25 @@ export namespace aws {
         secondaryPrivateIpAddressCount?: string;
     }
 
+    export interface ElastigroupResourceTagSpecification {
+        /**
+         * Tag specification for AMI resources.
+         */
+        shouldTagAmis?: boolean;
+        /**
+         * Tag specification for ENI resources.
+         */
+        shouldTagEnis?: boolean;
+        /**
+         * Tag specification for Snapshot resources.
+         */
+        shouldTagSnapshots?: boolean;
+        /**
+         * Tag specification for Volume resources.
+         */
+        shouldTagVolumes?: boolean;
+    }
+
     export interface ElastigroupRevertToSpot {
         /**
          * Actions to perform (options: timeWindow, never)
@@ -1432,6 +1451,25 @@ export namespace aws {
          * The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
          */
         deviceIndex: string;
+    }
+
+    export interface ManagedInstanceResourceTagSpecification {
+        /**
+         * Tag specification for AMI resources.
+         */
+        shouldTagAmis?: boolean;
+        /**
+         * Tag specification for ENI resources.
+         */
+        shouldTagEnis?: boolean;
+        /**
+         * Tag specification for Snapshot resources.
+         */
+        shouldTagSnapshots?: boolean;
+        /**
+         * Tag specification for Volume resources.
+         */
+        shouldTagVolumes?: boolean;
     }
 
     export interface ManagedInstanceRevertToSpot {
@@ -2078,7 +2116,7 @@ export namespace aws {
         /**
          * String. Set device name. (Example: `/dev/xvda1`).
          */
-        deviceName: string;
+        deviceName?: string;
         /**
          * Object. Set Elastic Block Store properties .
          */
@@ -4042,6 +4080,31 @@ export namespace gke {
          * The label value.
          */
         value: string;
+    }
+
+    export interface OceanLaunchSpecResourceLimits {
+        /**
+         * Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+         */
+        maxInstanceCount?: number;
+    }
+
+    export interface OceanLaunchSpecShieldedInstanceConfig {
+        /**
+         * Boolean. Enable the integrity monitoring parameter on the GCP instances.
+         */
+        enableIntegrityMonitoring: boolean;
+        /**
+         * Boolean. Enable the secure boot parameter on the GCP instances.
+         */
+        enableSecureBoot: boolean;
+    }
+
+    export interface OceanLaunchSpecStorage {
+        /**
+         * Defines the number of local SSDs to be attached per node for this VNG.
+         */
+        localSsdCount: number;
     }
 
     export interface OceanLaunchSpecStrategy {

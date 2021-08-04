@@ -60,6 +60,12 @@ import * as utilities from "../utilities";
  *     privateIp: "ip",
  *     product: "Linux/UNIX",
  *     region: "us-west-2",
+ *     resourceTagSpecifications: [{
+ *         shouldTagAmis: true,
+ *         shouldTagEnis: true,
+ *         shouldTagSnapshots: true,
+ *         shouldTagVolumes: true,
+ *     }],
  *     revertToSpot: {
  *         performAt: "always",
  *     },
@@ -248,6 +254,10 @@ export class ManagedInstance extends pulumi.CustomResource {
      * The AWS region your group will be created in.
      */
     public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * User will specify which resources should be tagged with group tags.
+     */
+    public readonly resourceTagSpecifications!: pulumi.Output<outputs.aws.ManagedInstanceResourceTagSpecification[] | undefined>;
     public readonly revertToSpot!: pulumi.Output<outputs.aws.ManagedInstanceRevertToSpot | undefined>;
     public readonly scheduledTasks!: pulumi.Output<outputs.aws.ManagedInstanceScheduledTask[] | undefined>;
     /**
@@ -327,6 +337,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             inputs["privateIp"] = state ? state.privateIp : undefined;
             inputs["product"] = state ? state.product : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["resourceTagSpecifications"] = state ? state.resourceTagSpecifications : undefined;
             inputs["revertToSpot"] = state ? state.revertToSpot : undefined;
             inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
@@ -390,6 +401,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             inputs["privateIp"] = args ? args.privateIp : undefined;
             inputs["product"] = args ? args.product : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["resourceTagSpecifications"] = args ? args.resourceTagSpecifications : undefined;
             inputs["revertToSpot"] = args ? args.revertToSpot : undefined;
             inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
@@ -539,6 +551,10 @@ export interface ManagedInstanceState {
      * The AWS region your group will be created in.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * User will specify which resources should be tagged with group tags.
+     */
+    readonly resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceResourceTagSpecification>[]>;
     readonly revertToSpot?: pulumi.Input<inputs.aws.ManagedInstanceRevertToSpot>;
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceScheduledTask>[]>;
     /**
@@ -704,6 +720,10 @@ export interface ManagedInstanceArgs {
      * The AWS region your group will be created in.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * User will specify which resources should be tagged with group tags.
+     */
+    readonly resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceResourceTagSpecification>[]>;
     readonly revertToSpot?: pulumi.Input<inputs.aws.ManagedInstanceRevertToSpot>;
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceScheduledTask>[]>;
     /**

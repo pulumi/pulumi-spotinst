@@ -14,7 +14,7 @@ import (
 type Ocean struct {
 	pulumi.CustomResourceState
 
-	// The AKS identifier.
+	// The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
 	AcdIdentifier pulumi.StringOutput `pulumi:"acdIdentifier"`
 	// The AKS cluster name.
 	AksName pulumi.StringOutput `pulumi:"aksName"`
@@ -97,7 +97,7 @@ func GetOcean(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ocean resources.
 type oceanState struct {
-	// The AKS identifier.
+	// The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
 	AcdIdentifier *string `pulumi:"acdIdentifier"`
 	// The AKS cluster name.
 	AksName *string `pulumi:"aksName"`
@@ -140,7 +140,7 @@ type oceanState struct {
 }
 
 type OceanState struct {
-	// The AKS identifier.
+	// The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
 	AcdIdentifier pulumi.StringPtrInput
 	// The AKS cluster name.
 	AksName pulumi.StringPtrInput
@@ -187,7 +187,7 @@ func (OceanState) ElementType() reflect.Type {
 }
 
 type oceanArgs struct {
-	// The AKS identifier.
+	// The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
 	AcdIdentifier string `pulumi:"acdIdentifier"`
 	// The AKS cluster name.
 	AksName string `pulumi:"aksName"`
@@ -231,7 +231,7 @@ type oceanArgs struct {
 
 // The set of arguments for constructing a Ocean resource.
 type OceanArgs struct {
-	// The AKS identifier.
+	// The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
 	AcdIdentifier pulumi.StringInput
 	// The AKS cluster name.
 	AksName pulumi.StringInput
