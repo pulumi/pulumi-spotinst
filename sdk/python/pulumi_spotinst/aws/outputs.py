@@ -104,6 +104,7 @@ __all__ = [
     'OceanAutoscalerAutoscaleDown',
     'OceanAutoscalerAutoscaleHeadroom',
     'OceanAutoscalerResourceLimits',
+    'OceanInstanceMetadataOptions',
     'OceanLaunchSpecAutoscaleHeadroom',
     'OceanLaunchSpecBlockDeviceMapping',
     'OceanLaunchSpecBlockDeviceMappingEbs',
@@ -7335,6 +7336,55 @@ class OceanAutoscalerResourceLimits(dict):
         The maximum cpu in vCPU units that can be allocated to the cluster.
         """
         return pulumi.get(self, "max_vcpu")
+
+
+@pulumi.output_type
+class OceanInstanceMetadataOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpTokens":
+            suggest = "http_tokens"
+        elif key == "httpPutResponseHopLimit":
+            suggest = "http_put_response_hop_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanInstanceMetadataOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanInstanceMetadataOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanInstanceMetadataOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_tokens: str,
+                 http_put_response_hop_limit: Optional[int] = None):
+        """
+        :param str http_tokens: Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        :param int http_put_response_hop_limit: An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        """
+        pulumi.set(__self__, "http_tokens", http_tokens)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> str:
+        """
+        Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[int]:
+        """
+        An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
 
 
 @pulumi.output_type

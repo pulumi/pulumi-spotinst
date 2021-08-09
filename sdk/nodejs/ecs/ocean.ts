@@ -37,6 +37,10 @@ import * as utilities from "../utilities";
  *     ebsOptimized: true,
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-12345",
+ *     instanceMetadataOptions: {
+ *         httpPutResponseHopLimit: 10,
+ *         httpTokens: "required",
+ *     },
  *     keyPair: "KeyPair",
  *     maxSize: 1,
  *     minSize: 0,
@@ -51,6 +55,7 @@ import * as utilities from "../utilities";
  *     },
  *     region: "us-west-2",
  *     securityGroupIds: ["sg-12345"],
+ *     spotPercentage: 100,
  *     subnetIds: ["subnet-12345"],
  *     tags: [{
  *         key: "fakeKey",
@@ -132,6 +137,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
+     * Ocean instance metadata options object for IMDSv2.
+     */
+    public readonly instanceMetadataOptions!: pulumi.Output<outputs.ecs.OceanInstanceMetadataOptions | undefined>;
+    /**
      * The key pair to attach the instances.
      */
     public readonly keyPair!: pulumi.Output<string | undefined>;
@@ -167,6 +176,10 @@ export class Ocean extends pulumi.CustomResource {
      * One or more security group ids.
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
+    /**
+     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+     */
+    public readonly spotPercentage!: pulumi.Output<number | undefined>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
      */
@@ -215,6 +228,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
+            inputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
             inputs["keyPair"] = state ? state.keyPair : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
             inputs["minSize"] = state ? state.minSize : undefined;
@@ -224,6 +238,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            inputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
@@ -254,6 +269,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
+            inputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
             inputs["keyPair"] = args ? args.keyPair : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
             inputs["minSize"] = args ? args.minSize : undefined;
@@ -263,6 +279,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            inputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
@@ -319,6 +336,10 @@ export interface OceanState {
      */
     readonly imageId?: pulumi.Input<string>;
     /**
+     * Ocean instance metadata options object for IMDSv2.
+     */
+    readonly instanceMetadataOptions?: pulumi.Input<inputs.ecs.OceanInstanceMetadataOptions>;
+    /**
      * The key pair to attach the instances.
      */
     readonly keyPair?: pulumi.Input<string>;
@@ -354,6 +375,10 @@ export interface OceanState {
      * One or more security group ids.
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+     */
+    readonly spotPercentage?: pulumi.Input<number>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
      */
@@ -422,6 +447,10 @@ export interface OceanArgs {
      */
     readonly imageId?: pulumi.Input<string>;
     /**
+     * Ocean instance metadata options object for IMDSv2.
+     */
+    readonly instanceMetadataOptions?: pulumi.Input<inputs.ecs.OceanInstanceMetadataOptions>;
+    /**
      * The key pair to attach the instances.
      */
     readonly keyPair?: pulumi.Input<string>;
@@ -457,6 +486,10 @@ export interface OceanArgs {
      * One or more security group ids.
      */
     readonly securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+     */
+    readonly spotPercentage?: pulumi.Input<number>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
      */

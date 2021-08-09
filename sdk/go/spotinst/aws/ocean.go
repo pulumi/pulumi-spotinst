@@ -36,6 +36,8 @@ type Ocean struct {
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrOutput `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
 	// - Array of load balancer objects to add to ocean cluster
@@ -131,6 +133,8 @@ type oceanState struct {
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyName *string `pulumi:"keyName"`
 	// - Array of load balancer objects to add to ocean cluster
@@ -192,6 +196,8 @@ type OceanState struct {
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
 	// The key pair to attach the instances.
 	KeyName pulumi.StringPtrInput
 	// - Array of load balancer objects to add to ocean cluster
@@ -257,6 +263,8 @@ type oceanArgs struct {
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyName *string `pulumi:"keyName"`
 	// - Array of load balancer objects to add to ocean cluster
@@ -319,6 +327,8 @@ type OceanArgs struct {
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
 	// The key pair to attach the instances.
 	KeyName pulumi.StringPtrInput
 	// - Array of load balancer objects to add to ocean cluster

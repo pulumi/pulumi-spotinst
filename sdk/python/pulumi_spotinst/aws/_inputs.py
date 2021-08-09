@@ -103,6 +103,7 @@ __all__ = [
     'OceanAutoscalerAutoscaleDownArgs',
     'OceanAutoscalerAutoscaleHeadroomArgs',
     'OceanAutoscalerResourceLimitsArgs',
+    'OceanInstanceMetadataOptionsArgs',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
     'OceanLaunchSpecBlockDeviceMappingArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
@@ -7357,6 +7358,44 @@ class OceanAutoscalerResourceLimitsArgs:
     @max_vcpu.setter
     def max_vcpu(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_vcpu", value)
+
+
+@pulumi.input_type
+class OceanInstanceMetadataOptionsArgs:
+    def __init__(__self__, *,
+                 http_tokens: pulumi.Input[str],
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] http_tokens: Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        :param pulumi.Input[int] http_put_response_hop_limit: An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        """
+        pulumi.set(__self__, "http_tokens", http_tokens)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> pulumi.Input[str]:
+        """
+        Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: pulumi.Input[str]):
+        pulumi.set(self, "http_tokens", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
 
 
 @pulumi.input_type

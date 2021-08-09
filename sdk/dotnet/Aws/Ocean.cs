@@ -79,6 +79,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
+        /// Ocean instance metadata options object for IMDSv2.
+        /// </summary>
+        [Output("instanceMetadataOptions")]
+        public Output<Outputs.OceanInstanceMetadataOptions?> InstanceMetadataOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The key pair to attach the instances.
         /// </summary>
         [Output("keyName")]
@@ -305,6 +311,12 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// Ocean instance metadata options object for IMDSv2.
+        /// </summary>
+        [Input("instanceMetadataOptions")]
+        public Input<Inputs.OceanInstanceMetadataOptionsArgs>? InstanceMetadataOptions { get; set; }
+
+        /// <summary>
         /// The key pair to attach the instances.
         /// </summary>
         [Input("keyName")]
@@ -526,6 +538,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// Ocean instance metadata options object for IMDSv2.
+        /// </summary>
+        [Input("instanceMetadataOptions")]
+        public Input<Inputs.OceanInstanceMetadataOptionsGetArgs>? InstanceMetadataOptions { get; set; }
 
         /// <summary>
         /// The key pair to attach the instances.

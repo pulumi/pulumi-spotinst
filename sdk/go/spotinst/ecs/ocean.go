@@ -50,10 +50,14 @@ import (
 // 			EbsOptimized:       pulumi.Bool(true),
 // 			IamInstanceProfile: pulumi.String("iam-profile"),
 // 			ImageId:            pulumi.String("ami-12345"),
-// 			KeyPair:            pulumi.String("KeyPair"),
-// 			MaxSize:            pulumi.Int(1),
-// 			MinSize:            pulumi.Int(0),
-// 			Monitoring:         pulumi.Bool(true),
+// 			InstanceMetadataOptions: &ecs.OceanInstanceMetadataOptionsArgs{
+// 				HttpPutResponseHopLimit: pulumi.Int(10),
+// 				HttpTokens:              pulumi.String("required"),
+// 			},
+// 			KeyPair:    pulumi.String("KeyPair"),
+// 			MaxSize:    pulumi.Int(1),
+// 			MinSize:    pulumi.Int(0),
+// 			Monitoring: pulumi.Bool(true),
 // 			OptimizeImages: &ecs.OceanOptimizeImagesArgs{
 // 				PerformAt:            pulumi.String("timeWindow"),
 // 				ShouldOptimizeEcsAmi: pulumi.Bool(true),
@@ -66,6 +70,7 @@ import (
 // 			SecurityGroupIds: pulumi.StringArray{
 // 				pulumi.String("sg-12345"),
 // 			},
+// 			SpotPercentage: pulumi.Int(100),
 // 			SubnetIds: pulumi.StringArray{
 // 				pulumi.String("subnet-12345"),
 // 			},
@@ -123,6 +128,8 @@ type Ocean struct {
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrOutput `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
 	// The upper limit of instances the cluster can scale up to.
@@ -141,6 +148,8 @@ type Ocean struct {
 	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
@@ -215,6 +224,8 @@ type oceanState struct {
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyPair *string `pulumi:"keyPair"`
 	// The upper limit of instances the cluster can scale up to.
@@ -233,6 +244,8 @@ type oceanState struct {
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	SpotPercentage *int `pulumi:"spotPercentage"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
@@ -267,6 +280,8 @@ type OceanState struct {
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
 	// The key pair to attach the instances.
 	KeyPair pulumi.StringPtrInput
 	// The upper limit of instances the cluster can scale up to.
@@ -285,6 +300,8 @@ type OceanState struct {
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
+	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	SpotPercentage pulumi.IntPtrInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
@@ -323,6 +340,8 @@ type oceanArgs struct {
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyPair *string `pulumi:"keyPair"`
 	// The upper limit of instances the cluster can scale up to.
@@ -341,6 +360,8 @@ type oceanArgs struct {
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	SpotPercentage *int `pulumi:"spotPercentage"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
@@ -376,6 +397,8 @@ type OceanArgs struct {
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
 	// The key pair to attach the instances.
 	KeyPair pulumi.StringPtrInput
 	// The upper limit of instances the cluster can scale up to.
@@ -394,6 +417,8 @@ type OceanArgs struct {
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
+	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	SpotPercentage pulumi.IntPtrInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.

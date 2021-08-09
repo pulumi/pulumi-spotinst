@@ -78,6 +78,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
+     * Ocean instance metadata options object for IMDSv2.
+     */
+    public readonly instanceMetadataOptions!: pulumi.Output<outputs.aws.OceanInstanceMetadataOptions | undefined>;
+    /**
      * The key pair to attach the instances.
      */
     public readonly keyName!: pulumi.Output<string | undefined>;
@@ -172,6 +176,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["gracePeriod"] = state ? state.gracePeriod : undefined;
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
+            inputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["loadBalancers"] = state ? state.loadBalancers : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
@@ -210,6 +215,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["gracePeriod"] = args ? args.gracePeriod : undefined;
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
+            inputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["loadBalancers"] = args ? args.loadBalancers : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
@@ -285,6 +291,10 @@ export interface OceanState {
      * ID of the image used to launch the instances.
      */
     readonly imageId?: pulumi.Input<string>;
+    /**
+     * Ocean instance metadata options object for IMDSv2.
+     */
+    readonly instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions>;
     /**
      * The key pair to attach the instances.
      */
@@ -405,6 +415,10 @@ export interface OceanArgs {
      * ID of the image used to launch the instances.
      */
     readonly imageId?: pulumi.Input<string>;
+    /**
+     * Ocean instance metadata options object for IMDSv2.
+     */
+    readonly instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions>;
     /**
      * The key pair to attach the instances.
      */

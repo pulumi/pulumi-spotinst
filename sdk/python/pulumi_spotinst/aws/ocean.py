@@ -28,6 +28,7 @@ class OceanArgs:
                  grace_period: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -60,6 +61,7 @@ class OceanArgs:
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: - Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
@@ -100,6 +102,8 @@ class OceanArgs:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if instance_metadata_options is not None:
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if load_balancers is not None:
@@ -290,6 +294,18 @@ class OceanArgs:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @instance_metadata_options.setter
+    def instance_metadata_options(self, value: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]):
+        pulumi.set(self, "instance_metadata_options", value)
 
     @property
     @pulumi.getter(name="keyName")
@@ -504,6 +520,7 @@ class _OceanState:
                  grace_period: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -536,6 +553,7 @@ class _OceanState:
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: - Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
@@ -576,6 +594,8 @@ class _OceanState:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if instance_metadata_options is not None:
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if load_balancers is not None:
@@ -746,6 +766,18 @@ class _OceanState:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @instance_metadata_options.setter
+    def instance_metadata_options(self, value: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]):
+        pulumi.set(self, "instance_metadata_options", value)
 
     @property
     @pulumi.getter(name="keyName")
@@ -986,6 +1018,7 @@ class Ocean(pulumi.CustomResource):
                  grace_period: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -1021,6 +1054,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: - Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
@@ -1073,6 +1107,7 @@ class Ocean(pulumi.CustomResource):
                  grace_period: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -1115,6 +1150,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["grace_period"] = grace_period
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["load_balancers"] = load_balancers
             __props__.__dict__["max_size"] = max_size
@@ -1159,6 +1195,7 @@ class Ocean(pulumi.CustomResource):
             grace_period: Optional[pulumi.Input[int]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
+            instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
@@ -1196,6 +1233,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: - Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
@@ -1229,6 +1267,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["grace_period"] = grace_period
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["instance_metadata_options"] = instance_metadata_options
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["load_balancers"] = load_balancers
         __props__.__dict__["max_size"] = max_size
@@ -1337,6 +1376,14 @@ class Ocean(pulumi.CustomResource):
         ID of the image used to launch the instances.
         """
         return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> pulumi.Output[Optional['outputs.OceanInstanceMetadataOptions']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
 
     @property
     @pulumi.getter(name="keyName")
