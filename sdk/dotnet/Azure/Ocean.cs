@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Azure
     public partial class Ocean : Pulumi.CustomResource
     {
         /// <summary>
-        /// The AKS identifier.
+        /// The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         /// </summary>
         [Output("acdIdentifier")]
         public Output<string> AcdIdentifier { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.SpotInst.Azure
     public sealed class OceanArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AKS identifier.
+        /// The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         /// </summary>
         [Input("acdIdentifier", required: true)]
         public Input<string> AcdIdentifier { get; set; } = null!;
@@ -348,7 +348,7 @@ namespace Pulumi.SpotInst.Azure
     public sealed class OceanState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AKS identifier.
+        /// The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         /// </summary>
         [Input("acdIdentifier")]
         public Input<string>? AcdIdentifier { get; set; }

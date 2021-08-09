@@ -70,6 +70,7 @@ class ElastigroupArgs:
                  preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]] = None,
                  revert_to_spot: Optional[pulumi.Input['ElastigroupRevertToSpotArgs']] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]]] = None,
@@ -96,7 +97,7 @@ class ElastigroupArgs:
         :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
-        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
@@ -142,11 +143,12 @@ class ElastigroupArgs:
         :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
         :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
         :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input['ElastigroupRevertToSpotArgs'] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]] scaling_strategies: Set termination policy.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -264,6 +266,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "private_ips", private_ips)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resource_tag_specifications is not None:
+            pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
             pulumi.set(__self__, "revert_to_spot", revert_to_spot)
         if scaling_down_policies is not None:
@@ -357,7 +361,7 @@ class ElastigroupArgs:
     @pulumi.getter
     def product(self) -> pulumi.Input[str]:
         """
-        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         """
         return pulumi.get(self, "product")
@@ -921,7 +925,7 @@ class ElastigroupArgs:
     @pulumi.getter(name="preferredAvailabilityZones")
     def preferred_availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         """
         return pulumi.get(self, "preferred_availability_zones")
@@ -954,6 +958,18 @@ class ElastigroupArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resourceTagSpecifications")
+    def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]]:
+        """
+        User will specify which resources should be tagged with group tags.
+        """
+        return pulumi.get(self, "resource_tag_specifications")
+
+    @resource_tag_specifications.setter
+    def resource_tag_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]]):
+        pulumi.set(self, "resource_tag_specifications", value)
 
     @property
     @pulumi.getter(name="revertToSpot")
@@ -1227,6 +1243,7 @@ class _ElastigroupState:
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]] = None,
                  revert_to_spot: Optional[pulumi.Input['ElastigroupRevertToSpotArgs']] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]]] = None,
@@ -1297,13 +1314,14 @@ class _ElastigroupState:
         :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
         :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
         :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input['ElastigroupRevertToSpotArgs'] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]] scaling_strategies: Set termination policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
@@ -1426,6 +1444,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "product", product)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resource_tag_specifications is not None:
+            pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
             pulumi.set(__self__, "revert_to_spot", revert_to_spot)
         if scaling_down_policies is not None:
@@ -2060,7 +2080,7 @@ class _ElastigroupState:
     @pulumi.getter(name="preferredAvailabilityZones")
     def preferred_availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         """
         return pulumi.get(self, "preferred_availability_zones")
@@ -2085,7 +2105,7 @@ class _ElastigroupState:
     @pulumi.getter
     def product(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         """
         return pulumi.get(self, "product")
@@ -2106,6 +2126,18 @@ class _ElastigroupState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resourceTagSpecifications")
+    def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]]:
+        """
+        User will specify which resources should be tagged with group tags.
+        """
+        return pulumi.get(self, "resource_tag_specifications")
+
+    @resource_tag_specifications.setter
+    def resource_tag_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]]):
+        pulumi.set(self, "resource_tag_specifications", value)
 
     @property
     @pulumi.getter(name="revertToSpot")
@@ -2393,6 +2425,7 @@ class Elastigroup(pulumi.CustomResource):
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]]] = None,
                  revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
                  scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]]] = None,
@@ -2467,13 +2500,14 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
         :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
         :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
@@ -2566,6 +2600,7 @@ class Elastigroup(pulumi.CustomResource):
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]]] = None,
                  revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
                  scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]]] = None,
@@ -2663,6 +2698,7 @@ class Elastigroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'product'")
             __props__.__dict__["product"] = product
             __props__.__dict__["region"] = region
+            __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
             __props__.__dict__["revert_to_spot"] = revert_to_spot
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_strategies"] = scaling_strategies
@@ -2750,6 +2786,7 @@ class Elastigroup(pulumi.CustomResource):
             private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             product: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]]] = None,
             revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
             scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]]] = None,
@@ -2825,13 +2862,14 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
         :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
         :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of associated security group IDS.
@@ -2904,6 +2942,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["private_ips"] = private_ips
         __props__.__dict__["product"] = product
         __props__.__dict__["region"] = region
+        __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
         __props__.__dict__["revert_to_spot"] = revert_to_spot
         __props__.__dict__["scaling_down_policies"] = scaling_down_policies
         __props__.__dict__["scaling_strategies"] = scaling_strategies
@@ -3318,7 +3357,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="preferredAvailabilityZones")
     def preferred_availability_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         """
         return pulumi.get(self, "preferred_availability_zones")
@@ -3335,7 +3374,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter
     def product(self) -> pulumi.Output[str]:
         """
-        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         """
         return pulumi.get(self, "product")
@@ -3348,6 +3387,14 @@ class Elastigroup(pulumi.CustomResource):
         Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="resourceTagSpecifications")
+    def resource_tag_specifications(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupResourceTagSpecification']]]:
+        """
+        User will specify which resources should be tagged with group tags.
+        """
+        return pulumi.get(self, "resource_tag_specifications")
 
     @property
     @pulumi.getter(name="revertToSpot")

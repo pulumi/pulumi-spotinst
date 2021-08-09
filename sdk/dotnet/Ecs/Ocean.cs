@@ -52,6 +52,11 @@ namespace Pulumi.SpotInst.Ecs
     ///             EbsOptimized = true,
     ///             IamInstanceProfile = "iam-profile",
     ///             ImageId = "ami-12345",
+    ///             InstanceMetadataOptions = new SpotInst.Ecs.Inputs.OceanInstanceMetadataOptionsArgs
+    ///             {
+    ///                 HttpPutResponseHopLimit = 10,
+    ///                 HttpTokens = "required",
+    ///             },
     ///             KeyPair = "KeyPair",
     ///             MaxSize = 1,
     ///             MinSize = 0,
@@ -71,6 +76,7 @@ namespace Pulumi.SpotInst.Ecs
     ///             {
     ///                 "sg-12345",
     ///             },
+    ///             SpotPercentage = 100,
     ///             SubnetIds = 
     ///             {
     ///                 "subnet-12345",
@@ -167,6 +173,12 @@ namespace Pulumi.SpotInst.Ecs
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
+        /// Ocean instance metadata options object for IMDSv2.
+        /// </summary>
+        [Output("instanceMetadataOptions")]
+        public Output<Outputs.OceanInstanceMetadataOptions?> InstanceMetadataOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The key pair to attach the instances.
         /// </summary>
         [Output("keyPair")]
@@ -219,6 +231,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// </summary>
+        [Output("spotPercentage")]
+        public Output<int?> SpotPercentage { get; private set; } = null!;
 
         /// <summary>
         /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -366,6 +384,12 @@ namespace Pulumi.SpotInst.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// Ocean instance metadata options object for IMDSv2.
+        /// </summary>
+        [Input("instanceMetadataOptions")]
+        public Input<Inputs.OceanInstanceMetadataOptionsArgs>? InstanceMetadataOptions { get; set; }
+
+        /// <summary>
         /// The key pair to attach the instances.
         /// </summary>
         [Input("keyPair")]
@@ -430,6 +454,12 @@ namespace Pulumi.SpotInst.Ecs
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        /// <summary>
+        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// </summary>
+        [Input("spotPercentage")]
+        public Input<int>? SpotPercentage { get; set; }
 
         [Input("subnetIds", required: true)]
         private InputList<string>? _subnetIds;
@@ -556,6 +586,12 @@ namespace Pulumi.SpotInst.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// Ocean instance metadata options object for IMDSv2.
+        /// </summary>
+        [Input("instanceMetadataOptions")]
+        public Input<Inputs.OceanInstanceMetadataOptionsGetArgs>? InstanceMetadataOptions { get; set; }
+
+        /// <summary>
         /// The key pair to attach the instances.
         /// </summary>
         [Input("keyPair")]
@@ -620,6 +656,12 @@ namespace Pulumi.SpotInst.Ecs
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        /// <summary>
+        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// </summary>
+        [Input("spotPercentage")]
+        public Input<int>? SpotPercentage { get; set; }
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;

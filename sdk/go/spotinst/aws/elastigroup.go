@@ -123,6 +123,8 @@ type Elastigroup struct {
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// User will specify which resources should be tagged with group tags.
+	ResourceTagSpecifications ElastigroupResourceTagSpecificationArrayOutput `pulumi:"resourceTagSpecifications"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
 	RevertToSpot        ElastigroupRevertToSpotPtrOutput        `pulumi:"revertToSpot"`
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
@@ -314,6 +316,8 @@ type elastigroupState struct {
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region *string `pulumi:"region"`
+	// User will specify which resources should be tagged with group tags.
+	ResourceTagSpecifications []ElastigroupResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
 	RevertToSpot        *ElastigroupRevertToSpot       `pulumi:"revertToSpot"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
@@ -459,6 +463,8 @@ type ElastigroupState struct {
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region pulumi.StringPtrInput
+	// User will specify which resources should be tagged with group tags.
+	ResourceTagSpecifications ElastigroupResourceTagSpecificationArrayInput
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
 	RevertToSpot        ElastigroupRevertToSpotPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
@@ -608,6 +614,8 @@ type elastigroupArgs struct {
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region *string `pulumi:"region"`
+	// User will specify which resources should be tagged with group tags.
+	ResourceTagSpecifications []ElastigroupResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
 	RevertToSpot        *ElastigroupRevertToSpot       `pulumi:"revertToSpot"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
@@ -754,6 +762,8 @@ type ElastigroupArgs struct {
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region pulumi.StringPtrInput
+	// User will specify which resources should be tagged with group tags.
+	ResourceTagSpecifications ElastigroupResourceTagSpecificationArrayInput
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
 	RevertToSpot        ElastigroupRevertToSpotPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput

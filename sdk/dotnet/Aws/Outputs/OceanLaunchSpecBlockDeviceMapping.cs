@@ -16,7 +16,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// <summary>
         /// String. Set device name. (Example: `/dev/xvda1`).
         /// </summary>
-        public readonly string DeviceName;
+        public readonly string? DeviceName;
         /// <summary>
         /// Object. Set Elastic Block Store properties .
         /// </summary>
@@ -29,7 +29,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
         [OutputConstructor]
         private OceanLaunchSpecBlockDeviceMapping(
-            string deviceName,
+            string? deviceName,
 
             Outputs.OceanLaunchSpecBlockDeviceMappingEbs? ebs,
 

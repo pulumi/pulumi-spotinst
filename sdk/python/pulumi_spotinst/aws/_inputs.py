@@ -52,6 +52,7 @@ __all__ = [
     'ElastigroupMetadataOptionsArgs',
     'ElastigroupMultaiTargetSetArgs',
     'ElastigroupNetworkInterfaceArgs',
+    'ElastigroupResourceTagSpecificationArgs',
     'ElastigroupRevertToSpotArgs',
     'ElastigroupScalingDownPolicyArgs',
     'ElastigroupScalingDownPolicyDimensionArgs',
@@ -77,6 +78,7 @@ __all__ = [
     'ManagedInstanceLoadBalancerArgs',
     'ManagedInstanceManagedInstanceActionArgs',
     'ManagedInstanceNetworkInterfaceArgs',
+    'ManagedInstanceResourceTagSpecificationArgs',
     'ManagedInstanceRevertToSpotArgs',
     'ManagedInstanceScheduledTaskArgs',
     'ManagedInstanceTagArgs',
@@ -101,6 +103,7 @@ __all__ = [
     'OceanAutoscalerAutoscaleDownArgs',
     'OceanAutoscalerAutoscaleHeadroomArgs',
     'OceanAutoscalerResourceLimitsArgs',
+    'OceanInstanceMetadataOptionsArgs',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
     'OceanLaunchSpecBlockDeviceMappingArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
@@ -2664,6 +2667,77 @@ class ElastigroupNetworkInterfaceArgs:
 
 
 @pulumi.input_type
+class ElastigroupResourceTagSpecificationArgs:
+    def __init__(__self__, *,
+                 should_tag_amis: Optional[pulumi.Input[bool]] = None,
+                 should_tag_enis: Optional[pulumi.Input[bool]] = None,
+                 should_tag_snapshots: Optional[pulumi.Input[bool]] = None,
+                 should_tag_volumes: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] should_tag_amis: Tag specification for AMI resources.
+        :param pulumi.Input[bool] should_tag_enis: Tag specification for ENI resources.
+        :param pulumi.Input[bool] should_tag_snapshots: Tag specification for Snapshot resources.
+        :param pulumi.Input[bool] should_tag_volumes: Tag specification for Volume resources.
+        """
+        if should_tag_amis is not None:
+            pulumi.set(__self__, "should_tag_amis", should_tag_amis)
+        if should_tag_enis is not None:
+            pulumi.set(__self__, "should_tag_enis", should_tag_enis)
+        if should_tag_snapshots is not None:
+            pulumi.set(__self__, "should_tag_snapshots", should_tag_snapshots)
+        if should_tag_volumes is not None:
+            pulumi.set(__self__, "should_tag_volumes", should_tag_volumes)
+
+    @property
+    @pulumi.getter(name="shouldTagAmis")
+    def should_tag_amis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Tag specification for AMI resources.
+        """
+        return pulumi.get(self, "should_tag_amis")
+
+    @should_tag_amis.setter
+    def should_tag_amis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_tag_amis", value)
+
+    @property
+    @pulumi.getter(name="shouldTagEnis")
+    def should_tag_enis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Tag specification for ENI resources.
+        """
+        return pulumi.get(self, "should_tag_enis")
+
+    @should_tag_enis.setter
+    def should_tag_enis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_tag_enis", value)
+
+    @property
+    @pulumi.getter(name="shouldTagSnapshots")
+    def should_tag_snapshots(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Tag specification for Snapshot resources.
+        """
+        return pulumi.get(self, "should_tag_snapshots")
+
+    @should_tag_snapshots.setter
+    def should_tag_snapshots(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_tag_snapshots", value)
+
+    @property
+    @pulumi.getter(name="shouldTagVolumes")
+    def should_tag_volumes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Tag specification for Volume resources.
+        """
+        return pulumi.get(self, "should_tag_volumes")
+
+    @should_tag_volumes.setter
+    def should_tag_volumes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_tag_volumes", value)
+
+
+@pulumi.input_type
 class ElastigroupRevertToSpotArgs:
     def __init__(__self__, *,
                  perform_at: pulumi.Input[str],
@@ -4889,6 +4963,77 @@ class ManagedInstanceNetworkInterfaceArgs:
     @associate_public_ip_address.setter
     def associate_public_ip_address(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "associate_public_ip_address", value)
+
+
+@pulumi.input_type
+class ManagedInstanceResourceTagSpecificationArgs:
+    def __init__(__self__, *,
+                 should_tag_amis: Optional[pulumi.Input[bool]] = None,
+                 should_tag_enis: Optional[pulumi.Input[bool]] = None,
+                 should_tag_snapshots: Optional[pulumi.Input[bool]] = None,
+                 should_tag_volumes: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] should_tag_amis: Tag specification for AMI resources.
+        :param pulumi.Input[bool] should_tag_enis: Tag specification for ENI resources.
+        :param pulumi.Input[bool] should_tag_snapshots: Tag specification for Snapshot resources.
+        :param pulumi.Input[bool] should_tag_volumes: Tag specification for Volume resources.
+        """
+        if should_tag_amis is not None:
+            pulumi.set(__self__, "should_tag_amis", should_tag_amis)
+        if should_tag_enis is not None:
+            pulumi.set(__self__, "should_tag_enis", should_tag_enis)
+        if should_tag_snapshots is not None:
+            pulumi.set(__self__, "should_tag_snapshots", should_tag_snapshots)
+        if should_tag_volumes is not None:
+            pulumi.set(__self__, "should_tag_volumes", should_tag_volumes)
+
+    @property
+    @pulumi.getter(name="shouldTagAmis")
+    def should_tag_amis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Tag specification for AMI resources.
+        """
+        return pulumi.get(self, "should_tag_amis")
+
+    @should_tag_amis.setter
+    def should_tag_amis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_tag_amis", value)
+
+    @property
+    @pulumi.getter(name="shouldTagEnis")
+    def should_tag_enis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Tag specification for ENI resources.
+        """
+        return pulumi.get(self, "should_tag_enis")
+
+    @should_tag_enis.setter
+    def should_tag_enis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_tag_enis", value)
+
+    @property
+    @pulumi.getter(name="shouldTagSnapshots")
+    def should_tag_snapshots(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Tag specification for Snapshot resources.
+        """
+        return pulumi.get(self, "should_tag_snapshots")
+
+    @should_tag_snapshots.setter
+    def should_tag_snapshots(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_tag_snapshots", value)
+
+    @property
+    @pulumi.getter(name="shouldTagVolumes")
+    def should_tag_volumes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Tag specification for Volume resources.
+        """
+        return pulumi.get(self, "should_tag_volumes")
+
+    @should_tag_volumes.setter
+    def should_tag_volumes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_tag_volumes", value)
 
 
 @pulumi.input_type
@@ -7216,6 +7361,44 @@ class OceanAutoscalerResourceLimitsArgs:
 
 
 @pulumi.input_type
+class OceanInstanceMetadataOptionsArgs:
+    def __init__(__self__, *,
+                 http_tokens: pulumi.Input[str],
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] http_tokens: Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        :param pulumi.Input[int] http_put_response_hop_limit: An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        """
+        pulumi.set(__self__, "http_tokens", http_tokens)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> pulumi.Input[str]:
+        """
+        Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: pulumi.Input[str]):
+        pulumi.set(self, "http_tokens", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
+
+
+@pulumi.input_type
 class OceanLaunchSpecAutoscaleHeadroomArgs:
     def __init__(__self__, *,
                  num_of_units: pulumi.Input[int],
@@ -7288,7 +7471,7 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
 @pulumi.input_type
 class OceanLaunchSpecBlockDeviceMappingArgs:
     def __init__(__self__, *,
-                 device_name: pulumi.Input[str],
+                 device_name: Optional[pulumi.Input[str]] = None,
                  ebs: Optional[pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgs']] = None,
                  no_device: Optional[pulumi.Input[str]] = None,
                  virtual_name: Optional[pulumi.Input[str]] = None):
@@ -7297,7 +7480,8 @@ class OceanLaunchSpecBlockDeviceMappingArgs:
         :param pulumi.Input['OceanLaunchSpecBlockDeviceMappingEbsArgs'] ebs: Object. Set Elastic Block Store properties .
         :param pulumi.Input[str] no_device: String. Suppresses the specified device included in the block device mapping of the AMI.
         """
-        pulumi.set(__self__, "device_name", device_name)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
         if ebs is not None:
             pulumi.set(__self__, "ebs", ebs)
         if no_device is not None:
@@ -7307,14 +7491,14 @@ class OceanLaunchSpecBlockDeviceMappingArgs:
 
     @property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> pulumi.Input[str]:
+    def device_name(self) -> Optional[pulumi.Input[str]]:
         """
         String. Set device name. (Example: `/dev/xvda1`).
         """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
-    def device_name(self, value: pulumi.Input[str]):
+    def device_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "device_name", value)
 
     @property

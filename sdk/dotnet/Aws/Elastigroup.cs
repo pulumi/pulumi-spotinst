@@ -303,7 +303,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> PlacementTenancy { get; private set; } = null!;
 
         /// <summary>
-        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         /// Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         /// </summary>
         [Output("preferredAvailabilityZones")]
@@ -316,7 +316,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         /// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         /// </summary>
         [Output("product")]
@@ -328,6 +328,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// User will specify which resources should be tagged with group tags.
+        /// </summary>
+        [Output("resourceTagSpecifications")]
+        public Output<ImmutableArray<Outputs.ElastigroupResourceTagSpecification>> ResourceTagSpecifications { get; private set; } = null!;
 
         /// <summary>
         /// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
@@ -823,7 +829,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _preferredAvailabilityZones;
 
         /// <summary>
-        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         /// Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         /// </summary>
         public InputList<string> PreferredAvailabilityZones
@@ -845,7 +851,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         /// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         /// </summary>
         [Input("product", required: true)]
@@ -857,6 +863,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("resourceTagSpecifications")]
+        private InputList<Inputs.ElastigroupResourceTagSpecificationArgs>? _resourceTagSpecifications;
+
+        /// <summary>
+        /// User will specify which resources should be tagged with group tags.
+        /// </summary>
+        public InputList<Inputs.ElastigroupResourceTagSpecificationArgs> ResourceTagSpecifications
+        {
+            get => _resourceTagSpecifications ?? (_resourceTagSpecifications = new InputList<Inputs.ElastigroupResourceTagSpecificationArgs>());
+            set => _resourceTagSpecifications = value;
+        }
 
         /// <summary>
         /// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
@@ -1373,7 +1391,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _preferredAvailabilityZones;
 
         /// <summary>
-        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        /// The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         /// Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         /// </summary>
         public InputList<string> PreferredAvailabilityZones
@@ -1395,7 +1413,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         /// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         /// </summary>
         [Input("product")]
@@ -1407,6 +1425,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("resourceTagSpecifications")]
+        private InputList<Inputs.ElastigroupResourceTagSpecificationGetArgs>? _resourceTagSpecifications;
+
+        /// <summary>
+        /// User will specify which resources should be tagged with group tags.
+        /// </summary>
+        public InputList<Inputs.ElastigroupResourceTagSpecificationGetArgs> ResourceTagSpecifications
+        {
+            get => _resourceTagSpecifications ?? (_resourceTagSpecifications = new InputList<Inputs.ElastigroupResourceTagSpecificationGetArgs>());
+            set => _resourceTagSpecifications = value;
+        }
 
         /// <summary>
         /// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`

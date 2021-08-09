@@ -42,6 +42,9 @@ __all__ = [
     'OceanLaunchSpecAutoscaleHeadroom',
     'OceanLaunchSpecLabel',
     'OceanLaunchSpecMetadata',
+    'OceanLaunchSpecResourceLimits',
+    'OceanLaunchSpecShieldedInstanceConfig',
+    'OceanLaunchSpecStorage',
     'OceanLaunchSpecStrategy',
     'OceanLaunchSpecTaint',
 ]
@@ -1822,6 +1825,128 @@ class OceanLaunchSpecMetadata(dict):
         The label value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanLaunchSpecResourceLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxInstanceCount":
+            suggest = "max_instance_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecResourceLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecResourceLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecResourceLimits.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_instance_count: Optional[int] = None):
+        """
+        :param int max_instance_count: Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+        """
+        if max_instance_count is not None:
+            pulumi.set(__self__, "max_instance_count", max_instance_count)
+
+    @property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> Optional[int]:
+        """
+        Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+        """
+        return pulumi.get(self, "max_instance_count")
+
+
+@pulumi.output_type
+class OceanLaunchSpecShieldedInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecShieldedInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecShieldedInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecShieldedInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[bool] = None,
+                 enable_secure_boot: Optional[bool] = None):
+        """
+        :param bool enable_integrity_monitoring: Boolean. Enable the integrity monitoring parameter on the GCP instances.
+        :param bool enable_secure_boot: Boolean. Enable the secure boot parameter on the GCP instances.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[bool]:
+        """
+        Boolean. Enable the integrity monitoring parameter on the GCP instances.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[bool]:
+        """
+        Boolean. Enable the secure boot parameter on the GCP instances.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
+class OceanLaunchSpecStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_ssd_count: Optional[int] = None):
+        """
+        :param int local_ssd_count: Defines the number of local SSDs to be attached per node for this VNG.
+        """
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        """
+        Defines the number of local SSDs to be attached per node for this VNG.
+        """
+        return pulumi.get(self, "local_ssd_count")
 
 
 @pulumi.output_type

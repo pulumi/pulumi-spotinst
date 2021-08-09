@@ -104,9 +104,11 @@ type ManagedInstance struct {
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 	Product pulumi.StringOutput `pulumi:"product"`
 	// The AWS region your group will be created in.
-	Region         pulumi.StringPtrOutput                  `pulumi:"region"`
-	RevertToSpot   ManagedInstanceRevertToSpotPtrOutput    `pulumi:"revertToSpot"`
-	ScheduledTasks ManagedInstanceScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
+	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// User will specify which resources should be tagged with group tags.
+	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayOutput `pulumi:"resourceTagSpecifications"`
+	RevertToSpot              ManagedInstanceRevertToSpotPtrOutput               `pulumi:"revertToSpot"`
+	ScheduledTasks            ManagedInstanceScheduledTaskArrayOutput            `pulumi:"scheduledTasks"`
 	// One or more security group IDs.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The Base64-encoded shutdown script to execute prior to instance termination.
@@ -240,9 +242,11 @@ type managedInstanceState struct {
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 	Product *string `pulumi:"product"`
 	// The AWS region your group will be created in.
-	Region         *string                        `pulumi:"region"`
-	RevertToSpot   *ManagedInstanceRevertToSpot   `pulumi:"revertToSpot"`
-	ScheduledTasks []ManagedInstanceScheduledTask `pulumi:"scheduledTasks"`
+	Region *string `pulumi:"region"`
+	// User will specify which resources should be tagged with group tags.
+	ResourceTagSpecifications []ManagedInstanceResourceTagSpecification `pulumi:"resourceTagSpecifications"`
+	RevertToSpot              *ManagedInstanceRevertToSpot              `pulumi:"revertToSpot"`
+	ScheduledTasks            []ManagedInstanceScheduledTask            `pulumi:"scheduledTasks"`
 	// One or more security group IDs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The Base64-encoded shutdown script to execute prior to instance termination.
@@ -330,9 +334,11 @@ type ManagedInstanceState struct {
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 	Product pulumi.StringPtrInput
 	// The AWS region your group will be created in.
-	Region         pulumi.StringPtrInput
-	RevertToSpot   ManagedInstanceRevertToSpotPtrInput
-	ScheduledTasks ManagedInstanceScheduledTaskArrayInput
+	Region pulumi.StringPtrInput
+	// User will specify which resources should be tagged with group tags.
+	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayInput
+	RevertToSpot              ManagedInstanceRevertToSpotPtrInput
+	ScheduledTasks            ManagedInstanceScheduledTaskArrayInput
 	// One or more security group IDs.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The Base64-encoded shutdown script to execute prior to instance termination.
@@ -424,9 +430,11 @@ type managedInstanceArgs struct {
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 	Product string `pulumi:"product"`
 	// The AWS region your group will be created in.
-	Region         *string                        `pulumi:"region"`
-	RevertToSpot   *ManagedInstanceRevertToSpot   `pulumi:"revertToSpot"`
-	ScheduledTasks []ManagedInstanceScheduledTask `pulumi:"scheduledTasks"`
+	Region *string `pulumi:"region"`
+	// User will specify which resources should be tagged with group tags.
+	ResourceTagSpecifications []ManagedInstanceResourceTagSpecification `pulumi:"resourceTagSpecifications"`
+	RevertToSpot              *ManagedInstanceRevertToSpot              `pulumi:"revertToSpot"`
+	ScheduledTasks            []ManagedInstanceScheduledTask            `pulumi:"scheduledTasks"`
 	// One or more security group IDs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The Base64-encoded shutdown script to execute prior to instance termination.
@@ -515,9 +523,11 @@ type ManagedInstanceArgs struct {
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 	Product pulumi.StringInput
 	// The AWS region your group will be created in.
-	Region         pulumi.StringPtrInput
-	RevertToSpot   ManagedInstanceRevertToSpotPtrInput
-	ScheduledTasks ManagedInstanceScheduledTaskArrayInput
+	Region pulumi.StringPtrInput
+	// User will specify which resources should be tagged with group tags.
+	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayInput
+	RevertToSpot              ManagedInstanceRevertToSpotPtrInput
+	ScheduledTasks            ManagedInstanceScheduledTaskArrayInput
 	// One or more security group IDs.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The Base64-encoded shutdown script to execute prior to instance termination.

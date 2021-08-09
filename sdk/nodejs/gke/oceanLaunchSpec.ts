@@ -63,6 +63,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly oceanId!: pulumi.Output<string>;
     /**
+     * The Ocean virtual node group resource limits object.
+     */
+    public readonly resourceLimits!: pulumi.Output<outputs.gke.OceanLaunchSpecResourceLimits | undefined>;
+    /**
      * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     public readonly restrictScaleDown!: pulumi.Output<boolean>;
@@ -75,9 +79,21 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly rootVolumeType!: pulumi.Output<string>;
     /**
+     * The account used by applications running on the VM to call GCP APIs.
+     */
+    public readonly serviceAccount!: pulumi.Output<string>;
+    /**
+     * The Ocean shielded instance configuration object.
+     */
+    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.gke.OceanLaunchSpecShieldedInstanceConfig>;
+    /**
      * Image URL.
      */
     public readonly sourceImage!: pulumi.Output<string>;
+    /**
+     * The Ocean virtual node group storage object.
+     */
+    public readonly storage!: pulumi.Output<outputs.gke.OceanLaunchSpecStorage>;
     /**
      * The Ocean Launch Spec Strategy object.
      */
@@ -106,10 +122,14 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["metadatas"] = state ? state.metadatas : undefined;
             inputs["nodePoolName"] = state ? state.nodePoolName : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
+            inputs["resourceLimits"] = state ? state.resourceLimits : undefined;
             inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
             inputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
+            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            inputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             inputs["sourceImage"] = state ? state.sourceImage : undefined;
+            inputs["storage"] = state ? state.storage : undefined;
             inputs["strategies"] = state ? state.strategies : undefined;
             inputs["taints"] = state ? state.taints : undefined;
         } else {
@@ -123,10 +143,14 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["metadatas"] = args ? args.metadatas : undefined;
             inputs["nodePoolName"] = args ? args.nodePoolName : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
+            inputs["resourceLimits"] = args ? args.resourceLimits : undefined;
             inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
             inputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
+            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             inputs["sourceImage"] = args ? args.sourceImage : undefined;
+            inputs["storage"] = args ? args.storage : undefined;
             inputs["strategies"] = args ? args.strategies : undefined;
             inputs["taints"] = args ? args.taints : undefined;
         }
@@ -166,6 +190,10 @@ export interface OceanLaunchSpecState {
      */
     readonly oceanId?: pulumi.Input<string>;
     /**
+     * The Ocean virtual node group resource limits object.
+     */
+    readonly resourceLimits?: pulumi.Input<inputs.gke.OceanLaunchSpecResourceLimits>;
+    /**
      * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     readonly restrictScaleDown?: pulumi.Input<boolean>;
@@ -178,9 +206,21 @@ export interface OceanLaunchSpecState {
      */
     readonly rootVolumeType?: pulumi.Input<string>;
     /**
+     * The account used by applications running on the VM to call GCP APIs.
+     */
+    readonly serviceAccount?: pulumi.Input<string>;
+    /**
+     * The Ocean shielded instance configuration object.
+     */
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanLaunchSpecShieldedInstanceConfig>;
+    /**
      * Image URL.
      */
     readonly sourceImage?: pulumi.Input<string>;
+    /**
+     * The Ocean virtual node group storage object.
+     */
+    readonly storage?: pulumi.Input<inputs.gke.OceanLaunchSpecStorage>;
     /**
      * The Ocean Launch Spec Strategy object.
      */
@@ -220,6 +260,10 @@ export interface OceanLaunchSpecArgs {
      */
     readonly oceanId: pulumi.Input<string>;
     /**
+     * The Ocean virtual node group resource limits object.
+     */
+    readonly resourceLimits?: pulumi.Input<inputs.gke.OceanLaunchSpecResourceLimits>;
+    /**
      * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     readonly restrictScaleDown?: pulumi.Input<boolean>;
@@ -232,9 +276,21 @@ export interface OceanLaunchSpecArgs {
      */
     readonly rootVolumeType?: pulumi.Input<string>;
     /**
+     * The account used by applications running on the VM to call GCP APIs.
+     */
+    readonly serviceAccount?: pulumi.Input<string>;
+    /**
+     * The Ocean shielded instance configuration object.
+     */
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanLaunchSpecShieldedInstanceConfig>;
+    /**
      * Image URL.
      */
     readonly sourceImage?: pulumi.Input<string>;
+    /**
+     * The Ocean virtual node group storage object.
+     */
+    readonly storage?: pulumi.Input<inputs.gke.OceanLaunchSpecStorage>;
     /**
      * The Ocean Launch Spec Strategy object.
      */

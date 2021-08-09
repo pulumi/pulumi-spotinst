@@ -27,6 +27,7 @@ class OceanArgs:
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -34,6 +35,7 @@ class OceanArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  optimize_images: Optional[pulumi.Input['OceanOptimizeImagesArgs']] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
@@ -54,6 +56,7 @@ class OceanArgs:
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
@@ -61,6 +64,7 @@ class OceanArgs:
         :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input['OceanOptimizeImagesArgs'] optimize_images: Object. Set auto image update settings.
         :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: While used, you can control whether the group should perform a deployment after an update to the configuration.
+        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input['OceanUpdatePolicyArgs'] update_policy: While used, you can control whether the group should perform a deployment after an update to the configuration.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
@@ -87,6 +91,8 @@ class OceanArgs:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if instance_metadata_options is not None:
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if key_pair is not None:
             pulumi.set(__self__, "key_pair", key_pair)
         if max_size is not None:
@@ -101,6 +107,8 @@ class OceanArgs:
             pulumi.set(__self__, "optimize_images", optimize_images)
         if scheduled_tasks is not None:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+        if spot_percentage is not None:
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if update_policy is not None:
@@ -259,6 +267,18 @@ class OceanArgs:
         pulumi.set(self, "image_id", value)
 
     @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @instance_metadata_options.setter
+    def instance_metadata_options(self, value: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]):
+        pulumi.set(self, "instance_metadata_options", value)
+
+    @property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[str]]:
         """
@@ -343,6 +363,18 @@ class OceanArgs:
         pulumi.set(self, "scheduled_tasks", value)
 
     @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        """
+        return pulumi.get(self, "spot_percentage")
+
+    @spot_percentage.setter
+    def spot_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_percentage", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]:
         """
@@ -424,6 +456,7 @@ class _OceanState:
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -433,6 +466,7 @@ class _OceanState:
                  region: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
@@ -451,6 +485,7 @@ class _OceanState:
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
@@ -460,6 +495,7 @@ class _OceanState:
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: While used, you can control whether the group should perform a deployment after an update to the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
+        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input['OceanUpdatePolicyArgs'] update_policy: While used, you can control whether the group should perform a deployment after an update to the configuration.
@@ -485,6 +521,8 @@ class _OceanState:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if instance_metadata_options is not None:
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if key_pair is not None:
             pulumi.set(__self__, "key_pair", key_pair)
         if max_size is not None:
@@ -503,6 +541,8 @@ class _OceanState:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if spot_percentage is not None:
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
         if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
@@ -627,6 +667,18 @@ class _OceanState:
         pulumi.set(self, "image_id", value)
 
     @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @instance_metadata_options.setter
+    def instance_metadata_options(self, value: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']]):
+        pulumi.set(self, "instance_metadata_options", value)
+
+    @property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[str]]:
         """
@@ -735,6 +787,18 @@ class _OceanState:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        """
+        return pulumi.get(self, "spot_percentage")
+
+    @spot_percentage.setter
+    def spot_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_percentage", value)
+
+    @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -830,6 +894,7 @@ class Ocean(pulumi.CustomResource):
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -839,6 +904,7 @@ class Ocean(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
@@ -879,6 +945,10 @@ class Ocean(pulumi.CustomResource):
             ebs_optimized=True,
             iam_instance_profile="iam-profile",
             image_id="ami-12345",
+            instance_metadata_options=spotinst.ecs.OceanInstanceMetadataOptionsArgs(
+                http_put_response_hop_limit=10,
+                http_tokens="required",
+            ),
             key_pair="KeyPair",
             max_size=1,
             min_size=0,
@@ -893,6 +963,7 @@ class Ocean(pulumi.CustomResource):
             ),
             region="us-west-2",
             security_group_ids=["sg-12345"],
+            spot_percentage=100,
             subnet_ids=["subnet-12345"],
             tags=[spotinst.ecs.OceanTagArgs(
                 key="fakeKey",
@@ -919,6 +990,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
@@ -928,6 +1000,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: While used, you can control whether the group should perform a deployment after an update to the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
+        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']] update_policy: While used, you can control whether the group should perform a deployment after an update to the configuration.
@@ -973,6 +1046,10 @@ class Ocean(pulumi.CustomResource):
             ebs_optimized=True,
             iam_instance_profile="iam-profile",
             image_id="ami-12345",
+            instance_metadata_options=spotinst.ecs.OceanInstanceMetadataOptionsArgs(
+                http_put_response_hop_limit=10,
+                http_tokens="required",
+            ),
             key_pair="KeyPair",
             max_size=1,
             min_size=0,
@@ -987,6 +1064,7 @@ class Ocean(pulumi.CustomResource):
             ),
             region="us-west-2",
             security_group_ids=["sg-12345"],
+            spot_percentage=100,
             subnet_ids=["subnet-12345"],
             tags=[spotinst.ecs.OceanTagArgs(
                 key="fakeKey",
@@ -1026,6 +1104,7 @@ class Ocean(pulumi.CustomResource):
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -1035,6 +1114,7 @@ class Ocean(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
@@ -1065,6 +1145,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["ebs_optimized"] = ebs_optimized
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["key_pair"] = key_pair
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
@@ -1078,6 +1159,7 @@ class Ocean(pulumi.CustomResource):
             if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["spot_percentage"] = spot_percentage
             if subnet_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_ids'")
             __props__.__dict__["subnet_ids"] = subnet_ids
@@ -1106,6 +1188,7 @@ class Ocean(pulumi.CustomResource):
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
+            instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
             key_pair: Optional[pulumi.Input[str]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
@@ -1115,6 +1198,7 @@ class Ocean(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            spot_percentage: Optional[pulumi.Input[int]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
@@ -1138,6 +1222,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
@@ -1147,6 +1232,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]] scheduled_tasks: While used, you can control whether the group should perform a deployment after an update to the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
+        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']] update_policy: While used, you can control whether the group should perform a deployment after an update to the configuration.
@@ -1167,6 +1253,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["ebs_optimized"] = ebs_optimized
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["instance_metadata_options"] = instance_metadata_options
         __props__.__dict__["key_pair"] = key_pair
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["min_size"] = min_size
@@ -1176,6 +1263,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["subnet_ids"] = subnet_ids
         __props__.__dict__["tags"] = tags
         __props__.__dict__["update_policy"] = update_policy
@@ -1258,6 +1346,14 @@ class Ocean(pulumi.CustomResource):
         return pulumi.get(self, "image_id")
 
     @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> pulumi.Output[Optional['outputs.OceanInstanceMetadataOptions']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1328,6 +1424,14 @@ class Ocean(pulumi.CustomResource):
         One or more security group ids.
         """
         return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> pulumi.Output[Optional[int]]:
+        """
+        The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        """
+        return pulumi.get(self, "spot_percentage")
 
     @property
     @pulumi.getter(name="subnetIds")

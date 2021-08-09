@@ -37,7 +37,7 @@ class OceanArgs:
                  vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None):
         """
         The set of arguments for constructing a Ocean resource.
-        :param pulumi.Input[str] acd_identifier: The AKS identifier.
+        :param pulumi.Input[str] acd_identifier: The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         :param pulumi.Input[str] aks_name: The AKS cluster name.
         :param pulumi.Input[str] aks_resource_group_name: Name of the Azure Resource Group where the AKS cluster is located.
         :param pulumi.Input[str] ssh_public_key: SSH public key for admin access to Linux VMs.
@@ -99,7 +99,7 @@ class OceanArgs:
     @pulumi.getter(name="acdIdentifier")
     def acd_identifier(self) -> pulumi.Input[str]:
         """
-        The AKS identifier.
+        The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         """
         return pulumi.get(self, "acd_identifier")
 
@@ -361,7 +361,7 @@ class _OceanState:
                  vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None):
         """
         Input properties used for looking up and filtering Ocean resources.
-        :param pulumi.Input[str] acd_identifier: The AKS identifier.
+        :param pulumi.Input[str] acd_identifier: The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         :param pulumi.Input[str] aks_name: The AKS cluster name.
         :param pulumi.Input[str] aks_resource_group_name: Name of the Azure Resource Group where the AKS cluster is located.
         :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -427,7 +427,7 @@ class _OceanState:
     @pulumi.getter(name="acdIdentifier")
     def acd_identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        The AKS identifier.
+        The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         """
         return pulumi.get(self, "acd_identifier")
 
@@ -694,7 +694,7 @@ class Ocean(pulumi.CustomResource):
         Create a Ocean resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acd_identifier: The AKS identifier.
+        :param pulumi.Input[str] acd_identifier: The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         :param pulumi.Input[str] aks_name: The AKS cluster name.
         :param pulumi.Input[str] aks_resource_group_name: Name of the Azure Resource Group where the AKS cluster is located.
         :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -835,7 +835,7 @@ class Ocean(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acd_identifier: The AKS identifier.
+        :param pulumi.Input[str] acd_identifier: The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         :param pulumi.Input[str] aks_name: The AKS cluster name.
         :param pulumi.Input[str] aks_resource_group_name: Name of the Azure Resource Group where the AKS cluster is located.
         :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -886,7 +886,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter(name="acdIdentifier")
     def acd_identifier(self) -> pulumi.Output[str]:
         """
-        The AKS identifier.
+        The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         """
         return pulumi.get(self, "acd_identifier")
 

@@ -30,6 +30,8 @@ type OceanImport struct {
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
+	// The root volume disk type.
+	RootVolumeType pulumi.StringPtrOutput `pulumi:"rootVolumeType"`
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// Instance types allowed in the Ocean cluster.
@@ -87,6 +89,8 @@ type oceanImportState struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
 	MinSize *int `pulumi:"minSize"`
+	// The root volume disk type.
+	RootVolumeType *string `pulumi:"rootVolumeType"`
 	// Set scheduling object.
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
 	// Instance types allowed in the Ocean cluster.
@@ -110,6 +114,8 @@ type OceanImportState struct {
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntPtrInput
+	// The root volume disk type.
+	RootVolumeType pulumi.StringPtrInput
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
 	// Instance types allowed in the Ocean cluster.
@@ -136,6 +142,8 @@ type oceanImportArgs struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
 	MinSize *int `pulumi:"minSize"`
+	// The root volume disk type.
+	RootVolumeType *string `pulumi:"rootVolumeType"`
 	// Set scheduling object.
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
 	// Instance types allowed in the Ocean cluster.
@@ -159,6 +167,8 @@ type OceanImportArgs struct {
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntPtrInput
+	// The root volume disk type.
+	RootVolumeType pulumi.StringPtrInput
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
 	// Instance types allowed in the Ocean cluster.

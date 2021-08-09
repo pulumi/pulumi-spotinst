@@ -54,6 +54,12 @@ namespace Pulumi.SpotInst.Gke
         public Output<string> OceanId { get; private set; } = null!;
 
         /// <summary>
+        /// The Ocean virtual node group resource limits object.
+        /// </summary>
+        [Output("resourceLimits")]
+        public Output<Outputs.OceanLaunchSpecResourceLimits?> ResourceLimits { get; private set; } = null!;
+
+        /// <summary>
         /// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Output("restrictScaleDown")]
@@ -72,10 +78,28 @@ namespace Pulumi.SpotInst.Gke
         public Output<string> RootVolumeType { get; private set; } = null!;
 
         /// <summary>
+        /// The account used by applications running on the VM to call GCP APIs.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// The Ocean shielded instance configuration object.
+        /// </summary>
+        [Output("shieldedInstanceConfig")]
+        public Output<Outputs.OceanLaunchSpecShieldedInstanceConfig> ShieldedInstanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Image URL.
         /// </summary>
         [Output("sourceImage")]
         public Output<string> SourceImage { get; private set; } = null!;
+
+        /// <summary>
+        /// The Ocean virtual node group storage object.
+        /// </summary>
+        [Output("storage")]
+        public Output<Outputs.OceanLaunchSpecStorage> Storage { get; private set; } = null!;
 
         /// <summary>
         /// The Ocean Launch Spec Strategy object.
@@ -196,6 +220,12 @@ namespace Pulumi.SpotInst.Gke
         public Input<string> OceanId { get; set; } = null!;
 
         /// <summary>
+        /// The Ocean virtual node group resource limits object.
+        /// </summary>
+        [Input("resourceLimits")]
+        public Input<Inputs.OceanLaunchSpecResourceLimitsArgs>? ResourceLimits { get; set; }
+
+        /// <summary>
         /// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Input("restrictScaleDown")]
@@ -214,10 +244,28 @@ namespace Pulumi.SpotInst.Gke
         public Input<string>? RootVolumeType { get; set; }
 
         /// <summary>
+        /// The account used by applications running on the VM to call GCP APIs.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// The Ocean shielded instance configuration object.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.OceanLaunchSpecShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
         /// Image URL.
         /// </summary>
         [Input("sourceImage")]
         public Input<string>? SourceImage { get; set; }
+
+        /// <summary>
+        /// The Ocean virtual node group storage object.
+        /// </summary>
+        [Input("storage")]
+        public Input<Inputs.OceanLaunchSpecStorageArgs>? Storage { get; set; }
 
         [Input("strategies")]
         private InputList<Inputs.OceanLaunchSpecStrategyArgs>? _strategies;
@@ -311,6 +359,12 @@ namespace Pulumi.SpotInst.Gke
         public Input<string>? OceanId { get; set; }
 
         /// <summary>
+        /// The Ocean virtual node group resource limits object.
+        /// </summary>
+        [Input("resourceLimits")]
+        public Input<Inputs.OceanLaunchSpecResourceLimitsGetArgs>? ResourceLimits { get; set; }
+
+        /// <summary>
         /// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Input("restrictScaleDown")]
@@ -329,10 +383,28 @@ namespace Pulumi.SpotInst.Gke
         public Input<string>? RootVolumeType { get; set; }
 
         /// <summary>
+        /// The account used by applications running on the VM to call GCP APIs.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// The Ocean shielded instance configuration object.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.OceanLaunchSpecShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
         /// Image URL.
         /// </summary>
         [Input("sourceImage")]
         public Input<string>? SourceImage { get; set; }
+
+        /// <summary>
+        /// The Ocean virtual node group storage object.
+        /// </summary>
+        [Input("storage")]
+        public Input<Inputs.OceanLaunchSpecStorageGetArgs>? Storage { get; set; }
 
         [Input("strategies")]
         private InputList<Inputs.OceanLaunchSpecStrategyGetArgs>? _strategies;

@@ -1263,6 +1263,156 @@ func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerResourceUni
 	}).(pulumi.IntPtrOutput)
 }
 
+type OceanInstanceMetadataOptions struct {
+	// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
+	// Determines if a signed token is required or not. Valid values: `optional` or `required`.
+	HttpTokens string `pulumi:"httpTokens"`
+}
+
+// OceanInstanceMetadataOptionsInput is an input type that accepts OceanInstanceMetadataOptionsArgs and OceanInstanceMetadataOptionsOutput values.
+// You can construct a concrete instance of `OceanInstanceMetadataOptionsInput` via:
+//
+//          OceanInstanceMetadataOptionsArgs{...}
+type OceanInstanceMetadataOptionsInput interface {
+	pulumi.Input
+
+	ToOceanInstanceMetadataOptionsOutput() OceanInstanceMetadataOptionsOutput
+	ToOceanInstanceMetadataOptionsOutputWithContext(context.Context) OceanInstanceMetadataOptionsOutput
+}
+
+type OceanInstanceMetadataOptionsArgs struct {
+	// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+	HttpPutResponseHopLimit pulumi.IntPtrInput `pulumi:"httpPutResponseHopLimit"`
+	// Determines if a signed token is required or not. Valid values: `optional` or `required`.
+	HttpTokens pulumi.StringInput `pulumi:"httpTokens"`
+}
+
+func (OceanInstanceMetadataOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (i OceanInstanceMetadataOptionsArgs) ToOceanInstanceMetadataOptionsOutput() OceanInstanceMetadataOptionsOutput {
+	return i.ToOceanInstanceMetadataOptionsOutputWithContext(context.Background())
+}
+
+func (i OceanInstanceMetadataOptionsArgs) ToOceanInstanceMetadataOptionsOutputWithContext(ctx context.Context) OceanInstanceMetadataOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanInstanceMetadataOptionsOutput)
+}
+
+func (i OceanInstanceMetadataOptionsArgs) ToOceanInstanceMetadataOptionsPtrOutput() OceanInstanceMetadataOptionsPtrOutput {
+	return i.ToOceanInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanInstanceMetadataOptionsArgs) ToOceanInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) OceanInstanceMetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanInstanceMetadataOptionsOutput).ToOceanInstanceMetadataOptionsPtrOutputWithContext(ctx)
+}
+
+// OceanInstanceMetadataOptionsPtrInput is an input type that accepts OceanInstanceMetadataOptionsArgs, OceanInstanceMetadataOptionsPtr and OceanInstanceMetadataOptionsPtrOutput values.
+// You can construct a concrete instance of `OceanInstanceMetadataOptionsPtrInput` via:
+//
+//          OceanInstanceMetadataOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanInstanceMetadataOptionsPtrInput interface {
+	pulumi.Input
+
+	ToOceanInstanceMetadataOptionsPtrOutput() OceanInstanceMetadataOptionsPtrOutput
+	ToOceanInstanceMetadataOptionsPtrOutputWithContext(context.Context) OceanInstanceMetadataOptionsPtrOutput
+}
+
+type oceanInstanceMetadataOptionsPtrType OceanInstanceMetadataOptionsArgs
+
+func OceanInstanceMetadataOptionsPtr(v *OceanInstanceMetadataOptionsArgs) OceanInstanceMetadataOptionsPtrInput {
+	return (*oceanInstanceMetadataOptionsPtrType)(v)
+}
+
+func (*oceanInstanceMetadataOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (i *oceanInstanceMetadataOptionsPtrType) ToOceanInstanceMetadataOptionsPtrOutput() OceanInstanceMetadataOptionsPtrOutput {
+	return i.ToOceanInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanInstanceMetadataOptionsPtrType) ToOceanInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) OceanInstanceMetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanInstanceMetadataOptionsPtrOutput)
+}
+
+type OceanInstanceMetadataOptionsOutput struct{ *pulumi.OutputState }
+
+func (OceanInstanceMetadataOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (o OceanInstanceMetadataOptionsOutput) ToOceanInstanceMetadataOptionsOutput() OceanInstanceMetadataOptionsOutput {
+	return o
+}
+
+func (o OceanInstanceMetadataOptionsOutput) ToOceanInstanceMetadataOptionsOutputWithContext(ctx context.Context) OceanInstanceMetadataOptionsOutput {
+	return o
+}
+
+func (o OceanInstanceMetadataOptionsOutput) ToOceanInstanceMetadataOptionsPtrOutput() OceanInstanceMetadataOptionsPtrOutput {
+	return o.ToOceanInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanInstanceMetadataOptionsOutput) ToOceanInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) OceanInstanceMetadataOptionsPtrOutput {
+	return o.ApplyT(func(v OceanInstanceMetadataOptions) *OceanInstanceMetadataOptions {
+		return &v
+	}).(OceanInstanceMetadataOptionsPtrOutput)
+}
+
+// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+func (o OceanInstanceMetadataOptionsOutput) HttpPutResponseHopLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanInstanceMetadataOptions) *int { return v.HttpPutResponseHopLimit }).(pulumi.IntPtrOutput)
+}
+
+// Determines if a signed token is required or not. Valid values: `optional` or `required`.
+func (o OceanInstanceMetadataOptionsOutput) HttpTokens() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanInstanceMetadataOptions) string { return v.HttpTokens }).(pulumi.StringOutput)
+}
+
+type OceanInstanceMetadataOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanInstanceMetadataOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (o OceanInstanceMetadataOptionsPtrOutput) ToOceanInstanceMetadataOptionsPtrOutput() OceanInstanceMetadataOptionsPtrOutput {
+	return o
+}
+
+func (o OceanInstanceMetadataOptionsPtrOutput) ToOceanInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) OceanInstanceMetadataOptionsPtrOutput {
+	return o
+}
+
+func (o OceanInstanceMetadataOptionsPtrOutput) Elem() OceanInstanceMetadataOptionsOutput {
+	return o.ApplyT(func(v *OceanInstanceMetadataOptions) OceanInstanceMetadataOptions { return *v }).(OceanInstanceMetadataOptionsOutput)
+}
+
+// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+func (o OceanInstanceMetadataOptionsPtrOutput) HttpPutResponseHopLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanInstanceMetadataOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPutResponseHopLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Determines if a signed token is required or not. Valid values: `optional` or `required`.
+func (o OceanInstanceMetadataOptionsPtrOutput) HttpTokens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanInstanceMetadataOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpTokens
+	}).(pulumi.StringPtrOutput)
+}
+
 type OceanLaunchSpecAttribute struct {
 	// The label key.
 	Key string `pulumi:"key"`
@@ -3045,6 +3195,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsPtrOutput{})
 	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput{})
 	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput{})
+	pulumi.RegisterOutputType(OceanInstanceMetadataOptionsOutput{})
+	pulumi.RegisterOutputType(OceanInstanceMetadataOptionsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAttributeOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAttributeArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomOutput{})
