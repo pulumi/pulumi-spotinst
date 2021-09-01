@@ -88,16 +88,6 @@ import * as utilities from "../utilities";
  *     vpcId: "vpc-123",
  * });
  * ```
- * ## Managed Instance Action
- *
- * * `managedInstanceAction` - (Optional)
- *     * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.
- *
- * Usage:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
  */
 export class ManagedInstance extends pulumi.CustomResource {
     /**
@@ -136,8 +126,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly blockDeviceMappings!: pulumi.Output<outputs.aws.ManagedInstanceBlockDeviceMapping[] | undefined>;
     /**
-     * Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-     * Default: `"onLaunch"`.
+     * Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
      */
     public readonly blockDevicesMode!: pulumi.Output<string | undefined>;
     /**
@@ -172,8 +161,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly gracePeriod!: pulumi.Output<number | undefined>;
     /**
-     * The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-     * Default: `"EC2"`.
+     * The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
      */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
@@ -197,8 +185,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly keyPair!: pulumi.Output<string | undefined>;
     /**
-     * Set lifecycle, valid values: `"spot"`, `"onDemand"`.
-     * Default `"spot"`.
+     * Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
      */
     public readonly lifeCycle!: pulumi.Output<string | undefined>;
     /**
@@ -217,8 +204,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly optimizationWindows!: pulumi.Output<string[] | undefined>;
     /**
-     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-     * Default: `"availabilityOriented"`.
+     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
      */
     public readonly orientation!: pulumi.Output<string | undefined>;
     /**
@@ -285,8 +271,7 @@ export class ManagedInstance extends pulumi.CustomResource {
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
-     * In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-     * Default: `"false"`.
+     * In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
      */
     public readonly utilizeReservedInstances!: pulumi.Output<boolean | undefined>;
     public readonly vpcId!: pulumi.Output<string>;
@@ -433,8 +418,7 @@ export interface ManagedInstanceState {
      */
     readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceBlockDeviceMapping>[]>;
     /**
-     * Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-     * Default: `"onLaunch"`.
+     * Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
      */
     readonly blockDevicesMode?: pulumi.Input<string>;
     /**
@@ -469,8 +453,7 @@ export interface ManagedInstanceState {
      */
     readonly gracePeriod?: pulumi.Input<number>;
     /**
-     * The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-     * Default: `"EC2"`.
+     * The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
      */
     readonly healthCheckType?: pulumi.Input<string>;
     /**
@@ -494,8 +477,7 @@ export interface ManagedInstanceState {
      */
     readonly keyPair?: pulumi.Input<string>;
     /**
-     * Set lifecycle, valid values: `"spot"`, `"onDemand"`.
-     * Default `"spot"`.
+     * Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
      */
     readonly lifeCycle?: pulumi.Input<string>;
     /**
@@ -514,8 +496,7 @@ export interface ManagedInstanceState {
      */
     readonly optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-     * Default: `"availabilityOriented"`.
+     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
      */
     readonly orientation?: pulumi.Input<string>;
     /**
@@ -582,8 +563,7 @@ export interface ManagedInstanceState {
      */
     readonly userData?: pulumi.Input<string>;
     /**
-     * In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-     * Default: `"false"`.
+     * In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
      */
     readonly utilizeReservedInstances?: pulumi.Input<boolean>;
     readonly vpcId?: pulumi.Input<string>;
@@ -602,8 +582,7 @@ export interface ManagedInstanceArgs {
      */
     readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceBlockDeviceMapping>[]>;
     /**
-     * Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-     * Default: `"onLaunch"`.
+     * Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
      */
     readonly blockDevicesMode?: pulumi.Input<string>;
     /**
@@ -638,8 +617,7 @@ export interface ManagedInstanceArgs {
      */
     readonly gracePeriod?: pulumi.Input<number>;
     /**
-     * The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-     * Default: `"EC2"`.
+     * The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
      */
     readonly healthCheckType?: pulumi.Input<string>;
     /**
@@ -663,8 +641,7 @@ export interface ManagedInstanceArgs {
      */
     readonly keyPair?: pulumi.Input<string>;
     /**
-     * Set lifecycle, valid values: `"spot"`, `"onDemand"`.
-     * Default `"spot"`.
+     * Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
      */
     readonly lifeCycle?: pulumi.Input<string>;
     /**
@@ -683,8 +660,7 @@ export interface ManagedInstanceArgs {
      */
     readonly optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-     * Default: `"availabilityOriented"`.
+     * Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
      */
     readonly orientation?: pulumi.Input<string>;
     /**
@@ -751,8 +727,7 @@ export interface ManagedInstanceArgs {
      */
     readonly userData?: pulumi.Input<string>;
     /**
-     * In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-     * Default: `"false"`.
+     * In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
      */
     readonly utilizeReservedInstances?: pulumi.Input<boolean>;
     readonly vpcId: pulumi.Input<string>;

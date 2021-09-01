@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *         numOfUnits: 5,
  *     }],
  *     blockDeviceMappings: [{
- *         deviceName: "/dev/xvda1",
+ *         deviceName: "/dev/xvda",
  *         ebs: {
  *             deleteOnTermination: true,
  *             dynamicVolumeSize: {

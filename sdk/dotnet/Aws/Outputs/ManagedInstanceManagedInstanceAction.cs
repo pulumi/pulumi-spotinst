@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ManagedInstanceManagedInstanceAction
     {
         /// <summary>
-        /// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
         /// </summary>
         public readonly string Type;
 

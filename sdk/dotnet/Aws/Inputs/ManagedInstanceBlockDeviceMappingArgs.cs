@@ -18,6 +18,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("deviceName", required: true)]
         public Input<string> DeviceName { get; set; } = null!;
 
+        /// <summary>
+        /// Object
+        /// </summary>
         [Input("ebs")]
         public Input<Inputs.ManagedInstanceBlockDeviceMappingEbsArgs>? Ebs { get; set; }
 

@@ -12,27 +12,6 @@ import (
 )
 
 // Provides a Spotinst AWS ManagedInstance resource.
-//
-// ## Managed Instance Action
-//
-// * `managedInstanceAction` - (Optional)
-//     * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.
-//
-// Usage:
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
-// ```
 type ManagedInstance struct {
 	pulumi.CustomResourceState
 
@@ -40,8 +19,7 @@ type ManagedInstance struct {
 	AutoHealing pulumi.BoolPtrOutput `pulumi:"autoHealing"`
 	// Attributes controls a portion of the AWS:
 	BlockDeviceMappings ManagedInstanceBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
-	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-	// Default: `"onLaunch"`.
+	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
 	BlockDevicesMode pulumi.StringPtrOutput `pulumi:"blockDevicesMode"`
 	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
 	CpuCredits pulumi.StringPtrOutput `pulumi:"cpuCredits"`
@@ -60,8 +38,7 @@ type ManagedInstance struct {
 	FallBackToOd     pulumi.BoolPtrOutput `pulumi:"fallBackToOd"`
 	// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
 	GracePeriod pulumi.IntPtrOutput `pulumi:"gracePeriod"`
-	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-	// Default: `"EC2"`.
+	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
 	// Set IAM profile to instance. Set only one of ARN or Name.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
@@ -73,8 +50,7 @@ type ManagedInstance struct {
 	IntegrationRoute53 ManagedInstanceIntegrationRoute53PtrOutput `pulumi:"integrationRoute53"`
 	// Specify a Key Pair to attach to the instances.
 	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
-	// Set lifecycle, valid values: `"spot"`, `"onDemand"`.
-	// Default `"spot"`.
+	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
 	LifeCycle pulumi.StringPtrOutput `pulumi:"lifeCycle"`
 	// List of load balancers configs.
 	LoadBalancers           ManagedInstanceLoadBalancerArrayOutput        `pulumi:"loadBalancers"`
@@ -85,8 +61,7 @@ type ManagedInstance struct {
 	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
 	OptimizationWindows pulumi.StringArrayOutput `pulumi:"optimizationWindows"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-	// Default: `"availabilityOriented"`.
+	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
 	Orientation pulumi.StringPtrOutput `pulumi:"orientation"`
 	// Should the instance maintain its Data volumes.
 	PersistBlockDevices pulumi.BoolOutput `pulumi:"persistBlockDevices"`
@@ -121,8 +96,7 @@ type ManagedInstance struct {
 	UnhealthyDuration pulumi.IntPtrOutput `pulumi:"unhealthyDuration"`
 	// The Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
-	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-	// Default: `"false"`.
+	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
 	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
 	VpcId                    pulumi.StringOutput  `pulumi:"vpcId"`
 }
@@ -178,8 +152,7 @@ type managedInstanceState struct {
 	AutoHealing *bool `pulumi:"autoHealing"`
 	// Attributes controls a portion of the AWS:
 	BlockDeviceMappings []ManagedInstanceBlockDeviceMapping `pulumi:"blockDeviceMappings"`
-	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-	// Default: `"onLaunch"`.
+	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
 	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
 	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
 	CpuCredits *string `pulumi:"cpuCredits"`
@@ -198,8 +171,7 @@ type managedInstanceState struct {
 	FallBackToOd     *bool `pulumi:"fallBackToOd"`
 	// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
 	GracePeriod *int `pulumi:"gracePeriod"`
-	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-	// Default: `"EC2"`.
+	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Set IAM profile to instance. Set only one of ARN or Name.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
@@ -211,8 +183,7 @@ type managedInstanceState struct {
 	IntegrationRoute53 *ManagedInstanceIntegrationRoute53 `pulumi:"integrationRoute53"`
 	// Specify a Key Pair to attach to the instances.
 	KeyPair *string `pulumi:"keyPair"`
-	// Set lifecycle, valid values: `"spot"`, `"onDemand"`.
-	// Default `"spot"`.
+	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
 	LifeCycle *string `pulumi:"lifeCycle"`
 	// List of load balancers configs.
 	LoadBalancers           []ManagedInstanceLoadBalancer         `pulumi:"loadBalancers"`
@@ -223,8 +194,7 @@ type managedInstanceState struct {
 	NetworkInterfaces []ManagedInstanceNetworkInterface `pulumi:"networkInterfaces"`
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
 	OptimizationWindows []string `pulumi:"optimizationWindows"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-	// Default: `"availabilityOriented"`.
+	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
 	Orientation *string `pulumi:"orientation"`
 	// Should the instance maintain its Data volumes.
 	PersistBlockDevices *bool `pulumi:"persistBlockDevices"`
@@ -259,8 +229,7 @@ type managedInstanceState struct {
 	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
 	// The Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
-	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-	// Default: `"false"`.
+	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
 	UtilizeReservedInstances *bool   `pulumi:"utilizeReservedInstances"`
 	VpcId                    *string `pulumi:"vpcId"`
 }
@@ -270,8 +239,7 @@ type ManagedInstanceState struct {
 	AutoHealing pulumi.BoolPtrInput
 	// Attributes controls a portion of the AWS:
 	BlockDeviceMappings ManagedInstanceBlockDeviceMappingArrayInput
-	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-	// Default: `"onLaunch"`.
+	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
 	BlockDevicesMode pulumi.StringPtrInput
 	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
 	CpuCredits pulumi.StringPtrInput
@@ -290,8 +258,7 @@ type ManagedInstanceState struct {
 	FallBackToOd     pulumi.BoolPtrInput
 	// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
 	GracePeriod pulumi.IntPtrInput
-	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-	// Default: `"EC2"`.
+	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
 	HealthCheckType pulumi.StringPtrInput
 	// Set IAM profile to instance. Set only one of ARN or Name.
 	IamInstanceProfile pulumi.StringPtrInput
@@ -303,8 +270,7 @@ type ManagedInstanceState struct {
 	IntegrationRoute53 ManagedInstanceIntegrationRoute53PtrInput
 	// Specify a Key Pair to attach to the instances.
 	KeyPair pulumi.StringPtrInput
-	// Set lifecycle, valid values: `"spot"`, `"onDemand"`.
-	// Default `"spot"`.
+	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
 	LifeCycle pulumi.StringPtrInput
 	// List of load balancers configs.
 	LoadBalancers           ManagedInstanceLoadBalancerArrayInput
@@ -315,8 +281,7 @@ type ManagedInstanceState struct {
 	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayInput
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
 	OptimizationWindows pulumi.StringArrayInput
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-	// Default: `"availabilityOriented"`.
+	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
 	Orientation pulumi.StringPtrInput
 	// Should the instance maintain its Data volumes.
 	PersistBlockDevices pulumi.BoolPtrInput
@@ -351,8 +316,7 @@ type ManagedInstanceState struct {
 	UnhealthyDuration pulumi.IntPtrInput
 	// The Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
-	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-	// Default: `"false"`.
+	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	VpcId                    pulumi.StringPtrInput
 }
@@ -366,8 +330,7 @@ type managedInstanceArgs struct {
 	AutoHealing *bool `pulumi:"autoHealing"`
 	// Attributes controls a portion of the AWS:
 	BlockDeviceMappings []ManagedInstanceBlockDeviceMapping `pulumi:"blockDeviceMappings"`
-	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-	// Default: `"onLaunch"`.
+	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
 	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
 	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
 	CpuCredits *string `pulumi:"cpuCredits"`
@@ -386,8 +349,7 @@ type managedInstanceArgs struct {
 	FallBackToOd     *bool `pulumi:"fallBackToOd"`
 	// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
 	GracePeriod *int `pulumi:"gracePeriod"`
-	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-	// Default: `"EC2"`.
+	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Set IAM profile to instance. Set only one of ARN or Name.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
@@ -399,8 +361,7 @@ type managedInstanceArgs struct {
 	IntegrationRoute53 *ManagedInstanceIntegrationRoute53 `pulumi:"integrationRoute53"`
 	// Specify a Key Pair to attach to the instances.
 	KeyPair *string `pulumi:"keyPair"`
-	// Set lifecycle, valid values: `"spot"`, `"onDemand"`.
-	// Default `"spot"`.
+	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
 	LifeCycle *string `pulumi:"lifeCycle"`
 	// List of load balancers configs.
 	LoadBalancers           []ManagedInstanceLoadBalancer         `pulumi:"loadBalancers"`
@@ -411,8 +372,7 @@ type managedInstanceArgs struct {
 	NetworkInterfaces []ManagedInstanceNetworkInterface `pulumi:"networkInterfaces"`
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
 	OptimizationWindows []string `pulumi:"optimizationWindows"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-	// Default: `"availabilityOriented"`.
+	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
 	Orientation *string `pulumi:"orientation"`
 	// Should the instance maintain its Data volumes.
 	PersistBlockDevices bool `pulumi:"persistBlockDevices"`
@@ -447,8 +407,7 @@ type managedInstanceArgs struct {
 	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
 	// The Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
-	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-	// Default: `"false"`.
+	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
 	UtilizeReservedInstances *bool  `pulumi:"utilizeReservedInstances"`
 	VpcId                    string `pulumi:"vpcId"`
 }
@@ -459,8 +418,7 @@ type ManagedInstanceArgs struct {
 	AutoHealing pulumi.BoolPtrInput
 	// Attributes controls a portion of the AWS:
 	BlockDeviceMappings ManagedInstanceBlockDeviceMappingArrayInput
-	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-	// Default: `"onLaunch"`.
+	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
 	BlockDevicesMode pulumi.StringPtrInput
 	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
 	CpuCredits pulumi.StringPtrInput
@@ -479,8 +437,7 @@ type ManagedInstanceArgs struct {
 	FallBackToOd     pulumi.BoolPtrInput
 	// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
 	GracePeriod pulumi.IntPtrInput
-	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-	// Default: `"EC2"`.
+	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
 	HealthCheckType pulumi.StringPtrInput
 	// Set IAM profile to instance. Set only one of ARN or Name.
 	IamInstanceProfile pulumi.StringPtrInput
@@ -492,8 +449,7 @@ type ManagedInstanceArgs struct {
 	IntegrationRoute53 ManagedInstanceIntegrationRoute53PtrInput
 	// Specify a Key Pair to attach to the instances.
 	KeyPair pulumi.StringPtrInput
-	// Set lifecycle, valid values: `"spot"`, `"onDemand"`.
-	// Default `"spot"`.
+	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
 	LifeCycle pulumi.StringPtrInput
 	// List of load balancers configs.
 	LoadBalancers           ManagedInstanceLoadBalancerArrayInput
@@ -504,8 +460,7 @@ type ManagedInstanceArgs struct {
 	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayInput
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
 	OptimizationWindows pulumi.StringArrayInput
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-	// Default: `"availabilityOriented"`.
+	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
 	Orientation pulumi.StringPtrInput
 	// Should the instance maintain its Data volumes.
 	PersistBlockDevices pulumi.BoolInput
@@ -540,8 +495,7 @@ type ManagedInstanceArgs struct {
 	UnhealthyDuration pulumi.IntPtrInput
 	// The Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
-	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-	// Default: `"false"`.
+	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
 	UtilizeReservedInstances pulumi.BoolPtrInput
 	VpcId                    pulumi.StringInput
 }

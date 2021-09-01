@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ManagedInstanceManagedInstanceActionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

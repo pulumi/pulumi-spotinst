@@ -809,6 +809,72 @@ export namespace aws {
         targetSetId: string;
     }
 
+    export interface ElastigroupMultipleMetrics {
+        /**
+         * Array of objects (Expression config)
+         */
+        expressions?: outputs.aws.ElastigroupMultipleMetricsExpression[];
+        /**
+         * Array of objects (Metric config)
+         */
+        metrics?: outputs.aws.ElastigroupMultipleMetricsMetric[];
+    }
+
+    export interface ElastigroupMultipleMetricsExpression {
+        /**
+         * An expression consisting of the metric names listed in the 'metrics' array.
+         */
+        expression: string;
+        /**
+         * The record set name.
+         */
+        name: string;
+    }
+
+    export interface ElastigroupMultipleMetricsMetric {
+        /**
+         * A list of dimensions describing qualities of the metric.
+         * *`name` - (Required) the dimension name.
+         * *`value` - (Optional) the dimension value.
+         */
+        dimensions?: outputs.aws.ElastigroupMultipleMetricsMetricDimension[];
+        /**
+         * Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+         */
+        extendedStatistic?: string;
+        /**
+         * The name of the metric, with or without spaces.
+         */
+        metricName: string;
+        /**
+         * The record set name.
+         */
+        name: string;
+        /**
+         * The namespace for the alarm's associated metric.
+         */
+        namespace: string;
+        /**
+         * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+         */
+        statistic?: string;
+        /**
+         * The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+         */
+        unit?: string;
+    }
+
+    export interface ElastigroupMultipleMetricsMetricDimension {
+        /**
+         * The record set name.
+         */
+        name: string;
+        /**
+         * The dimension value.
+         */
+        value?: string;
+    }
+
     export interface ElastigroupNetworkInterface {
         /**
          * Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
@@ -876,7 +942,7 @@ export namespace aws {
 
     export interface ElastigroupScalingDownPolicy {
         /**
-         * The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+         * The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
          */
         actionType?: string;
         /**
@@ -912,7 +978,7 @@ export namespace aws {
          */
         metricName: string;
         /**
-         * . The number of the desired target (and minimum) capacity
+         * The desired target capacity of a group. Required if using `"setMinTarget"` as action type
          */
         minTargetCapacity?: string;
         /**
@@ -943,14 +1009,15 @@ export namespace aws {
          * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          */
         statistic?: string;
+        stepAdjustments?: outputs.aws.ElastigroupScalingDownPolicyStepAdjustment[];
         /**
          * The target number of instances to have in the group.
          */
         target?: string;
         /**
-         * The value against which the specified statistic is compared.
+         * The value against which the specified statistic is compared in order to determine if a step should be applied.
          */
-        threshold: number;
+        threshold?: number;
         /**
          * The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
          */
@@ -966,6 +1033,48 @@ export namespace aws {
          * The dimension value.
          */
         value?: string;
+    }
+
+    export interface ElastigroupScalingDownPolicyStepAdjustment {
+        /**
+         * Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+         */
+        action: outputs.aws.ElastigroupScalingDownPolicyStepAdjustmentAction;
+        /**
+         * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
+         */
+        threshold: number;
+    }
+
+    export interface ElastigroupScalingDownPolicyStepAdjustmentAction {
+        /**
+         * The number of instances to add or remove.
+         */
+        adjustment?: string;
+        /**
+         * The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+         */
+        maxTargetCapacity?: string;
+        /**
+         * The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+         */
+        maximum?: string;
+        /**
+         * The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+         */
+        minTargetCapacity?: string;
+        /**
+         * The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+         */
+        minimum?: string;
+        /**
+         * The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+         */
+        target?: string;
+        /**
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         */
+        type: string;
     }
 
     export interface ElastigroupScalingStrategy {
@@ -1039,7 +1148,7 @@ export namespace aws {
 
     export interface ElastigroupScalingUpPolicy {
         /**
-         * The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+         * The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
          */
         actionType?: string;
         /**
@@ -1063,7 +1172,7 @@ export namespace aws {
          */
         isEnabled?: boolean;
         /**
-         * . The number of the desired target (and maximum) capacity
+         * The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
          */
         maxTargetCapacity?: string;
         /**
@@ -1106,14 +1215,15 @@ export namespace aws {
          * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          */
         statistic?: string;
+        stepAdjustments?: outputs.aws.ElastigroupScalingUpPolicyStepAdjustment[];
         /**
          * The target number of instances to have in the group.
          */
         target?: string;
         /**
-         * The value against which the specified statistic is compared.
+         * The value against which the specified statistic is compared in order to determine if a step should be applied.
          */
-        threshold: number;
+        threshold?: number;
         /**
          * The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
          */
@@ -1129,6 +1239,48 @@ export namespace aws {
          * The dimension value.
          */
         value?: string;
+    }
+
+    export interface ElastigroupScalingUpPolicyStepAdjustment {
+        /**
+         * Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+         */
+        action: outputs.aws.ElastigroupScalingUpPolicyStepAdjustmentAction;
+        /**
+         * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
+         */
+        threshold: number;
+    }
+
+    export interface ElastigroupScalingUpPolicyStepAdjustmentAction {
+        /**
+         * The number of instances to add or remove.
+         */
+        adjustment?: string;
+        /**
+         * The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+         */
+        maxTargetCapacity?: string;
+        /**
+         * The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+         */
+        maximum?: string;
+        /**
+         * The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+         */
+        minTargetCapacity?: string;
+        /**
+         * The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+         */
+        minimum?: string;
+        /**
+         * The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+         */
+        target?: string;
+        /**
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         */
+        type: string;
     }
 
     export interface ElastigroupScheduledTask {
@@ -1333,6 +1485,9 @@ export namespace aws {
          * The name of the device to mount.
          */
         deviceName: string;
+        /**
+         * Object
+         */
         ebs?: outputs.aws.ManagedInstanceBlockDeviceMappingEbs;
     }
 
@@ -1346,11 +1501,11 @@ export namespace aws {
          */
         iops?: number;
         /**
-         * The amount of data transferred to or from a storage device per second. Valid only if `volumeType` is set to `"gp3"`.
+         * The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volumeType` is set to `"gp3"`.
          */
         throughput?: number;
         /**
-         * The size of the volume in gigabytes.
+         * The size of the volume, in GiBs.
          */
         volumeSize?: number;
         /**
@@ -1409,10 +1564,12 @@ export namespace aws {
          * "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
          */
         autoWeight?: boolean;
+        /**
+         * "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
+         */
         azAwareness?: boolean;
         /**
-         * The Multai load balancer ID.
-         * Default: lb-123456
+         * The Multai load balancer ID. Example: lb-123456
          */
         balancerId?: string;
         /**
@@ -1420,27 +1577,25 @@ export namespace aws {
          */
         name?: string;
         /**
-         * The Multai load target set ID.
-         * Default: ts-123456
+         * The Multai load target set ID. Example: ts-123456
          */
         targetSetId?: string;
         /**
-         * The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`.
          */
         type: string;
     }
 
     export interface ManagedInstanceManagedInstanceAction {
         /**
-         * The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`.
          */
         type: string;
     }
 
     export interface ManagedInstanceNetworkInterface {
         /**
-         * Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
-         * Default: false
+         * Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`
          */
         associateIpv6Address?: boolean;
         /**
@@ -1474,16 +1629,15 @@ export namespace aws {
 
     export interface ManagedInstanceRevertToSpot {
         /**
-         * Valid values: `"always"`, `"never"`, `"timeWindow"`.
-         * Default `"never"`.
+         * Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
          */
         performAt: string;
     }
 
     export interface ManagedInstanceScheduledTask {
         /**
-         * A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-         * Example: 0 1 * * *
+         * A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+         * Example: `"0 1 * * *"`.
          */
         cronExpression?: string;
         /**
@@ -1496,11 +1650,11 @@ export namespace aws {
         isEnabled?: boolean;
         /**
          * DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-         * Example: 2019-05-23T10:55:09Z
+         * Example: `"2019-05-23T10:55:09Z"`
          */
         startTime?: string;
         /**
-         * The task type to run. Valid values: "pause", "resume", "recycle".
+         * The task type to run. Valid values: `"pause"`, `"resume"`, `"recycle"`.
          */
         taskType: string;
     }
@@ -2125,7 +2279,7 @@ export namespace aws {
 
     export interface OceanLaunchSpecBlockDeviceMapping {
         /**
-         * String. Set device name. (Example: `/dev/xvda1`).
+         * String. Set device name. (Example: `/dev/xvda`).
          */
         deviceName?: string;
         /**

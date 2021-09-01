@@ -37,7 +37,7 @@ import (
 // 			},
 // 			BlockDeviceMappings: aws.OceanLaunchSpecBlockDeviceMappingArray{
 // 				&aws.OceanLaunchSpecBlockDeviceMappingArgs{
-// 					DeviceName: pulumi.String("/dev/xvda1"),
+// 					DeviceName: pulumi.String("/dev/xvda"),
 // 					Ebs: &aws.OceanLaunchSpecBlockDeviceMappingEbsArgs{
 // 						DeleteOnTermination: pulumi.Bool(true),
 // 						DynamicVolumeSize: &aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{

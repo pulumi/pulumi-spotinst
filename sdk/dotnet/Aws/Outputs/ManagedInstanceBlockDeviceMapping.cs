@@ -17,6 +17,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// The name of the device to mount.
         /// </summary>
         public readonly string DeviceName;
+        /// <summary>
+        /// Object
+        /// </summary>
         public readonly Outputs.ManagedInstanceBlockDeviceMappingEbs? Ebs;
 
         [OutputConstructor]

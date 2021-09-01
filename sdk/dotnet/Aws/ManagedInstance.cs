@@ -11,25 +11,6 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a Spotinst AWS ManagedInstance resource.
-    /// 
-    /// ## Managed Instance Action
-    /// 
-    /// * `managed_instance_action` - (Optional)
-    ///     * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.
-    /// 
-    /// Usage:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/managedInstance:ManagedInstance")]
     public partial class ManagedInstance : Pulumi.CustomResource
@@ -47,8 +28,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.ManagedInstanceBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
         /// <summary>
-        /// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-        /// Default: `"onLaunch"`.
+        /// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
         /// </summary>
         [Output("blockDevicesMode")]
         public Output<string?> BlockDevicesMode { get; private set; } = null!;
@@ -101,8 +81,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> GracePeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-        /// Default: `"EC2"`.
+        /// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
         /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
@@ -138,8 +117,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> KeyPair { get; private set; } = null!;
 
         /// <summary>
-        /// Set lifecycle, valid values: `"spot"`, `"on_demand"`.
-        /// Default `"spot"`.
+        /// Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
         /// </summary>
         [Output("lifeCycle")]
         public Output<string?> LifeCycle { get; private set; } = null!;
@@ -172,8 +150,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<string>> OptimizationWindows { get; private set; } = null!;
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-        /// Default: `"availabilityOriented"`.
+        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
         /// </summary>
         [Output("orientation")]
         public Output<string?> Orientation { get; private set; } = null!;
@@ -276,8 +253,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> UserData { get; private set; } = null!;
 
         /// <summary>
-        /// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-        /// Default: `"false"`.
+        /// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
         /// </summary>
         [Output("utilizeReservedInstances")]
         public Output<bool?> UtilizeReservedInstances { get; private set; } = null!;
@@ -350,8 +326,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-        /// Default: `"onLaunch"`.
+        /// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
         /// </summary>
         [Input("blockDevicesMode")]
         public Input<string>? BlockDevicesMode { get; set; }
@@ -404,8 +379,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? GracePeriod { get; set; }
 
         /// <summary>
-        /// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-        /// Default: `"EC2"`.
+        /// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
@@ -447,8 +421,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? KeyPair { get; set; }
 
         /// <summary>
-        /// Set lifecycle, valid values: `"spot"`, `"on_demand"`.
-        /// Default `"spot"`.
+        /// Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
         /// </summary>
         [Input("lifeCycle")]
         public Input<string>? LifeCycle { get; set; }
@@ -498,8 +471,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-        /// Default: `"availabilityOriented"`.
+        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
         /// </summary>
         [Input("orientation")]
         public Input<string>? Orientation { get; set; }
@@ -631,8 +603,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-        /// Default: `"false"`.
+        /// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
         /// </summary>
         [Input("utilizeReservedInstances")]
         public Input<bool>? UtilizeReservedInstances { get; set; }
@@ -666,8 +637,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`.
-        /// Default: `"onLaunch"`.
+        /// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
         /// </summary>
         [Input("blockDevicesMode")]
         public Input<string>? BlockDevicesMode { get; set; }
@@ -720,8 +690,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? GracePeriod { get; set; }
 
         /// <summary>
-        /// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-        /// Default: `"EC2"`.
+        /// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
@@ -763,8 +732,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? KeyPair { get; set; }
 
         /// <summary>
-        /// Set lifecycle, valid values: `"spot"`, `"on_demand"`.
-        /// Default `"spot"`.
+        /// Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
         /// </summary>
         [Input("lifeCycle")]
         public Input<string>? LifeCycle { get; set; }
@@ -814,8 +782,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`.
-        /// Default: `"availabilityOriented"`.
+        /// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
         /// </summary>
         [Input("orientation")]
         public Input<string>? Orientation { get; set; }
@@ -947,8 +914,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.
-        /// Default: `"false"`.
+        /// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
         /// </summary>
         [Input("utilizeReservedInstances")]
         public Input<bool>? UtilizeReservedInstances { get; set; }

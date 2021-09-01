@@ -301,6 +301,7 @@ export class Elastigroup extends pulumi.CustomResource {
      * Set of targets to register.
      */
     public readonly multaiTargetSets!: pulumi.Output<outputs.aws.ElastigroupMultaiTargetSet[] | undefined>;
+    public readonly multipleMetrics!: pulumi.Output<outputs.aws.ElastigroupMultipleMetrics | undefined>;
     /**
      * The record set name.
      */
@@ -467,6 +468,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["minSize"] = state ? state.minSize : undefined;
             inputs["minimumInstanceLifetime"] = state ? state.minimumInstanceLifetime : undefined;
             inputs["multaiTargetSets"] = state ? state.multaiTargetSets : undefined;
+            inputs["multipleMetrics"] = state ? state.multipleMetrics : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["ondemandCount"] = state ? state.ondemandCount : undefined;
@@ -563,6 +565,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["minSize"] = args ? args.minSize : undefined;
             inputs["minimumInstanceLifetime"] = args ? args.minimumInstanceLifetime : undefined;
             inputs["multaiTargetSets"] = args ? args.multaiTargetSets : undefined;
+            inputs["multipleMetrics"] = args ? args.multipleMetrics : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["ondemandCount"] = args ? args.ondemandCount : undefined;
@@ -767,6 +770,7 @@ export interface ElastigroupState {
      * Set of targets to register.
      */
     readonly multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
+    readonly multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
     /**
      * The record set name.
      */
@@ -1041,6 +1045,7 @@ export interface ElastigroupArgs {
      * Set of targets to register.
      */
     readonly multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
+    readonly multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
     /**
      * The record set name.
      */

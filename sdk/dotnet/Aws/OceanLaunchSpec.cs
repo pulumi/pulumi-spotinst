@@ -39,7 +39,7 @@ namespace Pulumi.SpotInst.Aws
     ///             {
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
     ///                 {
-    ///                     DeviceName = "/dev/xvda1",
+    ///                     DeviceName = "/dev/xvda",
     ///                     Ebs = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
     ///                     {
     ///                         DeleteOnTermination = true,

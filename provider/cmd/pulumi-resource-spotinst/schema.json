@@ -1563,6 +1563,164 @@
                 "targetSetId"
             ]
         },
+        "spotinst:aws/ElastigroupMultipleMetrics:ElastigroupMultipleMetrics": {
+            "properties": {
+                "expressions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetricsExpression:ElastigroupMultipleMetricsExpression"
+                    },
+                    "description": "Array of objects (Expression config)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetricsMetric:ElastigroupMultipleMetricsMetric"
+                    },
+                    "description": "Array of objects (Metric config)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:aws/ElastigroupMultipleMetricsExpression:ElastigroupMultipleMetricsExpression": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "description": "An expression consisting of the metric names listed in the 'metrics' array.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The record set name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "expression",
+                "name"
+            ]
+        },
+        "spotinst:aws/ElastigroupMultipleMetricsMetric:ElastigroupMultipleMetricsMetric": {
+            "properties": {
+                "dimensions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetricsMetricDimension:ElastigroupMultipleMetricsMetricDimension"
+                    },
+                    "description": "A list of dimensions describing qualities of the metric.\n*`name` - (Required) the dimension name.\n*`value` - (Optional) the dimension value.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "extendedStatistic": {
+                    "type": "string",
+                    "description": "Percentile statistic. Valid values: `\"p0.1\"` - `\"p100\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metricName": {
+                    "type": "string",
+                    "description": "The name of the metric, with or without spaces.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The record set name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace for the alarm's associated metric.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statistic": {
+                    "type": "string",
+                    "description": "The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "The unit for the alarm's associated metric. Valid values: `\"percent`, `\"seconds\"`, `\"microseconds\"`, `\"milliseconds\"`, `\"bytes\"`, `\"kilobytes\"`, `\"megabytes\"`, `\"gigabytes\"`, `\"terabytes\"`, `\"bits\"`, `\"kilobits\"`, `\"megabits\"`, `\"gigabits\"`, `\"terabits\"`, `\"count\"`, `\"bytes/second\"`, `\"kilobytes/second\"`, `\"megabytes/second\"`, `\"gigabytes/second\"`, `\"terabytes/second\"`, `\"bits/second\"`, `\"kilobits/second\"`, `\"megabits/second\"`, `\"gigabits/second\"`, `\"terabits/second\"`, `\"count/second\"`, `\"none\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "metricName",
+                "name",
+                "namespace"
+            ]
+        },
+        "spotinst:aws/ElastigroupMultipleMetricsMetricDimension:ElastigroupMultipleMetricsMetricDimension": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The record set name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The dimension value.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
         "spotinst:aws/ElastigroupNetworkInterface:ElastigroupNetworkInterface": {
             "properties": {
                 "associateIpv6Address": {
@@ -1725,7 +1883,7 @@
             "properties": {
                 "actionType": {
                     "type": "string",
-                    "description": "The type of action to perform for scaling. Valid values: `\"adjustment\"`, `\"percentageAdjustment\"`, `\"setMaxTarget\"`, `\"setMinTarget\"`, `\"updateCapacity\"`.\n",
+                    "description": "The type of action to perform for scaling. Valid values: `\"adjustment\"`, `\"percentageAdjustment\"`, `\"setMaxTarget\"`, `\"setMinTarget\"`, `\"updateCapacity\"`. If a `step_adjustment` object is defined, then it cannot be specified.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1809,7 +1967,7 @@
                 },
                 "minTargetCapacity": {
                     "type": "string",
-                    "description": ". The number of the desired target (and minimum) capacity\n",
+                    "description": "The desired target capacity of a group. Required if using `\"setMinTarget\"` as action type\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1879,6 +2037,17 @@
                         }
                     }
                 },
+                "stepAdjustments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ElastigroupScalingDownPolicyStepAdjustment:ElastigroupScalingDownPolicyStepAdjustment"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "target": {
                     "type": "string",
                     "description": "The target number of instances to have in the group.\n",
@@ -1890,7 +2059,7 @@
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "The value against which the specified statistic is compared.\n",
+                    "description": "The value against which the specified statistic is compared in order to determine if a step should be applied.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1911,8 +2080,7 @@
             "required": [
                 "metricName",
                 "namespace",
-                "policyName",
-                "threshold"
+                "policyName"
             ],
             "language": {
                 "nodejs": {
@@ -1923,8 +2091,7 @@
                         "operator",
                         "period",
                         "policyName",
-                        "source",
-                        "threshold"
+                        "source"
                     ]
                 }
             }
@@ -1953,6 +2120,104 @@
             "type": "object",
             "required": [
                 "name"
+            ]
+        },
+        "spotinst:aws/ElastigroupScalingDownPolicyStepAdjustment:ElastigroupScalingDownPolicyStepAdjustment": {
+            "properties": {
+                "action": {
+                    "$ref": "#/types/spotinst:aws/ElastigroupScalingDownPolicyStepAdjustmentAction:ElastigroupScalingDownPolicyStepAdjustmentAction",
+                    "description": "Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "threshold": {
+                    "type": "integer",
+                    "description": "The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "threshold"
+            ]
+        },
+        "spotinst:aws/ElastigroupScalingDownPolicyStepAdjustmentAction:ElastigroupScalingDownPolicyStepAdjustmentAction": {
+            "properties": {
+                "adjustment": {
+                    "type": "string",
+                    "description": "The number of instances to add or remove.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxTargetCapacity": {
+                    "type": "string",
+                    "description": "The desired target capacity of a group. Required if using `\"setMaxTarget\"` as action type\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maximum": {
+                    "type": "string",
+                    "description": "The upper limit number of instances that you can scale up to. Required if using `\"updateCapacity\"` as action type and neither `\"target\"` nor `\"minimum\"` are not defined.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minTargetCapacity": {
+                    "type": "string",
+                    "description": "The desired target capacity of a group. Required if using `\"setMinTarget\"` as action type\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minimum": {
+                    "type": "string",
+                    "description": "The lower limit number of instances that you can scale down to. Required if using `\"updateCapacity\"` as action type and neither `\"target\"` nor `\"maximum\"` are not defined.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "target": {
+                    "type": "string",
+                    "description": "The desired number of instances. Required if using `\"updateCapacity\"` as action type and neither `\"minimum\"` nor `\"maximum\"` are not defined.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
             ]
         },
         "spotinst:aws/ElastigroupScalingStrategy:ElastigroupScalingStrategy": {
@@ -2132,7 +2397,7 @@
             "properties": {
                 "actionType": {
                     "type": "string",
-                    "description": "The type of action to perform for scaling. Valid values: `\"adjustment\"`, `\"percentageAdjustment\"`, `\"setMaxTarget\"`, `\"setMinTarget\"`, `\"updateCapacity\"`.\n",
+                    "description": "The type of action to perform for scaling. Valid values: `\"adjustment\"`, `\"percentageAdjustment\"`, `\"setMaxTarget\"`, `\"setMinTarget\"`, `\"updateCapacity\"`. If a `step_adjustment` object is defined, then it cannot be specified.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2189,7 +2454,7 @@
                 },
                 "maxTargetCapacity": {
                     "type": "string",
-                    "description": ". The number of the desired target (and maximum) capacity\n",
+                    "description": "The desired target capacity of a group. Required if using `\"setMaxTarget\"` as action type\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2286,6 +2551,17 @@
                         }
                     }
                 },
+                "stepAdjustments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/ElastigroupScalingUpPolicyStepAdjustment:ElastigroupScalingUpPolicyStepAdjustment"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "target": {
                     "type": "string",
                     "description": "The target number of instances to have in the group.\n",
@@ -2297,7 +2573,7 @@
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "The value against which the specified statistic is compared.\n",
+                    "description": "The value against which the specified statistic is compared in order to determine if a step should be applied.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2318,8 +2594,7 @@
             "required": [
                 "metricName",
                 "namespace",
-                "policyName",
-                "threshold"
+                "policyName"
             ],
             "language": {
                 "nodejs": {
@@ -2330,8 +2605,7 @@
                         "operator",
                         "period",
                         "policyName",
-                        "source",
-                        "threshold"
+                        "source"
                     ]
                 }
             }
@@ -2360,6 +2634,104 @@
             "type": "object",
             "required": [
                 "name"
+            ]
+        },
+        "spotinst:aws/ElastigroupScalingUpPolicyStepAdjustment:ElastigroupScalingUpPolicyStepAdjustment": {
+            "properties": {
+                "action": {
+                    "$ref": "#/types/spotinst:aws/ElastigroupScalingUpPolicyStepAdjustmentAction:ElastigroupScalingUpPolicyStepAdjustmentAction",
+                    "description": "Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "threshold": {
+                    "type": "integer",
+                    "description": "The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "threshold"
+            ]
+        },
+        "spotinst:aws/ElastigroupScalingUpPolicyStepAdjustmentAction:ElastigroupScalingUpPolicyStepAdjustmentAction": {
+            "properties": {
+                "adjustment": {
+                    "type": "string",
+                    "description": "The number of instances to add or remove.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxTargetCapacity": {
+                    "type": "string",
+                    "description": "The desired target capacity of a group. Required if using `\"setMaxTarget\"` as action type\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maximum": {
+                    "type": "string",
+                    "description": "The upper limit number of instances that you can scale up to. Required if using `\"updateCapacity\"` as action type and neither `\"target\"` nor `\"minimum\"` are not defined.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minTargetCapacity": {
+                    "type": "string",
+                    "description": "The desired target capacity of a group. Required if using `\"setMinTarget\"` as action type\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minimum": {
+                    "type": "string",
+                    "description": "The lower limit number of instances that you can scale down to. Required if using `\"updateCapacity\"` as action type and neither `\"target\"` nor `\"maximum\"` are not defined.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "target": {
+                    "type": "string",
+                    "description": "The desired number of instances. Required if using `\"updateCapacity\"` as action type and neither `\"minimum\"` nor `\"maximum\"` are not defined.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
             ]
         },
         "spotinst:aws/ElastigroupScheduledTask:ElastigroupScheduledTask": {
@@ -2837,6 +3209,7 @@
                 },
                 "ebs": {
                     "$ref": "#/types/spotinst:aws/ManagedInstanceBlockDeviceMappingEbs:ManagedInstanceBlockDeviceMappingEbs",
+                    "description": "Object\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2871,7 +3244,7 @@
                 },
                 "throughput": {
                     "type": "integer",
-                    "description": "The amount of data transferred to or from a storage device per second. Valid only if `volume_type` is set to `\"gp3\"`.\n",
+                    "description": "The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `\"gp3\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2880,7 +3253,7 @@
                 },
                 "volumeSize": {
                     "type": "integer",
-                    "description": "The size of the volume in gigabytes.\n",
+                    "description": "The size of the volume, in GiBs.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3032,6 +3405,7 @@
                 },
                 "azAwareness": {
                     "type": "boolean",
+                    "description": "\"AZ Awareness\" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3040,7 +3414,7 @@
                 },
                 "balancerId": {
                     "type": "string",
-                    "description": "The Multai load balancer ID.\nDefault: lb-123456\n",
+                    "description": "The Multai load balancer ID. Example: lb-123456\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3058,7 +3432,7 @@
                 },
                 "targetSetId": {
                     "type": "string",
-                    "description": "The Multai load target set ID.\nDefault: ts-123456\n",
+                    "description": "The Multai load target set ID. Example: ts-123456\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3067,7 +3441,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.\n",
+                    "description": "String, Action type. Supported action types: `pause`, `resume`, `recycle`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3084,7 +3458,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "description": "The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.\n",
+                    "description": "String, Action type. Supported action types: `pause`, `resume`, `recycle`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3101,7 +3475,7 @@
             "properties": {
                 "associateIpv6Address": {
                     "type": "boolean",
-                    "description": "Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.\nDefault: false\n",
+                    "description": "Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3177,7 +3551,7 @@
             "properties": {
                 "performAt": {
                     "type": "string",
-                    "description": "Valid values: `\"always\"`, `\"never\"`, `\"timeWindow\"`.\nDefault `\"never\"`.\n",
+                    "description": "Valid values: `\"always\"`, `\"never\"`, `\"timeWindow\"`. Default `\"never\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3194,7 +3568,7 @@
             "properties": {
                 "cronExpression": {
                     "type": "string",
-                    "description": "A valid cron expression. For example: \" * * * * * \". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.\nExample: 0 1 * * *\n",
+                    "description": "A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.\nExample: `\"0 1 * * *\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3221,7 +3595,7 @@
                 },
                 "startTime": {
                     "type": "string",
-                    "description": "DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If \"frequency\" or \"cronExpression\" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.\nExample: 2019-05-23T10:55:09Z\n",
+                    "description": "DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If \"frequency\" or \"cronExpression\" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.\nExample: `\"2019-05-23T10:55:09Z\"`\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3230,7 +3604,7 @@
                 },
                 "taskType": {
                     "type": "string",
-                    "description": "The task type to run. Valid values: \"pause\", \"resume\", \"recycle\".\n",
+                    "description": "The task type to run. Valid values: `\"pause\"`, `\"resume\"`, `\"recycle\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4775,7 +5149,7 @@
             "properties": {
                 "deviceName": {
                     "type": "string",
-                    "description": "String. Set device name. (Example: `/dev/xvda1`).\n",
+                    "description": "String. Set device name. (Example: `/dev/xvda`).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11530,6 +11904,9 @@
                     },
                     "description": "Set of targets to register.\n"
                 },
+                "multipleMetrics": {
+                    "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetrics:ElastigroupMultipleMetrics"
+                },
                 "name": {
                     "type": "string",
                     "description": "The record set name.\n"
@@ -11908,6 +12285,9 @@
                     },
                     "description": "Set of targets to register.\n"
                 },
+                "multipleMetrics": {
+                    "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetrics:ElastigroupMultipleMetrics"
+                },
                 "name": {
                     "type": "string",
                     "description": "The record set name.\n"
@@ -12282,6 +12662,9 @@
                         },
                         "description": "Set of targets to register.\n"
                     },
+                    "multipleMetrics": {
+                        "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetrics:ElastigroupMultipleMetrics"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The record set name.\n"
@@ -12458,7 +12841,7 @@
             }
         },
         "spotinst:aws/managedInstance:ManagedInstance": {
-            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvdcz\",\n        ebs: {\n            deleteOnTermination: true,\n            iops: 100,\n            throughput: 125,\n            volumeSize: 50,\n            volumeType: \"gp3\",\n        },\n    }],\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Pulumi\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    minimumInstanceLifetime: 1,\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    resourceTagSpecifications: [{\n        shouldTagAmis: true,\n        shouldTagEnis: true,\n        shouldTagSnapshots: true,\n        shouldTagVolumes: true,\n    }],\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n{{% /example %}}\n{{% /examples %}}\n## Managed Instance Action\n\n* `managed_instance_action` - (Optional)\n    * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n",
+            "description": "Provides a Spotinst AWS ManagedInstance resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Manged Instance\nconst default_managed_instance = new spotinst.aws.ManagedInstance(\"default-managed-instance\", {\n    autoHealing: true,\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvdcz\",\n        ebs: {\n            deleteOnTermination: true,\n            iops: 100,\n            throughput: 125,\n            volumeSize: 50,\n            volumeType: \"gp3\",\n        },\n    }],\n    blockDevicesMode: \"reattach\",\n    cpuCredits: \"standard\",\n    description: \"created by Pulumi\",\n    drainingTimeout: 120,\n    ebsOptimized: true,\n    elasticIp: \"ip\",\n    enableMonitoring: true,\n    fallbackToOndemand: false,\n    gracePeriod: 180,\n    healthCheckType: \"EC2\",\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-1234\",\n    instanceTypes: [\n        \"t1.micro\",\n        \"t3.medium\",\n        \"t3.large\",\n        \"t2.medium\",\n        \"t2.large\",\n        \"z1d.large\",\n    ],\n    keyPair: \"labs-oregon\",\n    lifeCycle: \"on_demand\",\n    minimumInstanceLifetime: 1,\n    optimizationWindows: [\"Mon:03:00-Wed:02:20\"],\n    orientation: \"balanced\",\n    persistBlockDevices: true,\n    persistPrivateIp: false,\n    persistRootDevice: true,\n    placementTenancy: \"default\",\n    preferredType: \"t1.micro\",\n    privateIp: \"ip\",\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n    resourceTagSpecifications: [{\n        shouldTagAmis: true,\n        shouldTagEnis: true,\n        shouldTagSnapshots: true,\n        shouldTagVolumes: true,\n    }],\n    revertToSpot: {\n        performAt: \"always\",\n    },\n    securityGroupIds: [\"sg-234\"],\n    shutdownScript: \"managed instance bye world\",\n    subnetIds: [\"subnet-123\"],\n    tags: [\n        {\n            key: \"explicit1\",\n            value: \"value1\",\n        },\n        {\n            key: \"explicit2\",\n            value: \"value2\",\n        },\n    ],\n    unhealthyDuration: 60,\n    userData: \"managed instance hello world\",\n    utilizeReservedInstances: true,\n    vpcId: \"vpc-123\",\n});\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "autoHealing": {
                     "type": "boolean",
@@ -12473,7 +12856,7 @@
                 },
                 "blockDevicesMode": {
                     "type": "string",
-                    "description": "Determine the way we attach the data volumes to the data devices. Valid values: `\"reattach\"`, `\"onLaunch\"`.\nDefault: `\"onLaunch\"`.\n"
+                    "description": "Determine the way we attach the data volumes to the data devices. Valid values: `\"reattach\"`, `\"onLaunch\"`. Default: `\"onLaunch\"`.\n"
                 },
                 "cpuCredits": {
                     "type": "string",
@@ -12508,7 +12891,7 @@
                 },
                 "healthCheckType": {
                     "type": "string",
-                    "description": "The service to use for the health check. Valid values: `\"EC2\"`, `\"ELB\"`, `\"TARGET_GROUP\"`, `\"MULTAI_TARGET_SET\"`.\nDefault: `\"EC2\"`.\n"
+                    "description": "The service to use for the health check. Valid values: `\"EC2\"`, `\"ELB\"`, `\"TARGET_GROUP\"`, `\"MULTAI_TARGET_SET\"`. Default: `\"EC2\"`.\n"
                 },
                 "iamInstanceProfile": {
                     "type": "string",
@@ -12535,7 +12918,7 @@
                 },
                 "lifeCycle": {
                     "type": "string",
-                    "description": "Set lifecycle, valid values: `\"spot\"`, `\"on_demand\"`.\nDefault `\"spot\"`.\n"
+                    "description": "Set lifecycle, valid values: `\"spot\"`, `\"on_demand\"`. Default `\"spot\"`.\n"
                 },
                 "loadBalancers": {
                     "type": "array",
@@ -12569,7 +12952,7 @@
                 },
                 "orientation": {
                     "type": "string",
-                    "description": "Select a prediction strategy. Valid values: `\"balanced\"`, `\"costOriented\"`, `\"availabilityOriented\"`, `\"cheapest\"`.\nDefault: `\"availabilityOriented\"`.\n"
+                    "description": "Select a prediction strategy. Valid values: `\"balanced\"`, `\"costOriented\"`, `\"availabilityOriented\"`, `\"cheapest\"`. Default: `\"availabilityOriented\"`.\n"
                 },
                 "persistBlockDevices": {
                     "type": "boolean",
@@ -12654,7 +13037,7 @@
                 },
                 "utilizeReservedInstances": {
                     "type": "boolean",
-                    "description": "In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.\nDefault: `\"false\"`.\n"
+                    "description": "In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `\"false\"`.\n"
                 },
                 "vpcId": {
                     "type": "string"
@@ -12684,7 +13067,7 @@
                 },
                 "blockDevicesMode": {
                     "type": "string",
-                    "description": "Determine the way we attach the data volumes to the data devices. Valid values: `\"reattach\"`, `\"onLaunch\"`.\nDefault: `\"onLaunch\"`.\n"
+                    "description": "Determine the way we attach the data volumes to the data devices. Valid values: `\"reattach\"`, `\"onLaunch\"`. Default: `\"onLaunch\"`.\n"
                 },
                 "cpuCredits": {
                     "type": "string",
@@ -12719,7 +13102,7 @@
                 },
                 "healthCheckType": {
                     "type": "string",
-                    "description": "The service to use for the health check. Valid values: `\"EC2\"`, `\"ELB\"`, `\"TARGET_GROUP\"`, `\"MULTAI_TARGET_SET\"`.\nDefault: `\"EC2\"`.\n"
+                    "description": "The service to use for the health check. Valid values: `\"EC2\"`, `\"ELB\"`, `\"TARGET_GROUP\"`, `\"MULTAI_TARGET_SET\"`. Default: `\"EC2\"`.\n"
                 },
                 "iamInstanceProfile": {
                     "type": "string",
@@ -12746,7 +13129,7 @@
                 },
                 "lifeCycle": {
                     "type": "string",
-                    "description": "Set lifecycle, valid values: `\"spot\"`, `\"on_demand\"`.\nDefault `\"spot\"`.\n"
+                    "description": "Set lifecycle, valid values: `\"spot\"`, `\"on_demand\"`. Default `\"spot\"`.\n"
                 },
                 "loadBalancers": {
                     "type": "array",
@@ -12780,7 +13163,7 @@
                 },
                 "orientation": {
                     "type": "string",
-                    "description": "Select a prediction strategy. Valid values: `\"balanced\"`, `\"costOriented\"`, `\"availabilityOriented\"`, `\"cheapest\"`.\nDefault: `\"availabilityOriented\"`.\n"
+                    "description": "Select a prediction strategy. Valid values: `\"balanced\"`, `\"costOriented\"`, `\"availabilityOriented\"`, `\"cheapest\"`. Default: `\"availabilityOriented\"`.\n"
                 },
                 "persistBlockDevices": {
                     "type": "boolean",
@@ -12865,7 +13248,7 @@
                 },
                 "utilizeReservedInstances": {
                     "type": "boolean",
-                    "description": "In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.\nDefault: `\"false\"`.\n"
+                    "description": "In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `\"false\"`.\n"
                 },
                 "vpcId": {
                     "type": "string"
@@ -12895,7 +13278,7 @@
                     },
                     "blockDevicesMode": {
                         "type": "string",
-                        "description": "Determine the way we attach the data volumes to the data devices. Valid values: `\"reattach\"`, `\"onLaunch\"`.\nDefault: `\"onLaunch\"`.\n"
+                        "description": "Determine the way we attach the data volumes to the data devices. Valid values: `\"reattach\"`, `\"onLaunch\"`. Default: `\"onLaunch\"`.\n"
                     },
                     "cpuCredits": {
                         "type": "string",
@@ -12930,7 +13313,7 @@
                     },
                     "healthCheckType": {
                         "type": "string",
-                        "description": "The service to use for the health check. Valid values: `\"EC2\"`, `\"ELB\"`, `\"TARGET_GROUP\"`, `\"MULTAI_TARGET_SET\"`.\nDefault: `\"EC2\"`.\n"
+                        "description": "The service to use for the health check. Valid values: `\"EC2\"`, `\"ELB\"`, `\"TARGET_GROUP\"`, `\"MULTAI_TARGET_SET\"`. Default: `\"EC2\"`.\n"
                     },
                     "iamInstanceProfile": {
                         "type": "string",
@@ -12957,7 +13340,7 @@
                     },
                     "lifeCycle": {
                         "type": "string",
-                        "description": "Set lifecycle, valid values: `\"spot\"`, `\"on_demand\"`.\nDefault `\"spot\"`.\n"
+                        "description": "Set lifecycle, valid values: `\"spot\"`, `\"on_demand\"`. Default `\"spot\"`.\n"
                     },
                     "loadBalancers": {
                         "type": "array",
@@ -12991,7 +13374,7 @@
                     },
                     "orientation": {
                         "type": "string",
-                        "description": "Select a prediction strategy. Valid values: `\"balanced\"`, `\"costOriented\"`, `\"availabilityOriented\"`, `\"cheapest\"`.\nDefault: `\"availabilityOriented\"`.\n"
+                        "description": "Select a prediction strategy. Valid values: `\"balanced\"`, `\"costOriented\"`, `\"availabilityOriented\"`, `\"cheapest\"`. Default: `\"availabilityOriented\"`.\n"
                     },
                     "persistBlockDevices": {
                         "type": "boolean",
@@ -13076,7 +13459,7 @@
                     },
                     "utilizeReservedInstances": {
                         "type": "boolean",
-                        "description": "In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances.\nDefault: `\"false\"`.\n"
+                        "description": "In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `\"false\"`.\n"
                     },
                     "vpcId": {
                         "type": "string"
@@ -14453,7 +14836,7 @@
             }
         },
         "spotinst:aws/oceanLaunchSpec:OceanLaunchSpec": {
-            "description": "Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.aws.OceanLaunchSpec(\"example\", {\n    associatePublicIpAddress: true,\n    autoscaleHeadrooms: [{\n        cpuPerUnit: 1000,\n        gpuPerUnit: 0,\n        memoryPerUnit: 2048,\n        numOfUnits: 5,\n    }],\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvda1\",\n        ebs: {\n            deleteOnTermination: true,\n            dynamicVolumeSize: {\n                baseSize: 50,\n                resource: \"CPU\",\n                sizePerResourceUnit: 20,\n            },\n            encrypted: false,\n            throughput: 500,\n            volumeSize: 50,\n            volumeType: \"gp2\",\n        },\n    }],\n    createOptions: {\n        initialNodes: 1,\n    },\n    elasticIpPools: [{\n        tagSelector: {\n            tagKey: \"key\",\n            tagValue: \"value\",\n        },\n    }],\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-123456\",\n    instanceTypes: [\n        \"m4.large\",\n        \"m4.xlarge\",\n        \"m4.2xlarge\",\n        \"m4.4xlarge\",\n    ],\n    labels: [{\n        key: \"key1\",\n        value: \"value1\",\n    }],\n    oceanId: \"o-123456\",\n    preferredSpotTypes: [\n        \"m4.large\",\n        \"m4.xlarge\",\n    ],\n    resourceLimits: [{\n        maxInstanceCount: 4,\n    }],\n    restrictScaleDown: true,\n    rootVolumeSize: 30,\n    securityGroups: [\"sg-987654321\"],\n    strategies: [{\n        spotPercentage: 70,\n    }],\n    subnetIds: [\"subnet-1234\"],\n    tags: [{\n        key: \"Env\",\n        value: \"production\",\n    }],\n    taints: [{\n        effect: \"NoExecute\",\n        key: \"key1\",\n        value: \"value1\",\n    }],\n    userData: \"echo Hello, world!\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.aws.OceanLaunchSpec(\"example\",\n    associate_public_ip_address=True,\n    autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(\n        cpu_per_unit=1000,\n        gpu_per_unit=0,\n        memory_per_unit=2048,\n        num_of_units=5,\n    )],\n    block_device_mappings=[spotinst.aws.OceanLaunchSpecBlockDeviceMappingArgs(\n        device_name=\"/dev/xvda1\",\n        ebs=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsArgs(\n            delete_on_termination=True,\n            dynamic_volume_size=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(\n                base_size=50,\n                resource=\"CPU\",\n                size_per_resource_unit=20,\n            ),\n            encrypted=False,\n            throughput=500,\n            volume_size=50,\n            volume_type=\"gp2\",\n        ),\n    )],\n    create_options=spotinst.aws.OceanLaunchSpecCreateOptionsArgs(\n        initial_nodes=1,\n    ),\n    elastic_ip_pools=[spotinst.aws.OceanLaunchSpecElasticIpPoolArgs(\n        tag_selector=spotinst.aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs(\n            tag_key=\"key\",\n            tag_value=\"value\",\n        ),\n    )],\n    iam_instance_profile=\"iam-profile\",\n    image_id=\"ami-123456\",\n    instance_types=[\n        \"m4.large\",\n        \"m4.xlarge\",\n        \"m4.2xlarge\",\n        \"m4.4xlarge\",\n    ],\n    labels=[spotinst.aws.OceanLaunchSpecLabelArgs(\n        key=\"key1\",\n        value=\"value1\",\n    )],\n    ocean_id=\"o-123456\",\n    preferred_spot_types=[\n        \"m4.large\",\n        \"m4.xlarge\",\n    ],\n    resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(\n        max_instance_count=4,\n    )],\n    restrict_scale_down=True,\n    root_volume_size=30,\n    security_groups=[\"sg-987654321\"],\n    strategies=[spotinst.aws.OceanLaunchSpecStrategyArgs(\n        spot_percentage=70,\n    )],\n    subnet_ids=[\"subnet-1234\"],\n    tags=[spotinst.aws.OceanLaunchSpecTagArgs(\n        key=\"Env\",\n        value=\"production\",\n    )],\n    taints=[spotinst.aws.OceanLaunchSpecTaintArgs(\n        effect=\"NoExecute\",\n        key=\"key1\",\n        value=\"value1\",\n    )],\n    user_data=\"echo Hello, world!\")\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new SpotInst.Aws.OceanLaunchSpec(\"example\", new SpotInst.Aws.OceanLaunchSpecArgs\n        {\n            AssociatePublicIpAddress = true,\n            AutoscaleHeadrooms = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs\n                {\n                    CpuPerUnit = 1000,\n                    GpuPerUnit = 0,\n                    MemoryPerUnit = 2048,\n                    NumOfUnits = 5,\n                },\n            },\n            BlockDeviceMappings = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingArgs\n                {\n                    DeviceName = \"/dev/xvda1\",\n                    Ebs = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs\n                    {\n                        DeleteOnTermination = true,\n                        DynamicVolumeSize = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs\n                        {\n                            BaseSize = 50,\n                            Resource = \"CPU\",\n                            SizePerResourceUnit = 20,\n                        },\n                        Encrypted = false,\n                        Throughput = 500,\n                        VolumeSize = 50,\n                        VolumeType = \"gp2\",\n                    },\n                },\n            },\n            CreateOptions = new SpotInst.Aws.Inputs.OceanLaunchSpecCreateOptionsArgs\n            {\n                InitialNodes = 1,\n            },\n            ElasticIpPools = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs\n                {\n                    TagSelector = new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs\n                    {\n                        TagKey = \"key\",\n                        TagValue = \"value\",\n                    },\n                },\n            },\n            IamInstanceProfile = \"iam-profile\",\n            ImageId = \"ami-123456\",\n            InstanceTypes = \n            {\n                \"m4.large\",\n                \"m4.xlarge\",\n                \"m4.2xlarge\",\n                \"m4.4xlarge\",\n            },\n            Labels = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecLabelArgs\n                {\n                    Key = \"key1\",\n                    Value = \"value1\",\n                },\n            },\n            OceanId = \"o-123456\",\n            PreferredSpotTypes = \n            {\n                \"m4.large\",\n                \"m4.xlarge\",\n            },\n            ResourceLimits = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecResourceLimitArgs\n                {\n                    MaxInstanceCount = 4,\n                },\n            },\n            RestrictScaleDown = true,\n            RootVolumeSize = 30,\n            SecurityGroups = \n            {\n                \"sg-987654321\",\n            },\n            Strategies = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecStrategyArgs\n                {\n                    SpotPercentage = 70,\n                },\n            },\n            SubnetIds = \n            {\n                \"subnet-1234\",\n            },\n            Tags = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecTagArgs\n                {\n                    Key = \"Env\",\n                    Value = \"production\",\n                },\n            },\n            Taints = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecTaintArgs\n                {\n                    Effect = \"NoExecute\",\n                    Key = \"key1\",\n                    Value = \"value1\",\n                },\n            },\n            UserData = \"echo Hello, world!\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aws.NewOceanLaunchSpec(ctx, \"example\", \u0026aws.OceanLaunchSpecArgs{\n\t\t\tAssociatePublicIpAddress: pulumi.Bool(true),\n\t\t\tAutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecAutoscaleHeadroomArgs{\n\t\t\t\t\tCpuPerUnit:    pulumi.Int(1000),\n\t\t\t\t\tGpuPerUnit:    pulumi.Int(0),\n\t\t\t\t\tMemoryPerUnit: pulumi.Int(2048),\n\t\t\t\t\tNumOfUnits:    pulumi.Int(5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBlockDeviceMappings: aws.OceanLaunchSpecBlockDeviceMappingArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecBlockDeviceMappingArgs{\n\t\t\t\t\tDeviceName: pulumi.String(\"/dev/xvda1\"),\n\t\t\t\t\tEbs: \u0026aws.OceanLaunchSpecBlockDeviceMappingEbsArgs{\n\t\t\t\t\t\tDeleteOnTermination: pulumi.Bool(true),\n\t\t\t\t\t\tDynamicVolumeSize: \u0026aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{\n\t\t\t\t\t\t\tBaseSize:            pulumi.Int(50),\n\t\t\t\t\t\t\tResource:            pulumi.String(\"CPU\"),\n\t\t\t\t\t\t\tSizePerResourceUnit: pulumi.Int(20),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tEncrypted:  pulumi.Bool(false),\n\t\t\t\t\t\tThroughput: pulumi.Int(500),\n\t\t\t\t\t\tVolumeSize: pulumi.Int(50),\n\t\t\t\t\t\tVolumeType: pulumi.String(\"gp2\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tCreateOptions: \u0026aws.OceanLaunchSpecCreateOptionsArgs{\n\t\t\t\tInitialNodes: pulumi.Int(1),\n\t\t\t},\n\t\t\tElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecElasticIpPoolArgs{\n\t\t\t\t\tTagSelector: \u0026aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{\n\t\t\t\t\t\tTagKey:   pulumi.String(\"key\"),\n\t\t\t\t\t\tTagValue: pulumi.String(\"value\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tIamInstanceProfile: pulumi.String(\"iam-profile\"),\n\t\t\tImageId:            pulumi.String(\"ami-123456\"),\n\t\t\tInstanceTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"m4.large\"),\n\t\t\t\tpulumi.String(\"m4.xlarge\"),\n\t\t\t\tpulumi.String(\"m4.2xlarge\"),\n\t\t\t\tpulumi.String(\"m4.4xlarge\"),\n\t\t\t},\n\t\t\tLabels: aws.OceanLaunchSpecLabelArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecLabelArgs{\n\t\t\t\t\tKey:   pulumi.String(\"key1\"),\n\t\t\t\t\tValue: pulumi.String(\"value1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOceanId: pulumi.String(\"o-123456\"),\n\t\t\tPreferredSpotTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"m4.large\"),\n\t\t\t\tpulumi.String(\"m4.xlarge\"),\n\t\t\t},\n\t\t\tResourceLimits: aws.OceanLaunchSpecResourceLimitArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecResourceLimitArgs{\n\t\t\t\t\tMaxInstanceCount: pulumi.Int(4),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRestrictScaleDown: pulumi.Bool(true),\n\t\t\tRootVolumeSize:    pulumi.Int(30),\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"sg-987654321\"),\n\t\t\t},\n\t\t\tStrategies: aws.OceanLaunchSpecStrategyArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecStrategyArgs{\n\t\t\t\t\tSpotPercentage: pulumi.Int(70),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSubnetIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"subnet-1234\"),\n\t\t\t},\n\t\t\tTags: aws.OceanLaunchSpecTagArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"Env\"),\n\t\t\t\t\tValue: pulumi.String(\"production\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTaints: aws.OceanLaunchSpecTaintArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecTaintArgs{\n\t\t\t\t\tEffect: pulumi.String(\"NoExecute\"),\n\t\t\t\t\tKey:    pulumi.String(\"key1\"),\n\t\t\t\t\tValue:  pulumi.String(\"value1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tUserData: pulumi.String(\"echo Hello, world!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const oceanLaunchspecId = spotinst_ocean_aws_launch_spec.example.id;\n```\n```python\nimport pulumi\n\npulumi.export(\"oceanLaunchspecId\", spotinst_ocean_aws_launch_spec[\"example\"][\"id\"])\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        this.OceanLaunchspecId = spotinst_ocean_aws_launch_spec.Example.Id;\n    }\n\n    [Output(\"oceanLaunchspecId\")]\n    public Output\u003cstring\u003e OceanLaunchspecId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"oceanLaunchspecId\", spotinst_ocean_aws_launch_spec.Example.Id)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.aws.OceanLaunchSpec(\"example\", {\n    associatePublicIpAddress: true,\n    autoscaleHeadrooms: [{\n        cpuPerUnit: 1000,\n        gpuPerUnit: 0,\n        memoryPerUnit: 2048,\n        numOfUnits: 5,\n    }],\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvda\",\n        ebs: {\n            deleteOnTermination: true,\n            dynamicVolumeSize: {\n                baseSize: 50,\n                resource: \"CPU\",\n                sizePerResourceUnit: 20,\n            },\n            encrypted: false,\n            throughput: 500,\n            volumeSize: 50,\n            volumeType: \"gp2\",\n        },\n    }],\n    createOptions: {\n        initialNodes: 1,\n    },\n    elasticIpPools: [{\n        tagSelector: {\n            tagKey: \"key\",\n            tagValue: \"value\",\n        },\n    }],\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-123456\",\n    instanceTypes: [\n        \"m4.large\",\n        \"m4.xlarge\",\n        \"m4.2xlarge\",\n        \"m4.4xlarge\",\n    ],\n    labels: [{\n        key: \"key1\",\n        value: \"value1\",\n    }],\n    oceanId: \"o-123456\",\n    preferredSpotTypes: [\n        \"m4.large\",\n        \"m4.xlarge\",\n    ],\n    resourceLimits: [{\n        maxInstanceCount: 4,\n    }],\n    restrictScaleDown: true,\n    rootVolumeSize: 30,\n    securityGroups: [\"sg-987654321\"],\n    strategies: [{\n        spotPercentage: 70,\n    }],\n    subnetIds: [\"subnet-1234\"],\n    tags: [{\n        key: \"Env\",\n        value: \"production\",\n    }],\n    taints: [{\n        effect: \"NoExecute\",\n        key: \"key1\",\n        value: \"value1\",\n    }],\n    userData: \"echo Hello, world!\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.aws.OceanLaunchSpec(\"example\",\n    associate_public_ip_address=True,\n    autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(\n        cpu_per_unit=1000,\n        gpu_per_unit=0,\n        memory_per_unit=2048,\n        num_of_units=5,\n    )],\n    block_device_mappings=[spotinst.aws.OceanLaunchSpecBlockDeviceMappingArgs(\n        device_name=\"/dev/xvda\",\n        ebs=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsArgs(\n            delete_on_termination=True,\n            dynamic_volume_size=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(\n                base_size=50,\n                resource=\"CPU\",\n                size_per_resource_unit=20,\n            ),\n            encrypted=False,\n            throughput=500,\n            volume_size=50,\n            volume_type=\"gp2\",\n        ),\n    )],\n    create_options=spotinst.aws.OceanLaunchSpecCreateOptionsArgs(\n        initial_nodes=1,\n    ),\n    elastic_ip_pools=[spotinst.aws.OceanLaunchSpecElasticIpPoolArgs(\n        tag_selector=spotinst.aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs(\n            tag_key=\"key\",\n            tag_value=\"value\",\n        ),\n    )],\n    iam_instance_profile=\"iam-profile\",\n    image_id=\"ami-123456\",\n    instance_types=[\n        \"m4.large\",\n        \"m4.xlarge\",\n        \"m4.2xlarge\",\n        \"m4.4xlarge\",\n    ],\n    labels=[spotinst.aws.OceanLaunchSpecLabelArgs(\n        key=\"key1\",\n        value=\"value1\",\n    )],\n    ocean_id=\"o-123456\",\n    preferred_spot_types=[\n        \"m4.large\",\n        \"m4.xlarge\",\n    ],\n    resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(\n        max_instance_count=4,\n    )],\n    restrict_scale_down=True,\n    root_volume_size=30,\n    security_groups=[\"sg-987654321\"],\n    strategies=[spotinst.aws.OceanLaunchSpecStrategyArgs(\n        spot_percentage=70,\n    )],\n    subnet_ids=[\"subnet-1234\"],\n    tags=[spotinst.aws.OceanLaunchSpecTagArgs(\n        key=\"Env\",\n        value=\"production\",\n    )],\n    taints=[spotinst.aws.OceanLaunchSpecTaintArgs(\n        effect=\"NoExecute\",\n        key=\"key1\",\n        value=\"value1\",\n    )],\n    user_data=\"echo Hello, world!\")\n```\n```csharp\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new SpotInst.Aws.OceanLaunchSpec(\"example\", new SpotInst.Aws.OceanLaunchSpecArgs\n        {\n            AssociatePublicIpAddress = true,\n            AutoscaleHeadrooms = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs\n                {\n                    CpuPerUnit = 1000,\n                    GpuPerUnit = 0,\n                    MemoryPerUnit = 2048,\n                    NumOfUnits = 5,\n                },\n            },\n            BlockDeviceMappings = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingArgs\n                {\n                    DeviceName = \"/dev/xvda\",\n                    Ebs = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs\n                    {\n                        DeleteOnTermination = true,\n                        DynamicVolumeSize = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs\n                        {\n                            BaseSize = 50,\n                            Resource = \"CPU\",\n                            SizePerResourceUnit = 20,\n                        },\n                        Encrypted = false,\n                        Throughput = 500,\n                        VolumeSize = 50,\n                        VolumeType = \"gp2\",\n                    },\n                },\n            },\n            CreateOptions = new SpotInst.Aws.Inputs.OceanLaunchSpecCreateOptionsArgs\n            {\n                InitialNodes = 1,\n            },\n            ElasticIpPools = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs\n                {\n                    TagSelector = new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs\n                    {\n                        TagKey = \"key\",\n                        TagValue = \"value\",\n                    },\n                },\n            },\n            IamInstanceProfile = \"iam-profile\",\n            ImageId = \"ami-123456\",\n            InstanceTypes = \n            {\n                \"m4.large\",\n                \"m4.xlarge\",\n                \"m4.2xlarge\",\n                \"m4.4xlarge\",\n            },\n            Labels = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecLabelArgs\n                {\n                    Key = \"key1\",\n                    Value = \"value1\",\n                },\n            },\n            OceanId = \"o-123456\",\n            PreferredSpotTypes = \n            {\n                \"m4.large\",\n                \"m4.xlarge\",\n            },\n            ResourceLimits = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecResourceLimitArgs\n                {\n                    MaxInstanceCount = 4,\n                },\n            },\n            RestrictScaleDown = true,\n            RootVolumeSize = 30,\n            SecurityGroups = \n            {\n                \"sg-987654321\",\n            },\n            Strategies = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecStrategyArgs\n                {\n                    SpotPercentage = 70,\n                },\n            },\n            SubnetIds = \n            {\n                \"subnet-1234\",\n            },\n            Tags = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecTagArgs\n                {\n                    Key = \"Env\",\n                    Value = \"production\",\n                },\n            },\n            Taints = \n            {\n                new SpotInst.Aws.Inputs.OceanLaunchSpecTaintArgs\n                {\n                    Effect = \"NoExecute\",\n                    Key = \"key1\",\n                    Value = \"value1\",\n                },\n            },\n            UserData = \"echo Hello, world!\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aws.NewOceanLaunchSpec(ctx, \"example\", \u0026aws.OceanLaunchSpecArgs{\n\t\t\tAssociatePublicIpAddress: pulumi.Bool(true),\n\t\t\tAutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecAutoscaleHeadroomArgs{\n\t\t\t\t\tCpuPerUnit:    pulumi.Int(1000),\n\t\t\t\t\tGpuPerUnit:    pulumi.Int(0),\n\t\t\t\t\tMemoryPerUnit: pulumi.Int(2048),\n\t\t\t\t\tNumOfUnits:    pulumi.Int(5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBlockDeviceMappings: aws.OceanLaunchSpecBlockDeviceMappingArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecBlockDeviceMappingArgs{\n\t\t\t\t\tDeviceName: pulumi.String(\"/dev/xvda\"),\n\t\t\t\t\tEbs: \u0026aws.OceanLaunchSpecBlockDeviceMappingEbsArgs{\n\t\t\t\t\t\tDeleteOnTermination: pulumi.Bool(true),\n\t\t\t\t\t\tDynamicVolumeSize: \u0026aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{\n\t\t\t\t\t\t\tBaseSize:            pulumi.Int(50),\n\t\t\t\t\t\t\tResource:            pulumi.String(\"CPU\"),\n\t\t\t\t\t\t\tSizePerResourceUnit: pulumi.Int(20),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tEncrypted:  pulumi.Bool(false),\n\t\t\t\t\t\tThroughput: pulumi.Int(500),\n\t\t\t\t\t\tVolumeSize: pulumi.Int(50),\n\t\t\t\t\t\tVolumeType: pulumi.String(\"gp2\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tCreateOptions: \u0026aws.OceanLaunchSpecCreateOptionsArgs{\n\t\t\t\tInitialNodes: pulumi.Int(1),\n\t\t\t},\n\t\t\tElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecElasticIpPoolArgs{\n\t\t\t\t\tTagSelector: \u0026aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{\n\t\t\t\t\t\tTagKey:   pulumi.String(\"key\"),\n\t\t\t\t\t\tTagValue: pulumi.String(\"value\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tIamInstanceProfile: pulumi.String(\"iam-profile\"),\n\t\t\tImageId:            pulumi.String(\"ami-123456\"),\n\t\t\tInstanceTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"m4.large\"),\n\t\t\t\tpulumi.String(\"m4.xlarge\"),\n\t\t\t\tpulumi.String(\"m4.2xlarge\"),\n\t\t\t\tpulumi.String(\"m4.4xlarge\"),\n\t\t\t},\n\t\t\tLabels: aws.OceanLaunchSpecLabelArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecLabelArgs{\n\t\t\t\t\tKey:   pulumi.String(\"key1\"),\n\t\t\t\t\tValue: pulumi.String(\"value1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOceanId: pulumi.String(\"o-123456\"),\n\t\t\tPreferredSpotTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"m4.large\"),\n\t\t\t\tpulumi.String(\"m4.xlarge\"),\n\t\t\t},\n\t\t\tResourceLimits: aws.OceanLaunchSpecResourceLimitArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecResourceLimitArgs{\n\t\t\t\t\tMaxInstanceCount: pulumi.Int(4),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRestrictScaleDown: pulumi.Bool(true),\n\t\t\tRootVolumeSize:    pulumi.Int(30),\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"sg-987654321\"),\n\t\t\t},\n\t\t\tStrategies: aws.OceanLaunchSpecStrategyArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecStrategyArgs{\n\t\t\t\t\tSpotPercentage: pulumi.Int(70),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSubnetIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"subnet-1234\"),\n\t\t\t},\n\t\t\tTags: aws.OceanLaunchSpecTagArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"Env\"),\n\t\t\t\t\tValue: pulumi.String(\"production\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTaints: aws.OceanLaunchSpecTaintArray{\n\t\t\t\t\u0026aws.OceanLaunchSpecTaintArgs{\n\t\t\t\t\tEffect: pulumi.String(\"NoExecute\"),\n\t\t\t\t\tKey:    pulumi.String(\"key1\"),\n\t\t\t\t\tValue:  pulumi.String(\"value1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tUserData: pulumi.String(\"echo Hello, world!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const oceanLaunchspecId = spotinst_ocean_aws_launch_spec.example.id;\n```\n```python\nimport pulumi\n\npulumi.export(\"oceanLaunchspecId\", spotinst_ocean_aws_launch_spec[\"example\"][\"id\"])\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        this.OceanLaunchspecId = spotinst_ocean_aws_launch_spec.Example.Id;\n    }\n\n    [Output(\"oceanLaunchspecId\")]\n    public Output\u003cstring\u003e OceanLaunchspecId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"oceanLaunchspecId\", spotinst_ocean_aws_launch_spec.Example.Id)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "associatePublicIpAddress": {
                     "type": "boolean",

@@ -25,13 +25,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? Iops { get; set; }
 
         /// <summary>
-        /// The amount of data transferred to or from a storage device per second. Valid only if `volume_type` is set to `"gp3"`.
+        /// The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `"gp3"`.
         /// </summary>
         [Input("throughput")]
         public Input<int>? Throughput { get; set; }
 
         /// <summary>
-        /// The size of the volume in gigabytes.
+        /// The size of the volume, in GiBs.
         /// </summary>
         [Input("volumeSize")]
         public Input<int>? VolumeSize { get; set; }

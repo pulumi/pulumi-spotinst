@@ -14,8 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ManagedInstanceNetworkInterface
     {
         /// <summary>
-        /// Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
-        /// Default: false
+        /// Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`
         /// </summary>
         public readonly bool? AssociateIpv6Address;
         /// <summary>
