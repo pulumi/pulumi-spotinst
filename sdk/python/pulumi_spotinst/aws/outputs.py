@@ -52,16 +52,24 @@ __all__ = [
     'ElastigroupIntegrationRoute53DomainRecordSet',
     'ElastigroupMetadataOptions',
     'ElastigroupMultaiTargetSet',
+    'ElastigroupMultipleMetrics',
+    'ElastigroupMultipleMetricsExpression',
+    'ElastigroupMultipleMetricsMetric',
+    'ElastigroupMultipleMetricsMetricDimension',
     'ElastigroupNetworkInterface',
     'ElastigroupResourceTagSpecification',
     'ElastigroupRevertToSpot',
     'ElastigroupScalingDownPolicy',
     'ElastigroupScalingDownPolicyDimension',
+    'ElastigroupScalingDownPolicyStepAdjustment',
+    'ElastigroupScalingDownPolicyStepAdjustmentAction',
     'ElastigroupScalingStrategy',
     'ElastigroupScalingTargetPolicy',
     'ElastigroupScalingTargetPolicyDimension',
     'ElastigroupScalingUpPolicy',
     'ElastigroupScalingUpPolicyDimension',
+    'ElastigroupScalingUpPolicyStepAdjustment',
+    'ElastigroupScalingUpPolicyStepAdjustmentAction',
     'ElastigroupScheduledTask',
     'ElastigroupSignal',
     'ElastigroupStatefulDeallocation',
@@ -2775,6 +2783,207 @@ class ElastigroupMultaiTargetSet(dict):
 
 
 @pulumi.output_type
+class ElastigroupMultipleMetrics(dict):
+    def __init__(__self__, *,
+                 expressions: Optional[Sequence['outputs.ElastigroupMultipleMetricsExpression']] = None,
+                 metrics: Optional[Sequence['outputs.ElastigroupMultipleMetricsMetric']] = None):
+        """
+        :param Sequence['ElastigroupMultipleMetricsExpressionArgs'] expressions: Array of objects (Expression config)
+        :param Sequence['ElastigroupMultipleMetricsMetricArgs'] metrics: Array of objects (Metric config)
+        """
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+
+    @property
+    @pulumi.getter
+    def expressions(self) -> Optional[Sequence['outputs.ElastigroupMultipleMetricsExpression']]:
+        """
+        Array of objects (Expression config)
+        """
+        return pulumi.get(self, "expressions")
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> Optional[Sequence['outputs.ElastigroupMultipleMetricsMetric']]:
+        """
+        Array of objects (Metric config)
+        """
+        return pulumi.get(self, "metrics")
+
+
+@pulumi.output_type
+class ElastigroupMultipleMetricsExpression(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 name: str):
+        """
+        :param str expression: An expression consisting of the metric names listed in the 'metrics' array.
+        :param str name: The record set name.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        An expression consisting of the metric names listed in the 'metrics' array.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The record set name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ElastigroupMultipleMetricsMetric(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricName":
+            suggest = "metric_name"
+        elif key == "extendedStatistic":
+            suggest = "extended_statistic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupMultipleMetricsMetric. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupMultipleMetricsMetric.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupMultipleMetricsMetric.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metric_name: str,
+                 name: str,
+                 namespace: str,
+                 dimensions: Optional[Sequence['outputs.ElastigroupMultipleMetricsMetricDimension']] = None,
+                 extended_statistic: Optional[str] = None,
+                 statistic: Optional[str] = None,
+                 unit: Optional[str] = None):
+        """
+        :param str metric_name: The name of the metric, with or without spaces.
+        :param str name: The record set name.
+        :param str namespace: The namespace for the alarm's associated metric.
+        :param Sequence['ElastigroupMultipleMetricsMetricDimensionArgs'] dimensions: A list of dimensions describing qualities of the metric.
+               *`name` - (Required) the dimension name.
+               *`value` - (Optional) the dimension value.
+        :param str extended_statistic: Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+        :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+        :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        """
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if extended_statistic is not None:
+            pulumi.set(__self__, "extended_statistic", extended_statistic)
+        if statistic is not None:
+            pulumi.set(__self__, "statistic", statistic)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> str:
+        """
+        The name of the metric, with or without spaces.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The record set name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        """
+        The namespace for the alarm's associated metric.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[Sequence['outputs.ElastigroupMultipleMetricsMetricDimension']]:
+        """
+        A list of dimensions describing qualities of the metric.
+        *`name` - (Required) the dimension name.
+        *`value` - (Optional) the dimension value.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter(name="extendedStatistic")
+    def extended_statistic(self) -> Optional[str]:
+        """
+        Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+        """
+        return pulumi.get(self, "extended_statistic")
+
+    @property
+    @pulumi.getter
+    def statistic(self) -> Optional[str]:
+        """
+        The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+        """
+        return pulumi.get(self, "statistic")
+
+    @property
+    @pulumi.getter
+    def unit(self) -> Optional[str]:
+        """
+        The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class ElastigroupMultipleMetricsMetricDimension(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: Optional[str] = None):
+        """
+        :param str name: The record set name.
+        :param str value: The dimension value.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The record set name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The dimension value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class ElastigroupNetworkInterface(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3051,6 +3260,8 @@ class ElastigroupScalingDownPolicy(dict):
             suggest = "max_target_capacity"
         elif key == "minTargetCapacity":
             suggest = "min_target_capacity"
+        elif key == "stepAdjustments":
+            suggest = "step_adjustments"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ElastigroupScalingDownPolicy. Access the value via the '{suggest}' property getter instead.")
@@ -3067,7 +3278,6 @@ class ElastigroupScalingDownPolicy(dict):
                  metric_name: str,
                  namespace: str,
                  policy_name: str,
-                 threshold: float,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
                  cooldown: Optional[int] = None,
@@ -3082,14 +3292,15 @@ class ElastigroupScalingDownPolicy(dict):
                  period: Optional[int] = None,
                  source: Optional[str] = None,
                  statistic: Optional[str] = None,
+                 step_adjustments: Optional[Sequence['outputs.ElastigroupScalingDownPolicyStepAdjustment']] = None,
                  target: Optional[str] = None,
+                 threshold: Optional[float] = None,
                  unit: Optional[str] = None):
         """
         :param str metric_name: The name of the metric, with or without spaces.
         :param str namespace: The namespace for the alarm's associated metric.
         :param str policy_name: The name of the policy.
-        :param float threshold: The value against which the specified statistic is compared.
-        :param str action_type: The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+        :param str action_type: The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
         :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
         :param int cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
         :param Sequence['ElastigroupScalingDownPolicyDimensionArgs'] dimensions: A list of dimensions describing qualities of the metric.
@@ -3097,19 +3308,19 @@ class ElastigroupScalingDownPolicy(dict):
         :param bool is_enabled: Specifies whether the scaling policy described in this block is enabled.
         :param str max_target_capacity: . The number of the desired target (and maximum) capacity
         :param str maximum: The maximal number of instances to have in the group.
-        :param str min_target_capacity: . The number of the desired target (and minimum) capacity
+        :param str min_target_capacity: The desired target capacity of a group. Required if using `"setMinTarget"` as action type
         :param str minimum: The minimal number of instances to have in the group.
         :param str operator: The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
         :param int period: The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
         :param str source: The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
         :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str target: The target number of instances to have in the group.
+        :param float threshold: The value against which the specified statistic is compared in order to determine if a step should be applied.
         :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "threshold", threshold)
         if action_type is not None:
             pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
@@ -3138,8 +3349,12 @@ class ElastigroupScalingDownPolicy(dict):
             pulumi.set(__self__, "source", source)
         if statistic is not None:
             pulumi.set(__self__, "statistic", statistic)
+        if step_adjustments is not None:
+            pulumi.set(__self__, "step_adjustments", step_adjustments)
         if target is not None:
             pulumi.set(__self__, "target", target)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
 
@@ -3168,18 +3383,10 @@ class ElastigroupScalingDownPolicy(dict):
         return pulumi.get(self, "policy_name")
 
     @property
-    @pulumi.getter
-    def threshold(self) -> float:
-        """
-        The value against which the specified statistic is compared.
-        """
-        return pulumi.get(self, "threshold")
-
-    @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[str]:
         """
-        The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+        The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
         """
         return pulumi.get(self, "action_type")
 
@@ -3243,7 +3450,7 @@ class ElastigroupScalingDownPolicy(dict):
     @pulumi.getter(name="minTargetCapacity")
     def min_target_capacity(self) -> Optional[str]:
         """
-        . The number of the desired target (and minimum) capacity
+        The desired target capacity of a group. Required if using `"setMinTarget"` as action type
         """
         return pulumi.get(self, "min_target_capacity")
 
@@ -3288,12 +3495,25 @@ class ElastigroupScalingDownPolicy(dict):
         return pulumi.get(self, "statistic")
 
     @property
+    @pulumi.getter(name="stepAdjustments")
+    def step_adjustments(self) -> Optional[Sequence['outputs.ElastigroupScalingDownPolicyStepAdjustment']]:
+        return pulumi.get(self, "step_adjustments")
+
+    @property
     @pulumi.getter
     def target(self) -> Optional[str]:
         """
         The target number of instances to have in the group.
         """
         return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        """
+        The value against which the specified statistic is compared in order to determine if a step should be applied.
+        """
+        return pulumi.get(self, "threshold")
 
     @property
     @pulumi.getter
@@ -3332,6 +3552,144 @@ class ElastigroupScalingDownPolicyDimension(dict):
         The dimension value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ElastigroupScalingDownPolicyStepAdjustment(dict):
+    def __init__(__self__, *,
+                 action: 'outputs.ElastigroupScalingDownPolicyStepAdjustmentAction',
+                 threshold: int):
+        """
+        :param 'ElastigroupScalingDownPolicyStepAdjustmentActionArgs' action: Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        :param int threshold: The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter
+    def action(self) -> 'outputs.ElastigroupScalingDownPolicyStepAdjustmentAction':
+        """
+        Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> int:
+        """
+        The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+        """
+        return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class ElastigroupScalingDownPolicyStepAdjustmentAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxTargetCapacity":
+            suggest = "max_target_capacity"
+        elif key == "minTargetCapacity":
+            suggest = "min_target_capacity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupScalingDownPolicyStepAdjustmentAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupScalingDownPolicyStepAdjustmentAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupScalingDownPolicyStepAdjustmentAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 adjustment: Optional[str] = None,
+                 max_target_capacity: Optional[str] = None,
+                 maximum: Optional[str] = None,
+                 min_target_capacity: Optional[str] = None,
+                 minimum: Optional[str] = None,
+                 target: Optional[str] = None):
+        """
+        :param str type: String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        :param str adjustment: The number of instances to add or remove.
+        :param str max_target_capacity: The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+        :param str maximum: The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+        :param str min_target_capacity: The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+        :param str minimum: The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+        :param str target: The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+        """
+        pulumi.set(__self__, "type", type)
+        if adjustment is not None:
+            pulumi.set(__self__, "adjustment", adjustment)
+        if max_target_capacity is not None:
+            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
+        if maximum is not None:
+            pulumi.set(__self__, "maximum", maximum)
+        if min_target_capacity is not None:
+            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
+        if minimum is not None:
+            pulumi.set(__self__, "minimum", minimum)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def adjustment(self) -> Optional[str]:
+        """
+        The number of instances to add or remove.
+        """
+        return pulumi.get(self, "adjustment")
+
+    @property
+    @pulumi.getter(name="maxTargetCapacity")
+    def max_target_capacity(self) -> Optional[str]:
+        """
+        The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+        """
+        return pulumi.get(self, "max_target_capacity")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> Optional[str]:
+        """
+        The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+        """
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter(name="minTargetCapacity")
+    def min_target_capacity(self) -> Optional[str]:
+        """
+        The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+        """
+        return pulumi.get(self, "min_target_capacity")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> Optional[str]:
+        """
+        The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+        """
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[str]:
+        """
+        The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+        """
+        return pulumi.get(self, "target")
 
 
 @pulumi.output_type
@@ -3591,6 +3949,8 @@ class ElastigroupScalingUpPolicy(dict):
             suggest = "max_target_capacity"
         elif key == "minTargetCapacity":
             suggest = "min_target_capacity"
+        elif key == "stepAdjustments":
+            suggest = "step_adjustments"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ElastigroupScalingUpPolicy. Access the value via the '{suggest}' property getter instead.")
@@ -3607,7 +3967,6 @@ class ElastigroupScalingUpPolicy(dict):
                  metric_name: str,
                  namespace: str,
                  policy_name: str,
-                 threshold: float,
                  action_type: Optional[str] = None,
                  adjustment: Optional[str] = None,
                  cooldown: Optional[int] = None,
@@ -3622,20 +3981,21 @@ class ElastigroupScalingUpPolicy(dict):
                  period: Optional[int] = None,
                  source: Optional[str] = None,
                  statistic: Optional[str] = None,
+                 step_adjustments: Optional[Sequence['outputs.ElastigroupScalingUpPolicyStepAdjustment']] = None,
                  target: Optional[str] = None,
+                 threshold: Optional[float] = None,
                  unit: Optional[str] = None):
         """
         :param str metric_name: The name of the metric, with or without spaces.
         :param str namespace: The namespace for the alarm's associated metric.
         :param str policy_name: The name of the policy.
-        :param float threshold: The value against which the specified statistic is compared.
-        :param str action_type: The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+        :param str action_type: The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
         :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
         :param int cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
         :param Sequence['ElastigroupScalingUpPolicyDimensionArgs'] dimensions: A list of dimensions describing qualities of the metric.
         :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param bool is_enabled: Specifies whether the scaling policy described in this block is enabled.
-        :param str max_target_capacity: . The number of the desired target (and maximum) capacity
+        :param str max_target_capacity: The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
         :param str maximum: The maximal number of instances to have in the group.
         :param str min_target_capacity: . The number of the desired target (and minimum) capacity
         :param str minimum: The minimal number of instances to have in the group.
@@ -3644,12 +4004,12 @@ class ElastigroupScalingUpPolicy(dict):
         :param str source: The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
         :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str target: The target number of instances to have in the group.
+        :param float threshold: The value against which the specified statistic is compared in order to determine if a step should be applied.
         :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "threshold", threshold)
         if action_type is not None:
             pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
@@ -3678,8 +4038,12 @@ class ElastigroupScalingUpPolicy(dict):
             pulumi.set(__self__, "source", source)
         if statistic is not None:
             pulumi.set(__self__, "statistic", statistic)
+        if step_adjustments is not None:
+            pulumi.set(__self__, "step_adjustments", step_adjustments)
         if target is not None:
             pulumi.set(__self__, "target", target)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
 
@@ -3708,18 +4072,10 @@ class ElastigroupScalingUpPolicy(dict):
         return pulumi.get(self, "policy_name")
 
     @property
-    @pulumi.getter
-    def threshold(self) -> float:
-        """
-        The value against which the specified statistic is compared.
-        """
-        return pulumi.get(self, "threshold")
-
-    @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[str]:
         """
-        The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+        The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
         """
         return pulumi.get(self, "action_type")
 
@@ -3767,7 +4123,7 @@ class ElastigroupScalingUpPolicy(dict):
     @pulumi.getter(name="maxTargetCapacity")
     def max_target_capacity(self) -> Optional[str]:
         """
-        . The number of the desired target (and maximum) capacity
+        The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
         """
         return pulumi.get(self, "max_target_capacity")
 
@@ -3828,12 +4184,25 @@ class ElastigroupScalingUpPolicy(dict):
         return pulumi.get(self, "statistic")
 
     @property
+    @pulumi.getter(name="stepAdjustments")
+    def step_adjustments(self) -> Optional[Sequence['outputs.ElastigroupScalingUpPolicyStepAdjustment']]:
+        return pulumi.get(self, "step_adjustments")
+
+    @property
     @pulumi.getter
     def target(self) -> Optional[str]:
         """
         The target number of instances to have in the group.
         """
         return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        """
+        The value against which the specified statistic is compared in order to determine if a step should be applied.
+        """
+        return pulumi.get(self, "threshold")
 
     @property
     @pulumi.getter
@@ -3872,6 +4241,144 @@ class ElastigroupScalingUpPolicyDimension(dict):
         The dimension value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ElastigroupScalingUpPolicyStepAdjustment(dict):
+    def __init__(__self__, *,
+                 action: 'outputs.ElastigroupScalingUpPolicyStepAdjustmentAction',
+                 threshold: int):
+        """
+        :param 'ElastigroupScalingUpPolicyStepAdjustmentActionArgs' action: Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        :param int threshold: The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter
+    def action(self) -> 'outputs.ElastigroupScalingUpPolicyStepAdjustmentAction':
+        """
+        Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> int:
+        """
+        The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+        """
+        return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class ElastigroupScalingUpPolicyStepAdjustmentAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxTargetCapacity":
+            suggest = "max_target_capacity"
+        elif key == "minTargetCapacity":
+            suggest = "min_target_capacity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupScalingUpPolicyStepAdjustmentAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupScalingUpPolicyStepAdjustmentAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupScalingUpPolicyStepAdjustmentAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 adjustment: Optional[str] = None,
+                 max_target_capacity: Optional[str] = None,
+                 maximum: Optional[str] = None,
+                 min_target_capacity: Optional[str] = None,
+                 minimum: Optional[str] = None,
+                 target: Optional[str] = None):
+        """
+        :param str type: String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        :param str adjustment: The number of instances to add or remove.
+        :param str max_target_capacity: The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+        :param str maximum: The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+        :param str min_target_capacity: The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+        :param str minimum: The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+        :param str target: The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+        """
+        pulumi.set(__self__, "type", type)
+        if adjustment is not None:
+            pulumi.set(__self__, "adjustment", adjustment)
+        if max_target_capacity is not None:
+            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
+        if maximum is not None:
+            pulumi.set(__self__, "maximum", maximum)
+        if min_target_capacity is not None:
+            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
+        if minimum is not None:
+            pulumi.set(__self__, "minimum", minimum)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def adjustment(self) -> Optional[str]:
+        """
+        The number of instances to add or remove.
+        """
+        return pulumi.get(self, "adjustment")
+
+    @property
+    @pulumi.getter(name="maxTargetCapacity")
+    def max_target_capacity(self) -> Optional[str]:
+        """
+        The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+        """
+        return pulumi.get(self, "max_target_capacity")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> Optional[str]:
+        """
+        The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+        """
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter(name="minTargetCapacity")
+    def min_target_capacity(self) -> Optional[str]:
+        """
+        The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+        """
+        return pulumi.get(self, "min_target_capacity")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> Optional[str]:
+        """
+        The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+        """
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[str]:
+        """
+        The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+        """
+        return pulumi.get(self, "target")
 
 
 @pulumi.output_type
@@ -4647,6 +5154,7 @@ class ManagedInstanceBlockDeviceMapping(dict):
                  ebs: Optional['outputs.ManagedInstanceBlockDeviceMappingEbs'] = None):
         """
         :param str device_name: The name of the device to mount.
+        :param 'ManagedInstanceBlockDeviceMappingEbsArgs' ebs: Object
         """
         pulumi.set(__self__, "device_name", device_name)
         if ebs is not None:
@@ -4663,6 +5171,9 @@ class ManagedInstanceBlockDeviceMapping(dict):
     @property
     @pulumi.getter
     def ebs(self) -> Optional['outputs.ManagedInstanceBlockDeviceMappingEbs']:
+        """
+        Object
+        """
         return pulumi.get(self, "ebs")
 
 
@@ -4698,8 +5209,8 @@ class ManagedInstanceBlockDeviceMappingEbs(dict):
         """
         :param bool delete_on_termination: Whether the volume should be destroyed on instance termination.
         :param int iops: The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `"io1"`.
-        :param int throughput: The amount of data transferred to or from a storage device per second. Valid only if `volume_type` is set to `"gp3"`.
-        :param int volume_size: The size of the volume in gigabytes.
+        :param int throughput: The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `"gp3"`.
+        :param int volume_size: The size of the volume, in GiBs.
         :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
         """
         if delete_on_termination is not None:
@@ -4733,7 +5244,7 @@ class ManagedInstanceBlockDeviceMappingEbs(dict):
     @pulumi.getter
     def throughput(self) -> Optional[int]:
         """
-        The amount of data transferred to or from a storage device per second. Valid only if `volume_type` is set to `"gp3"`.
+        The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `"gp3"`.
         """
         return pulumi.get(self, "throughput")
 
@@ -4741,7 +5252,7 @@ class ManagedInstanceBlockDeviceMappingEbs(dict):
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[int]:
         """
-        The size of the volume in gigabytes.
+        The size of the volume, in GiBs.
         """
         return pulumi.get(self, "volume_size")
 
@@ -4943,14 +5454,13 @@ class ManagedInstanceLoadBalancer(dict):
                  name: Optional[str] = None,
                  target_set_id: Optional[str] = None):
         """
-        :param str type: The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        :param str type: String, Action type. Supported action types: `pause`, `resume`, `recycle`.
         :param str arn: The AWS resource ARN (Required only for ALB target groups).
         :param bool auto_weight: "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-        :param str balancer_id: The Multai load balancer ID.
-               Default: lb-123456
+        :param bool az_awareness: "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
+        :param str balancer_id: The Multai load balancer ID. Example: lb-123456
         :param str name: The record set name.
-        :param str target_set_id: The Multai load target set ID.
-               Default: ts-123456
+        :param str target_set_id: The Multai load target set ID. Example: ts-123456
         """
         pulumi.set(__self__, "type", type)
         if arn is not None:
@@ -4970,7 +5480,7 @@ class ManagedInstanceLoadBalancer(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`.
         """
         return pulumi.get(self, "type")
 
@@ -4993,14 +5503,16 @@ class ManagedInstanceLoadBalancer(dict):
     @property
     @pulumi.getter(name="azAwareness")
     def az_awareness(self) -> Optional[bool]:
+        """
+        "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
+        """
         return pulumi.get(self, "az_awareness")
 
     @property
     @pulumi.getter(name="balancerId")
     def balancer_id(self) -> Optional[str]:
         """
-        The Multai load balancer ID.
-        Default: lb-123456
+        The Multai load balancer ID. Example: lb-123456
         """
         return pulumi.get(self, "balancer_id")
 
@@ -5016,8 +5528,7 @@ class ManagedInstanceLoadBalancer(dict):
     @pulumi.getter(name="targetSetId")
     def target_set_id(self) -> Optional[str]:
         """
-        The Multai load target set ID.
-        Default: ts-123456
+        The Multai load target set ID. Example: ts-123456
         """
         return pulumi.get(self, "target_set_id")
 
@@ -5027,7 +5538,7 @@ class ManagedInstanceManagedInstanceAction(dict):
     def __init__(__self__, *,
                  type: str):
         """
-        :param str type: The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        :param str type: String, Action type. Supported action types: `pause`, `resume`, `recycle`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -5035,7 +5546,7 @@ class ManagedInstanceManagedInstanceAction(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`.
         """
         return pulumi.get(self, "type")
 
@@ -5069,8 +5580,7 @@ class ManagedInstanceNetworkInterface(dict):
                  associate_public_ip_address: Optional[bool] = None):
         """
         :param str device_index: The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
-        :param bool associate_ipv6_address: Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
-               Default: false
+        :param bool associate_ipv6_address: Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`
         :param bool associate_public_ip_address: Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
         """
         pulumi.set(__self__, "device_index", device_index)
@@ -5091,8 +5601,7 @@ class ManagedInstanceNetworkInterface(dict):
     @pulumi.getter(name="associateIpv6Address")
     def associate_ipv6_address(self) -> Optional[bool]:
         """
-        Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
-        Default: false
+        Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`
         """
         return pulumi.get(self, "associate_ipv6_address")
 
@@ -5205,8 +5714,7 @@ class ManagedInstanceRevertToSpot(dict):
     def __init__(__self__, *,
                  perform_at: str):
         """
-        :param str perform_at: Valid values: `"always"`, `"never"`, `"timeWindow"`.
-               Default `"never"`.
+        :param str perform_at: Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
         """
         pulumi.set(__self__, "perform_at", perform_at)
 
@@ -5214,8 +5722,7 @@ class ManagedInstanceRevertToSpot(dict):
     @pulumi.getter(name="performAt")
     def perform_at(self) -> str:
         """
-        Valid values: `"always"`, `"never"`, `"timeWindow"`.
-        Default `"never"`.
+        Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
         """
         return pulumi.get(self, "perform_at")
 
@@ -5252,13 +5759,13 @@ class ManagedInstanceScheduledTask(dict):
                  is_enabled: Optional[bool] = None,
                  start_time: Optional[str] = None):
         """
-        :param str task_type: The task type to run. Valid values: "pause", "resume", "recycle".
-        :param str cron_expression: A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-               Example: 0 1 * * *
+        :param str task_type: The task type to run. Valid values: `"pause"`, `"resume"`, `"recycle"`.
+        :param str cron_expression: A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+               Example: `"0 1 * * *"`.
         :param str frequency: Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
         :param bool is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run.
         :param str start_time: DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-               Example: 2019-05-23T10:55:09Z
+               Example: `"2019-05-23T10:55:09Z"`
         """
         pulumi.set(__self__, "task_type", task_type)
         if cron_expression is not None:
@@ -5274,7 +5781,7 @@ class ManagedInstanceScheduledTask(dict):
     @pulumi.getter(name="taskType")
     def task_type(self) -> str:
         """
-        The task type to run. Valid values: "pause", "resume", "recycle".
+        The task type to run. Valid values: `"pause"`, `"resume"`, `"recycle"`.
         """
         return pulumi.get(self, "task_type")
 
@@ -5282,8 +5789,8 @@ class ManagedInstanceScheduledTask(dict):
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> Optional[str]:
         """
-        A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-        Example: 0 1 * * *
+        A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+        Example: `"0 1 * * *"`.
         """
         return pulumi.get(self, "cron_expression")
 
@@ -5308,7 +5815,7 @@ class ManagedInstanceScheduledTask(dict):
     def start_time(self) -> Optional[str]:
         """
         DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-        Example: 2019-05-23T10:55:09Z
+        Example: `"2019-05-23T10:55:09Z"`
         """
         return pulumi.get(self, "start_time")
 
@@ -7493,7 +8000,7 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
                  no_device: Optional[str] = None,
                  virtual_name: Optional[str] = None):
         """
-        :param str device_name: String. Set device name. (Example: `/dev/xvda1`).
+        :param str device_name: String. Set device name. (Example: `/dev/xvda`).
         :param 'OceanLaunchSpecBlockDeviceMappingEbsArgs' ebs: Object. Set Elastic Block Store properties .
         :param str no_device: String. Suppresses the specified device included in the block device mapping of the AMI.
         """
@@ -7510,7 +8017,7 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
         """
-        String. Set device name. (Example: `/dev/xvda1`).
+        String. Set device name. (Example: `/dev/xvda`).
         """
         return pulumi.get(self, "device_name")
 

@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLaunchSpecBlockDeviceMappingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Set device name. (Example: `/dev/xvda1`).
+        /// String. Set device name. (Example: `/dev/xvda`).
         /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }

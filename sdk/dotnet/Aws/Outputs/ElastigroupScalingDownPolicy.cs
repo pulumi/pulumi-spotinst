@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupScalingDownPolicy
     {
         /// <summary>
-        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
         /// </summary>
         public readonly string? ActionType;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string MetricName;
         /// <summary>
-        /// . The number of the desired target (and minimum) capacity
+        /// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
         /// </summary>
         public readonly string? MinTargetCapacity;
         /// <summary>
@@ -81,14 +81,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         /// </summary>
         public readonly string? Statistic;
+        public readonly ImmutableArray<Outputs.ElastigroupScalingDownPolicyStepAdjustment> StepAdjustments;
         /// <summary>
         /// The target number of instances to have in the group.
         /// </summary>
         public readonly string? Target;
         /// <summary>
-        /// The value against which the specified statistic is compared.
+        /// The value against which the specified statistic is compared in order to determine if a step should be applied.
         /// </summary>
-        public readonly double Threshold;
+        public readonly double? Threshold;
         /// <summary>
         /// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         /// </summary>
@@ -130,9 +131,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             string? statistic,
 
+            ImmutableArray<Outputs.ElastigroupScalingDownPolicyStepAdjustment> stepAdjustments,
+
             string? target,
 
-            double threshold,
+            double? threshold,
 
             string? unit)
         {
@@ -153,6 +156,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
             PolicyName = policyName;
             Source = source;
             Statistic = statistic;
+            StepAdjustments = stepAdjustments;
             Target = target;
             Threshold = threshold;
             Unit = unit;

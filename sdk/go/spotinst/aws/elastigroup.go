@@ -97,6 +97,7 @@ type Elastigroup struct {
 	MinimumInstanceLifetime pulumi.IntPtrOutput `pulumi:"minimumInstanceLifetime"`
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayOutput `pulumi:"multaiTargetSets"`
+	MultipleMetrics  ElastigroupMultipleMetricsPtrOutput   `pulumi:"multipleMetrics"`
 	// The record set name.
 	Name              pulumi.StringOutput                    `pulumi:"name"`
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
@@ -290,6 +291,7 @@ type elastigroupState struct {
 	MinimumInstanceLifetime *int `pulumi:"minimumInstanceLifetime"`
 	// Set of targets to register.
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
+	MultipleMetrics  *ElastigroupMultipleMetrics  `pulumi:"multipleMetrics"`
 	// The record set name.
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
@@ -437,6 +439,7 @@ type ElastigroupState struct {
 	MinimumInstanceLifetime pulumi.IntPtrInput
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
+	MultipleMetrics  ElastigroupMultipleMetricsPtrInput
 	// The record set name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
@@ -588,6 +591,7 @@ type elastigroupArgs struct {
 	MinimumInstanceLifetime *int `pulumi:"minimumInstanceLifetime"`
 	// Set of targets to register.
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
+	MultipleMetrics  *ElastigroupMultipleMetrics  `pulumi:"multipleMetrics"`
 	// The record set name.
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
@@ -736,6 +740,7 @@ type ElastigroupArgs struct {
 	MinimumInstanceLifetime pulumi.IntPtrInput
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
+	MultipleMetrics  ElastigroupMultipleMetricsPtrInput
 	// The record set name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput

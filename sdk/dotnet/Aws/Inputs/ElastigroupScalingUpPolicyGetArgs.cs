@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ElastigroupScalingUpPolicyGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
         /// </summary>
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? IsEnabled { get; set; }
 
         /// <summary>
-        /// . The number of the desired target (and maximum) capacity
+        /// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
         /// </summary>
         [Input("maxTargetCapacity")]
         public Input<string>? MaxTargetCapacity { get; set; }
@@ -120,6 +120,14 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("statistic")]
         public Input<string>? Statistic { get; set; }
 
+        [Input("stepAdjustments")]
+        private InputList<Inputs.ElastigroupScalingUpPolicyStepAdjustmentGetArgs>? _stepAdjustments;
+        public InputList<Inputs.ElastigroupScalingUpPolicyStepAdjustmentGetArgs> StepAdjustments
+        {
+            get => _stepAdjustments ?? (_stepAdjustments = new InputList<Inputs.ElastigroupScalingUpPolicyStepAdjustmentGetArgs>());
+            set => _stepAdjustments = value;
+        }
+
         /// <summary>
         /// The target number of instances to have in the group.
         /// </summary>
@@ -127,10 +135,10 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The value against which the specified statistic is compared.
+        /// The value against which the specified statistic is compared in order to determine if a step should be applied.
         /// </summary>
-        [Input("threshold", required: true)]
-        public Input<double> Threshold { get; set; } = null!;
+        [Input("threshold")]
+        public Input<double>? Threshold { get; set; }
 
         /// <summary>
         /// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.

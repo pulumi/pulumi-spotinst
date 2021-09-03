@@ -24,12 +24,14 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("autoWeight")]
         public Input<bool>? AutoWeight { get; set; }
 
+        /// <summary>
+        /// "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
+        /// </summary>
         [Input("azAwareness")]
         public Input<bool>? AzAwareness { get; set; }
 
         /// <summary>
-        /// The Multai load balancer ID.
-        /// Default: lb-123456
+        /// The Multai load balancer ID. Example: lb-123456
         /// </summary>
         [Input("balancerId")]
         public Input<string>? BalancerId { get; set; }
@@ -41,14 +43,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Multai load target set ID.
-        /// Default: ts-123456
+        /// The Multai load target set ID. Example: ts-123456
         /// </summary>
         [Input("targetSetId")]
         public Input<string>? TargetSetId { get; set; }
 
         /// <summary>
-        /// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanLaunchSpecBlockDeviceMapping
     {
         /// <summary>
-        /// String. Set device name. (Example: `/dev/xvda1`).
+        /// String. Set device name. (Example: `/dev/xvda`).
         /// </summary>
         public readonly string? DeviceName;
         /// <summary>

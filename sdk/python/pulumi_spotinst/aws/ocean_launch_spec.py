@@ -720,7 +720,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 num_of_units=5,
             )],
             block_device_mappings=[spotinst.aws.OceanLaunchSpecBlockDeviceMappingArgs(
-                device_name="/dev/xvda1",
+                device_name="/dev/xvda",
                 ebs=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsArgs(
                     delete_on_termination=True,
                     dynamic_volume_size=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
@@ -832,7 +832,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 num_of_units=5,
             )],
             block_device_mappings=[spotinst.aws.OceanLaunchSpecBlockDeviceMappingArgs(
-                device_name="/dev/xvda1",
+                device_name="/dev/xvda",
                 ebs=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsArgs(
                     delete_on_termination=True,
                     dynamic_volume_size=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(

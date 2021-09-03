@@ -14,8 +14,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ManagedInstanceScheduledTask
     {
         /// <summary>
-        /// A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-        /// Example: 0 1 * * *
+        /// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+        /// Example: `"0 1 * * *"`.
         /// </summary>
         public readonly string? CronExpression;
         /// <summary>
@@ -28,11 +28,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly bool? IsEnabled;
         /// <summary>
         /// DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-        /// Example: 2019-05-23T10:55:09Z
+        /// Example: `"2019-05-23T10:55:09Z"`
         /// </summary>
         public readonly string? StartTime;
         /// <summary>
-        /// The task type to run. Valid values: "pause", "resume", "recycle".
+        /// The task type to run. Valid values: `"pause"`, `"resume"`, `"recycle"`.
         /// </summary>
         public readonly string TaskType;
 

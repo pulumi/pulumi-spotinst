@@ -60,6 +60,7 @@ class ElastigroupArgs:
                  min_size: Optional[pulumi.Input[int]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]] = None,
+                 multiple_metrics: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
@@ -246,6 +247,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
         if multai_target_sets is not None:
             pulumi.set(__self__, "multai_target_sets", multai_target_sets)
+        if multiple_metrics is not None:
+            pulumi.set(__self__, "multiple_metrics", multiple_metrics)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
@@ -841,6 +844,15 @@ class ElastigroupArgs:
         pulumi.set(self, "multai_target_sets", value)
 
     @property
+    @pulumi.getter(name="multipleMetrics")
+    def multiple_metrics(self) -> Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']]:
+        return pulumi.get(self, "multiple_metrics")
+
+    @multiple_metrics.setter
+    def multiple_metrics(self, value: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']]):
+        pulumi.set(self, "multiple_metrics", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1231,6 +1243,7 @@ class _ElastigroupState:
                  min_size: Optional[pulumi.Input[int]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]] = None,
+                 multiple_metrics: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
@@ -1420,6 +1433,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
         if multai_target_sets is not None:
             pulumi.set(__self__, "multai_target_sets", multai_target_sets)
+        if multiple_metrics is not None:
+            pulumi.set(__self__, "multiple_metrics", multiple_metrics)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
@@ -1984,6 +1999,15 @@ class _ElastigroupState:
         pulumi.set(self, "multai_target_sets", value)
 
     @property
+    @pulumi.getter(name="multipleMetrics")
+    def multiple_metrics(self) -> Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']]:
+        return pulumi.get(self, "multiple_metrics")
+
+    @multiple_metrics.setter
+    def multiple_metrics(self, value: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']]):
+        pulumi.set(self, "multiple_metrics", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2413,6 +2437,7 @@ class Elastigroup(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
+                 multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
@@ -2588,6 +2613,7 @@ class Elastigroup(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
+                 multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
@@ -2682,6 +2708,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
             __props__.__dict__["multai_target_sets"] = multai_target_sets
+            __props__.__dict__["multiple_metrics"] = multiple_metrics
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["ondemand_count"] = ondemand_count
@@ -2774,6 +2801,7 @@ class Elastigroup(pulumi.CustomResource):
             min_size: Optional[pulumi.Input[int]] = None,
             minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
             multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
+            multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
             ondemand_count: Optional[pulumi.Input[int]] = None,
@@ -2930,6 +2958,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
         __props__.__dict__["multai_target_sets"] = multai_target_sets
+        __props__.__dict__["multiple_metrics"] = multiple_metrics
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["ondemand_count"] = ondemand_count
@@ -3291,6 +3320,11 @@ class Elastigroup(pulumi.CustomResource):
         Set of targets to register.
         """
         return pulumi.get(self, "multai_target_sets")
+
+    @property
+    @pulumi.getter(name="multipleMetrics")
+    def multiple_metrics(self) -> pulumi.Output[Optional['outputs.ElastigroupMultipleMetrics']]:
+        return pulumi.get(self, "multiple_metrics")
 
     @property
     @pulumi.getter

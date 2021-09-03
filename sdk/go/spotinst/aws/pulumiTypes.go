@@ -6571,6 +6571,527 @@ func (o ElastigroupMultaiTargetSetArrayOutput) Index(i pulumi.IntInput) Elastigr
 	}).(ElastigroupMultaiTargetSetOutput)
 }
 
+type ElastigroupMultipleMetrics struct {
+	// Array of objects (Expression config)
+	Expressions []ElastigroupMultipleMetricsExpression `pulumi:"expressions"`
+	// Array of objects (Metric config)
+	Metrics []ElastigroupMultipleMetricsMetric `pulumi:"metrics"`
+}
+
+// ElastigroupMultipleMetricsInput is an input type that accepts ElastigroupMultipleMetricsArgs and ElastigroupMultipleMetricsOutput values.
+// You can construct a concrete instance of `ElastigroupMultipleMetricsInput` via:
+//
+//          ElastigroupMultipleMetricsArgs{...}
+type ElastigroupMultipleMetricsInput interface {
+	pulumi.Input
+
+	ToElastigroupMultipleMetricsOutput() ElastigroupMultipleMetricsOutput
+	ToElastigroupMultipleMetricsOutputWithContext(context.Context) ElastigroupMultipleMetricsOutput
+}
+
+type ElastigroupMultipleMetricsArgs struct {
+	// Array of objects (Expression config)
+	Expressions ElastigroupMultipleMetricsExpressionArrayInput `pulumi:"expressions"`
+	// Array of objects (Metric config)
+	Metrics ElastigroupMultipleMetricsMetricArrayInput `pulumi:"metrics"`
+}
+
+func (ElastigroupMultipleMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupMultipleMetrics)(nil)).Elem()
+}
+
+func (i ElastigroupMultipleMetricsArgs) ToElastigroupMultipleMetricsOutput() ElastigroupMultipleMetricsOutput {
+	return i.ToElastigroupMultipleMetricsOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMultipleMetricsArgs) ToElastigroupMultipleMetricsOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultipleMetricsOutput)
+}
+
+func (i ElastigroupMultipleMetricsArgs) ToElastigroupMultipleMetricsPtrOutput() ElastigroupMultipleMetricsPtrOutput {
+	return i.ToElastigroupMultipleMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMultipleMetricsArgs) ToElastigroupMultipleMetricsPtrOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultipleMetricsOutput).ToElastigroupMultipleMetricsPtrOutputWithContext(ctx)
+}
+
+// ElastigroupMultipleMetricsPtrInput is an input type that accepts ElastigroupMultipleMetricsArgs, ElastigroupMultipleMetricsPtr and ElastigroupMultipleMetricsPtrOutput values.
+// You can construct a concrete instance of `ElastigroupMultipleMetricsPtrInput` via:
+//
+//          ElastigroupMultipleMetricsArgs{...}
+//
+//  or:
+//
+//          nil
+type ElastigroupMultipleMetricsPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupMultipleMetricsPtrOutput() ElastigroupMultipleMetricsPtrOutput
+	ToElastigroupMultipleMetricsPtrOutputWithContext(context.Context) ElastigroupMultipleMetricsPtrOutput
+}
+
+type elastigroupMultipleMetricsPtrType ElastigroupMultipleMetricsArgs
+
+func ElastigroupMultipleMetricsPtr(v *ElastigroupMultipleMetricsArgs) ElastigroupMultipleMetricsPtrInput {
+	return (*elastigroupMultipleMetricsPtrType)(v)
+}
+
+func (*elastigroupMultipleMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupMultipleMetrics)(nil)).Elem()
+}
+
+func (i *elastigroupMultipleMetricsPtrType) ToElastigroupMultipleMetricsPtrOutput() ElastigroupMultipleMetricsPtrOutput {
+	return i.ToElastigroupMultipleMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupMultipleMetricsPtrType) ToElastigroupMultipleMetricsPtrOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultipleMetricsPtrOutput)
+}
+
+type ElastigroupMultipleMetricsOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMultipleMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupMultipleMetrics)(nil)).Elem()
+}
+
+func (o ElastigroupMultipleMetricsOutput) ToElastigroupMultipleMetricsOutput() ElastigroupMultipleMetricsOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsOutput) ToElastigroupMultipleMetricsOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsOutput) ToElastigroupMultipleMetricsPtrOutput() ElastigroupMultipleMetricsPtrOutput {
+	return o.ToElastigroupMultipleMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupMultipleMetricsOutput) ToElastigroupMultipleMetricsPtrOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsPtrOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetrics) *ElastigroupMultipleMetrics {
+		return &v
+	}).(ElastigroupMultipleMetricsPtrOutput)
+}
+
+// Array of objects (Expression config)
+func (o ElastigroupMultipleMetricsOutput) Expressions() ElastigroupMultipleMetricsExpressionArrayOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetrics) []ElastigroupMultipleMetricsExpression { return v.Expressions }).(ElastigroupMultipleMetricsExpressionArrayOutput)
+}
+
+// Array of objects (Metric config)
+func (o ElastigroupMultipleMetricsOutput) Metrics() ElastigroupMultipleMetricsMetricArrayOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetrics) []ElastigroupMultipleMetricsMetric { return v.Metrics }).(ElastigroupMultipleMetricsMetricArrayOutput)
+}
+
+type ElastigroupMultipleMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMultipleMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupMultipleMetrics)(nil)).Elem()
+}
+
+func (o ElastigroupMultipleMetricsPtrOutput) ToElastigroupMultipleMetricsPtrOutput() ElastigroupMultipleMetricsPtrOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsPtrOutput) ToElastigroupMultipleMetricsPtrOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsPtrOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsPtrOutput) Elem() ElastigroupMultipleMetricsOutput {
+	return o.ApplyT(func(v *ElastigroupMultipleMetrics) ElastigroupMultipleMetrics { return *v }).(ElastigroupMultipleMetricsOutput)
+}
+
+// Array of objects (Expression config)
+func (o ElastigroupMultipleMetricsPtrOutput) Expressions() ElastigroupMultipleMetricsExpressionArrayOutput {
+	return o.ApplyT(func(v *ElastigroupMultipleMetrics) []ElastigroupMultipleMetricsExpression {
+		if v == nil {
+			return nil
+		}
+		return v.Expressions
+	}).(ElastigroupMultipleMetricsExpressionArrayOutput)
+}
+
+// Array of objects (Metric config)
+func (o ElastigroupMultipleMetricsPtrOutput) Metrics() ElastigroupMultipleMetricsMetricArrayOutput {
+	return o.ApplyT(func(v *ElastigroupMultipleMetrics) []ElastigroupMultipleMetricsMetric {
+		if v == nil {
+			return nil
+		}
+		return v.Metrics
+	}).(ElastigroupMultipleMetricsMetricArrayOutput)
+}
+
+type ElastigroupMultipleMetricsExpression struct {
+	// An expression consisting of the metric names listed in the 'metrics' array.
+	Expression string `pulumi:"expression"`
+	// The record set name.
+	Name string `pulumi:"name"`
+}
+
+// ElastigroupMultipleMetricsExpressionInput is an input type that accepts ElastigroupMultipleMetricsExpressionArgs and ElastigroupMultipleMetricsExpressionOutput values.
+// You can construct a concrete instance of `ElastigroupMultipleMetricsExpressionInput` via:
+//
+//          ElastigroupMultipleMetricsExpressionArgs{...}
+type ElastigroupMultipleMetricsExpressionInput interface {
+	pulumi.Input
+
+	ToElastigroupMultipleMetricsExpressionOutput() ElastigroupMultipleMetricsExpressionOutput
+	ToElastigroupMultipleMetricsExpressionOutputWithContext(context.Context) ElastigroupMultipleMetricsExpressionOutput
+}
+
+type ElastigroupMultipleMetricsExpressionArgs struct {
+	// An expression consisting of the metric names listed in the 'metrics' array.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// The record set name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ElastigroupMultipleMetricsExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupMultipleMetricsExpression)(nil)).Elem()
+}
+
+func (i ElastigroupMultipleMetricsExpressionArgs) ToElastigroupMultipleMetricsExpressionOutput() ElastigroupMultipleMetricsExpressionOutput {
+	return i.ToElastigroupMultipleMetricsExpressionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMultipleMetricsExpressionArgs) ToElastigroupMultipleMetricsExpressionOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultipleMetricsExpressionOutput)
+}
+
+// ElastigroupMultipleMetricsExpressionArrayInput is an input type that accepts ElastigroupMultipleMetricsExpressionArray and ElastigroupMultipleMetricsExpressionArrayOutput values.
+// You can construct a concrete instance of `ElastigroupMultipleMetricsExpressionArrayInput` via:
+//
+//          ElastigroupMultipleMetricsExpressionArray{ ElastigroupMultipleMetricsExpressionArgs{...} }
+type ElastigroupMultipleMetricsExpressionArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupMultipleMetricsExpressionArrayOutput() ElastigroupMultipleMetricsExpressionArrayOutput
+	ToElastigroupMultipleMetricsExpressionArrayOutputWithContext(context.Context) ElastigroupMultipleMetricsExpressionArrayOutput
+}
+
+type ElastigroupMultipleMetricsExpressionArray []ElastigroupMultipleMetricsExpressionInput
+
+func (ElastigroupMultipleMetricsExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupMultipleMetricsExpression)(nil)).Elem()
+}
+
+func (i ElastigroupMultipleMetricsExpressionArray) ToElastigroupMultipleMetricsExpressionArrayOutput() ElastigroupMultipleMetricsExpressionArrayOutput {
+	return i.ToElastigroupMultipleMetricsExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMultipleMetricsExpressionArray) ToElastigroupMultipleMetricsExpressionArrayOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultipleMetricsExpressionArrayOutput)
+}
+
+type ElastigroupMultipleMetricsExpressionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMultipleMetricsExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupMultipleMetricsExpression)(nil)).Elem()
+}
+
+func (o ElastigroupMultipleMetricsExpressionOutput) ToElastigroupMultipleMetricsExpressionOutput() ElastigroupMultipleMetricsExpressionOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsExpressionOutput) ToElastigroupMultipleMetricsExpressionOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsExpressionOutput {
+	return o
+}
+
+// An expression consisting of the metric names listed in the 'metrics' array.
+func (o ElastigroupMultipleMetricsExpressionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsExpression) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// The record set name.
+func (o ElastigroupMultipleMetricsExpressionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsExpression) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ElastigroupMultipleMetricsExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMultipleMetricsExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupMultipleMetricsExpression)(nil)).Elem()
+}
+
+func (o ElastigroupMultipleMetricsExpressionArrayOutput) ToElastigroupMultipleMetricsExpressionArrayOutput() ElastigroupMultipleMetricsExpressionArrayOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsExpressionArrayOutput) ToElastigroupMultipleMetricsExpressionArrayOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsExpressionArrayOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsExpressionArrayOutput) Index(i pulumi.IntInput) ElastigroupMultipleMetricsExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupMultipleMetricsExpression {
+		return vs[0].([]ElastigroupMultipleMetricsExpression)[vs[1].(int)]
+	}).(ElastigroupMultipleMetricsExpressionOutput)
+}
+
+type ElastigroupMultipleMetricsMetric struct {
+	// A list of dimensions describing qualities of the metric.
+	// *`name` - (Required) the dimension name.
+	// *`value` - (Optional) the dimension value.
+	Dimensions []ElastigroupMultipleMetricsMetricDimension `pulumi:"dimensions"`
+	// Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+	ExtendedStatistic *string `pulumi:"extendedStatistic"`
+	// The name of the metric, with or without spaces.
+	MetricName string `pulumi:"metricName"`
+	// The record set name.
+	Name string `pulumi:"name"`
+	// The namespace for the alarm's associated metric.
+	Namespace string `pulumi:"namespace"`
+	// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+	Statistic *string `pulumi:"statistic"`
+	// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+	Unit *string `pulumi:"unit"`
+}
+
+// ElastigroupMultipleMetricsMetricInput is an input type that accepts ElastigroupMultipleMetricsMetricArgs and ElastigroupMultipleMetricsMetricOutput values.
+// You can construct a concrete instance of `ElastigroupMultipleMetricsMetricInput` via:
+//
+//          ElastigroupMultipleMetricsMetricArgs{...}
+type ElastigroupMultipleMetricsMetricInput interface {
+	pulumi.Input
+
+	ToElastigroupMultipleMetricsMetricOutput() ElastigroupMultipleMetricsMetricOutput
+	ToElastigroupMultipleMetricsMetricOutputWithContext(context.Context) ElastigroupMultipleMetricsMetricOutput
+}
+
+type ElastigroupMultipleMetricsMetricArgs struct {
+	// A list of dimensions describing qualities of the metric.
+	// *`name` - (Required) the dimension name.
+	// *`value` - (Optional) the dimension value.
+	Dimensions ElastigroupMultipleMetricsMetricDimensionArrayInput `pulumi:"dimensions"`
+	// Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+	ExtendedStatistic pulumi.StringPtrInput `pulumi:"extendedStatistic"`
+	// The name of the metric, with or without spaces.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The record set name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace for the alarm's associated metric.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+}
+
+func (ElastigroupMultipleMetricsMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupMultipleMetricsMetric)(nil)).Elem()
+}
+
+func (i ElastigroupMultipleMetricsMetricArgs) ToElastigroupMultipleMetricsMetricOutput() ElastigroupMultipleMetricsMetricOutput {
+	return i.ToElastigroupMultipleMetricsMetricOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMultipleMetricsMetricArgs) ToElastigroupMultipleMetricsMetricOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultipleMetricsMetricOutput)
+}
+
+// ElastigroupMultipleMetricsMetricArrayInput is an input type that accepts ElastigroupMultipleMetricsMetricArray and ElastigroupMultipleMetricsMetricArrayOutput values.
+// You can construct a concrete instance of `ElastigroupMultipleMetricsMetricArrayInput` via:
+//
+//          ElastigroupMultipleMetricsMetricArray{ ElastigroupMultipleMetricsMetricArgs{...} }
+type ElastigroupMultipleMetricsMetricArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupMultipleMetricsMetricArrayOutput() ElastigroupMultipleMetricsMetricArrayOutput
+	ToElastigroupMultipleMetricsMetricArrayOutputWithContext(context.Context) ElastigroupMultipleMetricsMetricArrayOutput
+}
+
+type ElastigroupMultipleMetricsMetricArray []ElastigroupMultipleMetricsMetricInput
+
+func (ElastigroupMultipleMetricsMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupMultipleMetricsMetric)(nil)).Elem()
+}
+
+func (i ElastigroupMultipleMetricsMetricArray) ToElastigroupMultipleMetricsMetricArrayOutput() ElastigroupMultipleMetricsMetricArrayOutput {
+	return i.ToElastigroupMultipleMetricsMetricArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMultipleMetricsMetricArray) ToElastigroupMultipleMetricsMetricArrayOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultipleMetricsMetricArrayOutput)
+}
+
+type ElastigroupMultipleMetricsMetricOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMultipleMetricsMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupMultipleMetricsMetric)(nil)).Elem()
+}
+
+func (o ElastigroupMultipleMetricsMetricOutput) ToElastigroupMultipleMetricsMetricOutput() ElastigroupMultipleMetricsMetricOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsMetricOutput) ToElastigroupMultipleMetricsMetricOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsMetricOutput {
+	return o
+}
+
+// A list of dimensions describing qualities of the metric.
+// *`name` - (Required) the dimension name.
+// *`value` - (Optional) the dimension value.
+func (o ElastigroupMultipleMetricsMetricOutput) Dimensions() ElastigroupMultipleMetricsMetricDimensionArrayOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsMetric) []ElastigroupMultipleMetricsMetricDimension {
+		return v.Dimensions
+	}).(ElastigroupMultipleMetricsMetricDimensionArrayOutput)
+}
+
+// Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+func (o ElastigroupMultipleMetricsMetricOutput) ExtendedStatistic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsMetric) *string { return v.ExtendedStatistic }).(pulumi.StringPtrOutput)
+}
+
+// The name of the metric, with or without spaces.
+func (o ElastigroupMultipleMetricsMetricOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsMetric) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The record set name.
+func (o ElastigroupMultipleMetricsMetricOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsMetric) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace for the alarm's associated metric.
+func (o ElastigroupMultipleMetricsMetricOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsMetric) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+func (o ElastigroupMultipleMetricsMetricOutput) Statistic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsMetric) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+}
+
+// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+func (o ElastigroupMultipleMetricsMetricOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsMetric) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupMultipleMetricsMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMultipleMetricsMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupMultipleMetricsMetric)(nil)).Elem()
+}
+
+func (o ElastigroupMultipleMetricsMetricArrayOutput) ToElastigroupMultipleMetricsMetricArrayOutput() ElastigroupMultipleMetricsMetricArrayOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsMetricArrayOutput) ToElastigroupMultipleMetricsMetricArrayOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsMetricArrayOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsMetricArrayOutput) Index(i pulumi.IntInput) ElastigroupMultipleMetricsMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupMultipleMetricsMetric {
+		return vs[0].([]ElastigroupMultipleMetricsMetric)[vs[1].(int)]
+	}).(ElastigroupMultipleMetricsMetricOutput)
+}
+
+type ElastigroupMultipleMetricsMetricDimension struct {
+	// The record set name.
+	Name string `pulumi:"name"`
+	// The dimension value.
+	Value *string `pulumi:"value"`
+}
+
+// ElastigroupMultipleMetricsMetricDimensionInput is an input type that accepts ElastigroupMultipleMetricsMetricDimensionArgs and ElastigroupMultipleMetricsMetricDimensionOutput values.
+// You can construct a concrete instance of `ElastigroupMultipleMetricsMetricDimensionInput` via:
+//
+//          ElastigroupMultipleMetricsMetricDimensionArgs{...}
+type ElastigroupMultipleMetricsMetricDimensionInput interface {
+	pulumi.Input
+
+	ToElastigroupMultipleMetricsMetricDimensionOutput() ElastigroupMultipleMetricsMetricDimensionOutput
+	ToElastigroupMultipleMetricsMetricDimensionOutputWithContext(context.Context) ElastigroupMultipleMetricsMetricDimensionOutput
+}
+
+type ElastigroupMultipleMetricsMetricDimensionArgs struct {
+	// The record set name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The dimension value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ElastigroupMultipleMetricsMetricDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupMultipleMetricsMetricDimension)(nil)).Elem()
+}
+
+func (i ElastigroupMultipleMetricsMetricDimensionArgs) ToElastigroupMultipleMetricsMetricDimensionOutput() ElastigroupMultipleMetricsMetricDimensionOutput {
+	return i.ToElastigroupMultipleMetricsMetricDimensionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMultipleMetricsMetricDimensionArgs) ToElastigroupMultipleMetricsMetricDimensionOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsMetricDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultipleMetricsMetricDimensionOutput)
+}
+
+// ElastigroupMultipleMetricsMetricDimensionArrayInput is an input type that accepts ElastigroupMultipleMetricsMetricDimensionArray and ElastigroupMultipleMetricsMetricDimensionArrayOutput values.
+// You can construct a concrete instance of `ElastigroupMultipleMetricsMetricDimensionArrayInput` via:
+//
+//          ElastigroupMultipleMetricsMetricDimensionArray{ ElastigroupMultipleMetricsMetricDimensionArgs{...} }
+type ElastigroupMultipleMetricsMetricDimensionArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupMultipleMetricsMetricDimensionArrayOutput() ElastigroupMultipleMetricsMetricDimensionArrayOutput
+	ToElastigroupMultipleMetricsMetricDimensionArrayOutputWithContext(context.Context) ElastigroupMultipleMetricsMetricDimensionArrayOutput
+}
+
+type ElastigroupMultipleMetricsMetricDimensionArray []ElastigroupMultipleMetricsMetricDimensionInput
+
+func (ElastigroupMultipleMetricsMetricDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupMultipleMetricsMetricDimension)(nil)).Elem()
+}
+
+func (i ElastigroupMultipleMetricsMetricDimensionArray) ToElastigroupMultipleMetricsMetricDimensionArrayOutput() ElastigroupMultipleMetricsMetricDimensionArrayOutput {
+	return i.ToElastigroupMultipleMetricsMetricDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupMultipleMetricsMetricDimensionArray) ToElastigroupMultipleMetricsMetricDimensionArrayOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsMetricDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultipleMetricsMetricDimensionArrayOutput)
+}
+
+type ElastigroupMultipleMetricsMetricDimensionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMultipleMetricsMetricDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupMultipleMetricsMetricDimension)(nil)).Elem()
+}
+
+func (o ElastigroupMultipleMetricsMetricDimensionOutput) ToElastigroupMultipleMetricsMetricDimensionOutput() ElastigroupMultipleMetricsMetricDimensionOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsMetricDimensionOutput) ToElastigroupMultipleMetricsMetricDimensionOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsMetricDimensionOutput {
+	return o
+}
+
+// The record set name.
+func (o ElastigroupMultipleMetricsMetricDimensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsMetricDimension) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The dimension value.
+func (o ElastigroupMultipleMetricsMetricDimensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupMultipleMetricsMetricDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupMultipleMetricsMetricDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupMultipleMetricsMetricDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupMultipleMetricsMetricDimension)(nil)).Elem()
+}
+
+func (o ElastigroupMultipleMetricsMetricDimensionArrayOutput) ToElastigroupMultipleMetricsMetricDimensionArrayOutput() ElastigroupMultipleMetricsMetricDimensionArrayOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsMetricDimensionArrayOutput) ToElastigroupMultipleMetricsMetricDimensionArrayOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsMetricDimensionArrayOutput {
+	return o
+}
+
+func (o ElastigroupMultipleMetricsMetricDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupMultipleMetricsMetricDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupMultipleMetricsMetricDimension {
+		return vs[0].([]ElastigroupMultipleMetricsMetricDimension)[vs[1].(int)]
+	}).(ElastigroupMultipleMetricsMetricDimensionOutput)
+}
+
 type ElastigroupNetworkInterface struct {
 	// Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
 	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
@@ -7006,7 +7527,7 @@ func (o ElastigroupRevertToSpotPtrOutput) TimeWindows() pulumi.StringArrayOutput
 }
 
 type ElastigroupScalingDownPolicy struct {
-	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
 	ActionType *string `pulumi:"actionType"`
 	// The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
 	Adjustment *string `pulumi:"adjustment"`
@@ -7024,7 +7545,7 @@ type ElastigroupScalingDownPolicy struct {
 	Maximum *string `pulumi:"maximum"`
 	// The name of the metric, with or without spaces.
 	MetricName string `pulumi:"metricName"`
-	// . The number of the desired target (and minimum) capacity
+	// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
 	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
 	// The minimal number of instances to have in the group.
 	Minimum *string `pulumi:"minimum"`
@@ -7039,11 +7560,12 @@ type ElastigroupScalingDownPolicy struct {
 	// The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
 	Source *string `pulumi:"source"`
 	// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-	Statistic *string `pulumi:"statistic"`
+	Statistic       *string                                      `pulumi:"statistic"`
+	StepAdjustments []ElastigroupScalingDownPolicyStepAdjustment `pulumi:"stepAdjustments"`
 	// The target number of instances to have in the group.
 	Target *string `pulumi:"target"`
-	// The value against which the specified statistic is compared.
-	Threshold float64 `pulumi:"threshold"`
+	// The value against which the specified statistic is compared in order to determine if a step should be applied.
+	Threshold *float64 `pulumi:"threshold"`
 	// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
 	Unit *string `pulumi:"unit"`
 }
@@ -7060,7 +7582,7 @@ type ElastigroupScalingDownPolicyInput interface {
 }
 
 type ElastigroupScalingDownPolicyArgs struct {
-	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
 	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
 	// The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
 	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
@@ -7078,7 +7600,7 @@ type ElastigroupScalingDownPolicyArgs struct {
 	Maximum pulumi.StringPtrInput `pulumi:"maximum"`
 	// The name of the metric, with or without spaces.
 	MetricName pulumi.StringInput `pulumi:"metricName"`
-	// . The number of the desired target (and minimum) capacity
+	// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
 	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
 	// The minimal number of instances to have in the group.
 	Minimum pulumi.StringPtrInput `pulumi:"minimum"`
@@ -7093,11 +7615,12 @@ type ElastigroupScalingDownPolicyArgs struct {
 	// The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	Statistic       pulumi.StringPtrInput                                `pulumi:"statistic"`
+	StepAdjustments ElastigroupScalingDownPolicyStepAdjustmentArrayInput `pulumi:"stepAdjustments"`
 	// The target number of instances to have in the group.
 	Target pulumi.StringPtrInput `pulumi:"target"`
-	// The value against which the specified statistic is compared.
-	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// The value against which the specified statistic is compared in order to determine if a step should be applied.
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
 	// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 }
@@ -7153,7 +7676,7 @@ func (o ElastigroupScalingDownPolicyOutput) ToElastigroupScalingDownPolicyOutput
 	return o
 }
 
-// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
 func (o ElastigroupScalingDownPolicyOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
@@ -7198,7 +7721,7 @@ func (o ElastigroupScalingDownPolicyOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
-// . The number of the desired target (and minimum) capacity
+// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
 func (o ElastigroupScalingDownPolicyOutput) MinTargetCapacity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
 }
@@ -7238,14 +7761,20 @@ func (o ElastigroupScalingDownPolicyOutput) Statistic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
+func (o ElastigroupScalingDownPolicyOutput) StepAdjustments() ElastigroupScalingDownPolicyStepAdjustmentArrayOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) []ElastigroupScalingDownPolicyStepAdjustment {
+		return v.StepAdjustments
+	}).(ElastigroupScalingDownPolicyStepAdjustmentArrayOutput)
+}
+
 // The target number of instances to have in the group.
 func (o ElastigroupScalingDownPolicyOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// The value against which the specified statistic is compared.
-func (o ElastigroupScalingDownPolicyOutput) Threshold() pulumi.Float64Output {
-	return o.ApplyT(func(v ElastigroupScalingDownPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
+// The value against which the specified statistic is compared in order to determine if a step should be applied.
+func (o ElastigroupScalingDownPolicyOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
 
 // The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
@@ -7377,6 +7906,220 @@ func (o ElastigroupScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingDownPolicyDimension {
 		return vs[0].([]ElastigroupScalingDownPolicyDimension)[vs[1].(int)]
 	}).(ElastigroupScalingDownPolicyDimensionOutput)
+}
+
+type ElastigroupScalingDownPolicyStepAdjustment struct {
+	// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+	Action ElastigroupScalingDownPolicyStepAdjustmentAction `pulumi:"action"`
+	// The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
+	Threshold int `pulumi:"threshold"`
+}
+
+// ElastigroupScalingDownPolicyStepAdjustmentInput is an input type that accepts ElastigroupScalingDownPolicyStepAdjustmentArgs and ElastigroupScalingDownPolicyStepAdjustmentOutput values.
+// You can construct a concrete instance of `ElastigroupScalingDownPolicyStepAdjustmentInput` via:
+//
+//          ElastigroupScalingDownPolicyStepAdjustmentArgs{...}
+type ElastigroupScalingDownPolicyStepAdjustmentInput interface {
+	pulumi.Input
+
+	ToElastigroupScalingDownPolicyStepAdjustmentOutput() ElastigroupScalingDownPolicyStepAdjustmentOutput
+	ToElastigroupScalingDownPolicyStepAdjustmentOutputWithContext(context.Context) ElastigroupScalingDownPolicyStepAdjustmentOutput
+}
+
+type ElastigroupScalingDownPolicyStepAdjustmentArgs struct {
+	// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+	Action ElastigroupScalingDownPolicyStepAdjustmentActionInput `pulumi:"action"`
+	// The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
+	Threshold pulumi.IntInput `pulumi:"threshold"`
+}
+
+func (ElastigroupScalingDownPolicyStepAdjustmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupScalingDownPolicyStepAdjustment)(nil)).Elem()
+}
+
+func (i ElastigroupScalingDownPolicyStepAdjustmentArgs) ToElastigroupScalingDownPolicyStepAdjustmentOutput() ElastigroupScalingDownPolicyStepAdjustmentOutput {
+	return i.ToElastigroupScalingDownPolicyStepAdjustmentOutputWithContext(context.Background())
+}
+
+func (i ElastigroupScalingDownPolicyStepAdjustmentArgs) ToElastigroupScalingDownPolicyStepAdjustmentOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyStepAdjustmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyStepAdjustmentOutput)
+}
+
+// ElastigroupScalingDownPolicyStepAdjustmentArrayInput is an input type that accepts ElastigroupScalingDownPolicyStepAdjustmentArray and ElastigroupScalingDownPolicyStepAdjustmentArrayOutput values.
+// You can construct a concrete instance of `ElastigroupScalingDownPolicyStepAdjustmentArrayInput` via:
+//
+//          ElastigroupScalingDownPolicyStepAdjustmentArray{ ElastigroupScalingDownPolicyStepAdjustmentArgs{...} }
+type ElastigroupScalingDownPolicyStepAdjustmentArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupScalingDownPolicyStepAdjustmentArrayOutput() ElastigroupScalingDownPolicyStepAdjustmentArrayOutput
+	ToElastigroupScalingDownPolicyStepAdjustmentArrayOutputWithContext(context.Context) ElastigroupScalingDownPolicyStepAdjustmentArrayOutput
+}
+
+type ElastigroupScalingDownPolicyStepAdjustmentArray []ElastigroupScalingDownPolicyStepAdjustmentInput
+
+func (ElastigroupScalingDownPolicyStepAdjustmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupScalingDownPolicyStepAdjustment)(nil)).Elem()
+}
+
+func (i ElastigroupScalingDownPolicyStepAdjustmentArray) ToElastigroupScalingDownPolicyStepAdjustmentArrayOutput() ElastigroupScalingDownPolicyStepAdjustmentArrayOutput {
+	return i.ToElastigroupScalingDownPolicyStepAdjustmentArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupScalingDownPolicyStepAdjustmentArray) ToElastigroupScalingDownPolicyStepAdjustmentArrayOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyStepAdjustmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyStepAdjustmentArrayOutput)
+}
+
+type ElastigroupScalingDownPolicyStepAdjustmentOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupScalingDownPolicyStepAdjustmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupScalingDownPolicyStepAdjustment)(nil)).Elem()
+}
+
+func (o ElastigroupScalingDownPolicyStepAdjustmentOutput) ToElastigroupScalingDownPolicyStepAdjustmentOutput() ElastigroupScalingDownPolicyStepAdjustmentOutput {
+	return o
+}
+
+func (o ElastigroupScalingDownPolicyStepAdjustmentOutput) ToElastigroupScalingDownPolicyStepAdjustmentOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyStepAdjustmentOutput {
+	return o
+}
+
+// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+func (o ElastigroupScalingDownPolicyStepAdjustmentOutput) Action() ElastigroupScalingDownPolicyStepAdjustmentActionOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyStepAdjustment) ElastigroupScalingDownPolicyStepAdjustmentAction {
+		return v.Action
+	}).(ElastigroupScalingDownPolicyStepAdjustmentActionOutput)
+}
+
+// The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
+func (o ElastigroupScalingDownPolicyStepAdjustmentOutput) Threshold() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyStepAdjustment) int { return v.Threshold }).(pulumi.IntOutput)
+}
+
+type ElastigroupScalingDownPolicyStepAdjustmentArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupScalingDownPolicyStepAdjustmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupScalingDownPolicyStepAdjustment)(nil)).Elem()
+}
+
+func (o ElastigroupScalingDownPolicyStepAdjustmentArrayOutput) ToElastigroupScalingDownPolicyStepAdjustmentArrayOutput() ElastigroupScalingDownPolicyStepAdjustmentArrayOutput {
+	return o
+}
+
+func (o ElastigroupScalingDownPolicyStepAdjustmentArrayOutput) ToElastigroupScalingDownPolicyStepAdjustmentArrayOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyStepAdjustmentArrayOutput {
+	return o
+}
+
+func (o ElastigroupScalingDownPolicyStepAdjustmentArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingDownPolicyStepAdjustmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingDownPolicyStepAdjustment {
+		return vs[0].([]ElastigroupScalingDownPolicyStepAdjustment)[vs[1].(int)]
+	}).(ElastigroupScalingDownPolicyStepAdjustmentOutput)
+}
+
+type ElastigroupScalingDownPolicyStepAdjustmentAction struct {
+	// The number of instances to add or remove.
+	Adjustment *string `pulumi:"adjustment"`
+	// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
+	// The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+	Maximum *string `pulumi:"maximum"`
+	// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
+	// The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+	Minimum *string `pulumi:"minimum"`
+	// The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+	Target *string `pulumi:"target"`
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+	Type string `pulumi:"type"`
+}
+
+// ElastigroupScalingDownPolicyStepAdjustmentActionInput is an input type that accepts ElastigroupScalingDownPolicyStepAdjustmentActionArgs and ElastigroupScalingDownPolicyStepAdjustmentActionOutput values.
+// You can construct a concrete instance of `ElastigroupScalingDownPolicyStepAdjustmentActionInput` via:
+//
+//          ElastigroupScalingDownPolicyStepAdjustmentActionArgs{...}
+type ElastigroupScalingDownPolicyStepAdjustmentActionInput interface {
+	pulumi.Input
+
+	ToElastigroupScalingDownPolicyStepAdjustmentActionOutput() ElastigroupScalingDownPolicyStepAdjustmentActionOutput
+	ToElastigroupScalingDownPolicyStepAdjustmentActionOutputWithContext(context.Context) ElastigroupScalingDownPolicyStepAdjustmentActionOutput
+}
+
+type ElastigroupScalingDownPolicyStepAdjustmentActionArgs struct {
+	// The number of instances to add or remove.
+	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
+	// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
+	// The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+	Maximum pulumi.StringPtrInput `pulumi:"maximum"`
+	// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
+	// The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+	Minimum pulumi.StringPtrInput `pulumi:"minimum"`
+	// The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ElastigroupScalingDownPolicyStepAdjustmentActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupScalingDownPolicyStepAdjustmentAction)(nil)).Elem()
+}
+
+func (i ElastigroupScalingDownPolicyStepAdjustmentActionArgs) ToElastigroupScalingDownPolicyStepAdjustmentActionOutput() ElastigroupScalingDownPolicyStepAdjustmentActionOutput {
+	return i.ToElastigroupScalingDownPolicyStepAdjustmentActionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupScalingDownPolicyStepAdjustmentActionArgs) ToElastigroupScalingDownPolicyStepAdjustmentActionOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyStepAdjustmentActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyStepAdjustmentActionOutput)
+}
+
+type ElastigroupScalingDownPolicyStepAdjustmentActionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupScalingDownPolicyStepAdjustmentActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupScalingDownPolicyStepAdjustmentAction)(nil)).Elem()
+}
+
+func (o ElastigroupScalingDownPolicyStepAdjustmentActionOutput) ToElastigroupScalingDownPolicyStepAdjustmentActionOutput() ElastigroupScalingDownPolicyStepAdjustmentActionOutput {
+	return o
+}
+
+func (o ElastigroupScalingDownPolicyStepAdjustmentActionOutput) ToElastigroupScalingDownPolicyStepAdjustmentActionOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyStepAdjustmentActionOutput {
+	return o
+}
+
+// The number of instances to add or remove.
+func (o ElastigroupScalingDownPolicyStepAdjustmentActionOutput) Adjustment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyStepAdjustmentAction) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+}
+
+// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+func (o ElastigroupScalingDownPolicyStepAdjustmentActionOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyStepAdjustmentAction) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
+}
+
+// The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+func (o ElastigroupScalingDownPolicyStepAdjustmentActionOutput) Maximum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyStepAdjustmentAction) *string { return v.Maximum }).(pulumi.StringPtrOutput)
+}
+
+// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+func (o ElastigroupScalingDownPolicyStepAdjustmentActionOutput) MinTargetCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyStepAdjustmentAction) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
+}
+
+// The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+func (o ElastigroupScalingDownPolicyStepAdjustmentActionOutput) Minimum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyStepAdjustmentAction) *string { return v.Minimum }).(pulumi.StringPtrOutput)
+}
+
+// The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+func (o ElastigroupScalingDownPolicyStepAdjustmentActionOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyStepAdjustmentAction) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+func (o ElastigroupScalingDownPolicyStepAdjustmentActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupScalingDownPolicyStepAdjustmentAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type ElastigroupScalingStrategy struct {
@@ -7779,7 +8522,7 @@ func (o ElastigroupScalingTargetPolicyDimensionArrayOutput) Index(i pulumi.IntIn
 }
 
 type ElastigroupScalingUpPolicy struct {
-	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
 	ActionType *string `pulumi:"actionType"`
 	// The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
 	Adjustment *string `pulumi:"adjustment"`
@@ -7791,7 +8534,7 @@ type ElastigroupScalingUpPolicy struct {
 	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
 	// Specifies whether the scaling policy described in this block is enabled.
 	IsEnabled *bool `pulumi:"isEnabled"`
-	// . The number of the desired target (and maximum) capacity
+	// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
 	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
 	// The maximal number of instances to have in the group.
 	Maximum *string `pulumi:"maximum"`
@@ -7812,11 +8555,12 @@ type ElastigroupScalingUpPolicy struct {
 	// The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
 	Source *string `pulumi:"source"`
 	// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-	Statistic *string `pulumi:"statistic"`
+	Statistic       *string                                    `pulumi:"statistic"`
+	StepAdjustments []ElastigroupScalingUpPolicyStepAdjustment `pulumi:"stepAdjustments"`
 	// The target number of instances to have in the group.
 	Target *string `pulumi:"target"`
-	// The value against which the specified statistic is compared.
-	Threshold float64 `pulumi:"threshold"`
+	// The value against which the specified statistic is compared in order to determine if a step should be applied.
+	Threshold *float64 `pulumi:"threshold"`
 	// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
 	Unit *string `pulumi:"unit"`
 }
@@ -7833,7 +8577,7 @@ type ElastigroupScalingUpPolicyInput interface {
 }
 
 type ElastigroupScalingUpPolicyArgs struct {
-	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
 	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
 	// The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
 	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
@@ -7845,7 +8589,7 @@ type ElastigroupScalingUpPolicyArgs struct {
 	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
 	// Specifies whether the scaling policy described in this block is enabled.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// . The number of the desired target (and maximum) capacity
+	// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
 	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
 	// The maximal number of instances to have in the group.
 	Maximum pulumi.StringPtrInput `pulumi:"maximum"`
@@ -7866,11 +8610,12 @@ type ElastigroupScalingUpPolicyArgs struct {
 	// The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	Statistic       pulumi.StringPtrInput                              `pulumi:"statistic"`
+	StepAdjustments ElastigroupScalingUpPolicyStepAdjustmentArrayInput `pulumi:"stepAdjustments"`
 	// The target number of instances to have in the group.
 	Target pulumi.StringPtrInput `pulumi:"target"`
-	// The value against which the specified statistic is compared.
-	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// The value against which the specified statistic is compared in order to determine if a step should be applied.
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
 	// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 }
@@ -7926,7 +8671,7 @@ func (o ElastigroupScalingUpPolicyOutput) ToElastigroupScalingUpPolicyOutputWith
 	return o
 }
 
-// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
+// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
 func (o ElastigroupScalingUpPolicyOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
@@ -7956,7 +8701,7 @@ func (o ElastigroupScalingUpPolicyOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// . The number of the desired target (and maximum) capacity
+// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
 func (o ElastigroupScalingUpPolicyOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
 }
@@ -8011,14 +8756,20 @@ func (o ElastigroupScalingUpPolicyOutput) Statistic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Statistic }).(pulumi.StringPtrOutput)
 }
 
+func (o ElastigroupScalingUpPolicyOutput) StepAdjustments() ElastigroupScalingUpPolicyStepAdjustmentArrayOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) []ElastigroupScalingUpPolicyStepAdjustment {
+		return v.StepAdjustments
+	}).(ElastigroupScalingUpPolicyStepAdjustmentArrayOutput)
+}
+
 // The target number of instances to have in the group.
 func (o ElastigroupScalingUpPolicyOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
-// The value against which the specified statistic is compared.
-func (o ElastigroupScalingUpPolicyOutput) Threshold() pulumi.Float64Output {
-	return o.ApplyT(func(v ElastigroupScalingUpPolicy) float64 { return v.Threshold }).(pulumi.Float64Output)
+// The value against which the specified statistic is compared in order to determine if a step should be applied.
+func (o ElastigroupScalingUpPolicyOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
 
 // The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
@@ -8150,6 +8901,220 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingUpPolicyDimension {
 		return vs[0].([]ElastigroupScalingUpPolicyDimension)[vs[1].(int)]
 	}).(ElastigroupScalingUpPolicyDimensionOutput)
+}
+
+type ElastigroupScalingUpPolicyStepAdjustment struct {
+	// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+	Action ElastigroupScalingUpPolicyStepAdjustmentAction `pulumi:"action"`
+	// The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
+	Threshold int `pulumi:"threshold"`
+}
+
+// ElastigroupScalingUpPolicyStepAdjustmentInput is an input type that accepts ElastigroupScalingUpPolicyStepAdjustmentArgs and ElastigroupScalingUpPolicyStepAdjustmentOutput values.
+// You can construct a concrete instance of `ElastigroupScalingUpPolicyStepAdjustmentInput` via:
+//
+//          ElastigroupScalingUpPolicyStepAdjustmentArgs{...}
+type ElastigroupScalingUpPolicyStepAdjustmentInput interface {
+	pulumi.Input
+
+	ToElastigroupScalingUpPolicyStepAdjustmentOutput() ElastigroupScalingUpPolicyStepAdjustmentOutput
+	ToElastigroupScalingUpPolicyStepAdjustmentOutputWithContext(context.Context) ElastigroupScalingUpPolicyStepAdjustmentOutput
+}
+
+type ElastigroupScalingUpPolicyStepAdjustmentArgs struct {
+	// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+	Action ElastigroupScalingUpPolicyStepAdjustmentActionInput `pulumi:"action"`
+	// The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
+	Threshold pulumi.IntInput `pulumi:"threshold"`
+}
+
+func (ElastigroupScalingUpPolicyStepAdjustmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupScalingUpPolicyStepAdjustment)(nil)).Elem()
+}
+
+func (i ElastigroupScalingUpPolicyStepAdjustmentArgs) ToElastigroupScalingUpPolicyStepAdjustmentOutput() ElastigroupScalingUpPolicyStepAdjustmentOutput {
+	return i.ToElastigroupScalingUpPolicyStepAdjustmentOutputWithContext(context.Background())
+}
+
+func (i ElastigroupScalingUpPolicyStepAdjustmentArgs) ToElastigroupScalingUpPolicyStepAdjustmentOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyStepAdjustmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyStepAdjustmentOutput)
+}
+
+// ElastigroupScalingUpPolicyStepAdjustmentArrayInput is an input type that accepts ElastigroupScalingUpPolicyStepAdjustmentArray and ElastigroupScalingUpPolicyStepAdjustmentArrayOutput values.
+// You can construct a concrete instance of `ElastigroupScalingUpPolicyStepAdjustmentArrayInput` via:
+//
+//          ElastigroupScalingUpPolicyStepAdjustmentArray{ ElastigroupScalingUpPolicyStepAdjustmentArgs{...} }
+type ElastigroupScalingUpPolicyStepAdjustmentArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupScalingUpPolicyStepAdjustmentArrayOutput() ElastigroupScalingUpPolicyStepAdjustmentArrayOutput
+	ToElastigroupScalingUpPolicyStepAdjustmentArrayOutputWithContext(context.Context) ElastigroupScalingUpPolicyStepAdjustmentArrayOutput
+}
+
+type ElastigroupScalingUpPolicyStepAdjustmentArray []ElastigroupScalingUpPolicyStepAdjustmentInput
+
+func (ElastigroupScalingUpPolicyStepAdjustmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupScalingUpPolicyStepAdjustment)(nil)).Elem()
+}
+
+func (i ElastigroupScalingUpPolicyStepAdjustmentArray) ToElastigroupScalingUpPolicyStepAdjustmentArrayOutput() ElastigroupScalingUpPolicyStepAdjustmentArrayOutput {
+	return i.ToElastigroupScalingUpPolicyStepAdjustmentArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupScalingUpPolicyStepAdjustmentArray) ToElastigroupScalingUpPolicyStepAdjustmentArrayOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyStepAdjustmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyStepAdjustmentArrayOutput)
+}
+
+type ElastigroupScalingUpPolicyStepAdjustmentOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupScalingUpPolicyStepAdjustmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupScalingUpPolicyStepAdjustment)(nil)).Elem()
+}
+
+func (o ElastigroupScalingUpPolicyStepAdjustmentOutput) ToElastigroupScalingUpPolicyStepAdjustmentOutput() ElastigroupScalingUpPolicyStepAdjustmentOutput {
+	return o
+}
+
+func (o ElastigroupScalingUpPolicyStepAdjustmentOutput) ToElastigroupScalingUpPolicyStepAdjustmentOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyStepAdjustmentOutput {
+	return o
+}
+
+// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+func (o ElastigroupScalingUpPolicyStepAdjustmentOutput) Action() ElastigroupScalingUpPolicyStepAdjustmentActionOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyStepAdjustment) ElastigroupScalingUpPolicyStepAdjustmentAction {
+		return v.Action
+	}).(ElastigroupScalingUpPolicyStepAdjustmentActionOutput)
+}
+
+// The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
+func (o ElastigroupScalingUpPolicyStepAdjustmentOutput) Threshold() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyStepAdjustment) int { return v.Threshold }).(pulumi.IntOutput)
+}
+
+type ElastigroupScalingUpPolicyStepAdjustmentArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupScalingUpPolicyStepAdjustmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupScalingUpPolicyStepAdjustment)(nil)).Elem()
+}
+
+func (o ElastigroupScalingUpPolicyStepAdjustmentArrayOutput) ToElastigroupScalingUpPolicyStepAdjustmentArrayOutput() ElastigroupScalingUpPolicyStepAdjustmentArrayOutput {
+	return o
+}
+
+func (o ElastigroupScalingUpPolicyStepAdjustmentArrayOutput) ToElastigroupScalingUpPolicyStepAdjustmentArrayOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyStepAdjustmentArrayOutput {
+	return o
+}
+
+func (o ElastigroupScalingUpPolicyStepAdjustmentArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingUpPolicyStepAdjustmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingUpPolicyStepAdjustment {
+		return vs[0].([]ElastigroupScalingUpPolicyStepAdjustment)[vs[1].(int)]
+	}).(ElastigroupScalingUpPolicyStepAdjustmentOutput)
+}
+
+type ElastigroupScalingUpPolicyStepAdjustmentAction struct {
+	// The number of instances to add or remove.
+	Adjustment *string `pulumi:"adjustment"`
+	// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+	MaxTargetCapacity *string `pulumi:"maxTargetCapacity"`
+	// The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+	Maximum *string `pulumi:"maximum"`
+	// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+	MinTargetCapacity *string `pulumi:"minTargetCapacity"`
+	// The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+	Minimum *string `pulumi:"minimum"`
+	// The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+	Target *string `pulumi:"target"`
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+	Type string `pulumi:"type"`
+}
+
+// ElastigroupScalingUpPolicyStepAdjustmentActionInput is an input type that accepts ElastigroupScalingUpPolicyStepAdjustmentActionArgs and ElastigroupScalingUpPolicyStepAdjustmentActionOutput values.
+// You can construct a concrete instance of `ElastigroupScalingUpPolicyStepAdjustmentActionInput` via:
+//
+//          ElastigroupScalingUpPolicyStepAdjustmentActionArgs{...}
+type ElastigroupScalingUpPolicyStepAdjustmentActionInput interface {
+	pulumi.Input
+
+	ToElastigroupScalingUpPolicyStepAdjustmentActionOutput() ElastigroupScalingUpPolicyStepAdjustmentActionOutput
+	ToElastigroupScalingUpPolicyStepAdjustmentActionOutputWithContext(context.Context) ElastigroupScalingUpPolicyStepAdjustmentActionOutput
+}
+
+type ElastigroupScalingUpPolicyStepAdjustmentActionArgs struct {
+	// The number of instances to add or remove.
+	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
+	// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+	MaxTargetCapacity pulumi.StringPtrInput `pulumi:"maxTargetCapacity"`
+	// The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+	Maximum pulumi.StringPtrInput `pulumi:"maximum"`
+	// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+	MinTargetCapacity pulumi.StringPtrInput `pulumi:"minTargetCapacity"`
+	// The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+	Minimum pulumi.StringPtrInput `pulumi:"minimum"`
+	// The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ElastigroupScalingUpPolicyStepAdjustmentActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupScalingUpPolicyStepAdjustmentAction)(nil)).Elem()
+}
+
+func (i ElastigroupScalingUpPolicyStepAdjustmentActionArgs) ToElastigroupScalingUpPolicyStepAdjustmentActionOutput() ElastigroupScalingUpPolicyStepAdjustmentActionOutput {
+	return i.ToElastigroupScalingUpPolicyStepAdjustmentActionOutputWithContext(context.Background())
+}
+
+func (i ElastigroupScalingUpPolicyStepAdjustmentActionArgs) ToElastigroupScalingUpPolicyStepAdjustmentActionOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyStepAdjustmentActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyStepAdjustmentActionOutput)
+}
+
+type ElastigroupScalingUpPolicyStepAdjustmentActionOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupScalingUpPolicyStepAdjustmentActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupScalingUpPolicyStepAdjustmentAction)(nil)).Elem()
+}
+
+func (o ElastigroupScalingUpPolicyStepAdjustmentActionOutput) ToElastigroupScalingUpPolicyStepAdjustmentActionOutput() ElastigroupScalingUpPolicyStepAdjustmentActionOutput {
+	return o
+}
+
+func (o ElastigroupScalingUpPolicyStepAdjustmentActionOutput) ToElastigroupScalingUpPolicyStepAdjustmentActionOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyStepAdjustmentActionOutput {
+	return o
+}
+
+// The number of instances to add or remove.
+func (o ElastigroupScalingUpPolicyStepAdjustmentActionOutput) Adjustment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyStepAdjustmentAction) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
+}
+
+// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+func (o ElastigroupScalingUpPolicyStepAdjustmentActionOutput) MaxTargetCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyStepAdjustmentAction) *string { return v.MaxTargetCapacity }).(pulumi.StringPtrOutput)
+}
+
+// The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+func (o ElastigroupScalingUpPolicyStepAdjustmentActionOutput) Maximum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyStepAdjustmentAction) *string { return v.Maximum }).(pulumi.StringPtrOutput)
+}
+
+// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+func (o ElastigroupScalingUpPolicyStepAdjustmentActionOutput) MinTargetCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyStepAdjustmentAction) *string { return v.MinTargetCapacity }).(pulumi.StringPtrOutput)
+}
+
+// The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+func (o ElastigroupScalingUpPolicyStepAdjustmentActionOutput) Minimum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyStepAdjustmentAction) *string { return v.Minimum }).(pulumi.StringPtrOutput)
+}
+
+// The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+func (o ElastigroupScalingUpPolicyStepAdjustmentActionOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyStepAdjustmentAction) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+func (o ElastigroupScalingUpPolicyStepAdjustmentActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupScalingUpPolicyStepAdjustmentAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type ElastigroupScheduledTask struct {
@@ -9695,8 +10660,9 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ShouldHandl
 
 type ManagedInstanceBlockDeviceMapping struct {
 	// The name of the device to mount.
-	DeviceName string                                `pulumi:"deviceName"`
-	Ebs        *ManagedInstanceBlockDeviceMappingEbs `pulumi:"ebs"`
+	DeviceName string `pulumi:"deviceName"`
+	// Object
+	Ebs *ManagedInstanceBlockDeviceMappingEbs `pulumi:"ebs"`
 }
 
 // ManagedInstanceBlockDeviceMappingInput is an input type that accepts ManagedInstanceBlockDeviceMappingArgs and ManagedInstanceBlockDeviceMappingOutput values.
@@ -9712,8 +10678,9 @@ type ManagedInstanceBlockDeviceMappingInput interface {
 
 type ManagedInstanceBlockDeviceMappingArgs struct {
 	// The name of the device to mount.
-	DeviceName pulumi.StringInput                           `pulumi:"deviceName"`
-	Ebs        ManagedInstanceBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// Object
+	Ebs ManagedInstanceBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
 }
 
 func (ManagedInstanceBlockDeviceMappingArgs) ElementType() reflect.Type {
@@ -9772,6 +10739,7 @@ func (o ManagedInstanceBlockDeviceMappingOutput) DeviceName() pulumi.StringOutpu
 	return o.ApplyT(func(v ManagedInstanceBlockDeviceMapping) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
+// Object
 func (o ManagedInstanceBlockDeviceMappingOutput) Ebs() ManagedInstanceBlockDeviceMappingEbsPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceBlockDeviceMapping) *ManagedInstanceBlockDeviceMappingEbs { return v.Ebs }).(ManagedInstanceBlockDeviceMappingEbsPtrOutput)
 }
@@ -9801,9 +10769,9 @@ type ManagedInstanceBlockDeviceMappingEbs struct {
 	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
 	// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
 	Iops *int `pulumi:"iops"`
-	// The amount of data transferred to or from a storage device per second. Valid only if `volumeType` is set to `"gp3"`.
+	// The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volumeType` is set to `"gp3"`.
 	Throughput *int `pulumi:"throughput"`
-	// The size of the volume in gigabytes.
+	// The size of the volume, in GiBs.
 	VolumeSize *int `pulumi:"volumeSize"`
 	// The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
 	VolumeType *string `pulumi:"volumeType"`
@@ -9825,9 +10793,9 @@ type ManagedInstanceBlockDeviceMappingEbsArgs struct {
 	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
 	// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
-	// The amount of data transferred to or from a storage device per second. Valid only if `volumeType` is set to `"gp3"`.
+	// The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volumeType` is set to `"gp3"`.
 	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
-	// The size of the volume in gigabytes.
+	// The size of the volume, in GiBs.
 	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
 	// The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
 	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
@@ -9920,12 +10888,12 @@ func (o ManagedInstanceBlockDeviceMappingEbsOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
-// The amount of data transferred to or from a storage device per second. Valid only if `volumeType` is set to `"gp3"`.
+// The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volumeType` is set to `"gp3"`.
 func (o ManagedInstanceBlockDeviceMappingEbsOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
-// The size of the volume in gigabytes.
+// The size of the volume, in GiBs.
 func (o ManagedInstanceBlockDeviceMappingEbsOutput) VolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
 }
@@ -9973,7 +10941,7 @@ func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Iops() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The amount of data transferred to or from a storage device per second. Valid only if `volumeType` is set to `"gp3"`.
+// The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volumeType` is set to `"gp3"`.
 func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *int {
 		if v == nil {
@@ -9983,7 +10951,7 @@ func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of the volume in gigabytes.
+// The size of the volume, in GiBs.
 func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) VolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *int {
 		if v == nil {
@@ -10379,17 +11347,16 @@ type ManagedInstanceLoadBalancer struct {
 	// The AWS resource ARN (Required only for ALB target groups).
 	Arn *string `pulumi:"arn"`
 	// "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-	AutoWeight  *bool `pulumi:"autoWeight"`
+	AutoWeight *bool `pulumi:"autoWeight"`
+	// "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
 	AzAwareness *bool `pulumi:"azAwareness"`
-	// The Multai load balancer ID.
-	// Default: lb-123456
+	// The Multai load balancer ID. Example: lb-123456
 	BalancerId *string `pulumi:"balancerId"`
 	// The record set name.
 	Name *string `pulumi:"name"`
-	// The Multai load target set ID.
-	// Default: ts-123456
+	// The Multai load target set ID. Example: ts-123456
 	TargetSetId *string `pulumi:"targetSetId"`
-	// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
 	Type string `pulumi:"type"`
 }
 
@@ -10408,17 +11375,16 @@ type ManagedInstanceLoadBalancerArgs struct {
 	// The AWS resource ARN (Required only for ALB target groups).
 	Arn pulumi.StringPtrInput `pulumi:"arn"`
 	// "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-	AutoWeight  pulumi.BoolPtrInput `pulumi:"autoWeight"`
+	AutoWeight pulumi.BoolPtrInput `pulumi:"autoWeight"`
+	// "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
 	AzAwareness pulumi.BoolPtrInput `pulumi:"azAwareness"`
-	// The Multai load balancer ID.
-	// Default: lb-123456
+	// The Multai load balancer ID. Example: lb-123456
 	BalancerId pulumi.StringPtrInput `pulumi:"balancerId"`
 	// The record set name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Multai load target set ID.
-	// Default: ts-123456
+	// The Multai load target set ID. Example: ts-123456
 	TargetSetId pulumi.StringPtrInput `pulumi:"targetSetId"`
-	// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -10483,12 +11449,12 @@ func (o ManagedInstanceLoadBalancerOutput) AutoWeight() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *bool { return v.AutoWeight }).(pulumi.BoolPtrOutput)
 }
 
+// "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
 func (o ManagedInstanceLoadBalancerOutput) AzAwareness() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *bool { return v.AzAwareness }).(pulumi.BoolPtrOutput)
 }
 
-// The Multai load balancer ID.
-// Default: lb-123456
+// The Multai load balancer ID. Example: lb-123456
 func (o ManagedInstanceLoadBalancerOutput) BalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.BalancerId }).(pulumi.StringPtrOutput)
 }
@@ -10498,13 +11464,12 @@ func (o ManagedInstanceLoadBalancerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The Multai load target set ID.
-// Default: ts-123456
+// The Multai load target set ID. Example: ts-123456
 func (o ManagedInstanceLoadBalancerOutput) TargetSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.TargetSetId }).(pulumi.StringPtrOutput)
 }
 
-// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
 func (o ManagedInstanceLoadBalancerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedInstanceLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -10530,7 +11495,7 @@ func (o ManagedInstanceLoadBalancerArrayOutput) Index(i pulumi.IntInput) Managed
 }
 
 type ManagedInstanceManagedInstanceAction struct {
-	// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
 	Type string `pulumi:"type"`
 }
 
@@ -10546,7 +11511,7 @@ type ManagedInstanceManagedInstanceActionInput interface {
 }
 
 type ManagedInstanceManagedInstanceActionArgs struct {
-	// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+	// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -10627,7 +11592,7 @@ func (o ManagedInstanceManagedInstanceActionOutput) ToManagedInstanceManagedInst
 	}).(ManagedInstanceManagedInstanceActionPtrOutput)
 }
 
-// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
 func (o ManagedInstanceManagedInstanceActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedInstanceManagedInstanceAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -10650,7 +11615,7 @@ func (o ManagedInstanceManagedInstanceActionPtrOutput) Elem() ManagedInstanceMan
 	return o.ApplyT(func(v *ManagedInstanceManagedInstanceAction) ManagedInstanceManagedInstanceAction { return *v }).(ManagedInstanceManagedInstanceActionOutput)
 }
 
-// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
 func (o ManagedInstanceManagedInstanceActionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstanceManagedInstanceAction) *string {
 		if v == nil {
@@ -10661,8 +11626,7 @@ func (o ManagedInstanceManagedInstanceActionPtrOutput) Type() pulumi.StringPtrOu
 }
 
 type ManagedInstanceNetworkInterface struct {
-	// Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
-	// Default: false
+	// Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`
 	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
 	// Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
@@ -10682,8 +11646,7 @@ type ManagedInstanceNetworkInterfaceInput interface {
 }
 
 type ManagedInstanceNetworkInterfaceArgs struct {
-	// Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
-	// Default: false
+	// Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`
 	AssociateIpv6Address pulumi.BoolPtrInput `pulumi:"associateIpv6Address"`
 	// Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
 	AssociatePublicIpAddress pulumi.BoolPtrInput `pulumi:"associatePublicIpAddress"`
@@ -10742,8 +11705,7 @@ func (o ManagedInstanceNetworkInterfaceOutput) ToManagedInstanceNetworkInterface
 	return o
 }
 
-// Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet.
-// Default: false
+// Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`
 func (o ManagedInstanceNetworkInterfaceOutput) AssociateIpv6Address() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceNetworkInterface) *bool { return v.AssociateIpv6Address }).(pulumi.BoolPtrOutput)
 }
@@ -10903,8 +11865,7 @@ func (o ManagedInstanceResourceTagSpecificationArrayOutput) Index(i pulumi.IntIn
 }
 
 type ManagedInstanceRevertToSpot struct {
-	// Valid values: `"always"`, `"never"`, `"timeWindow"`.
-	// Default `"never"`.
+	// Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
 	PerformAt string `pulumi:"performAt"`
 }
 
@@ -10920,8 +11881,7 @@ type ManagedInstanceRevertToSpotInput interface {
 }
 
 type ManagedInstanceRevertToSpotArgs struct {
-	// Valid values: `"always"`, `"never"`, `"timeWindow"`.
-	// Default `"never"`.
+	// Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
 	PerformAt pulumi.StringInput `pulumi:"performAt"`
 }
 
@@ -11002,8 +11962,7 @@ func (o ManagedInstanceRevertToSpotOutput) ToManagedInstanceRevertToSpotPtrOutpu
 	}).(ManagedInstanceRevertToSpotPtrOutput)
 }
 
-// Valid values: `"always"`, `"never"`, `"timeWindow"`.
-// Default `"never"`.
+// Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
 func (o ManagedInstanceRevertToSpotOutput) PerformAt() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedInstanceRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
 }
@@ -11026,8 +11985,7 @@ func (o ManagedInstanceRevertToSpotPtrOutput) Elem() ManagedInstanceRevertToSpot
 	return o.ApplyT(func(v *ManagedInstanceRevertToSpot) ManagedInstanceRevertToSpot { return *v }).(ManagedInstanceRevertToSpotOutput)
 }
 
-// Valid values: `"always"`, `"never"`, `"timeWindow"`.
-// Default `"never"`.
+// Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
 func (o ManagedInstanceRevertToSpotPtrOutput) PerformAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstanceRevertToSpot) *string {
 		if v == nil {
@@ -11038,17 +11996,17 @@ func (o ManagedInstanceRevertToSpotPtrOutput) PerformAt() pulumi.StringPtrOutput
 }
 
 type ManagedInstanceScheduledTask struct {
-	// A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-	// Example: 0 1 * * *
+	// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+	// Example: `"0 1 * * *"`.
 	CronExpression *string `pulumi:"cronExpression"`
 	// Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
 	Frequency *string `pulumi:"frequency"`
 	// Describes whether the task is enabled. When true the task should run when false it should not run.
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-	// Example: 2019-05-23T10:55:09Z
+	// Example: `"2019-05-23T10:55:09Z"`
 	StartTime *string `pulumi:"startTime"`
-	// The task type to run. Valid values: "pause", "resume", "recycle".
+	// The task type to run. Valid values: `"pause"`, `"resume"`, `"recycle"`.
 	TaskType string `pulumi:"taskType"`
 }
 
@@ -11064,17 +12022,17 @@ type ManagedInstanceScheduledTaskInput interface {
 }
 
 type ManagedInstanceScheduledTaskArgs struct {
-	// A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-	// Example: 0 1 * * *
+	// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+	// Example: `"0 1 * * *"`.
 	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
 	// Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
 	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
 	// Describes whether the task is enabled. When true the task should run when false it should not run.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
 	// DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-	// Example: 2019-05-23T10:55:09Z
+	// Example: `"2019-05-23T10:55:09Z"`
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// The task type to run. Valid values: "pause", "resume", "recycle".
+	// The task type to run. Valid values: `"pause"`, `"resume"`, `"recycle"`.
 	TaskType pulumi.StringInput `pulumi:"taskType"`
 }
 
@@ -11129,8 +12087,8 @@ func (o ManagedInstanceScheduledTaskOutput) ToManagedInstanceScheduledTaskOutput
 	return o
 }
 
-// A valid cron expression. For example: " * * * * * ". The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-// Example: 0 1 * * *
+// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
+// Example: `"0 1 * * *"`.
 func (o ManagedInstanceScheduledTaskOutput) CronExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceScheduledTask) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
 }
@@ -11146,12 +12104,12 @@ func (o ManagedInstanceScheduledTaskOutput) IsEnabled() pulumi.BoolPtrOutput {
 }
 
 // DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-// Example: 2019-05-23T10:55:09Z
+// Example: `"2019-05-23T10:55:09Z"`
 func (o ManagedInstanceScheduledTaskOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceScheduledTask) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// The task type to run. Valid values: "pause", "resume", "recycle".
+// The task type to run. Valid values: `"pause"`, `"resume"`, `"recycle"`.
 func (o ManagedInstanceScheduledTaskOutput) TaskType() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedInstanceScheduledTask) string { return v.TaskType }).(pulumi.StringOutput)
 }
@@ -14857,7 +15815,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 }
 
 type OceanLaunchSpecBlockDeviceMapping struct {
-	// String. Set device name. (Example: `/dev/xvda1`).
+	// String. Set device name. (Example: `/dev/xvda`).
 	DeviceName *string `pulumi:"deviceName"`
 	// Object. Set Elastic Block Store properties .
 	Ebs *OceanLaunchSpecBlockDeviceMappingEbs `pulumi:"ebs"`
@@ -14878,7 +15836,7 @@ type OceanLaunchSpecBlockDeviceMappingInput interface {
 }
 
 type OceanLaunchSpecBlockDeviceMappingArgs struct {
-	// String. Set device name. (Example: `/dev/xvda1`).
+	// String. Set device name. (Example: `/dev/xvda`).
 	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
 	// Object. Set Elastic Block Store properties .
 	Ebs OceanLaunchSpecBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
@@ -14938,7 +15896,7 @@ func (o OceanLaunchSpecBlockDeviceMappingOutput) ToOceanLaunchSpecBlockDeviceMap
 	return o
 }
 
-// String. Set device name. (Example: `/dev/xvda1`).
+// String. Set device name. (Example: `/dev/xvda`).
 func (o OceanLaunchSpecBlockDeviceMappingOutput) DeviceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMapping) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
 }
@@ -17387,6 +18345,14 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupMetadataOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupMultaiTargetSetOutput{})
 	pulumi.RegisterOutputType(ElastigroupMultaiTargetSetArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupMultipleMetricsOutput{})
+	pulumi.RegisterOutputType(ElastigroupMultipleMetricsPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupMultipleMetricsExpressionOutput{})
+	pulumi.RegisterOutputType(ElastigroupMultipleMetricsExpressionArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupMultipleMetricsMetricOutput{})
+	pulumi.RegisterOutputType(ElastigroupMultipleMetricsMetricArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupMultipleMetricsMetricDimensionOutput{})
+	pulumi.RegisterOutputType(ElastigroupMultipleMetricsMetricDimensionArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ElastigroupNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupResourceTagSpecificationOutput{})
@@ -17397,6 +18363,9 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyDimensionOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyDimensionArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyStepAdjustmentOutput{})
+	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyStepAdjustmentArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupScalingDownPolicyStepAdjustmentActionOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingStrategyOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingStrategyArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingTargetPolicyOutput{})
@@ -17407,6 +18376,9 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionOutput{})
 	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyDimensionArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyStepAdjustmentOutput{})
+	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyStepAdjustmentArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupScalingUpPolicyStepAdjustmentActionOutput{})
 	pulumi.RegisterOutputType(ElastigroupScheduledTaskOutput{})
 	pulumi.RegisterOutputType(ElastigroupScheduledTaskArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupSignalOutput{})

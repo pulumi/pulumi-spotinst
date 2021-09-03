@@ -21,10 +21,12 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
         /// </summary>
         public readonly bool? AutoWeight;
+        /// <summary>
+        /// "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
+        /// </summary>
         public readonly bool? AzAwareness;
         /// <summary>
-        /// The Multai load balancer ID.
-        /// Default: lb-123456
+        /// The Multai load balancer ID. Example: lb-123456
         /// </summary>
         public readonly string? BalancerId;
         /// <summary>
@@ -32,12 +34,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The Multai load target set ID.
-        /// Default: ts-123456
+        /// The Multai load target set ID. Example: ts-123456
         /// </summary>
         public readonly string? TargetSetId;
         /// <summary>
-        /// The resource type. Valid Values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
         /// </summary>
         public readonly string Type;
 

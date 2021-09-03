@@ -257,6 +257,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("multaiTargetSets")]
         public Output<ImmutableArray<Outputs.ElastigroupMultaiTargetSet>> MultaiTargetSets { get; private set; } = null!;
 
+        [Output("multipleMetrics")]
+        public Output<Outputs.ElastigroupMultipleMetrics?> MultipleMetrics { get; private set; } = null!;
+
         /// <summary>
         /// The record set name.
         /// </summary>
@@ -774,6 +777,9 @@ namespace Pulumi.SpotInst.Aws
             get => _multaiTargetSets ?? (_multaiTargetSets = new InputList<Inputs.ElastigroupMultaiTargetSetArgs>());
             set => _multaiTargetSets = value;
         }
+
+        [Input("multipleMetrics")]
+        public Input<Inputs.ElastigroupMultipleMetricsArgs>? MultipleMetrics { get; set; }
 
         /// <summary>
         /// The record set name.
@@ -1336,6 +1342,9 @@ namespace Pulumi.SpotInst.Aws
             get => _multaiTargetSets ?? (_multaiTargetSets = new InputList<Inputs.ElastigroupMultaiTargetSetGetArgs>());
             set => _multaiTargetSets = value;
         }
+
+        [Input("multipleMetrics")]
+        public Input<Inputs.ElastigroupMultipleMetricsGetArgs>? MultipleMetrics { get; set; }
 
         /// <summary>
         /// The record set name.
