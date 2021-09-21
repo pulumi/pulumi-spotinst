@@ -71,6 +71,7 @@ export class OceanImport extends pulumi.CustomResource {
      * Set scheduling object.
      */
     public readonly scheduledTasks!: pulumi.Output<outputs.gke.OceanImportScheduledTask[] | undefined>;
+    public readonly updatePolicy!: pulumi.Output<outputs.gke.OceanImportUpdatePolicy | undefined>;
     /**
      * Instance types allowed in the Ocean cluster.
      */
@@ -100,6 +101,7 @@ export class OceanImport extends pulumi.CustomResource {
             inputs["minSize"] = state ? state.minSize : undefined;
             inputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
             inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
+            inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             inputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as OceanImportArgs | undefined;
@@ -119,6 +121,7 @@ export class OceanImport extends pulumi.CustomResource {
             inputs["minSize"] = args ? args.minSize : undefined;
             inputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
             inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
+            inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             inputs["whitelists"] = args ? args.whitelists : undefined;
             inputs["clusterControllerId"] = undefined /*out*/;
         }
@@ -171,6 +174,7 @@ export interface OceanImportState {
      * Set scheduling object.
      */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    readonly updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
     /**
      * Instance types allowed in the Ocean cluster.
      */
@@ -218,6 +222,7 @@ export interface OceanImportArgs {
      * Set scheduling object.
      */
     readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    readonly updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
     /**
      * Instance types allowed in the Ocean cluster.
      */

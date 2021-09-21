@@ -34,6 +34,9 @@ export interface ElastigroupAzureV3ImageMarketplace {
      * Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
      */
     sku: string;
+    /**
+     * -
+     */
     version: string;
 }
 
@@ -53,6 +56,9 @@ export interface ElastigroupAzureV3Login {
 }
 
 export interface ElastigroupAzureV3Network {
+    /**
+     * -
+     */
     networkInterfaces: outputs.ElastigroupAzureV3NetworkNetworkInterface[];
     /**
      * - The resource group of the Application Security Group.
@@ -75,6 +81,9 @@ export interface ElastigroupAzureV3NetworkNetworkInterface {
      */
     applicationSecurityGroups?: outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup[];
     assignPublicIp: boolean;
+    /**
+     * -
+     */
     isPrimary: boolean;
     /**
      * ID of subnet.
@@ -110,9 +119,12 @@ export interface ElastigroupAzureV3Strategy {
      * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
      */
     drainingTimeout?: number;
+    /**
+     * -
+     */
     fallbackToOnDemand?: boolean;
     /**
-     * Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
+     * Number of On-Demand instances to maintain. Required if `lowPriorityPercentage` is not specified.
      */
     odCount?: number;
     /**
@@ -785,6 +797,52 @@ export namespace aws {
          * - Designates whether the IP address should be exposed to connections outside the VPC.
          */
         usePublicIp?: boolean;
+    }
+
+    export interface ElastigroupItf {
+        fixedTargetGroups: boolean;
+        loadBalancers: outputs.aws.ElastigroupItfLoadBalancer[];
+        migrationHealthinessThreshold?: number;
+        targetGroupConfigs: outputs.aws.ElastigroupItfTargetGroupConfig[];
+        weightStrategy: string;
+    }
+
+    export interface ElastigroupItfLoadBalancer {
+        listenerRules: outputs.aws.ElastigroupItfLoadBalancerListenerRule[];
+        loadBalancerArn: string;
+    }
+
+    export interface ElastigroupItfLoadBalancerListenerRule {
+        ruleArn: string;
+    }
+
+    export interface ElastigroupItfTargetGroupConfig {
+        healthCheckIntervalSeconds?: number;
+        healthCheckPath: string;
+        healthCheckPort?: string;
+        healthCheckProtocol?: string;
+        healthCheckTimeoutSeconds?: number;
+        healthyThresholdCount?: number;
+        matchers?: outputs.aws.ElastigroupItfTargetGroupConfigMatcher[];
+        port: number;
+        protocol: string;
+        protocolVersion?: string;
+        /**
+         * A key/value mapping of tags to assign to the resource.
+         */
+        tags?: outputs.aws.ElastigroupItfTargetGroupConfigTag[];
+        unhealthyThresholdCount?: number;
+        vpcId: string;
+    }
+
+    export interface ElastigroupItfTargetGroupConfigMatcher {
+        grpcCode?: string;
+        httpCode?: string;
+    }
+
+    export interface ElastigroupItfTargetGroupConfigTag {
+        tagKey: string;
+        tagValue?: string;
     }
 
     export interface ElastigroupMetadataOptions {
@@ -2349,9 +2407,16 @@ export namespace aws {
 
     export interface OceanLaunchSpecCreateOptions {
         /**
-         * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+         * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
          */
         initialNodes: number;
+    }
+
+    export interface OceanLaunchSpecDeleteOptions {
+        /**
+         * When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+         */
+        forceDelete: boolean;
     }
 
     export interface OceanLaunchSpecElasticIpPool {
@@ -2421,6 +2486,15 @@ export namespace aws {
          * The taint value.
          */
         value: string;
+    }
+
+    export interface OceanLaunchSpecUpdatePolicy {
+        rollConfig?: outputs.aws.OceanLaunchSpecUpdatePolicyRollConfig;
+        shouldRoll: boolean;
+    }
+
+    export interface OceanLaunchSpecUpdatePolicyRollConfig {
+        batchSizePercentage: number;
     }
 
     export interface OceanLoadBalancer {
@@ -2502,6 +2576,10 @@ export namespace aws {
          * Sets the percentage of the instances to deploy in each batch.
          */
         batchSizePercentage: number;
+        /**
+         * List of virtual node group identifiers to be rolled.
+         */
+        launchSpecIds?: string[];
     }
 
     export interface SuspensionSuspension {
@@ -4215,6 +4293,20 @@ export namespace gke {
          * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
          */
         taskType: string;
+    }
+
+    export interface OceanImportUpdatePolicy {
+        rollConfig?: outputs.gke.OceanImportUpdatePolicyRollConfig;
+        shouldRoll: boolean;
+    }
+
+    export interface OceanImportUpdatePolicyRollConfig {
+        /**
+         * Value in % to set size of batch in roll. Valid values are 0-100
+         * Example: 20.
+         */
+        batchSizePercentage: number;
+        launchSpecIds?: string[];
     }
 
     export interface OceanLaunchSpecAutoscaleHeadroom {

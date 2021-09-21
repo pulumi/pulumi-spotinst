@@ -38,6 +38,8 @@ __all__ = [
     'OceanImportScheduledTaskArgs',
     'OceanImportScheduledTaskShutdownHoursArgs',
     'OceanImportScheduledTaskTaskArgs',
+    'OceanImportUpdatePolicyArgs',
+    'OceanImportUpdatePolicyRollConfigArgs',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecMetadataArgs',
@@ -1709,6 +1711,70 @@ class OceanImportScheduledTaskTaskArgs:
     @batch_size_percentage.setter
     def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "batch_size_percentage", value)
+
+
+@pulumi.input_type
+class OceanImportUpdatePolicyArgs:
+    def __init__(__self__, *,
+                 should_roll: pulumi.Input[bool],
+                 roll_config: Optional[pulumi.Input['OceanImportUpdatePolicyRollConfigArgs']] = None):
+        pulumi.set(__self__, "should_roll", should_roll)
+        if roll_config is not None:
+            pulumi.set(__self__, "roll_config", roll_config)
+
+    @property
+    @pulumi.getter(name="shouldRoll")
+    def should_roll(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "should_roll")
+
+    @should_roll.setter
+    def should_roll(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "should_roll", value)
+
+    @property
+    @pulumi.getter(name="rollConfig")
+    def roll_config(self) -> Optional[pulumi.Input['OceanImportUpdatePolicyRollConfigArgs']]:
+        return pulumi.get(self, "roll_config")
+
+    @roll_config.setter
+    def roll_config(self, value: Optional[pulumi.Input['OceanImportUpdatePolicyRollConfigArgs']]):
+        pulumi.set(self, "roll_config", value)
+
+
+@pulumi.input_type
+class OceanImportUpdatePolicyRollConfigArgs:
+    def __init__(__self__, *,
+                 batch_size_percentage: pulumi.Input[int],
+                 launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
+               Example: 20.
+        """
+        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if launch_spec_ids is not None:
+            pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> pulumi.Input[int]:
+        """
+        Value in % to set size of batch in roll. Valid values are 0-100
+        Example: 20.
+        """
+        return pulumi.get(self, "batch_size_percentage")
+
+    @batch_size_percentage.setter
+    def batch_size_percentage(self, value: pulumi.Input[int]):
+        pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter(name="launchSpecIds")
+    def launch_spec_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "launch_spec_ids")
+
+    @launch_spec_ids.setter
+    def launch_spec_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "launch_spec_ids", value)
 
 
 @pulumi.input_type

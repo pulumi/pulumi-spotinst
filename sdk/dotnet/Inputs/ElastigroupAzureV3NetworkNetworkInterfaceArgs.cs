@@ -39,6 +39,9 @@ namespace Pulumi.SpotInst.Inputs
         [Input("assignPublicIp", required: true)]
         public Input<bool> AssignPublicIp { get; set; } = null!;
 
+        /// <summary>
+        /// -
+        /// </summary>
         [Input("isPrimary", required: true)]
         public Input<bool> IsPrimary { get; set; } = null!;
 

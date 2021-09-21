@@ -50,6 +50,12 @@ __all__ = [
     'ElastigroupIntegrationRoute53',
     'ElastigroupIntegrationRoute53Domain',
     'ElastigroupIntegrationRoute53DomainRecordSet',
+    'ElastigroupItf',
+    'ElastigroupItfLoadBalancer',
+    'ElastigroupItfLoadBalancerListenerRule',
+    'ElastigroupItfTargetGroupConfig',
+    'ElastigroupItfTargetGroupConfigMatcher',
+    'ElastigroupItfTargetGroupConfigTag',
     'ElastigroupMetadataOptions',
     'ElastigroupMultaiTargetSet',
     'ElastigroupMultipleMetrics',
@@ -118,6 +124,7 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMappingEbs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize',
     'OceanLaunchSpecCreateOptions',
+    'OceanLaunchSpecDeleteOptions',
     'OceanLaunchSpecElasticIpPool',
     'OceanLaunchSpecElasticIpPoolTagSelector',
     'OceanLaunchSpecLabel',
@@ -125,6 +132,8 @@ __all__ = [
     'OceanLaunchSpecStrategy',
     'OceanLaunchSpecTag',
     'OceanLaunchSpecTaint',
+    'OceanLaunchSpecUpdatePolicy',
+    'OceanLaunchSpecUpdatePolicyRollConfig',
     'OceanLoadBalancer',
     'OceanScheduledTask',
     'OceanScheduledTaskShutdownHours',
@@ -2683,6 +2692,362 @@ class ElastigroupIntegrationRoute53DomainRecordSet(dict):
         - Designates whether the IP address should be exposed to connections outside the VPC.
         """
         return pulumi.get(self, "use_public_ip")
+
+
+@pulumi.output_type
+class ElastigroupItf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedTargetGroups":
+            suggest = "fixed_target_groups"
+        elif key == "loadBalancers":
+            suggest = "load_balancers"
+        elif key == "targetGroupConfigs":
+            suggest = "target_group_configs"
+        elif key == "weightStrategy":
+            suggest = "weight_strategy"
+        elif key == "migrationHealthinessThreshold":
+            suggest = "migration_healthiness_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupItf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupItf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupItf.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fixed_target_groups: bool,
+                 load_balancers: Sequence['outputs.ElastigroupItfLoadBalancer'],
+                 target_group_configs: Sequence['outputs.ElastigroupItfTargetGroupConfig'],
+                 weight_strategy: str,
+                 migration_healthiness_threshold: Optional[int] = None):
+        pulumi.set(__self__, "fixed_target_groups", fixed_target_groups)
+        pulumi.set(__self__, "load_balancers", load_balancers)
+        pulumi.set(__self__, "target_group_configs", target_group_configs)
+        pulumi.set(__self__, "weight_strategy", weight_strategy)
+        if migration_healthiness_threshold is not None:
+            pulumi.set(__self__, "migration_healthiness_threshold", migration_healthiness_threshold)
+
+    @property
+    @pulumi.getter(name="fixedTargetGroups")
+    def fixed_target_groups(self) -> bool:
+        return pulumi.get(self, "fixed_target_groups")
+
+    @property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> Sequence['outputs.ElastigroupItfLoadBalancer']:
+        return pulumi.get(self, "load_balancers")
+
+    @property
+    @pulumi.getter(name="targetGroupConfigs")
+    def target_group_configs(self) -> Sequence['outputs.ElastigroupItfTargetGroupConfig']:
+        return pulumi.get(self, "target_group_configs")
+
+    @property
+    @pulumi.getter(name="weightStrategy")
+    def weight_strategy(self) -> str:
+        return pulumi.get(self, "weight_strategy")
+
+    @property
+    @pulumi.getter(name="migrationHealthinessThreshold")
+    def migration_healthiness_threshold(self) -> Optional[int]:
+        return pulumi.get(self, "migration_healthiness_threshold")
+
+
+@pulumi.output_type
+class ElastigroupItfLoadBalancer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "listenerRules":
+            suggest = "listener_rules"
+        elif key == "loadBalancerArn":
+            suggest = "load_balancer_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupItfLoadBalancer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupItfLoadBalancer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupItfLoadBalancer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 listener_rules: Sequence['outputs.ElastigroupItfLoadBalancerListenerRule'],
+                 load_balancer_arn: str):
+        pulumi.set(__self__, "listener_rules", listener_rules)
+        pulumi.set(__self__, "load_balancer_arn", load_balancer_arn)
+
+    @property
+    @pulumi.getter(name="listenerRules")
+    def listener_rules(self) -> Sequence['outputs.ElastigroupItfLoadBalancerListenerRule']:
+        return pulumi.get(self, "listener_rules")
+
+    @property
+    @pulumi.getter(name="loadBalancerArn")
+    def load_balancer_arn(self) -> str:
+        return pulumi.get(self, "load_balancer_arn")
+
+
+@pulumi.output_type
+class ElastigroupItfLoadBalancerListenerRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleArn":
+            suggest = "rule_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupItfLoadBalancerListenerRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupItfLoadBalancerListenerRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupItfLoadBalancerListenerRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rule_arn: str):
+        pulumi.set(__self__, "rule_arn", rule_arn)
+
+    @property
+    @pulumi.getter(name="ruleArn")
+    def rule_arn(self) -> str:
+        return pulumi.get(self, "rule_arn")
+
+
+@pulumi.output_type
+class ElastigroupItfTargetGroupConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthCheckPath":
+            suggest = "health_check_path"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "healthCheckIntervalSeconds":
+            suggest = "health_check_interval_seconds"
+        elif key == "healthCheckPort":
+            suggest = "health_check_port"
+        elif key == "healthCheckProtocol":
+            suggest = "health_check_protocol"
+        elif key == "healthCheckTimeoutSeconds":
+            suggest = "health_check_timeout_seconds"
+        elif key == "healthyThresholdCount":
+            suggest = "healthy_threshold_count"
+        elif key == "protocolVersion":
+            suggest = "protocol_version"
+        elif key == "unhealthyThresholdCount":
+            suggest = "unhealthy_threshold_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupItfTargetGroupConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupItfTargetGroupConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupItfTargetGroupConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 health_check_path: str,
+                 port: int,
+                 protocol: str,
+                 vpc_id: str,
+                 health_check_interval_seconds: Optional[int] = None,
+                 health_check_port: Optional[str] = None,
+                 health_check_protocol: Optional[str] = None,
+                 health_check_timeout_seconds: Optional[int] = None,
+                 healthy_threshold_count: Optional[int] = None,
+                 matchers: Optional[Sequence['outputs.ElastigroupItfTargetGroupConfigMatcher']] = None,
+                 protocol_version: Optional[str] = None,
+                 tags: Optional[Sequence['outputs.ElastigroupItfTargetGroupConfigTag']] = None,
+                 unhealthy_threshold_count: Optional[int] = None):
+        """
+        :param Sequence['ElastigroupItfTargetGroupConfigTagArgs'] tags: A key/value mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "health_check_path", health_check_path)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        if health_check_interval_seconds is not None:
+            pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
+        if health_check_port is not None:
+            pulumi.set(__self__, "health_check_port", health_check_port)
+        if health_check_protocol is not None:
+            pulumi.set(__self__, "health_check_protocol", health_check_protocol)
+        if health_check_timeout_seconds is not None:
+            pulumi.set(__self__, "health_check_timeout_seconds", health_check_timeout_seconds)
+        if healthy_threshold_count is not None:
+            pulumi.set(__self__, "healthy_threshold_count", healthy_threshold_count)
+        if matchers is not None:
+            pulumi.set(__self__, "matchers", matchers)
+        if protocol_version is not None:
+            pulumi.set(__self__, "protocol_version", protocol_version)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if unhealthy_threshold_count is not None:
+            pulumi.set(__self__, "unhealthy_threshold_count", unhealthy_threshold_count)
+
+    @property
+    @pulumi.getter(name="healthCheckPath")
+    def health_check_path(self) -> str:
+        return pulumi.get(self, "health_check_path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="healthCheckIntervalSeconds")
+    def health_check_interval_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "health_check_interval_seconds")
+
+    @property
+    @pulumi.getter(name="healthCheckPort")
+    def health_check_port(self) -> Optional[str]:
+        return pulumi.get(self, "health_check_port")
+
+    @property
+    @pulumi.getter(name="healthCheckProtocol")
+    def health_check_protocol(self) -> Optional[str]:
+        return pulumi.get(self, "health_check_protocol")
+
+    @property
+    @pulumi.getter(name="healthCheckTimeoutSeconds")
+    def health_check_timeout_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "health_check_timeout_seconds")
+
+    @property
+    @pulumi.getter(name="healthyThresholdCount")
+    def healthy_threshold_count(self) -> Optional[int]:
+        return pulumi.get(self, "healthy_threshold_count")
+
+    @property
+    @pulumi.getter
+    def matchers(self) -> Optional[Sequence['outputs.ElastigroupItfTargetGroupConfigMatcher']]:
+        return pulumi.get(self, "matchers")
+
+    @property
+    @pulumi.getter(name="protocolVersion")
+    def protocol_version(self) -> Optional[str]:
+        return pulumi.get(self, "protocol_version")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence['outputs.ElastigroupItfTargetGroupConfigTag']]:
+        """
+        A key/value mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="unhealthyThresholdCount")
+    def unhealthy_threshold_count(self) -> Optional[int]:
+        return pulumi.get(self, "unhealthy_threshold_count")
+
+
+@pulumi.output_type
+class ElastigroupItfTargetGroupConfigMatcher(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "grpcCode":
+            suggest = "grpc_code"
+        elif key == "httpCode":
+            suggest = "http_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupItfTargetGroupConfigMatcher. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupItfTargetGroupConfigMatcher.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupItfTargetGroupConfigMatcher.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 grpc_code: Optional[str] = None,
+                 http_code: Optional[str] = None):
+        if grpc_code is not None:
+            pulumi.set(__self__, "grpc_code", grpc_code)
+        if http_code is not None:
+            pulumi.set(__self__, "http_code", http_code)
+
+    @property
+    @pulumi.getter(name="grpcCode")
+    def grpc_code(self) -> Optional[str]:
+        return pulumi.get(self, "grpc_code")
+
+    @property
+    @pulumi.getter(name="httpCode")
+    def http_code(self) -> Optional[str]:
+        return pulumi.get(self, "http_code")
+
+
+@pulumi.output_type
+class ElastigroupItfTargetGroupConfigTag(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupItfTargetGroupConfigTag. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupItfTargetGroupConfigTag.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupItfTargetGroupConfigTag.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_key: str,
+                 tag_value: Optional[str] = None):
+        pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> str:
+        return pulumi.get(self, "tag_key")
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[str]:
+        return pulumi.get(self, "tag_value")
 
 
 @pulumi.output_type
@@ -8266,7 +8631,7 @@ class OceanLaunchSpecCreateOptions(dict):
     def __init__(__self__, *,
                  initial_nodes: int):
         """
-        :param int initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+        :param int initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
         """
         pulumi.set(__self__, "initial_nodes", initial_nodes)
 
@@ -8274,9 +8639,44 @@ class OceanLaunchSpecCreateOptions(dict):
     @pulumi.getter(name="initialNodes")
     def initial_nodes(self) -> int:
         """
-        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
         """
         return pulumi.get(self, "initial_nodes")
+
+
+@pulumi.output_type
+class OceanLaunchSpecDeleteOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forceDelete":
+            suggest = "force_delete"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecDeleteOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecDeleteOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecDeleteOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 force_delete: bool):
+        """
+        :param bool force_delete: When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+        """
+        pulumi.set(__self__, "force_delete", force_delete)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> bool:
+        """
+        When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+        """
+        return pulumi.get(self, "force_delete")
 
 
 @pulumi.output_type
@@ -8532,6 +8932,74 @@ class OceanLaunchSpecTaint(dict):
         The taint value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanLaunchSpecUpdatePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shouldRoll":
+            suggest = "should_roll"
+        elif key == "rollConfig":
+            suggest = "roll_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecUpdatePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecUpdatePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecUpdatePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 should_roll: bool,
+                 roll_config: Optional['outputs.OceanLaunchSpecUpdatePolicyRollConfig'] = None):
+        pulumi.set(__self__, "should_roll", should_roll)
+        if roll_config is not None:
+            pulumi.set(__self__, "roll_config", roll_config)
+
+    @property
+    @pulumi.getter(name="shouldRoll")
+    def should_roll(self) -> bool:
+        return pulumi.get(self, "should_roll")
+
+    @property
+    @pulumi.getter(name="rollConfig")
+    def roll_config(self) -> Optional['outputs.OceanLaunchSpecUpdatePolicyRollConfig']:
+        return pulumi.get(self, "roll_config")
+
+
+@pulumi.output_type
+class OceanLaunchSpecUpdatePolicyRollConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchSizePercentage":
+            suggest = "batch_size_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecUpdatePolicyRollConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecUpdatePolicyRollConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecUpdatePolicyRollConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 batch_size_percentage: int):
+        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> int:
+        return pulumi.get(self, "batch_size_percentage")
 
 
 @pulumi.output_type
@@ -8820,6 +9288,8 @@ class OceanUpdatePolicyRollConfig(dict):
         suggest = None
         if key == "batchSizePercentage":
             suggest = "batch_size_percentage"
+        elif key == "launchSpecIds":
+            suggest = "launch_spec_ids"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanUpdatePolicyRollConfig. Access the value via the '{suggest}' property getter instead.")
@@ -8833,11 +9303,15 @@ class OceanUpdatePolicyRollConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 batch_size_percentage: int):
+                 batch_size_percentage: int,
+                 launch_spec_ids: Optional[Sequence[str]] = None):
         """
         :param int batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param Sequence[str] launch_spec_ids: List of virtual node group identifiers to be rolled.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if launch_spec_ids is not None:
+            pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -8846,6 +9320,14 @@ class OceanUpdatePolicyRollConfig(dict):
         Sets the percentage of the instances to deploy in each batch.
         """
         return pulumi.get(self, "batch_size_percentage")
+
+    @property
+    @pulumi.getter(name="launchSpecIds")
+    def launch_spec_ids(self) -> Optional[Sequence[str]]:
+        """
+        List of virtual node group identifiers to be rolled.
+        """
+        return pulumi.get(self, "launch_spec_ids")
 
 
 @pulumi.output_type

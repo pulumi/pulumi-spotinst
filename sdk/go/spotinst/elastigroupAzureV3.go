@@ -26,6 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := spotinst.NewElastigroupAzureV3(ctx, "testAzureGroup", &spotinst.ElastigroupAzureV3Args{
+// 			CustomData:      pulumi.String("IyEvYmluL2Jhc2gKZWNobyAidGVzdCI="),
 // 			DesiredCapacity: pulumi.Int(1),
 // 			Images: spotinst.ElastigroupAzureV3ImageArray{
 // 				&spotinst.ElastigroupAzureV3ImageArgs{
@@ -96,6 +97,8 @@ import (
 type ElastigroupAzureV3 struct {
 	pulumi.CustomResourceState
 
+	// Custom init script file or text in Base64 encoded format.
+	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
 	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
@@ -175,6 +178,8 @@ func GetElastigroupAzureV3(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElastigroupAzureV3 resources.
 type elastigroupAzureV3State struct {
+	// Custom init script file or text in Base64 encoded format.
+	CustomData *string `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
@@ -205,6 +210,8 @@ type elastigroupAzureV3State struct {
 }
 
 type ElastigroupAzureV3State struct {
+	// Custom init script file or text in Base64 encoded format.
+	CustomData pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrInput
 	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
@@ -239,6 +246,8 @@ func (ElastigroupAzureV3State) ElementType() reflect.Type {
 }
 
 type elastigroupAzureV3Args struct {
+	// Custom init script file or text in Base64 encoded format.
+	CustomData *string `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
@@ -270,6 +279,8 @@ type elastigroupAzureV3Args struct {
 
 // The set of arguments for constructing a ElastigroupAzureV3 resource.
 type ElastigroupAzureV3Args struct {
+	// Custom init script file or text in Base64 encoded format.
+	CustomData pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrInput
 	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.

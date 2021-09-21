@@ -100,6 +100,7 @@ class ElastigroupAzureV3ImageMarketplaceArgs:
         :param pulumi.Input[str] offer: Name of the image to use. Required if publisher is specified.
         :param pulumi.Input[str] publisher: Image publisher. Required if resource_group_name is not specified.
         :param pulumi.Input[str] sku: Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+        :param pulumi.Input[str] version: -
         """
         pulumi.set(__self__, "offer", offer)
         pulumi.set(__self__, "publisher", publisher)
@@ -145,6 +146,9 @@ class ElastigroupAzureV3ImageMarketplaceArgs:
     @property
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
+        """
+        -
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -213,6 +217,7 @@ class ElastigroupAzureV3NetworkArgs:
                  resource_group_name: pulumi.Input[str],
                  virtual_network_name: pulumi.Input[str]):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceArgs']]] network_interfaces: -
         :param pulumi.Input[str] resource_group_name: - The resource group of the Application Security Group.
                }
         :param pulumi.Input[str] virtual_network_name: Name of Vnet.
@@ -224,6 +229,9 @@ class ElastigroupAzureV3NetworkArgs:
     @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceArgs']]]:
+        """
+        -
+        """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
@@ -265,6 +273,7 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
                  additional_ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]] = None,
                  application_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None):
         """
+        :param pulumi.Input[bool] is_primary: -
         :param pulumi.Input[str] subnet_name: ID of subnet.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]] additional_ip_configs: Array of additional IP configuration objects.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]] application_security_groups: - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
@@ -289,6 +298,9 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="isPrimary")
     def is_primary(self) -> pulumi.Input[bool]:
+        """
+        -
+        """
         return pulumi.get(self, "is_primary")
 
     @is_primary.setter
@@ -418,7 +430,8 @@ class ElastigroupAzureV3StrategyArgs:
                  spot_percentage: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        :param pulumi.Input[int] od_count: Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
+        :param pulumi.Input[bool] fallback_to_on_demand: -
+        :param pulumi.Input[int] od_count: Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
         :param pulumi.Input[int] spot_percentage: TODO
         """
         if draining_timeout is not None:
@@ -445,6 +458,9 @@ class ElastigroupAzureV3StrategyArgs:
     @property
     @pulumi.getter(name="fallbackToOnDemand")
     def fallback_to_on_demand(self) -> Optional[pulumi.Input[bool]]:
+        """
+        -
+        """
         return pulumi.get(self, "fallback_to_on_demand")
 
     @fallback_to_on_demand.setter
@@ -455,7 +471,7 @@ class ElastigroupAzureV3StrategyArgs:
     @pulumi.getter(name="odCount")
     def od_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
+        Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
         """
         return pulumi.get(self, "od_count")
 

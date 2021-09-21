@@ -6315,6 +6315,687 @@ func (o ElastigroupIntegrationRoute53DomainRecordSetArrayOutput) Index(i pulumi.
 	}).(ElastigroupIntegrationRoute53DomainRecordSetOutput)
 }
 
+type ElastigroupItf struct {
+	FixedTargetGroups             bool                              `pulumi:"fixedTargetGroups"`
+	LoadBalancers                 []ElastigroupItfLoadBalancer      `pulumi:"loadBalancers"`
+	MigrationHealthinessThreshold *int                              `pulumi:"migrationHealthinessThreshold"`
+	TargetGroupConfigs            []ElastigroupItfTargetGroupConfig `pulumi:"targetGroupConfigs"`
+	WeightStrategy                string                            `pulumi:"weightStrategy"`
+}
+
+// ElastigroupItfInput is an input type that accepts ElastigroupItfArgs and ElastigroupItfOutput values.
+// You can construct a concrete instance of `ElastigroupItfInput` via:
+//
+//          ElastigroupItfArgs{...}
+type ElastigroupItfInput interface {
+	pulumi.Input
+
+	ToElastigroupItfOutput() ElastigroupItfOutput
+	ToElastigroupItfOutputWithContext(context.Context) ElastigroupItfOutput
+}
+
+type ElastigroupItfArgs struct {
+	FixedTargetGroups             pulumi.BoolInput                          `pulumi:"fixedTargetGroups"`
+	LoadBalancers                 ElastigroupItfLoadBalancerArrayInput      `pulumi:"loadBalancers"`
+	MigrationHealthinessThreshold pulumi.IntPtrInput                        `pulumi:"migrationHealthinessThreshold"`
+	TargetGroupConfigs            ElastigroupItfTargetGroupConfigArrayInput `pulumi:"targetGroupConfigs"`
+	WeightStrategy                pulumi.StringInput                        `pulumi:"weightStrategy"`
+}
+
+func (ElastigroupItfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItf)(nil)).Elem()
+}
+
+func (i ElastigroupItfArgs) ToElastigroupItfOutput() ElastigroupItfOutput {
+	return i.ToElastigroupItfOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfArgs) ToElastigroupItfOutputWithContext(ctx context.Context) ElastigroupItfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfOutput)
+}
+
+// ElastigroupItfArrayInput is an input type that accepts ElastigroupItfArray and ElastigroupItfArrayOutput values.
+// You can construct a concrete instance of `ElastigroupItfArrayInput` via:
+//
+//          ElastigroupItfArray{ ElastigroupItfArgs{...} }
+type ElastigroupItfArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupItfArrayOutput() ElastigroupItfArrayOutput
+	ToElastigroupItfArrayOutputWithContext(context.Context) ElastigroupItfArrayOutput
+}
+
+type ElastigroupItfArray []ElastigroupItfInput
+
+func (ElastigroupItfArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItf)(nil)).Elem()
+}
+
+func (i ElastigroupItfArray) ToElastigroupItfArrayOutput() ElastigroupItfArrayOutput {
+	return i.ToElastigroupItfArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfArray) ToElastigroupItfArrayOutputWithContext(ctx context.Context) ElastigroupItfArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfArrayOutput)
+}
+
+type ElastigroupItfOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItf)(nil)).Elem()
+}
+
+func (o ElastigroupItfOutput) ToElastigroupItfOutput() ElastigroupItfOutput {
+	return o
+}
+
+func (o ElastigroupItfOutput) ToElastigroupItfOutputWithContext(ctx context.Context) ElastigroupItfOutput {
+	return o
+}
+
+func (o ElastigroupItfOutput) FixedTargetGroups() pulumi.BoolOutput {
+	return o.ApplyT(func(v ElastigroupItf) bool { return v.FixedTargetGroups }).(pulumi.BoolOutput)
+}
+
+func (o ElastigroupItfOutput) LoadBalancers() ElastigroupItfLoadBalancerArrayOutput {
+	return o.ApplyT(func(v ElastigroupItf) []ElastigroupItfLoadBalancer { return v.LoadBalancers }).(ElastigroupItfLoadBalancerArrayOutput)
+}
+
+func (o ElastigroupItfOutput) MigrationHealthinessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupItf) *int { return v.MigrationHealthinessThreshold }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupItfOutput) TargetGroupConfigs() ElastigroupItfTargetGroupConfigArrayOutput {
+	return o.ApplyT(func(v ElastigroupItf) []ElastigroupItfTargetGroupConfig { return v.TargetGroupConfigs }).(ElastigroupItfTargetGroupConfigArrayOutput)
+}
+
+func (o ElastigroupItfOutput) WeightStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupItf) string { return v.WeightStrategy }).(pulumi.StringOutput)
+}
+
+type ElastigroupItfArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItf)(nil)).Elem()
+}
+
+func (o ElastigroupItfArrayOutput) ToElastigroupItfArrayOutput() ElastigroupItfArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfArrayOutput) ToElastigroupItfArrayOutputWithContext(ctx context.Context) ElastigroupItfArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfArrayOutput) Index(i pulumi.IntInput) ElastigroupItfOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupItf {
+		return vs[0].([]ElastigroupItf)[vs[1].(int)]
+	}).(ElastigroupItfOutput)
+}
+
+type ElastigroupItfLoadBalancer struct {
+	ListenerRules   []ElastigroupItfLoadBalancerListenerRule `pulumi:"listenerRules"`
+	LoadBalancerArn string                                   `pulumi:"loadBalancerArn"`
+}
+
+// ElastigroupItfLoadBalancerInput is an input type that accepts ElastigroupItfLoadBalancerArgs and ElastigroupItfLoadBalancerOutput values.
+// You can construct a concrete instance of `ElastigroupItfLoadBalancerInput` via:
+//
+//          ElastigroupItfLoadBalancerArgs{...}
+type ElastigroupItfLoadBalancerInput interface {
+	pulumi.Input
+
+	ToElastigroupItfLoadBalancerOutput() ElastigroupItfLoadBalancerOutput
+	ToElastigroupItfLoadBalancerOutputWithContext(context.Context) ElastigroupItfLoadBalancerOutput
+}
+
+type ElastigroupItfLoadBalancerArgs struct {
+	ListenerRules   ElastigroupItfLoadBalancerListenerRuleArrayInput `pulumi:"listenerRules"`
+	LoadBalancerArn pulumi.StringInput                               `pulumi:"loadBalancerArn"`
+}
+
+func (ElastigroupItfLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfLoadBalancer)(nil)).Elem()
+}
+
+func (i ElastigroupItfLoadBalancerArgs) ToElastigroupItfLoadBalancerOutput() ElastigroupItfLoadBalancerOutput {
+	return i.ToElastigroupItfLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfLoadBalancerArgs) ToElastigroupItfLoadBalancerOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfLoadBalancerOutput)
+}
+
+// ElastigroupItfLoadBalancerArrayInput is an input type that accepts ElastigroupItfLoadBalancerArray and ElastigroupItfLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `ElastigroupItfLoadBalancerArrayInput` via:
+//
+//          ElastigroupItfLoadBalancerArray{ ElastigroupItfLoadBalancerArgs{...} }
+type ElastigroupItfLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupItfLoadBalancerArrayOutput() ElastigroupItfLoadBalancerArrayOutput
+	ToElastigroupItfLoadBalancerArrayOutputWithContext(context.Context) ElastigroupItfLoadBalancerArrayOutput
+}
+
+type ElastigroupItfLoadBalancerArray []ElastigroupItfLoadBalancerInput
+
+func (ElastigroupItfLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItfLoadBalancer)(nil)).Elem()
+}
+
+func (i ElastigroupItfLoadBalancerArray) ToElastigroupItfLoadBalancerArrayOutput() ElastigroupItfLoadBalancerArrayOutput {
+	return i.ToElastigroupItfLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfLoadBalancerArray) ToElastigroupItfLoadBalancerArrayOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfLoadBalancerArrayOutput)
+}
+
+type ElastigroupItfLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfLoadBalancer)(nil)).Elem()
+}
+
+func (o ElastigroupItfLoadBalancerOutput) ToElastigroupItfLoadBalancerOutput() ElastigroupItfLoadBalancerOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerOutput) ToElastigroupItfLoadBalancerOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerOutput) ListenerRules() ElastigroupItfLoadBalancerListenerRuleArrayOutput {
+	return o.ApplyT(func(v ElastigroupItfLoadBalancer) []ElastigroupItfLoadBalancerListenerRule { return v.ListenerRules }).(ElastigroupItfLoadBalancerListenerRuleArrayOutput)
+}
+
+func (o ElastigroupItfLoadBalancerOutput) LoadBalancerArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupItfLoadBalancer) string { return v.LoadBalancerArn }).(pulumi.StringOutput)
+}
+
+type ElastigroupItfLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItfLoadBalancer)(nil)).Elem()
+}
+
+func (o ElastigroupItfLoadBalancerArrayOutput) ToElastigroupItfLoadBalancerArrayOutput() ElastigroupItfLoadBalancerArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerArrayOutput) ToElastigroupItfLoadBalancerArrayOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerArrayOutput) Index(i pulumi.IntInput) ElastigroupItfLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupItfLoadBalancer {
+		return vs[0].([]ElastigroupItfLoadBalancer)[vs[1].(int)]
+	}).(ElastigroupItfLoadBalancerOutput)
+}
+
+type ElastigroupItfLoadBalancerListenerRule struct {
+	RuleArn string `pulumi:"ruleArn"`
+}
+
+// ElastigroupItfLoadBalancerListenerRuleInput is an input type that accepts ElastigroupItfLoadBalancerListenerRuleArgs and ElastigroupItfLoadBalancerListenerRuleOutput values.
+// You can construct a concrete instance of `ElastigroupItfLoadBalancerListenerRuleInput` via:
+//
+//          ElastigroupItfLoadBalancerListenerRuleArgs{...}
+type ElastigroupItfLoadBalancerListenerRuleInput interface {
+	pulumi.Input
+
+	ToElastigroupItfLoadBalancerListenerRuleOutput() ElastigroupItfLoadBalancerListenerRuleOutput
+	ToElastigroupItfLoadBalancerListenerRuleOutputWithContext(context.Context) ElastigroupItfLoadBalancerListenerRuleOutput
+}
+
+type ElastigroupItfLoadBalancerListenerRuleArgs struct {
+	RuleArn pulumi.StringInput `pulumi:"ruleArn"`
+}
+
+func (ElastigroupItfLoadBalancerListenerRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfLoadBalancerListenerRule)(nil)).Elem()
+}
+
+func (i ElastigroupItfLoadBalancerListenerRuleArgs) ToElastigroupItfLoadBalancerListenerRuleOutput() ElastigroupItfLoadBalancerListenerRuleOutput {
+	return i.ToElastigroupItfLoadBalancerListenerRuleOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfLoadBalancerListenerRuleArgs) ToElastigroupItfLoadBalancerListenerRuleOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerListenerRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfLoadBalancerListenerRuleOutput)
+}
+
+// ElastigroupItfLoadBalancerListenerRuleArrayInput is an input type that accepts ElastigroupItfLoadBalancerListenerRuleArray and ElastigroupItfLoadBalancerListenerRuleArrayOutput values.
+// You can construct a concrete instance of `ElastigroupItfLoadBalancerListenerRuleArrayInput` via:
+//
+//          ElastigroupItfLoadBalancerListenerRuleArray{ ElastigroupItfLoadBalancerListenerRuleArgs{...} }
+type ElastigroupItfLoadBalancerListenerRuleArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupItfLoadBalancerListenerRuleArrayOutput() ElastigroupItfLoadBalancerListenerRuleArrayOutput
+	ToElastigroupItfLoadBalancerListenerRuleArrayOutputWithContext(context.Context) ElastigroupItfLoadBalancerListenerRuleArrayOutput
+}
+
+type ElastigroupItfLoadBalancerListenerRuleArray []ElastigroupItfLoadBalancerListenerRuleInput
+
+func (ElastigroupItfLoadBalancerListenerRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItfLoadBalancerListenerRule)(nil)).Elem()
+}
+
+func (i ElastigroupItfLoadBalancerListenerRuleArray) ToElastigroupItfLoadBalancerListenerRuleArrayOutput() ElastigroupItfLoadBalancerListenerRuleArrayOutput {
+	return i.ToElastigroupItfLoadBalancerListenerRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfLoadBalancerListenerRuleArray) ToElastigroupItfLoadBalancerListenerRuleArrayOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerListenerRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfLoadBalancerListenerRuleArrayOutput)
+}
+
+type ElastigroupItfLoadBalancerListenerRuleOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfLoadBalancerListenerRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfLoadBalancerListenerRule)(nil)).Elem()
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleOutput) ToElastigroupItfLoadBalancerListenerRuleOutput() ElastigroupItfLoadBalancerListenerRuleOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleOutput) ToElastigroupItfLoadBalancerListenerRuleOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerListenerRuleOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleOutput) RuleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupItfLoadBalancerListenerRule) string { return v.RuleArn }).(pulumi.StringOutput)
+}
+
+type ElastigroupItfLoadBalancerListenerRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfLoadBalancerListenerRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItfLoadBalancerListenerRule)(nil)).Elem()
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleArrayOutput) ToElastigroupItfLoadBalancerListenerRuleArrayOutput() ElastigroupItfLoadBalancerListenerRuleArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleArrayOutput) ToElastigroupItfLoadBalancerListenerRuleArrayOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerListenerRuleArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleArrayOutput) Index(i pulumi.IntInput) ElastigroupItfLoadBalancerListenerRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupItfLoadBalancerListenerRule {
+		return vs[0].([]ElastigroupItfLoadBalancerListenerRule)[vs[1].(int)]
+	}).(ElastigroupItfLoadBalancerListenerRuleOutput)
+}
+
+type ElastigroupItfTargetGroupConfig struct {
+	HealthCheckIntervalSeconds *int                                     `pulumi:"healthCheckIntervalSeconds"`
+	HealthCheckPath            string                                   `pulumi:"healthCheckPath"`
+	HealthCheckPort            *string                                  `pulumi:"healthCheckPort"`
+	HealthCheckProtocol        *string                                  `pulumi:"healthCheckProtocol"`
+	HealthCheckTimeoutSeconds  *int                                     `pulumi:"healthCheckTimeoutSeconds"`
+	HealthyThresholdCount      *int                                     `pulumi:"healthyThresholdCount"`
+	Matchers                   []ElastigroupItfTargetGroupConfigMatcher `pulumi:"matchers"`
+	Port                       int                                      `pulumi:"port"`
+	Protocol                   string                                   `pulumi:"protocol"`
+	ProtocolVersion            *string                                  `pulumi:"protocolVersion"`
+	// A key/value mapping of tags to assign to the resource.
+	Tags                    []ElastigroupItfTargetGroupConfigTag `pulumi:"tags"`
+	UnhealthyThresholdCount *int                                 `pulumi:"unhealthyThresholdCount"`
+	VpcId                   string                               `pulumi:"vpcId"`
+}
+
+// ElastigroupItfTargetGroupConfigInput is an input type that accepts ElastigroupItfTargetGroupConfigArgs and ElastigroupItfTargetGroupConfigOutput values.
+// You can construct a concrete instance of `ElastigroupItfTargetGroupConfigInput` via:
+//
+//          ElastigroupItfTargetGroupConfigArgs{...}
+type ElastigroupItfTargetGroupConfigInput interface {
+	pulumi.Input
+
+	ToElastigroupItfTargetGroupConfigOutput() ElastigroupItfTargetGroupConfigOutput
+	ToElastigroupItfTargetGroupConfigOutputWithContext(context.Context) ElastigroupItfTargetGroupConfigOutput
+}
+
+type ElastigroupItfTargetGroupConfigArgs struct {
+	HealthCheckIntervalSeconds pulumi.IntPtrInput                               `pulumi:"healthCheckIntervalSeconds"`
+	HealthCheckPath            pulumi.StringInput                               `pulumi:"healthCheckPath"`
+	HealthCheckPort            pulumi.StringPtrInput                            `pulumi:"healthCheckPort"`
+	HealthCheckProtocol        pulumi.StringPtrInput                            `pulumi:"healthCheckProtocol"`
+	HealthCheckTimeoutSeconds  pulumi.IntPtrInput                               `pulumi:"healthCheckTimeoutSeconds"`
+	HealthyThresholdCount      pulumi.IntPtrInput                               `pulumi:"healthyThresholdCount"`
+	Matchers                   ElastigroupItfTargetGroupConfigMatcherArrayInput `pulumi:"matchers"`
+	Port                       pulumi.IntInput                                  `pulumi:"port"`
+	Protocol                   pulumi.StringInput                               `pulumi:"protocol"`
+	ProtocolVersion            pulumi.StringPtrInput                            `pulumi:"protocolVersion"`
+	// A key/value mapping of tags to assign to the resource.
+	Tags                    ElastigroupItfTargetGroupConfigTagArrayInput `pulumi:"tags"`
+	UnhealthyThresholdCount pulumi.IntPtrInput                           `pulumi:"unhealthyThresholdCount"`
+	VpcId                   pulumi.StringInput                           `pulumi:"vpcId"`
+}
+
+func (ElastigroupItfTargetGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfTargetGroupConfig)(nil)).Elem()
+}
+
+func (i ElastigroupItfTargetGroupConfigArgs) ToElastigroupItfTargetGroupConfigOutput() ElastigroupItfTargetGroupConfigOutput {
+	return i.ToElastigroupItfTargetGroupConfigOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfTargetGroupConfigArgs) ToElastigroupItfTargetGroupConfigOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfTargetGroupConfigOutput)
+}
+
+// ElastigroupItfTargetGroupConfigArrayInput is an input type that accepts ElastigroupItfTargetGroupConfigArray and ElastigroupItfTargetGroupConfigArrayOutput values.
+// You can construct a concrete instance of `ElastigroupItfTargetGroupConfigArrayInput` via:
+//
+//          ElastigroupItfTargetGroupConfigArray{ ElastigroupItfTargetGroupConfigArgs{...} }
+type ElastigroupItfTargetGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupItfTargetGroupConfigArrayOutput() ElastigroupItfTargetGroupConfigArrayOutput
+	ToElastigroupItfTargetGroupConfigArrayOutputWithContext(context.Context) ElastigroupItfTargetGroupConfigArrayOutput
+}
+
+type ElastigroupItfTargetGroupConfigArray []ElastigroupItfTargetGroupConfigInput
+
+func (ElastigroupItfTargetGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItfTargetGroupConfig)(nil)).Elem()
+}
+
+func (i ElastigroupItfTargetGroupConfigArray) ToElastigroupItfTargetGroupConfigArrayOutput() ElastigroupItfTargetGroupConfigArrayOutput {
+	return i.ToElastigroupItfTargetGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfTargetGroupConfigArray) ToElastigroupItfTargetGroupConfigArrayOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfTargetGroupConfigArrayOutput)
+}
+
+type ElastigroupItfTargetGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfTargetGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfTargetGroupConfig)(nil)).Elem()
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) ToElastigroupItfTargetGroupConfigOutput() ElastigroupItfTargetGroupConfigOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) ToElastigroupItfTargetGroupConfigOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) HealthCheckIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) *int { return v.HealthCheckIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) HealthCheckPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) string { return v.HealthCheckPath }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) HealthCheckPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) *string { return v.HealthCheckPort }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) *string { return v.HealthCheckProtocol }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) HealthCheckTimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) *int { return v.HealthCheckTimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) HealthyThresholdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) *int { return v.HealthyThresholdCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) Matchers() ElastigroupItfTargetGroupConfigMatcherArrayOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) []ElastigroupItfTargetGroupConfigMatcher { return v.Matchers }).(ElastigroupItfTargetGroupConfigMatcherArrayOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) ProtocolVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) *string { return v.ProtocolVersion }).(pulumi.StringPtrOutput)
+}
+
+// A key/value mapping of tags to assign to the resource.
+func (o ElastigroupItfTargetGroupConfigOutput) Tags() ElastigroupItfTargetGroupConfigTagArrayOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) []ElastigroupItfTargetGroupConfigTag { return v.Tags }).(ElastigroupItfTargetGroupConfigTagArrayOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) UnhealthyThresholdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) *int { return v.UnhealthyThresholdCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfig) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type ElastigroupItfTargetGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfTargetGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItfTargetGroupConfig)(nil)).Elem()
+}
+
+func (o ElastigroupItfTargetGroupConfigArrayOutput) ToElastigroupItfTargetGroupConfigArrayOutput() ElastigroupItfTargetGroupConfigArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigArrayOutput) ToElastigroupItfTargetGroupConfigArrayOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigArrayOutput) Index(i pulumi.IntInput) ElastigroupItfTargetGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupItfTargetGroupConfig {
+		return vs[0].([]ElastigroupItfTargetGroupConfig)[vs[1].(int)]
+	}).(ElastigroupItfTargetGroupConfigOutput)
+}
+
+type ElastigroupItfTargetGroupConfigMatcher struct {
+	GrpcCode *string `pulumi:"grpcCode"`
+	HttpCode *string `pulumi:"httpCode"`
+}
+
+// ElastigroupItfTargetGroupConfigMatcherInput is an input type that accepts ElastigroupItfTargetGroupConfigMatcherArgs and ElastigroupItfTargetGroupConfigMatcherOutput values.
+// You can construct a concrete instance of `ElastigroupItfTargetGroupConfigMatcherInput` via:
+//
+//          ElastigroupItfTargetGroupConfigMatcherArgs{...}
+type ElastigroupItfTargetGroupConfigMatcherInput interface {
+	pulumi.Input
+
+	ToElastigroupItfTargetGroupConfigMatcherOutput() ElastigroupItfTargetGroupConfigMatcherOutput
+	ToElastigroupItfTargetGroupConfigMatcherOutputWithContext(context.Context) ElastigroupItfTargetGroupConfigMatcherOutput
+}
+
+type ElastigroupItfTargetGroupConfigMatcherArgs struct {
+	GrpcCode pulumi.StringPtrInput `pulumi:"grpcCode"`
+	HttpCode pulumi.StringPtrInput `pulumi:"httpCode"`
+}
+
+func (ElastigroupItfTargetGroupConfigMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfTargetGroupConfigMatcher)(nil)).Elem()
+}
+
+func (i ElastigroupItfTargetGroupConfigMatcherArgs) ToElastigroupItfTargetGroupConfigMatcherOutput() ElastigroupItfTargetGroupConfigMatcherOutput {
+	return i.ToElastigroupItfTargetGroupConfigMatcherOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfTargetGroupConfigMatcherArgs) ToElastigroupItfTargetGroupConfigMatcherOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfTargetGroupConfigMatcherOutput)
+}
+
+// ElastigroupItfTargetGroupConfigMatcherArrayInput is an input type that accepts ElastigroupItfTargetGroupConfigMatcherArray and ElastigroupItfTargetGroupConfigMatcherArrayOutput values.
+// You can construct a concrete instance of `ElastigroupItfTargetGroupConfigMatcherArrayInput` via:
+//
+//          ElastigroupItfTargetGroupConfigMatcherArray{ ElastigroupItfTargetGroupConfigMatcherArgs{...} }
+type ElastigroupItfTargetGroupConfigMatcherArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupItfTargetGroupConfigMatcherArrayOutput() ElastigroupItfTargetGroupConfigMatcherArrayOutput
+	ToElastigroupItfTargetGroupConfigMatcherArrayOutputWithContext(context.Context) ElastigroupItfTargetGroupConfigMatcherArrayOutput
+}
+
+type ElastigroupItfTargetGroupConfigMatcherArray []ElastigroupItfTargetGroupConfigMatcherInput
+
+func (ElastigroupItfTargetGroupConfigMatcherArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItfTargetGroupConfigMatcher)(nil)).Elem()
+}
+
+func (i ElastigroupItfTargetGroupConfigMatcherArray) ToElastigroupItfTargetGroupConfigMatcherArrayOutput() ElastigroupItfTargetGroupConfigMatcherArrayOutput {
+	return i.ToElastigroupItfTargetGroupConfigMatcherArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfTargetGroupConfigMatcherArray) ToElastigroupItfTargetGroupConfigMatcherArrayOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigMatcherArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfTargetGroupConfigMatcherArrayOutput)
+}
+
+type ElastigroupItfTargetGroupConfigMatcherOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfTargetGroupConfigMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfTargetGroupConfigMatcher)(nil)).Elem()
+}
+
+func (o ElastigroupItfTargetGroupConfigMatcherOutput) ToElastigroupItfTargetGroupConfigMatcherOutput() ElastigroupItfTargetGroupConfigMatcherOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigMatcherOutput) ToElastigroupItfTargetGroupConfigMatcherOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigMatcherOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigMatcherOutput) GrpcCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfigMatcher) *string { return v.GrpcCode }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigMatcherOutput) HttpCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfigMatcher) *string { return v.HttpCode }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupItfTargetGroupConfigMatcherArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfTargetGroupConfigMatcherArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItfTargetGroupConfigMatcher)(nil)).Elem()
+}
+
+func (o ElastigroupItfTargetGroupConfigMatcherArrayOutput) ToElastigroupItfTargetGroupConfigMatcherArrayOutput() ElastigroupItfTargetGroupConfigMatcherArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigMatcherArrayOutput) ToElastigroupItfTargetGroupConfigMatcherArrayOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigMatcherArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigMatcherArrayOutput) Index(i pulumi.IntInput) ElastigroupItfTargetGroupConfigMatcherOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupItfTargetGroupConfigMatcher {
+		return vs[0].([]ElastigroupItfTargetGroupConfigMatcher)[vs[1].(int)]
+	}).(ElastigroupItfTargetGroupConfigMatcherOutput)
+}
+
+type ElastigroupItfTargetGroupConfigTag struct {
+	TagKey   string  `pulumi:"tagKey"`
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// ElastigroupItfTargetGroupConfigTagInput is an input type that accepts ElastigroupItfTargetGroupConfigTagArgs and ElastigroupItfTargetGroupConfigTagOutput values.
+// You can construct a concrete instance of `ElastigroupItfTargetGroupConfigTagInput` via:
+//
+//          ElastigroupItfTargetGroupConfigTagArgs{...}
+type ElastigroupItfTargetGroupConfigTagInput interface {
+	pulumi.Input
+
+	ToElastigroupItfTargetGroupConfigTagOutput() ElastigroupItfTargetGroupConfigTagOutput
+	ToElastigroupItfTargetGroupConfigTagOutputWithContext(context.Context) ElastigroupItfTargetGroupConfigTagOutput
+}
+
+type ElastigroupItfTargetGroupConfigTagArgs struct {
+	TagKey   pulumi.StringInput    `pulumi:"tagKey"`
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (ElastigroupItfTargetGroupConfigTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfTargetGroupConfigTag)(nil)).Elem()
+}
+
+func (i ElastigroupItfTargetGroupConfigTagArgs) ToElastigroupItfTargetGroupConfigTagOutput() ElastigroupItfTargetGroupConfigTagOutput {
+	return i.ToElastigroupItfTargetGroupConfigTagOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfTargetGroupConfigTagArgs) ToElastigroupItfTargetGroupConfigTagOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfTargetGroupConfigTagOutput)
+}
+
+// ElastigroupItfTargetGroupConfigTagArrayInput is an input type that accepts ElastigroupItfTargetGroupConfigTagArray and ElastigroupItfTargetGroupConfigTagArrayOutput values.
+// You can construct a concrete instance of `ElastigroupItfTargetGroupConfigTagArrayInput` via:
+//
+//          ElastigroupItfTargetGroupConfigTagArray{ ElastigroupItfTargetGroupConfigTagArgs{...} }
+type ElastigroupItfTargetGroupConfigTagArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupItfTargetGroupConfigTagArrayOutput() ElastigroupItfTargetGroupConfigTagArrayOutput
+	ToElastigroupItfTargetGroupConfigTagArrayOutputWithContext(context.Context) ElastigroupItfTargetGroupConfigTagArrayOutput
+}
+
+type ElastigroupItfTargetGroupConfigTagArray []ElastigroupItfTargetGroupConfigTagInput
+
+func (ElastigroupItfTargetGroupConfigTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItfTargetGroupConfigTag)(nil)).Elem()
+}
+
+func (i ElastigroupItfTargetGroupConfigTagArray) ToElastigroupItfTargetGroupConfigTagArrayOutput() ElastigroupItfTargetGroupConfigTagArrayOutput {
+	return i.ToElastigroupItfTargetGroupConfigTagArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfTargetGroupConfigTagArray) ToElastigroupItfTargetGroupConfigTagArrayOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfTargetGroupConfigTagArrayOutput)
+}
+
+type ElastigroupItfTargetGroupConfigTagOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfTargetGroupConfigTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfTargetGroupConfigTag)(nil)).Elem()
+}
+
+func (o ElastigroupItfTargetGroupConfigTagOutput) ToElastigroupItfTargetGroupConfigTagOutput() ElastigroupItfTargetGroupConfigTagOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigTagOutput) ToElastigroupItfTargetGroupConfigTagOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigTagOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigTagOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfigTag) string { return v.TagKey }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupItfTargetGroupConfigTagOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfTargetGroupConfigTag) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type ElastigroupItfTargetGroupConfigTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfTargetGroupConfigTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupItfTargetGroupConfigTag)(nil)).Elem()
+}
+
+func (o ElastigroupItfTargetGroupConfigTagArrayOutput) ToElastigroupItfTargetGroupConfigTagArrayOutput() ElastigroupItfTargetGroupConfigTagArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigTagArrayOutput) ToElastigroupItfTargetGroupConfigTagArrayOutputWithContext(ctx context.Context) ElastigroupItfTargetGroupConfigTagArrayOutput {
+	return o
+}
+
+func (o ElastigroupItfTargetGroupConfigTagArrayOutput) Index(i pulumi.IntInput) ElastigroupItfTargetGroupConfigTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupItfTargetGroupConfigTag {
+		return vs[0].([]ElastigroupItfTargetGroupConfigTag)[vs[1].(int)]
+	}).(ElastigroupItfTargetGroupConfigTagOutput)
+}
+
 type ElastigroupMetadataOptions struct {
 	// The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
 	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
@@ -16392,7 +17073,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerR
 }
 
 type OceanLaunchSpecCreateOptions struct {
-	// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+	// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
 	InitialNodes int `pulumi:"initialNodes"`
 }
 
@@ -16408,7 +17089,7 @@ type OceanLaunchSpecCreateOptionsInput interface {
 }
 
 type OceanLaunchSpecCreateOptionsArgs struct {
-	// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+	// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
 	InitialNodes pulumi.IntInput `pulumi:"initialNodes"`
 }
 
@@ -16489,7 +17170,7 @@ func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsPtrOut
 	}).(OceanLaunchSpecCreateOptionsPtrOutput)
 }
 
-// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
 func (o OceanLaunchSpecCreateOptionsOutput) InitialNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecCreateOptions) int { return v.InitialNodes }).(pulumi.IntOutput)
 }
@@ -16512,7 +17193,7 @@ func (o OceanLaunchSpecCreateOptionsPtrOutput) Elem() OceanLaunchSpecCreateOptio
 	return o.ApplyT(func(v *OceanLaunchSpecCreateOptions) OceanLaunchSpecCreateOptions { return *v }).(OceanLaunchSpecCreateOptionsOutput)
 }
 
-// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
 func (o OceanLaunchSpecCreateOptionsPtrOutput) InitialNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecCreateOptions) *int {
 		if v == nil {
@@ -16520,6 +17201,137 @@ func (o OceanLaunchSpecCreateOptionsPtrOutput) InitialNodes() pulumi.IntPtrOutpu
 		}
 		return &v.InitialNodes
 	}).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecDeleteOptions struct {
+	// When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+	ForceDelete bool `pulumi:"forceDelete"`
+}
+
+// OceanLaunchSpecDeleteOptionsInput is an input type that accepts OceanLaunchSpecDeleteOptionsArgs and OceanLaunchSpecDeleteOptionsOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecDeleteOptionsInput` via:
+//
+//          OceanLaunchSpecDeleteOptionsArgs{...}
+type OceanLaunchSpecDeleteOptionsInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecDeleteOptionsOutput() OceanLaunchSpecDeleteOptionsOutput
+	ToOceanLaunchSpecDeleteOptionsOutputWithContext(context.Context) OceanLaunchSpecDeleteOptionsOutput
+}
+
+type OceanLaunchSpecDeleteOptionsArgs struct {
+	// When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+	ForceDelete pulumi.BoolInput `pulumi:"forceDelete"`
+}
+
+func (OceanLaunchSpecDeleteOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecDeleteOptions)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecDeleteOptionsArgs) ToOceanLaunchSpecDeleteOptionsOutput() OceanLaunchSpecDeleteOptionsOutput {
+	return i.ToOceanLaunchSpecDeleteOptionsOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecDeleteOptionsArgs) ToOceanLaunchSpecDeleteOptionsOutputWithContext(ctx context.Context) OceanLaunchSpecDeleteOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecDeleteOptionsOutput)
+}
+
+func (i OceanLaunchSpecDeleteOptionsArgs) ToOceanLaunchSpecDeleteOptionsPtrOutput() OceanLaunchSpecDeleteOptionsPtrOutput {
+	return i.ToOceanLaunchSpecDeleteOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecDeleteOptionsArgs) ToOceanLaunchSpecDeleteOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecDeleteOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecDeleteOptionsOutput).ToOceanLaunchSpecDeleteOptionsPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecDeleteOptionsPtrInput is an input type that accepts OceanLaunchSpecDeleteOptionsArgs, OceanLaunchSpecDeleteOptionsPtr and OceanLaunchSpecDeleteOptionsPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecDeleteOptionsPtrInput` via:
+//
+//          OceanLaunchSpecDeleteOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLaunchSpecDeleteOptionsPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecDeleteOptionsPtrOutput() OceanLaunchSpecDeleteOptionsPtrOutput
+	ToOceanLaunchSpecDeleteOptionsPtrOutputWithContext(context.Context) OceanLaunchSpecDeleteOptionsPtrOutput
+}
+
+type oceanLaunchSpecDeleteOptionsPtrType OceanLaunchSpecDeleteOptionsArgs
+
+func OceanLaunchSpecDeleteOptionsPtr(v *OceanLaunchSpecDeleteOptionsArgs) OceanLaunchSpecDeleteOptionsPtrInput {
+	return (*oceanLaunchSpecDeleteOptionsPtrType)(v)
+}
+
+func (*oceanLaunchSpecDeleteOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecDeleteOptions)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecDeleteOptionsPtrType) ToOceanLaunchSpecDeleteOptionsPtrOutput() OceanLaunchSpecDeleteOptionsPtrOutput {
+	return i.ToOceanLaunchSpecDeleteOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecDeleteOptionsPtrType) ToOceanLaunchSpecDeleteOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecDeleteOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecDeleteOptionsPtrOutput)
+}
+
+type OceanLaunchSpecDeleteOptionsOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecDeleteOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecDeleteOptions)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecDeleteOptionsOutput) ToOceanLaunchSpecDeleteOptionsOutput() OceanLaunchSpecDeleteOptionsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecDeleteOptionsOutput) ToOceanLaunchSpecDeleteOptionsOutputWithContext(ctx context.Context) OceanLaunchSpecDeleteOptionsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecDeleteOptionsOutput) ToOceanLaunchSpecDeleteOptionsPtrOutput() OceanLaunchSpecDeleteOptionsPtrOutput {
+	return o.ToOceanLaunchSpecDeleteOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecDeleteOptionsOutput) ToOceanLaunchSpecDeleteOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecDeleteOptionsPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecDeleteOptions) *OceanLaunchSpecDeleteOptions {
+		return &v
+	}).(OceanLaunchSpecDeleteOptionsPtrOutput)
+}
+
+// When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+func (o OceanLaunchSpecDeleteOptionsOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v OceanLaunchSpecDeleteOptions) bool { return v.ForceDelete }).(pulumi.BoolOutput)
+}
+
+type OceanLaunchSpecDeleteOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecDeleteOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecDeleteOptions)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecDeleteOptionsPtrOutput) ToOceanLaunchSpecDeleteOptionsPtrOutput() OceanLaunchSpecDeleteOptionsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecDeleteOptionsPtrOutput) ToOceanLaunchSpecDeleteOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecDeleteOptionsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecDeleteOptionsPtrOutput) Elem() OceanLaunchSpecDeleteOptionsOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecDeleteOptions) OceanLaunchSpecDeleteOptions { return *v }).(OceanLaunchSpecDeleteOptionsOutput)
+}
+
+// When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+func (o OceanLaunchSpecDeleteOptionsPtrOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecDeleteOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ForceDelete
+	}).(pulumi.BoolPtrOutput)
 }
 
 type OceanLaunchSpecElasticIpPool struct {
@@ -17290,6 +18102,273 @@ func (o OceanLaunchSpecTaintArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 	}).(OceanLaunchSpecTaintOutput)
 }
 
+type OceanLaunchSpecUpdatePolicy struct {
+	RollConfig *OceanLaunchSpecUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	ShouldRoll bool                                   `pulumi:"shouldRoll"`
+}
+
+// OceanLaunchSpecUpdatePolicyInput is an input type that accepts OceanLaunchSpecUpdatePolicyArgs and OceanLaunchSpecUpdatePolicyOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyInput` via:
+//
+//          OceanLaunchSpecUpdatePolicyArgs{...}
+type OceanLaunchSpecUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecUpdatePolicyOutput() OceanLaunchSpecUpdatePolicyOutput
+	ToOceanLaunchSpecUpdatePolicyOutputWithContext(context.Context) OceanLaunchSpecUpdatePolicyOutput
+}
+
+type OceanLaunchSpecUpdatePolicyArgs struct {
+	RollConfig OceanLaunchSpecUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	ShouldRoll pulumi.BoolInput                              `pulumi:"shouldRoll"`
+}
+
+func (OceanLaunchSpecUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecUpdatePolicy)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecUpdatePolicyArgs) ToOceanLaunchSpecUpdatePolicyOutput() OceanLaunchSpecUpdatePolicyOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecUpdatePolicyArgs) ToOceanLaunchSpecUpdatePolicyOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyOutput)
+}
+
+func (i OceanLaunchSpecUpdatePolicyArgs) ToOceanLaunchSpecUpdatePolicyPtrOutput() OceanLaunchSpecUpdatePolicyPtrOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecUpdatePolicyArgs) ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyOutput).ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecUpdatePolicyPtrInput is an input type that accepts OceanLaunchSpecUpdatePolicyArgs, OceanLaunchSpecUpdatePolicyPtr and OceanLaunchSpecUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyPtrInput` via:
+//
+//          OceanLaunchSpecUpdatePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLaunchSpecUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecUpdatePolicyPtrOutput() OceanLaunchSpecUpdatePolicyPtrOutput
+	ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(context.Context) OceanLaunchSpecUpdatePolicyPtrOutput
+}
+
+type oceanLaunchSpecUpdatePolicyPtrType OceanLaunchSpecUpdatePolicyArgs
+
+func OceanLaunchSpecUpdatePolicyPtr(v *OceanLaunchSpecUpdatePolicyArgs) OceanLaunchSpecUpdatePolicyPtrInput {
+	return (*oceanLaunchSpecUpdatePolicyPtrType)(v)
+}
+
+func (*oceanLaunchSpecUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecUpdatePolicy)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecUpdatePolicyPtrType) ToOceanLaunchSpecUpdatePolicyPtrOutput() OceanLaunchSpecUpdatePolicyPtrOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecUpdatePolicyPtrType) ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyPtrOutput)
+}
+
+type OceanLaunchSpecUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecUpdatePolicy)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyOutput() OceanLaunchSpecUpdatePolicyOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyPtrOutput() OceanLaunchSpecUpdatePolicyPtrOutput {
+	return o.ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicy {
+		return &v
+	}).(OceanLaunchSpecUpdatePolicyPtrOutput)
+}
+func (o OceanLaunchSpecUpdatePolicyOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicyRollConfig { return v.RollConfig }).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o OceanLaunchSpecUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+}
+
+type OceanLaunchSpecUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecUpdatePolicy)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecUpdatePolicyPtrOutput) ToOceanLaunchSpecUpdatePolicyPtrOutput() OceanLaunchSpecUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyPtrOutput) ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyPtrOutput) Elem() OceanLaunchSpecUpdatePolicyOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) OceanLaunchSpecUpdatePolicy { return *v }).(OceanLaunchSpecUpdatePolicyOutput)
+}
+
+func (o OceanLaunchSpecUpdatePolicyPtrOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicyRollConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RollConfig
+	}).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o OceanLaunchSpecUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldRoll
+	}).(pulumi.BoolPtrOutput)
+}
+
+type OceanLaunchSpecUpdatePolicyRollConfig struct {
+	BatchSizePercentage int `pulumi:"batchSizePercentage"`
+}
+
+// OceanLaunchSpecUpdatePolicyRollConfigInput is an input type that accepts OceanLaunchSpecUpdatePolicyRollConfigArgs and OceanLaunchSpecUpdatePolicyRollConfigOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyRollConfigInput` via:
+//
+//          OceanLaunchSpecUpdatePolicyRollConfigArgs{...}
+type OceanLaunchSpecUpdatePolicyRollConfigInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecUpdatePolicyRollConfigOutput() OceanLaunchSpecUpdatePolicyRollConfigOutput
+	ToOceanLaunchSpecUpdatePolicyRollConfigOutputWithContext(context.Context) OceanLaunchSpecUpdatePolicyRollConfigOutput
+}
+
+type OceanLaunchSpecUpdatePolicyRollConfigArgs struct {
+	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
+}
+
+func (OceanLaunchSpecUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecUpdatePolicyRollConfigArgs) ToOceanLaunchSpecUpdatePolicyRollConfigOutput() OceanLaunchSpecUpdatePolicyRollConfigOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyRollConfigOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecUpdatePolicyRollConfigArgs) ToOceanLaunchSpecUpdatePolicyRollConfigOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyRollConfigOutput)
+}
+
+func (i OceanLaunchSpecUpdatePolicyRollConfigArgs) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutput() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecUpdatePolicyRollConfigArgs) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyRollConfigOutput).ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecUpdatePolicyRollConfigPtrInput is an input type that accepts OceanLaunchSpecUpdatePolicyRollConfigArgs, OceanLaunchSpecUpdatePolicyRollConfigPtr and OceanLaunchSpecUpdatePolicyRollConfigPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyRollConfigPtrInput` via:
+//
+//          OceanLaunchSpecUpdatePolicyRollConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLaunchSpecUpdatePolicyRollConfigPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutput() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput
+	ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput
+}
+
+type oceanLaunchSpecUpdatePolicyRollConfigPtrType OceanLaunchSpecUpdatePolicyRollConfigArgs
+
+func OceanLaunchSpecUpdatePolicyRollConfigPtr(v *OceanLaunchSpecUpdatePolicyRollConfigArgs) OceanLaunchSpecUpdatePolicyRollConfigPtrInput {
+	return (*oceanLaunchSpecUpdatePolicyRollConfigPtrType)(v)
+}
+
+func (*oceanLaunchSpecUpdatePolicyRollConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecUpdatePolicyRollConfigPtrType) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutput() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecUpdatePolicyRollConfigPtrType) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
+}
+
+type OceanLaunchSpecUpdatePolicyRollConfigOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecUpdatePolicyRollConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePolicyRollConfigOutput() OceanLaunchSpecUpdatePolicyRollConfigOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePolicyRollConfigOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutput() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o.ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) *OceanLaunchSpecUpdatePolicyRollConfig {
+		return &v
+	}).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
+}
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+}
+
+type OceanLaunchSpecUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutput() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) Elem() OceanLaunchSpecUpdatePolicyRollConfigOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) OceanLaunchSpecUpdatePolicyRollConfig { return *v }).(OceanLaunchSpecUpdatePolicyRollConfigOutput)
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
 type OceanLoadBalancer struct {
 	// Required if type is set to `TARGET_GROUP`
 	Arn *string `pulumi:"arn"`
@@ -18035,6 +19114,8 @@ func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 type OceanUpdatePolicyRollConfig struct {
 	// Sets the percentage of the instances to deploy in each batch.
 	BatchSizePercentage int `pulumi:"batchSizePercentage"`
+	// List of virtual node group identifiers to be rolled.
+	LaunchSpecIds []string `pulumi:"launchSpecIds"`
 }
 
 // OceanUpdatePolicyRollConfigInput is an input type that accepts OceanUpdatePolicyRollConfigArgs and OceanUpdatePolicyRollConfigOutput values.
@@ -18051,6 +19132,8 @@ type OceanUpdatePolicyRollConfigInput interface {
 type OceanUpdatePolicyRollConfigArgs struct {
 	// Sets the percentage of the instances to deploy in each batch.
 	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
+	// List of virtual node group identifiers to be rolled.
+	LaunchSpecIds pulumi.StringArrayInput `pulumi:"launchSpecIds"`
 }
 
 func (OceanUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -18135,6 +19218,11 @@ func (o OceanUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutpu
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
+// List of virtual node group identifiers to be rolled.
+func (o OceanUpdatePolicyRollConfigOutput) LaunchSpecIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) []string { return v.LaunchSpecIds }).(pulumi.StringArrayOutput)
+}
+
 type OceanUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
@@ -18161,6 +19249,16 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPt
 		}
 		return &v.BatchSizePercentage
 	}).(pulumi.IntPtrOutput)
+}
+
+// List of virtual node group identifiers to be rolled.
+func (o OceanUpdatePolicyRollConfigPtrOutput) LaunchSpecIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LaunchSpecIds
+	}).(pulumi.StringArrayOutput)
 }
 
 type SuspensionSuspension struct {
@@ -18341,6 +19439,18 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupIntegrationRoute53DomainArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationRoute53DomainRecordSetOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationRoute53DomainRecordSetArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfLoadBalancerOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfLoadBalancerListenerRuleOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfLoadBalancerListenerRuleArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigMatcherOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigMatcherArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigTagOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigTagArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupMetadataOptionsOutput{})
 	pulumi.RegisterOutputType(ElastigroupMetadataOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupMultaiTargetSetOutput{})
@@ -18475,6 +19585,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecDeleteOptionsOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecDeleteOptionsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolTagSelectorOutput{})
@@ -18489,6 +19601,10 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecTagArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTaintOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTaintArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecUpdatePolicyPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecUpdatePolicyRollConfigOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput{})
 	pulumi.RegisterOutputType(OceanLoadBalancerOutput{})
 	pulumi.RegisterOutputType(OceanLoadBalancerArrayOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskOutput{})

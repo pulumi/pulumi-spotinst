@@ -17,9 +17,12 @@ namespace Pulumi.SpotInst.Outputs
         /// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
         /// </summary>
         public readonly int? DrainingTimeout;
+        /// <summary>
+        /// -
+        /// </summary>
         public readonly bool? FallbackToOnDemand;
         /// <summary>
-        /// Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
+        /// Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
         /// </summary>
         public readonly int? OdCount;
         /// <summary>

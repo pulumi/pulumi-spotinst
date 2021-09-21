@@ -53,6 +53,7 @@ class ElastigroupArgs:
                  integration_nomad: Optional[pulumi.Input['ElastigroupIntegrationNomadArgs']] = None,
                  integration_rancher: Optional[pulumi.Input['ElastigroupIntegrationRancherArgs']] = None,
                  integration_route53: Optional[pulumi.Input['ElastigroupIntegrationRoute53Args']] = None,
+                 itfs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfArgs']]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -233,6 +234,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "integration_rancher", integration_rancher)
         if integration_route53 is not None:
             pulumi.set(__self__, "integration_route53", integration_route53)
+        if itfs is not None:
+            pulumi.set(__self__, "itfs", itfs)
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if lifetime_period is not None:
@@ -763,6 +766,15 @@ class ElastigroupArgs:
         pulumi.set(self, "integration_route53", value)
 
     @property
+    @pulumi.getter
+    def itfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfArgs']]]]:
+        return pulumi.get(self, "itfs")
+
+    @itfs.setter
+    def itfs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfArgs']]]]):
+        pulumi.set(self, "itfs", value)
+
+    @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1236,6 +1248,7 @@ class _ElastigroupState:
                  integration_nomad: Optional[pulumi.Input['ElastigroupIntegrationNomadArgs']] = None,
                  integration_rancher: Optional[pulumi.Input['ElastigroupIntegrationRancherArgs']] = None,
                  integration_route53: Optional[pulumi.Input['ElastigroupIntegrationRoute53Args']] = None,
+                 itfs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfArgs']]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -1419,6 +1432,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "integration_rancher", integration_rancher)
         if integration_route53 is not None:
             pulumi.set(__self__, "integration_route53", integration_route53)
+        if itfs is not None:
+            pulumi.set(__self__, "itfs", itfs)
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if lifetime_period is not None:
@@ -1916,6 +1931,15 @@ class _ElastigroupState:
     @integration_route53.setter
     def integration_route53(self, value: Optional[pulumi.Input['ElastigroupIntegrationRoute53Args']]):
         pulumi.set(self, "integration_route53", value)
+
+    @property
+    @pulumi.getter
+    def itfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfArgs']]]]:
+        return pulumi.get(self, "itfs")
+
+    @itfs.setter
+    def itfs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfArgs']]]]):
+        pulumi.set(self, "itfs", value)
 
     @property
     @pulumi.getter(name="keyName")
@@ -2430,6 +2454,7 @@ class Elastigroup(pulumi.CustomResource):
                  integration_nomad: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']]] = None,
                  integration_rancher: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']]] = None,
                  integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
+                 itfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupItfArgs']]]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -2606,6 +2631,7 @@ class Elastigroup(pulumi.CustomResource):
                  integration_nomad: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']]] = None,
                  integration_rancher: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']]] = None,
                  integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
+                 itfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupItfArgs']]]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
@@ -2701,6 +2727,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["integration_nomad"] = integration_nomad
             __props__.__dict__["integration_rancher"] = integration_rancher
             __props__.__dict__["integration_route53"] = integration_route53
+            __props__.__dict__["itfs"] = itfs
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["lifetime_period"] = lifetime_period
             __props__.__dict__["max_size"] = max_size
@@ -2794,6 +2821,7 @@ class Elastigroup(pulumi.CustomResource):
             integration_nomad: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']]] = None,
             integration_rancher: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']]] = None,
             integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
+            itfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupItfArgs']]]]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             lifetime_period: Optional[pulumi.Input[str]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
@@ -2951,6 +2979,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["integration_nomad"] = integration_nomad
         __props__.__dict__["integration_rancher"] = integration_rancher
         __props__.__dict__["integration_route53"] = integration_route53
+        __props__.__dict__["itfs"] = itfs
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["lifetime_period"] = lifetime_period
         __props__.__dict__["max_size"] = max_size
@@ -3267,6 +3296,11 @@ class Elastigroup(pulumi.CustomResource):
         Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         """
         return pulumi.get(self, "integration_route53")
+
+    @property
+    @pulumi.getter
+    def itfs(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupItf']]]:
+        return pulumi.get(self, "itfs")
 
     @property
     @pulumi.getter(name="keyName")

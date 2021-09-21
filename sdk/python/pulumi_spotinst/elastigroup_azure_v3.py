@@ -22,6 +22,7 @@ class ElastigroupAzureV3Args:
                  resource_group_name: pulumi.Input[str],
                  spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  strategy: pulumi.Input['ElastigroupAzureV3StrategyArgs'],
+                 custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
                  login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
@@ -38,6 +39,7 @@ class ElastigroupAzureV3Args:
                }
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         :param pulumi.Input['ElastigroupAzureV3StrategyArgs'] strategy: Describes the deployment strategy.
+        :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]] images: Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
         :param pulumi.Input['ElastigroupAzureV3LoginArgs'] login: Describes the login configuration.
@@ -52,6 +54,8 @@ class ElastigroupAzureV3Args:
         pulumi.set(__self__, "resource_group_name", resource_group_name)
         pulumi.set(__self__, "spot_sizes", spot_sizes)
         pulumi.set(__self__, "strategy", strategy)
+        if custom_data is not None:
+            pulumi.set(__self__, "custom_data", custom_data)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
         if images is not None:
@@ -151,6 +155,18 @@ class ElastigroupAzureV3Args:
         pulumi.set(self, "strategy", value)
 
     @property
+    @pulumi.getter(name="customData")
+    def custom_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom init script file or text in Base64 encoded format.
+        """
+        return pulumi.get(self, "custom_data")
+
+    @custom_data.setter
+    def custom_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_data", value)
+
+    @property
     @pulumi.getter(name="desiredCapacity")
     def desired_capacity(self) -> Optional[pulumi.Input[int]]:
         """
@@ -226,6 +242,7 @@ class ElastigroupAzureV3Args:
 @pulumi.input_type
 class _ElastigroupAzureV3State:
     def __init__(__self__, *,
+                 custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
                  login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
@@ -241,6 +258,7 @@ class _ElastigroupAzureV3State:
                  strategy: Optional[pulumi.Input['ElastigroupAzureV3StrategyArgs']] = None):
         """
         Input properties used for looking up and filtering ElastigroupAzureV3 resources.
+        :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]] images: Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
         :param pulumi.Input['ElastigroupAzureV3LoginArgs'] login: Describes the login configuration.
@@ -256,6 +274,8 @@ class _ElastigroupAzureV3State:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         :param pulumi.Input['ElastigroupAzureV3StrategyArgs'] strategy: Describes the deployment strategy.
         """
+        if custom_data is not None:
+            pulumi.set(__self__, "custom_data", custom_data)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
         if images is not None:
@@ -282,6 +302,18 @@ class _ElastigroupAzureV3State:
             pulumi.set(__self__, "spot_sizes", spot_sizes)
         if strategy is not None:
             pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="customData")
+    def custom_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom init script file or text in Base64 encoded format.
+        """
+        return pulumi.get(self, "custom_data")
+
+    @custom_data.setter
+    def custom_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_data", value)
 
     @property
     @pulumi.getter(name="desiredCapacity")
@@ -446,6 +478,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]]] = None,
                  login: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']]] = None,
@@ -470,6 +503,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         test_azure_group = spotinst.ElastigroupAzureV3("testAzureGroup",
+            custom_data="IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=",
             desired_capacity=1,
             images=[spotinst.ElastigroupAzureV3ImageArgs(
                 marketplaces=[spotinst.ElastigroupAzureV3ImageMarketplaceArgs(
@@ -523,6 +557,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]] images: Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
         :param pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']] login: Describes the login configuration.
@@ -554,6 +589,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         test_azure_group = spotinst.ElastigroupAzureV3("testAzureGroup",
+            custom_data="IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=",
             desired_capacity=1,
             images=[spotinst.ElastigroupAzureV3ImageArgs(
                 marketplaces=[spotinst.ElastigroupAzureV3ImageMarketplaceArgs(
@@ -620,6 +656,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]]] = None,
                  login: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']]] = None,
@@ -645,6 +682,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ElastigroupAzureV3Args.__new__(ElastigroupAzureV3Args)
 
+            __props__.__dict__["custom_data"] = custom_data
             __props__.__dict__["desired_capacity"] = desired_capacity
             __props__.__dict__["images"] = images
             __props__.__dict__["login"] = login
@@ -682,6 +720,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            custom_data: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
             images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]]] = None,
             login: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']]] = None,
@@ -702,6 +741,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]] images: Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
         :param pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']] login: Describes the login configuration.
@@ -721,6 +761,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
 
         __props__ = _ElastigroupAzureV3State.__new__(_ElastigroupAzureV3State)
 
+        __props__.__dict__["custom_data"] = custom_data
         __props__.__dict__["desired_capacity"] = desired_capacity
         __props__.__dict__["images"] = images
         __props__.__dict__["login"] = login
@@ -735,6 +776,14 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         __props__.__dict__["spot_sizes"] = spot_sizes
         __props__.__dict__["strategy"] = strategy
         return ElastigroupAzureV3(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="customData")
+    def custom_data(self) -> pulumi.Output[Optional[str]]:
+        """
+        Custom init script file or text in Base64 encoded format.
+        """
+        return pulumi.get(self, "custom_data")
 
     @property
     @pulumi.getter(name="desiredCapacity")

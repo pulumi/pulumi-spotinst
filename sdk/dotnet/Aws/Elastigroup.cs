@@ -218,6 +218,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("integrationRoute53")]
         public Output<Outputs.ElastigroupIntegrationRoute53?> IntegrationRoute53 { get; private set; } = null!;
 
+        [Output("itfs")]
+        public Output<ImmutableArray<Outputs.ElastigroupItf>> Itfs { get; private set; } = null!;
+
         /// <summary>
         /// The key name that should be used for the instance.
         /// </summary>
@@ -732,6 +735,14 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("integrationRoute53")]
         public Input<Inputs.ElastigroupIntegrationRoute53Args>? IntegrationRoute53 { get; set; }
+
+        [Input("itfs")]
+        private InputList<Inputs.ElastigroupItfArgs>? _itfs;
+        public InputList<Inputs.ElastigroupItfArgs> Itfs
+        {
+            get => _itfs ?? (_itfs = new InputList<Inputs.ElastigroupItfArgs>());
+            set => _itfs = value;
+        }
 
         /// <summary>
         /// The key name that should be used for the instance.
@@ -1297,6 +1308,14 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("integrationRoute53")]
         public Input<Inputs.ElastigroupIntegrationRoute53GetArgs>? IntegrationRoute53 { get; set; }
+
+        [Input("itfs")]
+        private InputList<Inputs.ElastigroupItfGetArgs>? _itfs;
+        public InputList<Inputs.ElastigroupItfGetArgs> Itfs
+        {
+            get => _itfs ?? (_itfs = new InputList<Inputs.ElastigroupItfGetArgs>());
+            set => _itfs = value;
+        }
 
         /// <summary>
         /// The key name that should be used for the instance.

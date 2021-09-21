@@ -60,6 +60,10 @@ namespace Pulumi.SpotInst.Aws
     ///             {
     ///                 InitialNodes = 1,
     ///             },
+    ///             DeleteOptions = new SpotInst.Aws.Inputs.OceanLaunchSpecDeleteOptionsArgs
+    ///             {
+    ///                 ForceDelete = true,
+    ///             },
     ///             ElasticIpPools = 
     ///             {
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs
@@ -155,6 +159,24 @@ namespace Pulumi.SpotInst.Aws
     ///     public Output&lt;string&gt; OceanLaunchspecId { get; set; }
     /// }
     /// ```
+    /// ## Update Policy
+    /// 
+    /// * `update_policy` - (Optional)
+    ///     * `should_roll` - (Required) Enables the roll.
+    ///     * `roll_config` - (Required) Holds the roll configuration.
+    ///         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : Pulumi.CustomResource
@@ -179,6 +201,9 @@ namespace Pulumi.SpotInst.Aws
 
         [Output("createOptions")]
         public Output<Outputs.OceanLaunchSpecCreateOptions?> CreateOptions { get; private set; } = null!;
+
+        [Output("deleteOptions")]
+        public Output<Outputs.OceanLaunchSpecDeleteOptions?> DeleteOptions { get; private set; } = null!;
 
         /// <summary>
         /// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
@@ -270,6 +295,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("taints")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecTaint>> Taints { get; private set; } = null!;
 
+        [Output("updatePolicy")]
+        public Output<Outputs.OceanLaunchSpecUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
+
         /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.
         /// </summary>
@@ -354,6 +382,9 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("createOptions")]
         public Input<Inputs.OceanLaunchSpecCreateOptionsArgs>? CreateOptions { get; set; }
+
+        [Input("deleteOptions")]
+        public Input<Inputs.OceanLaunchSpecDeleteOptionsArgs>? DeleteOptions { get; set; }
 
         [Input("elasticIpPools")]
         private InputList<Inputs.OceanLaunchSpecElasticIpPoolArgs>? _elasticIpPools;
@@ -503,6 +534,9 @@ namespace Pulumi.SpotInst.Aws
             set => _taints = value;
         }
 
+        [Input("updatePolicy")]
+        public Input<Inputs.OceanLaunchSpecUpdatePolicyArgs>? UpdatePolicy { get; set; }
+
         /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.
         /// </summary>
@@ -548,6 +582,9 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("createOptions")]
         public Input<Inputs.OceanLaunchSpecCreateOptionsGetArgs>? CreateOptions { get; set; }
+
+        [Input("deleteOptions")]
+        public Input<Inputs.OceanLaunchSpecDeleteOptionsGetArgs>? DeleteOptions { get; set; }
 
         [Input("elasticIpPools")]
         private InputList<Inputs.OceanLaunchSpecElasticIpPoolGetArgs>? _elasticIpPools;
@@ -696,6 +733,9 @@ namespace Pulumi.SpotInst.Aws
             get => _taints ?? (_taints = new InputList<Inputs.OceanLaunchSpecTaintGetArgs>());
             set => _taints = value;
         }
+
+        [Input("updatePolicy")]
+        public Input<Inputs.OceanLaunchSpecUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
 
         /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.

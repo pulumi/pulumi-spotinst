@@ -18,6 +18,18 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
 
+        [Input("launchSpecIds")]
+        private InputList<string>? _launchSpecIds;
+
+        /// <summary>
+        /// List of virtual node group identifiers to be rolled.
+        /// </summary>
+        public InputList<string> LaunchSpecIds
+        {
+            get => _launchSpecIds ?? (_launchSpecIds = new InputList<string>());
+            set => _launchSpecIds = value;
+        }
+
         public OceanUpdatePolicyRollConfigGetArgs()
         {
         }

@@ -22,6 +22,9 @@ namespace Pulumi.SpotInst.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> ApplicationSecurityGroups;
         public readonly bool AssignPublicIp;
+        /// <summary>
+        /// -
+        /// </summary>
         public readonly bool IsPrimary;
         /// <summary>
         /// ID of subnet.

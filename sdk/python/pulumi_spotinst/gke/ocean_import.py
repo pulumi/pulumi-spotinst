@@ -25,6 +25,7 @@ class OceanImportArgs:
                  min_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a OceanImport resource.
@@ -57,6 +58,8 @@ class OceanImportArgs:
             pulumi.set(__self__, "root_volume_type", root_volume_type)
         if scheduled_tasks is not None:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
         if whitelists is not None:
             pulumi.set(__self__, "whitelists", whitelists)
 
@@ -178,6 +181,15 @@ class OceanImportArgs:
         pulumi.set(self, "scheduled_tasks", value)
 
     @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanImportUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -204,6 +216,7 @@ class _OceanImportState:
                  min_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering OceanImport resources.
@@ -240,6 +253,8 @@ class _OceanImportState:
             pulumi.set(__self__, "root_volume_type", root_volume_type)
         if scheduled_tasks is not None:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
         if whitelists is not None:
             pulumi.set(__self__, "whitelists", whitelists)
 
@@ -370,6 +385,15 @@ class _OceanImportState:
         pulumi.set(self, "scheduled_tasks", value)
 
     @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanImportUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -397,6 +421,7 @@ class OceanImport(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanImportUpdatePolicyArgs']]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -447,6 +472,7 @@ class OceanImport(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanImportUpdatePolicyArgs']]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
@@ -474,6 +500,7 @@ class OceanImport(pulumi.CustomResource):
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["root_volume_type"] = root_volume_type
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
+            __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["whitelists"] = whitelists
             __props__.__dict__["cluster_controller_id"] = None
         super(OceanImport, __self__).__init__(
@@ -497,6 +524,7 @@ class OceanImport(pulumi.CustomResource):
             min_size: Optional[pulumi.Input[int]] = None,
             root_volume_type: Optional[pulumi.Input[str]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
+            update_policy: Optional[pulumi.Input[pulumi.InputType['OceanImportUpdatePolicyArgs']]] = None,
             whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanImport':
         """
         Get an existing OceanImport resource's state with the given name, id, and optional extra
@@ -531,6 +559,7 @@ class OceanImport(pulumi.CustomResource):
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["root_volume_type"] = root_volume_type
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
+        __props__.__dict__["update_policy"] = update_policy
         __props__.__dict__["whitelists"] = whitelists
         return OceanImport(resource_name, opts=opts, __props__=__props__)
 
@@ -615,6 +644,11 @@ class OceanImport(pulumi.CustomResource):
         Set scheduling object.
         """
         return pulumi.get(self, "scheduled_tasks")
+
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> pulumi.Output[Optional['outputs.OceanImportUpdatePolicy']]:
+        return pulumi.get(self, "update_policy")
 
     @property
     @pulumi.getter

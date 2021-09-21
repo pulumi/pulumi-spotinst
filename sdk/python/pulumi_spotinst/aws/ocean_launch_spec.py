@@ -20,6 +20,7 @@ class OceanLaunchSpecArgs:
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
                  create_options: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']] = None,
+                 delete_options: Optional[pulumi.Input['OceanLaunchSpecDeleteOptionsArgs']] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,7 @@ class OceanLaunchSpecArgs:
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
                  user_data: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OceanLaunchSpec resource.
@@ -66,6 +68,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
         if create_options is not None:
             pulumi.set(__self__, "create_options", create_options)
+        if delete_options is not None:
+            pulumi.set(__self__, "delete_options", delete_options)
         if elastic_ip_pools is not None:
             pulumi.set(__self__, "elastic_ip_pools", elastic_ip_pools)
         if iam_instance_profile is not None:
@@ -96,6 +100,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
 
@@ -155,6 +161,15 @@ class OceanLaunchSpecArgs:
     @create_options.setter
     def create_options(self, value: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']]):
         pulumi.set(self, "create_options", value)
+
+    @property
+    @pulumi.getter(name="deleteOptions")
+    def delete_options(self) -> Optional[pulumi.Input['OceanLaunchSpecDeleteOptionsArgs']]:
+        return pulumi.get(self, "delete_options")
+
+    @delete_options.setter
+    def delete_options(self, value: Optional[pulumi.Input['OceanLaunchSpecDeleteOptionsArgs']]):
+        pulumi.set(self, "delete_options", value)
 
     @property
     @pulumi.getter(name="elasticIpPools")
@@ -331,6 +346,15 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "taints", value)
 
     @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
@@ -350,6 +374,7 @@ class _OceanLaunchSpecState:
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
                  create_options: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']] = None,
+                 delete_options: Optional[pulumi.Input['OceanLaunchSpecDeleteOptionsArgs']] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -366,6 +391,7 @@ class _OceanLaunchSpecState:
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
                  user_data: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OceanLaunchSpec resources.
@@ -396,6 +422,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
         if create_options is not None:
             pulumi.set(__self__, "create_options", create_options)
+        if delete_options is not None:
+            pulumi.set(__self__, "delete_options", delete_options)
         if elastic_ip_pools is not None:
             pulumi.set(__self__, "elastic_ip_pools", elastic_ip_pools)
         if iam_instance_profile is not None:
@@ -428,6 +456,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
 
@@ -475,6 +505,15 @@ class _OceanLaunchSpecState:
     @create_options.setter
     def create_options(self, value: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']]):
         pulumi.set(self, "create_options", value)
+
+    @property
+    @pulumi.getter(name="deleteOptions")
+    def delete_options(self) -> Optional[pulumi.Input['OceanLaunchSpecDeleteOptionsArgs']]:
+        return pulumi.get(self, "delete_options")
+
+    @delete_options.setter
+    def delete_options(self, value: Optional[pulumi.Input['OceanLaunchSpecDeleteOptionsArgs']]):
+        pulumi.set(self, "delete_options", value)
 
     @property
     @pulumi.getter(name="elasticIpPools")
@@ -663,6 +702,15 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "taints", value)
 
     @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
@@ -684,6 +732,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
                  create_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecCreateOptionsArgs']]] = None,
+                 delete_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecDeleteOptionsArgs']]] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -700,6 +749,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecUpdatePolicyArgs']]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -736,6 +786,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             create_options=spotinst.aws.OceanLaunchSpecCreateOptionsArgs(
                 initial_nodes=1,
+            ),
+            delete_options=spotinst.aws.OceanLaunchSpecDeleteOptionsArgs(
+                force_delete=True,
             ),
             elastic_ip_pools=[spotinst.aws.OceanLaunchSpecElasticIpPoolArgs(
                 tag_selector=spotinst.aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs(
@@ -785,6 +838,16 @@ class OceanLaunchSpec(pulumi.CustomResource):
         import pulumi
 
         pulumi.export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec["example"]["id"])
+        ```
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+            * `should_roll` - (Required) Enables the roll.
+            * `roll_config` - (Required) Holds the roll configuration.
+                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+
+        ```python
+        import pulumi
         ```
 
         :param str resource_name: The name of the resource.
@@ -849,6 +912,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
             create_options=spotinst.aws.OceanLaunchSpecCreateOptionsArgs(
                 initial_nodes=1,
             ),
+            delete_options=spotinst.aws.OceanLaunchSpecDeleteOptionsArgs(
+                force_delete=True,
+            ),
             elastic_ip_pools=[spotinst.aws.OceanLaunchSpecElasticIpPoolArgs(
                 tag_selector=spotinst.aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs(
                     tag_key="key",
@@ -898,6 +964,16 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         pulumi.export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec["example"]["id"])
         ```
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+            * `should_roll` - (Required) Enables the roll.
+            * `roll_config` - (Required) Holds the roll configuration.
+                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.
@@ -918,6 +994,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
                  create_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecCreateOptionsArgs']]] = None,
+                 delete_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecDeleteOptionsArgs']]] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -934,6 +1011,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecUpdatePolicyArgs']]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -951,6 +1029,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
             __props__.__dict__["block_device_mappings"] = block_device_mappings
             __props__.__dict__["create_options"] = create_options
+            __props__.__dict__["delete_options"] = delete_options
             __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
@@ -969,6 +1048,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
+            __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["user_data"] = user_data
         super(OceanLaunchSpec, __self__).__init__(
             'spotinst:aws/oceanLaunchSpec:OceanLaunchSpec',
@@ -984,6 +1064,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
             create_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecCreateOptionsArgs']]] = None,
+            delete_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecDeleteOptionsArgs']]] = None,
             elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
@@ -1000,6 +1081,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
+            update_policy: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecUpdatePolicyArgs']]] = None,
             user_data: Optional[pulumi.Input[str]] = None) -> 'OceanLaunchSpec':
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
@@ -1035,6 +1117,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
         __props__.__dict__["block_device_mappings"] = block_device_mappings
         __props__.__dict__["create_options"] = create_options
+        __props__.__dict__["delete_options"] = delete_options
         __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
@@ -1051,6 +1134,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["subnet_ids"] = subnet_ids
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
+        __props__.__dict__["update_policy"] = update_policy
         __props__.__dict__["user_data"] = user_data
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)
 
@@ -1082,6 +1166,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter(name="createOptions")
     def create_options(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecCreateOptions']]:
         return pulumi.get(self, "create_options")
+
+    @property
+    @pulumi.getter(name="deleteOptions")
+    def delete_options(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecDeleteOptions']]:
+        return pulumi.get(self, "delete_options")
 
     @property
     @pulumi.getter(name="elasticIpPools")
@@ -1204,6 +1293,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Optionally adds labels to instances launched in the cluster.
         """
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecUpdatePolicy']]:
+        return pulumi.get(self, "update_policy")
 
     @property
     @pulumi.getter(name="userData")

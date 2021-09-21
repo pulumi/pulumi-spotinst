@@ -55,6 +55,9 @@ import (
 // 			CreateOptions: &aws.OceanLaunchSpecCreateOptionsArgs{
 // 				InitialNodes: pulumi.Int(1),
 // 			},
+// 			DeleteOptions: &aws.OceanLaunchSpecDeleteOptionsArgs{
+// 				ForceDelete: pulumi.Bool(true),
+// 			},
 // 			ElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{
 // 				&aws.OceanLaunchSpecElasticIpPoolArgs{
 // 					TagSelector: &aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{
@@ -136,6 +139,26 @@ import (
 // 	})
 // }
 // ```
+// ## Update Policy
+//
+// * `updatePolicy` - (Optional)
+//     * `shouldRoll` - (Required) Enables the roll.
+//     * `rollConfig` - (Required) Holds the roll configuration.
+//         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
 
@@ -146,6 +169,7 @@ type OceanLaunchSpec struct {
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	CreateOptions       OceanLaunchSpecCreateOptionsPtrOutput        `pulumi:"createOptions"`
+	DeleteOptions       OceanLaunchSpecDeleteOptionsPtrOutput        `pulumi:"deleteOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayOutput `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -175,7 +199,8 @@ type OceanLaunchSpec struct {
 	// A key/value mapping of tags to assign to the resource.
 	Tags OceanLaunchSpecTagArrayOutput `pulumi:"tags"`
 	// Optionally adds labels to instances launched in the cluster.
-	Taints OceanLaunchSpecTaintArrayOutput `pulumi:"taints"`
+	Taints       OceanLaunchSpecTaintArrayOutput      `pulumi:"taints"`
+	UpdatePolicy OceanLaunchSpecUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 }
@@ -219,6 +244,7 @@ type oceanLaunchSpecState struct {
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	CreateOptions       *OceanLaunchSpecCreateOptions       `pulumi:"createOptions"`
+	DeleteOptions       *OceanLaunchSpecDeleteOptions       `pulumi:"deleteOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -248,7 +274,8 @@ type oceanLaunchSpecState struct {
 	// A key/value mapping of tags to assign to the resource.
 	Tags []OceanLaunchSpecTag `pulumi:"tags"`
 	// Optionally adds labels to instances launched in the cluster.
-	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
+	Taints       []OceanLaunchSpecTaint       `pulumi:"taints"`
+	UpdatePolicy *OceanLaunchSpecUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
 }
@@ -261,6 +288,7 @@ type OceanLaunchSpecState struct {
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
 	CreateOptions       OceanLaunchSpecCreateOptionsPtrInput
+	DeleteOptions       OceanLaunchSpecDeleteOptionsPtrInput
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -290,7 +318,8 @@ type OceanLaunchSpecState struct {
 	// A key/value mapping of tags to assign to the resource.
 	Tags OceanLaunchSpecTagArrayInput
 	// Optionally adds labels to instances launched in the cluster.
-	Taints OceanLaunchSpecTaintArrayInput
+	Taints       OceanLaunchSpecTaintArrayInput
+	UpdatePolicy OceanLaunchSpecUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
 }
@@ -307,6 +336,7 @@ type oceanLaunchSpecArgs struct {
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	CreateOptions       *OceanLaunchSpecCreateOptions       `pulumi:"createOptions"`
+	DeleteOptions       *OceanLaunchSpecDeleteOptions       `pulumi:"deleteOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -336,7 +366,8 @@ type oceanLaunchSpecArgs struct {
 	// A key/value mapping of tags to assign to the resource.
 	Tags []OceanLaunchSpecTag `pulumi:"tags"`
 	// Optionally adds labels to instances launched in the cluster.
-	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
+	Taints       []OceanLaunchSpecTaint       `pulumi:"taints"`
+	UpdatePolicy *OceanLaunchSpecUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
 }
@@ -350,6 +381,7 @@ type OceanLaunchSpecArgs struct {
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
 	CreateOptions       OceanLaunchSpecCreateOptionsPtrInput
+	DeleteOptions       OceanLaunchSpecDeleteOptionsPtrInput
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -379,7 +411,8 @@ type OceanLaunchSpecArgs struct {
 	// A key/value mapping of tags to assign to the resource.
 	Tags OceanLaunchSpecTagArrayInput
 	// Optionally adds labels to instances launched in the cluster.
-	Taints OceanLaunchSpecTaintArrayInput
+	Taints       OceanLaunchSpecTaintArrayInput
+	UpdatePolicy OceanLaunchSpecUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
 }

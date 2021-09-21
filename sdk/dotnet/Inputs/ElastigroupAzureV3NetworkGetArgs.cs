@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Inputs
     {
         [Input("networkInterfaces", required: true)]
         private InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceGetArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// -
+        /// </summary>
         public InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceGetArgs> NetworkInterfaces
         {
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceGetArgs>());
