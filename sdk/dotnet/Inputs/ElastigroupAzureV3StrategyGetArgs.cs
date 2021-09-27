@@ -18,11 +18,14 @@ namespace Pulumi.SpotInst.Inputs
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
 
+        /// <summary>
+        /// -
+        /// </summary>
         [Input("fallbackToOnDemand")]
         public Input<bool>? FallbackToOnDemand { get; set; }
 
         /// <summary>
-        /// Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
+        /// Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
         /// </summary>
         [Input("odCount")]
         public Input<int>? OdCount { get; set; }

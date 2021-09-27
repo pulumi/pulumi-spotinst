@@ -104,6 +104,7 @@ class ElastigroupAzureV3ImageMarketplace(dict):
         :param str offer: Name of the image to use. Required if publisher is specified.
         :param str publisher: Image publisher. Required if resource_group_name is not specified.
         :param str sku: Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+        :param str version: -
         """
         pulumi.set(__self__, "offer", offer)
         pulumi.set(__self__, "publisher", publisher)
@@ -137,6 +138,9 @@ class ElastigroupAzureV3ImageMarketplace(dict):
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        -
+        """
         return pulumi.get(self, "version")
 
 
@@ -229,6 +233,7 @@ class ElastigroupAzureV3Network(dict):
                  resource_group_name: str,
                  virtual_network_name: str):
         """
+        :param Sequence['ElastigroupAzureV3NetworkNetworkInterfaceArgs'] network_interfaces: -
         :param str resource_group_name: - The resource group of the Application Security Group.
                }
         :param str virtual_network_name: Name of Vnet.
@@ -240,6 +245,9 @@ class ElastigroupAzureV3Network(dict):
     @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterface']:
+        """
+        -
+        """
         return pulumi.get(self, "network_interfaces")
 
     @property
@@ -294,6 +302,7 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
                  additional_ip_configs: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig']] = None,
                  application_security_groups: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup']] = None):
         """
+        :param bool is_primary: -
         :param str subnet_name: ID of subnet.
         :param Sequence['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs'] additional_ip_configs: Array of additional IP configuration objects.
         :param Sequence['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs'] application_security_groups: - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
@@ -314,6 +323,9 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
     @property
     @pulumi.getter(name="isPrimary")
     def is_primary(self) -> bool:
+        """
+        -
+        """
         return pulumi.get(self, "is_primary")
 
     @property
@@ -468,7 +480,8 @@ class ElastigroupAzureV3Strategy(dict):
                  spot_percentage: Optional[int] = None):
         """
         :param int draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        :param int od_count: Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
+        :param bool fallback_to_on_demand: -
+        :param int od_count: Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
         :param int spot_percentage: TODO
         """
         if draining_timeout is not None:
@@ -491,13 +504,16 @@ class ElastigroupAzureV3Strategy(dict):
     @property
     @pulumi.getter(name="fallbackToOnDemand")
     def fallback_to_on_demand(self) -> Optional[bool]:
+        """
+        -
+        """
         return pulumi.get(self, "fallback_to_on_demand")
 
     @property
     @pulumi.getter(name="odCount")
     def od_count(self) -> Optional[int]:
         """
-        Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
+        Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
         """
         return pulumi.get(self, "od_count")
 

@@ -34,6 +34,9 @@ export interface ElastigroupAzureV3ImageMarketplace {
      * Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
      */
     sku: pulumi.Input<string>;
+    /**
+     * -
+     */
     version: pulumi.Input<string>;
 }
 
@@ -53,6 +56,9 @@ export interface ElastigroupAzureV3Login {
 }
 
 export interface ElastigroupAzureV3Network {
+    /**
+     * -
+     */
     networkInterfaces: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterface>[]>;
     /**
      * - The resource group of the Application Security Group.
@@ -75,6 +81,9 @@ export interface ElastigroupAzureV3NetworkNetworkInterface {
      */
     applicationSecurityGroups?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup>[]>;
     assignPublicIp: pulumi.Input<boolean>;
+    /**
+     * -
+     */
     isPrimary: pulumi.Input<boolean>;
     /**
      * ID of subnet.
@@ -110,9 +119,12 @@ export interface ElastigroupAzureV3Strategy {
      * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
      */
     drainingTimeout?: pulumi.Input<number>;
+    /**
+     * -
+     */
     fallbackToOnDemand?: pulumi.Input<boolean>;
     /**
-     * Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
+     * Number of On-Demand instances to maintain. Required if `lowPriorityPercentage` is not specified.
      */
     odCount?: pulumi.Input<number>;
     /**
@@ -785,6 +797,52 @@ export namespace aws {
          * - Designates whether the IP address should be exposed to connections outside the VPC.
          */
         usePublicIp?: pulumi.Input<boolean>;
+    }
+
+    export interface ElastigroupItf {
+        fixedTargetGroups: pulumi.Input<boolean>;
+        loadBalancers: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfLoadBalancer>[]>;
+        migrationHealthinessThreshold?: pulumi.Input<number>;
+        targetGroupConfigs: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfTargetGroupConfig>[]>;
+        weightStrategy: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupItfLoadBalancer {
+        listenerRules: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfLoadBalancerListenerRule>[]>;
+        loadBalancerArn: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupItfLoadBalancerListenerRule {
+        ruleArn: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupItfTargetGroupConfig {
+        healthCheckIntervalSeconds?: pulumi.Input<number>;
+        healthCheckPath: pulumi.Input<string>;
+        healthCheckPort?: pulumi.Input<string>;
+        healthCheckProtocol?: pulumi.Input<string>;
+        healthCheckTimeoutSeconds?: pulumi.Input<number>;
+        healthyThresholdCount?: pulumi.Input<number>;
+        matchers?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfTargetGroupConfigMatcher>[]>;
+        port: pulumi.Input<number>;
+        protocol: pulumi.Input<string>;
+        protocolVersion?: pulumi.Input<string>;
+        /**
+         * A key/value mapping of tags to assign to the resource.
+         */
+        tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfTargetGroupConfigTag>[]>;
+        unhealthyThresholdCount?: pulumi.Input<number>;
+        vpcId: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupItfTargetGroupConfigMatcher {
+        grpcCode?: pulumi.Input<string>;
+        httpCode?: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupItfTargetGroupConfigTag {
+        tagKey: pulumi.Input<string>;
+        tagValue?: pulumi.Input<string>;
     }
 
     export interface ElastigroupMetadataOptions {
@@ -2349,9 +2407,16 @@ export namespace aws {
 
     export interface OceanLaunchSpecCreateOptions {
         /**
-         * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+         * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
          */
         initialNodes: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecDeleteOptions {
+        /**
+         * When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+         */
+        forceDelete: pulumi.Input<boolean>;
     }
 
     export interface OceanLaunchSpecElasticIpPool {
@@ -2421,6 +2486,15 @@ export namespace aws {
          * The taint value.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecUpdatePolicy {
+        rollConfig?: pulumi.Input<inputs.aws.OceanLaunchSpecUpdatePolicyRollConfig>;
+        shouldRoll: pulumi.Input<boolean>;
+    }
+
+    export interface OceanLaunchSpecUpdatePolicyRollConfig {
+        batchSizePercentage: pulumi.Input<number>;
     }
 
     export interface OceanLoadBalancer {
@@ -2502,6 +2576,10 @@ export namespace aws {
          * Sets the percentage of the instances to deploy in each batch.
          */
         batchSizePercentage: pulumi.Input<number>;
+        /**
+         * List of virtual node group identifiers to be rolled.
+         */
+        launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface SuspensionSuspension {
@@ -4215,6 +4293,20 @@ export namespace gke {
          * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
          */
         taskType: pulumi.Input<string>;
+    }
+
+    export interface OceanImportUpdatePolicy {
+        rollConfig?: pulumi.Input<inputs.gke.OceanImportUpdatePolicyRollConfig>;
+        shouldRoll: pulumi.Input<boolean>;
+    }
+
+    export interface OceanImportUpdatePolicyRollConfig {
+        /**
+         * Value in % to set size of batch in roll. Valid values are 0-100
+         * Example: 20.
+         */
+        batchSizePercentage: pulumi.Input<number>;
+        launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanLaunchSpecAutoscaleHeadroom {

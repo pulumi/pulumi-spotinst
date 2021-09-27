@@ -15,6 +15,8 @@ import * as utilities from "./utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const testAzureGroup = new spotinst.ElastigroupAzureV3("test_azure_group", {
+ *     // --- LAUNCH SPEC ---------------------------------------------------
+ *     customData: "IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=",
  *     desiredCapacity: 1,
  *     // --- IMAGE ---------------------------------------------------------
  *     images: [{
@@ -102,6 +104,10 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
     }
 
     /**
+     * Custom init script file or text in Base64 encoded format.
+     */
+    public readonly customData!: pulumi.Output<string | undefined>;
+    /**
      * The desired number of instances the group should have at any time.
      */
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
@@ -168,6 +174,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElastigroupAzureV3State | undefined;
+            inputs["customData"] = state ? state.customData : undefined;
             inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             inputs["images"] = state ? state.images : undefined;
             inputs["login"] = state ? state.login : undefined;
@@ -204,6 +211,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             if ((!args || args.strategy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
+            inputs["customData"] = args ? args.customData : undefined;
             inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             inputs["images"] = args ? args.images : undefined;
             inputs["login"] = args ? args.login : undefined;
@@ -229,6 +237,10 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ElastigroupAzureV3 resources.
  */
 export interface ElastigroupAzureV3State {
+    /**
+     * Custom init script file or text in Base64 encoded format.
+     */
+    readonly customData?: pulumi.Input<string>;
     /**
      * The desired number of instances the group should have at any time.
      */
@@ -288,6 +300,10 @@ export interface ElastigroupAzureV3State {
  * The set of arguments for constructing a ElastigroupAzureV3 resource.
  */
 export interface ElastigroupAzureV3Args {
+    /**
+     * Custom init script file or text in Base64 encoded format.
+     */
+    readonly customData?: pulumi.Input<string>;
     /**
      * The desired number of instances the group should have at any time.
      */

@@ -84,6 +84,7 @@ type Elastigroup struct {
 	IntegrationRancher ElastigroupIntegrationRancherPtrOutput `pulumi:"integrationRancher"`
 	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
 	IntegrationRoute53 ElastigroupIntegrationRoute53PtrOutput `pulumi:"integrationRoute53"`
+	Itfs               ElastigroupItfArrayOutput              `pulumi:"itfs"`
 	// The key name that should be used for the instance.
 	KeyName        pulumi.StringPtrOutput `pulumi:"keyName"`
 	LifetimePeriod pulumi.StringPtrOutput `pulumi:"lifetimePeriod"`
@@ -278,6 +279,7 @@ type elastigroupState struct {
 	IntegrationRancher *ElastigroupIntegrationRancher `pulumi:"integrationRancher"`
 	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
 	IntegrationRoute53 *ElastigroupIntegrationRoute53 `pulumi:"integrationRoute53"`
+	Itfs               []ElastigroupItf               `pulumi:"itfs"`
 	// The key name that should be used for the instance.
 	KeyName        *string `pulumi:"keyName"`
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
@@ -426,6 +428,7 @@ type ElastigroupState struct {
 	IntegrationRancher ElastigroupIntegrationRancherPtrInput
 	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
 	IntegrationRoute53 ElastigroupIntegrationRoute53PtrInput
+	Itfs               ElastigroupItfArrayInput
 	// The key name that should be used for the instance.
 	KeyName        pulumi.StringPtrInput
 	LifetimePeriod pulumi.StringPtrInput
@@ -578,6 +581,7 @@ type elastigroupArgs struct {
 	IntegrationRancher *ElastigroupIntegrationRancher `pulumi:"integrationRancher"`
 	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
 	IntegrationRoute53 *ElastigroupIntegrationRoute53 `pulumi:"integrationRoute53"`
+	Itfs               []ElastigroupItf               `pulumi:"itfs"`
 	// The key name that should be used for the instance.
 	KeyName        *string `pulumi:"keyName"`
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
@@ -727,6 +731,7 @@ type ElastigroupArgs struct {
 	IntegrationRancher ElastigroupIntegrationRancherPtrInput
 	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
 	IntegrationRoute53 ElastigroupIntegrationRoute53PtrInput
+	Itfs               ElastigroupItfArrayInput
 	// The key name that should be used for the instance.
 	KeyName        pulumi.StringPtrInput
 	LifetimePeriod pulumi.StringPtrInput

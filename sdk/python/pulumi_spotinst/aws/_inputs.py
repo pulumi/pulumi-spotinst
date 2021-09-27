@@ -49,6 +49,12 @@ __all__ = [
     'ElastigroupIntegrationRoute53Args',
     'ElastigroupIntegrationRoute53DomainArgs',
     'ElastigroupIntegrationRoute53DomainRecordSetArgs',
+    'ElastigroupItfArgs',
+    'ElastigroupItfLoadBalancerArgs',
+    'ElastigroupItfLoadBalancerListenerRuleArgs',
+    'ElastigroupItfTargetGroupConfigArgs',
+    'ElastigroupItfTargetGroupConfigMatcherArgs',
+    'ElastigroupItfTargetGroupConfigTagArgs',
     'ElastigroupMetadataOptionsArgs',
     'ElastigroupMultaiTargetSetArgs',
     'ElastigroupMultipleMetricsArgs',
@@ -117,6 +123,7 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
     'OceanLaunchSpecCreateOptionsArgs',
+    'OceanLaunchSpecDeleteOptionsArgs',
     'OceanLaunchSpecElasticIpPoolArgs',
     'OceanLaunchSpecElasticIpPoolTagSelectorArgs',
     'OceanLaunchSpecLabelArgs',
@@ -124,6 +131,8 @@ __all__ = [
     'OceanLaunchSpecStrategyArgs',
     'OceanLaunchSpecTagArgs',
     'OceanLaunchSpecTaintArgs',
+    'OceanLaunchSpecUpdatePolicyArgs',
+    'OceanLaunchSpecUpdatePolicyRollConfigArgs',
     'OceanLoadBalancerArgs',
     'OceanScheduledTaskArgs',
     'OceanScheduledTaskShutdownHoursArgs',
@@ -2463,6 +2472,330 @@ class ElastigroupIntegrationRoute53DomainRecordSetArgs:
     @use_public_ip.setter
     def use_public_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_public_ip", value)
+
+
+@pulumi.input_type
+class ElastigroupItfArgs:
+    def __init__(__self__, *,
+                 fixed_target_groups: pulumi.Input[bool],
+                 load_balancers: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfLoadBalancerArgs']]],
+                 target_group_configs: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigArgs']]],
+                 weight_strategy: pulumi.Input[str],
+                 migration_healthiness_threshold: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "fixed_target_groups", fixed_target_groups)
+        pulumi.set(__self__, "load_balancers", load_balancers)
+        pulumi.set(__self__, "target_group_configs", target_group_configs)
+        pulumi.set(__self__, "weight_strategy", weight_strategy)
+        if migration_healthiness_threshold is not None:
+            pulumi.set(__self__, "migration_healthiness_threshold", migration_healthiness_threshold)
+
+    @property
+    @pulumi.getter(name="fixedTargetGroups")
+    def fixed_target_groups(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "fixed_target_groups")
+
+    @fixed_target_groups.setter
+    def fixed_target_groups(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "fixed_target_groups", value)
+
+    @property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupItfLoadBalancerArgs']]]:
+        return pulumi.get(self, "load_balancers")
+
+    @load_balancers.setter
+    def load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfLoadBalancerArgs']]]):
+        pulumi.set(self, "load_balancers", value)
+
+    @property
+    @pulumi.getter(name="targetGroupConfigs")
+    def target_group_configs(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigArgs']]]:
+        return pulumi.get(self, "target_group_configs")
+
+    @target_group_configs.setter
+    def target_group_configs(self, value: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigArgs']]]):
+        pulumi.set(self, "target_group_configs", value)
+
+    @property
+    @pulumi.getter(name="weightStrategy")
+    def weight_strategy(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "weight_strategy")
+
+    @weight_strategy.setter
+    def weight_strategy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "weight_strategy", value)
+
+    @property
+    @pulumi.getter(name="migrationHealthinessThreshold")
+    def migration_healthiness_threshold(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "migration_healthiness_threshold")
+
+    @migration_healthiness_threshold.setter
+    def migration_healthiness_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "migration_healthiness_threshold", value)
+
+
+@pulumi.input_type
+class ElastigroupItfLoadBalancerArgs:
+    def __init__(__self__, *,
+                 listener_rules: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfLoadBalancerListenerRuleArgs']]],
+                 load_balancer_arn: pulumi.Input[str]):
+        pulumi.set(__self__, "listener_rules", listener_rules)
+        pulumi.set(__self__, "load_balancer_arn", load_balancer_arn)
+
+    @property
+    @pulumi.getter(name="listenerRules")
+    def listener_rules(self) -> pulumi.Input[Sequence[pulumi.Input['ElastigroupItfLoadBalancerListenerRuleArgs']]]:
+        return pulumi.get(self, "listener_rules")
+
+    @listener_rules.setter
+    def listener_rules(self, value: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfLoadBalancerListenerRuleArgs']]]):
+        pulumi.set(self, "listener_rules", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerArn")
+    def load_balancer_arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "load_balancer_arn")
+
+    @load_balancer_arn.setter
+    def load_balancer_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "load_balancer_arn", value)
+
+
+@pulumi.input_type
+class ElastigroupItfLoadBalancerListenerRuleArgs:
+    def __init__(__self__, *,
+                 rule_arn: pulumi.Input[str]):
+        pulumi.set(__self__, "rule_arn", rule_arn)
+
+    @property
+    @pulumi.getter(name="ruleArn")
+    def rule_arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "rule_arn")
+
+    @rule_arn.setter
+    def rule_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule_arn", value)
+
+
+@pulumi.input_type
+class ElastigroupItfTargetGroupConfigArgs:
+    def __init__(__self__, *,
+                 health_check_path: pulumi.Input[str],
+                 port: pulumi.Input[int],
+                 protocol: pulumi.Input[str],
+                 vpc_id: pulumi.Input[str],
+                 health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
+                 health_check_port: Optional[pulumi.Input[str]] = None,
+                 health_check_protocol: Optional[pulumi.Input[str]] = None,
+                 health_check_timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 healthy_threshold_count: Optional[pulumi.Input[int]] = None,
+                 matchers: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigMatcherArgs']]]] = None,
+                 protocol_version: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigTagArgs']]]] = None,
+                 unhealthy_threshold_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "health_check_path", health_check_path)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        if health_check_interval_seconds is not None:
+            pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
+        if health_check_port is not None:
+            pulumi.set(__self__, "health_check_port", health_check_port)
+        if health_check_protocol is not None:
+            pulumi.set(__self__, "health_check_protocol", health_check_protocol)
+        if health_check_timeout_seconds is not None:
+            pulumi.set(__self__, "health_check_timeout_seconds", health_check_timeout_seconds)
+        if healthy_threshold_count is not None:
+            pulumi.set(__self__, "healthy_threshold_count", healthy_threshold_count)
+        if matchers is not None:
+            pulumi.set(__self__, "matchers", matchers)
+        if protocol_version is not None:
+            pulumi.set(__self__, "protocol_version", protocol_version)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if unhealthy_threshold_count is not None:
+            pulumi.set(__self__, "unhealthy_threshold_count", unhealthy_threshold_count)
+
+    @property
+    @pulumi.getter(name="healthCheckPath")
+    def health_check_path(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "health_check_path")
+
+    @health_check_path.setter
+    def health_check_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "health_check_path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="healthCheckIntervalSeconds")
+    def health_check_interval_seconds(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "health_check_interval_seconds")
+
+    @health_check_interval_seconds.setter
+    def health_check_interval_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_interval_seconds", value)
+
+    @property
+    @pulumi.getter(name="healthCheckPort")
+    def health_check_port(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "health_check_port")
+
+    @health_check_port.setter
+    def health_check_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_port", value)
+
+    @property
+    @pulumi.getter(name="healthCheckProtocol")
+    def health_check_protocol(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "health_check_protocol")
+
+    @health_check_protocol.setter
+    def health_check_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_protocol", value)
+
+    @property
+    @pulumi.getter(name="healthCheckTimeoutSeconds")
+    def health_check_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "health_check_timeout_seconds")
+
+    @health_check_timeout_seconds.setter
+    def health_check_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_timeout_seconds", value)
+
+    @property
+    @pulumi.getter(name="healthyThresholdCount")
+    def healthy_threshold_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "healthy_threshold_count")
+
+    @healthy_threshold_count.setter
+    def healthy_threshold_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "healthy_threshold_count", value)
+
+    @property
+    @pulumi.getter
+    def matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigMatcherArgs']]]]:
+        return pulumi.get(self, "matchers")
+
+    @matchers.setter
+    def matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigMatcherArgs']]]]):
+        pulumi.set(self, "matchers", value)
+
+    @property
+    @pulumi.getter(name="protocolVersion")
+    def protocol_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "protocol_version")
+
+    @protocol_version.setter
+    def protocol_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol_version", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigTagArgs']]]]:
+        """
+        A key/value mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="unhealthyThresholdCount")
+    def unhealthy_threshold_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "unhealthy_threshold_count")
+
+    @unhealthy_threshold_count.setter
+    def unhealthy_threshold_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "unhealthy_threshold_count", value)
+
+
+@pulumi.input_type
+class ElastigroupItfTargetGroupConfigMatcherArgs:
+    def __init__(__self__, *,
+                 grpc_code: Optional[pulumi.Input[str]] = None,
+                 http_code: Optional[pulumi.Input[str]] = None):
+        if grpc_code is not None:
+            pulumi.set(__self__, "grpc_code", grpc_code)
+        if http_code is not None:
+            pulumi.set(__self__, "http_code", http_code)
+
+    @property
+    @pulumi.getter(name="grpcCode")
+    def grpc_code(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "grpc_code")
+
+    @grpc_code.setter
+    def grpc_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grpc_code", value)
+
+    @property
+    @pulumi.getter(name="httpCode")
+    def http_code(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_code")
+
+    @http_code.setter
+    def http_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_code", value)
+
+
+@pulumi.input_type
+class ElastigroupItfTargetGroupConfigTagArgs:
+    def __init__(__self__, *,
+                 tag_key: pulumi.Input[str],
+                 tag_value: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag_key", value)
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_value", value)
 
 
 @pulumi.input_type
@@ -8321,7 +8654,7 @@ class OceanLaunchSpecCreateOptionsArgs:
     def __init__(__self__, *,
                  initial_nodes: pulumi.Input[int]):
         """
-        :param pulumi.Input[int] initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+        :param pulumi.Input[int] initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
         """
         pulumi.set(__self__, "initial_nodes", initial_nodes)
 
@@ -8329,13 +8662,35 @@ class OceanLaunchSpecCreateOptionsArgs:
     @pulumi.getter(name="initialNodes")
     def initial_nodes(self) -> pulumi.Input[int]:
         """
-        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created virtual node group.
+        When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
         """
         return pulumi.get(self, "initial_nodes")
 
     @initial_nodes.setter
     def initial_nodes(self, value: pulumi.Input[int]):
         pulumi.set(self, "initial_nodes", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecDeleteOptionsArgs:
+    def __init__(__self__, *,
+                 force_delete: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] force_delete: When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+        """
+        pulumi.set(__self__, "force_delete", force_delete)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Input[bool]:
+        """
+        When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "force_delete", value)
 
 
 @pulumi.input_type
@@ -8569,6 +8924,50 @@ class OceanLaunchSpecTaintArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecUpdatePolicyArgs:
+    def __init__(__self__, *,
+                 should_roll: pulumi.Input[bool],
+                 roll_config: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']] = None):
+        pulumi.set(__self__, "should_roll", should_roll)
+        if roll_config is not None:
+            pulumi.set(__self__, "roll_config", roll_config)
+
+    @property
+    @pulumi.getter(name="shouldRoll")
+    def should_roll(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "should_roll")
+
+    @should_roll.setter
+    def should_roll(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "should_roll", value)
+
+    @property
+    @pulumi.getter(name="rollConfig")
+    def roll_config(self) -> Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']]:
+        return pulumi.get(self, "roll_config")
+
+    @roll_config.setter
+    def roll_config(self, value: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']]):
+        pulumi.set(self, "roll_config", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecUpdatePolicyRollConfigArgs:
+    def __init__(__self__, *,
+                 batch_size_percentage: pulumi.Input[int]):
+        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @batch_size_percentage.setter
+    def batch_size_percentage(self, value: pulumi.Input[int]):
+        pulumi.set(self, "batch_size_percentage", value)
 
 
 @pulumi.input_type
@@ -8833,11 +9232,15 @@ class OceanUpdatePolicyArgs:
 @pulumi.input_type
 class OceanUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
-                 batch_size_percentage: pulumi.Input[int]):
+                 batch_size_percentage: pulumi.Input[int],
+                 launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] launch_spec_ids: List of virtual node group identifiers to be rolled.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if launch_spec_ids is not None:
+            pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -8850,6 +9253,18 @@ class OceanUpdatePolicyRollConfigArgs:
     @batch_size_percentage.setter
     def batch_size_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter(name="launchSpecIds")
+    def launch_spec_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of virtual node group identifiers to be rolled.
+        """
+        return pulumi.get(self, "launch_spec_ids")
+
+    @launch_spec_ids.setter
+    def launch_spec_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "launch_spec_ids", value)
 
 
 @pulumi.input_type

@@ -24,6 +24,7 @@ namespace Pulumi.SpotInst
     ///     {
     ///         var testAzureGroup = new SpotInst.ElastigroupAzureV3("testAzureGroup", new SpotInst.ElastigroupAzureV3Args
     ///         {
+    ///             CustomData = "IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=",
     ///             DesiredCapacity = 1,
     ///             Images = 
     ///             {
@@ -107,6 +108,12 @@ namespace Pulumi.SpotInst
     [SpotInstResourceType("spotinst:index/elastigroupAzureV3:ElastigroupAzureV3")]
     public partial class ElastigroupAzureV3 : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Custom init script file or text in Base64 encoded format.
+        /// </summary>
+        [Output("customData")]
+        public Output<string?> CustomData { get; private set; } = null!;
+
         /// <summary>
         /// The desired number of instances the group should have at any time.
         /// </summary>
@@ -233,6 +240,12 @@ namespace Pulumi.SpotInst
     public sealed class ElastigroupAzureV3Args : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Custom init script file or text in Base64 encoded format.
+        /// </summary>
+        [Input("customData")]
+        public Input<string>? CustomData { get; set; }
+
+        /// <summary>
         /// The desired number of instances the group should have at any time.
         /// </summary>
         [Input("desiredCapacity")]
@@ -336,6 +349,12 @@ namespace Pulumi.SpotInst
 
     public sealed class ElastigroupAzureV3State : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom init script file or text in Base64 encoded format.
+        /// </summary>
+        [Input("customData")]
+        public Input<string>? CustomData { get; set; }
+
         /// <summary>
         /// The desired number of instances the group should have at any time.
         /// </summary>

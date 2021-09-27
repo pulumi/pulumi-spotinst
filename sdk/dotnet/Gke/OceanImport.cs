@@ -72,6 +72,9 @@ namespace Pulumi.SpotInst.Gke
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.OceanImportScheduledTask>> ScheduledTasks { get; private set; } = null!;
 
+        [Output("updatePolicy")]
+        public Output<Outputs.OceanImportUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
+
         /// <summary>
         /// Instance types allowed in the Ocean cluster.
         /// </summary>
@@ -193,6 +196,9 @@ namespace Pulumi.SpotInst.Gke
             set => _scheduledTasks = value;
         }
 
+        [Input("updatePolicy")]
+        public Input<Inputs.OceanImportUpdatePolicyArgs>? UpdatePolicy { get; set; }
+
         [Input("whitelists")]
         private InputList<string>? _whitelists;
 
@@ -283,6 +289,9 @@ namespace Pulumi.SpotInst.Gke
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanImportScheduledTaskGetArgs>());
             set => _scheduledTasks = value;
         }
+
+        [Input("updatePolicy")]
+        public Input<Inputs.OceanImportUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
 
         [Input("whitelists")]
         private InputList<string>? _whitelists;

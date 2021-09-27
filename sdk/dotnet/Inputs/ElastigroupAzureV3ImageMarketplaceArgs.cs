@@ -30,6 +30,9 @@ namespace Pulumi.SpotInst.Inputs
         [Input("sku", required: true)]
         public Input<string> Sku { get; set; } = null!;
 
+        /// <summary>
+        /// -
+        /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
 

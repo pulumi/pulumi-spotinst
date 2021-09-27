@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class ElastigroupAzureV3Network
     {
+        /// <summary>
+        /// -
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterface> NetworkInterfaces;
         /// <summary>
         /// - The resource group of the Application Security Group.

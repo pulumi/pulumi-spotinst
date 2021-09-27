@@ -17,11 +17,19 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// Sets the percentage of the instances to deploy in each batch.
         /// </summary>
         public readonly int BatchSizePercentage;
+        /// <summary>
+        /// List of virtual node group identifiers to be rolled.
+        /// </summary>
+        public readonly ImmutableArray<string> LaunchSpecIds;
 
         [OutputConstructor]
-        private OceanUpdatePolicyRollConfig(int batchSizePercentage)
+        private OceanUpdatePolicyRollConfig(
+            int batchSizePercentage,
+
+            ImmutableArray<string> launchSpecIds)
         {
             BatchSizePercentage = batchSizePercentage;
+            LaunchSpecIds = launchSpecIds;
         }
     }
 }

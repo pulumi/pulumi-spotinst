@@ -276,6 +276,7 @@ export class Elastigroup extends pulumi.CustomResource {
      * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
      */
     public readonly integrationRoute53!: pulumi.Output<outputs.aws.ElastigroupIntegrationRoute53 | undefined>;
+    public readonly itfs!: pulumi.Output<outputs.aws.ElastigroupItf[] | undefined>;
     /**
      * The key name that should be used for the instance.
      */
@@ -461,6 +462,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["integrationNomad"] = state ? state.integrationNomad : undefined;
             inputs["integrationRancher"] = state ? state.integrationRancher : undefined;
             inputs["integrationRoute53"] = state ? state.integrationRoute53 : undefined;
+            inputs["itfs"] = state ? state.itfs : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["lifetimePeriod"] = state ? state.lifetimePeriod : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
@@ -558,6 +560,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["integrationNomad"] = args ? args.integrationNomad : undefined;
             inputs["integrationRancher"] = args ? args.integrationRancher : undefined;
             inputs["integrationRoute53"] = args ? args.integrationRoute53 : undefined;
+            inputs["itfs"] = args ? args.itfs : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["lifetimePeriod"] = args ? args.lifetimePeriod : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
@@ -745,6 +748,7 @@ export interface ElastigroupState {
      * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
      */
     readonly integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53>;
+    readonly itfs?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItf>[]>;
     /**
      * The key name that should be used for the instance.
      */
@@ -1020,6 +1024,7 @@ export interface ElastigroupArgs {
      * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
      */
     readonly integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53>;
+    readonly itfs?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItf>[]>;
     /**
      * The key name that should be used for the instance.
      */

@@ -40,6 +40,9 @@ import * as utilities from "../utilities";
  *     createOptions: {
  *         initialNodes: 1,
  *     },
+ *     deleteOptions: {
+ *         forceDelete: true,
+ *     },
  *     elasticIpPools: [{
  *         tagSelector: {
  *             tagKey: "key",
@@ -90,6 +93,16 @@ import * as utilities from "../utilities";
  *
  * export const oceanLaunchspecId = spotinst_ocean_aws_launch_spec.example.id;
  * ```
+ * ## Update Policy
+ *
+ * * `updatePolicy` - (Optional)
+ *     * `shouldRoll` - (Required) Enables the roll.
+ *     * `rollConfig` - (Required) Holds the roll configuration.
+ *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
@@ -132,6 +145,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly blockDeviceMappings!: pulumi.Output<outputs.aws.OceanLaunchSpecBlockDeviceMapping[] | undefined>;
     public readonly createOptions!: pulumi.Output<outputs.aws.OceanLaunchSpecCreateOptions | undefined>;
+    public readonly deleteOptions!: pulumi.Output<outputs.aws.OceanLaunchSpecDeleteOptions | undefined>;
     /**
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */
@@ -190,6 +204,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Optionally adds labels to instances launched in the cluster.
      */
     public readonly taints!: pulumi.Output<outputs.aws.OceanLaunchSpecTaint[] | undefined>;
+    public readonly updatePolicy!: pulumi.Output<outputs.aws.OceanLaunchSpecUpdatePolicy | undefined>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
@@ -212,6 +227,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
             inputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             inputs["createOptions"] = state ? state.createOptions : undefined;
+            inputs["deleteOptions"] = state ? state.deleteOptions : undefined;
             inputs["elasticIpPools"] = state ? state.elasticIpPools : undefined;
             inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
@@ -228,6 +244,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["taints"] = state ? state.taints : undefined;
+            inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             inputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
@@ -238,6 +255,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
             inputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             inputs["createOptions"] = args ? args.createOptions : undefined;
+            inputs["deleteOptions"] = args ? args.deleteOptions : undefined;
             inputs["elasticIpPools"] = args ? args.elasticIpPools : undefined;
             inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
@@ -254,6 +272,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["taints"] = args ? args.taints : undefined;
+            inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             inputs["userData"] = args ? args.userData : undefined;
         }
         if (!opts.version) {
@@ -280,6 +299,7 @@ export interface OceanLaunchSpecState {
      */
     readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[]>;
     readonly createOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecCreateOptions>;
+    readonly deleteOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecDeleteOptions>;
     /**
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */
@@ -338,6 +358,7 @@ export interface OceanLaunchSpecState {
      * Optionally adds labels to instances launched in the cluster.
      */
     readonly taints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTaint>[]>;
+    readonly updatePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecUpdatePolicy>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
@@ -361,6 +382,7 @@ export interface OceanLaunchSpecArgs {
      */
     readonly blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[]>;
     readonly createOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecCreateOptions>;
+    readonly deleteOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecDeleteOptions>;
     /**
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */
@@ -419,6 +441,7 @@ export interface OceanLaunchSpecArgs {
      * Optionally adds labels to instances launched in the cluster.
      */
     readonly taints?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecTaint>[]>;
+    readonly updatePolicy?: pulumi.Input<inputs.aws.OceanLaunchSpecUpdatePolicy>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
