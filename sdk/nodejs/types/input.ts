@@ -2453,6 +2453,10 @@ export namespace aws {
          * Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
          */
         maxInstanceCount?: pulumi.Input<number>;
+        /**
+         * Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
+         */
+        minInstanceCount?: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecStrategy {
@@ -3314,6 +3318,10 @@ export namespace azure {
 
 export namespace ecs {
     export interface OceanAutoscaler {
+        /**
+         * The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+         */
+        autoHeadroomPercentage?: pulumi.Input<number>;
         /**
          * Cooldown period between scaling actions.
          */
@@ -4355,6 +4363,10 @@ export namespace gke {
          * Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
          */
         maxInstanceCount?: pulumi.Input<number>;
+        /**
+         * Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+         */
+        minInstanceCount?: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecShieldedInstanceConfig {

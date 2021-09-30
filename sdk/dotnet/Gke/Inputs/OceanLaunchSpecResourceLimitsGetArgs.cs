@@ -18,6 +18,12 @@ namespace Pulumi.SpotInst.Gke.Inputs
         [Input("maxInstanceCount")]
         public Input<int>? MaxInstanceCount { get; set; }
 
+        /// <summary>
+        /// Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+        /// </summary>
+        [Input("minInstanceCount")]
+        public Input<int>? MinInstanceCount { get; set; }
+
         public OceanLaunchSpecResourceLimitsGetArgs()
         {
         }

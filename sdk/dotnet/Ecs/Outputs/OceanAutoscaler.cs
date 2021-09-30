@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     public sealed class OceanAutoscaler
     {
         /// <summary>
+        /// The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+        /// </summary>
+        public readonly int? AutoHeadroomPercentage;
+        /// <summary>
         /// Cooldown period between scaling actions.
         /// </summary>
         public readonly int? Cooldown;
@@ -40,6 +44,8 @@ namespace Pulumi.SpotInst.Ecs.Outputs
 
         [OutputConstructor]
         private OceanAutoscaler(
+            int? autoHeadroomPercentage,
+
             int? cooldown,
 
             Outputs.OceanAutoscalerDown? down,
@@ -52,6 +58,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
 
             Outputs.OceanAutoscalerResourceLimits? resourceLimits)
         {
+            AutoHeadroomPercentage = autoHeadroomPercentage;
             Cooldown = cooldown;
             Down = down;
             Headroom = headroom;

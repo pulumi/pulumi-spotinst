@@ -25,6 +25,8 @@ type OceanLaunchSpec struct {
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayOutput `pulumi:"metadatas"`
+	// The launch specification name.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The node pool you wish to use in your Launch Spec.
 	NodePoolName pulumi.StringPtrOutput `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
@@ -91,6 +93,8 @@ type oceanLaunchSpecState struct {
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
+	// The launch specification name.
+	Name *string `pulumi:"name"`
 	// The node pool you wish to use in your Launch Spec.
 	NodePoolName *string `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
@@ -126,6 +130,8 @@ type OceanLaunchSpecState struct {
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
+	// The launch specification name.
+	Name pulumi.StringPtrInput
 	// The node pool you wish to use in your Launch Spec.
 	NodePoolName pulumi.StringPtrInput
 	// The Ocean cluster ID.
@@ -165,6 +171,8 @@ type oceanLaunchSpecArgs struct {
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
+	// The launch specification name.
+	Name *string `pulumi:"name"`
 	// The node pool you wish to use in your Launch Spec.
 	NodePoolName *string `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
@@ -201,6 +209,8 @@ type OceanLaunchSpecArgs struct {
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
+	// The launch specification name.
+	Name pulumi.StringPtrInput
 	// The node pool you wish to use in your Launch Spec.
 	NodePoolName pulumi.StringPtrInput
 	// The Ocean cluster ID.

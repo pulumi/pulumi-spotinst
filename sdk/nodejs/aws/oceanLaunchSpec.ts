@@ -68,6 +68,7 @@ import * as utilities from "../utilities";
  *     ],
  *     resourceLimits: [{
  *         maxInstanceCount: 4,
+ *         minInstanceCount: 0,
  *     }],
  *     restrictScaleDown: true,
  *     rootVolumeSize: 30,

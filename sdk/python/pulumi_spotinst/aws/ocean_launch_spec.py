@@ -815,6 +815,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ],
             resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(
                 max_instance_count=4,
+                min_instance_count=0,
             )],
             restrict_scale_down=True,
             root_volume_size=30,
@@ -940,6 +941,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ],
             resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(
                 max_instance_count=4,
+                min_instance_count=0,
             )],
             restrict_scale_down=True,
             root_volume_size=30,

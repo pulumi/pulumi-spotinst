@@ -17690,6 +17690,8 @@ func (o OceanLaunchSpecLabelArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 type OceanLaunchSpecResourceLimit struct {
 	// Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
+	// Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
+	MinInstanceCount *int `pulumi:"minInstanceCount"`
 }
 
 // OceanLaunchSpecResourceLimitInput is an input type that accepts OceanLaunchSpecResourceLimitArgs and OceanLaunchSpecResourceLimitOutput values.
@@ -17706,6 +17708,8 @@ type OceanLaunchSpecResourceLimitInput interface {
 type OceanLaunchSpecResourceLimitArgs struct {
 	// Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
+	// Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
+	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
 }
 
 func (OceanLaunchSpecResourceLimitArgs) ElementType() reflect.Type {
@@ -17762,6 +17766,11 @@ func (o OceanLaunchSpecResourceLimitOutput) ToOceanLaunchSpecResourceLimitOutput
 // Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
 func (o OceanLaunchSpecResourceLimitOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecResourceLimit) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
+func (o OceanLaunchSpecResourceLimitOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecResourceLimit) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
 }
 
 type OceanLaunchSpecResourceLimitArrayOutput struct{ *pulumi.OutputState }

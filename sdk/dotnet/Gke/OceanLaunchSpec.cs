@@ -42,6 +42,12 @@ namespace Pulumi.SpotInst.Gke
         public Output<ImmutableArray<Outputs.OceanLaunchSpecMetadata>> Metadatas { get; private set; } = null!;
 
         /// <summary>
+        /// The launch specification name.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
         /// The node pool you wish to use in your Launch Spec.
         /// </summary>
         [Output("nodePoolName")]
@@ -208,6 +214,12 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
+        /// The launch specification name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// The node pool you wish to use in your Launch Spec.
         /// </summary>
         [Input("nodePoolName")]
@@ -345,6 +357,12 @@ namespace Pulumi.SpotInst.Gke
             get => _metadatas ?? (_metadatas = new InputList<Inputs.OceanLaunchSpecMetadataGetArgs>());
             set => _metadatas = value;
         }
+
+        /// <summary>
+        /// The launch specification name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The node pool you wish to use in your Launch Spec.

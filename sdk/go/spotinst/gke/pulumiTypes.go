@@ -4540,6 +4540,8 @@ func (o OceanLaunchSpecMetadataArrayOutput) Index(i pulumi.IntInput) OceanLaunch
 type OceanLaunchSpecResourceLimits struct {
 	// Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
+	// Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+	MinInstanceCount *int `pulumi:"minInstanceCount"`
 }
 
 // OceanLaunchSpecResourceLimitsInput is an input type that accepts OceanLaunchSpecResourceLimitsArgs and OceanLaunchSpecResourceLimitsOutput values.
@@ -4556,6 +4558,8 @@ type OceanLaunchSpecResourceLimitsInput interface {
 type OceanLaunchSpecResourceLimitsArgs struct {
 	// Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
+	// Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
 }
 
 func (OceanLaunchSpecResourceLimitsArgs) ElementType() reflect.Type {
@@ -4640,6 +4644,11 @@ func (o OceanLaunchSpecResourceLimitsOutput) MaxInstanceCount() pulumi.IntPtrOut
 	return o.ApplyT(func(v OceanLaunchSpecResourceLimits) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
 }
 
+// Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+func (o OceanLaunchSpecResourceLimitsOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecResourceLimits) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
+}
+
 type OceanLaunchSpecResourceLimitsPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecResourceLimitsPtrOutput) ElementType() reflect.Type {
@@ -4665,6 +4674,16 @@ func (o OceanLaunchSpecResourceLimitsPtrOutput) MaxInstanceCount() pulumi.IntPtr
 			return nil
 		}
 		return v.MaxInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+func (o OceanLaunchSpecResourceLimitsPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecResourceLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinInstanceCount
 	}).(pulumi.IntPtrOutput)
 }
 
