@@ -20,6 +20,7 @@ class OceanLaunchSpecArgs:
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  resource_limits: Optional[pulumi.Input['OceanLaunchSpecResourceLimitsArgs']] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
@@ -38,6 +39,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
+        :param pulumi.Input[str] name: The launch specification name.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
@@ -59,6 +61,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "labels", labels)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if node_pool_name is not None:
             pulumi.set(__self__, "node_pool_name", node_pool_name)
         if resource_limits is not None:
@@ -141,6 +145,18 @@ class OceanLaunchSpecArgs:
     @metadatas.setter
     def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]]):
         pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The launch specification name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="nodePoolName")
@@ -282,6 +298,7 @@ class _OceanLaunchSpecState:
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  resource_limits: Optional[pulumi.Input['OceanLaunchSpecResourceLimitsArgs']] = None,
@@ -300,6 +317,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
+        :param pulumi.Input[str] name: The launch specification name.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
@@ -321,6 +339,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "labels", labels)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if node_pool_name is not None:
             pulumi.set(__self__, "node_pool_name", node_pool_name)
         if ocean_id is not None:
@@ -393,6 +413,18 @@ class _OceanLaunchSpecState:
     @metadatas.setter
     def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]]):
         pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The launch specification name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="nodePoolName")
@@ -548,6 +580,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  resource_limits: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']]] = None,
@@ -572,6 +605,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
+        :param pulumi.Input[str] name: The launch specification name.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']] resource_limits: The Ocean virtual node group resource limits object.
@@ -615,6 +649,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  resource_limits: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']]] = None,
@@ -643,6 +678,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["labels"] = labels
             __props__.__dict__["metadatas"] = metadatas
+            __props__.__dict__["name"] = name
             __props__.__dict__["node_pool_name"] = node_pool_name
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
@@ -671,6 +707,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
             node_pool_name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
             resource_limits: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']]] = None,
@@ -694,6 +731,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
+        :param pulumi.Input[str] name: The launch specification name.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']] resource_limits: The Ocean virtual node group resource limits object.
@@ -715,6 +753,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["labels"] = labels
         __props__.__dict__["metadatas"] = metadatas
+        __props__.__dict__["name"] = name
         __props__.__dict__["node_pool_name"] = node_pool_name
         __props__.__dict__["ocean_id"] = ocean_id
         __props__.__dict__["resource_limits"] = resource_limits
@@ -760,6 +799,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Cluster's metadata.
         """
         return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The launch specification name.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nodePoolName")

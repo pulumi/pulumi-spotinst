@@ -35,6 +35,7 @@ __all__ = [
 @pulumi.input_type
 class OceanAutoscalerArgs:
     def __init__(__self__, *,
+                 auto_headroom_percentage: Optional[pulumi.Input[int]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
                  down: Optional[pulumi.Input['OceanAutoscalerDownArgs']] = None,
                  headroom: Optional[pulumi.Input['OceanAutoscalerHeadroomArgs']] = None,
@@ -42,6 +43,7 @@ class OceanAutoscalerArgs:
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_limits: Optional[pulumi.Input['OceanAutoscalerResourceLimitsArgs']] = None):
         """
+        :param pulumi.Input[int] auto_headroom_percentage: The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
         :param pulumi.Input[int] cooldown: Cooldown period between scaling actions.
         :param pulumi.Input['OceanAutoscalerDownArgs'] down: Auto Scaling scale down operations.
         :param pulumi.Input['OceanAutoscalerHeadroomArgs'] headroom: Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
@@ -49,6 +51,8 @@ class OceanAutoscalerArgs:
         :param pulumi.Input[bool] is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
         :param pulumi.Input['OceanAutoscalerResourceLimitsArgs'] resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
         """
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
         if cooldown is not None:
             pulumi.set(__self__, "cooldown", cooldown)
         if down is not None:
@@ -61,6 +65,18 @@ class OceanAutoscalerArgs:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
+
+    @property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
+
+    @auto_headroom_percentage.setter
+    def auto_headroom_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_headroom_percentage", value)
 
     @property
     @pulumi.getter

@@ -1922,6 +1922,8 @@ class OceanLaunchSpecResourceLimits(dict):
         suggest = None
         if key == "maxInstanceCount":
             suggest = "max_instance_count"
+        elif key == "minInstanceCount":
+            suggest = "min_instance_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecResourceLimits. Access the value via the '{suggest}' property getter instead.")
@@ -1935,12 +1937,16 @@ class OceanLaunchSpecResourceLimits(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 max_instance_count: Optional[int] = None):
+                 max_instance_count: Optional[int] = None,
+                 min_instance_count: Optional[int] = None):
         """
         :param int max_instance_count: Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+        :param int min_instance_count: Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
         """
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
+        if min_instance_count is not None:
+            pulumi.set(__self__, "min_instance_count", min_instance_count)
 
     @property
     @pulumi.getter(name="maxInstanceCount")
@@ -1949,6 +1955,14 @@ class OceanLaunchSpecResourceLimits(dict):
         Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
         """
         return pulumi.get(self, "max_instance_count")
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> Optional[int]:
+        """
+        Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+        """
+        return pulumi.get(self, "min_instance_count")
 
 
 @pulumi.output_type

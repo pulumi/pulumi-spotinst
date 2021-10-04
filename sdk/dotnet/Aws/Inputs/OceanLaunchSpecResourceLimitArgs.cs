@@ -18,6 +18,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("maxInstanceCount")]
         public Input<int>? MaxInstanceCount { get; set; }
 
+        /// <summary>
+        /// Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
+        /// </summary>
+        [Input("minInstanceCount")]
+        public Input<int>? MinInstanceCount { get; set; }
+
         public OceanLaunchSpecResourceLimitArgs()
         {
         }

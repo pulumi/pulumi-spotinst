@@ -8794,12 +8794,16 @@ class OceanLaunchSpecLabelArgs:
 @pulumi.input_type
 class OceanLaunchSpecResourceLimitArgs:
     def __init__(__self__, *,
-                 max_instance_count: Optional[pulumi.Input[int]] = None):
+                 max_instance_count: Optional[pulumi.Input[int]] = None,
+                 min_instance_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] max_instance_count: Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
+        :param pulumi.Input[int] min_instance_count: Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
         """
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
+        if min_instance_count is not None:
+            pulumi.set(__self__, "min_instance_count", min_instance_count)
 
     @property
     @pulumi.getter(name="maxInstanceCount")
@@ -8812,6 +8816,18 @@ class OceanLaunchSpecResourceLimitArgs:
     @max_instance_count.setter
     def max_instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_instance_count", value)
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
+        """
+        return pulumi.get(self, "min_instance_count")
+
+    @min_instance_count.setter
+    def min_instance_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_instance_count", value)
 
 
 @pulumi.input_type

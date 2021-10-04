@@ -55,6 +55,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly metadatas!: pulumi.Output<outputs.gke.OceanLaunchSpecMetadata[]>;
     /**
+     * The launch specification name.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
      * The node pool you wish to use in your Launch Spec.
      */
     public readonly nodePoolName!: pulumi.Output<string | undefined>;
@@ -120,6 +124,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["metadatas"] = state ? state.metadatas : undefined;
+            inputs["name"] = state ? state.name : undefined;
             inputs["nodePoolName"] = state ? state.nodePoolName : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
             inputs["resourceLimits"] = state ? state.resourceLimits : undefined;
@@ -141,6 +146,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["metadatas"] = args ? args.metadatas : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["nodePoolName"] = args ? args.nodePoolName : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
             inputs["resourceLimits"] = args ? args.resourceLimits : undefined;
@@ -181,6 +187,10 @@ export interface OceanLaunchSpecState {
      * Cluster's metadata.
      */
     readonly metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
+    /**
+     * The launch specification name.
+     */
+    readonly name?: pulumi.Input<string>;
     /**
      * The node pool you wish to use in your Launch Spec.
      */
@@ -251,6 +261,10 @@ export interface OceanLaunchSpecArgs {
      * Cluster's metadata.
      */
     readonly metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
+    /**
+     * The launch specification name.
+     */
+    readonly name?: pulumi.Input<string>;
     /**
      * The node pool you wish to use in your Launch Spec.
      */

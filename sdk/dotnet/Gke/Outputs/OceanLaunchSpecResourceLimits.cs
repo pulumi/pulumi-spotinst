@@ -17,11 +17,19 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
         /// </summary>
         public readonly int? MaxInstanceCount;
+        /// <summary>
+        /// Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
+        /// </summary>
+        public readonly int? MinInstanceCount;
 
         [OutputConstructor]
-        private OceanLaunchSpecResourceLimits(int? maxInstanceCount)
+        private OceanLaunchSpecResourceLimits(
+            int? maxInstanceCount,
+
+            int? minInstanceCount)
         {
             MaxInstanceCount = maxInstanceCount;
+            MinInstanceCount = minInstanceCount;
         }
     }
 }

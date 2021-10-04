@@ -11,6 +11,8 @@ import (
 )
 
 type OceanAutoscaler struct {
+	// The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
 	// Cooldown period between scaling actions.
 	Cooldown *int `pulumi:"cooldown"`
 	// Auto Scaling scale down operations.
@@ -37,6 +39,8 @@ type OceanAutoscalerInput interface {
 }
 
 type OceanAutoscalerArgs struct {
+	// The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
 	// Cooldown period between scaling actions.
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
 	// Auto Scaling scale down operations.
@@ -128,6 +132,11 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context
 	}).(OceanAutoscalerPtrOutput)
 }
 
+// The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+func (o OceanAutoscalerOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
+}
+
 // Cooldown period between scaling actions.
 func (o OceanAutoscalerOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
@@ -174,6 +183,16 @@ func (o OceanAutoscalerPtrOutput) ToOceanAutoscalerPtrOutputWithContext(ctx cont
 
 func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
+}
+
+// The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+func (o OceanAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoHeadroomPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 // Cooldown period between scaling actions.

@@ -103,6 +103,7 @@ namespace Pulumi.SpotInst.Aws
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecResourceLimitArgs
     ///                 {
     ///                     MaxInstanceCount = 4,
+    ///                     MinInstanceCount = 0,
     ///                 },
     ///             },
     ///             RestrictScaleDown = true,

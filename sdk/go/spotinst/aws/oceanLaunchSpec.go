@@ -88,6 +88,7 @@ import (
 // 			ResourceLimits: aws.OceanLaunchSpecResourceLimitArray{
 // 				&aws.OceanLaunchSpecResourceLimitArgs{
 // 					MaxInstanceCount: pulumi.Int(4),
+// 					MinInstanceCount: pulumi.Int(0),
 // 				},
 // 			},
 // 			RestrictScaleDown: pulumi.Bool(true),

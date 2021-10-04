@@ -38,7 +38,9 @@ class OceanAutoscaler(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "isAutoConfig":
+        if key == "autoHeadroomPercentage":
+            suggest = "auto_headroom_percentage"
+        elif key == "isAutoConfig":
             suggest = "is_auto_config"
         elif key == "isEnabled":
             suggest = "is_enabled"
@@ -57,6 +59,7 @@ class OceanAutoscaler(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_headroom_percentage: Optional[int] = None,
                  cooldown: Optional[int] = None,
                  down: Optional['outputs.OceanAutoscalerDown'] = None,
                  headroom: Optional['outputs.OceanAutoscalerHeadroom'] = None,
@@ -64,6 +67,7 @@ class OceanAutoscaler(dict):
                  is_enabled: Optional[bool] = None,
                  resource_limits: Optional['outputs.OceanAutoscalerResourceLimits'] = None):
         """
+        :param int auto_headroom_percentage: The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
         :param int cooldown: Cooldown period between scaling actions.
         :param 'OceanAutoscalerDownArgs' down: Auto Scaling scale down operations.
         :param 'OceanAutoscalerHeadroomArgs' headroom: Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
@@ -71,6 +75,8 @@ class OceanAutoscaler(dict):
         :param bool is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
         :param 'OceanAutoscalerResourceLimitsArgs' resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
         """
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
         if cooldown is not None:
             pulumi.set(__self__, "cooldown", cooldown)
         if down is not None:
@@ -83,6 +89,14 @@ class OceanAutoscaler(dict):
             pulumi.set(__self__, "is_enabled", is_enabled)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
+
+    @property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> Optional[int]:
+        """
+        The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
 
     @property
     @pulumi.getter

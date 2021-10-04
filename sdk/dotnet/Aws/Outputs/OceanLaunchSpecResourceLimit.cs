@@ -17,11 +17,19 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
         /// </summary>
         public readonly int? MaxInstanceCount;
+        /// <summary>
+        /// Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
+        /// </summary>
+        public readonly int? MinInstanceCount;
 
         [OutputConstructor]
-        private OceanLaunchSpecResourceLimit(int? maxInstanceCount)
+        private OceanLaunchSpecResourceLimit(
+            int? maxInstanceCount,
+
+            int? minInstanceCount)
         {
             MaxInstanceCount = maxInstanceCount;
+            MinInstanceCount = minInstanceCount;
         }
     }
 }
