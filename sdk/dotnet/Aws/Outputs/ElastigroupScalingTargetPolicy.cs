@@ -22,6 +22,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupScalingTargetPolicyDimension> Dimensions;
         /// <summary>
+        /// How many evaluation periods should accumulate before a scale down action takes place.
+        /// </summary>
+        public readonly int? EvaluationPeriods;
+        /// <summary>
         /// String, restrict the maximal number of instances which can be added in each scale-up action.
         /// </summary>
         public readonly string? MaxCapacityPerScale;
@@ -33,6 +37,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// String, the namespace for the alarm's associated metric.
         /// </summary>
         public readonly string Namespace;
+        /// <summary>
+        /// The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        /// </summary>
+        public readonly int? Period;
         /// <summary>
         /// String, the name of the policy.
         /// </summary>
@@ -64,11 +72,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             ImmutableArray<Outputs.ElastigroupScalingTargetPolicyDimension> dimensions,
 
+            int? evaluationPeriods,
+
             string? maxCapacityPerScale,
 
             string metricName,
 
             string @namespace,
+
+            int? period,
 
             string policyName,
 
@@ -84,9 +96,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         {
             Cooldown = cooldown;
             Dimensions = dimensions;
+            EvaluationPeriods = evaluationPeriods;
             MaxCapacityPerScale = maxCapacityPerScale;
             MetricName = metricName;
             Namespace = @namespace;
+            Period = period;
             PolicyName = policyName;
             PredictiveMode = predictiveMode;
             Source = source;

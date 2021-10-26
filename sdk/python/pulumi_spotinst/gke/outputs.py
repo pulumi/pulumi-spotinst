@@ -49,6 +49,8 @@ __all__ = [
     'OceanLaunchSpecStorage',
     'OceanLaunchSpecStrategy',
     'OceanLaunchSpecTaint',
+    'OceanLaunchSpecUpdatePolicy',
+    'OceanLaunchSpecUpdatePolicyRollConfig',
 ]
 
 @pulumi.output_type
@@ -2128,5 +2130,73 @@ class OceanLaunchSpecTaint(dict):
         The label value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanLaunchSpecUpdatePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shouldRoll":
+            suggest = "should_roll"
+        elif key == "rollConfig":
+            suggest = "roll_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecUpdatePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecUpdatePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecUpdatePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 should_roll: bool,
+                 roll_config: Optional['outputs.OceanLaunchSpecUpdatePolicyRollConfig'] = None):
+        pulumi.set(__self__, "should_roll", should_roll)
+        if roll_config is not None:
+            pulumi.set(__self__, "roll_config", roll_config)
+
+    @property
+    @pulumi.getter(name="shouldRoll")
+    def should_roll(self) -> bool:
+        return pulumi.get(self, "should_roll")
+
+    @property
+    @pulumi.getter(name="rollConfig")
+    def roll_config(self) -> Optional['outputs.OceanLaunchSpecUpdatePolicyRollConfig']:
+        return pulumi.get(self, "roll_config")
+
+
+@pulumi.output_type
+class OceanLaunchSpecUpdatePolicyRollConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchSizePercentage":
+            suggest = "batch_size_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecUpdatePolicyRollConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecUpdatePolicyRollConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecUpdatePolicyRollConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 batch_size_percentage: int):
+        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> int:
+        return pulumi.get(self, "batch_size_percentage")
 
 

@@ -38,6 +38,7 @@ class ElastigroupArgs:
                  node_image: Optional[pulumi.Input[str]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -98,6 +99,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "ondemand_count", ondemand_count)
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
         if scaling_down_policies is not None:
             pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
@@ -331,6 +334,15 @@ class ElastigroupArgs:
         pulumi.set(self, "preemptible_percentage", value)
 
     @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisioning_model")
+
+    @provisioning_model.setter
+    def provisioning_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_model", value)
+
+    @property
     @pulumi.getter(name="scalingDownPolicies")
     def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
         return pulumi.get(self, "scaling_down_policies")
@@ -411,6 +423,7 @@ class _ElastigroupState:
                  node_image: Optional[pulumi.Input[str]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -473,6 +486,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "ondemand_count", ondemand_count)
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
         if scaling_down_policies is not None:
             pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
@@ -706,6 +721,15 @@ class _ElastigroupState:
         pulumi.set(self, "preemptible_percentage", value)
 
     @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisioning_model")
+
+    @provisioning_model.setter
+    def provisioning_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_model", value)
+
+    @property
     @pulumi.getter(name="scalingDownPolicies")
     def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
         return pulumi.get(self, "scaling_down_policies")
@@ -788,6 +812,7 @@ class Elastigroup(pulumi.CustomResource):
                  node_image: Optional[pulumi.Input[str]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -966,6 +991,7 @@ class Elastigroup(pulumi.CustomResource):
                  node_image: Optional[pulumi.Input[str]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -1014,6 +1040,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["node_image"] = node_image
             __props__.__dict__["ondemand_count"] = ondemand_count
             __props__.__dict__["preemptible_percentage"] = preemptible_percentage
+            __props__.__dict__["provisioning_model"] = provisioning_model
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["service_account"] = service_account
@@ -1053,6 +1080,7 @@ class Elastigroup(pulumi.CustomResource):
             node_image: Optional[pulumi.Input[str]] = None,
             ondemand_count: Optional[pulumi.Input[int]] = None,
             preemptible_percentage: Optional[pulumi.Input[int]] = None,
+            provisioning_model: Optional[pulumi.Input[str]] = None,
             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
@@ -1098,6 +1126,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["node_image"] = node_image
         __props__.__dict__["ondemand_count"] = ondemand_count
         __props__.__dict__["preemptible_percentage"] = preemptible_percentage
+        __props__.__dict__["provisioning_model"] = provisioning_model
         __props__.__dict__["scaling_down_policies"] = scaling_down_policies
         __props__.__dict__["scaling_up_policies"] = scaling_up_policies
         __props__.__dict__["service_account"] = service_account
@@ -1232,6 +1261,11 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="preemptiblePercentage")
     def preemptible_percentage(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "preemptible_percentage")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "provisioning_model")
 
     @property
     @pulumi.getter(name="scalingDownPolicies")

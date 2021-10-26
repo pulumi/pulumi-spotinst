@@ -48,6 +48,8 @@ __all__ = [
     'OceanLaunchSpecStorageArgs',
     'OceanLaunchSpecStrategyArgs',
     'OceanLaunchSpecTaintArgs',
+    'OceanLaunchSpecUpdatePolicyArgs',
+    'OceanLaunchSpecUpdatePolicyRollConfigArgs',
 ]
 
 @pulumi.input_type
@@ -2102,5 +2104,49 @@ class OceanLaunchSpecTaintArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecUpdatePolicyArgs:
+    def __init__(__self__, *,
+                 should_roll: pulumi.Input[bool],
+                 roll_config: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']] = None):
+        pulumi.set(__self__, "should_roll", should_roll)
+        if roll_config is not None:
+            pulumi.set(__self__, "roll_config", roll_config)
+
+    @property
+    @pulumi.getter(name="shouldRoll")
+    def should_roll(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "should_roll")
+
+    @should_roll.setter
+    def should_roll(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "should_roll", value)
+
+    @property
+    @pulumi.getter(name="rollConfig")
+    def roll_config(self) -> Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']]:
+        return pulumi.get(self, "roll_config")
+
+    @roll_config.setter
+    def roll_config(self, value: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyRollConfigArgs']]):
+        pulumi.set(self, "roll_config", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecUpdatePolicyRollConfigArgs:
+    def __init__(__self__, *,
+                 batch_size_percentage: pulumi.Input[int]):
+        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @batch_size_percentage.setter
+    def batch_size_percentage(self, value: pulumi.Input[int]):
+        pulumi.set(self, "batch_size_percentage", value)
 
 

@@ -5180,6 +5180,273 @@ func (o OceanLaunchSpecTaintArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 	}).(OceanLaunchSpecTaintOutput)
 }
 
+type OceanLaunchSpecUpdatePolicy struct {
+	RollConfig *OceanLaunchSpecUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	ShouldRoll bool                                   `pulumi:"shouldRoll"`
+}
+
+// OceanLaunchSpecUpdatePolicyInput is an input type that accepts OceanLaunchSpecUpdatePolicyArgs and OceanLaunchSpecUpdatePolicyOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyInput` via:
+//
+//          OceanLaunchSpecUpdatePolicyArgs{...}
+type OceanLaunchSpecUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecUpdatePolicyOutput() OceanLaunchSpecUpdatePolicyOutput
+	ToOceanLaunchSpecUpdatePolicyOutputWithContext(context.Context) OceanLaunchSpecUpdatePolicyOutput
+}
+
+type OceanLaunchSpecUpdatePolicyArgs struct {
+	RollConfig OceanLaunchSpecUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	ShouldRoll pulumi.BoolInput                              `pulumi:"shouldRoll"`
+}
+
+func (OceanLaunchSpecUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecUpdatePolicy)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecUpdatePolicyArgs) ToOceanLaunchSpecUpdatePolicyOutput() OceanLaunchSpecUpdatePolicyOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecUpdatePolicyArgs) ToOceanLaunchSpecUpdatePolicyOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyOutput)
+}
+
+func (i OceanLaunchSpecUpdatePolicyArgs) ToOceanLaunchSpecUpdatePolicyPtrOutput() OceanLaunchSpecUpdatePolicyPtrOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecUpdatePolicyArgs) ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyOutput).ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecUpdatePolicyPtrInput is an input type that accepts OceanLaunchSpecUpdatePolicyArgs, OceanLaunchSpecUpdatePolicyPtr and OceanLaunchSpecUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyPtrInput` via:
+//
+//          OceanLaunchSpecUpdatePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLaunchSpecUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecUpdatePolicyPtrOutput() OceanLaunchSpecUpdatePolicyPtrOutput
+	ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(context.Context) OceanLaunchSpecUpdatePolicyPtrOutput
+}
+
+type oceanLaunchSpecUpdatePolicyPtrType OceanLaunchSpecUpdatePolicyArgs
+
+func OceanLaunchSpecUpdatePolicyPtr(v *OceanLaunchSpecUpdatePolicyArgs) OceanLaunchSpecUpdatePolicyPtrInput {
+	return (*oceanLaunchSpecUpdatePolicyPtrType)(v)
+}
+
+func (*oceanLaunchSpecUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecUpdatePolicy)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecUpdatePolicyPtrType) ToOceanLaunchSpecUpdatePolicyPtrOutput() OceanLaunchSpecUpdatePolicyPtrOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecUpdatePolicyPtrType) ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyPtrOutput)
+}
+
+type OceanLaunchSpecUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecUpdatePolicy)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyOutput() OceanLaunchSpecUpdatePolicyOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyPtrOutput() OceanLaunchSpecUpdatePolicyPtrOutput {
+	return o.ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicy {
+		return &v
+	}).(OceanLaunchSpecUpdatePolicyPtrOutput)
+}
+func (o OceanLaunchSpecUpdatePolicyOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicyRollConfig { return v.RollConfig }).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o OceanLaunchSpecUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+}
+
+type OceanLaunchSpecUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecUpdatePolicy)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecUpdatePolicyPtrOutput) ToOceanLaunchSpecUpdatePolicyPtrOutput() OceanLaunchSpecUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyPtrOutput) ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyPtrOutput) Elem() OceanLaunchSpecUpdatePolicyOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) OceanLaunchSpecUpdatePolicy { return *v }).(OceanLaunchSpecUpdatePolicyOutput)
+}
+
+func (o OceanLaunchSpecUpdatePolicyPtrOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicyRollConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RollConfig
+	}).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o OceanLaunchSpecUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldRoll
+	}).(pulumi.BoolPtrOutput)
+}
+
+type OceanLaunchSpecUpdatePolicyRollConfig struct {
+	BatchSizePercentage int `pulumi:"batchSizePercentage"`
+}
+
+// OceanLaunchSpecUpdatePolicyRollConfigInput is an input type that accepts OceanLaunchSpecUpdatePolicyRollConfigArgs and OceanLaunchSpecUpdatePolicyRollConfigOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyRollConfigInput` via:
+//
+//          OceanLaunchSpecUpdatePolicyRollConfigArgs{...}
+type OceanLaunchSpecUpdatePolicyRollConfigInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecUpdatePolicyRollConfigOutput() OceanLaunchSpecUpdatePolicyRollConfigOutput
+	ToOceanLaunchSpecUpdatePolicyRollConfigOutputWithContext(context.Context) OceanLaunchSpecUpdatePolicyRollConfigOutput
+}
+
+type OceanLaunchSpecUpdatePolicyRollConfigArgs struct {
+	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
+}
+
+func (OceanLaunchSpecUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecUpdatePolicyRollConfigArgs) ToOceanLaunchSpecUpdatePolicyRollConfigOutput() OceanLaunchSpecUpdatePolicyRollConfigOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyRollConfigOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecUpdatePolicyRollConfigArgs) ToOceanLaunchSpecUpdatePolicyRollConfigOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyRollConfigOutput)
+}
+
+func (i OceanLaunchSpecUpdatePolicyRollConfigArgs) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutput() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecUpdatePolicyRollConfigArgs) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyRollConfigOutput).ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecUpdatePolicyRollConfigPtrInput is an input type that accepts OceanLaunchSpecUpdatePolicyRollConfigArgs, OceanLaunchSpecUpdatePolicyRollConfigPtr and OceanLaunchSpecUpdatePolicyRollConfigPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyRollConfigPtrInput` via:
+//
+//          OceanLaunchSpecUpdatePolicyRollConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLaunchSpecUpdatePolicyRollConfigPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutput() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput
+	ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput
+}
+
+type oceanLaunchSpecUpdatePolicyRollConfigPtrType OceanLaunchSpecUpdatePolicyRollConfigArgs
+
+func OceanLaunchSpecUpdatePolicyRollConfigPtr(v *OceanLaunchSpecUpdatePolicyRollConfigArgs) OceanLaunchSpecUpdatePolicyRollConfigPtrInput {
+	return (*oceanLaunchSpecUpdatePolicyRollConfigPtrType)(v)
+}
+
+func (*oceanLaunchSpecUpdatePolicyRollConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecUpdatePolicyRollConfigPtrType) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutput() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return i.ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecUpdatePolicyRollConfigPtrType) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
+}
+
+type OceanLaunchSpecUpdatePolicyRollConfigOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecUpdatePolicyRollConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePolicyRollConfigOutput() OceanLaunchSpecUpdatePolicyRollConfigOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePolicyRollConfigOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutput() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o.ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) *OceanLaunchSpecUpdatePolicyRollConfig {
+		return &v
+	}).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
+}
+func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
+}
+
+type OceanLaunchSpecUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutput() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) Elem() OceanLaunchSpecUpdatePolicyRollConfigOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) OceanLaunchSpecUpdatePolicyRollConfig { return *v }).(OceanLaunchSpecUpdatePolicyRollConfigOutput)
+}
+
+func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ElastigroupBackendServiceOutput{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceArrayOutput{})
@@ -5259,4 +5526,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecStrategyArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTaintOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTaintArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecUpdatePolicyPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecUpdatePolicyRollConfigOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput{})
 }

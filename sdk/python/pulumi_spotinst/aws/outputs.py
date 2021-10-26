@@ -4116,6 +4116,8 @@ class ElastigroupScalingTargetPolicy(dict):
             suggest = "metric_name"
         elif key == "policyName":
             suggest = "policy_name"
+        elif key == "evaluationPeriods":
+            suggest = "evaluation_periods"
         elif key == "maxCapacityPerScale":
             suggest = "max_capacity_per_scale"
         elif key == "predictiveMode":
@@ -4139,7 +4141,9 @@ class ElastigroupScalingTargetPolicy(dict):
                  target: float,
                  cooldown: Optional[int] = None,
                  dimensions: Optional[Sequence['outputs.ElastigroupScalingTargetPolicyDimension']] = None,
+                 evaluation_periods: Optional[int] = None,
                  max_capacity_per_scale: Optional[str] = None,
+                 period: Optional[int] = None,
                  predictive_mode: Optional[str] = None,
                  source: Optional[str] = None,
                  statistic: Optional[str] = None,
@@ -4151,7 +4155,9 @@ class ElastigroupScalingTargetPolicy(dict):
         :param float target: The target number of instances to have in the group.
         :param int cooldown: Integer the amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
         :param Sequence['ElastigroupScalingTargetPolicyDimensionArgs'] dimensions: A list of dimensions describing qualities of the metric.
+        :param int evaluation_periods: How many evaluation periods should accumulate before a scale down action takes place.
         :param str max_capacity_per_scale: String, restrict the maximal number of instances which can be added in each scale-up action.
+        :param int period: The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
         :param str predictive_mode: Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
         :param str source: String, the source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
         :param str statistic: String, the metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
@@ -4165,8 +4171,12 @@ class ElastigroupScalingTargetPolicy(dict):
             pulumi.set(__self__, "cooldown", cooldown)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
+        if evaluation_periods is not None:
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_capacity_per_scale is not None:
             pulumi.set(__self__, "max_capacity_per_scale", max_capacity_per_scale)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
         if predictive_mode is not None:
             pulumi.set(__self__, "predictive_mode", predictive_mode)
         if source is not None:
@@ -4225,12 +4235,28 @@ class ElastigroupScalingTargetPolicy(dict):
         return pulumi.get(self, "dimensions")
 
     @property
+    @pulumi.getter(name="evaluationPeriods")
+    def evaluation_periods(self) -> Optional[int]:
+        """
+        How many evaluation periods should accumulate before a scale down action takes place.
+        """
+        return pulumi.get(self, "evaluation_periods")
+
+    @property
     @pulumi.getter(name="maxCapacityPerScale")
     def max_capacity_per_scale(self) -> Optional[str]:
         """
         String, restrict the maximal number of instances which can be added in each scale-up action.
         """
         return pulumi.get(self, "max_capacity_per_scale")
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[int]:
+        """
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        """
+        return pulumi.get(self, "period")
 
     @property
     @pulumi.getter(name="predictiveMode")

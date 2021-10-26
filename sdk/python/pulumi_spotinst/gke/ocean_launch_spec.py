@@ -31,7 +31,8 @@ class OceanLaunchSpecArgs:
                  source_image: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input['OceanLaunchSpecStorageArgs']] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None):
         """
         The set of arguments for constructing a OceanLaunchSpec resource.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
@@ -85,6 +86,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "strategies", strategies)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
 
     @property
     @pulumi.getter(name="oceanId")
@@ -290,6 +293,15 @@ class OceanLaunchSpecArgs:
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
 
 @pulumi.input_type
 class _OceanLaunchSpecState:
@@ -310,7 +322,8 @@ class _OceanLaunchSpecState:
                  source_image: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input['OceanLaunchSpecStorageArgs']] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None):
         """
         Input properties used for looking up and filtering OceanLaunchSpec resources.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
@@ -365,6 +378,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "strategies", strategies)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
 
     @property
     @pulumi.getter(name="autoscaleHeadrooms")
@@ -570,6 +585,15 @@ class _OceanLaunchSpecState:
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
 
 class OceanLaunchSpec(pulumi.CustomResource):
     @overload
@@ -593,11 +617,23 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  storage: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecStorageArgs']]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecUpdatePolicyArgs']]] = None,
                  __props__=None):
         """
         Manages a custom Spotinst Ocean GKE Launch Spec resource.
 
         > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
+
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+          * `should_roll` - (Required) Enables the roll.
+          * `roll_config` - (Required) Holds the roll configuration.
+            * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -629,6 +665,17 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Manages a custom Spotinst Ocean GKE Launch Spec resource.
 
         > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
+
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+          * `should_roll` - (Required) Enables the roll.
+          * `roll_config` - (Required) Holds the roll configuration.
+            * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.
@@ -662,6 +709,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  storage: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecStorageArgs']]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecUpdatePolicyArgs']]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -693,6 +741,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["storage"] = storage
             __props__.__dict__["strategies"] = strategies
             __props__.__dict__["taints"] = taints
+            __props__.__dict__["update_policy"] = update_policy
         super(OceanLaunchSpec, __self__).__init__(
             'spotinst:gke/oceanLaunchSpec:OceanLaunchSpec',
             resource_name,
@@ -719,7 +768,8 @@ class OceanLaunchSpec(pulumi.CustomResource):
             source_image: Optional[pulumi.Input[str]] = None,
             storage: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecStorageArgs']]] = None,
             strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
-            taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None) -> 'OceanLaunchSpec':
+            taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTaintArgs']]]]] = None,
+            update_policy: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecUpdatePolicyArgs']]] = None) -> 'OceanLaunchSpec':
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -766,6 +816,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["storage"] = storage
         __props__.__dict__["strategies"] = strategies
         __props__.__dict__["taints"] = taints
+        __props__.__dict__["update_policy"] = update_policy
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -903,4 +954,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Optionally adds labels to instances launched in an Ocean cluster.
         """
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecUpdatePolicy']]:
+        return pulumi.get(self, "update_policy")
 

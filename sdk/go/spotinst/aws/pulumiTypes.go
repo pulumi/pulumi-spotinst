@@ -8914,12 +8914,16 @@ type ElastigroupScalingTargetPolicy struct {
 	Cooldown *int `pulumi:"cooldown"`
 	// A list of dimensions describing qualities of the metric.
 	Dimensions []ElastigroupScalingTargetPolicyDimension `pulumi:"dimensions"`
+	// How many evaluation periods should accumulate before a scale down action takes place.
+	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
 	// String, restrict the maximal number of instances which can be added in each scale-up action.
 	MaxCapacityPerScale *string `pulumi:"maxCapacityPerScale"`
 	// String, the name of the metric, with or without spaces.
 	MetricName string `pulumi:"metricName"`
 	// String, the namespace for the alarm's associated metric.
 	Namespace string `pulumi:"namespace"`
+	// The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+	Period *int `pulumi:"period"`
 	// String, the name of the policy.
 	PolicyName string `pulumi:"policyName"`
 	// Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
@@ -8950,12 +8954,16 @@ type ElastigroupScalingTargetPolicyArgs struct {
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
 	// A list of dimensions describing qualities of the metric.
 	Dimensions ElastigroupScalingTargetPolicyDimensionArrayInput `pulumi:"dimensions"`
+	// How many evaluation periods should accumulate before a scale down action takes place.
+	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
 	// String, restrict the maximal number of instances which can be added in each scale-up action.
 	MaxCapacityPerScale pulumi.StringPtrInput `pulumi:"maxCapacityPerScale"`
 	// String, the name of the metric, with or without spaces.
 	MetricName pulumi.StringInput `pulumi:"metricName"`
 	// String, the namespace for the alarm's associated metric.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+	Period pulumi.IntPtrInput `pulumi:"period"`
 	// String, the name of the policy.
 	PolicyName pulumi.StringInput `pulumi:"policyName"`
 	// Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
@@ -9031,6 +9039,11 @@ func (o ElastigroupScalingTargetPolicyOutput) Dimensions() ElastigroupScalingTar
 	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) []ElastigroupScalingTargetPolicyDimension { return v.Dimensions }).(ElastigroupScalingTargetPolicyDimensionArrayOutput)
 }
 
+// How many evaluation periods should accumulate before a scale down action takes place.
+func (o ElastigroupScalingTargetPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
+}
+
 // String, restrict the maximal number of instances which can be added in each scale-up action.
 func (o ElastigroupScalingTargetPolicyOutput) MaxCapacityPerScale() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) *string { return v.MaxCapacityPerScale }).(pulumi.StringPtrOutput)
@@ -9044,6 +9057,11 @@ func (o ElastigroupScalingTargetPolicyOutput) MetricName() pulumi.StringOutput {
 // String, the namespace for the alarm's associated metric.
 func (o ElastigroupScalingTargetPolicyOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+func (o ElastigroupScalingTargetPolicyOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 // String, the name of the policy.

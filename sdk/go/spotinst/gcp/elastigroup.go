@@ -63,6 +63,8 @@ type Elastigroup struct {
 	OndemandCount     pulumi.IntPtrOutput                    `pulumi:"ondemandCount"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrOutput `pulumi:"preemptiblePercentage"`
+	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+	ProvisioningModel pulumi.StringPtrOutput `pulumi:"provisioningModel"`
 	// Contains scaling policies for scaling the Elastigroup down.
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
 	// Contains scaling policies for scaling the Elastigroup up.
@@ -162,6 +164,8 @@ type elastigroupState struct {
 	OndemandCount     *int                          `pulumi:"ondemandCount"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
+	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+	ProvisioningModel *string `pulumi:"provisioningModel"`
 	// Contains scaling policies for scaling the Elastigroup down.
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	// Contains scaling policies for scaling the Elastigroup up.
@@ -230,6 +234,8 @@ type ElastigroupState struct {
 	OndemandCount     pulumi.IntPtrInput
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrInput
+	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+	ProvisioningModel pulumi.StringPtrInput
 	// Contains scaling policies for scaling the Elastigroup down.
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	// Contains scaling policies for scaling the Elastigroup up.
@@ -302,6 +308,8 @@ type elastigroupArgs struct {
 	OndemandCount     *int                          `pulumi:"ondemandCount"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
+	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+	ProvisioningModel *string `pulumi:"provisioningModel"`
 	// Contains scaling policies for scaling the Elastigroup down.
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	// Contains scaling policies for scaling the Elastigroup up.
@@ -371,6 +379,8 @@ type ElastigroupArgs struct {
 	OndemandCount     pulumi.IntPtrInput
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrInput
+	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+	ProvisioningModel pulumi.StringPtrInput
 	// Contains scaling policies for scaling the Elastigroup down.
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	// Contains scaling policies for scaling the Elastigroup up.

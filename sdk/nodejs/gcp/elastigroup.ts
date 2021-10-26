@@ -66,6 +66,7 @@ import * as utilities from "../utilities";
  *         network: "spot-network",
  *     }],
  *     preemptiblePercentage: 50,
+ *     provisioningModel: "SPOT",
  *     scaling: [{
  *         up: [{
  *             action: [{
@@ -221,6 +222,10 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly preemptiblePercentage!: pulumi.Output<number | undefined>;
     /**
+     * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+     */
+    public readonly provisioningModel!: pulumi.Output<string | undefined>;
+    /**
      * Contains scaling policies for scaling the Elastigroup down.
      */
     public readonly scalingDownPolicies!: pulumi.Output<outputs.gcp.ElastigroupScalingDownPolicy[] | undefined>;
@@ -292,6 +297,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["ondemandCount"] = state ? state.ondemandCount : undefined;
             inputs["preemptiblePercentage"] = state ? state.preemptiblePercentage : undefined;
+            inputs["provisioningModel"] = state ? state.provisioningModel : undefined;
             inputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
             inputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
             inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
@@ -331,6 +337,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["ondemandCount"] = args ? args.ondemandCount : undefined;
             inputs["preemptiblePercentage"] = args ? args.preemptiblePercentage : undefined;
+            inputs["provisioningModel"] = args ? args.provisioningModel : undefined;
             inputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
             inputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
             inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
@@ -442,6 +449,10 @@ export interface ElastigroupState {
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
     readonly preemptiblePercentage?: pulumi.Input<number>;
+    /**
+     * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+     */
+    readonly provisioningModel?: pulumi.Input<string>;
     /**
      * Contains scaling policies for scaling the Elastigroup down.
      */
@@ -571,6 +582,10 @@ export interface ElastigroupArgs {
      * Percentage of Preemptible VMs to spin up from the "desiredCapacity".
      */
     readonly preemptiblePercentage?: pulumi.Input<number>;
+    /**
+     * Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+     */
+    readonly provisioningModel?: pulumi.Input<string>;
     /**
      * Contains scaling policies for scaling the Elastigroup down.
      */

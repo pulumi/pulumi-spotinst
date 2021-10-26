@@ -13,6 +13,25 @@ namespace Pulumi.SpotInst.Gke
     /// Manages a custom Spotinst Ocean GKE Launch Spec resource.
     /// 
     /// &gt; This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
+    /// 
+    /// ## Update Policy
+    /// 
+    /// * `update_policy` - (Optional)
+    ///   * `should_roll` - (Required) Enables the roll.
+    ///   * `roll_config` - (Required) Holds the roll configuration.
+    ///     * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : Pulumi.CustomResource
@@ -118,6 +137,9 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecTaint>> Taints { get; private set; } = null!;
+
+        [Output("updatePolicy")]
+        public Output<Outputs.OceanLaunchSpecUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
 
 
         /// <summary>
@@ -303,6 +325,9 @@ namespace Pulumi.SpotInst.Gke
             set => _taints = value;
         }
 
+        [Input("updatePolicy")]
+        public Input<Inputs.OceanLaunchSpecUpdatePolicyArgs>? UpdatePolicy { get; set; }
+
         public OceanLaunchSpecArgs()
         {
         }
@@ -447,6 +472,9 @@ namespace Pulumi.SpotInst.Gke
             get => _taints ?? (_taints = new InputList<Inputs.OceanLaunchSpecTaintGetArgs>());
             set => _taints = value;
         }
+
+        [Input("updatePolicy")]
+        public Input<Inputs.OceanLaunchSpecUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
 
         public OceanLaunchSpecState()
         {
