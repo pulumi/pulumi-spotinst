@@ -120,6 +120,7 @@ type Elastigroup struct {
 	NodeImage             pulumi.StringPtrOutput                  `pulumi:"nodeImage"`
 	OndemandCount         pulumi.IntPtrOutput                     `pulumi:"ondemandCount"`
 	PreemptiblePercentage pulumi.IntPtrOutput                     `pulumi:"preemptiblePercentage"`
+	ProvisioningModel     pulumi.StringPtrOutput                  `pulumi:"provisioningModel"`
 	ScalingDownPolicies   ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies     ElastigroupScalingUpPolicyArrayOutput   `pulumi:"scalingUpPolicies"`
 	ServiceAccount        pulumi.StringPtrOutput                  `pulumi:"serviceAccount"`
@@ -192,6 +193,7 @@ type elastigroupState struct {
 	NodeImage             *string                        `pulumi:"nodeImage"`
 	OndemandCount         *int                           `pulumi:"ondemandCount"`
 	PreemptiblePercentage *int                           `pulumi:"preemptiblePercentage"`
+	ProvisioningModel     *string                        `pulumi:"provisioningModel"`
 	ScalingDownPolicies   []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies     []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
 	ServiceAccount        *string                        `pulumi:"serviceAccount"`
@@ -230,6 +232,7 @@ type ElastigroupState struct {
 	NodeImage             pulumi.StringPtrInput
 	OndemandCount         pulumi.IntPtrInput
 	PreemptiblePercentage pulumi.IntPtrInput
+	ProvisioningModel     pulumi.StringPtrInput
 	ScalingDownPolicies   ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies     ElastigroupScalingUpPolicyArrayInput
 	ServiceAccount        pulumi.StringPtrInput
@@ -272,6 +275,7 @@ type elastigroupArgs struct {
 	NodeImage             *string                        `pulumi:"nodeImage"`
 	OndemandCount         *int                           `pulumi:"ondemandCount"`
 	PreemptiblePercentage *int                           `pulumi:"preemptiblePercentage"`
+	ProvisioningModel     *string                        `pulumi:"provisioningModel"`
 	ScalingDownPolicies   []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies     []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
 	ServiceAccount        *string                        `pulumi:"serviceAccount"`
@@ -311,6 +315,7 @@ type ElastigroupArgs struct {
 	NodeImage             pulumi.StringPtrInput
 	OndemandCount         pulumi.IntPtrInput
 	PreemptiblePercentage pulumi.IntPtrInput
+	ProvisioningModel     pulumi.StringPtrInput
 	ScalingDownPolicies   ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies     ElastigroupScalingUpPolicyArrayInput
 	ServiceAccount        pulumi.StringPtrInput

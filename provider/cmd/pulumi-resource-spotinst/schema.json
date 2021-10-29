@@ -2534,6 +2534,15 @@
                         }
                     }
                 },
+                "evaluationPeriods": {
+                    "type": "integer",
+                    "description": "How many evaluation periods should accumulate before a scale down action takes place.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxCapacityPerScale": {
                     "type": "string",
                     "description": "String, restrict the maximal number of instances which can be added in each scale-up action.\n",
@@ -2555,6 +2564,15 @@
                 "namespace": {
                     "type": "string",
                     "description": "String, the namespace for the alarm's associated metric.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "period": {
+                    "type": "integer",
+                    "description": "The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11197,6 +11215,46 @@
                 }
             }
         },
+        "spotinst:gke/OceanLaunchSpecUpdatePolicy:OceanLaunchSpecUpdatePolicy": {
+            "properties": {
+                "rollConfig": {
+                    "$ref": "#/types/spotinst:gke/OceanLaunchSpecUpdatePolicyRollConfig:OceanLaunchSpecUpdatePolicyRollConfig",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shouldRoll": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "shouldRoll"
+            ]
+        },
+        "spotinst:gke/OceanLaunchSpecUpdatePolicyRollConfig:OceanLaunchSpecUpdatePolicyRollConfig": {
+            "properties": {
+                "batchSizePercentage": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "batchSizePercentage"
+            ]
+        },
         "spotinst:index/ElastigroupAzureV3Image:ElastigroupAzureV3Image": {
             "properties": {
                 "customs": {
@@ -17234,7 +17292,7 @@
             }
         },
         "spotinst:gcp/elastigroup:Elastigroup": {
-            "description": "Provides a Spotinst elastigroup GCP resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.gcp.Elastigroup(\"example\", {\n    availabilityZones: [\n        \"asia-east1-c\",\n        \"us-central1-a\",\n    ],\n    backendServicesConfig: [{\n        ports: [{\n            portName: \"port-name\",\n            ports: [\n                8000,\n                6000,\n            ],\n        }],\n        serviceName: \"spotinst-elb-backend-service\",\n    }],\n    description: \"spotinst gcp group\",\n    desiredCapacity: 1,\n    disks: [{\n        autoDelete: true,\n        boot: true,\n        deviceName: \"device\",\n        initializeParams: [{\n            diskSizeGb: 10,\n            diskType: \"pd-standard\",\n            sourceImage: \"\",\n        }],\n        interface: \"SCSI\",\n        mode: \"READ_WRITE\",\n        type: \"PERSISTENT\",\n    }],\n    drainingTimeout: 180,\n    // on_demand_count      = 2\n    fallbackToOndemand: true,\n    instanceTypesCustoms: [{\n        memoryGiB: 7.5,\n        vCPU: 2,\n    }],\n    instanceTypesOndemand: [\"n1-standard-1\"],\n    instanceTypesPreemptibles: [\n        \"n1-standard-1\",\n        \"n1-standard-2\",\n    ],\n    labels: [{\n        key: \"test_key\",\n        value: \"test_value\",\n    }],\n    maxSize: 1,\n    minSize: 0,\n    networkInterfaces: [{\n        network: \"spot-network\",\n    }],\n    preemptiblePercentage: 50,\n    scaling: [{\n        up: [{\n            action: [{\n                adjustment: 1,\n                type: \"adjustment\",\n            }],\n            cooldown: 300,\n            dimensions: [{\n                name: \"storage_type\",\n                value: \"pd-ssd\",\n            }],\n            evaluationPeriods: 1,\n            metricName: \"instance/disk/read_ops_count\",\n            namespace: \"compute\",\n            operator: \"gte\",\n            period: 300,\n            policyName: \"scale_up_1\",\n            source: \"stackdriver\",\n            statistic: \"average\",\n            threshold: 10000,\n            unit: \"percent\",\n        }],\n    }],\n    serviceAccount: \"example@myProject.iam.gservicecct.com\",\n    startupScript: \"\",\n    subnets: [{\n        region: \"asia-east1\",\n        subnetNames: \"\",\n    }],\n    tags: [\n        \"http\",\n        \"https\",\n    ],\n});\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Spotinst elastigroup GCP resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.gcp.Elastigroup(\"example\", {\n    availabilityZones: [\n        \"asia-east1-c\",\n        \"us-central1-a\",\n    ],\n    backendServicesConfig: [{\n        ports: [{\n            portName: \"port-name\",\n            ports: [\n                8000,\n                6000,\n            ],\n        }],\n        serviceName: \"spotinst-elb-backend-service\",\n    }],\n    description: \"spotinst gcp group\",\n    desiredCapacity: 1,\n    disks: [{\n        autoDelete: true,\n        boot: true,\n        deviceName: \"device\",\n        initializeParams: [{\n            diskSizeGb: 10,\n            diskType: \"pd-standard\",\n            sourceImage: \"\",\n        }],\n        interface: \"SCSI\",\n        mode: \"READ_WRITE\",\n        type: \"PERSISTENT\",\n    }],\n    drainingTimeout: 180,\n    // on_demand_count      = 2\n    fallbackToOndemand: true,\n    instanceTypesCustoms: [{\n        memoryGiB: 7.5,\n        vCPU: 2,\n    }],\n    instanceTypesOndemand: [\"n1-standard-1\"],\n    instanceTypesPreemptibles: [\n        \"n1-standard-1\",\n        \"n1-standard-2\",\n    ],\n    labels: [{\n        key: \"test_key\",\n        value: \"test_value\",\n    }],\n    maxSize: 1,\n    minSize: 0,\n    networkInterfaces: [{\n        network: \"spot-network\",\n    }],\n    preemptiblePercentage: 50,\n    provisioningModel: \"SPOT\",\n    scaling: [{\n        up: [{\n            action: [{\n                adjustment: 1,\n                type: \"adjustment\",\n            }],\n            cooldown: 300,\n            dimensions: [{\n                name: \"storage_type\",\n                value: \"pd-ssd\",\n            }],\n            evaluationPeriods: 1,\n            metricName: \"instance/disk/read_ops_count\",\n            namespace: \"compute\",\n            operator: \"gte\",\n            period: 300,\n            policyName: \"scale_up_1\",\n            source: \"stackdriver\",\n            statistic: \"average\",\n            threshold: 10000,\n            unit: \"percent\",\n        }],\n    }],\n    serviceAccount: \"example@myProject.iam.gservicecct.com\",\n    startupScript: \"\",\n    subnets: [{\n        region: \"asia-east1\",\n        subnetNames: \"\",\n    }],\n    tags: [\n        \"http\",\n        \"https\",\n    ],\n});\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "autoHealing": {
                     "type": "boolean",
@@ -17359,6 +17417,10 @@
                 "preemptiblePercentage": {
                     "type": "integer",
                     "description": "Percentage of Preemptible VMs to spin up from the \"desired_capacity\".\n"
+                },
+                "provisioningModel": {
+                    "type": "string",
+                    "description": "Valid values: \"SPOT\", \"PREEMPTIBLE\". Define the provisioning model of the launched instances. Default value is \"PREEMPTIBLE\".\n"
                 },
                 "scalingDownPolicies": {
                     "type": "array",
@@ -17541,6 +17603,10 @@
                 "preemptiblePercentage": {
                     "type": "integer",
                     "description": "Percentage of Preemptible VMs to spin up from the \"desired_capacity\".\n"
+                },
+                "provisioningModel": {
+                    "type": "string",
+                    "description": "Valid values: \"SPOT\", \"PREEMPTIBLE\". Define the provisioning model of the launched instances. Default value is \"PREEMPTIBLE\".\n"
                 },
                 "scalingDownPolicies": {
                     "type": "array",
@@ -17723,6 +17789,10 @@
                         "type": "integer",
                         "description": "Percentage of Preemptible VMs to spin up from the \"desired_capacity\".\n"
                     },
+                    "provisioningModel": {
+                        "type": "string",
+                        "description": "Valid values: \"SPOT\", \"PREEMPTIBLE\". Define the provisioning model of the launched instances. Default value is \"PREEMPTIBLE\".\n"
+                    },
                     "scalingDownPolicies": {
                         "type": "array",
                         "items": {
@@ -17878,6 +17948,9 @@
                 "preemptiblePercentage": {
                     "type": "integer"
                 },
+                "provisioningModel": {
+                    "type": "string"
+                },
                 "scalingDownPolicies": {
                     "type": "array",
                     "items": {
@@ -18012,6 +18085,9 @@
                 "preemptiblePercentage": {
                     "type": "integer"
                 },
+                "provisioningModel": {
+                    "type": "string"
+                },
                 "scalingDownPolicies": {
                     "type": "array",
                     "items": {
@@ -18144,6 +18220,9 @@
                     },
                     "preemptiblePercentage": {
                         "type": "integer"
+                    },
+                    "provisioningModel": {
+                        "type": "string"
                     },
                     "scalingDownPolicies": {
                         "type": "array",
@@ -18374,7 +18453,7 @@
             }
         },
         "spotinst:gke/oceanLaunchSpec:OceanLaunchSpec": {
-            "description": "Manages a custom Spotinst Ocean GKE Launch Spec resource.\n\n\u003e This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.\n",
+            "description": "Manages a custom Spotinst Ocean GKE Launch Spec resource.\n\n\u003e This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.\n\n## Update Policy\n\n* `update_policy` - (Optional)\n  * `should_roll` - (Required) Enables the roll.\n  * `roll_config` - (Required) Holds the roll configuration.\n    * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "autoscaleHeadrooms": {
                     "type": "array",
@@ -18461,6 +18540,9 @@
                         "$ref": "#/types/spotinst:gke/OceanLaunchSpecTaint:OceanLaunchSpecTaint"
                     },
                     "description": "Optionally adds labels to instances launched in an Ocean cluster.\n"
+                },
+                "updatePolicy": {
+                    "$ref": "#/types/spotinst:gke/OceanLaunchSpecUpdatePolicy:OceanLaunchSpecUpdatePolicy"
                 }
             },
             "required": [
@@ -18564,6 +18646,9 @@
                         "$ref": "#/types/spotinst:gke/OceanLaunchSpecTaint:OceanLaunchSpecTaint"
                     },
                     "description": "Optionally adds labels to instances launched in an Ocean cluster.\n"
+                },
+                "updatePolicy": {
+                    "$ref": "#/types/spotinst:gke/OceanLaunchSpecUpdatePolicy:OceanLaunchSpecUpdatePolicy"
                 }
             },
             "requiredInputs": [
@@ -18657,6 +18742,9 @@
                             "$ref": "#/types/spotinst:gke/OceanLaunchSpecTaint:OceanLaunchSpecTaint"
                         },
                         "description": "Optionally adds labels to instances launched in an Ocean cluster.\n"
+                    },
+                    "updatePolicy": {
+                        "$ref": "#/types/spotinst:gke/OceanLaunchSpecUpdatePolicy:OceanLaunchSpecUpdatePolicy"
                     }
                 },
                 "type": "object"

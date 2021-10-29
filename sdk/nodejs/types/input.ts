@@ -1156,6 +1156,10 @@ export namespace aws {
          */
         dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicyDimension>[]>;
         /**
+         * How many evaluation periods should accumulate before a scale down action takes place.
+         */
+        evaluationPeriods?: pulumi.Input<number>;
+        /**
          * String, restrict the maximal number of instances which can be added in each scale-up action.
          */
         maxCapacityPerScale?: pulumi.Input<string>;
@@ -1167,6 +1171,10 @@ export namespace aws {
          * String, the namespace for the alarm's associated metric.
          */
         namespace: pulumi.Input<string>;
+        /**
+         * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+         */
+        period?: pulumi.Input<number>;
         /**
          * String, the name of the policy.
          */
@@ -4407,6 +4415,15 @@ export namespace gke {
          * The label value.
          */
         value?: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecUpdatePolicy {
+        rollConfig?: pulumi.Input<inputs.gke.OceanLaunchSpecUpdatePolicyRollConfig>;
+        shouldRoll: pulumi.Input<boolean>;
+    }
+
+    export interface OceanLaunchSpecUpdatePolicyRollConfig {
+        batchSizePercentage: pulumi.Input<number>;
     }
 }
 

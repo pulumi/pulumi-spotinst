@@ -154,6 +154,12 @@ namespace Pulumi.SpotInst.Gcp
         public Output<int?> PreemptiblePercentage { get; private set; } = null!;
 
         /// <summary>
+        /// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+        /// </summary>
+        [Output("provisioningModel")]
+        public Output<string?> ProvisioningModel { get; private set; } = null!;
+
+        /// <summary>
         /// Contains scaling policies for scaling the Elastigroup down.
         /// </summary>
         [Output("scalingDownPolicies")]
@@ -442,6 +448,12 @@ namespace Pulumi.SpotInst.Gcp
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
 
+        /// <summary>
+        /// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+        /// </summary>
+        [Input("provisioningModel")]
+        public Input<string>? ProvisioningModel { get; set; }
+
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyArgs>? _scalingDownPolicies;
 
@@ -720,6 +732,12 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
+
+        /// <summary>
+        /// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+        /// </summary>
+        [Input("provisioningModel")]
+        public Input<string>? ProvisioningModel { get; set; }
 
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyGetArgs>? _scalingDownPolicies;

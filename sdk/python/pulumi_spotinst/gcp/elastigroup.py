@@ -40,6 +40,7 @@ class ElastigroupArgs:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
@@ -72,6 +73,7 @@ class ElastigroupArgs:
         :param pulumi.Input[str] name: The dimension name.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]] network_interfaces: Array of objects representing the network configuration for the elastigroup.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
@@ -133,6 +135,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "ondemand_count", ondemand_count)
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
         if scaling_down_policies is not None:
             pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
@@ -441,6 +445,18 @@ class ElastigroupArgs:
         pulumi.set(self, "preemptible_percentage", value)
 
     @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+        """
+        return pulumi.get(self, "provisioning_model")
+
+    @provisioning_model.setter
+    def provisioning_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_model", value)
+
+    @property
     @pulumi.getter(name="scalingDownPolicies")
     def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
         """
@@ -574,6 +590,7 @@ class _ElastigroupState:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
@@ -606,6 +623,7 @@ class _ElastigroupState:
         :param pulumi.Input[str] name: The dimension name.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]] network_interfaces: Array of objects representing the network configuration for the elastigroup.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
@@ -668,6 +686,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "ondemand_count", ondemand_count)
         if preemptible_percentage is not None:
             pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
         if scaling_down_policies is not None:
             pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
@@ -976,6 +996,18 @@ class _ElastigroupState:
         pulumi.set(self, "preemptible_percentage", value)
 
     @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+        """
+        return pulumi.get(self, "provisioning_model")
+
+    @provisioning_model.setter
+    def provisioning_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_model", value)
+
+    @property
     @pulumi.getter(name="scalingDownPolicies")
     def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
         """
@@ -1111,6 +1143,7 @@ class Elastigroup(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
@@ -1147,6 +1180,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The dimension name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]] network_interfaces: Array of objects representing the network configuration for the elastigroup.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
@@ -1205,6 +1239,7 @@ class Elastigroup(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
@@ -1256,6 +1291,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["ondemand_count"] = ondemand_count
             __props__.__dict__["preemptible_percentage"] = preemptible_percentage
+            __props__.__dict__["provisioning_model"] = provisioning_model
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
@@ -1300,6 +1336,7 @@ class Elastigroup(pulumi.CustomResource):
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
             ondemand_count: Optional[pulumi.Input[int]] = None,
             preemptible_percentage: Optional[pulumi.Input[int]] = None,
+            provisioning_model: Optional[pulumi.Input[str]] = None,
             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScheduledTaskArgs']]]]] = None,
@@ -1337,6 +1374,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The dimension name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]] network_interfaces: Array of objects representing the network configuration for the elastigroup.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
+        :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
@@ -1375,6 +1413,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["ondemand_count"] = ondemand_count
         __props__.__dict__["preemptible_percentage"] = preemptible_percentage
+        __props__.__dict__["provisioning_model"] = provisioning_model
         __props__.__dict__["scaling_down_policies"] = scaling_down_policies
         __props__.__dict__["scaling_up_policies"] = scaling_up_policies
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
@@ -1573,6 +1612,14 @@ class Elastigroup(pulumi.CustomResource):
         Percentage of Preemptible VMs to spin up from the "desired_capacity".
         """
         return pulumi.get(self, "preemptible_percentage")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> pulumi.Output[Optional[str]]:
+        """
+        Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
+        """
+        return pulumi.get(self, "provisioning_model")
 
     @property
     @pulumi.getter(name="scalingDownPolicies")

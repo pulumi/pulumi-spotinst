@@ -179,6 +179,9 @@ namespace Pulumi.SpotInst.Gke
         [Output("preemptiblePercentage")]
         public Output<int?> PreemptiblePercentage { get; private set; } = null!;
 
+        [Output("provisioningModel")]
+        public Output<string?> ProvisioningModel { get; private set; } = null!;
+
         [Output("scalingDownPolicies")]
         public Output<ImmutableArray<Outputs.ElastigroupScalingDownPolicy>> ScalingDownPolicies { get; private set; } = null!;
 
@@ -364,6 +367,9 @@ namespace Pulumi.SpotInst.Gke
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
 
+        [Input("provisioningModel")]
+        public Input<string>? ProvisioningModel { get; set; }
+
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyArgs>? _scalingDownPolicies;
         public InputList<Inputs.ElastigroupScalingDownPolicyArgs> ScalingDownPolicies
@@ -524,6 +530,9 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("preemptiblePercentage")]
         public Input<int>? PreemptiblePercentage { get; set; }
+
+        [Input("provisioningModel")]
+        public Input<string>? ProvisioningModel { get; set; }
 
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyGetArgs>? _scalingDownPolicies;

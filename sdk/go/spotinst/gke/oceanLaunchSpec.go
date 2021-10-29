@@ -14,6 +14,27 @@ import (
 // Manages a custom Spotinst Ocean GKE Launch Spec resource.
 //
 // > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `nodePoolName`.
+//
+// ## Update Policy
+//
+// * `updatePolicy` - (Optional)
+//   * `shouldRoll` - (Required) Enables the roll.
+//   * `rollConfig` - (Required) Holds the roll configuration.
+//     * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
 
@@ -50,7 +71,8 @@ type OceanLaunchSpec struct {
 	// The Ocean Launch Spec Strategy object.
 	Strategies OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
-	Taints OceanLaunchSpecTaintArrayOutput `pulumi:"taints"`
+	Taints       OceanLaunchSpecTaintArrayOutput      `pulumi:"taints"`
+	UpdatePolicy OceanLaunchSpecUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 }
 
 // NewOceanLaunchSpec registers a new resource with the given unique name, arguments, and options.
@@ -118,7 +140,8 @@ type oceanLaunchSpecState struct {
 	// The Ocean Launch Spec Strategy object.
 	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
-	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
+	Taints       []OceanLaunchSpecTaint       `pulumi:"taints"`
+	UpdatePolicy *OceanLaunchSpecUpdatePolicy `pulumi:"updatePolicy"`
 }
 
 type OceanLaunchSpecState struct {
@@ -155,7 +178,8 @@ type OceanLaunchSpecState struct {
 	// The Ocean Launch Spec Strategy object.
 	Strategies OceanLaunchSpecStrategyArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
-	Taints OceanLaunchSpecTaintArrayInput
+	Taints       OceanLaunchSpecTaintArrayInput
+	UpdatePolicy OceanLaunchSpecUpdatePolicyPtrInput
 }
 
 func (OceanLaunchSpecState) ElementType() reflect.Type {
@@ -196,7 +220,8 @@ type oceanLaunchSpecArgs struct {
 	// The Ocean Launch Spec Strategy object.
 	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
-	Taints []OceanLaunchSpecTaint `pulumi:"taints"`
+	Taints       []OceanLaunchSpecTaint       `pulumi:"taints"`
+	UpdatePolicy *OceanLaunchSpecUpdatePolicy `pulumi:"updatePolicy"`
 }
 
 // The set of arguments for constructing a OceanLaunchSpec resource.
@@ -234,7 +259,8 @@ type OceanLaunchSpecArgs struct {
 	// The Ocean Launch Spec Strategy object.
 	Strategies OceanLaunchSpecStrategyArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
-	Taints OceanLaunchSpecTaintArrayInput
+	Taints       OceanLaunchSpecTaintArrayInput
+	UpdatePolicy OceanLaunchSpecUpdatePolicyPtrInput
 }
 
 func (OceanLaunchSpecArgs) ElementType() reflect.Type {

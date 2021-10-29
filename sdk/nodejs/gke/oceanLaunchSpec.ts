@@ -9,6 +9,17 @@ import * as utilities from "../utilities";
  * Manages a custom Spotinst Ocean GKE Launch Spec resource.
  *
  * > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `nodePoolName`.
+ *
+ * ## Update Policy
+ *
+ * * `updatePolicy` - (Optional)
+ *   * `shouldRoll` - (Required) Enables the roll.
+ *   * `rollConfig` - (Required) Holds the roll configuration.
+ *     * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
@@ -106,6 +117,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
     public readonly taints!: pulumi.Output<outputs.gke.OceanLaunchSpecTaint[]>;
+    public readonly updatePolicy!: pulumi.Output<outputs.gke.OceanLaunchSpecUpdatePolicy | undefined>;
 
     /**
      * Create a OceanLaunchSpec resource with the given unique name, arguments, and options.
@@ -137,6 +149,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["storage"] = state ? state.storage : undefined;
             inputs["strategies"] = state ? state.strategies : undefined;
             inputs["taints"] = state ? state.taints : undefined;
+            inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
             if ((!args || args.oceanId === undefined) && !opts.urn) {
@@ -159,6 +172,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["storage"] = args ? args.storage : undefined;
             inputs["strategies"] = args ? args.strategies : undefined;
             inputs["taints"] = args ? args.taints : undefined;
+            inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -239,6 +253,7 @@ export interface OceanLaunchSpecState {
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
     readonly taints?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecTaint>[]>;
+    readonly updatePolicy?: pulumi.Input<inputs.gke.OceanLaunchSpecUpdatePolicy>;
 }
 
 /**
@@ -313,4 +328,5 @@ export interface OceanLaunchSpecArgs {
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
     readonly taints?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecTaint>[]>;
+    readonly updatePolicy?: pulumi.Input<inputs.gke.OceanLaunchSpecUpdatePolicy>;
 }

@@ -31,6 +31,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         }
 
         /// <summary>
+        /// How many evaluation periods should accumulate before a scale down action takes place.
+        /// </summary>
+        [Input("evaluationPeriods")]
+        public Input<int>? EvaluationPeriods { get; set; }
+
+        /// <summary>
         /// String, restrict the maximal number of instances which can be added in each scale-up action.
         /// </summary>
         [Input("maxCapacityPerScale")]
@@ -47,6 +53,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
+
+        /// <summary>
+        /// The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
 
         /// <summary>
         /// String, the name of the policy.

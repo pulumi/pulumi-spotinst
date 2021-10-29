@@ -135,6 +135,7 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly nodeImage!: pulumi.Output<string | undefined>;
     public readonly ondemandCount!: pulumi.Output<number | undefined>;
     public readonly preemptiblePercentage!: pulumi.Output<number | undefined>;
+    public readonly provisioningModel!: pulumi.Output<string | undefined>;
     public readonly scalingDownPolicies!: pulumi.Output<outputs.gke.ElastigroupScalingDownPolicy[] | undefined>;
     public readonly scalingUpPolicies!: pulumi.Output<outputs.gke.ElastigroupScalingUpPolicy[] | undefined>;
     public readonly serviceAccount!: pulumi.Output<string | undefined>;
@@ -178,6 +179,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["nodeImage"] = state ? state.nodeImage : undefined;
             inputs["ondemandCount"] = state ? state.ondemandCount : undefined;
             inputs["preemptiblePercentage"] = state ? state.preemptiblePercentage : undefined;
+            inputs["provisioningModel"] = state ? state.provisioningModel : undefined;
             inputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
             inputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
@@ -215,6 +217,7 @@ export class Elastigroup extends pulumi.CustomResource {
             inputs["nodeImage"] = args ? args.nodeImage : undefined;
             inputs["ondemandCount"] = args ? args.ondemandCount : undefined;
             inputs["preemptiblePercentage"] = args ? args.preemptiblePercentage : undefined;
+            inputs["provisioningModel"] = args ? args.provisioningModel : undefined;
             inputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
             inputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -270,6 +273,7 @@ export interface ElastigroupState {
     readonly nodeImage?: pulumi.Input<string>;
     readonly ondemandCount?: pulumi.Input<number>;
     readonly preemptiblePercentage?: pulumi.Input<number>;
+    readonly provisioningModel?: pulumi.Input<string>;
     readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
     readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
     readonly serviceAccount?: pulumi.Input<string>;
@@ -319,6 +323,7 @@ export interface ElastigroupArgs {
     readonly nodeImage?: pulumi.Input<string>;
     readonly ondemandCount?: pulumi.Input<number>;
     readonly preemptiblePercentage?: pulumi.Input<number>;
+    readonly provisioningModel?: pulumi.Input<string>;
     readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
     readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
     readonly serviceAccount?: pulumi.Input<string>;
