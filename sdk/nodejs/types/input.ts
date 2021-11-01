@@ -55,6 +55,18 @@ export interface ElastigroupAzureV3Login {
     userName: pulumi.Input<string>;
 }
 
+export interface ElastigroupAzureV3ManagedServiceIdentity {
+    /**
+     * - The name of the Application Security group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * - The resource group of the Application Security Group.
+     * }
+     */
+    resourceGroupName: pulumi.Input<string>;
+}
+
 export interface ElastigroupAzureV3Network {
     /**
      * -

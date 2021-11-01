@@ -13,6 +13,7 @@ __all__ = [
     'ElastigroupAzureV3ImageCustomArgs',
     'ElastigroupAzureV3ImageMarketplaceArgs',
     'ElastigroupAzureV3LoginArgs',
+    'ElastigroupAzureV3ManagedServiceIdentityArgs',
     'ElastigroupAzureV3NetworkArgs',
     'ElastigroupAzureV3NetworkNetworkInterfaceArgs',
     'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs',
@@ -208,6 +209,45 @@ class ElastigroupAzureV3LoginArgs:
     @ssh_public_key.setter
     def ssh_public_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssh_public_key", value)
+
+
+@pulumi.input_type
+class ElastigroupAzureV3ManagedServiceIdentityArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: - The name of the Application Security group.
+        :param pulumi.Input[str] resource_group_name: - The resource group of the Application Security Group.
+               }
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        - The name of the Application Security group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        """
+        - The resource group of the Application Security Group.
+        }
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
 
 
 @pulumi.input_type

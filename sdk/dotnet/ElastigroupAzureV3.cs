@@ -47,6 +47,14 @@ namespace Pulumi.SpotInst
     ///                 SshPublicKey = "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
     ///                 UserName = "admin",
     ///             },
+    ///             ManagedServiceIdentities = 
+    ///             {
+    ///                 new SpotInst.Inputs.ElastigroupAzureV3ManagedServiceIdentityArgs
+    ///                 {
+    ///                     Name = "ocean-westus-dev-aks-agentpool",
+    ///                     ResourceGroupName = "MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+    ///                 },
+    ///             },
     ///             MaxSize = 1,
     ///             MinSize = 0,
     ///             Network = new SpotInst.Inputs.ElastigroupAzureV3NetworkArgs
@@ -131,6 +139,12 @@ namespace Pulumi.SpotInst
         /// </summary>
         [Output("login")]
         public Output<Outputs.ElastigroupAzureV3Login?> Login { get; private set; } = null!;
+
+        /// <summary>
+        /// List of Managed Service Identity objects.
+        /// </summary>
+        [Output("managedServiceIdentities")]
+        public Output<ImmutableArray<Outputs.ElastigroupAzureV3ManagedServiceIdentity>> ManagedServiceIdentities { get; private set; } = null!;
 
         /// <summary>
         /// The maximum number of instances the group should have at any time.
@@ -269,6 +283,18 @@ namespace Pulumi.SpotInst
         [Input("login")]
         public Input<Inputs.ElastigroupAzureV3LoginArgs>? Login { get; set; }
 
+        [Input("managedServiceIdentities")]
+        private InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityArgs>? _managedServiceIdentities;
+
+        /// <summary>
+        /// List of Managed Service Identity objects.
+        /// </summary>
+        public InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityArgs> ManagedServiceIdentities
+        {
+            get => _managedServiceIdentities ?? (_managedServiceIdentities = new InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityArgs>());
+            set => _managedServiceIdentities = value;
+        }
+
         /// <summary>
         /// The maximum number of instances the group should have at any time.
         /// </summary>
@@ -378,6 +404,18 @@ namespace Pulumi.SpotInst
         /// </summary>
         [Input("login")]
         public Input<Inputs.ElastigroupAzureV3LoginGetArgs>? Login { get; set; }
+
+        [Input("managedServiceIdentities")]
+        private InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityGetArgs>? _managedServiceIdentities;
+
+        /// <summary>
+        /// List of Managed Service Identity objects.
+        /// </summary>
+        public InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityGetArgs> ManagedServiceIdentities
+        {
+            get => _managedServiceIdentities ?? (_managedServiceIdentities = new InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityGetArgs>());
+            set => _managedServiceIdentities = value;
+        }
 
         /// <summary>
         /// The maximum number of instances the group should have at any time.

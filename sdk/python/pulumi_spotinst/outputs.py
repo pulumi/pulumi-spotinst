@@ -14,6 +14,7 @@ __all__ = [
     'ElastigroupAzureV3ImageCustom',
     'ElastigroupAzureV3ImageMarketplace',
     'ElastigroupAzureV3Login',
+    'ElastigroupAzureV3ManagedServiceIdentity',
     'ElastigroupAzureV3Network',
     'ElastigroupAzureV3NetworkNetworkInterface',
     'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig',
@@ -203,6 +204,54 @@ class ElastigroupAzureV3Login(dict):
         SSH for admin access to Linux VMs. Required for Linux OS types.
         """
         return pulumi.get(self, "ssh_public_key")
+
+
+@pulumi.output_type
+class ElastigroupAzureV3ManagedServiceIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3ManagedServiceIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElastigroupAzureV3ManagedServiceIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElastigroupAzureV3ManagedServiceIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_group_name: str):
+        """
+        :param str name: - The name of the Application Security group.
+        :param str resource_group_name: - The resource group of the Application Security Group.
+               }
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        - The name of the Application Security group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        """
+        - The resource group of the Application Security Group.
+        }
+        """
+        return pulumi.get(self, "resource_group_name")
 
 
 @pulumi.output_type

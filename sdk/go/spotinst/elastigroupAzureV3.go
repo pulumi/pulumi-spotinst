@@ -44,6 +44,12 @@ import (
 // 				SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
 // 				UserName:     pulumi.String("admin"),
 // 			},
+// 			ManagedServiceIdentities: spotinst.ElastigroupAzureV3ManagedServiceIdentityArray{
+// 				&spotinst.ElastigroupAzureV3ManagedServiceIdentityArgs{
+// 					Name:              pulumi.String("ocean-westus-dev-aks-agentpool"),
+// 					ResourceGroupName: pulumi.String("MC_ocean-westus-dev_ocean-westus-dev-aks_westus"),
+// 				},
+// 			},
 // 			MaxSize: pulumi.Int(1),
 // 			MinSize: pulumi.Int(0),
 // 			Network: &spotinst.ElastigroupAzureV3NetworkArgs{
@@ -105,6 +111,8 @@ type ElastigroupAzureV3 struct {
 	Images ElastigroupAzureV3ImageArrayOutput `pulumi:"images"`
 	// Describes the login configuration.
 	Login ElastigroupAzureV3LoginPtrOutput `pulumi:"login"`
+	// List of Managed Service Identity objects.
+	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayOutput `pulumi:"managedServiceIdentities"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
@@ -186,6 +194,8 @@ type elastigroupAzureV3State struct {
 	Images []ElastigroupAzureV3Image `pulumi:"images"`
 	// Describes the login configuration.
 	Login *ElastigroupAzureV3Login `pulumi:"login"`
+	// List of Managed Service Identity objects.
+	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
@@ -218,6 +228,8 @@ type ElastigroupAzureV3State struct {
 	Images ElastigroupAzureV3ImageArrayInput
 	// Describes the login configuration.
 	Login ElastigroupAzureV3LoginPtrInput
+	// List of Managed Service Identity objects.
+	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
@@ -254,6 +266,8 @@ type elastigroupAzureV3Args struct {
 	Images []ElastigroupAzureV3Image `pulumi:"images"`
 	// Describes the login configuration.
 	Login *ElastigroupAzureV3Login `pulumi:"login"`
+	// List of Managed Service Identity objects.
+	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
@@ -287,6 +301,8 @@ type ElastigroupAzureV3Args struct {
 	Images ElastigroupAzureV3ImageArrayInput
 	// Describes the login configuration.
 	Login ElastigroupAzureV3LoginPtrInput
+	// List of Managed Service Identity objects.
+	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.

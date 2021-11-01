@@ -26,6 +26,7 @@ class ElastigroupAzureV3Args:
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
                  login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -43,6 +44,7 @@ class ElastigroupAzureV3Args:
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]] images: Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
         :param pulumi.Input['ElastigroupAzureV3LoginArgs'] login: Describes the login configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: - The name of the Application Security group.
@@ -62,6 +64,8 @@ class ElastigroupAzureV3Args:
             pulumi.set(__self__, "images", images)
         if login is not None:
             pulumi.set(__self__, "login", login)
+        if managed_service_identities is not None:
+            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
@@ -203,6 +207,18 @@ class ElastigroupAzureV3Args:
         pulumi.set(self, "login", value)
 
     @property
+    @pulumi.getter(name="managedServiceIdentities")
+    def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]:
+        """
+        List of Managed Service Identity objects.
+        """
+        return pulumi.get(self, "managed_service_identities")
+
+    @managed_service_identities.setter
+    def managed_service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]):
+        pulumi.set(self, "managed_service_identities", value)
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -246,6 +262,7 @@ class _ElastigroupAzureV3State:
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
                  login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -262,6 +279,7 @@ class _ElastigroupAzureV3State:
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]] images: Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
         :param pulumi.Input['ElastigroupAzureV3LoginArgs'] login: Describes the login configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: - The name of the Application Security group.
@@ -282,6 +300,8 @@ class _ElastigroupAzureV3State:
             pulumi.set(__self__, "images", images)
         if login is not None:
             pulumi.set(__self__, "login", login)
+        if managed_service_identities is not None:
+            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
@@ -350,6 +370,18 @@ class _ElastigroupAzureV3State:
     @login.setter
     def login(self, value: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']]):
         pulumi.set(self, "login", value)
+
+    @property
+    @pulumi.getter(name="managedServiceIdentities")
+    def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]:
+        """
+        List of Managed Service Identity objects.
+        """
+        return pulumi.get(self, "managed_service_identities")
+
+    @managed_service_identities.setter
+    def managed_service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]):
+        pulumi.set(self, "managed_service_identities", value)
 
     @property
     @pulumi.getter(name="maxSize")
@@ -482,6 +514,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]]] = None,
                  login: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']]] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -517,6 +550,10 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                 ssh_public_key="33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
                 user_name="admin",
             ),
+            managed_service_identities=[spotinst.ElastigroupAzureV3ManagedServiceIdentityArgs(
+                name="ocean-westus-dev-aks-agentpool",
+                resource_group_name="MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+            )],
             max_size=1,
             min_size=0,
             network=spotinst.ElastigroupAzureV3NetworkArgs(
@@ -561,6 +598,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]] images: Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
         :param pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']] login: Describes the login configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: - The name of the Application Security group.
@@ -603,6 +641,10 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                 ssh_public_key="33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
                 user_name="admin",
             ),
+            managed_service_identities=[spotinst.ElastigroupAzureV3ManagedServiceIdentityArgs(
+                name="ocean-westus-dev-aks-agentpool",
+                resource_group_name="MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+            )],
             max_size=1,
             min_size=0,
             network=spotinst.ElastigroupAzureV3NetworkArgs(
@@ -660,6 +702,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]]] = None,
                  login: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']]] = None,
+                 managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -686,6 +729,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             __props__.__dict__["desired_capacity"] = desired_capacity
             __props__.__dict__["images"] = images
             __props__.__dict__["login"] = login
+            __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["name"] = name
@@ -724,6 +768,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             desired_capacity: Optional[pulumi.Input[int]] = None,
             images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]]] = None,
             login: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']]] = None,
+            managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -745,6 +790,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]] images: Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
         :param pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']] login: Describes the login configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: - The name of the Application Security group.
@@ -765,6 +811,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         __props__.__dict__["desired_capacity"] = desired_capacity
         __props__.__dict__["images"] = images
         __props__.__dict__["login"] = login
+        __props__.__dict__["managed_service_identities"] = managed_service_identities
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["name"] = name
@@ -808,6 +855,14 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         Describes the login configuration.
         """
         return pulumi.get(self, "login")
+
+    @property
+    @pulumi.getter(name="managedServiceIdentities")
+    def managed_service_identities(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupAzureV3ManagedServiceIdentity']]]:
+        """
+        List of Managed Service Identity objects.
+        """
+        return pulumi.get(self, "managed_service_identities")
 
     @property
     @pulumi.getter(name="maxSize")
