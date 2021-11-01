@@ -55,6 +55,18 @@ export interface ElastigroupAzureV3Login {
     userName: string;
 }
 
+export interface ElastigroupAzureV3ManagedServiceIdentity {
+    /**
+     * - The name of the Application Security group.
+     */
+    name: string;
+    /**
+     * - The resource group of the Application Security Group.
+     * }
+     */
+    resourceGroupName: string;
+}
+
 export interface ElastigroupAzureV3Network {
     /**
      * -

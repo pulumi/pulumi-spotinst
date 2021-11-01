@@ -32,6 +32,10 @@ import * as utilities from "./utilities";
  *         sshPublicKey: "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
  *         userName: "admin",
  *     },
+ *     managedServiceIdentities: [{
+ *         name: "ocean-westus-dev-aks-agentpool",
+ *         resourceGroupName: "MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+ *     }],
  *     maxSize: 1,
  *     // --- CAPACITY ------------------------------------------------------
  *     minSize: 0,
@@ -120,6 +124,10 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      */
     public readonly login!: pulumi.Output<outputs.ElastigroupAzureV3Login | undefined>;
     /**
+     * List of Managed Service Identity objects.
+     */
+    public readonly managedServiceIdentities!: pulumi.Output<outputs.ElastigroupAzureV3ManagedServiceIdentity[] | undefined>;
+    /**
      * The maximum number of instances the group should have at any time.
      */
     public readonly maxSize!: pulumi.Output<number>;
@@ -178,6 +186,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             inputs["images"] = state ? state.images : undefined;
             inputs["login"] = state ? state.login : undefined;
+            inputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
             inputs["minSize"] = state ? state.minSize : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -215,6 +224,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             inputs["images"] = args ? args.images : undefined;
             inputs["login"] = args ? args.login : undefined;
+            inputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
             inputs["minSize"] = args ? args.minSize : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -253,6 +263,10 @@ export interface ElastigroupAzureV3State {
      * Describes the login configuration.
      */
     readonly login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
+    /**
+     * List of Managed Service Identity objects.
+     */
+    readonly managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ManagedServiceIdentity>[]>;
     /**
      * The maximum number of instances the group should have at any time.
      */
@@ -316,6 +330,10 @@ export interface ElastigroupAzureV3Args {
      * Describes the login configuration.
      */
     readonly login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
+    /**
+     * List of Managed Service Identity objects.
+     */
+    readonly managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ManagedServiceIdentity>[]>;
     /**
      * The maximum number of instances the group should have at any time.
      */

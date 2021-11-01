@@ -512,6 +512,115 @@ func (o ElastigroupAzureV3LoginPtrOutput) UserName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ElastigroupAzureV3ManagedServiceIdentity struct {
+	// - The name of the Application Security group.
+	Name string `pulumi:"name"`
+	// - The resource group of the Application Security Group.
+	//   }
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+// ElastigroupAzureV3ManagedServiceIdentityInput is an input type that accepts ElastigroupAzureV3ManagedServiceIdentityArgs and ElastigroupAzureV3ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ManagedServiceIdentityInput` via:
+//
+//          ElastigroupAzureV3ManagedServiceIdentityArgs{...}
+type ElastigroupAzureV3ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ManagedServiceIdentityOutput() ElastigroupAzureV3ManagedServiceIdentityOutput
+	ToElastigroupAzureV3ManagedServiceIdentityOutputWithContext(context.Context) ElastigroupAzureV3ManagedServiceIdentityOutput
+}
+
+type ElastigroupAzureV3ManagedServiceIdentityArgs struct {
+	// - The name of the Application Security group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// - The resource group of the Application Security Group.
+	//   }
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (ElastigroupAzureV3ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ManagedServiceIdentityArgs) ToElastigroupAzureV3ManagedServiceIdentityOutput() ElastigroupAzureV3ManagedServiceIdentityOutput {
+	return i.ToElastigroupAzureV3ManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ManagedServiceIdentityArgs) ToElastigroupAzureV3ManagedServiceIdentityOutputWithContext(ctx context.Context) ElastigroupAzureV3ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ManagedServiceIdentityOutput)
+}
+
+// ElastigroupAzureV3ManagedServiceIdentityArrayInput is an input type that accepts ElastigroupAzureV3ManagedServiceIdentityArray and ElastigroupAzureV3ManagedServiceIdentityArrayOutput values.
+// You can construct a concrete instance of `ElastigroupAzureV3ManagedServiceIdentityArrayInput` via:
+//
+//          ElastigroupAzureV3ManagedServiceIdentityArray{ ElastigroupAzureV3ManagedServiceIdentityArgs{...} }
+type ElastigroupAzureV3ManagedServiceIdentityArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupAzureV3ManagedServiceIdentityArrayOutput() ElastigroupAzureV3ManagedServiceIdentityArrayOutput
+	ToElastigroupAzureV3ManagedServiceIdentityArrayOutputWithContext(context.Context) ElastigroupAzureV3ManagedServiceIdentityArrayOutput
+}
+
+type ElastigroupAzureV3ManagedServiceIdentityArray []ElastigroupAzureV3ManagedServiceIdentityInput
+
+func (ElastigroupAzureV3ManagedServiceIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ElastigroupAzureV3ManagedServiceIdentityArray) ToElastigroupAzureV3ManagedServiceIdentityArrayOutput() ElastigroupAzureV3ManagedServiceIdentityArrayOutput {
+	return i.ToElastigroupAzureV3ManagedServiceIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupAzureV3ManagedServiceIdentityArray) ToElastigroupAzureV3ManagedServiceIdentityArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ManagedServiceIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ManagedServiceIdentityArrayOutput)
+}
+
+type ElastigroupAzureV3ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupAzureV3ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ManagedServiceIdentityOutput) ToElastigroupAzureV3ManagedServiceIdentityOutput() ElastigroupAzureV3ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ManagedServiceIdentityOutput) ToElastigroupAzureV3ManagedServiceIdentityOutputWithContext(ctx context.Context) ElastigroupAzureV3ManagedServiceIdentityOutput {
+	return o
+}
+
+// - The name of the Application Security group.
+func (o ElastigroupAzureV3ManagedServiceIdentityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ManagedServiceIdentity) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// - The resource group of the Application Security Group.
+//   }
+func (o ElastigroupAzureV3ManagedServiceIdentityOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupAzureV3ManagedServiceIdentity) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+type ElastigroupAzureV3ManagedServiceIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupAzureV3ManagedServiceIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupAzureV3ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ElastigroupAzureV3ManagedServiceIdentityArrayOutput) ToElastigroupAzureV3ManagedServiceIdentityArrayOutput() ElastigroupAzureV3ManagedServiceIdentityArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ManagedServiceIdentityArrayOutput) ToElastigroupAzureV3ManagedServiceIdentityArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ManagedServiceIdentityArrayOutput {
+	return o
+}
+
+func (o ElastigroupAzureV3ManagedServiceIdentityArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ManagedServiceIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3ManagedServiceIdentity {
+		return vs[0].([]ElastigroupAzureV3ManagedServiceIdentity)[vs[1].(int)]
+	}).(ElastigroupAzureV3ManagedServiceIdentityOutput)
+}
+
 type ElastigroupAzureV3Network struct {
 	// -
 	NetworkInterfaces []ElastigroupAzureV3NetworkNetworkInterface `pulumi:"networkInterfaces"`
@@ -1509,6 +1618,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageMarketplaceArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3LoginOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3LoginPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ElastigroupAzureV3ManagedServiceIdentityArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3NetworkNetworkInterfaceOutput{})

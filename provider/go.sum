@@ -604,8 +604,8 @@ github.com/pulumi/pulumi/sdk/v3 v3.0.0 h1:zkragE05t1Rco/ymfqMU4UXdEmKMmOH0SXhUKQ
 github.com/pulumi/pulumi/sdk/v3 v3.0.0/go.mod h1:GBHyQ7awNQSRmiKp/p8kIKrGrMOZeA/k2czoM/GOqds=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Dik4Qe/+xguB8JagPyXNlbOnRiXGmq/PSPQTGunYnTk=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
-github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20211026181624-b3350070ec67 h1:ynSqc9Qk6hoEFKsCBDLnEvfUo3sqPCc+tI9jFJDl7BE=
-github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20211026181624-b3350070ec67/go.mod h1:TOFfTmrirFrfJZLIFDrotrC4UMo1jn5doid3ro5oekM=
+github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20211101113323-e2d669d3796b h1:DvkcLYVuZqPqqocrrY3WkusZ/KCXhmpAtyRpaYNf468=
+github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20211101113323-e2d669d3796b/go.mod h1:4jyvm5iaUkGfCNnHjJ61vPpV4EpZCU8ZQZiH6kcsirM=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
@@ -640,8 +640,8 @@ github.com/spf13/pflag v1.0.2/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnIn
 github.com/spf13/pflag v1.0.3 h1:zPAT6CGy6wXeQ7NtTnaTerfKOsV6V6F8agHXFiazDkg=
 github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
 github.com/spf13/viper v1.4.0/go.mod h1:PTJ7Z/lr49W6bUbkmS1V3by4uWynFiR9p7+dSq/yZzE=
-github.com/spotinst/spotinst-sdk-go v1.103.0 h1:Oyz4iqxOkRaVaVrtvkbtUxKNuXKTv7q55G1F2VOsDQM=
-github.com/spotinst/spotinst-sdk-go v1.103.0/go.mod h1:yaIEiSvAzil0DXpwb4rJ02o5gvDU/06u5Hxv3CJHX+M=
+github.com/spotinst/spotinst-sdk-go v1.104.0 h1:uVAn1GG+hXerwf3o/QZqk+UeC7mpeWrS6C3yl6eCkxo=
+github.com/spotinst/spotinst-sdk-go v1.104.0/go.mod h1:yaIEiSvAzil0DXpwb4rJ02o5gvDU/06u5Hxv3CJHX+M=
 github.com/src-d/gcfg v1.4.0 h1:xXbNR5AlLSA315x2UO+fTSSAXCDf+Ar38/6oyGbDKQ4=
 github.com/src-d/gcfg v1.4.0/go.mod h1:p/UMsR43ujA89BJY9duynAwIpvqEujIH/jFlfL7jWoI=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
