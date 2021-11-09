@@ -97,26 +97,26 @@ export class RoutingRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RoutingRule resources.
  */
 export interface RoutingRuleState {
-    readonly balancerId?: pulumi.Input<string>;
-    readonly listenerId?: pulumi.Input<string>;
-    readonly middlewareIds?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly priority?: pulumi.Input<number>;
-    readonly route?: pulumi.Input<string>;
-    readonly strategy?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.RoutingRuleTag>[]>;
-    readonly targetSetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    balancerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string>;
+    middlewareIds?: pulumi.Input<pulumi.Input<string>[]>;
+    priority?: pulumi.Input<number>;
+    route?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.multai.RoutingRuleTag>[]>;
+    targetSetIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a RoutingRule resource.
  */
 export interface RoutingRuleArgs {
-    readonly balancerId: pulumi.Input<string>;
-    readonly listenerId: pulumi.Input<string>;
-    readonly middlewareIds?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly priority?: pulumi.Input<number>;
-    readonly route: pulumi.Input<string>;
-    readonly strategy?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.RoutingRuleTag>[]>;
-    readonly targetSetIds: pulumi.Input<pulumi.Input<string>[]>;
+    balancerId: pulumi.Input<string>;
+    listenerId: pulumi.Input<string>;
+    middlewareIds?: pulumi.Input<pulumi.Input<string>[]>;
+    priority?: pulumi.Input<number>;
+    route: pulumi.Input<string>;
+    strategy?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.multai.RoutingRuleTag>[]>;
+    targetSetIds: pulumi.Input<pulumi.Input<string>[]>;
 }

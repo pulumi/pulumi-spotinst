@@ -159,31 +159,31 @@ export interface OceanVirtualNodeGroupState {
     /**
      * .
      */
-    readonly autoscales?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupAutoscale>[]>;
+    autoscales?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupAutoscale>[]>;
     /**
      * Additional labels for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupLabel>[]>;
     /**
      * .
      */
-    readonly launchSpecifications?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupLaunchSpecification>[]>;
+    launchSpecifications?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupLaunchSpecification>[]>;
     /**
      * Set name for the virtual node group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Ocean cluster ID.
      */
-    readonly oceanId?: pulumi.Input<string>;
+    oceanId?: pulumi.Input<string>;
     /**
      * .
      */
-    readonly resourceLimits?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupResourceLimit>[]>;
+    resourceLimits?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupResourceLimit>[]>;
     /**
      * Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
      */
-    readonly taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupTaint>[]>;
 }
 
 /**
@@ -193,29 +193,29 @@ export interface OceanVirtualNodeGroupArgs {
     /**
      * .
      */
-    readonly autoscales?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupAutoscale>[]>;
+    autoscales?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupAutoscale>[]>;
     /**
      * Additional labels for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupLabel>[]>;
     /**
      * .
      */
-    readonly launchSpecifications?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupLaunchSpecification>[]>;
+    launchSpecifications?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupLaunchSpecification>[]>;
     /**
      * Set name for the virtual node group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Ocean cluster ID.
      */
-    readonly oceanId: pulumi.Input<string>;
+    oceanId: pulumi.Input<string>;
     /**
      * .
      */
-    readonly resourceLimits?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupResourceLimit>[]>;
+    resourceLimits?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupResourceLimit>[]>;
     /**
      * Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
      */
-    readonly taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupTaint>[]>;
 }

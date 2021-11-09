@@ -250,121 +250,121 @@ export interface OceanState {
     /**
      * Configure public IP address allocation.
      */
-    readonly associatePublicIpAddress?: pulumi.Input<boolean>;
+    associatePublicIpAddress?: pulumi.Input<boolean>;
     /**
      * Describes the Ocean Kubernetes Auto Scaler.
      */
-    readonly autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     /**
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
      */
-    readonly blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
-    readonly controllerId?: pulumi.Input<string>;
+    controllerId?: pulumi.Input<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
-    readonly drainingTimeout?: pulumi.Input<number>;
+    drainingTimeout?: pulumi.Input<number>;
     /**
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
-    readonly ebsOptimized?: pulumi.Input<boolean>;
+    ebsOptimized?: pulumi.Input<boolean>;
     /**
      * If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
      */
-    readonly fallbackToOndemand?: pulumi.Input<boolean>;
+    fallbackToOndemand?: pulumi.Input<boolean>;
     /**
      * The amount of time, in seconds, after the instance has launched to start checking its health.
      */
-    readonly gracePeriod?: pulumi.Input<number>;
+    gracePeriod?: pulumi.Input<number>;
     /**
      * The instance profile iam role.
      */
-    readonly iamInstanceProfile?: pulumi.Input<string>;
+    iamInstanceProfile?: pulumi.Input<string>;
     /**
      * ID of the image used to launch the instances.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
-    readonly instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions>;
+    instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions>;
     /**
      * The key pair to attach the instances.
      */
-    readonly keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
     /**
      * - Array of load balancer objects to add to ocean cluster
      */
-    readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoadBalancer>[]>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
-    readonly monitoring?: pulumi.Input<boolean>;
+    monitoring?: pulumi.Input<boolean>;
     /**
      * Required if type is set to `CLASSIC`
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region the cluster will run in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
-    readonly rootVolumeSize?: pulumi.Input<number>;
+    rootVolumeSize?: pulumi.Input<number>;
     /**
      * Set scheduling object.
      */
-    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
      */
-    readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      */
-    readonly spotPercentage?: pulumi.Input<number>;
+    spotPercentage?: pulumi.Input<number>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      */
-    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanTag>[]>;
-    readonly updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanTag>[]>;
+    updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
      */
-    readonly useAsTemplateOnly?: pulumi.Input<boolean>;
+    useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
-    readonly userData?: pulumi.Input<string>;
-    readonly utilizeCommitments?: pulumi.Input<boolean>;
+    userData?: pulumi.Input<string>;
+    utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
-    readonly utilizeReservedInstances?: pulumi.Input<boolean>;
+    utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
      * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
      */
-    readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -374,119 +374,119 @@ export interface OceanArgs {
     /**
      * Configure public IP address allocation.
      */
-    readonly associatePublicIpAddress?: pulumi.Input<boolean>;
+    associatePublicIpAddress?: pulumi.Input<boolean>;
     /**
      * Describes the Ocean Kubernetes Auto Scaler.
      */
-    readonly autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
     /**
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
      */
-    readonly blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
-    readonly controllerId?: pulumi.Input<string>;
+    controllerId?: pulumi.Input<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
-    readonly drainingTimeout?: pulumi.Input<number>;
+    drainingTimeout?: pulumi.Input<number>;
     /**
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
-    readonly ebsOptimized?: pulumi.Input<boolean>;
+    ebsOptimized?: pulumi.Input<boolean>;
     /**
      * If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
      */
-    readonly fallbackToOndemand?: pulumi.Input<boolean>;
+    fallbackToOndemand?: pulumi.Input<boolean>;
     /**
      * The amount of time, in seconds, after the instance has launched to start checking its health.
      */
-    readonly gracePeriod?: pulumi.Input<number>;
+    gracePeriod?: pulumi.Input<number>;
     /**
      * The instance profile iam role.
      */
-    readonly iamInstanceProfile?: pulumi.Input<string>;
+    iamInstanceProfile?: pulumi.Input<string>;
     /**
      * ID of the image used to launch the instances.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
-    readonly instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions>;
+    instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions>;
     /**
      * The key pair to attach the instances.
      */
-    readonly keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
     /**
      * - Array of load balancer objects to add to ocean cluster
      */
-    readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoadBalancer>[]>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
-    readonly monitoring?: pulumi.Input<boolean>;
+    monitoring?: pulumi.Input<boolean>;
     /**
      * Required if type is set to `CLASSIC`
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region the cluster will run in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
-    readonly rootVolumeSize?: pulumi.Input<number>;
+    rootVolumeSize?: pulumi.Input<number>;
     /**
      * Set scheduling object.
      */
-    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
     /**
      * One or more security group ids.
      */
-    readonly securityGroups: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      */
-    readonly spotPercentage?: pulumi.Input<number>;
+    spotPercentage?: pulumi.Input<number>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      */
-    readonly subnetIds: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanTag>[]>;
-    readonly updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanTag>[]>;
+    updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
      */
-    readonly useAsTemplateOnly?: pulumi.Input<boolean>;
+    useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
-    readonly userData?: pulumi.Input<string>;
-    readonly utilizeCommitments?: pulumi.Input<boolean>;
+    userData?: pulumi.Input<string>;
+    utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
-    readonly utilizeReservedInstances?: pulumi.Input<boolean>;
+    utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
      * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
      */
-    readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

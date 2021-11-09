@@ -161,7 +161,7 @@ type ListenerArrayInput interface {
 type ListenerArray []ListenerInput
 
 func (ListenerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Listener)(nil))
+	return reflect.TypeOf((*[]*Listener)(nil)).Elem()
 }
 
 func (i ListenerArray) ToListenerArrayOutput() ListenerArrayOutput {
@@ -186,7 +186,7 @@ type ListenerMapInput interface {
 type ListenerMap map[string]ListenerInput
 
 func (ListenerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Listener)(nil))
+	return reflect.TypeOf((*map[string]*Listener)(nil)).Elem()
 }
 
 func (i ListenerMap) ToListenerMapOutput() ListenerMapOutput {
@@ -197,9 +197,7 @@ func (i ListenerMap) ToListenerMapOutputWithContext(ctx context.Context) Listene
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerMapOutput)
 }
 
-type ListenerOutput struct {
-	*pulumi.OutputState
-}
+type ListenerOutput struct{ *pulumi.OutputState }
 
 func (ListenerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Listener)(nil))
@@ -218,14 +216,12 @@ func (o ListenerOutput) ToListenerPtrOutput() ListenerPtrOutput {
 }
 
 func (o ListenerOutput) ToListenerPtrOutputWithContext(ctx context.Context) ListenerPtrOutput {
-	return o.ApplyT(func(v Listener) *Listener {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Listener) *Listener {
 		return &v
 	}).(ListenerPtrOutput)
 }
 
-type ListenerPtrOutput struct {
-	*pulumi.OutputState
-}
+type ListenerPtrOutput struct{ *pulumi.OutputState }
 
 func (ListenerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Listener)(nil))
@@ -237,6 +233,16 @@ func (o ListenerPtrOutput) ToListenerPtrOutput() ListenerPtrOutput {
 
 func (o ListenerPtrOutput) ToListenerPtrOutputWithContext(ctx context.Context) ListenerPtrOutput {
 	return o
+}
+
+func (o ListenerPtrOutput) Elem() ListenerOutput {
+	return o.ApplyT(func(v *Listener) Listener {
+		if v != nil {
+			return *v
+		}
+		var ret Listener
+		return ret
+	}).(ListenerOutput)
 }
 
 type ListenerArrayOutput struct{ *pulumi.OutputState }
@@ -280,6 +286,10 @@ func (o ListenerMapOutput) MapIndex(k pulumi.StringInput) ListenerOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerInput)(nil)).Elem(), &Listener{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerPtrInput)(nil)).Elem(), &Listener{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerArrayInput)(nil)).Elem(), ListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerMapInput)(nil)).Elem(), ListenerMap{})
 	pulumi.RegisterOutputType(ListenerOutput{})
 	pulumi.RegisterOutputType(ListenerPtrOutput{})
 	pulumi.RegisterOutputType(ListenerArrayOutput{})

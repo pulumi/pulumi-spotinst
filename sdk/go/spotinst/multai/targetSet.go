@@ -182,7 +182,7 @@ type TargetSetArrayInput interface {
 type TargetSetArray []TargetSetInput
 
 func (TargetSetArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TargetSet)(nil))
+	return reflect.TypeOf((*[]*TargetSet)(nil)).Elem()
 }
 
 func (i TargetSetArray) ToTargetSetArrayOutput() TargetSetArrayOutput {
@@ -207,7 +207,7 @@ type TargetSetMapInput interface {
 type TargetSetMap map[string]TargetSetInput
 
 func (TargetSetMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TargetSet)(nil))
+	return reflect.TypeOf((*map[string]*TargetSet)(nil)).Elem()
 }
 
 func (i TargetSetMap) ToTargetSetMapOutput() TargetSetMapOutput {
@@ -218,9 +218,7 @@ func (i TargetSetMap) ToTargetSetMapOutputWithContext(ctx context.Context) Targe
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSetMapOutput)
 }
 
-type TargetSetOutput struct {
-	*pulumi.OutputState
-}
+type TargetSetOutput struct{ *pulumi.OutputState }
 
 func (TargetSetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetSet)(nil))
@@ -239,14 +237,12 @@ func (o TargetSetOutput) ToTargetSetPtrOutput() TargetSetPtrOutput {
 }
 
 func (o TargetSetOutput) ToTargetSetPtrOutputWithContext(ctx context.Context) TargetSetPtrOutput {
-	return o.ApplyT(func(v TargetSet) *TargetSet {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetSet) *TargetSet {
 		return &v
 	}).(TargetSetPtrOutput)
 }
 
-type TargetSetPtrOutput struct {
-	*pulumi.OutputState
-}
+type TargetSetPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetSetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TargetSet)(nil))
@@ -258,6 +254,16 @@ func (o TargetSetPtrOutput) ToTargetSetPtrOutput() TargetSetPtrOutput {
 
 func (o TargetSetPtrOutput) ToTargetSetPtrOutputWithContext(ctx context.Context) TargetSetPtrOutput {
 	return o
+}
+
+func (o TargetSetPtrOutput) Elem() TargetSetOutput {
+	return o.ApplyT(func(v *TargetSet) TargetSet {
+		if v != nil {
+			return *v
+		}
+		var ret TargetSet
+		return ret
+	}).(TargetSetOutput)
 }
 
 type TargetSetArrayOutput struct{ *pulumi.OutputState }
@@ -301,6 +307,10 @@ func (o TargetSetMapOutput) MapIndex(k pulumi.StringInput) TargetSetOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSetInput)(nil)).Elem(), &TargetSet{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSetPtrInput)(nil)).Elem(), &TargetSet{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSetArrayInput)(nil)).Elem(), TargetSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSetMapInput)(nil)).Elem(), TargetSetMap{})
 	pulumi.RegisterOutputType(TargetSetOutput{})
 	pulumi.RegisterOutputType(TargetSetPtrOutput{})
 	pulumi.RegisterOutputType(TargetSetArrayOutput{})

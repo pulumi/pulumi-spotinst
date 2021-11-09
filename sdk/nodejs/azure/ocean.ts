@@ -196,83 +196,83 @@ export interface OceanState {
     /**
      * The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
      */
-    readonly acdIdentifier?: pulumi.Input<string>;
+    acdIdentifier?: pulumi.Input<string>;
     /**
      * The AKS cluster name.
      */
-    readonly aksName?: pulumi.Input<string>;
+    aksName?: pulumi.Input<string>;
     /**
      * Name of the Azure Resource Group where the AKS cluster is located.
      */
-    readonly aksResourceGroupName?: pulumi.Input<string>;
+    aksResourceGroupName?: pulumi.Input<string>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
-    readonly autoscaler?: pulumi.Input<inputs.azure.OceanAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.azure.OceanAutoscaler>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
-    readonly controllerClusterId?: pulumi.Input<string>;
+    controllerClusterId?: pulumi.Input<string>;
     /**
      * Must contain a valid Base64 encoded string.
      */
-    readonly customData?: pulumi.Input<string>;
+    customData?: pulumi.Input<string>;
     /**
      * List of Azure extension objects.
      */
-    readonly extensions?: pulumi.Input<pulumi.Input<inputs.azure.OceanExtension>[]>;
+    extensions?: pulumi.Input<pulumi.Input<inputs.azure.OceanExtension>[]>;
     /**
      * The Ocean AKS Health object.
      */
-    readonly health?: pulumi.Input<inputs.azure.OceanHealth>;
+    health?: pulumi.Input<inputs.azure.OceanHealth>;
     /**
      * Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
      */
-    readonly images?: pulumi.Input<pulumi.Input<inputs.azure.OceanImage>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.azure.OceanImage>[]>;
     /**
      * Configure Load Balancer.
      */
-    readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.OceanLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.OceanLoadBalancer>[]>;
     /**
      * List of Managed Service Identity objects.
      */
-    readonly managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.OceanManagedServiceIdentity>[]>;
+    managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.OceanManagedServiceIdentity>[]>;
     /**
      * Name of the Load Balancer.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Define the Virtual Network and Subnet.
      */
-    readonly network?: pulumi.Input<inputs.azure.OceanNetwork>;
+    network?: pulumi.Input<inputs.azure.OceanNetwork>;
     /**
      * OS disk specifications.
      */
-    readonly osDisk?: pulumi.Input<inputs.azure.OceanOsDisk>;
+    osDisk?: pulumi.Input<inputs.azure.OceanOsDisk>;
     /**
      * The Resource Group name of the Load Balancer.
      */
-    readonly resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string>;
     /**
      * SSH public key for admin access to Linux VMs.
      */
-    readonly sshPublicKey?: pulumi.Input<string>;
+    sshPublicKey?: pulumi.Input<string>;
     /**
      * The Ocean AKS strategy object.
      */
-    readonly strategies?: pulumi.Input<pulumi.Input<inputs.azure.OceanStrategy>[]>;
+    strategies?: pulumi.Input<pulumi.Input<inputs.azure.OceanStrategy>[]>;
     /**
      * Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.azure.OceanTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.azure.OceanTag>[]>;
     /**
      * Username for admin access to VMs.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
     /**
      * The types of virtual machines that may or may not be a part of the Ocean cluster.
      */
-    readonly vmSizes?: pulumi.Input<pulumi.Input<inputs.azure.OceanVmSize>[]>;
+    vmSizes?: pulumi.Input<pulumi.Input<inputs.azure.OceanVmSize>[]>;
 }
 
 /**
@@ -282,81 +282,81 @@ export interface OceanArgs {
     /**
      * The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
      */
-    readonly acdIdentifier: pulumi.Input<string>;
+    acdIdentifier: pulumi.Input<string>;
     /**
      * The AKS cluster name.
      */
-    readonly aksName: pulumi.Input<string>;
+    aksName: pulumi.Input<string>;
     /**
      * Name of the Azure Resource Group where the AKS cluster is located.
      */
-    readonly aksResourceGroupName: pulumi.Input<string>;
+    aksResourceGroupName: pulumi.Input<string>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
-    readonly autoscaler?: pulumi.Input<inputs.azure.OceanAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.azure.OceanAutoscaler>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
-    readonly controllerClusterId?: pulumi.Input<string>;
+    controllerClusterId?: pulumi.Input<string>;
     /**
      * Must contain a valid Base64 encoded string.
      */
-    readonly customData?: pulumi.Input<string>;
+    customData?: pulumi.Input<string>;
     /**
      * List of Azure extension objects.
      */
-    readonly extensions?: pulumi.Input<pulumi.Input<inputs.azure.OceanExtension>[]>;
+    extensions?: pulumi.Input<pulumi.Input<inputs.azure.OceanExtension>[]>;
     /**
      * The Ocean AKS Health object.
      */
-    readonly health?: pulumi.Input<inputs.azure.OceanHealth>;
+    health?: pulumi.Input<inputs.azure.OceanHealth>;
     /**
      * Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
      */
-    readonly images?: pulumi.Input<pulumi.Input<inputs.azure.OceanImage>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.azure.OceanImage>[]>;
     /**
      * Configure Load Balancer.
      */
-    readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.OceanLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.OceanLoadBalancer>[]>;
     /**
      * List of Managed Service Identity objects.
      */
-    readonly managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.OceanManagedServiceIdentity>[]>;
+    managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.OceanManagedServiceIdentity>[]>;
     /**
      * Name of the Load Balancer.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Define the Virtual Network and Subnet.
      */
-    readonly network?: pulumi.Input<inputs.azure.OceanNetwork>;
+    network?: pulumi.Input<inputs.azure.OceanNetwork>;
     /**
      * OS disk specifications.
      */
-    readonly osDisk?: pulumi.Input<inputs.azure.OceanOsDisk>;
+    osDisk?: pulumi.Input<inputs.azure.OceanOsDisk>;
     /**
      * The Resource Group name of the Load Balancer.
      */
-    readonly resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string>;
     /**
      * SSH public key for admin access to Linux VMs.
      */
-    readonly sshPublicKey: pulumi.Input<string>;
+    sshPublicKey: pulumi.Input<string>;
     /**
      * The Ocean AKS strategy object.
      */
-    readonly strategies?: pulumi.Input<pulumi.Input<inputs.azure.OceanStrategy>[]>;
+    strategies?: pulumi.Input<pulumi.Input<inputs.azure.OceanStrategy>[]>;
     /**
      * Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.azure.OceanTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.azure.OceanTag>[]>;
     /**
      * Username for admin access to VMs.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
     /**
      * The types of virtual machines that may or may not be a part of the Ocean cluster.
      */
-    readonly vmSizes?: pulumi.Input<pulumi.Input<inputs.azure.OceanVmSize>[]>;
+    vmSizes?: pulumi.Input<pulumi.Input<inputs.azure.OceanVmSize>[]>;
 }

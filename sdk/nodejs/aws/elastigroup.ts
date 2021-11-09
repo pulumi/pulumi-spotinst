@@ -620,271 +620,271 @@ export interface ElastigroupState {
      * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
      * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
      */
-    readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
      */
-    readonly blockDevicesMode?: pulumi.Input<string>;
+    blockDevicesMode?: pulumi.Input<string>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
-    readonly capacityUnit?: pulumi.Input<string>;
+    capacityUnit?: pulumi.Input<string>;
     /**
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
-    readonly cpuCredits?: pulumi.Input<string>;
+    cpuCredits?: pulumi.Input<string>;
     /**
      * The CPU options for the instances that are launched within the group:
      */
-    readonly cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions>;
+    cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions>;
     /**
      * The description of the network interface.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * Indicates (in seconds) the timeout to wait until instance are detached.
      */
-    readonly drainingTimeout?: pulumi.Input<number>;
-    readonly ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[]>;
+    drainingTimeout?: pulumi.Input<number>;
+    ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[]>;
     /**
      * Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
      */
-    readonly ebsOptimized?: pulumi.Input<boolean>;
+    ebsOptimized?: pulumi.Input<boolean>;
     /**
      * A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
      */
-    readonly elasticIps?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Elastic Load Balancers names (ELB).
      */
-    readonly elasticLoadBalancers?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticLoadBalancers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether monitoring is enabled for the instance.
      */
-    readonly enableMonitoring?: pulumi.Input<boolean>;
-    readonly ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEphemeralBlockDevice>[]>;
+    enableMonitoring?: pulumi.Input<boolean>;
+    ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEphemeralBlockDevice>[]>;
     /**
      * In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
      */
-    readonly fallbackToOndemand?: pulumi.Input<boolean>;
+    fallbackToOndemand?: pulumi.Input<boolean>;
     /**
      * The amount of time, in seconds, after the instance has launched to starts and check its health
      */
-    readonly healthCheckGracePeriod?: pulumi.Input<number>;
+    healthCheckGracePeriod?: pulumi.Input<number>;
     /**
      * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
      */
-    readonly healthCheckType?: pulumi.Input<string>;
+    healthCheckType?: pulumi.Input<string>;
     /**
      * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
      */
-    readonly healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
+    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
-    readonly iamInstanceProfile?: pulumi.Input<string>;
+    iamInstanceProfile?: pulumi.Input<string>;
     /**
      * The ID of the AMI used to launch the instance.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      */
-    readonly instanceTypesOndemand?: pulumi.Input<string>;
+    instanceTypesOndemand?: pulumi.Input<string>;
     /**
      * Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
      */
-    readonly instanceTypesPreferredSpots?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypesPreferredSpots?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * One or more instance types.
      */
-    readonly instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
      */
-    readonly instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[]>;
-    readonly integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk>;
+    instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[]>;
+    integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk>;
     /**
      * Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
      */
-    readonly integrationCodedeploy?: pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeploy>;
+    integrationCodedeploy?: pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeploy>;
     /**
      * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
      */
-    readonly integrationDockerSwarm?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarm>;
+    integrationDockerSwarm?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarm>;
     /**
      * Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
      */
-    readonly integrationEcs?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcs>;
+    integrationEcs?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcs>;
     /**
      * Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
      */
-    readonly integrationGitlab?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlab>;
+    integrationGitlab?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlab>;
     /**
      * Describes the [Kubernetes](https://kubernetes.io/) integration.
      */
-    readonly integrationKubernetes?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetes>;
+    integrationKubernetes?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetes>;
     /**
      * Describes the [Mesosphere](https://mesosphere.com/) integration.
      */
-    readonly integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere>;
+    integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere>;
     /**
      * Describes the [Multai Runtime](https://spotinst.com/) integration.
      */
-    readonly integrationMultaiRuntime?: pulumi.Input<inputs.aws.ElastigroupIntegrationMultaiRuntime>;
+    integrationMultaiRuntime?: pulumi.Input<inputs.aws.ElastigroupIntegrationMultaiRuntime>;
     /**
      * Describes the [Nomad](https://www.nomadproject.io/) integration.
      */
-    readonly integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad>;
+    integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad>;
     /**
      * Describes the [Rancher](http://rancherlabs.com/) integration.
      */
-    readonly integrationRancher?: pulumi.Input<inputs.aws.ElastigroupIntegrationRancher>;
+    integrationRancher?: pulumi.Input<inputs.aws.ElastigroupIntegrationRancher>;
     /**
      * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
      */
-    readonly integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53>;
-    readonly itfs?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItf>[]>;
+    integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53>;
+    itfs?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItf>[]>;
     /**
      * The key name that should be used for the instance.
      */
-    readonly keyName?: pulumi.Input<string>;
-    readonly lifetimePeriod?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
+    lifetimePeriod?: pulumi.Input<string>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * Data that used to configure or manage the running instances:
      */
-    readonly metadataOptions?: pulumi.Input<inputs.aws.ElastigroupMetadataOptions>;
+    metadataOptions?: pulumi.Input<inputs.aws.ElastigroupMetadataOptions>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
-    readonly minimumInstanceLifetime?: pulumi.Input<number>;
+    minimumInstanceLifetime?: pulumi.Input<number>;
     /**
      * Set of targets to register.
      */
-    readonly multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
-    readonly multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
+    multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
+    multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
     /**
      * The record set name.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
+    name?: pulumi.Input<string>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
     /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      */
-    readonly ondemandCount?: pulumi.Input<number>;
+    ondemandCount?: pulumi.Input<number>;
     /**
      * Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
      */
-    readonly orientation?: pulumi.Input<string>;
+    orientation?: pulumi.Input<string>;
     /**
      * Boolean, should the instance maintain its Data volumes.
      */
-    readonly persistBlockDevices?: pulumi.Input<boolean>;
+    persistBlockDevices?: pulumi.Input<boolean>;
     /**
      * Boolean, should the instance maintain its private IP.
      */
-    readonly persistPrivateIp?: pulumi.Input<boolean>;
+    persistPrivateIp?: pulumi.Input<boolean>;
     /**
      * Boolean, should the instance maintain its root device volumes.
      */
-    readonly persistRootDevice?: pulumi.Input<boolean>;
+    persistRootDevice?: pulumi.Input<boolean>;
     /**
      * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
      */
-    readonly placementTenancy?: pulumi.Input<string>;
+    placementTenancy?: pulumi.Input<string>;
     /**
      * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
-    readonly preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
      */
-    readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
-    readonly product?: pulumi.Input<string>;
+    product?: pulumi.Input<string>;
     /**
      * The AWS region your group will be created in.
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * User will specify which resources should be tagged with group tags.
      */
-    readonly resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[]>;
+    resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[]>;
     /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */
-    readonly revertToSpot?: pulumi.Input<inputs.aws.ElastigroupRevertToSpot>;
-    readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicy>[]>;
+    revertToSpot?: pulumi.Input<inputs.aws.ElastigroupRevertToSpot>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicy>[]>;
     /**
      * Set termination policy.
      */
-    readonly scalingStrategies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingStrategy>[]>;
-    readonly scalingTargetPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicy>[]>;
-    readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicy>[]>;
-    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScheduledTask>[]>;
+    scalingStrategies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingStrategy>[]>;
+    scalingTargetPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicy>[]>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicy>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScheduledTask>[]>;
     /**
      * A list of associated security group IDS.
      */
-    readonly securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
-    readonly shutdownScript?: pulumi.Input<string>;
-    readonly signals?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupSignal>[]>;
+    shutdownScript?: pulumi.Input<string>;
+    signals?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupSignal>[]>;
     /**
      * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      */
-    readonly spotPercentage?: pulumi.Input<number>;
-    readonly statefulDeallocation?: pulumi.Input<inputs.aws.ElastigroupStatefulDeallocation>;
-    readonly statefulInstanceActions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupStatefulInstanceAction>[]>;
+    spotPercentage?: pulumi.Input<number>;
+    statefulDeallocation?: pulumi.Input<inputs.aws.ElastigroupStatefulDeallocation>;
+    statefulInstanceActions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupStatefulInstanceAction>[]>;
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
      */
-    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A key/value mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[]>;
     /**
      * List of Target Group ARNs to register the instances to.
      */
-    readonly targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy>;
+    targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
+    updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy>;
     /**
      * The user data to provide when launching the instance.
      */
-    readonly userData?: pulumi.Input<string>;
-    readonly utilizeCommitments?: pulumi.Input<boolean>;
+    userData?: pulumi.Input<string>;
+    utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
      */
-    readonly utilizeReservedInstances?: pulumi.Input<boolean>;
+    utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
      * Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
      */
-    readonly waitForCapacity?: pulumi.Input<number>;
+    waitForCapacity?: pulumi.Input<number>;
     /**
      * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
      */
-    readonly waitForCapacityTimeout?: pulumi.Input<number>;
+    waitForCapacityTimeout?: pulumi.Input<number>;
 }
 
 /**
@@ -896,269 +896,269 @@ export interface ElastigroupArgs {
      * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
      * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
      */
-    readonly availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
      */
-    readonly blockDevicesMode?: pulumi.Input<string>;
+    blockDevicesMode?: pulumi.Input<string>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
-    readonly capacityUnit?: pulumi.Input<string>;
+    capacityUnit?: pulumi.Input<string>;
     /**
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
-    readonly cpuCredits?: pulumi.Input<string>;
+    cpuCredits?: pulumi.Input<string>;
     /**
      * The CPU options for the instances that are launched within the group:
      */
-    readonly cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions>;
+    cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions>;
     /**
      * The description of the network interface.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * Indicates (in seconds) the timeout to wait until instance are detached.
      */
-    readonly drainingTimeout?: pulumi.Input<number>;
-    readonly ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[]>;
+    drainingTimeout?: pulumi.Input<number>;
+    ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[]>;
     /**
      * Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
      */
-    readonly ebsOptimized?: pulumi.Input<boolean>;
+    ebsOptimized?: pulumi.Input<boolean>;
     /**
      * A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
      */
-    readonly elasticIps?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Elastic Load Balancers names (ELB).
      */
-    readonly elasticLoadBalancers?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticLoadBalancers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether monitoring is enabled for the instance.
      */
-    readonly enableMonitoring?: pulumi.Input<boolean>;
-    readonly ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEphemeralBlockDevice>[]>;
+    enableMonitoring?: pulumi.Input<boolean>;
+    ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEphemeralBlockDevice>[]>;
     /**
      * In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
      */
-    readonly fallbackToOndemand: pulumi.Input<boolean>;
+    fallbackToOndemand: pulumi.Input<boolean>;
     /**
      * The amount of time, in seconds, after the instance has launched to starts and check its health
      */
-    readonly healthCheckGracePeriod?: pulumi.Input<number>;
+    healthCheckGracePeriod?: pulumi.Input<number>;
     /**
      * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
      */
-    readonly healthCheckType?: pulumi.Input<string>;
+    healthCheckType?: pulumi.Input<string>;
     /**
      * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
      */
-    readonly healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
+    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
-    readonly iamInstanceProfile?: pulumi.Input<string>;
+    iamInstanceProfile?: pulumi.Input<string>;
     /**
      * The ID of the AMI used to launch the instance.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      */
-    readonly instanceTypesOndemand: pulumi.Input<string>;
+    instanceTypesOndemand: pulumi.Input<string>;
     /**
      * Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
      */
-    readonly instanceTypesPreferredSpots?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypesPreferredSpots?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * One or more instance types.
      */
-    readonly instanceTypesSpots: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypesSpots: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
      */
-    readonly instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[]>;
-    readonly integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk>;
+    instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[]>;
+    integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk>;
     /**
      * Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
      */
-    readonly integrationCodedeploy?: pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeploy>;
+    integrationCodedeploy?: pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeploy>;
     /**
      * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
      */
-    readonly integrationDockerSwarm?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarm>;
+    integrationDockerSwarm?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarm>;
     /**
      * Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
      */
-    readonly integrationEcs?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcs>;
+    integrationEcs?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcs>;
     /**
      * Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
      */
-    readonly integrationGitlab?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlab>;
+    integrationGitlab?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlab>;
     /**
      * Describes the [Kubernetes](https://kubernetes.io/) integration.
      */
-    readonly integrationKubernetes?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetes>;
+    integrationKubernetes?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetes>;
     /**
      * Describes the [Mesosphere](https://mesosphere.com/) integration.
      */
-    readonly integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere>;
+    integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere>;
     /**
      * Describes the [Multai Runtime](https://spotinst.com/) integration.
      */
-    readonly integrationMultaiRuntime?: pulumi.Input<inputs.aws.ElastigroupIntegrationMultaiRuntime>;
+    integrationMultaiRuntime?: pulumi.Input<inputs.aws.ElastigroupIntegrationMultaiRuntime>;
     /**
      * Describes the [Nomad](https://www.nomadproject.io/) integration.
      */
-    readonly integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad>;
+    integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad>;
     /**
      * Describes the [Rancher](http://rancherlabs.com/) integration.
      */
-    readonly integrationRancher?: pulumi.Input<inputs.aws.ElastigroupIntegrationRancher>;
+    integrationRancher?: pulumi.Input<inputs.aws.ElastigroupIntegrationRancher>;
     /**
      * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
      */
-    readonly integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53>;
-    readonly itfs?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItf>[]>;
+    integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53>;
+    itfs?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItf>[]>;
     /**
      * The key name that should be used for the instance.
      */
-    readonly keyName?: pulumi.Input<string>;
-    readonly lifetimePeriod?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
+    lifetimePeriod?: pulumi.Input<string>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * Data that used to configure or manage the running instances:
      */
-    readonly metadataOptions?: pulumi.Input<inputs.aws.ElastigroupMetadataOptions>;
+    metadataOptions?: pulumi.Input<inputs.aws.ElastigroupMetadataOptions>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
-    readonly minimumInstanceLifetime?: pulumi.Input<number>;
+    minimumInstanceLifetime?: pulumi.Input<number>;
     /**
      * Set of targets to register.
      */
-    readonly multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
-    readonly multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
+    multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
+    multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
     /**
      * The record set name.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
+    name?: pulumi.Input<string>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
     /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      */
-    readonly ondemandCount?: pulumi.Input<number>;
+    ondemandCount?: pulumi.Input<number>;
     /**
      * Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
      */
-    readonly orientation: pulumi.Input<string>;
+    orientation: pulumi.Input<string>;
     /**
      * Boolean, should the instance maintain its Data volumes.
      */
-    readonly persistBlockDevices?: pulumi.Input<boolean>;
+    persistBlockDevices?: pulumi.Input<boolean>;
     /**
      * Boolean, should the instance maintain its private IP.
      */
-    readonly persistPrivateIp?: pulumi.Input<boolean>;
+    persistPrivateIp?: pulumi.Input<boolean>;
     /**
      * Boolean, should the instance maintain its root device volumes.
      */
-    readonly persistRootDevice?: pulumi.Input<boolean>;
+    persistRootDevice?: pulumi.Input<boolean>;
     /**
      * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
      */
-    readonly placementTenancy?: pulumi.Input<string>;
+    placementTenancy?: pulumi.Input<string>;
     /**
      * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
-    readonly preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
      */
-    readonly privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
-    readonly product: pulumi.Input<string>;
+    product: pulumi.Input<string>;
     /**
      * The AWS region your group will be created in.
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * User will specify which resources should be tagged with group tags.
      */
-    readonly resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[]>;
+    resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[]>;
     /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */
-    readonly revertToSpot?: pulumi.Input<inputs.aws.ElastigroupRevertToSpot>;
-    readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicy>[]>;
+    revertToSpot?: pulumi.Input<inputs.aws.ElastigroupRevertToSpot>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicy>[]>;
     /**
      * Set termination policy.
      */
-    readonly scalingStrategies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingStrategy>[]>;
-    readonly scalingTargetPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicy>[]>;
-    readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicy>[]>;
-    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScheduledTask>[]>;
+    scalingStrategies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingStrategy>[]>;
+    scalingTargetPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicy>[]>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicy>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScheduledTask>[]>;
     /**
      * A list of associated security group IDS.
      */
-    readonly securityGroups: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
-    readonly shutdownScript?: pulumi.Input<string>;
-    readonly signals?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupSignal>[]>;
+    shutdownScript?: pulumi.Input<string>;
+    signals?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupSignal>[]>;
     /**
      * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      */
-    readonly spotPercentage?: pulumi.Input<number>;
-    readonly statefulDeallocation?: pulumi.Input<inputs.aws.ElastigroupStatefulDeallocation>;
-    readonly statefulInstanceActions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupStatefulInstanceAction>[]>;
+    spotPercentage?: pulumi.Input<number>;
+    statefulDeallocation?: pulumi.Input<inputs.aws.ElastigroupStatefulDeallocation>;
+    statefulInstanceActions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupStatefulInstanceAction>[]>;
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
      */
-    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A key/value mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[]>;
     /**
      * List of Target Group ARNs to register the instances to.
      */
-    readonly targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy>;
+    targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
+    updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy>;
     /**
      * The user data to provide when launching the instance.
      */
-    readonly userData?: pulumi.Input<string>;
-    readonly utilizeCommitments?: pulumi.Input<boolean>;
+    userData?: pulumi.Input<string>;
+    utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
      */
-    readonly utilizeReservedInstances?: pulumi.Input<boolean>;
+    utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
      * Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
      */
-    readonly waitForCapacity?: pulumi.Input<number>;
+    waitForCapacity?: pulumi.Input<number>;
     /**
      * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
      */
-    readonly waitForCapacityTimeout?: pulumi.Input<number>;
+    waitForCapacityTimeout?: pulumi.Input<number>;
 }

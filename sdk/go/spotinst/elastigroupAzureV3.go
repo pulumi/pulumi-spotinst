@@ -28,10 +28,10 @@ import (
 // 		_, err := spotinst.NewElastigroupAzureV3(ctx, "testAzureGroup", &spotinst.ElastigroupAzureV3Args{
 // 			CustomData:      pulumi.String("IyEvYmluL2Jhc2gKZWNobyAidGVzdCI="),
 // 			DesiredCapacity: pulumi.Int(1),
-// 			Images: spotinst.ElastigroupAzureV3ImageArray{
-// 				&spotinst.ElastigroupAzureV3ImageArgs{
-// 					Marketplaces: spotinst.ElastigroupAzureV3ImageMarketplaceArray{
-// 						&spotinst.ElastigroupAzureV3ImageMarketplaceArgs{
+// 			Images: ElastigroupAzureV3ImageArray{
+// 				&ElastigroupAzureV3ImageArgs{
+// 					Marketplaces: ElastigroupAzureV3ImageMarketplaceArray{
+// 						&ElastigroupAzureV3ImageMarketplaceArgs{
 // 							Offer:     pulumi.String("UbuntuServer"),
 // 							Publisher: pulumi.String("Canonical"),
 // 							Sku:       pulumi.String("18.04-LTS"),
@@ -40,31 +40,31 @@ import (
 // 					},
 // 				},
 // 			},
-// 			Login: &spotinst.ElastigroupAzureV3LoginArgs{
+// 			Login: &ElastigroupAzureV3LoginArgs{
 // 				SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
 // 				UserName:     pulumi.String("admin"),
 // 			},
-// 			ManagedServiceIdentities: spotinst.ElastigroupAzureV3ManagedServiceIdentityArray{
-// 				&spotinst.ElastigroupAzureV3ManagedServiceIdentityArgs{
+// 			ManagedServiceIdentities: ElastigroupAzureV3ManagedServiceIdentityArray{
+// 				&ElastigroupAzureV3ManagedServiceIdentityArgs{
 // 					Name:              pulumi.String("ocean-westus-dev-aks-agentpool"),
 // 					ResourceGroupName: pulumi.String("MC_ocean-westus-dev_ocean-westus-dev-aks_westus"),
 // 				},
 // 			},
 // 			MaxSize: pulumi.Int(1),
 // 			MinSize: pulumi.Int(0),
-// 			Network: &spotinst.ElastigroupAzureV3NetworkArgs{
-// 				NetworkInterfaces: spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArray{
-// 					&spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArgs{
-// 						AdditionalIpConfigs: spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{
-// 							&spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{
-// 								PrivateIPVersion: pulumi.String("IPv4"),
+// 			Network: &ElastigroupAzureV3NetworkArgs{
+// 				NetworkInterfaces: ElastigroupAzureV3NetworkNetworkInterfaceArray{
+// 					&ElastigroupAzureV3NetworkNetworkInterfaceArgs{
+// 						AdditionalIpConfigs: ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{
+// 							&ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{
+// 								PrivateIPVersion: "IPv4",
 // 								Name:             pulumi.String("SecondaryIPConfig"),
 // 							},
 // 						},
-// 						ApplicationSecurityGroup: pulumi.StringMapArray{
-// 							pulumi.StringMap{
-// 								"name":              pulumi.String("ApplicationSecurityGroupName"),
-// 								"resourceGroupName": pulumi.String("ResourceGroup"),
+// 						ApplicationSecurityGroup: []map[string]interface{}{
+// 							map[string]interface{}{
+// 								"name":              "ApplicationSecurityGroupName",
+// 								"resourceGroupName": "ResourceGroup",
 // 							},
 // 						},
 // 						AssignPublicIp: pulumi.Bool(false),
@@ -86,7 +86,7 @@ import (
 // 				pulumi.String("standard_a1_v1"),
 // 				pulumi.String("standard_a1_v2"),
 // 			},
-// 			Strategy: &spotinst.ElastigroupAzureV3StrategyArgs{
+// 			Strategy: &ElastigroupAzureV3StrategyArgs{
 // 				DrainingTimeout:    pulumi.Int(300),
 // 				FallbackToOnDemand: pulumi.Bool(true),
 // 				OdCount:            pulumi.Int(1),
@@ -392,7 +392,7 @@ type ElastigroupAzureV3ArrayInput interface {
 type ElastigroupAzureV3Array []ElastigroupAzureV3Input
 
 func (ElastigroupAzureV3Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ElastigroupAzureV3)(nil))
+	return reflect.TypeOf((*[]*ElastigroupAzureV3)(nil)).Elem()
 }
 
 func (i ElastigroupAzureV3Array) ToElastigroupAzureV3ArrayOutput() ElastigroupAzureV3ArrayOutput {
@@ -417,7 +417,7 @@ type ElastigroupAzureV3MapInput interface {
 type ElastigroupAzureV3Map map[string]ElastigroupAzureV3Input
 
 func (ElastigroupAzureV3Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ElastigroupAzureV3)(nil))
+	return reflect.TypeOf((*map[string]*ElastigroupAzureV3)(nil)).Elem()
 }
 
 func (i ElastigroupAzureV3Map) ToElastigroupAzureV3MapOutput() ElastigroupAzureV3MapOutput {
@@ -428,9 +428,7 @@ func (i ElastigroupAzureV3Map) ToElastigroupAzureV3MapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3MapOutput)
 }
 
-type ElastigroupAzureV3Output struct {
-	*pulumi.OutputState
-}
+type ElastigroupAzureV3Output struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElastigroupAzureV3)(nil))
@@ -449,14 +447,12 @@ func (o ElastigroupAzureV3Output) ToElastigroupAzureV3PtrOutput() ElastigroupAzu
 }
 
 func (o ElastigroupAzureV3Output) ToElastigroupAzureV3PtrOutputWithContext(ctx context.Context) ElastigroupAzureV3PtrOutput {
-	return o.ApplyT(func(v ElastigroupAzureV3) *ElastigroupAzureV3 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3) *ElastigroupAzureV3 {
 		return &v
 	}).(ElastigroupAzureV3PtrOutput)
 }
 
-type ElastigroupAzureV3PtrOutput struct {
-	*pulumi.OutputState
-}
+type ElastigroupAzureV3PtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElastigroupAzureV3)(nil))
@@ -468,6 +464,16 @@ func (o ElastigroupAzureV3PtrOutput) ToElastigroupAzureV3PtrOutput() Elastigroup
 
 func (o ElastigroupAzureV3PtrOutput) ToElastigroupAzureV3PtrOutputWithContext(ctx context.Context) ElastigroupAzureV3PtrOutput {
 	return o
+}
+
+func (o ElastigroupAzureV3PtrOutput) Elem() ElastigroupAzureV3Output {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3 {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3
+		return ret
+	}).(ElastigroupAzureV3Output)
 }
 
 type ElastigroupAzureV3ArrayOutput struct{ *pulumi.OutputState }
@@ -511,6 +517,10 @@ func (o ElastigroupAzureV3MapOutput) MapIndex(k pulumi.StringInput) ElastigroupA
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3Input)(nil)).Elem(), &ElastigroupAzureV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3PtrInput)(nil)).Elem(), &ElastigroupAzureV3{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ArrayInput)(nil)).Elem(), ElastigroupAzureV3Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3MapInput)(nil)).Elem(), ElastigroupAzureV3Map{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3Output{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3PtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ArrayOutput{})

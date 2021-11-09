@@ -557,19 +557,19 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             max_size=1,
             min_size=0,
             network=spotinst.ElastigroupAzureV3NetworkArgs(
-                network_interfaces=[{
-                    "additionalIpConfigs": [{
-                        "PrivateIPVersion": "IPv4",
-                        "name": "SecondaryIPConfig",
-                    }],
-                    "applicationSecurityGroup": [{
+                network_interfaces=[spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArgs(
+                    additional_ip_configs=[spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs(
+                        private_ip_version="IPv4",
+                        name="SecondaryIPConfig",
+                    )],
+                    application_security_group=[{
                         "name": "ApplicationSecurityGroupName",
-                        "resource_group_name": "ResourceGroup",
+                        "resourceGroupName": "ResourceGroup",
                     }],
-                    "assignPublicIp": False,
-                    "isPrimary": True,
-                    "subnetName": "default",
-                }],
+                    assign_public_ip=False,
+                    is_primary=True,
+                    subnet_name="default",
+                )],
                 resource_group_name="ResourceGroup",
                 virtual_network_name="VirtualNetworkName",
             ),
@@ -648,19 +648,19 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             max_size=1,
             min_size=0,
             network=spotinst.ElastigroupAzureV3NetworkArgs(
-                network_interfaces=[{
-                    "additionalIpConfigs": [{
-                        "PrivateIPVersion": "IPv4",
-                        "name": "SecondaryIPConfig",
-                    }],
-                    "applicationSecurityGroup": [{
+                network_interfaces=[spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArgs(
+                    additional_ip_configs=[spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs(
+                        private_ip_version="IPv4",
+                        name="SecondaryIPConfig",
+                    )],
+                    application_security_group=[{
                         "name": "ApplicationSecurityGroupName",
-                        "resource_group_name": "ResourceGroup",
+                        "resourceGroupName": "ResourceGroup",
                     }],
-                    "assignPublicIp": False,
-                    "isPrimary": True,
-                    "subnetName": "default",
-                }],
+                    assign_public_ip=False,
+                    is_primary=True,
+                    subnet_name="default",
+                )],
                 resource_group_name="ResourceGroup",
                 virtual_network_name="VirtualNetworkName",
             ),

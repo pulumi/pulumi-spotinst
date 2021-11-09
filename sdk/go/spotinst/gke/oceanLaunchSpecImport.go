@@ -192,7 +192,7 @@ type OceanLaunchSpecImportArrayInput interface {
 type OceanLaunchSpecImportArray []OceanLaunchSpecImportInput
 
 func (OceanLaunchSpecImportArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OceanLaunchSpecImport)(nil))
+	return reflect.TypeOf((*[]*OceanLaunchSpecImport)(nil)).Elem()
 }
 
 func (i OceanLaunchSpecImportArray) ToOceanLaunchSpecImportArrayOutput() OceanLaunchSpecImportArrayOutput {
@@ -217,7 +217,7 @@ type OceanLaunchSpecImportMapInput interface {
 type OceanLaunchSpecImportMap map[string]OceanLaunchSpecImportInput
 
 func (OceanLaunchSpecImportMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OceanLaunchSpecImport)(nil))
+	return reflect.TypeOf((*map[string]*OceanLaunchSpecImport)(nil)).Elem()
 }
 
 func (i OceanLaunchSpecImportMap) ToOceanLaunchSpecImportMapOutput() OceanLaunchSpecImportMapOutput {
@@ -228,9 +228,7 @@ func (i OceanLaunchSpecImportMap) ToOceanLaunchSpecImportMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecImportMapOutput)
 }
 
-type OceanLaunchSpecImportOutput struct {
-	*pulumi.OutputState
-}
+type OceanLaunchSpecImportOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecImportOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanLaunchSpecImport)(nil))
@@ -249,14 +247,12 @@ func (o OceanLaunchSpecImportOutput) ToOceanLaunchSpecImportPtrOutput() OceanLau
 }
 
 func (o OceanLaunchSpecImportOutput) ToOceanLaunchSpecImportPtrOutputWithContext(ctx context.Context) OceanLaunchSpecImportPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecImport) *OceanLaunchSpecImport {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecImport) *OceanLaunchSpecImport {
 		return &v
 	}).(OceanLaunchSpecImportPtrOutput)
 }
 
-type OceanLaunchSpecImportPtrOutput struct {
-	*pulumi.OutputState
-}
+type OceanLaunchSpecImportPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecImportPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanLaunchSpecImport)(nil))
@@ -268,6 +264,16 @@ func (o OceanLaunchSpecImportPtrOutput) ToOceanLaunchSpecImportPtrOutput() Ocean
 
 func (o OceanLaunchSpecImportPtrOutput) ToOceanLaunchSpecImportPtrOutputWithContext(ctx context.Context) OceanLaunchSpecImportPtrOutput {
 	return o
+}
+
+func (o OceanLaunchSpecImportPtrOutput) Elem() OceanLaunchSpecImportOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecImport) OceanLaunchSpecImport {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecImport
+		return ret
+	}).(OceanLaunchSpecImportOutput)
 }
 
 type OceanLaunchSpecImportArrayOutput struct{ *pulumi.OutputState }
@@ -311,6 +317,10 @@ func (o OceanLaunchSpecImportMapOutput) MapIndex(k pulumi.StringInput) OceanLaun
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecImportInput)(nil)).Elem(), &OceanLaunchSpecImport{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecImportPtrInput)(nil)).Elem(), &OceanLaunchSpecImport{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecImportArrayInput)(nil)).Elem(), OceanLaunchSpecImportArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecImportMapInput)(nil)).Elem(), OceanLaunchSpecImportMap{})
 	pulumi.RegisterOutputType(OceanLaunchSpecImportOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecImportPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecImportArrayOutput{})

@@ -8,26 +8,30 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'account',
-    'feature_flags',
-    'token',
-]
+import types
 
 __config__ = pulumi.Config('spotinst')
 
-account = __config__.get('account')
-"""
-Spotinst Account ID
-"""
 
-feature_flags = __config__.get('featureFlags')
-"""
-Spotinst SDK Feature Flags
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def account(self) -> Optional[str]:
+        """
+        Spotinst Account ID
+        """
+        return __config__.get('account')
 
-token = __config__.get('token')
-"""
-Spotinst Personal API Access Token
-"""
+    @property
+    def feature_flags(self) -> Optional[str]:
+        """
+        Spotinst SDK Feature Flags
+        """
+        return __config__.get('featureFlags')
+
+    @property
+    def token(self) -> Optional[str]:
+        """
+        Spotinst Personal API Access Token
+        """
+        return __config__.get('token')
 

@@ -63,12 +63,12 @@ export class Deployment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Deployment resources.
  */
 export interface DeploymentState {
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Deployment resource.
  */
 export interface DeploymentArgs {
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

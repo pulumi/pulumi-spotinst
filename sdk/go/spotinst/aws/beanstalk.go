@@ -323,7 +323,7 @@ type BeanstalkArrayInput interface {
 type BeanstalkArray []BeanstalkInput
 
 func (BeanstalkArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Beanstalk)(nil))
+	return reflect.TypeOf((*[]*Beanstalk)(nil)).Elem()
 }
 
 func (i BeanstalkArray) ToBeanstalkArrayOutput() BeanstalkArrayOutput {
@@ -348,7 +348,7 @@ type BeanstalkMapInput interface {
 type BeanstalkMap map[string]BeanstalkInput
 
 func (BeanstalkMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Beanstalk)(nil))
+	return reflect.TypeOf((*map[string]*Beanstalk)(nil)).Elem()
 }
 
 func (i BeanstalkMap) ToBeanstalkMapOutput() BeanstalkMapOutput {
@@ -359,9 +359,7 @@ func (i BeanstalkMap) ToBeanstalkMapOutputWithContext(ctx context.Context) Beans
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkMapOutput)
 }
 
-type BeanstalkOutput struct {
-	*pulumi.OutputState
-}
+type BeanstalkOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Beanstalk)(nil))
@@ -380,14 +378,12 @@ func (o BeanstalkOutput) ToBeanstalkPtrOutput() BeanstalkPtrOutput {
 }
 
 func (o BeanstalkOutput) ToBeanstalkPtrOutputWithContext(ctx context.Context) BeanstalkPtrOutput {
-	return o.ApplyT(func(v Beanstalk) *Beanstalk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Beanstalk) *Beanstalk {
 		return &v
 	}).(BeanstalkPtrOutput)
 }
 
-type BeanstalkPtrOutput struct {
-	*pulumi.OutputState
-}
+type BeanstalkPtrOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Beanstalk)(nil))
@@ -399,6 +395,16 @@ func (o BeanstalkPtrOutput) ToBeanstalkPtrOutput() BeanstalkPtrOutput {
 
 func (o BeanstalkPtrOutput) ToBeanstalkPtrOutputWithContext(ctx context.Context) BeanstalkPtrOutput {
 	return o
+}
+
+func (o BeanstalkPtrOutput) Elem() BeanstalkOutput {
+	return o.ApplyT(func(v *Beanstalk) Beanstalk {
+		if v != nil {
+			return *v
+		}
+		var ret Beanstalk
+		return ret
+	}).(BeanstalkOutput)
 }
 
 type BeanstalkArrayOutput struct{ *pulumi.OutputState }
@@ -442,6 +448,10 @@ func (o BeanstalkMapOutput) MapIndex(k pulumi.StringInput) BeanstalkOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkInput)(nil)).Elem(), &Beanstalk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkPtrInput)(nil)).Elem(), &Beanstalk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkArrayInput)(nil)).Elem(), BeanstalkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkMapInput)(nil)).Elem(), BeanstalkMap{})
 	pulumi.RegisterOutputType(BeanstalkOutput{})
 	pulumi.RegisterOutputType(BeanstalkPtrOutput{})
 	pulumi.RegisterOutputType(BeanstalkArrayOutput{})

@@ -127,7 +127,7 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutput() OceanAutoscalerPtrOu
 }
 
 func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context.Context) OceanAutoscalerPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscaler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanAutoscaler) *OceanAutoscaler {
 		return &v
 	}).(OceanAutoscalerPtrOutput)
 }
@@ -182,7 +182,13 @@ func (o OceanAutoscalerPtrOutput) ToOceanAutoscalerPtrOutputWithContext(ctx cont
 }
 
 func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
-	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler {
+		if v != nil {
+			return *v
+		}
+		var ret OceanAutoscaler
+		return ret
+	}).(OceanAutoscalerOutput)
 }
 
 // The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
@@ -348,7 +354,7 @@ func (o OceanAutoscalerDownOutput) ToOceanAutoscalerDownPtrOutput() OceanAutosca
 }
 
 func (o OceanAutoscalerDownOutput) ToOceanAutoscalerDownPtrOutputWithContext(ctx context.Context) OceanAutoscalerDownPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerDown) *OceanAutoscalerDown {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanAutoscalerDown) *OceanAutoscalerDown {
 		return &v
 	}).(OceanAutoscalerDownPtrOutput)
 }
@@ -373,7 +379,13 @@ func (o OceanAutoscalerDownPtrOutput) ToOceanAutoscalerDownPtrOutputWithContext(
 }
 
 func (o OceanAutoscalerDownPtrOutput) Elem() OceanAutoscalerDownOutput {
-	return o.ApplyT(func(v *OceanAutoscalerDown) OceanAutoscalerDown { return *v }).(OceanAutoscalerDownOutput)
+	return o.ApplyT(func(v *OceanAutoscalerDown) OceanAutoscalerDown {
+		if v != nil {
+			return *v
+		}
+		var ret OceanAutoscalerDown
+		return ret
+	}).(OceanAutoscalerDownOutput)
 }
 
 // Would represent the maximum % to scale-down. Number between 1-100.
@@ -487,7 +499,7 @@ func (o OceanAutoscalerHeadroomOutput) ToOceanAutoscalerHeadroomPtrOutput() Ocea
 }
 
 func (o OceanAutoscalerHeadroomOutput) ToOceanAutoscalerHeadroomPtrOutputWithContext(ctx context.Context) OceanAutoscalerHeadroomPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerHeadroom) *OceanAutoscalerHeadroom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanAutoscalerHeadroom) *OceanAutoscalerHeadroom {
 		return &v
 	}).(OceanAutoscalerHeadroomPtrOutput)
 }
@@ -522,7 +534,13 @@ func (o OceanAutoscalerHeadroomPtrOutput) ToOceanAutoscalerHeadroomPtrOutputWith
 }
 
 func (o OceanAutoscalerHeadroomPtrOutput) Elem() OceanAutoscalerHeadroomOutput {
-	return o.ApplyT(func(v *OceanAutoscalerHeadroom) OceanAutoscalerHeadroom { return *v }).(OceanAutoscalerHeadroomOutput)
+	return o.ApplyT(func(v *OceanAutoscalerHeadroom) OceanAutoscalerHeadroom {
+		if v != nil {
+			return *v
+		}
+		var ret OceanAutoscalerHeadroom
+		return ret
+	}).(OceanAutoscalerHeadroomOutput)
 }
 
 // Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -652,7 +670,7 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 }
 
 func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanAutoscalerResourceLimitsPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *OceanAutoscalerResourceLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanAutoscalerResourceLimits) *OceanAutoscalerResourceLimits {
 		return &v
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
@@ -682,7 +700,13 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) ToOceanAutoscalerResourceLimitsP
 }
 
 func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLimitsOutput {
-	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits { return *v }).(OceanAutoscalerResourceLimitsOutput)
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits {
+		if v != nil {
+			return *v
+		}
+		var ret OceanAutoscalerResourceLimits
+		return ret
+	}).(OceanAutoscalerResourceLimitsOutput)
 }
 
 // The maximum memory in GiB units that can be allocated to the cluster.
@@ -951,7 +975,7 @@ func (o OceanBlockDeviceMappingEbsOutput) ToOceanBlockDeviceMappingEbsPtrOutput(
 }
 
 func (o OceanBlockDeviceMappingEbsOutput) ToOceanBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsPtrOutput {
-	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *OceanBlockDeviceMappingEbs {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanBlockDeviceMappingEbs) *OceanBlockDeviceMappingEbs {
 		return &v
 	}).(OceanBlockDeviceMappingEbsPtrOutput)
 }
@@ -1018,7 +1042,13 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) ToOceanBlockDeviceMappingEbsPtrOutp
 }
 
 func (o OceanBlockDeviceMappingEbsPtrOutput) Elem() OceanBlockDeviceMappingEbsOutput {
-	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) OceanBlockDeviceMappingEbs { return *v }).(OceanBlockDeviceMappingEbsOutput)
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) OceanBlockDeviceMappingEbs {
+		if v != nil {
+			return *v
+		}
+		var ret OceanBlockDeviceMappingEbs
+		return ret
+	}).(OceanBlockDeviceMappingEbsOutput)
 }
 
 // Boolean. Toggles EBS deletion upon instance termination.
@@ -1212,7 +1242,7 @@ func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanBlockDeviceMap
 }
 
 func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
-	return o.ApplyT(func(v OceanBlockDeviceMappingEbsDynamicVolumeSize) *OceanBlockDeviceMappingEbsDynamicVolumeSize {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanBlockDeviceMappingEbsDynamicVolumeSize) *OceanBlockDeviceMappingEbsDynamicVolumeSize {
 		return &v
 	}).(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
 }
@@ -1248,7 +1278,11 @@ func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) ToOceanBlockDevice
 
 func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Elem() OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbsDynamicVolumeSize) OceanBlockDeviceMappingEbsDynamicVolumeSize {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret OceanBlockDeviceMappingEbsDynamicVolumeSize
+		return ret
 	}).(OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput)
 }
 
@@ -1379,7 +1413,7 @@ func (o OceanInstanceMetadataOptionsOutput) ToOceanInstanceMetadataOptionsPtrOut
 }
 
 func (o OceanInstanceMetadataOptionsOutput) ToOceanInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) OceanInstanceMetadataOptionsPtrOutput {
-	return o.ApplyT(func(v OceanInstanceMetadataOptions) *OceanInstanceMetadataOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanInstanceMetadataOptions) *OceanInstanceMetadataOptions {
 		return &v
 	}).(OceanInstanceMetadataOptionsPtrOutput)
 }
@@ -1409,7 +1443,13 @@ func (o OceanInstanceMetadataOptionsPtrOutput) ToOceanInstanceMetadataOptionsPtr
 }
 
 func (o OceanInstanceMetadataOptionsPtrOutput) Elem() OceanInstanceMetadataOptionsOutput {
-	return o.ApplyT(func(v *OceanInstanceMetadataOptions) OceanInstanceMetadataOptions { return *v }).(OceanInstanceMetadataOptionsOutput)
+	return o.ApplyT(func(v *OceanInstanceMetadataOptions) OceanInstanceMetadataOptions {
+		if v != nil {
+			return *v
+		}
+		var ret OceanInstanceMetadataOptions
+		return ret
+	}).(OceanInstanceMetadataOptionsOutput)
 }
 
 // An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
@@ -1872,10 +1912,11 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) ToOceanLaunchSpecBlockDevice
 }
 
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) ToOceanLaunchSpecBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecBlockDeviceMappingEbsPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *OceanLaunchSpecBlockDeviceMappingEbs {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecBlockDeviceMappingEbs) *OceanLaunchSpecBlockDeviceMappingEbs {
 		return &v
 	}).(OceanLaunchSpecBlockDeviceMappingEbsPtrOutput)
 }
+
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
@@ -1929,7 +1970,13 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) ToOceanLaunchSpecBlockDev
 }
 
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Elem() OceanLaunchSpecBlockDeviceMappingEbsOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) OceanLaunchSpecBlockDeviceMappingEbs { return *v }).(OceanLaunchSpecBlockDeviceMappingEbsOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) OceanLaunchSpecBlockDeviceMappingEbs {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecBlockDeviceMappingEbs
+		return ret
+	}).(OceanLaunchSpecBlockDeviceMappingEbsOutput)
 }
 
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
@@ -2108,10 +2155,11 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanLaun
 }
 
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
 		return &v
 	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
 }
+
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) BaseSize() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) int { return v.BaseSize }).(pulumi.IntOutput)
 }
@@ -2140,7 +2188,11 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) ToOceanL
 
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Elem() OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize
+		return ret
 	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput)
 }
 
@@ -2378,7 +2430,7 @@ func (o OceanOptimizeImagesOutput) ToOceanOptimizeImagesPtrOutput() OceanOptimiz
 }
 
 func (o OceanOptimizeImagesOutput) ToOceanOptimizeImagesPtrOutputWithContext(ctx context.Context) OceanOptimizeImagesPtrOutput {
-	return o.ApplyT(func(v OceanOptimizeImages) *OceanOptimizeImages {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanOptimizeImages) *OceanOptimizeImages {
 		return &v
 	}).(OceanOptimizeImagesPtrOutput)
 }
@@ -2413,7 +2465,13 @@ func (o OceanOptimizeImagesPtrOutput) ToOceanOptimizeImagesPtrOutputWithContext(
 }
 
 func (o OceanOptimizeImagesPtrOutput) Elem() OceanOptimizeImagesOutput {
-	return o.ApplyT(func(v *OceanOptimizeImages) OceanOptimizeImages { return *v }).(OceanOptimizeImagesOutput)
+	return o.ApplyT(func(v *OceanOptimizeImages) OceanOptimizeImages {
+		if v != nil {
+			return *v
+		}
+		var ret OceanOptimizeImages
+		return ret
+	}).(OceanOptimizeImagesOutput)
 }
 
 // String. Valid values: "always" "never" "timeWindow".
@@ -2649,7 +2707,7 @@ func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHours
 }
 
 func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(ctx context.Context) OceanScheduledTaskShutdownHoursPtrOutput {
-	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *OceanScheduledTaskShutdownHours {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanScheduledTaskShutdownHours) *OceanScheduledTaskShutdownHours {
 		return &v
 	}).(OceanScheduledTaskShutdownHoursPtrOutput)
 }
@@ -2679,7 +2737,13 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) ToOceanScheduledTaskShutdownHo
 }
 
 func (o OceanScheduledTaskShutdownHoursPtrOutput) Elem() OceanScheduledTaskShutdownHoursOutput {
-	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) OceanScheduledTaskShutdownHours { return *v }).(OceanScheduledTaskShutdownHoursOutput)
+	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) OceanScheduledTaskShutdownHours {
+		if v != nil {
+			return *v
+		}
+		var ret OceanScheduledTaskShutdownHours
+		return ret
+	}).(OceanScheduledTaskShutdownHoursOutput)
 }
 
 // Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
@@ -3018,10 +3082,11 @@ func (o OceanUpdatePolicyOutput) ToOceanUpdatePolicyPtrOutput() OceanUpdatePolic
 }
 
 func (o OceanUpdatePolicyOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanUpdatePolicyPtrOutput {
-	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanUpdatePolicy) *OceanUpdatePolicy {
 		return &v
 	}).(OceanUpdatePolicyPtrOutput)
 }
+
 func (o OceanUpdatePolicyOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
 }
@@ -3046,7 +3111,13 @@ func (o OceanUpdatePolicyPtrOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx 
 }
 
 func (o OceanUpdatePolicyPtrOutput) Elem() OceanUpdatePolicyOutput {
-	return o.ApplyT(func(v *OceanUpdatePolicy) OceanUpdatePolicy { return *v }).(OceanUpdatePolicyOutput)
+	return o.ApplyT(func(v *OceanUpdatePolicy) OceanUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OceanUpdatePolicy
+		return ret
+	}).(OceanUpdatePolicyOutput)
 }
 
 func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
@@ -3161,7 +3232,7 @@ func (o OceanUpdatePolicyRollConfigOutput) ToOceanUpdatePolicyRollConfigPtrOutpu
 }
 
 func (o OceanUpdatePolicyRollConfigOutput) ToOceanUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) *OceanUpdatePolicyRollConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanUpdatePolicyRollConfig) *OceanUpdatePolicyRollConfig {
 		return &v
 	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
@@ -3186,7 +3257,13 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) ToOceanUpdatePolicyRollConfigPtrOu
 }
 
 func (o OceanUpdatePolicyRollConfigPtrOutput) Elem() OceanUpdatePolicyRollConfigOutput {
-	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig { return *v }).(OceanUpdatePolicyRollConfigOutput)
+	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanUpdatePolicyRollConfig
+		return ret
+	}).(OceanUpdatePolicyRollConfigOutput)
 }
 
 // Sets the percentage of the instances to deploy in each batch.
@@ -3200,6 +3277,48 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPt
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerInput)(nil)).Elem(), OceanAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerPtrInput)(nil)).Elem(), OceanAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerDownInput)(nil)).Elem(), OceanAutoscalerDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerDownPtrInput)(nil)).Elem(), OceanAutoscalerDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerHeadroomInput)(nil)).Elem(), OceanAutoscalerHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerHeadroomPtrInput)(nil)).Elem(), OceanAutoscalerHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerResourceLimitsInput)(nil)).Elem(), OceanAutoscalerResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerResourceLimitsPtrInput)(nil)).Elem(), OceanAutoscalerResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingInput)(nil)).Elem(), OceanBlockDeviceMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingArrayInput)(nil)).Elem(), OceanBlockDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsInput)(nil)).Elem(), OceanBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsPtrInput)(nil)).Elem(), OceanBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsDynamicVolumeSizeInput)(nil)).Elem(), OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput)(nil)).Elem(), OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsPtrInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAttributeInput)(nil)).Elem(), OceanLaunchSpecAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAttributeArrayInput)(nil)).Elem(), OceanLaunchSpecAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingArrayInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsPtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTagInput)(nil)).Elem(), OceanLaunchSpecTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTagArrayInput)(nil)).Elem(), OceanLaunchSpecTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanOptimizeImagesInput)(nil)).Elem(), OceanOptimizeImagesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanOptimizeImagesPtrInput)(nil)).Elem(), OceanOptimizeImagesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskInput)(nil)).Elem(), OceanScheduledTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskArrayInput)(nil)).Elem(), OceanScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskShutdownHoursInput)(nil)).Elem(), OceanScheduledTaskShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskShutdownHoursPtrInput)(nil)).Elem(), OceanScheduledTaskShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskTaskInput)(nil)).Elem(), OceanScheduledTaskTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskTaskArrayInput)(nil)).Elem(), OceanScheduledTaskTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanTagInput)(nil)).Elem(), OceanTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanTagArrayInput)(nil)).Elem(), OceanTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanUpdatePolicyInput)(nil)).Elem(), OceanUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanUpdatePolicyPtrInput)(nil)).Elem(), OceanUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanUpdatePolicyRollConfigInput)(nil)).Elem(), OceanUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanUpdatePolicyRollConfigPtrInput)(nil)).Elem(), OceanUpdatePolicyRollConfigArgs{})
 	pulumi.RegisterOutputType(OceanAutoscalerOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerDownOutput{})

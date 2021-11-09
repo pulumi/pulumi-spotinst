@@ -566,7 +566,7 @@ type ManagedInstanceArrayInput interface {
 type ManagedInstanceArray []ManagedInstanceInput
 
 func (ManagedInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ManagedInstance)(nil))
+	return reflect.TypeOf((*[]*ManagedInstance)(nil)).Elem()
 }
 
 func (i ManagedInstanceArray) ToManagedInstanceArrayOutput() ManagedInstanceArrayOutput {
@@ -591,7 +591,7 @@ type ManagedInstanceMapInput interface {
 type ManagedInstanceMap map[string]ManagedInstanceInput
 
 func (ManagedInstanceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ManagedInstance)(nil))
+	return reflect.TypeOf((*map[string]*ManagedInstance)(nil)).Elem()
 }
 
 func (i ManagedInstanceMap) ToManagedInstanceMapOutput() ManagedInstanceMapOutput {
@@ -602,9 +602,7 @@ func (i ManagedInstanceMap) ToManagedInstanceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceMapOutput)
 }
 
-type ManagedInstanceOutput struct {
-	*pulumi.OutputState
-}
+type ManagedInstanceOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedInstance)(nil))
@@ -623,14 +621,12 @@ func (o ManagedInstanceOutput) ToManagedInstancePtrOutput() ManagedInstancePtrOu
 }
 
 func (o ManagedInstanceOutput) ToManagedInstancePtrOutputWithContext(ctx context.Context) ManagedInstancePtrOutput {
-	return o.ApplyT(func(v ManagedInstance) *ManagedInstance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedInstance) *ManagedInstance {
 		return &v
 	}).(ManagedInstancePtrOutput)
 }
 
-type ManagedInstancePtrOutput struct {
-	*pulumi.OutputState
-}
+type ManagedInstancePtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstancePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ManagedInstance)(nil))
@@ -642,6 +638,16 @@ func (o ManagedInstancePtrOutput) ToManagedInstancePtrOutput() ManagedInstancePt
 
 func (o ManagedInstancePtrOutput) ToManagedInstancePtrOutputWithContext(ctx context.Context) ManagedInstancePtrOutput {
 	return o
+}
+
+func (o ManagedInstancePtrOutput) Elem() ManagedInstanceOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstance {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedInstance
+		return ret
+	}).(ManagedInstanceOutput)
 }
 
 type ManagedInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -685,6 +691,10 @@ func (o ManagedInstanceMapOutput) MapIndex(k pulumi.StringInput) ManagedInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceInput)(nil)).Elem(), &ManagedInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstancePtrInput)(nil)).Elem(), &ManagedInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceArrayInput)(nil)).Elem(), ManagedInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceMapInput)(nil)).Elem(), ManagedInstanceMap{})
 	pulumi.RegisterOutputType(ManagedInstanceOutput{})
 	pulumi.RegisterOutputType(ManagedInstancePtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceArrayOutput{})

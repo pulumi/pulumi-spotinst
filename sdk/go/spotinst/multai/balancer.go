@@ -151,7 +151,7 @@ type BalancerArrayInput interface {
 type BalancerArray []BalancerInput
 
 func (BalancerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Balancer)(nil))
+	return reflect.TypeOf((*[]*Balancer)(nil)).Elem()
 }
 
 func (i BalancerArray) ToBalancerArrayOutput() BalancerArrayOutput {
@@ -176,7 +176,7 @@ type BalancerMapInput interface {
 type BalancerMap map[string]BalancerInput
 
 func (BalancerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Balancer)(nil))
+	return reflect.TypeOf((*map[string]*Balancer)(nil)).Elem()
 }
 
 func (i BalancerMap) ToBalancerMapOutput() BalancerMapOutput {
@@ -187,9 +187,7 @@ func (i BalancerMap) ToBalancerMapOutputWithContext(ctx context.Context) Balance
 	return pulumi.ToOutputWithContext(ctx, i).(BalancerMapOutput)
 }
 
-type BalancerOutput struct {
-	*pulumi.OutputState
-}
+type BalancerOutput struct{ *pulumi.OutputState }
 
 func (BalancerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Balancer)(nil))
@@ -208,14 +206,12 @@ func (o BalancerOutput) ToBalancerPtrOutput() BalancerPtrOutput {
 }
 
 func (o BalancerOutput) ToBalancerPtrOutputWithContext(ctx context.Context) BalancerPtrOutput {
-	return o.ApplyT(func(v Balancer) *Balancer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Balancer) *Balancer {
 		return &v
 	}).(BalancerPtrOutput)
 }
 
-type BalancerPtrOutput struct {
-	*pulumi.OutputState
-}
+type BalancerPtrOutput struct{ *pulumi.OutputState }
 
 func (BalancerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Balancer)(nil))
@@ -227,6 +223,16 @@ func (o BalancerPtrOutput) ToBalancerPtrOutput() BalancerPtrOutput {
 
 func (o BalancerPtrOutput) ToBalancerPtrOutputWithContext(ctx context.Context) BalancerPtrOutput {
 	return o
+}
+
+func (o BalancerPtrOutput) Elem() BalancerOutput {
+	return o.ApplyT(func(v *Balancer) Balancer {
+		if v != nil {
+			return *v
+		}
+		var ret Balancer
+		return ret
+	}).(BalancerOutput)
 }
 
 type BalancerArrayOutput struct{ *pulumi.OutputState }
@@ -270,6 +276,10 @@ func (o BalancerMapOutput) MapIndex(k pulumi.StringInput) BalancerOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BalancerInput)(nil)).Elem(), &Balancer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BalancerPtrInput)(nil)).Elem(), &Balancer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BalancerArrayInput)(nil)).Elem(), BalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BalancerMapInput)(nil)).Elem(), BalancerMap{})
 	pulumi.RegisterOutputType(BalancerOutput{})
 	pulumi.RegisterOutputType(BalancerPtrOutput{})
 	pulumi.RegisterOutputType(BalancerArrayOutput{})

@@ -196,50 +196,50 @@ export interface BeanstalkState {
     /**
      * The id of an existing Beanstalk environment.
      */
-    readonly beanstalkEnvironmentId?: pulumi.Input<string>;
+    beanstalkEnvironmentId?: pulumi.Input<string>;
     /**
      * The name of an existing Beanstalk environment.
      */
-    readonly beanstalkEnvironmentName?: pulumi.Input<string>;
+    beanstalkEnvironmentName?: pulumi.Input<string>;
     /**
      * Preferences when performing a roll
      */
-    readonly deploymentPreferences?: pulumi.Input<inputs.aws.BeanstalkDeploymentPreferences>;
+    deploymentPreferences?: pulumi.Input<inputs.aws.BeanstalkDeploymentPreferences>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
      */
-    readonly instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly maintenance?: pulumi.Input<string>;
+    instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[]>;
+    maintenance?: pulumi.Input<string>;
     /**
      * Managed Actions parameters
      */
-    readonly managedActions?: pulumi.Input<inputs.aws.BeanstalkManagedActions>;
+    managedActions?: pulumi.Input<inputs.aws.BeanstalkManagedActions>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * The group name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
-    readonly product?: pulumi.Input<string>;
+    product?: pulumi.Input<string>;
     /**
      * The AWS region your group will be created in. Cannot be changed after the group has been created.
      */
-    readonly region?: pulumi.Input<string>;
-    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkScheduledTask>[]>;
+    region?: pulumi.Input<string>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkScheduledTask>[]>;
 }
 
 /**
@@ -249,48 +249,48 @@ export interface BeanstalkArgs {
     /**
      * The id of an existing Beanstalk environment.
      */
-    readonly beanstalkEnvironmentId?: pulumi.Input<string>;
+    beanstalkEnvironmentId?: pulumi.Input<string>;
     /**
      * The name of an existing Beanstalk environment.
      */
-    readonly beanstalkEnvironmentName?: pulumi.Input<string>;
+    beanstalkEnvironmentName?: pulumi.Input<string>;
     /**
      * Preferences when performing a roll
      */
-    readonly deploymentPreferences?: pulumi.Input<inputs.aws.BeanstalkDeploymentPreferences>;
+    deploymentPreferences?: pulumi.Input<inputs.aws.BeanstalkDeploymentPreferences>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    readonly desiredCapacity: pulumi.Input<number>;
+    desiredCapacity: pulumi.Input<number>;
     /**
      * One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
      */
-    readonly instanceTypesSpots: pulumi.Input<pulumi.Input<string>[]>;
-    readonly maintenance?: pulumi.Input<string>;
+    instanceTypesSpots: pulumi.Input<pulumi.Input<string>[]>;
+    maintenance?: pulumi.Input<string>;
     /**
      * Managed Actions parameters
      */
-    readonly managedActions?: pulumi.Input<inputs.aws.BeanstalkManagedActions>;
+    managedActions?: pulumi.Input<inputs.aws.BeanstalkManagedActions>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    readonly maxSize: pulumi.Input<number>;
+    maxSize: pulumi.Input<number>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    readonly minSize: pulumi.Input<number>;
+    minSize: pulumi.Input<number>;
     /**
      * The group name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
-    readonly product: pulumi.Input<string>;
+    product: pulumi.Input<string>;
     /**
      * The AWS region your group will be created in. Cannot be changed after the group has been created.
      */
-    readonly region: pulumi.Input<string>;
-    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkScheduledTask>[]>;
+    region: pulumi.Input<string>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkScheduledTask>[]>;
 }

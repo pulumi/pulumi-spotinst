@@ -190,7 +190,7 @@ type SuspensionArrayInput interface {
 type SuspensionArray []SuspensionInput
 
 func (SuspensionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Suspension)(nil))
+	return reflect.TypeOf((*[]*Suspension)(nil)).Elem()
 }
 
 func (i SuspensionArray) ToSuspensionArrayOutput() SuspensionArrayOutput {
@@ -215,7 +215,7 @@ type SuspensionMapInput interface {
 type SuspensionMap map[string]SuspensionInput
 
 func (SuspensionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Suspension)(nil))
+	return reflect.TypeOf((*map[string]*Suspension)(nil)).Elem()
 }
 
 func (i SuspensionMap) ToSuspensionMapOutput() SuspensionMapOutput {
@@ -226,9 +226,7 @@ func (i SuspensionMap) ToSuspensionMapOutputWithContext(ctx context.Context) Sus
 	return pulumi.ToOutputWithContext(ctx, i).(SuspensionMapOutput)
 }
 
-type SuspensionOutput struct {
-	*pulumi.OutputState
-}
+type SuspensionOutput struct{ *pulumi.OutputState }
 
 func (SuspensionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Suspension)(nil))
@@ -247,14 +245,12 @@ func (o SuspensionOutput) ToSuspensionPtrOutput() SuspensionPtrOutput {
 }
 
 func (o SuspensionOutput) ToSuspensionPtrOutputWithContext(ctx context.Context) SuspensionPtrOutput {
-	return o.ApplyT(func(v Suspension) *Suspension {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Suspension) *Suspension {
 		return &v
 	}).(SuspensionPtrOutput)
 }
 
-type SuspensionPtrOutput struct {
-	*pulumi.OutputState
-}
+type SuspensionPtrOutput struct{ *pulumi.OutputState }
 
 func (SuspensionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Suspension)(nil))
@@ -266,6 +262,16 @@ func (o SuspensionPtrOutput) ToSuspensionPtrOutput() SuspensionPtrOutput {
 
 func (o SuspensionPtrOutput) ToSuspensionPtrOutputWithContext(ctx context.Context) SuspensionPtrOutput {
 	return o
+}
+
+func (o SuspensionPtrOutput) Elem() SuspensionOutput {
+	return o.ApplyT(func(v *Suspension) Suspension {
+		if v != nil {
+			return *v
+		}
+		var ret Suspension
+		return ret
+	}).(SuspensionOutput)
 }
 
 type SuspensionArrayOutput struct{ *pulumi.OutputState }
@@ -309,6 +315,10 @@ func (o SuspensionMapOutput) MapIndex(k pulumi.StringInput) SuspensionOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SuspensionInput)(nil)).Elem(), &Suspension{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuspensionPtrInput)(nil)).Elem(), &Suspension{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuspensionArrayInput)(nil)).Elem(), SuspensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuspensionMapInput)(nil)).Elem(), SuspensionMap{})
 	pulumi.RegisterOutputType(SuspensionOutput{})
 	pulumi.RegisterOutputType(SuspensionPtrOutput{})
 	pulumi.RegisterOutputType(SuspensionArrayOutput{})

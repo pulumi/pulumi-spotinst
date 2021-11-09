@@ -4,17 +4,39 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("spotinst");
+declare var exports: any;
+const __config = new pulumi.Config("spotinst");
 
 /**
  * Spotinst Account ID
  */
-export let account: string | undefined = __config.get("account");
+export declare const account: string | undefined;
+Object.defineProperty(exports, "account", {
+    get() {
+        return __config.get("account");
+    },
+    enumerable: true,
+});
+
 /**
  * Spotinst SDK Feature Flags
  */
-export let featureFlags: string | undefined = __config.get("featureFlags");
+export declare const featureFlags: string | undefined;
+Object.defineProperty(exports, "featureFlags", {
+    get() {
+        return __config.get("featureFlags");
+    },
+    enumerable: true,
+});
+
 /**
  * Spotinst Personal API Access Token
  */
-export let token: string | undefined = __config.get("token");
+export declare const token: string | undefined;
+Object.defineProperty(exports, "token", {
+    get() {
+        return __config.get("token");
+    },
+    enumerable: true,
+});
+

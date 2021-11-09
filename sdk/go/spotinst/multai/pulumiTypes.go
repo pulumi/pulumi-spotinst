@@ -103,10 +103,11 @@ func (o BalancerConnectionTimeoutsOutput) ToBalancerConnectionTimeoutsPtrOutput(
 }
 
 func (o BalancerConnectionTimeoutsOutput) ToBalancerConnectionTimeoutsPtrOutputWithContext(ctx context.Context) BalancerConnectionTimeoutsPtrOutput {
-	return o.ApplyT(func(v BalancerConnectionTimeouts) *BalancerConnectionTimeouts {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BalancerConnectionTimeouts) *BalancerConnectionTimeouts {
 		return &v
 	}).(BalancerConnectionTimeoutsPtrOutput)
 }
+
 func (o BalancerConnectionTimeoutsOutput) Draining() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BalancerConnectionTimeouts) *int { return v.Draining }).(pulumi.IntPtrOutput)
 }
@@ -130,7 +131,13 @@ func (o BalancerConnectionTimeoutsPtrOutput) ToBalancerConnectionTimeoutsPtrOutp
 }
 
 func (o BalancerConnectionTimeoutsPtrOutput) Elem() BalancerConnectionTimeoutsOutput {
-	return o.ApplyT(func(v *BalancerConnectionTimeouts) BalancerConnectionTimeouts { return *v }).(BalancerConnectionTimeoutsOutput)
+	return o.ApplyT(func(v *BalancerConnectionTimeouts) BalancerConnectionTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret BalancerConnectionTimeouts
+		return ret
+	}).(BalancerConnectionTimeoutsOutput)
 }
 
 func (o BalancerConnectionTimeoutsPtrOutput) Draining() pulumi.IntPtrOutput {
@@ -452,10 +459,11 @@ func (o ListenerTlsConfigOutput) ToListenerTlsConfigPtrOutput() ListenerTlsConfi
 }
 
 func (o ListenerTlsConfigOutput) ToListenerTlsConfigPtrOutputWithContext(ctx context.Context) ListenerTlsConfigPtrOutput {
-	return o.ApplyT(func(v ListenerTlsConfig) *ListenerTlsConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerTlsConfig) *ListenerTlsConfig {
 		return &v
 	}).(ListenerTlsConfigPtrOutput)
 }
+
 func (o ListenerTlsConfigOutput) CertificateIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListenerTlsConfig) []string { return v.CertificateIds }).(pulumi.StringArrayOutput)
 }
@@ -495,7 +503,13 @@ func (o ListenerTlsConfigPtrOutput) ToListenerTlsConfigPtrOutputWithContext(ctx 
 }
 
 func (o ListenerTlsConfigPtrOutput) Elem() ListenerTlsConfigOutput {
-	return o.ApplyT(func(v *ListenerTlsConfig) ListenerTlsConfig { return *v }).(ListenerTlsConfigOutput)
+	return o.ApplyT(func(v *ListenerTlsConfig) ListenerTlsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerTlsConfig
+		return ret
+	}).(ListenerTlsConfigOutput)
 }
 
 func (o ListenerTlsConfigPtrOutput) CertificateIds() pulumi.StringArrayOutput {
@@ -755,10 +769,11 @@ func (o TargetSetHealthCheckOutput) ToTargetSetHealthCheckPtrOutput() TargetSetH
 }
 
 func (o TargetSetHealthCheckOutput) ToTargetSetHealthCheckPtrOutputWithContext(ctx context.Context) TargetSetHealthCheckPtrOutput {
-	return o.ApplyT(func(v TargetSetHealthCheck) *TargetSetHealthCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetSetHealthCheck) *TargetSetHealthCheck {
 		return &v
 	}).(TargetSetHealthCheckPtrOutput)
 }
+
 func (o TargetSetHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v TargetSetHealthCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
@@ -802,7 +817,13 @@ func (o TargetSetHealthCheckPtrOutput) ToTargetSetHealthCheckPtrOutputWithContex
 }
 
 func (o TargetSetHealthCheckPtrOutput) Elem() TargetSetHealthCheckOutput {
-	return o.ApplyT(func(v *TargetSetHealthCheck) TargetSetHealthCheck { return *v }).(TargetSetHealthCheckOutput)
+	return o.ApplyT(func(v *TargetSetHealthCheck) TargetSetHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret TargetSetHealthCheck
+		return ret
+	}).(TargetSetHealthCheckOutput)
 }
 
 func (o TargetSetHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
@@ -1069,6 +1090,22 @@ func (o TargetTagArrayOutput) Index(i pulumi.IntInput) TargetTagOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BalancerConnectionTimeoutsInput)(nil)).Elem(), BalancerConnectionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BalancerConnectionTimeoutsPtrInput)(nil)).Elem(), BalancerConnectionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BalancerTagInput)(nil)).Elem(), BalancerTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BalancerTagArrayInput)(nil)).Elem(), BalancerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerTagInput)(nil)).Elem(), ListenerTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerTagArrayInput)(nil)).Elem(), ListenerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerTlsConfigInput)(nil)).Elem(), ListenerTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerTlsConfigPtrInput)(nil)).Elem(), ListenerTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutingRuleTagInput)(nil)).Elem(), RoutingRuleTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutingRuleTagArrayInput)(nil)).Elem(), RoutingRuleTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSetHealthCheckInput)(nil)).Elem(), TargetSetHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSetHealthCheckPtrInput)(nil)).Elem(), TargetSetHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSetTagInput)(nil)).Elem(), TargetSetTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSetTagArrayInput)(nil)).Elem(), TargetSetTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetTagInput)(nil)).Elem(), TargetTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetTagArrayInput)(nil)).Elem(), TargetTagArray{})
 	pulumi.RegisterOutputType(BalancerConnectionTimeoutsOutput{})
 	pulumi.RegisterOutputType(BalancerConnectionTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(BalancerTagOutput{})

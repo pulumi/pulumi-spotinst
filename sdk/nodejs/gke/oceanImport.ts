@@ -139,46 +139,46 @@ export interface OceanImportState {
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
-    readonly autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
      */
-    readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendService>[]>;
-    readonly clusterControllerId?: pulumi.Input<string>;
+    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendService>[]>;
+    clusterControllerId?: pulumi.Input<string>;
     /**
      * The GKE cluster name.
      */
-    readonly clusterName?: pulumi.Input<string>;
-    readonly controllerClusterId?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string>;
+    controllerClusterId?: pulumi.Input<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * The zone the master cluster is located in.
      */
-    readonly location?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * The root volume disk type.
      */
-    readonly rootVolumeType?: pulumi.Input<string>;
+    rootVolumeType?: pulumi.Input<string>;
     /**
      * Set scheduling object.
      */
-    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
-    readonly updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
     /**
      * Instance types allowed in the Ocean cluster.
      */
-    readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -188,43 +188,43 @@ export interface OceanImportArgs {
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
-    readonly autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
      */
-    readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendService>[]>;
+    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendService>[]>;
     /**
      * The GKE cluster name.
      */
-    readonly clusterName: pulumi.Input<string>;
-    readonly controllerClusterId?: pulumi.Input<string>;
+    clusterName: pulumi.Input<string>;
+    controllerClusterId?: pulumi.Input<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * The zone the master cluster is located in.
      */
-    readonly location: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * The root volume disk type.
      */
-    readonly rootVolumeType?: pulumi.Input<string>;
+    rootVolumeType?: pulumi.Input<string>;
     /**
      * Set scheduling object.
      */
-    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
-    readonly updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
     /**
      * Instance types allowed in the Ocean cluster.
      */
-    readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

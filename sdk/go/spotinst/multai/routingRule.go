@@ -179,7 +179,7 @@ type RoutingRuleArrayInput interface {
 type RoutingRuleArray []RoutingRuleInput
 
 func (RoutingRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RoutingRule)(nil))
+	return reflect.TypeOf((*[]*RoutingRule)(nil)).Elem()
 }
 
 func (i RoutingRuleArray) ToRoutingRuleArrayOutput() RoutingRuleArrayOutput {
@@ -204,7 +204,7 @@ type RoutingRuleMapInput interface {
 type RoutingRuleMap map[string]RoutingRuleInput
 
 func (RoutingRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RoutingRule)(nil))
+	return reflect.TypeOf((*map[string]*RoutingRule)(nil)).Elem()
 }
 
 func (i RoutingRuleMap) ToRoutingRuleMapOutput() RoutingRuleMapOutput {
@@ -215,9 +215,7 @@ func (i RoutingRuleMap) ToRoutingRuleMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleMapOutput)
 }
 
-type RoutingRuleOutput struct {
-	*pulumi.OutputState
-}
+type RoutingRuleOutput struct{ *pulumi.OutputState }
 
 func (RoutingRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RoutingRule)(nil))
@@ -236,14 +234,12 @@ func (o RoutingRuleOutput) ToRoutingRulePtrOutput() RoutingRulePtrOutput {
 }
 
 func (o RoutingRuleOutput) ToRoutingRulePtrOutputWithContext(ctx context.Context) RoutingRulePtrOutput {
-	return o.ApplyT(func(v RoutingRule) *RoutingRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutingRule) *RoutingRule {
 		return &v
 	}).(RoutingRulePtrOutput)
 }
 
-type RoutingRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type RoutingRulePtrOutput struct{ *pulumi.OutputState }
 
 func (RoutingRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RoutingRule)(nil))
@@ -255,6 +251,16 @@ func (o RoutingRulePtrOutput) ToRoutingRulePtrOutput() RoutingRulePtrOutput {
 
 func (o RoutingRulePtrOutput) ToRoutingRulePtrOutputWithContext(ctx context.Context) RoutingRulePtrOutput {
 	return o
+}
+
+func (o RoutingRulePtrOutput) Elem() RoutingRuleOutput {
+	return o.ApplyT(func(v *RoutingRule) RoutingRule {
+		if v != nil {
+			return *v
+		}
+		var ret RoutingRule
+		return ret
+	}).(RoutingRuleOutput)
 }
 
 type RoutingRuleArrayOutput struct{ *pulumi.OutputState }
@@ -298,6 +304,10 @@ func (o RoutingRuleMapOutput) MapIndex(k pulumi.StringInput) RoutingRuleOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutingRuleInput)(nil)).Elem(), &RoutingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutingRulePtrInput)(nil)).Elem(), &RoutingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutingRuleArrayInput)(nil)).Elem(), RoutingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutingRuleMapInput)(nil)).Elem(), RoutingRuleMap{})
 	pulumi.RegisterOutputType(RoutingRuleOutput{})
 	pulumi.RegisterOutputType(RoutingRulePtrOutput{})
 	pulumi.RegisterOutputType(RoutingRuleArrayOutput{})

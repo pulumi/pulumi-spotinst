@@ -281,7 +281,7 @@ type OceanVirtualNodeGroupArrayInput interface {
 type OceanVirtualNodeGroupArray []OceanVirtualNodeGroupInput
 
 func (OceanVirtualNodeGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OceanVirtualNodeGroup)(nil))
+	return reflect.TypeOf((*[]*OceanVirtualNodeGroup)(nil)).Elem()
 }
 
 func (i OceanVirtualNodeGroupArray) ToOceanVirtualNodeGroupArrayOutput() OceanVirtualNodeGroupArrayOutput {
@@ -306,7 +306,7 @@ type OceanVirtualNodeGroupMapInput interface {
 type OceanVirtualNodeGroupMap map[string]OceanVirtualNodeGroupInput
 
 func (OceanVirtualNodeGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OceanVirtualNodeGroup)(nil))
+	return reflect.TypeOf((*map[string]*OceanVirtualNodeGroup)(nil)).Elem()
 }
 
 func (i OceanVirtualNodeGroupMap) ToOceanVirtualNodeGroupMapOutput() OceanVirtualNodeGroupMapOutput {
@@ -317,9 +317,7 @@ func (i OceanVirtualNodeGroupMap) ToOceanVirtualNodeGroupMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupMapOutput)
 }
 
-type OceanVirtualNodeGroupOutput struct {
-	*pulumi.OutputState
-}
+type OceanVirtualNodeGroupOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OceanVirtualNodeGroup)(nil))
@@ -338,14 +336,12 @@ func (o OceanVirtualNodeGroupOutput) ToOceanVirtualNodeGroupPtrOutput() OceanVir
 }
 
 func (o OceanVirtualNodeGroupOutput) ToOceanVirtualNodeGroupPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupPtrOutput {
-	return o.ApplyT(func(v OceanVirtualNodeGroup) *OceanVirtualNodeGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanVirtualNodeGroup) *OceanVirtualNodeGroup {
 		return &v
 	}).(OceanVirtualNodeGroupPtrOutput)
 }
 
-type OceanVirtualNodeGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type OceanVirtualNodeGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OceanVirtualNodeGroup)(nil))
@@ -357,6 +353,16 @@ func (o OceanVirtualNodeGroupPtrOutput) ToOceanVirtualNodeGroupPtrOutput() Ocean
 
 func (o OceanVirtualNodeGroupPtrOutput) ToOceanVirtualNodeGroupPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupPtrOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupPtrOutput) Elem() OceanVirtualNodeGroupOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroup) OceanVirtualNodeGroup {
+		if v != nil {
+			return *v
+		}
+		var ret OceanVirtualNodeGroup
+		return ret
+	}).(OceanVirtualNodeGroupOutput)
 }
 
 type OceanVirtualNodeGroupArrayOutput struct{ *pulumi.OutputState }
@@ -400,6 +406,10 @@ func (o OceanVirtualNodeGroupMapOutput) MapIndex(k pulumi.StringInput) OceanVirt
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupInput)(nil)).Elem(), &OceanVirtualNodeGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupPtrInput)(nil)).Elem(), &OceanVirtualNodeGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupArrayInput)(nil)).Elem(), OceanVirtualNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupMapInput)(nil)).Elem(), OceanVirtualNodeGroupMap{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupPtrOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupArrayOutput{})

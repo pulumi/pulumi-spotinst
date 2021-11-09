@@ -115,7 +115,7 @@ func (o BeanstalkDeploymentPreferencesOutput) ToBeanstalkDeploymentPreferencesPt
 }
 
 func (o BeanstalkDeploymentPreferencesOutput) ToBeanstalkDeploymentPreferencesPtrOutputWithContext(ctx context.Context) BeanstalkDeploymentPreferencesPtrOutput {
-	return o.ApplyT(func(v BeanstalkDeploymentPreferences) *BeanstalkDeploymentPreferences {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BeanstalkDeploymentPreferences) *BeanstalkDeploymentPreferences {
 		return &v
 	}).(BeanstalkDeploymentPreferencesPtrOutput)
 }
@@ -155,7 +155,13 @@ func (o BeanstalkDeploymentPreferencesPtrOutput) ToBeanstalkDeploymentPreference
 }
 
 func (o BeanstalkDeploymentPreferencesPtrOutput) Elem() BeanstalkDeploymentPreferencesOutput {
-	return o.ApplyT(func(v *BeanstalkDeploymentPreferences) BeanstalkDeploymentPreferences { return *v }).(BeanstalkDeploymentPreferencesOutput)
+	return o.ApplyT(func(v *BeanstalkDeploymentPreferences) BeanstalkDeploymentPreferences {
+		if v != nil {
+			return *v
+		}
+		var ret BeanstalkDeploymentPreferences
+		return ret
+	}).(BeanstalkDeploymentPreferencesOutput)
 }
 
 // Should roll perform automatically
@@ -397,7 +403,7 @@ func (o BeanstalkManagedActionsOutput) ToBeanstalkManagedActionsPtrOutput() Bean
 }
 
 func (o BeanstalkManagedActionsOutput) ToBeanstalkManagedActionsPtrOutputWithContext(ctx context.Context) BeanstalkManagedActionsPtrOutput {
-	return o.ApplyT(func(v BeanstalkManagedActions) *BeanstalkManagedActions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BeanstalkManagedActions) *BeanstalkManagedActions {
 		return &v
 	}).(BeanstalkManagedActionsPtrOutput)
 }
@@ -422,7 +428,13 @@ func (o BeanstalkManagedActionsPtrOutput) ToBeanstalkManagedActionsPtrOutputWith
 }
 
 func (o BeanstalkManagedActionsPtrOutput) Elem() BeanstalkManagedActionsOutput {
-	return o.ApplyT(func(v *BeanstalkManagedActions) BeanstalkManagedActions { return *v }).(BeanstalkManagedActionsOutput)
+	return o.ApplyT(func(v *BeanstalkManagedActions) BeanstalkManagedActions {
+		if v != nil {
+			return *v
+		}
+		var ret BeanstalkManagedActions
+		return ret
+	}).(BeanstalkManagedActionsOutput)
 }
 
 // Platform Update parameters
@@ -536,7 +548,7 @@ func (o BeanstalkManagedActionsPlatformUpdateOutput) ToBeanstalkManagedActionsPl
 }
 
 func (o BeanstalkManagedActionsPlatformUpdateOutput) ToBeanstalkManagedActionsPlatformUpdatePtrOutputWithContext(ctx context.Context) BeanstalkManagedActionsPlatformUpdatePtrOutput {
-	return o.ApplyT(func(v BeanstalkManagedActionsPlatformUpdate) *BeanstalkManagedActionsPlatformUpdate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BeanstalkManagedActionsPlatformUpdate) *BeanstalkManagedActionsPlatformUpdate {
 		return &v
 	}).(BeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
@@ -571,7 +583,13 @@ func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) ToBeanstalkManagedAction
 }
 
 func (o BeanstalkManagedActionsPlatformUpdatePtrOutput) Elem() BeanstalkManagedActionsPlatformUpdateOutput {
-	return o.ApplyT(func(v *BeanstalkManagedActionsPlatformUpdate) BeanstalkManagedActionsPlatformUpdate { return *v }).(BeanstalkManagedActionsPlatformUpdateOutput)
+	return o.ApplyT(func(v *BeanstalkManagedActionsPlatformUpdate) BeanstalkManagedActionsPlatformUpdate {
+		if v != nil {
+			return *v
+		}
+		var ret BeanstalkManagedActionsPlatformUpdate
+		return ret
+	}).(BeanstalkManagedActionsPlatformUpdateOutput)
 }
 
 // Actions to perform (options: timeWindow, never)
@@ -920,7 +938,7 @@ func (o ElastigroupCpuOptionsOutput) ToElastigroupCpuOptionsPtrOutput() Elastigr
 }
 
 func (o ElastigroupCpuOptionsOutput) ToElastigroupCpuOptionsPtrOutputWithContext(ctx context.Context) ElastigroupCpuOptionsPtrOutput {
-	return o.ApplyT(func(v ElastigroupCpuOptions) *ElastigroupCpuOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupCpuOptions) *ElastigroupCpuOptions {
 		return &v
 	}).(ElastigroupCpuOptionsPtrOutput)
 }
@@ -945,7 +963,13 @@ func (o ElastigroupCpuOptionsPtrOutput) ToElastigroupCpuOptionsPtrOutputWithCont
 }
 
 func (o ElastigroupCpuOptionsPtrOutput) Elem() ElastigroupCpuOptionsOutput {
-	return o.ApplyT(func(v *ElastigroupCpuOptions) ElastigroupCpuOptions { return *v }).(ElastigroupCpuOptionsOutput)
+	return o.ApplyT(func(v *ElastigroupCpuOptions) ElastigroupCpuOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupCpuOptions
+		return ret
+	}).(ElastigroupCpuOptionsOutput)
 }
 
 // The ability to define the number of threads per core in instances that allow this.
@@ -1441,7 +1465,7 @@ func (o ElastigroupIntegrationBeanstalkOutput) ToElastigroupIntegrationBeanstalk
 }
 
 func (o ElastigroupIntegrationBeanstalkOutput) ToElastigroupIntegrationBeanstalkPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationBeanstalkPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationBeanstalk) *ElastigroupIntegrationBeanstalk {
 		return &v
 	}).(ElastigroupIntegrationBeanstalkPtrOutput)
 }
@@ -1479,7 +1503,13 @@ func (o ElastigroupIntegrationBeanstalkPtrOutput) ToElastigroupIntegrationBeanst
 }
 
 func (o ElastigroupIntegrationBeanstalkPtrOutput) Elem() ElastigroupIntegrationBeanstalkOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalk) ElastigroupIntegrationBeanstalk { return *v }).(ElastigroupIntegrationBeanstalkOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalk) ElastigroupIntegrationBeanstalk {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationBeanstalk
+		return ret
+	}).(ElastigroupIntegrationBeanstalkOutput)
 }
 
 // Preferences when performing a roll
@@ -1616,7 +1646,7 @@ func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput) ToElastigrou
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput) ToElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferences) *ElastigroupIntegrationBeanstalkDeploymentPreferences {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationBeanstalkDeploymentPreferences) *ElastigroupIntegrationBeanstalkDeploymentPreferences {
 		return &v
 	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput)
 }
@@ -1659,7 +1689,11 @@ func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) ToElastig
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput) Elem() ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkDeploymentPreferences) ElastigroupIntegrationBeanstalkDeploymentPreferences {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationBeanstalkDeploymentPreferences
+		return ret
 	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput)
 }
 
@@ -1800,7 +1834,7 @@ func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput) ToEl
 }
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput) ToElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
 		return &v
 	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput)
 }
@@ -1833,7 +1867,11 @@ func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput) T
 
 func (o ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput) Elem() ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy) ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy
+		return ret
 	}).(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput)
 }
 
@@ -1950,7 +1988,7 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsOutput) ToElastigroupIntegr
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsOutput) ToElastigroupIntegrationBeanstalkManagedActionsPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationBeanstalkManagedActionsPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActions) *ElastigroupIntegrationBeanstalkManagedActions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationBeanstalkManagedActions) *ElastigroupIntegrationBeanstalkManagedActions {
 		return &v
 	}).(ElastigroupIntegrationBeanstalkManagedActionsPtrOutput)
 }
@@ -1978,7 +2016,11 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsPtrOutput) ToElastigroupInt
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPtrOutput) Elem() ElastigroupIntegrationBeanstalkManagedActionsOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkManagedActions) ElastigroupIntegrationBeanstalkManagedActions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationBeanstalkManagedActions
+		return ret
 	}).(ElastigroupIntegrationBeanstalkManagedActionsOutput)
 }
 
@@ -2093,7 +2135,7 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput) ToEla
 }
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput) ToElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
 		return &v
 	}).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput)
 }
@@ -2129,7 +2171,11 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) To
 
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) Elem() ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate
+		return ret
 	}).(ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput)
 }
 
@@ -2264,7 +2310,7 @@ func (o ElastigroupIntegrationCodedeployOutput) ToElastigroupIntegrationCodedepl
 }
 
 func (o ElastigroupIntegrationCodedeployOutput) ToElastigroupIntegrationCodedeployPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationCodedeployPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationCodedeploy) *ElastigroupIntegrationCodedeploy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationCodedeploy) *ElastigroupIntegrationCodedeploy {
 		return &v
 	}).(ElastigroupIntegrationCodedeployPtrOutput)
 }
@@ -2301,7 +2347,13 @@ func (o ElastigroupIntegrationCodedeployPtrOutput) ToElastigroupIntegrationCoded
 }
 
 func (o ElastigroupIntegrationCodedeployPtrOutput) Elem() ElastigroupIntegrationCodedeployOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationCodedeploy) ElastigroupIntegrationCodedeploy { return *v }).(ElastigroupIntegrationCodedeployOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationCodedeploy) ElastigroupIntegrationCodedeploy {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationCodedeploy
+		return ret
+	}).(ElastigroupIntegrationCodedeployOutput)
 }
 
 // Cleanup automatically after a failed deploy.
@@ -2553,7 +2605,7 @@ func (o ElastigroupIntegrationDockerSwarmOutput) ToElastigroupIntegrationDockerS
 }
 
 func (o ElastigroupIntegrationDockerSwarmOutput) ToElastigroupIntegrationDockerSwarmPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationDockerSwarmPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarm {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarm {
 		return &v
 	}).(ElastigroupIntegrationDockerSwarmPtrOutput)
 }
@@ -2607,7 +2659,13 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) ToElastigroupIntegrationDock
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) Elem() ElastigroupIntegrationDockerSwarmOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) ElastigroupIntegrationDockerSwarm { return *v }).(ElastigroupIntegrationDockerSwarmOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) ElastigroupIntegrationDockerSwarm {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationDockerSwarm
+		return ret
+	}).(ElastigroupIntegrationDockerSwarmOutput)
 }
 
 // The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
@@ -2769,7 +2827,7 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleDownOutput) ToElastigroupInteg
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleDownOutput) ToElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleDown) *ElastigroupIntegrationDockerSwarmAutoscaleDown {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationDockerSwarmAutoscaleDown) *ElastigroupIntegrationDockerSwarmAutoscaleDown {
 		return &v
 	}).(ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput)
 }
@@ -2801,7 +2859,11 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) ToElastigroupIn
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationDockerSwarmAutoscaleDownOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarmAutoscaleDown) ElastigroupIntegrationDockerSwarmAutoscaleDown {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationDockerSwarmAutoscaleDown
+		return ret
 	}).(ElastigroupIntegrationDockerSwarmAutoscaleDownOutput)
 }
 
@@ -2927,7 +2989,7 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput) ToElastigroupI
 }
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput) ToElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
 		return &v
 	}).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput)
 }
@@ -2963,7 +3025,11 @@ func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) ToElastigro
 
 func (o ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarmAutoscaleHeadroom) ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationDockerSwarmAutoscaleHeadroom
+		return ret
 	}).(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput)
 }
 
@@ -3122,7 +3188,7 @@ func (o ElastigroupIntegrationEcsOutput) ToElastigroupIntegrationEcsPtrOutput() 
 }
 
 func (o ElastigroupIntegrationEcsOutput) ToElastigroupIntegrationEcsPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationEcsPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcs {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationEcs) *ElastigroupIntegrationEcs {
 		return &v
 	}).(ElastigroupIntegrationEcsPtrOutput)
 }
@@ -3191,7 +3257,13 @@ func (o ElastigroupIntegrationEcsPtrOutput) ToElastigroupIntegrationEcsPtrOutput
 }
 
 func (o ElastigroupIntegrationEcsPtrOutput) Elem() ElastigroupIntegrationEcsOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationEcs) ElastigroupIntegrationEcs { return *v }).(ElastigroupIntegrationEcsOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcs) ElastigroupIntegrationEcs {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationEcs
+		return ret
+	}).(ElastigroupIntegrationEcsOutput)
 }
 
 // A key/value mapping of tags to assign to the resource.
@@ -3486,7 +3558,7 @@ func (o ElastigroupIntegrationEcsAutoscaleDownOutput) ToElastigroupIntegrationEc
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleDownOutput) ToElastigroupIntegrationEcsAutoscaleDownPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationEcsAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleDown) *ElastigroupIntegrationEcsAutoscaleDown {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationEcsAutoscaleDown) *ElastigroupIntegrationEcsAutoscaleDown {
 		return &v
 	}).(ElastigroupIntegrationEcsAutoscaleDownPtrOutput)
 }
@@ -3517,7 +3589,13 @@ func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) ToElastigroupIntegratio
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationEcsAutoscaleDownOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleDown) ElastigroupIntegrationEcsAutoscaleDown { return *v }).(ElastigroupIntegrationEcsAutoscaleDownOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleDown) ElastigroupIntegrationEcsAutoscaleDown {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationEcsAutoscaleDown
+		return ret
+	}).(ElastigroupIntegrationEcsAutoscaleDownOutput)
 }
 
 // How many evaluation periods should accumulate before a scale down action takes place.
@@ -3642,7 +3720,7 @@ func (o ElastigroupIntegrationEcsAutoscaleHeadroomOutput) ToElastigroupIntegrati
 }
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomOutput) ToElastigroupIntegrationEcsAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcsAutoscaleHeadroom) *ElastigroupIntegrationEcsAutoscaleHeadroom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationEcsAutoscaleHeadroom) *ElastigroupIntegrationEcsAutoscaleHeadroom {
 		return &v
 	}).(ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput)
 }
@@ -3678,7 +3756,11 @@ func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) ToElastigroupIntegr
 
 func (o ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationEcsAutoscaleHeadroomOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationEcsAutoscaleHeadroom) ElastigroupIntegrationEcsAutoscaleHeadroom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationEcsAutoscaleHeadroom
+		return ret
 	}).(ElastigroupIntegrationEcsAutoscaleHeadroomOutput)
 }
 
@@ -3805,7 +3887,7 @@ func (o ElastigroupIntegrationEcsBatchOutput) ToElastigroupIntegrationEcsBatchPt
 }
 
 func (o ElastigroupIntegrationEcsBatchOutput) ToElastigroupIntegrationEcsBatchPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationEcsBatchPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationEcsBatch) *ElastigroupIntegrationEcsBatch {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationEcsBatch) *ElastigroupIntegrationEcsBatch {
 		return &v
 	}).(ElastigroupIntegrationEcsBatchPtrOutput)
 }
@@ -3830,7 +3912,13 @@ func (o ElastigroupIntegrationEcsBatchPtrOutput) ToElastigroupIntegrationEcsBatc
 }
 
 func (o ElastigroupIntegrationEcsBatchPtrOutput) Elem() ElastigroupIntegrationEcsBatchOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationEcsBatch) ElastigroupIntegrationEcsBatch { return *v }).(ElastigroupIntegrationEcsBatchOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationEcsBatch) ElastigroupIntegrationEcsBatch {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationEcsBatch
+		return ret
+	}).(ElastigroupIntegrationEcsBatchOutput)
 }
 
 // Array of strings.
@@ -3936,7 +4024,7 @@ func (o ElastigroupIntegrationGitlabOutput) ToElastigroupIntegrationGitlabPtrOut
 }
 
 func (o ElastigroupIntegrationGitlabOutput) ToElastigroupIntegrationGitlabPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGitlabPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGitlab) *ElastigroupIntegrationGitlab {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationGitlab) *ElastigroupIntegrationGitlab {
 		return &v
 	}).(ElastigroupIntegrationGitlabPtrOutput)
 }
@@ -3961,7 +4049,13 @@ func (o ElastigroupIntegrationGitlabPtrOutput) ToElastigroupIntegrationGitlabPtr
 }
 
 func (o ElastigroupIntegrationGitlabPtrOutput) Elem() ElastigroupIntegrationGitlabOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationGitlab) ElastigroupIntegrationGitlab { return *v }).(ElastigroupIntegrationGitlabOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGitlab) ElastigroupIntegrationGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationGitlab
+		return ret
+	}).(ElastigroupIntegrationGitlabOutput)
 }
 
 // Settings for Gitlab runner.
@@ -4067,7 +4161,7 @@ func (o ElastigroupIntegrationGitlabRunnerOutput) ToElastigroupIntegrationGitlab
 }
 
 func (o ElastigroupIntegrationGitlabRunnerOutput) ToElastigroupIntegrationGitlabRunnerPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGitlabRunnerPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGitlabRunner) *ElastigroupIntegrationGitlabRunner {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationGitlabRunner) *ElastigroupIntegrationGitlabRunner {
 		return &v
 	}).(ElastigroupIntegrationGitlabRunnerPtrOutput)
 }
@@ -4092,7 +4186,13 @@ func (o ElastigroupIntegrationGitlabRunnerPtrOutput) ToElastigroupIntegrationGit
 }
 
 func (o ElastigroupIntegrationGitlabRunnerPtrOutput) Elem() ElastigroupIntegrationGitlabRunnerOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationGitlabRunner) ElastigroupIntegrationGitlabRunner { return *v }).(ElastigroupIntegrationGitlabRunnerOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGitlabRunner) ElastigroupIntegrationGitlabRunner {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationGitlabRunner
+		return ret
+	}).(ElastigroupIntegrationGitlabRunnerOutput)
 }
 
 // Specifies whether the integration is enabled.
@@ -4232,7 +4332,7 @@ func (o ElastigroupIntegrationKubernetesOutput) ToElastigroupIntegrationKubernet
 }
 
 func (o ElastigroupIntegrationKubernetesOutput) ToElastigroupIntegrationKubernetesPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetes {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationKubernetes) *ElastigroupIntegrationKubernetes {
 		return &v
 	}).(ElastigroupIntegrationKubernetesPtrOutput)
 }
@@ -4307,7 +4407,13 @@ func (o ElastigroupIntegrationKubernetesPtrOutput) ToElastigroupIntegrationKuber
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) Elem() ElastigroupIntegrationKubernetesOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) ElastigroupIntegrationKubernetes { return *v }).(ElastigroupIntegrationKubernetesOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) ElastigroupIntegrationKubernetes {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationKubernetes
+		return ret
+	}).(ElastigroupIntegrationKubernetesOutput)
 }
 
 // The public IP of the DC/OS Master.
@@ -4502,7 +4608,7 @@ func (o ElastigroupIntegrationKubernetesAutoscaleDownOutput) ToElastigroupIntegr
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleDownOutput) ToElastigroupIntegrationKubernetesAutoscaleDownPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleDown) *ElastigroupIntegrationKubernetesAutoscaleDown {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationKubernetesAutoscaleDown) *ElastigroupIntegrationKubernetesAutoscaleDown {
 		return &v
 	}).(ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput)
 }
@@ -4528,7 +4634,11 @@ func (o ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) ToElastigroupInt
 
 func (o ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationKubernetesAutoscaleDownOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationKubernetesAutoscaleDown) ElastigroupIntegrationKubernetesAutoscaleDown {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationKubernetesAutoscaleDown
+		return ret
 	}).(ElastigroupIntegrationKubernetesAutoscaleDownOutput)
 }
 
@@ -4643,7 +4753,7 @@ func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput) ToElastigroupIn
 }
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput) ToElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *ElastigroupIntegrationKubernetesAutoscaleHeadroom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationKubernetesAutoscaleHeadroom) *ElastigroupIntegrationKubernetesAutoscaleHeadroom {
 		return &v
 	}).(ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput)
 }
@@ -4679,7 +4789,11 @@ func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) ToElastigrou
 
 func (o ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationKubernetesAutoscaleHeadroom) ElastigroupIntegrationKubernetesAutoscaleHeadroom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationKubernetesAutoscaleHeadroom
+		return ret
 	}).(ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput)
 }
 
@@ -4909,7 +5023,7 @@ func (o ElastigroupIntegrationMesosphereOutput) ToElastigroupIntegrationMesosphe
 }
 
 func (o ElastigroupIntegrationMesosphereOutput) ToElastigroupIntegrationMesospherePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMesospherePtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationMesosphere) *ElastigroupIntegrationMesosphere {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationMesosphere) *ElastigroupIntegrationMesosphere {
 		return &v
 	}).(ElastigroupIntegrationMesospherePtrOutput)
 }
@@ -4934,7 +5048,13 @@ func (o ElastigroupIntegrationMesospherePtrOutput) ToElastigroupIntegrationMesos
 }
 
 func (o ElastigroupIntegrationMesospherePtrOutput) Elem() ElastigroupIntegrationMesosphereOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationMesosphere) ElastigroupIntegrationMesosphere { return *v }).(ElastigroupIntegrationMesosphereOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationMesosphere) ElastigroupIntegrationMesosphere {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationMesosphere
+		return ret
+	}).(ElastigroupIntegrationMesosphereOutput)
 }
 
 // The public IP of the DC/OS Master.
@@ -5040,7 +5160,7 @@ func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMulta
 }
 
 func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationMultaiRuntime) *ElastigroupIntegrationMultaiRuntime {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationMultaiRuntime) *ElastigroupIntegrationMultaiRuntime {
 		return &v
 	}).(ElastigroupIntegrationMultaiRuntimePtrOutput)
 }
@@ -5065,7 +5185,13 @@ func (o ElastigroupIntegrationMultaiRuntimePtrOutput) ToElastigroupIntegrationMu
 }
 
 func (o ElastigroupIntegrationMultaiRuntimePtrOutput) Elem() ElastigroupIntegrationMultaiRuntimeOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) ElastigroupIntegrationMultaiRuntime { return *v }).(ElastigroupIntegrationMultaiRuntimeOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) ElastigroupIntegrationMultaiRuntime {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationMultaiRuntime
+		return ret
+	}).(ElastigroupIntegrationMultaiRuntimeOutput)
 }
 
 // The deployment id you want to get
@@ -5199,7 +5325,7 @@ func (o ElastigroupIntegrationNomadOutput) ToElastigroupIntegrationNomadPtrOutpu
 }
 
 func (o ElastigroupIntegrationNomadOutput) ToElastigroupIntegrationNomadPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationNomadPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomad {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationNomad) *ElastigroupIntegrationNomad {
 		return &v
 	}).(ElastigroupIntegrationNomadPtrOutput)
 }
@@ -5263,7 +5389,13 @@ func (o ElastigroupIntegrationNomadPtrOutput) ToElastigroupIntegrationNomadPtrOu
 }
 
 func (o ElastigroupIntegrationNomadPtrOutput) Elem() ElastigroupIntegrationNomadOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationNomad) ElastigroupIntegrationNomad { return *v }).(ElastigroupIntegrationNomadOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomad) ElastigroupIntegrationNomad {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationNomad
+		return ret
+	}).(ElastigroupIntegrationNomadOutput)
 }
 
 // Nomad ACL Token
@@ -5542,7 +5674,7 @@ func (o ElastigroupIntegrationNomadAutoscaleDownOutput) ToElastigroupIntegration
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleDownOutput) ToElastigroupIntegrationNomadAutoscaleDownPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationNomadAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleDown) *ElastigroupIntegrationNomadAutoscaleDown {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationNomadAutoscaleDown) *ElastigroupIntegrationNomadAutoscaleDown {
 		return &v
 	}).(ElastigroupIntegrationNomadAutoscaleDownPtrOutput)
 }
@@ -5567,7 +5699,13 @@ func (o ElastigroupIntegrationNomadAutoscaleDownPtrOutput) ToElastigroupIntegrat
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationNomadAutoscaleDownOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationNomadAutoscaleDown) ElastigroupIntegrationNomadAutoscaleDown { return *v }).(ElastigroupIntegrationNomadAutoscaleDownOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationNomadAutoscaleDown) ElastigroupIntegrationNomadAutoscaleDown {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationNomadAutoscaleDown
+		return ret
+	}).(ElastigroupIntegrationNomadAutoscaleDownOutput)
 }
 
 // How many evaluation periods should accumulate before a scale down action takes place.
@@ -5681,7 +5819,7 @@ func (o ElastigroupIntegrationNomadAutoscaleHeadroomOutput) ToElastigroupIntegra
 }
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomOutput) ToElastigroupIntegrationNomadAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationNomadAutoscaleHeadroom) *ElastigroupIntegrationNomadAutoscaleHeadroom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationNomadAutoscaleHeadroom) *ElastigroupIntegrationNomadAutoscaleHeadroom {
 		return &v
 	}).(ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput)
 }
@@ -5717,7 +5855,11 @@ func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) ToElastigroupInte
 
 func (o ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationNomadAutoscaleHeadroomOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationNomadAutoscaleHeadroom) ElastigroupIntegrationNomadAutoscaleHeadroom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationNomadAutoscaleHeadroom
+		return ret
 	}).(ElastigroupIntegrationNomadAutoscaleHeadroomOutput)
 }
 
@@ -5858,7 +6000,7 @@ func (o ElastigroupIntegrationRancherOutput) ToElastigroupIntegrationRancherPtrO
 }
 
 func (o ElastigroupIntegrationRancherOutput) ToElastigroupIntegrationRancherPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationRancherPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationRancher) *ElastigroupIntegrationRancher {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationRancher) *ElastigroupIntegrationRancher {
 		return &v
 	}).(ElastigroupIntegrationRancherPtrOutput)
 }
@@ -5899,7 +6041,13 @@ func (o ElastigroupIntegrationRancherPtrOutput) ToElastigroupIntegrationRancherP
 }
 
 func (o ElastigroupIntegrationRancherPtrOutput) Elem() ElastigroupIntegrationRancherOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationRancher) ElastigroupIntegrationRancher { return *v }).(ElastigroupIntegrationRancherOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationRancher) ElastigroupIntegrationRancher {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationRancher
+		return ret
+	}).(ElastigroupIntegrationRancherOutput)
 }
 
 // The access key of the Rancher API.
@@ -6036,7 +6184,7 @@ func (o ElastigroupIntegrationRoute53Output) ToElastigroupIntegrationRoute53PtrO
 }
 
 func (o ElastigroupIntegrationRoute53Output) ToElastigroupIntegrationRoute53PtrOutputWithContext(ctx context.Context) ElastigroupIntegrationRoute53PtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationRoute53) *ElastigroupIntegrationRoute53 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationRoute53) *ElastigroupIntegrationRoute53 {
 		return &v
 	}).(ElastigroupIntegrationRoute53PtrOutput)
 }
@@ -6061,7 +6209,13 @@ func (o ElastigroupIntegrationRoute53PtrOutput) ToElastigroupIntegrationRoute53P
 }
 
 func (o ElastigroupIntegrationRoute53PtrOutput) Elem() ElastigroupIntegrationRoute53Output {
-	return o.ApplyT(func(v *ElastigroupIntegrationRoute53) ElastigroupIntegrationRoute53 { return *v }).(ElastigroupIntegrationRoute53Output)
+	return o.ApplyT(func(v *ElastigroupIntegrationRoute53) ElastigroupIntegrationRoute53 {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationRoute53
+		return ret
+	}).(ElastigroupIntegrationRoute53Output)
 }
 
 // Collection of one or more domains to register.
@@ -7093,7 +7247,7 @@ func (o ElastigroupMetadataOptionsOutput) ToElastigroupMetadataOptionsPtrOutput(
 }
 
 func (o ElastigroupMetadataOptionsOutput) ToElastigroupMetadataOptionsPtrOutputWithContext(ctx context.Context) ElastigroupMetadataOptionsPtrOutput {
-	return o.ApplyT(func(v ElastigroupMetadataOptions) *ElastigroupMetadataOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupMetadataOptions) *ElastigroupMetadataOptions {
 		return &v
 	}).(ElastigroupMetadataOptionsPtrOutput)
 }
@@ -7123,7 +7277,13 @@ func (o ElastigroupMetadataOptionsPtrOutput) ToElastigroupMetadataOptionsPtrOutp
 }
 
 func (o ElastigroupMetadataOptionsPtrOutput) Elem() ElastigroupMetadataOptionsOutput {
-	return o.ApplyT(func(v *ElastigroupMetadataOptions) ElastigroupMetadataOptions { return *v }).(ElastigroupMetadataOptionsOutput)
+	return o.ApplyT(func(v *ElastigroupMetadataOptions) ElastigroupMetadataOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupMetadataOptions
+		return ret
+	}).(ElastigroupMetadataOptionsOutput)
 }
 
 // The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
@@ -7349,7 +7509,7 @@ func (o ElastigroupMultipleMetricsOutput) ToElastigroupMultipleMetricsPtrOutput(
 }
 
 func (o ElastigroupMultipleMetricsOutput) ToElastigroupMultipleMetricsPtrOutputWithContext(ctx context.Context) ElastigroupMultipleMetricsPtrOutput {
-	return o.ApplyT(func(v ElastigroupMultipleMetrics) *ElastigroupMultipleMetrics {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupMultipleMetrics) *ElastigroupMultipleMetrics {
 		return &v
 	}).(ElastigroupMultipleMetricsPtrOutput)
 }
@@ -7379,7 +7539,13 @@ func (o ElastigroupMultipleMetricsPtrOutput) ToElastigroupMultipleMetricsPtrOutp
 }
 
 func (o ElastigroupMultipleMetricsPtrOutput) Elem() ElastigroupMultipleMetricsOutput {
-	return o.ApplyT(func(v *ElastigroupMultipleMetrics) ElastigroupMultipleMetrics { return *v }).(ElastigroupMultipleMetricsOutput)
+	return o.ApplyT(func(v *ElastigroupMultipleMetrics) ElastigroupMultipleMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupMultipleMetrics
+		return ret
+	}).(ElastigroupMultipleMetricsOutput)
 }
 
 // Array of objects (Expression config)
@@ -8154,7 +8320,7 @@ func (o ElastigroupRevertToSpotOutput) ToElastigroupRevertToSpotPtrOutput() Elas
 }
 
 func (o ElastigroupRevertToSpotOutput) ToElastigroupRevertToSpotPtrOutputWithContext(ctx context.Context) ElastigroupRevertToSpotPtrOutput {
-	return o.ApplyT(func(v ElastigroupRevertToSpot) *ElastigroupRevertToSpot {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupRevertToSpot) *ElastigroupRevertToSpot {
 		return &v
 	}).(ElastigroupRevertToSpotPtrOutput)
 }
@@ -8184,7 +8350,13 @@ func (o ElastigroupRevertToSpotPtrOutput) ToElastigroupRevertToSpotPtrOutputWith
 }
 
 func (o ElastigroupRevertToSpotPtrOutput) Elem() ElastigroupRevertToSpotOutput {
-	return o.ApplyT(func(v *ElastigroupRevertToSpot) ElastigroupRevertToSpot { return *v }).(ElastigroupRevertToSpotOutput)
+	return o.ApplyT(func(v *ElastigroupRevertToSpot) ElastigroupRevertToSpot {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupRevertToSpot
+		return ret
+	}).(ElastigroupRevertToSpotOutput)
 }
 
 // Actions to perform (options: timeWindow, never)
@@ -10250,7 +10422,7 @@ func (o ElastigroupStatefulDeallocationOutput) ToElastigroupStatefulDeallocation
 }
 
 func (o ElastigroupStatefulDeallocationOutput) ToElastigroupStatefulDeallocationPtrOutputWithContext(ctx context.Context) ElastigroupStatefulDeallocationPtrOutput {
-	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *ElastigroupStatefulDeallocation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupStatefulDeallocation) *ElastigroupStatefulDeallocation {
 		return &v
 	}).(ElastigroupStatefulDeallocationPtrOutput)
 }
@@ -10290,7 +10462,13 @@ func (o ElastigroupStatefulDeallocationPtrOutput) ToElastigroupStatefulDeallocat
 }
 
 func (o ElastigroupStatefulDeallocationPtrOutput) Elem() ElastigroupStatefulDeallocationOutput {
-	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) ElastigroupStatefulDeallocation { return *v }).(ElastigroupStatefulDeallocationOutput)
+	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) ElastigroupStatefulDeallocation {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupStatefulDeallocation
+		return ret
+	}).(ElastigroupStatefulDeallocationOutput)
 }
 
 // For stateful groups: remove persistent images.
@@ -10647,7 +10825,7 @@ func (o ElastigroupUpdatePolicyOutput) ToElastigroupUpdatePolicyPtrOutput() Elas
 }
 
 func (o ElastigroupUpdatePolicyOutput) ToElastigroupUpdatePolicyPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicy {
 		return &v
 	}).(ElastigroupUpdatePolicyPtrOutput)
 }
@@ -10687,7 +10865,13 @@ func (o ElastigroupUpdatePolicyPtrOutput) ToElastigroupUpdatePolicyPtrOutputWith
 }
 
 func (o ElastigroupUpdatePolicyPtrOutput) Elem() ElastigroupUpdatePolicyOutput {
-	return o.ApplyT(func(v *ElastigroupUpdatePolicy) ElastigroupUpdatePolicy { return *v }).(ElastigroupUpdatePolicyOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicy) ElastigroupUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupUpdatePolicy
+		return ret
+	}).(ElastigroupUpdatePolicyOutput)
 }
 
 // Enables updates to tags without rolling the group when set to `true`.
@@ -10843,7 +11027,7 @@ func (o ElastigroupUpdatePolicyRollConfigOutput) ToElastigroupUpdatePolicyRollCo
 }
 
 func (o ElastigroupUpdatePolicyRollConfigOutput) ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfig {
 		return &v
 	}).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
@@ -10895,7 +11079,13 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) ToElastigroupUpdatePolicyRol
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Elem() ElastigroupUpdatePolicyRollConfigOutput {
-	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) ElastigroupUpdatePolicyRollConfig { return *v }).(ElastigroupUpdatePolicyRollConfigOutput)
+	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) ElastigroupUpdatePolicyRollConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupUpdatePolicyRollConfig
+		return ret
+	}).(ElastigroupUpdatePolicyRollConfigOutput)
 }
 
 // Sets the percentage of the instances to deploy in each batch.
@@ -11063,7 +11253,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) ToElastigroupUpdatePoli
 }
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyOutput) ToElastigroupUpdatePolicyRollConfigStrategyPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigStrategyPtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategy) *ElastigroupUpdatePolicyRollConfigStrategy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupUpdatePolicyRollConfigStrategy) *ElastigroupUpdatePolicyRollConfigStrategy {
 		return &v
 	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
@@ -11106,7 +11296,11 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) ToElastigroupUpdateP
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyPtrOutput) Elem() ElastigroupUpdatePolicyRollConfigStrategyOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategy) ElastigroupUpdatePolicyRollConfigStrategy {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupUpdatePolicyRollConfigStrategy
+		return ret
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOutput)
 }
 
@@ -11257,7 +11451,7 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ToElastigroupU
 }
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ToElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput {
-	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
 		return &v
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput)
 }
@@ -11304,7 +11498,11 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ToElastigro
 
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) Elem() ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupUpdatePolicyRollConfigStrategyOnFailure
+		return ret
 	}).(ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput)
 }
 
@@ -11572,7 +11770,7 @@ func (o ManagedInstanceBlockDeviceMappingEbsOutput) ToManagedInstanceBlockDevice
 }
 
 func (o ManagedInstanceBlockDeviceMappingEbsOutput) ToManagedInstanceBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) ManagedInstanceBlockDeviceMappingEbsPtrOutput {
-	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *ManagedInstanceBlockDeviceMappingEbs {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedInstanceBlockDeviceMappingEbs) *ManagedInstanceBlockDeviceMappingEbs {
 		return &v
 	}).(ManagedInstanceBlockDeviceMappingEbsPtrOutput)
 }
@@ -11617,7 +11815,13 @@ func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) ToManagedInstanceBlockDev
 }
 
 func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Elem() ManagedInstanceBlockDeviceMappingEbsOutput {
-	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) ManagedInstanceBlockDeviceMappingEbs { return *v }).(ManagedInstanceBlockDeviceMappingEbsOutput)
+	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) ManagedInstanceBlockDeviceMappingEbs {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedInstanceBlockDeviceMappingEbs
+		return ret
+	}).(ManagedInstanceBlockDeviceMappingEbsOutput)
 }
 
 // Whether the volume should be destroyed on instance termination.
@@ -11763,7 +11967,7 @@ func (o ManagedInstanceIntegrationRoute53Output) ToManagedInstanceIntegrationRou
 }
 
 func (o ManagedInstanceIntegrationRoute53Output) ToManagedInstanceIntegrationRoute53PtrOutputWithContext(ctx context.Context) ManagedInstanceIntegrationRoute53PtrOutput {
-	return o.ApplyT(func(v ManagedInstanceIntegrationRoute53) *ManagedInstanceIntegrationRoute53 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedInstanceIntegrationRoute53) *ManagedInstanceIntegrationRoute53 {
 		return &v
 	}).(ManagedInstanceIntegrationRoute53PtrOutput)
 }
@@ -11788,7 +11992,13 @@ func (o ManagedInstanceIntegrationRoute53PtrOutput) ToManagedInstanceIntegration
 }
 
 func (o ManagedInstanceIntegrationRoute53PtrOutput) Elem() ManagedInstanceIntegrationRoute53Output {
-	return o.ApplyT(func(v *ManagedInstanceIntegrationRoute53) ManagedInstanceIntegrationRoute53 { return *v }).(ManagedInstanceIntegrationRoute53Output)
+	return o.ApplyT(func(v *ManagedInstanceIntegrationRoute53) ManagedInstanceIntegrationRoute53 {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedInstanceIntegrationRoute53
+		return ret
+	}).(ManagedInstanceIntegrationRoute53Output)
 }
 
 // Route 53 Domain configurations.
@@ -12286,7 +12496,7 @@ func (o ManagedInstanceManagedInstanceActionOutput) ToManagedInstanceManagedInst
 }
 
 func (o ManagedInstanceManagedInstanceActionOutput) ToManagedInstanceManagedInstanceActionPtrOutputWithContext(ctx context.Context) ManagedInstanceManagedInstanceActionPtrOutput {
-	return o.ApplyT(func(v ManagedInstanceManagedInstanceAction) *ManagedInstanceManagedInstanceAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedInstanceManagedInstanceAction) *ManagedInstanceManagedInstanceAction {
 		return &v
 	}).(ManagedInstanceManagedInstanceActionPtrOutput)
 }
@@ -12311,7 +12521,13 @@ func (o ManagedInstanceManagedInstanceActionPtrOutput) ToManagedInstanceManagedI
 }
 
 func (o ManagedInstanceManagedInstanceActionPtrOutput) Elem() ManagedInstanceManagedInstanceActionOutput {
-	return o.ApplyT(func(v *ManagedInstanceManagedInstanceAction) ManagedInstanceManagedInstanceAction { return *v }).(ManagedInstanceManagedInstanceActionOutput)
+	return o.ApplyT(func(v *ManagedInstanceManagedInstanceAction) ManagedInstanceManagedInstanceAction {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedInstanceManagedInstanceAction
+		return ret
+	}).(ManagedInstanceManagedInstanceActionOutput)
 }
 
 // String, Action type. Supported action types: `pause`, `resume`, `recycle`.
@@ -12656,7 +12872,7 @@ func (o ManagedInstanceRevertToSpotOutput) ToManagedInstanceRevertToSpotPtrOutpu
 }
 
 func (o ManagedInstanceRevertToSpotOutput) ToManagedInstanceRevertToSpotPtrOutputWithContext(ctx context.Context) ManagedInstanceRevertToSpotPtrOutput {
-	return o.ApplyT(func(v ManagedInstanceRevertToSpot) *ManagedInstanceRevertToSpot {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedInstanceRevertToSpot) *ManagedInstanceRevertToSpot {
 		return &v
 	}).(ManagedInstanceRevertToSpotPtrOutput)
 }
@@ -12681,7 +12897,13 @@ func (o ManagedInstanceRevertToSpotPtrOutput) ToManagedInstanceRevertToSpotPtrOu
 }
 
 func (o ManagedInstanceRevertToSpotPtrOutput) Elem() ManagedInstanceRevertToSpotOutput {
-	return o.ApplyT(func(v *ManagedInstanceRevertToSpot) ManagedInstanceRevertToSpot { return *v }).(ManagedInstanceRevertToSpotOutput)
+	return o.ApplyT(func(v *ManagedInstanceRevertToSpot) ManagedInstanceRevertToSpot {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedInstanceRevertToSpot
+		return ret
+	}).(ManagedInstanceRevertToSpotOutput)
 }
 
 // Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
@@ -14217,7 +14439,7 @@ func (o MrScalarProvisioningTimeoutOutput) ToMrScalarProvisioningTimeoutPtrOutpu
 }
 
 func (o MrScalarProvisioningTimeoutOutput) ToMrScalarProvisioningTimeoutPtrOutputWithContext(ctx context.Context) MrScalarProvisioningTimeoutPtrOutput {
-	return o.ApplyT(func(v MrScalarProvisioningTimeout) *MrScalarProvisioningTimeout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MrScalarProvisioningTimeout) *MrScalarProvisioningTimeout {
 		return &v
 	}).(MrScalarProvisioningTimeoutPtrOutput)
 }
@@ -14247,7 +14469,13 @@ func (o MrScalarProvisioningTimeoutPtrOutput) ToMrScalarProvisioningTimeoutPtrOu
 }
 
 func (o MrScalarProvisioningTimeoutPtrOutput) Elem() MrScalarProvisioningTimeoutOutput {
-	return o.ApplyT(func(v *MrScalarProvisioningTimeout) MrScalarProvisioningTimeout { return *v }).(MrScalarProvisioningTimeoutOutput)
+	return o.ApplyT(func(v *MrScalarProvisioningTimeout) MrScalarProvisioningTimeout {
+		if v != nil {
+			return *v
+		}
+		var ret MrScalarProvisioningTimeout
+		return ret
+	}).(MrScalarProvisioningTimeoutOutput)
 }
 
 // The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
@@ -15628,7 +15856,7 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutput() OceanAutoscalerPtrOu
 }
 
 func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context.Context) OceanAutoscalerPtrOutput {
-	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscaler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanAutoscaler) *OceanAutoscaler {
 		return &v
 	}).(OceanAutoscalerPtrOutput)
 }
@@ -15683,7 +15911,13 @@ func (o OceanAutoscalerPtrOutput) ToOceanAutoscalerPtrOutputWithContext(ctx cont
 }
 
 func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
-	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler { return *v }).(OceanAutoscalerOutput)
+	return o.ApplyT(func(v *OceanAutoscaler) OceanAutoscaler {
+		if v != nil {
+			return *v
+		}
+		var ret OceanAutoscaler
+		return ret
+	}).(OceanAutoscalerOutput)
 }
 
 // Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
@@ -15851,10 +16085,11 @@ func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownPtrOut
 }
 
 func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *OceanAutoscalerAutoscaleDown {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanAutoscalerAutoscaleDown) *OceanAutoscalerAutoscaleDown {
 		return &v
 	}).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
+
 func (o OceanAutoscalerAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -15879,7 +16114,13 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) ToOceanAutoscalerAutoscaleDownPtr
 }
 
 func (o OceanAutoscalerAutoscaleDownPtrOutput) Elem() OceanAutoscalerAutoscaleDownOutput {
-	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) OceanAutoscalerAutoscaleDown { return *v }).(OceanAutoscalerAutoscaleDownOutput)
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) OceanAutoscalerAutoscaleDown {
+		if v != nil {
+			return *v
+		}
+		var ret OceanAutoscalerAutoscaleDown
+		return ret
+	}).(OceanAutoscalerAutoscaleDownOutput)
 }
 
 func (o OceanAutoscalerAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
@@ -16006,7 +16247,7 @@ func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadro
 }
 
 func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *OceanAutoscalerAutoscaleHeadroom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanAutoscalerAutoscaleHeadroom) *OceanAutoscalerAutoscaleHeadroom {
 		return &v
 	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
@@ -16046,7 +16287,13 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) ToOceanAutoscalerAutoscaleHea
 }
 
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanAutoscalerAutoscaleHeadroomOutput {
-	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) OceanAutoscalerAutoscaleHeadroom { return *v }).(OceanAutoscalerAutoscaleHeadroomOutput)
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) OceanAutoscalerAutoscaleHeadroom {
+		if v != nil {
+			return *v
+		}
+		var ret OceanAutoscalerAutoscaleHeadroom
+		return ret
+	}).(OceanAutoscalerAutoscaleHeadroomOutput)
 }
 
 // Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -16186,7 +16433,7 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 }
 
 func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanAutoscalerResourceLimitsPtrOutput {
-	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *OceanAutoscalerResourceLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanAutoscalerResourceLimits) *OceanAutoscalerResourceLimits {
 		return &v
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
@@ -16216,7 +16463,13 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) ToOceanAutoscalerResourceLimitsP
 }
 
 func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLimitsOutput {
-	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits { return *v }).(OceanAutoscalerResourceLimitsOutput)
+	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) OceanAutoscalerResourceLimits {
+		if v != nil {
+			return *v
+		}
+		var ret OceanAutoscalerResourceLimits
+		return ret
+	}).(OceanAutoscalerResourceLimitsOutput)
 }
 
 // The maximum memory in GiB units that can be allocated to the cluster.
@@ -16336,7 +16589,7 @@ func (o OceanInstanceMetadataOptionsOutput) ToOceanInstanceMetadataOptionsPtrOut
 }
 
 func (o OceanInstanceMetadataOptionsOutput) ToOceanInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) OceanInstanceMetadataOptionsPtrOutput {
-	return o.ApplyT(func(v OceanInstanceMetadataOptions) *OceanInstanceMetadataOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanInstanceMetadataOptions) *OceanInstanceMetadataOptions {
 		return &v
 	}).(OceanInstanceMetadataOptionsPtrOutput)
 }
@@ -16366,7 +16619,13 @@ func (o OceanInstanceMetadataOptionsPtrOutput) ToOceanInstanceMetadataOptionsPtr
 }
 
 func (o OceanInstanceMetadataOptionsPtrOutput) Elem() OceanInstanceMetadataOptionsOutput {
-	return o.ApplyT(func(v *OceanInstanceMetadataOptions) OceanInstanceMetadataOptions { return *v }).(OceanInstanceMetadataOptionsOutput)
+	return o.ApplyT(func(v *OceanInstanceMetadataOptions) OceanInstanceMetadataOptions {
+		if v != nil {
+			return *v
+		}
+		var ret OceanInstanceMetadataOptions
+		return ret
+	}).(OceanInstanceMetadataOptionsOutput)
 }
 
 // An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
@@ -16759,7 +17018,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) ToOceanLaunchSpecBlockDevice
 }
 
 func (o OceanLaunchSpecBlockDeviceMappingEbsOutput) ToOceanLaunchSpecBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecBlockDeviceMappingEbsPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbs) *OceanLaunchSpecBlockDeviceMappingEbs {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecBlockDeviceMappingEbs) *OceanLaunchSpecBlockDeviceMappingEbs {
 		return &v
 	}).(OceanLaunchSpecBlockDeviceMappingEbsPtrOutput)
 }
@@ -16826,7 +17085,13 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) ToOceanLaunchSpecBlockDev
 }
 
 func (o OceanLaunchSpecBlockDeviceMappingEbsPtrOutput) Elem() OceanLaunchSpecBlockDeviceMappingEbsOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) OceanLaunchSpecBlockDeviceMappingEbs { return *v }).(OceanLaunchSpecBlockDeviceMappingEbsOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbs) OceanLaunchSpecBlockDeviceMappingEbs {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecBlockDeviceMappingEbs
+		return ret
+	}).(OceanLaunchSpecBlockDeviceMappingEbsOutput)
 }
 
 // Boolean. Flag to delete the EBS on instance termination.
@@ -17020,7 +17285,7 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanLaun
 }
 
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
 		return &v
 	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
 }
@@ -17056,7 +17321,11 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) ToOceanL
 
 func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Elem() OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize) OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize
+		return ret
 	}).(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput)
 }
 
@@ -17183,7 +17452,7 @@ func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsPtrOut
 }
 
 func (o OceanLaunchSpecCreateOptionsOutput) ToOceanLaunchSpecCreateOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCreateOptionsPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecCreateOptions) *OceanLaunchSpecCreateOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecCreateOptions) *OceanLaunchSpecCreateOptions {
 		return &v
 	}).(OceanLaunchSpecCreateOptionsPtrOutput)
 }
@@ -17208,7 +17477,13 @@ func (o OceanLaunchSpecCreateOptionsPtrOutput) ToOceanLaunchSpecCreateOptionsPtr
 }
 
 func (o OceanLaunchSpecCreateOptionsPtrOutput) Elem() OceanLaunchSpecCreateOptionsOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecCreateOptions) OceanLaunchSpecCreateOptions { return *v }).(OceanLaunchSpecCreateOptionsOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecCreateOptions) OceanLaunchSpecCreateOptions {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecCreateOptions
+		return ret
+	}).(OceanLaunchSpecCreateOptionsOutput)
 }
 
 // When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
@@ -17314,7 +17589,7 @@ func (o OceanLaunchSpecDeleteOptionsOutput) ToOceanLaunchSpecDeleteOptionsPtrOut
 }
 
 func (o OceanLaunchSpecDeleteOptionsOutput) ToOceanLaunchSpecDeleteOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecDeleteOptionsPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecDeleteOptions) *OceanLaunchSpecDeleteOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecDeleteOptions) *OceanLaunchSpecDeleteOptions {
 		return &v
 	}).(OceanLaunchSpecDeleteOptionsPtrOutput)
 }
@@ -17339,7 +17614,13 @@ func (o OceanLaunchSpecDeleteOptionsPtrOutput) ToOceanLaunchSpecDeleteOptionsPtr
 }
 
 func (o OceanLaunchSpecDeleteOptionsPtrOutput) Elem() OceanLaunchSpecDeleteOptionsOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecDeleteOptions) OceanLaunchSpecDeleteOptions { return *v }).(OceanLaunchSpecDeleteOptionsOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecDeleteOptions) OceanLaunchSpecDeleteOptions {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecDeleteOptions
+		return ret
+	}).(OceanLaunchSpecDeleteOptionsOutput)
 }
 
 // When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
@@ -17546,7 +17827,7 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) ToOceanLaunchSpecElasticI
 }
 
 func (o OceanLaunchSpecElasticIpPoolTagSelectorOutput) ToOceanLaunchSpecElasticIpPoolTagSelectorPtrOutputWithContext(ctx context.Context) OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecElasticIpPoolTagSelector) *OceanLaunchSpecElasticIpPoolTagSelector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecElasticIpPoolTagSelector) *OceanLaunchSpecElasticIpPoolTagSelector {
 		return &v
 	}).(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput)
 }
@@ -17576,7 +17857,13 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) ToOceanLaunchSpecElast
 }
 
 func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) Elem() OceanLaunchSpecElasticIpPoolTagSelectorOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecElasticIpPoolTagSelector) OceanLaunchSpecElasticIpPoolTagSelector { return *v }).(OceanLaunchSpecElasticIpPoolTagSelectorOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecElasticIpPoolTagSelector) OceanLaunchSpecElasticIpPoolTagSelector {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecElasticIpPoolTagSelector
+		return ret
+	}).(OceanLaunchSpecElasticIpPoolTagSelectorOutput)
 }
 
 // Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
@@ -18222,10 +18509,11 @@ func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyPtrOutpu
 }
 
 func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicy {
 		return &v
 	}).(OceanLaunchSpecUpdatePolicyPtrOutput)
 }
+
 func (o OceanLaunchSpecUpdatePolicyOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicyRollConfig { return v.RollConfig }).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
 }
@@ -18249,7 +18537,13 @@ func (o OceanLaunchSpecUpdatePolicyPtrOutput) ToOceanLaunchSpecUpdatePolicyPtrOu
 }
 
 func (o OceanLaunchSpecUpdatePolicyPtrOutput) Elem() OceanLaunchSpecUpdatePolicyOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) OceanLaunchSpecUpdatePolicy { return *v }).(OceanLaunchSpecUpdatePolicyOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) OceanLaunchSpecUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecUpdatePolicy
+		return ret
+	}).(OceanLaunchSpecUpdatePolicyOutput)
 }
 
 func (o OceanLaunchSpecUpdatePolicyPtrOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
@@ -18361,10 +18655,11 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePoli
 }
 
 func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) *OceanLaunchSpecUpdatePolicyRollConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecUpdatePolicyRollConfig) *OceanLaunchSpecUpdatePolicyRollConfig {
 		return &v
 	}).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
 }
+
 func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
@@ -18384,7 +18679,13 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) ToOceanLaunchSpecUpdateP
 }
 
 func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) Elem() OceanLaunchSpecUpdatePolicyRollConfigOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) OceanLaunchSpecUpdatePolicyRollConfig { return *v }).(OceanLaunchSpecUpdatePolicyRollConfigOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) OceanLaunchSpecUpdatePolicyRollConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecUpdatePolicyRollConfig
+		return ret
+	}).(OceanLaunchSpecUpdatePolicyRollConfigOutput)
 }
 
 func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
@@ -18714,7 +19015,7 @@ func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHours
 }
 
 func (o OceanScheduledTaskShutdownHoursOutput) ToOceanScheduledTaskShutdownHoursPtrOutputWithContext(ctx context.Context) OceanScheduledTaskShutdownHoursPtrOutput {
-	return o.ApplyT(func(v OceanScheduledTaskShutdownHours) *OceanScheduledTaskShutdownHours {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanScheduledTaskShutdownHours) *OceanScheduledTaskShutdownHours {
 		return &v
 	}).(OceanScheduledTaskShutdownHoursPtrOutput)
 }
@@ -18744,7 +19045,13 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) ToOceanScheduledTaskShutdownHo
 }
 
 func (o OceanScheduledTaskShutdownHoursPtrOutput) Elem() OceanScheduledTaskShutdownHoursOutput {
-	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) OceanScheduledTaskShutdownHours { return *v }).(OceanScheduledTaskShutdownHoursOutput)
+	return o.ApplyT(func(v *OceanScheduledTaskShutdownHours) OceanScheduledTaskShutdownHours {
+		if v != nil {
+			return *v
+		}
+		var ret OceanScheduledTaskShutdownHours
+		return ret
+	}).(OceanScheduledTaskShutdownHoursOutput)
 }
 
 // Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
@@ -19085,7 +19392,7 @@ func (o OceanUpdatePolicyOutput) ToOceanUpdatePolicyPtrOutput() OceanUpdatePolic
 }
 
 func (o OceanUpdatePolicyOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanUpdatePolicyPtrOutput {
-	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanUpdatePolicy) *OceanUpdatePolicy {
 		return &v
 	}).(OceanUpdatePolicyPtrOutput)
 }
@@ -19115,7 +19422,13 @@ func (o OceanUpdatePolicyPtrOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx 
 }
 
 func (o OceanUpdatePolicyPtrOutput) Elem() OceanUpdatePolicyOutput {
-	return o.ApplyT(func(v *OceanUpdatePolicy) OceanUpdatePolicy { return *v }).(OceanUpdatePolicyOutput)
+	return o.ApplyT(func(v *OceanUpdatePolicy) OceanUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OceanUpdatePolicy
+		return ret
+	}).(OceanUpdatePolicyOutput)
 }
 
 // While used, you can control whether the group should perform a deployment after an update to the configuration.
@@ -19235,7 +19548,7 @@ func (o OceanUpdatePolicyRollConfigOutput) ToOceanUpdatePolicyRollConfigPtrOutpu
 }
 
 func (o OceanUpdatePolicyRollConfigOutput) ToOceanUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) *OceanUpdatePolicyRollConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanUpdatePolicyRollConfig) *OceanUpdatePolicyRollConfig {
 		return &v
 	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
@@ -19265,7 +19578,13 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) ToOceanUpdatePolicyRollConfigPtrOu
 }
 
 func (o OceanUpdatePolicyRollConfigPtrOutput) Elem() OceanUpdatePolicyRollConfigOutput {
-	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig { return *v }).(OceanUpdatePolicyRollConfigOutput)
+	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) OceanUpdatePolicyRollConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanUpdatePolicyRollConfig
+		return ret
+	}).(OceanUpdatePolicyRollConfigOutput)
 }
 
 // Sets the percentage of the instances to deploy in each batch.
@@ -19386,6 +19705,268 @@ func (o SuspensionSuspensionArrayOutput) Index(i pulumi.IntInput) SuspensionSusp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkDeploymentPreferencesInput)(nil)).Elem(), BeanstalkDeploymentPreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkDeploymentPreferencesPtrInput)(nil)).Elem(), BeanstalkDeploymentPreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkDeploymentPreferencesStrategyInput)(nil)).Elem(), BeanstalkDeploymentPreferencesStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkDeploymentPreferencesStrategyArrayInput)(nil)).Elem(), BeanstalkDeploymentPreferencesStrategyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkManagedActionsInput)(nil)).Elem(), BeanstalkManagedActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkManagedActionsPtrInput)(nil)).Elem(), BeanstalkManagedActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkManagedActionsPlatformUpdateInput)(nil)).Elem(), BeanstalkManagedActionsPlatformUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkManagedActionsPlatformUpdatePtrInput)(nil)).Elem(), BeanstalkManagedActionsPlatformUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkScheduledTaskInput)(nil)).Elem(), BeanstalkScheduledTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BeanstalkScheduledTaskArrayInput)(nil)).Elem(), BeanstalkScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupCpuOptionsInput)(nil)).Elem(), ElastigroupCpuOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupCpuOptionsPtrInput)(nil)).Elem(), ElastigroupCpuOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEbsBlockDeviceInput)(nil)).Elem(), ElastigroupEbsBlockDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEbsBlockDeviceArrayInput)(nil)).Elem(), ElastigroupEbsBlockDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEphemeralBlockDeviceInput)(nil)).Elem(), ElastigroupEphemeralBlockDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupEphemeralBlockDeviceArrayInput)(nil)).Elem(), ElastigroupEphemeralBlockDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupInstanceTypesWeightInput)(nil)).Elem(), ElastigroupInstanceTypesWeightArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupInstanceTypesWeightArrayInput)(nil)).Elem(), ElastigroupInstanceTypesWeightArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationBeanstalkInput)(nil)).Elem(), ElastigroupIntegrationBeanstalkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationBeanstalkPtrInput)(nil)).Elem(), ElastigroupIntegrationBeanstalkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationBeanstalkDeploymentPreferencesInput)(nil)).Elem(), ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrInput)(nil)).Elem(), ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyInput)(nil)).Elem(), ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrInput)(nil)).Elem(), ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationBeanstalkManagedActionsInput)(nil)).Elem(), ElastigroupIntegrationBeanstalkManagedActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationBeanstalkManagedActionsPtrInput)(nil)).Elem(), ElastigroupIntegrationBeanstalkManagedActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateInput)(nil)).Elem(), ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrInput)(nil)).Elem(), ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationCodedeployInput)(nil)).Elem(), ElastigroupIntegrationCodedeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationCodedeployPtrInput)(nil)).Elem(), ElastigroupIntegrationCodedeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationCodedeployDeploymentGroupInput)(nil)).Elem(), ElastigroupIntegrationCodedeployDeploymentGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationCodedeployDeploymentGroupArrayInput)(nil)).Elem(), ElastigroupIntegrationCodedeployDeploymentGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationDockerSwarmInput)(nil)).Elem(), ElastigroupIntegrationDockerSwarmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationDockerSwarmPtrInput)(nil)).Elem(), ElastigroupIntegrationDockerSwarmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationDockerSwarmAutoscaleDownInput)(nil)).Elem(), ElastigroupIntegrationDockerSwarmAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationDockerSwarmAutoscaleDownPtrInput)(nil)).Elem(), ElastigroupIntegrationDockerSwarmAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationDockerSwarmAutoscaleHeadroomInput)(nil)).Elem(), ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrInput)(nil)).Elem(), ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationEcsInput)(nil)).Elem(), ElastigroupIntegrationEcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationEcsPtrInput)(nil)).Elem(), ElastigroupIntegrationEcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationEcsAutoscaleAttributeInput)(nil)).Elem(), ElastigroupIntegrationEcsAutoscaleAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationEcsAutoscaleAttributeArrayInput)(nil)).Elem(), ElastigroupIntegrationEcsAutoscaleAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationEcsAutoscaleDownInput)(nil)).Elem(), ElastigroupIntegrationEcsAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationEcsAutoscaleDownPtrInput)(nil)).Elem(), ElastigroupIntegrationEcsAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationEcsAutoscaleHeadroomInput)(nil)).Elem(), ElastigroupIntegrationEcsAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationEcsAutoscaleHeadroomPtrInput)(nil)).Elem(), ElastigroupIntegrationEcsAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationEcsBatchInput)(nil)).Elem(), ElastigroupIntegrationEcsBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationEcsBatchPtrInput)(nil)).Elem(), ElastigroupIntegrationEcsBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGitlabInput)(nil)).Elem(), ElastigroupIntegrationGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGitlabPtrInput)(nil)).Elem(), ElastigroupIntegrationGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGitlabRunnerInput)(nil)).Elem(), ElastigroupIntegrationGitlabRunnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGitlabRunnerPtrInput)(nil)).Elem(), ElastigroupIntegrationGitlabRunnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesInput)(nil)).Elem(), ElastigroupIntegrationKubernetesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesPtrInput)(nil)).Elem(), ElastigroupIntegrationKubernetesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesAutoscaleDownInput)(nil)).Elem(), ElastigroupIntegrationKubernetesAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesAutoscaleDownPtrInput)(nil)).Elem(), ElastigroupIntegrationKubernetesAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesAutoscaleHeadroomInput)(nil)).Elem(), ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrInput)(nil)).Elem(), ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesAutoscaleLabelInput)(nil)).Elem(), ElastigroupIntegrationKubernetesAutoscaleLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesAutoscaleLabelArrayInput)(nil)).Elem(), ElastigroupIntegrationKubernetesAutoscaleLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationMesosphereInput)(nil)).Elem(), ElastigroupIntegrationMesosphereArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationMesospherePtrInput)(nil)).Elem(), ElastigroupIntegrationMesosphereArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationMultaiRuntimeInput)(nil)).Elem(), ElastigroupIntegrationMultaiRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationMultaiRuntimePtrInput)(nil)).Elem(), ElastigroupIntegrationMultaiRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadInput)(nil)).Elem(), ElastigroupIntegrationNomadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadPtrInput)(nil)).Elem(), ElastigroupIntegrationNomadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadAutoscaleConstraintInput)(nil)).Elem(), ElastigroupIntegrationNomadAutoscaleConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadAutoscaleConstraintArrayInput)(nil)).Elem(), ElastigroupIntegrationNomadAutoscaleConstraintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadAutoscaleDownInput)(nil)).Elem(), ElastigroupIntegrationNomadAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadAutoscaleDownPtrInput)(nil)).Elem(), ElastigroupIntegrationNomadAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadAutoscaleHeadroomInput)(nil)).Elem(), ElastigroupIntegrationNomadAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadAutoscaleHeadroomPtrInput)(nil)).Elem(), ElastigroupIntegrationNomadAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationRancherInput)(nil)).Elem(), ElastigroupIntegrationRancherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationRancherPtrInput)(nil)).Elem(), ElastigroupIntegrationRancherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationRoute53Input)(nil)).Elem(), ElastigroupIntegrationRoute53Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationRoute53PtrInput)(nil)).Elem(), ElastigroupIntegrationRoute53Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationRoute53DomainInput)(nil)).Elem(), ElastigroupIntegrationRoute53DomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationRoute53DomainArrayInput)(nil)).Elem(), ElastigroupIntegrationRoute53DomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationRoute53DomainRecordSetInput)(nil)).Elem(), ElastigroupIntegrationRoute53DomainRecordSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationRoute53DomainRecordSetArrayInput)(nil)).Elem(), ElastigroupIntegrationRoute53DomainRecordSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfInput)(nil)).Elem(), ElastigroupItfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfArrayInput)(nil)).Elem(), ElastigroupItfArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfLoadBalancerInput)(nil)).Elem(), ElastigroupItfLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfLoadBalancerArrayInput)(nil)).Elem(), ElastigroupItfLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfLoadBalancerListenerRuleInput)(nil)).Elem(), ElastigroupItfLoadBalancerListenerRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfLoadBalancerListenerRuleArrayInput)(nil)).Elem(), ElastigroupItfLoadBalancerListenerRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigArrayInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigMatcherInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigMatcherArrayInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigTagInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigTagArrayInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMetadataOptionsInput)(nil)).Elem(), ElastigroupMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMetadataOptionsPtrInput)(nil)).Elem(), ElastigroupMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultaiTargetSetInput)(nil)).Elem(), ElastigroupMultaiTargetSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultaiTargetSetArrayInput)(nil)).Elem(), ElastigroupMultaiTargetSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsInput)(nil)).Elem(), ElastigroupMultipleMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsPtrInput)(nil)).Elem(), ElastigroupMultipleMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsExpressionInput)(nil)).Elem(), ElastigroupMultipleMetricsExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsExpressionArrayInput)(nil)).Elem(), ElastigroupMultipleMetricsExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsMetricInput)(nil)).Elem(), ElastigroupMultipleMetricsMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsMetricArrayInput)(nil)).Elem(), ElastigroupMultipleMetricsMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsMetricDimensionInput)(nil)).Elem(), ElastigroupMultipleMetricsMetricDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsMetricDimensionArrayInput)(nil)).Elem(), ElastigroupMultipleMetricsMetricDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceInput)(nil)).Elem(), ElastigroupNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceArrayInput)(nil)).Elem(), ElastigroupNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupResourceTagSpecificationInput)(nil)).Elem(), ElastigroupResourceTagSpecificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupResourceTagSpecificationArrayInput)(nil)).Elem(), ElastigroupResourceTagSpecificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupRevertToSpotInput)(nil)).Elem(), ElastigroupRevertToSpotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupRevertToSpotPtrInput)(nil)).Elem(), ElastigroupRevertToSpotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyInput)(nil)).Elem(), ElastigroupScalingDownPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyArrayInput)(nil)).Elem(), ElastigroupScalingDownPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingDownPolicyDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingDownPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyStepAdjustmentInput)(nil)).Elem(), ElastigroupScalingDownPolicyStepAdjustmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyStepAdjustmentArrayInput)(nil)).Elem(), ElastigroupScalingDownPolicyStepAdjustmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyStepAdjustmentActionInput)(nil)).Elem(), ElastigroupScalingDownPolicyStepAdjustmentActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingStrategyInput)(nil)).Elem(), ElastigroupScalingStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingStrategyArrayInput)(nil)).Elem(), ElastigroupScalingStrategyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingTargetPolicyInput)(nil)).Elem(), ElastigroupScalingTargetPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingTargetPolicyArrayInput)(nil)).Elem(), ElastigroupScalingTargetPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingTargetPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingTargetPolicyDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingTargetPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingTargetPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyInput)(nil)).Elem(), ElastigroupScalingUpPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyStepAdjustmentInput)(nil)).Elem(), ElastigroupScalingUpPolicyStepAdjustmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyStepAdjustmentArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyStepAdjustmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyStepAdjustmentActionInput)(nil)).Elem(), ElastigroupScalingUpPolicyStepAdjustmentActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScheduledTaskInput)(nil)).Elem(), ElastigroupScheduledTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScheduledTaskArrayInput)(nil)).Elem(), ElastigroupScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupSignalInput)(nil)).Elem(), ElastigroupSignalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupSignalArrayInput)(nil)).Elem(), ElastigroupSignalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupStatefulDeallocationInput)(nil)).Elem(), ElastigroupStatefulDeallocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupStatefulDeallocationPtrInput)(nil)).Elem(), ElastigroupStatefulDeallocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupStatefulInstanceActionInput)(nil)).Elem(), ElastigroupStatefulInstanceActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupStatefulInstanceActionArrayInput)(nil)).Elem(), ElastigroupStatefulInstanceActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupTagInput)(nil)).Elem(), ElastigroupTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupTagArrayInput)(nil)).Elem(), ElastigroupTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyInput)(nil)).Elem(), ElastigroupUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyPtrInput)(nil)).Elem(), ElastigroupUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigInput)(nil)).Elem(), ElastigroupUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigPtrInput)(nil)).Elem(), ElastigroupUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigStrategyInput)(nil)).Elem(), ElastigroupUpdatePolicyRollConfigStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigStrategyPtrInput)(nil)).Elem(), ElastigroupUpdatePolicyRollConfigStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigStrategyOnFailureInput)(nil)).Elem(), ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput)(nil)).Elem(), ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceBlockDeviceMappingInput)(nil)).Elem(), ManagedInstanceBlockDeviceMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceBlockDeviceMappingArrayInput)(nil)).Elem(), ManagedInstanceBlockDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceBlockDeviceMappingEbsInput)(nil)).Elem(), ManagedInstanceBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceBlockDeviceMappingEbsPtrInput)(nil)).Elem(), ManagedInstanceBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceIntegrationRoute53Input)(nil)).Elem(), ManagedInstanceIntegrationRoute53Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceIntegrationRoute53PtrInput)(nil)).Elem(), ManagedInstanceIntegrationRoute53Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceIntegrationRoute53DomainInput)(nil)).Elem(), ManagedInstanceIntegrationRoute53DomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceIntegrationRoute53DomainArrayInput)(nil)).Elem(), ManagedInstanceIntegrationRoute53DomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceIntegrationRoute53DomainRecordSetInput)(nil)).Elem(), ManagedInstanceIntegrationRoute53DomainRecordSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceIntegrationRoute53DomainRecordSetArrayInput)(nil)).Elem(), ManagedInstanceIntegrationRoute53DomainRecordSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceLoadBalancerInput)(nil)).Elem(), ManagedInstanceLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceLoadBalancerArrayInput)(nil)).Elem(), ManagedInstanceLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceManagedInstanceActionInput)(nil)).Elem(), ManagedInstanceManagedInstanceActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceManagedInstanceActionPtrInput)(nil)).Elem(), ManagedInstanceManagedInstanceActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceNetworkInterfaceInput)(nil)).Elem(), ManagedInstanceNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceNetworkInterfaceArrayInput)(nil)).Elem(), ManagedInstanceNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceResourceTagSpecificationInput)(nil)).Elem(), ManagedInstanceResourceTagSpecificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceResourceTagSpecificationArrayInput)(nil)).Elem(), ManagedInstanceResourceTagSpecificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceRevertToSpotInput)(nil)).Elem(), ManagedInstanceRevertToSpotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceRevertToSpotPtrInput)(nil)).Elem(), ManagedInstanceRevertToSpotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceScheduledTaskInput)(nil)).Elem(), ManagedInstanceScheduledTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceScheduledTaskArrayInput)(nil)).Elem(), ManagedInstanceScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceTagInput)(nil)).Elem(), ManagedInstanceTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceTagArrayInput)(nil)).Elem(), ManagedInstanceTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarApplicationInput)(nil)).Elem(), MrScalarApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarApplicationArrayInput)(nil)).Elem(), MrScalarApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarBootstrapActionsFileInput)(nil)).Elem(), MrScalarBootstrapActionsFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarBootstrapActionsFileArrayInput)(nil)).Elem(), MrScalarBootstrapActionsFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarConfigurationsFileInput)(nil)).Elem(), MrScalarConfigurationsFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarConfigurationsFileArrayInput)(nil)).Elem(), MrScalarConfigurationsFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarCoreEbsBlockDeviceInput)(nil)).Elem(), MrScalarCoreEbsBlockDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarCoreEbsBlockDeviceArrayInput)(nil)).Elem(), MrScalarCoreEbsBlockDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarCoreScalingDownPolicyInput)(nil)).Elem(), MrScalarCoreScalingDownPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarCoreScalingDownPolicyArrayInput)(nil)).Elem(), MrScalarCoreScalingDownPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarCoreScalingUpPolicyInput)(nil)).Elem(), MrScalarCoreScalingUpPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarCoreScalingUpPolicyArrayInput)(nil)).Elem(), MrScalarCoreScalingUpPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarInstanceWeightInput)(nil)).Elem(), MrScalarInstanceWeightArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarInstanceWeightArrayInput)(nil)).Elem(), MrScalarInstanceWeightArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarMasterEbsBlockDeviceInput)(nil)).Elem(), MrScalarMasterEbsBlockDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarMasterEbsBlockDeviceArrayInput)(nil)).Elem(), MrScalarMasterEbsBlockDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarProvisioningTimeoutInput)(nil)).Elem(), MrScalarProvisioningTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarProvisioningTimeoutPtrInput)(nil)).Elem(), MrScalarProvisioningTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarScheduledTaskInput)(nil)).Elem(), MrScalarScheduledTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarScheduledTaskArrayInput)(nil)).Elem(), MrScalarScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarStepsFileInput)(nil)).Elem(), MrScalarStepsFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarStepsFileArrayInput)(nil)).Elem(), MrScalarStepsFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTagInput)(nil)).Elem(), MrScalarTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTagArrayInput)(nil)).Elem(), MrScalarTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTaskEbsBlockDeviceInput)(nil)).Elem(), MrScalarTaskEbsBlockDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTaskEbsBlockDeviceArrayInput)(nil)).Elem(), MrScalarTaskEbsBlockDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTaskScalingDownPolicyInput)(nil)).Elem(), MrScalarTaskScalingDownPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTaskScalingDownPolicyArrayInput)(nil)).Elem(), MrScalarTaskScalingDownPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTaskScalingUpPolicyInput)(nil)).Elem(), MrScalarTaskScalingUpPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTaskScalingUpPolicyArrayInput)(nil)).Elem(), MrScalarTaskScalingUpPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTerminationPolicyInput)(nil)).Elem(), MrScalarTerminationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTerminationPolicyArrayInput)(nil)).Elem(), MrScalarTerminationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTerminationPolicyStatementInput)(nil)).Elem(), MrScalarTerminationPolicyStatementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarTerminationPolicyStatementArrayInput)(nil)).Elem(), MrScalarTerminationPolicyStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerInput)(nil)).Elem(), OceanAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerPtrInput)(nil)).Elem(), OceanAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerAutoscaleDownInput)(nil)).Elem(), OceanAutoscalerAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerAutoscaleDownPtrInput)(nil)).Elem(), OceanAutoscalerAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerAutoscaleHeadroomInput)(nil)).Elem(), OceanAutoscalerAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerAutoscaleHeadroomPtrInput)(nil)).Elem(), OceanAutoscalerAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerResourceLimitsInput)(nil)).Elem(), OceanAutoscalerResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerResourceLimitsPtrInput)(nil)).Elem(), OceanAutoscalerResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsPtrInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingArrayInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsPtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsPtrInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecDeleteOptionsInput)(nil)).Elem(), OceanLaunchSpecDeleteOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecDeleteOptionsPtrInput)(nil)).Elem(), OceanLaunchSpecDeleteOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecElasticIpPoolInput)(nil)).Elem(), OceanLaunchSpecElasticIpPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecElasticIpPoolArrayInput)(nil)).Elem(), OceanLaunchSpecElasticIpPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecElasticIpPoolTagSelectorInput)(nil)).Elem(), OceanLaunchSpecElasticIpPoolTagSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecElasticIpPoolTagSelectorPtrInput)(nil)).Elem(), OceanLaunchSpecElasticIpPoolTagSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelInput)(nil)).Elem(), OceanLaunchSpecLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelArrayInput)(nil)).Elem(), OceanLaunchSpecLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitInput)(nil)).Elem(), OceanLaunchSpecResourceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitArrayInput)(nil)).Elem(), OceanLaunchSpecResourceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStrategyInput)(nil)).Elem(), OceanLaunchSpecStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStrategyArrayInput)(nil)).Elem(), OceanLaunchSpecStrategyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTagInput)(nil)).Elem(), OceanLaunchSpecTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTagArrayInput)(nil)).Elem(), OceanLaunchSpecTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTaintInput)(nil)).Elem(), OceanLaunchSpecTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTaintArrayInput)(nil)).Elem(), OceanLaunchSpecTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecUpdatePolicyInput)(nil)).Elem(), OceanLaunchSpecUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecUpdatePolicyPtrInput)(nil)).Elem(), OceanLaunchSpecUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecUpdatePolicyRollConfigInput)(nil)).Elem(), OceanLaunchSpecUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecUpdatePolicyRollConfigPtrInput)(nil)).Elem(), OceanLaunchSpecUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoadBalancerInput)(nil)).Elem(), OceanLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoadBalancerArrayInput)(nil)).Elem(), OceanLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskInput)(nil)).Elem(), OceanScheduledTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskArrayInput)(nil)).Elem(), OceanScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskShutdownHoursInput)(nil)).Elem(), OceanScheduledTaskShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskShutdownHoursPtrInput)(nil)).Elem(), OceanScheduledTaskShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskTaskInput)(nil)).Elem(), OceanScheduledTaskTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskTaskArrayInput)(nil)).Elem(), OceanScheduledTaskTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanTagInput)(nil)).Elem(), OceanTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanTagArrayInput)(nil)).Elem(), OceanTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanUpdatePolicyInput)(nil)).Elem(), OceanUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanUpdatePolicyPtrInput)(nil)).Elem(), OceanUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanUpdatePolicyRollConfigInput)(nil)).Elem(), OceanUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanUpdatePolicyRollConfigPtrInput)(nil)).Elem(), OceanUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuspensionSuspensionInput)(nil)).Elem(), SuspensionSuspensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuspensionSuspensionArrayInput)(nil)).Elem(), SuspensionSuspensionArray{})
 	pulumi.RegisterOutputType(BeanstalkDeploymentPreferencesOutput{})
 	pulumi.RegisterOutputType(BeanstalkDeploymentPreferencesPtrOutput{})
 	pulumi.RegisterOutputType(BeanstalkDeploymentPreferencesStrategyOutput{})

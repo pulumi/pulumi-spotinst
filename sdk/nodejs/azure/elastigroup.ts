@@ -346,180 +346,180 @@ export class Elastigroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Elastigroup resources.
  */
 export interface ElastigroupState {
-    readonly customData?: pulumi.Input<string>;
+    customData?: pulumi.Input<string>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * Describes the health check configuration.
      */
-    readonly healthCheck?: pulumi.Input<inputs.azure.ElastigroupHealthCheck>;
+    healthCheck?: pulumi.Input<inputs.azure.ElastigroupHealthCheck>;
     /**
      * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
      */
-    readonly images?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImage>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImage>[]>;
     /**
      * Describes the [Kubernetes](https://kubernetes.io/) integration.
      */
-    readonly integrationKubernetes?: pulumi.Input<inputs.azure.ElastigroupIntegrationKubernetes>;
+    integrationKubernetes?: pulumi.Input<inputs.azure.ElastigroupIntegrationKubernetes>;
     /**
      * Describes the [Multai Runtime](https://spotinst.com/) integration.
      */
-    readonly integrationMultaiRuntime?: pulumi.Input<inputs.azure.ElastigroupIntegrationMultaiRuntime>;
+    integrationMultaiRuntime?: pulumi.Input<inputs.azure.ElastigroupIntegrationMultaiRuntime>;
     /**
      * Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
      */
-    readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupLoadBalancer>[]>;
     /**
      * Describes the login configuration.
      */
-    readonly login?: pulumi.Input<inputs.azure.ElastigroupLogin>;
+    login?: pulumi.Input<inputs.azure.ElastigroupLogin>;
     /**
      * Available Low-Priority sizes.
      */
-    readonly lowPrioritySizes?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupManagedServiceIdentity>[]>;
+    lowPrioritySizes?: pulumi.Input<pulumi.Input<string>[]>;
+    managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupManagedServiceIdentity>[]>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * The dimension name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Defines the Virtual Network and Subnet for your Elastigroup.
      */
-    readonly network?: pulumi.Input<inputs.azure.ElastigroupNetwork>;
+    network?: pulumi.Input<inputs.azure.ElastigroupNetwork>;
     /**
      * Available On-Demand sizes
      */
-    readonly odSizes?: pulumi.Input<pulumi.Input<string>[]>;
+    odSizes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Operation system type. Valid values: `"Linux"`, `"Windows"`.
      */
-    readonly product?: pulumi.Input<string>;
+    product?: pulumi.Input<string>;
     /**
      * The region your Azure group will be created in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Vnet Resource Group Name.
      */
-    readonly resourceGroupName?: pulumi.Input<string>;
-    readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;
-    readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicy>[]>;
+    resourceGroupName?: pulumi.Input<string>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicy>[]>;
     /**
      * Describes the configuration of one or more scheduled tasks.
      */
-    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScheduledTask>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScheduledTask>[]>;
     /**
      * Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
      */
-    readonly shutdownScript?: pulumi.Input<string>;
+    shutdownScript?: pulumi.Input<string>;
     /**
      * Describes the deployment strategy.
      */
-    readonly strategy?: pulumi.Input<inputs.azure.ElastigroupStrategy>;
-    readonly updatePolicy?: pulumi.Input<inputs.azure.ElastigroupUpdatePolicy>;
+    strategy?: pulumi.Input<inputs.azure.ElastigroupStrategy>;
+    updatePolicy?: pulumi.Input<inputs.azure.ElastigroupUpdatePolicy>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
-    readonly userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Elastigroup resource.
  */
 export interface ElastigroupArgs {
-    readonly customData?: pulumi.Input<string>;
+    customData?: pulumi.Input<string>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * Describes the health check configuration.
      */
-    readonly healthCheck?: pulumi.Input<inputs.azure.ElastigroupHealthCheck>;
+    healthCheck?: pulumi.Input<inputs.azure.ElastigroupHealthCheck>;
     /**
      * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
      */
-    readonly images?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImage>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImage>[]>;
     /**
      * Describes the [Kubernetes](https://kubernetes.io/) integration.
      */
-    readonly integrationKubernetes?: pulumi.Input<inputs.azure.ElastigroupIntegrationKubernetes>;
+    integrationKubernetes?: pulumi.Input<inputs.azure.ElastigroupIntegrationKubernetes>;
     /**
      * Describes the [Multai Runtime](https://spotinst.com/) integration.
      */
-    readonly integrationMultaiRuntime?: pulumi.Input<inputs.azure.ElastigroupIntegrationMultaiRuntime>;
+    integrationMultaiRuntime?: pulumi.Input<inputs.azure.ElastigroupIntegrationMultaiRuntime>;
     /**
      * Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
      */
-    readonly loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupLoadBalancer>[]>;
     /**
      * Describes the login configuration.
      */
-    readonly login?: pulumi.Input<inputs.azure.ElastigroupLogin>;
+    login?: pulumi.Input<inputs.azure.ElastigroupLogin>;
     /**
      * Available Low-Priority sizes.
      */
-    readonly lowPrioritySizes: pulumi.Input<pulumi.Input<string>[]>;
-    readonly managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupManagedServiceIdentity>[]>;
+    lowPrioritySizes: pulumi.Input<pulumi.Input<string>[]>;
+    managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupManagedServiceIdentity>[]>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * The dimension name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Defines the Virtual Network and Subnet for your Elastigroup.
      */
-    readonly network: pulumi.Input<inputs.azure.ElastigroupNetwork>;
+    network: pulumi.Input<inputs.azure.ElastigroupNetwork>;
     /**
      * Available On-Demand sizes
      */
-    readonly odSizes: pulumi.Input<pulumi.Input<string>[]>;
+    odSizes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Operation system type. Valid values: `"Linux"`, `"Windows"`.
      */
-    readonly product: pulumi.Input<string>;
+    product: pulumi.Input<string>;
     /**
      * The region your Azure group will be created in.
      */
-    readonly region: pulumi.Input<string>;
+    region: pulumi.Input<string>;
     /**
      * Vnet Resource Group Name.
      */
-    readonly resourceGroupName: pulumi.Input<string>;
-    readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;
-    readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicy>[]>;
+    resourceGroupName: pulumi.Input<string>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicy>[]>;
     /**
      * Describes the configuration of one or more scheduled tasks.
      */
-    readonly scheduledTasks?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScheduledTask>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScheduledTask>[]>;
     /**
      * Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
      */
-    readonly shutdownScript?: pulumi.Input<string>;
+    shutdownScript?: pulumi.Input<string>;
     /**
      * Describes the deployment strategy.
      */
-    readonly strategy: pulumi.Input<inputs.azure.ElastigroupStrategy>;
-    readonly updatePolicy?: pulumi.Input<inputs.azure.ElastigroupUpdatePolicy>;
+    strategy: pulumi.Input<inputs.azure.ElastigroupStrategy>;
+    updatePolicy?: pulumi.Input<inputs.azure.ElastigroupUpdatePolicy>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
-    readonly userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
 }

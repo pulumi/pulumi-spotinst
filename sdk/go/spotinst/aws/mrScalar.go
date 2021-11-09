@@ -241,9 +241,9 @@ import (
 // 					ActionType: pulumi.String(""),
 // 					Adjustment: pulumi.String("1"),
 // 					Cooldown:   pulumi.Int(60),
-// 					Dimensions: pulumi.StringMap{
-// 						"name":  pulumi.String("name-1"),
-// 						"value": pulumi.String("value-1"),
+// 					Dimensions: pulumi.AnyMap{
+// 						"name":  pulumi.Any("name-1"),
+// 						"value": pulumi.Any("value-1"),
 // 					},
 // 					EvaluationPeriods: pulumi.Int(10),
 // 					MaxTargetCapacity: pulumi.String("1"),
@@ -999,7 +999,7 @@ type MrScalarArrayInput interface {
 type MrScalarArray []MrScalarInput
 
 func (MrScalarArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MrScalar)(nil))
+	return reflect.TypeOf((*[]*MrScalar)(nil)).Elem()
 }
 
 func (i MrScalarArray) ToMrScalarArrayOutput() MrScalarArrayOutput {
@@ -1024,7 +1024,7 @@ type MrScalarMapInput interface {
 type MrScalarMap map[string]MrScalarInput
 
 func (MrScalarMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MrScalar)(nil))
+	return reflect.TypeOf((*map[string]*MrScalar)(nil)).Elem()
 }
 
 func (i MrScalarMap) ToMrScalarMapOutput() MrScalarMapOutput {
@@ -1035,9 +1035,7 @@ func (i MrScalarMap) ToMrScalarMapOutputWithContext(ctx context.Context) MrScala
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarMapOutput)
 }
 
-type MrScalarOutput struct {
-	*pulumi.OutputState
-}
+type MrScalarOutput struct{ *pulumi.OutputState }
 
 func (MrScalarOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MrScalar)(nil))
@@ -1056,14 +1054,12 @@ func (o MrScalarOutput) ToMrScalarPtrOutput() MrScalarPtrOutput {
 }
 
 func (o MrScalarOutput) ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput {
-	return o.ApplyT(func(v MrScalar) *MrScalar {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MrScalar) *MrScalar {
 		return &v
 	}).(MrScalarPtrOutput)
 }
 
-type MrScalarPtrOutput struct {
-	*pulumi.OutputState
-}
+type MrScalarPtrOutput struct{ *pulumi.OutputState }
 
 func (MrScalarPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MrScalar)(nil))
@@ -1075,6 +1071,16 @@ func (o MrScalarPtrOutput) ToMrScalarPtrOutput() MrScalarPtrOutput {
 
 func (o MrScalarPtrOutput) ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput {
 	return o
+}
+
+func (o MrScalarPtrOutput) Elem() MrScalarOutput {
+	return o.ApplyT(func(v *MrScalar) MrScalar {
+		if v != nil {
+			return *v
+		}
+		var ret MrScalar
+		return ret
+	}).(MrScalarOutput)
 }
 
 type MrScalarArrayOutput struct{ *pulumi.OutputState }
@@ -1118,6 +1124,10 @@ func (o MrScalarMapOutput) MapIndex(k pulumi.StringInput) MrScalarOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarInput)(nil)).Elem(), &MrScalar{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarPtrInput)(nil)).Elem(), &MrScalar{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarArrayInput)(nil)).Elem(), MrScalarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarMapInput)(nil)).Elem(), MrScalarMap{})
 	pulumi.RegisterOutputType(MrScalarOutput{})
 	pulumi.RegisterOutputType(MrScalarPtrOutput{})
 	pulumi.RegisterOutputType(MrScalarArrayOutput{})
