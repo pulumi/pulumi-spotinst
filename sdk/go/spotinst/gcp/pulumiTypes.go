@@ -818,7 +818,7 @@ func (o ElastigroupIntegrationDockerSwarmOutput) ToElastigroupIntegrationDockerS
 }
 
 func (o ElastigroupIntegrationDockerSwarmOutput) ToElastigroupIntegrationDockerSwarmPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationDockerSwarmPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarm {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarm {
 		return &v
 	}).(ElastigroupIntegrationDockerSwarmPtrOutput)
 }
@@ -848,7 +848,13 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) ToElastigroupIntegrationDock
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) Elem() ElastigroupIntegrationDockerSwarmOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) ElastigroupIntegrationDockerSwarm { return *v }).(ElastigroupIntegrationDockerSwarmOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) ElastigroupIntegrationDockerSwarm {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationDockerSwarm
+		return ret
+	}).(ElastigroupIntegrationDockerSwarmOutput)
 }
 
 // IP or FQDN of one of your swarm managers.
@@ -978,10 +984,11 @@ func (o ElastigroupIntegrationGkeOutput) ToElastigroupIntegrationGkePtrOutput() 
 }
 
 func (o ElastigroupIntegrationGkeOutput) ToElastigroupIntegrationGkePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGkePtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) *ElastigroupIntegrationGke {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationGke) *ElastigroupIntegrationGke {
 		return &v
 	}).(ElastigroupIntegrationGkePtrOutput)
 }
+
 func (o ElastigroupIntegrationGkeOutput) AutoUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoUpdate }).(pulumi.BoolPtrOutput)
 }
@@ -1035,7 +1042,13 @@ func (o ElastigroupIntegrationGkePtrOutput) ToElastigroupIntegrationGkePtrOutput
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) Elem() ElastigroupIntegrationGkeOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationGke) ElastigroupIntegrationGke { return *v }).(ElastigroupIntegrationGkeOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) ElastigroupIntegrationGke {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationGke
+		return ret
+	}).(ElastigroupIntegrationGkeOutput)
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) AutoUpdate() pulumi.BoolPtrOutput {
@@ -1212,7 +1225,7 @@ func (o ElastigroupIntegrationGkeAutoscaleDownOutput) ToElastigroupIntegrationGk
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleDownOutput) ToElastigroupIntegrationGkeAutoscaleDownPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGkeAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleDown) *ElastigroupIntegrationGkeAutoscaleDown {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationGkeAutoscaleDown) *ElastigroupIntegrationGkeAutoscaleDown {
 		return &v
 	}).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
@@ -1237,7 +1250,13 @@ func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) ToElastigroupIntegratio
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationGkeAutoscaleDownOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleDown) ElastigroupIntegrationGkeAutoscaleDown { return *v }).(ElastigroupIntegrationGkeAutoscaleDownOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleDown) ElastigroupIntegrationGkeAutoscaleDown {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationGkeAutoscaleDown
+		return ret
+	}).(ElastigroupIntegrationGkeAutoscaleDownOutput)
 }
 
 // Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
@@ -1345,10 +1364,11 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) ToElastigroupIntegrati
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) ToElastigroupIntegrationGkeAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *ElastigroupIntegrationGkeAutoscaleHeadroom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationGkeAutoscaleHeadroom) *ElastigroupIntegrationGkeAutoscaleHeadroom {
 		return &v
 	}).(ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput)
 }
+
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
@@ -1377,7 +1397,11 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) ToElastigroupIntegr
 
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationGkeAutoscaleHeadroomOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) ElastigroupIntegrationGkeAutoscaleHeadroom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationGkeAutoscaleHeadroom
+		return ret
 	}).(ElastigroupIntegrationGkeAutoscaleHeadroomOutput)
 }
 
@@ -2915,6 +2939,50 @@ func (o ElastigroupSubnetArrayOutput) Index(i pulumi.IntInput) ElastigroupSubnet
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceInput)(nil)).Elem(), ElastigroupBackendServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceArrayInput)(nil)).Elem(), ElastigroupBackendServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceNamedPortInput)(nil)).Elem(), ElastigroupBackendServiceNamedPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceNamedPortArrayInput)(nil)).Elem(), ElastigroupBackendServiceNamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupDiskInput)(nil)).Elem(), ElastigroupDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupDiskArrayInput)(nil)).Elem(), ElastigroupDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupDiskInitializeParamInput)(nil)).Elem(), ElastigroupDiskInitializeParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupDiskInitializeParamArrayInput)(nil)).Elem(), ElastigroupDiskInitializeParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupGpuInput)(nil)).Elem(), ElastigroupGpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupGpuArrayInput)(nil)).Elem(), ElastigroupGpuArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupInstanceTypesCustomInput)(nil)).Elem(), ElastigroupInstanceTypesCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupInstanceTypesCustomArrayInput)(nil)).Elem(), ElastigroupInstanceTypesCustomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationDockerSwarmInput)(nil)).Elem(), ElastigroupIntegrationDockerSwarmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationDockerSwarmPtrInput)(nil)).Elem(), ElastigroupIntegrationDockerSwarmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeInput)(nil)).Elem(), ElastigroupIntegrationGkeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkePtrInput)(nil)).Elem(), ElastigroupIntegrationGkeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleDownInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleDownPtrInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleHeadroomInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleHeadroomPtrInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleLabelInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleLabelArrayInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLabelInput)(nil)).Elem(), ElastigroupLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLabelArrayInput)(nil)).Elem(), ElastigroupLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMetadataInput)(nil)).Elem(), ElastigroupMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMetadataArrayInput)(nil)).Elem(), ElastigroupMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceInput)(nil)).Elem(), ElastigroupNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceArrayInput)(nil)).Elem(), ElastigroupNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAccessConfigInput)(nil)).Elem(), ElastigroupNetworkInterfaceAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), ElastigroupNetworkInterfaceAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), ElastigroupNetworkInterfaceAliasIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), ElastigroupNetworkInterfaceAliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyInput)(nil)).Elem(), ElastigroupScalingDownPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyArrayInput)(nil)).Elem(), ElastigroupScalingDownPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingDownPolicyDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingDownPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyInput)(nil)).Elem(), ElastigroupScalingUpPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScheduledTaskInput)(nil)).Elem(), ElastigroupScheduledTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScheduledTaskArrayInput)(nil)).Elem(), ElastigroupScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupSubnetInput)(nil)).Elem(), ElastigroupSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupSubnetArrayInput)(nil)).Elem(), ElastigroupSubnetArray{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceOutput{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceNamedPortOutput{})

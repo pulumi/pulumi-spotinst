@@ -110,11 +110,11 @@ export interface SuspensionState {
     /**
      * Elastigroup ID to apply the suspensions on.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * block of single process to suspend.
      */
-    readonly suspensions?: pulumi.Input<pulumi.Input<inputs.aws.SuspensionSuspension>[]>;
+    suspensions?: pulumi.Input<pulumi.Input<inputs.aws.SuspensionSuspension>[]>;
 }
 
 /**
@@ -124,9 +124,9 @@ export interface SuspensionArgs {
     /**
      * Elastigroup ID to apply the suspensions on.
      */
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * block of single process to suspend.
      */
-    readonly suspensions: pulumi.Input<pulumi.Input<inputs.aws.SuspensionSuspension>[]>;
+    suspensions: pulumi.Input<pulumi.Input<inputs.aws.SuspensionSuspension>[]>;
 }

@@ -101,11 +101,11 @@ export interface OceanLaunchSpecImportState {
     /**
      * The node pool you wish to use in your launchSpec.
      */
-    readonly nodePoolName?: pulumi.Input<string>;
+    nodePoolName?: pulumi.Input<string>;
     /**
      * The Ocean cluster ID required for launchSpec create.
      */
-    readonly oceanId?: pulumi.Input<string>;
+    oceanId?: pulumi.Input<string>;
 }
 
 /**
@@ -115,9 +115,9 @@ export interface OceanLaunchSpecImportArgs {
     /**
      * The node pool you wish to use in your launchSpec.
      */
-    readonly nodePoolName: pulumi.Input<string>;
+    nodePoolName: pulumi.Input<string>;
     /**
      * The Ocean cluster ID required for launchSpec create.
      */
-    readonly oceanId: pulumi.Input<string>;
+    oceanId: pulumi.Input<string>;
 }

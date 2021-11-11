@@ -177,6 +177,7 @@ export interface HealthCheckCheck {
      */
     unhealthy: number;
 }
+
 export namespace aws {
     export interface BeanstalkDeploymentPreferences {
         /**
@@ -2612,6 +2613,7 @@ export namespace aws {
          */
         name: string;
     }
+
 }
 
 export namespace azure {
@@ -3334,6 +3336,7 @@ export namespace azure {
          */
         whitelists?: string[];
     }
+
 }
 
 export namespace ecs {
@@ -3621,6 +3624,7 @@ export namespace ecs {
          */
         batchSizePercentage: number;
     }
+
 }
 
 export namespace gcp {
@@ -3976,6 +3980,7 @@ export namespace gcp {
          */
         subnetNames: string[];
     }
+
 }
 
 export namespace gke {
@@ -4437,6 +4442,7 @@ export namespace gke {
     export interface OceanLaunchSpecUpdatePolicyRollConfig {
         batchSizePercentage: number;
     }
+
 }
 
 export namespace multai {
@@ -4488,4 +4494,5 @@ export namespace multai {
         key: string;
         value: string;
     }
+
 }

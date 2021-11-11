@@ -76,20 +76,20 @@ export class Balancer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Balancer resources.
  */
 export interface BalancerState {
-    readonly connectionTimeouts?: pulumi.Input<inputs.multai.BalancerConnectionTimeouts>;
-    readonly dnsCnameAliases?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly name?: pulumi.Input<string>;
-    readonly scheme?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.BalancerTag>[]>;
+    connectionTimeouts?: pulumi.Input<inputs.multai.BalancerConnectionTimeouts>;
+    dnsCnameAliases?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<string>;
+    scheme?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.multai.BalancerTag>[]>;
 }
 
 /**
  * The set of arguments for constructing a Balancer resource.
  */
 export interface BalancerArgs {
-    readonly connectionTimeouts?: pulumi.Input<inputs.multai.BalancerConnectionTimeouts>;
-    readonly dnsCnameAliases?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly name?: pulumi.Input<string>;
-    readonly scheme?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.BalancerTag>[]>;
+    connectionTimeouts?: pulumi.Input<inputs.multai.BalancerConnectionTimeouts>;
+    dnsCnameAliases?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<string>;
+    scheme?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.multai.BalancerTag>[]>;
 }

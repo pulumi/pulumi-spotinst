@@ -757,10 +757,11 @@ func (o ElastigroupIntegrationDockerSwarmOutput) ToElastigroupIntegrationDockerS
 }
 
 func (o ElastigroupIntegrationDockerSwarmOutput) ToElastigroupIntegrationDockerSwarmPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationDockerSwarmPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarm {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarm {
 		return &v
 	}).(ElastigroupIntegrationDockerSwarmPtrOutput)
 }
+
 func (o ElastigroupIntegrationDockerSwarmOutput) MasterHost() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) string { return v.MasterHost }).(pulumi.StringOutput)
 }
@@ -784,7 +785,13 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) ToElastigroupIntegrationDock
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) Elem() ElastigroupIntegrationDockerSwarmOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) ElastigroupIntegrationDockerSwarm { return *v }).(ElastigroupIntegrationDockerSwarmOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) ElastigroupIntegrationDockerSwarm {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationDockerSwarm
+		return ret
+	}).(ElastigroupIntegrationDockerSwarmOutput)
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterHost() pulumi.StringPtrOutput {
@@ -926,10 +933,11 @@ func (o ElastigroupIntegrationGkeOutput) ToElastigroupIntegrationGkePtrOutput() 
 }
 
 func (o ElastigroupIntegrationGkeOutput) ToElastigroupIntegrationGkePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGkePtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGke) *ElastigroupIntegrationGke {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationGke) *ElastigroupIntegrationGke {
 		return &v
 	}).(ElastigroupIntegrationGkePtrOutput)
 }
+
 func (o ElastigroupIntegrationGkeOutput) AutoUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoUpdate }).(pulumi.BoolPtrOutput)
 }
@@ -990,7 +998,13 @@ func (o ElastigroupIntegrationGkePtrOutput) ToElastigroupIntegrationGkePtrOutput
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) Elem() ElastigroupIntegrationGkeOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationGke) ElastigroupIntegrationGke { return *v }).(ElastigroupIntegrationGkeOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGke) ElastigroupIntegrationGke {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationGke
+		return ret
+	}).(ElastigroupIntegrationGkeOutput)
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) AutoUpdate() pulumi.BoolPtrOutput {
@@ -1174,7 +1188,7 @@ func (o ElastigroupIntegrationGkeAutoscaleDownOutput) ToElastigroupIntegrationGk
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleDownOutput) ToElastigroupIntegrationGkeAutoscaleDownPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGkeAutoscaleDownPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleDown) *ElastigroupIntegrationGkeAutoscaleDown {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationGkeAutoscaleDown) *ElastigroupIntegrationGkeAutoscaleDown {
 		return &v
 	}).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
@@ -1199,7 +1213,13 @@ func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) ToElastigroupIntegratio
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationGkeAutoscaleDownOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleDown) ElastigroupIntegrationGkeAutoscaleDown { return *v }).(ElastigroupIntegrationGkeAutoscaleDownOutput)
+	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleDown) ElastigroupIntegrationGkeAutoscaleDown {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationGkeAutoscaleDown
+		return ret
+	}).(ElastigroupIntegrationGkeAutoscaleDownOutput)
 }
 
 // Amount of cooldown evaluation periods for scale down.
@@ -1313,7 +1333,7 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) ToElastigroupIntegrati
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) ToElastigroupIntegrationGkeAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *ElastigroupIntegrationGkeAutoscaleHeadroom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationGkeAutoscaleHeadroom) *ElastigroupIntegrationGkeAutoscaleHeadroom {
 		return &v
 	}).(ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput)
 }
@@ -1349,7 +1369,11 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) ToElastigroupIntegr
 
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationGkeAutoscaleHeadroomOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) ElastigroupIntegrationGkeAutoscaleHeadroom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupIntegrationGkeAutoscaleHeadroom
+		return ret
 	}).(ElastigroupIntegrationGkeAutoscaleHeadroomOutput)
 }
 
@@ -2680,7 +2704,7 @@ func (o OceanImportAutoscalerOutput) ToOceanImportAutoscalerPtrOutput() OceanImp
 }
 
 func (o OceanImportAutoscalerOutput) ToOceanImportAutoscalerPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerPtrOutput {
-	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscaler {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportAutoscaler) *OceanImportAutoscaler {
 		return &v
 	}).(OceanImportAutoscalerPtrOutput)
 }
@@ -2735,7 +2759,13 @@ func (o OceanImportAutoscalerPtrOutput) ToOceanImportAutoscalerPtrOutputWithCont
 }
 
 func (o OceanImportAutoscalerPtrOutput) Elem() OceanImportAutoscalerOutput {
-	return o.ApplyT(func(v *OceanImportAutoscaler) OceanImportAutoscaler { return *v }).(OceanImportAutoscalerOutput)
+	return o.ApplyT(func(v *OceanImportAutoscaler) OceanImportAutoscaler {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportAutoscaler
+		return ret
+	}).(OceanImportAutoscalerOutput)
 }
 
 // Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
@@ -2905,7 +2935,7 @@ func (o OceanImportAutoscalerDownOutput) ToOceanImportAutoscalerDownPtrOutput() 
 }
 
 func (o OceanImportAutoscalerDownOutput) ToOceanImportAutoscalerDownPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerDownPtrOutput {
-	return o.ApplyT(func(v OceanImportAutoscalerDown) *OceanImportAutoscalerDown {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportAutoscalerDown) *OceanImportAutoscalerDown {
 		return &v
 	}).(OceanImportAutoscalerDownPtrOutput)
 }
@@ -2935,7 +2965,13 @@ func (o OceanImportAutoscalerDownPtrOutput) ToOceanImportAutoscalerDownPtrOutput
 }
 
 func (o OceanImportAutoscalerDownPtrOutput) Elem() OceanImportAutoscalerDownOutput {
-	return o.ApplyT(func(v *OceanImportAutoscalerDown) OceanImportAutoscalerDown { return *v }).(OceanImportAutoscalerDownOutput)
+	return o.ApplyT(func(v *OceanImportAutoscalerDown) OceanImportAutoscalerDown {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportAutoscalerDown
+		return ret
+	}).(OceanImportAutoscalerDownOutput)
 }
 
 // The number of evaluation periods that should accumulate before a scale down action takes place.
@@ -3063,7 +3099,7 @@ func (o OceanImportAutoscalerHeadroomOutput) ToOceanImportAutoscalerHeadroomPtrO
 }
 
 func (o OceanImportAutoscalerHeadroomOutput) ToOceanImportAutoscalerHeadroomPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerHeadroomPtrOutput {
-	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *OceanImportAutoscalerHeadroom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportAutoscalerHeadroom) *OceanImportAutoscalerHeadroom {
 		return &v
 	}).(OceanImportAutoscalerHeadroomPtrOutput)
 }
@@ -3103,7 +3139,13 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) ToOceanImportAutoscalerHeadroomP
 }
 
 func (o OceanImportAutoscalerHeadroomPtrOutput) Elem() OceanImportAutoscalerHeadroomOutput {
-	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) OceanImportAutoscalerHeadroom { return *v }).(OceanImportAutoscalerHeadroomOutput)
+	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) OceanImportAutoscalerHeadroom {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportAutoscalerHeadroom
+		return ret
+	}).(OceanImportAutoscalerHeadroomOutput)
 }
 
 // Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -3243,7 +3285,7 @@ func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResour
 }
 
 func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanImportAutoscalerResourceLimitsPtrOutput {
-	return o.ApplyT(func(v OceanImportAutoscalerResourceLimits) *OceanImportAutoscalerResourceLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportAutoscalerResourceLimits) *OceanImportAutoscalerResourceLimits {
 		return &v
 	}).(OceanImportAutoscalerResourceLimitsPtrOutput)
 }
@@ -3273,7 +3315,13 @@ func (o OceanImportAutoscalerResourceLimitsPtrOutput) ToOceanImportAutoscalerRes
 }
 
 func (o OceanImportAutoscalerResourceLimitsPtrOutput) Elem() OceanImportAutoscalerResourceLimitsOutput {
-	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) OceanImportAutoscalerResourceLimits { return *v }).(OceanImportAutoscalerResourceLimitsOutput)
+	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) OceanImportAutoscalerResourceLimits {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportAutoscalerResourceLimits
+		return ret
+	}).(OceanImportAutoscalerResourceLimitsOutput)
 }
 
 // The maximum memory in GiB units that can be allocated to the cluster.
@@ -3725,7 +3773,7 @@ func (o OceanImportScheduledTaskShutdownHoursOutput) ToOceanImportScheduledTaskS
 }
 
 func (o OceanImportScheduledTaskShutdownHoursOutput) ToOceanImportScheduledTaskShutdownHoursPtrOutputWithContext(ctx context.Context) OceanImportScheduledTaskShutdownHoursPtrOutput {
-	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) *OceanImportScheduledTaskShutdownHours {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportScheduledTaskShutdownHours) *OceanImportScheduledTaskShutdownHours {
 		return &v
 	}).(OceanImportScheduledTaskShutdownHoursPtrOutput)
 }
@@ -3756,7 +3804,13 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) ToOceanImportScheduledTa
 }
 
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) Elem() OceanImportScheduledTaskShutdownHoursOutput {
-	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) OceanImportScheduledTaskShutdownHours { return *v }).(OceanImportScheduledTaskShutdownHoursOutput)
+	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) OceanImportScheduledTaskShutdownHours {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportScheduledTaskShutdownHours
+		return ret
+	}).(OceanImportScheduledTaskShutdownHoursOutput)
 }
 
 // Enable the Ocean Kubernetes Autoscaler.
@@ -4003,10 +4057,11 @@ func (o OceanImportUpdatePolicyOutput) ToOceanImportUpdatePolicyPtrOutput() Ocea
 }
 
 func (o OceanImportUpdatePolicyOutput) ToOceanImportUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanImportUpdatePolicyPtrOutput {
-	return o.ApplyT(func(v OceanImportUpdatePolicy) *OceanImportUpdatePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportUpdatePolicy) *OceanImportUpdatePolicy {
 		return &v
 	}).(OceanImportUpdatePolicyPtrOutput)
 }
+
 func (o OceanImportUpdatePolicyOutput) RollConfig() OceanImportUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicy) *OceanImportUpdatePolicyRollConfig { return v.RollConfig }).(OceanImportUpdatePolicyRollConfigPtrOutput)
 }
@@ -4030,7 +4085,13 @@ func (o OceanImportUpdatePolicyPtrOutput) ToOceanImportUpdatePolicyPtrOutputWith
 }
 
 func (o OceanImportUpdatePolicyPtrOutput) Elem() OceanImportUpdatePolicyOutput {
-	return o.ApplyT(func(v *OceanImportUpdatePolicy) OceanImportUpdatePolicy { return *v }).(OceanImportUpdatePolicyOutput)
+	return o.ApplyT(func(v *OceanImportUpdatePolicy) OceanImportUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportUpdatePolicy
+		return ret
+	}).(OceanImportUpdatePolicyOutput)
 }
 
 func (o OceanImportUpdatePolicyPtrOutput) RollConfig() OceanImportUpdatePolicyRollConfigPtrOutput {
@@ -4148,7 +4209,7 @@ func (o OceanImportUpdatePolicyRollConfigOutput) ToOceanImportUpdatePolicyRollCo
 }
 
 func (o OceanImportUpdatePolicyRollConfigOutput) ToOceanImportUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanImportUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) *OceanImportUpdatePolicyRollConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportUpdatePolicyRollConfig) *OceanImportUpdatePolicyRollConfig {
 		return &v
 	}).(OceanImportUpdatePolicyRollConfigPtrOutput)
 }
@@ -4178,7 +4239,13 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) ToOceanImportUpdatePolicyRol
 }
 
 func (o OceanImportUpdatePolicyRollConfigPtrOutput) Elem() OceanImportUpdatePolicyRollConfigOutput {
-	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) OceanImportUpdatePolicyRollConfig { return *v }).(OceanImportUpdatePolicyRollConfigOutput)
+	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) OceanImportUpdatePolicyRollConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportUpdatePolicyRollConfig
+		return ret
+	}).(OceanImportUpdatePolicyRollConfigOutput)
 }
 
 // Value in % to set size of batch in roll. Valid values are 0-100
@@ -4634,7 +4701,7 @@ func (o OceanLaunchSpecResourceLimitsOutput) ToOceanLaunchSpecResourceLimitsPtrO
 }
 
 func (o OceanLaunchSpecResourceLimitsOutput) ToOceanLaunchSpecResourceLimitsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecResourceLimitsPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecResourceLimits) *OceanLaunchSpecResourceLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecResourceLimits) *OceanLaunchSpecResourceLimits {
 		return &v
 	}).(OceanLaunchSpecResourceLimitsPtrOutput)
 }
@@ -4664,7 +4731,13 @@ func (o OceanLaunchSpecResourceLimitsPtrOutput) ToOceanLaunchSpecResourceLimitsP
 }
 
 func (o OceanLaunchSpecResourceLimitsPtrOutput) Elem() OceanLaunchSpecResourceLimitsOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecResourceLimits) OceanLaunchSpecResourceLimits { return *v }).(OceanLaunchSpecResourceLimitsOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecResourceLimits) OceanLaunchSpecResourceLimits {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecResourceLimits
+		return ret
+	}).(OceanLaunchSpecResourceLimitsOutput)
 }
 
 // Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
@@ -4784,7 +4857,7 @@ func (o OceanLaunchSpecShieldedInstanceConfigOutput) ToOceanLaunchSpecShieldedIn
 }
 
 func (o OceanLaunchSpecShieldedInstanceConfigOutput) ToOceanLaunchSpecShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecShieldedInstanceConfig) *OceanLaunchSpecShieldedInstanceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecShieldedInstanceConfig) *OceanLaunchSpecShieldedInstanceConfig {
 		return &v
 	}).(OceanLaunchSpecShieldedInstanceConfigPtrOutput)
 }
@@ -4814,7 +4887,13 @@ func (o OceanLaunchSpecShieldedInstanceConfigPtrOutput) ToOceanLaunchSpecShielde
 }
 
 func (o OceanLaunchSpecShieldedInstanceConfigPtrOutput) Elem() OceanLaunchSpecShieldedInstanceConfigOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecShieldedInstanceConfig) OceanLaunchSpecShieldedInstanceConfig { return *v }).(OceanLaunchSpecShieldedInstanceConfigOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecShieldedInstanceConfig) OceanLaunchSpecShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecShieldedInstanceConfig
+		return ret
+	}).(OceanLaunchSpecShieldedInstanceConfigOutput)
 }
 
 // Boolean. Enable the integrity monitoring parameter on the GCP instances.
@@ -4930,7 +5009,7 @@ func (o OceanLaunchSpecStorageOutput) ToOceanLaunchSpecStoragePtrOutput() OceanL
 }
 
 func (o OceanLaunchSpecStorageOutput) ToOceanLaunchSpecStoragePtrOutputWithContext(ctx context.Context) OceanLaunchSpecStoragePtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecStorage) *OceanLaunchSpecStorage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecStorage) *OceanLaunchSpecStorage {
 		return &v
 	}).(OceanLaunchSpecStoragePtrOutput)
 }
@@ -4955,7 +5034,13 @@ func (o OceanLaunchSpecStoragePtrOutput) ToOceanLaunchSpecStoragePtrOutputWithCo
 }
 
 func (o OceanLaunchSpecStoragePtrOutput) Elem() OceanLaunchSpecStorageOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecStorage) OceanLaunchSpecStorage { return *v }).(OceanLaunchSpecStorageOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecStorage) OceanLaunchSpecStorage {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecStorage
+		return ret
+	}).(OceanLaunchSpecStorageOutput)
 }
 
 // Defines the number of local SSDs to be attached per node for this VNG.
@@ -5273,10 +5358,11 @@ func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyPtrOutpu
 }
 
 func (o OceanLaunchSpecUpdatePolicyOutput) ToOceanLaunchSpecUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicy {
 		return &v
 	}).(OceanLaunchSpecUpdatePolicyPtrOutput)
 }
+
 func (o OceanLaunchSpecUpdatePolicyOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicy) *OceanLaunchSpecUpdatePolicyRollConfig { return v.RollConfig }).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
 }
@@ -5300,7 +5386,13 @@ func (o OceanLaunchSpecUpdatePolicyPtrOutput) ToOceanLaunchSpecUpdatePolicyPtrOu
 }
 
 func (o OceanLaunchSpecUpdatePolicyPtrOutput) Elem() OceanLaunchSpecUpdatePolicyOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) OceanLaunchSpecUpdatePolicy { return *v }).(OceanLaunchSpecUpdatePolicyOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicy) OceanLaunchSpecUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecUpdatePolicy
+		return ret
+	}).(OceanLaunchSpecUpdatePolicyOutput)
 }
 
 func (o OceanLaunchSpecUpdatePolicyPtrOutput) RollConfig() OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
@@ -5412,10 +5504,11 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePoli
 }
 
 func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) ToOceanLaunchSpecUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanLaunchSpecUpdatePolicyRollConfigPtrOutput {
-	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) *OceanLaunchSpecUpdatePolicyRollConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecUpdatePolicyRollConfig) *OceanLaunchSpecUpdatePolicyRollConfig {
 		return &v
 	}).(OceanLaunchSpecUpdatePolicyRollConfigPtrOutput)
 }
+
 func (o OceanLaunchSpecUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
@@ -5435,7 +5528,13 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) ToOceanLaunchSpecUpdateP
 }
 
 func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) Elem() OceanLaunchSpecUpdatePolicyRollConfigOutput {
-	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) OceanLaunchSpecUpdatePolicyRollConfig { return *v }).(OceanLaunchSpecUpdatePolicyRollConfigOutput)
+	return o.ApplyT(func(v *OceanLaunchSpecUpdatePolicyRollConfig) OceanLaunchSpecUpdatePolicyRollConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecUpdatePolicyRollConfig
+		return ret
+	}).(OceanLaunchSpecUpdatePolicyRollConfigOutput)
 }
 
 func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
@@ -5448,6 +5547,88 @@ func (o OceanLaunchSpecUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceInput)(nil)).Elem(), ElastigroupBackendServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceArrayInput)(nil)).Elem(), ElastigroupBackendServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceNamedPortInput)(nil)).Elem(), ElastigroupBackendServiceNamedPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupBackendServiceNamedPortArrayInput)(nil)).Elem(), ElastigroupBackendServiceNamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupDiskInput)(nil)).Elem(), ElastigroupDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupDiskArrayInput)(nil)).Elem(), ElastigroupDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupDiskInitializeParamInput)(nil)).Elem(), ElastigroupDiskInitializeParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupDiskInitializeParamArrayInput)(nil)).Elem(), ElastigroupDiskInitializeParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupGpuInput)(nil)).Elem(), ElastigroupGpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupGpuArrayInput)(nil)).Elem(), ElastigroupGpuArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupInstanceTypesCustomInput)(nil)).Elem(), ElastigroupInstanceTypesCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupInstanceTypesCustomArrayInput)(nil)).Elem(), ElastigroupInstanceTypesCustomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationDockerSwarmInput)(nil)).Elem(), ElastigroupIntegrationDockerSwarmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationDockerSwarmPtrInput)(nil)).Elem(), ElastigroupIntegrationDockerSwarmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeInput)(nil)).Elem(), ElastigroupIntegrationGkeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkePtrInput)(nil)).Elem(), ElastigroupIntegrationGkeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleDownInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleDownPtrInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleHeadroomInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleHeadroomPtrInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleLabelInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationGkeAutoscaleLabelArrayInput)(nil)).Elem(), ElastigroupIntegrationGkeAutoscaleLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLabelInput)(nil)).Elem(), ElastigroupLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLabelArrayInput)(nil)).Elem(), ElastigroupLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMetadataInput)(nil)).Elem(), ElastigroupMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMetadataArrayInput)(nil)).Elem(), ElastigroupMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceInput)(nil)).Elem(), ElastigroupNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceArrayInput)(nil)).Elem(), ElastigroupNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAccessConfigInput)(nil)).Elem(), ElastigroupNetworkInterfaceAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), ElastigroupNetworkInterfaceAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), ElastigroupNetworkInterfaceAliasIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), ElastigroupNetworkInterfaceAliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyInput)(nil)).Elem(), ElastigroupScalingDownPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyArrayInput)(nil)).Elem(), ElastigroupScalingDownPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingDownPolicyDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingDownPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingDownPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyInput)(nil)).Elem(), ElastigroupScalingUpPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupScalingUpPolicyDimensionArrayInput)(nil)).Elem(), ElastigroupScalingUpPolicyDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerInput)(nil)).Elem(), OceanImportAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerPtrInput)(nil)).Elem(), OceanImportAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerDownInput)(nil)).Elem(), OceanImportAutoscalerDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerDownPtrInput)(nil)).Elem(), OceanImportAutoscalerDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerHeadroomInput)(nil)).Elem(), OceanImportAutoscalerHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerHeadroomPtrInput)(nil)).Elem(), OceanImportAutoscalerHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerResourceLimitsInput)(nil)).Elem(), OceanImportAutoscalerResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportAutoscalerResourceLimitsPtrInput)(nil)).Elem(), OceanImportAutoscalerResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportBackendServiceInput)(nil)).Elem(), OceanImportBackendServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportBackendServiceArrayInput)(nil)).Elem(), OceanImportBackendServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportBackendServiceNamedPortInput)(nil)).Elem(), OceanImportBackendServiceNamedPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportBackendServiceNamedPortArrayInput)(nil)).Elem(), OceanImportBackendServiceNamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskInput)(nil)).Elem(), OceanImportScheduledTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskArrayInput)(nil)).Elem(), OceanImportScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskShutdownHoursInput)(nil)).Elem(), OceanImportScheduledTaskShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskShutdownHoursPtrInput)(nil)).Elem(), OceanImportScheduledTaskShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskInput)(nil)).Elem(), OceanImportScheduledTaskTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskArrayInput)(nil)).Elem(), OceanImportScheduledTaskTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportUpdatePolicyInput)(nil)).Elem(), OceanImportUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportUpdatePolicyPtrInput)(nil)).Elem(), OceanImportUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportUpdatePolicyRollConfigInput)(nil)).Elem(), OceanImportUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportUpdatePolicyRollConfigPtrInput)(nil)).Elem(), OceanImportUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelInput)(nil)).Elem(), OceanLaunchSpecLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelArrayInput)(nil)).Elem(), OceanLaunchSpecLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecMetadataInput)(nil)).Elem(), OceanLaunchSpecMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecMetadataArrayInput)(nil)).Elem(), OceanLaunchSpecMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitsInput)(nil)).Elem(), OceanLaunchSpecResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitsPtrInput)(nil)).Elem(), OceanLaunchSpecResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecShieldedInstanceConfigInput)(nil)).Elem(), OceanLaunchSpecShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecShieldedInstanceConfigPtrInput)(nil)).Elem(), OceanLaunchSpecShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStorageInput)(nil)).Elem(), OceanLaunchSpecStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStoragePtrInput)(nil)).Elem(), OceanLaunchSpecStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStrategyInput)(nil)).Elem(), OceanLaunchSpecStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStrategyArrayInput)(nil)).Elem(), OceanLaunchSpecStrategyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTaintInput)(nil)).Elem(), OceanLaunchSpecTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTaintArrayInput)(nil)).Elem(), OceanLaunchSpecTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecUpdatePolicyInput)(nil)).Elem(), OceanLaunchSpecUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecUpdatePolicyPtrInput)(nil)).Elem(), OceanLaunchSpecUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecUpdatePolicyRollConfigInput)(nil)).Elem(), OceanLaunchSpecUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecUpdatePolicyRollConfigPtrInput)(nil)).Elem(), OceanLaunchSpecUpdatePolicyRollConfigArgs{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceOutput{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupBackendServiceNamedPortOutput{})

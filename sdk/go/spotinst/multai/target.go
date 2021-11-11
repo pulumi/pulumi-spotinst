@@ -174,7 +174,7 @@ type TargetArrayInput interface {
 type TargetArray []TargetInput
 
 func (TargetArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Target)(nil))
+	return reflect.TypeOf((*[]*Target)(nil)).Elem()
 }
 
 func (i TargetArray) ToTargetArrayOutput() TargetArrayOutput {
@@ -199,7 +199,7 @@ type TargetMapInput interface {
 type TargetMap map[string]TargetInput
 
 func (TargetMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Target)(nil))
+	return reflect.TypeOf((*map[string]*Target)(nil)).Elem()
 }
 
 func (i TargetMap) ToTargetMapOutput() TargetMapOutput {
@@ -210,9 +210,7 @@ func (i TargetMap) ToTargetMapOutputWithContext(ctx context.Context) TargetMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(TargetMapOutput)
 }
 
-type TargetOutput struct {
-	*pulumi.OutputState
-}
+type TargetOutput struct{ *pulumi.OutputState }
 
 func (TargetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Target)(nil))
@@ -231,14 +229,12 @@ func (o TargetOutput) ToTargetPtrOutput() TargetPtrOutput {
 }
 
 func (o TargetOutput) ToTargetPtrOutputWithContext(ctx context.Context) TargetPtrOutput {
-	return o.ApplyT(func(v Target) *Target {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Target) *Target {
 		return &v
 	}).(TargetPtrOutput)
 }
 
-type TargetPtrOutput struct {
-	*pulumi.OutputState
-}
+type TargetPtrOutput struct{ *pulumi.OutputState }
 
 func (TargetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Target)(nil))
@@ -250,6 +246,16 @@ func (o TargetPtrOutput) ToTargetPtrOutput() TargetPtrOutput {
 
 func (o TargetPtrOutput) ToTargetPtrOutputWithContext(ctx context.Context) TargetPtrOutput {
 	return o
+}
+
+func (o TargetPtrOutput) Elem() TargetOutput {
+	return o.ApplyT(func(v *Target) Target {
+		if v != nil {
+			return *v
+		}
+		var ret Target
+		return ret
+	}).(TargetOutput)
 }
 
 type TargetArrayOutput struct{ *pulumi.OutputState }
@@ -293,6 +299,10 @@ func (o TargetMapOutput) MapIndex(k pulumi.StringInput) TargetOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetInput)(nil)).Elem(), &Target{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetPtrInput)(nil)).Elem(), &Target{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetArrayInput)(nil)).Elem(), TargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetMapInput)(nil)).Elem(), TargetMap{})
 	pulumi.RegisterOutputType(TargetOutput{})
 	pulumi.RegisterOutputType(TargetPtrOutput{})
 	pulumi.RegisterOutputType(TargetArrayOutput{})

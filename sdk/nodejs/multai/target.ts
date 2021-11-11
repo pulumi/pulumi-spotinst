@@ -94,24 +94,24 @@ export class Target extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Target resources.
  */
 export interface TargetState {
-    readonly balancerId?: pulumi.Input<string>;
-    readonly host?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly port?: pulumi.Input<number>;
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetTag>[]>;
-    readonly targetSetId?: pulumi.Input<string>;
-    readonly weight?: pulumi.Input<number>;
+    balancerId?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetTag>[]>;
+    targetSetId?: pulumi.Input<string>;
+    weight?: pulumi.Input<number>;
 }
 
 /**
  * The set of arguments for constructing a Target resource.
  */
 export interface TargetArgs {
-    readonly balancerId: pulumi.Input<string>;
-    readonly host: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly port?: pulumi.Input<number>;
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetTag>[]>;
-    readonly targetSetId: pulumi.Input<string>;
-    readonly weight: pulumi.Input<number>;
+    balancerId: pulumi.Input<string>;
+    host: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetTag>[]>;
+    targetSetId: pulumi.Input<string>;
+    weight: pulumi.Input<number>;
 }

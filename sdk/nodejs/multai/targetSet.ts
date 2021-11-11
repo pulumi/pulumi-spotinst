@@ -100,26 +100,26 @@ export class TargetSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TargetSet resources.
  */
 export interface TargetSetState {
-    readonly balancerId?: pulumi.Input<string>;
-    readonly deploymentId?: pulumi.Input<string>;
-    readonly healthCheck?: pulumi.Input<inputs.multai.TargetSetHealthCheck>;
-    readonly name?: pulumi.Input<string>;
-    readonly port?: pulumi.Input<number>;
-    readonly protocol?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetSetTag>[]>;
-    readonly weight?: pulumi.Input<number>;
+    balancerId?: pulumi.Input<string>;
+    deploymentId?: pulumi.Input<string>;
+    healthCheck?: pulumi.Input<inputs.multai.TargetSetHealthCheck>;
+    name?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    protocol?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetSetTag>[]>;
+    weight?: pulumi.Input<number>;
 }
 
 /**
  * The set of arguments for constructing a TargetSet resource.
  */
 export interface TargetSetArgs {
-    readonly balancerId: pulumi.Input<string>;
-    readonly deploymentId: pulumi.Input<string>;
-    readonly healthCheck: pulumi.Input<inputs.multai.TargetSetHealthCheck>;
-    readonly name?: pulumi.Input<string>;
-    readonly port?: pulumi.Input<number>;
-    readonly protocol: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetSetTag>[]>;
-    readonly weight: pulumi.Input<number>;
+    balancerId: pulumi.Input<string>;
+    deploymentId: pulumi.Input<string>;
+    healthCheck: pulumi.Input<inputs.multai.TargetSetHealthCheck>;
+    name?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    protocol: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.multai.TargetSetTag>[]>;
+    weight: pulumi.Input<number>;
 }

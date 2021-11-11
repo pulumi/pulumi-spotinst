@@ -138,3 +138,27 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter
+    def account(self) -> pulumi.Output[Optional[str]]:
+        """
+        Spotinst Account ID
+        """
+        return pulumi.get(self, "account")
+
+    @property
+    @pulumi.getter(name="featureFlags")
+    def feature_flags(self) -> pulumi.Output[Optional[str]]:
+        """
+        Spotinst SDK Feature Flags
+        """
+        return pulumi.get(self, "feature_flags")
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Output[Optional[str]]:
+        """
+        Spotinst Personal API Access Token
+        """
+        return pulumi.get(self, "token")
+

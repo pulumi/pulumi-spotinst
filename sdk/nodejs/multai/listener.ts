@@ -85,20 +85,20 @@ export class Listener extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Listener resources.
  */
 export interface ListenerState {
-    readonly balancerId?: pulumi.Input<string>;
-    readonly port?: pulumi.Input<number>;
-    readonly protocol?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.ListenerTag>[]>;
-    readonly tlsConfig?: pulumi.Input<inputs.multai.ListenerTlsConfig>;
+    balancerId?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    protocol?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.multai.ListenerTag>[]>;
+    tlsConfig?: pulumi.Input<inputs.multai.ListenerTlsConfig>;
 }
 
 /**
  * The set of arguments for constructing a Listener resource.
  */
 export interface ListenerArgs {
-    readonly balancerId: pulumi.Input<string>;
-    readonly port: pulumi.Input<number>;
-    readonly protocol: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<inputs.multai.ListenerTag>[]>;
-    readonly tlsConfig?: pulumi.Input<inputs.multai.ListenerTlsConfig>;
+    balancerId: pulumi.Input<string>;
+    port: pulumi.Input<number>;
+    protocol: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.multai.ListenerTag>[]>;
+    tlsConfig?: pulumi.Input<inputs.multai.ListenerTlsConfig>;
 }

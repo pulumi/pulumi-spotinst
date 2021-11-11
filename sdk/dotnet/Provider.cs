@@ -19,6 +19,25 @@ namespace Pulumi.SpotInst
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// Spotinst Account ID
+        /// </summary>
+        [Output("account")]
+        public Output<string?> Account { get; private set; } = null!;
+
+        /// <summary>
+        /// Spotinst SDK Feature Flags
+        /// </summary>
+        [Output("featureFlags")]
+        public Output<string?> FeatureFlags { get; private set; } = null!;
+
+        /// <summary>
+        /// Spotinst Personal API Access Token
+        /// </summary>
+        [Output("token")]
+        public Output<string?> Token { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -119,17 +119,17 @@ export interface HealthCheckState {
     /**
      * Describes the check to execute.
      */
-    readonly check?: pulumi.Input<inputs.HealthCheckCheck>;
+    check?: pulumi.Input<inputs.HealthCheckCheck>;
     /**
      * The name of the health check.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly proxyAddress?: pulumi.Input<string>;
-    readonly proxyPort?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    proxyAddress?: pulumi.Input<string>;
+    proxyPort?: pulumi.Input<number>;
     /**
      * The ID of the resource to check.
      */
-    readonly resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string>;
 }
 
 /**
@@ -139,15 +139,15 @@ export interface HealthCheckArgs {
     /**
      * Describes the check to execute.
      */
-    readonly check?: pulumi.Input<inputs.HealthCheckCheck>;
+    check?: pulumi.Input<inputs.HealthCheckCheck>;
     /**
      * The name of the health check.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly proxyAddress: pulumi.Input<string>;
-    readonly proxyPort?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    proxyAddress: pulumi.Input<string>;
+    proxyPort?: pulumi.Input<number>;
     /**
      * The ID of the resource to check.
      */
-    readonly resourceId: pulumi.Input<string>;
+    resourceId: pulumi.Input<string>;
 }

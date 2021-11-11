@@ -30,12 +30,12 @@ import (
 // 		_, err := spotinst.NewSubscription(ctx, "default_subscription", &spotinst.SubscriptionArgs{
 // 			Endpoint:  pulumi.String("http://endpoint.com"),
 // 			EventType: pulumi.String("AWS_EC2_INSTANCE_LAUNCH"),
-// 			Format: pulumi.StringMap{
-// 				"event":         pulumi.String(fmt.Sprintf("%v%v%v", "%", "event", "%")),
-// 				"instance_id":   pulumi.String(fmt.Sprintf("%v%v%v", "%", "instance-id", "%")),
-// 				"resource_id":   pulumi.String(fmt.Sprintf("%v%v%v", "%", "resource-id", "%")),
-// 				"resource_name": pulumi.String(fmt.Sprintf("%v%v%v", "%", "resource-name", "%")),
-// 				"tags":          pulumi.String("foo,baz,baz"),
+// 			Format: pulumi.AnyMap{
+// 				"event":         pulumi.Any(fmt.Sprintf("%v%v%v", "%", "event", "%")),
+// 				"instance_id":   pulumi.Any(fmt.Sprintf("%v%v%v", "%", "instance-id", "%")),
+// 				"resource_id":   pulumi.Any(fmt.Sprintf("%v%v%v", "%", "resource-id", "%")),
+// 				"resource_name": pulumi.Any(fmt.Sprintf("%v%v%v", "%", "resource-name", "%")),
+// 				"tags":          pulumi.Any("foo,baz,baz"),
 // 			},
 // 			Protocol:   pulumi.String("http"),
 // 			ResourceId: pulumi.Any(spotinst_elastigroup_aws.My - eg.Id),
@@ -300,7 +300,7 @@ type SubscriptionArrayInput interface {
 type SubscriptionArray []SubscriptionInput
 
 func (SubscriptionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Subscription)(nil))
+	return reflect.TypeOf((*[]*Subscription)(nil)).Elem()
 }
 
 func (i SubscriptionArray) ToSubscriptionArrayOutput() SubscriptionArrayOutput {
@@ -325,7 +325,7 @@ type SubscriptionMapInput interface {
 type SubscriptionMap map[string]SubscriptionInput
 
 func (SubscriptionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Subscription)(nil))
+	return reflect.TypeOf((*map[string]*Subscription)(nil)).Elem()
 }
 
 func (i SubscriptionMap) ToSubscriptionMapOutput() SubscriptionMapOutput {
@@ -336,9 +336,7 @@ func (i SubscriptionMap) ToSubscriptionMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionMapOutput)
 }
 
-type SubscriptionOutput struct {
-	*pulumi.OutputState
-}
+type SubscriptionOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Subscription)(nil))
@@ -357,14 +355,12 @@ func (o SubscriptionOutput) ToSubscriptionPtrOutput() SubscriptionPtrOutput {
 }
 
 func (o SubscriptionOutput) ToSubscriptionPtrOutputWithContext(ctx context.Context) SubscriptionPtrOutput {
-	return o.ApplyT(func(v Subscription) *Subscription {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Subscription) *Subscription {
 		return &v
 	}).(SubscriptionPtrOutput)
 }
 
-type SubscriptionPtrOutput struct {
-	*pulumi.OutputState
-}
+type SubscriptionPtrOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Subscription)(nil))
@@ -376,6 +372,16 @@ func (o SubscriptionPtrOutput) ToSubscriptionPtrOutput() SubscriptionPtrOutput {
 
 func (o SubscriptionPtrOutput) ToSubscriptionPtrOutputWithContext(ctx context.Context) SubscriptionPtrOutput {
 	return o
+}
+
+func (o SubscriptionPtrOutput) Elem() SubscriptionOutput {
+	return o.ApplyT(func(v *Subscription) Subscription {
+		if v != nil {
+			return *v
+		}
+		var ret Subscription
+		return ret
+	}).(SubscriptionOutput)
 }
 
 type SubscriptionArrayOutput struct{ *pulumi.OutputState }
@@ -419,6 +425,10 @@ func (o SubscriptionMapOutput) MapIndex(k pulumi.StringInput) SubscriptionOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionInput)(nil)).Elem(), &Subscription{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPtrInput)(nil)).Elem(), &Subscription{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionArrayInput)(nil)).Elem(), SubscriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionMapInput)(nil)).Elem(), SubscriptionMap{})
 	pulumi.RegisterOutputType(SubscriptionOutput{})
 	pulumi.RegisterOutputType(SubscriptionPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionArrayOutput{})

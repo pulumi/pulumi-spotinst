@@ -250,64 +250,64 @@ export interface ElastigroupAzureV3State {
     /**
      * Custom init script file or text in Base64 encoded format.
      */
-    readonly customData?: pulumi.Input<string>;
+    customData?: pulumi.Input<string>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
      */
-    readonly images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[]>;
     /**
      * Describes the login configuration.
      */
-    readonly login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
+    login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
     /**
      * List of Managed Service Identity objects.
      */
-    readonly managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ManagedServiceIdentity>[]>;
+    managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ManagedServiceIdentity>[]>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * - The name of the Application Security group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Defines the Virtual Network and Subnet for your Elastigroup.
      */
-    readonly network?: pulumi.Input<inputs.ElastigroupAzureV3Network>;
+    network?: pulumi.Input<inputs.ElastigroupAzureV3Network>;
     /**
      * Available On-Demand sizes
      */
-    readonly odSizes?: pulumi.Input<pulumi.Input<string>[]>;
+    odSizes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
      */
-    readonly os?: pulumi.Input<string>;
+    os?: pulumi.Input<string>;
     /**
      * The region your Azure group will be created in.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * - The resource group of the Application Security Group.
      * }
      */
-    readonly resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string>;
     /**
      * Available Low-Priority sizes.
      */
-    readonly spotSizes?: pulumi.Input<pulumi.Input<string>[]>;
+    spotSizes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Describes the deployment strategy.
      */
-    readonly strategy?: pulumi.Input<inputs.ElastigroupAzureV3Strategy>;
+    strategy?: pulumi.Input<inputs.ElastigroupAzureV3Strategy>;
 }
 
 /**
@@ -317,62 +317,62 @@ export interface ElastigroupAzureV3Args {
     /**
      * Custom init script file or text in Base64 encoded format.
      */
-    readonly customData?: pulumi.Input<string>;
+    customData?: pulumi.Input<string>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    readonly desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number>;
     /**
      * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
      */
-    readonly images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[]>;
     /**
      * Describes the login configuration.
      */
-    readonly login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
+    login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
     /**
      * List of Managed Service Identity objects.
      */
-    readonly managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ManagedServiceIdentity>[]>;
+    managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ManagedServiceIdentity>[]>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    readonly maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    readonly minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number>;
     /**
      * - The name of the Application Security group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Defines the Virtual Network and Subnet for your Elastigroup.
      */
-    readonly network: pulumi.Input<inputs.ElastigroupAzureV3Network>;
+    network: pulumi.Input<inputs.ElastigroupAzureV3Network>;
     /**
      * Available On-Demand sizes
      */
-    readonly odSizes: pulumi.Input<pulumi.Input<string>[]>;
+    odSizes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
      */
-    readonly os: pulumi.Input<string>;
+    os: pulumi.Input<string>;
     /**
      * The region your Azure group will be created in.
      */
-    readonly region: pulumi.Input<string>;
+    region: pulumi.Input<string>;
     /**
      * - The resource group of the Application Security Group.
      * }
      */
-    readonly resourceGroupName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
     /**
      * Available Low-Priority sizes.
      */
-    readonly spotSizes: pulumi.Input<pulumi.Input<string>[]>;
+    spotSizes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Describes the deployment strategy.
      */
-    readonly strategy: pulumi.Input<inputs.ElastigroupAzureV3Strategy>;
+    strategy: pulumi.Input<inputs.ElastigroupAzureV3Strategy>;
 }

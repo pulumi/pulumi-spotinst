@@ -444,7 +444,7 @@ func (o ElastigroupAzureV3LoginOutput) ToElastigroupAzureV3LoginPtrOutput() Elas
 }
 
 func (o ElastigroupAzureV3LoginOutput) ToElastigroupAzureV3LoginPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3LoginPtrOutput {
-	return o.ApplyT(func(v ElastigroupAzureV3Login) *ElastigroupAzureV3Login {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3Login) *ElastigroupAzureV3Login {
 		return &v
 	}).(ElastigroupAzureV3LoginPtrOutput)
 }
@@ -479,7 +479,13 @@ func (o ElastigroupAzureV3LoginPtrOutput) ToElastigroupAzureV3LoginPtrOutputWith
 }
 
 func (o ElastigroupAzureV3LoginPtrOutput) Elem() ElastigroupAzureV3LoginOutput {
-	return o.ApplyT(func(v *ElastigroupAzureV3Login) ElastigroupAzureV3Login { return *v }).(ElastigroupAzureV3LoginOutput)
+	return o.ApplyT(func(v *ElastigroupAzureV3Login) ElastigroupAzureV3Login {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3Login
+		return ret
+	}).(ElastigroupAzureV3LoginOutput)
 }
 
 // Password for admin access to Windows VMs. Required for Windows OS types.
@@ -724,7 +730,7 @@ func (o ElastigroupAzureV3NetworkOutput) ToElastigroupAzureV3NetworkPtrOutput() 
 }
 
 func (o ElastigroupAzureV3NetworkOutput) ToElastigroupAzureV3NetworkPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkPtrOutput {
-	return o.ApplyT(func(v ElastigroupAzureV3Network) *ElastigroupAzureV3Network {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3Network) *ElastigroupAzureV3Network {
 		return &v
 	}).(ElastigroupAzureV3NetworkPtrOutput)
 }
@@ -762,7 +768,13 @@ func (o ElastigroupAzureV3NetworkPtrOutput) ToElastigroupAzureV3NetworkPtrOutput
 }
 
 func (o ElastigroupAzureV3NetworkPtrOutput) Elem() ElastigroupAzureV3NetworkOutput {
-	return o.ApplyT(func(v *ElastigroupAzureV3Network) ElastigroupAzureV3Network { return *v }).(ElastigroupAzureV3NetworkOutput)
+	return o.ApplyT(func(v *ElastigroupAzureV3Network) ElastigroupAzureV3Network {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3Network
+		return ret
+	}).(ElastigroupAzureV3NetworkOutput)
 }
 
 // -
@@ -1252,7 +1264,7 @@ func (o ElastigroupAzureV3StrategyOutput) ToElastigroupAzureV3StrategyPtrOutput(
 }
 
 func (o ElastigroupAzureV3StrategyOutput) ToElastigroupAzureV3StrategyPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3StrategyPtrOutput {
-	return o.ApplyT(func(v ElastigroupAzureV3Strategy) *ElastigroupAzureV3Strategy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3Strategy) *ElastigroupAzureV3Strategy {
 		return &v
 	}).(ElastigroupAzureV3StrategyPtrOutput)
 }
@@ -1292,7 +1304,13 @@ func (o ElastigroupAzureV3StrategyPtrOutput) ToElastigroupAzureV3StrategyPtrOutp
 }
 
 func (o ElastigroupAzureV3StrategyPtrOutput) Elem() ElastigroupAzureV3StrategyOutput {
-	return o.ApplyT(func(v *ElastigroupAzureV3Strategy) ElastigroupAzureV3Strategy { return *v }).(ElastigroupAzureV3StrategyOutput)
+	return o.ApplyT(func(v *ElastigroupAzureV3Strategy) ElastigroupAzureV3Strategy {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupAzureV3Strategy
+		return ret
+	}).(ElastigroupAzureV3StrategyOutput)
 }
 
 // Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
@@ -1456,10 +1474,11 @@ func (o HealthCheckCheckOutput) ToHealthCheckCheckPtrOutput() HealthCheckCheckPt
 }
 
 func (o HealthCheckCheckOutput) ToHealthCheckCheckPtrOutputWithContext(ctx context.Context) HealthCheckCheckPtrOutput {
-	return o.ApplyT(func(v HealthCheckCheck) *HealthCheckCheck {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HealthCheckCheck) *HealthCheckCheck {
 		return &v
 	}).(HealthCheckCheckPtrOutput)
 }
+
 func (o HealthCheckCheckOutput) EndPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckCheck) *string { return v.EndPoint }).(pulumi.StringPtrOutput)
 }
@@ -1518,7 +1537,13 @@ func (o HealthCheckCheckPtrOutput) ToHealthCheckCheckPtrOutputWithContext(ctx co
 }
 
 func (o HealthCheckCheckPtrOutput) Elem() HealthCheckCheckOutput {
-	return o.ApplyT(func(v *HealthCheckCheck) HealthCheckCheck { return *v }).(HealthCheckCheckOutput)
+	return o.ApplyT(func(v *HealthCheckCheck) HealthCheckCheck {
+		if v != nil {
+			return *v
+		}
+		var ret HealthCheckCheck
+		return ret
+	}).(HealthCheckCheckOutput)
 }
 
 func (o HealthCheckCheckPtrOutput) EndPoint() pulumi.StringPtrOutput {
@@ -1610,6 +1635,28 @@ func (o HealthCheckCheckPtrOutput) Unhealthy() pulumi.IntPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageInput)(nil)).Elem(), ElastigroupAzureV3ImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageCustomInput)(nil)).Elem(), ElastigroupAzureV3ImageCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageCustomArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageCustomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageMarketplaceInput)(nil)).Elem(), ElastigroupAzureV3ImageMarketplaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageMarketplaceArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageMarketplaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3LoginInput)(nil)).Elem(), ElastigroupAzureV3LoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3LoginPtrInput)(nil)).Elem(), ElastigroupAzureV3LoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ManagedServiceIdentityInput)(nil)).Elem(), ElastigroupAzureV3ManagedServiceIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ManagedServiceIdentityArrayInput)(nil)).Elem(), ElastigroupAzureV3ManagedServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkInput)(nil)).Elem(), ElastigroupAzureV3NetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkPtrInput)(nil)).Elem(), ElastigroupAzureV3NetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceArrayInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput)(nil)).Elem(), ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3StrategyInput)(nil)).Elem(), ElastigroupAzureV3StrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3StrategyPtrInput)(nil)).Elem(), ElastigroupAzureV3StrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckInput)(nil)).Elem(), HealthCheckCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckPtrInput)(nil)).Elem(), HealthCheckCheckArgs{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageCustomOutput{})

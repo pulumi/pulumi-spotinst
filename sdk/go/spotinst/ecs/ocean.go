@@ -500,7 +500,7 @@ type OceanArrayInput interface {
 type OceanArray []OceanInput
 
 func (OceanArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Ocean)(nil))
+	return reflect.TypeOf((*[]*Ocean)(nil)).Elem()
 }
 
 func (i OceanArray) ToOceanArrayOutput() OceanArrayOutput {
@@ -525,7 +525,7 @@ type OceanMapInput interface {
 type OceanMap map[string]OceanInput
 
 func (OceanMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Ocean)(nil))
+	return reflect.TypeOf((*map[string]*Ocean)(nil)).Elem()
 }
 
 func (i OceanMap) ToOceanMapOutput() OceanMapOutput {
@@ -536,9 +536,7 @@ func (i OceanMap) ToOceanMapOutputWithContext(ctx context.Context) OceanMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(OceanMapOutput)
 }
 
-type OceanOutput struct {
-	*pulumi.OutputState
-}
+type OceanOutput struct{ *pulumi.OutputState }
 
 func (OceanOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Ocean)(nil))
@@ -557,14 +555,12 @@ func (o OceanOutput) ToOceanPtrOutput() OceanPtrOutput {
 }
 
 func (o OceanOutput) ToOceanPtrOutputWithContext(ctx context.Context) OceanPtrOutput {
-	return o.ApplyT(func(v Ocean) *Ocean {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Ocean) *Ocean {
 		return &v
 	}).(OceanPtrOutput)
 }
 
-type OceanPtrOutput struct {
-	*pulumi.OutputState
-}
+type OceanPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Ocean)(nil))
@@ -576,6 +572,16 @@ func (o OceanPtrOutput) ToOceanPtrOutput() OceanPtrOutput {
 
 func (o OceanPtrOutput) ToOceanPtrOutputWithContext(ctx context.Context) OceanPtrOutput {
 	return o
+}
+
+func (o OceanPtrOutput) Elem() OceanOutput {
+	return o.ApplyT(func(v *Ocean) Ocean {
+		if v != nil {
+			return *v
+		}
+		var ret Ocean
+		return ret
+	}).(OceanOutput)
 }
 
 type OceanArrayOutput struct{ *pulumi.OutputState }
@@ -619,6 +625,10 @@ func (o OceanMapOutput) MapIndex(k pulumi.StringInput) OceanOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanInput)(nil)).Elem(), &Ocean{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanPtrInput)(nil)).Elem(), &Ocean{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanArrayInput)(nil)).Elem(), OceanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanMapInput)(nil)).Elem(), OceanMap{})
 	pulumi.RegisterOutputType(OceanOutput{})
 	pulumi.RegisterOutputType(OceanPtrOutput{})
 	pulumi.RegisterOutputType(OceanArrayOutput{})

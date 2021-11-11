@@ -236,98 +236,98 @@ export class Elastigroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Elastigroup resources.
  */
 export interface ElastigroupState {
-    readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
+    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
      * The GKE cluster ID you wish to import.
      *
      * @deprecated Please define cluster_id under integration_gke
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The zone where the cluster is hosted.
      */
-    readonly clusterZoneName?: pulumi.Input<string>;
-    readonly desiredCapacity?: pulumi.Input<number>;
-    readonly disks?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDisk>[]>;
-    readonly drainingTimeout?: pulumi.Input<number>;
-    readonly fallbackToOndemand?: pulumi.Input<boolean>;
-    readonly gpu?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupGpu>[]>;
-    readonly instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupInstanceTypesCustom>[]>;
-    readonly instanceTypesOndemand?: pulumi.Input<string>;
-    readonly instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm>;
+    clusterZoneName?: pulumi.Input<string>;
+    desiredCapacity?: pulumi.Input<number>;
+    disks?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDisk>[]>;
+    drainingTimeout?: pulumi.Input<number>;
+    fallbackToOndemand?: pulumi.Input<boolean>;
+    gpu?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupGpu>[]>;
+    instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupInstanceTypesCustom>[]>;
+    instanceTypesOndemand?: pulumi.Input<string>;
+    instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
+    integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm>;
     /**
      * Describes the GKE integration.
      */
-    readonly integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke>;
-    readonly ipForwarding?: pulumi.Input<boolean>;
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
-    readonly maxSize?: pulumi.Input<number>;
-    readonly metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[]>;
-    readonly minSize?: pulumi.Input<number>;
-    readonly name?: pulumi.Input<string>;
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
+    integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke>;
+    ipForwarding?: pulumi.Input<boolean>;
+    labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
+    maxSize?: pulumi.Input<number>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[]>;
+    minSize?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
     /**
      * The image that will be used for the node VMs. Possible values: COS, UBUNTU.
      */
-    readonly nodeImage?: pulumi.Input<string>;
-    readonly ondemandCount?: pulumi.Input<number>;
-    readonly preemptiblePercentage?: pulumi.Input<number>;
-    readonly provisioningModel?: pulumi.Input<string>;
-    readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
-    readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
-    readonly serviceAccount?: pulumi.Input<string>;
-    readonly shutdownScript?: pulumi.Input<string>;
-    readonly startupScript?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    nodeImage?: pulumi.Input<string>;
+    ondemandCount?: pulumi.Input<number>;
+    preemptiblePercentage?: pulumi.Input<number>;
+    provisioningModel?: pulumi.Input<string>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
+    serviceAccount?: pulumi.Input<string>;
+    shutdownScript?: pulumi.Input<string>;
+    startupScript?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a Elastigroup resource.
  */
 export interface ElastigroupArgs {
-    readonly backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
+    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
      * The GKE cluster ID you wish to import.
      *
      * @deprecated Please define cluster_id under integration_gke
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The zone where the cluster is hosted.
      */
-    readonly clusterZoneName: pulumi.Input<string>;
-    readonly desiredCapacity: pulumi.Input<number>;
-    readonly disks?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDisk>[]>;
-    readonly drainingTimeout?: pulumi.Input<number>;
-    readonly fallbackToOndemand?: pulumi.Input<boolean>;
-    readonly gpu?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupGpu>[]>;
-    readonly instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupInstanceTypesCustom>[]>;
-    readonly instanceTypesOndemand?: pulumi.Input<string>;
-    readonly instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm>;
+    clusterZoneName: pulumi.Input<string>;
+    desiredCapacity: pulumi.Input<number>;
+    disks?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDisk>[]>;
+    drainingTimeout?: pulumi.Input<number>;
+    fallbackToOndemand?: pulumi.Input<boolean>;
+    gpu?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupGpu>[]>;
+    instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupInstanceTypesCustom>[]>;
+    instanceTypesOndemand?: pulumi.Input<string>;
+    instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
+    integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm>;
     /**
      * Describes the GKE integration.
      */
-    readonly integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke>;
-    readonly ipForwarding?: pulumi.Input<boolean>;
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
-    readonly maxSize?: pulumi.Input<number>;
-    readonly metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[]>;
-    readonly minSize?: pulumi.Input<number>;
-    readonly name?: pulumi.Input<string>;
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
+    integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke>;
+    ipForwarding?: pulumi.Input<boolean>;
+    labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
+    maxSize?: pulumi.Input<number>;
+    metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[]>;
+    minSize?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
     /**
      * The image that will be used for the node VMs. Possible values: COS, UBUNTU.
      */
-    readonly nodeImage?: pulumi.Input<string>;
-    readonly ondemandCount?: pulumi.Input<number>;
-    readonly preemptiblePercentage?: pulumi.Input<number>;
-    readonly provisioningModel?: pulumi.Input<string>;
-    readonly scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
-    readonly scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
-    readonly serviceAccount?: pulumi.Input<string>;
-    readonly shutdownScript?: pulumi.Input<string>;
-    readonly startupScript?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    nodeImage?: pulumi.Input<string>;
+    ondemandCount?: pulumi.Input<number>;
+    preemptiblePercentage?: pulumi.Input<number>;
+    provisioningModel?: pulumi.Input<string>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicy>[]>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicy>[]>;
+    serviceAccount?: pulumi.Input<string>;
+    shutdownScript?: pulumi.Input<string>;
+    startupScript?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

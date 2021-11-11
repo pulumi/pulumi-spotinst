@@ -25,6 +25,18 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * Spotinst Account ID
+     */
+    public readonly account!: pulumi.Output<string | undefined>;
+    /**
+     * Spotinst SDK Feature Flags
+     */
+    public readonly featureFlags!: pulumi.Output<string | undefined>;
+    /**
+     * Spotinst Personal API Access Token
+     */
+    public readonly token!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -55,13 +67,13 @@ export interface ProviderArgs {
     /**
      * Spotinst Account ID
      */
-    readonly account?: pulumi.Input<string>;
+    account?: pulumi.Input<string>;
     /**
      * Spotinst SDK Feature Flags
      */
-    readonly featureFlags?: pulumi.Input<string>;
+    featureFlags?: pulumi.Input<string>;
     /**
      * Spotinst Personal API Access Token
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }
