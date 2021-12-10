@@ -24,6 +24,7 @@ class OceanLaunchSpecArgs:
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
@@ -38,6 +39,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in the array should be a subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
@@ -60,6 +62,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "name", name)
         if restrict_scale_down is not None:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
+        if scheduling_tasks is not None:
+            pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if subnet_ids is not None:
@@ -175,6 +179,18 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "restrict_scale_down", value)
 
     @property
+    @pulumi.getter(name="schedulingTasks")
+    def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]]:
+        """
+        Used to define scheduled tasks such as a manual headroom update.
+        """
+        return pulumi.get(self, "scheduling_tasks")
+
+    @scheduling_tasks.setter
+    def scheduling_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]]):
+        pulumi.set(self, "scheduling_tasks", value)
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -235,6 +251,7 @@ class _OceanLaunchSpecState:
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
@@ -249,6 +266,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in the array should be a subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
@@ -272,6 +290,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "ocean_id", ocean_id)
         if restrict_scale_down is not None:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
+        if scheduling_tasks is not None:
+            pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if subnet_ids is not None:
@@ -387,6 +407,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "restrict_scale_down", value)
 
     @property
+    @pulumi.getter(name="schedulingTasks")
+    def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]]:
+        """
+        Used to define scheduled tasks such as a manual headroom update.
+        """
+        return pulumi.get(self, "scheduling_tasks")
+
+    @scheduling_tasks.setter
+    def scheduling_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]]):
+        pulumi.set(self, "scheduling_tasks", value)
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -449,6 +481,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
@@ -509,6 +542,16 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ],
             ocean_id="o-123456",
             restrict_scale_down=True,
+            scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(
+                cron_expression="0 1 * * *",
+                is_enabled=True,
+                task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
+                    cpu_per_unit=1000,
+                    memory_per_unit=2048,
+                    num_of_units=5,
+                )],
+                task_type="manualHeadroomUpdate",
+            )],
             security_group_ids=["awseb-12345"],
             subnet_ids=["subnet-12345"],
             tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
@@ -551,6 +594,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in the array should be a subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
@@ -617,6 +661,16 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ],
             ocean_id="o-123456",
             restrict_scale_down=True,
+            scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(
+                cron_expression="0 1 * * *",
+                is_enabled=True,
+                task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
+                    cpu_per_unit=1000,
+                    memory_per_unit=2048,
+                    num_of_units=5,
+                )],
+                task_type="manualHeadroomUpdate",
+            )],
             security_group_ids=["awseb-12345"],
             subnet_ids=["subnet-12345"],
             tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
@@ -673,6 +727,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
@@ -700,6 +755,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ocean_id'")
             __props__.__dict__["ocean_id"] = ocean_id
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
+            __props__.__dict__["scheduling_tasks"] = scheduling_tasks
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
@@ -723,6 +779,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+            scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]]] = None,
@@ -742,6 +799,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: Set subnets in launchSpec. Each element in the array should be a subnet ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
@@ -760,6 +818,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["ocean_id"] = ocean_id
         __props__.__dict__["restrict_scale_down"] = restrict_scale_down
+        __props__.__dict__["scheduling_tasks"] = scheduling_tasks
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["subnet_ids"] = subnet_ids
         __props__.__dict__["tags"] = tags
@@ -834,6 +893,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         """
         return pulumi.get(self, "restrict_scale_down")
+
+    @property
+    @pulumi.getter(name="schedulingTasks")
+    def scheduling_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecSchedulingTask']]]:
+        """
+        Used to define scheduled tasks such as a manual headroom update.
+        """
+        return pulumi.get(self, "scheduling_tasks")
 
     @property
     @pulumi.getter(name="securityGroupIds")

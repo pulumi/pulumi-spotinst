@@ -103,6 +103,12 @@ namespace Pulumi.SpotInst.Gke
         public Output<string> RootVolumeType { get; private set; } = null!;
 
         /// <summary>
+        /// Used to define scheduled tasks such as a manual headroom update.
+        /// </summary>
+        [Output("schedulingTasks")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecSchedulingTask>> SchedulingTasks { get; private set; } = null!;
+
+        /// <summary>
         /// The account used by applications running on the VM to call GCP APIs.
         /// </summary>
         [Output("serviceAccount")]
@@ -277,6 +283,18 @@ namespace Pulumi.SpotInst.Gke
         [Input("rootVolumeType")]
         public Input<string>? RootVolumeType { get; set; }
 
+        [Input("schedulingTasks")]
+        private InputList<Inputs.OceanLaunchSpecSchedulingTaskArgs>? _schedulingTasks;
+
+        /// <summary>
+        /// Used to define scheduled tasks such as a manual headroom update.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecSchedulingTaskArgs> SchedulingTasks
+        {
+            get => _schedulingTasks ?? (_schedulingTasks = new InputList<Inputs.OceanLaunchSpecSchedulingTaskArgs>());
+            set => _schedulingTasks = value;
+        }
+
         /// <summary>
         /// The account used by applications running on the VM to call GCP APIs.
         /// </summary>
@@ -424,6 +442,18 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("rootVolumeType")]
         public Input<string>? RootVolumeType { get; set; }
+
+        [Input("schedulingTasks")]
+        private InputList<Inputs.OceanLaunchSpecSchedulingTaskGetArgs>? _schedulingTasks;
+
+        /// <summary>
+        /// Used to define scheduled tasks such as a manual headroom update.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecSchedulingTaskGetArgs> SchedulingTasks
+        {
+            get => _schedulingTasks ?? (_schedulingTasks = new InputList<Inputs.OceanLaunchSpecSchedulingTaskGetArgs>());
+            set => _schedulingTasks = value;
+        }
 
         /// <summary>
         /// The account used by applications running on the VM to call GCP APIs.

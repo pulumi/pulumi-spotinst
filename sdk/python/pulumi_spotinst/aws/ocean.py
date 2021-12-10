@@ -31,6 +31,7 @@ class OceanArgs:
                  instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
+                 logging: Optional[pulumi.Input['OceanLoggingArgs']] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -64,6 +65,7 @@ class OceanArgs:
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: - Array of load balancer objects to add to ocean cluster
+        :param pulumi.Input['OceanLoggingArgs'] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -74,6 +76,7 @@ class OceanArgs:
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
+               When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -108,6 +111,8 @@ class OceanArgs:
             pulumi.set(__self__, "key_name", key_name)
         if load_balancers is not None:
             pulumi.set(__self__, "load_balancers", load_balancers)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
@@ -332,6 +337,18 @@ class OceanArgs:
         pulumi.set(self, "load_balancers", value)
 
     @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['OceanLoggingArgs']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['OceanLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -453,6 +470,7 @@ class OceanArgs:
     def use_as_template_only(self) -> Optional[pulumi.Input[bool]]:
         """
         launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         """
         return pulumi.get(self, "use_as_template_only")
 
@@ -523,6 +541,7 @@ class _OceanState:
                  instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
+                 logging: Optional[pulumi.Input['OceanLoggingArgs']] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -556,6 +575,7 @@ class _OceanState:
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: - Array of load balancer objects to add to ocean cluster
+        :param pulumi.Input['OceanLoggingArgs'] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -568,6 +588,7 @@ class _OceanState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
+               When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -600,6 +621,8 @@ class _OceanState:
             pulumi.set(__self__, "key_name", key_name)
         if load_balancers is not None:
             pulumi.set(__self__, "load_balancers", load_balancers)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
@@ -804,6 +827,18 @@ class _OceanState:
         pulumi.set(self, "load_balancers", value)
 
     @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['OceanLoggingArgs']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['OceanLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -949,6 +984,7 @@ class _OceanState:
     def use_as_template_only(self) -> Optional[pulumi.Input[bool]]:
         """
         launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         """
         return pulumi.get(self, "use_as_template_only")
 
@@ -1021,6 +1057,7 @@ class Ocean(pulumi.CustomResource):
                  instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['OceanLoggingArgs']]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -1057,6 +1094,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: - Array of load balancer objects to add to ocean cluster
+        :param pulumi.Input[pulumi.InputType['OceanLoggingArgs']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -1069,6 +1107,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
+               When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -1110,6 +1149,7 @@ class Ocean(pulumi.CustomResource):
                  instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['OceanLoggingArgs']]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -1153,6 +1193,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["load_balancers"] = load_balancers
+            __props__.__dict__["logging"] = logging
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["monitoring"] = monitoring
@@ -1198,6 +1239,7 @@ class Ocean(pulumi.CustomResource):
             instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]]] = None,
+            logging: Optional[pulumi.Input[pulumi.InputType['OceanLoggingArgs']]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             monitoring: Optional[pulumi.Input[bool]] = None,
@@ -1236,6 +1278,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: - Array of load balancer objects to add to ocean cluster
+        :param pulumi.Input[pulumi.InputType['OceanLoggingArgs']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -1248,6 +1291,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
+               When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -1270,6 +1314,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["instance_metadata_options"] = instance_metadata_options
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["load_balancers"] = load_balancers
+        __props__.__dict__["logging"] = logging
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["monitoring"] = monitoring
@@ -1402,6 +1447,14 @@ class Ocean(pulumi.CustomResource):
         return pulumi.get(self, "load_balancers")
 
     @property
+    @pulumi.getter
+    def logging(self) -> pulumi.Output[Optional['outputs.OceanLogging']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging")
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> pulumi.Output[Optional[int]]:
         """
@@ -1499,6 +1552,7 @@ class Ocean(pulumi.CustomResource):
     def use_as_template_only(self) -> pulumi.Output[Optional[bool]]:
         """
         launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         """
         return pulumi.get(self, "use_as_template_only")
 

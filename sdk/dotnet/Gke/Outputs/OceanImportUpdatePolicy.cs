@@ -13,15 +13,19 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class OceanImportUpdatePolicy
     {
+        public readonly bool? ConditionedRoll;
         public readonly Outputs.OceanImportUpdatePolicyRollConfig? RollConfig;
         public readonly bool ShouldRoll;
 
         [OutputConstructor]
         private OceanImportUpdatePolicy(
+            bool? conditionedRoll,
+
             Outputs.OceanImportUpdatePolicyRollConfig? rollConfig,
 
             bool shouldRoll)
         {
+            ConditionedRoll = conditionedRoll;
             RollConfig = rollConfig;
             ShouldRoll = shouldRoll;
         }

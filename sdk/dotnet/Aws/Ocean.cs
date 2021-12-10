@@ -97,6 +97,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLoadBalancer>> LoadBalancers { get; private set; } = null!;
 
         /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Output("logging")]
+        public Output<Outputs.OceanLogging?> Logging { get; private set; } = null!;
+
+        /// <summary>
         /// The upper limit of instances the cluster can scale up to.
         /// </summary>
         [Output("maxSize")]
@@ -167,6 +173,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         /// </summary>
         [Output("useAsTemplateOnly")]
         public Output<bool?> UseAsTemplateOnly { get; private set; } = null!;
@@ -335,6 +342,12 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.OceanLoggingArgs>? Logging { get; set; }
+
+        /// <summary>
         /// The upper limit of instances the cluster can scale up to.
         /// </summary>
         [Input("maxSize")]
@@ -429,6 +442,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         /// </summary>
         [Input("useAsTemplateOnly")]
         public Input<bool>? UseAsTemplateOnly { get; set; }
@@ -564,6 +578,12 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.OceanLoggingGetArgs>? Logging { get; set; }
+
+        /// <summary>
         /// The upper limit of instances the cluster can scale up to.
         /// </summary>
         [Input("maxSize")]
@@ -658,6 +678,7 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         /// </summary>
         [Input("useAsTemplateOnly")]
         public Input<bool>? UseAsTemplateOnly { get; set; }

@@ -77,6 +77,20 @@ import (
 // 			},
 // 			OceanId:           pulumi.String("o-123456"),
 // 			RestrictScaleDown: pulumi.Bool(true),
+// 			SchedulingTasks: ecs.OceanLaunchSpecSchedulingTaskArray{
+// 				&ecs.OceanLaunchSpecSchedulingTaskArgs{
+// 					CronExpression: pulumi.String("0 1 * * *"),
+// 					IsEnabled:      pulumi.Bool(true),
+// 					TaskHeadrooms: ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
+// 						&ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
+// 							CpuPerUnit:    pulumi.Int(1000),
+// 							MemoryPerUnit: pulumi.Int(2048),
+// 							NumOfUnits:    pulumi.Int(5),
+// 						},
+// 					},
+// 					TaskType: pulumi.String("manualHeadroomUpdate"),
+// 				},
+// 			},
 // 			SecurityGroupIds: pulumi.StringArray{
 // 				pulumi.String("awseb-12345"),
 // 			},
@@ -150,6 +164,8 @@ type OceanLaunchSpec struct {
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
 	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayOutput `pulumi:"schedulingTasks"`
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
@@ -209,6 +225,8 @@ type oceanLaunchSpecState struct {
 	OceanId *string `pulumi:"oceanId"`
 	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
@@ -237,6 +255,8 @@ type OceanLaunchSpecState struct {
 	OceanId pulumi.StringPtrInput
 	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
 	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
@@ -269,6 +289,8 @@ type oceanLaunchSpecArgs struct {
 	OceanId string `pulumi:"oceanId"`
 	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
@@ -298,6 +320,8 @@ type OceanLaunchSpecArgs struct {
 	OceanId pulumi.StringInput
 	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
 	// Set subnets in launchSpec. Each element in the array should be a subnet ID.

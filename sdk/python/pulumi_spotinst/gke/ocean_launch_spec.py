@@ -26,6 +26,7 @@ class OceanLaunchSpecArgs:
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
+                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs']] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
@@ -46,6 +47,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
         :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[str] service_account: The account used by applications running on the VM to call GCP APIs.
         :param pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs'] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[str] source_image: Image URL.
@@ -74,6 +76,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "root_volume_size", root_volume_size)
         if root_volume_type is not None:
             pulumi.set(__self__, "root_volume_type", root_volume_type)
+        if scheduling_tasks is not None:
+            pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
@@ -222,6 +226,18 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "root_volume_type", value)
 
     @property
+    @pulumi.getter(name="schedulingTasks")
+    def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]]:
+        """
+        Used to define scheduled tasks such as a manual headroom update.
+        """
+        return pulumi.get(self, "scheduling_tasks")
+
+    @scheduling_tasks.setter
+    def scheduling_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]]):
+        pulumi.set(self, "scheduling_tasks", value)
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
@@ -317,6 +333,7 @@ class _OceanLaunchSpecState:
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
+                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs']] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
@@ -337,6 +354,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
         :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[str] service_account: The account used by applications running on the VM to call GCP APIs.
         :param pulumi.Input['OceanLaunchSpecShieldedInstanceConfigArgs'] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[str] source_image: Image URL.
@@ -366,6 +384,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "root_volume_size", root_volume_size)
         if root_volume_type is not None:
             pulumi.set(__self__, "root_volume_type", root_volume_type)
+        if scheduling_tasks is not None:
+            pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
@@ -514,6 +534,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "root_volume_type", value)
 
     @property
+    @pulumi.getter(name="schedulingTasks")
+    def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]]:
+        """
+        Used to define scheduled tasks such as a manual headroom update.
+        """
+        return pulumi.get(self, "scheduling_tasks")
+
+    @scheduling_tasks.setter
+    def scheduling_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]]):
+        pulumi.set(self, "scheduling_tasks", value)
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
@@ -611,6 +643,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
+                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecShieldedInstanceConfigArgs']]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
@@ -648,6 +681,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
         :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[str] service_account: The account used by applications running on the VM to call GCP APIs.
         :param pulumi.Input[pulumi.InputType['OceanLaunchSpecShieldedInstanceConfigArgs']] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[str] source_image: Image URL.
@@ -703,6 +737,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
+                 scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecShieldedInstanceConfigArgs']]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
@@ -735,6 +770,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["root_volume_size"] = root_volume_size
             __props__.__dict__["root_volume_type"] = root_volume_type
+            __props__.__dict__["scheduling_tasks"] = scheduling_tasks
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["source_image"] = source_image
@@ -763,6 +799,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
             root_volume_size: Optional[pulumi.Input[int]] = None,
             root_volume_type: Optional[pulumi.Input[str]] = None,
+            scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecShieldedInstanceConfigArgs']]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
@@ -788,6 +825,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Root volume size (in GB).
         :param pulumi.Input[str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[str] service_account: The account used by applications running on the VM to call GCP APIs.
         :param pulumi.Input[pulumi.InputType['OceanLaunchSpecShieldedInstanceConfigArgs']] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[str] source_image: Image URL.
@@ -810,6 +848,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["restrict_scale_down"] = restrict_scale_down
         __props__.__dict__["root_volume_size"] = root_volume_size
         __props__.__dict__["root_volume_type"] = root_volume_type
+        __props__.__dict__["scheduling_tasks"] = scheduling_tasks
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["shielded_instance_config"] = shielded_instance_config
         __props__.__dict__["source_image"] = source_image
@@ -906,6 +945,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
         """
         return pulumi.get(self, "root_volume_type")
+
+    @property
+    @pulumi.getter(name="schedulingTasks")
+    def scheduling_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecSchedulingTask']]]:
+        """
+        Used to define scheduled tasks such as a manual headroom update.
+        """
+        return pulumi.get(self, "scheduling_tasks")
 
     @property
     @pulumi.getter(name="serviceAccount")

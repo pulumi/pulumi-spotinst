@@ -72,6 +72,17 @@ import * as utilities from "../utilities";
  *     }],
  *     restrictScaleDown: true,
  *     rootVolumeSize: 30,
+ *     schedulingTasks: [{
+ *         cronExpression: "0 1 * * *",
+ *         isEnabled: true,
+ *         taskHeadrooms: [{
+ *             cpuPerUnit: 1000,
+ *             gpuPerUnit: 0,
+ *             memoryPerUnit: 2048,
+ *             numOfUnits: 5,
+ *         }],
+ *         taskType: "manualHeadroomUpdate",
+ *     }],
  *     securityGroups: ["sg-987654321"],
  *     strategies: [{
  *         spotPercentage: 70,
@@ -189,6 +200,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly rootVolumeSize!: pulumi.Output<number | undefined>;
     /**
+     * Used to define scheduled tasks such as a manual headroom update.
+     */
+    public readonly schedulingTasks!: pulumi.Output<outputs.aws.OceanLaunchSpecSchedulingTask[] | undefined>;
+    /**
      * Optionally adds security group IDs.
      */
     public readonly securityGroups!: pulumi.Output<string[] | undefined>;
@@ -240,6 +255,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["resourceLimits"] = state ? state.resourceLimits : undefined;
             inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
+            inputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
             inputs["strategies"] = state ? state.strategies : undefined;
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
@@ -268,6 +284,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["resourceLimits"] = args ? args.resourceLimits : undefined;
             inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
+            inputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["strategies"] = args ? args.strategies : undefined;
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
@@ -342,6 +359,10 @@ export interface OceanLaunchSpecState {
      * Set root volume size (in GB).
      */
     rootVolumeSize?: pulumi.Input<number>;
+    /**
+     * Used to define scheduled tasks such as a manual headroom update.
+     */
+    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingTask>[]>;
     /**
      * Optionally adds security group IDs.
      */
@@ -425,6 +446,10 @@ export interface OceanLaunchSpecArgs {
      * Set root volume size (in GB).
      */
     rootVolumeSize?: pulumi.Input<number>;
+    /**
+     * Used to define scheduled tasks such as a manual headroom update.
+     */
+    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingTask>[]>;
     /**
      * Optionally adds security group IDs.
      */

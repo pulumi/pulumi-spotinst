@@ -3965,8 +3965,9 @@ func (o OceanImportScheduledTaskTaskArrayOutput) Index(i pulumi.IntInput) OceanI
 }
 
 type OceanImportUpdatePolicy struct {
-	RollConfig *OceanImportUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll bool                               `pulumi:"shouldRoll"`
+	ConditionedRoll *bool                              `pulumi:"conditionedRoll"`
+	RollConfig      *OceanImportUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	ShouldRoll      bool                               `pulumi:"shouldRoll"`
 }
 
 // OceanImportUpdatePolicyInput is an input type that accepts OceanImportUpdatePolicyArgs and OceanImportUpdatePolicyOutput values.
@@ -3981,8 +3982,9 @@ type OceanImportUpdatePolicyInput interface {
 }
 
 type OceanImportUpdatePolicyArgs struct {
-	RollConfig OceanImportUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll pulumi.BoolInput                          `pulumi:"shouldRoll"`
+	ConditionedRoll pulumi.BoolPtrInput                       `pulumi:"conditionedRoll"`
+	RollConfig      OceanImportUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	ShouldRoll      pulumi.BoolInput                          `pulumi:"shouldRoll"`
 }
 
 func (OceanImportUpdatePolicyArgs) ElementType() reflect.Type {
@@ -4062,6 +4064,10 @@ func (o OceanImportUpdatePolicyOutput) ToOceanImportUpdatePolicyPtrOutputWithCon
 	}).(OceanImportUpdatePolicyPtrOutput)
 }
 
+func (o OceanImportUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
+}
+
 func (o OceanImportUpdatePolicyOutput) RollConfig() OceanImportUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicy) *OceanImportUpdatePolicyRollConfig { return v.RollConfig }).(OceanImportUpdatePolicyRollConfigPtrOutput)
 }
@@ -4092,6 +4098,15 @@ func (o OceanImportUpdatePolicyPtrOutput) Elem() OceanImportUpdatePolicyOutput {
 		var ret OceanImportUpdatePolicy
 		return ret
 	}).(OceanImportUpdatePolicyOutput)
+}
+
+func (o OceanImportUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanImportUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionedRoll
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o OceanImportUpdatePolicyPtrOutput) RollConfig() OceanImportUpdatePolicyRollConfigPtrOutput {
@@ -4758,6 +4773,256 @@ func (o OceanLaunchSpecResourceLimitsPtrOutput) MinInstanceCount() pulumi.IntPtr
 		}
 		return v.MinInstanceCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecSchedulingTask struct {
+	// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+	CronExpression string `pulumi:"cronExpression"`
+	// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+	IsEnabled bool `pulumi:"isEnabled"`
+	// The config of this scheduled task. Depends on the value of taskType.
+	TaskHeadrooms []OceanLaunchSpecSchedulingTaskTaskHeadroom `pulumi:"taskHeadrooms"`
+	// The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+	TaskType string `pulumi:"taskType"`
+}
+
+// OceanLaunchSpecSchedulingTaskInput is an input type that accepts OceanLaunchSpecSchedulingTaskArgs and OceanLaunchSpecSchedulingTaskOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecSchedulingTaskInput` via:
+//
+//          OceanLaunchSpecSchedulingTaskArgs{...}
+type OceanLaunchSpecSchedulingTaskInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecSchedulingTaskOutput() OceanLaunchSpecSchedulingTaskOutput
+	ToOceanLaunchSpecSchedulingTaskOutputWithContext(context.Context) OceanLaunchSpecSchedulingTaskOutput
+}
+
+type OceanLaunchSpecSchedulingTaskArgs struct {
+	// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
+	// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+	// The config of this scheduled task. Depends on the value of taskType.
+	TaskHeadrooms OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput `pulumi:"taskHeadrooms"`
+	// The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+	TaskType pulumi.StringInput `pulumi:"taskType"`
+}
+
+func (OceanLaunchSpecSchedulingTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecSchedulingTask)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecSchedulingTaskArgs) ToOceanLaunchSpecSchedulingTaskOutput() OceanLaunchSpecSchedulingTaskOutput {
+	return i.ToOceanLaunchSpecSchedulingTaskOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecSchedulingTaskArgs) ToOceanLaunchSpecSchedulingTaskOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecSchedulingTaskOutput)
+}
+
+// OceanLaunchSpecSchedulingTaskArrayInput is an input type that accepts OceanLaunchSpecSchedulingTaskArray and OceanLaunchSpecSchedulingTaskArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecSchedulingTaskArrayInput` via:
+//
+//          OceanLaunchSpecSchedulingTaskArray{ OceanLaunchSpecSchedulingTaskArgs{...} }
+type OceanLaunchSpecSchedulingTaskArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecSchedulingTaskArrayOutput() OceanLaunchSpecSchedulingTaskArrayOutput
+	ToOceanLaunchSpecSchedulingTaskArrayOutputWithContext(context.Context) OceanLaunchSpecSchedulingTaskArrayOutput
+}
+
+type OceanLaunchSpecSchedulingTaskArray []OceanLaunchSpecSchedulingTaskInput
+
+func (OceanLaunchSpecSchedulingTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecSchedulingTask)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecSchedulingTaskArray) ToOceanLaunchSpecSchedulingTaskArrayOutput() OceanLaunchSpecSchedulingTaskArrayOutput {
+	return i.ToOceanLaunchSpecSchedulingTaskArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecSchedulingTaskArray) ToOceanLaunchSpecSchedulingTaskArrayOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecSchedulingTaskArrayOutput)
+}
+
+type OceanLaunchSpecSchedulingTaskOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecSchedulingTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecSchedulingTask)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecSchedulingTaskOutput) ToOceanLaunchSpecSchedulingTaskOutput() OceanLaunchSpecSchedulingTaskOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingTaskOutput) ToOceanLaunchSpecSchedulingTaskOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingTaskOutput {
+	return o
+}
+
+// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+func (o OceanLaunchSpecSchedulingTaskOutput) CronExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingTask) string { return v.CronExpression }).(pulumi.StringOutput)
+}
+
+// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+func (o OceanLaunchSpecSchedulingTaskOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+// The config of this scheduled task. Depends on the value of taskType.
+func (o OceanLaunchSpecSchedulingTaskOutput) TaskHeadrooms() OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingTask) []OceanLaunchSpecSchedulingTaskTaskHeadroom {
+		return v.TaskHeadrooms
+	}).(OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput)
+}
+
+// The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+func (o OceanLaunchSpecSchedulingTaskOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingTask) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+type OceanLaunchSpecSchedulingTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecSchedulingTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecSchedulingTask)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecSchedulingTaskArrayOutput) ToOceanLaunchSpecSchedulingTaskArrayOutput() OceanLaunchSpecSchedulingTaskArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingTaskArrayOutput) ToOceanLaunchSpecSchedulingTaskArrayOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingTaskArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingTaskArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecSchedulingTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecSchedulingTask {
+		return vs[0].([]OceanLaunchSpecSchedulingTask)[vs[1].(int)]
+	}).(OceanLaunchSpecSchedulingTaskOutput)
+}
+
+type OceanLaunchSpecSchedulingTaskTaskHeadroom struct {
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit *int `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of GPUS to allocate for each headroom unit.
+	GpuPerUnit *int `pulumi:"gpuPerUnit"`
+	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	NumOfUnits int `pulumi:"numOfUnits"`
+}
+
+// OceanLaunchSpecSchedulingTaskTaskHeadroomInput is an input type that accepts OceanLaunchSpecSchedulingTaskTaskHeadroomArgs and OceanLaunchSpecSchedulingTaskTaskHeadroomOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecSchedulingTaskTaskHeadroomInput` via:
+//
+//          OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{...}
+type OceanLaunchSpecSchedulingTaskTaskHeadroomInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecSchedulingTaskTaskHeadroomOutput() OceanLaunchSpecSchedulingTaskTaskHeadroomOutput
+	ToOceanLaunchSpecSchedulingTaskTaskHeadroomOutputWithContext(context.Context) OceanLaunchSpecSchedulingTaskTaskHeadroomOutput
+}
+
+type OceanLaunchSpecSchedulingTaskTaskHeadroomArgs struct {
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	// Optionally configure the number of GPUS to allocate for each headroom unit.
+	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	NumOfUnits pulumi.IntInput `pulumi:"numOfUnits"`
+}
+
+func (OceanLaunchSpecSchedulingTaskTaskHeadroomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecSchedulingTaskTaskHeadroom)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecSchedulingTaskTaskHeadroomArgs) ToOceanLaunchSpecSchedulingTaskTaskHeadroomOutput() OceanLaunchSpecSchedulingTaskTaskHeadroomOutput {
+	return i.ToOceanLaunchSpecSchedulingTaskTaskHeadroomOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecSchedulingTaskTaskHeadroomArgs) ToOceanLaunchSpecSchedulingTaskTaskHeadroomOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingTaskTaskHeadroomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecSchedulingTaskTaskHeadroomOutput)
+}
+
+// OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput is an input type that accepts OceanLaunchSpecSchedulingTaskTaskHeadroomArray and OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput` via:
+//
+//          OceanLaunchSpecSchedulingTaskTaskHeadroomArray{ OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{...} }
+type OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput() OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput
+	ToOceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutputWithContext(context.Context) OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput
+}
+
+type OceanLaunchSpecSchedulingTaskTaskHeadroomArray []OceanLaunchSpecSchedulingTaskTaskHeadroomInput
+
+func (OceanLaunchSpecSchedulingTaskTaskHeadroomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecSchedulingTaskTaskHeadroom)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecSchedulingTaskTaskHeadroomArray) ToOceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput() OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput {
+	return i.ToOceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecSchedulingTaskTaskHeadroomArray) ToOceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput)
+}
+
+type OceanLaunchSpecSchedulingTaskTaskHeadroomOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecSchedulingTaskTaskHeadroom)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) ToOceanLaunchSpecSchedulingTaskTaskHeadroomOutput() OceanLaunchSpecSchedulingTaskTaskHeadroomOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) ToOceanLaunchSpecSchedulingTaskTaskHeadroomOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingTaskTaskHeadroomOutput {
+	return o
+}
+
+// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+}
+
+// Optionally configure the number of GPUS to allocate for each headroom unit.
+func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
+}
+
+// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+}
+
+// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) NumOfUnits() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
+}
+
+type OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecSchedulingTaskTaskHeadroom)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput) ToOceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput() OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput) ToOceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecSchedulingTaskTaskHeadroomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecSchedulingTaskTaskHeadroom {
+		return vs[0].([]OceanLaunchSpecSchedulingTaskTaskHeadroom)[vs[1].(int)]
+	}).(OceanLaunchSpecSchedulingTaskTaskHeadroomOutput)
 }
 
 type OceanLaunchSpecShieldedInstanceConfig struct {
@@ -5617,6 +5882,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecMetadataArrayInput)(nil)).Elem(), OceanLaunchSpecMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitsInput)(nil)).Elem(), OceanLaunchSpecResourceLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitsPtrInput)(nil)).Elem(), OceanLaunchSpecResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskArrayInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskTaskHeadroomInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskTaskHeadroomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecShieldedInstanceConfigInput)(nil)).Elem(), OceanLaunchSpecShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecShieldedInstanceConfigPtrInput)(nil)).Elem(), OceanLaunchSpecShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecStorageInput)(nil)).Elem(), OceanLaunchSpecStorageArgs{})
@@ -5699,6 +5968,10 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecMetadataArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskTaskHeadroomOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecStorageOutput{})

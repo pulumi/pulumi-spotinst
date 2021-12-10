@@ -108,6 +108,25 @@ namespace Pulumi.SpotInst.Aws
     ///             },
     ///             RestrictScaleDown = true,
     ///             RootVolumeSize = 30,
+    ///             SchedulingTasks = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecSchedulingTaskArgs
+    ///                 {
+    ///                     CronExpression = "0 1 * * *",
+    ///                     IsEnabled = true,
+    ///                     TaskHeadrooms = 
+    ///                     {
+    ///                         new SpotInst.Aws.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs
+    ///                         {
+    ///                             CpuPerUnit = 1000,
+    ///                             GpuPerUnit = 0,
+    ///                             MemoryPerUnit = 2048,
+    ///                             NumOfUnits = 5,
+    ///                         },
+    ///                     },
+    ///                     TaskType = "manualHeadroomUpdate",
+    ///                 },
+    ///             },
     ///             SecurityGroups = 
     ///             {
     ///                 "sg-987654321",
@@ -268,6 +287,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("rootVolumeSize")]
         public Output<int?> RootVolumeSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Used to define scheduled tasks such as a manual headroom update.
+        /// </summary>
+        [Output("schedulingTasks")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecSchedulingTask>> SchedulingTasks { get; private set; } = null!;
 
         /// <summary>
         /// Optionally adds security group IDs.
@@ -479,6 +504,18 @@ namespace Pulumi.SpotInst.Aws
         [Input("rootVolumeSize")]
         public Input<int>? RootVolumeSize { get; set; }
 
+        [Input("schedulingTasks")]
+        private InputList<Inputs.OceanLaunchSpecSchedulingTaskArgs>? _schedulingTasks;
+
+        /// <summary>
+        /// Used to define scheduled tasks such as a manual headroom update.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecSchedulingTaskArgs> SchedulingTasks
+        {
+            get => _schedulingTasks ?? (_schedulingTasks = new InputList<Inputs.OceanLaunchSpecSchedulingTaskArgs>());
+            set => _schedulingTasks = value;
+        }
+
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;
 
@@ -678,6 +715,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("rootVolumeSize")]
         public Input<int>? RootVolumeSize { get; set; }
+
+        [Input("schedulingTasks")]
+        private InputList<Inputs.OceanLaunchSpecSchedulingTaskGetArgs>? _schedulingTasks;
+
+        /// <summary>
+        /// Used to define scheduled tasks such as a manual headroom update.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecSchedulingTaskGetArgs> SchedulingTasks
+        {
+            get => _schedulingTasks ?? (_schedulingTasks = new InputList<Inputs.OceanLaunchSpecSchedulingTaskGetArgs>());
+            set => _schedulingTasks = value;
+        }
 
         [Input("securityGroups")]
         private InputList<string>? _securityGroups;

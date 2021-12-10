@@ -45,6 +45,8 @@ __all__ = [
     'OceanLaunchSpecLabel',
     'OceanLaunchSpecMetadata',
     'OceanLaunchSpecResourceLimits',
+    'OceanLaunchSpecSchedulingTask',
+    'OceanLaunchSpecSchedulingTaskTaskHeadroom',
     'OceanLaunchSpecShieldedInstanceConfig',
     'OceanLaunchSpecStorage',
     'OceanLaunchSpecStrategy',
@@ -1699,6 +1701,8 @@ class OceanImportUpdatePolicy(dict):
         suggest = None
         if key == "shouldRoll":
             suggest = "should_roll"
+        elif key == "conditionedRoll":
+            suggest = "conditioned_roll"
         elif key == "rollConfig":
             suggest = "roll_config"
 
@@ -1715,8 +1719,11 @@ class OceanImportUpdatePolicy(dict):
 
     def __init__(__self__, *,
                  should_roll: bool,
+                 conditioned_roll: Optional[bool] = None,
                  roll_config: Optional['outputs.OceanImportUpdatePolicyRollConfig'] = None):
         pulumi.set(__self__, "should_roll", should_roll)
+        if conditioned_roll is not None:
+            pulumi.set(__self__, "conditioned_roll", conditioned_roll)
         if roll_config is not None:
             pulumi.set(__self__, "roll_config", roll_config)
 
@@ -1724,6 +1731,11 @@ class OceanImportUpdatePolicy(dict):
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> bool:
         return pulumi.get(self, "should_roll")
+
+    @property
+    @pulumi.getter(name="conditionedRoll")
+    def conditioned_roll(self) -> Optional[bool]:
+        return pulumi.get(self, "conditioned_roll")
 
     @property
     @pulumi.getter(name="rollConfig")
@@ -1965,6 +1977,158 @@ class OceanLaunchSpecResourceLimits(dict):
         Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
         """
         return pulumi.get(self, "min_instance_count")
+
+
+@pulumi.output_type
+class OceanLaunchSpecSchedulingTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronExpression":
+            suggest = "cron_expression"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "taskType":
+            suggest = "task_type"
+        elif key == "taskHeadrooms":
+            suggest = "task_headrooms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecSchedulingTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecSchedulingTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecSchedulingTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cron_expression: str,
+                 is_enabled: bool,
+                 task_type: str,
+                 task_headrooms: Optional[Sequence['outputs.OceanLaunchSpecSchedulingTaskTaskHeadroom']] = None):
+        """
+        :param str cron_expression: A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+        :param bool is_enabled: Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        :param str task_type: The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+        :param Sequence['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs'] task_headrooms: The config of this scheduled task. Depends on the value of taskType.
+        """
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "task_type", task_type)
+        if task_headrooms is not None:
+            pulumi.set(__self__, "task_headrooms", task_headrooms)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> str:
+        """
+        A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> bool:
+        """
+        Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter(name="taskType")
+    def task_type(self) -> str:
+        """
+        The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+        """
+        return pulumi.get(self, "task_type")
+
+    @property
+    @pulumi.getter(name="taskHeadrooms")
+    def task_headrooms(self) -> Optional[Sequence['outputs.OceanLaunchSpecSchedulingTaskTaskHeadroom']]:
+        """
+        The config of this scheduled task. Depends on the value of taskType.
+        """
+        return pulumi.get(self, "task_headrooms")
+
+
+@pulumi.output_type
+class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numOfUnits":
+            suggest = "num_of_units"
+        elif key == "cpuPerUnit":
+            suggest = "cpu_per_unit"
+        elif key == "gpuPerUnit":
+            suggest = "gpu_per_unit"
+        elif key == "memoryPerUnit":
+            suggest = "memory_per_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecSchedulingTaskTaskHeadroom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecSchedulingTaskTaskHeadroom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecSchedulingTaskTaskHeadroom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 num_of_units: int,
+                 cpu_per_unit: Optional[int] = None,
+                 gpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None):
+        """
+        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        :param int cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param int gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
+        :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
+        pulumi.set(__self__, "num_of_units", num_of_units)
+        if cpu_per_unit is not None:
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+        if gpu_per_unit is not None:
+            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
+        if memory_per_unit is not None:
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+
+    @property
+    @pulumi.getter(name="numOfUnits")
+    def num_of_units(self) -> int:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
+        return pulumi.get(self, "num_of_units")
+
+    @property
+    @pulumi.getter(name="cpuPerUnit")
+    def cpu_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        return pulumi.get(self, "cpu_per_unit")
+
+    @property
+    @pulumi.getter(name="gpuPerUnit")
+    def gpu_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the number of GPUS to allocate for each headroom unit.
+        """
+        return pulumi.get(self, "gpu_per_unit")
+
+    @property
+    @pulumi.getter(name="memoryPerUnit")
+    def memory_per_unit(self) -> Optional[int]:
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
+        return pulumi.get(self, "memory_per_unit")
 
 
 @pulumi.output_type

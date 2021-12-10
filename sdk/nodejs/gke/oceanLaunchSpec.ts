@@ -94,6 +94,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly rootVolumeType!: pulumi.Output<string>;
     /**
+     * Used to define scheduled tasks such as a manual headroom update.
+     */
+    public readonly schedulingTasks!: pulumi.Output<outputs.gke.OceanLaunchSpecSchedulingTask[] | undefined>;
+    /**
      * The account used by applications running on the VM to call GCP APIs.
      */
     public readonly serviceAccount!: pulumi.Output<string>;
@@ -143,6 +147,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
             inputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
+            inputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             inputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             inputs["sourceImage"] = state ? state.sourceImage : undefined;
@@ -166,6 +171,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
             inputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
+            inputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             inputs["sourceImage"] = args ? args.sourceImage : undefined;
@@ -229,6 +235,10 @@ export interface OceanLaunchSpecState {
      * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
      */
     rootVolumeType?: pulumi.Input<string>;
+    /**
+     * Used to define scheduled tasks such as a manual headroom update.
+     */
+    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingTask>[]>;
     /**
      * The account used by applications running on the VM to call GCP APIs.
      */
@@ -304,6 +314,10 @@ export interface OceanLaunchSpecArgs {
      * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
      */
     rootVolumeType?: pulumi.Input<string>;
+    /**
+     * Used to define scheduled tasks such as a manual headroom update.
+     */
+    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingTask>[]>;
     /**
      * The account used by applications running on the VM to call GCP APIs.
      */

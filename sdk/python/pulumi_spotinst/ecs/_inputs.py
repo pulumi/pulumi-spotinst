@@ -22,6 +22,8 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMappingArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
+    'OceanLaunchSpecSchedulingTaskArgs',
+    'OceanLaunchSpecSchedulingTaskTaskHeadroomArgs',
     'OceanLaunchSpecTagArgs',
     'OceanOptimizeImagesArgs',
     'OceanScheduledTaskArgs',
@@ -619,8 +621,8 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
+        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         pulumi.set(__self__, "num_of_units", num_of_units)
@@ -633,7 +635,7 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> pulumi.Input[int]:
         """
-        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
         """
         return pulumi.get(self, "num_of_units")
 
@@ -645,7 +647,7 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         """
-        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
         """
         return pulumi.get(self, "cpu_per_unit")
 
@@ -867,6 +869,128 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @size_per_resource_unit.setter
     def size_per_resource_unit(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_per_resource_unit", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecSchedulingTaskArgs:
+    def __init__(__self__, *,
+                 cron_expression: pulumi.Input[str],
+                 is_enabled: pulumi.Input[bool],
+                 task_type: pulumi.Input[str],
+                 task_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]] = None):
+        """
+        :param pulumi.Input[str] cron_expression: A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+        :param pulumi.Input[bool] is_enabled: Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        :param pulumi.Input[str] task_type: The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]] task_headrooms: The config of this scheduled task. Depends on the value of taskType.
+        """
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "task_type", task_type)
+        if task_headrooms is not None:
+            pulumi.set(__self__, "task_headrooms", task_headrooms)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> pulumi.Input[str]:
+        """
+        A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron_expression", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Input[bool]:
+        """
+        Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter(name="taskType")
+    def task_type(self) -> pulumi.Input[str]:
+        """
+        The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+        """
+        return pulumi.get(self, "task_type")
+
+    @task_type.setter
+    def task_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "task_type", value)
+
+    @property
+    @pulumi.getter(name="taskHeadrooms")
+    def task_headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]:
+        """
+        The config of this scheduled task. Depends on the value of taskType.
+        """
+        return pulumi.get(self, "task_headrooms")
+
+    @task_headrooms.setter
+    def task_headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]):
+        pulumi.set(self, "task_headrooms", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
+    def __init__(__self__, *,
+                 num_of_units: pulumi.Input[int],
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
+        pulumi.set(__self__, "num_of_units", num_of_units)
+        if cpu_per_unit is not None:
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+        if memory_per_unit is not None:
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+
+    @property
+    @pulumi.getter(name="numOfUnits")
+    def num_of_units(self) -> pulumi.Input[int]:
+        """
+        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        """
+        return pulumi.get(self, "num_of_units")
+
+    @num_of_units.setter
+    def num_of_units(self, value: pulumi.Input[int]):
+        pulumi.set(self, "num_of_units", value)
+
+    @property
+    @pulumi.getter(name="cpuPerUnit")
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        """
+        return pulumi.get(self, "cpu_per_unit")
+
+    @cpu_per_unit.setter
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_per_unit", value)
+
+    @property
+    @pulumi.getter(name="memoryPerUnit")
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+        """
+        return pulumi.get(self, "memory_per_unit")
+
+    @memory_per_unit.setter
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_per_unit", value)
 
 
 @pulumi.input_type
@@ -1129,11 +1253,15 @@ class OceanTagArgs:
 class OceanUpdatePolicyArgs:
     def __init__(__self__, *,
                  should_roll: pulumi.Input[bool],
+                 conditioned_roll: Optional[pulumi.Input[bool]] = None,
                  roll_config: Optional[pulumi.Input['OceanUpdatePolicyRollConfigArgs']] = None):
         """
         :param pulumi.Input[bool] should_roll: Enables the roll.
+        :param pulumi.Input[bool] conditioned_roll: Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
         """
         pulumi.set(__self__, "should_roll", should_roll)
+        if conditioned_roll is not None:
+            pulumi.set(__self__, "conditioned_roll", conditioned_roll)
         if roll_config is not None:
             pulumi.set(__self__, "roll_config", roll_config)
 
@@ -1148,6 +1276,18 @@ class OceanUpdatePolicyArgs:
     @should_roll.setter
     def should_roll(self, value: pulumi.Input[bool]):
         pulumi.set(self, "should_roll", value)
+
+    @property
+    @pulumi.getter(name="conditionedRoll")
+    def conditioned_roll(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        """
+        return pulumi.get(self, "conditioned_roll")
+
+    @conditioned_roll.setter
+    def conditioned_roll(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "conditioned_roll", value)
 
     @property
     @pulumi.getter(name="rollConfig")

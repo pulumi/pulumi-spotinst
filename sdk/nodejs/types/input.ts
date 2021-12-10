@@ -2427,7 +2427,7 @@ export namespace aws {
 
     export interface OceanLaunchSpecCreateOptions {
         /**
-         * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+         * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the useAsTemplateOnly (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
          */
         initialNodes: pulumi.Input<number>;
     }
@@ -2477,6 +2477,44 @@ export namespace aws {
          * Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
          */
         minInstanceCount?: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecSchedulingTask {
+        /**
+         * A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+         */
+        cronExpression: pulumi.Input<string>;
+        /**
+         * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+         */
+        isEnabled: pulumi.Input<boolean>;
+        /**
+         * The config of this scheduled task. Depends on the value of taskType.
+         */
+        taskHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingTaskTaskHeadroom>[]>;
+        /**
+         * The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+         */
+        taskType: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the number of GPUS to allocate for each headroom unit.
+         */
+        gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
+        memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
+        numOfUnits: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecStrategy {
@@ -2536,6 +2574,27 @@ export namespace aws {
         type?: pulumi.Input<string>;
     }
 
+    export interface OceanLogging {
+        /**
+         * Logging Export configuration.
+         */
+        export?: pulumi.Input<inputs.aws.OceanLoggingExport>;
+    }
+
+    export interface OceanLoggingExport {
+        /**
+         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+         */
+        s3s?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoggingExportS3>[]>;
+    }
+
+    export interface OceanLoggingExportS3 {
+        /**
+         * The identifier of The S3 data integration to export the logs to.
+         */
+        id: pulumi.Input<string>;
+    }
+
     export interface OceanScheduledTask {
         /**
          * Set shutdown hours for cluster object.
@@ -2585,6 +2644,10 @@ export namespace aws {
     }
 
     export interface OceanUpdatePolicy {
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+         */
+        conditionedRoll?: pulumi.Input<boolean>;
         /**
          * While used, you can control whether the group should perform a deployment after an update to the configuration.
          */
@@ -3497,7 +3560,7 @@ export namespace ecs {
 
     export interface OceanLaunchSpecAutoscaleHeadroom {
         /**
-         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
         cpuPerUnit?: pulumi.Input<number>;
         /**
@@ -3505,7 +3568,7 @@ export namespace ecs {
          */
         memoryPerUnit?: pulumi.Input<number>;
         /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
          */
         numOfUnits: pulumi.Input<number>;
     }
@@ -3533,6 +3596,40 @@ export namespace ecs {
         baseSize: pulumi.Input<number>;
         resource: pulumi.Input<string>;
         sizePerResourceUnit: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecSchedulingTask {
+        /**
+         * A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+         */
+        cronExpression: pulumi.Input<string>;
+        /**
+         * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+         */
+        isEnabled: pulumi.Input<boolean>;
+        /**
+         * The config of this scheduled task. Depends on the value of taskType.
+         */
+        taskHeadrooms?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroom>[]>;
+        /**
+         * The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+         */
+        taskType: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
+        memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
+        numOfUnits: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecTag {
@@ -3610,6 +3707,10 @@ export namespace ecs {
     }
 
     export interface OceanUpdatePolicy {
+        /**
+         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+         */
+        conditionedRoll?: pulumi.Input<boolean>;
         rollConfig?: pulumi.Input<inputs.ecs.OceanUpdatePolicyRollConfig>;
         /**
          * Enables the roll.
@@ -3623,7 +3724,6 @@ export namespace ecs {
          */
         batchSizePercentage: pulumi.Input<number>;
     }
-
 }
 
 export namespace gcp {
@@ -4328,6 +4428,7 @@ export namespace gke {
     }
 
     export interface OceanImportUpdatePolicy {
+        conditionedRoll?: pulumi.Input<boolean>;
         rollConfig?: pulumi.Input<inputs.gke.OceanImportUpdatePolicyRollConfig>;
         shouldRoll: pulumi.Input<boolean>;
     }
@@ -4391,6 +4492,44 @@ export namespace gke {
          * Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
          */
         minInstanceCount?: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecSchedulingTask {
+        /**
+         * A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
+         */
+        cronExpression: pulumi.Input<string>;
+        /**
+         * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+         */
+        isEnabled: pulumi.Input<boolean>;
+        /**
+         * The config of this scheduled task. Depends on the value of taskType.
+         */
+        taskHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingTaskTaskHeadroom>[]>;
+        /**
+         * The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
+         */
+        taskType: pulumi.Input<string>;
+    }
+
+    export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
+        /**
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         */
+        cpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the number of GPUS to allocate for each headroom unit.
+         */
+        gpuPerUnit?: pulumi.Input<number>;
+        /**
+         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+         */
+        memoryPerUnit?: pulumi.Input<number>;
+        /**
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         */
+        numOfUnits: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecShieldedInstanceConfig {
