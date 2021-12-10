@@ -42,6 +42,8 @@ type Ocean struct {
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
 	// - Array of load balancer objects to add to ocean cluster
 	LoadBalancers OceanLoadBalancerArrayOutput `pulumi:"loadBalancers"`
+	// Logging configuration.
+	Logging OceanLoggingPtrOutput `pulumi:"logging"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrOutput `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
@@ -66,6 +68,7 @@ type Ocean struct {
 	Tags         OceanTagArrayOutput        `pulumi:"tags"`
 	UpdatePolicy OceanUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	// When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
 	UseAsTemplateOnly pulumi.BoolPtrOutput `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData           pulumi.StringPtrOutput `pulumi:"userData"`
@@ -139,6 +142,8 @@ type oceanState struct {
 	KeyName *string `pulumi:"keyName"`
 	// - Array of load balancer objects to add to ocean cluster
 	LoadBalancers []OceanLoadBalancer `pulumi:"loadBalancers"`
+	// Logging configuration.
+	Logging *OceanLogging `pulumi:"logging"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
@@ -163,6 +168,7 @@ type oceanState struct {
 	Tags         []OceanTag         `pulumi:"tags"`
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	// When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
 	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData           *string `pulumi:"userData"`
@@ -202,6 +208,8 @@ type OceanState struct {
 	KeyName pulumi.StringPtrInput
 	// - Array of load balancer objects to add to ocean cluster
 	LoadBalancers OceanLoadBalancerArrayInput
+	// Logging configuration.
+	Logging OceanLoggingPtrInput
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
@@ -226,6 +234,7 @@ type OceanState struct {
 	Tags         OceanTagArrayInput
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	// When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
 	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData           pulumi.StringPtrInput
@@ -269,6 +278,8 @@ type oceanArgs struct {
 	KeyName *string `pulumi:"keyName"`
 	// - Array of load balancer objects to add to ocean cluster
 	LoadBalancers []OceanLoadBalancer `pulumi:"loadBalancers"`
+	// Logging configuration.
+	Logging *OceanLogging `pulumi:"logging"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
@@ -293,6 +304,7 @@ type oceanArgs struct {
 	Tags         []OceanTag         `pulumi:"tags"`
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	// When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
 	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData           *string `pulumi:"userData"`
@@ -333,6 +345,8 @@ type OceanArgs struct {
 	KeyName pulumi.StringPtrInput
 	// - Array of load balancer objects to add to ocean cluster
 	LoadBalancers OceanLoadBalancerArrayInput
+	// Logging configuration.
+	Logging OceanLoggingPtrInput
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
@@ -357,6 +371,7 @@ type OceanArgs struct {
 	Tags         OceanTagArrayInput
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	// When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
 	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData           pulumi.StringPtrInput

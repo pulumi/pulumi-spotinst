@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanLaunchSpecCreateOptions
     {
         /// <summary>
-        /// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
+        /// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
         /// </summary>
         public readonly int InitialNodes;
 

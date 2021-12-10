@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanImportUpdatePolicyGetArgs : Pulumi.ResourceArgs
     {
+        [Input("conditionedRoll")]
+        public Input<bool>? ConditionedRoll { get; set; }
+
         [Input("rollConfig")]
         public Input<Inputs.OceanImportUpdatePolicyRollConfigGetArgs>? RollConfig { get; set; }
 

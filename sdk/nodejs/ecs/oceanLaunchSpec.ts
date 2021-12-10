@@ -60,6 +60,16 @@ import * as utilities from "../utilities";
  *     ],
  *     oceanId: "o-123456",
  *     restrictScaleDown: true,
+ *     schedulingTasks: [{
+ *         cronExpression: "0 1 * * *",
+ *         isEnabled: true,
+ *         taskHeadrooms: [{
+ *             cpuPerUnit: 1000,
+ *             memoryPerUnit: 2048,
+ *             numOfUnits: 5,
+ *         }],
+ *         taskType: "manualHeadroomUpdate",
+ *     }],
  *     securityGroupIds: ["awseb-12345"],
  *     subnetIds: ["subnet-12345"],
  *     tags: [{
@@ -155,6 +165,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly restrictScaleDown!: pulumi.Output<boolean | undefined>;
     /**
+     * Used to define scheduled tasks such as a manual headroom update.
+     */
+    public readonly schedulingTasks!: pulumi.Output<outputs.ecs.OceanLaunchSpecSchedulingTask[] | undefined>;
+    /**
      * One or more security group ids.
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
@@ -193,6 +207,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["oceanId"] = state ? state.oceanId : undefined;
             inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
+            inputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["subnetIds"] = state ? state.subnetIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -211,6 +226,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["oceanId"] = args ? args.oceanId : undefined;
             inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
+            inputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["subnetIds"] = args ? args.subnetIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -260,6 +276,10 @@ export interface OceanLaunchSpecState {
      * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     restrictScaleDown?: pulumi.Input<boolean>;
+    /**
+     * Used to define scheduled tasks such as a manual headroom update.
+     */
+    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecSchedulingTask>[]>;
     /**
      * One or more security group ids.
      */
@@ -315,6 +335,10 @@ export interface OceanLaunchSpecArgs {
      * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     restrictScaleDown?: pulumi.Input<boolean>;
+    /**
+     * Used to define scheduled tasks such as a manual headroom update.
+     */
+    schedulingTasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecSchedulingTask>[]>;
     /**
      * One or more security group ids.
      */

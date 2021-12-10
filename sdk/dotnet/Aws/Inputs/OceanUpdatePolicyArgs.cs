@@ -13,6 +13,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanUpdatePolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+        /// </summary>
+        [Input("conditionedRoll")]
+        public Input<bool>? ConditionedRoll { get; set; }
+
+        /// <summary>
         /// While used, you can control whether the group should perform a deployment after an update to the configuration.
         /// </summary>
         [Input("rollConfig")]

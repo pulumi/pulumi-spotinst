@@ -60,6 +60,8 @@ type OceanLaunchSpec struct {
 	RootVolumeSize pulumi.IntOutput `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
 	RootVolumeType pulumi.StringOutput `pulumi:"rootVolumeType"`
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayOutput `pulumi:"schedulingTasks"`
 	// The account used by applications running on the VM to call GCP APIs.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The Ocean shielded instance configuration object.
@@ -129,6 +131,8 @@ type oceanLaunchSpecState struct {
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
 	RootVolumeType *string `pulumi:"rootVolumeType"`
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// The account used by applications running on the VM to call GCP APIs.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The Ocean shielded instance configuration object.
@@ -167,6 +171,8 @@ type OceanLaunchSpecState struct {
 	RootVolumeSize pulumi.IntPtrInput
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
 	RootVolumeType pulumi.StringPtrInput
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// The account used by applications running on the VM to call GCP APIs.
 	ServiceAccount pulumi.StringPtrInput
 	// The Ocean shielded instance configuration object.
@@ -209,6 +215,8 @@ type oceanLaunchSpecArgs struct {
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
 	RootVolumeType *string `pulumi:"rootVolumeType"`
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// The account used by applications running on the VM to call GCP APIs.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The Ocean shielded instance configuration object.
@@ -248,6 +256,8 @@ type OceanLaunchSpecArgs struct {
 	RootVolumeSize pulumi.IntPtrInput
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`.
 	RootVolumeType pulumi.StringPtrInput
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// The account used by applications running on the VM to call GCP APIs.
 	ServiceAccount pulumi.StringPtrInput
 	// The Ocean shielded instance configuration object.

@@ -93,6 +93,21 @@ import (
 // 			},
 // 			RestrictScaleDown: pulumi.Bool(true),
 // 			RootVolumeSize:    pulumi.Int(30),
+// 			SchedulingTasks: aws.OceanLaunchSpecSchedulingTaskArray{
+// 				&aws.OceanLaunchSpecSchedulingTaskArgs{
+// 					CronExpression: pulumi.String("0 1 * * *"),
+// 					IsEnabled:      pulumi.Bool(true),
+// 					TaskHeadrooms: aws.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
+// 						&aws.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
+// 							CpuPerUnit:    pulumi.Int(1000),
+// 							GpuPerUnit:    pulumi.Int(0),
+// 							MemoryPerUnit: pulumi.Int(2048),
+// 							NumOfUnits:    pulumi.Int(5),
+// 						},
+// 					},
+// 					TaskType: pulumi.String("manualHeadroomUpdate"),
+// 				},
+// 			},
 // 			SecurityGroups: pulumi.StringArray{
 // 				pulumi.String("sg-987654321"),
 // 			},
@@ -192,6 +207,8 @@ type OceanLaunchSpec struct {
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayOutput `pulumi:"schedulingTasks"`
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayOutput           `pulumi:"securityGroups"`
 	Strategies     OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
@@ -267,6 +284,8 @@ type oceanLaunchSpecState struct {
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// Optionally adds security group IDs.
 	SecurityGroups []string                  `pulumi:"securityGroups"`
 	Strategies     []OceanLaunchSpecStrategy `pulumi:"strategies"`
@@ -311,6 +330,8 @@ type OceanLaunchSpecState struct {
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayInput
 	Strategies     OceanLaunchSpecStrategyArrayInput
@@ -359,6 +380,8 @@ type oceanLaunchSpecArgs struct {
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// Optionally adds security group IDs.
 	SecurityGroups []string                  `pulumi:"securityGroups"`
 	Strategies     []OceanLaunchSpecStrategy `pulumi:"strategies"`
@@ -404,6 +427,8 @@ type OceanLaunchSpecArgs struct {
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
+	// Used to define scheduled tasks such as a manual headroom update.
+	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// Optionally adds security group IDs.
 	SecurityGroups pulumi.StringArrayInput
 	Strategies     OceanLaunchSpecStrategyArrayInput

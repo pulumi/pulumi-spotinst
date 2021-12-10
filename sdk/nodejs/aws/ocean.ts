@@ -90,6 +90,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly loadBalancers!: pulumi.Output<outputs.aws.OceanLoadBalancer[] | undefined>;
     /**
+     * Logging configuration.
+     */
+    public readonly logging!: pulumi.Output<outputs.aws.OceanLogging | undefined>;
+    /**
      * The upper limit of instances the cluster can scale up to.
      */
     public readonly maxSize!: pulumi.Output<number | undefined>;
@@ -136,6 +140,7 @@ export class Ocean extends pulumi.CustomResource {
     public readonly updatePolicy!: pulumi.Output<outputs.aws.OceanUpdatePolicy | undefined>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     * When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
      */
     public readonly useAsTemplateOnly!: pulumi.Output<boolean | undefined>;
     /**
@@ -179,6 +184,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["loadBalancers"] = state ? state.loadBalancers : undefined;
+            inputs["logging"] = state ? state.logging : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
             inputs["minSize"] = state ? state.minSize : undefined;
             inputs["monitoring"] = state ? state.monitoring : undefined;
@@ -218,6 +224,7 @@ export class Ocean extends pulumi.CustomResource {
             inputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["loadBalancers"] = args ? args.loadBalancers : undefined;
+            inputs["logging"] = args ? args.logging : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
             inputs["minSize"] = args ? args.minSize : undefined;
             inputs["monitoring"] = args ? args.monitoring : undefined;
@@ -304,6 +311,10 @@ export interface OceanState {
      */
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoadBalancer>[]>;
     /**
+     * Logging configuration.
+     */
+    logging?: pulumi.Input<inputs.aws.OceanLogging>;
+    /**
      * The upper limit of instances the cluster can scale up to.
      */
     maxSize?: pulumi.Input<number>;
@@ -350,6 +361,7 @@ export interface OceanState {
     updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     * When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
      */
     useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
@@ -428,6 +440,10 @@ export interface OceanArgs {
      */
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoadBalancer>[]>;
     /**
+     * Logging configuration.
+     */
+    logging?: pulumi.Input<inputs.aws.OceanLogging>;
+    /**
      * The upper limit of instances the cluster can scale up to.
      */
     maxSize?: pulumi.Input<number>;
@@ -474,6 +490,7 @@ export interface OceanArgs {
     updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     * When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
      */
     useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
