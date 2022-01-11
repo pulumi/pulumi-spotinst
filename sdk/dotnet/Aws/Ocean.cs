@@ -184,6 +184,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
+        /// <summary>
+        /// If savings plans exist, Ocean will utilize them before launching Spot instances.
+        /// </summary>
         [Output("utilizeCommitments")]
         public Output<bool?> UtilizeCommitments { get; private set; } = null!;
 
@@ -453,6 +456,9 @@ namespace Pulumi.SpotInst.Aws
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        /// <summary>
+        /// If savings plans exist, Ocean will utilize them before launching Spot instances.
+        /// </summary>
         [Input("utilizeCommitments")]
         public Input<bool>? UtilizeCommitments { get; set; }
 
@@ -689,6 +695,9 @@ namespace Pulumi.SpotInst.Aws
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        /// <summary>
+        /// If savings plans exist, Ocean will utilize them before launching Spot instances.
+        /// </summary>
         [Input("utilizeCommitments")]
         public Input<bool>? UtilizeCommitments { get; set; }
 

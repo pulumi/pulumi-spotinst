@@ -147,6 +147,9 @@ export class Ocean extends pulumi.CustomResource {
      * Base64-encoded MIME user data to make available to the instances.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
+    /**
+     * If savings plans exist, Ocean will utilize them before launching Spot instances.
+     */
     public readonly utilizeCommitments!: pulumi.Output<boolean | undefined>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -368,6 +371,9 @@ export interface OceanState {
      * Base64-encoded MIME user data to make available to the instances.
      */
     userData?: pulumi.Input<string>;
+    /**
+     * If savings plans exist, Ocean will utilize them before launching Spot instances.
+     */
     utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -497,6 +503,9 @@ export interface OceanArgs {
      * Base64-encoded MIME user data to make available to the instances.
      */
     userData?: pulumi.Input<string>;
+    /**
+     * If savings plans exist, Ocean will utilize them before launching Spot instances.
+     */
     utilizeCommitments?: pulumi.Input<boolean>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.

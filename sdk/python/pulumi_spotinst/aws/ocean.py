@@ -78,6 +78,7 @@ class OceanArgs:
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
+        :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """
@@ -493,6 +494,9 @@ class OceanArgs:
     @property
     @pulumi.getter(name="utilizeCommitments")
     def utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If savings plans exist, Ocean will utilize them before launching Spot instances.
+        """
         return pulumi.get(self, "utilize_commitments")
 
     @utilize_commitments.setter
@@ -590,6 +594,7 @@ class _OceanState:
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
+        :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """
@@ -1007,6 +1012,9 @@ class _OceanState:
     @property
     @pulumi.getter(name="utilizeCommitments")
     def utilize_commitments(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If savings plans exist, Ocean will utilize them before launching Spot instances.
+        """
         return pulumi.get(self, "utilize_commitments")
 
     @utilize_commitments.setter
@@ -1109,6 +1117,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
+        :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """
@@ -1293,6 +1302,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
+        :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """
@@ -1567,6 +1577,9 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter(name="utilizeCommitments")
     def utilize_commitments(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If savings plans exist, Ocean will utilize them before launching Spot instances.
+        """
         return pulumi.get(self, "utilize_commitments")
 
     @property

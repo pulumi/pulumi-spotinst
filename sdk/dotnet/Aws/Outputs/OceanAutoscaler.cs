@@ -38,6 +38,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? AutoscaleIsEnabled;
         /// <summary>
+        /// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        /// </summary>
+        public readonly bool? EnableAutomaticAndManualHeadroom;
+        /// <summary>
         /// Optionally set upper and lower bounds on the resource usage of the cluster.
         /// </summary>
         public readonly Outputs.OceanAutoscalerResourceLimits? ResourceLimits;
@@ -56,6 +60,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             bool? autoscaleIsEnabled,
 
+            bool? enableAutomaticAndManualHeadroom,
+
             Outputs.OceanAutoscalerResourceLimits? resourceLimits)
         {
             AutoHeadroomPercentage = autoHeadroomPercentage;
@@ -64,6 +70,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
             AutoscaleHeadroom = autoscaleHeadroom;
             AutoscaleIsAutoConfig = autoscaleIsAutoConfig;
             AutoscaleIsEnabled = autoscaleIsEnabled;
+            EnableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
             ResourceLimits = resourceLimits;
         }
     }

@@ -71,8 +71,9 @@ type Ocean struct {
 	// When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
 	UseAsTemplateOnly pulumi.BoolPtrOutput `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData           pulumi.StringPtrOutput `pulumi:"userData"`
-	UtilizeCommitments pulumi.BoolPtrOutput   `pulumi:"utilizeCommitments"`
+	UserData pulumi.StringPtrOutput `pulumi:"userData"`
+	// If savings plans exist, Ocean will utilize them before launching Spot instances.
+	UtilizeCommitments pulumi.BoolPtrOutput `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -171,8 +172,9 @@ type oceanState struct {
 	// When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
 	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData           *string `pulumi:"userData"`
-	UtilizeCommitments *bool   `pulumi:"utilizeCommitments"`
+	UserData *string `pulumi:"userData"`
+	// If savings plans exist, Ocean will utilize them before launching Spot instances.
+	UtilizeCommitments *bool `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -237,7 +239,8 @@ type OceanState struct {
 	// When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
 	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData           pulumi.StringPtrInput
+	UserData pulumi.StringPtrInput
+	// If savings plans exist, Ocean will utilize them before launching Spot instances.
 	UtilizeCommitments pulumi.BoolPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
@@ -307,8 +310,9 @@ type oceanArgs struct {
 	// When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
 	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData           *string `pulumi:"userData"`
-	UtilizeCommitments *bool   `pulumi:"utilizeCommitments"`
+	UserData *string `pulumi:"userData"`
+	// If savings plans exist, Ocean will utilize them before launching Spot instances.
+	UtilizeCommitments *bool `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
@@ -374,7 +378,8 @@ type OceanArgs struct {
 	// When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
 	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData           pulumi.StringPtrInput
+	UserData pulumi.StringPtrInput
+	// If savings plans exist, Ocean will utilize them before launching Spot instances.
 	UtilizeCommitments pulumi.BoolPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
