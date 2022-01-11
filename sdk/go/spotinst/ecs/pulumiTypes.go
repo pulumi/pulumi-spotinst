@@ -3229,6 +3229,8 @@ func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
 }
 
 type OceanUpdatePolicy struct {
+	// will update instance tags on the fly without rolling the cluster.
+	AutoApplyTags *bool `pulumi:"autoApplyTags"`
 	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 	ConditionedRoll *bool                        `pulumi:"conditionedRoll"`
 	RollConfig      *OceanUpdatePolicyRollConfig `pulumi:"rollConfig"`
@@ -3248,6 +3250,8 @@ type OceanUpdatePolicyInput interface {
 }
 
 type OceanUpdatePolicyArgs struct {
+	// will update instance tags on the fly without rolling the cluster.
+	AutoApplyTags pulumi.BoolPtrInput `pulumi:"autoApplyTags"`
 	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 	ConditionedRoll pulumi.BoolPtrInput                 `pulumi:"conditionedRoll"`
 	RollConfig      OceanUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
@@ -3332,6 +3336,11 @@ func (o OceanUpdatePolicyOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx con
 	}).(OceanUpdatePolicyPtrOutput)
 }
 
+// will update instance tags on the fly without rolling the cluster.
+func (o OceanUpdatePolicyOutput) AutoApplyTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanUpdatePolicy) *bool { return v.AutoApplyTags }).(pulumi.BoolPtrOutput)
+}
+
 // Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 func (o OceanUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
@@ -3368,6 +3377,16 @@ func (o OceanUpdatePolicyPtrOutput) Elem() OceanUpdatePolicyOutput {
 		var ret OceanUpdatePolicy
 		return ret
 	}).(OceanUpdatePolicyOutput)
+}
+
+// will update instance tags on the fly without rolling the cluster.
+func (o OceanUpdatePolicyPtrOutput) AutoApplyTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoApplyTags
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).

@@ -81,6 +81,7 @@ import (
 // 				},
 // 			},
 // 			UserData:                 pulumi.String("echo hello world"),
+// 			UtilizeCommitments:       pulumi.Bool(false),
 // 			UtilizeReservedInstances: pulumi.Bool(false),
 // 			Whitelists: pulumi.StringArray{
 // 				pulumi.String("t3.medium"),
@@ -157,8 +158,9 @@ type Ocean struct {
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData           pulumi.StringPtrOutput `pulumi:"userData"`
-	UtilizeCommitments pulumi.BoolPtrOutput   `pulumi:"utilizeCommitments"`
+	UserData pulumi.StringPtrOutput `pulumi:"userData"`
+	// If savings plans exist, Ocean will utilize them before launching Spot instances.
+	UtilizeCommitments pulumi.BoolPtrOutput `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
@@ -253,8 +255,9 @@ type oceanState struct {
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData           *string `pulumi:"userData"`
-	UtilizeCommitments *bool   `pulumi:"utilizeCommitments"`
+	UserData *string `pulumi:"userData"`
+	// If savings plans exist, Ocean will utilize them before launching Spot instances.
+	UtilizeCommitments *bool `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
@@ -309,7 +312,8 @@ type OceanState struct {
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData           pulumi.StringPtrInput
+	UserData pulumi.StringPtrInput
+	// If savings plans exist, Ocean will utilize them before launching Spot instances.
 	UtilizeCommitments pulumi.BoolPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
@@ -369,8 +373,9 @@ type oceanArgs struct {
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData           *string `pulumi:"userData"`
-	UtilizeCommitments *bool   `pulumi:"utilizeCommitments"`
+	UserData *string `pulumi:"userData"`
+	// If savings plans exist, Ocean will utilize them before launching Spot instances.
+	UtilizeCommitments *bool `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
 	// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
@@ -426,7 +431,8 @@ type OceanArgs struct {
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
-	UserData           pulumi.StringPtrInput
+	UserData pulumi.StringPtrInput
+	// If savings plans exist, Ocean will utilize them before launching Spot instances.
 	UtilizeCommitments pulumi.BoolPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput

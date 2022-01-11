@@ -7964,6 +7964,8 @@ class OceanAutoscaler(dict):
             suggest = "autoscale_is_auto_config"
         elif key == "autoscaleIsEnabled":
             suggest = "autoscale_is_enabled"
+        elif key == "enableAutomaticAndManualHeadroom":
+            suggest = "enable_automatic_and_manual_headroom"
         elif key == "resourceLimits":
             suggest = "resource_limits"
 
@@ -7985,6 +7987,7 @@ class OceanAutoscaler(dict):
                  autoscale_headroom: Optional['outputs.OceanAutoscalerAutoscaleHeadroom'] = None,
                  autoscale_is_auto_config: Optional[bool] = None,
                  autoscale_is_enabled: Optional[bool] = None,
+                 enable_automatic_and_manual_headroom: Optional[bool] = None,
                  resource_limits: Optional['outputs.OceanAutoscalerResourceLimits'] = None):
         """
         :param int auto_headroom_percentage: Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
@@ -7993,6 +7996,7 @@ class OceanAutoscaler(dict):
         :param 'OceanAutoscalerAutoscaleHeadroomArgs' autoscale_headroom: Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
         :param bool autoscale_is_auto_config: Automatically configure and optimize headroom resources.
         :param bool autoscale_is_enabled: Enable the Ocean Kubernetes Auto Scaler.
+        :param bool enable_automatic_and_manual_headroom: enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
         :param 'OceanAutoscalerResourceLimitsArgs' resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
         """
         if auto_headroom_percentage is not None:
@@ -8007,6 +8011,8 @@ class OceanAutoscaler(dict):
             pulumi.set(__self__, "autoscale_is_auto_config", autoscale_is_auto_config)
         if autoscale_is_enabled is not None:
             pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
+        if enable_automatic_and_manual_headroom is not None:
+            pulumi.set(__self__, "enable_automatic_and_manual_headroom", enable_automatic_and_manual_headroom)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
 
@@ -8057,6 +8063,14 @@ class OceanAutoscaler(dict):
         Enable the Ocean Kubernetes Auto Scaler.
         """
         return pulumi.get(self, "autoscale_is_enabled")
+
+    @property
+    @pulumi.getter(name="enableAutomaticAndManualHeadroom")
+    def enable_automatic_and_manual_headroom(self) -> Optional[bool]:
+        """
+        enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        """
+        return pulumi.get(self, "enable_automatic_and_manual_headroom")
 
     @property
     @pulumi.getter(name="resourceLimits")
@@ -9492,6 +9506,8 @@ class OceanUpdatePolicy(dict):
         suggest = None
         if key == "shouldRoll":
             suggest = "should_roll"
+        elif key == "autoApplyTags":
+            suggest = "auto_apply_tags"
         elif key == "conditionedRoll":
             suggest = "conditioned_roll"
         elif key == "rollConfig":
@@ -9510,14 +9526,18 @@ class OceanUpdatePolicy(dict):
 
     def __init__(__self__, *,
                  should_roll: bool,
+                 auto_apply_tags: Optional[bool] = None,
                  conditioned_roll: Optional[bool] = None,
                  roll_config: Optional['outputs.OceanUpdatePolicyRollConfig'] = None):
         """
         :param bool should_roll: Enables the roll.
+        :param bool auto_apply_tags: will update instance tags on the fly without rolling the cluster.
         :param bool conditioned_roll: Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
         :param 'OceanUpdatePolicyRollConfigArgs' roll_config: While used, you can control whether the group should perform a deployment after an update to the configuration.
         """
         pulumi.set(__self__, "should_roll", should_roll)
+        if auto_apply_tags is not None:
+            pulumi.set(__self__, "auto_apply_tags", auto_apply_tags)
         if conditioned_roll is not None:
             pulumi.set(__self__, "conditioned_roll", conditioned_roll)
         if roll_config is not None:
@@ -9530,6 +9550,14 @@ class OceanUpdatePolicy(dict):
         Enables the roll.
         """
         return pulumi.get(self, "should_roll")
+
+    @property
+    @pulumi.getter(name="autoApplyTags")
+    def auto_apply_tags(self) -> Optional[bool]:
+        """
+        will update instance tags on the fly without rolling the cluster.
+        """
+        return pulumi.get(self, "auto_apply_tags")
 
     @property
     @pulumi.getter(name="conditionedRoll")

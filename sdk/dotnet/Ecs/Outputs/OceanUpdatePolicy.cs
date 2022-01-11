@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     public sealed class OceanUpdatePolicy
     {
         /// <summary>
+        /// will update instance tags on the fly without rolling the cluster.
+        /// </summary>
+        public readonly bool? AutoApplyTags;
+        /// <summary>
         /// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
         /// </summary>
         public readonly bool? ConditionedRoll;
@@ -25,12 +29,15 @@ namespace Pulumi.SpotInst.Ecs.Outputs
 
         [OutputConstructor]
         private OceanUpdatePolicy(
+            bool? autoApplyTags,
+
             bool? conditionedRoll,
 
             Outputs.OceanUpdatePolicyRollConfig? rollConfig,
 
             bool shouldRoll)
         {
+            AutoApplyTags = autoApplyTags;
             ConditionedRoll = conditionedRoll;
             RollConfig = rollConfig;
             ShouldRoll = shouldRoll;

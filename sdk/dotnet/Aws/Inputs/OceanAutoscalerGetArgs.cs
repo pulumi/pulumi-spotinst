@@ -49,6 +49,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? AutoscaleIsEnabled { get; set; }
 
         /// <summary>
+        /// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        /// </summary>
+        [Input("enableAutomaticAndManualHeadroom")]
+        public Input<bool>? EnableAutomaticAndManualHeadroom { get; set; }
+
+        /// <summary>
         /// Optionally set upper and lower bounds on the resource usage of the cluster.
         /// </summary>
         [Input("resourceLimits")]

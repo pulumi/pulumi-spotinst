@@ -15752,6 +15752,8 @@ type OceanAutoscaler struct {
 	AutoscaleIsAutoConfig *bool `pulumi:"autoscaleIsAutoConfig"`
 	// Enable the Ocean Kubernetes Auto Scaler.
 	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
+	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+	EnableAutomaticAndManualHeadroom *bool `pulumi:"enableAutomaticAndManualHeadroom"`
 	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits *OceanAutoscalerResourceLimits `pulumi:"resourceLimits"`
 }
@@ -15780,6 +15782,8 @@ type OceanAutoscalerArgs struct {
 	AutoscaleIsAutoConfig pulumi.BoolPtrInput `pulumi:"autoscaleIsAutoConfig"`
 	// Enable the Ocean Kubernetes Auto Scaler.
 	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
+	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput `pulumi:"enableAutomaticAndManualHeadroom"`
 	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits OceanAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
 }
@@ -15891,6 +15895,11 @@ func (o OceanAutoscalerOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+func (o OceanAutoscalerOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.EnableAutomaticAndManualHeadroom }).(pulumi.BoolPtrOutput)
+}
+
 // Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
@@ -15977,6 +15986,16 @@ func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.AutoscaleIsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+func (o OceanAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticAndManualHeadroom
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -19917,6 +19936,8 @@ func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
 }
 
 type OceanUpdatePolicy struct {
+	// will update instance tags on the fly without rolling the cluster.
+	AutoApplyTags *bool `pulumi:"autoApplyTags"`
 	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 	ConditionedRoll *bool `pulumi:"conditionedRoll"`
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
@@ -19937,6 +19958,8 @@ type OceanUpdatePolicyInput interface {
 }
 
 type OceanUpdatePolicyArgs struct {
+	// will update instance tags on the fly without rolling the cluster.
+	AutoApplyTags pulumi.BoolPtrInput `pulumi:"autoApplyTags"`
 	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 	ConditionedRoll pulumi.BoolPtrInput `pulumi:"conditionedRoll"`
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
@@ -20022,6 +20045,11 @@ func (o OceanUpdatePolicyOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx con
 	}).(OceanUpdatePolicyPtrOutput)
 }
 
+// will update instance tags on the fly without rolling the cluster.
+func (o OceanUpdatePolicyOutput) AutoApplyTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanUpdatePolicy) *bool { return v.AutoApplyTags }).(pulumi.BoolPtrOutput)
+}
+
 // Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 func (o OceanUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
@@ -20059,6 +20087,16 @@ func (o OceanUpdatePolicyPtrOutput) Elem() OceanUpdatePolicyOutput {
 		var ret OceanUpdatePolicy
 		return ret
 	}).(OceanUpdatePolicyOutput)
+}
+
+// will update instance tags on the fly without rolling the cluster.
+func (o OceanUpdatePolicyPtrOutput) AutoApplyTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoApplyTags
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).

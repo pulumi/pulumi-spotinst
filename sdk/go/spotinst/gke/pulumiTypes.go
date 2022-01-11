@@ -2594,6 +2594,8 @@ type OceanImportAutoscaler struct {
 	Cooldown *int `pulumi:"cooldown"`
 	// Auto Scaling scale down operations.
 	Down *OceanImportAutoscalerDown `pulumi:"down"`
+	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+	EnableAutomaticAndManualHeadroom *bool `pulumi:"enableAutomaticAndManualHeadroom"`
 	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 	Headroom *OceanImportAutoscalerHeadroom `pulumi:"headroom"`
 	// Automatically configure and optimize headroom resources.
@@ -2622,6 +2624,8 @@ type OceanImportAutoscalerArgs struct {
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
 	// Auto Scaling scale down operations.
 	Down OceanImportAutoscalerDownPtrInput `pulumi:"down"`
+	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput `pulumi:"enableAutomaticAndManualHeadroom"`
 	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 	Headroom OceanImportAutoscalerHeadroomPtrInput `pulumi:"headroom"`
 	// Automatically configure and optimize headroom resources.
@@ -2724,6 +2728,11 @@ func (o OceanImportAutoscalerOutput) Down() OceanImportAutoscalerDownPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerDown { return v.Down }).(OceanImportAutoscalerDownPtrOutput)
 }
 
+// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+func (o OceanImportAutoscalerOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportAutoscaler) *bool { return v.EnableAutomaticAndManualHeadroom }).(pulumi.BoolPtrOutput)
+}
+
 // Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanImportAutoscalerOutput) Headroom() OceanImportAutoscalerHeadroomPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerHeadroom { return v.Headroom }).(OceanImportAutoscalerHeadroomPtrOutput)
@@ -2796,6 +2805,16 @@ func (o OceanImportAutoscalerPtrOutput) Down() OceanImportAutoscalerDownPtrOutpu
 		}
 		return v.Down
 	}).(OceanImportAutoscalerDownPtrOutput)
+}
+
+// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+func (o OceanImportAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanImportAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticAndManualHeadroom
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.

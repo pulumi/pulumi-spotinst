@@ -2283,6 +2283,10 @@ export namespace aws {
          */
         autoscaleIsEnabled?: boolean;
         /**
+         * enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+         */
+        enableAutomaticAndManualHeadroom?: boolean;
+        /**
          * Optionally set upper and lower bounds on the resource usage of the cluster.
          */
         resourceLimits?: outputs.aws.OceanAutoscalerResourceLimits;
@@ -2645,6 +2649,10 @@ export namespace aws {
     }
 
     export interface OceanUpdatePolicy {
+        /**
+         * will update instance tags on the fly without rolling the cluster.
+         */
+        autoApplyTags?: boolean;
         /**
          * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
          */
@@ -3709,6 +3717,10 @@ export namespace ecs {
 
     export interface OceanUpdatePolicy {
         /**
+         * will update instance tags on the fly without rolling the cluster.
+         */
+        autoApplyTags?: boolean;
+        /**
          * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
          */
         conditionedRoll?: boolean;
@@ -4302,6 +4314,10 @@ export namespace gke {
          * Auto Scaling scale down operations.
          */
         down?: outputs.gke.OceanImportAutoscalerDown;
+        /**
+         * enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+         */
+        enableAutomaticAndManualHeadroom?: boolean;
         /**
          * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
          */

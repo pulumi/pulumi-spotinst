@@ -1253,13 +1253,17 @@ class OceanTagArgs:
 class OceanUpdatePolicyArgs:
     def __init__(__self__, *,
                  should_roll: pulumi.Input[bool],
+                 auto_apply_tags: Optional[pulumi.Input[bool]] = None,
                  conditioned_roll: Optional[pulumi.Input[bool]] = None,
                  roll_config: Optional[pulumi.Input['OceanUpdatePolicyRollConfigArgs']] = None):
         """
         :param pulumi.Input[bool] should_roll: Enables the roll.
+        :param pulumi.Input[bool] auto_apply_tags: will update instance tags on the fly without rolling the cluster.
         :param pulumi.Input[bool] conditioned_roll: Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
         """
         pulumi.set(__self__, "should_roll", should_roll)
+        if auto_apply_tags is not None:
+            pulumi.set(__self__, "auto_apply_tags", auto_apply_tags)
         if conditioned_roll is not None:
             pulumi.set(__self__, "conditioned_roll", conditioned_roll)
         if roll_config is not None:
@@ -1276,6 +1280,18 @@ class OceanUpdatePolicyArgs:
     @should_roll.setter
     def should_roll(self, value: pulumi.Input[bool]):
         pulumi.set(self, "should_roll", value)
+
+    @property
+    @pulumi.getter(name="autoApplyTags")
+    def auto_apply_tags(self) -> Optional[pulumi.Input[bool]]:
+        """
+        will update instance tags on the fly without rolling the cluster.
+        """
+        return pulumi.get(self, "auto_apply_tags")
+
+    @auto_apply_tags.setter
+    def auto_apply_tags(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_apply_tags", value)
 
     @property
     @pulumi.getter(name="conditionedRoll")

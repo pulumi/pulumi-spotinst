@@ -31,6 +31,12 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public Input<Inputs.OceanImportAutoscalerDownGetArgs>? Down { get; set; }
 
         /// <summary>
+        /// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        /// </summary>
+        [Input("enableAutomaticAndManualHeadroom")]
+        public Input<bool>? EnableAutomaticAndManualHeadroom { get; set; }
+
+        /// <summary>
         /// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
         /// </summary>
         [Input("headroom")]

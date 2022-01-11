@@ -26,6 +26,10 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// </summary>
         public readonly Outputs.OceanImportAutoscalerDown? Down;
         /// <summary>
+        /// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        /// </summary>
+        public readonly bool? EnableAutomaticAndManualHeadroom;
+        /// <summary>
         /// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
         /// </summary>
         public readonly Outputs.OceanImportAutoscalerHeadroom? Headroom;
@@ -50,6 +54,8 @@ namespace Pulumi.SpotInst.Gke.Outputs
 
             Outputs.OceanImportAutoscalerDown? down,
 
+            bool? enableAutomaticAndManualHeadroom,
+
             Outputs.OceanImportAutoscalerHeadroom? headroom,
 
             bool? isAutoConfig,
@@ -61,6 +67,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
             AutoHeadroomPercentage = autoHeadroomPercentage;
             Cooldown = cooldown;
             Down = down;
+            EnableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
             Headroom = headroom;
             IsAutoConfig = isAutoConfig;
             IsEnabled = isEnabled;
