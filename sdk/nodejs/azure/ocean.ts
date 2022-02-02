@@ -123,30 +123,30 @@ export class Ocean extends pulumi.CustomResource {
      */
     constructor(name: string, args: OceanArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanArgs | OceanState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanState | undefined;
-            inputs["acdIdentifier"] = state ? state.acdIdentifier : undefined;
-            inputs["aksName"] = state ? state.aksName : undefined;
-            inputs["aksResourceGroupName"] = state ? state.aksResourceGroupName : undefined;
-            inputs["autoscaler"] = state ? state.autoscaler : undefined;
-            inputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
-            inputs["customData"] = state ? state.customData : undefined;
-            inputs["extensions"] = state ? state.extensions : undefined;
-            inputs["health"] = state ? state.health : undefined;
-            inputs["images"] = state ? state.images : undefined;
-            inputs["loadBalancers"] = state ? state.loadBalancers : undefined;
-            inputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["osDisk"] = state ? state.osDisk : undefined;
-            inputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
-            inputs["sshPublicKey"] = state ? state.sshPublicKey : undefined;
-            inputs["strategies"] = state ? state.strategies : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["userName"] = state ? state.userName : undefined;
-            inputs["vmSizes"] = state ? state.vmSizes : undefined;
+            resourceInputs["acdIdentifier"] = state ? state.acdIdentifier : undefined;
+            resourceInputs["aksName"] = state ? state.aksName : undefined;
+            resourceInputs["aksResourceGroupName"] = state ? state.aksResourceGroupName : undefined;
+            resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
+            resourceInputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
+            resourceInputs["customData"] = state ? state.customData : undefined;
+            resourceInputs["extensions"] = state ? state.extensions : undefined;
+            resourceInputs["health"] = state ? state.health : undefined;
+            resourceInputs["images"] = state ? state.images : undefined;
+            resourceInputs["loadBalancers"] = state ? state.loadBalancers : undefined;
+            resourceInputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["osDisk"] = state ? state.osDisk : undefined;
+            resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
+            resourceInputs["sshPublicKey"] = state ? state.sshPublicKey : undefined;
+            resourceInputs["strategies"] = state ? state.strategies : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["vmSizes"] = state ? state.vmSizes : undefined;
         } else {
             const args = argsOrState as OceanArgs | undefined;
             if ((!args || args.acdIdentifier === undefined) && !opts.urn) {
@@ -161,31 +161,29 @@ export class Ocean extends pulumi.CustomResource {
             if ((!args || args.sshPublicKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sshPublicKey'");
             }
-            inputs["acdIdentifier"] = args ? args.acdIdentifier : undefined;
-            inputs["aksName"] = args ? args.aksName : undefined;
-            inputs["aksResourceGroupName"] = args ? args.aksResourceGroupName : undefined;
-            inputs["autoscaler"] = args ? args.autoscaler : undefined;
-            inputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
-            inputs["customData"] = args ? args.customData : undefined;
-            inputs["extensions"] = args ? args.extensions : undefined;
-            inputs["health"] = args ? args.health : undefined;
-            inputs["images"] = args ? args.images : undefined;
-            inputs["loadBalancers"] = args ? args.loadBalancers : undefined;
-            inputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["osDisk"] = args ? args.osDisk : undefined;
-            inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            inputs["sshPublicKey"] = args ? args.sshPublicKey : undefined;
-            inputs["strategies"] = args ? args.strategies : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
-            inputs["vmSizes"] = args ? args.vmSizes : undefined;
+            resourceInputs["acdIdentifier"] = args ? args.acdIdentifier : undefined;
+            resourceInputs["aksName"] = args ? args.aksName : undefined;
+            resourceInputs["aksResourceGroupName"] = args ? args.aksResourceGroupName : undefined;
+            resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
+            resourceInputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
+            resourceInputs["customData"] = args ? args.customData : undefined;
+            resourceInputs["extensions"] = args ? args.extensions : undefined;
+            resourceInputs["health"] = args ? args.health : undefined;
+            resourceInputs["images"] = args ? args.images : undefined;
+            resourceInputs["loadBalancers"] = args ? args.loadBalancers : undefined;
+            resourceInputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["osDisk"] = args ? args.osDisk : undefined;
+            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["sshPublicKey"] = args ? args.sshPublicKey : undefined;
+            resourceInputs["strategies"] = args ? args.strategies : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["vmSizes"] = args ? args.vmSizes : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Ocean.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Ocean.__pulumiType, name, resourceInputs, opts);
     }
 }
 

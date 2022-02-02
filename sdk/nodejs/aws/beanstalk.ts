@@ -131,23 +131,23 @@ export class Beanstalk extends pulumi.CustomResource {
      */
     constructor(name: string, args: BeanstalkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BeanstalkArgs | BeanstalkState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BeanstalkState | undefined;
-            inputs["beanstalkEnvironmentId"] = state ? state.beanstalkEnvironmentId : undefined;
-            inputs["beanstalkEnvironmentName"] = state ? state.beanstalkEnvironmentName : undefined;
-            inputs["deploymentPreferences"] = state ? state.deploymentPreferences : undefined;
-            inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            inputs["instanceTypesSpots"] = state ? state.instanceTypesSpots : undefined;
-            inputs["maintenance"] = state ? state.maintenance : undefined;
-            inputs["managedActions"] = state ? state.managedActions : undefined;
-            inputs["maxSize"] = state ? state.maxSize : undefined;
-            inputs["minSize"] = state ? state.minSize : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["product"] = state ? state.product : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
+            resourceInputs["beanstalkEnvironmentId"] = state ? state.beanstalkEnvironmentId : undefined;
+            resourceInputs["beanstalkEnvironmentName"] = state ? state.beanstalkEnvironmentName : undefined;
+            resourceInputs["deploymentPreferences"] = state ? state.deploymentPreferences : undefined;
+            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            resourceInputs["instanceTypesSpots"] = state ? state.instanceTypesSpots : undefined;
+            resourceInputs["maintenance"] = state ? state.maintenance : undefined;
+            resourceInputs["managedActions"] = state ? state.managedActions : undefined;
+            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
+            resourceInputs["minSize"] = state ? state.minSize : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["product"] = state ? state.product : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
         } else {
             const args = argsOrState as BeanstalkArgs | undefined;
             if ((!args || args.desiredCapacity === undefined) && !opts.urn) {
@@ -168,24 +168,22 @@ export class Beanstalk extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            inputs["beanstalkEnvironmentId"] = args ? args.beanstalkEnvironmentId : undefined;
-            inputs["beanstalkEnvironmentName"] = args ? args.beanstalkEnvironmentName : undefined;
-            inputs["deploymentPreferences"] = args ? args.deploymentPreferences : undefined;
-            inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            inputs["instanceTypesSpots"] = args ? args.instanceTypesSpots : undefined;
-            inputs["maintenance"] = args ? args.maintenance : undefined;
-            inputs["managedActions"] = args ? args.managedActions : undefined;
-            inputs["maxSize"] = args ? args.maxSize : undefined;
-            inputs["minSize"] = args ? args.minSize : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["product"] = args ? args.product : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
+            resourceInputs["beanstalkEnvironmentId"] = args ? args.beanstalkEnvironmentId : undefined;
+            resourceInputs["beanstalkEnvironmentName"] = args ? args.beanstalkEnvironmentName : undefined;
+            resourceInputs["deploymentPreferences"] = args ? args.deploymentPreferences : undefined;
+            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            resourceInputs["instanceTypesSpots"] = args ? args.instanceTypesSpots : undefined;
+            resourceInputs["maintenance"] = args ? args.maintenance : undefined;
+            resourceInputs["managedActions"] = args ? args.managedActions : undefined;
+            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
+            resourceInputs["minSize"] = args ? args.minSize : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["product"] = args ? args.product : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Beanstalk.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Beanstalk.__pulumiType, name, resourceInputs, opts);
     }
 }
 

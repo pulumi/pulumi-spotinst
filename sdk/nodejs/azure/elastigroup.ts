@@ -257,35 +257,35 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: ElastigroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ElastigroupArgs | ElastigroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElastigroupState | undefined;
-            inputs["customData"] = state ? state.customData : undefined;
-            inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            inputs["healthCheck"] = state ? state.healthCheck : undefined;
-            inputs["images"] = state ? state.images : undefined;
-            inputs["integrationKubernetes"] = state ? state.integrationKubernetes : undefined;
-            inputs["integrationMultaiRuntime"] = state ? state.integrationMultaiRuntime : undefined;
-            inputs["loadBalancers"] = state ? state.loadBalancers : undefined;
-            inputs["login"] = state ? state.login : undefined;
-            inputs["lowPrioritySizes"] = state ? state.lowPrioritySizes : undefined;
-            inputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
-            inputs["maxSize"] = state ? state.maxSize : undefined;
-            inputs["minSize"] = state ? state.minSize : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["odSizes"] = state ? state.odSizes : undefined;
-            inputs["product"] = state ? state.product : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
-            inputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
-            inputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
-            inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
-            inputs["shutdownScript"] = state ? state.shutdownScript : undefined;
-            inputs["strategy"] = state ? state.strategy : undefined;
-            inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            inputs["userData"] = state ? state.userData : undefined;
+            resourceInputs["customData"] = state ? state.customData : undefined;
+            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
+            resourceInputs["images"] = state ? state.images : undefined;
+            resourceInputs["integrationKubernetes"] = state ? state.integrationKubernetes : undefined;
+            resourceInputs["integrationMultaiRuntime"] = state ? state.integrationMultaiRuntime : undefined;
+            resourceInputs["loadBalancers"] = state ? state.loadBalancers : undefined;
+            resourceInputs["login"] = state ? state.login : undefined;
+            resourceInputs["lowPrioritySizes"] = state ? state.lowPrioritySizes : undefined;
+            resourceInputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
+            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
+            resourceInputs["minSize"] = state ? state.minSize : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["odSizes"] = state ? state.odSizes : undefined;
+            resourceInputs["product"] = state ? state.product : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
+            resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
+            resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
+            resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
+            resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
+            resourceInputs["strategy"] = state ? state.strategy : undefined;
+            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
+            resourceInputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as ElastigroupArgs | undefined;
             if ((!args || args.lowPrioritySizes === undefined) && !opts.urn) {
@@ -309,36 +309,34 @@ export class Elastigroup extends pulumi.CustomResource {
             if ((!args || args.strategy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
-            inputs["customData"] = args ? args.customData : undefined;
-            inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            inputs["healthCheck"] = args ? args.healthCheck : undefined;
-            inputs["images"] = args ? args.images : undefined;
-            inputs["integrationKubernetes"] = args ? args.integrationKubernetes : undefined;
-            inputs["integrationMultaiRuntime"] = args ? args.integrationMultaiRuntime : undefined;
-            inputs["loadBalancers"] = args ? args.loadBalancers : undefined;
-            inputs["login"] = args ? args.login : undefined;
-            inputs["lowPrioritySizes"] = args ? args.lowPrioritySizes : undefined;
-            inputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
-            inputs["maxSize"] = args ? args.maxSize : undefined;
-            inputs["minSize"] = args ? args.minSize : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["odSizes"] = args ? args.odSizes : undefined;
-            inputs["product"] = args ? args.product : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            inputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
-            inputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
-            inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
-            inputs["shutdownScript"] = args ? args.shutdownScript : undefined;
-            inputs["strategy"] = args ? args.strategy : undefined;
-            inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            inputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["customData"] = args ? args.customData : undefined;
+            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
+            resourceInputs["images"] = args ? args.images : undefined;
+            resourceInputs["integrationKubernetes"] = args ? args.integrationKubernetes : undefined;
+            resourceInputs["integrationMultaiRuntime"] = args ? args.integrationMultaiRuntime : undefined;
+            resourceInputs["loadBalancers"] = args ? args.loadBalancers : undefined;
+            resourceInputs["login"] = args ? args.login : undefined;
+            resourceInputs["lowPrioritySizes"] = args ? args.lowPrioritySizes : undefined;
+            resourceInputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
+            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
+            resourceInputs["minSize"] = args ? args.minSize : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["odSizes"] = args ? args.odSizes : undefined;
+            resourceInputs["product"] = args ? args.product : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
+            resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
+            resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
+            resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
+            resourceInputs["strategy"] = args ? args.strategy : undefined;
+            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            resourceInputs["userData"] = args ? args.userData : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Elastigroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Elastigroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

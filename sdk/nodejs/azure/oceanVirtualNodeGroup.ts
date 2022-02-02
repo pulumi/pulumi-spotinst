@@ -121,34 +121,32 @@ export class OceanVirtualNodeGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: OceanVirtualNodeGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanVirtualNodeGroupArgs | OceanVirtualNodeGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanVirtualNodeGroupState | undefined;
-            inputs["autoscales"] = state ? state.autoscales : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["launchSpecifications"] = state ? state.launchSpecifications : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["oceanId"] = state ? state.oceanId : undefined;
-            inputs["resourceLimits"] = state ? state.resourceLimits : undefined;
-            inputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["autoscales"] = state ? state.autoscales : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["launchSpecifications"] = state ? state.launchSpecifications : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["oceanId"] = state ? state.oceanId : undefined;
+            resourceInputs["resourceLimits"] = state ? state.resourceLimits : undefined;
+            resourceInputs["taints"] = state ? state.taints : undefined;
         } else {
             const args = argsOrState as OceanVirtualNodeGroupArgs | undefined;
             if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
-            inputs["autoscales"] = args ? args.autoscales : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["launchSpecifications"] = args ? args.launchSpecifications : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["oceanId"] = args ? args.oceanId : undefined;
-            inputs["resourceLimits"] = args ? args.resourceLimits : undefined;
-            inputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["autoscales"] = args ? args.autoscales : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["launchSpecifications"] = args ? args.launchSpecifications : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["oceanId"] = args ? args.oceanId : undefined;
+            resourceInputs["resourceLimits"] = args ? args.resourceLimits : undefined;
+            resourceInputs["taints"] = args ? args.taints : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OceanVirtualNodeGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OceanVirtualNodeGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

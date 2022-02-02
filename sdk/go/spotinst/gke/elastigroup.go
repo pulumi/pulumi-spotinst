@@ -32,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gke.NewElastigroup(ctx, "example_gke_elastigroup", &gke.ElastigroupArgs{
+// 		_, err := gke.NewElastigroup(ctx, "example-gke-elastigroup", &gke.ElastigroupArgs{
 // 			BackendServices: gke.ElastigroupBackendServiceArray{
 // 				&gke.ElastigroupBackendServiceArgs{
 // 					LocationType: pulumi.String("global"),
@@ -336,7 +336,7 @@ type ElastigroupInput interface {
 }
 
 func (*Elastigroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*Elastigroup)(nil))
+	return reflect.TypeOf((**Elastigroup)(nil)).Elem()
 }
 
 func (i *Elastigroup) ToElastigroupOutput() ElastigroupOutput {
@@ -345,35 +345,6 @@ func (i *Elastigroup) ToElastigroupOutput() ElastigroupOutput {
 
 func (i *Elastigroup) ToElastigroupOutputWithContext(ctx context.Context) ElastigroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupOutput)
-}
-
-func (i *Elastigroup) ToElastigroupPtrOutput() ElastigroupPtrOutput {
-	return i.ToElastigroupPtrOutputWithContext(context.Background())
-}
-
-func (i *Elastigroup) ToElastigroupPtrOutputWithContext(ctx context.Context) ElastigroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupPtrOutput)
-}
-
-type ElastigroupPtrInput interface {
-	pulumi.Input
-
-	ToElastigroupPtrOutput() ElastigroupPtrOutput
-	ToElastigroupPtrOutputWithContext(ctx context.Context) ElastigroupPtrOutput
-}
-
-type elastigroupPtrType ElastigroupArgs
-
-func (*elastigroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Elastigroup)(nil))
-}
-
-func (i *elastigroupPtrType) ToElastigroupPtrOutput() ElastigroupPtrOutput {
-	return i.ToElastigroupPtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupPtrType) ToElastigroupPtrOutputWithContext(ctx context.Context) ElastigroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupPtrOutput)
 }
 
 // ElastigroupArrayInput is an input type that accepts ElastigroupArray and ElastigroupArrayOutput values.
@@ -429,7 +400,7 @@ func (i ElastigroupMap) ToElastigroupMapOutputWithContext(ctx context.Context) E
 type ElastigroupOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Elastigroup)(nil))
+	return reflect.TypeOf((**Elastigroup)(nil)).Elem()
 }
 
 func (o ElastigroupOutput) ToElastigroupOutput() ElastigroupOutput {
@@ -440,44 +411,10 @@ func (o ElastigroupOutput) ToElastigroupOutputWithContext(ctx context.Context) E
 	return o
 }
 
-func (o ElastigroupOutput) ToElastigroupPtrOutput() ElastigroupPtrOutput {
-	return o.ToElastigroupPtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupOutput) ToElastigroupPtrOutputWithContext(ctx context.Context) ElastigroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Elastigroup) *Elastigroup {
-		return &v
-	}).(ElastigroupPtrOutput)
-}
-
-type ElastigroupPtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Elastigroup)(nil))
-}
-
-func (o ElastigroupPtrOutput) ToElastigroupPtrOutput() ElastigroupPtrOutput {
-	return o
-}
-
-func (o ElastigroupPtrOutput) ToElastigroupPtrOutputWithContext(ctx context.Context) ElastigroupPtrOutput {
-	return o
-}
-
-func (o ElastigroupPtrOutput) Elem() ElastigroupOutput {
-	return o.ApplyT(func(v *Elastigroup) Elastigroup {
-		if v != nil {
-			return *v
-		}
-		var ret Elastigroup
-		return ret
-	}).(ElastigroupOutput)
-}
-
 type ElastigroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Elastigroup)(nil))
+	return reflect.TypeOf((*[]*Elastigroup)(nil)).Elem()
 }
 
 func (o ElastigroupArrayOutput) ToElastigroupArrayOutput() ElastigroupArrayOutput {
@@ -489,15 +426,15 @@ func (o ElastigroupArrayOutput) ToElastigroupArrayOutputWithContext(ctx context.
 }
 
 func (o ElastigroupArrayOutput) Index(i pulumi.IntInput) ElastigroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Elastigroup {
-		return vs[0].([]Elastigroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Elastigroup {
+		return vs[0].([]*Elastigroup)[vs[1].(int)]
 	}).(ElastigroupOutput)
 }
 
 type ElastigroupMapOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Elastigroup)(nil))
+	return reflect.TypeOf((*map[string]*Elastigroup)(nil)).Elem()
 }
 
 func (o ElastigroupMapOutput) ToElastigroupMapOutput() ElastigroupMapOutput {
@@ -509,18 +446,16 @@ func (o ElastigroupMapOutput) ToElastigroupMapOutputWithContext(ctx context.Cont
 }
 
 func (o ElastigroupMapOutput) MapIndex(k pulumi.StringInput) ElastigroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Elastigroup {
-		return vs[0].(map[string]Elastigroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Elastigroup {
+		return vs[0].(map[string]*Elastigroup)[vs[1].(string)]
 	}).(ElastigroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupInput)(nil)).Elem(), &Elastigroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupPtrInput)(nil)).Elem(), &Elastigroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupArrayInput)(nil)).Elem(), ElastigroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMapInput)(nil)).Elem(), ElastigroupMap{})
 	pulumi.RegisterOutputType(ElastigroupOutput{})
-	pulumi.RegisterOutputType(ElastigroupPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupMapOutput{})
 }

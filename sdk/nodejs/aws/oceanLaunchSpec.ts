@@ -235,68 +235,66 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     constructor(name: string, args: OceanLaunchSpecArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanLaunchSpecArgs | OceanLaunchSpecState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
-            inputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
-            inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
-            inputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
-            inputs["createOptions"] = state ? state.createOptions : undefined;
-            inputs["deleteOptions"] = state ? state.deleteOptions : undefined;
-            inputs["elasticIpPools"] = state ? state.elasticIpPools : undefined;
-            inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["oceanId"] = state ? state.oceanId : undefined;
-            inputs["preferredSpotTypes"] = state ? state.preferredSpotTypes : undefined;
-            inputs["resourceLimits"] = state ? state.resourceLimits : undefined;
-            inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
-            inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
-            inputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
-            inputs["securityGroups"] = state ? state.securityGroups : undefined;
-            inputs["strategies"] = state ? state.strategies : undefined;
-            inputs["subnetIds"] = state ? state.subnetIds : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["taints"] = state ? state.taints : undefined;
-            inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            inputs["userData"] = state ? state.userData : undefined;
+            resourceInputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
+            resourceInputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
+            resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
+            resourceInputs["createOptions"] = state ? state.createOptions : undefined;
+            resourceInputs["deleteOptions"] = state ? state.deleteOptions : undefined;
+            resourceInputs["elasticIpPools"] = state ? state.elasticIpPools : undefined;
+            resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["oceanId"] = state ? state.oceanId : undefined;
+            resourceInputs["preferredSpotTypes"] = state ? state.preferredSpotTypes : undefined;
+            resourceInputs["resourceLimits"] = state ? state.resourceLimits : undefined;
+            resourceInputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
+            resourceInputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
+            resourceInputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
+            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["strategies"] = state ? state.strategies : undefined;
+            resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
+            resourceInputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
             if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
-            inputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
-            inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
-            inputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
-            inputs["createOptions"] = args ? args.createOptions : undefined;
-            inputs["deleteOptions"] = args ? args.deleteOptions : undefined;
-            inputs["elasticIpPools"] = args ? args.elasticIpPools : undefined;
-            inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["oceanId"] = args ? args.oceanId : undefined;
-            inputs["preferredSpotTypes"] = args ? args.preferredSpotTypes : undefined;
-            inputs["resourceLimits"] = args ? args.resourceLimits : undefined;
-            inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
-            inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
-            inputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
-            inputs["securityGroups"] = args ? args.securityGroups : undefined;
-            inputs["strategies"] = args ? args.strategies : undefined;
-            inputs["subnetIds"] = args ? args.subnetIds : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["taints"] = args ? args.taints : undefined;
-            inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            inputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
+            resourceInputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
+            resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
+            resourceInputs["createOptions"] = args ? args.createOptions : undefined;
+            resourceInputs["deleteOptions"] = args ? args.deleteOptions : undefined;
+            resourceInputs["elasticIpPools"] = args ? args.elasticIpPools : undefined;
+            resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["oceanId"] = args ? args.oceanId : undefined;
+            resourceInputs["preferredSpotTypes"] = args ? args.preferredSpotTypes : undefined;
+            resourceInputs["resourceLimits"] = args ? args.resourceLimits : undefined;
+            resourceInputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
+            resourceInputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
+            resourceInputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
+            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["strategies"] = args ? args.strategies : undefined;
+            resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            resourceInputs["userData"] = args ? args.userData : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OceanLaunchSpec.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OceanLaunchSpec.__pulumiType, name, resourceInputs, opts);
     }
 }
 

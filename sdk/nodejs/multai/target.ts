@@ -50,17 +50,17 @@ export class Target extends pulumi.CustomResource {
      */
     constructor(name: string, args: TargetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetArgs | TargetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetState | undefined;
-            inputs["balancerId"] = state ? state.balancerId : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["targetSetId"] = state ? state.targetSetId : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["balancerId"] = state ? state.balancerId : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["targetSetId"] = state ? state.targetSetId : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as TargetArgs | undefined;
             if ((!args || args.balancerId === undefined) && !opts.urn) {
@@ -75,18 +75,16 @@ export class Target extends pulumi.CustomResource {
             if ((!args || args.weight === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
-            inputs["balancerId"] = args ? args.balancerId : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["targetSetId"] = args ? args.targetSetId : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["balancerId"] = args ? args.balancerId : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["targetSetId"] = args ? args.targetSetId : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Target.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Target.__pulumiType, name, resourceInputs, opts);
     }
 }
 

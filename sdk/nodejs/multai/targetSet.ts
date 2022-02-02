@@ -51,18 +51,18 @@ export class TargetSet extends pulumi.CustomResource {
      */
     constructor(name: string, args: TargetSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetSetArgs | TargetSetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TargetSetState | undefined;
-            inputs["balancerId"] = state ? state.balancerId : undefined;
-            inputs["deploymentId"] = state ? state.deploymentId : undefined;
-            inputs["healthCheck"] = state ? state.healthCheck : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["balancerId"] = state ? state.balancerId : undefined;
+            resourceInputs["deploymentId"] = state ? state.deploymentId : undefined;
+            resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as TargetSetArgs | undefined;
             if ((!args || args.balancerId === undefined) && !opts.urn) {
@@ -80,19 +80,17 @@ export class TargetSet extends pulumi.CustomResource {
             if ((!args || args.weight === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
-            inputs["balancerId"] = args ? args.balancerId : undefined;
-            inputs["deploymentId"] = args ? args.deploymentId : undefined;
-            inputs["healthCheck"] = args ? args.healthCheck : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["balancerId"] = args ? args.balancerId : undefined;
+            resourceInputs["deploymentId"] = args ? args.deploymentId : undefined;
+            resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TargetSet.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TargetSet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -132,58 +132,56 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     constructor(name: string, args: OceanLaunchSpecArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanLaunchSpecArgs | OceanLaunchSpecState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
-            inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
-            inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["metadatas"] = state ? state.metadatas : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nodePoolName"] = state ? state.nodePoolName : undefined;
-            inputs["oceanId"] = state ? state.oceanId : undefined;
-            inputs["resourceLimits"] = state ? state.resourceLimits : undefined;
-            inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
-            inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
-            inputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
-            inputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
-            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            inputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
-            inputs["sourceImage"] = state ? state.sourceImage : undefined;
-            inputs["storage"] = state ? state.storage : undefined;
-            inputs["strategies"] = state ? state.strategies : undefined;
-            inputs["taints"] = state ? state.taints : undefined;
-            inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
+            resourceInputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
+            resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["metadatas"] = state ? state.metadatas : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodePoolName"] = state ? state.nodePoolName : undefined;
+            resourceInputs["oceanId"] = state ? state.oceanId : undefined;
+            resourceInputs["resourceLimits"] = state ? state.resourceLimits : undefined;
+            resourceInputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
+            resourceInputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
+            resourceInputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
+            resourceInputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
+            resourceInputs["sourceImage"] = state ? state.sourceImage : undefined;
+            resourceInputs["storage"] = state ? state.storage : undefined;
+            resourceInputs["strategies"] = state ? state.strategies : undefined;
+            resourceInputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
             if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
-            inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
-            inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["metadatas"] = args ? args.metadatas : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nodePoolName"] = args ? args.nodePoolName : undefined;
-            inputs["oceanId"] = args ? args.oceanId : undefined;
-            inputs["resourceLimits"] = args ? args.resourceLimits : undefined;
-            inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
-            inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
-            inputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
-            inputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
-            inputs["sourceImage"] = args ? args.sourceImage : undefined;
-            inputs["storage"] = args ? args.storage : undefined;
-            inputs["strategies"] = args ? args.strategies : undefined;
-            inputs["taints"] = args ? args.taints : undefined;
-            inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            resourceInputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
+            resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodePoolName"] = args ? args.nodePoolName : undefined;
+            resourceInputs["oceanId"] = args ? args.oceanId : undefined;
+            resourceInputs["resourceLimits"] = args ? args.resourceLimits : undefined;
+            resourceInputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
+            resourceInputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
+            resourceInputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
+            resourceInputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
+            resourceInputs["sourceImage"] = args ? args.sourceImage : undefined;
+            resourceInputs["storage"] = args ? args.storage : undefined;
+            resourceInputs["strategies"] = args ? args.strategies : undefined;
+            resourceInputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OceanLaunchSpec.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OceanLaunchSpec.__pulumiType, name, resourceInputs, opts);
     }
 }
 

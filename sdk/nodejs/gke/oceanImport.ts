@@ -86,23 +86,23 @@ export class OceanImport extends pulumi.CustomResource {
      */
     constructor(name: string, args: OceanImportArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanImportArgs | OceanImportState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanImportState | undefined;
-            inputs["autoscaler"] = state ? state.autoscaler : undefined;
-            inputs["backendServices"] = state ? state.backendServices : undefined;
-            inputs["clusterControllerId"] = state ? state.clusterControllerId : undefined;
-            inputs["clusterName"] = state ? state.clusterName : undefined;
-            inputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
-            inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["maxSize"] = state ? state.maxSize : undefined;
-            inputs["minSize"] = state ? state.minSize : undefined;
-            inputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
-            inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
-            inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            inputs["whitelists"] = state ? state.whitelists : undefined;
+            resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
+            resourceInputs["backendServices"] = state ? state.backendServices : undefined;
+            resourceInputs["clusterControllerId"] = state ? state.clusterControllerId : undefined;
+            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
+            resourceInputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
+            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
+            resourceInputs["minSize"] = state ? state.minSize : undefined;
+            resourceInputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
+            resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
+            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
+            resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as OceanImportArgs | undefined;
             if ((!args || args.clusterName === undefined) && !opts.urn) {
@@ -111,24 +111,22 @@ export class OceanImport extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            inputs["autoscaler"] = args ? args.autoscaler : undefined;
-            inputs["backendServices"] = args ? args.backendServices : undefined;
-            inputs["clusterName"] = args ? args.clusterName : undefined;
-            inputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
-            inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            inputs["location"] = args ? args.location : undefined;
-            inputs["maxSize"] = args ? args.maxSize : undefined;
-            inputs["minSize"] = args ? args.minSize : undefined;
-            inputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
-            inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
-            inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            inputs["whitelists"] = args ? args.whitelists : undefined;
-            inputs["clusterControllerId"] = undefined /*out*/;
+            resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
+            resourceInputs["backendServices"] = args ? args.backendServices : undefined;
+            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
+            resourceInputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
+            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
+            resourceInputs["minSize"] = args ? args.minSize : undefined;
+            resourceInputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
+            resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
+            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            resourceInputs["whitelists"] = args ? args.whitelists : undefined;
+            resourceInputs["clusterControllerId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OceanImport.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OceanImport.__pulumiType, name, resourceInputs, opts);
     }
 }
 

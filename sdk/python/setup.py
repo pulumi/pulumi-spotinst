@@ -55,6 +55,7 @@ setup(name='pulumi_spotinst',
       package_data={
           'pulumi_spotinst': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

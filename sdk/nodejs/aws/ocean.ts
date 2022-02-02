@@ -169,42 +169,42 @@ export class Ocean extends pulumi.CustomResource {
      */
     constructor(name: string, args: OceanArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanArgs | OceanState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanState | undefined;
-            inputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
-            inputs["autoscaler"] = state ? state.autoscaler : undefined;
-            inputs["blacklists"] = state ? state.blacklists : undefined;
-            inputs["controllerId"] = state ? state.controllerId : undefined;
-            inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            inputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
-            inputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
-            inputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
-            inputs["gracePeriod"] = state ? state.gracePeriod : undefined;
-            inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
-            inputs["keyName"] = state ? state.keyName : undefined;
-            inputs["loadBalancers"] = state ? state.loadBalancers : undefined;
-            inputs["logging"] = state ? state.logging : undefined;
-            inputs["maxSize"] = state ? state.maxSize : undefined;
-            inputs["minSize"] = state ? state.minSize : undefined;
-            inputs["monitoring"] = state ? state.monitoring : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
-            inputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
-            inputs["securityGroups"] = state ? state.securityGroups : undefined;
-            inputs["spotPercentage"] = state ? state.spotPercentage : undefined;
-            inputs["subnetIds"] = state ? state.subnetIds : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["updatePolicy"] = state ? state.updatePolicy : undefined;
-            inputs["useAsTemplateOnly"] = state ? state.useAsTemplateOnly : undefined;
-            inputs["userData"] = state ? state.userData : undefined;
-            inputs["utilizeCommitments"] = state ? state.utilizeCommitments : undefined;
-            inputs["utilizeReservedInstances"] = state ? state.utilizeReservedInstances : undefined;
-            inputs["whitelists"] = state ? state.whitelists : undefined;
+            resourceInputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
+            resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
+            resourceInputs["blacklists"] = state ? state.blacklists : undefined;
+            resourceInputs["controllerId"] = state ? state.controllerId : undefined;
+            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
+            resourceInputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
+            resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
+            resourceInputs["gracePeriod"] = state ? state.gracePeriod : undefined;
+            resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
+            resourceInputs["keyName"] = state ? state.keyName : undefined;
+            resourceInputs["loadBalancers"] = state ? state.loadBalancers : undefined;
+            resourceInputs["logging"] = state ? state.logging : undefined;
+            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
+            resourceInputs["minSize"] = state ? state.minSize : undefined;
+            resourceInputs["monitoring"] = state ? state.monitoring : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
+            resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
+            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
+            resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
+            resourceInputs["useAsTemplateOnly"] = state ? state.useAsTemplateOnly : undefined;
+            resourceInputs["userData"] = state ? state.userData : undefined;
+            resourceInputs["utilizeCommitments"] = state ? state.utilizeCommitments : undefined;
+            resourceInputs["utilizeReservedInstances"] = state ? state.utilizeReservedInstances : undefined;
+            resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as OceanArgs | undefined;
             if ((!args || args.securityGroups === undefined) && !opts.urn) {
@@ -213,43 +213,41 @@ export class Ocean extends pulumi.CustomResource {
             if ((!args || args.subnetIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetIds'");
             }
-            inputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
-            inputs["autoscaler"] = args ? args.autoscaler : undefined;
-            inputs["blacklists"] = args ? args.blacklists : undefined;
-            inputs["controllerId"] = args ? args.controllerId : undefined;
-            inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            inputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
-            inputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
-            inputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
-            inputs["gracePeriod"] = args ? args.gracePeriod : undefined;
-            inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
-            inputs["keyName"] = args ? args.keyName : undefined;
-            inputs["loadBalancers"] = args ? args.loadBalancers : undefined;
-            inputs["logging"] = args ? args.logging : undefined;
-            inputs["maxSize"] = args ? args.maxSize : undefined;
-            inputs["minSize"] = args ? args.minSize : undefined;
-            inputs["monitoring"] = args ? args.monitoring : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
-            inputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
-            inputs["securityGroups"] = args ? args.securityGroups : undefined;
-            inputs["spotPercentage"] = args ? args.spotPercentage : undefined;
-            inputs["subnetIds"] = args ? args.subnetIds : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["updatePolicy"] = args ? args.updatePolicy : undefined;
-            inputs["useAsTemplateOnly"] = args ? args.useAsTemplateOnly : undefined;
-            inputs["userData"] = args ? args.userData : undefined;
-            inputs["utilizeCommitments"] = args ? args.utilizeCommitments : undefined;
-            inputs["utilizeReservedInstances"] = args ? args.utilizeReservedInstances : undefined;
-            inputs["whitelists"] = args ? args.whitelists : undefined;
+            resourceInputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
+            resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
+            resourceInputs["blacklists"] = args ? args.blacklists : undefined;
+            resourceInputs["controllerId"] = args ? args.controllerId : undefined;
+            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
+            resourceInputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
+            resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
+            resourceInputs["gracePeriod"] = args ? args.gracePeriod : undefined;
+            resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
+            resourceInputs["keyName"] = args ? args.keyName : undefined;
+            resourceInputs["loadBalancers"] = args ? args.loadBalancers : undefined;
+            resourceInputs["logging"] = args ? args.logging : undefined;
+            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
+            resourceInputs["minSize"] = args ? args.minSize : undefined;
+            resourceInputs["monitoring"] = args ? args.monitoring : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
+            resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
+            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
+            resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            resourceInputs["useAsTemplateOnly"] = args ? args.useAsTemplateOnly : undefined;
+            resourceInputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["utilizeCommitments"] = args ? args.utilizeCommitments : undefined;
+            resourceInputs["utilizeReservedInstances"] = args ? args.utilizeReservedInstances : undefined;
+            resourceInputs["whitelists"] = args ? args.whitelists : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Ocean.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Ocean.__pulumiType, name, resourceInputs, opts);
     }
 }
 

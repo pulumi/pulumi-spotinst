@@ -194,48 +194,46 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     constructor(name: string, args: OceanLaunchSpecArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OceanLaunchSpecArgs | OceanLaunchSpecState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
-            inputs["attributes"] = state ? state.attributes : undefined;
-            inputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
-            inputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
-            inputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["oceanId"] = state ? state.oceanId : undefined;
-            inputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
-            inputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["subnetIds"] = state ? state.subnetIds : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["userData"] = state ? state.userData : undefined;
+            resourceInputs["attributes"] = state ? state.attributes : undefined;
+            resourceInputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
+            resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
+            resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["oceanId"] = state ? state.oceanId : undefined;
+            resourceInputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
+            resourceInputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
             if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
-            inputs["attributes"] = args ? args.attributes : undefined;
-            inputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
-            inputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
-            inputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["oceanId"] = args ? args.oceanId : undefined;
-            inputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
-            inputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["subnetIds"] = args ? args.subnetIds : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["attributes"] = args ? args.attributes : undefined;
+            resourceInputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
+            resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
+            resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["oceanId"] = args ? args.oceanId : undefined;
+            resourceInputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
+            resourceInputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["userData"] = args ? args.userData : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OceanLaunchSpec.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OceanLaunchSpec.__pulumiType, name, resourceInputs, opts);
     }
 }
 
