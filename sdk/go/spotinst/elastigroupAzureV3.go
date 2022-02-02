@@ -338,7 +338,7 @@ type ElastigroupAzureV3Input interface {
 }
 
 func (*ElastigroupAzureV3) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupAzureV3)(nil))
+	return reflect.TypeOf((**ElastigroupAzureV3)(nil)).Elem()
 }
 
 func (i *ElastigroupAzureV3) ToElastigroupAzureV3Output() ElastigroupAzureV3Output {
@@ -347,35 +347,6 @@ func (i *ElastigroupAzureV3) ToElastigroupAzureV3Output() ElastigroupAzureV3Outp
 
 func (i *ElastigroupAzureV3) ToElastigroupAzureV3OutputWithContext(ctx context.Context) ElastigroupAzureV3Output {
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3Output)
-}
-
-func (i *ElastigroupAzureV3) ToElastigroupAzureV3PtrOutput() ElastigroupAzureV3PtrOutput {
-	return i.ToElastigroupAzureV3PtrOutputWithContext(context.Background())
-}
-
-func (i *ElastigroupAzureV3) ToElastigroupAzureV3PtrOutputWithContext(ctx context.Context) ElastigroupAzureV3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3PtrOutput)
-}
-
-type ElastigroupAzureV3PtrInput interface {
-	pulumi.Input
-
-	ToElastigroupAzureV3PtrOutput() ElastigroupAzureV3PtrOutput
-	ToElastigroupAzureV3PtrOutputWithContext(ctx context.Context) ElastigroupAzureV3PtrOutput
-}
-
-type elastigroupAzureV3PtrType ElastigroupAzureV3Args
-
-func (*elastigroupAzureV3PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupAzureV3)(nil))
-}
-
-func (i *elastigroupAzureV3PtrType) ToElastigroupAzureV3PtrOutput() ElastigroupAzureV3PtrOutput {
-	return i.ToElastigroupAzureV3PtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupAzureV3PtrType) ToElastigroupAzureV3PtrOutputWithContext(ctx context.Context) ElastigroupAzureV3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3PtrOutput)
 }
 
 // ElastigroupAzureV3ArrayInput is an input type that accepts ElastigroupAzureV3Array and ElastigroupAzureV3ArrayOutput values.
@@ -431,7 +402,7 @@ func (i ElastigroupAzureV3Map) ToElastigroupAzureV3MapOutputWithContext(ctx cont
 type ElastigroupAzureV3Output struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupAzureV3)(nil))
+	return reflect.TypeOf((**ElastigroupAzureV3)(nil)).Elem()
 }
 
 func (o ElastigroupAzureV3Output) ToElastigroupAzureV3Output() ElastigroupAzureV3Output {
@@ -442,44 +413,10 @@ func (o ElastigroupAzureV3Output) ToElastigroupAzureV3OutputWithContext(ctx cont
 	return o
 }
 
-func (o ElastigroupAzureV3Output) ToElastigroupAzureV3PtrOutput() ElastigroupAzureV3PtrOutput {
-	return o.ToElastigroupAzureV3PtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupAzureV3Output) ToElastigroupAzureV3PtrOutputWithContext(ctx context.Context) ElastigroupAzureV3PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3) *ElastigroupAzureV3 {
-		return &v
-	}).(ElastigroupAzureV3PtrOutput)
-}
-
-type ElastigroupAzureV3PtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupAzureV3PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupAzureV3)(nil))
-}
-
-func (o ElastigroupAzureV3PtrOutput) ToElastigroupAzureV3PtrOutput() ElastigroupAzureV3PtrOutput {
-	return o
-}
-
-func (o ElastigroupAzureV3PtrOutput) ToElastigroupAzureV3PtrOutputWithContext(ctx context.Context) ElastigroupAzureV3PtrOutput {
-	return o
-}
-
-func (o ElastigroupAzureV3PtrOutput) Elem() ElastigroupAzureV3Output {
-	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3 {
-		if v != nil {
-			return *v
-		}
-		var ret ElastigroupAzureV3
-		return ret
-	}).(ElastigroupAzureV3Output)
-}
-
 type ElastigroupAzureV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupAzureV3)(nil))
+	return reflect.TypeOf((*[]*ElastigroupAzureV3)(nil)).Elem()
 }
 
 func (o ElastigroupAzureV3ArrayOutput) ToElastigroupAzureV3ArrayOutput() ElastigroupAzureV3ArrayOutput {
@@ -491,15 +428,15 @@ func (o ElastigroupAzureV3ArrayOutput) ToElastigroupAzureV3ArrayOutputWithContex
 }
 
 func (o ElastigroupAzureV3ArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupAzureV3 {
-		return vs[0].([]ElastigroupAzureV3)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ElastigroupAzureV3 {
+		return vs[0].([]*ElastigroupAzureV3)[vs[1].(int)]
 	}).(ElastigroupAzureV3Output)
 }
 
 type ElastigroupAzureV3MapOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ElastigroupAzureV3)(nil))
+	return reflect.TypeOf((*map[string]*ElastigroupAzureV3)(nil)).Elem()
 }
 
 func (o ElastigroupAzureV3MapOutput) ToElastigroupAzureV3MapOutput() ElastigroupAzureV3MapOutput {
@@ -511,18 +448,16 @@ func (o ElastigroupAzureV3MapOutput) ToElastigroupAzureV3MapOutputWithContext(ct
 }
 
 func (o ElastigroupAzureV3MapOutput) MapIndex(k pulumi.StringInput) ElastigroupAzureV3Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ElastigroupAzureV3 {
-		return vs[0].(map[string]ElastigroupAzureV3)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ElastigroupAzureV3 {
+		return vs[0].(map[string]*ElastigroupAzureV3)[vs[1].(string)]
 	}).(ElastigroupAzureV3Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3Input)(nil)).Elem(), &ElastigroupAzureV3{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3PtrInput)(nil)).Elem(), &ElastigroupAzureV3{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ArrayInput)(nil)).Elem(), ElastigroupAzureV3Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3MapInput)(nil)).Elem(), ElastigroupAzureV3Map{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3Output{})
-	pulumi.RegisterOutputType(ElastigroupAzureV3PtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3MapOutput{})
 }

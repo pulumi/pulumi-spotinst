@@ -102,15 +102,15 @@ export class Subscription extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubscriptionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubscriptionArgs | SubscriptionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubscriptionState | undefined;
-            inputs["endpoint"] = state ? state.endpoint : undefined;
-            inputs["eventType"] = state ? state.eventType : undefined;
-            inputs["format"] = state ? state.format : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["resourceId"] = state ? state.resourceId : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["eventType"] = state ? state.eventType : undefined;
+            resourceInputs["format"] = state ? state.format : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
             if ((!args || args.endpoint === undefined) && !opts.urn) {
@@ -125,16 +125,14 @@ export class Subscription extends pulumi.CustomResource {
             if ((!args || args.resourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            inputs["endpoint"] = args ? args.endpoint : undefined;
-            inputs["eventType"] = args ? args.eventType : undefined;
-            inputs["format"] = args ? args.format : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["resourceId"] = args ? args.resourceId : undefined;
+            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["eventType"] = args ? args.eventType : undefined;
+            resourceInputs["format"] = args ? args.format : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Subscription.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Subscription.__pulumiType, name, resourceInputs, opts);
     }
 }
 

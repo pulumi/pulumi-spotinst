@@ -51,18 +51,18 @@ export class RoutingRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: RoutingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoutingRuleArgs | RoutingRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoutingRuleState | undefined;
-            inputs["balancerId"] = state ? state.balancerId : undefined;
-            inputs["listenerId"] = state ? state.listenerId : undefined;
-            inputs["middlewareIds"] = state ? state.middlewareIds : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["route"] = state ? state.route : undefined;
-            inputs["strategy"] = state ? state.strategy : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["targetSetIds"] = state ? state.targetSetIds : undefined;
+            resourceInputs["balancerId"] = state ? state.balancerId : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["middlewareIds"] = state ? state.middlewareIds : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["route"] = state ? state.route : undefined;
+            resourceInputs["strategy"] = state ? state.strategy : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["targetSetIds"] = state ? state.targetSetIds : undefined;
         } else {
             const args = argsOrState as RoutingRuleArgs | undefined;
             if ((!args || args.balancerId === undefined) && !opts.urn) {
@@ -77,19 +77,17 @@ export class RoutingRule extends pulumi.CustomResource {
             if ((!args || args.targetSetIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetSetIds'");
             }
-            inputs["balancerId"] = args ? args.balancerId : undefined;
-            inputs["listenerId"] = args ? args.listenerId : undefined;
-            inputs["middlewareIds"] = args ? args.middlewareIds : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["route"] = args ? args.route : undefined;
-            inputs["strategy"] = args ? args.strategy : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["targetSetIds"] = args ? args.targetSetIds : undefined;
+            resourceInputs["balancerId"] = args ? args.balancerId : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["middlewareIds"] = args ? args.middlewareIds : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["route"] = args ? args.route : undefined;
+            resourceInputs["strategy"] = args ? args.strategy : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["targetSetIds"] = args ? args.targetSetIds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RoutingRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RoutingRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

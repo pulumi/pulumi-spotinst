@@ -79,12 +79,12 @@ export class Suspension extends pulumi.CustomResource {
      */
     constructor(name: string, args: SuspensionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SuspensionArgs | SuspensionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SuspensionState | undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["suspensions"] = state ? state.suspensions : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["suspensions"] = state ? state.suspensions : undefined;
         } else {
             const args = argsOrState as SuspensionArgs | undefined;
             if ((!args || args.groupId === undefined) && !opts.urn) {
@@ -93,13 +93,11 @@ export class Suspension extends pulumi.CustomResource {
             if ((!args || args.suspensions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'suspensions'");
             }
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["suspensions"] = args ? args.suspensions : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["suspensions"] = args ? args.suspensions : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Suspension.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Suspension.__pulumiType, name, resourceInputs, opts);
     }
 }
 

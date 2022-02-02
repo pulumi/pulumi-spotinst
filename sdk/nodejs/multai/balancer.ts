@@ -48,27 +48,25 @@ export class Balancer extends pulumi.CustomResource {
      */
     constructor(name: string, args?: BalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BalancerArgs | BalancerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BalancerState | undefined;
-            inputs["connectionTimeouts"] = state ? state.connectionTimeouts : undefined;
-            inputs["dnsCnameAliases"] = state ? state.dnsCnameAliases : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["scheme"] = state ? state.scheme : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["connectionTimeouts"] = state ? state.connectionTimeouts : undefined;
+            resourceInputs["dnsCnameAliases"] = state ? state.dnsCnameAliases : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["scheme"] = state ? state.scheme : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as BalancerArgs | undefined;
-            inputs["connectionTimeouts"] = args ? args.connectionTimeouts : undefined;
-            inputs["dnsCnameAliases"] = args ? args.dnsCnameAliases : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["scheme"] = args ? args.scheme : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["connectionTimeouts"] = args ? args.connectionTimeouts : undefined;
+            resourceInputs["dnsCnameAliases"] = args ? args.dnsCnameAliases : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["scheme"] = args ? args.scheme : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Balancer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Balancer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

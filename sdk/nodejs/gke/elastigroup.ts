@@ -152,40 +152,40 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: ElastigroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ElastigroupArgs | ElastigroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElastigroupState | undefined;
-            inputs["backendServices"] = state ? state.backendServices : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["clusterZoneName"] = state ? state.clusterZoneName : undefined;
-            inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            inputs["disks"] = state ? state.disks : undefined;
-            inputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
-            inputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
-            inputs["gpu"] = state ? state.gpu : undefined;
-            inputs["instanceTypesCustoms"] = state ? state.instanceTypesCustoms : undefined;
-            inputs["instanceTypesOndemand"] = state ? state.instanceTypesOndemand : undefined;
-            inputs["instanceTypesPreemptibles"] = state ? state.instanceTypesPreemptibles : undefined;
-            inputs["integrationDockerSwarm"] = state ? state.integrationDockerSwarm : undefined;
-            inputs["integrationGke"] = state ? state.integrationGke : undefined;
-            inputs["ipForwarding"] = state ? state.ipForwarding : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["maxSize"] = state ? state.maxSize : undefined;
-            inputs["metadatas"] = state ? state.metadatas : undefined;
-            inputs["minSize"] = state ? state.minSize : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            inputs["nodeImage"] = state ? state.nodeImage : undefined;
-            inputs["ondemandCount"] = state ? state.ondemandCount : undefined;
-            inputs["preemptiblePercentage"] = state ? state.preemptiblePercentage : undefined;
-            inputs["provisioningModel"] = state ? state.provisioningModel : undefined;
-            inputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
-            inputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
-            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            inputs["shutdownScript"] = state ? state.shutdownScript : undefined;
-            inputs["startupScript"] = state ? state.startupScript : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["backendServices"] = state ? state.backendServices : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["clusterZoneName"] = state ? state.clusterZoneName : undefined;
+            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            resourceInputs["disks"] = state ? state.disks : undefined;
+            resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
+            resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
+            resourceInputs["gpu"] = state ? state.gpu : undefined;
+            resourceInputs["instanceTypesCustoms"] = state ? state.instanceTypesCustoms : undefined;
+            resourceInputs["instanceTypesOndemand"] = state ? state.instanceTypesOndemand : undefined;
+            resourceInputs["instanceTypesPreemptibles"] = state ? state.instanceTypesPreemptibles : undefined;
+            resourceInputs["integrationDockerSwarm"] = state ? state.integrationDockerSwarm : undefined;
+            resourceInputs["integrationGke"] = state ? state.integrationGke : undefined;
+            resourceInputs["ipForwarding"] = state ? state.ipForwarding : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
+            resourceInputs["metadatas"] = state ? state.metadatas : undefined;
+            resourceInputs["minSize"] = state ? state.minSize : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
+            resourceInputs["nodeImage"] = state ? state.nodeImage : undefined;
+            resourceInputs["ondemandCount"] = state ? state.ondemandCount : undefined;
+            resourceInputs["preemptiblePercentage"] = state ? state.preemptiblePercentage : undefined;
+            resourceInputs["provisioningModel"] = state ? state.provisioningModel : undefined;
+            resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
+            resourceInputs["scalingUpPolicies"] = state ? state.scalingUpPolicies : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            resourceInputs["shutdownScript"] = state ? state.shutdownScript : undefined;
+            resourceInputs["startupScript"] = state ? state.startupScript : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ElastigroupArgs | undefined;
             if ((!args || args.clusterZoneName === undefined) && !opts.urn) {
@@ -194,41 +194,39 @@ export class Elastigroup extends pulumi.CustomResource {
             if ((!args || args.desiredCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'desiredCapacity'");
             }
-            inputs["backendServices"] = args ? args.backendServices : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["clusterZoneName"] = args ? args.clusterZoneName : undefined;
-            inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            inputs["disks"] = args ? args.disks : undefined;
-            inputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
-            inputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
-            inputs["gpu"] = args ? args.gpu : undefined;
-            inputs["instanceTypesCustoms"] = args ? args.instanceTypesCustoms : undefined;
-            inputs["instanceTypesOndemand"] = args ? args.instanceTypesOndemand : undefined;
-            inputs["instanceTypesPreemptibles"] = args ? args.instanceTypesPreemptibles : undefined;
-            inputs["integrationDockerSwarm"] = args ? args.integrationDockerSwarm : undefined;
-            inputs["integrationGke"] = args ? args.integrationGke : undefined;
-            inputs["ipForwarding"] = args ? args.ipForwarding : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["maxSize"] = args ? args.maxSize : undefined;
-            inputs["metadatas"] = args ? args.metadatas : undefined;
-            inputs["minSize"] = args ? args.minSize : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            inputs["nodeImage"] = args ? args.nodeImage : undefined;
-            inputs["ondemandCount"] = args ? args.ondemandCount : undefined;
-            inputs["preemptiblePercentage"] = args ? args.preemptiblePercentage : undefined;
-            inputs["provisioningModel"] = args ? args.provisioningModel : undefined;
-            inputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
-            inputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
-            inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            inputs["shutdownScript"] = args ? args.shutdownScript : undefined;
-            inputs["startupScript"] = args ? args.startupScript : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["backendServices"] = args ? args.backendServices : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["clusterZoneName"] = args ? args.clusterZoneName : undefined;
+            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            resourceInputs["disks"] = args ? args.disks : undefined;
+            resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
+            resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
+            resourceInputs["gpu"] = args ? args.gpu : undefined;
+            resourceInputs["instanceTypesCustoms"] = args ? args.instanceTypesCustoms : undefined;
+            resourceInputs["instanceTypesOndemand"] = args ? args.instanceTypesOndemand : undefined;
+            resourceInputs["instanceTypesPreemptibles"] = args ? args.instanceTypesPreemptibles : undefined;
+            resourceInputs["integrationDockerSwarm"] = args ? args.integrationDockerSwarm : undefined;
+            resourceInputs["integrationGke"] = args ? args.integrationGke : undefined;
+            resourceInputs["ipForwarding"] = args ? args.ipForwarding : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
+            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
+            resourceInputs["minSize"] = args ? args.minSize : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            resourceInputs["nodeImage"] = args ? args.nodeImage : undefined;
+            resourceInputs["ondemandCount"] = args ? args.ondemandCount : undefined;
+            resourceInputs["preemptiblePercentage"] = args ? args.preemptiblePercentage : undefined;
+            resourceInputs["provisioningModel"] = args ? args.provisioningModel : undefined;
+            resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
+            resourceInputs["scalingUpPolicies"] = args ? args.scalingUpPolicies : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["shutdownScript"] = args ? args.shutdownScript : undefined;
+            resourceInputs["startupScript"] = args ? args.startupScript : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Elastigroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Elastigroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

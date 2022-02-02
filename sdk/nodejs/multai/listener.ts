@@ -48,15 +48,15 @@ export class Listener extends pulumi.CustomResource {
      */
     constructor(name: string, args: ListenerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ListenerArgs | ListenerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
-            inputs["balancerId"] = state ? state.balancerId : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tlsConfig"] = state ? state.tlsConfig : undefined;
+            resourceInputs["balancerId"] = state ? state.balancerId : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tlsConfig"] = state ? state.tlsConfig : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
             if ((!args || args.balancerId === undefined) && !opts.urn) {
@@ -68,16 +68,14 @@ export class Listener extends pulumi.CustomResource {
             if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            inputs["balancerId"] = args ? args.balancerId : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tlsConfig"] = args ? args.tlsConfig : undefined;
+            resourceInputs["balancerId"] = args ? args.balancerId : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tlsConfig"] = args ? args.tlsConfig : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Listener.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Listener.__pulumiType, name, resourceInputs, opts);
     }
 }
 

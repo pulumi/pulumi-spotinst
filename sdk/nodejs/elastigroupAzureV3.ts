@@ -178,25 +178,25 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      */
     constructor(name: string, args: ElastigroupAzureV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ElastigroupAzureV3Args | ElastigroupAzureV3State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElastigroupAzureV3State | undefined;
-            inputs["customData"] = state ? state.customData : undefined;
-            inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            inputs["images"] = state ? state.images : undefined;
-            inputs["login"] = state ? state.login : undefined;
-            inputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
-            inputs["maxSize"] = state ? state.maxSize : undefined;
-            inputs["minSize"] = state ? state.minSize : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["odSizes"] = state ? state.odSizes : undefined;
-            inputs["os"] = state ? state.os : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
-            inputs["spotSizes"] = state ? state.spotSizes : undefined;
-            inputs["strategy"] = state ? state.strategy : undefined;
+            resourceInputs["customData"] = state ? state.customData : undefined;
+            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            resourceInputs["images"] = state ? state.images : undefined;
+            resourceInputs["login"] = state ? state.login : undefined;
+            resourceInputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
+            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
+            resourceInputs["minSize"] = state ? state.minSize : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["odSizes"] = state ? state.odSizes : undefined;
+            resourceInputs["os"] = state ? state.os : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
+            resourceInputs["spotSizes"] = state ? state.spotSizes : undefined;
+            resourceInputs["strategy"] = state ? state.strategy : undefined;
         } else {
             const args = argsOrState as ElastigroupAzureV3Args | undefined;
             if ((!args || args.network === undefined) && !opts.urn) {
@@ -220,26 +220,24 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             if ((!args || args.strategy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
-            inputs["customData"] = args ? args.customData : undefined;
-            inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            inputs["images"] = args ? args.images : undefined;
-            inputs["login"] = args ? args.login : undefined;
-            inputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
-            inputs["maxSize"] = args ? args.maxSize : undefined;
-            inputs["minSize"] = args ? args.minSize : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["odSizes"] = args ? args.odSizes : undefined;
-            inputs["os"] = args ? args.os : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            inputs["spotSizes"] = args ? args.spotSizes : undefined;
-            inputs["strategy"] = args ? args.strategy : undefined;
+            resourceInputs["customData"] = args ? args.customData : undefined;
+            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            resourceInputs["images"] = args ? args.images : undefined;
+            resourceInputs["login"] = args ? args.login : undefined;
+            resourceInputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
+            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
+            resourceInputs["minSize"] = args ? args.minSize : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["odSizes"] = args ? args.odSizes : undefined;
+            resourceInputs["os"] = args ? args.os : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["spotSizes"] = args ? args.spotSizes : undefined;
+            resourceInputs["strategy"] = args ? args.strategy : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ElastigroupAzureV3.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ElastigroupAzureV3.__pulumiType, name, resourceInputs, opts);
     }
 }
 

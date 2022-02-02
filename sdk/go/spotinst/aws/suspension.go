@@ -136,7 +136,7 @@ type SuspensionInput interface {
 }
 
 func (*Suspension) ElementType() reflect.Type {
-	return reflect.TypeOf((*Suspension)(nil))
+	return reflect.TypeOf((**Suspension)(nil)).Elem()
 }
 
 func (i *Suspension) ToSuspensionOutput() SuspensionOutput {
@@ -145,35 +145,6 @@ func (i *Suspension) ToSuspensionOutput() SuspensionOutput {
 
 func (i *Suspension) ToSuspensionOutputWithContext(ctx context.Context) SuspensionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SuspensionOutput)
-}
-
-func (i *Suspension) ToSuspensionPtrOutput() SuspensionPtrOutput {
-	return i.ToSuspensionPtrOutputWithContext(context.Background())
-}
-
-func (i *Suspension) ToSuspensionPtrOutputWithContext(ctx context.Context) SuspensionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SuspensionPtrOutput)
-}
-
-type SuspensionPtrInput interface {
-	pulumi.Input
-
-	ToSuspensionPtrOutput() SuspensionPtrOutput
-	ToSuspensionPtrOutputWithContext(ctx context.Context) SuspensionPtrOutput
-}
-
-type suspensionPtrType SuspensionArgs
-
-func (*suspensionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Suspension)(nil))
-}
-
-func (i *suspensionPtrType) ToSuspensionPtrOutput() SuspensionPtrOutput {
-	return i.ToSuspensionPtrOutputWithContext(context.Background())
-}
-
-func (i *suspensionPtrType) ToSuspensionPtrOutputWithContext(ctx context.Context) SuspensionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SuspensionPtrOutput)
 }
 
 // SuspensionArrayInput is an input type that accepts SuspensionArray and SuspensionArrayOutput values.
@@ -229,7 +200,7 @@ func (i SuspensionMap) ToSuspensionMapOutputWithContext(ctx context.Context) Sus
 type SuspensionOutput struct{ *pulumi.OutputState }
 
 func (SuspensionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Suspension)(nil))
+	return reflect.TypeOf((**Suspension)(nil)).Elem()
 }
 
 func (o SuspensionOutput) ToSuspensionOutput() SuspensionOutput {
@@ -240,44 +211,10 @@ func (o SuspensionOutput) ToSuspensionOutputWithContext(ctx context.Context) Sus
 	return o
 }
 
-func (o SuspensionOutput) ToSuspensionPtrOutput() SuspensionPtrOutput {
-	return o.ToSuspensionPtrOutputWithContext(context.Background())
-}
-
-func (o SuspensionOutput) ToSuspensionPtrOutputWithContext(ctx context.Context) SuspensionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Suspension) *Suspension {
-		return &v
-	}).(SuspensionPtrOutput)
-}
-
-type SuspensionPtrOutput struct{ *pulumi.OutputState }
-
-func (SuspensionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Suspension)(nil))
-}
-
-func (o SuspensionPtrOutput) ToSuspensionPtrOutput() SuspensionPtrOutput {
-	return o
-}
-
-func (o SuspensionPtrOutput) ToSuspensionPtrOutputWithContext(ctx context.Context) SuspensionPtrOutput {
-	return o
-}
-
-func (o SuspensionPtrOutput) Elem() SuspensionOutput {
-	return o.ApplyT(func(v *Suspension) Suspension {
-		if v != nil {
-			return *v
-		}
-		var ret Suspension
-		return ret
-	}).(SuspensionOutput)
-}
-
 type SuspensionArrayOutput struct{ *pulumi.OutputState }
 
 func (SuspensionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Suspension)(nil))
+	return reflect.TypeOf((*[]*Suspension)(nil)).Elem()
 }
 
 func (o SuspensionArrayOutput) ToSuspensionArrayOutput() SuspensionArrayOutput {
@@ -289,15 +226,15 @@ func (o SuspensionArrayOutput) ToSuspensionArrayOutputWithContext(ctx context.Co
 }
 
 func (o SuspensionArrayOutput) Index(i pulumi.IntInput) SuspensionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Suspension {
-		return vs[0].([]Suspension)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Suspension {
+		return vs[0].([]*Suspension)[vs[1].(int)]
 	}).(SuspensionOutput)
 }
 
 type SuspensionMapOutput struct{ *pulumi.OutputState }
 
 func (SuspensionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Suspension)(nil))
+	return reflect.TypeOf((*map[string]*Suspension)(nil)).Elem()
 }
 
 func (o SuspensionMapOutput) ToSuspensionMapOutput() SuspensionMapOutput {
@@ -309,18 +246,16 @@ func (o SuspensionMapOutput) ToSuspensionMapOutputWithContext(ctx context.Contex
 }
 
 func (o SuspensionMapOutput) MapIndex(k pulumi.StringInput) SuspensionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Suspension {
-		return vs[0].(map[string]Suspension)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Suspension {
+		return vs[0].(map[string]*Suspension)[vs[1].(string)]
 	}).(SuspensionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SuspensionInput)(nil)).Elem(), &Suspension{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SuspensionPtrInput)(nil)).Elem(), &Suspension{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SuspensionArrayInput)(nil)).Elem(), SuspensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SuspensionMapInput)(nil)).Elem(), SuspensionMap{})
 	pulumi.RegisterOutputType(SuspensionOutput{})
-	pulumi.RegisterOutputType(SuspensionPtrOutput{})
 	pulumi.RegisterOutputType(SuspensionArrayOutput{})
 	pulumi.RegisterOutputType(SuspensionMapOutput{})
 }

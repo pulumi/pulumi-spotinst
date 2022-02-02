@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.NewMrScalar(ctx, "sample_MrScaler_01", &aws.MrScalarArgs{
+// 		_, err := aws.NewMrScalar(ctx, "sample-MrScaler-01", &aws.MrScalarArgs{
 // 			AdditionalInfo: pulumi.String("{'test':'more information'}"),
 // 			AdditionalPrimarySecurityGroups: pulumi.StringArray{
 // 				pulumi.String("sg-456321"),
@@ -175,7 +175,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.NewMrScalar(ctx, "sample_MrScaler_01", &aws.MrScalarArgs{
+// 		_, err := aws.NewMrScalar(ctx, "sample-MrScaler-01", &aws.MrScalarArgs{
 // 			AvailabilityZones: pulumi.StringArray{
 // 				pulumi.String("us-west-2a:subnet-12345678"),
 // 			},
@@ -283,7 +283,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.NewMrScalar(ctx, "example_scaler_2", &aws.MrScalarArgs{
+// 		_, err := aws.NewMrScalar(ctx, "example-scaler-2", &aws.MrScalarArgs{
 // 			ClusterId:           pulumi.String("j-27UVDEHXL4OQM"),
 // 			Description:         pulumi.String("created by Pulumi"),
 // 			Region:              pulumi.String("us-west-2"),
@@ -945,7 +945,7 @@ type MrScalarInput interface {
 }
 
 func (*MrScalar) ElementType() reflect.Type {
-	return reflect.TypeOf((*MrScalar)(nil))
+	return reflect.TypeOf((**MrScalar)(nil)).Elem()
 }
 
 func (i *MrScalar) ToMrScalarOutput() MrScalarOutput {
@@ -954,35 +954,6 @@ func (i *MrScalar) ToMrScalarOutput() MrScalarOutput {
 
 func (i *MrScalar) ToMrScalarOutputWithContext(ctx context.Context) MrScalarOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarOutput)
-}
-
-func (i *MrScalar) ToMrScalarPtrOutput() MrScalarPtrOutput {
-	return i.ToMrScalarPtrOutputWithContext(context.Background())
-}
-
-func (i *MrScalar) ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MrScalarPtrOutput)
-}
-
-type MrScalarPtrInput interface {
-	pulumi.Input
-
-	ToMrScalarPtrOutput() MrScalarPtrOutput
-	ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput
-}
-
-type mrScalarPtrType MrScalarArgs
-
-func (*mrScalarPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MrScalar)(nil))
-}
-
-func (i *mrScalarPtrType) ToMrScalarPtrOutput() MrScalarPtrOutput {
-	return i.ToMrScalarPtrOutputWithContext(context.Background())
-}
-
-func (i *mrScalarPtrType) ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MrScalarPtrOutput)
 }
 
 // MrScalarArrayInput is an input type that accepts MrScalarArray and MrScalarArrayOutput values.
@@ -1038,7 +1009,7 @@ func (i MrScalarMap) ToMrScalarMapOutputWithContext(ctx context.Context) MrScala
 type MrScalarOutput struct{ *pulumi.OutputState }
 
 func (MrScalarOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MrScalar)(nil))
+	return reflect.TypeOf((**MrScalar)(nil)).Elem()
 }
 
 func (o MrScalarOutput) ToMrScalarOutput() MrScalarOutput {
@@ -1049,44 +1020,10 @@ func (o MrScalarOutput) ToMrScalarOutputWithContext(ctx context.Context) MrScala
 	return o
 }
 
-func (o MrScalarOutput) ToMrScalarPtrOutput() MrScalarPtrOutput {
-	return o.ToMrScalarPtrOutputWithContext(context.Background())
-}
-
-func (o MrScalarOutput) ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MrScalar) *MrScalar {
-		return &v
-	}).(MrScalarPtrOutput)
-}
-
-type MrScalarPtrOutput struct{ *pulumi.OutputState }
-
-func (MrScalarPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MrScalar)(nil))
-}
-
-func (o MrScalarPtrOutput) ToMrScalarPtrOutput() MrScalarPtrOutput {
-	return o
-}
-
-func (o MrScalarPtrOutput) ToMrScalarPtrOutputWithContext(ctx context.Context) MrScalarPtrOutput {
-	return o
-}
-
-func (o MrScalarPtrOutput) Elem() MrScalarOutput {
-	return o.ApplyT(func(v *MrScalar) MrScalar {
-		if v != nil {
-			return *v
-		}
-		var ret MrScalar
-		return ret
-	}).(MrScalarOutput)
-}
-
 type MrScalarArrayOutput struct{ *pulumi.OutputState }
 
 func (MrScalarArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MrScalar)(nil))
+	return reflect.TypeOf((*[]*MrScalar)(nil)).Elem()
 }
 
 func (o MrScalarArrayOutput) ToMrScalarArrayOutput() MrScalarArrayOutput {
@@ -1098,15 +1035,15 @@ func (o MrScalarArrayOutput) ToMrScalarArrayOutputWithContext(ctx context.Contex
 }
 
 func (o MrScalarArrayOutput) Index(i pulumi.IntInput) MrScalarOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MrScalar {
-		return vs[0].([]MrScalar)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MrScalar {
+		return vs[0].([]*MrScalar)[vs[1].(int)]
 	}).(MrScalarOutput)
 }
 
 type MrScalarMapOutput struct{ *pulumi.OutputState }
 
 func (MrScalarMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MrScalar)(nil))
+	return reflect.TypeOf((*map[string]*MrScalar)(nil)).Elem()
 }
 
 func (o MrScalarMapOutput) ToMrScalarMapOutput() MrScalarMapOutput {
@@ -1118,18 +1055,16 @@ func (o MrScalarMapOutput) ToMrScalarMapOutputWithContext(ctx context.Context) M
 }
 
 func (o MrScalarMapOutput) MapIndex(k pulumi.StringInput) MrScalarOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MrScalar {
-		return vs[0].(map[string]MrScalar)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MrScalar {
+		return vs[0].(map[string]*MrScalar)[vs[1].(string)]
 	}).(MrScalarOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarInput)(nil)).Elem(), &MrScalar{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarPtrInput)(nil)).Elem(), &MrScalar{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarArrayInput)(nil)).Elem(), MrScalarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MrScalarMapInput)(nil)).Elem(), MrScalarMap{})
 	pulumi.RegisterOutputType(MrScalarOutput{})
-	pulumi.RegisterOutputType(MrScalarPtrOutput{})
 	pulumi.RegisterOutputType(MrScalarArrayOutput{})
 	pulumi.RegisterOutputType(MrScalarMapOutput{})
 }
