@@ -9,6 +9,175 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Azure
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new SpotInst.Azure.Ocean("example", new SpotInst.Azure.OceanArgs
+    ///         {
+    ///             AcdIdentifier = "acd-12345678",
+    ///             AksName = "ocean-westus-dev-aks",
+    ///             AksResourceGroupName = "ocean-westus-dev",
+    ///             Autoscaler = new SpotInst.Azure.Inputs.OceanAutoscalerArgs
+    ///             {
+    ///                 AutoscaleDown = new SpotInst.Azure.Inputs.OceanAutoscalerAutoscaleDownArgs
+    ///                 {
+    ///                     MaxScaleDownPercentage = 10,
+    ///                 },
+    ///                 AutoscaleHeadroom = new SpotInst.Azure.Inputs.OceanAutoscalerAutoscaleHeadroomArgs
+    ///                 {
+    ///                     Automatic = new SpotInst.Azure.Inputs.OceanAutoscalerAutoscaleHeadroomAutomaticArgs
+    ///                     {
+    ///                         IsEnabled = true,
+    ///                         Percentage = 10,
+    ///                     },
+    ///                 },
+    ///                 AutoscaleIsEnabled = true,
+    ///                 ResourceLimits = new SpotInst.Azure.Inputs.OceanAutoscalerResourceLimitsArgs
+    ///                 {
+    ///                     MaxMemoryGib = 40,
+    ///                     MaxVcpu = 1024,
+    ///                 },
+    ///             },
+    ///             ControllerClusterId = "ocean-westus-dev-aks",
+    ///             CustomData = "[... redacted ...]",
+    ///             Extensions = 
+    ///             {
+    ///                 new SpotInst.Azure.Inputs.OceanExtensionArgs
+    ///                 {
+    ///                     ApiVersion = "1.0",
+    ///                     MinorVersionAutoUpgrade = true,
+    ///                     Name = "extension-name",
+    ///                     Publisher = "Microsoft.Azure.Extensions",
+    ///                     Type = "Linux",
+    ///                 },
+    ///             },
+    ///             Health = new SpotInst.Azure.Inputs.OceanHealthArgs
+    ///             {
+    ///                 GracePeriod = 10,
+    ///             },
+    ///             Images = 
+    ///             {
+    ///                 new SpotInst.Azure.Inputs.OceanImageArgs
+    ///                 {
+    ///                     Marketplaces = 
+    ///                     {
+    ///                         new SpotInst.Azure.Inputs.OceanImageMarketplaceArgs
+    ///                         {
+    ///                             Offer = "UbuntuServer",
+    ///                             Publisher = "Canonical",
+    ///                             Sku = "18.04-LTS",
+    ///                             Version = "latest",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             LoadBalancers = 
+    ///             {
+    ///                 new SpotInst.Azure.Inputs.OceanLoadBalancerArgs
+    ///                 {
+    ///                     BackendPoolNames = 
+    ///                     {
+    ///                         "terraform-backend-pool",
+    ///                     },
+    ///                     LoadBalancerSku = "Standard",
+    ///                     Name = "load-balancer-name",
+    ///                     ResourceGroupName = "resource-group-name",
+    ///                     Type = "loadBalancer",
+    ///                 },
+    ///             },
+    ///             ManagedServiceIdentities = 
+    ///             {
+    ///                 new SpotInst.Azure.Inputs.OceanManagedServiceIdentityArgs
+    ///                 {
+    ///                     Name = "ocean-westus-dev-aks-agentpool",
+    ///                     ResourceGroupName = "MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+    ///                 },
+    ///             },
+    ///             Network = new SpotInst.Azure.Inputs.OceanNetworkArgs
+    ///             {
+    ///                 NetworkInterfaces = 
+    ///                 {
+    ///                     new SpotInst.Azure.Inputs.OceanNetworkNetworkInterfaceArgs
+    ///                     {
+    ///                         AdditionalIpConfig = 
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "name", "ip-config-name" },
+    ///                                 { "privateIpVersion", "ipv4" },
+    ///                             },
+    ///                         },
+    ///                         AssignPublicIp = false,
+    ///                         IsPrimary = false,
+    ///                         SubnetName = "subnet-name",
+    ///                     },
+    ///                 },
+    ///                 ResourceGroupName = "ocean-westus-dev",
+    ///                 VirtualNetworkName = "vn-name",
+    ///             },
+    ///             OsDisk = new SpotInst.Azure.Inputs.OceanOsDiskArgs
+    ///             {
+    ///                 SizeGb = 130,
+    ///                 Type = "Standard_LRS",
+    ///             },
+    ///             ResourceGroupName = "some-resource-group-name",
+    ///             SshPublicKey = "ssh-rsa [... redacted ...] generated-by-azure",
+    ///             Strategies = 
+    ///             {
+    ///                 new SpotInst.Azure.Inputs.OceanStrategyArgs
+    ///                 {
+    ///                     FallbackToOndemand = true,
+    ///                     SpotPercentage = 40,
+    ///                 },
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Azure.Inputs.OceanTagArgs
+    ///                 {
+    ///                     Key = "Environment",
+    ///                     Value = "Dev",
+    ///                 },
+    ///             },
+    ///             UserName = "some-name",
+    ///             VmSizes = 
+    ///             {
+    ///                 new SpotInst.Azure.Inputs.OceanVmSizeArgs
+    ///                 {
+    ///                     Whitelists = 
+    ///                     {
+    ///                         "standard_ds2_v2",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         this.OceanId = spotinst_ocean_aks.Example.Id;
+    ///     }
+    /// 
+    ///     [Output("oceanId")]
+    ///     public Output&lt;string&gt; OceanId { get; set; }
+    /// }
+    /// ```
+    /// </summary>
     [SpotInstResourceType("spotinst:azure/ocean:Ocean")]
     public partial class Ocean : Pulumi.CustomResource
     {

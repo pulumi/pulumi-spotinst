@@ -11,6 +11,147 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azure.NewOcean(ctx, "example", &azure.OceanArgs{
+// 			AcdIdentifier:        pulumi.String("acd-12345678"),
+// 			AksName:              pulumi.String("ocean-westus-dev-aks"),
+// 			AksResourceGroupName: pulumi.String("ocean-westus-dev"),
+// 			Autoscaler: &azure.OceanAutoscalerArgs{
+// 				AutoscaleDown: &azure.OceanAutoscalerAutoscaleDownArgs{
+// 					MaxScaleDownPercentage: pulumi.Float64(10),
+// 				},
+// 				AutoscaleHeadroom: &azure.OceanAutoscalerAutoscaleHeadroomArgs{
+// 					Automatic: &azure.OceanAutoscalerAutoscaleHeadroomAutomaticArgs{
+// 						IsEnabled:  pulumi.Bool(true),
+// 						Percentage: pulumi.Int(10),
+// 					},
+// 				},
+// 				AutoscaleIsEnabled: pulumi.Bool(true),
+// 				ResourceLimits: &azure.OceanAutoscalerResourceLimitsArgs{
+// 					MaxMemoryGib: pulumi.Int(40),
+// 					MaxVcpu:      pulumi.Int(1024),
+// 				},
+// 			},
+// 			ControllerClusterId: pulumi.String("ocean-westus-dev-aks"),
+// 			CustomData:          pulumi.String("[... redacted ...]"),
+// 			Extensions: azure.OceanExtensionArray{
+// 				&azure.OceanExtensionArgs{
+// 					ApiVersion:              pulumi.String("1.0"),
+// 					MinorVersionAutoUpgrade: pulumi.Bool(true),
+// 					Name:                    pulumi.String("extension-name"),
+// 					Publisher:               pulumi.String("Microsoft.Azure.Extensions"),
+// 					Type:                    pulumi.String("Linux"),
+// 				},
+// 			},
+// 			Health: &azure.OceanHealthArgs{
+// 				GracePeriod: pulumi.Int(10),
+// 			},
+// 			Images: azure.OceanImageArray{
+// 				&azure.OceanImageArgs{
+// 					Marketplaces: azure.OceanImageMarketplaceArray{
+// 						&azure.OceanImageMarketplaceArgs{
+// 							Offer:     pulumi.String("UbuntuServer"),
+// 							Publisher: pulumi.String("Canonical"),
+// 							Sku:       pulumi.String("18.04-LTS"),
+// 							Version:   pulumi.String("latest"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			LoadBalancers: azure.OceanLoadBalancerArray{
+// 				&azure.OceanLoadBalancerArgs{
+// 					BackendPoolNames: pulumi.StringArray{
+// 						pulumi.String("terraform-backend-pool"),
+// 					},
+// 					LoadBalancerSku:   pulumi.String("Standard"),
+// 					Name:              pulumi.String("load-balancer-name"),
+// 					ResourceGroupName: pulumi.String("resource-group-name"),
+// 					Type:              pulumi.String("loadBalancer"),
+// 				},
+// 			},
+// 			ManagedServiceIdentities: azure.OceanManagedServiceIdentityArray{
+// 				&azure.OceanManagedServiceIdentityArgs{
+// 					Name:              pulumi.String("ocean-westus-dev-aks-agentpool"),
+// 					ResourceGroupName: pulumi.String("MC_ocean-westus-dev_ocean-westus-dev-aks_westus"),
+// 				},
+// 			},
+// 			Network: &azure.OceanNetworkArgs{
+// 				NetworkInterfaces: azure.OceanNetworkNetworkInterfaceArray{
+// 					&azure.OceanNetworkNetworkInterfaceArgs{
+// 						AdditionalIpConfig: []map[string]interface{}{
+// 							map[string]interface{}{
+// 								"name":             "ip-config-name",
+// 								"privateIpVersion": "ipv4",
+// 							},
+// 						},
+// 						AssignPublicIp: pulumi.Bool(false),
+// 						IsPrimary:      pulumi.Bool(false),
+// 						SubnetName:     pulumi.String("subnet-name"),
+// 					},
+// 				},
+// 				ResourceGroupName:  pulumi.String("ocean-westus-dev"),
+// 				VirtualNetworkName: pulumi.String("vn-name"),
+// 			},
+// 			OsDisk: &azure.OceanOsDiskArgs{
+// 				SizeGb: pulumi.Int(130),
+// 				Type:   pulumi.String("Standard_LRS"),
+// 			},
+// 			ResourceGroupName: pulumi.String("some-resource-group-name"),
+// 			SshPublicKey:      pulumi.String("ssh-rsa [... redacted ...] generated-by-azure"),
+// 			Strategies: azure.OceanStrategyArray{
+// 				&azure.OceanStrategyArgs{
+// 					FallbackToOndemand: pulumi.Bool(true),
+// 					SpotPercentage:     pulumi.Int(40),
+// 				},
+// 			},
+// 			Tags: azure.OceanTagArray{
+// 				&azure.OceanTagArgs{
+// 					Key:   pulumi.String("Environment"),
+// 					Value: pulumi.String("Dev"),
+// 				},
+// 			},
+// 			UserName: pulumi.String("some-name"),
+// 			VmSizes: azure.OceanVmSizeArray{
+// 				&azure.OceanVmSizeArgs{
+// 					Whitelists: pulumi.StringArray{
+// 						pulumi.String("standard_ds2_v2"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ctx.Export("oceanId", spotinst_ocean_aks.Example.Id)
+// 		return nil
+// 	})
+// }
+// ```
 type Ocean struct {
 	pulumi.CustomResourceState
 

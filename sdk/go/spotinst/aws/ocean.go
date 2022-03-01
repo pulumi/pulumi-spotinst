@@ -11,6 +11,100 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aws.NewOcean(ctx, "example", &aws.OceanArgs{
+// 			AssociatePublicIpAddress: pulumi.Bool(true),
+// 			ControllerId:             pulumi.String("ocean-dev"),
+// 			DesiredCapacity:          pulumi.Int(2),
+// 			DrainingTimeout:          pulumi.Int(120),
+// 			EbsOptimized:             pulumi.Bool(true),
+// 			FallbackToOndemand:       pulumi.Bool(true),
+// 			GracePeriod:              pulumi.Int(600),
+// 			IamInstanceProfile:       pulumi.String("iam-profile"),
+// 			ImageId:                  pulumi.String("ami-123456"),
+// 			InstanceMetadataOptions: &aws.OceanInstanceMetadataOptionsArgs{
+// 				HttpPutResponseHopLimit: pulumi.Int(10),
+// 				HttpTokens:              pulumi.String("required"),
+// 			},
+// 			KeyName: pulumi.String("fake key"),
+// 			LoadBalancers: aws.OceanLoadBalancerArray{
+// 				&aws.OceanLoadBalancerArgs{
+// 					Arn:  pulumi.String("arn:aws:elasticloadbalancing:us-west-2:fake-arn"),
+// 					Type: pulumi.String("TARGET_GROUP"),
+// 				},
+// 				&aws.OceanLoadBalancerArgs{
+// 					Name: pulumi.String("example"),
+// 					Type: pulumi.String("CLASSIC"),
+// 				},
+// 			},
+// 			Logging: &aws.OceanLoggingArgs{
+// 				Export: &aws.OceanLoggingExportArgs{
+// 					S3: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"id": "di-abcd123",
+// 						},
+// 					},
+// 				},
+// 			},
+// 			MaxSize:        pulumi.Int(2),
+// 			MinSize:        pulumi.Int(1),
+// 			Monitoring:     pulumi.Bool(true),
+// 			Region:         pulumi.String("us-west-2"),
+// 			RootVolumeSize: pulumi.Int(20),
+// 			SecurityGroups: pulumi.StringArray{
+// 				pulumi.String("sg-987654321"),
+// 			},
+// 			SpotPercentage: pulumi.Int(100),
+// 			SubnetIds: pulumi.StringArray{
+// 				pulumi.String("subnet-123456789"),
+// 			},
+// 			Tags: aws.OceanTagArray{
+// 				&aws.OceanTagArgs{
+// 					Key:   pulumi.String("fakeKey"),
+// 					Value: pulumi.String("fakeValue"),
+// 				},
+// 			},
+// 			UseAsTemplateOnly:        pulumi.Bool(true),
+// 			UserData:                 pulumi.String("echo hello world"),
+// 			UtilizeCommitments:       pulumi.Bool(false),
+// 			UtilizeReservedInstances: pulumi.Bool(false),
+// 			Whitelists: pulumi.StringArray{
+// 				pulumi.String("t1.micro"),
+// 				pulumi.String("m1.small"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		ctx.Export("oceanId", spotinst_ocean_aws.Example.Id)
+// 		return nil
+// 	})
+// }
+// ```
 type Ocean struct {
 	pulumi.CustomResourceState
 

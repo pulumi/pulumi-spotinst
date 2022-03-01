@@ -691,7 +691,102 @@ class Ocean(pulumi.CustomResource):
                  vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]]] = None,
                  __props__=None):
         """
-        Create a Ocean resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.Ocean("example",
+            acd_identifier="acd-12345678",
+            aks_name="ocean-westus-dev-aks",
+            aks_resource_group_name="ocean-westus-dev",
+            autoscaler=spotinst.azure.OceanAutoscalerArgs(
+                autoscale_down=spotinst.azure.OceanAutoscalerAutoscaleDownArgs(
+                    max_scale_down_percentage=10,
+                ),
+                autoscale_headroom=spotinst.azure.OceanAutoscalerAutoscaleHeadroomArgs(
+                    automatic=spotinst.azure.OceanAutoscalerAutoscaleHeadroomAutomaticArgs(
+                        is_enabled=True,
+                        percentage=10,
+                    ),
+                ),
+                autoscale_is_enabled=True,
+                resource_limits=spotinst.azure.OceanAutoscalerResourceLimitsArgs(
+                    max_memory_gib=40,
+                    max_vcpu=1024,
+                ),
+            ),
+            controller_cluster_id="ocean-westus-dev-aks",
+            custom_data="[... redacted ...]",
+            extensions=[spotinst.azure.OceanExtensionArgs(
+                api_version="1.0",
+                minor_version_auto_upgrade=True,
+                name="extension-name",
+                publisher="Microsoft.Azure.Extensions",
+                type="Linux",
+            )],
+            health=spotinst.azure.OceanHealthArgs(
+                grace_period=10,
+            ),
+            images=[spotinst.azure.OceanImageArgs(
+                marketplaces=[spotinst.azure.OceanImageMarketplaceArgs(
+                    offer="UbuntuServer",
+                    publisher="Canonical",
+                    sku="18.04-LTS",
+                    version="latest",
+                )],
+            )],
+            load_balancers=[spotinst.azure.OceanLoadBalancerArgs(
+                backend_pool_names=["terraform-backend-pool"],
+                load_balancer_sku="Standard",
+                name="load-balancer-name",
+                resource_group_name="resource-group-name",
+                type="loadBalancer",
+            )],
+            managed_service_identities=[spotinst.azure.OceanManagedServiceIdentityArgs(
+                name="ocean-westus-dev-aks-agentpool",
+                resource_group_name="MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+            )],
+            network=spotinst.azure.OceanNetworkArgs(
+                network_interfaces=[spotinst.azure.OceanNetworkNetworkInterfaceArgs(
+                    additional_ip_config=[{
+                        "name": "ip-config-name",
+                        "privateIpVersion": "ipv4",
+                    }],
+                    assign_public_ip=False,
+                    is_primary=False,
+                    subnet_name="subnet-name",
+                )],
+                resource_group_name="ocean-westus-dev",
+                virtual_network_name="vn-name",
+            ),
+            os_disk=spotinst.azure.OceanOsDiskArgs(
+                size_gb=130,
+                type="Standard_LRS",
+            ),
+            resource_group_name="some-resource-group-name",
+            ssh_public_key="ssh-rsa [... redacted ...] generated-by-azure",
+            strategies=[spotinst.azure.OceanStrategyArgs(
+                fallback_to_ondemand=True,
+                spot_percentage=40,
+            )],
+            tags=[spotinst.azure.OceanTagArgs(
+                key="Environment",
+                value="Dev",
+            )],
+            user_name="some-name",
+            vm_sizes=[spotinst.azure.OceanVmSizeArgs(
+                whitelists=["standard_ds2_v2"],
+            )])
+        ```
+
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_aks["example"]["id"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acd_identifier: The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
@@ -722,7 +817,102 @@ class Ocean(pulumi.CustomResource):
                  args: OceanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Ocean resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.Ocean("example",
+            acd_identifier="acd-12345678",
+            aks_name="ocean-westus-dev-aks",
+            aks_resource_group_name="ocean-westus-dev",
+            autoscaler=spotinst.azure.OceanAutoscalerArgs(
+                autoscale_down=spotinst.azure.OceanAutoscalerAutoscaleDownArgs(
+                    max_scale_down_percentage=10,
+                ),
+                autoscale_headroom=spotinst.azure.OceanAutoscalerAutoscaleHeadroomArgs(
+                    automatic=spotinst.azure.OceanAutoscalerAutoscaleHeadroomAutomaticArgs(
+                        is_enabled=True,
+                        percentage=10,
+                    ),
+                ),
+                autoscale_is_enabled=True,
+                resource_limits=spotinst.azure.OceanAutoscalerResourceLimitsArgs(
+                    max_memory_gib=40,
+                    max_vcpu=1024,
+                ),
+            ),
+            controller_cluster_id="ocean-westus-dev-aks",
+            custom_data="[... redacted ...]",
+            extensions=[spotinst.azure.OceanExtensionArgs(
+                api_version="1.0",
+                minor_version_auto_upgrade=True,
+                name="extension-name",
+                publisher="Microsoft.Azure.Extensions",
+                type="Linux",
+            )],
+            health=spotinst.azure.OceanHealthArgs(
+                grace_period=10,
+            ),
+            images=[spotinst.azure.OceanImageArgs(
+                marketplaces=[spotinst.azure.OceanImageMarketplaceArgs(
+                    offer="UbuntuServer",
+                    publisher="Canonical",
+                    sku="18.04-LTS",
+                    version="latest",
+                )],
+            )],
+            load_balancers=[spotinst.azure.OceanLoadBalancerArgs(
+                backend_pool_names=["terraform-backend-pool"],
+                load_balancer_sku="Standard",
+                name="load-balancer-name",
+                resource_group_name="resource-group-name",
+                type="loadBalancer",
+            )],
+            managed_service_identities=[spotinst.azure.OceanManagedServiceIdentityArgs(
+                name="ocean-westus-dev-aks-agentpool",
+                resource_group_name="MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+            )],
+            network=spotinst.azure.OceanNetworkArgs(
+                network_interfaces=[spotinst.azure.OceanNetworkNetworkInterfaceArgs(
+                    additional_ip_config=[{
+                        "name": "ip-config-name",
+                        "privateIpVersion": "ipv4",
+                    }],
+                    assign_public_ip=False,
+                    is_primary=False,
+                    subnet_name="subnet-name",
+                )],
+                resource_group_name="ocean-westus-dev",
+                virtual_network_name="vn-name",
+            ),
+            os_disk=spotinst.azure.OceanOsDiskArgs(
+                size_gb=130,
+                type="Standard_LRS",
+            ),
+            resource_group_name="some-resource-group-name",
+            ssh_public_key="ssh-rsa [... redacted ...] generated-by-azure",
+            strategies=[spotinst.azure.OceanStrategyArgs(
+                fallback_to_ondemand=True,
+                spot_percentage=40,
+            )],
+            tags=[spotinst.azure.OceanTagArgs(
+                key="Environment",
+                value="Dev",
+            )],
+            user_name="some-name",
+            vm_sizes=[spotinst.azure.OceanVmSizeArgs(
+                whitelists=["standard_ds2_v2"],
+            )])
+        ```
+
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_aks["example"]["id"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

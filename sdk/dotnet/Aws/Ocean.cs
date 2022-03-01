@@ -9,6 +9,111 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Aws
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new SpotInst.Aws.Ocean("example", new SpotInst.Aws.OceanArgs
+    ///         {
+    ///             AssociatePublicIpAddress = true,
+    ///             ControllerId = "ocean-dev",
+    ///             DesiredCapacity = 2,
+    ///             DrainingTimeout = 120,
+    ///             EbsOptimized = true,
+    ///             FallbackToOndemand = true,
+    ///             GracePeriod = 600,
+    ///             IamInstanceProfile = "iam-profile",
+    ///             ImageId = "ami-123456",
+    ///             InstanceMetadataOptions = new SpotInst.Aws.Inputs.OceanInstanceMetadataOptionsArgs
+    ///             {
+    ///                 HttpPutResponseHopLimit = 10,
+    ///                 HttpTokens = "required",
+    ///             },
+    ///             KeyName = "fake key",
+    ///             LoadBalancers = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLoadBalancerArgs
+    ///                 {
+    ///                     Arn = "arn:aws:elasticloadbalancing:us-west-2:fake-arn",
+    ///                     Type = "TARGET_GROUP",
+    ///                 },
+    ///                 new SpotInst.Aws.Inputs.OceanLoadBalancerArgs
+    ///                 {
+    ///                     Name = "example",
+    ///                     Type = "CLASSIC",
+    ///                 },
+    ///             },
+    ///             Logging = new SpotInst.Aws.Inputs.OceanLoggingArgs
+    ///             {
+    ///                 Export = new SpotInst.Aws.Inputs.OceanLoggingExportArgs
+    ///                 {
+    ///                     S3 = 
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "id", "di-abcd123" },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             MaxSize = 2,
+    ///             MinSize = 1,
+    ///             Monitoring = true,
+    ///             Region = "us-west-2",
+    ///             RootVolumeSize = 20,
+    ///             SecurityGroups = 
+    ///             {
+    ///                 "sg-987654321",
+    ///             },
+    ///             SpotPercentage = 100,
+    ///             SubnetIds = 
+    ///             {
+    ///                 "subnet-123456789",
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanTagArgs
+    ///                 {
+    ///                     Key = "fakeKey",
+    ///                     Value = "fakeValue",
+    ///                 },
+    ///             },
+    ///             UseAsTemplateOnly = true,
+    ///             UserData = "echo hello world",
+    ///             UtilizeCommitments = false,
+    ///             UtilizeReservedInstances = false,
+    ///             Whitelists = 
+    ///             {
+    ///                 "t1.micro",
+    ///                 "m1.small",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         this.OceanId = spotinst_ocean_aws.Example.Id;
+    ///     }
+    /// 
+    ///     [Output("oceanId")]
+    ///     public Output&lt;string&gt; OceanId { get; set; }
+    /// }
+    /// ```
+    /// </summary>
     [SpotInstResourceType("spotinst:aws/ocean:Ocean")]
     public partial class Ocean : Pulumi.CustomResource
     {

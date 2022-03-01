@@ -1085,7 +1085,71 @@ class Ocean(pulumi.CustomResource):
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a Ocean resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.aws.Ocean("example",
+            associate_public_ip_address=True,
+            controller_id="ocean-dev",
+            desired_capacity=2,
+            draining_timeout=120,
+            ebs_optimized=True,
+            fallback_to_ondemand=True,
+            grace_period=600,
+            iam_instance_profile="iam-profile",
+            image_id="ami-123456",
+            instance_metadata_options=spotinst.aws.OceanInstanceMetadataOptionsArgs(
+                http_put_response_hop_limit=10,
+                http_tokens="required",
+            ),
+            key_name="fake key",
+            load_balancers=[
+                spotinst.aws.OceanLoadBalancerArgs(
+                    arn="arn:aws:elasticloadbalancing:us-west-2:fake-arn",
+                    type="TARGET_GROUP",
+                ),
+                spotinst.aws.OceanLoadBalancerArgs(
+                    name="example",
+                    type="CLASSIC",
+                ),
+            ],
+            logging=spotinst.aws.OceanLoggingArgs(
+                export=spotinst.aws.OceanLoggingExportArgs(
+                    s3=[{
+                        "id": "di-abcd123",
+                    }],
+                ),
+            ),
+            max_size=2,
+            min_size=1,
+            monitoring=True,
+            region="us-west-2",
+            root_volume_size=20,
+            security_groups=["sg-987654321"],
+            spot_percentage=100,
+            subnet_ids=["subnet-123456789"],
+            tags=[spotinst.aws.OceanTagArgs(
+                key="fakeKey",
+                value="fakeValue",
+            )],
+            use_as_template_only=True,
+            user_data="echo hello world",
+            utilize_commitments=False,
+            utilize_reserved_instances=False,
+            whitelists=[
+                "t1.micro",
+                "m1.small",
+            ])
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_aws["example"]["id"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
@@ -1128,7 +1192,71 @@ class Ocean(pulumi.CustomResource):
                  args: OceanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Ocean resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.aws.Ocean("example",
+            associate_public_ip_address=True,
+            controller_id="ocean-dev",
+            desired_capacity=2,
+            draining_timeout=120,
+            ebs_optimized=True,
+            fallback_to_ondemand=True,
+            grace_period=600,
+            iam_instance_profile="iam-profile",
+            image_id="ami-123456",
+            instance_metadata_options=spotinst.aws.OceanInstanceMetadataOptionsArgs(
+                http_put_response_hop_limit=10,
+                http_tokens="required",
+            ),
+            key_name="fake key",
+            load_balancers=[
+                spotinst.aws.OceanLoadBalancerArgs(
+                    arn="arn:aws:elasticloadbalancing:us-west-2:fake-arn",
+                    type="TARGET_GROUP",
+                ),
+                spotinst.aws.OceanLoadBalancerArgs(
+                    name="example",
+                    type="CLASSIC",
+                ),
+            ],
+            logging=spotinst.aws.OceanLoggingArgs(
+                export=spotinst.aws.OceanLoggingExportArgs(
+                    s3=[{
+                        "id": "di-abcd123",
+                    }],
+                ),
+            ),
+            max_size=2,
+            min_size=1,
+            monitoring=True,
+            region="us-west-2",
+            root_volume_size=20,
+            security_groups=["sg-987654321"],
+            spot_percentage=100,
+            subnet_ids=["subnet-123456789"],
+            tags=[spotinst.aws.OceanTagArgs(
+                key="fakeKey",
+                value="fakeValue",
+            )],
+            use_as_template_only=True,
+            user_data="echo hello world",
+            utilize_commitments=False,
+            utilize_reserved_instances=False,
+            whitelists=[
+                "t1.micro",
+                "m1.small",
+            ])
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_aws["example"]["id"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
