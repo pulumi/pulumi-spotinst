@@ -44,6 +44,7 @@ namespace Pulumi.SpotInst.Gke
     ///                 },
     ///             },
     ///             ClusterName = "example-cluster-name",
+    ///             ControllerClusterId = "example-controller-123124",
     ///             DesiredCapacity = 0,
     ///             Location = "us-central1-a",
     ///             MaxSize = 2,
@@ -74,6 +75,25 @@ namespace Pulumi.SpotInst.Gke
     ///     public Output&lt;string&gt; OceanId { get; set; }
     /// }
     /// ```
+    /// ## Strategy
+    /// 
+    /// * `strategy` - (Optional) Strategy object.
+    ///     * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+    ///     * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// &lt;a id="update-policy"&gt;&lt;/a&gt;
     /// ## Update Policy
     /// 
     /// * `update_policy` - (Optional)
@@ -120,6 +140,9 @@ namespace Pulumi.SpotInst.Gke
         [Output("clusterName")]
         public Output<string> ClusterName { get; private set; } = null!;
 
+        /// <summary>
+        /// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+        /// </summary>
         [Output("controllerClusterId")]
         public Output<string> ControllerClusterId { get; private set; } = null!;
 
@@ -158,6 +181,9 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.OceanImportScheduledTask>> ScheduledTasks { get; private set; } = null!;
+
+        [Output("strategies")]
+        public Output<ImmutableArray<Outputs.OceanImportStrategy>> Strategies { get; private set; } = null!;
 
         [Output("updatePolicy")]
         public Output<Outputs.OceanImportUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
@@ -238,6 +264,9 @@ namespace Pulumi.SpotInst.Gke
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 
+        /// <summary>
+        /// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+        /// </summary>
         [Input("controllerClusterId")]
         public Input<string>? ControllerClusterId { get; set; }
 
@@ -281,6 +310,14 @@ namespace Pulumi.SpotInst.Gke
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanImportScheduledTaskArgs>());
             set => _scheduledTasks = value;
+        }
+
+        [Input("strategies")]
+        private InputList<Inputs.OceanImportStrategyArgs>? _strategies;
+        public InputList<Inputs.OceanImportStrategyArgs> Strategies
+        {
+            get => _strategies ?? (_strategies = new InputList<Inputs.OceanImportStrategyArgs>());
+            set => _strategies = value;
         }
 
         [Input("updatePolicy")]
@@ -332,6 +369,9 @@ namespace Pulumi.SpotInst.Gke
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
 
+        /// <summary>
+        /// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+        /// </summary>
         [Input("controllerClusterId")]
         public Input<string>? ControllerClusterId { get; set; }
 
@@ -375,6 +415,14 @@ namespace Pulumi.SpotInst.Gke
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanImportScheduledTaskGetArgs>());
             set => _scheduledTasks = value;
+        }
+
+        [Input("strategies")]
+        private InputList<Inputs.OceanImportStrategyGetArgs>? _strategies;
+        public InputList<Inputs.OceanImportStrategyGetArgs> Strategies
+        {
+            get => _strategies ?? (_strategies = new InputList<Inputs.OceanImportStrategyGetArgs>());
+            set => _strategies = value;
         }
 
         [Input("updatePolicy")]

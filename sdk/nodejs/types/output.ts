@@ -813,11 +813,17 @@ export namespace aws {
     }
 
     export interface ElastigroupItf {
+        defaultStaticTargetGroup?: outputs.aws.ElastigroupItfDefaultStaticTargetGroup;
         fixedTargetGroups: boolean;
         loadBalancers: outputs.aws.ElastigroupItfLoadBalancer[];
         migrationHealthinessThreshold?: number;
         targetGroupConfigs: outputs.aws.ElastigroupItfTargetGroupConfig[];
         weightStrategy: string;
+    }
+
+    export interface ElastigroupItfDefaultStaticTargetGroup {
+        arn: string;
+        percentage: number;
     }
 
     export interface ElastigroupItfLoadBalancer {
@@ -827,6 +833,12 @@ export namespace aws {
 
     export interface ElastigroupItfLoadBalancerListenerRule {
         ruleArn: string;
+        staticTargetGroup?: outputs.aws.ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup;
+    }
+
+    export interface ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup {
+        arn: string;
+        percentage: number;
     }
 
     export interface ElastigroupItfTargetGroupConfig {
@@ -2287,6 +2299,10 @@ export namespace aws {
          */
         enableAutomaticAndManualHeadroom?: boolean;
         /**
+         * List of Ocean extended resource definitions to use in this cluster.
+         */
+        extendedResourceDefinitions?: string[];
+        /**
          * Optionally set upper and lower bounds on the resource usage of the cluster.
          */
         resourceLimits?: outputs.aws.OceanAutoscalerResourceLimits;
@@ -2484,13 +2500,24 @@ export namespace aws {
         minInstanceCount?: number;
     }
 
+    export interface OceanLaunchSpecSchedulingShutdownHours {
+        /**
+         * Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+         */
+        isEnabled?: boolean;
+        /**
+         * The times that the shutdown hours will apply.
+         */
+        timeWindows: string[];
+    }
+
     export interface OceanLaunchSpecSchedulingTask {
         /**
          * A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
          */
         cronExpression: string;
         /**
-         * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+         * Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
          */
         isEnabled: boolean;
         /**
@@ -4443,6 +4470,14 @@ export namespace gke {
          * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
          */
         taskType: string;
+    }
+
+    export interface OceanImportStrategy {
+        /**
+         * The draining timeout (in seconds) before terminating the instance.
+         */
+        drainingTimeout?: number;
+        provisioningModel?: string;
     }
 
     export interface OceanImportUpdatePolicy {

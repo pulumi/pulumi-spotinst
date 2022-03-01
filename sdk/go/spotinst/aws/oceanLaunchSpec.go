@@ -93,6 +93,13 @@ import (
 // 			},
 // 			RestrictScaleDown: pulumi.Bool(true),
 // 			RootVolumeSize:    pulumi.Int(30),
+// 			SchedulingShutdownHours: &aws.OceanLaunchSpecSchedulingShutdownHoursArgs{
+// 				IsEnabled: pulumi.Bool(true),
+// 				TimeWindows: pulumi.StringArray{
+// 					pulumi.String("Sat:08:00-Sat:08:30"),
+// 					pulumi.String("Sun:08:00-Sun:08:30"),
+// 				},
+// 			},
 // 			SchedulingTasks: aws.OceanLaunchSpecSchedulingTaskArray{
 // 				&aws.OceanLaunchSpecSchedulingTaskArgs{
 // 					CronExpression: pulumi.String("0 1 * * *"),
@@ -207,6 +214,8 @@ type OceanLaunchSpec struct {
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
+	// Used to specify times that the nodes in the virtual node group will be taken down.
+	SchedulingShutdownHours OceanLaunchSpecSchedulingShutdownHoursPtrOutput `pulumi:"schedulingShutdownHours"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayOutput `pulumi:"schedulingTasks"`
 	// Optionally adds security group IDs.
@@ -284,6 +293,8 @@ type oceanLaunchSpecState struct {
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	// Used to specify times that the nodes in the virtual node group will be taken down.
+	SchedulingShutdownHours *OceanLaunchSpecSchedulingShutdownHours `pulumi:"schedulingShutdownHours"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// Optionally adds security group IDs.
@@ -330,6 +341,8 @@ type OceanLaunchSpecState struct {
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
+	// Used to specify times that the nodes in the virtual node group will be taken down.
+	SchedulingShutdownHours OceanLaunchSpecSchedulingShutdownHoursPtrInput
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// Optionally adds security group IDs.
@@ -380,6 +393,8 @@ type oceanLaunchSpecArgs struct {
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Set root volume size (in GB).
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
+	// Used to specify times that the nodes in the virtual node group will be taken down.
+	SchedulingShutdownHours *OceanLaunchSpecSchedulingShutdownHours `pulumi:"schedulingShutdownHours"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// Optionally adds security group IDs.
@@ -427,6 +442,8 @@ type OceanLaunchSpecArgs struct {
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Set root volume size (in GB).
 	RootVolumeSize pulumi.IntPtrInput
+	// Used to specify times that the nodes in the virtual node group will be taken down.
+	SchedulingShutdownHours OceanLaunchSpecSchedulingShutdownHoursPtrInput
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// Optionally adds security group IDs.

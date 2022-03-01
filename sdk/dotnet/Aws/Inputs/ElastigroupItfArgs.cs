@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupItfArgs : Pulumi.ResourceArgs
     {
+        [Input("defaultStaticTargetGroup")]
+        public Input<Inputs.ElastigroupItfDefaultStaticTargetGroupArgs>? DefaultStaticTargetGroup { get; set; }
+
         [Input("fixedTargetGroups", required: true)]
         public Input<bool> FixedTargetGroups { get; set; } = null!;
 

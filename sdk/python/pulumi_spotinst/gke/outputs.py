@@ -39,6 +39,7 @@ __all__ = [
     'OceanImportScheduledTask',
     'OceanImportScheduledTaskShutdownHours',
     'OceanImportScheduledTaskTask',
+    'OceanImportStrategy',
     'OceanImportUpdatePolicy',
     'OceanImportUpdatePolicyRollConfig',
     'OceanLaunchSpecAutoscaleHeadroom',
@@ -1706,6 +1707,52 @@ class OceanImportScheduledTaskTask(dict):
         Example: 20.
         """
         return pulumi.get(self, "batch_size_percentage")
+
+
+@pulumi.output_type
+class OceanImportStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "drainingTimeout":
+            suggest = "draining_timeout"
+        elif key == "provisioningModel":
+            suggest = "provisioning_model"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanImportStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanImportStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanImportStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 draining_timeout: Optional[int] = None,
+                 provisioning_model: Optional[str] = None):
+        """
+        :param int draining_timeout: The draining timeout (in seconds) before terminating the instance.
+        """
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[int]:
+        """
+        The draining timeout (in seconds) before terminating the instance.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[str]:
+        return pulumi.get(self, "provisioning_model")
 
 
 @pulumi.output_type

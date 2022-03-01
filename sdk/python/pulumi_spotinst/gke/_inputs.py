@@ -38,6 +38,7 @@ __all__ = [
     'OceanImportScheduledTaskArgs',
     'OceanImportScheduledTaskShutdownHoursArgs',
     'OceanImportScheduledTaskTaskArgs',
+    'OceanImportStrategyArgs',
     'OceanImportUpdatePolicyArgs',
     'OceanImportUpdatePolicyRollConfigArgs',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
@@ -1731,6 +1732,41 @@ class OceanImportScheduledTaskTaskArgs:
     @batch_size_percentage.setter
     def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "batch_size_percentage", value)
+
+
+@pulumi.input_type
+class OceanImportStrategyArgs:
+    def __init__(__self__, *,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
+                 provisioning_model: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] draining_timeout: The draining timeout (in seconds) before terminating the instance.
+        """
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The draining timeout (in seconds) before terminating the instance.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "draining_timeout", value)
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisioning_model")
+
+    @provisioning_model.setter
+    def provisioning_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioning_model", value)
 
 
 @pulumi.input_type

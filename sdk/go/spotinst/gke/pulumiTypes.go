@@ -3983,6 +3983,109 @@ func (o OceanImportScheduledTaskTaskArrayOutput) Index(i pulumi.IntInput) OceanI
 	}).(OceanImportScheduledTaskTaskOutput)
 }
 
+type OceanImportStrategy struct {
+	// The draining timeout (in seconds) before terminating the instance.
+	DrainingTimeout   *int    `pulumi:"drainingTimeout"`
+	ProvisioningModel *string `pulumi:"provisioningModel"`
+}
+
+// OceanImportStrategyInput is an input type that accepts OceanImportStrategyArgs and OceanImportStrategyOutput values.
+// You can construct a concrete instance of `OceanImportStrategyInput` via:
+//
+//          OceanImportStrategyArgs{...}
+type OceanImportStrategyInput interface {
+	pulumi.Input
+
+	ToOceanImportStrategyOutput() OceanImportStrategyOutput
+	ToOceanImportStrategyOutputWithContext(context.Context) OceanImportStrategyOutput
+}
+
+type OceanImportStrategyArgs struct {
+	// The draining timeout (in seconds) before terminating the instance.
+	DrainingTimeout   pulumi.IntPtrInput    `pulumi:"drainingTimeout"`
+	ProvisioningModel pulumi.StringPtrInput `pulumi:"provisioningModel"`
+}
+
+func (OceanImportStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportStrategy)(nil)).Elem()
+}
+
+func (i OceanImportStrategyArgs) ToOceanImportStrategyOutput() OceanImportStrategyOutput {
+	return i.ToOceanImportStrategyOutputWithContext(context.Background())
+}
+
+func (i OceanImportStrategyArgs) ToOceanImportStrategyOutputWithContext(ctx context.Context) OceanImportStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportStrategyOutput)
+}
+
+// OceanImportStrategyArrayInput is an input type that accepts OceanImportStrategyArray and OceanImportStrategyArrayOutput values.
+// You can construct a concrete instance of `OceanImportStrategyArrayInput` via:
+//
+//          OceanImportStrategyArray{ OceanImportStrategyArgs{...} }
+type OceanImportStrategyArrayInput interface {
+	pulumi.Input
+
+	ToOceanImportStrategyArrayOutput() OceanImportStrategyArrayOutput
+	ToOceanImportStrategyArrayOutputWithContext(context.Context) OceanImportStrategyArrayOutput
+}
+
+type OceanImportStrategyArray []OceanImportStrategyInput
+
+func (OceanImportStrategyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanImportStrategy)(nil)).Elem()
+}
+
+func (i OceanImportStrategyArray) ToOceanImportStrategyArrayOutput() OceanImportStrategyArrayOutput {
+	return i.ToOceanImportStrategyArrayOutputWithContext(context.Background())
+}
+
+func (i OceanImportStrategyArray) ToOceanImportStrategyArrayOutputWithContext(ctx context.Context) OceanImportStrategyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportStrategyArrayOutput)
+}
+
+type OceanImportStrategyOutput struct{ *pulumi.OutputState }
+
+func (OceanImportStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportStrategy)(nil)).Elem()
+}
+
+func (o OceanImportStrategyOutput) ToOceanImportStrategyOutput() OceanImportStrategyOutput {
+	return o
+}
+
+func (o OceanImportStrategyOutput) ToOceanImportStrategyOutputWithContext(ctx context.Context) OceanImportStrategyOutput {
+	return o
+}
+
+// The draining timeout (in seconds) before terminating the instance.
+func (o OceanImportStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportStrategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportStrategyOutput) ProvisioningModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanImportStrategy) *string { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
+}
+
+type OceanImportStrategyArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanImportStrategyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanImportStrategy)(nil)).Elem()
+}
+
+func (o OceanImportStrategyArrayOutput) ToOceanImportStrategyArrayOutput() OceanImportStrategyArrayOutput {
+	return o
+}
+
+func (o OceanImportStrategyArrayOutput) ToOceanImportStrategyArrayOutputWithContext(ctx context.Context) OceanImportStrategyArrayOutput {
+	return o
+}
+
+func (o OceanImportStrategyArrayOutput) Index(i pulumi.IntInput) OceanImportStrategyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanImportStrategy {
+		return vs[0].([]OceanImportStrategy)[vs[1].(int)]
+	}).(OceanImportStrategyOutput)
+}
+
 type OceanImportUpdatePolicy struct {
 	ConditionedRoll *bool                              `pulumi:"conditionedRoll"`
 	RollConfig      *OceanImportUpdatePolicyRollConfig `pulumi:"rollConfig"`
@@ -5889,6 +5992,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskShutdownHoursPtrInput)(nil)).Elem(), OceanImportScheduledTaskShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskInput)(nil)).Elem(), OceanImportScheduledTaskTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskArrayInput)(nil)).Elem(), OceanImportScheduledTaskTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportStrategyInput)(nil)).Elem(), OceanImportStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportStrategyArrayInput)(nil)).Elem(), OceanImportStrategyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportUpdatePolicyInput)(nil)).Elem(), OceanImportUpdatePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportUpdatePolicyPtrInput)(nil)).Elem(), OceanImportUpdatePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportUpdatePolicyRollConfigInput)(nil)).Elem(), OceanImportUpdatePolicyRollConfigArgs{})
@@ -5975,6 +6080,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanImportScheduledTaskShutdownHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportScheduledTaskTaskOutput{})
 	pulumi.RegisterOutputType(OceanImportScheduledTaskTaskArrayOutput{})
+	pulumi.RegisterOutputType(OceanImportStrategyOutput{})
+	pulumi.RegisterOutputType(OceanImportStrategyArrayOutput{})
 	pulumi.RegisterOutputType(OceanImportUpdatePolicyOutput{})
 	pulumi.RegisterOutputType(OceanImportUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportUpdatePolicyRollConfigOutput{})

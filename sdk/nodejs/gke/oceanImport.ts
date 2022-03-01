@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *         serviceName: "example-backend-service",
  *     }],
  *     clusterName: "example-cluster-name",
+ *     controllerClusterId: "example-controller-123124",
  *     desiredCapacity: 0,
  *     location: "us-central1-a",
  *     maxSize: 2,
@@ -43,6 +44,17 @@ import * as utilities from "../utilities";
  *
  * export const oceanId = spotinst_ocean_gke_import.example.id;
  * ```
+ * ## Strategy
+ *
+ * * `strategy` - (Optional) Strategy object.
+ *     * `drainingTimeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+ *     * `provisioningModel` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * <a id="update-policy"></a>
  * ## Update Policy
  *
  * * `updatePolicy` - (Optional)
@@ -98,6 +110,9 @@ export class OceanImport extends pulumi.CustomResource {
      * The GKE cluster name.
      */
     public readonly clusterName!: pulumi.Output<string>;
+    /**
+     * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+     */
     public readonly controllerClusterId!: pulumi.Output<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
@@ -123,6 +138,7 @@ export class OceanImport extends pulumi.CustomResource {
      * Set scheduling object.
      */
     public readonly scheduledTasks!: pulumi.Output<outputs.gke.OceanImportScheduledTask[] | undefined>;
+    public readonly strategies!: pulumi.Output<outputs.gke.OceanImportStrategy[] | undefined>;
     public readonly updatePolicy!: pulumi.Output<outputs.gke.OceanImportUpdatePolicy | undefined>;
     /**
      * Instance types allowed in the Ocean cluster.
@@ -153,6 +169,7 @@ export class OceanImport extends pulumi.CustomResource {
             resourceInputs["minSize"] = state ? state.minSize : undefined;
             resourceInputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
             resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
+            resourceInputs["strategies"] = state ? state.strategies : undefined;
             resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
@@ -173,6 +190,7 @@ export class OceanImport extends pulumi.CustomResource {
             resourceInputs["minSize"] = args ? args.minSize : undefined;
             resourceInputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
             resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
+            resourceInputs["strategies"] = args ? args.strategies : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             resourceInputs["whitelists"] = args ? args.whitelists : undefined;
             resourceInputs["clusterControllerId"] = undefined /*out*/;
@@ -199,6 +217,9 @@ export interface OceanImportState {
      * The GKE cluster name.
      */
     clusterName?: pulumi.Input<string>;
+    /**
+     * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+     */
     controllerClusterId?: pulumi.Input<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
@@ -224,6 +245,7 @@ export interface OceanImportState {
      * Set scheduling object.
      */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportStrategy>[]>;
     updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
     /**
      * Instance types allowed in the Ocean cluster.
@@ -247,6 +269,9 @@ export interface OceanImportArgs {
      * The GKE cluster name.
      */
     clusterName: pulumi.Input<string>;
+    /**
+     * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+     */
     controllerClusterId?: pulumi.Input<string>;
     /**
      * The number of instances to launch and maintain in the cluster.
@@ -272,6 +297,7 @@ export interface OceanImportArgs {
      * Set scheduling object.
      */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportStrategy>[]>;
     updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
     /**
      * Instance types allowed in the Ocean cluster.

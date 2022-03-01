@@ -15,6 +15,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("ruleArn", required: true)]
         public Input<string> RuleArn { get; set; } = null!;
 
+        [Input("staticTargetGroup")]
+        public Input<Inputs.ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupGetArgs>? StaticTargetGroup { get; set; }
+
         public ElastigroupItfLoadBalancerListenerRuleGetArgs()
         {
         }

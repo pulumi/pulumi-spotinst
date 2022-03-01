@@ -6470,11 +6470,12 @@ func (o ElastigroupIntegrationRoute53DomainRecordSetArrayOutput) Index(i pulumi.
 }
 
 type ElastigroupItf struct {
-	FixedTargetGroups             bool                              `pulumi:"fixedTargetGroups"`
-	LoadBalancers                 []ElastigroupItfLoadBalancer      `pulumi:"loadBalancers"`
-	MigrationHealthinessThreshold *int                              `pulumi:"migrationHealthinessThreshold"`
-	TargetGroupConfigs            []ElastigroupItfTargetGroupConfig `pulumi:"targetGroupConfigs"`
-	WeightStrategy                string                            `pulumi:"weightStrategy"`
+	DefaultStaticTargetGroup      *ElastigroupItfDefaultStaticTargetGroup `pulumi:"defaultStaticTargetGroup"`
+	FixedTargetGroups             bool                                    `pulumi:"fixedTargetGroups"`
+	LoadBalancers                 []ElastigroupItfLoadBalancer            `pulumi:"loadBalancers"`
+	MigrationHealthinessThreshold *int                                    `pulumi:"migrationHealthinessThreshold"`
+	TargetGroupConfigs            []ElastigroupItfTargetGroupConfig       `pulumi:"targetGroupConfigs"`
+	WeightStrategy                string                                  `pulumi:"weightStrategy"`
 }
 
 // ElastigroupItfInput is an input type that accepts ElastigroupItfArgs and ElastigroupItfOutput values.
@@ -6489,11 +6490,12 @@ type ElastigroupItfInput interface {
 }
 
 type ElastigroupItfArgs struct {
-	FixedTargetGroups             pulumi.BoolInput                          `pulumi:"fixedTargetGroups"`
-	LoadBalancers                 ElastigroupItfLoadBalancerArrayInput      `pulumi:"loadBalancers"`
-	MigrationHealthinessThreshold pulumi.IntPtrInput                        `pulumi:"migrationHealthinessThreshold"`
-	TargetGroupConfigs            ElastigroupItfTargetGroupConfigArrayInput `pulumi:"targetGroupConfigs"`
-	WeightStrategy                pulumi.StringInput                        `pulumi:"weightStrategy"`
+	DefaultStaticTargetGroup      ElastigroupItfDefaultStaticTargetGroupPtrInput `pulumi:"defaultStaticTargetGroup"`
+	FixedTargetGroups             pulumi.BoolInput                               `pulumi:"fixedTargetGroups"`
+	LoadBalancers                 ElastigroupItfLoadBalancerArrayInput           `pulumi:"loadBalancers"`
+	MigrationHealthinessThreshold pulumi.IntPtrInput                             `pulumi:"migrationHealthinessThreshold"`
+	TargetGroupConfigs            ElastigroupItfTargetGroupConfigArrayInput      `pulumi:"targetGroupConfigs"`
+	WeightStrategy                pulumi.StringInput                             `pulumi:"weightStrategy"`
 }
 
 func (ElastigroupItfArgs) ElementType() reflect.Type {
@@ -6547,6 +6549,10 @@ func (o ElastigroupItfOutput) ToElastigroupItfOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ElastigroupItfOutput) DefaultStaticTargetGroup() ElastigroupItfDefaultStaticTargetGroupPtrOutput {
+	return o.ApplyT(func(v ElastigroupItf) *ElastigroupItfDefaultStaticTargetGroup { return v.DefaultStaticTargetGroup }).(ElastigroupItfDefaultStaticTargetGroupPtrOutput)
+}
+
 func (o ElastigroupItfOutput) FixedTargetGroups() pulumi.BoolOutput {
 	return o.ApplyT(func(v ElastigroupItf) bool { return v.FixedTargetGroups }).(pulumi.BoolOutput)
 }
@@ -6585,6 +6591,154 @@ func (o ElastigroupItfArrayOutput) Index(i pulumi.IntInput) ElastigroupItfOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupItf {
 		return vs[0].([]ElastigroupItf)[vs[1].(int)]
 	}).(ElastigroupItfOutput)
+}
+
+type ElastigroupItfDefaultStaticTargetGroup struct {
+	Arn        string  `pulumi:"arn"`
+	Percentage float64 `pulumi:"percentage"`
+}
+
+// ElastigroupItfDefaultStaticTargetGroupInput is an input type that accepts ElastigroupItfDefaultStaticTargetGroupArgs and ElastigroupItfDefaultStaticTargetGroupOutput values.
+// You can construct a concrete instance of `ElastigroupItfDefaultStaticTargetGroupInput` via:
+//
+//          ElastigroupItfDefaultStaticTargetGroupArgs{...}
+type ElastigroupItfDefaultStaticTargetGroupInput interface {
+	pulumi.Input
+
+	ToElastigroupItfDefaultStaticTargetGroupOutput() ElastigroupItfDefaultStaticTargetGroupOutput
+	ToElastigroupItfDefaultStaticTargetGroupOutputWithContext(context.Context) ElastigroupItfDefaultStaticTargetGroupOutput
+}
+
+type ElastigroupItfDefaultStaticTargetGroupArgs struct {
+	Arn        pulumi.StringInput  `pulumi:"arn"`
+	Percentage pulumi.Float64Input `pulumi:"percentage"`
+}
+
+func (ElastigroupItfDefaultStaticTargetGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfDefaultStaticTargetGroup)(nil)).Elem()
+}
+
+func (i ElastigroupItfDefaultStaticTargetGroupArgs) ToElastigroupItfDefaultStaticTargetGroupOutput() ElastigroupItfDefaultStaticTargetGroupOutput {
+	return i.ToElastigroupItfDefaultStaticTargetGroupOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfDefaultStaticTargetGroupArgs) ToElastigroupItfDefaultStaticTargetGroupOutputWithContext(ctx context.Context) ElastigroupItfDefaultStaticTargetGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfDefaultStaticTargetGroupOutput)
+}
+
+func (i ElastigroupItfDefaultStaticTargetGroupArgs) ToElastigroupItfDefaultStaticTargetGroupPtrOutput() ElastigroupItfDefaultStaticTargetGroupPtrOutput {
+	return i.ToElastigroupItfDefaultStaticTargetGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfDefaultStaticTargetGroupArgs) ToElastigroupItfDefaultStaticTargetGroupPtrOutputWithContext(ctx context.Context) ElastigroupItfDefaultStaticTargetGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfDefaultStaticTargetGroupOutput).ToElastigroupItfDefaultStaticTargetGroupPtrOutputWithContext(ctx)
+}
+
+// ElastigroupItfDefaultStaticTargetGroupPtrInput is an input type that accepts ElastigroupItfDefaultStaticTargetGroupArgs, ElastigroupItfDefaultStaticTargetGroupPtr and ElastigroupItfDefaultStaticTargetGroupPtrOutput values.
+// You can construct a concrete instance of `ElastigroupItfDefaultStaticTargetGroupPtrInput` via:
+//
+//          ElastigroupItfDefaultStaticTargetGroupArgs{...}
+//
+//  or:
+//
+//          nil
+type ElastigroupItfDefaultStaticTargetGroupPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupItfDefaultStaticTargetGroupPtrOutput() ElastigroupItfDefaultStaticTargetGroupPtrOutput
+	ToElastigroupItfDefaultStaticTargetGroupPtrOutputWithContext(context.Context) ElastigroupItfDefaultStaticTargetGroupPtrOutput
+}
+
+type elastigroupItfDefaultStaticTargetGroupPtrType ElastigroupItfDefaultStaticTargetGroupArgs
+
+func ElastigroupItfDefaultStaticTargetGroupPtr(v *ElastigroupItfDefaultStaticTargetGroupArgs) ElastigroupItfDefaultStaticTargetGroupPtrInput {
+	return (*elastigroupItfDefaultStaticTargetGroupPtrType)(v)
+}
+
+func (*elastigroupItfDefaultStaticTargetGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupItfDefaultStaticTargetGroup)(nil)).Elem()
+}
+
+func (i *elastigroupItfDefaultStaticTargetGroupPtrType) ToElastigroupItfDefaultStaticTargetGroupPtrOutput() ElastigroupItfDefaultStaticTargetGroupPtrOutput {
+	return i.ToElastigroupItfDefaultStaticTargetGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupItfDefaultStaticTargetGroupPtrType) ToElastigroupItfDefaultStaticTargetGroupPtrOutputWithContext(ctx context.Context) ElastigroupItfDefaultStaticTargetGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfDefaultStaticTargetGroupPtrOutput)
+}
+
+type ElastigroupItfDefaultStaticTargetGroupOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfDefaultStaticTargetGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfDefaultStaticTargetGroup)(nil)).Elem()
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupOutput) ToElastigroupItfDefaultStaticTargetGroupOutput() ElastigroupItfDefaultStaticTargetGroupOutput {
+	return o
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupOutput) ToElastigroupItfDefaultStaticTargetGroupOutputWithContext(ctx context.Context) ElastigroupItfDefaultStaticTargetGroupOutput {
+	return o
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupOutput) ToElastigroupItfDefaultStaticTargetGroupPtrOutput() ElastigroupItfDefaultStaticTargetGroupPtrOutput {
+	return o.ToElastigroupItfDefaultStaticTargetGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupOutput) ToElastigroupItfDefaultStaticTargetGroupPtrOutputWithContext(ctx context.Context) ElastigroupItfDefaultStaticTargetGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupItfDefaultStaticTargetGroup) *ElastigroupItfDefaultStaticTargetGroup {
+		return &v
+	}).(ElastigroupItfDefaultStaticTargetGroupPtrOutput)
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupItfDefaultStaticTargetGroup) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupOutput) Percentage() pulumi.Float64Output {
+	return o.ApplyT(func(v ElastigroupItfDefaultStaticTargetGroup) float64 { return v.Percentage }).(pulumi.Float64Output)
+}
+
+type ElastigroupItfDefaultStaticTargetGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfDefaultStaticTargetGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupItfDefaultStaticTargetGroup)(nil)).Elem()
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupPtrOutput) ToElastigroupItfDefaultStaticTargetGroupPtrOutput() ElastigroupItfDefaultStaticTargetGroupPtrOutput {
+	return o
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupPtrOutput) ToElastigroupItfDefaultStaticTargetGroupPtrOutputWithContext(ctx context.Context) ElastigroupItfDefaultStaticTargetGroupPtrOutput {
+	return o
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupPtrOutput) Elem() ElastigroupItfDefaultStaticTargetGroupOutput {
+	return o.ApplyT(func(v *ElastigroupItfDefaultStaticTargetGroup) ElastigroupItfDefaultStaticTargetGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupItfDefaultStaticTargetGroup
+		return ret
+	}).(ElastigroupItfDefaultStaticTargetGroupOutput)
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupItfDefaultStaticTargetGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupItfDefaultStaticTargetGroupPtrOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ElastigroupItfDefaultStaticTargetGroup) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Percentage
+	}).(pulumi.Float64PtrOutput)
 }
 
 type ElastigroupItfLoadBalancer struct {
@@ -6688,7 +6842,8 @@ func (o ElastigroupItfLoadBalancerArrayOutput) Index(i pulumi.IntInput) Elastigr
 }
 
 type ElastigroupItfLoadBalancerListenerRule struct {
-	RuleArn string `pulumi:"ruleArn"`
+	RuleArn           string                                                   `pulumi:"ruleArn"`
+	StaticTargetGroup *ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup `pulumi:"staticTargetGroup"`
 }
 
 // ElastigroupItfLoadBalancerListenerRuleInput is an input type that accepts ElastigroupItfLoadBalancerListenerRuleArgs and ElastigroupItfLoadBalancerListenerRuleOutput values.
@@ -6703,7 +6858,8 @@ type ElastigroupItfLoadBalancerListenerRuleInput interface {
 }
 
 type ElastigroupItfLoadBalancerListenerRuleArgs struct {
-	RuleArn pulumi.StringInput `pulumi:"ruleArn"`
+	RuleArn           pulumi.StringInput                                              `pulumi:"ruleArn"`
+	StaticTargetGroup ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrInput `pulumi:"staticTargetGroup"`
 }
 
 func (ElastigroupItfLoadBalancerListenerRuleArgs) ElementType() reflect.Type {
@@ -6761,6 +6917,12 @@ func (o ElastigroupItfLoadBalancerListenerRuleOutput) RuleArn() pulumi.StringOut
 	return o.ApplyT(func(v ElastigroupItfLoadBalancerListenerRule) string { return v.RuleArn }).(pulumi.StringOutput)
 }
 
+func (o ElastigroupItfLoadBalancerListenerRuleOutput) StaticTargetGroup() ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput {
+	return o.ApplyT(func(v ElastigroupItfLoadBalancerListenerRule) *ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup {
+		return v.StaticTargetGroup
+	}).(ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput)
+}
+
 type ElastigroupItfLoadBalancerListenerRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupItfLoadBalancerListenerRuleArrayOutput) ElementType() reflect.Type {
@@ -6779,6 +6941,154 @@ func (o ElastigroupItfLoadBalancerListenerRuleArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupItfLoadBalancerListenerRule {
 		return vs[0].([]ElastigroupItfLoadBalancerListenerRule)[vs[1].(int)]
 	}).(ElastigroupItfLoadBalancerListenerRuleOutput)
+}
+
+type ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup struct {
+	Arn        string  `pulumi:"arn"`
+	Percentage float64 `pulumi:"percentage"`
+}
+
+// ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupInput is an input type that accepts ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs and ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput values.
+// You can construct a concrete instance of `ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupInput` via:
+//
+//          ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs{...}
+type ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupInput interface {
+	pulumi.Input
+
+	ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput() ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput
+	ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutputWithContext(context.Context) ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput
+}
+
+type ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs struct {
+	Arn        pulumi.StringInput  `pulumi:"arn"`
+	Percentage pulumi.Float64Input `pulumi:"percentage"`
+}
+
+func (ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup)(nil)).Elem()
+}
+
+func (i ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput() ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput {
+	return i.ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput)
+}
+
+func (i ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput() ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput {
+	return i.ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput).ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutputWithContext(ctx)
+}
+
+// ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrInput is an input type that accepts ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs, ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtr and ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput values.
+// You can construct a concrete instance of `ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrInput` via:
+//
+//          ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs{...}
+//
+//  or:
+//
+//          nil
+type ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput() ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput
+	ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutputWithContext(context.Context) ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput
+}
+
+type elastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrType ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs
+
+func ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtr(v *ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs) ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrInput {
+	return (*elastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrType)(v)
+}
+
+func (*elastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup)(nil)).Elem()
+}
+
+func (i *elastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrType) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput() ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput {
+	return i.ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrType) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput)
+}
+
+type ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup)(nil)).Elem()
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput() ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput() ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput {
+	return o.ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup) *ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup {
+		return &v
+	}).(ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput)
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput) Percentage() pulumi.Float64Output {
+	return o.ApplyT(func(v ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup) float64 { return v.Percentage }).(pulumi.Float64Output)
+}
+
+type ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup)(nil)).Elem()
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput() ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput) ToElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutputWithContext(ctx context.Context) ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput {
+	return o
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput) Elem() ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput {
+	return o.ApplyT(func(v *ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup) ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup
+		return ret
+	}).(ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput)
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Percentage
+	}).(pulumi.Float64PtrOutput)
 }
 
 type ElastigroupItfTargetGroupConfig struct {
@@ -15754,6 +16064,8 @@ type OceanAutoscaler struct {
 	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
 	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
 	EnableAutomaticAndManualHeadroom *bool `pulumi:"enableAutomaticAndManualHeadroom"`
+	// List of Ocean extended resource definitions to use in this cluster.
+	ExtendedResourceDefinitions []string `pulumi:"extendedResourceDefinitions"`
 	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits *OceanAutoscalerResourceLimits `pulumi:"resourceLimits"`
 }
@@ -15784,6 +16096,8 @@ type OceanAutoscalerArgs struct {
 	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
 	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
 	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput `pulumi:"enableAutomaticAndManualHeadroom"`
+	// List of Ocean extended resource definitions to use in this cluster.
+	ExtendedResourceDefinitions pulumi.StringArrayInput `pulumi:"extendedResourceDefinitions"`
 	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits OceanAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
 }
@@ -15900,6 +16214,11 @@ func (o OceanAutoscalerOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtr
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.EnableAutomaticAndManualHeadroom }).(pulumi.BoolPtrOutput)
 }
 
+// List of Ocean extended resource definitions to use in this cluster.
+func (o OceanAutoscalerOutput) ExtendedResourceDefinitions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanAutoscaler) []string { return v.ExtendedResourceDefinitions }).(pulumi.StringArrayOutput)
+}
+
 // Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
@@ -15997,6 +16316,16 @@ func (o OceanAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.Bool
 		}
 		return v.EnableAutomaticAndManualHeadroom
 	}).(pulumi.BoolPtrOutput)
+}
+
+// List of Ocean extended resource definitions to use in this cluster.
+func (o OceanAutoscalerPtrOutput) ExtendedResourceDefinitions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanAutoscaler) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExtendedResourceDefinitions
+	}).(pulumi.StringArrayOutput)
 }
 
 // Optionally set upper and lower bounds on the resource usage of the cluster.
@@ -18117,10 +18446,166 @@ func (o OceanLaunchSpecResourceLimitArrayOutput) Index(i pulumi.IntInput) OceanL
 	}).(OceanLaunchSpecResourceLimitOutput)
 }
 
+type OceanLaunchSpecSchedulingShutdownHours struct {
+	// Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply.
+	TimeWindows []string `pulumi:"timeWindows"`
+}
+
+// OceanLaunchSpecSchedulingShutdownHoursInput is an input type that accepts OceanLaunchSpecSchedulingShutdownHoursArgs and OceanLaunchSpecSchedulingShutdownHoursOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecSchedulingShutdownHoursInput` via:
+//
+//          OceanLaunchSpecSchedulingShutdownHoursArgs{...}
+type OceanLaunchSpecSchedulingShutdownHoursInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecSchedulingShutdownHoursOutput() OceanLaunchSpecSchedulingShutdownHoursOutput
+	ToOceanLaunchSpecSchedulingShutdownHoursOutputWithContext(context.Context) OceanLaunchSpecSchedulingShutdownHoursOutput
+}
+
+type OceanLaunchSpecSchedulingShutdownHoursArgs struct {
+	// Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply.
+	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
+}
+
+func (OceanLaunchSpecSchedulingShutdownHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecSchedulingShutdownHoursArgs) ToOceanLaunchSpecSchedulingShutdownHoursOutput() OceanLaunchSpecSchedulingShutdownHoursOutput {
+	return i.ToOceanLaunchSpecSchedulingShutdownHoursOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecSchedulingShutdownHoursArgs) ToOceanLaunchSpecSchedulingShutdownHoursOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecSchedulingShutdownHoursOutput)
+}
+
+func (i OceanLaunchSpecSchedulingShutdownHoursArgs) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutput() OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return i.ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecSchedulingShutdownHoursArgs) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecSchedulingShutdownHoursOutput).ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecSchedulingShutdownHoursPtrInput is an input type that accepts OceanLaunchSpecSchedulingShutdownHoursArgs, OceanLaunchSpecSchedulingShutdownHoursPtr and OceanLaunchSpecSchedulingShutdownHoursPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecSchedulingShutdownHoursPtrInput` via:
+//
+//          OceanLaunchSpecSchedulingShutdownHoursArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLaunchSpecSchedulingShutdownHoursPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecSchedulingShutdownHoursPtrOutput() OceanLaunchSpecSchedulingShutdownHoursPtrOutput
+	ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(context.Context) OceanLaunchSpecSchedulingShutdownHoursPtrOutput
+}
+
+type oceanLaunchSpecSchedulingShutdownHoursPtrType OceanLaunchSpecSchedulingShutdownHoursArgs
+
+func OceanLaunchSpecSchedulingShutdownHoursPtr(v *OceanLaunchSpecSchedulingShutdownHoursArgs) OceanLaunchSpecSchedulingShutdownHoursPtrInput {
+	return (*oceanLaunchSpecSchedulingShutdownHoursPtrType)(v)
+}
+
+func (*oceanLaunchSpecSchedulingShutdownHoursPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecSchedulingShutdownHoursPtrType) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutput() OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return i.ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecSchedulingShutdownHoursPtrType) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecSchedulingShutdownHoursPtrOutput)
+}
+
+type OceanLaunchSpecSchedulingShutdownHoursOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecSchedulingShutdownHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) ToOceanLaunchSpecSchedulingShutdownHoursOutput() OceanLaunchSpecSchedulingShutdownHoursOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) ToOceanLaunchSpecSchedulingShutdownHoursOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutput() OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return o.ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecSchedulingShutdownHours) *OceanLaunchSpecSchedulingShutdownHours {
+		return &v
+	}).(OceanLaunchSpecSchedulingShutdownHoursPtrOutput)
+}
+
+// Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The times that the shutdown hours will apply.
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+}
+
+type OceanLaunchSpecSchedulingShutdownHoursPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecSchedulingShutdownHoursPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursPtrOutput) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutput() OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursPtrOutput) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursPtrOutput) Elem() OceanLaunchSpecSchedulingShutdownHoursOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecSchedulingShutdownHours) OceanLaunchSpecSchedulingShutdownHours {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecSchedulingShutdownHours
+		return ret
+	}).(OceanLaunchSpecSchedulingShutdownHoursOutput)
+}
+
+// Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+func (o OceanLaunchSpecSchedulingShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecSchedulingShutdownHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The times that the shutdown hours will apply.
+func (o OceanLaunchSpecSchedulingShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecSchedulingShutdownHours) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
+}
+
 type OceanLaunchSpecSchedulingTask struct {
 	// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
 	CronExpression string `pulumi:"cronExpression"`
-	// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+	// Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The config of this scheduled task. Depends on the value of taskType.
 	TaskHeadrooms []OceanLaunchSpecSchedulingTaskTaskHeadroom `pulumi:"taskHeadrooms"`
@@ -18142,7 +18627,7 @@ type OceanLaunchSpecSchedulingTaskInput interface {
 type OceanLaunchSpecSchedulingTaskArgs struct {
 	// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+	// Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// The config of this scheduled task. Depends on the value of taskType.
 	TaskHeadrooms OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput `pulumi:"taskHeadrooms"`
@@ -18206,7 +18691,7 @@ func (o OceanLaunchSpecSchedulingTaskOutput) CronExpression() pulumi.StringOutpu
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+// Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
 func (o OceanLaunchSpecSchedulingTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
@@ -20465,10 +20950,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationRoute53DomainRecordSetArrayInput)(nil)).Elem(), ElastigroupIntegrationRoute53DomainRecordSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfInput)(nil)).Elem(), ElastigroupItfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfArrayInput)(nil)).Elem(), ElastigroupItfArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfDefaultStaticTargetGroupInput)(nil)).Elem(), ElastigroupItfDefaultStaticTargetGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfDefaultStaticTargetGroupPtrInput)(nil)).Elem(), ElastigroupItfDefaultStaticTargetGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfLoadBalancerInput)(nil)).Elem(), ElastigroupItfLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfLoadBalancerArrayInput)(nil)).Elem(), ElastigroupItfLoadBalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfLoadBalancerListenerRuleInput)(nil)).Elem(), ElastigroupItfLoadBalancerListenerRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfLoadBalancerListenerRuleArrayInput)(nil)).Elem(), ElastigroupItfLoadBalancerListenerRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupInput)(nil)).Elem(), ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrInput)(nil)).Elem(), ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigArrayInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigMatcherInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigMatcherArgs{})
@@ -20619,6 +21108,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelArrayInput)(nil)).Elem(), OceanLaunchSpecLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitInput)(nil)).Elem(), OceanLaunchSpecResourceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitArrayInput)(nil)).Elem(), OceanLaunchSpecResourceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingShutdownHoursInput)(nil)).Elem(), OceanLaunchSpecSchedulingShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingShutdownHoursPtrInput)(nil)).Elem(), OceanLaunchSpecSchedulingShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskArrayInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskTaskHeadroomInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{})
@@ -20737,10 +21228,14 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupIntegrationRoute53DomainRecordSetArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfDefaultStaticTargetGroupOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfDefaultStaticTargetGroupPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfLoadBalancerOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfLoadBalancerArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfLoadBalancerListenerRuleOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfLoadBalancerListenerRuleArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput{})
+	pulumi.RegisterOutputType(ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigMatcherOutput{})
@@ -20891,6 +21386,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingShutdownHoursOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingShutdownHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskTaskHeadroomOutput{})

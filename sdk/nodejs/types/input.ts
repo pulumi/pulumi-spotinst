@@ -812,11 +812,17 @@ export namespace aws {
     }
 
     export interface ElastigroupItf {
+        defaultStaticTargetGroup?: pulumi.Input<inputs.aws.ElastigroupItfDefaultStaticTargetGroup>;
         fixedTargetGroups: pulumi.Input<boolean>;
         loadBalancers: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfLoadBalancer>[]>;
         migrationHealthinessThreshold?: pulumi.Input<number>;
         targetGroupConfigs: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfTargetGroupConfig>[]>;
         weightStrategy: pulumi.Input<string>;
+    }
+
+    export interface ElastigroupItfDefaultStaticTargetGroup {
+        arn: pulumi.Input<string>;
+        percentage: pulumi.Input<number>;
     }
 
     export interface ElastigroupItfLoadBalancer {
@@ -826,6 +832,12 @@ export namespace aws {
 
     export interface ElastigroupItfLoadBalancerListenerRule {
         ruleArn: pulumi.Input<string>;
+        staticTargetGroup?: pulumi.Input<inputs.aws.ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup>;
+    }
+
+    export interface ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup {
+        arn: pulumi.Input<string>;
+        percentage: pulumi.Input<number>;
     }
 
     export interface ElastigroupItfTargetGroupConfig {
@@ -2286,6 +2298,10 @@ export namespace aws {
          */
         enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
         /**
+         * List of Ocean extended resource definitions to use in this cluster.
+         */
+        extendedResourceDefinitions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Optionally set upper and lower bounds on the resource usage of the cluster.
          */
         resourceLimits?: pulumi.Input<inputs.aws.OceanAutoscalerResourceLimits>;
@@ -2483,13 +2499,24 @@ export namespace aws {
         minInstanceCount?: pulumi.Input<number>;
     }
 
+    export interface OceanLaunchSpecSchedulingShutdownHours {
+        /**
+         * Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+         */
+        isEnabled?: pulumi.Input<boolean>;
+        /**
+         * The times that the shutdown hours will apply.
+         */
+        timeWindows: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface OceanLaunchSpecSchedulingTask {
         /**
          * A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
          */
         cronExpression: pulumi.Input<string>;
         /**
-         * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+         * Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
          */
         isEnabled: pulumi.Input<boolean>;
         /**
@@ -4441,6 +4468,14 @@ export namespace gke {
          * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
          */
         taskType: pulumi.Input<string>;
+    }
+
+    export interface OceanImportStrategy {
+        /**
+         * The draining timeout (in seconds) before terminating the instance.
+         */
+        drainingTimeout?: pulumi.Input<number>;
+        provisioningModel?: pulumi.Input<string>;
     }
 
     export interface OceanImportUpdatePolicy {

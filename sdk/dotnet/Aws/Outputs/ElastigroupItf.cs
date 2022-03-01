@@ -13,6 +13,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupItf
     {
+        public readonly Outputs.ElastigroupItfDefaultStaticTargetGroup? DefaultStaticTargetGroup;
         public readonly bool FixedTargetGroups;
         public readonly ImmutableArray<Outputs.ElastigroupItfLoadBalancer> LoadBalancers;
         public readonly int? MigrationHealthinessThreshold;
@@ -21,6 +22,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
         [OutputConstructor]
         private ElastigroupItf(
+            Outputs.ElastigroupItfDefaultStaticTargetGroup? defaultStaticTargetGroup,
+
             bool fixedTargetGroups,
 
             ImmutableArray<Outputs.ElastigroupItfLoadBalancer> loadBalancers,
@@ -31,6 +34,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             string weightStrategy)
         {
+            DefaultStaticTargetGroup = defaultStaticTargetGroup;
             FixedTargetGroups = fixedTargetGroups;
             LoadBalancers = loadBalancers;
             MigrationHealthinessThreshold = migrationHealthinessThreshold;
