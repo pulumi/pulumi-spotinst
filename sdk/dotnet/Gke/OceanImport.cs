@@ -9,6 +9,93 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Gke
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new SpotInst.Gke.OceanImport("example", new SpotInst.Gke.OceanImportArgs
+    ///         {
+    ///             BackendServices = 
+    ///             {
+    ///                 new SpotInst.Gke.Inputs.OceanImportBackendServiceArgs
+    ///                 {
+    ///                     LocationType = "regional",
+    ///                     NamedPorts = 
+    ///                     {
+    ///                         new SpotInst.Gke.Inputs.OceanImportBackendServiceNamedPortArgs
+    ///                         {
+    ///                             Name = "http",
+    ///                             Ports = 
+    ///                             {
+    ///                                 "80",
+    ///                                 "8080",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     Scheme = "INTERNAL",
+    ///                     ServiceName = "example-backend-service",
+    ///                 },
+    ///             },
+    ///             ClusterName = "example-cluster-name",
+    ///             DesiredCapacity = 0,
+    ///             Location = "us-central1-a",
+    ///             MaxSize = 2,
+    ///             MinSize = 0,
+    ///             RootVolumeType = "pd-ssd",
+    ///             Whitelists = 
+    ///             {
+    ///                 "n1-standard-1",
+    ///                 "n1-standard-2",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         this.OceanId = spotinst_ocean_gke_import.Example.Id;
+    ///     }
+    /// 
+    ///     [Output("oceanId")]
+    ///     public Output&lt;string&gt; OceanId { get; set; }
+    /// }
+    /// ```
+    /// ## Update Policy
+    /// 
+    /// * `update_policy` - (Optional)
+    ///     * `should_roll` - (Required) Enables the roll.
+    ///     * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+    ///   
+    ///     * `roll_config` - (Required) Holds the roll configuration.
+    ///         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+    ///         * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanImport:OceanImport")]
     public partial class OceanImport : Pulumi.CustomResource
     {

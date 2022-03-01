@@ -425,7 +425,56 @@ class OceanImport(pulumi.CustomResource):
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a OceanImport resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.gke.OceanImport("example",
+            backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
+                location_type="regional",
+                named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
+                    name="http",
+                    ports=[
+                        "80",
+                        "8080",
+                    ],
+                )],
+                scheme="INTERNAL",
+                service_name="example-backend-service",
+            )],
+            cluster_name="example-cluster-name",
+            desired_capacity=0,
+            location="us-central1-a",
+            max_size=2,
+            min_size=0,
+            root_volume_type="pd-ssd",
+            whitelists=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ])
+        ```
+
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
+        ```
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+            * `should_roll` - (Required) Enables the roll.
+            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+          
+            * `roll_config` - (Required) Holds the roll configuration.
+                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+                * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
+
+        ```python
+        import pulumi
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -446,7 +495,56 @@ class OceanImport(pulumi.CustomResource):
                  args: OceanImportArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OceanImport resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.gke.OceanImport("example",
+            backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
+                location_type="regional",
+                named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
+                    name="http",
+                    ports=[
+                        "80",
+                        "8080",
+                    ],
+                )],
+                scheme="INTERNAL",
+                service_name="example-backend-service",
+            )],
+            cluster_name="example-cluster-name",
+            desired_capacity=0,
+            location="us-central1-a",
+            max_size=2,
+            min_size=0,
+            root_volume_type="pd-ssd",
+            whitelists=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ])
+        ```
+
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
+        ```
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+            * `should_roll` - (Required) Enables the roll.
+            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+          
+            * `roll_config` - (Required) Holds the roll configuration.
+                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+                * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
+
+        ```python
+        import pulumi
+        ```
+
         :param str resource_name: The name of the resource.
         :param OceanImportArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

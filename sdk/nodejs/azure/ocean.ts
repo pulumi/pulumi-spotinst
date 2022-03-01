@@ -5,6 +5,116 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.azure.Ocean("example", {
+ *     // --- AKS -----------------------------------------------------------
+ *     acdIdentifier: "acd-12345678",
+ *     aksName: "ocean-westus-dev-aks",
+ *     aksResourceGroupName: "ocean-westus-dev",
+ *     // --- Auto Scaler ------------------------------------------------------
+ *     autoscaler: {
+ *         autoscaleDown: {
+ *             maxScaleDownPercentage: 10,
+ *         },
+ *         autoscaleHeadroom: {
+ *             automatic: {
+ *                 isEnabled: true,
+ *                 percentage: 10,
+ *             },
+ *         },
+ *         autoscaleIsEnabled: true,
+ *         resourceLimits: {
+ *             maxMemoryGib: 40,
+ *             maxVcpu: 1024,
+ *         },
+ *     },
+ *     controllerClusterId: "ocean-westus-dev-aks",
+ *     customData: "[... redacted ...]",
+ *     // --- Extensions -------------------------------------------------------
+ *     extensions: [{
+ *         apiVersion: "1.0",
+ *         minorVersionAutoUpgrade: true,
+ *         name: "extension-name",
+ *         publisher: "Microsoft.Azure.Extensions",
+ *         type: "Linux",
+ *     }],
+ *     // --- Health ----------------------------------------------------------
+ *     health: {
+ *         gracePeriod: 10,
+ *     },
+ *     // --- Image ---------------------------------------------------------
+ *     images: [{
+ *         marketplaces: [{
+ *             offer: "UbuntuServer",
+ *             publisher: "Canonical",
+ *             sku: "18.04-LTS",
+ *             version: "latest",
+ *         }],
+ *     }],
+ *     // --- Load Balancers ---------------------------------------------------
+ *     loadBalancers: [{
+ *         backendPoolNames: ["terraform-backend-pool"],
+ *         loadBalancerSku: "Standard",
+ *         name: "load-balancer-name",
+ *         resourceGroupName: "resource-group-name",
+ *         type: "loadBalancer",
+ *     }],
+ *     managedServiceIdentities: [{
+ *         name: "ocean-westus-dev-aks-agentpool",
+ *         resourceGroupName: "MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+ *     }],
+ *     // --- NETWORK ---------------------------------------------------------
+ *     network: {
+ *         networkInterfaces: [{
+ *             additionalIpConfigs: [{
+ *                 name: "ip-config-name",
+ *                 privateIpVersion: "ipv4",
+ *             }],
+ *             assignPublicIp: false,
+ *             isPrimary: false,
+ *             subnetName: "subnet-name",
+ *         }],
+ *         resourceGroupName: "ocean-westus-dev",
+ *         virtualNetworkName: "vn-name",
+ *     },
+ *     // --- OSDisk --------------------------------------------------------
+ *     osDisk: {
+ *         sizeGb: 130,
+ *         type: "Standard_LRS",
+ *     },
+ *     // --- Launch Specification ------------------------------------------
+ *     resourceGroupName: "some-resource-group-name",
+ *     // --- Login ---------------------------------------------------------
+ *     sshPublicKey: "ssh-rsa [... redacted ...] generated-by-azure",
+ *     // --- Strategy --------------------------------------------------------
+ *     strategies: [{
+ *         fallbackToOndemand: true,
+ *         spotPercentage: 40,
+ *     }],
+ *     tags: [{
+ *         key: "Environment",
+ *         value: "Dev",
+ *     }],
+ *     userName: "some-name",
+ *     // --- VMSizes --------------------------------------------------------
+ *     vmSizes: [{
+ *         whitelists: ["standard_ds2_v2"],
+ *     }],
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanId = spotinst_ocean_aks.example.id;
+ * ```
+ */
 export class Ocean extends pulumi.CustomResource {
     /**
      * Get an existing Ocean resource's state with the given name, ID, and optional extra

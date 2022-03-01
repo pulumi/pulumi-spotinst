@@ -5,6 +5,75 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.aws.Ocean("example", {
+ *     associatePublicIpAddress: true,
+ *     controllerId: "ocean-dev",
+ *     desiredCapacity: 2,
+ *     drainingTimeout: 120,
+ *     ebsOptimized: true,
+ *     // region STRATEGY
+ *     fallbackToOndemand: true,
+ *     gracePeriod: 600,
+ *     iamInstanceProfile: "iam-profile",
+ *     // region LAUNCH CONFIGURATION
+ *     imageId: "ami-123456",
+ *     instanceMetadataOptions: {
+ *         httpPutResponseHopLimit: 10,
+ *         httpTokens: "required",
+ *     },
+ *     keyName: "fake key",
+ *     loadBalancers: [
+ *         {
+ *             arn: "arn:aws:elasticloadbalancing:us-west-2:fake-arn",
+ *             type: "TARGET_GROUP",
+ *         },
+ *         {
+ *             name: "example",
+ *             type: "CLASSIC",
+ *         },
+ *     ],
+ *     logging: {
+ *         export: {
+ *             s3s: [{
+ *                 id: "di-abcd123",
+ *             }],
+ *         },
+ *     },
+ *     maxSize: 2,
+ *     minSize: 1,
+ *     monitoring: true,
+ *     region: "us-west-2",
+ *     rootVolumeSize: 20,
+ *     securityGroups: ["sg-987654321"],
+ *     spotPercentage: 100,
+ *     subnetIds: ["subnet-123456789"],
+ *     tags: [{
+ *         key: "fakeKey",
+ *         value: "fakeValue",
+ *     }],
+ *     useAsTemplateOnly: true,
+ *     userData: "echo hello world",
+ *     utilizeCommitments: false,
+ *     utilizeReservedInstances: false,
+ *     whitelists: [
+ *         "t1.micro",
+ *         "m1.small",
+ *     ],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanId = spotinst_ocean_aws.example.id;
+ * ```
+ */
 export class Ocean extends pulumi.CustomResource {
     /**
      * Get an existing Ocean resource's state with the given name, ID, and optional extra
