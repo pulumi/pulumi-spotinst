@@ -72,6 +72,13 @@ import * as utilities from "../utilities";
  *     }],
  *     restrictScaleDown: true,
  *     rootVolumeSize: 30,
+ *     schedulingShutdownHours: {
+ *         isEnabled: true,
+ *         timeWindows: [
+ *             "Sat:08:00-Sat:08:30",
+ *             "Sun:08:00-Sun:08:30",
+ *         ],
+ *     },
  *     schedulingTasks: [{
  *         cronExpression: "0 1 * * *",
  *         isEnabled: true,
@@ -200,6 +207,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly rootVolumeSize!: pulumi.Output<number | undefined>;
     /**
+     * Used to specify times that the nodes in the virtual node group will be taken down.
+     */
+    public readonly schedulingShutdownHours!: pulumi.Output<outputs.aws.OceanLaunchSpecSchedulingShutdownHours | undefined>;
+    /**
      * Used to define scheduled tasks such as a manual headroom update.
      */
     public readonly schedulingTasks!: pulumi.Output<outputs.aws.OceanLaunchSpecSchedulingTask[] | undefined>;
@@ -255,6 +266,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["resourceLimits"] = state ? state.resourceLimits : undefined;
             resourceInputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             resourceInputs["rootVolumeSize"] = state ? state.rootVolumeSize : undefined;
+            resourceInputs["schedulingShutdownHours"] = state ? state.schedulingShutdownHours : undefined;
             resourceInputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
             resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
             resourceInputs["strategies"] = state ? state.strategies : undefined;
@@ -284,6 +296,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["resourceLimits"] = args ? args.resourceLimits : undefined;
             resourceInputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             resourceInputs["rootVolumeSize"] = args ? args.rootVolumeSize : undefined;
+            resourceInputs["schedulingShutdownHours"] = args ? args.schedulingShutdownHours : undefined;
             resourceInputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
             resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
             resourceInputs["strategies"] = args ? args.strategies : undefined;
@@ -357,6 +370,10 @@ export interface OceanLaunchSpecState {
      * Set root volume size (in GB).
      */
     rootVolumeSize?: pulumi.Input<number>;
+    /**
+     * Used to specify times that the nodes in the virtual node group will be taken down.
+     */
+    schedulingShutdownHours?: pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingShutdownHours>;
     /**
      * Used to define scheduled tasks such as a manual headroom update.
      */
@@ -444,6 +461,10 @@ export interface OceanLaunchSpecArgs {
      * Set root volume size (in GB).
      */
     rootVolumeSize?: pulumi.Input<number>;
+    /**
+     * Used to specify times that the nodes in the virtual node group will be taken down.
+     */
+    schedulingShutdownHours?: pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingShutdownHours>;
     /**
      * Used to define scheduled tasks such as a manual headroom update.
      */

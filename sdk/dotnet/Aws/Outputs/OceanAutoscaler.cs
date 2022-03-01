@@ -42,6 +42,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? EnableAutomaticAndManualHeadroom;
         /// <summary>
+        /// List of Ocean extended resource definitions to use in this cluster.
+        /// </summary>
+        public readonly ImmutableArray<string> ExtendedResourceDefinitions;
+        /// <summary>
         /// Optionally set upper and lower bounds on the resource usage of the cluster.
         /// </summary>
         public readonly Outputs.OceanAutoscalerResourceLimits? ResourceLimits;
@@ -62,6 +66,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             bool? enableAutomaticAndManualHeadroom,
 
+            ImmutableArray<string> extendedResourceDefinitions,
+
             Outputs.OceanAutoscalerResourceLimits? resourceLimits)
         {
             AutoHeadroomPercentage = autoHeadroomPercentage;
@@ -71,6 +77,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
             AutoscaleIsAutoConfig = autoscaleIsAutoConfig;
             AutoscaleIsEnabled = autoscaleIsEnabled;
             EnableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
+            ExtendedResourceDefinitions = extendedResourceDefinitions;
             ResourceLimits = resourceLimits;
         }
     }

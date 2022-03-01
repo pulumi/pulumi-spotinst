@@ -54,6 +54,18 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("enableAutomaticAndManualHeadroom")]
         public Input<bool>? EnableAutomaticAndManualHeadroom { get; set; }
 
+        [Input("extendedResourceDefinitions")]
+        private InputList<string>? _extendedResourceDefinitions;
+
+        /// <summary>
+        /// List of Ocean extended resource definitions to use in this cluster.
+        /// </summary>
+        public InputList<string> ExtendedResourceDefinitions
+        {
+            get => _extendedResourceDefinitions ?? (_extendedResourceDefinitions = new InputList<string>());
+            set => _extendedResourceDefinitions = value;
+        }
+
         /// <summary>
         /// Optionally set upper and lower bounds on the resource usage of the cluster.
         /// </summary>

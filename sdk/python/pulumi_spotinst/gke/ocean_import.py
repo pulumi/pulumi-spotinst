@@ -25,6 +25,7 @@ class OceanImportArgs:
                  min_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -33,6 +34,7 @@ class OceanImportArgs:
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input['OceanImportAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]] backend_services: Describes the backend service configurations.
+        :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
@@ -58,6 +60,8 @@ class OceanImportArgs:
             pulumi.set(__self__, "root_volume_type", root_volume_type)
         if scheduled_tasks is not None:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+        if strategies is not None:
+            pulumi.set(__self__, "strategies", strategies)
         if update_policy is not None:
             pulumi.set(__self__, "update_policy", update_policy)
         if whitelists is not None:
@@ -114,6 +118,9 @@ class OceanImportArgs:
     @property
     @pulumi.getter(name="controllerClusterId")
     def controller_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+        """
         return pulumi.get(self, "controller_cluster_id")
 
     @controller_cluster_id.setter
@@ -181,6 +188,15 @@ class OceanImportArgs:
         pulumi.set(self, "scheduled_tasks", value)
 
     @property
+    @pulumi.getter
+    def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]:
+        return pulumi.get(self, "strategies")
+
+    @strategies.setter
+    def strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]):
+        pulumi.set(self, "strategies", value)
+
+    @property
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> Optional[pulumi.Input['OceanImportUpdatePolicyArgs']]:
         return pulumi.get(self, "update_policy")
@@ -216,6 +232,7 @@ class _OceanImportState:
                  min_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -223,6 +240,7 @@ class _OceanImportState:
         :param pulumi.Input['OceanImportAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
+        :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
@@ -253,6 +271,8 @@ class _OceanImportState:
             pulumi.set(__self__, "root_volume_type", root_volume_type)
         if scheduled_tasks is not None:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+        if strategies is not None:
+            pulumi.set(__self__, "strategies", strategies)
         if update_policy is not None:
             pulumi.set(__self__, "update_policy", update_policy)
         if whitelists is not None:
@@ -306,6 +326,9 @@ class _OceanImportState:
     @property
     @pulumi.getter(name="controllerClusterId")
     def controller_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+        """
         return pulumi.get(self, "controller_cluster_id")
 
     @controller_cluster_id.setter
@@ -385,6 +408,15 @@ class _OceanImportState:
         pulumi.set(self, "scheduled_tasks", value)
 
     @property
+    @pulumi.getter
+    def strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]:
+        return pulumi.get(self, "strategies")
+
+    @strategies.setter
+    def strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]]):
+        pulumi.set(self, "strategies", value)
+
+    @property
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> Optional[pulumi.Input['OceanImportUpdatePolicyArgs']]:
         return pulumi.get(self, "update_policy")
@@ -421,6 +453,7 @@ class OceanImport(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportStrategyArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanImportUpdatePolicyArgs']]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -445,6 +478,7 @@ class OceanImport(pulumi.CustomResource):
                 service_name="example-backend-service",
             )],
             cluster_name="example-cluster-name",
+            controller_cluster_id="example-controller-123124",
             desired_capacity=0,
             location="us-central1-a",
             max_size=2,
@@ -461,6 +495,17 @@ class OceanImport(pulumi.CustomResource):
 
         pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
         ```
+        ## Strategy
+
+        * `strategy` - (Optional) Strategy object.
+            * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+            * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="update-policy"></a>
         ## Update Policy
 
         * `update_policy` - (Optional)
@@ -480,6 +525,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
+        :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
@@ -515,6 +561,7 @@ class OceanImport(pulumi.CustomResource):
                 service_name="example-backend-service",
             )],
             cluster_name="example-cluster-name",
+            controller_cluster_id="example-controller-123124",
             desired_capacity=0,
             location="us-central1-a",
             max_size=2,
@@ -531,6 +578,17 @@ class OceanImport(pulumi.CustomResource):
 
         pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
         ```
+        ## Strategy
+
+        * `strategy` - (Optional) Strategy object.
+            * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+            * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="update-policy"></a>
         ## Update Policy
 
         * `update_policy` - (Optional)
@@ -570,6 +628,7 @@ class OceanImport(pulumi.CustomResource):
                  min_size: Optional[pulumi.Input[int]] = None,
                  root_volume_type: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
+                 strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportStrategyArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanImportUpdatePolicyArgs']]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -598,6 +657,7 @@ class OceanImport(pulumi.CustomResource):
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["root_volume_type"] = root_volume_type
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
+            __props__.__dict__["strategies"] = strategies
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["whitelists"] = whitelists
             __props__.__dict__["cluster_controller_id"] = None
@@ -622,6 +682,7 @@ class OceanImport(pulumi.CustomResource):
             min_size: Optional[pulumi.Input[int]] = None,
             root_volume_type: Optional[pulumi.Input[str]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]]] = None,
+            strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportStrategyArgs']]]]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['OceanImportUpdatePolicyArgs']]] = None,
             whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanImport':
         """
@@ -634,6 +695,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
+        :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
@@ -657,6 +719,7 @@ class OceanImport(pulumi.CustomResource):
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["root_volume_type"] = root_volume_type
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
+        __props__.__dict__["strategies"] = strategies
         __props__.__dict__["update_policy"] = update_policy
         __props__.__dict__["whitelists"] = whitelists
         return OceanImport(resource_name, opts=opts, __props__=__props__)
@@ -693,6 +756,9 @@ class OceanImport(pulumi.CustomResource):
     @property
     @pulumi.getter(name="controllerClusterId")
     def controller_cluster_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+        """
         return pulumi.get(self, "controller_cluster_id")
 
     @property
@@ -742,6 +808,11 @@ class OceanImport(pulumi.CustomResource):
         Set scheduling object.
         """
         return pulumi.get(self, "scheduled_tasks")
+
+    @property
+    @pulumi.getter
+    def strategies(self) -> pulumi.Output[Optional[Sequence['outputs.OceanImportStrategy']]]:
+        return pulumi.get(self, "strategies")
 
     @property
     @pulumi.getter(name="updatePolicy")

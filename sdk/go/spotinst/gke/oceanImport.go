@@ -40,12 +40,13 @@ import (
 // 					ServiceName: pulumi.String("example-backend-service"),
 // 				},
 // 			},
-// 			ClusterName:     pulumi.String("example-cluster-name"),
-// 			DesiredCapacity: pulumi.Int(0),
-// 			Location:        pulumi.String("us-central1-a"),
-// 			MaxSize:         pulumi.Int(2),
-// 			MinSize:         pulumi.Int(0),
-// 			RootVolumeType:  pulumi.String("pd-ssd"),
+// 			ClusterName:         pulumi.String("example-cluster-name"),
+// 			ControllerClusterId: pulumi.String("example-controller-123124"),
+// 			DesiredCapacity:     pulumi.Int(0),
+// 			Location:            pulumi.String("us-central1-a"),
+// 			MaxSize:             pulumi.Int(2),
+// 			MinSize:             pulumi.Int(0),
+// 			RootVolumeType:      pulumi.String("pd-ssd"),
 // 			Whitelists: pulumi.StringArray{
 // 				pulumi.String("n1-standard-1"),
 // 				pulumi.String("n1-standard-2"),
@@ -73,6 +74,27 @@ import (
 // 	})
 // }
 // ```
+// ## Strategy
+//
+// * `strategy` - (Optional) Strategy object.
+//     * `drainingTimeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+//     * `provisioningModel` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// <a id="update-policy"></a>
 // ## Update Policy
 //
 // * `updatePolicy` - (Optional)
@@ -105,7 +127,8 @@ type OceanImport struct {
 	BackendServices     OceanImportBackendServiceArrayOutput `pulumi:"backendServices"`
 	ClusterControllerId pulumi.StringOutput                  `pulumi:"clusterControllerId"`
 	// The GKE cluster name.
-	ClusterName         pulumi.StringOutput `pulumi:"clusterName"`
+	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId pulumi.StringOutput `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
@@ -119,6 +142,7 @@ type OceanImport struct {
 	RootVolumeType pulumi.StringPtrOutput `pulumi:"rootVolumeType"`
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
+	Strategies     OceanImportStrategyArrayOutput      `pulumi:"strategies"`
 	UpdatePolicy   OceanImportUpdatePolicyPtrOutput    `pulumi:"updatePolicy"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
@@ -165,7 +189,8 @@ type oceanImportState struct {
 	BackendServices     []OceanImportBackendService `pulumi:"backendServices"`
 	ClusterControllerId *string                     `pulumi:"clusterControllerId"`
 	// The GKE cluster name.
-	ClusterName         *string `pulumi:"clusterName"`
+	ClusterName *string `pulumi:"clusterName"`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId *string `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
@@ -179,6 +204,7 @@ type oceanImportState struct {
 	RootVolumeType *string `pulumi:"rootVolumeType"`
 	// Set scheduling object.
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
+	Strategies     []OceanImportStrategy      `pulumi:"strategies"`
 	UpdatePolicy   *OceanImportUpdatePolicy   `pulumi:"updatePolicy"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists []string `pulumi:"whitelists"`
@@ -191,7 +217,8 @@ type OceanImportState struct {
 	BackendServices     OceanImportBackendServiceArrayInput
 	ClusterControllerId pulumi.StringPtrInput
 	// The GKE cluster name.
-	ClusterName         pulumi.StringPtrInput
+	ClusterName pulumi.StringPtrInput
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
@@ -205,6 +232,7 @@ type OceanImportState struct {
 	RootVolumeType pulumi.StringPtrInput
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
+	Strategies     OceanImportStrategyArrayInput
 	UpdatePolicy   OceanImportUpdatePolicyPtrInput
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayInput
@@ -220,7 +248,8 @@ type oceanImportArgs struct {
 	// Describes the backend service configurations.
 	BackendServices []OceanImportBackendService `pulumi:"backendServices"`
 	// The GKE cluster name.
-	ClusterName         string  `pulumi:"clusterName"`
+	ClusterName string `pulumi:"clusterName"`
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId *string `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
@@ -234,6 +263,7 @@ type oceanImportArgs struct {
 	RootVolumeType *string `pulumi:"rootVolumeType"`
 	// Set scheduling object.
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
+	Strategies     []OceanImportStrategy      `pulumi:"strategies"`
 	UpdatePolicy   *OceanImportUpdatePolicy   `pulumi:"updatePolicy"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists []string `pulumi:"whitelists"`
@@ -246,7 +276,8 @@ type OceanImportArgs struct {
 	// Describes the backend service configurations.
 	BackendServices OceanImportBackendServiceArrayInput
 	// The GKE cluster name.
-	ClusterName         pulumi.StringInput
+	ClusterName pulumi.StringInput
+	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerClusterId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
@@ -260,6 +291,7 @@ type OceanImportArgs struct {
 	RootVolumeType pulumi.StringPtrInput
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
+	Strategies     OceanImportStrategyArrayInput
 	UpdatePolicy   OceanImportUpdatePolicyPtrInput
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayInput

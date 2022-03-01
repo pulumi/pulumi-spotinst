@@ -31,6 +31,7 @@ class OceanLaunchSpecArgs:
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
+                 scheduling_shutdown_hours: Optional[pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs']] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
@@ -54,6 +55,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
+        :param pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs'] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A list of subnet IDs.
@@ -92,6 +94,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if root_volume_size is not None:
             pulumi.set(__self__, "root_volume_size", root_volume_size)
+        if scheduling_shutdown_hours is not None:
+            pulumi.set(__self__, "scheduling_shutdown_hours", scheduling_shutdown_hours)
         if scheduling_tasks is not None:
             pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if security_groups is not None:
@@ -293,6 +297,18 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "root_volume_size", value)
 
     @property
+    @pulumi.getter(name="schedulingShutdownHours")
+    def scheduling_shutdown_hours(self) -> Optional[pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs']]:
+        """
+        Used to specify times that the nodes in the virtual node group will be taken down.
+        """
+        return pulumi.get(self, "scheduling_shutdown_hours")
+
+    @scheduling_shutdown_hours.setter
+    def scheduling_shutdown_hours(self, value: Optional[pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs']]):
+        pulumi.set(self, "scheduling_shutdown_hours", value)
+
+    @property
     @pulumi.getter(name="schedulingTasks")
     def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]]:
         """
@@ -402,6 +418,7 @@ class _OceanLaunchSpecState:
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
+                 scheduling_shutdown_hours: Optional[pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs']] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
@@ -425,6 +442,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
+        :param pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs'] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A list of subnet IDs.
@@ -464,6 +482,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if root_volume_size is not None:
             pulumi.set(__self__, "root_volume_size", root_volume_size)
+        if scheduling_shutdown_hours is not None:
+            pulumi.set(__self__, "scheduling_shutdown_hours", scheduling_shutdown_hours)
         if scheduling_tasks is not None:
             pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if security_groups is not None:
@@ -665,6 +685,18 @@ class _OceanLaunchSpecState:
         pulumi.set(self, "root_volume_size", value)
 
     @property
+    @pulumi.getter(name="schedulingShutdownHours")
+    def scheduling_shutdown_hours(self) -> Optional[pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs']]:
+        """
+        Used to specify times that the nodes in the virtual node group will be taken down.
+        """
+        return pulumi.get(self, "scheduling_shutdown_hours")
+
+    @scheduling_shutdown_hours.setter
+    def scheduling_shutdown_hours(self, value: Optional[pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs']]):
+        pulumi.set(self, "scheduling_shutdown_hours", value)
+
+    @property
     @pulumi.getter(name="schedulingTasks")
     def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]]:
         """
@@ -776,6 +808,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
+                 scheduling_shutdown_hours: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingShutdownHoursArgs']]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
@@ -852,6 +885,13 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             restrict_scale_down=True,
             root_volume_size=30,
+            scheduling_shutdown_hours=spotinst.aws.OceanLaunchSpecSchedulingShutdownHoursArgs(
+                is_enabled=True,
+                time_windows=[
+                    "Sat:08:00-Sat:08:30",
+                    "Sun:08:00-Sun:08:30",
+                ],
+            ),
             scheduling_tasks=[spotinst.aws.OceanLaunchSpecSchedulingTaskArgs(
                 cron_expression="0 1 * * *",
                 is_enabled=True,
@@ -910,6 +950,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingShutdownHoursArgs']] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A list of subnet IDs.
@@ -990,6 +1031,13 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             restrict_scale_down=True,
             root_volume_size=30,
+            scheduling_shutdown_hours=spotinst.aws.OceanLaunchSpecSchedulingShutdownHoursArgs(
+                is_enabled=True,
+                time_windows=[
+                    "Sat:08:00-Sat:08:30",
+                    "Sun:08:00-Sun:08:30",
+                ],
+            ),
             scheduling_tasks=[spotinst.aws.OceanLaunchSpecSchedulingTaskArgs(
                 cron_expression="0 1 * * *",
                 is_enabled=True,
@@ -1064,6 +1112,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
+                 scheduling_shutdown_hours: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingShutdownHoursArgs']]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
@@ -1102,6 +1151,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["resource_limits"] = resource_limits
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["root_volume_size"] = root_volume_size
+            __props__.__dict__["scheduling_shutdown_hours"] = scheduling_shutdown_hours
             __props__.__dict__["scheduling_tasks"] = scheduling_tasks
             __props__.__dict__["security_groups"] = security_groups
             __props__.__dict__["strategies"] = strategies
@@ -1136,6 +1186,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitArgs']]]]] = None,
             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
             root_volume_size: Optional[pulumi.Input[int]] = None,
+            scheduling_shutdown_hours: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingShutdownHoursArgs']]] = None,
             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecStrategyArgs']]]]] = None,
@@ -1164,6 +1215,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[int] root_volume_size: Set root volume size (in GB).
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingShutdownHoursArgs']] scheduling_shutdown_hours: Used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecSchedulingTaskArgs']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: Optionally adds security group IDs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A list of subnet IDs.
@@ -1191,6 +1243,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["resource_limits"] = resource_limits
         __props__.__dict__["restrict_scale_down"] = restrict_scale_down
         __props__.__dict__["root_volume_size"] = root_volume_size
+        __props__.__dict__["scheduling_shutdown_hours"] = scheduling_shutdown_hours
         __props__.__dict__["scheduling_tasks"] = scheduling_tasks
         __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["strategies"] = strategies
@@ -1319,6 +1372,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Set root volume size (in GB).
         """
         return pulumi.get(self, "root_volume_size")
+
+    @property
+    @pulumi.getter(name="schedulingShutdownHours")
+    def scheduling_shutdown_hours(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecSchedulingShutdownHours']]:
+        """
+        Used to specify times that the nodes in the virtual node group will be taken down.
+        """
+        return pulumi.get(self, "scheduling_shutdown_hours")
 
     @property
     @pulumi.getter(name="schedulingTasks")

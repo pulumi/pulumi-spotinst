@@ -14,11 +14,16 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupItfLoadBalancerListenerRule
     {
         public readonly string RuleArn;
+        public readonly Outputs.ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup? StaticTargetGroup;
 
         [OutputConstructor]
-        private ElastigroupItfLoadBalancerListenerRule(string ruleArn)
+        private ElastigroupItfLoadBalancerListenerRule(
+            string ruleArn,
+
+            Outputs.ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup? staticTargetGroup)
         {
             RuleArn = ruleArn;
+            StaticTargetGroup = staticTargetGroup;
         }
     }
 }

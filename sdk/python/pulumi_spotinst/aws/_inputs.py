@@ -50,8 +50,10 @@ __all__ = [
     'ElastigroupIntegrationRoute53DomainArgs',
     'ElastigroupIntegrationRoute53DomainRecordSetArgs',
     'ElastigroupItfArgs',
+    'ElastigroupItfDefaultStaticTargetGroupArgs',
     'ElastigroupItfLoadBalancerArgs',
     'ElastigroupItfLoadBalancerListenerRuleArgs',
+    'ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs',
     'ElastigroupItfTargetGroupConfigArgs',
     'ElastigroupItfTargetGroupConfigMatcherArgs',
     'ElastigroupItfTargetGroupConfigTagArgs',
@@ -128,6 +130,7 @@ __all__ = [
     'OceanLaunchSpecElasticIpPoolTagSelectorArgs',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecResourceLimitArgs',
+    'OceanLaunchSpecSchedulingShutdownHoursArgs',
     'OceanLaunchSpecSchedulingTaskArgs',
     'OceanLaunchSpecSchedulingTaskTaskHeadroomArgs',
     'OceanLaunchSpecStrategyArgs',
@@ -2486,11 +2489,14 @@ class ElastigroupItfArgs:
                  load_balancers: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfLoadBalancerArgs']]],
                  target_group_configs: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigArgs']]],
                  weight_strategy: pulumi.Input[str],
+                 default_static_target_group: Optional[pulumi.Input['ElastigroupItfDefaultStaticTargetGroupArgs']] = None,
                  migration_healthiness_threshold: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "fixed_target_groups", fixed_target_groups)
         pulumi.set(__self__, "load_balancers", load_balancers)
         pulumi.set(__self__, "target_group_configs", target_group_configs)
         pulumi.set(__self__, "weight_strategy", weight_strategy)
+        if default_static_target_group is not None:
+            pulumi.set(__self__, "default_static_target_group", default_static_target_group)
         if migration_healthiness_threshold is not None:
             pulumi.set(__self__, "migration_healthiness_threshold", migration_healthiness_threshold)
 
@@ -2531,6 +2537,15 @@ class ElastigroupItfArgs:
         pulumi.set(self, "weight_strategy", value)
 
     @property
+    @pulumi.getter(name="defaultStaticTargetGroup")
+    def default_static_target_group(self) -> Optional[pulumi.Input['ElastigroupItfDefaultStaticTargetGroupArgs']]:
+        return pulumi.get(self, "default_static_target_group")
+
+    @default_static_target_group.setter
+    def default_static_target_group(self, value: Optional[pulumi.Input['ElastigroupItfDefaultStaticTargetGroupArgs']]):
+        pulumi.set(self, "default_static_target_group", value)
+
+    @property
     @pulumi.getter(name="migrationHealthinessThreshold")
     def migration_healthiness_threshold(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "migration_healthiness_threshold")
@@ -2538,6 +2553,33 @@ class ElastigroupItfArgs:
     @migration_healthiness_threshold.setter
     def migration_healthiness_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "migration_healthiness_threshold", value)
+
+
+@pulumi.input_type
+class ElastigroupItfDefaultStaticTargetGroupArgs:
+    def __init__(__self__, *,
+                 arn: pulumi.Input[str],
+                 percentage: pulumi.Input[float]):
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: pulumi.Input[float]):
+        pulumi.set(self, "percentage", value)
 
 
 @pulumi.input_type
@@ -2570,8 +2612,11 @@ class ElastigroupItfLoadBalancerArgs:
 @pulumi.input_type
 class ElastigroupItfLoadBalancerListenerRuleArgs:
     def __init__(__self__, *,
-                 rule_arn: pulumi.Input[str]):
+                 rule_arn: pulumi.Input[str],
+                 static_target_group: Optional[pulumi.Input['ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs']] = None):
         pulumi.set(__self__, "rule_arn", rule_arn)
+        if static_target_group is not None:
+            pulumi.set(__self__, "static_target_group", static_target_group)
 
     @property
     @pulumi.getter(name="ruleArn")
@@ -2581,6 +2626,42 @@ class ElastigroupItfLoadBalancerListenerRuleArgs:
     @rule_arn.setter
     def rule_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "rule_arn", value)
+
+    @property
+    @pulumi.getter(name="staticTargetGroup")
+    def static_target_group(self) -> Optional[pulumi.Input['ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs']]:
+        return pulumi.get(self, "static_target_group")
+
+    @static_target_group.setter
+    def static_target_group(self, value: Optional[pulumi.Input['ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs']]):
+        pulumi.set(self, "static_target_group", value)
+
+
+@pulumi.input_type
+class ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs:
+    def __init__(__self__, *,
+                 arn: pulumi.Input[str],
+                 percentage: pulumi.Input[float]):
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: pulumi.Input[float]):
+        pulumi.set(self, "percentage", value)
 
 
 @pulumi.input_type
@@ -8054,6 +8135,7 @@ class OceanAutoscalerArgs:
                  autoscale_is_auto_config: Optional[pulumi.Input[bool]] = None,
                  autoscale_is_enabled: Optional[pulumi.Input[bool]] = None,
                  enable_automatic_and_manual_headroom: Optional[pulumi.Input[bool]] = None,
+                 extended_resource_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_limits: Optional[pulumi.Input['OceanAutoscalerResourceLimitsArgs']] = None):
         """
         :param pulumi.Input[int] auto_headroom_percentage: Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
@@ -8063,6 +8145,7 @@ class OceanAutoscalerArgs:
         :param pulumi.Input[bool] autoscale_is_auto_config: Automatically configure and optimize headroom resources.
         :param pulumi.Input[bool] autoscale_is_enabled: Enable the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[bool] enable_automatic_and_manual_headroom: enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] extended_resource_definitions: List of Ocean extended resource definitions to use in this cluster.
         :param pulumi.Input['OceanAutoscalerResourceLimitsArgs'] resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
         """
         if auto_headroom_percentage is not None:
@@ -8079,6 +8162,8 @@ class OceanAutoscalerArgs:
             pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
         if enable_automatic_and_manual_headroom is not None:
             pulumi.set(__self__, "enable_automatic_and_manual_headroom", enable_automatic_and_manual_headroom)
+        if extended_resource_definitions is not None:
+            pulumi.set(__self__, "extended_resource_definitions", extended_resource_definitions)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
 
@@ -8165,6 +8250,18 @@ class OceanAutoscalerArgs:
     @enable_automatic_and_manual_headroom.setter
     def enable_automatic_and_manual_headroom(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_automatic_and_manual_headroom", value)
+
+    @property
+    @pulumi.getter(name="extendedResourceDefinitions")
+    def extended_resource_definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of Ocean extended resource definitions to use in this cluster.
+        """
+        return pulumi.get(self, "extended_resource_definitions")
+
+    @extended_resource_definitions.setter
+    def extended_resource_definitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "extended_resource_definitions", value)
 
     @property
     @pulumi.getter(name="resourceLimits")
@@ -8884,6 +8981,44 @@ class OceanLaunchSpecResourceLimitArgs:
 
 
 @pulumi.input_type
+class OceanLaunchSpecSchedulingShutdownHoursArgs:
+    def __init__(__self__, *,
+                 time_windows: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 is_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: The times that the shutdown hours will apply.
+        :param pulumi.Input[bool] is_enabled: Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+        """
+        pulumi.set(__self__, "time_windows", time_windows)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The times that the shutdown hours will apply.
+        """
+        return pulumi.get(self, "time_windows")
+
+    @time_windows.setter
+    def time_windows(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "time_windows", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+
+@pulumi.input_type
 class OceanLaunchSpecSchedulingTaskArgs:
     def __init__(__self__, *,
                  cron_expression: pulumi.Input[str],
@@ -8892,7 +9027,7 @@ class OceanLaunchSpecSchedulingTaskArgs:
                  task_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]] = None):
         """
         :param pulumi.Input[str] cron_expression: A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
-        :param pulumi.Input[bool] is_enabled: Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        :param pulumi.Input[bool] is_enabled: Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
         :param pulumi.Input[str] task_type: The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]] task_headrooms: The config of this scheduled task. Depends on the value of taskType.
         """
@@ -8918,7 +9053,7 @@ class OceanLaunchSpecSchedulingTaskArgs:
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Input[bool]:
         """
-        Describes whether the task is enabled. When True, the task runs. When False, it does not run.
+        Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
         """
         return pulumi.get(self, "is_enabled")
 
