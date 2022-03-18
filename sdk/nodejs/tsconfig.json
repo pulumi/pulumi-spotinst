@@ -19,6 +19,7 @@
         "aws/managedInstance.ts",
         "aws/mrScalar.ts",
         "aws/ocean.ts",
+        "aws/oceanExtendedResourceDefinition.ts",
         "aws/oceanLaunchSpec.ts",
         "aws/suspension.ts",
         "azure/elastigroup.ts",

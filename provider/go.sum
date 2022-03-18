@@ -742,8 +742,8 @@ github.com/pulumi/pulumi/sdk/v3 v3.25.0 h1:ZLO5sXjtEcPJKveX8cL7YzNIvGM+/lxQ6uhgL
 github.com/pulumi/pulumi/sdk/v3 v3.25.0/go.mod h1:VsxW+TGv2VBLe/MeqsAr9r0zKzK/gbAhFT9QxYr24cY=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Dik4Qe/+xguB8JagPyXNlbOnRiXGmq/PSPQTGunYnTk=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
-github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20220301202456-234b4314c758 h1:uR2IjLCVtdRbEHriOGuw8t0fS/cKo/su2H2M1BVnm0Q=
-github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20220301202456-234b4314c758/go.mod h1:rj4uyP8OUyN6SqzFeTuFzoWEa4vLOrrtz9SysiMb1+g=
+github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20220318151754-a22a8448a2fd h1:ie4+0l9GA3ofs8/zTYbgyEBhjJAB30Ck8Bn89BNowOY=
+github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20220318151754-a22a8448a2fd/go.mod h1:H7gMPo4NMjG+RcySB1f841Ef+nnokDH55r3TzOMCiK4=
 github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
 github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
@@ -795,8 +795,8 @@ github.com/spf13/pflag v1.0.2/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnIn
 github.com/spf13/pflag v1.0.3 h1:zPAT6CGy6wXeQ7NtTnaTerfKOsV6V6F8agHXFiazDkg=
 github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
 github.com/spf13/viper v1.4.0/go.mod h1:PTJ7Z/lr49W6bUbkmS1V3by4uWynFiR9p7+dSq/yZzE=
-github.com/spotinst/spotinst-sdk-go v1.111.0 h1:p1zLX8D4nzbMEG+AuBp0+byROHn0L84zLAPClwwwlrk=
-github.com/spotinst/spotinst-sdk-go v1.111.0/go.mod h1:3RwemuVqsntSGsNoLxlJkdnjwEfMIRYR31ywV8uz6M4=
+github.com/spotinst/spotinst-sdk-go v1.113.0 h1:75AYQ1C5MNzfOX2FklYplymC+efzjd57bVhYdqHnXBQ=
+github.com/spotinst/spotinst-sdk-go v1.113.0/go.mod h1:3RwemuVqsntSGsNoLxlJkdnjwEfMIRYR31ywV8uz6M4=
 github.com/src-d/gcfg v1.4.0 h1:xXbNR5AlLSA315x2UO+fTSSAXCDf+Ar38/6oyGbDKQ4=
 github.com/src-d/gcfg v1.4.0/go.mod h1:p/UMsR43ujA89BJY9duynAwIpvqEujIH/jFlfL7jWoI=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

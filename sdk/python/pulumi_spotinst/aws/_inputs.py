@@ -121,6 +121,7 @@ __all__ = [
     'OceanAutoscalerResourceLimitsArgs',
     'OceanInstanceMetadataOptionsArgs',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
+    'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs',
     'OceanLaunchSpecBlockDeviceMappingArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
@@ -8527,6 +8528,29 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
     @memory_per_unit.setter
     def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
+    def __init__(__self__, *,
+                 auto_headroom_percentage: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        """
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
+
+    @property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
+
+    @auto_headroom_percentage.setter
+    def auto_headroom_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_headroom_percentage", value)
 
 
 @pulumi.input_type

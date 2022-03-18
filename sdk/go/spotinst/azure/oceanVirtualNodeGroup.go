@@ -28,11 +28,14 @@ import (
 // 		_, err := azure.NewOceanVirtualNodeGroup(ctx, "example", &azure.OceanVirtualNodeGroupArgs{
 // 			Autoscales: azure.OceanVirtualNodeGroupAutoscaleArray{
 // 				&azure.OceanVirtualNodeGroupAutoscaleArgs{
-// 					AutoscaleHeadroom: &azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{
-// 						CpuPerUnit:    pulumi.Int(4),
-// 						GpuPerUnit:    pulumi.Int(8),
-// 						MemoryPerUnit: pulumi.Int(100),
-// 						NumOfUnits:    pulumi.Int(16),
+// 					AutoHeadroomPercentage: pulumi.Int(5),
+// 					AutoscaleHeadrooms: azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray{
+// 						&azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{
+// 							CpuPerUnit:    pulumi.Int(4),
+// 							GpuPerUnit:    pulumi.Int(8),
+// 							MemoryPerUnit: pulumi.Int(100),
+// 							NumOfUnits:    pulumi.Int(16),
+// 						},
 // 					},
 // 				},
 // 			},

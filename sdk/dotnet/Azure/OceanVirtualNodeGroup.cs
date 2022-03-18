@@ -28,12 +28,16 @@ namespace Pulumi.SpotInst.Azure
     ///             {
     ///                 new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleArgs
     ///                 {
-    ///                     AutoscaleHeadroom = new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs
+    ///                     AutoHeadroomPercentage = 5,
+    ///                     AutoscaleHeadrooms = 
     ///                     {
-    ///                         CpuPerUnit = 4,
-    ///                         GpuPerUnit = 8,
-    ///                         MemoryPerUnit = 100,
-    ///                         NumOfUnits = 16,
+    ///                         new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs
+    ///                         {
+    ///                             CpuPerUnit = 4,
+    ///                             GpuPerUnit = 8,
+    ///                             MemoryPerUnit = 100,
+    ///                             NumOfUnits = 16,
+    ///                         },
     ///                     },
     ///                 },
     ///             },

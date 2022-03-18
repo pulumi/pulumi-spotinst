@@ -22,6 +22,9 @@ import * as utilities from "../utilities";
  *         memoryPerUnit: 2048,
  *         numOfUnits: 5,
  *     }],
+ *     autoscaleHeadroomsAutomatics: [{
+ *         autoHeadroomPercentage: 5,
+ *     }],
  *     blockDeviceMappings: [{
  *         deviceName: "/dev/xvda",
  *         ebs: {
@@ -160,6 +163,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly autoscaleHeadrooms!: pulumi.Output<outputs.aws.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
     /**
+     * Set automatic headroom per launch spec.
+     */
+    public readonly autoscaleHeadroomsAutomatics!: pulumi.Output<outputs.aws.OceanLaunchSpecAutoscaleHeadroomsAutomatic[] | undefined>;
+    /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
     public readonly blockDeviceMappings!: pulumi.Output<outputs.aws.OceanLaunchSpecBlockDeviceMapping[] | undefined>;
@@ -252,6 +259,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             const state = argsOrState as OceanLaunchSpecState | undefined;
             resourceInputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
             resourceInputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
+            resourceInputs["autoscaleHeadroomsAutomatics"] = state ? state.autoscaleHeadroomsAutomatics : undefined;
             resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             resourceInputs["createOptions"] = state ? state.createOptions : undefined;
             resourceInputs["deleteOptions"] = state ? state.deleteOptions : undefined;
@@ -282,6 +290,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             }
             resourceInputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
             resourceInputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
+            resourceInputs["autoscaleHeadroomsAutomatics"] = args ? args.autoscaleHeadroomsAutomatics : undefined;
             resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             resourceInputs["createOptions"] = args ? args.createOptions : undefined;
             resourceInputs["deleteOptions"] = args ? args.deleteOptions : undefined;
@@ -323,6 +332,10 @@ export interface OceanLaunchSpecState {
      * Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
      */
     autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    /**
+     * Set automatic headroom per launch spec.
+     */
+    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[]>;
     /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
@@ -414,6 +427,10 @@ export interface OceanLaunchSpecArgs {
      * Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
      */
     autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    /**
+     * Set automatic headroom per launch spec.
+     */
+    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[]>;
     /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */

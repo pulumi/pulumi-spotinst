@@ -122,6 +122,7 @@ __all__ = [
     'OceanAutoscalerResourceLimits',
     'OceanInstanceMetadataOptions',
     'OceanLaunchSpecAutoscaleHeadroom',
+    'OceanLaunchSpecAutoscaleHeadroomsAutomatic',
     'OceanLaunchSpecBlockDeviceMapping',
     'OceanLaunchSpecBlockDeviceMappingEbs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize',
@@ -8454,6 +8455,42 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
         Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         return pulumi.get(self, "memory_per_unit")
+
+
+@pulumi.output_type
+class OceanLaunchSpecAutoscaleHeadroomsAutomatic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoHeadroomPercentage":
+            suggest = "auto_headroom_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecAutoscaleHeadroomsAutomatic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecAutoscaleHeadroomsAutomatic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecAutoscaleHeadroomsAutomatic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_headroom_percentage: Optional[int] = None):
+        """
+        :param int auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        """
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
+
+    @property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> Optional[int]:
+        """
+        Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
 
 
 @pulumi.output_type

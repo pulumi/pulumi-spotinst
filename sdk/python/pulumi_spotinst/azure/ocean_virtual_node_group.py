@@ -275,12 +275,13 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
 
         example = spotinst.azure.OceanVirtualNodeGroup("example",
             autoscales=[spotinst.azure.OceanVirtualNodeGroupAutoscaleArgs(
-                autoscale_headroom=spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(
+                auto_headroom_percentage=5,
+                autoscale_headrooms=[spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(
                     cpu_per_unit=4,
                     gpu_per_unit=8,
                     memory_per_unit=100,
                     num_of_units=16,
-                ),
+                )],
             )],
             labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(
                 key="label_key",
@@ -340,12 +341,13 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
 
         example = spotinst.azure.OceanVirtualNodeGroup("example",
             autoscales=[spotinst.azure.OceanVirtualNodeGroupAutoscaleArgs(
-                autoscale_headroom=spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(
+                auto_headroom_percentage=5,
+                autoscale_headrooms=[spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(
                     cpu_per_unit=4,
                     gpu_per_unit=8,
                     memory_per_unit=100,
                     num_of_units=16,
-                ),
+                )],
             )],
             labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(
                 key="label_key",

@@ -13,12 +13,20 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanVirtualNodeGroupAutoscale
     {
-        public readonly Outputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom? AutoscaleHeadroom;
+        /// <summary>
+        /// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+        /// </summary>
+        public readonly int? AutoHeadroomPercentage;
+        public readonly ImmutableArray<Outputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom> AutoscaleHeadrooms;
 
         [OutputConstructor]
-        private OceanVirtualNodeGroupAutoscale(Outputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom? autoscaleHeadroom)
+        private OceanVirtualNodeGroupAutoscale(
+            int? autoHeadroomPercentage,
+
+            ImmutableArray<Outputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom> autoscaleHeadrooms)
         {
-            AutoscaleHeadroom = autoscaleHeadroom;
+            AutoHeadroomPercentage = autoHeadroomPercentage;
+            AutoscaleHeadrooms = autoscaleHeadrooms;
         }
     }
 }

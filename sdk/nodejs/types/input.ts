@@ -2375,6 +2375,13 @@ export namespace aws {
         numOfUnits: pulumi.Input<number>;
     }
 
+    export interface OceanLaunchSpecAutoscaleHeadroomsAutomatic {
+        /**
+         * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+         */
+        autoHeadroomPercentage?: pulumi.Input<number>;
+    }
+
     export interface OceanLaunchSpecBlockDeviceMapping {
         /**
          * String. Set device name. (Example: `/dev/xvda`).
@@ -3339,7 +3346,11 @@ export namespace azure {
     }
 
     export interface OceanVirtualNodeGroupAutoscale {
-        autoscaleHeadroom?: pulumi.Input<inputs.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom>;
+        /**
+         * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+         */
+        autoHeadroomPercentage?: pulumi.Input<number>;
+        autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom>[]>;
     }
 
     export interface OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
@@ -4470,6 +4481,17 @@ export namespace gke {
         taskType: pulumi.Input<string>;
     }
 
+    export interface OceanImportShieldedInstanceConfig {
+        /**
+         * Boolean. Enable the integrity monitoring parameter on the GCP instances.
+         */
+        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        /**
+         * Boolean. Enable the secure boot parameter on the GCP instances.
+         */
+        enableSecureBoot?: pulumi.Input<boolean>;
+    }
+
     export interface OceanImportStrategy {
         /**
          * The draining timeout (in seconds) before terminating the instance.
@@ -4510,6 +4532,13 @@ export namespace gke {
          * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
          */
         numOfUnits: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecAutoscaleHeadroomsAutomatic {
+        /**
+         * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+         */
+        autoHeadroomPercentage?: pulumi.Input<number>;
     }
 
     export interface OceanLaunchSpecLabel {

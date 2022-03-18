@@ -47,6 +47,10 @@ import (
 // 			MaxSize:             pulumi.Int(2),
 // 			MinSize:             pulumi.Int(0),
 // 			RootVolumeType:      pulumi.String("pd-ssd"),
+// 			ShieldedInstanceConfig: &gke.OceanImportShieldedInstanceConfigArgs{
+// 				EnableIntegrityMonitoring: pulumi.Bool(true),
+// 				EnableSecureBoot:          pulumi.Bool(true),
+// 			},
 // 			Whitelists: pulumi.StringArray{
 // 				pulumi.String("n1-standard-1"),
 // 				pulumi.String("n1-standard-2"),
@@ -142,8 +146,10 @@ type OceanImport struct {
 	RootVolumeType pulumi.StringPtrOutput `pulumi:"rootVolumeType"`
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
-	Strategies     OceanImportStrategyArrayOutput      `pulumi:"strategies"`
-	UpdatePolicy   OceanImportUpdatePolicyPtrOutput    `pulumi:"updatePolicy"`
+	// The Ocean shielded instance configuration object.
+	ShieldedInstanceConfig OceanImportShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
+	Strategies             OceanImportStrategyArrayOutput          `pulumi:"strategies"`
+	UpdatePolicy           OceanImportUpdatePolicyPtrOutput        `pulumi:"updatePolicy"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
@@ -204,8 +210,10 @@ type oceanImportState struct {
 	RootVolumeType *string `pulumi:"rootVolumeType"`
 	// Set scheduling object.
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
-	Strategies     []OceanImportStrategy      `pulumi:"strategies"`
-	UpdatePolicy   *OceanImportUpdatePolicy   `pulumi:"updatePolicy"`
+	// The Ocean shielded instance configuration object.
+	ShieldedInstanceConfig *OceanImportShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	Strategies             []OceanImportStrategy              `pulumi:"strategies"`
+	UpdatePolicy           *OceanImportUpdatePolicy           `pulumi:"updatePolicy"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists []string `pulumi:"whitelists"`
 }
@@ -232,8 +240,10 @@ type OceanImportState struct {
 	RootVolumeType pulumi.StringPtrInput
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
-	Strategies     OceanImportStrategyArrayInput
-	UpdatePolicy   OceanImportUpdatePolicyPtrInput
+	// The Ocean shielded instance configuration object.
+	ShieldedInstanceConfig OceanImportShieldedInstanceConfigPtrInput
+	Strategies             OceanImportStrategyArrayInput
+	UpdatePolicy           OceanImportUpdatePolicyPtrInput
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayInput
 }
@@ -263,8 +273,10 @@ type oceanImportArgs struct {
 	RootVolumeType *string `pulumi:"rootVolumeType"`
 	// Set scheduling object.
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
-	Strategies     []OceanImportStrategy      `pulumi:"strategies"`
-	UpdatePolicy   *OceanImportUpdatePolicy   `pulumi:"updatePolicy"`
+	// The Ocean shielded instance configuration object.
+	ShieldedInstanceConfig *OceanImportShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	Strategies             []OceanImportStrategy              `pulumi:"strategies"`
+	UpdatePolicy           *OceanImportUpdatePolicy           `pulumi:"updatePolicy"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists []string `pulumi:"whitelists"`
 }
@@ -291,8 +303,10 @@ type OceanImportArgs struct {
 	RootVolumeType pulumi.StringPtrInput
 	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
-	Strategies     OceanImportStrategyArrayInput
-	UpdatePolicy   OceanImportUpdatePolicyPtrInput
+	// The Ocean shielded instance configuration object.
+	ShieldedInstanceConfig OceanImportShieldedInstanceConfigPtrInput
+	Strategies             OceanImportStrategyArrayInput
+	UpdatePolicy           OceanImportUpdatePolicyPtrInput
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayInput
 }

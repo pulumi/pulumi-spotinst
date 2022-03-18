@@ -12,8 +12,19 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanVirtualNodeGroupAutoscaleGetArgs : Pulumi.ResourceArgs
     {
-        [Input("autoscaleHeadroom")]
-        public Input<Inputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomGetArgs>? AutoscaleHeadroom { get; set; }
+        /// <summary>
+        /// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+        /// </summary>
+        [Input("autoHeadroomPercentage")]
+        public Input<int>? AutoHeadroomPercentage { get; set; }
+
+        [Input("autoscaleHeadrooms")]
+        private InputList<Inputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomGetArgs>? _autoscaleHeadrooms;
+        public InputList<Inputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomGetArgs> AutoscaleHeadrooms
+        {
+            get => _autoscaleHeadrooms ?? (_autoscaleHeadrooms = new InputList<Inputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomGetArgs>());
+            set => _autoscaleHeadrooms = value;
+        }
 
         public OceanVirtualNodeGroupAutoscaleGetArgs()
         {

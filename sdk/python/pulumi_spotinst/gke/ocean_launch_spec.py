@@ -17,6 +17,7 @@ class OceanLaunchSpecArgs:
     def __init__(__self__, *,
                  ocean_id: pulumi.Input[str],
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
+                 autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
@@ -38,6 +39,7 @@ class OceanLaunchSpecArgs:
         The set of arguments for constructing a OceanLaunchSpec resource.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
@@ -58,6 +60,8 @@ class OceanLaunchSpecArgs:
         pulumi.set(__self__, "ocean_id", ocean_id)
         if autoscale_headrooms is not None:
             pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
+        if autoscale_headrooms_automatics is not None:
+            pulumi.set(__self__, "autoscale_headrooms_automatics", autoscale_headrooms_automatics)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if labels is not None:
@@ -116,6 +120,18 @@ class OceanLaunchSpecArgs:
     @autoscale_headrooms.setter
     def autoscale_headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]]):
         pulumi.set(self, "autoscale_headrooms", value)
+
+    @property
+    @pulumi.getter(name="autoscaleHeadroomsAutomatics")
+    def autoscale_headrooms_automatics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]]:
+        """
+        Set automatic headroom per launch spec.
+        """
+        return pulumi.get(self, "autoscale_headrooms_automatics")
+
+    @autoscale_headrooms_automatics.setter
+    def autoscale_headrooms_automatics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]]):
+        pulumi.set(self, "autoscale_headrooms_automatics", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -323,6 +339,7 @@ class OceanLaunchSpecArgs:
 class _OceanLaunchSpecState:
     def __init__(__self__, *,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
+                 autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
@@ -344,6 +361,7 @@ class _OceanLaunchSpecState:
         """
         Input properties used for looking up and filtering OceanLaunchSpec resources.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
@@ -364,6 +382,8 @@ class _OceanLaunchSpecState:
         """
         if autoscale_headrooms is not None:
             pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
+        if autoscale_headrooms_automatics is not None:
+            pulumi.set(__self__, "autoscale_headrooms_automatics", autoscale_headrooms_automatics)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if labels is not None:
@@ -412,6 +432,18 @@ class _OceanLaunchSpecState:
     @autoscale_headrooms.setter
     def autoscale_headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]]):
         pulumi.set(self, "autoscale_headrooms", value)
+
+    @property
+    @pulumi.getter(name="autoscaleHeadroomsAutomatics")
+    def autoscale_headrooms_automatics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]]:
+        """
+        Set automatic headroom per launch spec.
+        """
+        return pulumi.get(self, "autoscale_headrooms_automatics")
+
+    @autoscale_headrooms_automatics.setter
+    def autoscale_headrooms_automatics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]]):
+        pulumi.set(self, "autoscale_headrooms_automatics", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -633,6 +665,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+                 autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
@@ -671,6 +704,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
@@ -727,6 +761,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+                 autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
@@ -758,6 +793,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__ = OceanLaunchSpecArgs.__new__(OceanLaunchSpecArgs)
 
             __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
+            __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["labels"] = labels
             __props__.__dict__["metadatas"] = metadatas
@@ -789,6 +825,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
+            autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
@@ -815,6 +852,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
@@ -838,6 +876,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__ = _OceanLaunchSpecState.__new__(_OceanLaunchSpecState)
 
         __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
+        __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["labels"] = labels
         __props__.__dict__["metadatas"] = metadatas
@@ -865,6 +904,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Set custom headroom per launch spec. provide list of headrooms object.
         """
         return pulumi.get(self, "autoscale_headrooms")
+
+    @property
+    @pulumi.getter(name="autoscaleHeadroomsAutomatics")
+    def autoscale_headrooms_automatics(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]:
+        """
+        Set automatic headroom per launch spec.
+        """
+        return pulumi.get(self, "autoscale_headrooms_automatics")
 
     @property
     @pulumi.getter(name="instanceTypes")

@@ -10,6 +10,7 @@ export * from "./elastigroup";
 export * from "./managedInstance";
 export * from "./mrScalar";
 export * from "./ocean";
+export * from "./oceanExtendedResourceDefinition";
 export * from "./oceanLaunchSpec";
 export * from "./suspension";
 
@@ -19,6 +20,7 @@ import { Elastigroup } from "./elastigroup";
 import { ManagedInstance } from "./managedInstance";
 import { MrScalar } from "./mrScalar";
 import { Ocean } from "./ocean";
+import { OceanExtendedResourceDefinition } from "./oceanExtendedResourceDefinition";
 import { OceanLaunchSpec } from "./oceanLaunchSpec";
 import { Suspension } from "./suspension";
 
@@ -36,6 +38,8 @@ const _module = {
                 return new MrScalar(name, <any>undefined, { urn })
             case "spotinst:aws/ocean:Ocean":
                 return new Ocean(name, <any>undefined, { urn })
+            case "spotinst:aws/oceanExtendedResourceDefinition:OceanExtendedResourceDefinition":
+                return new OceanExtendedResourceDefinition(name, <any>undefined, { urn })
             case "spotinst:aws/oceanLaunchSpec:OceanLaunchSpec":
                 return new OceanLaunchSpec(name, <any>undefined, { urn })
             case "spotinst:aws/suspension:Suspension":
@@ -50,5 +54,6 @@ pulumi.runtime.registerResourceModule("spotinst", "aws/elastigroup", _module)
 pulumi.runtime.registerResourceModule("spotinst", "aws/managedInstance", _module)
 pulumi.runtime.registerResourceModule("spotinst", "aws/mrScalar", _module)
 pulumi.runtime.registerResourceModule("spotinst", "aws/ocean", _module)
+pulumi.runtime.registerResourceModule("spotinst", "aws/oceanExtendedResourceDefinition", _module)
 pulumi.runtime.registerResourceModule("spotinst", "aws/oceanLaunchSpec", _module)
 pulumi.runtime.registerResourceModule("spotinst", "aws/suspension", _module)
