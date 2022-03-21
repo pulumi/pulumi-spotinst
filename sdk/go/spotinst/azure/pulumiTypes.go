@@ -5345,7 +5345,9 @@ func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
 }
 
 type OceanVirtualNodeGroupAutoscale struct {
-	AutoscaleHeadroom *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
+	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+	AutoHeadroomPercentage *int                                              `pulumi:"autoHeadroomPercentage"`
+	AutoscaleHeadrooms     []OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 }
 
 // OceanVirtualNodeGroupAutoscaleInput is an input type that accepts OceanVirtualNodeGroupAutoscaleArgs and OceanVirtualNodeGroupAutoscaleOutput values.
@@ -5360,7 +5362,9 @@ type OceanVirtualNodeGroupAutoscaleInput interface {
 }
 
 type OceanVirtualNodeGroupAutoscaleArgs struct {
-	AutoscaleHeadroom OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
+	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+	AutoHeadroomPercentage pulumi.IntPtrInput                                        `pulumi:"autoHeadroomPercentage"`
+	AutoscaleHeadrooms     OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayInput `pulumi:"autoscaleHeadrooms"`
 }
 
 func (OceanVirtualNodeGroupAutoscaleArgs) ElementType() reflect.Type {
@@ -5414,10 +5418,15 @@ func (o OceanVirtualNodeGroupAutoscaleOutput) ToOceanVirtualNodeGroupAutoscaleOu
 	return o
 }
 
-func (o OceanVirtualNodeGroupAutoscaleOutput) AutoscaleHeadroom() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
-	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscale) *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
-		return v.AutoscaleHeadroom
-	}).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput)
+// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+func (o OceanVirtualNodeGroupAutoscaleOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscale) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanVirtualNodeGroupAutoscaleOutput) AutoscaleHeadrooms() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscale) []OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
+		return v.AutoscaleHeadrooms
+	}).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput)
 }
 
 type OceanVirtualNodeGroupAutoscaleArrayOutput struct{ *pulumi.OutputState }
@@ -5485,45 +5494,29 @@ func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ToOceanVirtualNodeG
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput)
 }
 
-func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
-	return i.ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(context.Background())
-}
-
-func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput).ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(ctx)
-}
-
-// OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput is an input type that accepts OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs, OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtr and OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput values.
-// You can construct a concrete instance of `OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput` via:
+// OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayInput is an input type that accepts OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray and OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput values.
+// You can construct a concrete instance of `OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayInput` via:
 //
-//          OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{...}
-//
-//  or:
-//
-//          nil
-type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput interface {
+//          OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray{ OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{...} }
+type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayInput interface {
 	pulumi.Input
 
-	ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput
-	ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput
+	ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput
+	ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutputWithContext(context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput
 }
 
-type oceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrType OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs
+type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray []OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomInput
 
-func OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtr(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput {
-	return (*oceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrType)(v)
+func (OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom)(nil)).Elem()
 }
 
-func (*oceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom)(nil)).Elem()
+func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput {
+	return i.ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutputWithContext(context.Background())
 }
 
-func (i *oceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrType) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
-	return i.ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(context.Background())
-}
-
-func (i *oceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrType) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput)
+func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput)
 }
 
 type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
@@ -5538,16 +5531,6 @@ func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNod
 
 func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput {
 	return o
-}
-
-func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
-	return o.ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(context.Background())
-}
-
-func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
-		return &v
-	}).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput)
 }
 
 // Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -5570,68 +5553,24 @@ func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) NumOfUnits() pulu
 	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
 }
 
-type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput struct{ *pulumi.OutputState }
+type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput struct{ *pulumi.OutputState }
 
-func (OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom)(nil)).Elem()
+func (OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom)(nil)).Elem()
 }
 
-func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput {
 	return o
 }
 
-func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput {
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput {
 	return o
 }
 
-func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) Elem() OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput {
-	return o.ApplyT(func(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
-		if v != nil {
-			return *v
-		}
-		var ret OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom
-		return ret
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
+		return vs[0].([]OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom)[vs[1].(int)]
 	}).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput)
-}
-
-// Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CpuPerUnit
-	}).(pulumi.IntPtrOutput)
-}
-
-// How many GPU cores should be allocated for headroom unit.
-func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int {
-		if v == nil {
-			return nil
-		}
-		return v.GpuPerUnit
-	}).(pulumi.IntPtrOutput)
-}
-
-// Configure the amount of memory (MiB) to allocate the headroom.
-func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MemoryPerUnit
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
-func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.NumOfUnits
-	}).(pulumi.IntPtrOutput)
 }
 
 type OceanVirtualNodeGroupLabel struct {
@@ -6499,7 +6438,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupAutoscaleInput)(nil)).Elem(), OceanVirtualNodeGroupAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupAutoscaleArrayInput)(nil)).Elem(), OceanVirtualNodeGroupAutoscaleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomInput)(nil)).Elem(), OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrInput)(nil)).Elem(), OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayInput)(nil)).Elem(), OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupLabelInput)(nil)).Elem(), OceanVirtualNodeGroupLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupLabelArrayInput)(nil)).Elem(), OceanVirtualNodeGroupLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanVirtualNodeGroupLaunchSpecificationInput)(nil)).Elem(), OceanVirtualNodeGroupLaunchSpecificationArgs{})
@@ -6591,7 +6530,7 @@ func init() {
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleArrayOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput{})
-	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomPtrOutput{})
+	pulumi.RegisterOutputType(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupLabelOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanVirtualNodeGroupLaunchSpecificationOutput{})

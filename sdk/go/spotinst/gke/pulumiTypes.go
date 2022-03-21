@@ -3983,6 +3983,162 @@ func (o OceanImportScheduledTaskTaskArrayOutput) Index(i pulumi.IntInput) OceanI
 	}).(OceanImportScheduledTaskTaskOutput)
 }
 
+type OceanImportShieldedInstanceConfig struct {
+	// Boolean. Enable the integrity monitoring parameter on the GCP instances.
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// Boolean. Enable the secure boot parameter on the GCP instances.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+}
+
+// OceanImportShieldedInstanceConfigInput is an input type that accepts OceanImportShieldedInstanceConfigArgs and OceanImportShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `OceanImportShieldedInstanceConfigInput` via:
+//
+//          OceanImportShieldedInstanceConfigArgs{...}
+type OceanImportShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToOceanImportShieldedInstanceConfigOutput() OceanImportShieldedInstanceConfigOutput
+	ToOceanImportShieldedInstanceConfigOutputWithContext(context.Context) OceanImportShieldedInstanceConfigOutput
+}
+
+type OceanImportShieldedInstanceConfigArgs struct {
+	// Boolean. Enable the integrity monitoring parameter on the GCP instances.
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// Boolean. Enable the secure boot parameter on the GCP instances.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+}
+
+func (OceanImportShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i OceanImportShieldedInstanceConfigArgs) ToOceanImportShieldedInstanceConfigOutput() OceanImportShieldedInstanceConfigOutput {
+	return i.ToOceanImportShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i OceanImportShieldedInstanceConfigArgs) ToOceanImportShieldedInstanceConfigOutputWithContext(ctx context.Context) OceanImportShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportShieldedInstanceConfigOutput)
+}
+
+func (i OceanImportShieldedInstanceConfigArgs) ToOceanImportShieldedInstanceConfigPtrOutput() OceanImportShieldedInstanceConfigPtrOutput {
+	return i.ToOceanImportShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i OceanImportShieldedInstanceConfigArgs) ToOceanImportShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) OceanImportShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportShieldedInstanceConfigOutput).ToOceanImportShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// OceanImportShieldedInstanceConfigPtrInput is an input type that accepts OceanImportShieldedInstanceConfigArgs, OceanImportShieldedInstanceConfigPtr and OceanImportShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `OceanImportShieldedInstanceConfigPtrInput` via:
+//
+//          OceanImportShieldedInstanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanImportShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToOceanImportShieldedInstanceConfigPtrOutput() OceanImportShieldedInstanceConfigPtrOutput
+	ToOceanImportShieldedInstanceConfigPtrOutputWithContext(context.Context) OceanImportShieldedInstanceConfigPtrOutput
+}
+
+type oceanImportShieldedInstanceConfigPtrType OceanImportShieldedInstanceConfigArgs
+
+func OceanImportShieldedInstanceConfigPtr(v *OceanImportShieldedInstanceConfigArgs) OceanImportShieldedInstanceConfigPtrInput {
+	return (*oceanImportShieldedInstanceConfigPtrType)(v)
+}
+
+func (*oceanImportShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *oceanImportShieldedInstanceConfigPtrType) ToOceanImportShieldedInstanceConfigPtrOutput() OceanImportShieldedInstanceConfigPtrOutput {
+	return i.ToOceanImportShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanImportShieldedInstanceConfigPtrType) ToOceanImportShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) OceanImportShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportShieldedInstanceConfigPtrOutput)
+}
+
+type OceanImportShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (OceanImportShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o OceanImportShieldedInstanceConfigOutput) ToOceanImportShieldedInstanceConfigOutput() OceanImportShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o OceanImportShieldedInstanceConfigOutput) ToOceanImportShieldedInstanceConfigOutputWithContext(ctx context.Context) OceanImportShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o OceanImportShieldedInstanceConfigOutput) ToOceanImportShieldedInstanceConfigPtrOutput() OceanImportShieldedInstanceConfigPtrOutput {
+	return o.ToOceanImportShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OceanImportShieldedInstanceConfigOutput) ToOceanImportShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) OceanImportShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportShieldedInstanceConfig) *OceanImportShieldedInstanceConfig {
+		return &v
+	}).(OceanImportShieldedInstanceConfigPtrOutput)
+}
+
+// Boolean. Enable the integrity monitoring parameter on the GCP instances.
+func (o OceanImportShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Enable the secure boot parameter on the GCP instances.
+func (o OceanImportShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+type OceanImportShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanImportShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o OceanImportShieldedInstanceConfigPtrOutput) ToOceanImportShieldedInstanceConfigPtrOutput() OceanImportShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o OceanImportShieldedInstanceConfigPtrOutput) ToOceanImportShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) OceanImportShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o OceanImportShieldedInstanceConfigPtrOutput) Elem() OceanImportShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *OceanImportShieldedInstanceConfig) OceanImportShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportShieldedInstanceConfig
+		return ret
+	}).(OceanImportShieldedInstanceConfigOutput)
+}
+
+// Boolean. Enable the integrity monitoring parameter on the GCP instances.
+func (o OceanImportShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanImportShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Enable the secure boot parameter on the GCP instances.
+func (o OceanImportShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanImportShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
 type OceanImportStrategy struct {
 	// The draining timeout (in seconds) before terminating the instance.
 	DrainingTimeout   *int    `pulumi:"drainingTimeout"`
@@ -4527,6 +4683,103 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecAutoscaleHeadroom {
 		return vs[0].([]OceanLaunchSpecAutoscaleHeadroom)[vs[1].(int)]
 	}).(OceanLaunchSpecAutoscaleHeadroomOutput)
+}
+
+type OceanLaunchSpecAutoscaleHeadroomsAutomatic struct {
+	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
+}
+
+// OceanLaunchSpecAutoscaleHeadroomsAutomaticInput is an input type that accepts OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs and OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecAutoscaleHeadroomsAutomaticInput` via:
+//
+//          OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{...}
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput
+	ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutputWithContext(context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput
+}
+
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs struct {
+	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
+}
+
+func (OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomatic)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput {
+	return i.ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput)
+}
+
+// OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput is an input type that accepts OceanLaunchSpecAutoscaleHeadroomsAutomaticArray and OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput` via:
+//
+//          OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{ OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{...} }
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput
+	ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutputWithContext(context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput
+}
+
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticArray []OceanLaunchSpecAutoscaleHeadroomsAutomaticInput
+
+func (OceanLaunchSpecAutoscaleHeadroomsAutomaticArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecAutoscaleHeadroomsAutomatic)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecAutoscaleHeadroomsAutomaticArray) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
+	return i.ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecAutoscaleHeadroomsAutomaticArray) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput)
+}
+
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomatic)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput {
+	return o
+}
+
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput {
+	return o
+}
+
+// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroomsAutomatic) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecAutoscaleHeadroomsAutomatic)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecAutoscaleHeadroomsAutomatic {
+		return vs[0].([]OceanLaunchSpecAutoscaleHeadroomsAutomatic)[vs[1].(int)]
+	}).(OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput)
 }
 
 type OceanLaunchSpecLabel struct {
@@ -5992,6 +6245,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskShutdownHoursPtrInput)(nil)).Elem(), OceanImportScheduledTaskShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskInput)(nil)).Elem(), OceanImportScheduledTaskTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskArrayInput)(nil)).Elem(), OceanImportScheduledTaskTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportShieldedInstanceConfigInput)(nil)).Elem(), OceanImportShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportShieldedInstanceConfigPtrInput)(nil)).Elem(), OceanImportShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportStrategyInput)(nil)).Elem(), OceanImportStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportStrategyArrayInput)(nil)).Elem(), OceanImportStrategyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportUpdatePolicyInput)(nil)).Elem(), OceanImportUpdatePolicyArgs{})
@@ -6000,6 +6255,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportUpdatePolicyRollConfigPtrInput)(nil)).Elem(), OceanImportUpdatePolicyRollConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomaticInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelInput)(nil)).Elem(), OceanLaunchSpecLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelArrayInput)(nil)).Elem(), OceanLaunchSpecLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecMetadataInput)(nil)).Elem(), OceanLaunchSpecMetadataArgs{})
@@ -6080,6 +6337,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanImportScheduledTaskShutdownHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportScheduledTaskTaskOutput{})
 	pulumi.RegisterOutputType(OceanImportScheduledTaskTaskArrayOutput{})
+	pulumi.RegisterOutputType(OceanImportShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(OceanImportShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportStrategyOutput{})
 	pulumi.RegisterOutputType(OceanImportStrategyArrayOutput{})
 	pulumi.RegisterOutputType(OceanImportUpdatePolicyOutput{})
@@ -6088,6 +6347,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanImportUpdatePolicyRollConfigPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecMetadataOutput{})

@@ -2376,18 +2376,36 @@ class OceanTagArgs:
 @pulumi.input_type
 class OceanVirtualNodeGroupAutoscaleArgs:
     def __init__(__self__, *,
-                 autoscale_headroom: Optional[pulumi.Input['OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs']] = None):
-        if autoscale_headroom is not None:
-            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
+                 auto_headroom_percentage: Optional[pulumi.Input[int]] = None,
+                 autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs']]]] = None):
+        """
+        :param pulumi.Input[int] auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+        """
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
+        if autoscale_headrooms is not None:
+            pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
 
     @property
-    @pulumi.getter(name="autoscaleHeadroom")
-    def autoscale_headroom(self) -> Optional[pulumi.Input['OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs']]:
-        return pulumi.get(self, "autoscale_headroom")
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
 
-    @autoscale_headroom.setter
-    def autoscale_headroom(self, value: Optional[pulumi.Input['OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs']]):
-        pulumi.set(self, "autoscale_headroom", value)
+    @auto_headroom_percentage.setter
+    def auto_headroom_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_headroom_percentage", value)
+
+    @property
+    @pulumi.getter(name="autoscaleHeadrooms")
+    def autoscale_headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs']]]]:
+        return pulumi.get(self, "autoscale_headrooms")
+
+    @autoscale_headrooms.setter
+    def autoscale_headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs']]]]):
+        pulumi.set(self, "autoscale_headrooms", value)
 
 
 @pulumi.input_type

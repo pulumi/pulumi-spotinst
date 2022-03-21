@@ -50,6 +50,11 @@ namespace Pulumi.SpotInst.Gke
     ///             MaxSize = 2,
     ///             MinSize = 0,
     ///             RootVolumeType = "pd-ssd",
+    ///             ShieldedInstanceConfig = new SpotInst.Gke.Inputs.OceanImportShieldedInstanceConfigArgs
+    ///             {
+    ///                 EnableIntegrityMonitoring = true,
+    ///                 EnableSecureBoot = true,
+    ///             },
     ///             Whitelists = 
     ///             {
     ///                 "n1-standard-1",
@@ -182,6 +187,12 @@ namespace Pulumi.SpotInst.Gke
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.OceanImportScheduledTask>> ScheduledTasks { get; private set; } = null!;
 
+        /// <summary>
+        /// The Ocean shielded instance configuration object.
+        /// </summary>
+        [Output("shieldedInstanceConfig")]
+        public Output<Outputs.OceanImportShieldedInstanceConfig> ShieldedInstanceConfig { get; private set; } = null!;
+
         [Output("strategies")]
         public Output<ImmutableArray<Outputs.OceanImportStrategy>> Strategies { get; private set; } = null!;
 
@@ -312,6 +323,12 @@ namespace Pulumi.SpotInst.Gke
             set => _scheduledTasks = value;
         }
 
+        /// <summary>
+        /// The Ocean shielded instance configuration object.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.OceanImportShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
         [Input("strategies")]
         private InputList<Inputs.OceanImportStrategyArgs>? _strategies;
         public InputList<Inputs.OceanImportStrategyArgs> Strategies
@@ -416,6 +433,12 @@ namespace Pulumi.SpotInst.Gke
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanImportScheduledTaskGetArgs>());
             set => _scheduledTasks = value;
         }
+
+        /// <summary>
+        /// The Ocean shielded instance configuration object.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.OceanImportShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
 
         [Input("strategies")]
         private InputList<Inputs.OceanImportStrategyGetArgs>? _strategies;

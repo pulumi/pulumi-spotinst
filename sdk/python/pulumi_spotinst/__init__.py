@@ -82,6 +82,14 @@ _utilities.register(
  },
  {
   "pkg": "spotinst",
+  "mod": "aws/oceanExtendedResourceDefinition",
+  "fqn": "pulumi_spotinst.aws",
+  "classes": {
+   "spotinst:aws/oceanExtendedResourceDefinition:OceanExtendedResourceDefinition": "OceanExtendedResourceDefinition"
+  }
+ },
+ {
+  "pkg": "spotinst",
   "mod": "aws/oceanLaunchSpec",
   "fqn": "pulumi_spotinst.aws",
   "classes": {

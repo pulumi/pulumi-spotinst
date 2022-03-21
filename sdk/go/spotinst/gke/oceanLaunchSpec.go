@@ -40,6 +40,8 @@ type OceanLaunchSpec struct {
 
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
+	// Set automatic headroom per launch spec.
+	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput `pulumi:"autoscaleHeadroomsAutomatics"`
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -111,6 +113,8 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 type oceanLaunchSpecState struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// Set automatic headroom per launch spec.
+	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -151,6 +155,8 @@ type oceanLaunchSpecState struct {
 type OceanLaunchSpecState struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// Set automatic headroom per launch spec.
+	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -195,6 +201,8 @@ func (OceanLaunchSpecState) ElementType() reflect.Type {
 type oceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// Set automatic headroom per launch spec.
+	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
@@ -236,6 +244,8 @@ type oceanLaunchSpecArgs struct {
 type OceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// Set automatic headroom per launch spec.
+	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
 	// List of supported machine types for the Launch Spec.
 	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.

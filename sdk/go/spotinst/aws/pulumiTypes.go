@@ -17120,6 +17120,103 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 	}).(OceanLaunchSpecAutoscaleHeadroomOutput)
 }
 
+type OceanLaunchSpecAutoscaleHeadroomsAutomatic struct {
+	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
+}
+
+// OceanLaunchSpecAutoscaleHeadroomsAutomaticInput is an input type that accepts OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs and OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecAutoscaleHeadroomsAutomaticInput` via:
+//
+//          OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{...}
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput
+	ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutputWithContext(context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput
+}
+
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs struct {
+	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
+}
+
+func (OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomatic)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput {
+	return i.ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput)
+}
+
+// OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput is an input type that accepts OceanLaunchSpecAutoscaleHeadroomsAutomaticArray and OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput` via:
+//
+//          OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{ OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{...} }
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput
+	ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutputWithContext(context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput
+}
+
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticArray []OceanLaunchSpecAutoscaleHeadroomsAutomaticInput
+
+func (OceanLaunchSpecAutoscaleHeadroomsAutomaticArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecAutoscaleHeadroomsAutomatic)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecAutoscaleHeadroomsAutomaticArray) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
+	return i.ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecAutoscaleHeadroomsAutomaticArray) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput)
+}
+
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomatic)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput {
+	return o
+}
+
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput {
+	return o
+}
+
+// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroomsAutomatic) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecAutoscaleHeadroomsAutomatic)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput() OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput) ToOceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecAutoscaleHeadroomsAutomatic {
+		return vs[0].([]OceanLaunchSpecAutoscaleHeadroomsAutomatic)[vs[1].(int)]
+	}).(OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput)
+}
+
 type OceanLaunchSpecBlockDeviceMapping struct {
 	// String. Set device name. (Example: `/dev/xvda`).
 	DeviceName *string `pulumi:"deviceName"`
@@ -21090,6 +21187,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsPtrInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomaticInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingArrayInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsArgs{})
@@ -21368,6 +21467,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanInstanceMetadataOptionsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsOutput{})

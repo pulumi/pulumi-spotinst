@@ -35,6 +35,13 @@ namespace Pulumi.SpotInst.Aws
     ///                     NumOfUnits = 5,
     ///                 },
     ///             },
+    ///             AutoscaleHeadroomsAutomatics = 
+    ///             {
+    ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs
+    ///                 {
+    ///                     AutoHeadroomPercentage = 5,
+    ///                 },
+    ///             },
     ///             BlockDeviceMappings = 
     ///             {
     ///                 new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
@@ -223,6 +230,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroom>> AutoscaleHeadrooms { get; private set; } = null!;
 
         /// <summary>
+        /// Set automatic headroom per launch spec.
+        /// </summary>
+        [Output("autoscaleHeadroomsAutomatics")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic>> AutoscaleHeadroomsAutomatics { get; private set; } = null!;
+
+        /// <summary>
         /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         /// </summary>
         [Output("blockDeviceMappings")]
@@ -407,6 +420,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _autoscaleHeadrooms ?? (_autoscaleHeadrooms = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomArgs>());
             set => _autoscaleHeadrooms = value;
+        }
+
+        [Input("autoscaleHeadroomsAutomatics")]
+        private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs>? _autoscaleHeadroomsAutomatics;
+
+        /// <summary>
+        /// Set automatic headroom per launch spec.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs> AutoscaleHeadroomsAutomatics
+        {
+            get => _autoscaleHeadroomsAutomatics ?? (_autoscaleHeadroomsAutomatics = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs>());
+            set => _autoscaleHeadroomsAutomatics = value;
         }
 
         [Input("blockDeviceMappings")]
@@ -625,6 +650,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _autoscaleHeadrooms ?? (_autoscaleHeadrooms = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomGetArgs>());
             set => _autoscaleHeadrooms = value;
+        }
+
+        [Input("autoscaleHeadroomsAutomatics")]
+        private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticGetArgs>? _autoscaleHeadroomsAutomatics;
+
+        /// <summary>
+        /// Set automatic headroom per launch spec.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticGetArgs> AutoscaleHeadroomsAutomatics
+        {
+            get => _autoscaleHeadroomsAutomatics ?? (_autoscaleHeadroomsAutomatics = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticGetArgs>());
+            set => _autoscaleHeadroomsAutomatics = value;
         }
 
         [Input("blockDeviceMappings")]

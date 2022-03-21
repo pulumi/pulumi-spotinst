@@ -43,6 +43,12 @@ namespace Pulumi.SpotInst.Gke
         public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroom>> AutoscaleHeadrooms { get; private set; } = null!;
 
         /// <summary>
+        /// Set automatic headroom per launch spec.
+        /// </summary>
+        [Output("autoscaleHeadroomsAutomatics")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic>> AutoscaleHeadroomsAutomatics { get; private set; } = null!;
+
+        /// <summary>
         /// List of supported machine types for the Launch Spec.
         /// </summary>
         [Output("instanceTypes")]
@@ -205,6 +211,18 @@ namespace Pulumi.SpotInst.Gke
             set => _autoscaleHeadrooms = value;
         }
 
+        [Input("autoscaleHeadroomsAutomatics")]
+        private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs>? _autoscaleHeadroomsAutomatics;
+
+        /// <summary>
+        /// Set automatic headroom per launch spec.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs> AutoscaleHeadroomsAutomatics
+        {
+            get => _autoscaleHeadroomsAutomatics ?? (_autoscaleHeadroomsAutomatics = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs>());
+            set => _autoscaleHeadroomsAutomatics = value;
+        }
+
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
 
@@ -363,6 +381,18 @@ namespace Pulumi.SpotInst.Gke
         {
             get => _autoscaleHeadrooms ?? (_autoscaleHeadrooms = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomGetArgs>());
             set => _autoscaleHeadrooms = value;
+        }
+
+        [Input("autoscaleHeadroomsAutomatics")]
+        private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticGetArgs>? _autoscaleHeadroomsAutomatics;
+
+        /// <summary>
+        /// Set automatic headroom per launch spec.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticGetArgs> AutoscaleHeadroomsAutomatics
+        {
+            get => _autoscaleHeadroomsAutomatics ?? (_autoscaleHeadroomsAutomatics = new InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticGetArgs>());
+            set => _autoscaleHeadroomsAutomatics = value;
         }
 
         [Input("instanceTypes")]

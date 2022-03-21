@@ -32,6 +32,10 @@ import * as utilities from "../utilities";
  *     maxSize: 2,
  *     minSize: 0,
  *     rootVolumeType: "pd-ssd",
+ *     shieldedInstanceConfig: {
+ *         enableIntegrityMonitoring: true,
+ *         enableSecureBoot: true,
+ *     },
  *     whitelists: [
  *         "n1-standard-1",
  *         "n1-standard-2",
@@ -138,6 +142,10 @@ export class OceanImport extends pulumi.CustomResource {
      * Set scheduling object.
      */
     public readonly scheduledTasks!: pulumi.Output<outputs.gke.OceanImportScheduledTask[] | undefined>;
+    /**
+     * The Ocean shielded instance configuration object.
+     */
+    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.gke.OceanImportShieldedInstanceConfig>;
     public readonly strategies!: pulumi.Output<outputs.gke.OceanImportStrategy[] | undefined>;
     public readonly updatePolicy!: pulumi.Output<outputs.gke.OceanImportUpdatePolicy | undefined>;
     /**
@@ -169,6 +177,7 @@ export class OceanImport extends pulumi.CustomResource {
             resourceInputs["minSize"] = state ? state.minSize : undefined;
             resourceInputs["rootVolumeType"] = state ? state.rootVolumeType : undefined;
             resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
+            resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             resourceInputs["strategies"] = state ? state.strategies : undefined;
             resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             resourceInputs["whitelists"] = state ? state.whitelists : undefined;
@@ -190,6 +199,7 @@ export class OceanImport extends pulumi.CustomResource {
             resourceInputs["minSize"] = args ? args.minSize : undefined;
             resourceInputs["rootVolumeType"] = args ? args.rootVolumeType : undefined;
             resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
+            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["strategies"] = args ? args.strategies : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             resourceInputs["whitelists"] = args ? args.whitelists : undefined;
@@ -245,6 +255,10 @@ export interface OceanImportState {
      * Set scheduling object.
      */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    /**
+     * The Ocean shielded instance configuration object.
+     */
+    shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanImportShieldedInstanceConfig>;
     strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportStrategy>[]>;
     updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
     /**
@@ -297,6 +311,10 @@ export interface OceanImportArgs {
      * Set scheduling object.
      */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    /**
+     * The Ocean shielded instance configuration object.
+     */
+    shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanImportShieldedInstanceConfig>;
     strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportStrategy>[]>;
     updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
     /**

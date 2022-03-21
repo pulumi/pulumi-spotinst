@@ -35,6 +35,11 @@ import (
 // 					NumOfUnits:    pulumi.Int(5),
 // 				},
 // 			},
+// 			AutoscaleHeadroomsAutomatics: aws.OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{
+// 				&aws.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{
+// 					AutoHeadroomPercentage: pulumi.Int(5),
+// 				},
+// 			},
 // 			BlockDeviceMappings: aws.OceanLaunchSpecBlockDeviceMappingArray{
 // 				&aws.OceanLaunchSpecBlockDeviceMappingArgs{
 // 					DeviceName: pulumi.String("/dev/xvda"),
@@ -189,6 +194,8 @@ type OceanLaunchSpec struct {
 	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
 	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
+	// Set automatic headroom per launch spec.
+	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput `pulumi:"autoscaleHeadroomsAutomatics"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	CreateOptions       OceanLaunchSpecCreateOptionsPtrOutput        `pulumi:"createOptions"`
@@ -268,6 +275,8 @@ type oceanLaunchSpecState struct {
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
 	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// Set automatic headroom per launch spec.
+	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	CreateOptions       *OceanLaunchSpecCreateOptions       `pulumi:"createOptions"`
@@ -316,6 +325,8 @@ type OceanLaunchSpecState struct {
 	AssociatePublicIpAddress pulumi.BoolPtrInput
 	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// Set automatic headroom per launch spec.
+	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
 	CreateOptions       OceanLaunchSpecCreateOptionsPtrInput
@@ -368,6 +379,8 @@ type oceanLaunchSpecArgs struct {
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
 	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
+	// Set automatic headroom per launch spec.
+	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	CreateOptions       *OceanLaunchSpecCreateOptions       `pulumi:"createOptions"`
@@ -417,6 +430,8 @@ type OceanLaunchSpecArgs struct {
 	AssociatePublicIpAddress pulumi.BoolPtrInput
 	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
+	// Set automatic headroom per launch spec.
+	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
 	CreateOptions       OceanLaunchSpecCreateOptionsPtrInput

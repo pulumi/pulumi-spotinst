@@ -38,10 +38,12 @@ __all__ = [
     'OceanImportScheduledTaskArgs',
     'OceanImportScheduledTaskShutdownHoursArgs',
     'OceanImportScheduledTaskTaskArgs',
+    'OceanImportShieldedInstanceConfigArgs',
     'OceanImportStrategyArgs',
     'OceanImportUpdatePolicyArgs',
     'OceanImportUpdatePolicyRollConfigArgs',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
+    'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecMetadataArgs',
     'OceanLaunchSpecResourceLimitsArgs',
@@ -1735,6 +1737,45 @@ class OceanImportScheduledTaskTaskArgs:
 
 
 @pulumi.input_type
+class OceanImportShieldedInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
+                 enable_secure_boot: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_integrity_monitoring: Boolean. Enable the integrity monitoring parameter on the GCP instances.
+        :param pulumi.Input[bool] enable_secure_boot: Boolean. Enable the secure boot parameter on the GCP instances.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Enable the integrity monitoring parameter on the GCP instances.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @enable_integrity_monitoring.setter
+    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_integrity_monitoring", value)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Enable the secure boot parameter on the GCP instances.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
+
+
+@pulumi.input_type
 class OceanImportStrategyArgs:
     def __init__(__self__, *,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
@@ -1913,6 +1954,29 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
     @memory_per_unit.setter
     def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
+    def __init__(__self__, *,
+                 auto_headroom_percentage: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        """
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
+
+    @property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
+
+    @auto_headroom_percentage.setter
+    def auto_headroom_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_headroom_percentage", value)
 
 
 @pulumi.input_type

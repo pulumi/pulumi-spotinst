@@ -16,12 +16,13 @@ import * as utilities from "../utilities";
  *
  * const example = new spotinst.azure.OceanVirtualNodeGroup("example", {
  *     autoscales: [{
- *         autoscaleHeadroom: {
+ *         autoHeadroomPercentage: 5,
+ *         autoscaleHeadrooms: [{
  *             cpuPerUnit: 4,
  *             gpuPerUnit: 8,
  *             memoryPerUnit: 100,
  *             numOfUnits: 16,
- *         },
+ *         }],
  *     }],
  *     labels: [{
  *         key: "label_key",

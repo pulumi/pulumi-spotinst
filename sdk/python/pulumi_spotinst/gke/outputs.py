@@ -39,10 +39,12 @@ __all__ = [
     'OceanImportScheduledTask',
     'OceanImportScheduledTaskShutdownHours',
     'OceanImportScheduledTaskTask',
+    'OceanImportShieldedInstanceConfig',
     'OceanImportStrategy',
     'OceanImportUpdatePolicy',
     'OceanImportUpdatePolicyRollConfig',
     'OceanLaunchSpecAutoscaleHeadroom',
+    'OceanLaunchSpecAutoscaleHeadroomsAutomatic',
     'OceanLaunchSpecLabel',
     'OceanLaunchSpecMetadata',
     'OceanLaunchSpecResourceLimits',
@@ -1710,6 +1712,56 @@ class OceanImportScheduledTaskTask(dict):
 
 
 @pulumi.output_type
+class OceanImportShieldedInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanImportShieldedInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanImportShieldedInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanImportShieldedInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[bool] = None,
+                 enable_secure_boot: Optional[bool] = None):
+        """
+        :param bool enable_integrity_monitoring: Boolean. Enable the integrity monitoring parameter on the GCP instances.
+        :param bool enable_secure_boot: Boolean. Enable the secure boot parameter on the GCP instances.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[bool]:
+        """
+        Boolean. Enable the integrity monitoring parameter on the GCP instances.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[bool]:
+        """
+        Boolean. Enable the secure boot parameter on the GCP instances.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
 class OceanImportStrategy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1926,6 +1978,42 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
         Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         return pulumi.get(self, "memory_per_unit")
+
+
+@pulumi.output_type
+class OceanLaunchSpecAutoscaleHeadroomsAutomatic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoHeadroomPercentage":
+            suggest = "auto_headroom_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecAutoscaleHeadroomsAutomatic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecAutoscaleHeadroomsAutomatic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecAutoscaleHeadroomsAutomatic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_headroom_percentage: Optional[int] = None):
+        """
+        :param int auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        """
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
+
+    @property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> Optional[int]:
+        """
+        Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
 
 
 @pulumi.output_type

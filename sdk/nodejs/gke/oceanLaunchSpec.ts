@@ -54,6 +54,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly autoscaleHeadrooms!: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
     /**
+     * Set automatic headroom per launch spec.
+     */
+    public readonly autoscaleHeadroomsAutomatics!: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic[] | undefined>;
+    /**
      * List of supported machine types for the Launch Spec.
      */
     public readonly instanceTypes!: pulumi.Output<string[]>;
@@ -137,6 +141,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
             resourceInputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
+            resourceInputs["autoscaleHeadroomsAutomatics"] = state ? state.autoscaleHeadroomsAutomatics : undefined;
             resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["metadatas"] = state ? state.metadatas : undefined;
@@ -161,6 +166,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
                 throw new Error("Missing required property 'oceanId'");
             }
             resourceInputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
+            resourceInputs["autoscaleHeadroomsAutomatics"] = args ? args.autoscaleHeadroomsAutomatics : undefined;
             resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["metadatas"] = args ? args.metadatas : undefined;
@@ -193,6 +199,10 @@ export interface OceanLaunchSpecState {
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
     autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    /**
+     * Set automatic headroom per launch spec.
+     */
+    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[]>;
     /**
      * List of supported machine types for the Launch Spec.
      */
@@ -272,6 +282,10 @@ export interface OceanLaunchSpecArgs {
      * Set custom headroom per launch spec. provide list of headrooms object.
      */
     autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroom>[]>;
+    /**
+     * Set automatic headroom per launch spec.
+     */
+    autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[]>;
     /**
      * List of supported machine types for the Launch Spec.
      */

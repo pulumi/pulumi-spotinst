@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MrScalar{}
 	case "spotinst:aws/ocean:Ocean":
 		r = &Ocean{}
+	case "spotinst:aws/oceanExtendedResourceDefinition:OceanExtendedResourceDefinition":
+		r = &OceanExtendedResourceDefinition{}
 	case "spotinst:aws/oceanLaunchSpec:OceanLaunchSpec":
 		r = &OceanLaunchSpec{}
 	case "spotinst:aws/suspension:Suspension":
@@ -71,6 +73,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"spotinst",
 		"aws/ocean",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"aws/oceanExtendedResourceDefinition",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
