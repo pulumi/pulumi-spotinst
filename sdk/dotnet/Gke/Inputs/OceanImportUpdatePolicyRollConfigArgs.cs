@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanImportUpdatePolicyRollConfigArgs : Pulumi.ResourceArgs
     {
+        [Input("batchMinHealthyPercentage")]
+        public Input<int>? BatchMinHealthyPercentage { get; set; }
+
         /// <summary>
         /// Value in % to set size of batch in roll. Valid values are 0-100
         /// Example: 20.

@@ -1854,12 +1854,15 @@ class OceanImportUpdatePolicyArgs:
 class OceanImportUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
                  batch_size_percentage: pulumi.Input[int],
+                 batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
                  launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if launch_spec_ids is not None:
             pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
 
@@ -1875,6 +1878,15 @@ class OceanImportUpdatePolicyRollConfigArgs:
     @batch_size_percentage.setter
     def batch_size_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @batch_min_healthy_percentage.setter
+    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_min_healthy_percentage", value)
 
     @property
     @pulumi.getter(name="launchSpecIds")

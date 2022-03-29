@@ -9699,12 +9699,16 @@ class OceanUpdatePolicyArgs:
 class OceanUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
                  batch_size_percentage: pulumi.Input[int],
+                 batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
                  launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param pulumi.Input[int] batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] launch_spec_ids: List of virtual node group identifiers to be rolled.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if launch_spec_ids is not None:
             pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
 
@@ -9719,6 +9723,18 @@ class OceanUpdatePolicyRollConfigArgs:
     @batch_size_percentage.setter
     def batch_size_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @batch_min_healthy_percentage.setter
+    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_min_healthy_percentage", value)
 
     @property
     @pulumi.getter(name="launchSpecIds")
