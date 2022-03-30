@@ -4406,6 +4406,7 @@ func (o OceanImportUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 }
 
 type OceanImportUpdatePolicyRollConfig struct {
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
 	// Value in % to set size of batch in roll. Valid values are 0-100
 	// Example: 20.
 	BatchSizePercentage int      `pulumi:"batchSizePercentage"`
@@ -4424,6 +4425,7 @@ type OceanImportUpdatePolicyRollConfigInput interface {
 }
 
 type OceanImportUpdatePolicyRollConfigArgs struct {
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
 	// Value in % to set size of batch in roll. Valid values are 0-100
 	// Example: 20.
 	BatchSizePercentage pulumi.IntInput         `pulumi:"batchSizePercentage"`
@@ -4507,6 +4509,10 @@ func (o OceanImportUpdatePolicyRollConfigOutput) ToOceanImportUpdatePolicyRollCo
 	}).(OceanImportUpdatePolicyRollConfigPtrOutput)
 }
 
+func (o OceanImportUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
+}
+
 // Value in % to set size of batch in roll. Valid values are 0-100
 // Example: 20.
 func (o OceanImportUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
@@ -4539,6 +4545,15 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) Elem() OceanImportUpdatePoli
 		var ret OceanImportUpdatePolicyRollConfig
 		return ret
 	}).(OceanImportUpdatePolicyRollConfigOutput)
+}
+
+func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchMinHealthyPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 // Value in % to set size of batch in roll. Valid values are 0-100

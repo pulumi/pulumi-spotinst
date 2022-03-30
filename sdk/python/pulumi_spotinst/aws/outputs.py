@@ -9744,6 +9744,8 @@ class OceanUpdatePolicyRollConfig(dict):
         suggest = None
         if key == "batchSizePercentage":
             suggest = "batch_size_percentage"
+        elif key == "batchMinHealthyPercentage":
+            suggest = "batch_min_healthy_percentage"
         elif key == "launchSpecIds":
             suggest = "launch_spec_ids"
 
@@ -9760,12 +9762,16 @@ class OceanUpdatePolicyRollConfig(dict):
 
     def __init__(__self__, *,
                  batch_size_percentage: int,
+                 batch_min_healthy_percentage: Optional[int] = None,
                  launch_spec_ids: Optional[Sequence[str]] = None):
         """
         :param int batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
+        :param int batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
         :param Sequence[str] launch_spec_ids: List of virtual node group identifiers to be rolled.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if launch_spec_ids is not None:
             pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
 
@@ -9776,6 +9782,14 @@ class OceanUpdatePolicyRollConfig(dict):
         Sets the percentage of the instances to deploy in each batch.
         """
         return pulumi.get(self, "batch_size_percentage")
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[int]:
+        """
+        Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+        """
+        return pulumi.get(self, "batch_min_healthy_percentage")
 
     @property
     @pulumi.getter(name="launchSpecIds")
