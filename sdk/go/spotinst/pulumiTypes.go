@@ -10,6 +10,158 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DataIntegrationS3 struct {
+	BucketName string `pulumi:"bucketName"`
+	// The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
+	Subdir *string `pulumi:"subdir"`
+}
+
+// DataIntegrationS3Input is an input type that accepts DataIntegrationS3Args and DataIntegrationS3Output values.
+// You can construct a concrete instance of `DataIntegrationS3Input` via:
+//
+//          DataIntegrationS3Args{...}
+type DataIntegrationS3Input interface {
+	pulumi.Input
+
+	ToDataIntegrationS3Output() DataIntegrationS3Output
+	ToDataIntegrationS3OutputWithContext(context.Context) DataIntegrationS3Output
+}
+
+type DataIntegrationS3Args struct {
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
+	Subdir pulumi.StringPtrInput `pulumi:"subdir"`
+}
+
+func (DataIntegrationS3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataIntegrationS3)(nil)).Elem()
+}
+
+func (i DataIntegrationS3Args) ToDataIntegrationS3Output() DataIntegrationS3Output {
+	return i.ToDataIntegrationS3OutputWithContext(context.Background())
+}
+
+func (i DataIntegrationS3Args) ToDataIntegrationS3OutputWithContext(ctx context.Context) DataIntegrationS3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(DataIntegrationS3Output)
+}
+
+func (i DataIntegrationS3Args) ToDataIntegrationS3PtrOutput() DataIntegrationS3PtrOutput {
+	return i.ToDataIntegrationS3PtrOutputWithContext(context.Background())
+}
+
+func (i DataIntegrationS3Args) ToDataIntegrationS3PtrOutputWithContext(ctx context.Context) DataIntegrationS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataIntegrationS3Output).ToDataIntegrationS3PtrOutputWithContext(ctx)
+}
+
+// DataIntegrationS3PtrInput is an input type that accepts DataIntegrationS3Args, DataIntegrationS3Ptr and DataIntegrationS3PtrOutput values.
+// You can construct a concrete instance of `DataIntegrationS3PtrInput` via:
+//
+//          DataIntegrationS3Args{...}
+//
+//  or:
+//
+//          nil
+type DataIntegrationS3PtrInput interface {
+	pulumi.Input
+
+	ToDataIntegrationS3PtrOutput() DataIntegrationS3PtrOutput
+	ToDataIntegrationS3PtrOutputWithContext(context.Context) DataIntegrationS3PtrOutput
+}
+
+type dataIntegrationS3PtrType DataIntegrationS3Args
+
+func DataIntegrationS3Ptr(v *DataIntegrationS3Args) DataIntegrationS3PtrInput {
+	return (*dataIntegrationS3PtrType)(v)
+}
+
+func (*dataIntegrationS3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataIntegrationS3)(nil)).Elem()
+}
+
+func (i *dataIntegrationS3PtrType) ToDataIntegrationS3PtrOutput() DataIntegrationS3PtrOutput {
+	return i.ToDataIntegrationS3PtrOutputWithContext(context.Background())
+}
+
+func (i *dataIntegrationS3PtrType) ToDataIntegrationS3PtrOutputWithContext(ctx context.Context) DataIntegrationS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataIntegrationS3PtrOutput)
+}
+
+type DataIntegrationS3Output struct{ *pulumi.OutputState }
+
+func (DataIntegrationS3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataIntegrationS3)(nil)).Elem()
+}
+
+func (o DataIntegrationS3Output) ToDataIntegrationS3Output() DataIntegrationS3Output {
+	return o
+}
+
+func (o DataIntegrationS3Output) ToDataIntegrationS3OutputWithContext(ctx context.Context) DataIntegrationS3Output {
+	return o
+}
+
+func (o DataIntegrationS3Output) ToDataIntegrationS3PtrOutput() DataIntegrationS3PtrOutput {
+	return o.ToDataIntegrationS3PtrOutputWithContext(context.Background())
+}
+
+func (o DataIntegrationS3Output) ToDataIntegrationS3PtrOutputWithContext(ctx context.Context) DataIntegrationS3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataIntegrationS3) *DataIntegrationS3 {
+		return &v
+	}).(DataIntegrationS3PtrOutput)
+}
+
+func (o DataIntegrationS3Output) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataIntegrationS3) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
+func (o DataIntegrationS3Output) Subdir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataIntegrationS3) *string { return v.Subdir }).(pulumi.StringPtrOutput)
+}
+
+type DataIntegrationS3PtrOutput struct{ *pulumi.OutputState }
+
+func (DataIntegrationS3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataIntegrationS3)(nil)).Elem()
+}
+
+func (o DataIntegrationS3PtrOutput) ToDataIntegrationS3PtrOutput() DataIntegrationS3PtrOutput {
+	return o
+}
+
+func (o DataIntegrationS3PtrOutput) ToDataIntegrationS3PtrOutputWithContext(ctx context.Context) DataIntegrationS3PtrOutput {
+	return o
+}
+
+func (o DataIntegrationS3PtrOutput) Elem() DataIntegrationS3Output {
+	return o.ApplyT(func(v *DataIntegrationS3) DataIntegrationS3 {
+		if v != nil {
+			return *v
+		}
+		var ret DataIntegrationS3
+		return ret
+	}).(DataIntegrationS3Output)
+}
+
+func (o DataIntegrationS3PtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataIntegrationS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
+func (o DataIntegrationS3PtrOutput) Subdir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataIntegrationS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdir
+	}).(pulumi.StringPtrOutput)
+}
+
 type ElastigroupAzureV3Image struct {
 	Customs      []ElastigroupAzureV3ImageCustom      `pulumi:"customs"`
 	Marketplaces []ElastigroupAzureV3ImageMarketplace `pulumi:"marketplaces"`
@@ -1635,6 +1787,8 @@ func (o HealthCheckCheckPtrOutput) Unhealthy() pulumi.IntPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DataIntegrationS3Input)(nil)).Elem(), DataIntegrationS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataIntegrationS3PtrInput)(nil)).Elem(), DataIntegrationS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageInput)(nil)).Elem(), ElastigroupAzureV3ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageArrayInput)(nil)).Elem(), ElastigroupAzureV3ImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3ImageCustomInput)(nil)).Elem(), ElastigroupAzureV3ImageCustomArgs{})
@@ -1657,6 +1811,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3StrategyPtrInput)(nil)).Elem(), ElastigroupAzureV3StrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckInput)(nil)).Elem(), HealthCheckCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckPtrInput)(nil)).Elem(), HealthCheckCheckArgs{})
+	pulumi.RegisterOutputType(DataIntegrationS3Output{})
+	pulumi.RegisterOutputType(DataIntegrationS3PtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageCustomOutput{})

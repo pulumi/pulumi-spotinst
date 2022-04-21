@@ -18,6 +18,9 @@ namespace Pulumi.SpotInst.Gke.Inputs
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
 
+        [Input("preemptiblePercentage")]
+        public Input<int>? PreemptiblePercentage { get; set; }
+
         [Input("provisioningModel")]
         public Input<string>? ProvisioningModel { get; set; }
 

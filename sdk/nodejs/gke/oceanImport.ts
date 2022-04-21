@@ -53,6 +53,7 @@ import * as utilities from "../utilities";
  * * `strategy` - (Optional) Strategy object.
  *     * `drainingTimeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
  *     * `provisioningModel` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+ *     * `preemptiblePercentage`- (Optional) Defines the desired preemptible percentage for the cluster.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

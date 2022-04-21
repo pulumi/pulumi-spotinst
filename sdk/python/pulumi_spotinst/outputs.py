@@ -10,6 +10,7 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'DataIntegrationS3',
     'ElastigroupAzureV3Image',
     'ElastigroupAzureV3ImageCustom',
     'ElastigroupAzureV3ImageMarketplace',
@@ -22,6 +23,49 @@ __all__ = [
     'ElastigroupAzureV3Strategy',
     'HealthCheckCheck',
 ]
+
+@pulumi.output_type
+class DataIntegrationS3(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataIntegrationS3. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataIntegrationS3.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataIntegrationS3.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_name: str,
+                 subdir: Optional[str] = None):
+        """
+        :param str subdir: The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        if subdir is not None:
+            pulumi.set(__self__, "subdir", subdir)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> str:
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def subdir(self) -> Optional[str]:
+        """
+        The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
+        """
+        return pulumi.get(self, "subdir")
+
 
 @pulumi.output_type
 class ElastigroupAzureV3Image(dict):
