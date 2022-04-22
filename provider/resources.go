@@ -102,13 +102,34 @@ func Provider() tfbridge.ProviderInfo {
 					"gpu": {Name: "gpu"},
 				},
 			},
-			"spotinst_mrscaler_aws":                           {Tok: makeResource(awsMod, "MrScalar")},
-			"spotinst_multai_balancer":                        {Tok: makeResource(multaiMod, "Balancer")},
-			"spotinst_multai_deployment":                      {Tok: makeResource(multaiMod, "Deployment")},
-			"spotinst_multai_listener":                        {Tok: makeResource(multaiMod, "Listener")},
-			"spotinst_multai_routing_rule":                    {Tok: makeResource(multaiMod, "RoutingRule")},
-			"spotinst_multai_target":                          {Tok: makeResource(multaiMod, "Target")},
-			"spotinst_multai_target_set":                      {Tok: makeResource(multaiMod, "TargetSet")},
+			"spotinst_mrscaler_aws": {Tok: makeResource(awsMod, "MrScalar")},
+
+			// Lack of docs is tracked in: https://github.com/pulumi/pulumi-spotinst/issues/193
+			"spotinst_multai_balancer": {
+				Tok:  makeResource(multaiMod, "Balancer"),
+				Docs: noUpstreamDocs(),
+			},
+			"spotinst_multai_deployment": {
+				Tok:  makeResource(multaiMod, "Deployment"),
+				Docs: noUpstreamDocs(),
+			},
+			"spotinst_multai_listener": {
+				Tok:  makeResource(multaiMod, "Listener"),
+				Docs: noUpstreamDocs(),
+			},
+			"spotinst_multai_routing_rule": {
+				Tok:  makeResource(multaiMod, "RoutingRule"),
+				Docs: noUpstreamDocs(),
+			},
+			"spotinst_multai_target": {
+				Tok:  makeResource(multaiMod, "Target"),
+				Docs: noUpstreamDocs(),
+			},
+			"spotinst_multai_target_set": {
+				Tok:  makeResource(multaiMod, "TargetSet"),
+				Docs: noUpstreamDocs(),
+			},
+
 			"spotinst_ocean_aws":                              {Tok: makeResource(awsMod, "Ocean")},
 			"spotinst_ocean_aws_launch_spec":                  {Tok: makeResource(awsMod, "OceanLaunchSpec")},
 			"spotinst_ocean_aws_extended_resource_definition": {Tok: makeResource(awsMod, "OceanExtendedResourceDefinition")},
@@ -120,6 +141,7 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_subscription":                           {Tok: makeResource(mainMod, "Subscription")},
 			"spotinst_health_check":                           {Tok: makeResource(mainMod, "HealthCheck")},
 			"spotinst_elastigroup_azure_v3":                   {Tok: makeResource(mainMod, "ElastigroupAzureV3")},
+			"spotinst_data_integration":                       {Tok: makeResource(mainMod, "DataIntegration")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -157,4 +179,10 @@ func Provider() tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+func noUpstreamDocs() *tfbridge.DocInfo {
+	return &tfbridge.DocInfo{
+		Markdown: []byte(" "),
+	}
 }

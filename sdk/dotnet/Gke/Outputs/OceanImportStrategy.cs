@@ -17,15 +17,19 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// The draining timeout (in seconds) before terminating the instance.
         /// </summary>
         public readonly int? DrainingTimeout;
+        public readonly int? PreemptiblePercentage;
         public readonly string? ProvisioningModel;
 
         [OutputConstructor]
         private OceanImportStrategy(
             int? drainingTimeout,
 
+            int? preemptiblePercentage,
+
             string? provisioningModel)
         {
             DrainingTimeout = drainingTimeout;
+            PreemptiblePercentage = preemptiblePercentage;
             ProvisioningModel = provisioningModel;
         }
     }

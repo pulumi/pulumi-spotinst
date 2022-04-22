@@ -4141,8 +4141,9 @@ func (o OceanImportShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.Bo
 
 type OceanImportStrategy struct {
 	// The draining timeout (in seconds) before terminating the instance.
-	DrainingTimeout   *int    `pulumi:"drainingTimeout"`
-	ProvisioningModel *string `pulumi:"provisioningModel"`
+	DrainingTimeout       *int    `pulumi:"drainingTimeout"`
+	PreemptiblePercentage *int    `pulumi:"preemptiblePercentage"`
+	ProvisioningModel     *string `pulumi:"provisioningModel"`
 }
 
 // OceanImportStrategyInput is an input type that accepts OceanImportStrategyArgs and OceanImportStrategyOutput values.
@@ -4158,8 +4159,9 @@ type OceanImportStrategyInput interface {
 
 type OceanImportStrategyArgs struct {
 	// The draining timeout (in seconds) before terminating the instance.
-	DrainingTimeout   pulumi.IntPtrInput    `pulumi:"drainingTimeout"`
-	ProvisioningModel pulumi.StringPtrInput `pulumi:"provisioningModel"`
+	DrainingTimeout       pulumi.IntPtrInput    `pulumi:"drainingTimeout"`
+	PreemptiblePercentage pulumi.IntPtrInput    `pulumi:"preemptiblePercentage"`
+	ProvisioningModel     pulumi.StringPtrInput `pulumi:"provisioningModel"`
 }
 
 func (OceanImportStrategyArgs) ElementType() reflect.Type {
@@ -4216,6 +4218,10 @@ func (o OceanImportStrategyOutput) ToOceanImportStrategyOutputWithContext(ctx co
 // The draining timeout (in seconds) before terminating the instance.
 func (o OceanImportStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportStrategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportStrategyOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportStrategy) *int { return v.PreemptiblePercentage }).(pulumi.IntPtrOutput)
 }
 
 func (o OceanImportStrategyOutput) ProvisioningModel() pulumi.StringPtrOutput {

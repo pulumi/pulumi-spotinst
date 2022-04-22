@@ -1768,6 +1768,8 @@ class OceanImportStrategy(dict):
         suggest = None
         if key == "drainingTimeout":
             suggest = "draining_timeout"
+        elif key == "preemptiblePercentage":
+            suggest = "preemptible_percentage"
         elif key == "provisioningModel":
             suggest = "provisioning_model"
 
@@ -1784,12 +1786,15 @@ class OceanImportStrategy(dict):
 
     def __init__(__self__, *,
                  draining_timeout: Optional[int] = None,
+                 preemptible_percentage: Optional[int] = None,
                  provisioning_model: Optional[str] = None):
         """
         :param int draining_timeout: The draining timeout (in seconds) before terminating the instance.
         """
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if preemptible_percentage is not None:
+            pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
 
@@ -1800,6 +1805,11 @@ class OceanImportStrategy(dict):
         The draining timeout (in seconds) before terminating the instance.
         """
         return pulumi.get(self, "draining_timeout")
+
+    @property
+    @pulumi.getter(name="preemptiblePercentage")
+    def preemptible_percentage(self) -> Optional[int]:
+        return pulumi.get(self, "preemptible_percentage")
 
     @property
     @pulumi.getter(name="provisioningModel")

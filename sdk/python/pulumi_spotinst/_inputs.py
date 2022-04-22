@@ -9,6 +9,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'DataIntegrationS3Args',
     'ElastigroupAzureV3ImageArgs',
     'ElastigroupAzureV3ImageCustomArgs',
     'ElastigroupAzureV3ImageMarketplaceArgs',
@@ -21,6 +22,40 @@ __all__ = [
     'ElastigroupAzureV3StrategyArgs',
     'HealthCheckCheckArgs',
 ]
+
+@pulumi.input_type
+class DataIntegrationS3Args:
+    def __init__(__self__, *,
+                 bucket_name: pulumi.Input[str],
+                 subdir: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] subdir: The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        if subdir is not None:
+            pulumi.set(__self__, "subdir", subdir)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter
+    def subdir(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
+        """
+        return pulumi.get(self, "subdir")
+
+    @subdir.setter
+    def subdir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subdir", value)
+
 
 @pulumi.input_type
 class ElastigroupAzureV3ImageArgs:

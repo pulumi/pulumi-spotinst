@@ -1779,12 +1779,15 @@ class OceanImportShieldedInstanceConfigArgs:
 class OceanImportStrategyArgs:
     def __init__(__self__, *,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
+                 preemptible_percentage: Optional[pulumi.Input[int]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] draining_timeout: The draining timeout (in seconds) before terminating the instance.
         """
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if preemptible_percentage is not None:
+            pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
 
@@ -1799,6 +1802,15 @@ class OceanImportStrategyArgs:
     @draining_timeout.setter
     def draining_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "draining_timeout", value)
+
+    @property
+    @pulumi.getter(name="preemptiblePercentage")
+    def preemptible_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "preemptible_percentage")
+
+    @preemptible_percentage.setter
+    def preemptible_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "preemptible_percentage", value)
 
     @property
     @pulumi.getter(name="provisioningModel")

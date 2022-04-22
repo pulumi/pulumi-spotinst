@@ -4,6 +4,14 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface DataIntegrationS3 {
+    bucketName: string;
+    /**
+     * The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
+     */
+    subdir?: string;
+}
+
 export interface ElastigroupAzureV3Image {
     customs?: outputs.ElastigroupAzureV3ImageCustom[];
     marketplaces?: outputs.ElastigroupAzureV3ImageMarketplace[];
@@ -4507,6 +4515,7 @@ export namespace gke {
          * The draining timeout (in seconds) before terminating the instance.
          */
         drainingTimeout?: number;
+        preemptiblePercentage?: number;
         provisioningModel?: string;
     }
 
