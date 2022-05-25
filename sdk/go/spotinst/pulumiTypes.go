@@ -1786,6 +1786,3785 @@ func (o HealthCheckCheckPtrOutput) Unhealthy() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type StatefulNodeAzureAttachDataDisk struct {
+	DataDiskName              string  `pulumi:"dataDiskName"`
+	DataDiskResourceGroupName string  `pulumi:"dataDiskResourceGroupName"`
+	Lun                       *int    `pulumi:"lun"`
+	SizeGb                    int     `pulumi:"sizeGb"`
+	StorageAccountType        string  `pulumi:"storageAccountType"`
+	Zone                      *string `pulumi:"zone"`
+}
+
+// StatefulNodeAzureAttachDataDiskInput is an input type that accepts StatefulNodeAzureAttachDataDiskArgs and StatefulNodeAzureAttachDataDiskOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureAttachDataDiskInput` via:
+//
+//          StatefulNodeAzureAttachDataDiskArgs{...}
+type StatefulNodeAzureAttachDataDiskInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureAttachDataDiskOutput() StatefulNodeAzureAttachDataDiskOutput
+	ToStatefulNodeAzureAttachDataDiskOutputWithContext(context.Context) StatefulNodeAzureAttachDataDiskOutput
+}
+
+type StatefulNodeAzureAttachDataDiskArgs struct {
+	DataDiskName              pulumi.StringInput    `pulumi:"dataDiskName"`
+	DataDiskResourceGroupName pulumi.StringInput    `pulumi:"dataDiskResourceGroupName"`
+	Lun                       pulumi.IntPtrInput    `pulumi:"lun"`
+	SizeGb                    pulumi.IntInput       `pulumi:"sizeGb"`
+	StorageAccountType        pulumi.StringInput    `pulumi:"storageAccountType"`
+	Zone                      pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (StatefulNodeAzureAttachDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureAttachDataDisk)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureAttachDataDiskArgs) ToStatefulNodeAzureAttachDataDiskOutput() StatefulNodeAzureAttachDataDiskOutput {
+	return i.ToStatefulNodeAzureAttachDataDiskOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureAttachDataDiskArgs) ToStatefulNodeAzureAttachDataDiskOutputWithContext(ctx context.Context) StatefulNodeAzureAttachDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureAttachDataDiskOutput)
+}
+
+// StatefulNodeAzureAttachDataDiskArrayInput is an input type that accepts StatefulNodeAzureAttachDataDiskArray and StatefulNodeAzureAttachDataDiskArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureAttachDataDiskArrayInput` via:
+//
+//          StatefulNodeAzureAttachDataDiskArray{ StatefulNodeAzureAttachDataDiskArgs{...} }
+type StatefulNodeAzureAttachDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureAttachDataDiskArrayOutput() StatefulNodeAzureAttachDataDiskArrayOutput
+	ToStatefulNodeAzureAttachDataDiskArrayOutputWithContext(context.Context) StatefulNodeAzureAttachDataDiskArrayOutput
+}
+
+type StatefulNodeAzureAttachDataDiskArray []StatefulNodeAzureAttachDataDiskInput
+
+func (StatefulNodeAzureAttachDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureAttachDataDisk)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureAttachDataDiskArray) ToStatefulNodeAzureAttachDataDiskArrayOutput() StatefulNodeAzureAttachDataDiskArrayOutput {
+	return i.ToStatefulNodeAzureAttachDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureAttachDataDiskArray) ToStatefulNodeAzureAttachDataDiskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureAttachDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureAttachDataDiskArrayOutput)
+}
+
+type StatefulNodeAzureAttachDataDiskOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureAttachDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureAttachDataDisk)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureAttachDataDiskOutput) ToStatefulNodeAzureAttachDataDiskOutput() StatefulNodeAzureAttachDataDiskOutput {
+	return o
+}
+
+func (o StatefulNodeAzureAttachDataDiskOutput) ToStatefulNodeAzureAttachDataDiskOutputWithContext(ctx context.Context) StatefulNodeAzureAttachDataDiskOutput {
+	return o
+}
+
+func (o StatefulNodeAzureAttachDataDiskOutput) DataDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureAttachDataDisk) string { return v.DataDiskName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureAttachDataDiskOutput) DataDiskResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureAttachDataDisk) string { return v.DataDiskResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureAttachDataDiskOutput) Lun() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureAttachDataDisk) *int { return v.Lun }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureAttachDataDiskOutput) SizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v StatefulNodeAzureAttachDataDisk) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+func (o StatefulNodeAzureAttachDataDiskOutput) StorageAccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureAttachDataDisk) string { return v.StorageAccountType }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureAttachDataDiskOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureAttachDataDisk) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type StatefulNodeAzureAttachDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureAttachDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureAttachDataDisk)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureAttachDataDiskArrayOutput) ToStatefulNodeAzureAttachDataDiskArrayOutput() StatefulNodeAzureAttachDataDiskArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureAttachDataDiskArrayOutput) ToStatefulNodeAzureAttachDataDiskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureAttachDataDiskArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureAttachDataDiskArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureAttachDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureAttachDataDisk {
+		return vs[0].([]StatefulNodeAzureAttachDataDisk)[vs[1].(int)]
+	}).(StatefulNodeAzureAttachDataDiskOutput)
+}
+
+type StatefulNodeAzureBootDiagnostic struct {
+	IsEnabled  *bool   `pulumi:"isEnabled"`
+	StorageUrl *string `pulumi:"storageUrl"`
+	Type       *string `pulumi:"type"`
+}
+
+// StatefulNodeAzureBootDiagnosticInput is an input type that accepts StatefulNodeAzureBootDiagnosticArgs and StatefulNodeAzureBootDiagnosticOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureBootDiagnosticInput` via:
+//
+//          StatefulNodeAzureBootDiagnosticArgs{...}
+type StatefulNodeAzureBootDiagnosticInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureBootDiagnosticOutput() StatefulNodeAzureBootDiagnosticOutput
+	ToStatefulNodeAzureBootDiagnosticOutputWithContext(context.Context) StatefulNodeAzureBootDiagnosticOutput
+}
+
+type StatefulNodeAzureBootDiagnosticArgs struct {
+	IsEnabled  pulumi.BoolPtrInput   `pulumi:"isEnabled"`
+	StorageUrl pulumi.StringPtrInput `pulumi:"storageUrl"`
+	Type       pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (StatefulNodeAzureBootDiagnosticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureBootDiagnostic)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureBootDiagnosticArgs) ToStatefulNodeAzureBootDiagnosticOutput() StatefulNodeAzureBootDiagnosticOutput {
+	return i.ToStatefulNodeAzureBootDiagnosticOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureBootDiagnosticArgs) ToStatefulNodeAzureBootDiagnosticOutputWithContext(ctx context.Context) StatefulNodeAzureBootDiagnosticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureBootDiagnosticOutput)
+}
+
+// StatefulNodeAzureBootDiagnosticArrayInput is an input type that accepts StatefulNodeAzureBootDiagnosticArray and StatefulNodeAzureBootDiagnosticArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureBootDiagnosticArrayInput` via:
+//
+//          StatefulNodeAzureBootDiagnosticArray{ StatefulNodeAzureBootDiagnosticArgs{...} }
+type StatefulNodeAzureBootDiagnosticArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureBootDiagnosticArrayOutput() StatefulNodeAzureBootDiagnosticArrayOutput
+	ToStatefulNodeAzureBootDiagnosticArrayOutputWithContext(context.Context) StatefulNodeAzureBootDiagnosticArrayOutput
+}
+
+type StatefulNodeAzureBootDiagnosticArray []StatefulNodeAzureBootDiagnosticInput
+
+func (StatefulNodeAzureBootDiagnosticArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureBootDiagnostic)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureBootDiagnosticArray) ToStatefulNodeAzureBootDiagnosticArrayOutput() StatefulNodeAzureBootDiagnosticArrayOutput {
+	return i.ToStatefulNodeAzureBootDiagnosticArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureBootDiagnosticArray) ToStatefulNodeAzureBootDiagnosticArrayOutputWithContext(ctx context.Context) StatefulNodeAzureBootDiagnosticArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureBootDiagnosticArrayOutput)
+}
+
+type StatefulNodeAzureBootDiagnosticOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureBootDiagnosticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureBootDiagnostic)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureBootDiagnosticOutput) ToStatefulNodeAzureBootDiagnosticOutput() StatefulNodeAzureBootDiagnosticOutput {
+	return o
+}
+
+func (o StatefulNodeAzureBootDiagnosticOutput) ToStatefulNodeAzureBootDiagnosticOutputWithContext(ctx context.Context) StatefulNodeAzureBootDiagnosticOutput {
+	return o
+}
+
+func (o StatefulNodeAzureBootDiagnosticOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureBootDiagnostic) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureBootDiagnosticOutput) StorageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureBootDiagnostic) *string { return v.StorageUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureBootDiagnosticOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureBootDiagnostic) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type StatefulNodeAzureBootDiagnosticArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureBootDiagnosticArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureBootDiagnostic)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureBootDiagnosticArrayOutput) ToStatefulNodeAzureBootDiagnosticArrayOutput() StatefulNodeAzureBootDiagnosticArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureBootDiagnosticArrayOutput) ToStatefulNodeAzureBootDiagnosticArrayOutputWithContext(ctx context.Context) StatefulNodeAzureBootDiagnosticArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureBootDiagnosticArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureBootDiagnosticOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureBootDiagnostic {
+		return vs[0].([]StatefulNodeAzureBootDiagnostic)[vs[1].(int)]
+	}).(StatefulNodeAzureBootDiagnosticOutput)
+}
+
+type StatefulNodeAzureDataDisk struct {
+	Lun    int    `pulumi:"lun"`
+	SizeGb int    `pulumi:"sizeGb"`
+	Type   string `pulumi:"type"`
+}
+
+// StatefulNodeAzureDataDiskInput is an input type that accepts StatefulNodeAzureDataDiskArgs and StatefulNodeAzureDataDiskOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureDataDiskInput` via:
+//
+//          StatefulNodeAzureDataDiskArgs{...}
+type StatefulNodeAzureDataDiskInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureDataDiskOutput() StatefulNodeAzureDataDiskOutput
+	ToStatefulNodeAzureDataDiskOutputWithContext(context.Context) StatefulNodeAzureDataDiskOutput
+}
+
+type StatefulNodeAzureDataDiskArgs struct {
+	Lun    pulumi.IntInput    `pulumi:"lun"`
+	SizeGb pulumi.IntInput    `pulumi:"sizeGb"`
+	Type   pulumi.StringInput `pulumi:"type"`
+}
+
+func (StatefulNodeAzureDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureDataDisk)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureDataDiskArgs) ToStatefulNodeAzureDataDiskOutput() StatefulNodeAzureDataDiskOutput {
+	return i.ToStatefulNodeAzureDataDiskOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureDataDiskArgs) ToStatefulNodeAzureDataDiskOutputWithContext(ctx context.Context) StatefulNodeAzureDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDataDiskOutput)
+}
+
+// StatefulNodeAzureDataDiskArrayInput is an input type that accepts StatefulNodeAzureDataDiskArray and StatefulNodeAzureDataDiskArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureDataDiskArrayInput` via:
+//
+//          StatefulNodeAzureDataDiskArray{ StatefulNodeAzureDataDiskArgs{...} }
+type StatefulNodeAzureDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureDataDiskArrayOutput() StatefulNodeAzureDataDiskArrayOutput
+	ToStatefulNodeAzureDataDiskArrayOutputWithContext(context.Context) StatefulNodeAzureDataDiskArrayOutput
+}
+
+type StatefulNodeAzureDataDiskArray []StatefulNodeAzureDataDiskInput
+
+func (StatefulNodeAzureDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureDataDisk)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureDataDiskArray) ToStatefulNodeAzureDataDiskArrayOutput() StatefulNodeAzureDataDiskArrayOutput {
+	return i.ToStatefulNodeAzureDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureDataDiskArray) ToStatefulNodeAzureDataDiskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDataDiskArrayOutput)
+}
+
+type StatefulNodeAzureDataDiskOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureDataDisk)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureDataDiskOutput) ToStatefulNodeAzureDataDiskOutput() StatefulNodeAzureDataDiskOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDataDiskOutput) ToStatefulNodeAzureDataDiskOutputWithContext(ctx context.Context) StatefulNodeAzureDataDiskOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDataDiskOutput) Lun() pulumi.IntOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDataDisk) int { return v.Lun }).(pulumi.IntOutput)
+}
+
+func (o StatefulNodeAzureDataDiskOutput) SizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDataDisk) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+func (o StatefulNodeAzureDataDiskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDataDisk) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureDataDisk)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureDataDiskArrayOutput) ToStatefulNodeAzureDataDiskArrayOutput() StatefulNodeAzureDataDiskArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDataDiskArrayOutput) ToStatefulNodeAzureDataDiskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureDataDiskArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDataDiskArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureDataDisk {
+		return vs[0].([]StatefulNodeAzureDataDisk)[vs[1].(int)]
+	}).(StatefulNodeAzureDataDiskOutput)
+}
+
+type StatefulNodeAzureDelete struct {
+	DiskShouldDeallocate     bool `pulumi:"diskShouldDeallocate"`
+	DiskTtlInHours           *int `pulumi:"diskTtlInHours"`
+	NetworkShouldDeallocate  bool `pulumi:"networkShouldDeallocate"`
+	NetworkTtlInHours        *int `pulumi:"networkTtlInHours"`
+	PublicIpShouldDeallocate bool `pulumi:"publicIpShouldDeallocate"`
+	PublicIpTtlInHours       *int `pulumi:"publicIpTtlInHours"`
+	ShouldTerminateVm        bool `pulumi:"shouldTerminateVm"`
+	SnapshotShouldDeallocate bool `pulumi:"snapshotShouldDeallocate"`
+	SnapshotTtlInHours       *int `pulumi:"snapshotTtlInHours"`
+}
+
+// StatefulNodeAzureDeleteInput is an input type that accepts StatefulNodeAzureDeleteArgs and StatefulNodeAzureDeleteOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureDeleteInput` via:
+//
+//          StatefulNodeAzureDeleteArgs{...}
+type StatefulNodeAzureDeleteInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureDeleteOutput() StatefulNodeAzureDeleteOutput
+	ToStatefulNodeAzureDeleteOutputWithContext(context.Context) StatefulNodeAzureDeleteOutput
+}
+
+type StatefulNodeAzureDeleteArgs struct {
+	DiskShouldDeallocate     pulumi.BoolInput   `pulumi:"diskShouldDeallocate"`
+	DiskTtlInHours           pulumi.IntPtrInput `pulumi:"diskTtlInHours"`
+	NetworkShouldDeallocate  pulumi.BoolInput   `pulumi:"networkShouldDeallocate"`
+	NetworkTtlInHours        pulumi.IntPtrInput `pulumi:"networkTtlInHours"`
+	PublicIpShouldDeallocate pulumi.BoolInput   `pulumi:"publicIpShouldDeallocate"`
+	PublicIpTtlInHours       pulumi.IntPtrInput `pulumi:"publicIpTtlInHours"`
+	ShouldTerminateVm        pulumi.BoolInput   `pulumi:"shouldTerminateVm"`
+	SnapshotShouldDeallocate pulumi.BoolInput   `pulumi:"snapshotShouldDeallocate"`
+	SnapshotTtlInHours       pulumi.IntPtrInput `pulumi:"snapshotTtlInHours"`
+}
+
+func (StatefulNodeAzureDeleteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureDelete)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureDeleteArgs) ToStatefulNodeAzureDeleteOutput() StatefulNodeAzureDeleteOutput {
+	return i.ToStatefulNodeAzureDeleteOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureDeleteArgs) ToStatefulNodeAzureDeleteOutputWithContext(ctx context.Context) StatefulNodeAzureDeleteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDeleteOutput)
+}
+
+// StatefulNodeAzureDeleteArrayInput is an input type that accepts StatefulNodeAzureDeleteArray and StatefulNodeAzureDeleteArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureDeleteArrayInput` via:
+//
+//          StatefulNodeAzureDeleteArray{ StatefulNodeAzureDeleteArgs{...} }
+type StatefulNodeAzureDeleteArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureDeleteArrayOutput() StatefulNodeAzureDeleteArrayOutput
+	ToStatefulNodeAzureDeleteArrayOutputWithContext(context.Context) StatefulNodeAzureDeleteArrayOutput
+}
+
+type StatefulNodeAzureDeleteArray []StatefulNodeAzureDeleteInput
+
+func (StatefulNodeAzureDeleteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureDelete)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureDeleteArray) ToStatefulNodeAzureDeleteArrayOutput() StatefulNodeAzureDeleteArrayOutput {
+	return i.ToStatefulNodeAzureDeleteArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureDeleteArray) ToStatefulNodeAzureDeleteArrayOutputWithContext(ctx context.Context) StatefulNodeAzureDeleteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDeleteArrayOutput)
+}
+
+type StatefulNodeAzureDeleteOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureDeleteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureDelete)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureDeleteOutput) ToStatefulNodeAzureDeleteOutput() StatefulNodeAzureDeleteOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDeleteOutput) ToStatefulNodeAzureDeleteOutputWithContext(ctx context.Context) StatefulNodeAzureDeleteOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDeleteOutput) DiskShouldDeallocate() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) bool { return v.DiskShouldDeallocate }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureDeleteOutput) DiskTtlInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) *int { return v.DiskTtlInHours }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureDeleteOutput) NetworkShouldDeallocate() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) bool { return v.NetworkShouldDeallocate }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureDeleteOutput) NetworkTtlInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) *int { return v.NetworkTtlInHours }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureDeleteOutput) PublicIpShouldDeallocate() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) bool { return v.PublicIpShouldDeallocate }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureDeleteOutput) PublicIpTtlInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) *int { return v.PublicIpTtlInHours }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureDeleteOutput) ShouldTerminateVm() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) bool { return v.ShouldTerminateVm }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureDeleteOutput) SnapshotShouldDeallocate() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) bool { return v.SnapshotShouldDeallocate }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureDeleteOutput) SnapshotTtlInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDelete) *int { return v.SnapshotTtlInHours }).(pulumi.IntPtrOutput)
+}
+
+type StatefulNodeAzureDeleteArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureDeleteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureDelete)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureDeleteArrayOutput) ToStatefulNodeAzureDeleteArrayOutput() StatefulNodeAzureDeleteArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDeleteArrayOutput) ToStatefulNodeAzureDeleteArrayOutputWithContext(ctx context.Context) StatefulNodeAzureDeleteArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDeleteArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureDeleteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureDelete {
+		return vs[0].([]StatefulNodeAzureDelete)[vs[1].(int)]
+	}).(StatefulNodeAzureDeleteOutput)
+}
+
+type StatefulNodeAzureDetachDataDisk struct {
+	DataDiskName              string `pulumi:"dataDiskName"`
+	DataDiskResourceGroupName string `pulumi:"dataDiskResourceGroupName"`
+	ShouldDeallocate          bool   `pulumi:"shouldDeallocate"`
+	TtlInHours                *int   `pulumi:"ttlInHours"`
+}
+
+// StatefulNodeAzureDetachDataDiskInput is an input type that accepts StatefulNodeAzureDetachDataDiskArgs and StatefulNodeAzureDetachDataDiskOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureDetachDataDiskInput` via:
+//
+//          StatefulNodeAzureDetachDataDiskArgs{...}
+type StatefulNodeAzureDetachDataDiskInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureDetachDataDiskOutput() StatefulNodeAzureDetachDataDiskOutput
+	ToStatefulNodeAzureDetachDataDiskOutputWithContext(context.Context) StatefulNodeAzureDetachDataDiskOutput
+}
+
+type StatefulNodeAzureDetachDataDiskArgs struct {
+	DataDiskName              pulumi.StringInput `pulumi:"dataDiskName"`
+	DataDiskResourceGroupName pulumi.StringInput `pulumi:"dataDiskResourceGroupName"`
+	ShouldDeallocate          pulumi.BoolInput   `pulumi:"shouldDeallocate"`
+	TtlInHours                pulumi.IntPtrInput `pulumi:"ttlInHours"`
+}
+
+func (StatefulNodeAzureDetachDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureDetachDataDisk)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureDetachDataDiskArgs) ToStatefulNodeAzureDetachDataDiskOutput() StatefulNodeAzureDetachDataDiskOutput {
+	return i.ToStatefulNodeAzureDetachDataDiskOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureDetachDataDiskArgs) ToStatefulNodeAzureDetachDataDiskOutputWithContext(ctx context.Context) StatefulNodeAzureDetachDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDetachDataDiskOutput)
+}
+
+// StatefulNodeAzureDetachDataDiskArrayInput is an input type that accepts StatefulNodeAzureDetachDataDiskArray and StatefulNodeAzureDetachDataDiskArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureDetachDataDiskArrayInput` via:
+//
+//          StatefulNodeAzureDetachDataDiskArray{ StatefulNodeAzureDetachDataDiskArgs{...} }
+type StatefulNodeAzureDetachDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureDetachDataDiskArrayOutput() StatefulNodeAzureDetachDataDiskArrayOutput
+	ToStatefulNodeAzureDetachDataDiskArrayOutputWithContext(context.Context) StatefulNodeAzureDetachDataDiskArrayOutput
+}
+
+type StatefulNodeAzureDetachDataDiskArray []StatefulNodeAzureDetachDataDiskInput
+
+func (StatefulNodeAzureDetachDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureDetachDataDisk)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureDetachDataDiskArray) ToStatefulNodeAzureDetachDataDiskArrayOutput() StatefulNodeAzureDetachDataDiskArrayOutput {
+	return i.ToStatefulNodeAzureDetachDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureDetachDataDiskArray) ToStatefulNodeAzureDetachDataDiskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureDetachDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDetachDataDiskArrayOutput)
+}
+
+type StatefulNodeAzureDetachDataDiskOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureDetachDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureDetachDataDisk)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureDetachDataDiskOutput) ToStatefulNodeAzureDetachDataDiskOutput() StatefulNodeAzureDetachDataDiskOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDetachDataDiskOutput) ToStatefulNodeAzureDetachDataDiskOutputWithContext(ctx context.Context) StatefulNodeAzureDetachDataDiskOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDetachDataDiskOutput) DataDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDetachDataDisk) string { return v.DataDiskName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureDetachDataDiskOutput) DataDiskResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDetachDataDisk) string { return v.DataDiskResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureDetachDataDiskOutput) ShouldDeallocate() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDetachDataDisk) bool { return v.ShouldDeallocate }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureDetachDataDiskOutput) TtlInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureDetachDataDisk) *int { return v.TtlInHours }).(pulumi.IntPtrOutput)
+}
+
+type StatefulNodeAzureDetachDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureDetachDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureDetachDataDisk)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureDetachDataDiskArrayOutput) ToStatefulNodeAzureDetachDataDiskArrayOutput() StatefulNodeAzureDetachDataDiskArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDetachDataDiskArrayOutput) ToStatefulNodeAzureDetachDataDiskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureDetachDataDiskArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureDetachDataDiskArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureDetachDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureDetachDataDisk {
+		return vs[0].([]StatefulNodeAzureDetachDataDisk)[vs[1].(int)]
+	}).(StatefulNodeAzureDetachDataDiskOutput)
+}
+
+type StatefulNodeAzureExtension struct {
+	ApiVersion              string                 `pulumi:"apiVersion"`
+	MinorVersionAutoUpgrade bool                   `pulumi:"minorVersionAutoUpgrade"`
+	Name                    string                 `pulumi:"name"`
+	ProtectedSettings       map[string]interface{} `pulumi:"protectedSettings"`
+	PublicSettings          map[string]interface{} `pulumi:"publicSettings"`
+	Publisher               string                 `pulumi:"publisher"`
+	Type                    string                 `pulumi:"type"`
+}
+
+// StatefulNodeAzureExtensionInput is an input type that accepts StatefulNodeAzureExtensionArgs and StatefulNodeAzureExtensionOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureExtensionInput` via:
+//
+//          StatefulNodeAzureExtensionArgs{...}
+type StatefulNodeAzureExtensionInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureExtensionOutput() StatefulNodeAzureExtensionOutput
+	ToStatefulNodeAzureExtensionOutputWithContext(context.Context) StatefulNodeAzureExtensionOutput
+}
+
+type StatefulNodeAzureExtensionArgs struct {
+	ApiVersion              pulumi.StringInput `pulumi:"apiVersion"`
+	MinorVersionAutoUpgrade pulumi.BoolInput   `pulumi:"minorVersionAutoUpgrade"`
+	Name                    pulumi.StringInput `pulumi:"name"`
+	ProtectedSettings       pulumi.MapInput    `pulumi:"protectedSettings"`
+	PublicSettings          pulumi.MapInput    `pulumi:"publicSettings"`
+	Publisher               pulumi.StringInput `pulumi:"publisher"`
+	Type                    pulumi.StringInput `pulumi:"type"`
+}
+
+func (StatefulNodeAzureExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureExtension)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureExtensionArgs) ToStatefulNodeAzureExtensionOutput() StatefulNodeAzureExtensionOutput {
+	return i.ToStatefulNodeAzureExtensionOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureExtensionArgs) ToStatefulNodeAzureExtensionOutputWithContext(ctx context.Context) StatefulNodeAzureExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureExtensionOutput)
+}
+
+// StatefulNodeAzureExtensionArrayInput is an input type that accepts StatefulNodeAzureExtensionArray and StatefulNodeAzureExtensionArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureExtensionArrayInput` via:
+//
+//          StatefulNodeAzureExtensionArray{ StatefulNodeAzureExtensionArgs{...} }
+type StatefulNodeAzureExtensionArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureExtensionArrayOutput() StatefulNodeAzureExtensionArrayOutput
+	ToStatefulNodeAzureExtensionArrayOutputWithContext(context.Context) StatefulNodeAzureExtensionArrayOutput
+}
+
+type StatefulNodeAzureExtensionArray []StatefulNodeAzureExtensionInput
+
+func (StatefulNodeAzureExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureExtension)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureExtensionArray) ToStatefulNodeAzureExtensionArrayOutput() StatefulNodeAzureExtensionArrayOutput {
+	return i.ToStatefulNodeAzureExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureExtensionArray) ToStatefulNodeAzureExtensionArrayOutputWithContext(ctx context.Context) StatefulNodeAzureExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureExtensionArrayOutput)
+}
+
+type StatefulNodeAzureExtensionOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureExtension)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureExtensionOutput) ToStatefulNodeAzureExtensionOutput() StatefulNodeAzureExtensionOutput {
+	return o
+}
+
+func (o StatefulNodeAzureExtensionOutput) ToStatefulNodeAzureExtensionOutputWithContext(ctx context.Context) StatefulNodeAzureExtensionOutput {
+	return o
+}
+
+func (o StatefulNodeAzureExtensionOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureExtension) string { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureExtensionOutput) MinorVersionAutoUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureExtension) bool { return v.MinorVersionAutoUpgrade }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureExtensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureExtension) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureExtensionOutput) ProtectedSettings() pulumi.MapOutput {
+	return o.ApplyT(func(v StatefulNodeAzureExtension) map[string]interface{} { return v.ProtectedSettings }).(pulumi.MapOutput)
+}
+
+func (o StatefulNodeAzureExtensionOutput) PublicSettings() pulumi.MapOutput {
+	return o.ApplyT(func(v StatefulNodeAzureExtension) map[string]interface{} { return v.PublicSettings }).(pulumi.MapOutput)
+}
+
+func (o StatefulNodeAzureExtensionOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureExtension) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureExtensionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureExtension) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureExtension)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureExtensionArrayOutput) ToStatefulNodeAzureExtensionArrayOutput() StatefulNodeAzureExtensionArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureExtensionArrayOutput) ToStatefulNodeAzureExtensionArrayOutputWithContext(ctx context.Context) StatefulNodeAzureExtensionArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureExtensionArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureExtension {
+		return vs[0].([]StatefulNodeAzureExtension)[vs[1].(int)]
+	}).(StatefulNodeAzureExtensionOutput)
+}
+
+type StatefulNodeAzureHealth struct {
+	AutoHealing       bool     `pulumi:"autoHealing"`
+	GracePeriod       *int     `pulumi:"gracePeriod"`
+	HealthCheckTypes  []string `pulumi:"healthCheckTypes"`
+	UnhealthyDuration *int     `pulumi:"unhealthyDuration"`
+}
+
+// StatefulNodeAzureHealthInput is an input type that accepts StatefulNodeAzureHealthArgs and StatefulNodeAzureHealthOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureHealthInput` via:
+//
+//          StatefulNodeAzureHealthArgs{...}
+type StatefulNodeAzureHealthInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureHealthOutput() StatefulNodeAzureHealthOutput
+	ToStatefulNodeAzureHealthOutputWithContext(context.Context) StatefulNodeAzureHealthOutput
+}
+
+type StatefulNodeAzureHealthArgs struct {
+	AutoHealing       pulumi.BoolInput        `pulumi:"autoHealing"`
+	GracePeriod       pulumi.IntPtrInput      `pulumi:"gracePeriod"`
+	HealthCheckTypes  pulumi.StringArrayInput `pulumi:"healthCheckTypes"`
+	UnhealthyDuration pulumi.IntPtrInput      `pulumi:"unhealthyDuration"`
+}
+
+func (StatefulNodeAzureHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureHealth)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureHealthArgs) ToStatefulNodeAzureHealthOutput() StatefulNodeAzureHealthOutput {
+	return i.ToStatefulNodeAzureHealthOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureHealthArgs) ToStatefulNodeAzureHealthOutputWithContext(ctx context.Context) StatefulNodeAzureHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureHealthOutput)
+}
+
+func (i StatefulNodeAzureHealthArgs) ToStatefulNodeAzureHealthPtrOutput() StatefulNodeAzureHealthPtrOutput {
+	return i.ToStatefulNodeAzureHealthPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureHealthArgs) ToStatefulNodeAzureHealthPtrOutputWithContext(ctx context.Context) StatefulNodeAzureHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureHealthOutput).ToStatefulNodeAzureHealthPtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureHealthPtrInput is an input type that accepts StatefulNodeAzureHealthArgs, StatefulNodeAzureHealthPtr and StatefulNodeAzureHealthPtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureHealthPtrInput` via:
+//
+//          StatefulNodeAzureHealthArgs{...}
+//
+//  or:
+//
+//          nil
+type StatefulNodeAzureHealthPtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureHealthPtrOutput() StatefulNodeAzureHealthPtrOutput
+	ToStatefulNodeAzureHealthPtrOutputWithContext(context.Context) StatefulNodeAzureHealthPtrOutput
+}
+
+type statefulNodeAzureHealthPtrType StatefulNodeAzureHealthArgs
+
+func StatefulNodeAzureHealthPtr(v *StatefulNodeAzureHealthArgs) StatefulNodeAzureHealthPtrInput {
+	return (*statefulNodeAzureHealthPtrType)(v)
+}
+
+func (*statefulNodeAzureHealthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureHealth)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureHealthPtrType) ToStatefulNodeAzureHealthPtrOutput() StatefulNodeAzureHealthPtrOutput {
+	return i.ToStatefulNodeAzureHealthPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureHealthPtrType) ToStatefulNodeAzureHealthPtrOutputWithContext(ctx context.Context) StatefulNodeAzureHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureHealthPtrOutput)
+}
+
+type StatefulNodeAzureHealthOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureHealth)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureHealthOutput) ToStatefulNodeAzureHealthOutput() StatefulNodeAzureHealthOutput {
+	return o
+}
+
+func (o StatefulNodeAzureHealthOutput) ToStatefulNodeAzureHealthOutputWithContext(ctx context.Context) StatefulNodeAzureHealthOutput {
+	return o
+}
+
+func (o StatefulNodeAzureHealthOutput) ToStatefulNodeAzureHealthPtrOutput() StatefulNodeAzureHealthPtrOutput {
+	return o.ToStatefulNodeAzureHealthPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureHealthOutput) ToStatefulNodeAzureHealthPtrOutputWithContext(ctx context.Context) StatefulNodeAzureHealthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureHealth) *StatefulNodeAzureHealth {
+		return &v
+	}).(StatefulNodeAzureHealthPtrOutput)
+}
+
+func (o StatefulNodeAzureHealthOutput) AutoHealing() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureHealth) bool { return v.AutoHealing }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureHealthOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureHealth) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureHealthOutput) HealthCheckTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureHealth) []string { return v.HealthCheckTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureHealthOutput) UnhealthyDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureHealth) *int { return v.UnhealthyDuration }).(pulumi.IntPtrOutput)
+}
+
+type StatefulNodeAzureHealthPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureHealthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureHealth)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureHealthPtrOutput) ToStatefulNodeAzureHealthPtrOutput() StatefulNodeAzureHealthPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureHealthPtrOutput) ToStatefulNodeAzureHealthPtrOutputWithContext(ctx context.Context) StatefulNodeAzureHealthPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureHealthPtrOutput) Elem() StatefulNodeAzureHealthOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureHealth) StatefulNodeAzureHealth {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureHealth
+		return ret
+	}).(StatefulNodeAzureHealthOutput)
+}
+
+func (o StatefulNodeAzureHealthPtrOutput) AutoHealing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureHealth) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoHealing
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureHealthPtrOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureHealth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriod
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureHealthPtrOutput) HealthCheckTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureHealth) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureHealthPtrOutput) UnhealthyDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureHealth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UnhealthyDuration
+	}).(pulumi.IntPtrOutput)
+}
+
+type StatefulNodeAzureImage struct {
+	CustomImages      []StatefulNodeAzureImageCustomImage      `pulumi:"customImages"`
+	Galleries         []StatefulNodeAzureImageGallery          `pulumi:"galleries"`
+	MarketplaceImages []StatefulNodeAzureImageMarketplaceImage `pulumi:"marketplaceImages"`
+}
+
+// StatefulNodeAzureImageInput is an input type that accepts StatefulNodeAzureImageArgs and StatefulNodeAzureImageOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureImageInput` via:
+//
+//          StatefulNodeAzureImageArgs{...}
+type StatefulNodeAzureImageInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureImageOutput() StatefulNodeAzureImageOutput
+	ToStatefulNodeAzureImageOutputWithContext(context.Context) StatefulNodeAzureImageOutput
+}
+
+type StatefulNodeAzureImageArgs struct {
+	CustomImages      StatefulNodeAzureImageCustomImageArrayInput      `pulumi:"customImages"`
+	Galleries         StatefulNodeAzureImageGalleryArrayInput          `pulumi:"galleries"`
+	MarketplaceImages StatefulNodeAzureImageMarketplaceImageArrayInput `pulumi:"marketplaceImages"`
+}
+
+func (StatefulNodeAzureImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureImage)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureImageArgs) ToStatefulNodeAzureImageOutput() StatefulNodeAzureImageOutput {
+	return i.ToStatefulNodeAzureImageOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureImageArgs) ToStatefulNodeAzureImageOutputWithContext(ctx context.Context) StatefulNodeAzureImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageOutput)
+}
+
+func (i StatefulNodeAzureImageArgs) ToStatefulNodeAzureImagePtrOutput() StatefulNodeAzureImagePtrOutput {
+	return i.ToStatefulNodeAzureImagePtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureImageArgs) ToStatefulNodeAzureImagePtrOutputWithContext(ctx context.Context) StatefulNodeAzureImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageOutput).ToStatefulNodeAzureImagePtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureImagePtrInput is an input type that accepts StatefulNodeAzureImageArgs, StatefulNodeAzureImagePtr and StatefulNodeAzureImagePtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureImagePtrInput` via:
+//
+//          StatefulNodeAzureImageArgs{...}
+//
+//  or:
+//
+//          nil
+type StatefulNodeAzureImagePtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureImagePtrOutput() StatefulNodeAzureImagePtrOutput
+	ToStatefulNodeAzureImagePtrOutputWithContext(context.Context) StatefulNodeAzureImagePtrOutput
+}
+
+type statefulNodeAzureImagePtrType StatefulNodeAzureImageArgs
+
+func StatefulNodeAzureImagePtr(v *StatefulNodeAzureImageArgs) StatefulNodeAzureImagePtrInput {
+	return (*statefulNodeAzureImagePtrType)(v)
+}
+
+func (*statefulNodeAzureImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureImage)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureImagePtrType) ToStatefulNodeAzureImagePtrOutput() StatefulNodeAzureImagePtrOutput {
+	return i.ToStatefulNodeAzureImagePtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureImagePtrType) ToStatefulNodeAzureImagePtrOutputWithContext(ctx context.Context) StatefulNodeAzureImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImagePtrOutput)
+}
+
+type StatefulNodeAzureImageOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureImage)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureImageOutput) ToStatefulNodeAzureImageOutput() StatefulNodeAzureImageOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageOutput) ToStatefulNodeAzureImageOutputWithContext(ctx context.Context) StatefulNodeAzureImageOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageOutput) ToStatefulNodeAzureImagePtrOutput() StatefulNodeAzureImagePtrOutput {
+	return o.ToStatefulNodeAzureImagePtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureImageOutput) ToStatefulNodeAzureImagePtrOutputWithContext(ctx context.Context) StatefulNodeAzureImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureImage) *StatefulNodeAzureImage {
+		return &v
+	}).(StatefulNodeAzureImagePtrOutput)
+}
+
+func (o StatefulNodeAzureImageOutput) CustomImages() StatefulNodeAzureImageCustomImageArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImage) []StatefulNodeAzureImageCustomImage { return v.CustomImages }).(StatefulNodeAzureImageCustomImageArrayOutput)
+}
+
+func (o StatefulNodeAzureImageOutput) Galleries() StatefulNodeAzureImageGalleryArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImage) []StatefulNodeAzureImageGallery { return v.Galleries }).(StatefulNodeAzureImageGalleryArrayOutput)
+}
+
+func (o StatefulNodeAzureImageOutput) MarketplaceImages() StatefulNodeAzureImageMarketplaceImageArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImage) []StatefulNodeAzureImageMarketplaceImage { return v.MarketplaceImages }).(StatefulNodeAzureImageMarketplaceImageArrayOutput)
+}
+
+type StatefulNodeAzureImagePtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureImage)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureImagePtrOutput) ToStatefulNodeAzureImagePtrOutput() StatefulNodeAzureImagePtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImagePtrOutput) ToStatefulNodeAzureImagePtrOutputWithContext(ctx context.Context) StatefulNodeAzureImagePtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImagePtrOutput) Elem() StatefulNodeAzureImageOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureImage) StatefulNodeAzureImage {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureImage
+		return ret
+	}).(StatefulNodeAzureImageOutput)
+}
+
+func (o StatefulNodeAzureImagePtrOutput) CustomImages() StatefulNodeAzureImageCustomImageArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureImage) []StatefulNodeAzureImageCustomImage {
+		if v == nil {
+			return nil
+		}
+		return v.CustomImages
+	}).(StatefulNodeAzureImageCustomImageArrayOutput)
+}
+
+func (o StatefulNodeAzureImagePtrOutput) Galleries() StatefulNodeAzureImageGalleryArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureImage) []StatefulNodeAzureImageGallery {
+		if v == nil {
+			return nil
+		}
+		return v.Galleries
+	}).(StatefulNodeAzureImageGalleryArrayOutput)
+}
+
+func (o StatefulNodeAzureImagePtrOutput) MarketplaceImages() StatefulNodeAzureImageMarketplaceImageArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureImage) []StatefulNodeAzureImageMarketplaceImage {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceImages
+	}).(StatefulNodeAzureImageMarketplaceImageArrayOutput)
+}
+
+type StatefulNodeAzureImageCustomImage struct {
+	CustomImageResourceGroupName string `pulumi:"customImageResourceGroupName"`
+	Name                         string `pulumi:"name"`
+}
+
+// StatefulNodeAzureImageCustomImageInput is an input type that accepts StatefulNodeAzureImageCustomImageArgs and StatefulNodeAzureImageCustomImageOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureImageCustomImageInput` via:
+//
+//          StatefulNodeAzureImageCustomImageArgs{...}
+type StatefulNodeAzureImageCustomImageInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureImageCustomImageOutput() StatefulNodeAzureImageCustomImageOutput
+	ToStatefulNodeAzureImageCustomImageOutputWithContext(context.Context) StatefulNodeAzureImageCustomImageOutput
+}
+
+type StatefulNodeAzureImageCustomImageArgs struct {
+	CustomImageResourceGroupName pulumi.StringInput `pulumi:"customImageResourceGroupName"`
+	Name                         pulumi.StringInput `pulumi:"name"`
+}
+
+func (StatefulNodeAzureImageCustomImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureImageCustomImage)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureImageCustomImageArgs) ToStatefulNodeAzureImageCustomImageOutput() StatefulNodeAzureImageCustomImageOutput {
+	return i.ToStatefulNodeAzureImageCustomImageOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureImageCustomImageArgs) ToStatefulNodeAzureImageCustomImageOutputWithContext(ctx context.Context) StatefulNodeAzureImageCustomImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageCustomImageOutput)
+}
+
+// StatefulNodeAzureImageCustomImageArrayInput is an input type that accepts StatefulNodeAzureImageCustomImageArray and StatefulNodeAzureImageCustomImageArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureImageCustomImageArrayInput` via:
+//
+//          StatefulNodeAzureImageCustomImageArray{ StatefulNodeAzureImageCustomImageArgs{...} }
+type StatefulNodeAzureImageCustomImageArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureImageCustomImageArrayOutput() StatefulNodeAzureImageCustomImageArrayOutput
+	ToStatefulNodeAzureImageCustomImageArrayOutputWithContext(context.Context) StatefulNodeAzureImageCustomImageArrayOutput
+}
+
+type StatefulNodeAzureImageCustomImageArray []StatefulNodeAzureImageCustomImageInput
+
+func (StatefulNodeAzureImageCustomImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureImageCustomImage)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureImageCustomImageArray) ToStatefulNodeAzureImageCustomImageArrayOutput() StatefulNodeAzureImageCustomImageArrayOutput {
+	return i.ToStatefulNodeAzureImageCustomImageArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureImageCustomImageArray) ToStatefulNodeAzureImageCustomImageArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImageCustomImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageCustomImageArrayOutput)
+}
+
+type StatefulNodeAzureImageCustomImageOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureImageCustomImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureImageCustomImage)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureImageCustomImageOutput) ToStatefulNodeAzureImageCustomImageOutput() StatefulNodeAzureImageCustomImageOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageCustomImageOutput) ToStatefulNodeAzureImageCustomImageOutputWithContext(ctx context.Context) StatefulNodeAzureImageCustomImageOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageCustomImageOutput) CustomImageResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageCustomImage) string { return v.CustomImageResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureImageCustomImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageCustomImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureImageCustomImageArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureImageCustomImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureImageCustomImage)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureImageCustomImageArrayOutput) ToStatefulNodeAzureImageCustomImageArrayOutput() StatefulNodeAzureImageCustomImageArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageCustomImageArrayOutput) ToStatefulNodeAzureImageCustomImageArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImageCustomImageArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageCustomImageArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureImageCustomImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureImageCustomImage {
+		return vs[0].([]StatefulNodeAzureImageCustomImage)[vs[1].(int)]
+	}).(StatefulNodeAzureImageCustomImageOutput)
+}
+
+type StatefulNodeAzureImageGallery struct {
+	GalleryName              string `pulumi:"galleryName"`
+	GalleryResourceGroupName string `pulumi:"galleryResourceGroupName"`
+	ImageName                string `pulumi:"imageName"`
+	VersionName              string `pulumi:"versionName"`
+}
+
+// StatefulNodeAzureImageGalleryInput is an input type that accepts StatefulNodeAzureImageGalleryArgs and StatefulNodeAzureImageGalleryOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureImageGalleryInput` via:
+//
+//          StatefulNodeAzureImageGalleryArgs{...}
+type StatefulNodeAzureImageGalleryInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureImageGalleryOutput() StatefulNodeAzureImageGalleryOutput
+	ToStatefulNodeAzureImageGalleryOutputWithContext(context.Context) StatefulNodeAzureImageGalleryOutput
+}
+
+type StatefulNodeAzureImageGalleryArgs struct {
+	GalleryName              pulumi.StringInput `pulumi:"galleryName"`
+	GalleryResourceGroupName pulumi.StringInput `pulumi:"galleryResourceGroupName"`
+	ImageName                pulumi.StringInput `pulumi:"imageName"`
+	VersionName              pulumi.StringInput `pulumi:"versionName"`
+}
+
+func (StatefulNodeAzureImageGalleryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureImageGallery)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureImageGalleryArgs) ToStatefulNodeAzureImageGalleryOutput() StatefulNodeAzureImageGalleryOutput {
+	return i.ToStatefulNodeAzureImageGalleryOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureImageGalleryArgs) ToStatefulNodeAzureImageGalleryOutputWithContext(ctx context.Context) StatefulNodeAzureImageGalleryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageGalleryOutput)
+}
+
+// StatefulNodeAzureImageGalleryArrayInput is an input type that accepts StatefulNodeAzureImageGalleryArray and StatefulNodeAzureImageGalleryArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureImageGalleryArrayInput` via:
+//
+//          StatefulNodeAzureImageGalleryArray{ StatefulNodeAzureImageGalleryArgs{...} }
+type StatefulNodeAzureImageGalleryArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureImageGalleryArrayOutput() StatefulNodeAzureImageGalleryArrayOutput
+	ToStatefulNodeAzureImageGalleryArrayOutputWithContext(context.Context) StatefulNodeAzureImageGalleryArrayOutput
+}
+
+type StatefulNodeAzureImageGalleryArray []StatefulNodeAzureImageGalleryInput
+
+func (StatefulNodeAzureImageGalleryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureImageGallery)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureImageGalleryArray) ToStatefulNodeAzureImageGalleryArrayOutput() StatefulNodeAzureImageGalleryArrayOutput {
+	return i.ToStatefulNodeAzureImageGalleryArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureImageGalleryArray) ToStatefulNodeAzureImageGalleryArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImageGalleryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageGalleryArrayOutput)
+}
+
+type StatefulNodeAzureImageGalleryOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureImageGalleryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureImageGallery)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureImageGalleryOutput) ToStatefulNodeAzureImageGalleryOutput() StatefulNodeAzureImageGalleryOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageGalleryOutput) ToStatefulNodeAzureImageGalleryOutputWithContext(ctx context.Context) StatefulNodeAzureImageGalleryOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageGalleryOutput) GalleryName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageGallery) string { return v.GalleryName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureImageGalleryOutput) GalleryResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageGallery) string { return v.GalleryResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureImageGalleryOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageGallery) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureImageGalleryOutput) VersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageGallery) string { return v.VersionName }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureImageGalleryArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureImageGalleryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureImageGallery)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureImageGalleryArrayOutput) ToStatefulNodeAzureImageGalleryArrayOutput() StatefulNodeAzureImageGalleryArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageGalleryArrayOutput) ToStatefulNodeAzureImageGalleryArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImageGalleryArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageGalleryArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureImageGalleryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureImageGallery {
+		return vs[0].([]StatefulNodeAzureImageGallery)[vs[1].(int)]
+	}).(StatefulNodeAzureImageGalleryOutput)
+}
+
+type StatefulNodeAzureImageMarketplaceImage struct {
+	Offer     string `pulumi:"offer"`
+	Publisher string `pulumi:"publisher"`
+	Sku       string `pulumi:"sku"`
+	Version   string `pulumi:"version"`
+}
+
+// StatefulNodeAzureImageMarketplaceImageInput is an input type that accepts StatefulNodeAzureImageMarketplaceImageArgs and StatefulNodeAzureImageMarketplaceImageOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureImageMarketplaceImageInput` via:
+//
+//          StatefulNodeAzureImageMarketplaceImageArgs{...}
+type StatefulNodeAzureImageMarketplaceImageInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureImageMarketplaceImageOutput() StatefulNodeAzureImageMarketplaceImageOutput
+	ToStatefulNodeAzureImageMarketplaceImageOutputWithContext(context.Context) StatefulNodeAzureImageMarketplaceImageOutput
+}
+
+type StatefulNodeAzureImageMarketplaceImageArgs struct {
+	Offer     pulumi.StringInput `pulumi:"offer"`
+	Publisher pulumi.StringInput `pulumi:"publisher"`
+	Sku       pulumi.StringInput `pulumi:"sku"`
+	Version   pulumi.StringInput `pulumi:"version"`
+}
+
+func (StatefulNodeAzureImageMarketplaceImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureImageMarketplaceImage)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureImageMarketplaceImageArgs) ToStatefulNodeAzureImageMarketplaceImageOutput() StatefulNodeAzureImageMarketplaceImageOutput {
+	return i.ToStatefulNodeAzureImageMarketplaceImageOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureImageMarketplaceImageArgs) ToStatefulNodeAzureImageMarketplaceImageOutputWithContext(ctx context.Context) StatefulNodeAzureImageMarketplaceImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageMarketplaceImageOutput)
+}
+
+// StatefulNodeAzureImageMarketplaceImageArrayInput is an input type that accepts StatefulNodeAzureImageMarketplaceImageArray and StatefulNodeAzureImageMarketplaceImageArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureImageMarketplaceImageArrayInput` via:
+//
+//          StatefulNodeAzureImageMarketplaceImageArray{ StatefulNodeAzureImageMarketplaceImageArgs{...} }
+type StatefulNodeAzureImageMarketplaceImageArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureImageMarketplaceImageArrayOutput() StatefulNodeAzureImageMarketplaceImageArrayOutput
+	ToStatefulNodeAzureImageMarketplaceImageArrayOutputWithContext(context.Context) StatefulNodeAzureImageMarketplaceImageArrayOutput
+}
+
+type StatefulNodeAzureImageMarketplaceImageArray []StatefulNodeAzureImageMarketplaceImageInput
+
+func (StatefulNodeAzureImageMarketplaceImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureImageMarketplaceImage)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureImageMarketplaceImageArray) ToStatefulNodeAzureImageMarketplaceImageArrayOutput() StatefulNodeAzureImageMarketplaceImageArrayOutput {
+	return i.ToStatefulNodeAzureImageMarketplaceImageArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureImageMarketplaceImageArray) ToStatefulNodeAzureImageMarketplaceImageArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImageMarketplaceImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageMarketplaceImageArrayOutput)
+}
+
+type StatefulNodeAzureImageMarketplaceImageOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureImageMarketplaceImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureImageMarketplaceImage)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureImageMarketplaceImageOutput) ToStatefulNodeAzureImageMarketplaceImageOutput() StatefulNodeAzureImageMarketplaceImageOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageMarketplaceImageOutput) ToStatefulNodeAzureImageMarketplaceImageOutputWithContext(ctx context.Context) StatefulNodeAzureImageMarketplaceImageOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageMarketplaceImageOutput) Offer() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageMarketplaceImage) string { return v.Offer }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureImageMarketplaceImageOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageMarketplaceImage) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureImageMarketplaceImageOutput) Sku() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageMarketplaceImage) string { return v.Sku }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureImageMarketplaceImageOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImageMarketplaceImage) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureImageMarketplaceImageArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureImageMarketplaceImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureImageMarketplaceImage)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureImageMarketplaceImageArrayOutput) ToStatefulNodeAzureImageMarketplaceImageArrayOutput() StatefulNodeAzureImageMarketplaceImageArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageMarketplaceImageArrayOutput) ToStatefulNodeAzureImageMarketplaceImageArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImageMarketplaceImageArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImageMarketplaceImageArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureImageMarketplaceImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureImageMarketplaceImage {
+		return vs[0].([]StatefulNodeAzureImageMarketplaceImage)[vs[1].(int)]
+	}).(StatefulNodeAzureImageMarketplaceImageOutput)
+}
+
+type StatefulNodeAzureImportVm struct {
+	DrainingTimeout        *int   `pulumi:"drainingTimeout"`
+	OriginalVmName         string `pulumi:"originalVmName"`
+	ResourceGroupName      string `pulumi:"resourceGroupName"`
+	ResourcesRetentionTime *int   `pulumi:"resourcesRetentionTime"`
+}
+
+// StatefulNodeAzureImportVmInput is an input type that accepts StatefulNodeAzureImportVmArgs and StatefulNodeAzureImportVmOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureImportVmInput` via:
+//
+//          StatefulNodeAzureImportVmArgs{...}
+type StatefulNodeAzureImportVmInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureImportVmOutput() StatefulNodeAzureImportVmOutput
+	ToStatefulNodeAzureImportVmOutputWithContext(context.Context) StatefulNodeAzureImportVmOutput
+}
+
+type StatefulNodeAzureImportVmArgs struct {
+	DrainingTimeout        pulumi.IntPtrInput `pulumi:"drainingTimeout"`
+	OriginalVmName         pulumi.StringInput `pulumi:"originalVmName"`
+	ResourceGroupName      pulumi.StringInput `pulumi:"resourceGroupName"`
+	ResourcesRetentionTime pulumi.IntPtrInput `pulumi:"resourcesRetentionTime"`
+}
+
+func (StatefulNodeAzureImportVmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureImportVm)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureImportVmArgs) ToStatefulNodeAzureImportVmOutput() StatefulNodeAzureImportVmOutput {
+	return i.ToStatefulNodeAzureImportVmOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureImportVmArgs) ToStatefulNodeAzureImportVmOutputWithContext(ctx context.Context) StatefulNodeAzureImportVmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImportVmOutput)
+}
+
+// StatefulNodeAzureImportVmArrayInput is an input type that accepts StatefulNodeAzureImportVmArray and StatefulNodeAzureImportVmArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureImportVmArrayInput` via:
+//
+//          StatefulNodeAzureImportVmArray{ StatefulNodeAzureImportVmArgs{...} }
+type StatefulNodeAzureImportVmArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureImportVmArrayOutput() StatefulNodeAzureImportVmArrayOutput
+	ToStatefulNodeAzureImportVmArrayOutputWithContext(context.Context) StatefulNodeAzureImportVmArrayOutput
+}
+
+type StatefulNodeAzureImportVmArray []StatefulNodeAzureImportVmInput
+
+func (StatefulNodeAzureImportVmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureImportVm)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureImportVmArray) ToStatefulNodeAzureImportVmArrayOutput() StatefulNodeAzureImportVmArrayOutput {
+	return i.ToStatefulNodeAzureImportVmArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureImportVmArray) ToStatefulNodeAzureImportVmArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImportVmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImportVmArrayOutput)
+}
+
+type StatefulNodeAzureImportVmOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureImportVmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureImportVm)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureImportVmOutput) ToStatefulNodeAzureImportVmOutput() StatefulNodeAzureImportVmOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImportVmOutput) ToStatefulNodeAzureImportVmOutputWithContext(ctx context.Context) StatefulNodeAzureImportVmOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImportVmOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImportVm) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureImportVmOutput) OriginalVmName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImportVm) string { return v.OriginalVmName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureImportVmOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImportVm) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureImportVmOutput) ResourcesRetentionTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureImportVm) *int { return v.ResourcesRetentionTime }).(pulumi.IntPtrOutput)
+}
+
+type StatefulNodeAzureImportVmArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureImportVmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureImportVm)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureImportVmArrayOutput) ToStatefulNodeAzureImportVmArrayOutput() StatefulNodeAzureImportVmArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImportVmArrayOutput) ToStatefulNodeAzureImportVmArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImportVmArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureImportVmArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureImportVmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureImportVm {
+		return vs[0].([]StatefulNodeAzureImportVm)[vs[1].(int)]
+	}).(StatefulNodeAzureImportVmOutput)
+}
+
+type StatefulNodeAzureLoadBalancer struct {
+	BackendPoolNames  []string `pulumi:"backendPoolNames"`
+	Name              string   `pulumi:"name"`
+	ResourceGroupName string   `pulumi:"resourceGroupName"`
+	Sku               *string  `pulumi:"sku"`
+	Type              string   `pulumi:"type"`
+}
+
+// StatefulNodeAzureLoadBalancerInput is an input type that accepts StatefulNodeAzureLoadBalancerArgs and StatefulNodeAzureLoadBalancerOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureLoadBalancerInput` via:
+//
+//          StatefulNodeAzureLoadBalancerArgs{...}
+type StatefulNodeAzureLoadBalancerInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureLoadBalancerOutput() StatefulNodeAzureLoadBalancerOutput
+	ToStatefulNodeAzureLoadBalancerOutputWithContext(context.Context) StatefulNodeAzureLoadBalancerOutput
+}
+
+type StatefulNodeAzureLoadBalancerArgs struct {
+	BackendPoolNames  pulumi.StringArrayInput `pulumi:"backendPoolNames"`
+	Name              pulumi.StringInput      `pulumi:"name"`
+	ResourceGroupName pulumi.StringInput      `pulumi:"resourceGroupName"`
+	Sku               pulumi.StringPtrInput   `pulumi:"sku"`
+	Type              pulumi.StringInput      `pulumi:"type"`
+}
+
+func (StatefulNodeAzureLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureLoadBalancer)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureLoadBalancerArgs) ToStatefulNodeAzureLoadBalancerOutput() StatefulNodeAzureLoadBalancerOutput {
+	return i.ToStatefulNodeAzureLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureLoadBalancerArgs) ToStatefulNodeAzureLoadBalancerOutputWithContext(ctx context.Context) StatefulNodeAzureLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureLoadBalancerOutput)
+}
+
+// StatefulNodeAzureLoadBalancerArrayInput is an input type that accepts StatefulNodeAzureLoadBalancerArray and StatefulNodeAzureLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureLoadBalancerArrayInput` via:
+//
+//          StatefulNodeAzureLoadBalancerArray{ StatefulNodeAzureLoadBalancerArgs{...} }
+type StatefulNodeAzureLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureLoadBalancerArrayOutput() StatefulNodeAzureLoadBalancerArrayOutput
+	ToStatefulNodeAzureLoadBalancerArrayOutputWithContext(context.Context) StatefulNodeAzureLoadBalancerArrayOutput
+}
+
+type StatefulNodeAzureLoadBalancerArray []StatefulNodeAzureLoadBalancerInput
+
+func (StatefulNodeAzureLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureLoadBalancer)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureLoadBalancerArray) ToStatefulNodeAzureLoadBalancerArrayOutput() StatefulNodeAzureLoadBalancerArrayOutput {
+	return i.ToStatefulNodeAzureLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureLoadBalancerArray) ToStatefulNodeAzureLoadBalancerArrayOutputWithContext(ctx context.Context) StatefulNodeAzureLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureLoadBalancerArrayOutput)
+}
+
+type StatefulNodeAzureLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureLoadBalancer)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureLoadBalancerOutput) ToStatefulNodeAzureLoadBalancerOutput() StatefulNodeAzureLoadBalancerOutput {
+	return o
+}
+
+func (o StatefulNodeAzureLoadBalancerOutput) ToStatefulNodeAzureLoadBalancerOutputWithContext(ctx context.Context) StatefulNodeAzureLoadBalancerOutput {
+	return o
+}
+
+func (o StatefulNodeAzureLoadBalancerOutput) BackendPoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureLoadBalancer) []string { return v.BackendPoolNames }).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureLoadBalancerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureLoadBalancer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureLoadBalancerOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureLoadBalancer) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureLoadBalancerOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureLoadBalancer) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureLoadBalancerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureLoadBalancer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureLoadBalancer)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureLoadBalancerArrayOutput) ToStatefulNodeAzureLoadBalancerArrayOutput() StatefulNodeAzureLoadBalancerArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureLoadBalancerArrayOutput) ToStatefulNodeAzureLoadBalancerArrayOutputWithContext(ctx context.Context) StatefulNodeAzureLoadBalancerArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureLoadBalancerArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureLoadBalancer {
+		return vs[0].([]StatefulNodeAzureLoadBalancer)[vs[1].(int)]
+	}).(StatefulNodeAzureLoadBalancerOutput)
+}
+
+type StatefulNodeAzureLogin struct {
+	Password     *string `pulumi:"password"`
+	SshPublicKey *string `pulumi:"sshPublicKey"`
+	UserName     string  `pulumi:"userName"`
+}
+
+// StatefulNodeAzureLoginInput is an input type that accepts StatefulNodeAzureLoginArgs and StatefulNodeAzureLoginOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureLoginInput` via:
+//
+//          StatefulNodeAzureLoginArgs{...}
+type StatefulNodeAzureLoginInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureLoginOutput() StatefulNodeAzureLoginOutput
+	ToStatefulNodeAzureLoginOutputWithContext(context.Context) StatefulNodeAzureLoginOutput
+}
+
+type StatefulNodeAzureLoginArgs struct {
+	Password     pulumi.StringPtrInput `pulumi:"password"`
+	SshPublicKey pulumi.StringPtrInput `pulumi:"sshPublicKey"`
+	UserName     pulumi.StringInput    `pulumi:"userName"`
+}
+
+func (StatefulNodeAzureLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureLogin)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureLoginArgs) ToStatefulNodeAzureLoginOutput() StatefulNodeAzureLoginOutput {
+	return i.ToStatefulNodeAzureLoginOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureLoginArgs) ToStatefulNodeAzureLoginOutputWithContext(ctx context.Context) StatefulNodeAzureLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureLoginOutput)
+}
+
+func (i StatefulNodeAzureLoginArgs) ToStatefulNodeAzureLoginPtrOutput() StatefulNodeAzureLoginPtrOutput {
+	return i.ToStatefulNodeAzureLoginPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureLoginArgs) ToStatefulNodeAzureLoginPtrOutputWithContext(ctx context.Context) StatefulNodeAzureLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureLoginOutput).ToStatefulNodeAzureLoginPtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureLoginPtrInput is an input type that accepts StatefulNodeAzureLoginArgs, StatefulNodeAzureLoginPtr and StatefulNodeAzureLoginPtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureLoginPtrInput` via:
+//
+//          StatefulNodeAzureLoginArgs{...}
+//
+//  or:
+//
+//          nil
+type StatefulNodeAzureLoginPtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureLoginPtrOutput() StatefulNodeAzureLoginPtrOutput
+	ToStatefulNodeAzureLoginPtrOutputWithContext(context.Context) StatefulNodeAzureLoginPtrOutput
+}
+
+type statefulNodeAzureLoginPtrType StatefulNodeAzureLoginArgs
+
+func StatefulNodeAzureLoginPtr(v *StatefulNodeAzureLoginArgs) StatefulNodeAzureLoginPtrInput {
+	return (*statefulNodeAzureLoginPtrType)(v)
+}
+
+func (*statefulNodeAzureLoginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureLogin)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureLoginPtrType) ToStatefulNodeAzureLoginPtrOutput() StatefulNodeAzureLoginPtrOutput {
+	return i.ToStatefulNodeAzureLoginPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureLoginPtrType) ToStatefulNodeAzureLoginPtrOutputWithContext(ctx context.Context) StatefulNodeAzureLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureLoginPtrOutput)
+}
+
+type StatefulNodeAzureLoginOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureLogin)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureLoginOutput) ToStatefulNodeAzureLoginOutput() StatefulNodeAzureLoginOutput {
+	return o
+}
+
+func (o StatefulNodeAzureLoginOutput) ToStatefulNodeAzureLoginOutputWithContext(ctx context.Context) StatefulNodeAzureLoginOutput {
+	return o
+}
+
+func (o StatefulNodeAzureLoginOutput) ToStatefulNodeAzureLoginPtrOutput() StatefulNodeAzureLoginPtrOutput {
+	return o.ToStatefulNodeAzureLoginPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureLoginOutput) ToStatefulNodeAzureLoginPtrOutputWithContext(ctx context.Context) StatefulNodeAzureLoginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureLogin) *StatefulNodeAzureLogin {
+		return &v
+	}).(StatefulNodeAzureLoginPtrOutput)
+}
+
+func (o StatefulNodeAzureLoginOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureLogin) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureLoginOutput) SshPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureLogin) *string { return v.SshPublicKey }).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureLoginOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureLogin) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureLoginPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureLoginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureLogin)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureLoginPtrOutput) ToStatefulNodeAzureLoginPtrOutput() StatefulNodeAzureLoginPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureLoginPtrOutput) ToStatefulNodeAzureLoginPtrOutputWithContext(ctx context.Context) StatefulNodeAzureLoginPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureLoginPtrOutput) Elem() StatefulNodeAzureLoginOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureLogin) StatefulNodeAzureLogin {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureLogin
+		return ret
+	}).(StatefulNodeAzureLoginOutput)
+}
+
+func (o StatefulNodeAzureLoginPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureLogin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureLoginPtrOutput) SshPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureLogin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SshPublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureLoginPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureLogin) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatefulNodeAzureManagedServiceIdentity struct {
+	Name              string `pulumi:"name"`
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+// StatefulNodeAzureManagedServiceIdentityInput is an input type that accepts StatefulNodeAzureManagedServiceIdentityArgs and StatefulNodeAzureManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureManagedServiceIdentityInput` via:
+//
+//          StatefulNodeAzureManagedServiceIdentityArgs{...}
+type StatefulNodeAzureManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureManagedServiceIdentityOutput() StatefulNodeAzureManagedServiceIdentityOutput
+	ToStatefulNodeAzureManagedServiceIdentityOutputWithContext(context.Context) StatefulNodeAzureManagedServiceIdentityOutput
+}
+
+type StatefulNodeAzureManagedServiceIdentityArgs struct {
+	Name              pulumi.StringInput `pulumi:"name"`
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (StatefulNodeAzureManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureManagedServiceIdentityArgs) ToStatefulNodeAzureManagedServiceIdentityOutput() StatefulNodeAzureManagedServiceIdentityOutput {
+	return i.ToStatefulNodeAzureManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureManagedServiceIdentityArgs) ToStatefulNodeAzureManagedServiceIdentityOutputWithContext(ctx context.Context) StatefulNodeAzureManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureManagedServiceIdentityOutput)
+}
+
+// StatefulNodeAzureManagedServiceIdentityArrayInput is an input type that accepts StatefulNodeAzureManagedServiceIdentityArray and StatefulNodeAzureManagedServiceIdentityArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureManagedServiceIdentityArrayInput` via:
+//
+//          StatefulNodeAzureManagedServiceIdentityArray{ StatefulNodeAzureManagedServiceIdentityArgs{...} }
+type StatefulNodeAzureManagedServiceIdentityArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureManagedServiceIdentityArrayOutput() StatefulNodeAzureManagedServiceIdentityArrayOutput
+	ToStatefulNodeAzureManagedServiceIdentityArrayOutputWithContext(context.Context) StatefulNodeAzureManagedServiceIdentityArrayOutput
+}
+
+type StatefulNodeAzureManagedServiceIdentityArray []StatefulNodeAzureManagedServiceIdentityInput
+
+func (StatefulNodeAzureManagedServiceIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureManagedServiceIdentityArray) ToStatefulNodeAzureManagedServiceIdentityArrayOutput() StatefulNodeAzureManagedServiceIdentityArrayOutput {
+	return i.ToStatefulNodeAzureManagedServiceIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureManagedServiceIdentityArray) ToStatefulNodeAzureManagedServiceIdentityArrayOutputWithContext(ctx context.Context) StatefulNodeAzureManagedServiceIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureManagedServiceIdentityArrayOutput)
+}
+
+type StatefulNodeAzureManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureManagedServiceIdentityOutput) ToStatefulNodeAzureManagedServiceIdentityOutput() StatefulNodeAzureManagedServiceIdentityOutput {
+	return o
+}
+
+func (o StatefulNodeAzureManagedServiceIdentityOutput) ToStatefulNodeAzureManagedServiceIdentityOutputWithContext(ctx context.Context) StatefulNodeAzureManagedServiceIdentityOutput {
+	return o
+}
+
+func (o StatefulNodeAzureManagedServiceIdentityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureManagedServiceIdentity) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureManagedServiceIdentityOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureManagedServiceIdentity) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureManagedServiceIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureManagedServiceIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureManagedServiceIdentityArrayOutput) ToStatefulNodeAzureManagedServiceIdentityArrayOutput() StatefulNodeAzureManagedServiceIdentityArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureManagedServiceIdentityArrayOutput) ToStatefulNodeAzureManagedServiceIdentityArrayOutputWithContext(ctx context.Context) StatefulNodeAzureManagedServiceIdentityArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureManagedServiceIdentityArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureManagedServiceIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureManagedServiceIdentity {
+		return vs[0].([]StatefulNodeAzureManagedServiceIdentity)[vs[1].(int)]
+	}).(StatefulNodeAzureManagedServiceIdentityOutput)
+}
+
+type StatefulNodeAzureNetwork struct {
+	NetworkInterfaces        []StatefulNodeAzureNetworkNetworkInterface `pulumi:"networkInterfaces"`
+	NetworkResourceGroupName string                                     `pulumi:"networkResourceGroupName"`
+	VirtualNetworkName       string                                     `pulumi:"virtualNetworkName"`
+}
+
+// StatefulNodeAzureNetworkInput is an input type that accepts StatefulNodeAzureNetworkArgs and StatefulNodeAzureNetworkOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkInput` via:
+//
+//          StatefulNodeAzureNetworkArgs{...}
+type StatefulNodeAzureNetworkInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkOutput() StatefulNodeAzureNetworkOutput
+	ToStatefulNodeAzureNetworkOutputWithContext(context.Context) StatefulNodeAzureNetworkOutput
+}
+
+type StatefulNodeAzureNetworkArgs struct {
+	NetworkInterfaces        StatefulNodeAzureNetworkNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	NetworkResourceGroupName pulumi.StringInput                                 `pulumi:"networkResourceGroupName"`
+	VirtualNetworkName       pulumi.StringInput                                 `pulumi:"virtualNetworkName"`
+}
+
+func (StatefulNodeAzureNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetwork)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkArgs) ToStatefulNodeAzureNetworkOutput() StatefulNodeAzureNetworkOutput {
+	return i.ToStatefulNodeAzureNetworkOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkArgs) ToStatefulNodeAzureNetworkOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkOutput)
+}
+
+func (i StatefulNodeAzureNetworkArgs) ToStatefulNodeAzureNetworkPtrOutput() StatefulNodeAzureNetworkPtrOutput {
+	return i.ToStatefulNodeAzureNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkArgs) ToStatefulNodeAzureNetworkPtrOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkOutput).ToStatefulNodeAzureNetworkPtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureNetworkPtrInput is an input type that accepts StatefulNodeAzureNetworkArgs, StatefulNodeAzureNetworkPtr and StatefulNodeAzureNetworkPtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkPtrInput` via:
+//
+//          StatefulNodeAzureNetworkArgs{...}
+//
+//  or:
+//
+//          nil
+type StatefulNodeAzureNetworkPtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkPtrOutput() StatefulNodeAzureNetworkPtrOutput
+	ToStatefulNodeAzureNetworkPtrOutputWithContext(context.Context) StatefulNodeAzureNetworkPtrOutput
+}
+
+type statefulNodeAzureNetworkPtrType StatefulNodeAzureNetworkArgs
+
+func StatefulNodeAzureNetworkPtr(v *StatefulNodeAzureNetworkArgs) StatefulNodeAzureNetworkPtrInput {
+	return (*statefulNodeAzureNetworkPtrType)(v)
+}
+
+func (*statefulNodeAzureNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureNetwork)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureNetworkPtrType) ToStatefulNodeAzureNetworkPtrOutput() StatefulNodeAzureNetworkPtrOutput {
+	return i.ToStatefulNodeAzureNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureNetworkPtrType) ToStatefulNodeAzureNetworkPtrOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkPtrOutput)
+}
+
+type StatefulNodeAzureNetworkOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetwork)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkOutput) ToStatefulNodeAzureNetworkOutput() StatefulNodeAzureNetworkOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkOutput) ToStatefulNodeAzureNetworkOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkOutput) ToStatefulNodeAzureNetworkPtrOutput() StatefulNodeAzureNetworkPtrOutput {
+	return o.ToStatefulNodeAzureNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureNetworkOutput) ToStatefulNodeAzureNetworkPtrOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureNetwork) *StatefulNodeAzureNetwork {
+		return &v
+	}).(StatefulNodeAzureNetworkPtrOutput)
+}
+
+func (o StatefulNodeAzureNetworkOutput) NetworkInterfaces() StatefulNodeAzureNetworkNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetwork) []StatefulNodeAzureNetworkNetworkInterface {
+		return v.NetworkInterfaces
+	}).(StatefulNodeAzureNetworkNetworkInterfaceArrayOutput)
+}
+
+func (o StatefulNodeAzureNetworkOutput) NetworkResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetwork) string { return v.NetworkResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureNetworkOutput) VirtualNetworkName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetwork) string { return v.VirtualNetworkName }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureNetwork)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkPtrOutput) ToStatefulNodeAzureNetworkPtrOutput() StatefulNodeAzureNetworkPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkPtrOutput) ToStatefulNodeAzureNetworkPtrOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkPtrOutput) Elem() StatefulNodeAzureNetworkOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureNetwork) StatefulNodeAzureNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureNetwork
+		return ret
+	}).(StatefulNodeAzureNetworkOutput)
+}
+
+func (o StatefulNodeAzureNetworkPtrOutput) NetworkInterfaces() StatefulNodeAzureNetworkNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureNetwork) []StatefulNodeAzureNetworkNetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(StatefulNodeAzureNetworkNetworkInterfaceArrayOutput)
+}
+
+func (o StatefulNodeAzureNetworkPtrOutput) NetworkResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureNetworkPtrOutput) VirtualNetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualNetworkName
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterface struct {
+	AdditionalIpConfigurations []StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration `pulumi:"additionalIpConfigurations"`
+	ApplicationSecurityGroups  []StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup  `pulumi:"applicationSecurityGroups"`
+	AssignPublicIp             *bool                                                               `pulumi:"assignPublicIp"`
+	EnableIpForwarding         *bool                                                               `pulumi:"enableIpForwarding"`
+	IsPrimary                  bool                                                                `pulumi:"isPrimary"`
+	NetworkSecurityGroups      []StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup      `pulumi:"networkSecurityGroups"`
+	PrivateIpAddresses         []string                                                            `pulumi:"privateIpAddresses"`
+	PublicIpSku                *string                                                             `pulumi:"publicIpSku"`
+	PublicIps                  []StatefulNodeAzureNetworkNetworkInterfacePublicIp                  `pulumi:"publicIps"`
+	SubnetName                 string                                                              `pulumi:"subnetName"`
+}
+
+// StatefulNodeAzureNetworkNetworkInterfaceInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceArgs and StatefulNodeAzureNetworkNetworkInterfaceOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceInput` via:
+//
+//          StatefulNodeAzureNetworkNetworkInterfaceArgs{...}
+type StatefulNodeAzureNetworkNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkNetworkInterfaceOutput() StatefulNodeAzureNetworkNetworkInterfaceOutput
+	ToStatefulNodeAzureNetworkNetworkInterfaceOutputWithContext(context.Context) StatefulNodeAzureNetworkNetworkInterfaceOutput
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceArgs struct {
+	AdditionalIpConfigurations StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayInput `pulumi:"additionalIpConfigurations"`
+	ApplicationSecurityGroups  StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayInput  `pulumi:"applicationSecurityGroups"`
+	AssignPublicIp             pulumi.BoolPtrInput                                                         `pulumi:"assignPublicIp"`
+	EnableIpForwarding         pulumi.BoolPtrInput                                                         `pulumi:"enableIpForwarding"`
+	IsPrimary                  pulumi.BoolInput                                                            `pulumi:"isPrimary"`
+	NetworkSecurityGroups      StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayInput      `pulumi:"networkSecurityGroups"`
+	PrivateIpAddresses         pulumi.StringArrayInput                                                     `pulumi:"privateIpAddresses"`
+	PublicIpSku                pulumi.StringPtrInput                                                       `pulumi:"publicIpSku"`
+	PublicIps                  StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput                  `pulumi:"publicIps"`
+	SubnetName                 pulumi.StringInput                                                          `pulumi:"subnetName"`
+}
+
+func (StatefulNodeAzureNetworkNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterface)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceArgs) ToStatefulNodeAzureNetworkNetworkInterfaceOutput() StatefulNodeAzureNetworkNetworkInterfaceOutput {
+	return i.ToStatefulNodeAzureNetworkNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceArgs) ToStatefulNodeAzureNetworkNetworkInterfaceOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceOutput)
+}
+
+// StatefulNodeAzureNetworkNetworkInterfaceArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceArray and StatefulNodeAzureNetworkNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceArrayInput` via:
+//
+//          StatefulNodeAzureNetworkNetworkInterfaceArray{ StatefulNodeAzureNetworkNetworkInterfaceArgs{...} }
+type StatefulNodeAzureNetworkNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkNetworkInterfaceArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceArrayOutput
+	ToStatefulNodeAzureNetworkNetworkInterfaceArrayOutputWithContext(context.Context) StatefulNodeAzureNetworkNetworkInterfaceArrayOutput
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceArray []StatefulNodeAzureNetworkNetworkInterfaceInput
+
+func (StatefulNodeAzureNetworkNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureNetworkNetworkInterface)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceArray) ToStatefulNodeAzureNetworkNetworkInterfaceArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceArrayOutput {
+	return i.ToStatefulNodeAzureNetworkNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceArray) ToStatefulNodeAzureNetworkNetworkInterfaceArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceArrayOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterface)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) ToStatefulNodeAzureNetworkNetworkInterfaceOutput() StatefulNodeAzureNetworkNetworkInterfaceOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) ToStatefulNodeAzureNetworkNetworkInterfaceOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) AdditionalIpConfigurations() StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterface) []StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration {
+		return v.AdditionalIpConfigurations
+	}).(StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) ApplicationSecurityGroups() StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterface) []StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup {
+		return v.ApplicationSecurityGroups
+	}).(StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) AssignPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterface) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) EnableIpForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterface) *bool { return v.EnableIpForwarding }).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) IsPrimary() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterface) bool { return v.IsPrimary }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) NetworkSecurityGroups() StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterface) []StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup {
+		return v.NetworkSecurityGroups
+	}).(StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) PrivateIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterface) []string { return v.PrivateIpAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) PublicIpSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterface) *string { return v.PublicIpSku }).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) PublicIps() StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterface) []StatefulNodeAzureNetworkNetworkInterfacePublicIp {
+		return v.PublicIps
+	}).(StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) SubnetName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterface) string { return v.SubnetName }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureNetworkNetworkInterface)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureNetworkNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureNetworkNetworkInterface {
+		return vs[0].([]StatefulNodeAzureNetworkNetworkInterface)[vs[1].(int)]
+	}).(StatefulNodeAzureNetworkNetworkInterfaceOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration struct {
+	Name                    string `pulumi:"name"`
+	PrivateIpAddressVersion string `pulumi:"privateIpAddressVersion"`
+}
+
+// StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs and StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationInput` via:
+//
+//          StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs{...}
+type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput() StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput
+	ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutputWithContext(context.Context) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs struct {
+	Name                    pulumi.StringInput `pulumi:"name"`
+	PrivateIpAddressVersion pulumi.StringInput `pulumi:"privateIpAddressVersion"`
+}
+
+func (StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs) ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput() StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput {
+	return i.ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs) ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput)
+}
+
+// StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray and StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayInput` via:
+//
+//          StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray{ StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs{...} }
+type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput
+	ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutputWithContext(context.Context) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray []StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationInput
+
+func (StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray) ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput {
+	return i.ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray) ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput) ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput() StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput) ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput) PrivateIpAddressVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration) string {
+		return v.PrivateIpAddressVersion
+	}).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration {
+		return vs[0].([]StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration)[vs[1].(int)]
+	}).(StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup struct {
+	Name                     string `pulumi:"name"`
+	NetworkResourceGroupName string `pulumi:"networkResourceGroupName"`
+}
+
+// StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs and StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupInput` via:
+//
+//          StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs{...}
+type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput() StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput
+	ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(context.Context) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs struct {
+	Name                     pulumi.StringInput `pulumi:"name"`
+	NetworkResourceGroupName pulumi.StringInput `pulumi:"networkResourceGroupName"`
+}
+
+func (StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs) ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput() StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput {
+	return i.ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs) ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput)
+}
+
+// StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray and StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayInput` via:
+//
+//          StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray{ StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs{...} }
+type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput
+	ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(context.Context) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray []StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupInput
+
+func (StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray) ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
+	return i.ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray) ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput) ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput() StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput) ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput) NetworkResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup) string {
+		return v.NetworkResourceGroupName
+	}).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup {
+		return vs[0].([]StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup)[vs[1].(int)]
+	}).(StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup struct {
+	Name                     *string `pulumi:"name"`
+	NetworkResourceGroupName *string `pulumi:"networkResourceGroupName"`
+}
+
+// StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs and StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupInput` via:
+//
+//          StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs{...}
+type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput() StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput
+	ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutputWithContext(context.Context) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs struct {
+	Name                     pulumi.StringPtrInput `pulumi:"name"`
+	NetworkResourceGroupName pulumi.StringPtrInput `pulumi:"networkResourceGroupName"`
+}
+
+func (StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs) ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput() StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput {
+	return i.ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs) ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput)
+}
+
+// StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray and StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayInput` via:
+//
+//          StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray{ StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs{...} }
+type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput
+	ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutputWithContext(context.Context) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray []StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupInput
+
+func (StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray) ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput {
+	return i.ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray) ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput) ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput() StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput) ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput) NetworkResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup) *string {
+		return v.NetworkResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput() StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup {
+		return vs[0].([]StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup)[vs[1].(int)]
+	}).(StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfacePublicIp struct {
+	Name                     string `pulumi:"name"`
+	NetworkResourceGroupName string `pulumi:"networkResourceGroupName"`
+}
+
+// StatefulNodeAzureNetworkNetworkInterfacePublicIpInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs and StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfacePublicIpInput` via:
+//
+//          StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs{...}
+type StatefulNodeAzureNetworkNetworkInterfacePublicIpInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkNetworkInterfacePublicIpOutput() StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput
+	ToStatefulNodeAzureNetworkNetworkInterfacePublicIpOutputWithContext(context.Context) StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput
+}
+
+type StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs struct {
+	Name                     pulumi.StringInput `pulumi:"name"`
+	NetworkResourceGroupName pulumi.StringInput `pulumi:"networkResourceGroupName"`
+}
+
+func (StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfacePublicIp)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs) ToStatefulNodeAzureNetworkNetworkInterfacePublicIpOutput() StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput {
+	return i.ToStatefulNodeAzureNetworkNetworkInterfacePublicIpOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs) ToStatefulNodeAzureNetworkNetworkInterfacePublicIpOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput)
+}
+
+// StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfacePublicIpArray and StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput` via:
+//
+//          StatefulNodeAzureNetworkNetworkInterfacePublicIpArray{ StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs{...} }
+type StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput() StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput
+	ToStatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutputWithContext(context.Context) StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput
+}
+
+type StatefulNodeAzureNetworkNetworkInterfacePublicIpArray []StatefulNodeAzureNetworkNetworkInterfacePublicIpInput
+
+func (StatefulNodeAzureNetworkNetworkInterfacePublicIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureNetworkNetworkInterfacePublicIp)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfacePublicIpArray) ToStatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput() StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput {
+	return i.ToStatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureNetworkNetworkInterfacePublicIpArray) ToStatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfacePublicIp)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput) ToStatefulNodeAzureNetworkNetworkInterfacePublicIpOutput() StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput) ToStatefulNodeAzureNetworkNetworkInterfacePublicIpOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterfacePublicIp) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput) NetworkResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureNetworkNetworkInterfacePublicIp) string { return v.NetworkResourceGroupName }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureNetworkNetworkInterfacePublicIp)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput() StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureNetworkNetworkInterfacePublicIp {
+		return vs[0].([]StatefulNodeAzureNetworkNetworkInterfacePublicIp)[vs[1].(int)]
+	}).(StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput)
+}
+
+type StatefulNodeAzureOsDisk struct {
+	SizeGb *int   `pulumi:"sizeGb"`
+	Type   string `pulumi:"type"`
+}
+
+// StatefulNodeAzureOsDiskInput is an input type that accepts StatefulNodeAzureOsDiskArgs and StatefulNodeAzureOsDiskOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureOsDiskInput` via:
+//
+//          StatefulNodeAzureOsDiskArgs{...}
+type StatefulNodeAzureOsDiskInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureOsDiskOutput() StatefulNodeAzureOsDiskOutput
+	ToStatefulNodeAzureOsDiskOutputWithContext(context.Context) StatefulNodeAzureOsDiskOutput
+}
+
+type StatefulNodeAzureOsDiskArgs struct {
+	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
+	Type   pulumi.StringInput `pulumi:"type"`
+}
+
+func (StatefulNodeAzureOsDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureOsDisk)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureOsDiskArgs) ToStatefulNodeAzureOsDiskOutput() StatefulNodeAzureOsDiskOutput {
+	return i.ToStatefulNodeAzureOsDiskOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureOsDiskArgs) ToStatefulNodeAzureOsDiskOutputWithContext(ctx context.Context) StatefulNodeAzureOsDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureOsDiskOutput)
+}
+
+func (i StatefulNodeAzureOsDiskArgs) ToStatefulNodeAzureOsDiskPtrOutput() StatefulNodeAzureOsDiskPtrOutput {
+	return i.ToStatefulNodeAzureOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureOsDiskArgs) ToStatefulNodeAzureOsDiskPtrOutputWithContext(ctx context.Context) StatefulNodeAzureOsDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureOsDiskOutput).ToStatefulNodeAzureOsDiskPtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureOsDiskPtrInput is an input type that accepts StatefulNodeAzureOsDiskArgs, StatefulNodeAzureOsDiskPtr and StatefulNodeAzureOsDiskPtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureOsDiskPtrInput` via:
+//
+//          StatefulNodeAzureOsDiskArgs{...}
+//
+//  or:
+//
+//          nil
+type StatefulNodeAzureOsDiskPtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureOsDiskPtrOutput() StatefulNodeAzureOsDiskPtrOutput
+	ToStatefulNodeAzureOsDiskPtrOutputWithContext(context.Context) StatefulNodeAzureOsDiskPtrOutput
+}
+
+type statefulNodeAzureOsDiskPtrType StatefulNodeAzureOsDiskArgs
+
+func StatefulNodeAzureOsDiskPtr(v *StatefulNodeAzureOsDiskArgs) StatefulNodeAzureOsDiskPtrInput {
+	return (*statefulNodeAzureOsDiskPtrType)(v)
+}
+
+func (*statefulNodeAzureOsDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureOsDisk)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureOsDiskPtrType) ToStatefulNodeAzureOsDiskPtrOutput() StatefulNodeAzureOsDiskPtrOutput {
+	return i.ToStatefulNodeAzureOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureOsDiskPtrType) ToStatefulNodeAzureOsDiskPtrOutputWithContext(ctx context.Context) StatefulNodeAzureOsDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureOsDiskPtrOutput)
+}
+
+type StatefulNodeAzureOsDiskOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureOsDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureOsDisk)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureOsDiskOutput) ToStatefulNodeAzureOsDiskOutput() StatefulNodeAzureOsDiskOutput {
+	return o
+}
+
+func (o StatefulNodeAzureOsDiskOutput) ToStatefulNodeAzureOsDiskOutputWithContext(ctx context.Context) StatefulNodeAzureOsDiskOutput {
+	return o
+}
+
+func (o StatefulNodeAzureOsDiskOutput) ToStatefulNodeAzureOsDiskPtrOutput() StatefulNodeAzureOsDiskPtrOutput {
+	return o.ToStatefulNodeAzureOsDiskPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureOsDiskOutput) ToStatefulNodeAzureOsDiskPtrOutputWithContext(ctx context.Context) StatefulNodeAzureOsDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureOsDisk) *StatefulNodeAzureOsDisk {
+		return &v
+	}).(StatefulNodeAzureOsDiskPtrOutput)
+}
+
+func (o StatefulNodeAzureOsDiskOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureOsDisk) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureOsDiskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureOsDisk) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureOsDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureOsDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureOsDisk)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureOsDiskPtrOutput) ToStatefulNodeAzureOsDiskPtrOutput() StatefulNodeAzureOsDiskPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureOsDiskPtrOutput) ToStatefulNodeAzureOsDiskPtrOutputWithContext(ctx context.Context) StatefulNodeAzureOsDiskPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureOsDiskPtrOutput) Elem() StatefulNodeAzureOsDiskOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureOsDisk) StatefulNodeAzureOsDisk {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureOsDisk
+		return ret
+	}).(StatefulNodeAzureOsDiskOutput)
+}
+
+func (o StatefulNodeAzureOsDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureOsDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureOsDiskPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureOsDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatefulNodeAzureSchedulingTask struct {
+	CronExpression string `pulumi:"cronExpression"`
+	IsEnabled      bool   `pulumi:"isEnabled"`
+	Type           string `pulumi:"type"`
+}
+
+// StatefulNodeAzureSchedulingTaskInput is an input type that accepts StatefulNodeAzureSchedulingTaskArgs and StatefulNodeAzureSchedulingTaskOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSchedulingTaskInput` via:
+//
+//          StatefulNodeAzureSchedulingTaskArgs{...}
+type StatefulNodeAzureSchedulingTaskInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSchedulingTaskOutput() StatefulNodeAzureSchedulingTaskOutput
+	ToStatefulNodeAzureSchedulingTaskOutputWithContext(context.Context) StatefulNodeAzureSchedulingTaskOutput
+}
+
+type StatefulNodeAzureSchedulingTaskArgs struct {
+	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
+	IsEnabled      pulumi.BoolInput   `pulumi:"isEnabled"`
+	Type           pulumi.StringInput `pulumi:"type"`
+}
+
+func (StatefulNodeAzureSchedulingTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSchedulingTask)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSchedulingTaskArgs) ToStatefulNodeAzureSchedulingTaskOutput() StatefulNodeAzureSchedulingTaskOutput {
+	return i.ToStatefulNodeAzureSchedulingTaskOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSchedulingTaskArgs) ToStatefulNodeAzureSchedulingTaskOutputWithContext(ctx context.Context) StatefulNodeAzureSchedulingTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSchedulingTaskOutput)
+}
+
+// StatefulNodeAzureSchedulingTaskArrayInput is an input type that accepts StatefulNodeAzureSchedulingTaskArray and StatefulNodeAzureSchedulingTaskArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSchedulingTaskArrayInput` via:
+//
+//          StatefulNodeAzureSchedulingTaskArray{ StatefulNodeAzureSchedulingTaskArgs{...} }
+type StatefulNodeAzureSchedulingTaskArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSchedulingTaskArrayOutput() StatefulNodeAzureSchedulingTaskArrayOutput
+	ToStatefulNodeAzureSchedulingTaskArrayOutputWithContext(context.Context) StatefulNodeAzureSchedulingTaskArrayOutput
+}
+
+type StatefulNodeAzureSchedulingTaskArray []StatefulNodeAzureSchedulingTaskInput
+
+func (StatefulNodeAzureSchedulingTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureSchedulingTask)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSchedulingTaskArray) ToStatefulNodeAzureSchedulingTaskArrayOutput() StatefulNodeAzureSchedulingTaskArrayOutput {
+	return i.ToStatefulNodeAzureSchedulingTaskArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSchedulingTaskArray) ToStatefulNodeAzureSchedulingTaskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSchedulingTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSchedulingTaskArrayOutput)
+}
+
+type StatefulNodeAzureSchedulingTaskOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSchedulingTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSchedulingTask)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSchedulingTaskOutput) ToStatefulNodeAzureSchedulingTaskOutput() StatefulNodeAzureSchedulingTaskOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSchedulingTaskOutput) ToStatefulNodeAzureSchedulingTaskOutputWithContext(ctx context.Context) StatefulNodeAzureSchedulingTaskOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSchedulingTaskOutput) CronExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSchedulingTask) string { return v.CronExpression }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureSchedulingTaskOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSchedulingTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureSchedulingTaskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSchedulingTask) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureSchedulingTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSchedulingTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureSchedulingTask)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSchedulingTaskArrayOutput) ToStatefulNodeAzureSchedulingTaskArrayOutput() StatefulNodeAzureSchedulingTaskArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSchedulingTaskArrayOutput) ToStatefulNodeAzureSchedulingTaskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSchedulingTaskArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSchedulingTaskArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureSchedulingTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureSchedulingTask {
+		return vs[0].([]StatefulNodeAzureSchedulingTask)[vs[1].(int)]
+	}).(StatefulNodeAzureSchedulingTaskOutput)
+}
+
+type StatefulNodeAzureSecret struct {
+	SourceVaults      []StatefulNodeAzureSecretSourceVault      `pulumi:"sourceVaults"`
+	VaultCertificates []StatefulNodeAzureSecretVaultCertificate `pulumi:"vaultCertificates"`
+}
+
+// StatefulNodeAzureSecretInput is an input type that accepts StatefulNodeAzureSecretArgs and StatefulNodeAzureSecretOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSecretInput` via:
+//
+//          StatefulNodeAzureSecretArgs{...}
+type StatefulNodeAzureSecretInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSecretOutput() StatefulNodeAzureSecretOutput
+	ToStatefulNodeAzureSecretOutputWithContext(context.Context) StatefulNodeAzureSecretOutput
+}
+
+type StatefulNodeAzureSecretArgs struct {
+	SourceVaults      StatefulNodeAzureSecretSourceVaultArrayInput      `pulumi:"sourceVaults"`
+	VaultCertificates StatefulNodeAzureSecretVaultCertificateArrayInput `pulumi:"vaultCertificates"`
+}
+
+func (StatefulNodeAzureSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSecret)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSecretArgs) ToStatefulNodeAzureSecretOutput() StatefulNodeAzureSecretOutput {
+	return i.ToStatefulNodeAzureSecretOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSecretArgs) ToStatefulNodeAzureSecretOutputWithContext(ctx context.Context) StatefulNodeAzureSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretOutput)
+}
+
+// StatefulNodeAzureSecretArrayInput is an input type that accepts StatefulNodeAzureSecretArray and StatefulNodeAzureSecretArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSecretArrayInput` via:
+//
+//          StatefulNodeAzureSecretArray{ StatefulNodeAzureSecretArgs{...} }
+type StatefulNodeAzureSecretArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSecretArrayOutput() StatefulNodeAzureSecretArrayOutput
+	ToStatefulNodeAzureSecretArrayOutputWithContext(context.Context) StatefulNodeAzureSecretArrayOutput
+}
+
+type StatefulNodeAzureSecretArray []StatefulNodeAzureSecretInput
+
+func (StatefulNodeAzureSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureSecret)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSecretArray) ToStatefulNodeAzureSecretArrayOutput() StatefulNodeAzureSecretArrayOutput {
+	return i.ToStatefulNodeAzureSecretArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSecretArray) ToStatefulNodeAzureSecretArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretArrayOutput)
+}
+
+type StatefulNodeAzureSecretOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSecret)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSecretOutput) ToStatefulNodeAzureSecretOutput() StatefulNodeAzureSecretOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretOutput) ToStatefulNodeAzureSecretOutputWithContext(ctx context.Context) StatefulNodeAzureSecretOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretOutput) SourceVaults() StatefulNodeAzureSecretSourceVaultArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecret) []StatefulNodeAzureSecretSourceVault { return v.SourceVaults }).(StatefulNodeAzureSecretSourceVaultArrayOutput)
+}
+
+func (o StatefulNodeAzureSecretOutput) VaultCertificates() StatefulNodeAzureSecretVaultCertificateArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecret) []StatefulNodeAzureSecretVaultCertificate { return v.VaultCertificates }).(StatefulNodeAzureSecretVaultCertificateArrayOutput)
+}
+
+type StatefulNodeAzureSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureSecret)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSecretArrayOutput) ToStatefulNodeAzureSecretArrayOutput() StatefulNodeAzureSecretArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretArrayOutput) ToStatefulNodeAzureSecretArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSecretArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureSecret {
+		return vs[0].([]StatefulNodeAzureSecret)[vs[1].(int)]
+	}).(StatefulNodeAzureSecretOutput)
+}
+
+type StatefulNodeAzureSecretSourceVault struct {
+	Name              string `pulumi:"name"`
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+// StatefulNodeAzureSecretSourceVaultInput is an input type that accepts StatefulNodeAzureSecretSourceVaultArgs and StatefulNodeAzureSecretSourceVaultOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSecretSourceVaultInput` via:
+//
+//          StatefulNodeAzureSecretSourceVaultArgs{...}
+type StatefulNodeAzureSecretSourceVaultInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSecretSourceVaultOutput() StatefulNodeAzureSecretSourceVaultOutput
+	ToStatefulNodeAzureSecretSourceVaultOutputWithContext(context.Context) StatefulNodeAzureSecretSourceVaultOutput
+}
+
+type StatefulNodeAzureSecretSourceVaultArgs struct {
+	Name              pulumi.StringInput `pulumi:"name"`
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (StatefulNodeAzureSecretSourceVaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSecretSourceVault)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSecretSourceVaultArgs) ToStatefulNodeAzureSecretSourceVaultOutput() StatefulNodeAzureSecretSourceVaultOutput {
+	return i.ToStatefulNodeAzureSecretSourceVaultOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSecretSourceVaultArgs) ToStatefulNodeAzureSecretSourceVaultOutputWithContext(ctx context.Context) StatefulNodeAzureSecretSourceVaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretSourceVaultOutput)
+}
+
+// StatefulNodeAzureSecretSourceVaultArrayInput is an input type that accepts StatefulNodeAzureSecretSourceVaultArray and StatefulNodeAzureSecretSourceVaultArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSecretSourceVaultArrayInput` via:
+//
+//          StatefulNodeAzureSecretSourceVaultArray{ StatefulNodeAzureSecretSourceVaultArgs{...} }
+type StatefulNodeAzureSecretSourceVaultArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSecretSourceVaultArrayOutput() StatefulNodeAzureSecretSourceVaultArrayOutput
+	ToStatefulNodeAzureSecretSourceVaultArrayOutputWithContext(context.Context) StatefulNodeAzureSecretSourceVaultArrayOutput
+}
+
+type StatefulNodeAzureSecretSourceVaultArray []StatefulNodeAzureSecretSourceVaultInput
+
+func (StatefulNodeAzureSecretSourceVaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureSecretSourceVault)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSecretSourceVaultArray) ToStatefulNodeAzureSecretSourceVaultArrayOutput() StatefulNodeAzureSecretSourceVaultArrayOutput {
+	return i.ToStatefulNodeAzureSecretSourceVaultArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSecretSourceVaultArray) ToStatefulNodeAzureSecretSourceVaultArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSecretSourceVaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretSourceVaultArrayOutput)
+}
+
+type StatefulNodeAzureSecretSourceVaultOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSecretSourceVaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSecretSourceVault)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSecretSourceVaultOutput) ToStatefulNodeAzureSecretSourceVaultOutput() StatefulNodeAzureSecretSourceVaultOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretSourceVaultOutput) ToStatefulNodeAzureSecretSourceVaultOutputWithContext(ctx context.Context) StatefulNodeAzureSecretSourceVaultOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretSourceVaultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecretSourceVault) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureSecretSourceVaultOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecretSourceVault) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureSecretSourceVaultArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSecretSourceVaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureSecretSourceVault)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSecretSourceVaultArrayOutput) ToStatefulNodeAzureSecretSourceVaultArrayOutput() StatefulNodeAzureSecretSourceVaultArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretSourceVaultArrayOutput) ToStatefulNodeAzureSecretSourceVaultArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSecretSourceVaultArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretSourceVaultArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureSecretSourceVaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureSecretSourceVault {
+		return vs[0].([]StatefulNodeAzureSecretSourceVault)[vs[1].(int)]
+	}).(StatefulNodeAzureSecretSourceVaultOutput)
+}
+
+type StatefulNodeAzureSecretVaultCertificate struct {
+	CertificateStore *string `pulumi:"certificateStore"`
+	CertificateUrl   *string `pulumi:"certificateUrl"`
+}
+
+// StatefulNodeAzureSecretVaultCertificateInput is an input type that accepts StatefulNodeAzureSecretVaultCertificateArgs and StatefulNodeAzureSecretVaultCertificateOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSecretVaultCertificateInput` via:
+//
+//          StatefulNodeAzureSecretVaultCertificateArgs{...}
+type StatefulNodeAzureSecretVaultCertificateInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSecretVaultCertificateOutput() StatefulNodeAzureSecretVaultCertificateOutput
+	ToStatefulNodeAzureSecretVaultCertificateOutputWithContext(context.Context) StatefulNodeAzureSecretVaultCertificateOutput
+}
+
+type StatefulNodeAzureSecretVaultCertificateArgs struct {
+	CertificateStore pulumi.StringPtrInput `pulumi:"certificateStore"`
+	CertificateUrl   pulumi.StringPtrInput `pulumi:"certificateUrl"`
+}
+
+func (StatefulNodeAzureSecretVaultCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSecretVaultCertificate)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSecretVaultCertificateArgs) ToStatefulNodeAzureSecretVaultCertificateOutput() StatefulNodeAzureSecretVaultCertificateOutput {
+	return i.ToStatefulNodeAzureSecretVaultCertificateOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSecretVaultCertificateArgs) ToStatefulNodeAzureSecretVaultCertificateOutputWithContext(ctx context.Context) StatefulNodeAzureSecretVaultCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretVaultCertificateOutput)
+}
+
+// StatefulNodeAzureSecretVaultCertificateArrayInput is an input type that accepts StatefulNodeAzureSecretVaultCertificateArray and StatefulNodeAzureSecretVaultCertificateArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSecretVaultCertificateArrayInput` via:
+//
+//          StatefulNodeAzureSecretVaultCertificateArray{ StatefulNodeAzureSecretVaultCertificateArgs{...} }
+type StatefulNodeAzureSecretVaultCertificateArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSecretVaultCertificateArrayOutput() StatefulNodeAzureSecretVaultCertificateArrayOutput
+	ToStatefulNodeAzureSecretVaultCertificateArrayOutputWithContext(context.Context) StatefulNodeAzureSecretVaultCertificateArrayOutput
+}
+
+type StatefulNodeAzureSecretVaultCertificateArray []StatefulNodeAzureSecretVaultCertificateInput
+
+func (StatefulNodeAzureSecretVaultCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureSecretVaultCertificate)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSecretVaultCertificateArray) ToStatefulNodeAzureSecretVaultCertificateArrayOutput() StatefulNodeAzureSecretVaultCertificateArrayOutput {
+	return i.ToStatefulNodeAzureSecretVaultCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSecretVaultCertificateArray) ToStatefulNodeAzureSecretVaultCertificateArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSecretVaultCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretVaultCertificateArrayOutput)
+}
+
+type StatefulNodeAzureSecretVaultCertificateOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSecretVaultCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSecretVaultCertificate)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSecretVaultCertificateOutput) ToStatefulNodeAzureSecretVaultCertificateOutput() StatefulNodeAzureSecretVaultCertificateOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretVaultCertificateOutput) ToStatefulNodeAzureSecretVaultCertificateOutputWithContext(ctx context.Context) StatefulNodeAzureSecretVaultCertificateOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretVaultCertificateOutput) CertificateStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecretVaultCertificate) *string { return v.CertificateStore }).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureSecretVaultCertificateOutput) CertificateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecretVaultCertificate) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
+}
+
+type StatefulNodeAzureSecretVaultCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSecretVaultCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureSecretVaultCertificate)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSecretVaultCertificateArrayOutput) ToStatefulNodeAzureSecretVaultCertificateArrayOutput() StatefulNodeAzureSecretVaultCertificateArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretVaultCertificateArrayOutput) ToStatefulNodeAzureSecretVaultCertificateArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSecretVaultCertificateArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecretVaultCertificateArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureSecretVaultCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureSecretVaultCertificate {
+		return vs[0].([]StatefulNodeAzureSecretVaultCertificate)[vs[1].(int)]
+	}).(StatefulNodeAzureSecretVaultCertificateOutput)
+}
+
+type StatefulNodeAzureSignal struct {
+	Timeout int    `pulumi:"timeout"`
+	Type    string `pulumi:"type"`
+}
+
+// StatefulNodeAzureSignalInput is an input type that accepts StatefulNodeAzureSignalArgs and StatefulNodeAzureSignalOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSignalInput` via:
+//
+//          StatefulNodeAzureSignalArgs{...}
+type StatefulNodeAzureSignalInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSignalOutput() StatefulNodeAzureSignalOutput
+	ToStatefulNodeAzureSignalOutputWithContext(context.Context) StatefulNodeAzureSignalOutput
+}
+
+type StatefulNodeAzureSignalArgs struct {
+	Timeout pulumi.IntInput    `pulumi:"timeout"`
+	Type    pulumi.StringInput `pulumi:"type"`
+}
+
+func (StatefulNodeAzureSignalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSignal)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSignalArgs) ToStatefulNodeAzureSignalOutput() StatefulNodeAzureSignalOutput {
+	return i.ToStatefulNodeAzureSignalOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSignalArgs) ToStatefulNodeAzureSignalOutputWithContext(ctx context.Context) StatefulNodeAzureSignalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSignalOutput)
+}
+
+// StatefulNodeAzureSignalArrayInput is an input type that accepts StatefulNodeAzureSignalArray and StatefulNodeAzureSignalArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSignalArrayInput` via:
+//
+//          StatefulNodeAzureSignalArray{ StatefulNodeAzureSignalArgs{...} }
+type StatefulNodeAzureSignalArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSignalArrayOutput() StatefulNodeAzureSignalArrayOutput
+	ToStatefulNodeAzureSignalArrayOutputWithContext(context.Context) StatefulNodeAzureSignalArrayOutput
+}
+
+type StatefulNodeAzureSignalArray []StatefulNodeAzureSignalInput
+
+func (StatefulNodeAzureSignalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureSignal)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSignalArray) ToStatefulNodeAzureSignalArrayOutput() StatefulNodeAzureSignalArrayOutput {
+	return i.ToStatefulNodeAzureSignalArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSignalArray) ToStatefulNodeAzureSignalArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSignalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSignalArrayOutput)
+}
+
+type StatefulNodeAzureSignalOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSignalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSignal)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSignalOutput) ToStatefulNodeAzureSignalOutput() StatefulNodeAzureSignalOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSignalOutput) ToStatefulNodeAzureSignalOutputWithContext(ctx context.Context) StatefulNodeAzureSignalOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSignalOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSignal) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+func (o StatefulNodeAzureSignalOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSignal) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureSignalArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSignalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureSignal)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSignalArrayOutput) ToStatefulNodeAzureSignalArrayOutput() StatefulNodeAzureSignalArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSignalArrayOutput) ToStatefulNodeAzureSignalArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSignalArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSignalArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureSignalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureSignal {
+		return vs[0].([]StatefulNodeAzureSignal)[vs[1].(int)]
+	}).(StatefulNodeAzureSignalOutput)
+}
+
+type StatefulNodeAzureStrategy struct {
+	DrainingTimeout     *int                                   `pulumi:"drainingTimeout"`
+	FallbackToOnDemand  bool                                   `pulumi:"fallbackToOnDemand"`
+	OptimizationWindows []string                               `pulumi:"optimizationWindows"`
+	PreferredLifeCycle  *string                                `pulumi:"preferredLifeCycle"`
+	RevertToSpot        *StatefulNodeAzureStrategyRevertToSpot `pulumi:"revertToSpot"`
+}
+
+// StatefulNodeAzureStrategyInput is an input type that accepts StatefulNodeAzureStrategyArgs and StatefulNodeAzureStrategyOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureStrategyInput` via:
+//
+//          StatefulNodeAzureStrategyArgs{...}
+type StatefulNodeAzureStrategyInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureStrategyOutput() StatefulNodeAzureStrategyOutput
+	ToStatefulNodeAzureStrategyOutputWithContext(context.Context) StatefulNodeAzureStrategyOutput
+}
+
+type StatefulNodeAzureStrategyArgs struct {
+	DrainingTimeout     pulumi.IntPtrInput                            `pulumi:"drainingTimeout"`
+	FallbackToOnDemand  pulumi.BoolInput                              `pulumi:"fallbackToOnDemand"`
+	OptimizationWindows pulumi.StringArrayInput                       `pulumi:"optimizationWindows"`
+	PreferredLifeCycle  pulumi.StringPtrInput                         `pulumi:"preferredLifeCycle"`
+	RevertToSpot        StatefulNodeAzureStrategyRevertToSpotPtrInput `pulumi:"revertToSpot"`
+}
+
+func (StatefulNodeAzureStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureStrategy)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureStrategyArgs) ToStatefulNodeAzureStrategyOutput() StatefulNodeAzureStrategyOutput {
+	return i.ToStatefulNodeAzureStrategyOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureStrategyArgs) ToStatefulNodeAzureStrategyOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyOutput)
+}
+
+func (i StatefulNodeAzureStrategyArgs) ToStatefulNodeAzureStrategyPtrOutput() StatefulNodeAzureStrategyPtrOutput {
+	return i.ToStatefulNodeAzureStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureStrategyArgs) ToStatefulNodeAzureStrategyPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyOutput).ToStatefulNodeAzureStrategyPtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureStrategyPtrInput is an input type that accepts StatefulNodeAzureStrategyArgs, StatefulNodeAzureStrategyPtr and StatefulNodeAzureStrategyPtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureStrategyPtrInput` via:
+//
+//          StatefulNodeAzureStrategyArgs{...}
+//
+//  or:
+//
+//          nil
+type StatefulNodeAzureStrategyPtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureStrategyPtrOutput() StatefulNodeAzureStrategyPtrOutput
+	ToStatefulNodeAzureStrategyPtrOutputWithContext(context.Context) StatefulNodeAzureStrategyPtrOutput
+}
+
+type statefulNodeAzureStrategyPtrType StatefulNodeAzureStrategyArgs
+
+func StatefulNodeAzureStrategyPtr(v *StatefulNodeAzureStrategyArgs) StatefulNodeAzureStrategyPtrInput {
+	return (*statefulNodeAzureStrategyPtrType)(v)
+}
+
+func (*statefulNodeAzureStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureStrategy)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureStrategyPtrType) ToStatefulNodeAzureStrategyPtrOutput() StatefulNodeAzureStrategyPtrOutput {
+	return i.ToStatefulNodeAzureStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureStrategyPtrType) ToStatefulNodeAzureStrategyPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyPtrOutput)
+}
+
+type StatefulNodeAzureStrategyOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureStrategy)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureStrategyOutput) ToStatefulNodeAzureStrategyOutput() StatefulNodeAzureStrategyOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyOutput) ToStatefulNodeAzureStrategyOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyOutput) ToStatefulNodeAzureStrategyPtrOutput() StatefulNodeAzureStrategyPtrOutput {
+	return o.ToStatefulNodeAzureStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureStrategyOutput) ToStatefulNodeAzureStrategyPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureStrategy) *StatefulNodeAzureStrategy {
+		return &v
+	}).(StatefulNodeAzureStrategyPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyOutput) FallbackToOnDemand() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategy) bool { return v.FallbackToOnDemand }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureStrategyOutput) OptimizationWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategy) []string { return v.OptimizationWindows }).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureStrategyOutput) PreferredLifeCycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategy) *string { return v.PreferredLifeCycle }).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyOutput) RevertToSpot() StatefulNodeAzureStrategyRevertToSpotPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategy) *StatefulNodeAzureStrategyRevertToSpot { return v.RevertToSpot }).(StatefulNodeAzureStrategyRevertToSpotPtrOutput)
+}
+
+type StatefulNodeAzureStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureStrategy)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) ToStatefulNodeAzureStrategyPtrOutput() StatefulNodeAzureStrategyPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) ToStatefulNodeAzureStrategyPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) Elem() StatefulNodeAzureStrategyOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) StatefulNodeAzureStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureStrategy
+		return ret
+	}).(StatefulNodeAzureStrategyOutput)
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DrainingTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) FallbackToOnDemand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.FallbackToOnDemand
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) OptimizationWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OptimizationWindows
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) PreferredLifeCycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredLifeCycle
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) RevertToSpot() StatefulNodeAzureStrategyRevertToSpotPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) *StatefulNodeAzureStrategyRevertToSpot {
+		if v == nil {
+			return nil
+		}
+		return v.RevertToSpot
+	}).(StatefulNodeAzureStrategyRevertToSpotPtrOutput)
+}
+
+type StatefulNodeAzureStrategyRevertToSpot struct {
+	PerformAt string `pulumi:"performAt"`
+}
+
+// StatefulNodeAzureStrategyRevertToSpotInput is an input type that accepts StatefulNodeAzureStrategyRevertToSpotArgs and StatefulNodeAzureStrategyRevertToSpotOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureStrategyRevertToSpotInput` via:
+//
+//          StatefulNodeAzureStrategyRevertToSpotArgs{...}
+type StatefulNodeAzureStrategyRevertToSpotInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureStrategyRevertToSpotOutput() StatefulNodeAzureStrategyRevertToSpotOutput
+	ToStatefulNodeAzureStrategyRevertToSpotOutputWithContext(context.Context) StatefulNodeAzureStrategyRevertToSpotOutput
+}
+
+type StatefulNodeAzureStrategyRevertToSpotArgs struct {
+	PerformAt pulumi.StringInput `pulumi:"performAt"`
+}
+
+func (StatefulNodeAzureStrategyRevertToSpotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureStrategyRevertToSpot)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureStrategyRevertToSpotArgs) ToStatefulNodeAzureStrategyRevertToSpotOutput() StatefulNodeAzureStrategyRevertToSpotOutput {
+	return i.ToStatefulNodeAzureStrategyRevertToSpotOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureStrategyRevertToSpotArgs) ToStatefulNodeAzureStrategyRevertToSpotOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyRevertToSpotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyRevertToSpotOutput)
+}
+
+func (i StatefulNodeAzureStrategyRevertToSpotArgs) ToStatefulNodeAzureStrategyRevertToSpotPtrOutput() StatefulNodeAzureStrategyRevertToSpotPtrOutput {
+	return i.ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureStrategyRevertToSpotArgs) ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyRevertToSpotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyRevertToSpotOutput).ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureStrategyRevertToSpotPtrInput is an input type that accepts StatefulNodeAzureStrategyRevertToSpotArgs, StatefulNodeAzureStrategyRevertToSpotPtr and StatefulNodeAzureStrategyRevertToSpotPtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureStrategyRevertToSpotPtrInput` via:
+//
+//          StatefulNodeAzureStrategyRevertToSpotArgs{...}
+//
+//  or:
+//
+//          nil
+type StatefulNodeAzureStrategyRevertToSpotPtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureStrategyRevertToSpotPtrOutput() StatefulNodeAzureStrategyRevertToSpotPtrOutput
+	ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(context.Context) StatefulNodeAzureStrategyRevertToSpotPtrOutput
+}
+
+type statefulNodeAzureStrategyRevertToSpotPtrType StatefulNodeAzureStrategyRevertToSpotArgs
+
+func StatefulNodeAzureStrategyRevertToSpotPtr(v *StatefulNodeAzureStrategyRevertToSpotArgs) StatefulNodeAzureStrategyRevertToSpotPtrInput {
+	return (*statefulNodeAzureStrategyRevertToSpotPtrType)(v)
+}
+
+func (*statefulNodeAzureStrategyRevertToSpotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureStrategyRevertToSpot)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureStrategyRevertToSpotPtrType) ToStatefulNodeAzureStrategyRevertToSpotPtrOutput() StatefulNodeAzureStrategyRevertToSpotPtrOutput {
+	return i.ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureStrategyRevertToSpotPtrType) ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyRevertToSpotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyRevertToSpotPtrOutput)
+}
+
+type StatefulNodeAzureStrategyRevertToSpotOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureStrategyRevertToSpotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureStrategyRevertToSpot)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureStrategyRevertToSpotOutput) ToStatefulNodeAzureStrategyRevertToSpotOutput() StatefulNodeAzureStrategyRevertToSpotOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyRevertToSpotOutput) ToStatefulNodeAzureStrategyRevertToSpotOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyRevertToSpotOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyRevertToSpotOutput) ToStatefulNodeAzureStrategyRevertToSpotPtrOutput() StatefulNodeAzureStrategyRevertToSpotPtrOutput {
+	return o.ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureStrategyRevertToSpotOutput) ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyRevertToSpotPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureStrategyRevertToSpot) *StatefulNodeAzureStrategyRevertToSpot {
+		return &v
+	}).(StatefulNodeAzureStrategyRevertToSpotPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyRevertToSpotOutput) PerformAt() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureStrategyRevertToSpotPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureStrategyRevertToSpotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureStrategyRevertToSpot)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureStrategyRevertToSpotPtrOutput) ToStatefulNodeAzureStrategyRevertToSpotPtrOutput() StatefulNodeAzureStrategyRevertToSpotPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyRevertToSpotPtrOutput) ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyRevertToSpotPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyRevertToSpotPtrOutput) Elem() StatefulNodeAzureStrategyRevertToSpotOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategyRevertToSpot) StatefulNodeAzureStrategyRevertToSpot {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureStrategyRevertToSpot
+		return ret
+	}).(StatefulNodeAzureStrategyRevertToSpotOutput)
+}
+
+func (o StatefulNodeAzureStrategyRevertToSpotPtrOutput) PerformAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategyRevertToSpot) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PerformAt
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatefulNodeAzureTag struct {
+	TagKey   string  `pulumi:"tagKey"`
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// StatefulNodeAzureTagInput is an input type that accepts StatefulNodeAzureTagArgs and StatefulNodeAzureTagOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureTagInput` via:
+//
+//          StatefulNodeAzureTagArgs{...}
+type StatefulNodeAzureTagInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureTagOutput() StatefulNodeAzureTagOutput
+	ToStatefulNodeAzureTagOutputWithContext(context.Context) StatefulNodeAzureTagOutput
+}
+
+type StatefulNodeAzureTagArgs struct {
+	TagKey   pulumi.StringInput    `pulumi:"tagKey"`
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (StatefulNodeAzureTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureTag)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureTagArgs) ToStatefulNodeAzureTagOutput() StatefulNodeAzureTagOutput {
+	return i.ToStatefulNodeAzureTagOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureTagArgs) ToStatefulNodeAzureTagOutputWithContext(ctx context.Context) StatefulNodeAzureTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureTagOutput)
+}
+
+// StatefulNodeAzureTagArrayInput is an input type that accepts StatefulNodeAzureTagArray and StatefulNodeAzureTagArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureTagArrayInput` via:
+//
+//          StatefulNodeAzureTagArray{ StatefulNodeAzureTagArgs{...} }
+type StatefulNodeAzureTagArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureTagArrayOutput() StatefulNodeAzureTagArrayOutput
+	ToStatefulNodeAzureTagArrayOutputWithContext(context.Context) StatefulNodeAzureTagArrayOutput
+}
+
+type StatefulNodeAzureTagArray []StatefulNodeAzureTagInput
+
+func (StatefulNodeAzureTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureTag)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureTagArray) ToStatefulNodeAzureTagArrayOutput() StatefulNodeAzureTagArrayOutput {
+	return i.ToStatefulNodeAzureTagArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureTagArray) ToStatefulNodeAzureTagArrayOutputWithContext(ctx context.Context) StatefulNodeAzureTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureTagArrayOutput)
+}
+
+type StatefulNodeAzureTagOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureTag)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureTagOutput) ToStatefulNodeAzureTagOutput() StatefulNodeAzureTagOutput {
+	return o
+}
+
+func (o StatefulNodeAzureTagOutput) ToStatefulNodeAzureTagOutputWithContext(ctx context.Context) StatefulNodeAzureTagOutput {
+	return o
+}
+
+func (o StatefulNodeAzureTagOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureTag) string { return v.TagKey }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureTagOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureTag) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type StatefulNodeAzureTagArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureTag)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureTagArrayOutput) ToStatefulNodeAzureTagArrayOutput() StatefulNodeAzureTagArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureTagArrayOutput) ToStatefulNodeAzureTagArrayOutputWithContext(ctx context.Context) StatefulNodeAzureTagArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureTagArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureTag {
+		return vs[0].([]StatefulNodeAzureTag)[vs[1].(int)]
+	}).(StatefulNodeAzureTagOutput)
+}
+
+type StatefulNodeAzureUpdateState struct {
+	State string `pulumi:"state"`
+}
+
+// StatefulNodeAzureUpdateStateInput is an input type that accepts StatefulNodeAzureUpdateStateArgs and StatefulNodeAzureUpdateStateOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureUpdateStateInput` via:
+//
+//          StatefulNodeAzureUpdateStateArgs{...}
+type StatefulNodeAzureUpdateStateInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureUpdateStateOutput() StatefulNodeAzureUpdateStateOutput
+	ToStatefulNodeAzureUpdateStateOutputWithContext(context.Context) StatefulNodeAzureUpdateStateOutput
+}
+
+type StatefulNodeAzureUpdateStateArgs struct {
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (StatefulNodeAzureUpdateStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureUpdateState)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureUpdateStateArgs) ToStatefulNodeAzureUpdateStateOutput() StatefulNodeAzureUpdateStateOutput {
+	return i.ToStatefulNodeAzureUpdateStateOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureUpdateStateArgs) ToStatefulNodeAzureUpdateStateOutputWithContext(ctx context.Context) StatefulNodeAzureUpdateStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureUpdateStateOutput)
+}
+
+// StatefulNodeAzureUpdateStateArrayInput is an input type that accepts StatefulNodeAzureUpdateStateArray and StatefulNodeAzureUpdateStateArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureUpdateStateArrayInput` via:
+//
+//          StatefulNodeAzureUpdateStateArray{ StatefulNodeAzureUpdateStateArgs{...} }
+type StatefulNodeAzureUpdateStateArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureUpdateStateArrayOutput() StatefulNodeAzureUpdateStateArrayOutput
+	ToStatefulNodeAzureUpdateStateArrayOutputWithContext(context.Context) StatefulNodeAzureUpdateStateArrayOutput
+}
+
+type StatefulNodeAzureUpdateStateArray []StatefulNodeAzureUpdateStateInput
+
+func (StatefulNodeAzureUpdateStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureUpdateState)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureUpdateStateArray) ToStatefulNodeAzureUpdateStateArrayOutput() StatefulNodeAzureUpdateStateArrayOutput {
+	return i.ToStatefulNodeAzureUpdateStateArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureUpdateStateArray) ToStatefulNodeAzureUpdateStateArrayOutputWithContext(ctx context.Context) StatefulNodeAzureUpdateStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureUpdateStateArrayOutput)
+}
+
+type StatefulNodeAzureUpdateStateOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureUpdateStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureUpdateState)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureUpdateStateOutput) ToStatefulNodeAzureUpdateStateOutput() StatefulNodeAzureUpdateStateOutput {
+	return o
+}
+
+func (o StatefulNodeAzureUpdateStateOutput) ToStatefulNodeAzureUpdateStateOutputWithContext(ctx context.Context) StatefulNodeAzureUpdateStateOutput {
+	return o
+}
+
+func (o StatefulNodeAzureUpdateStateOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureUpdateState) string { return v.State }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureUpdateStateArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureUpdateStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureUpdateState)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureUpdateStateArrayOutput) ToStatefulNodeAzureUpdateStateArrayOutput() StatefulNodeAzureUpdateStateArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureUpdateStateArrayOutput) ToStatefulNodeAzureUpdateStateArrayOutputWithContext(ctx context.Context) StatefulNodeAzureUpdateStateArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureUpdateStateArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureUpdateStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureUpdateState {
+		return vs[0].([]StatefulNodeAzureUpdateState)[vs[1].(int)]
+	}).(StatefulNodeAzureUpdateStateOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataIntegrationS3Input)(nil)).Elem(), DataIntegrationS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataIntegrationS3PtrInput)(nil)).Elem(), DataIntegrationS3Args{})
@@ -1811,6 +5590,68 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupAzureV3StrategyPtrInput)(nil)).Elem(), ElastigroupAzureV3StrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckInput)(nil)).Elem(), HealthCheckCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckCheckPtrInput)(nil)).Elem(), HealthCheckCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureAttachDataDiskInput)(nil)).Elem(), StatefulNodeAzureAttachDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureAttachDataDiskArrayInput)(nil)).Elem(), StatefulNodeAzureAttachDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureBootDiagnosticInput)(nil)).Elem(), StatefulNodeAzureBootDiagnosticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureBootDiagnosticArrayInput)(nil)).Elem(), StatefulNodeAzureBootDiagnosticArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureDataDiskInput)(nil)).Elem(), StatefulNodeAzureDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureDataDiskArrayInput)(nil)).Elem(), StatefulNodeAzureDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureDeleteInput)(nil)).Elem(), StatefulNodeAzureDeleteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureDeleteArrayInput)(nil)).Elem(), StatefulNodeAzureDeleteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureDetachDataDiskInput)(nil)).Elem(), StatefulNodeAzureDetachDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureDetachDataDiskArrayInput)(nil)).Elem(), StatefulNodeAzureDetachDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureExtensionInput)(nil)).Elem(), StatefulNodeAzureExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureExtensionArrayInput)(nil)).Elem(), StatefulNodeAzureExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureHealthInput)(nil)).Elem(), StatefulNodeAzureHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureHealthPtrInput)(nil)).Elem(), StatefulNodeAzureHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureImageInput)(nil)).Elem(), StatefulNodeAzureImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureImagePtrInput)(nil)).Elem(), StatefulNodeAzureImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureImageCustomImageInput)(nil)).Elem(), StatefulNodeAzureImageCustomImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureImageCustomImageArrayInput)(nil)).Elem(), StatefulNodeAzureImageCustomImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureImageGalleryInput)(nil)).Elem(), StatefulNodeAzureImageGalleryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureImageGalleryArrayInput)(nil)).Elem(), StatefulNodeAzureImageGalleryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureImageMarketplaceImageInput)(nil)).Elem(), StatefulNodeAzureImageMarketplaceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureImageMarketplaceImageArrayInput)(nil)).Elem(), StatefulNodeAzureImageMarketplaceImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureImportVmInput)(nil)).Elem(), StatefulNodeAzureImportVmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureImportVmArrayInput)(nil)).Elem(), StatefulNodeAzureImportVmArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureLoadBalancerInput)(nil)).Elem(), StatefulNodeAzureLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureLoadBalancerArrayInput)(nil)).Elem(), StatefulNodeAzureLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureLoginInput)(nil)).Elem(), StatefulNodeAzureLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureLoginPtrInput)(nil)).Elem(), StatefulNodeAzureLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureManagedServiceIdentityInput)(nil)).Elem(), StatefulNodeAzureManagedServiceIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureManagedServiceIdentityArrayInput)(nil)).Elem(), StatefulNodeAzureManagedServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkInput)(nil)).Elem(), StatefulNodeAzureNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkPtrInput)(nil)).Elem(), StatefulNodeAzureNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceArrayInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfacePublicIpInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfacePublicIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureOsDiskInput)(nil)).Elem(), StatefulNodeAzureOsDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureOsDiskPtrInput)(nil)).Elem(), StatefulNodeAzureOsDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSchedulingTaskInput)(nil)).Elem(), StatefulNodeAzureSchedulingTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSchedulingTaskArrayInput)(nil)).Elem(), StatefulNodeAzureSchedulingTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecretInput)(nil)).Elem(), StatefulNodeAzureSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecretArrayInput)(nil)).Elem(), StatefulNodeAzureSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecretSourceVaultInput)(nil)).Elem(), StatefulNodeAzureSecretSourceVaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecretSourceVaultArrayInput)(nil)).Elem(), StatefulNodeAzureSecretSourceVaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecretVaultCertificateInput)(nil)).Elem(), StatefulNodeAzureSecretVaultCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecretVaultCertificateArrayInput)(nil)).Elem(), StatefulNodeAzureSecretVaultCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSignalInput)(nil)).Elem(), StatefulNodeAzureSignalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSignalArrayInput)(nil)).Elem(), StatefulNodeAzureSignalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyInput)(nil)).Elem(), StatefulNodeAzureStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyPtrInput)(nil)).Elem(), StatefulNodeAzureStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyRevertToSpotInput)(nil)).Elem(), StatefulNodeAzureStrategyRevertToSpotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyRevertToSpotPtrInput)(nil)).Elem(), StatefulNodeAzureStrategyRevertToSpotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureTagInput)(nil)).Elem(), StatefulNodeAzureTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureTagArrayInput)(nil)).Elem(), StatefulNodeAzureTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureUpdateStateInput)(nil)).Elem(), StatefulNodeAzureUpdateStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureUpdateStateArrayInput)(nil)).Elem(), StatefulNodeAzureUpdateStateArray{})
 	pulumi.RegisterOutputType(DataIntegrationS3Output{})
 	pulumi.RegisterOutputType(DataIntegrationS3PtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupAzureV3ImageOutput{})
@@ -1835,4 +5676,66 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupAzureV3StrategyPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckOutput{})
 	pulumi.RegisterOutputType(HealthCheckCheckPtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureAttachDataDiskOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureAttachDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureBootDiagnosticOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureBootDiagnosticArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureDataDiskOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureDeleteOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureDeleteArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureDetachDataDiskOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureDetachDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureExtensionOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureExtensionArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureHealthOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureHealthPtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureImageOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureImagePtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureImageCustomImageOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureImageCustomImageArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureImageGalleryOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureImageGalleryArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureImageMarketplaceImageOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureImageMarketplaceImageArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureImportVmOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureImportVmArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureLoadBalancerOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureLoginOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureLoginPtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureManagedServiceIdentityArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkPtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureOsDiskOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureOsDiskPtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSchedulingTaskOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSchedulingTaskArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSecretOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSecretArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSecretSourceVaultOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSecretSourceVaultArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSecretVaultCertificateOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSecretVaultCertificateArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSignalOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSignalArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureStrategyOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureStrategyPtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureStrategyRevertToSpotOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureStrategyRevertToSpotPtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureTagOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureTagArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureUpdateStateOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureUpdateStateArrayOutput{})
 }

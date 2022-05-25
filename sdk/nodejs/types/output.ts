@@ -186,6 +186,205 @@ export interface HealthCheckCheck {
     unhealthy: number;
 }
 
+export interface StatefulNodeAzureAttachDataDisk {
+    dataDiskName: string;
+    dataDiskResourceGroupName: string;
+    lun?: number;
+    sizeGb: number;
+    storageAccountType: string;
+    zone?: string;
+}
+
+export interface StatefulNodeAzureBootDiagnostic {
+    isEnabled: boolean;
+    storageUrl: string;
+    type: string;
+}
+
+export interface StatefulNodeAzureDataDisk {
+    lun: number;
+    sizeGb: number;
+    type: string;
+}
+
+export interface StatefulNodeAzureDelete {
+    diskShouldDeallocate: boolean;
+    diskTtlInHours?: number;
+    networkShouldDeallocate: boolean;
+    networkTtlInHours?: number;
+    publicIpShouldDeallocate: boolean;
+    publicIpTtlInHours?: number;
+    shouldTerminateVm: boolean;
+    snapshotShouldDeallocate: boolean;
+    snapshotTtlInHours?: number;
+}
+
+export interface StatefulNodeAzureDetachDataDisk {
+    dataDiskName: string;
+    dataDiskResourceGroupName: string;
+    shouldDeallocate: boolean;
+    ttlInHours?: number;
+}
+
+export interface StatefulNodeAzureExtension {
+    apiVersion: string;
+    minorVersionAutoUpgrade: boolean;
+    name: string;
+    protectedSettings: {[key: string]: any};
+    publicSettings: {[key: string]: any};
+    publisher: string;
+    type: string;
+}
+
+export interface StatefulNodeAzureHealth {
+    autoHealing: boolean;
+    gracePeriod: number;
+    healthCheckTypes: string[];
+    unhealthyDuration: number;
+}
+
+export interface StatefulNodeAzureImage {
+    customImages: outputs.StatefulNodeAzureImageCustomImage[];
+    galleries: outputs.StatefulNodeAzureImageGallery[];
+    marketplaceImages: outputs.StatefulNodeAzureImageMarketplaceImage[];
+}
+
+export interface StatefulNodeAzureImageCustomImage {
+    customImageResourceGroupName: string;
+    name: string;
+}
+
+export interface StatefulNodeAzureImageGallery {
+    galleryName: string;
+    galleryResourceGroupName: string;
+    imageName: string;
+    versionName: string;
+}
+
+export interface StatefulNodeAzureImageMarketplaceImage {
+    offer: string;
+    publisher: string;
+    sku: string;
+    version: string;
+}
+
+export interface StatefulNodeAzureImportVm {
+    drainingTimeout?: number;
+    originalVmName: string;
+    resourceGroupName: string;
+    resourcesRetentionTime?: number;
+}
+
+export interface StatefulNodeAzureLoadBalancer {
+    backendPoolNames: string[];
+    name: string;
+    resourceGroupName: string;
+    sku: string;
+    type: string;
+}
+
+export interface StatefulNodeAzureLogin {
+    password: string;
+    sshPublicKey: string;
+    userName: string;
+}
+
+export interface StatefulNodeAzureManagedServiceIdentity {
+    name: string;
+    resourceGroupName: string;
+}
+
+export interface StatefulNodeAzureNetwork {
+    networkInterfaces: outputs.StatefulNodeAzureNetworkNetworkInterface[];
+    networkResourceGroupName: string;
+    virtualNetworkName: string;
+}
+
+export interface StatefulNodeAzureNetworkNetworkInterface {
+    additionalIpConfigurations: outputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration[];
+    applicationSecurityGroups: outputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup[];
+    assignPublicIp: boolean;
+    enableIpForwarding: boolean;
+    isPrimary: boolean;
+    networkSecurityGroups: outputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup[];
+    privateIpAddresses: string[];
+    publicIpSku: string;
+    publicIps: outputs.StatefulNodeAzureNetworkNetworkInterfacePublicIp[];
+    subnetName: string;
+}
+
+export interface StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration {
+    name: string;
+    privateIpAddressVersion: string;
+}
+
+export interface StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup {
+    name: string;
+    networkResourceGroupName: string;
+}
+
+export interface StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup {
+    name: string;
+    networkResourceGroupName: string;
+}
+
+export interface StatefulNodeAzureNetworkNetworkInterfacePublicIp {
+    name: string;
+    networkResourceGroupName: string;
+}
+
+export interface StatefulNodeAzureOsDisk {
+    sizeGb: number;
+    type: string;
+}
+
+export interface StatefulNodeAzureSchedulingTask {
+    cronExpression: string;
+    isEnabled: boolean;
+    type: string;
+}
+
+export interface StatefulNodeAzureSecret {
+    sourceVaults: outputs.StatefulNodeAzureSecretSourceVault[];
+    vaultCertificates: outputs.StatefulNodeAzureSecretVaultCertificate[];
+}
+
+export interface StatefulNodeAzureSecretSourceVault {
+    name: string;
+    resourceGroupName: string;
+}
+
+export interface StatefulNodeAzureSecretVaultCertificate {
+    certificateStore: string;
+    certificateUrl: string;
+}
+
+export interface StatefulNodeAzureSignal {
+    timeout: number;
+    type: string;
+}
+
+export interface StatefulNodeAzureStrategy {
+    drainingTimeout: number;
+    fallbackToOnDemand: boolean;
+    optimizationWindows?: string[];
+    preferredLifeCycle: string;
+    revertToSpot: outputs.StatefulNodeAzureStrategyRevertToSpot;
+}
+
+export interface StatefulNodeAzureStrategyRevertToSpot {
+    performAt: string;
+}
+
+export interface StatefulNodeAzureTag {
+    tagKey: string;
+    tagValue: string;
+}
+
+export interface StatefulNodeAzureUpdateState {
+    state: string;
+}
+
 export namespace aws {
     export interface BeanstalkDeploymentPreferences {
         /**

@@ -9,6 +9,7 @@ export * from "./dataIntegration";
 export * from "./elastigroupAzureV3";
 export * from "./healthCheck";
 export * from "./provider";
+export * from "./statefulNodeAzure";
 export * from "./subscription";
 
 // Export sub-modules:
@@ -36,6 +37,7 @@ export {
 import { DataIntegration } from "./dataIntegration";
 import { ElastigroupAzureV3 } from "./elastigroupAzureV3";
 import { HealthCheck } from "./healthCheck";
+import { StatefulNodeAzure } from "./statefulNodeAzure";
 import { Subscription } from "./subscription";
 
 const _module = {
@@ -48,6 +50,8 @@ const _module = {
                 return new ElastigroupAzureV3(name, <any>undefined, { urn })
             case "spotinst:index/healthCheck:HealthCheck":
                 return new HealthCheck(name, <any>undefined, { urn })
+            case "spotinst:index/statefulNodeAzure:StatefulNodeAzure":
+                return new StatefulNodeAzure(name, <any>undefined, { urn })
             case "spotinst:index/subscription:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
             default:
@@ -58,6 +62,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("spotinst", "index/dataIntegration", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/elastigroupAzureV3", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/healthCheck", _module)
+pulumi.runtime.registerResourceModule("spotinst", "index/statefulNodeAzure", _module)
 pulumi.runtime.registerResourceModule("spotinst", "index/subscription", _module)
 
 import { Provider } from "./provider";

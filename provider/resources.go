@@ -142,6 +142,7 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_health_check":                           {Tok: makeResource(mainMod, "HealthCheck")},
 			"spotinst_elastigroup_azure_v3":                   {Tok: makeResource(mainMod, "ElastigroupAzureV3")},
 			"spotinst_data_integration":                       {Tok: makeResource(mainMod, "DataIntegration")},
+			"spotinst_stateful_node_azure":                    {Tok: makeResource(mainMod, "StatefulNodeAzure")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{

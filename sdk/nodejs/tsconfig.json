@@ -50,6 +50,7 @@
         "multai/target.ts",
         "multai/targetSet.ts",
         "provider.ts",
+        "statefulNodeAzure.ts",
         "subscription.ts",
         "types/index.ts",
         "types/input.ts",
