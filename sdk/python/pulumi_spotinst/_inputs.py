@@ -21,6 +21,37 @@ __all__ = [
     'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs',
     'ElastigroupAzureV3StrategyArgs',
     'HealthCheckCheckArgs',
+    'StatefulNodeAzureAttachDataDiskArgs',
+    'StatefulNodeAzureBootDiagnosticArgs',
+    'StatefulNodeAzureDataDiskArgs',
+    'StatefulNodeAzureDeleteArgs',
+    'StatefulNodeAzureDetachDataDiskArgs',
+    'StatefulNodeAzureExtensionArgs',
+    'StatefulNodeAzureHealthArgs',
+    'StatefulNodeAzureImageArgs',
+    'StatefulNodeAzureImageCustomImageArgs',
+    'StatefulNodeAzureImageGalleryArgs',
+    'StatefulNodeAzureImageMarketplaceImageArgs',
+    'StatefulNodeAzureImportVmArgs',
+    'StatefulNodeAzureLoadBalancerArgs',
+    'StatefulNodeAzureLoginArgs',
+    'StatefulNodeAzureManagedServiceIdentityArgs',
+    'StatefulNodeAzureNetworkArgs',
+    'StatefulNodeAzureNetworkNetworkInterfaceArgs',
+    'StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs',
+    'StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs',
+    'StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs',
+    'StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs',
+    'StatefulNodeAzureOsDiskArgs',
+    'StatefulNodeAzureSchedulingTaskArgs',
+    'StatefulNodeAzureSecretArgs',
+    'StatefulNodeAzureSecretSourceVaultArgs',
+    'StatefulNodeAzureSecretVaultCertificateArgs',
+    'StatefulNodeAzureSignalArgs',
+    'StatefulNodeAzureStrategyArgs',
+    'StatefulNodeAzureStrategyRevertToSpotArgs',
+    'StatefulNodeAzureTagArgs',
+    'StatefulNodeAzureUpdateStateArgs',
 ]
 
 @pulumi.input_type
@@ -703,5 +734,1366 @@ class HealthCheckCheckArgs:
     @timeout.setter
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureAttachDataDiskArgs:
+    def __init__(__self__, *,
+                 data_disk_name: pulumi.Input[str],
+                 data_disk_resource_group_name: pulumi.Input[str],
+                 size_gb: pulumi.Input[int],
+                 storage_account_type: pulumi.Input[str],
+                 lun: Optional[pulumi.Input[int]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "data_disk_name", data_disk_name)
+        pulumi.set(__self__, "data_disk_resource_group_name", data_disk_resource_group_name)
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "storage_account_type", storage_account_type)
+        if lun is not None:
+            pulumi.set(__self__, "lun", lun)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="dataDiskName")
+    def data_disk_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "data_disk_name")
+
+    @data_disk_name.setter
+    def data_disk_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data_disk_name", value)
+
+    @property
+    @pulumi.getter(name="dataDiskResourceGroupName")
+    def data_disk_resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "data_disk_resource_group_name")
+
+    @data_disk_resource_group_name.setter
+    def data_disk_resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data_disk_resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "size_gb")
+
+    @size_gb.setter
+    def size_gb(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size_gb", value)
+
+    @property
+    @pulumi.getter(name="storageAccountType")
+    def storage_account_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "storage_account_type")
+
+    @storage_account_type.setter
+    def storage_account_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "storage_account_type", value)
+
+    @property
+    @pulumi.getter
+    def lun(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "lun")
+
+    @lun.setter
+    def lun(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lun", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureBootDiagnosticArgs:
+    def __init__(__self__, *,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 storage_url: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if storage_url is not None:
+            pulumi.set(__self__, "storage_url", storage_url)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter(name="storageUrl")
+    def storage_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_url")
+
+    @storage_url.setter
+    def storage_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_url", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureDataDiskArgs:
+    def __init__(__self__, *,
+                 lun: pulumi.Input[int],
+                 size_gb: pulumi.Input[int],
+                 type: pulumi.Input[str]):
+        pulumi.set(__self__, "lun", lun)
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def lun(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "lun")
+
+    @lun.setter
+    def lun(self, value: pulumi.Input[int]):
+        pulumi.set(self, "lun", value)
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "size_gb")
+
+    @size_gb.setter
+    def size_gb(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size_gb", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureDeleteArgs:
+    def __init__(__self__, *,
+                 disk_should_deallocate: pulumi.Input[bool],
+                 network_should_deallocate: pulumi.Input[bool],
+                 public_ip_should_deallocate: pulumi.Input[bool],
+                 should_terminate_vm: pulumi.Input[bool],
+                 snapshot_should_deallocate: pulumi.Input[bool],
+                 disk_ttl_in_hours: Optional[pulumi.Input[int]] = None,
+                 network_ttl_in_hours: Optional[pulumi.Input[int]] = None,
+                 public_ip_ttl_in_hours: Optional[pulumi.Input[int]] = None,
+                 snapshot_ttl_in_hours: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "disk_should_deallocate", disk_should_deallocate)
+        pulumi.set(__self__, "network_should_deallocate", network_should_deallocate)
+        pulumi.set(__self__, "public_ip_should_deallocate", public_ip_should_deallocate)
+        pulumi.set(__self__, "should_terminate_vm", should_terminate_vm)
+        pulumi.set(__self__, "snapshot_should_deallocate", snapshot_should_deallocate)
+        if disk_ttl_in_hours is not None:
+            pulumi.set(__self__, "disk_ttl_in_hours", disk_ttl_in_hours)
+        if network_ttl_in_hours is not None:
+            pulumi.set(__self__, "network_ttl_in_hours", network_ttl_in_hours)
+        if public_ip_ttl_in_hours is not None:
+            pulumi.set(__self__, "public_ip_ttl_in_hours", public_ip_ttl_in_hours)
+        if snapshot_ttl_in_hours is not None:
+            pulumi.set(__self__, "snapshot_ttl_in_hours", snapshot_ttl_in_hours)
+
+    @property
+    @pulumi.getter(name="diskShouldDeallocate")
+    def disk_should_deallocate(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "disk_should_deallocate")
+
+    @disk_should_deallocate.setter
+    def disk_should_deallocate(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "disk_should_deallocate", value)
+
+    @property
+    @pulumi.getter(name="networkShouldDeallocate")
+    def network_should_deallocate(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "network_should_deallocate")
+
+    @network_should_deallocate.setter
+    def network_should_deallocate(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "network_should_deallocate", value)
+
+    @property
+    @pulumi.getter(name="publicIpShouldDeallocate")
+    def public_ip_should_deallocate(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "public_ip_should_deallocate")
+
+    @public_ip_should_deallocate.setter
+    def public_ip_should_deallocate(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "public_ip_should_deallocate", value)
+
+    @property
+    @pulumi.getter(name="shouldTerminateVm")
+    def should_terminate_vm(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "should_terminate_vm")
+
+    @should_terminate_vm.setter
+    def should_terminate_vm(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "should_terminate_vm", value)
+
+    @property
+    @pulumi.getter(name="snapshotShouldDeallocate")
+    def snapshot_should_deallocate(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "snapshot_should_deallocate")
+
+    @snapshot_should_deallocate.setter
+    def snapshot_should_deallocate(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "snapshot_should_deallocate", value)
+
+    @property
+    @pulumi.getter(name="diskTtlInHours")
+    def disk_ttl_in_hours(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "disk_ttl_in_hours")
+
+    @disk_ttl_in_hours.setter
+    def disk_ttl_in_hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_ttl_in_hours", value)
+
+    @property
+    @pulumi.getter(name="networkTtlInHours")
+    def network_ttl_in_hours(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "network_ttl_in_hours")
+
+    @network_ttl_in_hours.setter
+    def network_ttl_in_hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "network_ttl_in_hours", value)
+
+    @property
+    @pulumi.getter(name="publicIpTtlInHours")
+    def public_ip_ttl_in_hours(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "public_ip_ttl_in_hours")
+
+    @public_ip_ttl_in_hours.setter
+    def public_ip_ttl_in_hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "public_ip_ttl_in_hours", value)
+
+    @property
+    @pulumi.getter(name="snapshotTtlInHours")
+    def snapshot_ttl_in_hours(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "snapshot_ttl_in_hours")
+
+    @snapshot_ttl_in_hours.setter
+    def snapshot_ttl_in_hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "snapshot_ttl_in_hours", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureDetachDataDiskArgs:
+    def __init__(__self__, *,
+                 data_disk_name: pulumi.Input[str],
+                 data_disk_resource_group_name: pulumi.Input[str],
+                 should_deallocate: pulumi.Input[bool],
+                 ttl_in_hours: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "data_disk_name", data_disk_name)
+        pulumi.set(__self__, "data_disk_resource_group_name", data_disk_resource_group_name)
+        pulumi.set(__self__, "should_deallocate", should_deallocate)
+        if ttl_in_hours is not None:
+            pulumi.set(__self__, "ttl_in_hours", ttl_in_hours)
+
+    @property
+    @pulumi.getter(name="dataDiskName")
+    def data_disk_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "data_disk_name")
+
+    @data_disk_name.setter
+    def data_disk_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data_disk_name", value)
+
+    @property
+    @pulumi.getter(name="dataDiskResourceGroupName")
+    def data_disk_resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "data_disk_resource_group_name")
+
+    @data_disk_resource_group_name.setter
+    def data_disk_resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data_disk_resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="shouldDeallocate")
+    def should_deallocate(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "should_deallocate")
+
+    @should_deallocate.setter
+    def should_deallocate(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "should_deallocate", value)
+
+    @property
+    @pulumi.getter(name="ttlInHours")
+    def ttl_in_hours(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ttl_in_hours")
+
+    @ttl_in_hours.setter
+    def ttl_in_hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl_in_hours", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureExtensionArgs:
+    def __init__(__self__, *,
+                 api_version: pulumi.Input[str],
+                 minor_version_auto_upgrade: pulumi.Input[bool],
+                 name: pulumi.Input[str],
+                 publisher: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 protected_settings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 public_settings: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        pulumi.set(__self__, "api_version", api_version)
+        pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "type", type)
+        if protected_settings is not None:
+            pulumi.set(__self__, "protected_settings", protected_settings)
+        if public_settings is not None:
+            pulumi.set(__self__, "public_settings", public_settings)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="minorVersionAutoUpgrade")
+    def minor_version_auto_upgrade(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "minor_version_auto_upgrade")
+
+    @minor_version_auto_upgrade.setter
+    def minor_version_auto_upgrade(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "minor_version_auto_upgrade", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "publisher")
+
+    @publisher.setter
+    def publisher(self, value: pulumi.Input[str]):
+        pulumi.set(self, "publisher", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="protectedSettings")
+    def protected_settings(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "protected_settings")
+
+    @protected_settings.setter
+    def protected_settings(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "protected_settings", value)
+
+    @property
+    @pulumi.getter(name="publicSettings")
+    def public_settings(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "public_settings")
+
+    @public_settings.setter
+    def public_settings(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "public_settings", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureHealthArgs:
+    def __init__(__self__, *,
+                 auto_healing: pulumi.Input[bool],
+                 health_check_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 grace_period: Optional[pulumi.Input[int]] = None,
+                 unhealthy_duration: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "auto_healing", auto_healing)
+        pulumi.set(__self__, "health_check_types", health_check_types)
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+        if unhealthy_duration is not None:
+            pulumi.set(__self__, "unhealthy_duration", unhealthy_duration)
+
+    @property
+    @pulumi.getter(name="autoHealing")
+    def auto_healing(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "auto_healing")
+
+    @auto_healing.setter
+    def auto_healing(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "auto_healing", value)
+
+    @property
+    @pulumi.getter(name="healthCheckTypes")
+    def health_check_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "health_check_types")
+
+    @health_check_types.setter
+    def health_check_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "health_check_types", value)
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "grace_period")
+
+    @grace_period.setter
+    def grace_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "grace_period", value)
+
+    @property
+    @pulumi.getter(name="unhealthyDuration")
+    def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "unhealthy_duration")
+
+    @unhealthy_duration.setter
+    def unhealthy_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "unhealthy_duration", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureImageArgs:
+    def __init__(__self__, *,
+                 custom_images: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]] = None,
+                 galleries: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]] = None,
+                 marketplace_images: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]] = None):
+        if custom_images is not None:
+            pulumi.set(__self__, "custom_images", custom_images)
+        if galleries is not None:
+            pulumi.set(__self__, "galleries", galleries)
+        if marketplace_images is not None:
+            pulumi.set(__self__, "marketplace_images", marketplace_images)
+
+    @property
+    @pulumi.getter(name="customImages")
+    def custom_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]]:
+        return pulumi.get(self, "custom_images")
+
+    @custom_images.setter
+    def custom_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]]):
+        pulumi.set(self, "custom_images", value)
+
+    @property
+    @pulumi.getter
+    def galleries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]]:
+        return pulumi.get(self, "galleries")
+
+    @galleries.setter
+    def galleries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]]):
+        pulumi.set(self, "galleries", value)
+
+    @property
+    @pulumi.getter(name="marketplaceImages")
+    def marketplace_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]]:
+        return pulumi.get(self, "marketplace_images")
+
+    @marketplace_images.setter
+    def marketplace_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]]):
+        pulumi.set(self, "marketplace_images", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureImageCustomImageArgs:
+    def __init__(__self__, *,
+                 custom_image_resource_group_name: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        pulumi.set(__self__, "custom_image_resource_group_name", custom_image_resource_group_name)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="customImageResourceGroupName")
+    def custom_image_resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "custom_image_resource_group_name")
+
+    @custom_image_resource_group_name.setter
+    def custom_image_resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "custom_image_resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureImageGalleryArgs:
+    def __init__(__self__, *,
+                 gallery_name: pulumi.Input[str],
+                 gallery_resource_group_name: pulumi.Input[str],
+                 image_name: pulumi.Input[str],
+                 version_name: pulumi.Input[str]):
+        pulumi.set(__self__, "gallery_name", gallery_name)
+        pulumi.set(__self__, "gallery_resource_group_name", gallery_resource_group_name)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "version_name", version_name)
+
+    @property
+    @pulumi.getter(name="galleryName")
+    def gallery_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "gallery_name")
+
+    @gallery_name.setter
+    def gallery_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gallery_name", value)
+
+    @property
+    @pulumi.getter(name="galleryResourceGroupName")
+    def gallery_resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "gallery_resource_group_name")
+
+    @gallery_resource_group_name.setter
+    def gallery_resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gallery_resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="versionName")
+    def version_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "version_name")
+
+    @version_name.setter
+    def version_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version_name", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureImageMarketplaceImageArgs:
+    def __init__(__self__, *,
+                 offer: pulumi.Input[str],
+                 publisher: pulumi.Input[str],
+                 sku: pulumi.Input[str],
+                 version: pulumi.Input[str]):
+        pulumi.set(__self__, "offer", offer)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "sku", sku)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def offer(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "offer")
+
+    @offer.setter
+    def offer(self, value: pulumi.Input[str]):
+        pulumi.set(self, "offer", value)
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "publisher")
+
+    @publisher.setter
+    def publisher(self, value: pulumi.Input[str]):
+        pulumi.set(self, "publisher", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sku", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureImportVmArgs:
+    def __init__(__self__, *,
+                 original_vm_name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
+                 resources_retention_time: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "original_vm_name", original_vm_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if resources_retention_time is not None:
+            pulumi.set(__self__, "resources_retention_time", resources_retention_time)
+
+    @property
+    @pulumi.getter(name="originalVmName")
+    def original_vm_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "original_vm_name")
+
+    @original_vm_name.setter
+    def original_vm_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "original_vm_name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "draining_timeout", value)
+
+    @property
+    @pulumi.getter(name="resourcesRetentionTime")
+    def resources_retention_time(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "resources_retention_time")
+
+    @resources_retention_time.setter
+    def resources_retention_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "resources_retention_time", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureLoadBalancerArgs:
+    def __init__(__self__, *,
+                 backend_pool_names: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 sku: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "backend_pool_names", backend_pool_names)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "type", type)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+
+    @property
+    @pulumi.getter(name="backendPoolNames")
+    def backend_pool_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "backend_pool_names")
+
+    @backend_pool_names.setter
+    def backend_pool_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "backend_pool_names", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sku")
+
+    @sku.setter
+    def sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sku", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureLoginArgs:
+    def __init__(__self__, *,
+                 user_name: pulumi.Input[str],
+                 password: Optional[pulumi.Input[str]] = None,
+                 ssh_public_key: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "user_name", user_name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if ssh_public_key is not None:
+            pulumi.set(__self__, "ssh_public_key", ssh_public_key)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="sshPublicKey")
+    def ssh_public_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ssh_public_key")
+
+    @ssh_public_key.setter
+    def ssh_public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssh_public_key", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureManagedServiceIdentityArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureNetworkArgs:
+    def __init__(__self__, *,
+                 network_interfaces: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceArgs']]],
+                 network_resource_group_name: pulumi.Input[str],
+                 virtual_network_name: pulumi.Input[str]):
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+        pulumi.set(__self__, "virtual_network_name", virtual_network_name)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceArgs']]]:
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceArgs']]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter(name="networkResourceGroupName")
+    def network_resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network_resource_group_name")
+
+    @network_resource_group_name.setter
+    def network_resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="virtualNetworkName")
+    def virtual_network_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "virtual_network_name")
+
+    @virtual_network_name.setter
+    def virtual_network_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "virtual_network_name", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureNetworkNetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 is_primary: pulumi.Input[bool],
+                 subnet_name: pulumi.Input[str],
+                 additional_ip_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]] = None,
+                 application_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None,
+                 assign_public_ip: Optional[pulumi.Input[bool]] = None,
+                 enable_ip_forwarding: Optional[pulumi.Input[bool]] = None,
+                 network_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]] = None,
+                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 public_ip_sku: Optional[pulumi.Input[str]] = None,
+                 public_ips: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]] = None):
+        pulumi.set(__self__, "is_primary", is_primary)
+        pulumi.set(__self__, "subnet_name", subnet_name)
+        if additional_ip_configurations is not None:
+            pulumi.set(__self__, "additional_ip_configurations", additional_ip_configurations)
+        if application_security_groups is not None:
+            pulumi.set(__self__, "application_security_groups", application_security_groups)
+        if assign_public_ip is not None:
+            pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        if enable_ip_forwarding is not None:
+            pulumi.set(__self__, "enable_ip_forwarding", enable_ip_forwarding)
+        if network_security_groups is not None:
+            pulumi.set(__self__, "network_security_groups", network_security_groups)
+        if private_ip_addresses is not None:
+            pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+        if public_ip_sku is not None:
+            pulumi.set(__self__, "public_ip_sku", public_ip_sku)
+        if public_ips is not None:
+            pulumi.set(__self__, "public_ips", public_ips)
+
+    @property
+    @pulumi.getter(name="isPrimary")
+    def is_primary(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "is_primary")
+
+    @is_primary.setter
+    def is_primary(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "is_primary", value)
+
+    @property
+    @pulumi.getter(name="subnetName")
+    def subnet_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "subnet_name")
+
+    @subnet_name.setter
+    def subnet_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subnet_name", value)
+
+    @property
+    @pulumi.getter(name="additionalIpConfigurations")
+    def additional_ip_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]]:
+        return pulumi.get(self, "additional_ip_configurations")
+
+    @additional_ip_configurations.setter
+    def additional_ip_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]]):
+        pulumi.set(self, "additional_ip_configurations", value)
+
+    @property
+    @pulumi.getter(name="applicationSecurityGroups")
+    def application_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]:
+        return pulumi.get(self, "application_security_groups")
+
+    @application_security_groups.setter
+    def application_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]):
+        pulumi.set(self, "application_security_groups", value)
+
+    @property
+    @pulumi.getter(name="assignPublicIp")
+    def assign_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "assign_public_ip")
+
+    @assign_public_ip.setter
+    def assign_public_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "assign_public_ip", value)
+
+    @property
+    @pulumi.getter(name="enableIpForwarding")
+    def enable_ip_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_ip_forwarding")
+
+    @enable_ip_forwarding.setter
+    def enable_ip_forwarding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ip_forwarding", value)
+
+    @property
+    @pulumi.getter(name="networkSecurityGroups")
+    def network_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]]:
+        return pulumi.get(self, "network_security_groups")
+
+    @network_security_groups.setter
+    def network_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]]):
+        pulumi.set(self, "network_security_groups", value)
+
+    @property
+    @pulumi.getter(name="privateIpAddresses")
+    def private_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "private_ip_addresses")
+
+    @private_ip_addresses.setter
+    def private_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "private_ip_addresses", value)
+
+    @property
+    @pulumi.getter(name="publicIpSku")
+    def public_ip_sku(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "public_ip_sku")
+
+    @public_ip_sku.setter
+    def public_ip_sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_ip_sku", value)
+
+    @property
+    @pulumi.getter(name="publicIps")
+    def public_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]]:
+        return pulumi.get(self, "public_ips")
+
+    @public_ips.setter
+    def public_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]]):
+        pulumi.set(self, "public_ips", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 private_ip_address_version: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_ip_address_version", private_ip_address_version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="privateIpAddressVersion")
+    def private_ip_address_version(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "private_ip_address_version")
+
+    @private_ip_address_version.setter
+    def private_ip_address_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_ip_address_version", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 network_resource_group_name: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkResourceGroupName")
+    def network_resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network_resource_group_name")
+
+    @network_resource_group_name.setter
+    def network_resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_resource_group_name", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_resource_group_name: Optional[pulumi.Input[str]] = None):
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_resource_group_name is not None:
+            pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkResourceGroupName")
+    def network_resource_group_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_resource_group_name")
+
+    @network_resource_group_name.setter
+    def network_resource_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_resource_group_name", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 network_resource_group_name: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkResourceGroupName")
+    def network_resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network_resource_group_name")
+
+    @network_resource_group_name.setter
+    def network_resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_resource_group_name", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureOsDiskArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 size_gb: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "type", type)
+        if size_gb is not None:
+            pulumi.set(__self__, "size_gb", size_gb)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "size_gb")
+
+    @size_gb.setter
+    def size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size_gb", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureSchedulingTaskArgs:
+    def __init__(__self__, *,
+                 cron_expression: pulumi.Input[str],
+                 is_enabled: pulumi.Input[bool],
+                 type: pulumi.Input[str]):
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron_expression", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureSecretArgs:
+    def __init__(__self__, *,
+                 source_vaults: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretSourceVaultArgs']]],
+                 vault_certificates: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretVaultCertificateArgs']]]):
+        pulumi.set(__self__, "source_vaults", source_vaults)
+        pulumi.set(__self__, "vault_certificates", vault_certificates)
+
+    @property
+    @pulumi.getter(name="sourceVaults")
+    def source_vaults(self) -> pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretSourceVaultArgs']]]:
+        return pulumi.get(self, "source_vaults")
+
+    @source_vaults.setter
+    def source_vaults(self, value: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretSourceVaultArgs']]]):
+        pulumi.set(self, "source_vaults", value)
+
+    @property
+    @pulumi.getter(name="vaultCertificates")
+    def vault_certificates(self) -> pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretVaultCertificateArgs']]]:
+        return pulumi.get(self, "vault_certificates")
+
+    @vault_certificates.setter
+    def vault_certificates(self, value: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretVaultCertificateArgs']]]):
+        pulumi.set(self, "vault_certificates", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureSecretSourceVaultArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureSecretVaultCertificateArgs:
+    def __init__(__self__, *,
+                 certificate_store: Optional[pulumi.Input[str]] = None,
+                 certificate_url: Optional[pulumi.Input[str]] = None):
+        if certificate_store is not None:
+            pulumi.set(__self__, "certificate_store", certificate_store)
+        if certificate_url is not None:
+            pulumi.set(__self__, "certificate_url", certificate_url)
+
+    @property
+    @pulumi.getter(name="certificateStore")
+    def certificate_store(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "certificate_store")
+
+    @certificate_store.setter
+    def certificate_store(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_store", value)
+
+    @property
+    @pulumi.getter(name="certificateUrl")
+    def certificate_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "certificate_url")
+
+    @certificate_url.setter
+    def certificate_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_url", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureSignalArgs:
+    def __init__(__self__, *,
+                 timeout: pulumi.Input[int],
+                 type: pulumi.Input[str]):
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[int]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureStrategyArgs:
+    def __init__(__self__, *,
+                 fallback_to_on_demand: pulumi.Input[bool],
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
+                 optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 preferred_life_cycle: Optional[pulumi.Input[str]] = None,
+                 revert_to_spot: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']] = None):
+        pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if optimization_windows is not None:
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
+        if preferred_life_cycle is not None:
+            pulumi.set(__self__, "preferred_life_cycle", preferred_life_cycle)
+        if revert_to_spot is not None:
+            pulumi.set(__self__, "revert_to_spot", revert_to_spot)
+
+    @property
+    @pulumi.getter(name="fallbackToOnDemand")
+    def fallback_to_on_demand(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "fallback_to_on_demand")
+
+    @fallback_to_on_demand.setter
+    def fallback_to_on_demand(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "fallback_to_on_demand", value)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "draining_timeout", value)
+
+    @property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "optimization_windows")
+
+    @optimization_windows.setter
+    def optimization_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "optimization_windows", value)
+
+    @property
+    @pulumi.getter(name="preferredLifeCycle")
+    def preferred_life_cycle(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "preferred_life_cycle")
+
+    @preferred_life_cycle.setter
+    def preferred_life_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preferred_life_cycle", value)
+
+    @property
+    @pulumi.getter(name="revertToSpot")
+    def revert_to_spot(self) -> Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']]:
+        return pulumi.get(self, "revert_to_spot")
+
+    @revert_to_spot.setter
+    def revert_to_spot(self, value: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']]):
+        pulumi.set(self, "revert_to_spot", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureStrategyRevertToSpotArgs:
+    def __init__(__self__, *,
+                 perform_at: pulumi.Input[str]):
+        pulumi.set(__self__, "perform_at", perform_at)
+
+    @property
+    @pulumi.getter(name="performAt")
+    def perform_at(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "perform_at")
+
+    @perform_at.setter
+    def perform_at(self, value: pulumi.Input[str]):
+        pulumi.set(self, "perform_at", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureTagArgs:
+    def __init__(__self__, *,
+                 tag_key: pulumi.Input[str],
+                 tag_value: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag_key", value)
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_value", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureUpdateStateArgs:
+    def __init__(__self__, *,
+                 state: pulumi.Input[str]):
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[str]):
+        pulumi.set(self, "state", value)
 
 

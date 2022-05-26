@@ -22,6 +22,37 @@ __all__ = [
     'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup',
     'ElastigroupAzureV3Strategy',
     'HealthCheckCheck',
+    'StatefulNodeAzureAttachDataDisk',
+    'StatefulNodeAzureBootDiagnostic',
+    'StatefulNodeAzureDataDisk',
+    'StatefulNodeAzureDelete',
+    'StatefulNodeAzureDetachDataDisk',
+    'StatefulNodeAzureExtension',
+    'StatefulNodeAzureHealth',
+    'StatefulNodeAzureImage',
+    'StatefulNodeAzureImageCustomImage',
+    'StatefulNodeAzureImageGallery',
+    'StatefulNodeAzureImageMarketplaceImage',
+    'StatefulNodeAzureImportVm',
+    'StatefulNodeAzureLoadBalancer',
+    'StatefulNodeAzureLogin',
+    'StatefulNodeAzureManagedServiceIdentity',
+    'StatefulNodeAzureNetwork',
+    'StatefulNodeAzureNetworkNetworkInterface',
+    'StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration',
+    'StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup',
+    'StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup',
+    'StatefulNodeAzureNetworkNetworkInterfacePublicIp',
+    'StatefulNodeAzureOsDisk',
+    'StatefulNodeAzureSchedulingTask',
+    'StatefulNodeAzureSecret',
+    'StatefulNodeAzureSecretSourceVault',
+    'StatefulNodeAzureSecretVaultCertificate',
+    'StatefulNodeAzureSignal',
+    'StatefulNodeAzureStrategy',
+    'StatefulNodeAzureStrategyRevertToSpot',
+    'StatefulNodeAzureTag',
+    'StatefulNodeAzureUpdateState',
 ]
 
 @pulumi.output_type
@@ -738,5 +769,1516 @@ class HealthCheckCheck(dict):
         the amount of time (in seconds) to wait when receiving a response from the health check.
         """
         return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class StatefulNodeAzureAttachDataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataDiskName":
+            suggest = "data_disk_name"
+        elif key == "dataDiskResourceGroupName":
+            suggest = "data_disk_resource_group_name"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+        elif key == "storageAccountType":
+            suggest = "storage_account_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureAttachDataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureAttachDataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureAttachDataDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_disk_name: str,
+                 data_disk_resource_group_name: str,
+                 size_gb: int,
+                 storage_account_type: str,
+                 lun: Optional[int] = None,
+                 zone: Optional[str] = None):
+        pulumi.set(__self__, "data_disk_name", data_disk_name)
+        pulumi.set(__self__, "data_disk_resource_group_name", data_disk_resource_group_name)
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "storage_account_type", storage_account_type)
+        if lun is not None:
+            pulumi.set(__self__, "lun", lun)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="dataDiskName")
+    def data_disk_name(self) -> str:
+        return pulumi.get(self, "data_disk_name")
+
+    @property
+    @pulumi.getter(name="dataDiskResourceGroupName")
+    def data_disk_resource_group_name(self) -> str:
+        return pulumi.get(self, "data_disk_resource_group_name")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> int:
+        return pulumi.get(self, "size_gb")
+
+    @property
+    @pulumi.getter(name="storageAccountType")
+    def storage_account_type(self) -> str:
+        return pulumi.get(self, "storage_account_type")
+
+    @property
+    @pulumi.getter
+    def lun(self) -> Optional[int]:
+        return pulumi.get(self, "lun")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[str]:
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class StatefulNodeAzureBootDiagnostic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "storageUrl":
+            suggest = "storage_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureBootDiagnostic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureBootDiagnostic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureBootDiagnostic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_enabled: Optional[bool] = None,
+                 storage_url: Optional[str] = None,
+                 type: Optional[str] = None):
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if storage_url is not None:
+            pulumi.set(__self__, "storage_url", storage_url)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter(name="storageUrl")
+    def storage_url(self) -> Optional[str]:
+        return pulumi.get(self, "storage_url")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class StatefulNodeAzureDataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureDataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureDataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureDataDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 lun: int,
+                 size_gb: int,
+                 type: str):
+        pulumi.set(__self__, "lun", lun)
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def lun(self) -> int:
+        return pulumi.get(self, "lun")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> int:
+        return pulumi.get(self, "size_gb")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class StatefulNodeAzureDelete(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskShouldDeallocate":
+            suggest = "disk_should_deallocate"
+        elif key == "networkShouldDeallocate":
+            suggest = "network_should_deallocate"
+        elif key == "publicIpShouldDeallocate":
+            suggest = "public_ip_should_deallocate"
+        elif key == "shouldTerminateVm":
+            suggest = "should_terminate_vm"
+        elif key == "snapshotShouldDeallocate":
+            suggest = "snapshot_should_deallocate"
+        elif key == "diskTtlInHours":
+            suggest = "disk_ttl_in_hours"
+        elif key == "networkTtlInHours":
+            suggest = "network_ttl_in_hours"
+        elif key == "publicIpTtlInHours":
+            suggest = "public_ip_ttl_in_hours"
+        elif key == "snapshotTtlInHours":
+            suggest = "snapshot_ttl_in_hours"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureDelete. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureDelete.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureDelete.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_should_deallocate: bool,
+                 network_should_deallocate: bool,
+                 public_ip_should_deallocate: bool,
+                 should_terminate_vm: bool,
+                 snapshot_should_deallocate: bool,
+                 disk_ttl_in_hours: Optional[int] = None,
+                 network_ttl_in_hours: Optional[int] = None,
+                 public_ip_ttl_in_hours: Optional[int] = None,
+                 snapshot_ttl_in_hours: Optional[int] = None):
+        pulumi.set(__self__, "disk_should_deallocate", disk_should_deallocate)
+        pulumi.set(__self__, "network_should_deallocate", network_should_deallocate)
+        pulumi.set(__self__, "public_ip_should_deallocate", public_ip_should_deallocate)
+        pulumi.set(__self__, "should_terminate_vm", should_terminate_vm)
+        pulumi.set(__self__, "snapshot_should_deallocate", snapshot_should_deallocate)
+        if disk_ttl_in_hours is not None:
+            pulumi.set(__self__, "disk_ttl_in_hours", disk_ttl_in_hours)
+        if network_ttl_in_hours is not None:
+            pulumi.set(__self__, "network_ttl_in_hours", network_ttl_in_hours)
+        if public_ip_ttl_in_hours is not None:
+            pulumi.set(__self__, "public_ip_ttl_in_hours", public_ip_ttl_in_hours)
+        if snapshot_ttl_in_hours is not None:
+            pulumi.set(__self__, "snapshot_ttl_in_hours", snapshot_ttl_in_hours)
+
+    @property
+    @pulumi.getter(name="diskShouldDeallocate")
+    def disk_should_deallocate(self) -> bool:
+        return pulumi.get(self, "disk_should_deallocate")
+
+    @property
+    @pulumi.getter(name="networkShouldDeallocate")
+    def network_should_deallocate(self) -> bool:
+        return pulumi.get(self, "network_should_deallocate")
+
+    @property
+    @pulumi.getter(name="publicIpShouldDeallocate")
+    def public_ip_should_deallocate(self) -> bool:
+        return pulumi.get(self, "public_ip_should_deallocate")
+
+    @property
+    @pulumi.getter(name="shouldTerminateVm")
+    def should_terminate_vm(self) -> bool:
+        return pulumi.get(self, "should_terminate_vm")
+
+    @property
+    @pulumi.getter(name="snapshotShouldDeallocate")
+    def snapshot_should_deallocate(self) -> bool:
+        return pulumi.get(self, "snapshot_should_deallocate")
+
+    @property
+    @pulumi.getter(name="diskTtlInHours")
+    def disk_ttl_in_hours(self) -> Optional[int]:
+        return pulumi.get(self, "disk_ttl_in_hours")
+
+    @property
+    @pulumi.getter(name="networkTtlInHours")
+    def network_ttl_in_hours(self) -> Optional[int]:
+        return pulumi.get(self, "network_ttl_in_hours")
+
+    @property
+    @pulumi.getter(name="publicIpTtlInHours")
+    def public_ip_ttl_in_hours(self) -> Optional[int]:
+        return pulumi.get(self, "public_ip_ttl_in_hours")
+
+    @property
+    @pulumi.getter(name="snapshotTtlInHours")
+    def snapshot_ttl_in_hours(self) -> Optional[int]:
+        return pulumi.get(self, "snapshot_ttl_in_hours")
+
+
+@pulumi.output_type
+class StatefulNodeAzureDetachDataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataDiskName":
+            suggest = "data_disk_name"
+        elif key == "dataDiskResourceGroupName":
+            suggest = "data_disk_resource_group_name"
+        elif key == "shouldDeallocate":
+            suggest = "should_deallocate"
+        elif key == "ttlInHours":
+            suggest = "ttl_in_hours"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureDetachDataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureDetachDataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureDetachDataDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_disk_name: str,
+                 data_disk_resource_group_name: str,
+                 should_deallocate: bool,
+                 ttl_in_hours: Optional[int] = None):
+        pulumi.set(__self__, "data_disk_name", data_disk_name)
+        pulumi.set(__self__, "data_disk_resource_group_name", data_disk_resource_group_name)
+        pulumi.set(__self__, "should_deallocate", should_deallocate)
+        if ttl_in_hours is not None:
+            pulumi.set(__self__, "ttl_in_hours", ttl_in_hours)
+
+    @property
+    @pulumi.getter(name="dataDiskName")
+    def data_disk_name(self) -> str:
+        return pulumi.get(self, "data_disk_name")
+
+    @property
+    @pulumi.getter(name="dataDiskResourceGroupName")
+    def data_disk_resource_group_name(self) -> str:
+        return pulumi.get(self, "data_disk_resource_group_name")
+
+    @property
+    @pulumi.getter(name="shouldDeallocate")
+    def should_deallocate(self) -> bool:
+        return pulumi.get(self, "should_deallocate")
+
+    @property
+    @pulumi.getter(name="ttlInHours")
+    def ttl_in_hours(self) -> Optional[int]:
+        return pulumi.get(self, "ttl_in_hours")
+
+
+@pulumi.output_type
+class StatefulNodeAzureExtension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiVersion":
+            suggest = "api_version"
+        elif key == "minorVersionAutoUpgrade":
+            suggest = "minor_version_auto_upgrade"
+        elif key == "protectedSettings":
+            suggest = "protected_settings"
+        elif key == "publicSettings":
+            suggest = "public_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureExtension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureExtension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureExtension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_version: str,
+                 minor_version_auto_upgrade: bool,
+                 name: str,
+                 publisher: str,
+                 type: str,
+                 protected_settings: Optional[Mapping[str, Any]] = None,
+                 public_settings: Optional[Mapping[str, Any]] = None):
+        pulumi.set(__self__, "api_version", api_version)
+        pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "type", type)
+        if protected_settings is not None:
+            pulumi.set(__self__, "protected_settings", protected_settings)
+        if public_settings is not None:
+            pulumi.set(__self__, "public_settings", public_settings)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> str:
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter(name="minorVersionAutoUpgrade")
+    def minor_version_auto_upgrade(self) -> bool:
+        return pulumi.get(self, "minor_version_auto_upgrade")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> str:
+        return pulumi.get(self, "publisher")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="protectedSettings")
+    def protected_settings(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "protected_settings")
+
+    @property
+    @pulumi.getter(name="publicSettings")
+    def public_settings(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "public_settings")
+
+
+@pulumi.output_type
+class StatefulNodeAzureHealth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoHealing":
+            suggest = "auto_healing"
+        elif key == "healthCheckTypes":
+            suggest = "health_check_types"
+        elif key == "gracePeriod":
+            suggest = "grace_period"
+        elif key == "unhealthyDuration":
+            suggest = "unhealthy_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureHealth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureHealth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureHealth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_healing: bool,
+                 health_check_types: Sequence[str],
+                 grace_period: Optional[int] = None,
+                 unhealthy_duration: Optional[int] = None):
+        pulumi.set(__self__, "auto_healing", auto_healing)
+        pulumi.set(__self__, "health_check_types", health_check_types)
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+        if unhealthy_duration is not None:
+            pulumi.set(__self__, "unhealthy_duration", unhealthy_duration)
+
+    @property
+    @pulumi.getter(name="autoHealing")
+    def auto_healing(self) -> bool:
+        return pulumi.get(self, "auto_healing")
+
+    @property
+    @pulumi.getter(name="healthCheckTypes")
+    def health_check_types(self) -> Sequence[str]:
+        return pulumi.get(self, "health_check_types")
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[int]:
+        return pulumi.get(self, "grace_period")
+
+    @property
+    @pulumi.getter(name="unhealthyDuration")
+    def unhealthy_duration(self) -> Optional[int]:
+        return pulumi.get(self, "unhealthy_duration")
+
+
+@pulumi.output_type
+class StatefulNodeAzureImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customImages":
+            suggest = "custom_images"
+        elif key == "marketplaceImages":
+            suggest = "marketplace_images"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureImage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_images: Optional[Sequence['outputs.StatefulNodeAzureImageCustomImage']] = None,
+                 galleries: Optional[Sequence['outputs.StatefulNodeAzureImageGallery']] = None,
+                 marketplace_images: Optional[Sequence['outputs.StatefulNodeAzureImageMarketplaceImage']] = None):
+        if custom_images is not None:
+            pulumi.set(__self__, "custom_images", custom_images)
+        if galleries is not None:
+            pulumi.set(__self__, "galleries", galleries)
+        if marketplace_images is not None:
+            pulumi.set(__self__, "marketplace_images", marketplace_images)
+
+    @property
+    @pulumi.getter(name="customImages")
+    def custom_images(self) -> Optional[Sequence['outputs.StatefulNodeAzureImageCustomImage']]:
+        return pulumi.get(self, "custom_images")
+
+    @property
+    @pulumi.getter
+    def galleries(self) -> Optional[Sequence['outputs.StatefulNodeAzureImageGallery']]:
+        return pulumi.get(self, "galleries")
+
+    @property
+    @pulumi.getter(name="marketplaceImages")
+    def marketplace_images(self) -> Optional[Sequence['outputs.StatefulNodeAzureImageMarketplaceImage']]:
+        return pulumi.get(self, "marketplace_images")
+
+
+@pulumi.output_type
+class StatefulNodeAzureImageCustomImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customImageResourceGroupName":
+            suggest = "custom_image_resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureImageCustomImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureImageCustomImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureImageCustomImage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_image_resource_group_name: str,
+                 name: str):
+        pulumi.set(__self__, "custom_image_resource_group_name", custom_image_resource_group_name)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="customImageResourceGroupName")
+    def custom_image_resource_group_name(self) -> str:
+        return pulumi.get(self, "custom_image_resource_group_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class StatefulNodeAzureImageGallery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "galleryName":
+            suggest = "gallery_name"
+        elif key == "galleryResourceGroupName":
+            suggest = "gallery_resource_group_name"
+        elif key == "imageName":
+            suggest = "image_name"
+        elif key == "versionName":
+            suggest = "version_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureImageGallery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureImageGallery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureImageGallery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gallery_name: str,
+                 gallery_resource_group_name: str,
+                 image_name: str,
+                 version_name: str):
+        pulumi.set(__self__, "gallery_name", gallery_name)
+        pulumi.set(__self__, "gallery_resource_group_name", gallery_resource_group_name)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "version_name", version_name)
+
+    @property
+    @pulumi.getter(name="galleryName")
+    def gallery_name(self) -> str:
+        return pulumi.get(self, "gallery_name")
+
+    @property
+    @pulumi.getter(name="galleryResourceGroupName")
+    def gallery_resource_group_name(self) -> str:
+        return pulumi.get(self, "gallery_resource_group_name")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> str:
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="versionName")
+    def version_name(self) -> str:
+        return pulumi.get(self, "version_name")
+
+
+@pulumi.output_type
+class StatefulNodeAzureImageMarketplaceImage(dict):
+    def __init__(__self__, *,
+                 offer: str,
+                 publisher: str,
+                 sku: str,
+                 version: str):
+        pulumi.set(__self__, "offer", offer)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "sku", sku)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def offer(self) -> str:
+        return pulumi.get(self, "offer")
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> str:
+        return pulumi.get(self, "publisher")
+
+    @property
+    @pulumi.getter
+    def sku(self) -> str:
+        return pulumi.get(self, "sku")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class StatefulNodeAzureImportVm(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "originalVmName":
+            suggest = "original_vm_name"
+        elif key == "resourceGroupName":
+            suggest = "resource_group_name"
+        elif key == "drainingTimeout":
+            suggest = "draining_timeout"
+        elif key == "resourcesRetentionTime":
+            suggest = "resources_retention_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureImportVm. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureImportVm.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureImportVm.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 original_vm_name: str,
+                 resource_group_name: str,
+                 draining_timeout: Optional[int] = None,
+                 resources_retention_time: Optional[int] = None):
+        pulumi.set(__self__, "original_vm_name", original_vm_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if resources_retention_time is not None:
+            pulumi.set(__self__, "resources_retention_time", resources_retention_time)
+
+    @property
+    @pulumi.getter(name="originalVmName")
+    def original_vm_name(self) -> str:
+        return pulumi.get(self, "original_vm_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        return pulumi.get(self, "resource_group_name")
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[int]:
+        return pulumi.get(self, "draining_timeout")
+
+    @property
+    @pulumi.getter(name="resourcesRetentionTime")
+    def resources_retention_time(self) -> Optional[int]:
+        return pulumi.get(self, "resources_retention_time")
+
+
+@pulumi.output_type
+class StatefulNodeAzureLoadBalancer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendPoolNames":
+            suggest = "backend_pool_names"
+        elif key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureLoadBalancer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureLoadBalancer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureLoadBalancer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backend_pool_names: Sequence[str],
+                 name: str,
+                 resource_group_name: str,
+                 type: str,
+                 sku: Optional[str] = None):
+        pulumi.set(__self__, "backend_pool_names", backend_pool_names)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "type", type)
+        if sku is not None:
+            pulumi.set(__self__, "sku", sku)
+
+    @property
+    @pulumi.getter(name="backendPoolNames")
+    def backend_pool_names(self) -> Sequence[str]:
+        return pulumi.get(self, "backend_pool_names")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        return pulumi.get(self, "resource_group_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def sku(self) -> Optional[str]:
+        return pulumi.get(self, "sku")
+
+
+@pulumi.output_type
+class StatefulNodeAzureLogin(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+        elif key == "sshPublicKey":
+            suggest = "ssh_public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureLogin. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureLogin.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureLogin.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 user_name: str,
+                 password: Optional[str] = None,
+                 ssh_public_key: Optional[str] = None):
+        pulumi.set(__self__, "user_name", user_name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if ssh_public_key is not None:
+            pulumi.set(__self__, "ssh_public_key", ssh_public_key)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        return pulumi.get(self, "user_name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="sshPublicKey")
+    def ssh_public_key(self) -> Optional[str]:
+        return pulumi.get(self, "ssh_public_key")
+
+
+@pulumi.output_type
+class StatefulNodeAzureManagedServiceIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureManagedServiceIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureManagedServiceIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureManagedServiceIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_group_name: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        return pulumi.get(self, "resource_group_name")
+
+
+@pulumi.output_type
+class StatefulNodeAzureNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkInterfaces":
+            suggest = "network_interfaces"
+        elif key == "networkResourceGroupName":
+            suggest = "network_resource_group_name"
+        elif key == "virtualNetworkName":
+            suggest = "virtual_network_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_interfaces: Sequence['outputs.StatefulNodeAzureNetworkNetworkInterface'],
+                 network_resource_group_name: str,
+                 virtual_network_name: str):
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+        pulumi.set(__self__, "virtual_network_name", virtual_network_name)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Sequence['outputs.StatefulNodeAzureNetworkNetworkInterface']:
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="networkResourceGroupName")
+    def network_resource_group_name(self) -> str:
+        return pulumi.get(self, "network_resource_group_name")
+
+    @property
+    @pulumi.getter(name="virtualNetworkName")
+    def virtual_network_name(self) -> str:
+        return pulumi.get(self, "virtual_network_name")
+
+
+@pulumi.output_type
+class StatefulNodeAzureNetworkNetworkInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isPrimary":
+            suggest = "is_primary"
+        elif key == "subnetName":
+            suggest = "subnet_name"
+        elif key == "additionalIpConfigurations":
+            suggest = "additional_ip_configurations"
+        elif key == "applicationSecurityGroups":
+            suggest = "application_security_groups"
+        elif key == "assignPublicIp":
+            suggest = "assign_public_ip"
+        elif key == "enableIpForwarding":
+            suggest = "enable_ip_forwarding"
+        elif key == "networkSecurityGroups":
+            suggest = "network_security_groups"
+        elif key == "privateIpAddresses":
+            suggest = "private_ip_addresses"
+        elif key == "publicIpSku":
+            suggest = "public_ip_sku"
+        elif key == "publicIps":
+            suggest = "public_ips"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureNetworkNetworkInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureNetworkNetworkInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureNetworkNetworkInterface.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_primary: bool,
+                 subnet_name: str,
+                 additional_ip_configurations: Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration']] = None,
+                 application_security_groups: Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup']] = None,
+                 assign_public_ip: Optional[bool] = None,
+                 enable_ip_forwarding: Optional[bool] = None,
+                 network_security_groups: Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup']] = None,
+                 private_ip_addresses: Optional[Sequence[str]] = None,
+                 public_ip_sku: Optional[str] = None,
+                 public_ips: Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfacePublicIp']] = None):
+        pulumi.set(__self__, "is_primary", is_primary)
+        pulumi.set(__self__, "subnet_name", subnet_name)
+        if additional_ip_configurations is not None:
+            pulumi.set(__self__, "additional_ip_configurations", additional_ip_configurations)
+        if application_security_groups is not None:
+            pulumi.set(__self__, "application_security_groups", application_security_groups)
+        if assign_public_ip is not None:
+            pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        if enable_ip_forwarding is not None:
+            pulumi.set(__self__, "enable_ip_forwarding", enable_ip_forwarding)
+        if network_security_groups is not None:
+            pulumi.set(__self__, "network_security_groups", network_security_groups)
+        if private_ip_addresses is not None:
+            pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+        if public_ip_sku is not None:
+            pulumi.set(__self__, "public_ip_sku", public_ip_sku)
+        if public_ips is not None:
+            pulumi.set(__self__, "public_ips", public_ips)
+
+    @property
+    @pulumi.getter(name="isPrimary")
+    def is_primary(self) -> bool:
+        return pulumi.get(self, "is_primary")
+
+    @property
+    @pulumi.getter(name="subnetName")
+    def subnet_name(self) -> str:
+        return pulumi.get(self, "subnet_name")
+
+    @property
+    @pulumi.getter(name="additionalIpConfigurations")
+    def additional_ip_configurations(self) -> Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration']]:
+        return pulumi.get(self, "additional_ip_configurations")
+
+    @property
+    @pulumi.getter(name="applicationSecurityGroups")
+    def application_security_groups(self) -> Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup']]:
+        return pulumi.get(self, "application_security_groups")
+
+    @property
+    @pulumi.getter(name="assignPublicIp")
+    def assign_public_ip(self) -> Optional[bool]:
+        return pulumi.get(self, "assign_public_ip")
+
+    @property
+    @pulumi.getter(name="enableIpForwarding")
+    def enable_ip_forwarding(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_ip_forwarding")
+
+    @property
+    @pulumi.getter(name="networkSecurityGroups")
+    def network_security_groups(self) -> Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup']]:
+        return pulumi.get(self, "network_security_groups")
+
+    @property
+    @pulumi.getter(name="privateIpAddresses")
+    def private_ip_addresses(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "private_ip_addresses")
+
+    @property
+    @pulumi.getter(name="publicIpSku")
+    def public_ip_sku(self) -> Optional[str]:
+        return pulumi.get(self, "public_ip_sku")
+
+    @property
+    @pulumi.getter(name="publicIps")
+    def public_ips(self) -> Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfacePublicIp']]:
+        return pulumi.get(self, "public_ips")
+
+
+@pulumi.output_type
+class StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateIpAddressVersion":
+            suggest = "private_ip_address_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 private_ip_address_version: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_ip_address_version", private_ip_address_version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="privateIpAddressVersion")
+    def private_ip_address_version(self) -> str:
+        return pulumi.get(self, "private_ip_address_version")
+
+
+@pulumi.output_type
+class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkResourceGroupName":
+            suggest = "network_resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 network_resource_group_name: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkResourceGroupName")
+    def network_resource_group_name(self) -> str:
+        return pulumi.get(self, "network_resource_group_name")
+
+
+@pulumi.output_type
+class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkResourceGroupName":
+            suggest = "network_resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 network_resource_group_name: Optional[str] = None):
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_resource_group_name is not None:
+            pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkResourceGroupName")
+    def network_resource_group_name(self) -> Optional[str]:
+        return pulumi.get(self, "network_resource_group_name")
+
+
+@pulumi.output_type
+class StatefulNodeAzureNetworkNetworkInterfacePublicIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkResourceGroupName":
+            suggest = "network_resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureNetworkNetworkInterfacePublicIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureNetworkNetworkInterfacePublicIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureNetworkNetworkInterfacePublicIp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 network_resource_group_name: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkResourceGroupName")
+    def network_resource_group_name(self) -> str:
+        return pulumi.get(self, "network_resource_group_name")
+
+
+@pulumi.output_type
+class StatefulNodeAzureOsDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureOsDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureOsDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureOsDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 size_gb: Optional[int] = None):
+        pulumi.set(__self__, "type", type)
+        if size_gb is not None:
+            pulumi.set(__self__, "size_gb", size_gb)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> Optional[int]:
+        return pulumi.get(self, "size_gb")
+
+
+@pulumi.output_type
+class StatefulNodeAzureSchedulingTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronExpression":
+            suggest = "cron_expression"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureSchedulingTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureSchedulingTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureSchedulingTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cron_expression: str,
+                 is_enabled: bool,
+                 type: str):
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> str:
+        return pulumi.get(self, "cron_expression")
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> bool:
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class StatefulNodeAzureSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceVaults":
+            suggest = "source_vaults"
+        elif key == "vaultCertificates":
+            suggest = "vault_certificates"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureSecret.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_vaults: Sequence['outputs.StatefulNodeAzureSecretSourceVault'],
+                 vault_certificates: Sequence['outputs.StatefulNodeAzureSecretVaultCertificate']):
+        pulumi.set(__self__, "source_vaults", source_vaults)
+        pulumi.set(__self__, "vault_certificates", vault_certificates)
+
+    @property
+    @pulumi.getter(name="sourceVaults")
+    def source_vaults(self) -> Sequence['outputs.StatefulNodeAzureSecretSourceVault']:
+        return pulumi.get(self, "source_vaults")
+
+    @property
+    @pulumi.getter(name="vaultCertificates")
+    def vault_certificates(self) -> Sequence['outputs.StatefulNodeAzureSecretVaultCertificate']:
+        return pulumi.get(self, "vault_certificates")
+
+
+@pulumi.output_type
+class StatefulNodeAzureSecretSourceVault(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureSecretSourceVault. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureSecretSourceVault.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureSecretSourceVault.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_group_name: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        return pulumi.get(self, "resource_group_name")
+
+
+@pulumi.output_type
+class StatefulNodeAzureSecretVaultCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateStore":
+            suggest = "certificate_store"
+        elif key == "certificateUrl":
+            suggest = "certificate_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureSecretVaultCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureSecretVaultCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureSecretVaultCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_store: Optional[str] = None,
+                 certificate_url: Optional[str] = None):
+        if certificate_store is not None:
+            pulumi.set(__self__, "certificate_store", certificate_store)
+        if certificate_url is not None:
+            pulumi.set(__self__, "certificate_url", certificate_url)
+
+    @property
+    @pulumi.getter(name="certificateStore")
+    def certificate_store(self) -> Optional[str]:
+        return pulumi.get(self, "certificate_store")
+
+    @property
+    @pulumi.getter(name="certificateUrl")
+    def certificate_url(self) -> Optional[str]:
+        return pulumi.get(self, "certificate_url")
+
+
+@pulumi.output_type
+class StatefulNodeAzureSignal(dict):
+    def __init__(__self__, *,
+                 timeout: int,
+                 type: str):
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> int:
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class StatefulNodeAzureStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fallbackToOnDemand":
+            suggest = "fallback_to_on_demand"
+        elif key == "drainingTimeout":
+            suggest = "draining_timeout"
+        elif key == "optimizationWindows":
+            suggest = "optimization_windows"
+        elif key == "preferredLifeCycle":
+            suggest = "preferred_life_cycle"
+        elif key == "revertToSpot":
+            suggest = "revert_to_spot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fallback_to_on_demand: bool,
+                 draining_timeout: Optional[int] = None,
+                 optimization_windows: Optional[Sequence[str]] = None,
+                 preferred_life_cycle: Optional[str] = None,
+                 revert_to_spot: Optional['outputs.StatefulNodeAzureStrategyRevertToSpot'] = None):
+        pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if optimization_windows is not None:
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
+        if preferred_life_cycle is not None:
+            pulumi.set(__self__, "preferred_life_cycle", preferred_life_cycle)
+        if revert_to_spot is not None:
+            pulumi.set(__self__, "revert_to_spot", revert_to_spot)
+
+    @property
+    @pulumi.getter(name="fallbackToOnDemand")
+    def fallback_to_on_demand(self) -> bool:
+        return pulumi.get(self, "fallback_to_on_demand")
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[int]:
+        return pulumi.get(self, "draining_timeout")
+
+    @property
+    @pulumi.getter(name="optimizationWindows")
+    def optimization_windows(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "optimization_windows")
+
+    @property
+    @pulumi.getter(name="preferredLifeCycle")
+    def preferred_life_cycle(self) -> Optional[str]:
+        return pulumi.get(self, "preferred_life_cycle")
+
+    @property
+    @pulumi.getter(name="revertToSpot")
+    def revert_to_spot(self) -> Optional['outputs.StatefulNodeAzureStrategyRevertToSpot']:
+        return pulumi.get(self, "revert_to_spot")
+
+
+@pulumi.output_type
+class StatefulNodeAzureStrategyRevertToSpot(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "performAt":
+            suggest = "perform_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureStrategyRevertToSpot. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureStrategyRevertToSpot.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureStrategyRevertToSpot.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 perform_at: str):
+        pulumi.set(__self__, "perform_at", perform_at)
+
+    @property
+    @pulumi.getter(name="performAt")
+    def perform_at(self) -> str:
+        return pulumi.get(self, "perform_at")
+
+
+@pulumi.output_type
+class StatefulNodeAzureTag(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureTag. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureTag.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureTag.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_key: str,
+                 tag_value: Optional[str] = None):
+        pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> str:
+        return pulumi.get(self, "tag_key")
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[str]:
+        return pulumi.get(self, "tag_value")
+
+
+@pulumi.output_type
+class StatefulNodeAzureUpdateState(dict):
+    def __init__(__self__, *,
+                 state: str):
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
 
 

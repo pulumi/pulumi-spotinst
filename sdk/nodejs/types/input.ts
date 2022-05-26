@@ -185,6 +185,206 @@ export interface HealthCheckCheck {
      */
     unhealthy: pulumi.Input<number>;
 }
+
+export interface StatefulNodeAzureAttachDataDisk {
+    dataDiskName: pulumi.Input<string>;
+    dataDiskResourceGroupName: pulumi.Input<string>;
+    lun?: pulumi.Input<number>;
+    sizeGb: pulumi.Input<number>;
+    storageAccountType: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureBootDiagnostic {
+    isEnabled?: pulumi.Input<boolean>;
+    storageUrl?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureDataDisk {
+    lun: pulumi.Input<number>;
+    sizeGb: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureDelete {
+    diskShouldDeallocate: pulumi.Input<boolean>;
+    diskTtlInHours?: pulumi.Input<number>;
+    networkShouldDeallocate: pulumi.Input<boolean>;
+    networkTtlInHours?: pulumi.Input<number>;
+    publicIpShouldDeallocate: pulumi.Input<boolean>;
+    publicIpTtlInHours?: pulumi.Input<number>;
+    shouldTerminateVm: pulumi.Input<boolean>;
+    snapshotShouldDeallocate: pulumi.Input<boolean>;
+    snapshotTtlInHours?: pulumi.Input<number>;
+}
+
+export interface StatefulNodeAzureDetachDataDisk {
+    dataDiskName: pulumi.Input<string>;
+    dataDiskResourceGroupName: pulumi.Input<string>;
+    shouldDeallocate: pulumi.Input<boolean>;
+    ttlInHours?: pulumi.Input<number>;
+}
+
+export interface StatefulNodeAzureExtension {
+    apiVersion: pulumi.Input<string>;
+    minorVersionAutoUpgrade: pulumi.Input<boolean>;
+    name: pulumi.Input<string>;
+    protectedSettings?: pulumi.Input<{[key: string]: any}>;
+    publicSettings?: pulumi.Input<{[key: string]: any}>;
+    publisher: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureHealth {
+    autoHealing: pulumi.Input<boolean>;
+    gracePeriod?: pulumi.Input<number>;
+    healthCheckTypes: pulumi.Input<pulumi.Input<string>[]>;
+    unhealthyDuration?: pulumi.Input<number>;
+}
+
+export interface StatefulNodeAzureImage {
+    customImages?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureImageCustomImage>[]>;
+    galleries?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureImageGallery>[]>;
+    marketplaceImages?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureImageMarketplaceImage>[]>;
+}
+
+export interface StatefulNodeAzureImageCustomImage {
+    customImageResourceGroupName: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureImageGallery {
+    galleryName: pulumi.Input<string>;
+    galleryResourceGroupName: pulumi.Input<string>;
+    imageName: pulumi.Input<string>;
+    versionName: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureImageMarketplaceImage {
+    offer: pulumi.Input<string>;
+    publisher: pulumi.Input<string>;
+    sku: pulumi.Input<string>;
+    version: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureImportVm {
+    drainingTimeout?: pulumi.Input<number>;
+    originalVmName: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+    resourcesRetentionTime?: pulumi.Input<number>;
+}
+
+export interface StatefulNodeAzureLoadBalancer {
+    backendPoolNames: pulumi.Input<pulumi.Input<string>[]>;
+    name: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+    sku?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureLogin {
+    password?: pulumi.Input<string>;
+    sshPublicKey?: pulumi.Input<string>;
+    userName: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureManagedServiceIdentity {
+    name: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureNetwork {
+    networkInterfaces: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterface>[]>;
+    networkResourceGroupName: pulumi.Input<string>;
+    virtualNetworkName: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureNetworkNetworkInterface {
+    additionalIpConfigurations?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration>[]>;
+    applicationSecurityGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup>[]>;
+    assignPublicIp?: pulumi.Input<boolean>;
+    enableIpForwarding?: pulumi.Input<boolean>;
+    isPrimary: pulumi.Input<boolean>;
+    networkSecurityGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup>[]>;
+    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    publicIpSku?: pulumi.Input<string>;
+    publicIps?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfacePublicIp>[]>;
+    subnetName: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration {
+    name: pulumi.Input<string>;
+    privateIpAddressVersion: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup {
+    name: pulumi.Input<string>;
+    networkResourceGroupName: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup {
+    name?: pulumi.Input<string>;
+    networkResourceGroupName?: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureNetworkNetworkInterfacePublicIp {
+    name: pulumi.Input<string>;
+    networkResourceGroupName: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureOsDisk {
+    sizeGb?: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureSchedulingTask {
+    cronExpression: pulumi.Input<string>;
+    isEnabled: pulumi.Input<boolean>;
+    type: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureSecret {
+    sourceVaults: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSecretSourceVault>[]>;
+    vaultCertificates: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSecretVaultCertificate>[]>;
+}
+
+export interface StatefulNodeAzureSecretSourceVault {
+    name: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureSecretVaultCertificate {
+    certificateStore?: pulumi.Input<string>;
+    certificateUrl?: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureSignal {
+    timeout: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureStrategy {
+    drainingTimeout?: pulumi.Input<number>;
+    fallbackToOnDemand: pulumi.Input<boolean>;
+    optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredLifeCycle?: pulumi.Input<string>;
+    revertToSpot?: pulumi.Input<inputs.StatefulNodeAzureStrategyRevertToSpot>;
+}
+
+export interface StatefulNodeAzureStrategyRevertToSpot {
+    performAt: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureTag {
+    tagKey: pulumi.Input<string>;
+    tagValue?: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureUpdateState {
+    state: pulumi.Input<string>;
+}
+
 export namespace aws {
     export interface BeanstalkDeploymentPreferences {
         /**

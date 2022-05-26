@@ -9,6 +9,7 @@ from .data_integration import *
 from .elastigroup_azure_v3 import *
 from .health_check import *
 from .provider import *
+from .stateful_node_azure import *
 from .subscription import *
 from ._inputs import *
 from . import outputs
@@ -207,6 +208,14 @@ _utilities.register(
   "fqn": "pulumi_spotinst",
   "classes": {
    "spotinst:index/healthCheck:HealthCheck": "HealthCheck"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "index/statefulNodeAzure",
+  "fqn": "pulumi_spotinst",
+  "classes": {
+   "spotinst:index/statefulNodeAzure:StatefulNodeAzure": "StatefulNodeAzure"
   }
  },
  {
