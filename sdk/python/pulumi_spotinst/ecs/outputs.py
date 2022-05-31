@@ -26,6 +26,9 @@ __all__ = [
     'OceanLaunchSpecSchedulingTask',
     'OceanLaunchSpecSchedulingTaskTaskHeadroom',
     'OceanLaunchSpecTag',
+    'OceanLogging',
+    'OceanLoggingExport',
+    'OceanLoggingExportS3',
     'OceanOptimizeImages',
     'OceanScheduledTask',
     'OceanScheduledTaskShutdownHours',
@@ -1083,6 +1086,62 @@ class OceanLaunchSpecTag(dict):
         The label value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanLogging(dict):
+    def __init__(__self__, *,
+                 export: Optional['outputs.OceanLoggingExport'] = None):
+        """
+        :param 'OceanLoggingExportArgs' export: Logging Export configuration.
+        """
+        if export is not None:
+            pulumi.set(__self__, "export", export)
+
+    @property
+    @pulumi.getter
+    def export(self) -> Optional['outputs.OceanLoggingExport']:
+        """
+        Logging Export configuration.
+        """
+        return pulumi.get(self, "export")
+
+
+@pulumi.output_type
+class OceanLoggingExport(dict):
+    def __init__(__self__, *,
+                 s3s: Optional[Sequence['outputs.OceanLoggingExportS3']] = None):
+        """
+        :param Sequence['OceanLoggingExportS3Args'] s3s: Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
+        if s3s is not None:
+            pulumi.set(__self__, "s3s", s3s)
+
+    @property
+    @pulumi.getter
+    def s3s(self) -> Optional[Sequence['outputs.OceanLoggingExportS3']]:
+        """
+        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
+        return pulumi.get(self, "s3s")
+
+
+@pulumi.output_type
+class OceanLoggingExportS3(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The identifier of The S3 data integration to export the logs to.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The identifier of The S3 data integration to export the logs to.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

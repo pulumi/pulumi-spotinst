@@ -2641,6 +2641,8 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDisk(dict):
         suggest = None
         if key == "sizeGb":
             suggest = "size_gb"
+        elif key == "utilizeEphemeralStorage":
+            suggest = "utilize_ephemeral_storage"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanVirtualNodeGroupLaunchSpecificationOsDisk. Access the value via the '{suggest}' property getter instead.")
@@ -2655,14 +2657,18 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDisk(dict):
 
     def __init__(__self__, *,
                  size_gb: int,
-                 type: Optional[str] = None):
+                 type: Optional[str] = None,
+                 utilize_ephemeral_storage: Optional[bool] = None):
         """
         :param int size_gb: The size of the OS disk in GB, Required if dataDisks is specified.
         :param str type: The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
+        :param bool utilize_ephemeral_storage: Flag to enable/disable the Ephemeral OS Disk utilization.
         """
         pulumi.set(__self__, "size_gb", size_gb)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if utilize_ephemeral_storage is not None:
+            pulumi.set(__self__, "utilize_ephemeral_storage", utilize_ephemeral_storage)
 
     @property
     @pulumi.getter(name="sizeGb")
@@ -2679,6 +2685,14 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDisk(dict):
         The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="utilizeEphemeralStorage")
+    def utilize_ephemeral_storage(self) -> Optional[bool]:
+        """
+        Flag to enable/disable the Ephemeral OS Disk utilization.
+        """
+        return pulumi.get(self, "utilize_ephemeral_storage")
 
 
 @pulumi.output_type

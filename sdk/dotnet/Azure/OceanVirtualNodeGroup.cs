@@ -57,6 +57,7 @@ namespace Pulumi.SpotInst.Azure
     ///                     {
     ///                         SizeGb = 100,
     ///                         Type = "Standard_LRS",
+    ///                         UtilizeEphemeralStorage = false,
     ///                     },
     ///                     Tags = 
     ///                     {
@@ -84,6 +85,12 @@ namespace Pulumi.SpotInst.Azure
     ///                     Key = "taint_key",
     ///                     Value = "taint_value",
     ///                 },
+    ///             },
+    ///             Zones = 
+    ///             {
+    ///                 "1",
+    ///                 "2",
+    ///                 "3",
     ///             },
     ///         });
     ///     }
@@ -150,6 +157,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.OceanVirtualNodeGroupTaint>> Taints { get; private set; } = null!;
+
+        /// <summary>
+        /// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        /// </summary>
+        [Output("zones")]
+        public Output<ImmutableArray<string>> Zones { get; private set; } = null!;
 
 
         /// <summary>
@@ -269,6 +282,18 @@ namespace Pulumi.SpotInst.Azure
             set => _taints = value;
         }
 
+        [Input("zones")]
+        private InputList<string>? _zones;
+
+        /// <summary>
+        /// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        /// </summary>
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
+
         public OceanVirtualNodeGroupArgs()
         {
         }
@@ -346,6 +371,18 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _taints ?? (_taints = new InputList<Inputs.OceanVirtualNodeGroupTaintGetArgs>());
             set => _taints = value;
+        }
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+
+        /// <summary>
+        /// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+        /// </summary>
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
         }
 
         public OceanVirtualNodeGroupState()

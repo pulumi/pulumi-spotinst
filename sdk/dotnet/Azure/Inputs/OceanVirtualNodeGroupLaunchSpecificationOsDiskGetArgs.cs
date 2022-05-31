@@ -24,6 +24,12 @@ namespace Pulumi.SpotInst.Azure.Inputs
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Flag to enable/disable the Ephemeral OS Disk utilization.
+        /// </summary>
+        [Input("utilizeEphemeralStorage")]
+        public Input<bool>? UtilizeEphemeralStorage { get; set; }
+
         public OceanVirtualNodeGroupLaunchSpecificationOsDiskGetArgs()
         {
         }

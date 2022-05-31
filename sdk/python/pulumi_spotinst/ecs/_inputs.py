@@ -25,6 +25,9 @@ __all__ = [
     'OceanLaunchSpecSchedulingTaskArgs',
     'OceanLaunchSpecSchedulingTaskTaskHeadroomArgs',
     'OceanLaunchSpecTagArgs',
+    'OceanLoggingArgs',
+    'OceanLoggingExportArgs',
+    'OceanLoggingExportS3Args',
     'OceanOptimizeImagesArgs',
     'OceanScheduledTaskArgs',
     'OceanScheduledTaskShutdownHoursArgs',
@@ -1028,6 +1031,74 @@ class OceanLaunchSpecTagArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanLoggingArgs:
+    def __init__(__self__, *,
+                 export: Optional[pulumi.Input['OceanLoggingExportArgs']] = None):
+        """
+        :param pulumi.Input['OceanLoggingExportArgs'] export: Logging Export configuration.
+        """
+        if export is not None:
+            pulumi.set(__self__, "export", export)
+
+    @property
+    @pulumi.getter
+    def export(self) -> Optional[pulumi.Input['OceanLoggingExportArgs']]:
+        """
+        Logging Export configuration.
+        """
+        return pulumi.get(self, "export")
+
+    @export.setter
+    def export(self, value: Optional[pulumi.Input['OceanLoggingExportArgs']]):
+        pulumi.set(self, "export", value)
+
+
+@pulumi.input_type
+class OceanLoggingExportArgs:
+    def __init__(__self__, *,
+                 s3s: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]] s3s: Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
+        if s3s is not None:
+            pulumi.set(__self__, "s3s", s3s)
+
+    @property
+    @pulumi.getter
+    def s3s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]]:
+        """
+        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
+        return pulumi.get(self, "s3s")
+
+    @s3s.setter
+    def s3s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]]):
+        pulumi.set(self, "s3s", value)
+
+
+@pulumi.input_type
+class OceanLoggingExportS3Args:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: The identifier of The S3 data integration to export the logs to.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The identifier of The S3 data integration to export the logs to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type

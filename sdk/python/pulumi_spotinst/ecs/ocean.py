@@ -29,6 +29,7 @@ class OceanArgs:
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
+                 logging: Optional[pulumi.Input['OceanLoggingArgs']] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -58,6 +59,7 @@ class OceanArgs:
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
+        :param pulumi.Input['OceanLoggingArgs'] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -96,6 +98,8 @@ class OceanArgs:
             pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if key_pair is not None:
             pulumi.set(__self__, "key_pair", key_pair)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
@@ -292,6 +296,18 @@ class OceanArgs:
         pulumi.set(self, "key_pair", value)
 
     @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['OceanLoggingArgs']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['OceanLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -462,6 +478,7 @@ class _OceanState:
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
+                 logging: Optional[pulumi.Input['OceanLoggingArgs']] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -491,6 +508,7 @@ class _OceanState:
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
+        :param pulumi.Input['OceanLoggingArgs'] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -530,6 +548,8 @@ class _OceanState:
             pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if key_pair is not None:
             pulumi.set(__self__, "key_pair", key_pair)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
@@ -694,6 +714,18 @@ class _OceanState:
     @key_pair.setter
     def key_pair(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_pair", value)
+
+    @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['OceanLoggingArgs']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['OceanLoggingArgs']]):
+        pulumi.set(self, "logging", value)
 
     @property
     @pulumi.getter(name="maxSize")
@@ -904,6 +936,7 @@ class Ocean(pulumi.CustomResource):
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['OceanLoggingArgs']]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -958,6 +991,13 @@ class Ocean(pulumi.CustomResource):
                 http_tokens="required",
             ),
             key_pair="KeyPair",
+            logging=spotinst.ecs.OceanLoggingArgs(
+                export=spotinst.ecs.OceanLoggingExportArgs(
+                    s3=[{
+                        "id": "di-abcd123",
+                    }],
+                ),
+            ),
             max_size=1,
             min_size=0,
             monitoring=True,
@@ -1001,6 +1041,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
+        :param pulumi.Input[pulumi.InputType['OceanLoggingArgs']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -1061,6 +1102,13 @@ class Ocean(pulumi.CustomResource):
                 http_tokens="required",
             ),
             key_pair="KeyPair",
+            logging=spotinst.ecs.OceanLoggingArgs(
+                export=spotinst.ecs.OceanLoggingExportArgs(
+                    s3=[{
+                        "id": "di-abcd123",
+                    }],
+                ),
+            ),
             max_size=1,
             min_size=0,
             monitoring=True,
@@ -1117,6 +1165,7 @@ class Ocean(pulumi.CustomResource):
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['OceanLoggingArgs']]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
@@ -1158,6 +1207,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["key_pair"] = key_pair
+            __props__.__dict__["logging"] = logging
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["monitoring"] = monitoring
@@ -1201,6 +1251,7 @@ class Ocean(pulumi.CustomResource):
             image_id: Optional[pulumi.Input[str]] = None,
             instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
             key_pair: Optional[pulumi.Input[str]] = None,
+            logging: Optional[pulumi.Input[pulumi.InputType['OceanLoggingArgs']]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             monitoring: Optional[pulumi.Input[bool]] = None,
@@ -1235,6 +1286,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[str] key_pair: The key pair to attach the instances.
+        :param pulumi.Input[pulumi.InputType['OceanLoggingArgs']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -1267,6 +1319,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["instance_metadata_options"] = instance_metadata_options
         __props__.__dict__["key_pair"] = key_pair
+        __props__.__dict__["logging"] = logging
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["monitoring"] = monitoring
@@ -1372,6 +1425,14 @@ class Ocean(pulumi.CustomResource):
         The key pair to attach the instances.
         """
         return pulumi.get(self, "key_pair")
+
+    @property
+    @pulumi.getter
+    def logging(self) -> pulumi.Output[Optional['outputs.OceanLogging']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging")
 
     @property
     @pulumi.getter(name="maxSize")
