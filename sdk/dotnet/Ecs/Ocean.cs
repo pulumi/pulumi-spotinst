@@ -58,6 +58,19 @@ namespace Pulumi.SpotInst.Ecs
     ///                 HttpTokens = "required",
     ///             },
     ///             KeyPair = "KeyPair",
+    ///             Logging = new SpotInst.Ecs.Inputs.OceanLoggingArgs
+    ///             {
+    ///                 Export = new SpotInst.Ecs.Inputs.OceanLoggingExportArgs
+    ///                 {
+    ///                     S3 = 
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "id", "di-abcd123" },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
     ///             MaxSize = 1,
     ///             MinSize = 0,
     ///             Monitoring = true,
@@ -184,6 +197,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("keyPair")]
         public Output<string?> KeyPair { get; private set; } = null!;
+
+        /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Output("logging")]
+        public Output<Outputs.OceanLogging?> Logging { get; private set; } = null!;
 
         /// <summary>
         /// The upper limit of instances the cluster can scale up to.
@@ -400,6 +419,12 @@ namespace Pulumi.SpotInst.Ecs
         public Input<string>? KeyPair { get; set; }
 
         /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.OceanLoggingArgs>? Logging { get; set; }
+
+        /// <summary>
         /// The upper limit of instances the cluster can scale up to.
         /// </summary>
         [Input("maxSize")]
@@ -603,6 +628,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("keyPair")]
         public Input<string>? KeyPair { get; set; }
+
+        /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.OceanLoggingGetArgs>? Logging { get; set; }
 
         /// <summary>
         /// The upper limit of instances the cluster can scale up to.

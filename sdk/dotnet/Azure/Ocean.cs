@@ -157,6 +157,12 @@ namespace Pulumi.SpotInst.Azure
     ///                     },
     ///                 },
     ///             },
+    ///             Zones = 
+    ///             {
+    ///                 "1",
+    ///                 "2",
+    ///                 "3",
+    ///             },
     ///         });
     ///     }
     /// 
@@ -300,6 +306,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("vmSizes")]
         public Output<ImmutableArray<Outputs.OceanVmSize>> VmSizes { get; private set; } = null!;
+
+        /// <summary>
+        /// An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+        /// </summary>
+        [Output("zones")]
+        public Output<ImmutableArray<string>> Zones { get; private set; } = null!;
 
 
         /// <summary>
@@ -509,6 +521,18 @@ namespace Pulumi.SpotInst.Azure
             set => _vmSizes = value;
         }
 
+        [Input("zones")]
+        private InputList<string>? _zones;
+
+        /// <summary>
+        /// An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+        /// </summary>
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
+
         public OceanArgs()
         {
         }
@@ -676,6 +700,18 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _vmSizes ?? (_vmSizes = new InputList<Inputs.OceanVmSizeGetArgs>());
             set => _vmSizes = value;
+        }
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+
+        /// <summary>
+        /// An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+        /// </summary>
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
         }
 
         public OceanState()

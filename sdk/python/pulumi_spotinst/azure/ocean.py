@@ -34,7 +34,8 @@ class OceanArgs:
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
-                 vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None):
+                 vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Ocean resource.
         :param pulumi.Input[str] acd_identifier: The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
@@ -57,6 +58,7 @@ class OceanArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
         :param pulumi.Input[str] user_name: Username for admin access to VMs.
         :param pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]] vm_sizes: The types of virtual machines that may or may not be a part of the Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
         """
         pulumi.set(__self__, "acd_identifier", acd_identifier)
         pulumi.set(__self__, "aks_name", aks_name)
@@ -94,6 +96,8 @@ class OceanArgs:
             pulumi.set(__self__, "user_name", user_name)
         if vm_sizes is not None:
             pulumi.set(__self__, "vm_sizes", vm_sizes)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="acdIdentifier")
@@ -335,6 +339,18 @@ class OceanArgs:
     def vm_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]]):
         pulumi.set(self, "vm_sizes", value)
 
+    @property
+    @pulumi.getter
+    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "zones", value)
+
 
 @pulumi.input_type
 class _OceanState:
@@ -358,7 +374,8 @@ class _OceanState:
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
-                 vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None):
+                 vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Ocean resources.
         :param pulumi.Input[str] acd_identifier: The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
@@ -381,6 +398,7 @@ class _OceanState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
         :param pulumi.Input[str] user_name: Username for admin access to VMs.
         :param pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]] vm_sizes: The types of virtual machines that may or may not be a part of the Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
         """
         if acd_identifier is not None:
             pulumi.set(__self__, "acd_identifier", acd_identifier)
@@ -422,6 +440,8 @@ class _OceanState:
             pulumi.set(__self__, "user_name", user_name)
         if vm_sizes is not None:
             pulumi.set(__self__, "vm_sizes", vm_sizes)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="acdIdentifier")
@@ -663,6 +683,18 @@ class _OceanState:
     def vm_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]]):
         pulumi.set(self, "vm_sizes", value)
 
+    @property
+    @pulumi.getter
+    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "zones", value)
+
 
 class Ocean(pulumi.CustomResource):
     @overload
@@ -689,6 +721,7 @@ class Ocean(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
                  vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -778,7 +811,12 @@ class Ocean(pulumi.CustomResource):
             user_name="some-name",
             vm_sizes=[spotinst.azure.OceanVmSizeArgs(
                 whitelists=["standard_ds2_v2"],
-            )])
+            )],
+            zones=[
+                "1",
+                "2",
+                "3",
+            ])
         ```
 
         ```python
@@ -809,6 +847,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
         :param pulumi.Input[str] user_name: Username for admin access to VMs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]] vm_sizes: The types of virtual machines that may or may not be a part of the Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
         """
         ...
     @overload
@@ -904,7 +943,12 @@ class Ocean(pulumi.CustomResource):
             user_name="some-name",
             vm_sizes=[spotinst.azure.OceanVmSizeArgs(
                 whitelists=["standard_ds2_v2"],
-            )])
+            )],
+            zones=[
+                "1",
+                "2",
+                "3",
+            ])
         ```
 
         ```python
@@ -948,6 +992,7 @@ class Ocean(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
                  vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -988,6 +1033,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_name"] = user_name
             __props__.__dict__["vm_sizes"] = vm_sizes
+            __props__.__dict__["zones"] = zones
         super(Ocean, __self__).__init__(
             'spotinst:azure/ocean:Ocean',
             resource_name,
@@ -1017,7 +1063,8 @@ class Ocean(pulumi.CustomResource):
             strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanStrategyArgs']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
             user_name: Optional[pulumi.Input[str]] = None,
-            vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]]] = None) -> 'Ocean':
+            vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]]] = None,
+            zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Ocean':
         """
         Get an existing Ocean resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1045,6 +1092,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
         :param pulumi.Input[str] user_name: Username for admin access to VMs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVmSizeArgs']]]] vm_sizes: The types of virtual machines that may or may not be a part of the Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1070,6 +1118,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["user_name"] = user_name
         __props__.__dict__["vm_sizes"] = vm_sizes
+        __props__.__dict__["zones"] = zones
         return Ocean(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1231,4 +1280,12 @@ class Ocean(pulumi.CustomResource):
         The types of virtual machines that may or may not be a part of the Ocean cluster.
         """
         return pulumi.get(self, "vm_sizes")
+
+    @property
+    @pulumi.getter
+    def zones(self) -> pulumi.Output[Sequence[str]]:
+        """
+        An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+        """
+        return pulumi.get(self, "zones")
 

@@ -54,7 +54,16 @@ import (
 // 				HttpPutResponseHopLimit: pulumi.Int(10),
 // 				HttpTokens:              pulumi.String("required"),
 // 			},
-// 			KeyPair:    pulumi.String("KeyPair"),
+// 			KeyPair: pulumi.String("KeyPair"),
+// 			Logging: &ecs.OceanLoggingArgs{
+// 				Export: &ecs.OceanLoggingExportArgs{
+// 					S3: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"id": "di-abcd123",
+// 						},
+// 					},
+// 				},
+// 			},
 // 			MaxSize:    pulumi.Int(1),
 // 			MinSize:    pulumi.Int(0),
 // 			Monitoring: pulumi.Bool(true),
@@ -133,6 +142,8 @@ type Ocean struct {
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrOutput `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
+	// Logging configuration.
+	Logging OceanLoggingPtrOutput `pulumi:"logging"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
@@ -230,6 +241,8 @@ type oceanState struct {
 	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyPair *string `pulumi:"keyPair"`
+	// Logging configuration.
+	Logging *OceanLogging `pulumi:"logging"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
@@ -287,6 +300,8 @@ type OceanState struct {
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
 	// The key pair to attach the instances.
 	KeyPair pulumi.StringPtrInput
+	// Logging configuration.
+	Logging OceanLoggingPtrInput
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
@@ -348,6 +363,8 @@ type oceanArgs struct {
 	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyPair *string `pulumi:"keyPair"`
+	// Logging configuration.
+	Logging *OceanLogging `pulumi:"logging"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
@@ -406,6 +423,8 @@ type OceanArgs struct {
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
 	// The key pair to attach the instances.
 	KeyPair pulumi.StringPtrInput
+	// Logging configuration.
+	Logging OceanLoggingPtrInput
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.

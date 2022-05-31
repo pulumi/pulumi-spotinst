@@ -106,6 +106,11 @@ import * as utilities from "../utilities";
  *     vmSizes: [{
  *         whitelists: ["standard_ds2_v2"],
  *     }],
+ *     zones: [
+ *         "1",
+ *         "2",
+ *         "3",
+ *     ],
  * });
  * ```
  *
@@ -223,6 +228,10 @@ export class Ocean extends pulumi.CustomResource {
      * The types of virtual machines that may or may not be a part of the Ocean cluster.
      */
     public readonly vmSizes!: pulumi.Output<outputs.azure.OceanVmSize[] | undefined>;
+    /**
+     * An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+     */
+    public readonly zones!: pulumi.Output<string[]>;
 
     /**
      * Create a Ocean resource with the given unique name, arguments, and options.
@@ -257,6 +266,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["userName"] = state ? state.userName : undefined;
             resourceInputs["vmSizes"] = state ? state.vmSizes : undefined;
+            resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as OceanArgs | undefined;
             if ((!args || args.acdIdentifier === undefined) && !opts.urn) {
@@ -291,6 +301,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userName"] = args ? args.userName : undefined;
             resourceInputs["vmSizes"] = args ? args.vmSizes : undefined;
+            resourceInputs["zones"] = args ? args.zones : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Ocean.__pulumiType, name, resourceInputs, opts);
@@ -381,6 +392,10 @@ export interface OceanState {
      * The types of virtual machines that may or may not be a part of the Ocean cluster.
      */
     vmSizes?: pulumi.Input<pulumi.Input<inputs.azure.OceanVmSize>[]>;
+    /**
+     * An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -467,4 +482,8 @@ export interface OceanArgs {
      * The types of virtual machines that may or may not be a part of the Ocean cluster.
      */
     vmSizes?: pulumi.Input<pulumi.Input<inputs.azure.OceanVmSize>[]>;
+    /**
+     * An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

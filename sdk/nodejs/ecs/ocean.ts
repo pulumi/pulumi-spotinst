@@ -42,6 +42,13 @@ import * as utilities from "../utilities";
  *         httpTokens: "required",
  *     },
  *     keyPair: "KeyPair",
+ *     logging: {
+ *         export: {
+ *             s3s: [{
+ *                 id: "di-abcd123",
+ *             }],
+ *         },
+ *     },
  *     maxSize: 1,
  *     minSize: 0,
  *     monitoring: true,
@@ -146,6 +153,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly keyPair!: pulumi.Output<string | undefined>;
     /**
+     * Logging configuration.
+     */
+    public readonly logging!: pulumi.Output<outputs.ecs.OceanLogging | undefined>;
+    /**
      * The upper limit of instances the cluster can scale up to.
      */
     public readonly maxSize!: pulumi.Output<number>;
@@ -234,6 +245,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
             resourceInputs["keyPair"] = state ? state.keyPair : undefined;
+            resourceInputs["logging"] = state ? state.logging : undefined;
             resourceInputs["maxSize"] = state ? state.maxSize : undefined;
             resourceInputs["minSize"] = state ? state.minSize : undefined;
             resourceInputs["monitoring"] = state ? state.monitoring : undefined;
@@ -275,6 +287,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
             resourceInputs["keyPair"] = args ? args.keyPair : undefined;
+            resourceInputs["logging"] = args ? args.logging : undefined;
             resourceInputs["maxSize"] = args ? args.maxSize : undefined;
             resourceInputs["minSize"] = args ? args.minSize : undefined;
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
@@ -345,6 +358,10 @@ export interface OceanState {
      * The key pair to attach the instances.
      */
     keyPair?: pulumi.Input<string>;
+    /**
+     * Logging configuration.
+     */
+    logging?: pulumi.Input<inputs.ecs.OceanLogging>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
@@ -459,6 +476,10 @@ export interface OceanArgs {
      * The key pair to attach the instances.
      */
     keyPair?: pulumi.Input<string>;
+    /**
+     * Logging configuration.
+     */
+    logging?: pulumi.Input<inputs.ecs.OceanLogging>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */

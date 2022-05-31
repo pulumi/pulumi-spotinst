@@ -21,15 +21,22 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Flag to enable/disable the Ephemeral OS Disk utilization.
+        /// </summary>
+        public readonly bool? UtilizeEphemeralStorage;
 
         [OutputConstructor]
         private OceanVirtualNodeGroupLaunchSpecificationOsDisk(
             int sizeGb,
 
-            string? type)
+            string? type,
+
+            bool? utilizeEphemeralStorage)
         {
             SizeGb = sizeGb;
             Type = type;
+            UtilizeEphemeralStorage = utilizeEphemeralStorage;
         }
     }
 }

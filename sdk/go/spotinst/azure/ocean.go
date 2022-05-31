@@ -129,6 +129,11 @@ import (
 // 					},
 // 				},
 // 			},
+// 			Zones: pulumi.StringArray{
+// 				pulumi.String("1"),
+// 				pulumi.String("2"),
+// 				pulumi.String("3"),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -195,6 +200,8 @@ type Ocean struct {
 	UserName pulumi.StringOutput `pulumi:"userName"`
 	// The types of virtual machines that may or may not be a part of the Ocean cluster.
 	VmSizes OceanVmSizeArrayOutput `pulumi:"vmSizes"`
+	// An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewOcean registers a new resource with the given unique name, arguments, and options.
@@ -278,6 +285,8 @@ type oceanState struct {
 	UserName *string `pulumi:"userName"`
 	// The types of virtual machines that may or may not be a part of the Ocean cluster.
 	VmSizes []OceanVmSize `pulumi:"vmSizes"`
+	// An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+	Zones []string `pulumi:"zones"`
 }
 
 type OceanState struct {
@@ -321,6 +330,8 @@ type OceanState struct {
 	UserName pulumi.StringPtrInput
 	// The types of virtual machines that may or may not be a part of the Ocean cluster.
 	VmSizes OceanVmSizeArrayInput
+	// An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+	Zones pulumi.StringArrayInput
 }
 
 func (OceanState) ElementType() reflect.Type {
@@ -368,6 +379,8 @@ type oceanArgs struct {
 	UserName *string `pulumi:"userName"`
 	// The types of virtual machines that may or may not be a part of the Ocean cluster.
 	VmSizes []OceanVmSize `pulumi:"vmSizes"`
+	// An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+	Zones []string `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a Ocean resource.
@@ -412,6 +425,8 @@ type OceanArgs struct {
 	UserName pulumi.StringPtrInput
 	// The types of virtual machines that may or may not be a part of the Ocean cluster.
 	VmSizes OceanVmSizeArrayInput
+	// An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+	Zones pulumi.StringArrayInput
 }
 
 func (OceanArgs) ElementType() reflect.Type {

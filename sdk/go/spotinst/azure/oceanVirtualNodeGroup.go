@@ -48,8 +48,9 @@ import (
 // 			LaunchSpecifications: azure.OceanVirtualNodeGroupLaunchSpecificationArray{
 // 				&azure.OceanVirtualNodeGroupLaunchSpecificationArgs{
 // 					OsDisk: &azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs{
-// 						SizeGb: pulumi.Int(100),
-// 						Type:   pulumi.String("Standard_LRS"),
+// 						SizeGb:                  pulumi.Int(100),
+// 						Type:                    pulumi.String("Standard_LRS"),
+// 						UtilizeEphemeralStorage: pulumi.Bool(false),
 // 					},
 // 					Tags: azure.OceanVirtualNodeGroupLaunchSpecificationTagArray{
 // 						&azure.OceanVirtualNodeGroupLaunchSpecificationTagArgs{
@@ -71,6 +72,11 @@ import (
 // 					Key:    pulumi.String("taint_key"),
 // 					Value:  pulumi.String("taint_value"),
 // 				},
+// 			},
+// 			Zones: pulumi.StringArray{
+// 				pulumi.String("1"),
+// 				pulumi.String("2"),
+// 				pulumi.String("3"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -112,6 +118,8 @@ type OceanVirtualNodeGroup struct {
 	ResourceLimits OceanVirtualNodeGroupResourceLimitArrayOutput `pulumi:"resourceLimits"`
 	// Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
 	Taints OceanVirtualNodeGroupTaintArrayOutput `pulumi:"taints"`
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewOceanVirtualNodeGroup registers a new resource with the given unique name, arguments, and options.
@@ -160,6 +168,8 @@ type oceanVirtualNodeGroupState struct {
 	ResourceLimits []OceanVirtualNodeGroupResourceLimit `pulumi:"resourceLimits"`
 	// Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
 	Taints []OceanVirtualNodeGroupTaint `pulumi:"taints"`
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	Zones []string `pulumi:"zones"`
 }
 
 type OceanVirtualNodeGroupState struct {
@@ -177,6 +187,8 @@ type OceanVirtualNodeGroupState struct {
 	ResourceLimits OceanVirtualNodeGroupResourceLimitArrayInput
 	// Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
 	Taints OceanVirtualNodeGroupTaintArrayInput
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	Zones pulumi.StringArrayInput
 }
 
 func (OceanVirtualNodeGroupState) ElementType() reflect.Type {
@@ -198,6 +210,8 @@ type oceanVirtualNodeGroupArgs struct {
 	ResourceLimits []OceanVirtualNodeGroupResourceLimit `pulumi:"resourceLimits"`
 	// Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
 	Taints []OceanVirtualNodeGroupTaint `pulumi:"taints"`
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	Zones []string `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a OceanVirtualNodeGroup resource.
@@ -216,6 +230,8 @@ type OceanVirtualNodeGroupArgs struct {
 	ResourceLimits OceanVirtualNodeGroupResourceLimitArrayInput
 	// Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
 	Taints OceanVirtualNodeGroupTaintArrayInput
+	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+	Zones pulumi.StringArrayInput
 }
 
 func (OceanVirtualNodeGroupArgs) ElementType() reflect.Type {

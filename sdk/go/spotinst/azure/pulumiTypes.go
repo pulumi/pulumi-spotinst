@@ -5794,6 +5794,8 @@ type OceanVirtualNodeGroupLaunchSpecificationOsDisk struct {
 	SizeGb int `pulumi:"sizeGb"`
 	// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
 	Type *string `pulumi:"type"`
+	// Flag to enable/disable the Ephemeral OS Disk utilization.
+	UtilizeEphemeralStorage *bool `pulumi:"utilizeEphemeralStorage"`
 }
 
 // OceanVirtualNodeGroupLaunchSpecificationOsDiskInput is an input type that accepts OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs and OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput values.
@@ -5812,6 +5814,8 @@ type OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs struct {
 	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
 	// The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Flag to enable/disable the Ephemeral OS Disk utilization.
+	UtilizeEphemeralStorage pulumi.BoolPtrInput `pulumi:"utilizeEphemeralStorage"`
 }
 
 func (OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) ElementType() reflect.Type {
@@ -5901,6 +5905,11 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) Type() pulumi.Stri
 	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationOsDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Flag to enable/disable the Ephemeral OS Disk utilization.
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) UtilizeEphemeralStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecificationOsDisk) *bool { return v.UtilizeEphemeralStorage }).(pulumi.BoolPtrOutput)
+}
+
 type OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) ElementType() reflect.Type {
@@ -5943,6 +5952,16 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) Type() pulumi.S
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Flag to enable/disable the Ephemeral OS Disk utilization.
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) UtilizeEphemeralStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroupLaunchSpecificationOsDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UtilizeEphemeralStorage
+	}).(pulumi.BoolPtrOutput)
 }
 
 type OceanVirtualNodeGroupLaunchSpecificationTag struct {

@@ -3615,6 +3615,10 @@ export namespace azure {
          * The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
          */
         type?: pulumi.Input<string>;
+        /**
+         * Flag to enable/disable the Ephemeral OS Disk utilization.
+         */
+        utilizeEphemeralStorage?: pulumi.Input<boolean>;
     }
 
     export interface OceanVirtualNodeGroupLaunchSpecificationTag {
@@ -3899,6 +3903,27 @@ export namespace ecs {
          * The label value.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface OceanLogging {
+        /**
+         * Logging Export configuration.
+         */
+        export?: pulumi.Input<inputs.ecs.OceanLoggingExport>;
+    }
+
+    export interface OceanLoggingExport {
+        /**
+         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+         */
+        s3s?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLoggingExportS3>[]>;
+    }
+
+    export interface OceanLoggingExportS3 {
+        /**
+         * The identifier of The S3 data integration to export the logs to.
+         */
+        id: pulumi.Input<string>;
     }
 
     export interface OceanOptimizeImages {

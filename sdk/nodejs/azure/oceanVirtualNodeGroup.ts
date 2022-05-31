@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *         osDisk: {
  *             sizeGb: 100,
  *             type: "Standard_LRS",
+ *             utilizeEphemeralStorage: false,
  *         },
  *         tags: [{
  *             key: "label_key",
@@ -47,6 +48,11 @@ import * as utilities from "../utilities";
  *         key: "taint_key",
  *         value: "taint_value",
  *     }],
+ *     zones: [
+ *         "1",
+ *         "2",
+ *         "3",
+ *     ],
  * });
  * ```
  *
@@ -112,6 +118,10 @@ export class OceanVirtualNodeGroup extends pulumi.CustomResource {
      * Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
      */
     public readonly taints!: pulumi.Output<outputs.azure.OceanVirtualNodeGroupTaint[] | undefined>;
+    /**
+     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     */
+    public readonly zones!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a OceanVirtualNodeGroup resource with the given unique name, arguments, and options.
@@ -133,6 +143,7 @@ export class OceanVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["oceanId"] = state ? state.oceanId : undefined;
             resourceInputs["resourceLimits"] = state ? state.resourceLimits : undefined;
             resourceInputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as OceanVirtualNodeGroupArgs | undefined;
             if ((!args || args.oceanId === undefined) && !opts.urn) {
@@ -145,6 +156,7 @@ export class OceanVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["oceanId"] = args ? args.oceanId : undefined;
             resourceInputs["resourceLimits"] = args ? args.resourceLimits : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["zones"] = args ? args.zones : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OceanVirtualNodeGroup.__pulumiType, name, resourceInputs, opts);
@@ -183,6 +195,10 @@ export interface OceanVirtualNodeGroupState {
      * Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupTaint>[]>;
+    /**
+     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -217,4 +233,8 @@ export interface OceanVirtualNodeGroupArgs {
      * Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupTaint>[]>;
+    /**
+     * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

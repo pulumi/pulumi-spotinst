@@ -2570,6 +2570,377 @@ func (o OceanLaunchSpecTagArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecT
 	}).(OceanLaunchSpecTagOutput)
 }
 
+type OceanLogging struct {
+	// Logging Export configuration.
+	Export *OceanLoggingExport `pulumi:"export"`
+}
+
+// OceanLoggingInput is an input type that accepts OceanLoggingArgs and OceanLoggingOutput values.
+// You can construct a concrete instance of `OceanLoggingInput` via:
+//
+//          OceanLoggingArgs{...}
+type OceanLoggingInput interface {
+	pulumi.Input
+
+	ToOceanLoggingOutput() OceanLoggingOutput
+	ToOceanLoggingOutputWithContext(context.Context) OceanLoggingOutput
+}
+
+type OceanLoggingArgs struct {
+	// Logging Export configuration.
+	Export OceanLoggingExportPtrInput `pulumi:"export"`
+}
+
+func (OceanLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLogging)(nil)).Elem()
+}
+
+func (i OceanLoggingArgs) ToOceanLoggingOutput() OceanLoggingOutput {
+	return i.ToOceanLoggingOutputWithContext(context.Background())
+}
+
+func (i OceanLoggingArgs) ToOceanLoggingOutputWithContext(ctx context.Context) OceanLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLoggingOutput)
+}
+
+func (i OceanLoggingArgs) ToOceanLoggingPtrOutput() OceanLoggingPtrOutput {
+	return i.ToOceanLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLoggingArgs) ToOceanLoggingPtrOutputWithContext(ctx context.Context) OceanLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLoggingOutput).ToOceanLoggingPtrOutputWithContext(ctx)
+}
+
+// OceanLoggingPtrInput is an input type that accepts OceanLoggingArgs, OceanLoggingPtr and OceanLoggingPtrOutput values.
+// You can construct a concrete instance of `OceanLoggingPtrInput` via:
+//
+//          OceanLoggingArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLoggingPtrInput interface {
+	pulumi.Input
+
+	ToOceanLoggingPtrOutput() OceanLoggingPtrOutput
+	ToOceanLoggingPtrOutputWithContext(context.Context) OceanLoggingPtrOutput
+}
+
+type oceanLoggingPtrType OceanLoggingArgs
+
+func OceanLoggingPtr(v *OceanLoggingArgs) OceanLoggingPtrInput {
+	return (*oceanLoggingPtrType)(v)
+}
+
+func (*oceanLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLogging)(nil)).Elem()
+}
+
+func (i *oceanLoggingPtrType) ToOceanLoggingPtrOutput() OceanLoggingPtrOutput {
+	return i.ToOceanLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLoggingPtrType) ToOceanLoggingPtrOutputWithContext(ctx context.Context) OceanLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLoggingPtrOutput)
+}
+
+type OceanLoggingOutput struct{ *pulumi.OutputState }
+
+func (OceanLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLogging)(nil)).Elem()
+}
+
+func (o OceanLoggingOutput) ToOceanLoggingOutput() OceanLoggingOutput {
+	return o
+}
+
+func (o OceanLoggingOutput) ToOceanLoggingOutputWithContext(ctx context.Context) OceanLoggingOutput {
+	return o
+}
+
+func (o OceanLoggingOutput) ToOceanLoggingPtrOutput() OceanLoggingPtrOutput {
+	return o.ToOceanLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLoggingOutput) ToOceanLoggingPtrOutputWithContext(ctx context.Context) OceanLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLogging) *OceanLogging {
+		return &v
+	}).(OceanLoggingPtrOutput)
+}
+
+// Logging Export configuration.
+func (o OceanLoggingOutput) Export() OceanLoggingExportPtrOutput {
+	return o.ApplyT(func(v OceanLogging) *OceanLoggingExport { return v.Export }).(OceanLoggingExportPtrOutput)
+}
+
+type OceanLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLogging)(nil)).Elem()
+}
+
+func (o OceanLoggingPtrOutput) ToOceanLoggingPtrOutput() OceanLoggingPtrOutput {
+	return o
+}
+
+func (o OceanLoggingPtrOutput) ToOceanLoggingPtrOutputWithContext(ctx context.Context) OceanLoggingPtrOutput {
+	return o
+}
+
+func (o OceanLoggingPtrOutput) Elem() OceanLoggingOutput {
+	return o.ApplyT(func(v *OceanLogging) OceanLogging {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLogging
+		return ret
+	}).(OceanLoggingOutput)
+}
+
+// Logging Export configuration.
+func (o OceanLoggingPtrOutput) Export() OceanLoggingExportPtrOutput {
+	return o.ApplyT(func(v *OceanLogging) *OceanLoggingExport {
+		if v == nil {
+			return nil
+		}
+		return v.Export
+	}).(OceanLoggingExportPtrOutput)
+}
+
+type OceanLoggingExport struct {
+	// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+	S3s []OceanLoggingExportS3 `pulumi:"s3s"`
+}
+
+// OceanLoggingExportInput is an input type that accepts OceanLoggingExportArgs and OceanLoggingExportOutput values.
+// You can construct a concrete instance of `OceanLoggingExportInput` via:
+//
+//          OceanLoggingExportArgs{...}
+type OceanLoggingExportInput interface {
+	pulumi.Input
+
+	ToOceanLoggingExportOutput() OceanLoggingExportOutput
+	ToOceanLoggingExportOutputWithContext(context.Context) OceanLoggingExportOutput
+}
+
+type OceanLoggingExportArgs struct {
+	// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+	S3s OceanLoggingExportS3ArrayInput `pulumi:"s3s"`
+}
+
+func (OceanLoggingExportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLoggingExport)(nil)).Elem()
+}
+
+func (i OceanLoggingExportArgs) ToOceanLoggingExportOutput() OceanLoggingExportOutput {
+	return i.ToOceanLoggingExportOutputWithContext(context.Background())
+}
+
+func (i OceanLoggingExportArgs) ToOceanLoggingExportOutputWithContext(ctx context.Context) OceanLoggingExportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLoggingExportOutput)
+}
+
+func (i OceanLoggingExportArgs) ToOceanLoggingExportPtrOutput() OceanLoggingExportPtrOutput {
+	return i.ToOceanLoggingExportPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLoggingExportArgs) ToOceanLoggingExportPtrOutputWithContext(ctx context.Context) OceanLoggingExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLoggingExportOutput).ToOceanLoggingExportPtrOutputWithContext(ctx)
+}
+
+// OceanLoggingExportPtrInput is an input type that accepts OceanLoggingExportArgs, OceanLoggingExportPtr and OceanLoggingExportPtrOutput values.
+// You can construct a concrete instance of `OceanLoggingExportPtrInput` via:
+//
+//          OceanLoggingExportArgs{...}
+//
+//  or:
+//
+//          nil
+type OceanLoggingExportPtrInput interface {
+	pulumi.Input
+
+	ToOceanLoggingExportPtrOutput() OceanLoggingExportPtrOutput
+	ToOceanLoggingExportPtrOutputWithContext(context.Context) OceanLoggingExportPtrOutput
+}
+
+type oceanLoggingExportPtrType OceanLoggingExportArgs
+
+func OceanLoggingExportPtr(v *OceanLoggingExportArgs) OceanLoggingExportPtrInput {
+	return (*oceanLoggingExportPtrType)(v)
+}
+
+func (*oceanLoggingExportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLoggingExport)(nil)).Elem()
+}
+
+func (i *oceanLoggingExportPtrType) ToOceanLoggingExportPtrOutput() OceanLoggingExportPtrOutput {
+	return i.ToOceanLoggingExportPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLoggingExportPtrType) ToOceanLoggingExportPtrOutputWithContext(ctx context.Context) OceanLoggingExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLoggingExportPtrOutput)
+}
+
+type OceanLoggingExportOutput struct{ *pulumi.OutputState }
+
+func (OceanLoggingExportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLoggingExport)(nil)).Elem()
+}
+
+func (o OceanLoggingExportOutput) ToOceanLoggingExportOutput() OceanLoggingExportOutput {
+	return o
+}
+
+func (o OceanLoggingExportOutput) ToOceanLoggingExportOutputWithContext(ctx context.Context) OceanLoggingExportOutput {
+	return o
+}
+
+func (o OceanLoggingExportOutput) ToOceanLoggingExportPtrOutput() OceanLoggingExportPtrOutput {
+	return o.ToOceanLoggingExportPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLoggingExportOutput) ToOceanLoggingExportPtrOutputWithContext(ctx context.Context) OceanLoggingExportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLoggingExport) *OceanLoggingExport {
+		return &v
+	}).(OceanLoggingExportPtrOutput)
+}
+
+// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+func (o OceanLoggingExportOutput) S3s() OceanLoggingExportS3ArrayOutput {
+	return o.ApplyT(func(v OceanLoggingExport) []OceanLoggingExportS3 { return v.S3s }).(OceanLoggingExportS3ArrayOutput)
+}
+
+type OceanLoggingExportPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLoggingExportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLoggingExport)(nil)).Elem()
+}
+
+func (o OceanLoggingExportPtrOutput) ToOceanLoggingExportPtrOutput() OceanLoggingExportPtrOutput {
+	return o
+}
+
+func (o OceanLoggingExportPtrOutput) ToOceanLoggingExportPtrOutputWithContext(ctx context.Context) OceanLoggingExportPtrOutput {
+	return o
+}
+
+func (o OceanLoggingExportPtrOutput) Elem() OceanLoggingExportOutput {
+	return o.ApplyT(func(v *OceanLoggingExport) OceanLoggingExport {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLoggingExport
+		return ret
+	}).(OceanLoggingExportOutput)
+}
+
+// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+func (o OceanLoggingExportPtrOutput) S3s() OceanLoggingExportS3ArrayOutput {
+	return o.ApplyT(func(v *OceanLoggingExport) []OceanLoggingExportS3 {
+		if v == nil {
+			return nil
+		}
+		return v.S3s
+	}).(OceanLoggingExportS3ArrayOutput)
+}
+
+type OceanLoggingExportS3 struct {
+	// The identifier of The S3 data integration to export the logs to.
+	Id string `pulumi:"id"`
+}
+
+// OceanLoggingExportS3Input is an input type that accepts OceanLoggingExportS3Args and OceanLoggingExportS3Output values.
+// You can construct a concrete instance of `OceanLoggingExportS3Input` via:
+//
+//          OceanLoggingExportS3Args{...}
+type OceanLoggingExportS3Input interface {
+	pulumi.Input
+
+	ToOceanLoggingExportS3Output() OceanLoggingExportS3Output
+	ToOceanLoggingExportS3OutputWithContext(context.Context) OceanLoggingExportS3Output
+}
+
+type OceanLoggingExportS3Args struct {
+	// The identifier of The S3 data integration to export the logs to.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (OceanLoggingExportS3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLoggingExportS3)(nil)).Elem()
+}
+
+func (i OceanLoggingExportS3Args) ToOceanLoggingExportS3Output() OceanLoggingExportS3Output {
+	return i.ToOceanLoggingExportS3OutputWithContext(context.Background())
+}
+
+func (i OceanLoggingExportS3Args) ToOceanLoggingExportS3OutputWithContext(ctx context.Context) OceanLoggingExportS3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLoggingExportS3Output)
+}
+
+// OceanLoggingExportS3ArrayInput is an input type that accepts OceanLoggingExportS3Array and OceanLoggingExportS3ArrayOutput values.
+// You can construct a concrete instance of `OceanLoggingExportS3ArrayInput` via:
+//
+//          OceanLoggingExportS3Array{ OceanLoggingExportS3Args{...} }
+type OceanLoggingExportS3ArrayInput interface {
+	pulumi.Input
+
+	ToOceanLoggingExportS3ArrayOutput() OceanLoggingExportS3ArrayOutput
+	ToOceanLoggingExportS3ArrayOutputWithContext(context.Context) OceanLoggingExportS3ArrayOutput
+}
+
+type OceanLoggingExportS3Array []OceanLoggingExportS3Input
+
+func (OceanLoggingExportS3Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLoggingExportS3)(nil)).Elem()
+}
+
+func (i OceanLoggingExportS3Array) ToOceanLoggingExportS3ArrayOutput() OceanLoggingExportS3ArrayOutput {
+	return i.ToOceanLoggingExportS3ArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLoggingExportS3Array) ToOceanLoggingExportS3ArrayOutputWithContext(ctx context.Context) OceanLoggingExportS3ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLoggingExportS3ArrayOutput)
+}
+
+type OceanLoggingExportS3Output struct{ *pulumi.OutputState }
+
+func (OceanLoggingExportS3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLoggingExportS3)(nil)).Elem()
+}
+
+func (o OceanLoggingExportS3Output) ToOceanLoggingExportS3Output() OceanLoggingExportS3Output {
+	return o
+}
+
+func (o OceanLoggingExportS3Output) ToOceanLoggingExportS3OutputWithContext(ctx context.Context) OceanLoggingExportS3Output {
+	return o
+}
+
+// The identifier of The S3 data integration to export the logs to.
+func (o OceanLoggingExportS3Output) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLoggingExportS3) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type OceanLoggingExportS3ArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLoggingExportS3ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLoggingExportS3)(nil)).Elem()
+}
+
+func (o OceanLoggingExportS3ArrayOutput) ToOceanLoggingExportS3ArrayOutput() OceanLoggingExportS3ArrayOutput {
+	return o
+}
+
+func (o OceanLoggingExportS3ArrayOutput) ToOceanLoggingExportS3ArrayOutputWithContext(ctx context.Context) OceanLoggingExportS3ArrayOutput {
+	return o
+}
+
+func (o OceanLoggingExportS3ArrayOutput) Index(i pulumi.IntInput) OceanLoggingExportS3Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLoggingExportS3 {
+		return vs[0].([]OceanLoggingExportS3)[vs[1].(int)]
+	}).(OceanLoggingExportS3Output)
+}
+
 type OceanOptimizeImages struct {
 	// String. Valid values: "always" "never" "timeWindow".
 	PerformAt string `pulumi:"performAt"`
@@ -3607,6 +3978,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskTaskHeadroomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTagInput)(nil)).Elem(), OceanLaunchSpecTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecTagArrayInput)(nil)).Elem(), OceanLaunchSpecTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoggingInput)(nil)).Elem(), OceanLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoggingPtrInput)(nil)).Elem(), OceanLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoggingExportInput)(nil)).Elem(), OceanLoggingExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoggingExportPtrInput)(nil)).Elem(), OceanLoggingExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoggingExportS3Input)(nil)).Elem(), OceanLoggingExportS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoggingExportS3ArrayInput)(nil)).Elem(), OceanLoggingExportS3Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanOptimizeImagesInput)(nil)).Elem(), OceanOptimizeImagesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanOptimizeImagesPtrInput)(nil)).Elem(), OceanOptimizeImagesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskInput)(nil)).Elem(), OceanScheduledTaskArgs{})
@@ -3653,6 +4030,12 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecTagArrayOutput{})
+	pulumi.RegisterOutputType(OceanLoggingOutput{})
+	pulumi.RegisterOutputType(OceanLoggingPtrOutput{})
+	pulumi.RegisterOutputType(OceanLoggingExportOutput{})
+	pulumi.RegisterOutputType(OceanLoggingExportPtrOutput{})
+	pulumi.RegisterOutputType(OceanLoggingExportS3Output{})
+	pulumi.RegisterOutputType(OceanLoggingExportS3ArrayOutput{})
 	pulumi.RegisterOutputType(OceanOptimizeImagesOutput{})
 	pulumi.RegisterOutputType(OceanOptimizeImagesPtrOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskOutput{})
