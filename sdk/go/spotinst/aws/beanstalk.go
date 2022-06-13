@@ -344,6 +344,70 @@ func (o BeanstalkOutput) ToBeanstalkOutputWithContext(ctx context.Context) Beans
 	return o
 }
 
+// The id of an existing Beanstalk environment.
+func (o BeanstalkOutput) BeanstalkEnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Beanstalk) pulumi.StringPtrOutput { return v.BeanstalkEnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// The name of an existing Beanstalk environment.
+func (o BeanstalkOutput) BeanstalkEnvironmentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Beanstalk) pulumi.StringPtrOutput { return v.BeanstalkEnvironmentName }).(pulumi.StringPtrOutput)
+}
+
+// Preferences when performing a roll
+func (o BeanstalkOutput) DeploymentPreferences() BeanstalkDeploymentPreferencesPtrOutput {
+	return o.ApplyT(func(v *Beanstalk) BeanstalkDeploymentPreferencesPtrOutput { return v.DeploymentPreferences }).(BeanstalkDeploymentPreferencesPtrOutput)
+}
+
+// The desired number of instances the group should have at any time.
+func (o BeanstalkOutput) DesiredCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *Beanstalk) pulumi.IntOutput { return v.DesiredCapacity }).(pulumi.IntOutput)
+}
+
+// One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
+func (o BeanstalkOutput) InstanceTypesSpots() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Beanstalk) pulumi.StringArrayOutput { return v.InstanceTypesSpots }).(pulumi.StringArrayOutput)
+}
+
+func (o BeanstalkOutput) Maintenance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Beanstalk) pulumi.StringPtrOutput { return v.Maintenance }).(pulumi.StringPtrOutput)
+}
+
+// Managed Actions parameters
+func (o BeanstalkOutput) ManagedActions() BeanstalkManagedActionsPtrOutput {
+	return o.ApplyT(func(v *Beanstalk) BeanstalkManagedActionsPtrOutput { return v.ManagedActions }).(BeanstalkManagedActionsPtrOutput)
+}
+
+// The maximum number of instances the group should have at any time.
+func (o BeanstalkOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Beanstalk) pulumi.IntOutput { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// The minimum number of instances the group should have at any time.
+func (o BeanstalkOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Beanstalk) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
+}
+
+// The group name.
+func (o BeanstalkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Beanstalk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
+// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
+func (o BeanstalkOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v *Beanstalk) pulumi.StringOutput { return v.Product }).(pulumi.StringOutput)
+}
+
+// The AWS region your group will be created in. Cannot be changed after the group has been created.
+func (o BeanstalkOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Beanstalk) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o BeanstalkOutput) ScheduledTasks() BeanstalkScheduledTaskArrayOutput {
+	return o.ApplyT(func(v *Beanstalk) BeanstalkScheduledTaskArrayOutput { return v.ScheduledTasks }).(BeanstalkScheduledTaskArrayOutput)
+}
+
 type BeanstalkArrayOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkArrayOutput) ElementType() reflect.Type {

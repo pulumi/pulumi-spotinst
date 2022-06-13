@@ -172,6 +172,26 @@ func (o BalancerOutput) ToBalancerOutputWithContext(ctx context.Context) Balance
 	return o
 }
 
+func (o BalancerOutput) ConnectionTimeouts() BalancerConnectionTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Balancer) BalancerConnectionTimeoutsPtrOutput { return v.ConnectionTimeouts }).(BalancerConnectionTimeoutsPtrOutput)
+}
+
+func (o BalancerOutput) DnsCnameAliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Balancer) pulumi.StringArrayOutput { return v.DnsCnameAliases }).(pulumi.StringArrayOutput)
+}
+
+func (o BalancerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Balancer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o BalancerOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Balancer) pulumi.StringPtrOutput { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+func (o BalancerOutput) Tags() BalancerTagArrayOutput {
+	return o.ApplyT(func(v *Balancer) BalancerTagArrayOutput { return v.Tags }).(BalancerTagArrayOutput)
+}
+
 type BalancerArrayOutput struct{ *pulumi.OutputState }
 
 func (BalancerArrayOutput) ElementType() reflect.Type {

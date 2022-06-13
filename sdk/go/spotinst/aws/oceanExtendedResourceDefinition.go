@@ -203,6 +203,17 @@ func (o OceanExtendedResourceDefinitionOutput) ToOceanExtendedResourceDefinition
 	return o
 }
 
+// The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
+// The name should be a valid Kubernetes extended resource name.
+func (o OceanExtendedResourceDefinitionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanExtendedResourceDefinition) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A mapping between AWS instanceType or * as default and its value for the given extended resource.
+func (o OceanExtendedResourceDefinitionOutput) ResourceMapping() pulumi.MapOutput {
+	return o.ApplyT(func(v *OceanExtendedResourceDefinition) pulumi.MapOutput { return v.ResourceMapping }).(pulumi.MapOutput)
+}
+
 type OceanExtendedResourceDefinitionArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanExtendedResourceDefinitionArrayOutput) ElementType() reflect.Type {

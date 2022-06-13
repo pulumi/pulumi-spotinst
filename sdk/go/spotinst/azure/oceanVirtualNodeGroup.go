@@ -321,6 +321,48 @@ func (o OceanVirtualNodeGroupOutput) ToOceanVirtualNodeGroupOutputWithContext(ct
 	return o
 }
 
+// .
+func (o OceanVirtualNodeGroupOutput) Autoscales() OceanVirtualNodeGroupAutoscaleArrayOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroup) OceanVirtualNodeGroupAutoscaleArrayOutput { return v.Autoscales }).(OceanVirtualNodeGroupAutoscaleArrayOutput)
+}
+
+// Additional labels for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
+func (o OceanVirtualNodeGroupOutput) Labels() OceanVirtualNodeGroupLabelArrayOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroup) OceanVirtualNodeGroupLabelArrayOutput { return v.Labels }).(OceanVirtualNodeGroupLabelArrayOutput)
+}
+
+// .
+func (o OceanVirtualNodeGroupOutput) LaunchSpecifications() OceanVirtualNodeGroupLaunchSpecificationArrayOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroup) OceanVirtualNodeGroupLaunchSpecificationArrayOutput {
+		return v.LaunchSpecifications
+	}).(OceanVirtualNodeGroupLaunchSpecificationArrayOutput)
+}
+
+// Set name for the virtual node group.
+func (o OceanVirtualNodeGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Ocean cluster ID.
+func (o OceanVirtualNodeGroupOutput) OceanId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroup) pulumi.StringOutput { return v.OceanId }).(pulumi.StringOutput)
+}
+
+// .
+func (o OceanVirtualNodeGroupOutput) ResourceLimits() OceanVirtualNodeGroupResourceLimitArrayOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroup) OceanVirtualNodeGroupResourceLimitArrayOutput { return v.ResourceLimits }).(OceanVirtualNodeGroupResourceLimitArrayOutput)
+}
+
+// Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
+func (o OceanVirtualNodeGroupOutput) Taints() OceanVirtualNodeGroupTaintArrayOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroup) OceanVirtualNodeGroupTaintArrayOutput { return v.Taints }).(OceanVirtualNodeGroupTaintArrayOutput)
+}
+
+// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
+func (o OceanVirtualNodeGroupOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanVirtualNodeGroup) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
 type OceanVirtualNodeGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupArrayOutput) ElementType() reflect.Type {

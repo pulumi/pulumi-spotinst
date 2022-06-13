@@ -516,6 +516,111 @@ func (o OceanOutput) ToOceanOutputWithContext(ctx context.Context) OceanOutput {
 	return o
 }
 
+// The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
+func (o OceanOutput) AcdIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.AcdIdentifier }).(pulumi.StringOutput)
+}
+
+// The AKS cluster name.
+func (o OceanOutput) AksName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.AksName }).(pulumi.StringOutput)
+}
+
+// Name of the Azure Resource Group where the AKS cluster is located.
+func (o OceanOutput) AksResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.AksResourceGroupName }).(pulumi.StringOutput)
+}
+
+// The Ocean Kubernetes Autoscaler object.
+func (o OceanOutput) Autoscaler() OceanAutoscalerPtrOutput {
+	return o.ApplyT(func(v *Ocean) OceanAutoscalerPtrOutput { return v.Autoscaler }).(OceanAutoscalerPtrOutput)
+}
+
+// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+func (o OceanOutput) ControllerClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.ControllerClusterId }).(pulumi.StringOutput)
+}
+
+// Must contain a valid Base64 encoded string.
+func (o OceanOutput) CustomData() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.CustomData }).(pulumi.StringOutput)
+}
+
+// List of Azure extension objects.
+func (o OceanOutput) Extensions() OceanExtensionArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanExtensionArrayOutput { return v.Extensions }).(OceanExtensionArrayOutput)
+}
+
+// The Ocean AKS Health object.
+func (o OceanOutput) Health() OceanHealthOutput {
+	return o.ApplyT(func(v *Ocean) OceanHealthOutput { return v.Health }).(OceanHealthOutput)
+}
+
+// Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
+func (o OceanOutput) Images() OceanImageArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanImageArrayOutput { return v.Images }).(OceanImageArrayOutput)
+}
+
+// Configure Load Balancer.
+func (o OceanOutput) LoadBalancers() OceanLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanLoadBalancerArrayOutput { return v.LoadBalancers }).(OceanLoadBalancerArrayOutput)
+}
+
+// List of Managed Service Identity objects.
+func (o OceanOutput) ManagedServiceIdentities() OceanManagedServiceIdentityArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanManagedServiceIdentityArrayOutput { return v.ManagedServiceIdentities }).(OceanManagedServiceIdentityArrayOutput)
+}
+
+// Name of the Load Balancer.
+func (o OceanOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Define the Virtual Network and Subnet.
+func (o OceanOutput) Network() OceanNetworkOutput {
+	return o.ApplyT(func(v *Ocean) OceanNetworkOutput { return v.Network }).(OceanNetworkOutput)
+}
+
+// OS disk specifications.
+func (o OceanOutput) OsDisk() OceanOsDiskPtrOutput {
+	return o.ApplyT(func(v *Ocean) OceanOsDiskPtrOutput { return v.OsDisk }).(OceanOsDiskPtrOutput)
+}
+
+// The Resource Group name of the Load Balancer.
+func (o OceanOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// SSH public key for admin access to Linux VMs.
+func (o OceanOutput) SshPublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.SshPublicKey }).(pulumi.StringOutput)
+}
+
+// The Ocean AKS strategy object.
+func (o OceanOutput) Strategies() OceanStrategyArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanStrategyArrayOutput { return v.Strategies }).(OceanStrategyArrayOutput)
+}
+
+// Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
+func (o OceanOutput) Tags() OceanTagArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanTagArrayOutput { return v.Tags }).(OceanTagArrayOutput)
+}
+
+// Username for admin access to VMs.
+func (o OceanOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
+}
+
+// The types of virtual machines that may or may not be a part of the Ocean cluster.
+func (o OceanOutput) VmSizes() OceanVmSizeArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanVmSizeArrayOutput { return v.VmSizes }).(OceanVmSizeArrayOutput)
+}
+
+// An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
+func (o OceanOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
 type OceanArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanArrayOutput) ElementType() reflect.Type {

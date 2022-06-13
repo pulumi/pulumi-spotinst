@@ -378,7 +378,7 @@ export interface StatefulNodeAzureStrategyRevertToSpot {
 
 export interface StatefulNodeAzureTag {
     tagKey: string;
-    tagValue: string;
+    tagValue?: string;
 }
 
 export interface StatefulNodeAzureUpdateState {

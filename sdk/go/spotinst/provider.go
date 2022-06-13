@@ -96,6 +96,21 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// Spotinst Account ID
+func (o ProviderOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Account }).(pulumi.StringPtrOutput)
+}
+
+// Spotinst SDK Feature Flags
+func (o ProviderOutput) FeatureFlags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FeatureFlags }).(pulumi.StringPtrOutput)
+}
+
+// Spotinst Personal API Access Token
+func (o ProviderOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

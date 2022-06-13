@@ -213,6 +213,16 @@ func (o OceanLaunchSpecImportOutput) ToOceanLaunchSpecImportOutputWithContext(ct
 	return o
 }
 
+// The node pool you wish to use in your launchSpec.
+func (o OceanLaunchSpecImportOutput) NodePoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecImport) pulumi.StringOutput { return v.NodePoolName }).(pulumi.StringOutput)
+}
+
+// The Ocean cluster ID required for launchSpec create.
+func (o OceanLaunchSpecImportOutput) OceanId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecImport) pulumi.StringOutput { return v.OceanId }).(pulumi.StringOutput)
+}
+
 type OceanLaunchSpecImportArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecImportArrayOutput) ElementType() reflect.Type {

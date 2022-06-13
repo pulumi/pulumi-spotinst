@@ -413,6 +413,84 @@ func (o ElastigroupAzureV3Output) ToElastigroupAzureV3OutputWithContext(ctx cont
 	return o
 }
 
+// Custom init script file or text in Base64 encoded format.
+func (o ElastigroupAzureV3Output) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringPtrOutput { return v.CustomData }).(pulumi.StringPtrOutput)
+}
+
+// The desired number of instances the group should have at any time.
+func (o ElastigroupAzureV3Output) DesiredCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+func (o ElastigroupAzureV3Output) Images() ElastigroupAzureV3ImageArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ImageArrayOutput { return v.Images }).(ElastigroupAzureV3ImageArrayOutput)
+}
+
+// Describes the login configuration.
+func (o ElastigroupAzureV3Output) Login() ElastigroupAzureV3LoginPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3LoginPtrOutput { return v.Login }).(ElastigroupAzureV3LoginPtrOutput)
+}
+
+// List of Managed Service Identity objects.
+func (o ElastigroupAzureV3Output) ManagedServiceIdentities() ElastigroupAzureV3ManagedServiceIdentityArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ManagedServiceIdentityArrayOutput {
+		return v.ManagedServiceIdentities
+	}).(ElastigroupAzureV3ManagedServiceIdentityArrayOutput)
+}
+
+// The maximum number of instances the group should have at any time.
+func (o ElastigroupAzureV3Output) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntOutput { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// The minimum number of instances the group should have at any time.
+func (o ElastigroupAzureV3Output) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
+}
+
+// - The name of the Application Security group.
+func (o ElastigroupAzureV3Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Defines the Virtual Network and Subnet for your Elastigroup.
+func (o ElastigroupAzureV3Output) Network() ElastigroupAzureV3NetworkOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3NetworkOutput { return v.Network }).(ElastigroupAzureV3NetworkOutput)
+}
+
+// Available On-Demand sizes
+func (o ElastigroupAzureV3Output) OdSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringArrayOutput { return v.OdSizes }).(pulumi.StringArrayOutput)
+}
+
+// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
+func (o ElastigroupAzureV3Output) Os() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.Os }).(pulumi.StringOutput)
+}
+
+// The region your Azure group will be created in.
+func (o ElastigroupAzureV3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// - The resource group of the Application Security Group.
+//   }
+func (o ElastigroupAzureV3Output) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// Available Low-Priority sizes.
+func (o ElastigroupAzureV3Output) SpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringArrayOutput { return v.SpotSizes }).(pulumi.StringArrayOutput)
+}
+
+// Describes the deployment strategy.
+func (o ElastigroupAzureV3Output) Strategy() ElastigroupAzureV3StrategyOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3StrategyOutput { return v.Strategy }).(ElastigroupAzureV3StrategyOutput)
+}
+
 type ElastigroupAzureV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3ArrayOutput) ElementType() reflect.Type {

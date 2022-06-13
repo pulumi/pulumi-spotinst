@@ -195,6 +195,34 @@ func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutpu
 	return o
 }
 
+func (o TargetOutput) BalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.BalancerId }).(pulumi.StringOutput)
+}
+
+func (o TargetOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o TargetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TargetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Target) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o TargetOutput) Tags() TargetTagArrayOutput {
+	return o.ApplyT(func(v *Target) TargetTagArrayOutput { return v.Tags }).(TargetTagArrayOutput)
+}
+
+func (o TargetOutput) TargetSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.TargetSetId }).(pulumi.StringOutput)
+}
+
+func (o TargetOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *Target) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
+}
+
 type TargetArrayOutput struct{ *pulumi.OutputState }
 
 func (TargetArrayOutput) ElementType() reflect.Type {
