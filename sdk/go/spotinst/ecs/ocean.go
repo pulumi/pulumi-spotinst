@@ -546,6 +546,146 @@ func (o OceanOutput) ToOceanOutputWithContext(ctx context.Context) OceanOutput {
 	return o
 }
 
+// Configure public IP address allocation.
+func (o OceanOutput) AssociatePublicIpAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
+}
+
+// Describes the Ocean ECS autoscaler.
+func (o OceanOutput) Autoscaler() OceanAutoscalerPtrOutput {
+	return o.ApplyT(func(v *Ocean) OceanAutoscalerPtrOutput { return v.Autoscaler }).(OceanAutoscalerPtrOutput)
+}
+
+// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+func (o OceanOutput) BlockDeviceMappings() OceanBlockDeviceMappingArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanBlockDeviceMappingArrayOutput { return v.BlockDeviceMappings }).(OceanBlockDeviceMappingArrayOutput)
+}
+
+// The ocean cluster name.
+func (o OceanOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The number of instances to launch and maintain in the cluster.
+func (o OceanOutput) DesiredCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.IntOutput { return v.DesiredCapacity }).(pulumi.IntOutput)
+}
+
+// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
+func (o OceanOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
+func (o OceanOutput) EbsOptimized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.EbsOptimized }).(pulumi.BoolPtrOutput)
+}
+
+// The instance profile iam role.
+func (o OceanOutput) IamInstanceProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.IamInstanceProfile }).(pulumi.StringPtrOutput)
+}
+
+// ID of the image used to launch the instances.
+func (o OceanOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// Ocean instance metadata options object for IMDSv2.
+func (o OceanOutput) InstanceMetadataOptions() OceanInstanceMetadataOptionsPtrOutput {
+	return o.ApplyT(func(v *Ocean) OceanInstanceMetadataOptionsPtrOutput { return v.InstanceMetadataOptions }).(OceanInstanceMetadataOptionsPtrOutput)
+}
+
+// The key pair to attach the instances.
+func (o OceanOutput) KeyPair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.KeyPair }).(pulumi.StringPtrOutput)
+}
+
+// Logging configuration.
+func (o OceanOutput) Logging() OceanLoggingPtrOutput {
+	return o.ApplyT(func(v *Ocean) OceanLoggingPtrOutput { return v.Logging }).(OceanLoggingPtrOutput)
+}
+
+// The upper limit of instances the cluster can scale up to.
+func (o OceanOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.IntOutput { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// The lower limit of instances the cluster can scale down to.
+func (o OceanOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
+}
+
+// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+func (o OceanOutput) Monitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.Monitoring }).(pulumi.BoolPtrOutput)
+}
+
+// The Ocean cluster name.
+func (o OceanOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Object. Set auto image update settings.
+func (o OceanOutput) OptimizeImages() OceanOptimizeImagesPtrOutput {
+	return o.ApplyT(func(v *Ocean) OceanOptimizeImagesPtrOutput { return v.OptimizeImages }).(OceanOptimizeImagesPtrOutput)
+}
+
+// The region the cluster will run in.
+func (o OceanOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
+func (o OceanOutput) ScheduledTasks() OceanScheduledTaskArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanScheduledTaskArrayOutput { return v.ScheduledTasks }).(OceanScheduledTaskArrayOutput)
+}
+
+// One or more security group ids.
+func (o OceanOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+func (o OceanOutput) SpotPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.SpotPercentage }).(pulumi.IntPtrOutput)
+}
+
+// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
+func (o OceanOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringArrayOutput { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// Optionally adds tags to instances launched in an Ocean cluster.
+func (o OceanOutput) Tags() OceanTagArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanTagArrayOutput { return v.Tags }).(OceanTagArrayOutput)
+}
+
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
+func (o OceanOutput) UpdatePolicy() OceanUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *Ocean) OceanUpdatePolicyPtrOutput { return v.UpdatePolicy }).(OceanUpdatePolicyPtrOutput)
+}
+
+// Base64-encoded MIME user data to make available to the instances.
+func (o OceanOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// If savings plans exist, Ocean will utilize them before launching Spot instances.
+func (o OceanOutput) UtilizeCommitments() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.UtilizeCommitments }).(pulumi.BoolPtrOutput)
+}
+
+// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
+func (o OceanOutput) UtilizeReservedInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.UtilizeReservedInstances }).(pulumi.BoolPtrOutput)
+}
+
+// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+func (o OceanOutput) Whitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringArrayOutput { return v.Whitelists }).(pulumi.StringArrayOutput)
+}
+
 type OceanArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanArrayOutput) ElementType() reflect.Type {

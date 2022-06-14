@@ -229,6 +229,29 @@ func (o HealthCheckOutput) ToHealthCheckOutputWithContext(ctx context.Context) H
 	return o
 }
 
+// Describes the check to execute.
+func (o HealthCheckOutput) Check() HealthCheckCheckPtrOutput {
+	return o.ApplyT(func(v *HealthCheck) HealthCheckCheckPtrOutput { return v.Check }).(HealthCheckCheckPtrOutput)
+}
+
+// The name of the health check.
+func (o HealthCheckOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *HealthCheck) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o HealthCheckOutput) ProxyAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *HealthCheck) pulumi.StringOutput { return v.ProxyAddress }).(pulumi.StringOutput)
+}
+
+func (o HealthCheckOutput) ProxyPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HealthCheck) pulumi.IntPtrOutput { return v.ProxyPort }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the resource to check.
+func (o HealthCheckOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HealthCheck) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
+}
+
 type HealthCheckArrayOutput struct{ *pulumi.OutputState }
 
 func (HealthCheckArrayOutput) ElementType() reflect.Type {

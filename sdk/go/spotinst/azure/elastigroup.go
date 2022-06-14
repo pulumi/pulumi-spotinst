@@ -539,6 +539,126 @@ func (o ElastigroupOutput) ToElastigroupOutputWithContext(ctx context.Context) E
 	return o
 }
 
+func (o ElastigroupOutput) CustomData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.CustomData }).(pulumi.StringPtrOutput)
+}
+
+// The desired number of instances the group should have at any time.
+func (o ElastigroupOutput) DesiredCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Describes the health check configuration.
+func (o ElastigroupOutput) HealthCheck() ElastigroupHealthCheckPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupHealthCheckPtrOutput { return v.HealthCheck }).(ElastigroupHealthCheckPtrOutput)
+}
+
+// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+func (o ElastigroupOutput) Images() ElastigroupImageArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupImageArrayOutput { return v.Images }).(ElastigroupImageArrayOutput)
+}
+
+// Describes the [Kubernetes](https://kubernetes.io/) integration.
+func (o ElastigroupOutput) IntegrationKubernetes() ElastigroupIntegrationKubernetesPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationKubernetesPtrOutput { return v.IntegrationKubernetes }).(ElastigroupIntegrationKubernetesPtrOutput)
+}
+
+// Describes the [Multai Runtime](https://spotinst.com/) integration.
+func (o ElastigroupOutput) IntegrationMultaiRuntime() ElastigroupIntegrationMultaiRuntimePtrOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationMultaiRuntimePtrOutput { return v.IntegrationMultaiRuntime }).(ElastigroupIntegrationMultaiRuntimePtrOutput)
+}
+
+// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+func (o ElastigroupOutput) LoadBalancers() ElastigroupLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupLoadBalancerArrayOutput { return v.LoadBalancers }).(ElastigroupLoadBalancerArrayOutput)
+}
+
+// Describes the login configuration.
+func (o ElastigroupOutput) Login() ElastigroupLoginPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupLoginPtrOutput { return v.Login }).(ElastigroupLoginPtrOutput)
+}
+
+// Available Low-Priority sizes.
+func (o ElastigroupOutput) LowPrioritySizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.LowPrioritySizes }).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupOutput) ManagedServiceIdentities() ElastigroupManagedServiceIdentityArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupManagedServiceIdentityArrayOutput { return v.ManagedServiceIdentities }).(ElastigroupManagedServiceIdentityArrayOutput)
+}
+
+// The maximum number of instances the group should have at any time.
+func (o ElastigroupOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// The minimum number of instances the group should have at any time.
+func (o ElastigroupOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
+}
+
+// The dimension name.
+func (o ElastigroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Defines the Virtual Network and Subnet for your Elastigroup.
+func (o ElastigroupOutput) Network() ElastigroupNetworkOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupNetworkOutput { return v.Network }).(ElastigroupNetworkOutput)
+}
+
+// Available On-Demand sizes
+func (o ElastigroupOutput) OdSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.OdSizes }).(pulumi.StringArrayOutput)
+}
+
+// Operation system type. Valid values: `"Linux"`, `"Windows"`.
+func (o ElastigroupOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Product }).(pulumi.StringOutput)
+}
+
+// The region your Azure group will be created in.
+func (o ElastigroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Vnet Resource Group Name.
+func (o ElastigroupOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupOutput) ScalingDownPolicies() ElastigroupScalingDownPolicyArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupScalingDownPolicyArrayOutput { return v.ScalingDownPolicies }).(ElastigroupScalingDownPolicyArrayOutput)
+}
+
+func (o ElastigroupOutput) ScalingUpPolicies() ElastigroupScalingUpPolicyArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupScalingUpPolicyArrayOutput { return v.ScalingUpPolicies }).(ElastigroupScalingUpPolicyArrayOutput)
+}
+
+// Describes the configuration of one or more scheduled tasks.
+func (o ElastigroupOutput) ScheduledTasks() ElastigroupScheduledTaskArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupScheduledTaskArrayOutput { return v.ScheduledTasks }).(ElastigroupScheduledTaskArrayOutput)
+}
+
+// Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
+func (o ElastigroupOutput) ShutdownScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ShutdownScript }).(pulumi.StringPtrOutput)
+}
+
+// Describes the deployment strategy.
+func (o ElastigroupOutput) Strategy() ElastigroupStrategyOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupStrategyOutput { return v.Strategy }).(ElastigroupStrategyOutput)
+}
+
+func (o ElastigroupOutput) UpdatePolicy() ElastigroupUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupUpdatePolicyPtrOutput { return v.UpdatePolicy }).(ElastigroupUpdatePolicyPtrOutput)
+}
+
+// Base64-encoded MIME user data to make available to the instances.
+func (o ElastigroupOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
 type ElastigroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupArrayOutput) ElementType() reflect.Type {

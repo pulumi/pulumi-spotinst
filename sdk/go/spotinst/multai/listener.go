@@ -182,6 +182,26 @@ func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) Listene
 	return o
 }
 
+func (o ListenerOutput) BalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.BalancerId }).(pulumi.StringOutput)
+}
+
+func (o ListenerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ListenerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o ListenerOutput) Tags() ListenerTagArrayOutput {
+	return o.ApplyT(func(v *Listener) ListenerTagArrayOutput { return v.Tags }).(ListenerTagArrayOutput)
+}
+
+func (o ListenerOutput) TlsConfig() ListenerTlsConfigPtrOutput {
+	return o.ApplyT(func(v *Listener) ListenerTlsConfigPtrOutput { return v.TlsConfig }).(ListenerTlsConfigPtrOutput)
+}
+
 type ListenerArrayOutput struct{ *pulumi.OutputState }
 
 func (ListenerArrayOutput) ElementType() reflect.Type {

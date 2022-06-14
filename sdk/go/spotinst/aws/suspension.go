@@ -211,6 +211,16 @@ func (o SuspensionOutput) ToSuspensionOutputWithContext(ctx context.Context) Sus
 	return o
 }
 
+// Elastigroup ID to apply the suspensions on.
+func (o SuspensionOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Suspension) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// block of single process to suspend.
+func (o SuspensionOutput) Suspensions() SuspensionSuspensionArrayOutput {
+	return o.ApplyT(func(v *Suspension) SuspensionSuspensionArrayOutput { return v.Suspensions }).(SuspensionSuspensionArrayOutput)
+}
+
 type SuspensionArrayOutput struct{ *pulumi.OutputState }
 
 func (SuspensionArrayOutput) ElementType() reflect.Type {

@@ -419,6 +419,75 @@ func (o OceanLaunchSpecOutput) ToOceanLaunchSpecOutputWithContext(ctx context.Co
 	return o
 }
 
+// Optionally adds labels to instances launched in an Ocean cluster.
+func (o OceanLaunchSpecOutput) Attributes() OceanLaunchSpecAttributeArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecAttributeArrayOutput { return v.Attributes }).(OceanLaunchSpecAttributeArrayOutput)
+}
+
+// Set custom headroom per launch spec. provide list of headrooms object.
+func (o OceanLaunchSpecOutput) AutoscaleHeadrooms() OceanLaunchSpecAutoscaleHeadroomArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecAutoscaleHeadroomArrayOutput { return v.AutoscaleHeadrooms }).(OceanLaunchSpecAutoscaleHeadroomArrayOutput)
+}
+
+func (o OceanLaunchSpecOutput) BlockDeviceMappings() OceanLaunchSpecBlockDeviceMappingArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecBlockDeviceMappingArrayOutput { return v.BlockDeviceMappings }).(OceanLaunchSpecBlockDeviceMappingArrayOutput)
+}
+
+// The ARN or name of an IAM instance profile to associate with launched instances.
+func (o OceanLaunchSpecOutput) IamInstanceProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.IamInstanceProfile }).(pulumi.StringPtrOutput)
+}
+
+// ID of the image used to launch the instances.
+func (o OceanLaunchSpecOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
+func (o OceanLaunchSpecOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The Ocean Launch Specification name.
+func (o OceanLaunchSpecOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Ocean cluster ID .
+func (o OceanLaunchSpecOutput) OceanId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.OceanId }).(pulumi.StringOutput)
+}
+
+// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+func (o OceanLaunchSpecOutput) RestrictScaleDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.BoolPtrOutput { return v.RestrictScaleDown }).(pulumi.BoolPtrOutput)
+}
+
+// Used to define scheduled tasks such as a manual headroom update.
+func (o OceanLaunchSpecOutput) SchedulingTasks() OceanLaunchSpecSchedulingTaskArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecSchedulingTaskArrayOutput { return v.SchedulingTasks }).(OceanLaunchSpecSchedulingTaskArrayOutput)
+}
+
+// One or more security group ids.
+func (o OceanLaunchSpecOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Set subnets in launchSpec. Each element in the array should be a subnet ID.
+func (o OceanLaunchSpecOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// A key/value mapping of tags to assign to the resource.
+func (o OceanLaunchSpecOutput) Tags() OceanLaunchSpecTagArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecTagArrayOutput { return v.Tags }).(OceanLaunchSpecTagArrayOutput)
+}
+
+// Base64-encoded MIME user data to make available to the instances.
+func (o OceanLaunchSpecOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
 type OceanLaunchSpecArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecArrayOutput) ElementType() reflect.Type {

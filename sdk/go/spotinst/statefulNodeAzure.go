@@ -594,6 +594,160 @@ func (o StatefulNodeAzureOutput) ToStatefulNodeAzureOutputWithContext(ctx contex
 	return o
 }
 
+func (o StatefulNodeAzureOutput) AttachDataDisks() StatefulNodeAzureAttachDataDiskArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureAttachDataDiskArrayOutput { return v.AttachDataDisks }).(StatefulNodeAzureAttachDataDiskArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) BootDiagnostics() StatefulNodeAzureBootDiagnosticArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureBootDiagnosticArrayOutput { return v.BootDiagnostics }).(StatefulNodeAzureBootDiagnosticArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) CustomData() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.CustomData }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) DataDisks() StatefulNodeAzureDataDiskArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureDataDiskArrayOutput { return v.DataDisks }).(StatefulNodeAzureDataDiskArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) DataDisksPersistenceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.DataDisksPersistenceMode }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) Deletes() StatefulNodeAzureDeleteArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureDeleteArrayOutput { return v.Deletes }).(StatefulNodeAzureDeleteArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) DetachDataDisks() StatefulNodeAzureDetachDataDiskArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureDetachDataDiskArrayOutput { return v.DetachDataDisks }).(StatefulNodeAzureDetachDataDiskArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) Extensions() StatefulNodeAzureExtensionArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureExtensionArrayOutput { return v.Extensions }).(StatefulNodeAzureExtensionArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) Health() StatefulNodeAzureHealthOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureHealthOutput { return v.Health }).(StatefulNodeAzureHealthOutput)
+}
+
+func (o StatefulNodeAzureOutput) Image() StatefulNodeAzureImageOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureImageOutput { return v.Image }).(StatefulNodeAzureImageOutput)
+}
+
+func (o StatefulNodeAzureOutput) ImportVms() StatefulNodeAzureImportVmArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureImportVmArrayOutput { return v.ImportVms }).(StatefulNodeAzureImportVmArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) LoadBalancers() StatefulNodeAzureLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureLoadBalancerArrayOutput { return v.LoadBalancers }).(StatefulNodeAzureLoadBalancerArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) Login() StatefulNodeAzureLoginOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureLoginOutput { return v.Login }).(StatefulNodeAzureLoginOutput)
+}
+
+func (o StatefulNodeAzureOutput) ManagedServiceIdentities() StatefulNodeAzureManagedServiceIdentityArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureManagedServiceIdentityArrayOutput {
+		return v.ManagedServiceIdentities
+	}).(StatefulNodeAzureManagedServiceIdentityArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) Network() StatefulNodeAzureNetworkOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureNetworkOutput { return v.Network }).(StatefulNodeAzureNetworkOutput)
+}
+
+func (o StatefulNodeAzureOutput) OdSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringArrayOutput { return v.OdSizes }).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) Os() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.Os }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) OsDisk() StatefulNodeAzureOsDiskOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureOsDiskOutput { return v.OsDisk }).(StatefulNodeAzureOsDiskOutput)
+}
+
+func (o StatefulNodeAzureOutput) OsDiskPersistenceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.OsDiskPersistenceMode }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) PreferredSpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringArrayOutput { return v.PreferredSpotSizes }).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) PreferredZones() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.PreferredZones }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) SchedulingTasks() StatefulNodeAzureSchedulingTaskArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureSchedulingTaskArrayOutput { return v.SchedulingTasks }).(StatefulNodeAzureSchedulingTaskArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) Secrets() StatefulNodeAzureSecretArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureSecretArrayOutput { return v.Secrets }).(StatefulNodeAzureSecretArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) ShouldPersistDataDisks() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.BoolOutput { return v.ShouldPersistDataDisks }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureOutput) ShouldPersistNetwork() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.BoolOutput { return v.ShouldPersistNetwork }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureOutput) ShouldPersistOsDisk() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.BoolOutput { return v.ShouldPersistOsDisk }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureOutput) ShouldPersistVm() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.BoolOutput { return v.ShouldPersistVm }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureOutput) ShutdownScript() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.ShutdownScript }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) Signals() StatefulNodeAzureSignalArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureSignalArrayOutput { return v.Signals }).(StatefulNodeAzureSignalArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) SpotSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringArrayOutput { return v.SpotSizes }).(pulumi.StringArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) Strategy() StatefulNodeAzureStrategyOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureStrategyOutput { return v.Strategy }).(StatefulNodeAzureStrategyOutput)
+}
+
+func (o StatefulNodeAzureOutput) Tags() StatefulNodeAzureTagArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureTagArrayOutput { return v.Tags }).(StatefulNodeAzureTagArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) UpdateStates() StatefulNodeAzureUpdateStateArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureUpdateStateArrayOutput { return v.UpdateStates }).(StatefulNodeAzureUpdateStateArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
 type StatefulNodeAzureArrayOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureArrayOutput) ElementType() reflect.Type {

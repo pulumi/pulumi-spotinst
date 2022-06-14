@@ -411,6 +411,132 @@ func (o ElastigroupOutput) ToElastigroupOutputWithContext(ctx context.Context) E
 	return o
 }
 
+func (o ElastigroupOutput) BackendServices() ElastigroupBackendServiceArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupBackendServiceArrayOutput { return v.BackendServices }).(ElastigroupBackendServiceArrayOutput)
+}
+
+// The GKE cluster ID you wish to import.
+//
+// Deprecated: Please define cluster_id under integration_gke
+func (o ElastigroupOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The zone where the cluster is hosted.
+func (o ElastigroupOutput) ClusterZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.ClusterZoneName }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupOutput) DesiredCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.DesiredCapacity }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupOutput) Disks() ElastigroupDiskArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupDiskArrayOutput { return v.Disks }).(ElastigroupDiskArrayOutput)
+}
+
+func (o ElastigroupOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupOutput) Gpu() ElastigroupGpuArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupGpuArrayOutput { return v.Gpu }).(ElastigroupGpuArrayOutput)
+}
+
+func (o ElastigroupOutput) InstanceTypesCustoms() ElastigroupInstanceTypesCustomArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupInstanceTypesCustomArrayOutput { return v.InstanceTypesCustoms }).(ElastigroupInstanceTypesCustomArrayOutput)
+}
+
+func (o ElastigroupOutput) InstanceTypesOndemand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.InstanceTypesOndemand }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupOutput) InstanceTypesPreemptibles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.InstanceTypesPreemptibles }).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupOutput) IntegrationDockerSwarm() ElastigroupIntegrationDockerSwarmPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationDockerSwarmPtrOutput { return v.IntegrationDockerSwarm }).(ElastigroupIntegrationDockerSwarmPtrOutput)
+}
+
+// Describes the GKE integration.
+func (o ElastigroupOutput) IntegrationGke() ElastigroupIntegrationGkePtrOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationGkePtrOutput { return v.IntegrationGke }).(ElastigroupIntegrationGkePtrOutput)
+}
+
+func (o ElastigroupOutput) IpForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.IpForwarding }).(pulumi.BoolPtrOutput)
+}
+
+func (o ElastigroupOutput) Labels() ElastigroupLabelArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupLabelArrayOutput { return v.Labels }).(ElastigroupLabelArrayOutput)
+}
+
+func (o ElastigroupOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupOutput) Metadatas() ElastigroupMetadataArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupMetadataArrayOutput { return v.Metadatas }).(ElastigroupMetadataArrayOutput)
+}
+
+func (o ElastigroupOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
+}
+
+func (o ElastigroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ElastigroupOutput) NetworkInterfaces() ElastigroupNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(ElastigroupNetworkInterfaceArrayOutput)
+}
+
+// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
+func (o ElastigroupOutput) NodeImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.NodeImage }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupOutput) OndemandCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.OndemandCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupOutput) PreemptiblePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.PreemptiblePercentage }).(pulumi.IntPtrOutput)
+}
+
+func (o ElastigroupOutput) ProvisioningModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupOutput) ScalingDownPolicies() ElastigroupScalingDownPolicyArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupScalingDownPolicyArrayOutput { return v.ScalingDownPolicies }).(ElastigroupScalingDownPolicyArrayOutput)
+}
+
+func (o ElastigroupOutput) ScalingUpPolicies() ElastigroupScalingUpPolicyArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupScalingUpPolicyArrayOutput { return v.ScalingUpPolicies }).(ElastigroupScalingUpPolicyArrayOutput)
+}
+
+func (o ElastigroupOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupOutput) ShutdownScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ShutdownScript }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupOutput) StartupScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.StartupScript }).(pulumi.StringPtrOutput)
+}
+
+func (o ElastigroupOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 type ElastigroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupArrayOutput) ElementType() reflect.Type {

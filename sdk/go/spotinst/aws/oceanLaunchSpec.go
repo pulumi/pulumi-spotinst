@@ -562,6 +562,135 @@ func (o OceanLaunchSpecOutput) ToOceanLaunchSpecOutputWithContext(ctx context.Co
 	return o
 }
 
+// Configure public IP address allocation.
+func (o OceanLaunchSpecOutput) AssociatePublicIpAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.BoolPtrOutput { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
+}
+
+// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
+func (o OceanLaunchSpecOutput) AutoscaleHeadrooms() OceanLaunchSpecAutoscaleHeadroomArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecAutoscaleHeadroomArrayOutput { return v.AutoscaleHeadrooms }).(OceanLaunchSpecAutoscaleHeadroomArrayOutput)
+}
+
+// Set automatic headroom per launch spec.
+func (o OceanLaunchSpecOutput) AutoscaleHeadroomsAutomatics() OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput {
+		return v.AutoscaleHeadroomsAutomatics
+	}).(OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput)
+}
+
+// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+func (o OceanLaunchSpecOutput) BlockDeviceMappings() OceanLaunchSpecBlockDeviceMappingArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecBlockDeviceMappingArrayOutput { return v.BlockDeviceMappings }).(OceanLaunchSpecBlockDeviceMappingArrayOutput)
+}
+
+func (o OceanLaunchSpecOutput) CreateOptions() OceanLaunchSpecCreateOptionsPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecCreateOptionsPtrOutput { return v.CreateOptions }).(OceanLaunchSpecCreateOptionsPtrOutput)
+}
+
+func (o OceanLaunchSpecOutput) DeleteOptions() OceanLaunchSpecDeleteOptionsPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecDeleteOptionsPtrOutput { return v.DeleteOptions }).(OceanLaunchSpecDeleteOptionsPtrOutput)
+}
+
+// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
+func (o OceanLaunchSpecOutput) ElasticIpPools() OceanLaunchSpecElasticIpPoolArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecElasticIpPoolArrayOutput { return v.ElasticIpPools }).(OceanLaunchSpecElasticIpPoolArrayOutput)
+}
+
+// The ARN or name of an IAM instance profile to associate with launched instances.
+func (o OceanLaunchSpecOutput) IamInstanceProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.IamInstanceProfile }).(pulumi.StringPtrOutput)
+}
+
+// ID of the image used to launch the instances.
+func (o OceanLaunchSpecOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
+func (o OceanLaunchSpecOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Optionally adds labels to instances launched in the cluster.
+func (o OceanLaunchSpecOutput) Labels() OceanLaunchSpecLabelArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecLabelArrayOutput { return v.Labels }).(OceanLaunchSpecLabelArrayOutput)
+}
+
+// The name of the Virtual Node Group.
+func (o OceanLaunchSpecOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the Ocean cluster.
+func (o OceanLaunchSpecOutput) OceanId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.OceanId }).(pulumi.StringOutput)
+}
+
+// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+func (o OceanLaunchSpecOutput) PreferredSpotTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.PreferredSpotTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanLaunchSpecOutput) ResourceLimits() OceanLaunchSpecResourceLimitArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecResourceLimitArrayOutput { return v.ResourceLimits }).(OceanLaunchSpecResourceLimitArrayOutput)
+}
+
+// Boolean. When set to `True`, nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
+func (o OceanLaunchSpecOutput) RestrictScaleDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.BoolPtrOutput { return v.RestrictScaleDown }).(pulumi.BoolPtrOutput)
+}
+
+// Set root volume size (in GB).
+func (o OceanLaunchSpecOutput) RootVolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.IntPtrOutput { return v.RootVolumeSize }).(pulumi.IntPtrOutput)
+}
+
+// Used to specify times that the nodes in the virtual node group will be taken down.
+func (o OceanLaunchSpecOutput) SchedulingShutdownHours() OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+		return v.SchedulingShutdownHours
+	}).(OceanLaunchSpecSchedulingShutdownHoursPtrOutput)
+}
+
+// Used to define scheduled tasks such as a manual headroom update.
+func (o OceanLaunchSpecOutput) SchedulingTasks() OceanLaunchSpecSchedulingTaskArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecSchedulingTaskArrayOutput { return v.SchedulingTasks }).(OceanLaunchSpecSchedulingTaskArrayOutput)
+}
+
+// Optionally adds security group IDs.
+func (o OceanLaunchSpecOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanLaunchSpecOutput) Strategies() OceanLaunchSpecStrategyArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecStrategyArrayOutput { return v.Strategies }).(OceanLaunchSpecStrategyArrayOutput)
+}
+
+// A list of subnet IDs.
+func (o OceanLaunchSpecOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// A key/value mapping of tags to assign to the resource.
+func (o OceanLaunchSpecOutput) Tags() OceanLaunchSpecTagArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecTagArrayOutput { return v.Tags }).(OceanLaunchSpecTagArrayOutput)
+}
+
+// Optionally adds labels to instances launched in the cluster.
+func (o OceanLaunchSpecOutput) Taints() OceanLaunchSpecTaintArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecTaintArrayOutput { return v.Taints }).(OceanLaunchSpecTaintArrayOutput)
+}
+
+func (o OceanLaunchSpecOutput) UpdatePolicy() OceanLaunchSpecUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecUpdatePolicyPtrOutput { return v.UpdatePolicy }).(OceanLaunchSpecUpdatePolicyPtrOutput)
+}
+
+// Base64-encoded MIME user data to make available to the instances.
+func (o OceanLaunchSpecOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
 type OceanLaunchSpecArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecArrayOutput) ElementType() reflect.Type {

@@ -205,6 +205,21 @@ func (o DataIntegrationOutput) ToDataIntegrationOutputWithContext(ctx context.Co
 	return o
 }
 
+// The name of the data integration.
+func (o DataIntegrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// When vendor value is s3, the following fields are included:
+func (o DataIntegrationOutput) S3() DataIntegrationS3PtrOutput {
+	return o.ApplyT(func(v *DataIntegration) DataIntegrationS3PtrOutput { return v.S3 }).(DataIntegrationS3PtrOutput)
+}
+
+// Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
+func (o DataIntegrationOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataIntegration) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
 type DataIntegrationArrayOutput struct{ *pulumi.OutputState }
 
 func (DataIntegrationArrayOutput) ElementType() reflect.Type {

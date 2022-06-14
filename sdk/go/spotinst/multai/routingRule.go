@@ -200,6 +200,38 @@ func (o RoutingRuleOutput) ToRoutingRuleOutputWithContext(ctx context.Context) R
 	return o
 }
 
+func (o RoutingRuleOutput) BalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutingRule) pulumi.StringOutput { return v.BalancerId }).(pulumi.StringOutput)
+}
+
+func (o RoutingRuleOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutingRule) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+func (o RoutingRuleOutput) MiddlewareIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoutingRule) pulumi.StringArrayOutput { return v.MiddlewareIds }).(pulumi.StringArrayOutput)
+}
+
+func (o RoutingRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RoutingRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+func (o RoutingRuleOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutingRule) pulumi.StringOutput { return v.Route }).(pulumi.StringOutput)
+}
+
+func (o RoutingRuleOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutingRule) pulumi.StringPtrOutput { return v.Strategy }).(pulumi.StringPtrOutput)
+}
+
+func (o RoutingRuleOutput) Tags() RoutingRuleTagArrayOutput {
+	return o.ApplyT(func(v *RoutingRule) RoutingRuleTagArrayOutput { return v.Tags }).(RoutingRuleTagArrayOutput)
+}
+
+func (o RoutingRuleOutput) TargetSetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoutingRule) pulumi.StringArrayOutput { return v.TargetSetIds }).(pulumi.StringArrayOutput)
+}
+
 type RoutingRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (RoutingRuleArrayOutput) ElementType() reflect.Type {

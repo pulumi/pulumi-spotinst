@@ -152,6 +152,10 @@ func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) Dep
 	return o
 }
 
+func (o DeploymentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type DeploymentArrayOutput struct{ *pulumi.OutputState }
 
 func (DeploymentArrayOutput) ElementType() reflect.Type {

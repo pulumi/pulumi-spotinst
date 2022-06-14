@@ -587,6 +587,224 @@ func (o ManagedInstanceOutput) ToManagedInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
+func (o ManagedInstanceOutput) AutoHealing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.AutoHealing }).(pulumi.BoolPtrOutput)
+}
+
+// Attributes controls a portion of the AWS:
+func (o ManagedInstanceOutput) BlockDeviceMappings() ManagedInstanceBlockDeviceMappingArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceBlockDeviceMappingArrayOutput { return v.BlockDeviceMappings }).(ManagedInstanceBlockDeviceMappingArrayOutput)
+}
+
+// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
+func (o ManagedInstanceOutput) BlockDevicesMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.BlockDevicesMode }).(pulumi.StringPtrOutput)
+}
+
+// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
+func (o ManagedInstanceOutput) CpuCredits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.CpuCredits }).(pulumi.StringPtrOutput)
+}
+
+// The ManagedInstance description.
+func (o ManagedInstanceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
+func (o ManagedInstanceOutput) DrainingTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
+// Default: false
+func (o ManagedInstanceOutput) EbsOptimized() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolOutput { return v.EbsOptimized }).(pulumi.BoolOutput)
+}
+
+// Elastic IP Allocation Id to associate to the instance.
+func (o ManagedInstanceOutput) ElasticIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.ElasticIp }).(pulumi.StringPtrOutput)
+}
+
+// Describes whether instance Enhanced Monitoring is enabled.
+// Default: false
+func (o ManagedInstanceOutput) EnableMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.EnableMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+func (o ManagedInstanceOutput) FallBackToOd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.FallBackToOd }).(pulumi.BoolPtrOutput)
+}
+
+// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
+func (o ManagedInstanceOutput) GracePeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
+func (o ManagedInstanceOutput) HealthCheckType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
+}
+
+// Set IAM profile to instance. Set only one of ARN or Name.
+func (o ManagedInstanceOutput) IamInstanceProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.IamInstanceProfile }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the image used to launch the instance.
+func (o ManagedInstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// Comma separated list of available instance types for instance.
+func (o ManagedInstanceOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+func (o ManagedInstanceOutput) IntegrationRoute53() ManagedInstanceIntegrationRoute53PtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceIntegrationRoute53PtrOutput { return v.IntegrationRoute53 }).(ManagedInstanceIntegrationRoute53PtrOutput)
+}
+
+// Specify a Key Pair to attach to the instances.
+func (o ManagedInstanceOutput) KeyPair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.KeyPair }).(pulumi.StringPtrOutput)
+}
+
+// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
+func (o ManagedInstanceOutput) LifeCycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.LifeCycle }).(pulumi.StringPtrOutput)
+}
+
+// List of load balancers configs.
+func (o ManagedInstanceOutput) LoadBalancers() ManagedInstanceLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceLoadBalancerArrayOutput { return v.LoadBalancers }).(ManagedInstanceLoadBalancerArrayOutput)
+}
+
+func (o ManagedInstanceOutput) ManagedInstanceAction() ManagedInstanceManagedInstanceActionPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceManagedInstanceActionPtrOutput { return v.ManagedInstanceAction }).(ManagedInstanceManagedInstanceActionPtrOutput)
+}
+
+func (o ManagedInstanceOutput) MinimumInstanceLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.MinimumInstanceLifetime }).(pulumi.IntPtrOutput)
+}
+
+// The record set name.
+func (o ManagedInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ManagedInstanceOutput) NetworkInterfaces() ManagedInstanceNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(ManagedInstanceNetworkInterfaceArrayOutput)
+}
+
+// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
+func (o ManagedInstanceOutput) OptimizationWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringArrayOutput { return v.OptimizationWindows }).(pulumi.StringArrayOutput)
+}
+
+// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
+func (o ManagedInstanceOutput) Orientation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.Orientation }).(pulumi.StringPtrOutput)
+}
+
+// Should the instance maintain its Data volumes.
+func (o ManagedInstanceOutput) PersistBlockDevices() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolOutput { return v.PersistBlockDevices }).(pulumi.BoolOutput)
+}
+
+// Should the instance maintain its private IP.
+func (o ManagedInstanceOutput) PersistPrivateIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.PersistPrivateIp }).(pulumi.BoolPtrOutput)
+}
+
+// Should the instance maintain its root device volumes.
+func (o ManagedInstanceOutput) PersistRootDevice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.PersistRootDevice }).(pulumi.BoolPtrOutput)
+}
+
+// Valid values: `"default"`, `"dedicated"`.
+// Default: default
+func (o ManagedInstanceOutput) PlacementTenancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.PlacementTenancy }).(pulumi.StringPtrOutput)
+}
+
+// Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
+func (o ManagedInstanceOutput) PreferredType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.PreferredType }).(pulumi.StringPtrOutput)
+}
+
+// Private IP Allocation Id to associate to the instance.
+func (o ManagedInstanceOutput) PrivateIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.PrivateIp }).(pulumi.StringPtrOutput)
+}
+
+// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
+func (o ManagedInstanceOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringOutput { return v.Product }).(pulumi.StringOutput)
+}
+
+// The AWS region your group will be created in.
+func (o ManagedInstanceOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// User will specify which resources should be tagged with group tags.
+func (o ManagedInstanceOutput) ResourceTagSpecifications() ManagedInstanceResourceTagSpecificationArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceResourceTagSpecificationArrayOutput {
+		return v.ResourceTagSpecifications
+	}).(ManagedInstanceResourceTagSpecificationArrayOutput)
+}
+
+func (o ManagedInstanceOutput) RevertToSpot() ManagedInstanceRevertToSpotPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceRevertToSpotPtrOutput { return v.RevertToSpot }).(ManagedInstanceRevertToSpotPtrOutput)
+}
+
+func (o ManagedInstanceOutput) ScheduledTasks() ManagedInstanceScheduledTaskArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceScheduledTaskArrayOutput { return v.ScheduledTasks }).(ManagedInstanceScheduledTaskArrayOutput)
+}
+
+// One or more security group IDs.
+func (o ManagedInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The Base64-encoded shutdown script to execute prior to instance termination.
+func (o ManagedInstanceOutput) ShutdownScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.ShutdownScript }).(pulumi.StringPtrOutput)
+}
+
+// A comma-separated list of subnet identifiers for your instance.
+func (o ManagedInstanceOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringArrayOutput { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// Set tags for the instance. Items should be unique.
+func (o ManagedInstanceOutput) Tags() ManagedInstanceTagArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceTagArrayOutput { return v.Tags }).(ManagedInstanceTagArrayOutput)
+}
+
+// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
+func (o ManagedInstanceOutput) UnhealthyDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.UnhealthyDuration }).(pulumi.IntPtrOutput)
+}
+
+// The Base64-encoded MIME user data to make available to the instances.
+func (o ManagedInstanceOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
+func (o ManagedInstanceOutput) UtilizeReservedInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.UtilizeReservedInstances }).(pulumi.BoolPtrOutput)
+}
+
+func (o ManagedInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 type ManagedInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceArrayOutput) ElementType() reflect.Type {

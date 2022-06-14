@@ -400,6 +400,78 @@ func (o OceanImportOutput) ToOceanImportOutputWithContext(ctx context.Context) O
 	return o
 }
 
+// The Ocean Kubernetes Autoscaler object.
+func (o OceanImportOutput) Autoscaler() OceanImportAutoscalerOutput {
+	return o.ApplyT(func(v *OceanImport) OceanImportAutoscalerOutput { return v.Autoscaler }).(OceanImportAutoscalerOutput)
+}
+
+// Describes the backend service configurations.
+func (o OceanImportOutput) BackendServices() OceanImportBackendServiceArrayOutput {
+	return o.ApplyT(func(v *OceanImport) OceanImportBackendServiceArrayOutput { return v.BackendServices }).(OceanImportBackendServiceArrayOutput)
+}
+
+func (o OceanImportOutput) ClusterControllerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.StringOutput { return v.ClusterControllerId }).(pulumi.StringOutput)
+}
+
+// The GKE cluster name.
+func (o OceanImportOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+func (o OceanImportOutput) ControllerClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.StringOutput { return v.ControllerClusterId }).(pulumi.StringOutput)
+}
+
+// The number of instances to launch and maintain in the cluster.
+func (o OceanImportOutput) DesiredCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.IntOutput { return v.DesiredCapacity }).(pulumi.IntOutput)
+}
+
+// The zone the master cluster is located in.
+func (o OceanImportOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The upper limit of instances the cluster can scale up to.
+func (o OceanImportOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.IntOutput { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// The lower limit of instances the cluster can scale down to.
+func (o OceanImportOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
+}
+
+// The root volume disk type.
+func (o OceanImportOutput) RootVolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.StringPtrOutput { return v.RootVolumeType }).(pulumi.StringPtrOutput)
+}
+
+// Set scheduling object.
+func (o OceanImportOutput) ScheduledTasks() OceanImportScheduledTaskArrayOutput {
+	return o.ApplyT(func(v *OceanImport) OceanImportScheduledTaskArrayOutput { return v.ScheduledTasks }).(OceanImportScheduledTaskArrayOutput)
+}
+
+// The Ocean shielded instance configuration object.
+func (o OceanImportOutput) ShieldedInstanceConfig() OceanImportShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *OceanImport) OceanImportShieldedInstanceConfigOutput { return v.ShieldedInstanceConfig }).(OceanImportShieldedInstanceConfigOutput)
+}
+
+func (o OceanImportOutput) Strategies() OceanImportStrategyArrayOutput {
+	return o.ApplyT(func(v *OceanImport) OceanImportStrategyArrayOutput { return v.Strategies }).(OceanImportStrategyArrayOutput)
+}
+
+func (o OceanImportOutput) UpdatePolicy() OceanImportUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *OceanImport) OceanImportUpdatePolicyPtrOutput { return v.UpdatePolicy }).(OceanImportUpdatePolicyPtrOutput)
+}
+
+// Instance types allowed in the Ocean cluster.
+func (o OceanImportOutput) Whitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.StringArrayOutput { return v.Whitelists }).(pulumi.StringArrayOutput)
+}
+
 type OceanImportArrayOutput struct{ *pulumi.OutputState }
 
 func (OceanImportArrayOutput) ElementType() reflect.Type {

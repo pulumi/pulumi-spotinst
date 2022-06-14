@@ -203,6 +203,38 @@ func (o TargetSetOutput) ToTargetSetOutputWithContext(ctx context.Context) Targe
 	return o
 }
 
+func (o TargetSetOutput) BalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetSet) pulumi.StringOutput { return v.BalancerId }).(pulumi.StringOutput)
+}
+
+func (o TargetSetOutput) DeploymentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetSet) pulumi.StringOutput { return v.DeploymentId }).(pulumi.StringOutput)
+}
+
+func (o TargetSetOutput) HealthCheck() TargetSetHealthCheckOutput {
+	return o.ApplyT(func(v *TargetSet) TargetSetHealthCheckOutput { return v.HealthCheck }).(TargetSetHealthCheckOutput)
+}
+
+func (o TargetSetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TargetSetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetSet) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o TargetSetOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetSet) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o TargetSetOutput) Tags() TargetSetTagArrayOutput {
+	return o.ApplyT(func(v *TargetSet) TargetSetTagArrayOutput { return v.Tags }).(TargetSetTagArrayOutput)
+}
+
+func (o TargetSetOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *TargetSet) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
+}
+
 type TargetSetArrayOutput struct{ *pulumi.OutputState }
 
 func (TargetSetArrayOutput) ElementType() reflect.Type {
