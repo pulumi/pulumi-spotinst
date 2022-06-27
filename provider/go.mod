@@ -8,6 +8,14 @@ require (
 	github.com/spotinst/terraform-provider-spotinst v1.32.0
 )
 
+replace (
+	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
+	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220505215311-795430389fa7
+	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
+	github.com/spotinst/terraform-provider-spotinst => github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20220627133113-a1bc6c524aae
+)
+
 require (
 	cloud.google.com/go v0.100.2 // indirect
 	cloud.google.com/go/compute v1.5.0 // indirect
@@ -207,12 +215,4 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600 // indirect
-)
-
-replace (
-	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
-	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220505215311-795430389fa7
-	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	github.com/spotinst/terraform-provider-spotinst => github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20220613153615-7f039c17be85
 )
