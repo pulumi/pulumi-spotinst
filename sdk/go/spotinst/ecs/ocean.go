@@ -89,6 +89,7 @@ import (
 // 					Value: pulumi.String("fakeValue"),
 // 				},
 // 			},
+// 			UseAsTemplateOnly:        pulumi.Bool(true),
 // 			UserData:                 pulumi.String("echo hello world"),
 // 			UtilizeCommitments:       pulumi.Bool(false),
 // 			UtilizeReservedInstances: pulumi.Bool(false),
@@ -168,6 +169,8 @@ type Ocean struct {
 	Tags OceanTagArrayOutput `pulumi:"tags"`
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly pulumi.BoolPtrOutput `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// If savings plans exist, Ocean will utilize them before launching Spot instances.
@@ -267,6 +270,8 @@ type oceanState struct {
 	Tags []OceanTag `pulumi:"tags"`
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
 	// If savings plans exist, Ocean will utilize them before launching Spot instances.
@@ -326,6 +331,8 @@ type OceanState struct {
 	Tags OceanTagArrayInput
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrInput
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
 	// If savings plans exist, Ocean will utilize them before launching Spot instances.
@@ -389,6 +396,8 @@ type oceanArgs struct {
 	Tags []OceanTag `pulumi:"tags"`
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData *string `pulumi:"userData"`
 	// If savings plans exist, Ocean will utilize them before launching Spot instances.
@@ -449,6 +458,8 @@ type OceanArgs struct {
 	Tags OceanTagArrayInput
 	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrInput
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Base64-encoded MIME user data to make available to the instances.
 	UserData pulumi.StringPtrInput
 	// If savings plans exist, Ocean will utilize them before launching Spot instances.
@@ -664,6 +675,11 @@ func (o OceanOutput) Tags() OceanTagArrayOutput {
 // While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o OceanOutput) UpdatePolicy() OceanUpdatePolicyPtrOutput {
 	return o.ApplyT(func(v *Ocean) OceanUpdatePolicyPtrOutput { return v.UpdatePolicy }).(OceanUpdatePolicyPtrOutput)
+}
+
+// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+func (o OceanOutput) UseAsTemplateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.UseAsTemplateOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Base64-encoded MIME user data to make available to the instances.
