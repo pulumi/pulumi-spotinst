@@ -68,6 +68,7 @@ import * as utilities from "../utilities";
  *         key: "fakeKey",
  *         value: "fakeValue",
  *     }],
+ *     useAsTemplateOnly: true,
  *     userData: "echo hello world",
  *     utilizeCommitments: false,
  *     utilizeReservedInstances: false,
@@ -205,6 +206,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly updatePolicy!: pulumi.Output<outputs.ecs.OceanUpdatePolicy | undefined>;
     /**
+     * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     */
+    public readonly useAsTemplateOnly!: pulumi.Output<boolean | undefined>;
+    /**
      * Base64-encoded MIME user data to make available to the instances.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
@@ -258,6 +263,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
+            resourceInputs["useAsTemplateOnly"] = state ? state.useAsTemplateOnly : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
             resourceInputs["utilizeCommitments"] = state ? state.utilizeCommitments : undefined;
             resourceInputs["utilizeReservedInstances"] = state ? state.utilizeReservedInstances : undefined;
@@ -300,6 +306,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            resourceInputs["useAsTemplateOnly"] = args ? args.useAsTemplateOnly : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["utilizeCommitments"] = args ? args.utilizeCommitments : undefined;
             resourceInputs["utilizeReservedInstances"] = args ? args.utilizeReservedInstances : undefined;
@@ -410,6 +417,10 @@ export interface OceanState {
      * While used, you can control whether the group should perform a deployment after an update to the configuration.
      */
     updatePolicy?: pulumi.Input<inputs.ecs.OceanUpdatePolicy>;
+    /**
+     * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     */
+    useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
@@ -528,6 +539,10 @@ export interface OceanArgs {
      * While used, you can control whether the group should perform a deployment after an update to the configuration.
      */
     updatePolicy?: pulumi.Input<inputs.ecs.OceanUpdatePolicy>;
+    /**
+     * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     */
+    useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */

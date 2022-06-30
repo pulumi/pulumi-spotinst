@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *         enableIntegrityMonitoring: true,
  *         enableSecureBoot: true,
  *     },
+ *     useAsTemplateOnly: false,
  *     whitelists: [
  *         "n1-standard-1",
  *         "n1-standard-2",
@@ -151,6 +152,10 @@ export class OceanImport extends pulumi.CustomResource {
     public readonly strategies!: pulumi.Output<outputs.gke.OceanImportStrategy[] | undefined>;
     public readonly updatePolicy!: pulumi.Output<outputs.gke.OceanImportUpdatePolicy | undefined>;
     /**
+     * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     */
+    public readonly useAsTemplateOnly!: pulumi.Output<boolean | undefined>;
+    /**
      * Instance types allowed in the Ocean cluster.
      */
     public readonly whitelists!: pulumi.Output<string[] | undefined>;
@@ -182,6 +187,7 @@ export class OceanImport extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             resourceInputs["strategies"] = state ? state.strategies : undefined;
             resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
+            resourceInputs["useAsTemplateOnly"] = state ? state.useAsTemplateOnly : undefined;
             resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as OceanImportArgs | undefined;
@@ -204,6 +210,7 @@ export class OceanImport extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["strategies"] = args ? args.strategies : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
+            resourceInputs["useAsTemplateOnly"] = args ? args.useAsTemplateOnly : undefined;
             resourceInputs["whitelists"] = args ? args.whitelists : undefined;
             resourceInputs["clusterControllerId"] = undefined /*out*/;
         }
@@ -264,6 +271,10 @@ export interface OceanImportState {
     strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportStrategy>[]>;
     updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
     /**
+     * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     */
+    useAsTemplateOnly?: pulumi.Input<boolean>;
+    /**
      * Instance types allowed in the Ocean cluster.
      */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -319,6 +330,10 @@ export interface OceanImportArgs {
     shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanImportShieldedInstanceConfig>;
     strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportStrategy>[]>;
     updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
+    /**
+     * launch specification defined on the Ocean object will function only as a template for virtual node groups.
+     */
+    useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
      * Instance types allowed in the Ocean cluster.
      */

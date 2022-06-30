@@ -28,6 +28,7 @@ class OceanImportArgs:
                  shielded_instance_config: Optional[pulumi.Input['OceanImportShieldedInstanceConfigArgs']] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
+                 use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a OceanImport resource.
@@ -42,6 +43,7 @@ class OceanImportArgs:
         :param pulumi.Input[str] root_volume_type: The root volume disk type.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input['OceanImportShieldedInstanceConfigArgs'] shielded_instance_config: The Ocean shielded instance configuration object.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -68,6 +70,8 @@ class OceanImportArgs:
             pulumi.set(__self__, "strategies", strategies)
         if update_policy is not None:
             pulumi.set(__self__, "update_policy", update_policy)
+        if use_as_template_only is not None:
+            pulumi.set(__self__, "use_as_template_only", use_as_template_only)
         if whitelists is not None:
             pulumi.set(__self__, "whitelists", whitelists)
 
@@ -222,6 +226,18 @@ class OceanImportArgs:
         pulumi.set(self, "update_policy", value)
 
     @property
+    @pulumi.getter(name="useAsTemplateOnly")
+    def use_as_template_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        """
+        return pulumi.get(self, "use_as_template_only")
+
+    @use_as_template_only.setter
+    def use_as_template_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_as_template_only", value)
+
+    @property
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -251,6 +267,7 @@ class _OceanImportState:
                  shielded_instance_config: Optional[pulumi.Input['OceanImportShieldedInstanceConfigArgs']] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
+                 use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering OceanImport resources.
@@ -265,6 +282,7 @@ class _OceanImportState:
         :param pulumi.Input[str] root_volume_type: The root volume disk type.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input['OceanImportShieldedInstanceConfigArgs'] shielded_instance_config: The Ocean shielded instance configuration object.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
         """
         if autoscaler is not None:
@@ -295,6 +313,8 @@ class _OceanImportState:
             pulumi.set(__self__, "strategies", strategies)
         if update_policy is not None:
             pulumi.set(__self__, "update_policy", update_policy)
+        if use_as_template_only is not None:
+            pulumi.set(__self__, "use_as_template_only", use_as_template_only)
         if whitelists is not None:
             pulumi.set(__self__, "whitelists", whitelists)
 
@@ -458,6 +478,18 @@ class _OceanImportState:
         pulumi.set(self, "update_policy", value)
 
     @property
+    @pulumi.getter(name="useAsTemplateOnly")
+    def use_as_template_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        """
+        return pulumi.get(self, "use_as_template_only")
+
+    @use_as_template_only.setter
+    def use_as_template_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_as_template_only", value)
+
+    @property
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -488,6 +520,7 @@ class OceanImport(pulumi.CustomResource):
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['OceanImportShieldedInstanceConfigArgs']]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportStrategyArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanImportUpdatePolicyArgs']]] = None,
+                 use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -521,6 +554,7 @@ class OceanImport(pulumi.CustomResource):
                 enable_integrity_monitoring=True,
                 enable_secure_boot=True,
             ),
+            use_as_template_only=False,
             whitelists=[
                 "n1-standard-1",
                 "n1-standard-2",
@@ -572,6 +606,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[str] root_volume_type: The root volume disk type.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[pulumi.InputType['OceanImportShieldedInstanceConfigArgs']] shielded_instance_config: The Ocean shielded instance configuration object.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
         """
         ...
@@ -611,6 +646,7 @@ class OceanImport(pulumi.CustomResource):
                 enable_integrity_monitoring=True,
                 enable_secure_boot=True,
             ),
+            use_as_template_only=False,
             whitelists=[
                 "n1-standard-1",
                 "n1-standard-2",
@@ -677,6 +713,7 @@ class OceanImport(pulumi.CustomResource):
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['OceanImportShieldedInstanceConfigArgs']]] = None,
                  strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportStrategyArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanImportUpdatePolicyArgs']]] = None,
+                 use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
@@ -707,6 +744,7 @@ class OceanImport(pulumi.CustomResource):
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["strategies"] = strategies
             __props__.__dict__["update_policy"] = update_policy
+            __props__.__dict__["use_as_template_only"] = use_as_template_only
             __props__.__dict__["whitelists"] = whitelists
             __props__.__dict__["cluster_controller_id"] = None
         super(OceanImport, __self__).__init__(
@@ -733,6 +771,7 @@ class OceanImport(pulumi.CustomResource):
             shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['OceanImportShieldedInstanceConfigArgs']]] = None,
             strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportStrategyArgs']]]]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['OceanImportUpdatePolicyArgs']]] = None,
+            use_as_template_only: Optional[pulumi.Input[bool]] = None,
             whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanImport':
         """
         Get an existing OceanImport resource's state with the given name, id, and optional extra
@@ -752,6 +791,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[str] root_volume_type: The root volume disk type.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[pulumi.InputType['OceanImportShieldedInstanceConfigArgs']] shielded_instance_config: The Ocean shielded instance configuration object.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -772,6 +812,7 @@ class OceanImport(pulumi.CustomResource):
         __props__.__dict__["shielded_instance_config"] = shielded_instance_config
         __props__.__dict__["strategies"] = strategies
         __props__.__dict__["update_policy"] = update_policy
+        __props__.__dict__["use_as_template_only"] = use_as_template_only
         __props__.__dict__["whitelists"] = whitelists
         return OceanImport(resource_name, opts=opts, __props__=__props__)
 
@@ -877,6 +918,14 @@ class OceanImport(pulumi.CustomResource):
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> pulumi.Output[Optional['outputs.OceanImportUpdatePolicy']]:
         return pulumi.get(self, "update_policy")
+
+    @property
+    @pulumi.getter(name="useAsTemplateOnly")
+    def use_as_template_only(self) -> pulumi.Output[Optional[bool]]:
+        """
+        launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        """
+        return pulumi.get(self, "use_as_template_only")
 
     @property
     @pulumi.getter

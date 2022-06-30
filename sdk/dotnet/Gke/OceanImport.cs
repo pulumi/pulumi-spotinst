@@ -55,6 +55,7 @@ namespace Pulumi.SpotInst.Gke
     ///                 EnableIntegrityMonitoring = true,
     ///                 EnableSecureBoot = true,
     ///             },
+    ///             UseAsTemplateOnly = false,
     ///             Whitelists = 
     ///             {
     ///                 "n1-standard-1",
@@ -202,6 +203,12 @@ namespace Pulumi.SpotInst.Gke
         public Output<Outputs.OceanImportUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
 
         /// <summary>
+        /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// </summary>
+        [Output("useAsTemplateOnly")]
+        public Output<bool?> UseAsTemplateOnly { get; private set; } = null!;
+
+        /// <summary>
         /// Instance types allowed in the Ocean cluster.
         /// </summary>
         [Output("whitelists")]
@@ -342,6 +349,12 @@ namespace Pulumi.SpotInst.Gke
         [Input("updatePolicy")]
         public Input<Inputs.OceanImportUpdatePolicyArgs>? UpdatePolicy { get; set; }
 
+        /// <summary>
+        /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// </summary>
+        [Input("useAsTemplateOnly")]
+        public Input<bool>? UseAsTemplateOnly { get; set; }
+
         [Input("whitelists")]
         private InputList<string>? _whitelists;
 
@@ -452,6 +465,12 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("updatePolicy")]
         public Input<Inputs.OceanImportUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
+
+        /// <summary>
+        /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// </summary>
+        [Input("useAsTemplateOnly")]
+        public Input<bool>? UseAsTemplateOnly { get; set; }
 
         [Input("whitelists")]
         private InputList<string>? _whitelists;

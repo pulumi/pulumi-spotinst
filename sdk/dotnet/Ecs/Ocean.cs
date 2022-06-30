@@ -102,6 +102,7 @@ namespace Pulumi.SpotInst.Ecs
     ///                     Value = "fakeValue",
     ///                 },
     ///             },
+    ///             UseAsTemplateOnly = true,
     ///             UserData = "echo hello world",
     ///             UtilizeCommitments = false,
     ///             UtilizeReservedInstances = false,
@@ -275,6 +276,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("updatePolicy")]
         public Output<Outputs.OceanUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// </summary>
+        [Output("useAsTemplateOnly")]
+        public Output<bool?> UseAsTemplateOnly { get; private set; } = null!;
 
         /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.
@@ -521,6 +528,12 @@ namespace Pulumi.SpotInst.Ecs
         public Input<Inputs.OceanUpdatePolicyArgs>? UpdatePolicy { get; set; }
 
         /// <summary>
+        /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// </summary>
+        [Input("useAsTemplateOnly")]
+        public Input<bool>? UseAsTemplateOnly { get; set; }
+
+        /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.
         /// </summary>
         [Input("userData")]
@@ -730,6 +743,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
+
+        /// <summary>
+        /// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        /// </summary>
+        [Input("useAsTemplateOnly")]
+        public Input<bool>? UseAsTemplateOnly { get; set; }
 
         /// <summary>
         /// Base64-encoded MIME user data to make available to the instances.

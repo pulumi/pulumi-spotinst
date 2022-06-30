@@ -39,6 +39,7 @@ class OceanArgs:
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
+                 use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
@@ -69,6 +70,7 @@ class OceanArgs:
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input['OceanUpdatePolicyArgs'] update_policy: While used, you can control whether the group should perform a deployment after an update to the configuration.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -118,6 +120,8 @@ class OceanArgs:
             pulumi.set(__self__, "tags", tags)
         if update_policy is not None:
             pulumi.set(__self__, "update_policy", update_policy)
+        if use_as_template_only is not None:
+            pulumi.set(__self__, "use_as_template_only", use_as_template_only)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if utilize_commitments is not None:
@@ -416,6 +420,18 @@ class OceanArgs:
         pulumi.set(self, "update_policy", value)
 
     @property
+    @pulumi.getter(name="useAsTemplateOnly")
+    def use_as_template_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        """
+        return pulumi.get(self, "use_as_template_only")
+
+    @use_as_template_only.setter
+    def use_as_template_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_as_template_only", value)
+
+    @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
@@ -491,6 +507,7 @@ class _OceanState:
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
+                 use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
@@ -521,6 +538,7 @@ class _OceanState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input['OceanUpdatePolicyArgs'] update_policy: While used, you can control whether the group should perform a deployment after an update to the configuration.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -574,6 +592,8 @@ class _OceanState:
             pulumi.set(__self__, "tags", tags)
         if update_policy is not None:
             pulumi.set(__self__, "update_policy", update_policy)
+        if use_as_template_only is not None:
+            pulumi.set(__self__, "use_as_template_only", use_as_template_only)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if utilize_commitments is not None:
@@ -872,6 +892,18 @@ class _OceanState:
         pulumi.set(self, "update_policy", value)
 
     @property
+    @pulumi.getter(name="useAsTemplateOnly")
+    def use_as_template_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        """
+        return pulumi.get(self, "use_as_template_only")
+
+    @use_as_template_only.setter
+    def use_as_template_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_as_template_only", value)
+
+    @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
@@ -949,6 +981,7 @@ class Ocean(pulumi.CustomResource):
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
+                 use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
@@ -1017,6 +1050,7 @@ class Ocean(pulumi.CustomResource):
                 key="fakeKey",
                 value="fakeValue",
             )],
+            use_as_template_only=True,
             user_data="echo hello world",
             utilize_commitments=False,
             utilize_reserved_instances=False,
@@ -1054,6 +1088,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']] update_policy: While used, you can control whether the group should perform a deployment after an update to the configuration.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -1128,6 +1163,7 @@ class Ocean(pulumi.CustomResource):
                 key="fakeKey",
                 value="fakeValue",
             )],
+            use_as_template_only=True,
             user_data="echo hello world",
             utilize_commitments=False,
             utilize_reserved_instances=False,
@@ -1178,6 +1214,7 @@ class Ocean(pulumi.CustomResource):
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
+                 use_as_template_only: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  utilize_commitments: Optional[pulumi.Input[bool]] = None,
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
@@ -1226,6 +1263,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
             __props__.__dict__["update_policy"] = update_policy
+            __props__.__dict__["use_as_template_only"] = use_as_template_only
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["utilize_commitments"] = utilize_commitments
             __props__.__dict__["utilize_reserved_instances"] = utilize_reserved_instances
@@ -1264,6 +1302,7 @@ class Ocean(pulumi.CustomResource):
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
+            use_as_template_only: Optional[pulumi.Input[bool]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             utilize_commitments: Optional[pulumi.Input[bool]] = None,
             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
@@ -1299,6 +1338,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']] update_policy: While used, you can control whether the group should perform a deployment after an update to the configuration.
+        :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
@@ -1332,6 +1372,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["subnet_ids"] = subnet_ids
         __props__.__dict__["tags"] = tags
         __props__.__dict__["update_policy"] = update_policy
+        __props__.__dict__["use_as_template_only"] = use_as_template_only
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["utilize_commitments"] = utilize_commitments
         __props__.__dict__["utilize_reserved_instances"] = utilize_reserved_instances
@@ -1529,6 +1570,14 @@ class Ocean(pulumi.CustomResource):
         While used, you can control whether the group should perform a deployment after an update to the configuration.
         """
         return pulumi.get(self, "update_policy")
+
+    @property
+    @pulumi.getter(name="useAsTemplateOnly")
+    def use_as_template_only(self) -> pulumi.Output[Optional[bool]]:
+        """
+        launch specification defined on the Ocean object will function only as a template for virtual node groups.
+        """
+        return pulumi.get(self, "use_as_template_only")
 
     @property
     @pulumi.getter(name="userData")

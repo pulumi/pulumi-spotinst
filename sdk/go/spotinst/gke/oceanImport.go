@@ -51,6 +51,7 @@ import (
 // 				EnableIntegrityMonitoring: pulumi.Bool(true),
 // 				EnableSecureBoot:          pulumi.Bool(true),
 // 			},
+// 			UseAsTemplateOnly: pulumi.Bool(false),
 // 			Whitelists: pulumi.StringArray{
 // 				pulumi.String("n1-standard-1"),
 // 				pulumi.String("n1-standard-2"),
@@ -152,6 +153,8 @@ type OceanImport struct {
 	ShieldedInstanceConfig OceanImportShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
 	Strategies             OceanImportStrategyArrayOutput          `pulumi:"strategies"`
 	UpdatePolicy           OceanImportUpdatePolicyPtrOutput        `pulumi:"updatePolicy"`
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly pulumi.BoolPtrOutput `pulumi:"useAsTemplateOnly"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
@@ -216,6 +219,8 @@ type oceanImportState struct {
 	ShieldedInstanceConfig *OceanImportShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	Strategies             []OceanImportStrategy              `pulumi:"strategies"`
 	UpdatePolicy           *OceanImportUpdatePolicy           `pulumi:"updatePolicy"`
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists []string `pulumi:"whitelists"`
 }
@@ -246,6 +251,8 @@ type OceanImportState struct {
 	ShieldedInstanceConfig OceanImportShieldedInstanceConfigPtrInput
 	Strategies             OceanImportStrategyArrayInput
 	UpdatePolicy           OceanImportUpdatePolicyPtrInput
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayInput
 }
@@ -279,6 +286,8 @@ type oceanImportArgs struct {
 	ShieldedInstanceConfig *OceanImportShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	Strategies             []OceanImportStrategy              `pulumi:"strategies"`
 	UpdatePolicy           *OceanImportUpdatePolicy           `pulumi:"updatePolicy"`
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
 	// Instance types allowed in the Ocean cluster.
 	Whitelists []string `pulumi:"whitelists"`
 }
@@ -309,6 +318,8 @@ type OceanImportArgs struct {
 	ShieldedInstanceConfig OceanImportShieldedInstanceConfigPtrInput
 	Strategies             OceanImportStrategyArrayInput
 	UpdatePolicy           OceanImportUpdatePolicyPtrInput
+	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+	UseAsTemplateOnly pulumi.BoolPtrInput
 	// Instance types allowed in the Ocean cluster.
 	Whitelists pulumi.StringArrayInput
 }
@@ -465,6 +476,11 @@ func (o OceanImportOutput) Strategies() OceanImportStrategyArrayOutput {
 
 func (o OceanImportOutput) UpdatePolicy() OceanImportUpdatePolicyPtrOutput {
 	return o.ApplyT(func(v *OceanImport) OceanImportUpdatePolicyPtrOutput { return v.UpdatePolicy }).(OceanImportUpdatePolicyPtrOutput)
+}
+
+// launch specification defined on the Ocean object will function only as a template for virtual node groups.
+func (o OceanImportOutput) UseAsTemplateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.BoolPtrOutput { return v.UseAsTemplateOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Instance types allowed in the Ocean cluster.
