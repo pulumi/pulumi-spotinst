@@ -20718,6 +20718,8 @@ type OceanUpdatePolicyRollConfig struct {
 	BatchSizePercentage int `pulumi:"batchSizePercentage"`
 	// List of virtual node group identifiers to be rolled.
 	LaunchSpecIds []string `pulumi:"launchSpecIds"`
+	// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+	RespectPdb *bool `pulumi:"respectPdb"`
 }
 
 // OceanUpdatePolicyRollConfigInput is an input type that accepts OceanUpdatePolicyRollConfigArgs and OceanUpdatePolicyRollConfigOutput values.
@@ -20738,6 +20740,8 @@ type OceanUpdatePolicyRollConfigArgs struct {
 	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
 	// List of virtual node group identifiers to be rolled.
 	LaunchSpecIds pulumi.StringArrayInput `pulumi:"launchSpecIds"`
+	// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
 }
 
 func (OceanUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -20832,6 +20836,11 @@ func (o OceanUpdatePolicyRollConfigOutput) LaunchSpecIds() pulumi.StringArrayOut
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) []string { return v.LaunchSpecIds }).(pulumi.StringArrayOutput)
 }
 
+// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+func (o OceanUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
+}
+
 type OceanUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
@@ -20884,6 +20893,16 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) LaunchSpecIds() pulumi.StringArray
 		}
 		return v.LaunchSpecIds
 	}).(pulumi.StringArrayOutput)
+}
+
+// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+func (o OceanUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectPdb
+	}).(pulumi.BoolPtrOutput)
 }
 
 type SuspensionSuspension struct {
