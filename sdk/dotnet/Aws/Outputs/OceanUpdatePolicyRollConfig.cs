@@ -25,6 +25,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// List of virtual node group identifiers to be rolled.
         /// </summary>
         public readonly ImmutableArray<string> LaunchSpecIds;
+        /// <summary>
+        /// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        /// </summary>
+        public readonly bool? RespectPdb;
 
         [OutputConstructor]
         private OceanUpdatePolicyRollConfig(
@@ -32,11 +36,14 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             int batchSizePercentage,
 
-            ImmutableArray<string> launchSpecIds)
+            ImmutableArray<string> launchSpecIds,
+
+            bool? respectPdb)
         {
             BatchMinHealthyPercentage = batchMinHealthyPercentage;
             BatchSizePercentage = batchSizePercentage;
             LaunchSpecIds = launchSpecIds;
+            RespectPdb = respectPdb;
         }
     }
 }

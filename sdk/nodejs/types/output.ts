@@ -2921,6 +2921,10 @@ export namespace aws {
          * List of virtual node group identifiers to be rolled.
          */
         launchSpecIds?: string[];
+        /**
+         * During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+         */
+        respectPdb?: boolean;
     }
 
     export interface SuspensionSuspension {

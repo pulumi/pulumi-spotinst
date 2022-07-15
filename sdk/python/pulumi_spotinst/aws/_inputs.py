@@ -9700,17 +9700,21 @@ class OceanUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
                  batch_size_percentage: pulumi.Input[int],
                  batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
-                 launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 respect_pdb: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
         :param pulumi.Input[int] batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] launch_spec_ids: List of virtual node group identifiers to be rolled.
+        :param pulumi.Input[bool] respect_pdb: During the roll, if the parameter is set to True we honor PDB during the instance replacement.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if launch_spec_ids is not None:
             pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -9747,6 +9751,18 @@ class OceanUpdatePolicyRollConfigArgs:
     @launch_spec_ids.setter
     def launch_spec_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "launch_spec_ids", value)
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        """
+        During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        """
+        return pulumi.get(self, "respect_pdb")
+
+    @respect_pdb.setter
+    def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_pdb", value)
 
 
 @pulumi.input_type

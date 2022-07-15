@@ -36,6 +36,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
             set => _launchSpecIds = value;
         }
 
+        /// <summary>
+        /// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        /// </summary>
+        [Input("respectPdb")]
+        public Input<bool>? RespectPdb { get; set; }
+
         public OceanUpdatePolicyRollConfigGetArgs()
         {
         }
