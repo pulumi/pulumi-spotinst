@@ -836,7 +836,7 @@ func (i *Elastigroup) ToElastigroupOutputWithContext(ctx context.Context) Elasti
 // ElastigroupArrayInput is an input type that accepts ElastigroupArray and ElastigroupArrayOutput values.
 // You can construct a concrete instance of `ElastigroupArrayInput` via:
 //
-//          ElastigroupArray{ ElastigroupArgs{...} }
+//	ElastigroupArray{ ElastigroupArgs{...} }
 type ElastigroupArrayInput interface {
 	pulumi.Input
 
@@ -861,7 +861,7 @@ func (i ElastigroupArray) ToElastigroupArrayOutputWithContext(ctx context.Contex
 // ElastigroupMapInput is an input type that accepts ElastigroupMap and ElastigroupMapOutput values.
 // You can construct a concrete instance of `ElastigroupMapInput` via:
 //
-//          ElastigroupMap{ "key": ElastigroupArgs{...} }
+//	ElastigroupMap{ "key": ElastigroupArgs{...} }
 type ElastigroupMapInput interface {
 	pulumi.Input
 

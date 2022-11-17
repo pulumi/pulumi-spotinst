@@ -18,22 +18,25 @@ import (
 // ## Update Policy
 //
 // * `updatePolicy` - (Optional)
-//   * `shouldRoll` - (Required) Enables the roll.
-//   * `rollConfig` - (Required) Holds the roll configuration.
-//     * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+//   - `shouldRoll` - (Required) Enables the roll.
+//   - `rollConfig` - (Required) Holds the roll configuration.
+//   - `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
@@ -309,7 +312,7 @@ func (i *OceanLaunchSpec) ToOceanLaunchSpecOutputWithContext(ctx context.Context
 // OceanLaunchSpecArrayInput is an input type that accepts OceanLaunchSpecArray and OceanLaunchSpecArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecArrayInput` via:
 //
-//          OceanLaunchSpecArray{ OceanLaunchSpecArgs{...} }
+//	OceanLaunchSpecArray{ OceanLaunchSpecArgs{...} }
 type OceanLaunchSpecArrayInput interface {
 	pulumi.Input
 
@@ -334,7 +337,7 @@ func (i OceanLaunchSpecArray) ToOceanLaunchSpecArrayOutputWithContext(ctx contex
 // OceanLaunchSpecMapInput is an input type that accepts OceanLaunchSpecMap and OceanLaunchSpecMapOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecMapInput` via:
 //
-//          OceanLaunchSpecMap{ "key": OceanLaunchSpecArgs{...} }
+//	OceanLaunchSpecMap{ "key": OceanLaunchSpecArgs{...} }
 type OceanLaunchSpecMapInput interface {
 	pulumi.Input
 

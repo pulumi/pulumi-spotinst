@@ -19,33 +19,36 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := spotinst.NewSubscription(ctx, "default-subscription", &spotinst.SubscriptionArgs{
-// 			Endpoint:  pulumi.String("http://endpoint.com"),
-// 			EventType: pulumi.String("AWS_EC2_INSTANCE_LAUNCH"),
-// 			Format: pulumi.AnyMap{
-// 				"event":         pulumi.Any(fmt.Sprintf("%v%v%v", "%", "event", "%")),
-// 				"instance_id":   pulumi.Any(fmt.Sprintf("%v%v%v", "%", "instance-id", "%")),
-// 				"resource_id":   pulumi.Any(fmt.Sprintf("%v%v%v", "%", "resource-id", "%")),
-// 				"resource_name": pulumi.Any(fmt.Sprintf("%v%v%v", "%", "resource-name", "%")),
-// 				"tags":          pulumi.Any("foo,baz,baz"),
-// 			},
-// 			Protocol:   pulumi.String("http"),
-// 			ResourceId: pulumi.Any(spotinst_elastigroup_aws.My - eg.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spotinst.NewSubscription(ctx, "default-subscription", &spotinst.SubscriptionArgs{
+//				Endpoint:  pulumi.String("http://endpoint.com"),
+//				EventType: pulumi.String("AWS_EC2_INSTANCE_LAUNCH"),
+//				Format: pulumi.AnyMap{
+//					"event":         pulumi.Any(fmt.Sprintf("%v%v%v", "%", "event", "%")),
+//					"instance_id":   pulumi.Any(fmt.Sprintf("%v%v%v", "%", "instance-id", "%")),
+//					"resource_id":   pulumi.Any(fmt.Sprintf("%v%v%v", "%", "resource-id", "%")),
+//					"resource_name": pulumi.Any(fmt.Sprintf("%v%v%v", "%", "resource-name", "%")),
+//					"tags":          pulumi.Any("foo,baz,baz"),
+//				},
+//				Protocol:   pulumi.String("http"),
+//				ResourceId: pulumi.Any(spotinst_elastigroup_aws.My - eg.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Subscription struct {
 	pulumi.CustomResourceState
@@ -260,7 +263,7 @@ func (i *Subscription) ToSubscriptionOutputWithContext(ctx context.Context) Subs
 // SubscriptionArrayInput is an input type that accepts SubscriptionArray and SubscriptionArrayOutput values.
 // You can construct a concrete instance of `SubscriptionArrayInput` via:
 //
-//          SubscriptionArray{ SubscriptionArgs{...} }
+//	SubscriptionArray{ SubscriptionArgs{...} }
 type SubscriptionArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +288,7 @@ func (i SubscriptionArray) ToSubscriptionArrayOutputWithContext(ctx context.Cont
 // SubscriptionMapInput is an input type that accepts SubscriptionMap and SubscriptionMapOutput values.
 // You can construct a concrete instance of `SubscriptionMapInput` via:
 //
-//          SubscriptionMap{ "key": SubscriptionArgs{...} }
+//	SubscriptionMap{ "key": SubscriptionArgs{...} }
 type SubscriptionMapInput interface {
 	pulumi.Input
 

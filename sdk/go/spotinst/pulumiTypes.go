@@ -19,7 +19,7 @@ type DataIntegrationS3 struct {
 // DataIntegrationS3Input is an input type that accepts DataIntegrationS3Args and DataIntegrationS3Output values.
 // You can construct a concrete instance of `DataIntegrationS3Input` via:
 //
-//          DataIntegrationS3Args{...}
+//	DataIntegrationS3Args{...}
 type DataIntegrationS3Input interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i DataIntegrationS3Args) ToDataIntegrationS3PtrOutputWithContext(ctx conte
 // DataIntegrationS3PtrInput is an input type that accepts DataIntegrationS3Args, DataIntegrationS3Ptr and DataIntegrationS3PtrOutput values.
 // You can construct a concrete instance of `DataIntegrationS3PtrInput` via:
 //
-//          DataIntegrationS3Args{...}
+//	        DataIntegrationS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DataIntegrationS3PtrInput interface {
 	pulumi.Input
 
@@ -170,7 +170,7 @@ type ElastigroupAzureV3Image struct {
 // ElastigroupAzureV3ImageInput is an input type that accepts ElastigroupAzureV3ImageArgs and ElastigroupAzureV3ImageOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ImageInput` via:
 //
-//          ElastigroupAzureV3ImageArgs{...}
+//	ElastigroupAzureV3ImageArgs{...}
 type ElastigroupAzureV3ImageInput interface {
 	pulumi.Input
 
@@ -198,7 +198,7 @@ func (i ElastigroupAzureV3ImageArgs) ToElastigroupAzureV3ImageOutputWithContext(
 // ElastigroupAzureV3ImageArrayInput is an input type that accepts ElastigroupAzureV3ImageArray and ElastigroupAzureV3ImageArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ImageArrayInput` via:
 //
-//          ElastigroupAzureV3ImageArray{ ElastigroupAzureV3ImageArgs{...} }
+//	ElastigroupAzureV3ImageArray{ ElastigroupAzureV3ImageArgs{...} }
 type ElastigroupAzureV3ImageArrayInput interface {
 	pulumi.Input
 
@@ -273,7 +273,7 @@ type ElastigroupAzureV3ImageCustom struct {
 // ElastigroupAzureV3ImageCustomInput is an input type that accepts ElastigroupAzureV3ImageCustomArgs and ElastigroupAzureV3ImageCustomOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ImageCustomInput` via:
 //
-//          ElastigroupAzureV3ImageCustomArgs{...}
+//	ElastigroupAzureV3ImageCustomArgs{...}
 type ElastigroupAzureV3ImageCustomInput interface {
 	pulumi.Input
 
@@ -304,7 +304,7 @@ func (i ElastigroupAzureV3ImageCustomArgs) ToElastigroupAzureV3ImageCustomOutput
 // ElastigroupAzureV3ImageCustomArrayInput is an input type that accepts ElastigroupAzureV3ImageCustomArray and ElastigroupAzureV3ImageCustomArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ImageCustomArrayInput` via:
 //
-//          ElastigroupAzureV3ImageCustomArray{ ElastigroupAzureV3ImageCustomArgs{...} }
+//	ElastigroupAzureV3ImageCustomArray{ ElastigroupAzureV3ImageCustomArgs{...} }
 type ElastigroupAzureV3ImageCustomArrayInput interface {
 	pulumi.Input
 
@@ -345,8 +345,8 @@ func (o ElastigroupAzureV3ImageCustomOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ImageCustom) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
-// - The resource group of the Application Security Group.
-//   }
+//   - The resource group of the Application Security Group.
+//     }
 func (o ElastigroupAzureV3ImageCustomOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ImageCustom) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -385,7 +385,7 @@ type ElastigroupAzureV3ImageMarketplace struct {
 // ElastigroupAzureV3ImageMarketplaceInput is an input type that accepts ElastigroupAzureV3ImageMarketplaceArgs and ElastigroupAzureV3ImageMarketplaceOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ImageMarketplaceInput` via:
 //
-//          ElastigroupAzureV3ImageMarketplaceArgs{...}
+//	ElastigroupAzureV3ImageMarketplaceArgs{...}
 type ElastigroupAzureV3ImageMarketplaceInput interface {
 	pulumi.Input
 
@@ -419,7 +419,7 @@ func (i ElastigroupAzureV3ImageMarketplaceArgs) ToElastigroupAzureV3ImageMarketp
 // ElastigroupAzureV3ImageMarketplaceArrayInput is an input type that accepts ElastigroupAzureV3ImageMarketplaceArray and ElastigroupAzureV3ImageMarketplaceArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ImageMarketplaceArrayInput` via:
 //
-//          ElastigroupAzureV3ImageMarketplaceArray{ ElastigroupAzureV3ImageMarketplaceArgs{...} }
+//	ElastigroupAzureV3ImageMarketplaceArray{ ElastigroupAzureV3ImageMarketplaceArgs{...} }
 type ElastigroupAzureV3ImageMarketplaceArrayInput interface {
 	pulumi.Input
 
@@ -507,7 +507,7 @@ type ElastigroupAzureV3Login struct {
 // ElastigroupAzureV3LoginInput is an input type that accepts ElastigroupAzureV3LoginArgs and ElastigroupAzureV3LoginOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3LoginInput` via:
 //
-//          ElastigroupAzureV3LoginArgs{...}
+//	ElastigroupAzureV3LoginArgs{...}
 type ElastigroupAzureV3LoginInput interface {
 	pulumi.Input
 
@@ -547,11 +547,11 @@ func (i ElastigroupAzureV3LoginArgs) ToElastigroupAzureV3LoginPtrOutputWithConte
 // ElastigroupAzureV3LoginPtrInput is an input type that accepts ElastigroupAzureV3LoginArgs, ElastigroupAzureV3LoginPtr and ElastigroupAzureV3LoginPtrOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3LoginPtrInput` via:
 //
-//          ElastigroupAzureV3LoginArgs{...}
+//	        ElastigroupAzureV3LoginArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupAzureV3LoginPtrInput interface {
 	pulumi.Input
 
@@ -681,7 +681,7 @@ type ElastigroupAzureV3ManagedServiceIdentity struct {
 // ElastigroupAzureV3ManagedServiceIdentityInput is an input type that accepts ElastigroupAzureV3ManagedServiceIdentityArgs and ElastigroupAzureV3ManagedServiceIdentityOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ManagedServiceIdentityInput` via:
 //
-//          ElastigroupAzureV3ManagedServiceIdentityArgs{...}
+//	ElastigroupAzureV3ManagedServiceIdentityArgs{...}
 type ElastigroupAzureV3ManagedServiceIdentityInput interface {
 	pulumi.Input
 
@@ -712,7 +712,7 @@ func (i ElastigroupAzureV3ManagedServiceIdentityArgs) ToElastigroupAzureV3Manage
 // ElastigroupAzureV3ManagedServiceIdentityArrayInput is an input type that accepts ElastigroupAzureV3ManagedServiceIdentityArray and ElastigroupAzureV3ManagedServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ManagedServiceIdentityArrayInput` via:
 //
-//          ElastigroupAzureV3ManagedServiceIdentityArray{ ElastigroupAzureV3ManagedServiceIdentityArgs{...} }
+//	ElastigroupAzureV3ManagedServiceIdentityArray{ ElastigroupAzureV3ManagedServiceIdentityArgs{...} }
 type ElastigroupAzureV3ManagedServiceIdentityArrayInput interface {
 	pulumi.Input
 
@@ -753,8 +753,8 @@ func (o ElastigroupAzureV3ManagedServiceIdentityOutput) Name() pulumi.StringOutp
 	return o.ApplyT(func(v ElastigroupAzureV3ManagedServiceIdentity) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// - The resource group of the Application Security Group.
-//   }
+//   - The resource group of the Application Security Group.
+//     }
 func (o ElastigroupAzureV3ManagedServiceIdentityOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ManagedServiceIdentity) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -792,7 +792,7 @@ type ElastigroupAzureV3Network struct {
 // ElastigroupAzureV3NetworkInput is an input type that accepts ElastigroupAzureV3NetworkArgs and ElastigroupAzureV3NetworkOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkInput` via:
 //
-//          ElastigroupAzureV3NetworkArgs{...}
+//	ElastigroupAzureV3NetworkArgs{...}
 type ElastigroupAzureV3NetworkInput interface {
 	pulumi.Input
 
@@ -833,11 +833,11 @@ func (i ElastigroupAzureV3NetworkArgs) ToElastigroupAzureV3NetworkPtrOutputWithC
 // ElastigroupAzureV3NetworkPtrInput is an input type that accepts ElastigroupAzureV3NetworkArgs, ElastigroupAzureV3NetworkPtr and ElastigroupAzureV3NetworkPtrOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkPtrInput` via:
 //
-//          ElastigroupAzureV3NetworkArgs{...}
+//	        ElastigroupAzureV3NetworkArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupAzureV3NetworkPtrInput interface {
 	pulumi.Input
 
@@ -894,8 +894,8 @@ func (o ElastigroupAzureV3NetworkOutput) NetworkInterfaces() ElastigroupAzureV3N
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput)
 }
 
-// - The resource group of the Application Security Group.
-//   }
+//   - The resource group of the Application Security Group.
+//     }
 func (o ElastigroupAzureV3NetworkOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3Network) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -939,8 +939,8 @@ func (o ElastigroupAzureV3NetworkPtrOutput) NetworkInterfaces() ElastigroupAzure
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput)
 }
 
-// - The resource group of the Application Security Group.
-//   }
+//   - The resource group of the Application Security Group.
+//     }
 func (o ElastigroupAzureV3NetworkPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3Network) *string {
 		if v == nil {
@@ -975,7 +975,7 @@ type ElastigroupAzureV3NetworkNetworkInterface struct {
 // ElastigroupAzureV3NetworkNetworkInterfaceInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceArgs and ElastigroupAzureV3NetworkNetworkInterfaceOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceInput` via:
 //
-//          ElastigroupAzureV3NetworkNetworkInterfaceArgs{...}
+//	ElastigroupAzureV3NetworkNetworkInterfaceArgs{...}
 type ElastigroupAzureV3NetworkNetworkInterfaceInput interface {
 	pulumi.Input
 
@@ -1010,7 +1010,7 @@ func (i ElastigroupAzureV3NetworkNetworkInterfaceArgs) ToElastigroupAzureV3Netwo
 // ElastigroupAzureV3NetworkNetworkInterfaceArrayInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceArray and ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceArrayInput` via:
 //
-//          ElastigroupAzureV3NetworkNetworkInterfaceArray{ ElastigroupAzureV3NetworkNetworkInterfaceArgs{...} }
+//	ElastigroupAzureV3NetworkNetworkInterfaceArray{ ElastigroupAzureV3NetworkNetworkInterfaceArgs{...} }
 type ElastigroupAzureV3NetworkNetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -1104,7 +1104,7 @@ type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig struct {
 // ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs and ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigInput` via:
 //
-//          ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{...}
+//	ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{...}
 type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigInput interface {
 	pulumi.Input
 
@@ -1134,7 +1134,7 @@ func (i ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs) ToElast
 // ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray and ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput` via:
 //
-//          ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{ ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{...} }
+//	ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{ ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{...} }
 type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput interface {
 	pulumi.Input
 
@@ -1211,7 +1211,7 @@ type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup struct {
 // ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs and ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput` via:
 //
-//          ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{...}
+//	ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{...}
 type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput interface {
 	pulumi.Input
 
@@ -1242,7 +1242,7 @@ func (i ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs) T
 // ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray and ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput` via:
 //
-//          ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray{ ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{...} }
+//	ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray{ ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{...} }
 type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput interface {
 	pulumi.Input
 
@@ -1283,8 +1283,8 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput)
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// - The resource group of the Application Security Group.
-//   }
+//   - The resource group of the Application Security Group.
+//     }
 func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup) string {
 		return v.ResourceGroupName
@@ -1325,7 +1325,7 @@ type ElastigroupAzureV3Strategy struct {
 // ElastigroupAzureV3StrategyInput is an input type that accepts ElastigroupAzureV3StrategyArgs and ElastigroupAzureV3StrategyOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3StrategyInput` via:
 //
-//          ElastigroupAzureV3StrategyArgs{...}
+//	ElastigroupAzureV3StrategyArgs{...}
 type ElastigroupAzureV3StrategyInput interface {
 	pulumi.Input
 
@@ -1367,11 +1367,11 @@ func (i ElastigroupAzureV3StrategyArgs) ToElastigroupAzureV3StrategyPtrOutputWit
 // ElastigroupAzureV3StrategyPtrInput is an input type that accepts ElastigroupAzureV3StrategyArgs, ElastigroupAzureV3StrategyPtr and ElastigroupAzureV3StrategyPtrOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3StrategyPtrInput` via:
 //
-//          ElastigroupAzureV3StrategyArgs{...}
+//	        ElastigroupAzureV3StrategyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupAzureV3StrategyPtrInput interface {
 	pulumi.Input
 
@@ -1527,7 +1527,7 @@ type HealthCheckCheck struct {
 // HealthCheckCheckInput is an input type that accepts HealthCheckCheckArgs and HealthCheckCheckOutput values.
 // You can construct a concrete instance of `HealthCheckCheckInput` via:
 //
-//          HealthCheckCheckArgs{...}
+//	HealthCheckCheckArgs{...}
 type HealthCheckCheckInput interface {
 	pulumi.Input
 
@@ -1577,11 +1577,11 @@ func (i HealthCheckCheckArgs) ToHealthCheckCheckPtrOutputWithContext(ctx context
 // HealthCheckCheckPtrInput is an input type that accepts HealthCheckCheckArgs, HealthCheckCheckPtr and HealthCheckCheckPtrOutput values.
 // You can construct a concrete instance of `HealthCheckCheckPtrInput` via:
 //
-//          HealthCheckCheckArgs{...}
+//	        HealthCheckCheckArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HealthCheckCheckPtrInput interface {
 	pulumi.Input
 
@@ -1798,7 +1798,7 @@ type StatefulNodeAzureAttachDataDisk struct {
 // StatefulNodeAzureAttachDataDiskInput is an input type that accepts StatefulNodeAzureAttachDataDiskArgs and StatefulNodeAzureAttachDataDiskOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureAttachDataDiskInput` via:
 //
-//          StatefulNodeAzureAttachDataDiskArgs{...}
+//	StatefulNodeAzureAttachDataDiskArgs{...}
 type StatefulNodeAzureAttachDataDiskInput interface {
 	pulumi.Input
 
@@ -1830,7 +1830,7 @@ func (i StatefulNodeAzureAttachDataDiskArgs) ToStatefulNodeAzureAttachDataDiskOu
 // StatefulNodeAzureAttachDataDiskArrayInput is an input type that accepts StatefulNodeAzureAttachDataDiskArray and StatefulNodeAzureAttachDataDiskArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureAttachDataDiskArrayInput` via:
 //
-//          StatefulNodeAzureAttachDataDiskArray{ StatefulNodeAzureAttachDataDiskArgs{...} }
+//	StatefulNodeAzureAttachDataDiskArray{ StatefulNodeAzureAttachDataDiskArgs{...} }
 type StatefulNodeAzureAttachDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -1919,7 +1919,7 @@ type StatefulNodeAzureBootDiagnostic struct {
 // StatefulNodeAzureBootDiagnosticInput is an input type that accepts StatefulNodeAzureBootDiagnosticArgs and StatefulNodeAzureBootDiagnosticOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureBootDiagnosticInput` via:
 //
-//          StatefulNodeAzureBootDiagnosticArgs{...}
+//	StatefulNodeAzureBootDiagnosticArgs{...}
 type StatefulNodeAzureBootDiagnosticInput interface {
 	pulumi.Input
 
@@ -1948,7 +1948,7 @@ func (i StatefulNodeAzureBootDiagnosticArgs) ToStatefulNodeAzureBootDiagnosticOu
 // StatefulNodeAzureBootDiagnosticArrayInput is an input type that accepts StatefulNodeAzureBootDiagnosticArray and StatefulNodeAzureBootDiagnosticArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureBootDiagnosticArrayInput` via:
 //
-//          StatefulNodeAzureBootDiagnosticArray{ StatefulNodeAzureBootDiagnosticArgs{...} }
+//	StatefulNodeAzureBootDiagnosticArray{ StatefulNodeAzureBootDiagnosticArgs{...} }
 type StatefulNodeAzureBootDiagnosticArrayInput interface {
 	pulumi.Input
 
@@ -2025,7 +2025,7 @@ type StatefulNodeAzureDataDisk struct {
 // StatefulNodeAzureDataDiskInput is an input type that accepts StatefulNodeAzureDataDiskArgs and StatefulNodeAzureDataDiskOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureDataDiskInput` via:
 //
-//          StatefulNodeAzureDataDiskArgs{...}
+//	StatefulNodeAzureDataDiskArgs{...}
 type StatefulNodeAzureDataDiskInput interface {
 	pulumi.Input
 
@@ -2054,7 +2054,7 @@ func (i StatefulNodeAzureDataDiskArgs) ToStatefulNodeAzureDataDiskOutputWithCont
 // StatefulNodeAzureDataDiskArrayInput is an input type that accepts StatefulNodeAzureDataDiskArray and StatefulNodeAzureDataDiskArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureDataDiskArrayInput` via:
 //
-//          StatefulNodeAzureDataDiskArray{ StatefulNodeAzureDataDiskArgs{...} }
+//	StatefulNodeAzureDataDiskArray{ StatefulNodeAzureDataDiskArgs{...} }
 type StatefulNodeAzureDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -2137,7 +2137,7 @@ type StatefulNodeAzureDelete struct {
 // StatefulNodeAzureDeleteInput is an input type that accepts StatefulNodeAzureDeleteArgs and StatefulNodeAzureDeleteOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureDeleteInput` via:
 //
-//          StatefulNodeAzureDeleteArgs{...}
+//	StatefulNodeAzureDeleteArgs{...}
 type StatefulNodeAzureDeleteInput interface {
 	pulumi.Input
 
@@ -2172,7 +2172,7 @@ func (i StatefulNodeAzureDeleteArgs) ToStatefulNodeAzureDeleteOutputWithContext(
 // StatefulNodeAzureDeleteArrayInput is an input type that accepts StatefulNodeAzureDeleteArray and StatefulNodeAzureDeleteArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureDeleteArrayInput` via:
 //
-//          StatefulNodeAzureDeleteArray{ StatefulNodeAzureDeleteArgs{...} }
+//	StatefulNodeAzureDeleteArray{ StatefulNodeAzureDeleteArgs{...} }
 type StatefulNodeAzureDeleteArrayInput interface {
 	pulumi.Input
 
@@ -2274,7 +2274,7 @@ type StatefulNodeAzureDetachDataDisk struct {
 // StatefulNodeAzureDetachDataDiskInput is an input type that accepts StatefulNodeAzureDetachDataDiskArgs and StatefulNodeAzureDetachDataDiskOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureDetachDataDiskInput` via:
 //
-//          StatefulNodeAzureDetachDataDiskArgs{...}
+//	StatefulNodeAzureDetachDataDiskArgs{...}
 type StatefulNodeAzureDetachDataDiskInput interface {
 	pulumi.Input
 
@@ -2304,7 +2304,7 @@ func (i StatefulNodeAzureDetachDataDiskArgs) ToStatefulNodeAzureDetachDataDiskOu
 // StatefulNodeAzureDetachDataDiskArrayInput is an input type that accepts StatefulNodeAzureDetachDataDiskArray and StatefulNodeAzureDetachDataDiskArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureDetachDataDiskArrayInput` via:
 //
-//          StatefulNodeAzureDetachDataDiskArray{ StatefulNodeAzureDetachDataDiskArgs{...} }
+//	StatefulNodeAzureDetachDataDiskArray{ StatefulNodeAzureDetachDataDiskArgs{...} }
 type StatefulNodeAzureDetachDataDiskArrayInput interface {
 	pulumi.Input
 
@@ -2389,7 +2389,7 @@ type StatefulNodeAzureExtension struct {
 // StatefulNodeAzureExtensionInput is an input type that accepts StatefulNodeAzureExtensionArgs and StatefulNodeAzureExtensionOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureExtensionInput` via:
 //
-//          StatefulNodeAzureExtensionArgs{...}
+//	StatefulNodeAzureExtensionArgs{...}
 type StatefulNodeAzureExtensionInput interface {
 	pulumi.Input
 
@@ -2422,7 +2422,7 @@ func (i StatefulNodeAzureExtensionArgs) ToStatefulNodeAzureExtensionOutputWithCo
 // StatefulNodeAzureExtensionArrayInput is an input type that accepts StatefulNodeAzureExtensionArray and StatefulNodeAzureExtensionArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureExtensionArrayInput` via:
 //
-//          StatefulNodeAzureExtensionArray{ StatefulNodeAzureExtensionArgs{...} }
+//	StatefulNodeAzureExtensionArray{ StatefulNodeAzureExtensionArgs{...} }
 type StatefulNodeAzureExtensionArrayInput interface {
 	pulumi.Input
 
@@ -2516,7 +2516,7 @@ type StatefulNodeAzureHealth struct {
 // StatefulNodeAzureHealthInput is an input type that accepts StatefulNodeAzureHealthArgs and StatefulNodeAzureHealthOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureHealthInput` via:
 //
-//          StatefulNodeAzureHealthArgs{...}
+//	StatefulNodeAzureHealthArgs{...}
 type StatefulNodeAzureHealthInput interface {
 	pulumi.Input
 
@@ -2554,11 +2554,11 @@ func (i StatefulNodeAzureHealthArgs) ToStatefulNodeAzureHealthPtrOutputWithConte
 // StatefulNodeAzureHealthPtrInput is an input type that accepts StatefulNodeAzureHealthArgs, StatefulNodeAzureHealthPtr and StatefulNodeAzureHealthPtrOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureHealthPtrInput` via:
 //
-//          StatefulNodeAzureHealthArgs{...}
+//	        StatefulNodeAzureHealthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StatefulNodeAzureHealthPtrInput interface {
 	pulumi.Input
 
@@ -2693,7 +2693,7 @@ type StatefulNodeAzureImage struct {
 // StatefulNodeAzureImageInput is an input type that accepts StatefulNodeAzureImageArgs and StatefulNodeAzureImageOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImageInput` via:
 //
-//          StatefulNodeAzureImageArgs{...}
+//	StatefulNodeAzureImageArgs{...}
 type StatefulNodeAzureImageInput interface {
 	pulumi.Input
 
@@ -2730,11 +2730,11 @@ func (i StatefulNodeAzureImageArgs) ToStatefulNodeAzureImagePtrOutputWithContext
 // StatefulNodeAzureImagePtrInput is an input type that accepts StatefulNodeAzureImageArgs, StatefulNodeAzureImagePtr and StatefulNodeAzureImagePtrOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImagePtrInput` via:
 //
-//          StatefulNodeAzureImageArgs{...}
+//	        StatefulNodeAzureImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StatefulNodeAzureImagePtrInput interface {
 	pulumi.Input
 
@@ -2855,7 +2855,7 @@ type StatefulNodeAzureImageCustomImage struct {
 // StatefulNodeAzureImageCustomImageInput is an input type that accepts StatefulNodeAzureImageCustomImageArgs and StatefulNodeAzureImageCustomImageOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImageCustomImageInput` via:
 //
-//          StatefulNodeAzureImageCustomImageArgs{...}
+//	StatefulNodeAzureImageCustomImageArgs{...}
 type StatefulNodeAzureImageCustomImageInput interface {
 	pulumi.Input
 
@@ -2883,7 +2883,7 @@ func (i StatefulNodeAzureImageCustomImageArgs) ToStatefulNodeAzureImageCustomIma
 // StatefulNodeAzureImageCustomImageArrayInput is an input type that accepts StatefulNodeAzureImageCustomImageArray and StatefulNodeAzureImageCustomImageArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImageCustomImageArrayInput` via:
 //
-//          StatefulNodeAzureImageCustomImageArray{ StatefulNodeAzureImageCustomImageArgs{...} }
+//	StatefulNodeAzureImageCustomImageArray{ StatefulNodeAzureImageCustomImageArgs{...} }
 type StatefulNodeAzureImageCustomImageArrayInput interface {
 	pulumi.Input
 
@@ -2957,7 +2957,7 @@ type StatefulNodeAzureImageGallery struct {
 // StatefulNodeAzureImageGalleryInput is an input type that accepts StatefulNodeAzureImageGalleryArgs and StatefulNodeAzureImageGalleryOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImageGalleryInput` via:
 //
-//          StatefulNodeAzureImageGalleryArgs{...}
+//	StatefulNodeAzureImageGalleryArgs{...}
 type StatefulNodeAzureImageGalleryInput interface {
 	pulumi.Input
 
@@ -2987,7 +2987,7 @@ func (i StatefulNodeAzureImageGalleryArgs) ToStatefulNodeAzureImageGalleryOutput
 // StatefulNodeAzureImageGalleryArrayInput is an input type that accepts StatefulNodeAzureImageGalleryArray and StatefulNodeAzureImageGalleryArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImageGalleryArrayInput` via:
 //
-//          StatefulNodeAzureImageGalleryArray{ StatefulNodeAzureImageGalleryArgs{...} }
+//	StatefulNodeAzureImageGalleryArray{ StatefulNodeAzureImageGalleryArgs{...} }
 type StatefulNodeAzureImageGalleryArrayInput interface {
 	pulumi.Input
 
@@ -3069,7 +3069,7 @@ type StatefulNodeAzureImageMarketplaceImage struct {
 // StatefulNodeAzureImageMarketplaceImageInput is an input type that accepts StatefulNodeAzureImageMarketplaceImageArgs and StatefulNodeAzureImageMarketplaceImageOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImageMarketplaceImageInput` via:
 //
-//          StatefulNodeAzureImageMarketplaceImageArgs{...}
+//	StatefulNodeAzureImageMarketplaceImageArgs{...}
 type StatefulNodeAzureImageMarketplaceImageInput interface {
 	pulumi.Input
 
@@ -3099,7 +3099,7 @@ func (i StatefulNodeAzureImageMarketplaceImageArgs) ToStatefulNodeAzureImageMark
 // StatefulNodeAzureImageMarketplaceImageArrayInput is an input type that accepts StatefulNodeAzureImageMarketplaceImageArray and StatefulNodeAzureImageMarketplaceImageArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImageMarketplaceImageArrayInput` via:
 //
-//          StatefulNodeAzureImageMarketplaceImageArray{ StatefulNodeAzureImageMarketplaceImageArgs{...} }
+//	StatefulNodeAzureImageMarketplaceImageArray{ StatefulNodeAzureImageMarketplaceImageArgs{...} }
 type StatefulNodeAzureImageMarketplaceImageArrayInput interface {
 	pulumi.Input
 
@@ -3181,7 +3181,7 @@ type StatefulNodeAzureImportVm struct {
 // StatefulNodeAzureImportVmInput is an input type that accepts StatefulNodeAzureImportVmArgs and StatefulNodeAzureImportVmOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImportVmInput` via:
 //
-//          StatefulNodeAzureImportVmArgs{...}
+//	StatefulNodeAzureImportVmArgs{...}
 type StatefulNodeAzureImportVmInput interface {
 	pulumi.Input
 
@@ -3211,7 +3211,7 @@ func (i StatefulNodeAzureImportVmArgs) ToStatefulNodeAzureImportVmOutputWithCont
 // StatefulNodeAzureImportVmArrayInput is an input type that accepts StatefulNodeAzureImportVmArray and StatefulNodeAzureImportVmArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImportVmArrayInput` via:
 //
-//          StatefulNodeAzureImportVmArray{ StatefulNodeAzureImportVmArgs{...} }
+//	StatefulNodeAzureImportVmArray{ StatefulNodeAzureImportVmArgs{...} }
 type StatefulNodeAzureImportVmArrayInput interface {
 	pulumi.Input
 
@@ -3294,7 +3294,7 @@ type StatefulNodeAzureLoadBalancer struct {
 // StatefulNodeAzureLoadBalancerInput is an input type that accepts StatefulNodeAzureLoadBalancerArgs and StatefulNodeAzureLoadBalancerOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureLoadBalancerInput` via:
 //
-//          StatefulNodeAzureLoadBalancerArgs{...}
+//	StatefulNodeAzureLoadBalancerArgs{...}
 type StatefulNodeAzureLoadBalancerInput interface {
 	pulumi.Input
 
@@ -3325,7 +3325,7 @@ func (i StatefulNodeAzureLoadBalancerArgs) ToStatefulNodeAzureLoadBalancerOutput
 // StatefulNodeAzureLoadBalancerArrayInput is an input type that accepts StatefulNodeAzureLoadBalancerArray and StatefulNodeAzureLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureLoadBalancerArrayInput` via:
 //
-//          StatefulNodeAzureLoadBalancerArray{ StatefulNodeAzureLoadBalancerArgs{...} }
+//	StatefulNodeAzureLoadBalancerArray{ StatefulNodeAzureLoadBalancerArgs{...} }
 type StatefulNodeAzureLoadBalancerArrayInput interface {
 	pulumi.Input
 
@@ -3410,7 +3410,7 @@ type StatefulNodeAzureLogin struct {
 // StatefulNodeAzureLoginInput is an input type that accepts StatefulNodeAzureLoginArgs and StatefulNodeAzureLoginOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureLoginInput` via:
 //
-//          StatefulNodeAzureLoginArgs{...}
+//	StatefulNodeAzureLoginArgs{...}
 type StatefulNodeAzureLoginInput interface {
 	pulumi.Input
 
@@ -3447,11 +3447,11 @@ func (i StatefulNodeAzureLoginArgs) ToStatefulNodeAzureLoginPtrOutputWithContext
 // StatefulNodeAzureLoginPtrInput is an input type that accepts StatefulNodeAzureLoginArgs, StatefulNodeAzureLoginPtr and StatefulNodeAzureLoginPtrOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureLoginPtrInput` via:
 //
-//          StatefulNodeAzureLoginArgs{...}
+//	        StatefulNodeAzureLoginArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StatefulNodeAzureLoginPtrInput interface {
 	pulumi.Input
 
@@ -3572,7 +3572,7 @@ type StatefulNodeAzureManagedServiceIdentity struct {
 // StatefulNodeAzureManagedServiceIdentityInput is an input type that accepts StatefulNodeAzureManagedServiceIdentityArgs and StatefulNodeAzureManagedServiceIdentityOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureManagedServiceIdentityInput` via:
 //
-//          StatefulNodeAzureManagedServiceIdentityArgs{...}
+//	StatefulNodeAzureManagedServiceIdentityArgs{...}
 type StatefulNodeAzureManagedServiceIdentityInput interface {
 	pulumi.Input
 
@@ -3600,7 +3600,7 @@ func (i StatefulNodeAzureManagedServiceIdentityArgs) ToStatefulNodeAzureManagedS
 // StatefulNodeAzureManagedServiceIdentityArrayInput is an input type that accepts StatefulNodeAzureManagedServiceIdentityArray and StatefulNodeAzureManagedServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureManagedServiceIdentityArrayInput` via:
 //
-//          StatefulNodeAzureManagedServiceIdentityArray{ StatefulNodeAzureManagedServiceIdentityArgs{...} }
+//	StatefulNodeAzureManagedServiceIdentityArray{ StatefulNodeAzureManagedServiceIdentityArgs{...} }
 type StatefulNodeAzureManagedServiceIdentityArrayInput interface {
 	pulumi.Input
 
@@ -3673,7 +3673,7 @@ type StatefulNodeAzureNetwork struct {
 // StatefulNodeAzureNetworkInput is an input type that accepts StatefulNodeAzureNetworkArgs and StatefulNodeAzureNetworkOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkInput` via:
 //
-//          StatefulNodeAzureNetworkArgs{...}
+//	StatefulNodeAzureNetworkArgs{...}
 type StatefulNodeAzureNetworkInput interface {
 	pulumi.Input
 
@@ -3710,11 +3710,11 @@ func (i StatefulNodeAzureNetworkArgs) ToStatefulNodeAzureNetworkPtrOutputWithCon
 // StatefulNodeAzureNetworkPtrInput is an input type that accepts StatefulNodeAzureNetworkArgs, StatefulNodeAzureNetworkPtr and StatefulNodeAzureNetworkPtrOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkPtrInput` via:
 //
-//          StatefulNodeAzureNetworkArgs{...}
+//	        StatefulNodeAzureNetworkArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StatefulNodeAzureNetworkPtrInput interface {
 	pulumi.Input
 
@@ -3845,7 +3845,7 @@ type StatefulNodeAzureNetworkNetworkInterface struct {
 // StatefulNodeAzureNetworkNetworkInterfaceInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceArgs and StatefulNodeAzureNetworkNetworkInterfaceOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceInput` via:
 //
-//          StatefulNodeAzureNetworkNetworkInterfaceArgs{...}
+//	StatefulNodeAzureNetworkNetworkInterfaceArgs{...}
 type StatefulNodeAzureNetworkNetworkInterfaceInput interface {
 	pulumi.Input
 
@@ -3881,7 +3881,7 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceArgs) ToStatefulNodeAzureNetwork
 // StatefulNodeAzureNetworkNetworkInterfaceArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceArray and StatefulNodeAzureNetworkNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceArrayInput` via:
 //
-//          StatefulNodeAzureNetworkNetworkInterfaceArray{ StatefulNodeAzureNetworkNetworkInterfaceArgs{...} }
+//	StatefulNodeAzureNetworkNetworkInterfaceArray{ StatefulNodeAzureNetworkNetworkInterfaceArgs{...} }
 type StatefulNodeAzureNetworkNetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -3993,7 +3993,7 @@ type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration struct {
 // StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs and StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationInput` via:
 //
-//          StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs{...}
+//	StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs{...}
 type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationInput interface {
 	pulumi.Input
 
@@ -4021,7 +4021,7 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs) T
 // StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray and StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayInput` via:
 //
-//          StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray{ StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs{...} }
+//	StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray{ StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs{...} }
 type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -4095,7 +4095,7 @@ type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup struct {
 // StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs and StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupInput` via:
 //
-//          StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs{...}
+//	StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs{...}
 type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupInput interface {
 	pulumi.Input
 
@@ -4123,7 +4123,7 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs) To
 // StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray and StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayInput` via:
 //
-//          StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray{ StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs{...} }
+//	StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray{ StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs{...} }
 type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayInput interface {
 	pulumi.Input
 
@@ -4197,7 +4197,7 @@ type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup struct {
 // StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs and StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupInput` via:
 //
-//          StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs{...}
+//	StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs{...}
 type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupInput interface {
 	pulumi.Input
 
@@ -4225,7 +4225,7 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs) ToStat
 // StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray and StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayInput` via:
 //
-//          StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray{ StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs{...} }
+//	StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray{ StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs{...} }
 type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayInput interface {
 	pulumi.Input
 
@@ -4299,7 +4299,7 @@ type StatefulNodeAzureNetworkNetworkInterfacePublicIp struct {
 // StatefulNodeAzureNetworkNetworkInterfacePublicIpInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs and StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfacePublicIpInput` via:
 //
-//          StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs{...}
+//	StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs{...}
 type StatefulNodeAzureNetworkNetworkInterfacePublicIpInput interface {
 	pulumi.Input
 
@@ -4327,7 +4327,7 @@ func (i StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs) ToStatefulNodeAzur
 // StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfacePublicIpArray and StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput` via:
 //
-//          StatefulNodeAzureNetworkNetworkInterfacePublicIpArray{ StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs{...} }
+//	StatefulNodeAzureNetworkNetworkInterfacePublicIpArray{ StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs{...} }
 type StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput interface {
 	pulumi.Input
 
@@ -4399,7 +4399,7 @@ type StatefulNodeAzureOsDisk struct {
 // StatefulNodeAzureOsDiskInput is an input type that accepts StatefulNodeAzureOsDiskArgs and StatefulNodeAzureOsDiskOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureOsDiskInput` via:
 //
-//          StatefulNodeAzureOsDiskArgs{...}
+//	StatefulNodeAzureOsDiskArgs{...}
 type StatefulNodeAzureOsDiskInput interface {
 	pulumi.Input
 
@@ -4435,11 +4435,11 @@ func (i StatefulNodeAzureOsDiskArgs) ToStatefulNodeAzureOsDiskPtrOutputWithConte
 // StatefulNodeAzureOsDiskPtrInput is an input type that accepts StatefulNodeAzureOsDiskArgs, StatefulNodeAzureOsDiskPtr and StatefulNodeAzureOsDiskPtrOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureOsDiskPtrInput` via:
 //
-//          StatefulNodeAzureOsDiskArgs{...}
+//	        StatefulNodeAzureOsDiskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StatefulNodeAzureOsDiskPtrInput interface {
 	pulumi.Input
 
@@ -4548,7 +4548,7 @@ type StatefulNodeAzureSchedulingTask struct {
 // StatefulNodeAzureSchedulingTaskInput is an input type that accepts StatefulNodeAzureSchedulingTaskArgs and StatefulNodeAzureSchedulingTaskOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSchedulingTaskInput` via:
 //
-//          StatefulNodeAzureSchedulingTaskArgs{...}
+//	StatefulNodeAzureSchedulingTaskArgs{...}
 type StatefulNodeAzureSchedulingTaskInput interface {
 	pulumi.Input
 
@@ -4577,7 +4577,7 @@ func (i StatefulNodeAzureSchedulingTaskArgs) ToStatefulNodeAzureSchedulingTaskOu
 // StatefulNodeAzureSchedulingTaskArrayInput is an input type that accepts StatefulNodeAzureSchedulingTaskArray and StatefulNodeAzureSchedulingTaskArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSchedulingTaskArrayInput` via:
 //
-//          StatefulNodeAzureSchedulingTaskArray{ StatefulNodeAzureSchedulingTaskArgs{...} }
+//	StatefulNodeAzureSchedulingTaskArray{ StatefulNodeAzureSchedulingTaskArgs{...} }
 type StatefulNodeAzureSchedulingTaskArrayInput interface {
 	pulumi.Input
 
@@ -4653,7 +4653,7 @@ type StatefulNodeAzureSecret struct {
 // StatefulNodeAzureSecretInput is an input type that accepts StatefulNodeAzureSecretArgs and StatefulNodeAzureSecretOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSecretInput` via:
 //
-//          StatefulNodeAzureSecretArgs{...}
+//	StatefulNodeAzureSecretArgs{...}
 type StatefulNodeAzureSecretInput interface {
 	pulumi.Input
 
@@ -4681,7 +4681,7 @@ func (i StatefulNodeAzureSecretArgs) ToStatefulNodeAzureSecretOutputWithContext(
 // StatefulNodeAzureSecretArrayInput is an input type that accepts StatefulNodeAzureSecretArray and StatefulNodeAzureSecretArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSecretArrayInput` via:
 //
-//          StatefulNodeAzureSecretArray{ StatefulNodeAzureSecretArgs{...} }
+//	StatefulNodeAzureSecretArray{ StatefulNodeAzureSecretArgs{...} }
 type StatefulNodeAzureSecretArrayInput interface {
 	pulumi.Input
 
@@ -4753,7 +4753,7 @@ type StatefulNodeAzureSecretSourceVault struct {
 // StatefulNodeAzureSecretSourceVaultInput is an input type that accepts StatefulNodeAzureSecretSourceVaultArgs and StatefulNodeAzureSecretSourceVaultOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSecretSourceVaultInput` via:
 //
-//          StatefulNodeAzureSecretSourceVaultArgs{...}
+//	StatefulNodeAzureSecretSourceVaultArgs{...}
 type StatefulNodeAzureSecretSourceVaultInput interface {
 	pulumi.Input
 
@@ -4781,7 +4781,7 @@ func (i StatefulNodeAzureSecretSourceVaultArgs) ToStatefulNodeAzureSecretSourceV
 // StatefulNodeAzureSecretSourceVaultArrayInput is an input type that accepts StatefulNodeAzureSecretSourceVaultArray and StatefulNodeAzureSecretSourceVaultArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSecretSourceVaultArrayInput` via:
 //
-//          StatefulNodeAzureSecretSourceVaultArray{ StatefulNodeAzureSecretSourceVaultArgs{...} }
+//	StatefulNodeAzureSecretSourceVaultArray{ StatefulNodeAzureSecretSourceVaultArgs{...} }
 type StatefulNodeAzureSecretSourceVaultArrayInput interface {
 	pulumi.Input
 
@@ -4853,7 +4853,7 @@ type StatefulNodeAzureSecretVaultCertificate struct {
 // StatefulNodeAzureSecretVaultCertificateInput is an input type that accepts StatefulNodeAzureSecretVaultCertificateArgs and StatefulNodeAzureSecretVaultCertificateOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSecretVaultCertificateInput` via:
 //
-//          StatefulNodeAzureSecretVaultCertificateArgs{...}
+//	StatefulNodeAzureSecretVaultCertificateArgs{...}
 type StatefulNodeAzureSecretVaultCertificateInput interface {
 	pulumi.Input
 
@@ -4881,7 +4881,7 @@ func (i StatefulNodeAzureSecretVaultCertificateArgs) ToStatefulNodeAzureSecretVa
 // StatefulNodeAzureSecretVaultCertificateArrayInput is an input type that accepts StatefulNodeAzureSecretVaultCertificateArray and StatefulNodeAzureSecretVaultCertificateArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSecretVaultCertificateArrayInput` via:
 //
-//          StatefulNodeAzureSecretVaultCertificateArray{ StatefulNodeAzureSecretVaultCertificateArgs{...} }
+//	StatefulNodeAzureSecretVaultCertificateArray{ StatefulNodeAzureSecretVaultCertificateArgs{...} }
 type StatefulNodeAzureSecretVaultCertificateArrayInput interface {
 	pulumi.Input
 
@@ -4953,7 +4953,7 @@ type StatefulNodeAzureSignal struct {
 // StatefulNodeAzureSignalInput is an input type that accepts StatefulNodeAzureSignalArgs and StatefulNodeAzureSignalOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSignalInput` via:
 //
-//          StatefulNodeAzureSignalArgs{...}
+//	StatefulNodeAzureSignalArgs{...}
 type StatefulNodeAzureSignalInput interface {
 	pulumi.Input
 
@@ -4981,7 +4981,7 @@ func (i StatefulNodeAzureSignalArgs) ToStatefulNodeAzureSignalOutputWithContext(
 // StatefulNodeAzureSignalArrayInput is an input type that accepts StatefulNodeAzureSignalArray and StatefulNodeAzureSignalArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSignalArrayInput` via:
 //
-//          StatefulNodeAzureSignalArray{ StatefulNodeAzureSignalArgs{...} }
+//	StatefulNodeAzureSignalArray{ StatefulNodeAzureSignalArgs{...} }
 type StatefulNodeAzureSignalArrayInput interface {
 	pulumi.Input
 
@@ -5056,7 +5056,7 @@ type StatefulNodeAzureStrategy struct {
 // StatefulNodeAzureStrategyInput is an input type that accepts StatefulNodeAzureStrategyArgs and StatefulNodeAzureStrategyOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureStrategyInput` via:
 //
-//          StatefulNodeAzureStrategyArgs{...}
+//	StatefulNodeAzureStrategyArgs{...}
 type StatefulNodeAzureStrategyInput interface {
 	pulumi.Input
 
@@ -5095,11 +5095,11 @@ func (i StatefulNodeAzureStrategyArgs) ToStatefulNodeAzureStrategyPtrOutputWithC
 // StatefulNodeAzureStrategyPtrInput is an input type that accepts StatefulNodeAzureStrategyArgs, StatefulNodeAzureStrategyPtr and StatefulNodeAzureStrategyPtrOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureStrategyPtrInput` via:
 //
-//          StatefulNodeAzureStrategyArgs{...}
+//	        StatefulNodeAzureStrategyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StatefulNodeAzureStrategyPtrInput interface {
 	pulumi.Input
 
@@ -5245,7 +5245,7 @@ type StatefulNodeAzureStrategyRevertToSpot struct {
 // StatefulNodeAzureStrategyRevertToSpotInput is an input type that accepts StatefulNodeAzureStrategyRevertToSpotArgs and StatefulNodeAzureStrategyRevertToSpotOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureStrategyRevertToSpotInput` via:
 //
-//          StatefulNodeAzureStrategyRevertToSpotArgs{...}
+//	StatefulNodeAzureStrategyRevertToSpotArgs{...}
 type StatefulNodeAzureStrategyRevertToSpotInput interface {
 	pulumi.Input
 
@@ -5280,11 +5280,11 @@ func (i StatefulNodeAzureStrategyRevertToSpotArgs) ToStatefulNodeAzureStrategyRe
 // StatefulNodeAzureStrategyRevertToSpotPtrInput is an input type that accepts StatefulNodeAzureStrategyRevertToSpotArgs, StatefulNodeAzureStrategyRevertToSpotPtr and StatefulNodeAzureStrategyRevertToSpotPtrOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureStrategyRevertToSpotPtrInput` via:
 //
-//          StatefulNodeAzureStrategyRevertToSpotArgs{...}
+//	        StatefulNodeAzureStrategyRevertToSpotArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StatefulNodeAzureStrategyRevertToSpotPtrInput interface {
 	pulumi.Input
 
@@ -5379,7 +5379,7 @@ type StatefulNodeAzureTag struct {
 // StatefulNodeAzureTagInput is an input type that accepts StatefulNodeAzureTagArgs and StatefulNodeAzureTagOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureTagInput` via:
 //
-//          StatefulNodeAzureTagArgs{...}
+//	StatefulNodeAzureTagArgs{...}
 type StatefulNodeAzureTagInput interface {
 	pulumi.Input
 
@@ -5407,7 +5407,7 @@ func (i StatefulNodeAzureTagArgs) ToStatefulNodeAzureTagOutputWithContext(ctx co
 // StatefulNodeAzureTagArrayInput is an input type that accepts StatefulNodeAzureTagArray and StatefulNodeAzureTagArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureTagArrayInput` via:
 //
-//          StatefulNodeAzureTagArray{ StatefulNodeAzureTagArgs{...} }
+//	StatefulNodeAzureTagArray{ StatefulNodeAzureTagArgs{...} }
 type StatefulNodeAzureTagArrayInput interface {
 	pulumi.Input
 
@@ -5478,7 +5478,7 @@ type StatefulNodeAzureUpdateState struct {
 // StatefulNodeAzureUpdateStateInput is an input type that accepts StatefulNodeAzureUpdateStateArgs and StatefulNodeAzureUpdateStateOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureUpdateStateInput` via:
 //
-//          StatefulNodeAzureUpdateStateArgs{...}
+//	StatefulNodeAzureUpdateStateArgs{...}
 type StatefulNodeAzureUpdateStateInput interface {
 	pulumi.Input
 
@@ -5505,7 +5505,7 @@ func (i StatefulNodeAzureUpdateStateArgs) ToStatefulNodeAzureUpdateStateOutputWi
 // StatefulNodeAzureUpdateStateArrayInput is an input type that accepts StatefulNodeAzureUpdateStateArray and StatefulNodeAzureUpdateStateArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureUpdateStateArrayInput` via:
 //
-//          StatefulNodeAzureUpdateStateArray{ StatefulNodeAzureUpdateStateArgs{...} }
+//	StatefulNodeAzureUpdateStateArray{ StatefulNodeAzureUpdateStateArgs{...} }
 type StatefulNodeAzureUpdateStateArrayInput interface {
 	pulumi.Input
 

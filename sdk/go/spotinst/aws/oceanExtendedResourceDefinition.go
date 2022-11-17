@@ -19,24 +19,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.NewOceanExtendedResourceDefinition(ctx, "example", &aws.OceanExtendedResourceDefinitionArgs{
-// 			ResourceMapping: pulumi.AnyMap{
-// 				"c3.large":  pulumi.Any("2Ki"),
-// 				"c3.xlarge": pulumi.Any("4Ki"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aws.NewOceanExtendedResourceDefinition(ctx, "example", &aws.OceanExtendedResourceDefinitionArgs{
+//				ResourceMapping: pulumi.AnyMap{
+//					"c3.large":  pulumi.Any("2Ki"),
+//					"c3.xlarge": pulumi.Any("4Ki"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type OceanExtendedResourceDefinition struct {
 	pulumi.CustomResourceState
@@ -142,7 +145,7 @@ func (i *OceanExtendedResourceDefinition) ToOceanExtendedResourceDefinitionOutpu
 // OceanExtendedResourceDefinitionArrayInput is an input type that accepts OceanExtendedResourceDefinitionArray and OceanExtendedResourceDefinitionArrayOutput values.
 // You can construct a concrete instance of `OceanExtendedResourceDefinitionArrayInput` via:
 //
-//          OceanExtendedResourceDefinitionArray{ OceanExtendedResourceDefinitionArgs{...} }
+//	OceanExtendedResourceDefinitionArray{ OceanExtendedResourceDefinitionArgs{...} }
 type OceanExtendedResourceDefinitionArrayInput interface {
 	pulumi.Input
 
@@ -167,7 +170,7 @@ func (i OceanExtendedResourceDefinitionArray) ToOceanExtendedResourceDefinitionA
 // OceanExtendedResourceDefinitionMapInput is an input type that accepts OceanExtendedResourceDefinitionMap and OceanExtendedResourceDefinitionMapOutput values.
 // You can construct a concrete instance of `OceanExtendedResourceDefinitionMapInput` via:
 //
-//          OceanExtendedResourceDefinitionMap{ "key": OceanExtendedResourceDefinitionArgs{...} }
+//	OceanExtendedResourceDefinitionMap{ "key": OceanExtendedResourceDefinitionArgs{...} }
 type OceanExtendedResourceDefinitionMapInput interface {
 	pulumi.Input
 

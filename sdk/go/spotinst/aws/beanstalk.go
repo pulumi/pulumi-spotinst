@@ -19,50 +19,53 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.NewBeanstalk(ctx, "elastigoup-aws-beanstalk", &aws.BeanstalkArgs{
-// 			BeanstalkEnvironmentId:   pulumi.String("e-example"),
-// 			BeanstalkEnvironmentName: pulumi.String("example-env"),
-// 			DeploymentPreferences: &aws.BeanstalkDeploymentPreferencesArgs{
-// 				AutomaticRoll:       pulumi.Bool(true),
-// 				BatchSizePercentage: pulumi.Int(100),
-// 				GracePeriod:         pulumi.Int(90),
-// 				Strategies: aws.BeanstalkDeploymentPreferencesStrategyArray{
-// 					&aws.BeanstalkDeploymentPreferencesStrategyArgs{
-// 						Action:               pulumi.String("REPLACE_SERVER"),
-// 						ShouldDrainInstances: pulumi.Bool(true),
-// 					},
-// 				},
-// 			},
-// 			DesiredCapacity: pulumi.Int(0),
-// 			InstanceTypesSpots: pulumi.StringArray{
-// 				pulumi.String("t2.micro"),
-// 				pulumi.String("t2.medium"),
-// 				pulumi.String("t2.large"),
-// 			},
-// 			ManagedActions: &aws.BeanstalkManagedActionsArgs{
-// 				PlatformUpdate: &aws.BeanstalkManagedActionsPlatformUpdateArgs{
-// 					PerformAt:   pulumi.String("timeWindow"),
-// 					TimeWindow:  pulumi.String("Mon:23:50-Tue:00:20"),
-// 					UpdateLevel: pulumi.String("minorAndPatch"),
-// 				},
-// 			},
-// 			MaxSize: pulumi.Int(1),
-// 			MinSize: pulumi.Int(0),
-// 			Product: pulumi.String("Linux/UNIX"),
-// 			Region:  pulumi.String("us-west-2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aws.NewBeanstalk(ctx, "elastigoup-aws-beanstalk", &aws.BeanstalkArgs{
+//				BeanstalkEnvironmentId:   pulumi.String("e-example"),
+//				BeanstalkEnvironmentName: pulumi.String("example-env"),
+//				DeploymentPreferences: &aws.BeanstalkDeploymentPreferencesArgs{
+//					AutomaticRoll:       pulumi.Bool(true),
+//					BatchSizePercentage: pulumi.Int(100),
+//					GracePeriod:         pulumi.Int(90),
+//					Strategies: aws.BeanstalkDeploymentPreferencesStrategyArray{
+//						&aws.BeanstalkDeploymentPreferencesStrategyArgs{
+//							Action:               pulumi.String("REPLACE_SERVER"),
+//							ShouldDrainInstances: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				DesiredCapacity: pulumi.Int(0),
+//				InstanceTypesSpots: pulumi.StringArray{
+//					pulumi.String("t2.micro"),
+//					pulumi.String("t2.medium"),
+//					pulumi.String("t2.large"),
+//				},
+//				ManagedActions: &aws.BeanstalkManagedActionsArgs{
+//					PlatformUpdate: &aws.BeanstalkManagedActionsPlatformUpdateArgs{
+//						PerformAt:   pulumi.String("timeWindow"),
+//						TimeWindow:  pulumi.String("Mon:23:50-Tue:00:20"),
+//						UpdateLevel: pulumi.String("minorAndPatch"),
+//					},
+//				},
+//				MaxSize: pulumi.Int(1),
+//				MinSize: pulumi.Int(0),
+//				Product: pulumi.String("Linux/UNIX"),
+//				Region:  pulumi.String("us-west-2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Beanstalk struct {
 	pulumi.CustomResourceState
@@ -283,7 +286,7 @@ func (i *Beanstalk) ToBeanstalkOutputWithContext(ctx context.Context) BeanstalkO
 // BeanstalkArrayInput is an input type that accepts BeanstalkArray and BeanstalkArrayOutput values.
 // You can construct a concrete instance of `BeanstalkArrayInput` via:
 //
-//          BeanstalkArray{ BeanstalkArgs{...} }
+//	BeanstalkArray{ BeanstalkArgs{...} }
 type BeanstalkArrayInput interface {
 	pulumi.Input
 
@@ -308,7 +311,7 @@ func (i BeanstalkArray) ToBeanstalkArrayOutputWithContext(ctx context.Context) B
 // BeanstalkMapInput is an input type that accepts BeanstalkMap and BeanstalkMapOutput values.
 // You can construct a concrete instance of `BeanstalkMapInput` via:
 //
-//          BeanstalkMap{ "key": BeanstalkArgs{...} }
+//	BeanstalkMap{ "key": BeanstalkArgs{...} }
 type BeanstalkMapInput interface {
 	pulumi.Input
 

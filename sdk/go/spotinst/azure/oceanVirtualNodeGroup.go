@@ -19,87 +19,93 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azure.NewOceanVirtualNodeGroup(ctx, "example", &azure.OceanVirtualNodeGroupArgs{
-// 			Autoscales: azure.OceanVirtualNodeGroupAutoscaleArray{
-// 				&azure.OceanVirtualNodeGroupAutoscaleArgs{
-// 					AutoHeadroomPercentage: pulumi.Int(5),
-// 					AutoscaleHeadrooms: azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray{
-// 						&azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{
-// 							CpuPerUnit:    pulumi.Int(4),
-// 							GpuPerUnit:    pulumi.Int(8),
-// 							MemoryPerUnit: pulumi.Int(100),
-// 							NumOfUnits:    pulumi.Int(16),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			Labels: azure.OceanVirtualNodeGroupLabelArray{
-// 				&azure.OceanVirtualNodeGroupLabelArgs{
-// 					Key:   pulumi.String("label_key"),
-// 					Value: pulumi.String("label_value"),
-// 				},
-// 			},
-// 			LaunchSpecifications: azure.OceanVirtualNodeGroupLaunchSpecificationArray{
-// 				&azure.OceanVirtualNodeGroupLaunchSpecificationArgs{
-// 					OsDisk: &azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs{
-// 						SizeGb:                  pulumi.Int(100),
-// 						Type:                    pulumi.String("Standard_LRS"),
-// 						UtilizeEphemeralStorage: pulumi.Bool(false),
-// 					},
-// 					Tags: azure.OceanVirtualNodeGroupLaunchSpecificationTagArray{
-// 						&azure.OceanVirtualNodeGroupLaunchSpecificationTagArgs{
-// 							Key:   pulumi.String("label_key"),
-// 							Value: pulumi.String("label_value"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			OceanId: pulumi.String("o-12345"),
-// 			ResourceLimits: azure.OceanVirtualNodeGroupResourceLimitArray{
-// 				&azure.OceanVirtualNodeGroupResourceLimitArgs{
-// 					MaxInstanceCount: pulumi.Int(4),
-// 				},
-// 			},
-// 			Taints: azure.OceanVirtualNodeGroupTaintArray{
-// 				&azure.OceanVirtualNodeGroupTaintArgs{
-// 					Effect: pulumi.String("NoSchedule"),
-// 					Key:    pulumi.String("taint_key"),
-// 					Value:  pulumi.String("taint_value"),
-// 				},
-// 			},
-// 			Zones: pulumi.StringArray{
-// 				pulumi.String("1"),
-// 				pulumi.String("2"),
-// 				pulumi.String("3"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azure.NewOceanVirtualNodeGroup(ctx, "example", &azure.OceanVirtualNodeGroupArgs{
+//				Autoscales: azure.OceanVirtualNodeGroupAutoscaleArray{
+//					&azure.OceanVirtualNodeGroupAutoscaleArgs{
+//						AutoHeadroomPercentage: pulumi.Int(5),
+//						AutoscaleHeadrooms: azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray{
+//							&azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{
+//								CpuPerUnit:    pulumi.Int(4),
+//								GpuPerUnit:    pulumi.Int(8),
+//								MemoryPerUnit: pulumi.Int(100),
+//								NumOfUnits:    pulumi.Int(16),
+//							},
+//						},
+//					},
+//				},
+//				Labels: azure.OceanVirtualNodeGroupLabelArray{
+//					&azure.OceanVirtualNodeGroupLabelArgs{
+//						Key:   pulumi.String("label_key"),
+//						Value: pulumi.String("label_value"),
+//					},
+//				},
+//				LaunchSpecifications: azure.OceanVirtualNodeGroupLaunchSpecificationArray{
+//					&azure.OceanVirtualNodeGroupLaunchSpecificationArgs{
+//						OsDisk: &azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs{
+//							SizeGb:                  pulumi.Int(100),
+//							Type:                    pulumi.String("Standard_LRS"),
+//							UtilizeEphemeralStorage: pulumi.Bool(false),
+//						},
+//						Tags: azure.OceanVirtualNodeGroupLaunchSpecificationTagArray{
+//							&azure.OceanVirtualNodeGroupLaunchSpecificationTagArgs{
+//								Key:   pulumi.String("label_key"),
+//								Value: pulumi.String("label_value"),
+//							},
+//						},
+//					},
+//				},
+//				OceanId: pulumi.String("o-12345"),
+//				ResourceLimits: azure.OceanVirtualNodeGroupResourceLimitArray{
+//					&azure.OceanVirtualNodeGroupResourceLimitArgs{
+//						MaxInstanceCount: pulumi.Int(4),
+//					},
+//				},
+//				Taints: azure.OceanVirtualNodeGroupTaintArray{
+//					&azure.OceanVirtualNodeGroupTaintArgs{
+//						Effect: pulumi.String("NoSchedule"),
+//						Key:    pulumi.String("taint_key"),
+//						Value:  pulumi.String("taint_value"),
+//					},
+//				},
+//				Zones: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("2"),
+//					pulumi.String("3"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ctx.Export("oceanId", spotinst_ocean_aks_.Example.Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ctx.Export("oceanId", spotinst_ocean_aks_.Example.Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 type OceanVirtualNodeGroup struct {
 	pulumi.CustomResourceState
@@ -260,7 +266,7 @@ func (i *OceanVirtualNodeGroup) ToOceanVirtualNodeGroupOutputWithContext(ctx con
 // OceanVirtualNodeGroupArrayInput is an input type that accepts OceanVirtualNodeGroupArray and OceanVirtualNodeGroupArrayOutput values.
 // You can construct a concrete instance of `OceanVirtualNodeGroupArrayInput` via:
 //
-//          OceanVirtualNodeGroupArray{ OceanVirtualNodeGroupArgs{...} }
+//	OceanVirtualNodeGroupArray{ OceanVirtualNodeGroupArgs{...} }
 type OceanVirtualNodeGroupArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +291,7 @@ func (i OceanVirtualNodeGroupArray) ToOceanVirtualNodeGroupArrayOutputWithContex
 // OceanVirtualNodeGroupMapInput is an input type that accepts OceanVirtualNodeGroupMap and OceanVirtualNodeGroupMapOutput values.
 // You can construct a concrete instance of `OceanVirtualNodeGroupMapInput` via:
 //
-//          OceanVirtualNodeGroupMap{ "key": OceanVirtualNodeGroupArgs{...} }
+//	OceanVirtualNodeGroupMap{ "key": OceanVirtualNodeGroupArgs{...} }
 type OceanVirtualNodeGroupMapInput interface {
 	pulumi.Input
 

@@ -19,86 +19,89 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := spotinst.NewElastigroupAzureV3(ctx, "testAzureGroup", &spotinst.ElastigroupAzureV3Args{
-// 			CustomData:      pulumi.String("IyEvYmluL2Jhc2gKZWNobyAidGVzdCI="),
-// 			DesiredCapacity: pulumi.Int(1),
-// 			Images: ElastigroupAzureV3ImageArray{
-// 				&ElastigroupAzureV3ImageArgs{
-// 					Marketplaces: ElastigroupAzureV3ImageMarketplaceArray{
-// 						&ElastigroupAzureV3ImageMarketplaceArgs{
-// 							Offer:     pulumi.String("UbuntuServer"),
-// 							Publisher: pulumi.String("Canonical"),
-// 							Sku:       pulumi.String("18.04-LTS"),
-// 							Version:   pulumi.String("latest"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			Login: &ElastigroupAzureV3LoginArgs{
-// 				SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
-// 				UserName:     pulumi.String("admin"),
-// 			},
-// 			ManagedServiceIdentities: ElastigroupAzureV3ManagedServiceIdentityArray{
-// 				&ElastigroupAzureV3ManagedServiceIdentityArgs{
-// 					Name:              pulumi.String("ocean-westus-dev-aks-agentpool"),
-// 					ResourceGroupName: pulumi.String("MC_ocean-westus-dev_ocean-westus-dev-aks_westus"),
-// 				},
-// 			},
-// 			MaxSize: pulumi.Int(1),
-// 			MinSize: pulumi.Int(0),
-// 			Network: &ElastigroupAzureV3NetworkArgs{
-// 				NetworkInterfaces: ElastigroupAzureV3NetworkNetworkInterfaceArray{
-// 					&ElastigroupAzureV3NetworkNetworkInterfaceArgs{
-// 						AdditionalIpConfigs: ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{
-// 							&ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{
-// 								PrivateIPVersion: "IPv4",
-// 								Name:             pulumi.String("SecondaryIPConfig"),
-// 							},
-// 						},
-// 						ApplicationSecurityGroup: []map[string]interface{}{
-// 							map[string]interface{}{
-// 								"name":              "ApplicationSecurityGroupName",
-// 								"resourceGroupName": "ResourceGroup",
-// 							},
-// 						},
-// 						AssignPublicIp: pulumi.Bool(false),
-// 						IsPrimary:      pulumi.Bool(true),
-// 						SubnetName:     pulumi.String("default"),
-// 					},
-// 				},
-// 				ResourceGroupName:  pulumi.String("ResourceGroup"),
-// 				VirtualNetworkName: pulumi.String("VirtualNetworkName"),
-// 			},
-// 			OdSizes: pulumi.StringArray{
-// 				pulumi.String("standard_a1_v1"),
-// 				pulumi.String("standard_a1_v2"),
-// 			},
-// 			Os:                pulumi.String("Linux"),
-// 			Region:            pulumi.String("eastus"),
-// 			ResourceGroupName: pulumi.String("spotinst-azure"),
-// 			SpotSizes: pulumi.StringArray{
-// 				pulumi.String("standard_a1_v1"),
-// 				pulumi.String("standard_a1_v2"),
-// 			},
-// 			Strategy: &ElastigroupAzureV3StrategyArgs{
-// 				DrainingTimeout:    pulumi.Int(300),
-// 				FallbackToOnDemand: pulumi.Bool(true),
-// 				OdCount:            pulumi.Int(1),
-// 				SpotPercentage:     pulumi.Int(65),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spotinst.NewElastigroupAzureV3(ctx, "testAzureGroup", &spotinst.ElastigroupAzureV3Args{
+//				CustomData:      pulumi.String("IyEvYmluL2Jhc2gKZWNobyAidGVzdCI="),
+//				DesiredCapacity: pulumi.Int(1),
+//				Images: ElastigroupAzureV3ImageArray{
+//					&ElastigroupAzureV3ImageArgs{
+//						Marketplaces: ElastigroupAzureV3ImageMarketplaceArray{
+//							&ElastigroupAzureV3ImageMarketplaceArgs{
+//								Offer:     pulumi.String("UbuntuServer"),
+//								Publisher: pulumi.String("Canonical"),
+//								Sku:       pulumi.String("18.04-LTS"),
+//								Version:   pulumi.String("latest"),
+//							},
+//						},
+//					},
+//				},
+//				Login: &ElastigroupAzureV3LoginArgs{
+//					SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
+//					UserName:     pulumi.String("admin"),
+//				},
+//				ManagedServiceIdentities: ElastigroupAzureV3ManagedServiceIdentityArray{
+//					&ElastigroupAzureV3ManagedServiceIdentityArgs{
+//						Name:              pulumi.String("ocean-westus-dev-aks-agentpool"),
+//						ResourceGroupName: pulumi.String("MC_ocean-westus-dev_ocean-westus-dev-aks_westus"),
+//					},
+//				},
+//				MaxSize: pulumi.Int(1),
+//				MinSize: pulumi.Int(0),
+//				Network: &ElastigroupAzureV3NetworkArgs{
+//					NetworkInterfaces: ElastigroupAzureV3NetworkNetworkInterfaceArray{
+//						&ElastigroupAzureV3NetworkNetworkInterfaceArgs{
+//							AdditionalIpConfigs: ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{
+//								&ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{
+//									PrivateIPVersion: "IPv4",
+//									Name:             pulumi.String("SecondaryIPConfig"),
+//								},
+//							},
+//							ApplicationSecurityGroup: []map[string]interface{}{
+//								map[string]interface{}{
+//									"name":              "ApplicationSecurityGroupName",
+//									"resourceGroupName": "ResourceGroup",
+//								},
+//							},
+//							AssignPublicIp: pulumi.Bool(false),
+//							IsPrimary:      pulumi.Bool(true),
+//							SubnetName:     pulumi.String("default"),
+//						},
+//					},
+//					ResourceGroupName:  pulumi.String("ResourceGroup"),
+//					VirtualNetworkName: pulumi.String("VirtualNetworkName"),
+//				},
+//				OdSizes: pulumi.StringArray{
+//					pulumi.String("standard_a1_v1"),
+//					pulumi.String("standard_a1_v2"),
+//				},
+//				Os:                pulumi.String("Linux"),
+//				Region:            pulumi.String("eastus"),
+//				ResourceGroupName: pulumi.String("spotinst-azure"),
+//				SpotSizes: pulumi.StringArray{
+//					pulumi.String("standard_a1_v1"),
+//					pulumi.String("standard_a1_v2"),
+//				},
+//				Strategy: &ElastigroupAzureV3StrategyArgs{
+//					DrainingTimeout:    pulumi.Int(300),
+//					FallbackToOnDemand: pulumi.Bool(true),
+//					OdCount:            pulumi.Int(1),
+//					SpotPercentage:     pulumi.Int(65),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ElastigroupAzureV3 struct {
 	pulumi.CustomResourceState
@@ -352,7 +355,7 @@ func (i *ElastigroupAzureV3) ToElastigroupAzureV3OutputWithContext(ctx context.C
 // ElastigroupAzureV3ArrayInput is an input type that accepts ElastigroupAzureV3Array and ElastigroupAzureV3ArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ArrayInput` via:
 //
-//          ElastigroupAzureV3Array{ ElastigroupAzureV3Args{...} }
+//	ElastigroupAzureV3Array{ ElastigroupAzureV3Args{...} }
 type ElastigroupAzureV3ArrayInput interface {
 	pulumi.Input
 
@@ -377,7 +380,7 @@ func (i ElastigroupAzureV3Array) ToElastigroupAzureV3ArrayOutputWithContext(ctx 
 // ElastigroupAzureV3MapInput is an input type that accepts ElastigroupAzureV3Map and ElastigroupAzureV3MapOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3MapInput` via:
 //
-//          ElastigroupAzureV3Map{ "key": ElastigroupAzureV3Args{...} }
+//	ElastigroupAzureV3Map{ "key": ElastigroupAzureV3Args{...} }
 type ElastigroupAzureV3MapInput interface {
 	pulumi.Input
 
@@ -475,8 +478,8 @@ func (o ElastigroupAzureV3Output) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// - The resource group of the Application Security Group.
-//   }
+//   - The resource group of the Application Security Group.
+//     }
 func (o ElastigroupAzureV3Output) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
 }

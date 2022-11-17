@@ -19,32 +19,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := spotinst.NewHealthCheck(ctx, "httpCheck", &spotinst.HealthCheckArgs{
-// 			Check: &HealthCheckCheckArgs{
-// 				Endpoint:  pulumi.String("http://endpoint.com"),
-// 				Healthy:   pulumi.Int(1),
-// 				Interval:  pulumi.Int(10),
-// 				Port:      pulumi.Int(1337),
-// 				Protocol:  pulumi.String("http"),
-// 				Timeout:   pulumi.Int(10),
-// 				Unhealthy: pulumi.Int(1),
-// 			},
-// 			ProxyAddress: pulumi.String("http://proxy.com"),
-// 			ProxyPort:    pulumi.Int(80),
-// 			ResourceId:   pulumi.String("sig-123"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spotinst.NewHealthCheck(ctx, "httpCheck", &spotinst.HealthCheckArgs{
+//				Check: &HealthCheckCheckArgs{
+//					Endpoint:  pulumi.String("http://endpoint.com"),
+//					Healthy:   pulumi.Int(1),
+//					Interval:  pulumi.Int(10),
+//					Port:      pulumi.Int(1337),
+//					Protocol:  pulumi.String("http"),
+//					Timeout:   pulumi.Int(10),
+//					Unhealthy: pulumi.Int(1),
+//				},
+//				ProxyAddress: pulumi.String("http://proxy.com"),
+//				ProxyPort:    pulumi.Int(80),
+//				ResourceId:   pulumi.String("sig-123"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type HealthCheck struct {
 	pulumi.CustomResourceState
@@ -168,7 +171,7 @@ func (i *HealthCheck) ToHealthCheckOutputWithContext(ctx context.Context) Health
 // HealthCheckArrayInput is an input type that accepts HealthCheckArray and HealthCheckArrayOutput values.
 // You can construct a concrete instance of `HealthCheckArrayInput` via:
 //
-//          HealthCheckArray{ HealthCheckArgs{...} }
+//	HealthCheckArray{ HealthCheckArgs{...} }
 type HealthCheckArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +196,7 @@ func (i HealthCheckArray) ToHealthCheckArrayOutputWithContext(ctx context.Contex
 // HealthCheckMapInput is an input type that accepts HealthCheckMap and HealthCheckMapOutput values.
 // You can construct a concrete instance of `HealthCheckMapInput` via:
 //
-//          HealthCheckMap{ "key": HealthCheckArgs{...} }
+//	HealthCheckMap{ "key": HealthCheckArgs{...} }
 type HealthCheckMapInput interface {
 	pulumi.Input
 

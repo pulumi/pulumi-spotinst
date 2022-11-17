@@ -19,173 +19,182 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.NewOceanLaunchSpec(ctx, "example", &aws.OceanLaunchSpecArgs{
-// 			AssociatePublicIpAddress: pulumi.Bool(true),
-// 			AutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{
-// 				&aws.OceanLaunchSpecAutoscaleHeadroomArgs{
-// 					CpuPerUnit:    pulumi.Int(1000),
-// 					GpuPerUnit:    pulumi.Int(0),
-// 					MemoryPerUnit: pulumi.Int(2048),
-// 					NumOfUnits:    pulumi.Int(5),
-// 				},
-// 			},
-// 			AutoscaleHeadroomsAutomatics: aws.OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{
-// 				&aws.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{
-// 					AutoHeadroomPercentage: pulumi.Int(5),
-// 				},
-// 			},
-// 			BlockDeviceMappings: aws.OceanLaunchSpecBlockDeviceMappingArray{
-// 				&aws.OceanLaunchSpecBlockDeviceMappingArgs{
-// 					DeviceName: pulumi.String("/dev/xvda"),
-// 					Ebs: &aws.OceanLaunchSpecBlockDeviceMappingEbsArgs{
-// 						DeleteOnTermination: pulumi.Bool(true),
-// 						DynamicVolumeSize: &aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{
-// 							BaseSize:            pulumi.Int(50),
-// 							Resource:            pulumi.String("CPU"),
-// 							SizePerResourceUnit: pulumi.Int(20),
-// 						},
-// 						Encrypted:  pulumi.Bool(false),
-// 						Throughput: pulumi.Int(500),
-// 						VolumeSize: pulumi.Int(50),
-// 						VolumeType: pulumi.String("gp2"),
-// 					},
-// 				},
-// 			},
-// 			CreateOptions: &aws.OceanLaunchSpecCreateOptionsArgs{
-// 				InitialNodes: pulumi.Int(1),
-// 			},
-// 			DeleteOptions: &aws.OceanLaunchSpecDeleteOptionsArgs{
-// 				ForceDelete: pulumi.Bool(true),
-// 			},
-// 			ElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{
-// 				&aws.OceanLaunchSpecElasticIpPoolArgs{
-// 					TagSelector: &aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{
-// 						TagKey:   pulumi.String("key"),
-// 						TagValue: pulumi.String("value"),
-// 					},
-// 				},
-// 			},
-// 			IamInstanceProfile: pulumi.String("iam-profile"),
-// 			ImageId:            pulumi.String("ami-123456"),
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.String("m4.large"),
-// 				pulumi.String("m4.xlarge"),
-// 				pulumi.String("m4.2xlarge"),
-// 				pulumi.String("m4.4xlarge"),
-// 			},
-// 			Labels: aws.OceanLaunchSpecLabelArray{
-// 				&aws.OceanLaunchSpecLabelArgs{
-// 					Key:   pulumi.String("key1"),
-// 					Value: pulumi.String("value1"),
-// 				},
-// 			},
-// 			OceanId: pulumi.String("o-123456"),
-// 			PreferredSpotTypes: pulumi.StringArray{
-// 				pulumi.String("m4.large"),
-// 				pulumi.String("m4.xlarge"),
-// 			},
-// 			ResourceLimits: aws.OceanLaunchSpecResourceLimitArray{
-// 				&aws.OceanLaunchSpecResourceLimitArgs{
-// 					MaxInstanceCount: pulumi.Int(4),
-// 					MinInstanceCount: pulumi.Int(0),
-// 				},
-// 			},
-// 			RestrictScaleDown: pulumi.Bool(true),
-// 			RootVolumeSize:    pulumi.Int(30),
-// 			SchedulingShutdownHours: &aws.OceanLaunchSpecSchedulingShutdownHoursArgs{
-// 				IsEnabled: pulumi.Bool(true),
-// 				TimeWindows: pulumi.StringArray{
-// 					pulumi.String("Sat:08:00-Sat:08:30"),
-// 					pulumi.String("Sun:08:00-Sun:08:30"),
-// 				},
-// 			},
-// 			SchedulingTasks: aws.OceanLaunchSpecSchedulingTaskArray{
-// 				&aws.OceanLaunchSpecSchedulingTaskArgs{
-// 					CronExpression: pulumi.String("0 1 * * *"),
-// 					IsEnabled:      pulumi.Bool(true),
-// 					TaskHeadrooms: aws.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
-// 						&aws.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
-// 							CpuPerUnit:    pulumi.Int(1000),
-// 							GpuPerUnit:    pulumi.Int(0),
-// 							MemoryPerUnit: pulumi.Int(2048),
-// 							NumOfUnits:    pulumi.Int(5),
-// 						},
-// 					},
-// 					TaskType: pulumi.String("manualHeadroomUpdate"),
-// 				},
-// 			},
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.String("sg-987654321"),
-// 			},
-// 			Strategies: aws.OceanLaunchSpecStrategyArray{
-// 				&aws.OceanLaunchSpecStrategyArgs{
-// 					SpotPercentage: pulumi.Int(70),
-// 				},
-// 			},
-// 			SubnetIds: pulumi.StringArray{
-// 				pulumi.String("subnet-1234"),
-// 			},
-// 			Tags: aws.OceanLaunchSpecTagArray{
-// 				&aws.OceanLaunchSpecTagArgs{
-// 					Key:   pulumi.String("Env"),
-// 					Value: pulumi.String("production"),
-// 				},
-// 			},
-// 			Taints: aws.OceanLaunchSpecTaintArray{
-// 				&aws.OceanLaunchSpecTaintArgs{
-// 					Effect: pulumi.String("NoExecute"),
-// 					Key:    pulumi.String("key1"),
-// 					Value:  pulumi.String("value1"),
-// 				},
-// 			},
-// 			UserData: pulumi.String("echo Hello, world!"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aws.NewOceanLaunchSpec(ctx, "example", &aws.OceanLaunchSpecArgs{
+//				AssociatePublicIpAddress: pulumi.Bool(true),
+//				AutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{
+//					&aws.OceanLaunchSpecAutoscaleHeadroomArgs{
+//						CpuPerUnit:    pulumi.Int(1000),
+//						GpuPerUnit:    pulumi.Int(0),
+//						MemoryPerUnit: pulumi.Int(2048),
+//						NumOfUnits:    pulumi.Int(5),
+//					},
+//				},
+//				AutoscaleHeadroomsAutomatics: aws.OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{
+//					&aws.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{
+//						AutoHeadroomPercentage: pulumi.Int(5),
+//					},
+//				},
+//				BlockDeviceMappings: aws.OceanLaunchSpecBlockDeviceMappingArray{
+//					&aws.OceanLaunchSpecBlockDeviceMappingArgs{
+//						DeviceName: pulumi.String("/dev/xvda"),
+//						Ebs: &aws.OceanLaunchSpecBlockDeviceMappingEbsArgs{
+//							DeleteOnTermination: pulumi.Bool(true),
+//							DynamicVolumeSize: &aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{
+//								BaseSize:            pulumi.Int(50),
+//								Resource:            pulumi.String("CPU"),
+//								SizePerResourceUnit: pulumi.Int(20),
+//							},
+//							Encrypted:  pulumi.Bool(false),
+//							Throughput: pulumi.Int(500),
+//							VolumeSize: pulumi.Int(50),
+//							VolumeType: pulumi.String("gp2"),
+//						},
+//					},
+//				},
+//				CreateOptions: &aws.OceanLaunchSpecCreateOptionsArgs{
+//					InitialNodes: pulumi.Int(1),
+//				},
+//				DeleteOptions: &aws.OceanLaunchSpecDeleteOptionsArgs{
+//					ForceDelete: pulumi.Bool(true),
+//				},
+//				ElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{
+//					&aws.OceanLaunchSpecElasticIpPoolArgs{
+//						TagSelector: &aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs{
+//							TagKey:   pulumi.String("key"),
+//							TagValue: pulumi.String("value"),
+//						},
+//					},
+//				},
+//				IamInstanceProfile: pulumi.String("iam-profile"),
+//				ImageId:            pulumi.String("ami-123456"),
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String("m4.large"),
+//					pulumi.String("m4.xlarge"),
+//					pulumi.String("m4.2xlarge"),
+//					pulumi.String("m4.4xlarge"),
+//				},
+//				Labels: aws.OceanLaunchSpecLabelArray{
+//					&aws.OceanLaunchSpecLabelArgs{
+//						Key:   pulumi.String("key1"),
+//						Value: pulumi.String("value1"),
+//					},
+//				},
+//				OceanId: pulumi.String("o-123456"),
+//				PreferredSpotTypes: pulumi.StringArray{
+//					pulumi.String("m4.large"),
+//					pulumi.String("m4.xlarge"),
+//				},
+//				ResourceLimits: aws.OceanLaunchSpecResourceLimitArray{
+//					&aws.OceanLaunchSpecResourceLimitArgs{
+//						MaxInstanceCount: pulumi.Int(4),
+//						MinInstanceCount: pulumi.Int(0),
+//					},
+//				},
+//				RestrictScaleDown: pulumi.Bool(true),
+//				RootVolumeSize:    pulumi.Int(30),
+//				SchedulingShutdownHours: &aws.OceanLaunchSpecSchedulingShutdownHoursArgs{
+//					IsEnabled: pulumi.Bool(true),
+//					TimeWindows: pulumi.StringArray{
+//						pulumi.String("Sat:08:00-Sat:08:30"),
+//						pulumi.String("Sun:08:00-Sun:08:30"),
+//					},
+//				},
+//				SchedulingTasks: aws.OceanLaunchSpecSchedulingTaskArray{
+//					&aws.OceanLaunchSpecSchedulingTaskArgs{
+//						CronExpression: pulumi.String("0 1 * * *"),
+//						IsEnabled:      pulumi.Bool(true),
+//						TaskHeadrooms: aws.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
+//							&aws.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
+//								CpuPerUnit:    pulumi.Int(1000),
+//								GpuPerUnit:    pulumi.Int(0),
+//								MemoryPerUnit: pulumi.Int(2048),
+//								NumOfUnits:    pulumi.Int(5),
+//							},
+//						},
+//						TaskType: pulumi.String("manualHeadroomUpdate"),
+//					},
+//				},
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("sg-987654321"),
+//				},
+//				Strategies: aws.OceanLaunchSpecStrategyArray{
+//					&aws.OceanLaunchSpecStrategyArgs{
+//						SpotPercentage: pulumi.Int(70),
+//					},
+//				},
+//				SubnetIds: pulumi.StringArray{
+//					pulumi.String("subnet-1234"),
+//				},
+//				Tags: aws.OceanLaunchSpecTagArray{
+//					&aws.OceanLaunchSpecTagArgs{
+//						Key:   pulumi.String("Env"),
+//						Value: pulumi.String("production"),
+//					},
+//				},
+//				Taints: aws.OceanLaunchSpecTaintArray{
+//					&aws.OceanLaunchSpecTaintArgs{
+//						Effect: pulumi.String("NoExecute"),
+//						Key:    pulumi.String("key1"),
+//						Value:  pulumi.String("value1"),
+//					},
+//				},
+//				UserData: pulumi.String("echo Hello, world!"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ctx.Export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec.Example.Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ctx.Export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec.Example.Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Update Policy
 //
 // * `updatePolicy` - (Optional)
-//     * `shouldRoll` - (Required) Enables the roll.
-//     * `rollConfig` - (Required) Holds the roll configuration.
-//         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+//   - `shouldRoll` - (Required) Enables the roll.
+//   - `rollConfig` - (Required) Holds the roll configuration.
+//   - `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
@@ -501,7 +510,7 @@ func (i *OceanLaunchSpec) ToOceanLaunchSpecOutputWithContext(ctx context.Context
 // OceanLaunchSpecArrayInput is an input type that accepts OceanLaunchSpecArray and OceanLaunchSpecArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecArrayInput` via:
 //
-//          OceanLaunchSpecArray{ OceanLaunchSpecArgs{...} }
+//	OceanLaunchSpecArray{ OceanLaunchSpecArgs{...} }
 type OceanLaunchSpecArrayInput interface {
 	pulumi.Input
 
@@ -526,7 +535,7 @@ func (i OceanLaunchSpecArray) ToOceanLaunchSpecArrayOutputWithContext(ctx contex
 // OceanLaunchSpecMapInput is an input type that accepts OceanLaunchSpecMap and OceanLaunchSpecMapOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecMapInput` via:
 //
-//          OceanLaunchSpecMap{ "key": OceanLaunchSpecArgs{...} }
+//	OceanLaunchSpecMap{ "key": OceanLaunchSpecArgs{...} }
 type OceanLaunchSpecMapInput interface {
 	pulumi.Input
 

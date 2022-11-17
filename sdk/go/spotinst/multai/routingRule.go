@@ -139,7 +139,7 @@ func (i *RoutingRule) ToRoutingRuleOutputWithContext(ctx context.Context) Routin
 // RoutingRuleArrayInput is an input type that accepts RoutingRuleArray and RoutingRuleArrayOutput values.
 // You can construct a concrete instance of `RoutingRuleArrayInput` via:
 //
-//          RoutingRuleArray{ RoutingRuleArgs{...} }
+//	RoutingRuleArray{ RoutingRuleArgs{...} }
 type RoutingRuleArrayInput interface {
 	pulumi.Input
 
@@ -164,7 +164,7 @@ func (i RoutingRuleArray) ToRoutingRuleArrayOutputWithContext(ctx context.Contex
 // RoutingRuleMapInput is an input type that accepts RoutingRuleMap and RoutingRuleMapOutput values.
 // You can construct a concrete instance of `RoutingRuleMapInput` via:
 //
-//          RoutingRuleMap{ "key": RoutingRuleArgs{...} }
+//	RoutingRuleMap{ "key": RoutingRuleArgs{...} }
 type RoutingRuleMapInput interface {
 	pulumi.Input
 

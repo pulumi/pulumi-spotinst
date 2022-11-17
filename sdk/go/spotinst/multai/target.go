@@ -134,7 +134,7 @@ func (i *Target) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 // TargetArrayInput is an input type that accepts TargetArray and TargetArrayOutput values.
 // You can construct a concrete instance of `TargetArrayInput` via:
 //
-//          TargetArray{ TargetArgs{...} }
+//	TargetArray{ TargetArgs{...} }
 type TargetArrayInput interface {
 	pulumi.Input
 
@@ -159,7 +159,7 @@ func (i TargetArray) ToTargetArrayOutputWithContext(ctx context.Context) TargetA
 // TargetMapInput is an input type that accepts TargetMap and TargetMapOutput values.
 // You can construct a concrete instance of `TargetMapInput` via:
 //
-//          TargetMap{ "key": TargetArgs{...} }
+//	TargetMap{ "key": TargetArgs{...} }
 type TargetMapInput interface {
 	pulumi.Input
 

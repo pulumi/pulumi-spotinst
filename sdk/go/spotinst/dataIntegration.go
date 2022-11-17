@@ -18,25 +18,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := spotinst.NewDataIntegration(ctx, "example", &spotinst.DataIntegrationArgs{
-// 			S3: &DataIntegrationS3Args{
-// 				BucketName: pulumi.String("terraform-test-do-not-delete"),
-// 				Subdir:     pulumi.String("terraform-test-data-integration"),
-// 			},
-// 			Status: pulumi.String("enabled"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spotinst.NewDataIntegration(ctx, "example", &spotinst.DataIntegrationArgs{
+//				S3: &DataIntegrationS3Args{
+//					BucketName: pulumi.String("terraform-test-do-not-delete"),
+//					Subdir:     pulumi.String("terraform-test-data-integration"),
+//				},
+//				Status: pulumi.String("enabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type DataIntegration struct {
 	pulumi.CustomResourceState
@@ -144,7 +147,7 @@ func (i *DataIntegration) ToDataIntegrationOutputWithContext(ctx context.Context
 // DataIntegrationArrayInput is an input type that accepts DataIntegrationArray and DataIntegrationArrayOutput values.
 // You can construct a concrete instance of `DataIntegrationArrayInput` via:
 //
-//          DataIntegrationArray{ DataIntegrationArgs{...} }
+//	DataIntegrationArray{ DataIntegrationArgs{...} }
 type DataIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -169,7 +172,7 @@ func (i DataIntegrationArray) ToDataIntegrationArrayOutputWithContext(ctx contex
 // DataIntegrationMapInput is an input type that accepts DataIntegrationMap and DataIntegrationMapOutput values.
 // You can construct a concrete instance of `DataIntegrationMapInput` via:
 //
-//          DataIntegrationMap{ "key": DataIntegrationArgs{...} }
+//	DataIntegrationMap{ "key": DataIntegrationArgs{...} }
 type DataIntegrationMapInput interface {
 	pulumi.Input
 

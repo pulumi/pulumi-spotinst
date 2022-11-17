@@ -384,7 +384,6 @@ export interface StatefulNodeAzureTag {
 export interface StatefulNodeAzureUpdateState {
     state: pulumi.Input<string>;
 }
-
 export namespace aws {
     export interface BeanstalkDeploymentPreferences {
         /**
@@ -2933,7 +2932,6 @@ export namespace aws {
          */
         name: pulumi.Input<string>;
     }
-
 }
 
 export namespace azure {
@@ -3664,7 +3662,6 @@ export namespace azure {
          */
         whitelists?: pulumi.Input<pulumi.Input<string>[]>;
     }
-
 }
 
 export namespace ecs {
@@ -4374,7 +4371,6 @@ export namespace gcp {
          */
         subnetNames: pulumi.Input<pulumi.Input<string>[]>;
     }
-
 }
 
 export namespace gke {
@@ -4907,7 +4903,6 @@ export namespace gke {
     export interface OceanLaunchSpecUpdatePolicyRollConfig {
         batchSizePercentage: pulumi.Input<number>;
     }
-
 }
 
 export namespace multai {

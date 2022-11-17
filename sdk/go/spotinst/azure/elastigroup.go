@@ -19,142 +19,145 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azure.NewElastigroup(ctx, "testAzureGroup", &azure.ElastigroupArgs{
-// 			DesiredCapacity: pulumi.Int(1),
-// 			HealthCheck: &azure.ElastigroupHealthCheckArgs{
-// 				AutoHealing:     pulumi.Bool(true),
-// 				GracePeriod:     pulumi.Int(120),
-// 				HealthCheckType: pulumi.String("INSTANCE_STATE"),
-// 			},
-// 			Images: azure.ElastigroupImageArray{
-// 				&azure.ElastigroupImageArgs{
-// 					Marketplaces: azure.ElastigroupImageMarketplaceArray{
-// 						&azure.ElastigroupImageMarketplaceArgs{
-// 							Offer:     pulumi.String("UbuntuServer"),
-// 							Publisher: pulumi.String("Canonical"),
-// 							Sku:       pulumi.String("16.04-LTS"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			LoadBalancers: azure.ElastigroupLoadBalancerArray{
-// 				&azure.ElastigroupLoadBalancerArgs{
-// 					AutoWeight:  pulumi.Bool(true),
-// 					BalancerId:  pulumi.String("lb-1ee2e3q"),
-// 					TargetSetId: pulumi.String("ts-3eq"),
-// 					Type:        pulumi.String("MULTAI_TARGET_SET"),
-// 				},
-// 			},
-// 			Login: &azure.ElastigroupLoginArgs{
-// 				SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
-// 				UserName:     pulumi.String("admin"),
-// 			},
-// 			LowPrioritySizes: pulumi.StringArray{
-// 				pulumi.String("standard_a1_v1"),
-// 				pulumi.String("standard_a1_v2"),
-// 			},
-// 			ManagedServiceIdentities: azure.ElastigroupManagedServiceIdentityArray{
-// 				&azure.ElastigroupManagedServiceIdentityArgs{
-// 					Name:              pulumi.String("example-identity"),
-// 					ResourceGroupName: pulumi.String("spotinst-azure"),
-// 				},
-// 			},
-// 			MaxSize: pulumi.Int(1),
-// 			MinSize: pulumi.Int(0),
-// 			Network: &azure.ElastigroupNetworkArgs{
-// 				AssignPublicIp:     pulumi.Bool(true),
-// 				ResourceGroupName:  pulumi.String("subnetResourceGroup"),
-// 				SubnetName:         pulumi.String("my-subnet-name"),
-// 				VirtualNetworkName: pulumi.String("vname"),
-// 			},
-// 			OdSizes: pulumi.StringArray{
-// 				pulumi.String("standard_a1_v1"),
-// 				pulumi.String("standard_a1_v2"),
-// 			},
-// 			Product:           pulumi.String("Linux"),
-// 			Region:            pulumi.String("eastus"),
-// 			ResourceGroupName: pulumi.String("spotinst-azure"),
-// 			ScalingDownPolicies: azure.ElastigroupScalingDownPolicyArray{
-// 				&azure.ElastigroupScalingDownPolicyArgs{
-// 					ActionType: pulumi.String("adjustment"),
-// 					Adjustment: pulumi.String("MIN(5,10)"),
-// 					Cooldown:   pulumi.Int(60),
-// 					Dimensions: azure.ElastigroupScalingDownPolicyDimensionArray{
-// 						&azure.ElastigroupScalingDownPolicyDimensionArgs{
-// 							Name:  pulumi.String("name-1"),
-// 							Value: pulumi.String("value-1"),
-// 						},
-// 					},
-// 					EvaluationPeriods: pulumi.Int(10),
-// 					MetricName:        pulumi.String("CPUUtilization"),
-// 					Namespace:         pulumi.String("Microsoft.Compute"),
-// 					Operator:          pulumi.String("gt"),
-// 					Period:            pulumi.Int(60),
-// 					PolicyName:        pulumi.String("policy-name"),
-// 					Statistic:         pulumi.String("average"),
-// 					Threshold:         pulumi.Float64(10),
-// 					Unit:              pulumi.String("percent"),
-// 				},
-// 			},
-// 			ScalingUpPolicies: azure.ElastigroupScalingUpPolicyArray{
-// 				&azure.ElastigroupScalingUpPolicyArgs{
-// 					ActionType: pulumi.String("setMinTarget"),
-// 					Cooldown:   pulumi.Int(60),
-// 					Dimensions: azure.ElastigroupScalingUpPolicyDimensionArray{
-// 						&azure.ElastigroupScalingUpPolicyDimensionArgs{
-// 							Name:  pulumi.String("resourceName"),
-// 							Value: pulumi.String("resource-name"),
-// 						},
-// 						&azure.ElastigroupScalingUpPolicyDimensionArgs{
-// 							Name:  pulumi.String("resourceGroupName"),
-// 							Value: pulumi.String("resource-group-name"),
-// 						},
-// 					},
-// 					EvaluationPeriods: pulumi.Int(10),
-// 					MetricName:        pulumi.String("CPUUtilization"),
-// 					MinTargetCapacity: pulumi.String("1"),
-// 					Namespace:         pulumi.String("Microsoft.Compute"),
-// 					Operator:          pulumi.String("gt"),
-// 					Period:            pulumi.Int(60),
-// 					PolicyName:        pulumi.String("policy-name"),
-// 					Statistic:         pulumi.String("average"),
-// 					Threshold:         pulumi.Float64(10),
-// 					Unit:              pulumi.String("percent"),
-// 				},
-// 			},
-// 			ScheduledTasks: azure.ElastigroupScheduledTaskArray{
-// 				&azure.ElastigroupScheduledTaskArgs{
-// 					Adjustment:           pulumi.String("2"),
-// 					AdjustmentPercentage: pulumi.String("50"),
-// 					BatchSizePercentage:  pulumi.String("33"),
-// 					CronExpression:       pulumi.String("* * * * *"),
-// 					GracePeriod:          pulumi.String("300"),
-// 					IsEnabled:            pulumi.Bool(true),
-// 					ScaleMaxCapacity:     pulumi.String("8"),
-// 					ScaleMinCapacity:     pulumi.String("5"),
-// 					ScaleTargetCapacity:  pulumi.String("6"),
-// 					TaskType:             pulumi.String("scale"),
-// 				},
-// 			},
-// 			ShutdownScript: pulumi.String(""),
-// 			Strategy: &azure.ElastigroupStrategyArgs{
-// 				DrainingTimeout: pulumi.Int(300),
-// 				OdCount:         pulumi.Int(1),
-// 			},
-// 			UserData: pulumi.String(""),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azure.NewElastigroup(ctx, "testAzureGroup", &azure.ElastigroupArgs{
+//				DesiredCapacity: pulumi.Int(1),
+//				HealthCheck: &azure.ElastigroupHealthCheckArgs{
+//					AutoHealing:     pulumi.Bool(true),
+//					GracePeriod:     pulumi.Int(120),
+//					HealthCheckType: pulumi.String("INSTANCE_STATE"),
+//				},
+//				Images: azure.ElastigroupImageArray{
+//					&azure.ElastigroupImageArgs{
+//						Marketplaces: azure.ElastigroupImageMarketplaceArray{
+//							&azure.ElastigroupImageMarketplaceArgs{
+//								Offer:     pulumi.String("UbuntuServer"),
+//								Publisher: pulumi.String("Canonical"),
+//								Sku:       pulumi.String("16.04-LTS"),
+//							},
+//						},
+//					},
+//				},
+//				LoadBalancers: azure.ElastigroupLoadBalancerArray{
+//					&azure.ElastigroupLoadBalancerArgs{
+//						AutoWeight:  pulumi.Bool(true),
+//						BalancerId:  pulumi.String("lb-1ee2e3q"),
+//						TargetSetId: pulumi.String("ts-3eq"),
+//						Type:        pulumi.String("MULTAI_TARGET_SET"),
+//					},
+//				},
+//				Login: &azure.ElastigroupLoginArgs{
+//					SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
+//					UserName:     pulumi.String("admin"),
+//				},
+//				LowPrioritySizes: pulumi.StringArray{
+//					pulumi.String("standard_a1_v1"),
+//					pulumi.String("standard_a1_v2"),
+//				},
+//				ManagedServiceIdentities: azure.ElastigroupManagedServiceIdentityArray{
+//					&azure.ElastigroupManagedServiceIdentityArgs{
+//						Name:              pulumi.String("example-identity"),
+//						ResourceGroupName: pulumi.String("spotinst-azure"),
+//					},
+//				},
+//				MaxSize: pulumi.Int(1),
+//				MinSize: pulumi.Int(0),
+//				Network: &azure.ElastigroupNetworkArgs{
+//					AssignPublicIp:     pulumi.Bool(true),
+//					ResourceGroupName:  pulumi.String("subnetResourceGroup"),
+//					SubnetName:         pulumi.String("my-subnet-name"),
+//					VirtualNetworkName: pulumi.String("vname"),
+//				},
+//				OdSizes: pulumi.StringArray{
+//					pulumi.String("standard_a1_v1"),
+//					pulumi.String("standard_a1_v2"),
+//				},
+//				Product:           pulumi.String("Linux"),
+//				Region:            pulumi.String("eastus"),
+//				ResourceGroupName: pulumi.String("spotinst-azure"),
+//				ScalingDownPolicies: azure.ElastigroupScalingDownPolicyArray{
+//					&azure.ElastigroupScalingDownPolicyArgs{
+//						ActionType: pulumi.String("adjustment"),
+//						Adjustment: pulumi.String("MIN(5,10)"),
+//						Cooldown:   pulumi.Int(60),
+//						Dimensions: azure.ElastigroupScalingDownPolicyDimensionArray{
+//							&azure.ElastigroupScalingDownPolicyDimensionArgs{
+//								Name:  pulumi.String("name-1"),
+//								Value: pulumi.String("value-1"),
+//							},
+//						},
+//						EvaluationPeriods: pulumi.Int(10),
+//						MetricName:        pulumi.String("CPUUtilization"),
+//						Namespace:         pulumi.String("Microsoft.Compute"),
+//						Operator:          pulumi.String("gt"),
+//						Period:            pulumi.Int(60),
+//						PolicyName:        pulumi.String("policy-name"),
+//						Statistic:         pulumi.String("average"),
+//						Threshold:         pulumi.Float64(10),
+//						Unit:              pulumi.String("percent"),
+//					},
+//				},
+//				ScalingUpPolicies: azure.ElastigroupScalingUpPolicyArray{
+//					&azure.ElastigroupScalingUpPolicyArgs{
+//						ActionType: pulumi.String("setMinTarget"),
+//						Cooldown:   pulumi.Int(60),
+//						Dimensions: azure.ElastigroupScalingUpPolicyDimensionArray{
+//							&azure.ElastigroupScalingUpPolicyDimensionArgs{
+//								Name:  pulumi.String("resourceName"),
+//								Value: pulumi.String("resource-name"),
+//							},
+//							&azure.ElastigroupScalingUpPolicyDimensionArgs{
+//								Name:  pulumi.String("resourceGroupName"),
+//								Value: pulumi.String("resource-group-name"),
+//							},
+//						},
+//						EvaluationPeriods: pulumi.Int(10),
+//						MetricName:        pulumi.String("CPUUtilization"),
+//						MinTargetCapacity: pulumi.String("1"),
+//						Namespace:         pulumi.String("Microsoft.Compute"),
+//						Operator:          pulumi.String("gt"),
+//						Period:            pulumi.Int(60),
+//						PolicyName:        pulumi.String("policy-name"),
+//						Statistic:         pulumi.String("average"),
+//						Threshold:         pulumi.Float64(10),
+//						Unit:              pulumi.String("percent"),
+//					},
+//				},
+//				ScheduledTasks: azure.ElastigroupScheduledTaskArray{
+//					&azure.ElastigroupScheduledTaskArgs{
+//						Adjustment:           pulumi.String("2"),
+//						AdjustmentPercentage: pulumi.String("50"),
+//						BatchSizePercentage:  pulumi.String("33"),
+//						CronExpression:       pulumi.String("* * * * *"),
+//						GracePeriod:          pulumi.String("300"),
+//						IsEnabled:            pulumi.Bool(true),
+//						ScaleMaxCapacity:     pulumi.String("8"),
+//						ScaleMinCapacity:     pulumi.String("5"),
+//						ScaleTargetCapacity:  pulumi.String("6"),
+//						TaskType:             pulumi.String("scale"),
+//					},
+//				},
+//				ShutdownScript: pulumi.String(""),
+//				Strategy: &azure.ElastigroupStrategyArgs{
+//					DrainingTimeout: pulumi.Int(300),
+//					OdCount:         pulumi.Int(1),
+//				},
+//				UserData: pulumi.String(""),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Elastigroup struct {
 	pulumi.CustomResourceState
@@ -478,7 +481,7 @@ func (i *Elastigroup) ToElastigroupOutputWithContext(ctx context.Context) Elasti
 // ElastigroupArrayInput is an input type that accepts ElastigroupArray and ElastigroupArrayOutput values.
 // You can construct a concrete instance of `ElastigroupArrayInput` via:
 //
-//          ElastigroupArray{ ElastigroupArgs{...} }
+//	ElastigroupArray{ ElastigroupArgs{...} }
 type ElastigroupArrayInput interface {
 	pulumi.Input
 
@@ -503,7 +506,7 @@ func (i ElastigroupArray) ToElastigroupArrayOutputWithContext(ctx context.Contex
 // ElastigroupMapInput is an input type that accepts ElastigroupMap and ElastigroupMapOutput values.
 // You can construct a concrete instance of `ElastigroupMapInput` via:
 //
-//          ElastigroupMap{ "key": ElastigroupArgs{...} }
+//	ElastigroupMap{ "key": ElastigroupArgs{...} }
 type ElastigroupMapInput interface {
 	pulumi.Input
 
