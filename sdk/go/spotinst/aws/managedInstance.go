@@ -526,7 +526,7 @@ func (i *ManagedInstance) ToManagedInstanceOutputWithContext(ctx context.Context
 // ManagedInstanceArrayInput is an input type that accepts ManagedInstanceArray and ManagedInstanceArrayOutput values.
 // You can construct a concrete instance of `ManagedInstanceArrayInput` via:
 //
-//          ManagedInstanceArray{ ManagedInstanceArgs{...} }
+//	ManagedInstanceArray{ ManagedInstanceArgs{...} }
 type ManagedInstanceArrayInput interface {
 	pulumi.Input
 
@@ -551,7 +551,7 @@ func (i ManagedInstanceArray) ToManagedInstanceArrayOutputWithContext(ctx contex
 // ManagedInstanceMapInput is an input type that accepts ManagedInstanceMap and ManagedInstanceMapOutput values.
 // You can construct a concrete instance of `ManagedInstanceMapInput` via:
 //
-//          ManagedInstanceMap{ "key": ManagedInstanceArgs{...} }
+//	ManagedInstanceMap{ "key": ManagedInstanceArgs{...} }
 type ManagedInstanceMapInput interface {
 	pulumi.Input
 

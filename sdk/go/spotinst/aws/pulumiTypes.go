@@ -24,7 +24,7 @@ type BeanstalkDeploymentPreferences struct {
 // BeanstalkDeploymentPreferencesInput is an input type that accepts BeanstalkDeploymentPreferencesArgs and BeanstalkDeploymentPreferencesOutput values.
 // You can construct a concrete instance of `BeanstalkDeploymentPreferencesInput` via:
 //
-//          BeanstalkDeploymentPreferencesArgs{...}
+//	BeanstalkDeploymentPreferencesArgs{...}
 type BeanstalkDeploymentPreferencesInput interface {
 	pulumi.Input
 
@@ -66,11 +66,11 @@ func (i BeanstalkDeploymentPreferencesArgs) ToBeanstalkDeploymentPreferencesPtrO
 // BeanstalkDeploymentPreferencesPtrInput is an input type that accepts BeanstalkDeploymentPreferencesArgs, BeanstalkDeploymentPreferencesPtr and BeanstalkDeploymentPreferencesPtrOutput values.
 // You can construct a concrete instance of `BeanstalkDeploymentPreferencesPtrInput` via:
 //
-//          BeanstalkDeploymentPreferencesArgs{...}
+//	        BeanstalkDeploymentPreferencesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BeanstalkDeploymentPreferencesPtrInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ type BeanstalkDeploymentPreferencesStrategy struct {
 // BeanstalkDeploymentPreferencesStrategyInput is an input type that accepts BeanstalkDeploymentPreferencesStrategyArgs and BeanstalkDeploymentPreferencesStrategyOutput values.
 // You can construct a concrete instance of `BeanstalkDeploymentPreferencesStrategyInput` via:
 //
-//          BeanstalkDeploymentPreferencesStrategyArgs{...}
+//	BeanstalkDeploymentPreferencesStrategyArgs{...}
 type BeanstalkDeploymentPreferencesStrategyInput interface {
 	pulumi.Input
 
@@ -244,7 +244,7 @@ func (i BeanstalkDeploymentPreferencesStrategyArgs) ToBeanstalkDeploymentPrefere
 // BeanstalkDeploymentPreferencesStrategyArrayInput is an input type that accepts BeanstalkDeploymentPreferencesStrategyArray and BeanstalkDeploymentPreferencesStrategyArrayOutput values.
 // You can construct a concrete instance of `BeanstalkDeploymentPreferencesStrategyArrayInput` via:
 //
-//          BeanstalkDeploymentPreferencesStrategyArray{ BeanstalkDeploymentPreferencesStrategyArgs{...} }
+//	BeanstalkDeploymentPreferencesStrategyArray{ BeanstalkDeploymentPreferencesStrategyArgs{...} }
 type BeanstalkDeploymentPreferencesStrategyArrayInput interface {
 	pulumi.Input
 
@@ -318,7 +318,7 @@ type BeanstalkManagedActions struct {
 // BeanstalkManagedActionsInput is an input type that accepts BeanstalkManagedActionsArgs and BeanstalkManagedActionsOutput values.
 // You can construct a concrete instance of `BeanstalkManagedActionsInput` via:
 //
-//          BeanstalkManagedActionsArgs{...}
+//	BeanstalkManagedActionsArgs{...}
 type BeanstalkManagedActionsInput interface {
 	pulumi.Input
 
@@ -354,11 +354,11 @@ func (i BeanstalkManagedActionsArgs) ToBeanstalkManagedActionsPtrOutputWithConte
 // BeanstalkManagedActionsPtrInput is an input type that accepts BeanstalkManagedActionsArgs, BeanstalkManagedActionsPtr and BeanstalkManagedActionsPtrOutput values.
 // You can construct a concrete instance of `BeanstalkManagedActionsPtrInput` via:
 //
-//          BeanstalkManagedActionsArgs{...}
+//	        BeanstalkManagedActionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BeanstalkManagedActionsPtrInput interface {
 	pulumi.Input
 
@@ -459,7 +459,7 @@ type BeanstalkManagedActionsPlatformUpdate struct {
 // BeanstalkManagedActionsPlatformUpdateInput is an input type that accepts BeanstalkManagedActionsPlatformUpdateArgs and BeanstalkManagedActionsPlatformUpdateOutput values.
 // You can construct a concrete instance of `BeanstalkManagedActionsPlatformUpdateInput` via:
 //
-//          BeanstalkManagedActionsPlatformUpdateArgs{...}
+//	BeanstalkManagedActionsPlatformUpdateArgs{...}
 type BeanstalkManagedActionsPlatformUpdateInput interface {
 	pulumi.Input
 
@@ -499,11 +499,11 @@ func (i BeanstalkManagedActionsPlatformUpdateArgs) ToBeanstalkManagedActionsPlat
 // BeanstalkManagedActionsPlatformUpdatePtrInput is an input type that accepts BeanstalkManagedActionsPlatformUpdateArgs, BeanstalkManagedActionsPlatformUpdatePtr and BeanstalkManagedActionsPlatformUpdatePtrOutput values.
 // You can construct a concrete instance of `BeanstalkManagedActionsPlatformUpdatePtrInput` via:
 //
-//          BeanstalkManagedActionsPlatformUpdateArgs{...}
+//	        BeanstalkManagedActionsPlatformUpdateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BeanstalkManagedActionsPlatformUpdatePtrInput interface {
 	pulumi.Input
 
@@ -658,7 +658,7 @@ type BeanstalkScheduledTask struct {
 // BeanstalkScheduledTaskInput is an input type that accepts BeanstalkScheduledTaskArgs and BeanstalkScheduledTaskOutput values.
 // You can construct a concrete instance of `BeanstalkScheduledTaskInput` via:
 //
-//          BeanstalkScheduledTaskArgs{...}
+//	BeanstalkScheduledTaskArgs{...}
 type BeanstalkScheduledTaskInput interface {
 	pulumi.Input
 
@@ -714,7 +714,7 @@ func (i BeanstalkScheduledTaskArgs) ToBeanstalkScheduledTaskOutputWithContext(ct
 // BeanstalkScheduledTaskArrayInput is an input type that accepts BeanstalkScheduledTaskArray and BeanstalkScheduledTaskArrayOutput values.
 // You can construct a concrete instance of `BeanstalkScheduledTaskArrayInput` via:
 //
-//          BeanstalkScheduledTaskArray{ BeanstalkScheduledTaskArgs{...} }
+//	BeanstalkScheduledTaskArray{ BeanstalkScheduledTaskArgs{...} }
 type BeanstalkScheduledTaskArrayInput interface {
 	pulumi.Input
 
@@ -853,7 +853,7 @@ type ElastigroupCpuOptions struct {
 // ElastigroupCpuOptionsInput is an input type that accepts ElastigroupCpuOptionsArgs and ElastigroupCpuOptionsOutput values.
 // You can construct a concrete instance of `ElastigroupCpuOptionsInput` via:
 //
-//          ElastigroupCpuOptionsArgs{...}
+//	ElastigroupCpuOptionsArgs{...}
 type ElastigroupCpuOptionsInput interface {
 	pulumi.Input
 
@@ -889,11 +889,11 @@ func (i ElastigroupCpuOptionsArgs) ToElastigroupCpuOptionsPtrOutputWithContext(c
 // ElastigroupCpuOptionsPtrInput is an input type that accepts ElastigroupCpuOptionsArgs, ElastigroupCpuOptionsPtr and ElastigroupCpuOptionsPtrOutput values.
 // You can construct a concrete instance of `ElastigroupCpuOptionsPtrInput` via:
 //
-//          ElastigroupCpuOptionsArgs{...}
+//	        ElastigroupCpuOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupCpuOptionsPtrInput interface {
 	pulumi.Input
 
@@ -1006,7 +1006,7 @@ type ElastigroupEbsBlockDevice struct {
 // ElastigroupEbsBlockDeviceInput is an input type that accepts ElastigroupEbsBlockDeviceArgs and ElastigroupEbsBlockDeviceOutput values.
 // You can construct a concrete instance of `ElastigroupEbsBlockDeviceInput` via:
 //
-//          ElastigroupEbsBlockDeviceArgs{...}
+//	ElastigroupEbsBlockDeviceArgs{...}
 type ElastigroupEbsBlockDeviceInput interface {
 	pulumi.Input
 
@@ -1050,7 +1050,7 @@ func (i ElastigroupEbsBlockDeviceArgs) ToElastigroupEbsBlockDeviceOutputWithCont
 // ElastigroupEbsBlockDeviceArrayInput is an input type that accepts ElastigroupEbsBlockDeviceArray and ElastigroupEbsBlockDeviceArrayOutput values.
 // You can construct a concrete instance of `ElastigroupEbsBlockDeviceArrayInput` via:
 //
-//          ElastigroupEbsBlockDeviceArray{ ElastigroupEbsBlockDeviceArgs{...} }
+//	ElastigroupEbsBlockDeviceArray{ ElastigroupEbsBlockDeviceArgs{...} }
 type ElastigroupEbsBlockDeviceArrayInput interface {
 	pulumi.Input
 
@@ -1162,7 +1162,7 @@ type ElastigroupEphemeralBlockDevice struct {
 // ElastigroupEphemeralBlockDeviceInput is an input type that accepts ElastigroupEphemeralBlockDeviceArgs and ElastigroupEphemeralBlockDeviceOutput values.
 // You can construct a concrete instance of `ElastigroupEphemeralBlockDeviceInput` via:
 //
-//          ElastigroupEphemeralBlockDeviceArgs{...}
+//	ElastigroupEphemeralBlockDeviceArgs{...}
 type ElastigroupEphemeralBlockDeviceInput interface {
 	pulumi.Input
 
@@ -1193,7 +1193,7 @@ func (i ElastigroupEphemeralBlockDeviceArgs) ToElastigroupEphemeralBlockDeviceOu
 // ElastigroupEphemeralBlockDeviceArrayInput is an input type that accepts ElastigroupEphemeralBlockDeviceArray and ElastigroupEphemeralBlockDeviceArrayOutput values.
 // You can construct a concrete instance of `ElastigroupEphemeralBlockDeviceArrayInput` via:
 //
-//          ElastigroupEphemeralBlockDeviceArray{ ElastigroupEphemeralBlockDeviceArgs{...} }
+//	ElastigroupEphemeralBlockDeviceArray{ ElastigroupEphemeralBlockDeviceArgs{...} }
 type ElastigroupEphemeralBlockDeviceArrayInput interface {
 	pulumi.Input
 
@@ -1270,7 +1270,7 @@ type ElastigroupInstanceTypesWeight struct {
 // ElastigroupInstanceTypesWeightInput is an input type that accepts ElastigroupInstanceTypesWeightArgs and ElastigroupInstanceTypesWeightOutput values.
 // You can construct a concrete instance of `ElastigroupInstanceTypesWeightInput` via:
 //
-//          ElastigroupInstanceTypesWeightArgs{...}
+//	ElastigroupInstanceTypesWeightArgs{...}
 type ElastigroupInstanceTypesWeightInput interface {
 	pulumi.Input
 
@@ -1300,7 +1300,7 @@ func (i ElastigroupInstanceTypesWeightArgs) ToElastigroupInstanceTypesWeightOutp
 // ElastigroupInstanceTypesWeightArrayInput is an input type that accepts ElastigroupInstanceTypesWeightArray and ElastigroupInstanceTypesWeightArrayOutput values.
 // You can construct a concrete instance of `ElastigroupInstanceTypesWeightArrayInput` via:
 //
-//          ElastigroupInstanceTypesWeightArray{ ElastigroupInstanceTypesWeightArgs{...} }
+//	ElastigroupInstanceTypesWeightArray{ ElastigroupInstanceTypesWeightArgs{...} }
 type ElastigroupInstanceTypesWeightArrayInput interface {
 	pulumi.Input
 
@@ -1377,7 +1377,7 @@ type ElastigroupIntegrationBeanstalk struct {
 // ElastigroupIntegrationBeanstalkInput is an input type that accepts ElastigroupIntegrationBeanstalkArgs and ElastigroupIntegrationBeanstalkOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationBeanstalkInput` via:
 //
-//          ElastigroupIntegrationBeanstalkArgs{...}
+//	ElastigroupIntegrationBeanstalkArgs{...}
 type ElastigroupIntegrationBeanstalkInput interface {
 	pulumi.Input
 
@@ -1416,11 +1416,11 @@ func (i ElastigroupIntegrationBeanstalkArgs) ToElastigroupIntegrationBeanstalkPt
 // ElastigroupIntegrationBeanstalkPtrInput is an input type that accepts ElastigroupIntegrationBeanstalkArgs, ElastigroupIntegrationBeanstalkPtr and ElastigroupIntegrationBeanstalkPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationBeanstalkPtrInput` via:
 //
-//          ElastigroupIntegrationBeanstalkArgs{...}
+//	        ElastigroupIntegrationBeanstalkArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationBeanstalkPtrInput interface {
 	pulumi.Input
 
@@ -1555,7 +1555,7 @@ type ElastigroupIntegrationBeanstalkDeploymentPreferences struct {
 // ElastigroupIntegrationBeanstalkDeploymentPreferencesInput is an input type that accepts ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs and ElastigroupIntegrationBeanstalkDeploymentPreferencesOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationBeanstalkDeploymentPreferencesInput` via:
 //
-//          ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs{...}
+//	ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs{...}
 type ElastigroupIntegrationBeanstalkDeploymentPreferencesInput interface {
 	pulumi.Input
 
@@ -1597,11 +1597,11 @@ func (i ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs) ToElastigroupI
 // ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrInput is an input type that accepts ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs, ElastigroupIntegrationBeanstalkDeploymentPreferencesPtr and ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrInput` via:
 //
-//          ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs{...}
+//	        ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationBeanstalkDeploymentPreferencesPtrInput interface {
 	pulumi.Input
 
@@ -1747,7 +1747,7 @@ type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy struct {
 // ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyInput is an input type that accepts ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs and ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyInput` via:
 //
-//          ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs{...}
+//	ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs{...}
 type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyInput interface {
 	pulumi.Input
 
@@ -1785,11 +1785,11 @@ func (i ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs) ToElas
 // ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrInput is an input type that accepts ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs, ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtr and ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrInput` via:
 //
-//          ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs{...}
+//	        ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyPtrInput interface {
 	pulumi.Input
 
@@ -1903,7 +1903,7 @@ type ElastigroupIntegrationBeanstalkManagedActions struct {
 // ElastigroupIntegrationBeanstalkManagedActionsInput is an input type that accepts ElastigroupIntegrationBeanstalkManagedActionsArgs and ElastigroupIntegrationBeanstalkManagedActionsOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationBeanstalkManagedActionsInput` via:
 //
-//          ElastigroupIntegrationBeanstalkManagedActionsArgs{...}
+//	ElastigroupIntegrationBeanstalkManagedActionsArgs{...}
 type ElastigroupIntegrationBeanstalkManagedActionsInput interface {
 	pulumi.Input
 
@@ -1939,11 +1939,11 @@ func (i ElastigroupIntegrationBeanstalkManagedActionsArgs) ToElastigroupIntegrat
 // ElastigroupIntegrationBeanstalkManagedActionsPtrInput is an input type that accepts ElastigroupIntegrationBeanstalkManagedActionsArgs, ElastigroupIntegrationBeanstalkManagedActionsPtr and ElastigroupIntegrationBeanstalkManagedActionsPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationBeanstalkManagedActionsPtrInput` via:
 //
-//          ElastigroupIntegrationBeanstalkManagedActionsArgs{...}
+//	        ElastigroupIntegrationBeanstalkManagedActionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationBeanstalkManagedActionsPtrInput interface {
 	pulumi.Input
 
@@ -2046,7 +2046,7 @@ type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate struct {
 // ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateInput is an input type that accepts ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs and ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateInput` via:
 //
-//          ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs{...}
+//	ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs{...}
 type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateInput interface {
 	pulumi.Input
 
@@ -2086,11 +2086,11 @@ func (i ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs) ToElast
 // ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrInput is an input type that accepts ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs, ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtr and ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrInput` via:
 //
-//          ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs{...}
+//	        ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrInput interface {
 	pulumi.Input
 
@@ -2221,7 +2221,7 @@ type ElastigroupIntegrationCodedeploy struct {
 // ElastigroupIntegrationCodedeployInput is an input type that accepts ElastigroupIntegrationCodedeployArgs and ElastigroupIntegrationCodedeployOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationCodedeployInput` via:
 //
-//          ElastigroupIntegrationCodedeployArgs{...}
+//	ElastigroupIntegrationCodedeployArgs{...}
 type ElastigroupIntegrationCodedeployInput interface {
 	pulumi.Input
 
@@ -2261,11 +2261,11 @@ func (i ElastigroupIntegrationCodedeployArgs) ToElastigroupIntegrationCodedeploy
 // ElastigroupIntegrationCodedeployPtrInput is an input type that accepts ElastigroupIntegrationCodedeployArgs, ElastigroupIntegrationCodedeployPtr and ElastigroupIntegrationCodedeployPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationCodedeployPtrInput` via:
 //
-//          ElastigroupIntegrationCodedeployArgs{...}
+//	        ElastigroupIntegrationCodedeployArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationCodedeployPtrInput interface {
 	pulumi.Input
 
@@ -2396,7 +2396,7 @@ type ElastigroupIntegrationCodedeployDeploymentGroup struct {
 // ElastigroupIntegrationCodedeployDeploymentGroupInput is an input type that accepts ElastigroupIntegrationCodedeployDeploymentGroupArgs and ElastigroupIntegrationCodedeployDeploymentGroupOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationCodedeployDeploymentGroupInput` via:
 //
-//          ElastigroupIntegrationCodedeployDeploymentGroupArgs{...}
+//	ElastigroupIntegrationCodedeployDeploymentGroupArgs{...}
 type ElastigroupIntegrationCodedeployDeploymentGroupInput interface {
 	pulumi.Input
 
@@ -2426,7 +2426,7 @@ func (i ElastigroupIntegrationCodedeployDeploymentGroupArgs) ToElastigroupIntegr
 // ElastigroupIntegrationCodedeployDeploymentGroupArrayInput is an input type that accepts ElastigroupIntegrationCodedeployDeploymentGroupArray and ElastigroupIntegrationCodedeployDeploymentGroupArrayOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationCodedeployDeploymentGroupArrayInput` via:
 //
-//          ElastigroupIntegrationCodedeployDeploymentGroupArray{ ElastigroupIntegrationCodedeployDeploymentGroupArgs{...} }
+//	ElastigroupIntegrationCodedeployDeploymentGroupArray{ ElastigroupIntegrationCodedeployDeploymentGroupArgs{...} }
 type ElastigroupIntegrationCodedeployDeploymentGroupArrayInput interface {
 	pulumi.Input
 
@@ -2510,7 +2510,7 @@ type ElastigroupIntegrationDockerSwarm struct {
 // ElastigroupIntegrationDockerSwarmInput is an input type that accepts ElastigroupIntegrationDockerSwarmArgs and ElastigroupIntegrationDockerSwarmOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationDockerSwarmInput` via:
 //
-//          ElastigroupIntegrationDockerSwarmArgs{...}
+//	ElastigroupIntegrationDockerSwarmArgs{...}
 type ElastigroupIntegrationDockerSwarmInput interface {
 	pulumi.Input
 
@@ -2556,11 +2556,11 @@ func (i ElastigroupIntegrationDockerSwarmArgs) ToElastigroupIntegrationDockerSwa
 // ElastigroupIntegrationDockerSwarmPtrInput is an input type that accepts ElastigroupIntegrationDockerSwarmArgs, ElastigroupIntegrationDockerSwarmPtr and ElastigroupIntegrationDockerSwarmPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationDockerSwarmPtrInput` via:
 //
-//          ElastigroupIntegrationDockerSwarmArgs{...}
+//	        ElastigroupIntegrationDockerSwarmArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationDockerSwarmPtrInput interface {
 	pulumi.Input
 
@@ -2739,7 +2739,7 @@ type ElastigroupIntegrationDockerSwarmAutoscaleDown struct {
 // ElastigroupIntegrationDockerSwarmAutoscaleDownInput is an input type that accepts ElastigroupIntegrationDockerSwarmAutoscaleDownArgs and ElastigroupIntegrationDockerSwarmAutoscaleDownOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationDockerSwarmAutoscaleDownInput` via:
 //
-//          ElastigroupIntegrationDockerSwarmAutoscaleDownArgs{...}
+//	ElastigroupIntegrationDockerSwarmAutoscaleDownArgs{...}
 type ElastigroupIntegrationDockerSwarmAutoscaleDownInput interface {
 	pulumi.Input
 
@@ -2778,11 +2778,11 @@ func (i ElastigroupIntegrationDockerSwarmAutoscaleDownArgs) ToElastigroupIntegra
 // ElastigroupIntegrationDockerSwarmAutoscaleDownPtrInput is an input type that accepts ElastigroupIntegrationDockerSwarmAutoscaleDownArgs, ElastigroupIntegrationDockerSwarmAutoscaleDownPtr and ElastigroupIntegrationDockerSwarmAutoscaleDownPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationDockerSwarmAutoscaleDownPtrInput` via:
 //
-//          ElastigroupIntegrationDockerSwarmAutoscaleDownArgs{...}
+//	        ElastigroupIntegrationDockerSwarmAutoscaleDownArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationDockerSwarmAutoscaleDownPtrInput interface {
 	pulumi.Input
 
@@ -2900,7 +2900,7 @@ type ElastigroupIntegrationDockerSwarmAutoscaleHeadroom struct {
 // ElastigroupIntegrationDockerSwarmAutoscaleHeadroomInput is an input type that accepts ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs and ElastigroupIntegrationDockerSwarmAutoscaleHeadroomOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationDockerSwarmAutoscaleHeadroomInput` via:
 //
-//          ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs{...}
+//	ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs{...}
 type ElastigroupIntegrationDockerSwarmAutoscaleHeadroomInput interface {
 	pulumi.Input
 
@@ -2940,11 +2940,11 @@ func (i ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs) ToElastigroupInt
 // ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrInput is an input type that accepts ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs, ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtr and ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrInput` via:
 //
-//          ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs{...}
+//	        ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationDockerSwarmAutoscaleHeadroomPtrInput interface {
 	pulumi.Input
 
@@ -3087,7 +3087,7 @@ type ElastigroupIntegrationEcs struct {
 // ElastigroupIntegrationEcsInput is an input type that accepts ElastigroupIntegrationEcsArgs and ElastigroupIntegrationEcsOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationEcsInput` via:
 //
-//          ElastigroupIntegrationEcsArgs{...}
+//	ElastigroupIntegrationEcsArgs{...}
 type ElastigroupIntegrationEcsInput interface {
 	pulumi.Input
 
@@ -3139,11 +3139,11 @@ func (i ElastigroupIntegrationEcsArgs) ToElastigroupIntegrationEcsPtrOutputWithC
 // ElastigroupIntegrationEcsPtrInput is an input type that accepts ElastigroupIntegrationEcsArgs, ElastigroupIntegrationEcsPtr and ElastigroupIntegrationEcsPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationEcsPtrInput` via:
 //
-//          ElastigroupIntegrationEcsArgs{...}
+//	        ElastigroupIntegrationEcsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationEcsPtrInput interface {
 	pulumi.Input
 
@@ -3365,7 +3365,7 @@ type ElastigroupIntegrationEcsAutoscaleAttribute struct {
 // ElastigroupIntegrationEcsAutoscaleAttributeInput is an input type that accepts ElastigroupIntegrationEcsAutoscaleAttributeArgs and ElastigroupIntegrationEcsAutoscaleAttributeOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationEcsAutoscaleAttributeInput` via:
 //
-//          ElastigroupIntegrationEcsAutoscaleAttributeArgs{...}
+//	ElastigroupIntegrationEcsAutoscaleAttributeArgs{...}
 type ElastigroupIntegrationEcsAutoscaleAttributeInput interface {
 	pulumi.Input
 
@@ -3394,7 +3394,7 @@ func (i ElastigroupIntegrationEcsAutoscaleAttributeArgs) ToElastigroupIntegratio
 // ElastigroupIntegrationEcsAutoscaleAttributeArrayInput is an input type that accepts ElastigroupIntegrationEcsAutoscaleAttributeArray and ElastigroupIntegrationEcsAutoscaleAttributeArrayOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationEcsAutoscaleAttributeArrayInput` via:
 //
-//          ElastigroupIntegrationEcsAutoscaleAttributeArray{ ElastigroupIntegrationEcsAutoscaleAttributeArgs{...} }
+//	ElastigroupIntegrationEcsAutoscaleAttributeArray{ ElastigroupIntegrationEcsAutoscaleAttributeArgs{...} }
 type ElastigroupIntegrationEcsAutoscaleAttributeArrayInput interface {
 	pulumi.Input
 
@@ -3470,7 +3470,7 @@ type ElastigroupIntegrationEcsAutoscaleDown struct {
 // ElastigroupIntegrationEcsAutoscaleDownInput is an input type that accepts ElastigroupIntegrationEcsAutoscaleDownArgs and ElastigroupIntegrationEcsAutoscaleDownOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationEcsAutoscaleDownInput` via:
 //
-//          ElastigroupIntegrationEcsAutoscaleDownArgs{...}
+//	ElastigroupIntegrationEcsAutoscaleDownArgs{...}
 type ElastigroupIntegrationEcsAutoscaleDownInput interface {
 	pulumi.Input
 
@@ -3509,11 +3509,11 @@ func (i ElastigroupIntegrationEcsAutoscaleDownArgs) ToElastigroupIntegrationEcsA
 // ElastigroupIntegrationEcsAutoscaleDownPtrInput is an input type that accepts ElastigroupIntegrationEcsAutoscaleDownArgs, ElastigroupIntegrationEcsAutoscaleDownPtr and ElastigroupIntegrationEcsAutoscaleDownPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationEcsAutoscaleDownPtrInput` via:
 //
-//          ElastigroupIntegrationEcsAutoscaleDownArgs{...}
+//	        ElastigroupIntegrationEcsAutoscaleDownArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationEcsAutoscaleDownPtrInput interface {
 	pulumi.Input
 
@@ -3631,7 +3631,7 @@ type ElastigroupIntegrationEcsAutoscaleHeadroom struct {
 // ElastigroupIntegrationEcsAutoscaleHeadroomInput is an input type that accepts ElastigroupIntegrationEcsAutoscaleHeadroomArgs and ElastigroupIntegrationEcsAutoscaleHeadroomOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationEcsAutoscaleHeadroomInput` via:
 //
-//          ElastigroupIntegrationEcsAutoscaleHeadroomArgs{...}
+//	ElastigroupIntegrationEcsAutoscaleHeadroomArgs{...}
 type ElastigroupIntegrationEcsAutoscaleHeadroomInput interface {
 	pulumi.Input
 
@@ -3671,11 +3671,11 @@ func (i ElastigroupIntegrationEcsAutoscaleHeadroomArgs) ToElastigroupIntegration
 // ElastigroupIntegrationEcsAutoscaleHeadroomPtrInput is an input type that accepts ElastigroupIntegrationEcsAutoscaleHeadroomArgs, ElastigroupIntegrationEcsAutoscaleHeadroomPtr and ElastigroupIntegrationEcsAutoscaleHeadroomPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationEcsAutoscaleHeadroomPtrInput` via:
 //
-//          ElastigroupIntegrationEcsAutoscaleHeadroomArgs{...}
+//	        ElastigroupIntegrationEcsAutoscaleHeadroomArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationEcsAutoscaleHeadroomPtrInput interface {
 	pulumi.Input
 
@@ -3802,7 +3802,7 @@ type ElastigroupIntegrationEcsBatch struct {
 // ElastigroupIntegrationEcsBatchInput is an input type that accepts ElastigroupIntegrationEcsBatchArgs and ElastigroupIntegrationEcsBatchOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationEcsBatchInput` via:
 //
-//          ElastigroupIntegrationEcsBatchArgs{...}
+//	ElastigroupIntegrationEcsBatchArgs{...}
 type ElastigroupIntegrationEcsBatchInput interface {
 	pulumi.Input
 
@@ -3838,11 +3838,11 @@ func (i ElastigroupIntegrationEcsBatchArgs) ToElastigroupIntegrationEcsBatchPtrO
 // ElastigroupIntegrationEcsBatchPtrInput is an input type that accepts ElastigroupIntegrationEcsBatchArgs, ElastigroupIntegrationEcsBatchPtr and ElastigroupIntegrationEcsBatchPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationEcsBatchPtrInput` via:
 //
-//          ElastigroupIntegrationEcsBatchArgs{...}
+//	        ElastigroupIntegrationEcsBatchArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationEcsBatchPtrInput interface {
 	pulumi.Input
 
@@ -3939,7 +3939,7 @@ type ElastigroupIntegrationGitlab struct {
 // ElastigroupIntegrationGitlabInput is an input type that accepts ElastigroupIntegrationGitlabArgs and ElastigroupIntegrationGitlabOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationGitlabInput` via:
 //
-//          ElastigroupIntegrationGitlabArgs{...}
+//	ElastigroupIntegrationGitlabArgs{...}
 type ElastigroupIntegrationGitlabInput interface {
 	pulumi.Input
 
@@ -3975,11 +3975,11 @@ func (i ElastigroupIntegrationGitlabArgs) ToElastigroupIntegrationGitlabPtrOutpu
 // ElastigroupIntegrationGitlabPtrInput is an input type that accepts ElastigroupIntegrationGitlabArgs, ElastigroupIntegrationGitlabPtr and ElastigroupIntegrationGitlabPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationGitlabPtrInput` via:
 //
-//          ElastigroupIntegrationGitlabArgs{...}
+//	        ElastigroupIntegrationGitlabArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationGitlabPtrInput interface {
 	pulumi.Input
 
@@ -4076,7 +4076,7 @@ type ElastigroupIntegrationGitlabRunner struct {
 // ElastigroupIntegrationGitlabRunnerInput is an input type that accepts ElastigroupIntegrationGitlabRunnerArgs and ElastigroupIntegrationGitlabRunnerOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationGitlabRunnerInput` via:
 //
-//          ElastigroupIntegrationGitlabRunnerArgs{...}
+//	ElastigroupIntegrationGitlabRunnerArgs{...}
 type ElastigroupIntegrationGitlabRunnerInput interface {
 	pulumi.Input
 
@@ -4112,11 +4112,11 @@ func (i ElastigroupIntegrationGitlabRunnerArgs) ToElastigroupIntegrationGitlabRu
 // ElastigroupIntegrationGitlabRunnerPtrInput is an input type that accepts ElastigroupIntegrationGitlabRunnerArgs, ElastigroupIntegrationGitlabRunnerPtr and ElastigroupIntegrationGitlabRunnerPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationGitlabRunnerPtrInput` via:
 //
-//          ElastigroupIntegrationGitlabRunnerArgs{...}
+//	        ElastigroupIntegrationGitlabRunnerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationGitlabRunnerPtrInput interface {
 	pulumi.Input
 
@@ -4230,7 +4230,7 @@ type ElastigroupIntegrationKubernetes struct {
 // ElastigroupIntegrationKubernetesInput is an input type that accepts ElastigroupIntegrationKubernetesArgs and ElastigroupIntegrationKubernetesOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationKubernetesInput` via:
 //
-//          ElastigroupIntegrationKubernetesArgs{...}
+//	ElastigroupIntegrationKubernetesArgs{...}
 type ElastigroupIntegrationKubernetesInput interface {
 	pulumi.Input
 
@@ -4283,11 +4283,11 @@ func (i ElastigroupIntegrationKubernetesArgs) ToElastigroupIntegrationKubernetes
 // ElastigroupIntegrationKubernetesPtrInput is an input type that accepts ElastigroupIntegrationKubernetesArgs, ElastigroupIntegrationKubernetesPtr and ElastigroupIntegrationKubernetesPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationKubernetesPtrInput` via:
 //
-//          ElastigroupIntegrationKubernetesArgs{...}
+//	        ElastigroupIntegrationKubernetesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationKubernetesPtrInput interface {
 	pulumi.Input
 
@@ -4523,7 +4523,7 @@ type ElastigroupIntegrationKubernetesAutoscaleDown struct {
 // ElastigroupIntegrationKubernetesAutoscaleDownInput is an input type that accepts ElastigroupIntegrationKubernetesAutoscaleDownArgs and ElastigroupIntegrationKubernetesAutoscaleDownOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationKubernetesAutoscaleDownInput` via:
 //
-//          ElastigroupIntegrationKubernetesAutoscaleDownArgs{...}
+//	ElastigroupIntegrationKubernetesAutoscaleDownArgs{...}
 type ElastigroupIntegrationKubernetesAutoscaleDownInput interface {
 	pulumi.Input
 
@@ -4559,11 +4559,11 @@ func (i ElastigroupIntegrationKubernetesAutoscaleDownArgs) ToElastigroupIntegrat
 // ElastigroupIntegrationKubernetesAutoscaleDownPtrInput is an input type that accepts ElastigroupIntegrationKubernetesAutoscaleDownArgs, ElastigroupIntegrationKubernetesAutoscaleDownPtr and ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationKubernetesAutoscaleDownPtrInput` via:
 //
-//          ElastigroupIntegrationKubernetesAutoscaleDownArgs{...}
+//	        ElastigroupIntegrationKubernetesAutoscaleDownArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationKubernetesAutoscaleDownPtrInput interface {
 	pulumi.Input
 
@@ -4664,7 +4664,7 @@ type ElastigroupIntegrationKubernetesAutoscaleHeadroom struct {
 // ElastigroupIntegrationKubernetesAutoscaleHeadroomInput is an input type that accepts ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs and ElastigroupIntegrationKubernetesAutoscaleHeadroomOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationKubernetesAutoscaleHeadroomInput` via:
 //
-//          ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs{...}
+//	ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs{...}
 type ElastigroupIntegrationKubernetesAutoscaleHeadroomInput interface {
 	pulumi.Input
 
@@ -4704,11 +4704,11 @@ func (i ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs) ToElastigroupInte
 // ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrInput is an input type that accepts ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs, ElastigroupIntegrationKubernetesAutoscaleHeadroomPtr and ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrInput` via:
 //
-//          ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs{...}
+//	        ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationKubernetesAutoscaleHeadroomPtrInput interface {
 	pulumi.Input
 
@@ -4836,7 +4836,7 @@ type ElastigroupIntegrationKubernetesAutoscaleLabel struct {
 // ElastigroupIntegrationKubernetesAutoscaleLabelInput is an input type that accepts ElastigroupIntegrationKubernetesAutoscaleLabelArgs and ElastigroupIntegrationKubernetesAutoscaleLabelOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationKubernetesAutoscaleLabelInput` via:
 //
-//          ElastigroupIntegrationKubernetesAutoscaleLabelArgs{...}
+//	ElastigroupIntegrationKubernetesAutoscaleLabelArgs{...}
 type ElastigroupIntegrationKubernetesAutoscaleLabelInput interface {
 	pulumi.Input
 
@@ -4865,7 +4865,7 @@ func (i ElastigroupIntegrationKubernetesAutoscaleLabelArgs) ToElastigroupIntegra
 // ElastigroupIntegrationKubernetesAutoscaleLabelArrayInput is an input type that accepts ElastigroupIntegrationKubernetesAutoscaleLabelArray and ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationKubernetesAutoscaleLabelArrayInput` via:
 //
-//          ElastigroupIntegrationKubernetesAutoscaleLabelArray{ ElastigroupIntegrationKubernetesAutoscaleLabelArgs{...} }
+//	ElastigroupIntegrationKubernetesAutoscaleLabelArray{ ElastigroupIntegrationKubernetesAutoscaleLabelArgs{...} }
 type ElastigroupIntegrationKubernetesAutoscaleLabelArrayInput interface {
 	pulumi.Input
 
@@ -4938,7 +4938,7 @@ type ElastigroupIntegrationMesosphere struct {
 // ElastigroupIntegrationMesosphereInput is an input type that accepts ElastigroupIntegrationMesosphereArgs and ElastigroupIntegrationMesosphereOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationMesosphereInput` via:
 //
-//          ElastigroupIntegrationMesosphereArgs{...}
+//	ElastigroupIntegrationMesosphereArgs{...}
 type ElastigroupIntegrationMesosphereInput interface {
 	pulumi.Input
 
@@ -4974,11 +4974,11 @@ func (i ElastigroupIntegrationMesosphereArgs) ToElastigroupIntegrationMesosphere
 // ElastigroupIntegrationMesospherePtrInput is an input type that accepts ElastigroupIntegrationMesosphereArgs, ElastigroupIntegrationMesospherePtr and ElastigroupIntegrationMesospherePtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationMesospherePtrInput` via:
 //
-//          ElastigroupIntegrationMesosphereArgs{...}
+//	        ElastigroupIntegrationMesosphereArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationMesospherePtrInput interface {
 	pulumi.Input
 
@@ -5075,7 +5075,7 @@ type ElastigroupIntegrationMultaiRuntime struct {
 // ElastigroupIntegrationMultaiRuntimeInput is an input type that accepts ElastigroupIntegrationMultaiRuntimeArgs and ElastigroupIntegrationMultaiRuntimeOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationMultaiRuntimeInput` via:
 //
-//          ElastigroupIntegrationMultaiRuntimeArgs{...}
+//	ElastigroupIntegrationMultaiRuntimeArgs{...}
 type ElastigroupIntegrationMultaiRuntimeInput interface {
 	pulumi.Input
 
@@ -5111,11 +5111,11 @@ func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiR
 // ElastigroupIntegrationMultaiRuntimePtrInput is an input type that accepts ElastigroupIntegrationMultaiRuntimeArgs, ElastigroupIntegrationMultaiRuntimePtr and ElastigroupIntegrationMultaiRuntimePtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationMultaiRuntimePtrInput` via:
 //
-//          ElastigroupIntegrationMultaiRuntimeArgs{...}
+//	        ElastigroupIntegrationMultaiRuntimeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationMultaiRuntimePtrInput interface {
 	pulumi.Input
 
@@ -5226,7 +5226,7 @@ type ElastigroupIntegrationNomad struct {
 // ElastigroupIntegrationNomadInput is an input type that accepts ElastigroupIntegrationNomadArgs and ElastigroupIntegrationNomadOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationNomadInput` via:
 //
-//          ElastigroupIntegrationNomadArgs{...}
+//	ElastigroupIntegrationNomadArgs{...}
 type ElastigroupIntegrationNomadInput interface {
 	pulumi.Input
 
@@ -5276,11 +5276,11 @@ func (i ElastigroupIntegrationNomadArgs) ToElastigroupIntegrationNomadPtrOutputW
 // ElastigroupIntegrationNomadPtrInput is an input type that accepts ElastigroupIntegrationNomadArgs, ElastigroupIntegrationNomadPtr and ElastigroupIntegrationNomadPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationNomadPtrInput` via:
 //
-//          ElastigroupIntegrationNomadArgs{...}
+//	        ElastigroupIntegrationNomadArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationNomadPtrInput interface {
 	pulumi.Input
 
@@ -5487,7 +5487,7 @@ type ElastigroupIntegrationNomadAutoscaleConstraint struct {
 // ElastigroupIntegrationNomadAutoscaleConstraintInput is an input type that accepts ElastigroupIntegrationNomadAutoscaleConstraintArgs and ElastigroupIntegrationNomadAutoscaleConstraintOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationNomadAutoscaleConstraintInput` via:
 //
-//          ElastigroupIntegrationNomadAutoscaleConstraintArgs{...}
+//	ElastigroupIntegrationNomadAutoscaleConstraintArgs{...}
 type ElastigroupIntegrationNomadAutoscaleConstraintInput interface {
 	pulumi.Input
 
@@ -5516,7 +5516,7 @@ func (i ElastigroupIntegrationNomadAutoscaleConstraintArgs) ToElastigroupIntegra
 // ElastigroupIntegrationNomadAutoscaleConstraintArrayInput is an input type that accepts ElastigroupIntegrationNomadAutoscaleConstraintArray and ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationNomadAutoscaleConstraintArrayInput` via:
 //
-//          ElastigroupIntegrationNomadAutoscaleConstraintArray{ ElastigroupIntegrationNomadAutoscaleConstraintArgs{...} }
+//	ElastigroupIntegrationNomadAutoscaleConstraintArray{ ElastigroupIntegrationNomadAutoscaleConstraintArgs{...} }
 type ElastigroupIntegrationNomadAutoscaleConstraintArrayInput interface {
 	pulumi.Input
 
@@ -5589,7 +5589,7 @@ type ElastigroupIntegrationNomadAutoscaleDown struct {
 // ElastigroupIntegrationNomadAutoscaleDownInput is an input type that accepts ElastigroupIntegrationNomadAutoscaleDownArgs and ElastigroupIntegrationNomadAutoscaleDownOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationNomadAutoscaleDownInput` via:
 //
-//          ElastigroupIntegrationNomadAutoscaleDownArgs{...}
+//	ElastigroupIntegrationNomadAutoscaleDownArgs{...}
 type ElastigroupIntegrationNomadAutoscaleDownInput interface {
 	pulumi.Input
 
@@ -5625,11 +5625,11 @@ func (i ElastigroupIntegrationNomadAutoscaleDownArgs) ToElastigroupIntegrationNo
 // ElastigroupIntegrationNomadAutoscaleDownPtrInput is an input type that accepts ElastigroupIntegrationNomadAutoscaleDownArgs, ElastigroupIntegrationNomadAutoscaleDownPtr and ElastigroupIntegrationNomadAutoscaleDownPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationNomadAutoscaleDownPtrInput` via:
 //
-//          ElastigroupIntegrationNomadAutoscaleDownArgs{...}
+//	        ElastigroupIntegrationNomadAutoscaleDownArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationNomadAutoscaleDownPtrInput interface {
 	pulumi.Input
 
@@ -5730,7 +5730,7 @@ type ElastigroupIntegrationNomadAutoscaleHeadroom struct {
 // ElastigroupIntegrationNomadAutoscaleHeadroomInput is an input type that accepts ElastigroupIntegrationNomadAutoscaleHeadroomArgs and ElastigroupIntegrationNomadAutoscaleHeadroomOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationNomadAutoscaleHeadroomInput` via:
 //
-//          ElastigroupIntegrationNomadAutoscaleHeadroomArgs{...}
+//	ElastigroupIntegrationNomadAutoscaleHeadroomArgs{...}
 type ElastigroupIntegrationNomadAutoscaleHeadroomInput interface {
 	pulumi.Input
 
@@ -5770,11 +5770,11 @@ func (i ElastigroupIntegrationNomadAutoscaleHeadroomArgs) ToElastigroupIntegrati
 // ElastigroupIntegrationNomadAutoscaleHeadroomPtrInput is an input type that accepts ElastigroupIntegrationNomadAutoscaleHeadroomArgs, ElastigroupIntegrationNomadAutoscaleHeadroomPtr and ElastigroupIntegrationNomadAutoscaleHeadroomPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationNomadAutoscaleHeadroomPtrInput` via:
 //
-//          ElastigroupIntegrationNomadAutoscaleHeadroomArgs{...}
+//	        ElastigroupIntegrationNomadAutoscaleHeadroomArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationNomadAutoscaleHeadroomPtrInput interface {
 	pulumi.Input
 
@@ -5908,7 +5908,7 @@ type ElastigroupIntegrationRancher struct {
 // ElastigroupIntegrationRancherInput is an input type that accepts ElastigroupIntegrationRancherArgs and ElastigroupIntegrationRancherOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationRancherInput` via:
 //
-//          ElastigroupIntegrationRancherArgs{...}
+//	ElastigroupIntegrationRancherArgs{...}
 type ElastigroupIntegrationRancherInput interface {
 	pulumi.Input
 
@@ -5951,11 +5951,11 @@ func (i ElastigroupIntegrationRancherArgs) ToElastigroupIntegrationRancherPtrOut
 // ElastigroupIntegrationRancherPtrInput is an input type that accepts ElastigroupIntegrationRancherArgs, ElastigroupIntegrationRancherPtr and ElastigroupIntegrationRancherPtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationRancherPtrInput` via:
 //
-//          ElastigroupIntegrationRancherArgs{...}
+//	        ElastigroupIntegrationRancherArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationRancherPtrInput interface {
 	pulumi.Input
 
@@ -6099,7 +6099,7 @@ type ElastigroupIntegrationRoute53 struct {
 // ElastigroupIntegrationRoute53Input is an input type that accepts ElastigroupIntegrationRoute53Args and ElastigroupIntegrationRoute53Output values.
 // You can construct a concrete instance of `ElastigroupIntegrationRoute53Input` via:
 //
-//          ElastigroupIntegrationRoute53Args{...}
+//	ElastigroupIntegrationRoute53Args{...}
 type ElastigroupIntegrationRoute53Input interface {
 	pulumi.Input
 
@@ -6135,11 +6135,11 @@ func (i ElastigroupIntegrationRoute53Args) ToElastigroupIntegrationRoute53PtrOut
 // ElastigroupIntegrationRoute53PtrInput is an input type that accepts ElastigroupIntegrationRoute53Args, ElastigroupIntegrationRoute53Ptr and ElastigroupIntegrationRoute53PtrOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationRoute53PtrInput` via:
 //
-//          ElastigroupIntegrationRoute53Args{...}
+//	        ElastigroupIntegrationRoute53Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupIntegrationRoute53PtrInput interface {
 	pulumi.Input
 
@@ -6242,7 +6242,7 @@ type ElastigroupIntegrationRoute53Domain struct {
 // ElastigroupIntegrationRoute53DomainInput is an input type that accepts ElastigroupIntegrationRoute53DomainArgs and ElastigroupIntegrationRoute53DomainOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationRoute53DomainInput` via:
 //
-//          ElastigroupIntegrationRoute53DomainArgs{...}
+//	ElastigroupIntegrationRoute53DomainArgs{...}
 type ElastigroupIntegrationRoute53DomainInput interface {
 	pulumi.Input
 
@@ -6276,7 +6276,7 @@ func (i ElastigroupIntegrationRoute53DomainArgs) ToElastigroupIntegrationRoute53
 // ElastigroupIntegrationRoute53DomainArrayInput is an input type that accepts ElastigroupIntegrationRoute53DomainArray and ElastigroupIntegrationRoute53DomainArrayOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationRoute53DomainArrayInput` via:
 //
-//          ElastigroupIntegrationRoute53DomainArray{ ElastigroupIntegrationRoute53DomainArgs{...} }
+//	ElastigroupIntegrationRoute53DomainArray{ ElastigroupIntegrationRoute53DomainArgs{...} }
 type ElastigroupIntegrationRoute53DomainArrayInput interface {
 	pulumi.Input
 
@@ -6366,7 +6366,7 @@ type ElastigroupIntegrationRoute53DomainRecordSet struct {
 // ElastigroupIntegrationRoute53DomainRecordSetInput is an input type that accepts ElastigroupIntegrationRoute53DomainRecordSetArgs and ElastigroupIntegrationRoute53DomainRecordSetOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationRoute53DomainRecordSetInput` via:
 //
-//          ElastigroupIntegrationRoute53DomainRecordSetArgs{...}
+//	ElastigroupIntegrationRoute53DomainRecordSetArgs{...}
 type ElastigroupIntegrationRoute53DomainRecordSetInput interface {
 	pulumi.Input
 
@@ -6398,7 +6398,7 @@ func (i ElastigroupIntegrationRoute53DomainRecordSetArgs) ToElastigroupIntegrati
 // ElastigroupIntegrationRoute53DomainRecordSetArrayInput is an input type that accepts ElastigroupIntegrationRoute53DomainRecordSetArray and ElastigroupIntegrationRoute53DomainRecordSetArrayOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationRoute53DomainRecordSetArrayInput` via:
 //
-//          ElastigroupIntegrationRoute53DomainRecordSetArray{ ElastigroupIntegrationRoute53DomainRecordSetArgs{...} }
+//	ElastigroupIntegrationRoute53DomainRecordSetArray{ ElastigroupIntegrationRoute53DomainRecordSetArgs{...} }
 type ElastigroupIntegrationRoute53DomainRecordSetArrayInput interface {
 	pulumi.Input
 
@@ -6481,7 +6481,7 @@ type ElastigroupItf struct {
 // ElastigroupItfInput is an input type that accepts ElastigroupItfArgs and ElastigroupItfOutput values.
 // You can construct a concrete instance of `ElastigroupItfInput` via:
 //
-//          ElastigroupItfArgs{...}
+//	ElastigroupItfArgs{...}
 type ElastigroupItfInput interface {
 	pulumi.Input
 
@@ -6513,7 +6513,7 @@ func (i ElastigroupItfArgs) ToElastigroupItfOutputWithContext(ctx context.Contex
 // ElastigroupItfArrayInput is an input type that accepts ElastigroupItfArray and ElastigroupItfArrayOutput values.
 // You can construct a concrete instance of `ElastigroupItfArrayInput` via:
 //
-//          ElastigroupItfArray{ ElastigroupItfArgs{...} }
+//	ElastigroupItfArray{ ElastigroupItfArgs{...} }
 type ElastigroupItfArrayInput interface {
 	pulumi.Input
 
@@ -6601,7 +6601,7 @@ type ElastigroupItfDefaultStaticTargetGroup struct {
 // ElastigroupItfDefaultStaticTargetGroupInput is an input type that accepts ElastigroupItfDefaultStaticTargetGroupArgs and ElastigroupItfDefaultStaticTargetGroupOutput values.
 // You can construct a concrete instance of `ElastigroupItfDefaultStaticTargetGroupInput` via:
 //
-//          ElastigroupItfDefaultStaticTargetGroupArgs{...}
+//	ElastigroupItfDefaultStaticTargetGroupArgs{...}
 type ElastigroupItfDefaultStaticTargetGroupInput interface {
 	pulumi.Input
 
@@ -6637,11 +6637,11 @@ func (i ElastigroupItfDefaultStaticTargetGroupArgs) ToElastigroupItfDefaultStati
 // ElastigroupItfDefaultStaticTargetGroupPtrInput is an input type that accepts ElastigroupItfDefaultStaticTargetGroupArgs, ElastigroupItfDefaultStaticTargetGroupPtr and ElastigroupItfDefaultStaticTargetGroupPtrOutput values.
 // You can construct a concrete instance of `ElastigroupItfDefaultStaticTargetGroupPtrInput` via:
 //
-//          ElastigroupItfDefaultStaticTargetGroupArgs{...}
+//	        ElastigroupItfDefaultStaticTargetGroupArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupItfDefaultStaticTargetGroupPtrInput interface {
 	pulumi.Input
 
@@ -6749,7 +6749,7 @@ type ElastigroupItfLoadBalancer struct {
 // ElastigroupItfLoadBalancerInput is an input type that accepts ElastigroupItfLoadBalancerArgs and ElastigroupItfLoadBalancerOutput values.
 // You can construct a concrete instance of `ElastigroupItfLoadBalancerInput` via:
 //
-//          ElastigroupItfLoadBalancerArgs{...}
+//	ElastigroupItfLoadBalancerArgs{...}
 type ElastigroupItfLoadBalancerInput interface {
 	pulumi.Input
 
@@ -6777,7 +6777,7 @@ func (i ElastigroupItfLoadBalancerArgs) ToElastigroupItfLoadBalancerOutputWithCo
 // ElastigroupItfLoadBalancerArrayInput is an input type that accepts ElastigroupItfLoadBalancerArray and ElastigroupItfLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `ElastigroupItfLoadBalancerArrayInput` via:
 //
-//          ElastigroupItfLoadBalancerArray{ ElastigroupItfLoadBalancerArgs{...} }
+//	ElastigroupItfLoadBalancerArray{ ElastigroupItfLoadBalancerArgs{...} }
 type ElastigroupItfLoadBalancerArrayInput interface {
 	pulumi.Input
 
@@ -6849,7 +6849,7 @@ type ElastigroupItfLoadBalancerListenerRule struct {
 // ElastigroupItfLoadBalancerListenerRuleInput is an input type that accepts ElastigroupItfLoadBalancerListenerRuleArgs and ElastigroupItfLoadBalancerListenerRuleOutput values.
 // You can construct a concrete instance of `ElastigroupItfLoadBalancerListenerRuleInput` via:
 //
-//          ElastigroupItfLoadBalancerListenerRuleArgs{...}
+//	ElastigroupItfLoadBalancerListenerRuleArgs{...}
 type ElastigroupItfLoadBalancerListenerRuleInput interface {
 	pulumi.Input
 
@@ -6877,7 +6877,7 @@ func (i ElastigroupItfLoadBalancerListenerRuleArgs) ToElastigroupItfLoadBalancer
 // ElastigroupItfLoadBalancerListenerRuleArrayInput is an input type that accepts ElastigroupItfLoadBalancerListenerRuleArray and ElastigroupItfLoadBalancerListenerRuleArrayOutput values.
 // You can construct a concrete instance of `ElastigroupItfLoadBalancerListenerRuleArrayInput` via:
 //
-//          ElastigroupItfLoadBalancerListenerRuleArray{ ElastigroupItfLoadBalancerListenerRuleArgs{...} }
+//	ElastigroupItfLoadBalancerListenerRuleArray{ ElastigroupItfLoadBalancerListenerRuleArgs{...} }
 type ElastigroupItfLoadBalancerListenerRuleArrayInput interface {
 	pulumi.Input
 
@@ -6951,7 +6951,7 @@ type ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup struct {
 // ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupInput is an input type that accepts ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs and ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupOutput values.
 // You can construct a concrete instance of `ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupInput` via:
 //
-//          ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs{...}
+//	ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs{...}
 type ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupInput interface {
 	pulumi.Input
 
@@ -6987,11 +6987,11 @@ func (i ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs) ToElastigro
 // ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrInput is an input type that accepts ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs, ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtr and ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrOutput values.
 // You can construct a concrete instance of `ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrInput` via:
 //
-//          ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs{...}
+//	        ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupPtrInput interface {
 	pulumi.Input
 
@@ -7111,7 +7111,7 @@ type ElastigroupItfTargetGroupConfig struct {
 // ElastigroupItfTargetGroupConfigInput is an input type that accepts ElastigroupItfTargetGroupConfigArgs and ElastigroupItfTargetGroupConfigOutput values.
 // You can construct a concrete instance of `ElastigroupItfTargetGroupConfigInput` via:
 //
-//          ElastigroupItfTargetGroupConfigArgs{...}
+//	ElastigroupItfTargetGroupConfigArgs{...}
 type ElastigroupItfTargetGroupConfigInput interface {
 	pulumi.Input
 
@@ -7151,7 +7151,7 @@ func (i ElastigroupItfTargetGroupConfigArgs) ToElastigroupItfTargetGroupConfigOu
 // ElastigroupItfTargetGroupConfigArrayInput is an input type that accepts ElastigroupItfTargetGroupConfigArray and ElastigroupItfTargetGroupConfigArrayOutput values.
 // You can construct a concrete instance of `ElastigroupItfTargetGroupConfigArrayInput` via:
 //
-//          ElastigroupItfTargetGroupConfigArray{ ElastigroupItfTargetGroupConfigArgs{...} }
+//	ElastigroupItfTargetGroupConfigArray{ ElastigroupItfTargetGroupConfigArgs{...} }
 type ElastigroupItfTargetGroupConfigArrayInput interface {
 	pulumi.Input
 
@@ -7268,7 +7268,7 @@ type ElastigroupItfTargetGroupConfigMatcher struct {
 // ElastigroupItfTargetGroupConfigMatcherInput is an input type that accepts ElastigroupItfTargetGroupConfigMatcherArgs and ElastigroupItfTargetGroupConfigMatcherOutput values.
 // You can construct a concrete instance of `ElastigroupItfTargetGroupConfigMatcherInput` via:
 //
-//          ElastigroupItfTargetGroupConfigMatcherArgs{...}
+//	ElastigroupItfTargetGroupConfigMatcherArgs{...}
 type ElastigroupItfTargetGroupConfigMatcherInput interface {
 	pulumi.Input
 
@@ -7296,7 +7296,7 @@ func (i ElastigroupItfTargetGroupConfigMatcherArgs) ToElastigroupItfTargetGroupC
 // ElastigroupItfTargetGroupConfigMatcherArrayInput is an input type that accepts ElastigroupItfTargetGroupConfigMatcherArray and ElastigroupItfTargetGroupConfigMatcherArrayOutput values.
 // You can construct a concrete instance of `ElastigroupItfTargetGroupConfigMatcherArrayInput` via:
 //
-//          ElastigroupItfTargetGroupConfigMatcherArray{ ElastigroupItfTargetGroupConfigMatcherArgs{...} }
+//	ElastigroupItfTargetGroupConfigMatcherArray{ ElastigroupItfTargetGroupConfigMatcherArgs{...} }
 type ElastigroupItfTargetGroupConfigMatcherArrayInput interface {
 	pulumi.Input
 
@@ -7368,7 +7368,7 @@ type ElastigroupItfTargetGroupConfigTag struct {
 // ElastigroupItfTargetGroupConfigTagInput is an input type that accepts ElastigroupItfTargetGroupConfigTagArgs and ElastigroupItfTargetGroupConfigTagOutput values.
 // You can construct a concrete instance of `ElastigroupItfTargetGroupConfigTagInput` via:
 //
-//          ElastigroupItfTargetGroupConfigTagArgs{...}
+//	ElastigroupItfTargetGroupConfigTagArgs{...}
 type ElastigroupItfTargetGroupConfigTagInput interface {
 	pulumi.Input
 
@@ -7396,7 +7396,7 @@ func (i ElastigroupItfTargetGroupConfigTagArgs) ToElastigroupItfTargetGroupConfi
 // ElastigroupItfTargetGroupConfigTagArrayInput is an input type that accepts ElastigroupItfTargetGroupConfigTagArray and ElastigroupItfTargetGroupConfigTagArrayOutput values.
 // You can construct a concrete instance of `ElastigroupItfTargetGroupConfigTagArrayInput` via:
 //
-//          ElastigroupItfTargetGroupConfigTagArray{ ElastigroupItfTargetGroupConfigTagArgs{...} }
+//	ElastigroupItfTargetGroupConfigTagArray{ ElastigroupItfTargetGroupConfigTagArgs{...} }
 type ElastigroupItfTargetGroupConfigTagArrayInput interface {
 	pulumi.Input
 
@@ -7470,7 +7470,7 @@ type ElastigroupMetadataOptions struct {
 // ElastigroupMetadataOptionsInput is an input type that accepts ElastigroupMetadataOptionsArgs and ElastigroupMetadataOptionsOutput values.
 // You can construct a concrete instance of `ElastigroupMetadataOptionsInput` via:
 //
-//          ElastigroupMetadataOptionsArgs{...}
+//	ElastigroupMetadataOptionsArgs{...}
 type ElastigroupMetadataOptionsInput interface {
 	pulumi.Input
 
@@ -7508,11 +7508,11 @@ func (i ElastigroupMetadataOptionsArgs) ToElastigroupMetadataOptionsPtrOutputWit
 // ElastigroupMetadataOptionsPtrInput is an input type that accepts ElastigroupMetadataOptionsArgs, ElastigroupMetadataOptionsPtr and ElastigroupMetadataOptionsPtrOutput values.
 // You can construct a concrete instance of `ElastigroupMetadataOptionsPtrInput` via:
 //
-//          ElastigroupMetadataOptionsArgs{...}
+//	        ElastigroupMetadataOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupMetadataOptionsPtrInput interface {
 	pulumi.Input
 
@@ -7626,7 +7626,7 @@ type ElastigroupMultaiTargetSet struct {
 // ElastigroupMultaiTargetSetInput is an input type that accepts ElastigroupMultaiTargetSetArgs and ElastigroupMultaiTargetSetOutput values.
 // You can construct a concrete instance of `ElastigroupMultaiTargetSetInput` via:
 //
-//          ElastigroupMultaiTargetSetArgs{...}
+//	ElastigroupMultaiTargetSetArgs{...}
 type ElastigroupMultaiTargetSetInput interface {
 	pulumi.Input
 
@@ -7656,7 +7656,7 @@ func (i ElastigroupMultaiTargetSetArgs) ToElastigroupMultaiTargetSetOutputWithCo
 // ElastigroupMultaiTargetSetArrayInput is an input type that accepts ElastigroupMultaiTargetSetArray and ElastigroupMultaiTargetSetArrayOutput values.
 // You can construct a concrete instance of `ElastigroupMultaiTargetSetArrayInput` via:
 //
-//          ElastigroupMultaiTargetSetArray{ ElastigroupMultaiTargetSetArgs{...} }
+//	ElastigroupMultaiTargetSetArray{ ElastigroupMultaiTargetSetArgs{...} }
 type ElastigroupMultaiTargetSetArrayInput interface {
 	pulumi.Input
 
@@ -7732,7 +7732,7 @@ type ElastigroupMultipleMetrics struct {
 // ElastigroupMultipleMetricsInput is an input type that accepts ElastigroupMultipleMetricsArgs and ElastigroupMultipleMetricsOutput values.
 // You can construct a concrete instance of `ElastigroupMultipleMetricsInput` via:
 //
-//          ElastigroupMultipleMetricsArgs{...}
+//	ElastigroupMultipleMetricsArgs{...}
 type ElastigroupMultipleMetricsInput interface {
 	pulumi.Input
 
@@ -7770,11 +7770,11 @@ func (i ElastigroupMultipleMetricsArgs) ToElastigroupMultipleMetricsPtrOutputWit
 // ElastigroupMultipleMetricsPtrInput is an input type that accepts ElastigroupMultipleMetricsArgs, ElastigroupMultipleMetricsPtr and ElastigroupMultipleMetricsPtrOutput values.
 // You can construct a concrete instance of `ElastigroupMultipleMetricsPtrInput` via:
 //
-//          ElastigroupMultipleMetricsArgs{...}
+//	        ElastigroupMultipleMetricsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupMultipleMetricsPtrInput interface {
 	pulumi.Input
 
@@ -7888,7 +7888,7 @@ type ElastigroupMultipleMetricsExpression struct {
 // ElastigroupMultipleMetricsExpressionInput is an input type that accepts ElastigroupMultipleMetricsExpressionArgs and ElastigroupMultipleMetricsExpressionOutput values.
 // You can construct a concrete instance of `ElastigroupMultipleMetricsExpressionInput` via:
 //
-//          ElastigroupMultipleMetricsExpressionArgs{...}
+//	ElastigroupMultipleMetricsExpressionArgs{...}
 type ElastigroupMultipleMetricsExpressionInput interface {
 	pulumi.Input
 
@@ -7918,7 +7918,7 @@ func (i ElastigroupMultipleMetricsExpressionArgs) ToElastigroupMultipleMetricsEx
 // ElastigroupMultipleMetricsExpressionArrayInput is an input type that accepts ElastigroupMultipleMetricsExpressionArray and ElastigroupMultipleMetricsExpressionArrayOutput values.
 // You can construct a concrete instance of `ElastigroupMultipleMetricsExpressionArrayInput` via:
 //
-//          ElastigroupMultipleMetricsExpressionArray{ ElastigroupMultipleMetricsExpressionArgs{...} }
+//	ElastigroupMultipleMetricsExpressionArray{ ElastigroupMultipleMetricsExpressionArgs{...} }
 type ElastigroupMultipleMetricsExpressionArrayInput interface {
 	pulumi.Input
 
@@ -8006,7 +8006,7 @@ type ElastigroupMultipleMetricsMetric struct {
 // ElastigroupMultipleMetricsMetricInput is an input type that accepts ElastigroupMultipleMetricsMetricArgs and ElastigroupMultipleMetricsMetricOutput values.
 // You can construct a concrete instance of `ElastigroupMultipleMetricsMetricInput` via:
 //
-//          ElastigroupMultipleMetricsMetricArgs{...}
+//	ElastigroupMultipleMetricsMetricArgs{...}
 type ElastigroupMultipleMetricsMetricInput interface {
 	pulumi.Input
 
@@ -8048,7 +8048,7 @@ func (i ElastigroupMultipleMetricsMetricArgs) ToElastigroupMultipleMetricsMetric
 // ElastigroupMultipleMetricsMetricArrayInput is an input type that accepts ElastigroupMultipleMetricsMetricArray and ElastigroupMultipleMetricsMetricArrayOutput values.
 // You can construct a concrete instance of `ElastigroupMultipleMetricsMetricArrayInput` via:
 //
-//          ElastigroupMultipleMetricsMetricArray{ ElastigroupMultipleMetricsMetricArgs{...} }
+//	ElastigroupMultipleMetricsMetricArray{ ElastigroupMultipleMetricsMetricArgs{...} }
 type ElastigroupMultipleMetricsMetricArrayInput interface {
 	pulumi.Input
 
@@ -8153,7 +8153,7 @@ type ElastigroupMultipleMetricsMetricDimension struct {
 // ElastigroupMultipleMetricsMetricDimensionInput is an input type that accepts ElastigroupMultipleMetricsMetricDimensionArgs and ElastigroupMultipleMetricsMetricDimensionOutput values.
 // You can construct a concrete instance of `ElastigroupMultipleMetricsMetricDimensionInput` via:
 //
-//          ElastigroupMultipleMetricsMetricDimensionArgs{...}
+//	ElastigroupMultipleMetricsMetricDimensionArgs{...}
 type ElastigroupMultipleMetricsMetricDimensionInput interface {
 	pulumi.Input
 
@@ -8183,7 +8183,7 @@ func (i ElastigroupMultipleMetricsMetricDimensionArgs) ToElastigroupMultipleMetr
 // ElastigroupMultipleMetricsMetricDimensionArrayInput is an input type that accepts ElastigroupMultipleMetricsMetricDimensionArray and ElastigroupMultipleMetricsMetricDimensionArrayOutput values.
 // You can construct a concrete instance of `ElastigroupMultipleMetricsMetricDimensionArrayInput` via:
 //
-//          ElastigroupMultipleMetricsMetricDimensionArray{ ElastigroupMultipleMetricsMetricDimensionArgs{...} }
+//	ElastigroupMultipleMetricsMetricDimensionArray{ ElastigroupMultipleMetricsMetricDimensionArgs{...} }
 type ElastigroupMultipleMetricsMetricDimensionArrayInput interface {
 	pulumi.Input
 
@@ -8271,7 +8271,7 @@ type ElastigroupNetworkInterface struct {
 // ElastigroupNetworkInterfaceInput is an input type that accepts ElastigroupNetworkInterfaceArgs and ElastigroupNetworkInterfaceOutput values.
 // You can construct a concrete instance of `ElastigroupNetworkInterfaceInput` via:
 //
-//          ElastigroupNetworkInterfaceArgs{...}
+//	ElastigroupNetworkInterfaceArgs{...}
 type ElastigroupNetworkInterfaceInput interface {
 	pulumi.Input
 
@@ -8313,7 +8313,7 @@ func (i ElastigroupNetworkInterfaceArgs) ToElastigroupNetworkInterfaceOutputWith
 // ElastigroupNetworkInterfaceArrayInput is an input type that accepts ElastigroupNetworkInterfaceArray and ElastigroupNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `ElastigroupNetworkInterfaceArrayInput` via:
 //
-//          ElastigroupNetworkInterfaceArray{ ElastigroupNetworkInterfaceArgs{...} }
+//	ElastigroupNetworkInterfaceArray{ ElastigroupNetworkInterfaceArgs{...} }
 type ElastigroupNetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -8423,7 +8423,7 @@ type ElastigroupResourceTagSpecification struct {
 // ElastigroupResourceTagSpecificationInput is an input type that accepts ElastigroupResourceTagSpecificationArgs and ElastigroupResourceTagSpecificationOutput values.
 // You can construct a concrete instance of `ElastigroupResourceTagSpecificationInput` via:
 //
-//          ElastigroupResourceTagSpecificationArgs{...}
+//	ElastigroupResourceTagSpecificationArgs{...}
 type ElastigroupResourceTagSpecificationInput interface {
 	pulumi.Input
 
@@ -8457,7 +8457,7 @@ func (i ElastigroupResourceTagSpecificationArgs) ToElastigroupResourceTagSpecifi
 // ElastigroupResourceTagSpecificationArrayInput is an input type that accepts ElastigroupResourceTagSpecificationArray and ElastigroupResourceTagSpecificationArrayOutput values.
 // You can construct a concrete instance of `ElastigroupResourceTagSpecificationArrayInput` via:
 //
-//          ElastigroupResourceTagSpecificationArray{ ElastigroupResourceTagSpecificationArgs{...} }
+//	ElastigroupResourceTagSpecificationArray{ ElastigroupResourceTagSpecificationArgs{...} }
 type ElastigroupResourceTagSpecificationArrayInput interface {
 	pulumi.Input
 
@@ -8543,7 +8543,7 @@ type ElastigroupRevertToSpot struct {
 // ElastigroupRevertToSpotInput is an input type that accepts ElastigroupRevertToSpotArgs and ElastigroupRevertToSpotOutput values.
 // You can construct a concrete instance of `ElastigroupRevertToSpotInput` via:
 //
-//          ElastigroupRevertToSpotArgs{...}
+//	ElastigroupRevertToSpotArgs{...}
 type ElastigroupRevertToSpotInput interface {
 	pulumi.Input
 
@@ -8581,11 +8581,11 @@ func (i ElastigroupRevertToSpotArgs) ToElastigroupRevertToSpotPtrOutputWithConte
 // ElastigroupRevertToSpotPtrInput is an input type that accepts ElastigroupRevertToSpotArgs, ElastigroupRevertToSpotPtr and ElastigroupRevertToSpotPtrOutput values.
 // You can construct a concrete instance of `ElastigroupRevertToSpotPtrInput` via:
 //
-//          ElastigroupRevertToSpotArgs{...}
+//	        ElastigroupRevertToSpotArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupRevertToSpotPtrInput interface {
 	pulumi.Input
 
@@ -8736,7 +8736,7 @@ type ElastigroupScalingDownPolicy struct {
 // ElastigroupScalingDownPolicyInput is an input type that accepts ElastigroupScalingDownPolicyArgs and ElastigroupScalingDownPolicyOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyInput` via:
 //
-//          ElastigroupScalingDownPolicyArgs{...}
+//	ElastigroupScalingDownPolicyArgs{...}
 type ElastigroupScalingDownPolicyInput interface {
 	pulumi.Input
 
@@ -8803,7 +8803,7 @@ func (i ElastigroupScalingDownPolicyArgs) ToElastigroupScalingDownPolicyOutputWi
 // ElastigroupScalingDownPolicyArrayInput is an input type that accepts ElastigroupScalingDownPolicyArray and ElastigroupScalingDownPolicyArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyArrayInput` via:
 //
-//          ElastigroupScalingDownPolicyArray{ ElastigroupScalingDownPolicyArgs{...} }
+//	ElastigroupScalingDownPolicyArray{ ElastigroupScalingDownPolicyArgs{...} }
 type ElastigroupScalingDownPolicyArrayInput interface {
 	pulumi.Input
 
@@ -8975,7 +8975,7 @@ type ElastigroupScalingDownPolicyDimension struct {
 // ElastigroupScalingDownPolicyDimensionInput is an input type that accepts ElastigroupScalingDownPolicyDimensionArgs and ElastigroupScalingDownPolicyDimensionOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyDimensionInput` via:
 //
-//          ElastigroupScalingDownPolicyDimensionArgs{...}
+//	ElastigroupScalingDownPolicyDimensionArgs{...}
 type ElastigroupScalingDownPolicyDimensionInput interface {
 	pulumi.Input
 
@@ -9005,7 +9005,7 @@ func (i ElastigroupScalingDownPolicyDimensionArgs) ToElastigroupScalingDownPolic
 // ElastigroupScalingDownPolicyDimensionArrayInput is an input type that accepts ElastigroupScalingDownPolicyDimensionArray and ElastigroupScalingDownPolicyDimensionArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyDimensionArrayInput` via:
 //
-//          ElastigroupScalingDownPolicyDimensionArray{ ElastigroupScalingDownPolicyDimensionArgs{...} }
+//	ElastigroupScalingDownPolicyDimensionArray{ ElastigroupScalingDownPolicyDimensionArgs{...} }
 type ElastigroupScalingDownPolicyDimensionArrayInput interface {
 	pulumi.Input
 
@@ -9081,7 +9081,7 @@ type ElastigroupScalingDownPolicyStepAdjustment struct {
 // ElastigroupScalingDownPolicyStepAdjustmentInput is an input type that accepts ElastigroupScalingDownPolicyStepAdjustmentArgs and ElastigroupScalingDownPolicyStepAdjustmentOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyStepAdjustmentInput` via:
 //
-//          ElastigroupScalingDownPolicyStepAdjustmentArgs{...}
+//	ElastigroupScalingDownPolicyStepAdjustmentArgs{...}
 type ElastigroupScalingDownPolicyStepAdjustmentInput interface {
 	pulumi.Input
 
@@ -9111,7 +9111,7 @@ func (i ElastigroupScalingDownPolicyStepAdjustmentArgs) ToElastigroupScalingDown
 // ElastigroupScalingDownPolicyStepAdjustmentArrayInput is an input type that accepts ElastigroupScalingDownPolicyStepAdjustmentArray and ElastigroupScalingDownPolicyStepAdjustmentArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyStepAdjustmentArrayInput` via:
 //
-//          ElastigroupScalingDownPolicyStepAdjustmentArray{ ElastigroupScalingDownPolicyStepAdjustmentArgs{...} }
+//	ElastigroupScalingDownPolicyStepAdjustmentArray{ ElastigroupScalingDownPolicyStepAdjustmentArgs{...} }
 type ElastigroupScalingDownPolicyStepAdjustmentArrayInput interface {
 	pulumi.Input
 
@@ -9199,7 +9199,7 @@ type ElastigroupScalingDownPolicyStepAdjustmentAction struct {
 // ElastigroupScalingDownPolicyStepAdjustmentActionInput is an input type that accepts ElastigroupScalingDownPolicyStepAdjustmentActionArgs and ElastigroupScalingDownPolicyStepAdjustmentActionOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyStepAdjustmentActionInput` via:
 //
-//          ElastigroupScalingDownPolicyStepAdjustmentActionArgs{...}
+//	ElastigroupScalingDownPolicyStepAdjustmentActionArgs{...}
 type ElastigroupScalingDownPolicyStepAdjustmentActionInput interface {
 	pulumi.Input
 
@@ -9295,7 +9295,7 @@ type ElastigroupScalingStrategy struct {
 // ElastigroupScalingStrategyInput is an input type that accepts ElastigroupScalingStrategyArgs and ElastigroupScalingStrategyOutput values.
 // You can construct a concrete instance of `ElastigroupScalingStrategyInput` via:
 //
-//          ElastigroupScalingStrategyArgs{...}
+//	ElastigroupScalingStrategyArgs{...}
 type ElastigroupScalingStrategyInput interface {
 	pulumi.Input
 
@@ -9325,7 +9325,7 @@ func (i ElastigroupScalingStrategyArgs) ToElastigroupScalingStrategyOutputWithCo
 // ElastigroupScalingStrategyArrayInput is an input type that accepts ElastigroupScalingStrategyArray and ElastigroupScalingStrategyArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingStrategyArrayInput` via:
 //
-//          ElastigroupScalingStrategyArray{ ElastigroupScalingStrategyArgs{...} }
+//	ElastigroupScalingStrategyArray{ ElastigroupScalingStrategyArgs{...} }
 type ElastigroupScalingStrategyArrayInput interface {
 	pulumi.Input
 
@@ -9423,7 +9423,7 @@ type ElastigroupScalingTargetPolicy struct {
 // ElastigroupScalingTargetPolicyInput is an input type that accepts ElastigroupScalingTargetPolicyArgs and ElastigroupScalingTargetPolicyOutput values.
 // You can construct a concrete instance of `ElastigroupScalingTargetPolicyInput` via:
 //
-//          ElastigroupScalingTargetPolicyArgs{...}
+//	ElastigroupScalingTargetPolicyArgs{...}
 type ElastigroupScalingTargetPolicyInput interface {
 	pulumi.Input
 
@@ -9475,7 +9475,7 @@ func (i ElastigroupScalingTargetPolicyArgs) ToElastigroupScalingTargetPolicyOutp
 // ElastigroupScalingTargetPolicyArrayInput is an input type that accepts ElastigroupScalingTargetPolicyArray and ElastigroupScalingTargetPolicyArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingTargetPolicyArrayInput` via:
 //
-//          ElastigroupScalingTargetPolicyArray{ ElastigroupScalingTargetPolicyArgs{...} }
+//	ElastigroupScalingTargetPolicyArray{ ElastigroupScalingTargetPolicyArgs{...} }
 type ElastigroupScalingTargetPolicyArrayInput interface {
 	pulumi.Input
 
@@ -9606,7 +9606,7 @@ type ElastigroupScalingTargetPolicyDimension struct {
 // ElastigroupScalingTargetPolicyDimensionInput is an input type that accepts ElastigroupScalingTargetPolicyDimensionArgs and ElastigroupScalingTargetPolicyDimensionOutput values.
 // You can construct a concrete instance of `ElastigroupScalingTargetPolicyDimensionInput` via:
 //
-//          ElastigroupScalingTargetPolicyDimensionArgs{...}
+//	ElastigroupScalingTargetPolicyDimensionArgs{...}
 type ElastigroupScalingTargetPolicyDimensionInput interface {
 	pulumi.Input
 
@@ -9636,7 +9636,7 @@ func (i ElastigroupScalingTargetPolicyDimensionArgs) ToElastigroupScalingTargetP
 // ElastigroupScalingTargetPolicyDimensionArrayInput is an input type that accepts ElastigroupScalingTargetPolicyDimensionArray and ElastigroupScalingTargetPolicyDimensionArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingTargetPolicyDimensionArrayInput` via:
 //
-//          ElastigroupScalingTargetPolicyDimensionArray{ ElastigroupScalingTargetPolicyDimensionArgs{...} }
+//	ElastigroupScalingTargetPolicyDimensionArray{ ElastigroupScalingTargetPolicyDimensionArgs{...} }
 type ElastigroupScalingTargetPolicyDimensionArrayInput interface {
 	pulumi.Input
 
@@ -9749,7 +9749,7 @@ type ElastigroupScalingUpPolicy struct {
 // ElastigroupScalingUpPolicyInput is an input type that accepts ElastigroupScalingUpPolicyArgs and ElastigroupScalingUpPolicyOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyInput` via:
 //
-//          ElastigroupScalingUpPolicyArgs{...}
+//	ElastigroupScalingUpPolicyArgs{...}
 type ElastigroupScalingUpPolicyInput interface {
 	pulumi.Input
 
@@ -9816,7 +9816,7 @@ func (i ElastigroupScalingUpPolicyArgs) ToElastigroupScalingUpPolicyOutputWithCo
 // ElastigroupScalingUpPolicyArrayInput is an input type that accepts ElastigroupScalingUpPolicyArray and ElastigroupScalingUpPolicyArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyArrayInput` via:
 //
-//          ElastigroupScalingUpPolicyArray{ ElastigroupScalingUpPolicyArgs{...} }
+//	ElastigroupScalingUpPolicyArray{ ElastigroupScalingUpPolicyArgs{...} }
 type ElastigroupScalingUpPolicyArrayInput interface {
 	pulumi.Input
 
@@ -9988,7 +9988,7 @@ type ElastigroupScalingUpPolicyDimension struct {
 // ElastigroupScalingUpPolicyDimensionInput is an input type that accepts ElastigroupScalingUpPolicyDimensionArgs and ElastigroupScalingUpPolicyDimensionOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyDimensionInput` via:
 //
-//          ElastigroupScalingUpPolicyDimensionArgs{...}
+//	ElastigroupScalingUpPolicyDimensionArgs{...}
 type ElastigroupScalingUpPolicyDimensionInput interface {
 	pulumi.Input
 
@@ -10018,7 +10018,7 @@ func (i ElastigroupScalingUpPolicyDimensionArgs) ToElastigroupScalingUpPolicyDim
 // ElastigroupScalingUpPolicyDimensionArrayInput is an input type that accepts ElastigroupScalingUpPolicyDimensionArray and ElastigroupScalingUpPolicyDimensionArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyDimensionArrayInput` via:
 //
-//          ElastigroupScalingUpPolicyDimensionArray{ ElastigroupScalingUpPolicyDimensionArgs{...} }
+//	ElastigroupScalingUpPolicyDimensionArray{ ElastigroupScalingUpPolicyDimensionArgs{...} }
 type ElastigroupScalingUpPolicyDimensionArrayInput interface {
 	pulumi.Input
 
@@ -10094,7 +10094,7 @@ type ElastigroupScalingUpPolicyStepAdjustment struct {
 // ElastigroupScalingUpPolicyStepAdjustmentInput is an input type that accepts ElastigroupScalingUpPolicyStepAdjustmentArgs and ElastigroupScalingUpPolicyStepAdjustmentOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyStepAdjustmentInput` via:
 //
-//          ElastigroupScalingUpPolicyStepAdjustmentArgs{...}
+//	ElastigroupScalingUpPolicyStepAdjustmentArgs{...}
 type ElastigroupScalingUpPolicyStepAdjustmentInput interface {
 	pulumi.Input
 
@@ -10124,7 +10124,7 @@ func (i ElastigroupScalingUpPolicyStepAdjustmentArgs) ToElastigroupScalingUpPoli
 // ElastigroupScalingUpPolicyStepAdjustmentArrayInput is an input type that accepts ElastigroupScalingUpPolicyStepAdjustmentArray and ElastigroupScalingUpPolicyStepAdjustmentArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyStepAdjustmentArrayInput` via:
 //
-//          ElastigroupScalingUpPolicyStepAdjustmentArray{ ElastigroupScalingUpPolicyStepAdjustmentArgs{...} }
+//	ElastigroupScalingUpPolicyStepAdjustmentArray{ ElastigroupScalingUpPolicyStepAdjustmentArgs{...} }
 type ElastigroupScalingUpPolicyStepAdjustmentArrayInput interface {
 	pulumi.Input
 
@@ -10212,7 +10212,7 @@ type ElastigroupScalingUpPolicyStepAdjustmentAction struct {
 // ElastigroupScalingUpPolicyStepAdjustmentActionInput is an input type that accepts ElastigroupScalingUpPolicyStepAdjustmentActionArgs and ElastigroupScalingUpPolicyStepAdjustmentActionOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyStepAdjustmentActionInput` via:
 //
-//          ElastigroupScalingUpPolicyStepAdjustmentActionArgs{...}
+//	ElastigroupScalingUpPolicyStepAdjustmentActionArgs{...}
 type ElastigroupScalingUpPolicyStepAdjustmentActionInput interface {
 	pulumi.Input
 
@@ -10334,7 +10334,7 @@ type ElastigroupScheduledTask struct {
 // ElastigroupScheduledTaskInput is an input type that accepts ElastigroupScheduledTaskArgs and ElastigroupScheduledTaskOutput values.
 // You can construct a concrete instance of `ElastigroupScheduledTaskInput` via:
 //
-//          ElastigroupScheduledTaskArgs{...}
+//	ElastigroupScheduledTaskArgs{...}
 type ElastigroupScheduledTaskInput interface {
 	pulumi.Input
 
@@ -10390,7 +10390,7 @@ func (i ElastigroupScheduledTaskArgs) ToElastigroupScheduledTaskOutputWithContex
 // ElastigroupScheduledTaskArrayInput is an input type that accepts ElastigroupScheduledTaskArray and ElastigroupScheduledTaskArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScheduledTaskArrayInput` via:
 //
-//          ElastigroupScheduledTaskArray{ ElastigroupScheduledTaskArgs{...} }
+//	ElastigroupScheduledTaskArray{ ElastigroupScheduledTaskArgs{...} }
 type ElastigroupScheduledTaskArrayInput interface {
 	pulumi.Input
 
@@ -10531,7 +10531,7 @@ type ElastigroupSignal struct {
 // ElastigroupSignalInput is an input type that accepts ElastigroupSignalArgs and ElastigroupSignalOutput values.
 // You can construct a concrete instance of `ElastigroupSignalInput` via:
 //
-//          ElastigroupSignalArgs{...}
+//	ElastigroupSignalArgs{...}
 type ElastigroupSignalInput interface {
 	pulumi.Input
 
@@ -10561,7 +10561,7 @@ func (i ElastigroupSignalArgs) ToElastigroupSignalOutputWithContext(ctx context.
 // ElastigroupSignalArrayInput is an input type that accepts ElastigroupSignalArray and ElastigroupSignalArrayOutput values.
 // You can construct a concrete instance of `ElastigroupSignalArrayInput` via:
 //
-//          ElastigroupSignalArray{ ElastigroupSignalArgs{...} }
+//	ElastigroupSignalArray{ ElastigroupSignalArgs{...} }
 type ElastigroupSignalArrayInput interface {
 	pulumi.Input
 
@@ -10641,7 +10641,7 @@ type ElastigroupStatefulDeallocation struct {
 // ElastigroupStatefulDeallocationInput is an input type that accepts ElastigroupStatefulDeallocationArgs and ElastigroupStatefulDeallocationOutput values.
 // You can construct a concrete instance of `ElastigroupStatefulDeallocationInput` via:
 //
-//          ElastigroupStatefulDeallocationArgs{...}
+//	ElastigroupStatefulDeallocationArgs{...}
 type ElastigroupStatefulDeallocationInput interface {
 	pulumi.Input
 
@@ -10683,11 +10683,11 @@ func (i ElastigroupStatefulDeallocationArgs) ToElastigroupStatefulDeallocationPt
 // ElastigroupStatefulDeallocationPtrInput is an input type that accepts ElastigroupStatefulDeallocationArgs, ElastigroupStatefulDeallocationPtr and ElastigroupStatefulDeallocationPtrOutput values.
 // You can construct a concrete instance of `ElastigroupStatefulDeallocationPtrInput` via:
 //
-//          ElastigroupStatefulDeallocationArgs{...}
+//	        ElastigroupStatefulDeallocationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupStatefulDeallocationPtrInput interface {
 	pulumi.Input
 
@@ -10831,7 +10831,7 @@ type ElastigroupStatefulInstanceAction struct {
 // ElastigroupStatefulInstanceActionInput is an input type that accepts ElastigroupStatefulInstanceActionArgs and ElastigroupStatefulInstanceActionOutput values.
 // You can construct a concrete instance of `ElastigroupStatefulInstanceActionInput` via:
 //
-//          ElastigroupStatefulInstanceActionArgs{...}
+//	ElastigroupStatefulInstanceActionArgs{...}
 type ElastigroupStatefulInstanceActionInput interface {
 	pulumi.Input
 
@@ -10861,7 +10861,7 @@ func (i ElastigroupStatefulInstanceActionArgs) ToElastigroupStatefulInstanceActi
 // ElastigroupStatefulInstanceActionArrayInput is an input type that accepts ElastigroupStatefulInstanceActionArray and ElastigroupStatefulInstanceActionArrayOutput values.
 // You can construct a concrete instance of `ElastigroupStatefulInstanceActionArrayInput` via:
 //
-//          ElastigroupStatefulInstanceActionArray{ ElastigroupStatefulInstanceActionArgs{...} }
+//	ElastigroupStatefulInstanceActionArray{ ElastigroupStatefulInstanceActionArgs{...} }
 type ElastigroupStatefulInstanceActionArrayInput interface {
 	pulumi.Input
 
@@ -10936,7 +10936,7 @@ type ElastigroupTag struct {
 // ElastigroupTagInput is an input type that accepts ElastigroupTagArgs and ElastigroupTagOutput values.
 // You can construct a concrete instance of `ElastigroupTagInput` via:
 //
-//          ElastigroupTagArgs{...}
+//	ElastigroupTagArgs{...}
 type ElastigroupTagInput interface {
 	pulumi.Input
 
@@ -10965,7 +10965,7 @@ func (i ElastigroupTagArgs) ToElastigroupTagOutputWithContext(ctx context.Contex
 // ElastigroupTagArrayInput is an input type that accepts ElastigroupTagArray and ElastigroupTagArrayOutput values.
 // You can construct a concrete instance of `ElastigroupTagArrayInput` via:
 //
-//          ElastigroupTagArray{ ElastigroupTagArgs{...} }
+//	ElastigroupTagArray{ ElastigroupTagArgs{...} }
 type ElastigroupTagArrayInput interface {
 	pulumi.Input
 
@@ -11044,7 +11044,7 @@ type ElastigroupUpdatePolicy struct {
 // ElastigroupUpdatePolicyInput is an input type that accepts ElastigroupUpdatePolicyArgs and ElastigroupUpdatePolicyOutput values.
 // You can construct a concrete instance of `ElastigroupUpdatePolicyInput` via:
 //
-//          ElastigroupUpdatePolicyArgs{...}
+//	ElastigroupUpdatePolicyArgs{...}
 type ElastigroupUpdatePolicyInput interface {
 	pulumi.Input
 
@@ -11086,11 +11086,11 @@ func (i ElastigroupUpdatePolicyArgs) ToElastigroupUpdatePolicyPtrOutputWithConte
 // ElastigroupUpdatePolicyPtrInput is an input type that accepts ElastigroupUpdatePolicyArgs, ElastigroupUpdatePolicyPtr and ElastigroupUpdatePolicyPtrOutput values.
 // You can construct a concrete instance of `ElastigroupUpdatePolicyPtrInput` via:
 //
-//          ElastigroupUpdatePolicyArgs{...}
+//	        ElastigroupUpdatePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupUpdatePolicyPtrInput interface {
 	pulumi.Input
 
@@ -11242,7 +11242,7 @@ type ElastigroupUpdatePolicyRollConfig struct {
 // ElastigroupUpdatePolicyRollConfigInput is an input type that accepts ElastigroupUpdatePolicyRollConfigArgs and ElastigroupUpdatePolicyRollConfigOutput values.
 // You can construct a concrete instance of `ElastigroupUpdatePolicyRollConfigInput` via:
 //
-//          ElastigroupUpdatePolicyRollConfigArgs{...}
+//	ElastigroupUpdatePolicyRollConfigArgs{...}
 type ElastigroupUpdatePolicyRollConfigInput interface {
 	pulumi.Input
 
@@ -11288,11 +11288,11 @@ func (i ElastigroupUpdatePolicyRollConfigArgs) ToElastigroupUpdatePolicyRollConf
 // ElastigroupUpdatePolicyRollConfigPtrInput is an input type that accepts ElastigroupUpdatePolicyRollConfigArgs, ElastigroupUpdatePolicyRollConfigPtr and ElastigroupUpdatePolicyRollConfigPtrOutput values.
 // You can construct a concrete instance of `ElastigroupUpdatePolicyRollConfigPtrInput` via:
 //
-//          ElastigroupUpdatePolicyRollConfigArgs{...}
+//	        ElastigroupUpdatePolicyRollConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupUpdatePolicyRollConfigPtrInput interface {
 	pulumi.Input
 
@@ -11472,7 +11472,7 @@ type ElastigroupUpdatePolicyRollConfigStrategy struct {
 // ElastigroupUpdatePolicyRollConfigStrategyInput is an input type that accepts ElastigroupUpdatePolicyRollConfigStrategyArgs and ElastigroupUpdatePolicyRollConfigStrategyOutput values.
 // You can construct a concrete instance of `ElastigroupUpdatePolicyRollConfigStrategyInput` via:
 //
-//          ElastigroupUpdatePolicyRollConfigStrategyArgs{...}
+//	ElastigroupUpdatePolicyRollConfigStrategyArgs{...}
 type ElastigroupUpdatePolicyRollConfigStrategyInput interface {
 	pulumi.Input
 
@@ -11514,11 +11514,11 @@ func (i ElastigroupUpdatePolicyRollConfigStrategyArgs) ToElastigroupUpdatePolicy
 // ElastigroupUpdatePolicyRollConfigStrategyPtrInput is an input type that accepts ElastigroupUpdatePolicyRollConfigStrategyArgs, ElastigroupUpdatePolicyRollConfigStrategyPtr and ElastigroupUpdatePolicyRollConfigStrategyPtrOutput values.
 // You can construct a concrete instance of `ElastigroupUpdatePolicyRollConfigStrategyPtrInput` via:
 //
-//          ElastigroupUpdatePolicyRollConfigStrategyArgs{...}
+//	        ElastigroupUpdatePolicyRollConfigStrategyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupUpdatePolicyRollConfigStrategyPtrInput interface {
 	pulumi.Input
 
@@ -11669,7 +11669,7 @@ type ElastigroupUpdatePolicyRollConfigStrategyOnFailure struct {
 // ElastigroupUpdatePolicyRollConfigStrategyOnFailureInput is an input type that accepts ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs and ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput values.
 // You can construct a concrete instance of `ElastigroupUpdatePolicyRollConfigStrategyOnFailureInput` via:
 //
-//          ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs{...}
+//	ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs{...}
 type ElastigroupUpdatePolicyRollConfigStrategyOnFailureInput interface {
 	pulumi.Input
 
@@ -11712,11 +11712,11 @@ func (i ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs) ToElastigroupUpd
 // ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput is an input type that accepts ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs, ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtr and ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput values.
 // You can construct a concrete instance of `ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput` via:
 //
-//          ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs{...}
+//	        ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrInput interface {
 	pulumi.Input
 
@@ -11875,7 +11875,7 @@ type ManagedInstanceBlockDeviceMapping struct {
 // ManagedInstanceBlockDeviceMappingInput is an input type that accepts ManagedInstanceBlockDeviceMappingArgs and ManagedInstanceBlockDeviceMappingOutput values.
 // You can construct a concrete instance of `ManagedInstanceBlockDeviceMappingInput` via:
 //
-//          ManagedInstanceBlockDeviceMappingArgs{...}
+//	ManagedInstanceBlockDeviceMappingArgs{...}
 type ManagedInstanceBlockDeviceMappingInput interface {
 	pulumi.Input
 
@@ -11905,7 +11905,7 @@ func (i ManagedInstanceBlockDeviceMappingArgs) ToManagedInstanceBlockDeviceMappi
 // ManagedInstanceBlockDeviceMappingArrayInput is an input type that accepts ManagedInstanceBlockDeviceMappingArray and ManagedInstanceBlockDeviceMappingArrayOutput values.
 // You can construct a concrete instance of `ManagedInstanceBlockDeviceMappingArrayInput` via:
 //
-//          ManagedInstanceBlockDeviceMappingArray{ ManagedInstanceBlockDeviceMappingArgs{...} }
+//	ManagedInstanceBlockDeviceMappingArray{ ManagedInstanceBlockDeviceMappingArgs{...} }
 type ManagedInstanceBlockDeviceMappingArrayInput interface {
 	pulumi.Input
 
@@ -11987,7 +11987,7 @@ type ManagedInstanceBlockDeviceMappingEbs struct {
 // ManagedInstanceBlockDeviceMappingEbsInput is an input type that accepts ManagedInstanceBlockDeviceMappingEbsArgs and ManagedInstanceBlockDeviceMappingEbsOutput values.
 // You can construct a concrete instance of `ManagedInstanceBlockDeviceMappingEbsInput` via:
 //
-//          ManagedInstanceBlockDeviceMappingEbsArgs{...}
+//	ManagedInstanceBlockDeviceMappingEbsArgs{...}
 type ManagedInstanceBlockDeviceMappingEbsInput interface {
 	pulumi.Input
 
@@ -12031,11 +12031,11 @@ func (i ManagedInstanceBlockDeviceMappingEbsArgs) ToManagedInstanceBlockDeviceMa
 // ManagedInstanceBlockDeviceMappingEbsPtrInput is an input type that accepts ManagedInstanceBlockDeviceMappingEbsArgs, ManagedInstanceBlockDeviceMappingEbsPtr and ManagedInstanceBlockDeviceMappingEbsPtrOutput values.
 // You can construct a concrete instance of `ManagedInstanceBlockDeviceMappingEbsPtrInput` via:
 //
-//          ManagedInstanceBlockDeviceMappingEbsArgs{...}
+//	        ManagedInstanceBlockDeviceMappingEbsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManagedInstanceBlockDeviceMappingEbsPtrInput interface {
 	pulumi.Input
 
@@ -12192,7 +12192,7 @@ type ManagedInstanceIntegrationRoute53 struct {
 // ManagedInstanceIntegrationRoute53Input is an input type that accepts ManagedInstanceIntegrationRoute53Args and ManagedInstanceIntegrationRoute53Output values.
 // You can construct a concrete instance of `ManagedInstanceIntegrationRoute53Input` via:
 //
-//          ManagedInstanceIntegrationRoute53Args{...}
+//	ManagedInstanceIntegrationRoute53Args{...}
 type ManagedInstanceIntegrationRoute53Input interface {
 	pulumi.Input
 
@@ -12228,11 +12228,11 @@ func (i ManagedInstanceIntegrationRoute53Args) ToManagedInstanceIntegrationRoute
 // ManagedInstanceIntegrationRoute53PtrInput is an input type that accepts ManagedInstanceIntegrationRoute53Args, ManagedInstanceIntegrationRoute53Ptr and ManagedInstanceIntegrationRoute53PtrOutput values.
 // You can construct a concrete instance of `ManagedInstanceIntegrationRoute53PtrInput` via:
 //
-//          ManagedInstanceIntegrationRoute53Args{...}
+//	        ManagedInstanceIntegrationRoute53Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManagedInstanceIntegrationRoute53PtrInput interface {
 	pulumi.Input
 
@@ -12335,7 +12335,7 @@ type ManagedInstanceIntegrationRoute53Domain struct {
 // ManagedInstanceIntegrationRoute53DomainInput is an input type that accepts ManagedInstanceIntegrationRoute53DomainArgs and ManagedInstanceIntegrationRoute53DomainOutput values.
 // You can construct a concrete instance of `ManagedInstanceIntegrationRoute53DomainInput` via:
 //
-//          ManagedInstanceIntegrationRoute53DomainArgs{...}
+//	ManagedInstanceIntegrationRoute53DomainArgs{...}
 type ManagedInstanceIntegrationRoute53DomainInput interface {
 	pulumi.Input
 
@@ -12369,7 +12369,7 @@ func (i ManagedInstanceIntegrationRoute53DomainArgs) ToManagedInstanceIntegratio
 // ManagedInstanceIntegrationRoute53DomainArrayInput is an input type that accepts ManagedInstanceIntegrationRoute53DomainArray and ManagedInstanceIntegrationRoute53DomainArrayOutput values.
 // You can construct a concrete instance of `ManagedInstanceIntegrationRoute53DomainArrayInput` via:
 //
-//          ManagedInstanceIntegrationRoute53DomainArray{ ManagedInstanceIntegrationRoute53DomainArgs{...} }
+//	ManagedInstanceIntegrationRoute53DomainArray{ ManagedInstanceIntegrationRoute53DomainArgs{...} }
 type ManagedInstanceIntegrationRoute53DomainArrayInput interface {
 	pulumi.Input
 
@@ -12459,7 +12459,7 @@ type ManagedInstanceIntegrationRoute53DomainRecordSet struct {
 // ManagedInstanceIntegrationRoute53DomainRecordSetInput is an input type that accepts ManagedInstanceIntegrationRoute53DomainRecordSetArgs and ManagedInstanceIntegrationRoute53DomainRecordSetOutput values.
 // You can construct a concrete instance of `ManagedInstanceIntegrationRoute53DomainRecordSetInput` via:
 //
-//          ManagedInstanceIntegrationRoute53DomainRecordSetArgs{...}
+//	ManagedInstanceIntegrationRoute53DomainRecordSetArgs{...}
 type ManagedInstanceIntegrationRoute53DomainRecordSetInput interface {
 	pulumi.Input
 
@@ -12491,7 +12491,7 @@ func (i ManagedInstanceIntegrationRoute53DomainRecordSetArgs) ToManagedInstanceI
 // ManagedInstanceIntegrationRoute53DomainRecordSetArrayInput is an input type that accepts ManagedInstanceIntegrationRoute53DomainRecordSetArray and ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput values.
 // You can construct a concrete instance of `ManagedInstanceIntegrationRoute53DomainRecordSetArrayInput` via:
 //
-//          ManagedInstanceIntegrationRoute53DomainRecordSetArray{ ManagedInstanceIntegrationRoute53DomainRecordSetArgs{...} }
+//	ManagedInstanceIntegrationRoute53DomainRecordSetArray{ ManagedInstanceIntegrationRoute53DomainRecordSetArgs{...} }
 type ManagedInstanceIntegrationRoute53DomainRecordSetArrayInput interface {
 	pulumi.Input
 
@@ -12582,7 +12582,7 @@ type ManagedInstanceLoadBalancer struct {
 // ManagedInstanceLoadBalancerInput is an input type that accepts ManagedInstanceLoadBalancerArgs and ManagedInstanceLoadBalancerOutput values.
 // You can construct a concrete instance of `ManagedInstanceLoadBalancerInput` via:
 //
-//          ManagedInstanceLoadBalancerArgs{...}
+//	ManagedInstanceLoadBalancerArgs{...}
 type ManagedInstanceLoadBalancerInput interface {
 	pulumi.Input
 
@@ -12622,7 +12622,7 @@ func (i ManagedInstanceLoadBalancerArgs) ToManagedInstanceLoadBalancerOutputWith
 // ManagedInstanceLoadBalancerArrayInput is an input type that accepts ManagedInstanceLoadBalancerArray and ManagedInstanceLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `ManagedInstanceLoadBalancerArrayInput` via:
 //
-//          ManagedInstanceLoadBalancerArray{ ManagedInstanceLoadBalancerArgs{...} }
+//	ManagedInstanceLoadBalancerArray{ ManagedInstanceLoadBalancerArgs{...} }
 type ManagedInstanceLoadBalancerArrayInput interface {
 	pulumi.Input
 
@@ -12721,7 +12721,7 @@ type ManagedInstanceManagedInstanceAction struct {
 // ManagedInstanceManagedInstanceActionInput is an input type that accepts ManagedInstanceManagedInstanceActionArgs and ManagedInstanceManagedInstanceActionOutput values.
 // You can construct a concrete instance of `ManagedInstanceManagedInstanceActionInput` via:
 //
-//          ManagedInstanceManagedInstanceActionArgs{...}
+//	ManagedInstanceManagedInstanceActionArgs{...}
 type ManagedInstanceManagedInstanceActionInput interface {
 	pulumi.Input
 
@@ -12757,11 +12757,11 @@ func (i ManagedInstanceManagedInstanceActionArgs) ToManagedInstanceManagedInstan
 // ManagedInstanceManagedInstanceActionPtrInput is an input type that accepts ManagedInstanceManagedInstanceActionArgs, ManagedInstanceManagedInstanceActionPtr and ManagedInstanceManagedInstanceActionPtrOutput values.
 // You can construct a concrete instance of `ManagedInstanceManagedInstanceActionPtrInput` via:
 //
-//          ManagedInstanceManagedInstanceActionArgs{...}
+//	        ManagedInstanceManagedInstanceActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManagedInstanceManagedInstanceActionPtrInput interface {
 	pulumi.Input
 
@@ -12862,7 +12862,7 @@ type ManagedInstanceNetworkInterface struct {
 // ManagedInstanceNetworkInterfaceInput is an input type that accepts ManagedInstanceNetworkInterfaceArgs and ManagedInstanceNetworkInterfaceOutput values.
 // You can construct a concrete instance of `ManagedInstanceNetworkInterfaceInput` via:
 //
-//          ManagedInstanceNetworkInterfaceArgs{...}
+//	ManagedInstanceNetworkInterfaceArgs{...}
 type ManagedInstanceNetworkInterfaceInput interface {
 	pulumi.Input
 
@@ -12894,7 +12894,7 @@ func (i ManagedInstanceNetworkInterfaceArgs) ToManagedInstanceNetworkInterfaceOu
 // ManagedInstanceNetworkInterfaceArrayInput is an input type that accepts ManagedInstanceNetworkInterfaceArray and ManagedInstanceNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `ManagedInstanceNetworkInterfaceArrayInput` via:
 //
-//          ManagedInstanceNetworkInterfaceArray{ ManagedInstanceNetworkInterfaceArgs{...} }
+//	ManagedInstanceNetworkInterfaceArray{ ManagedInstanceNetworkInterfaceArgs{...} }
 type ManagedInstanceNetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -12979,7 +12979,7 @@ type ManagedInstanceResourceTagSpecification struct {
 // ManagedInstanceResourceTagSpecificationInput is an input type that accepts ManagedInstanceResourceTagSpecificationArgs and ManagedInstanceResourceTagSpecificationOutput values.
 // You can construct a concrete instance of `ManagedInstanceResourceTagSpecificationInput` via:
 //
-//          ManagedInstanceResourceTagSpecificationArgs{...}
+//	ManagedInstanceResourceTagSpecificationArgs{...}
 type ManagedInstanceResourceTagSpecificationInput interface {
 	pulumi.Input
 
@@ -13013,7 +13013,7 @@ func (i ManagedInstanceResourceTagSpecificationArgs) ToManagedInstanceResourceTa
 // ManagedInstanceResourceTagSpecificationArrayInput is an input type that accepts ManagedInstanceResourceTagSpecificationArray and ManagedInstanceResourceTagSpecificationArrayOutput values.
 // You can construct a concrete instance of `ManagedInstanceResourceTagSpecificationArrayInput` via:
 //
-//          ManagedInstanceResourceTagSpecificationArray{ ManagedInstanceResourceTagSpecificationArgs{...} }
+//	ManagedInstanceResourceTagSpecificationArray{ ManagedInstanceResourceTagSpecificationArgs{...} }
 type ManagedInstanceResourceTagSpecificationArrayInput interface {
 	pulumi.Input
 
@@ -13097,7 +13097,7 @@ type ManagedInstanceRevertToSpot struct {
 // ManagedInstanceRevertToSpotInput is an input type that accepts ManagedInstanceRevertToSpotArgs and ManagedInstanceRevertToSpotOutput values.
 // You can construct a concrete instance of `ManagedInstanceRevertToSpotInput` via:
 //
-//          ManagedInstanceRevertToSpotArgs{...}
+//	ManagedInstanceRevertToSpotArgs{...}
 type ManagedInstanceRevertToSpotInput interface {
 	pulumi.Input
 
@@ -13133,11 +13133,11 @@ func (i ManagedInstanceRevertToSpotArgs) ToManagedInstanceRevertToSpotPtrOutputW
 // ManagedInstanceRevertToSpotPtrInput is an input type that accepts ManagedInstanceRevertToSpotArgs, ManagedInstanceRevertToSpotPtr and ManagedInstanceRevertToSpotPtrOutput values.
 // You can construct a concrete instance of `ManagedInstanceRevertToSpotPtrInput` via:
 //
-//          ManagedInstanceRevertToSpotArgs{...}
+//	        ManagedInstanceRevertToSpotArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManagedInstanceRevertToSpotPtrInput interface {
 	pulumi.Input
 
@@ -13244,7 +13244,7 @@ type ManagedInstanceScheduledTask struct {
 // ManagedInstanceScheduledTaskInput is an input type that accepts ManagedInstanceScheduledTaskArgs and ManagedInstanceScheduledTaskOutput values.
 // You can construct a concrete instance of `ManagedInstanceScheduledTaskInput` via:
 //
-//          ManagedInstanceScheduledTaskArgs{...}
+//	ManagedInstanceScheduledTaskArgs{...}
 type ManagedInstanceScheduledTaskInput interface {
 	pulumi.Input
 
@@ -13282,7 +13282,7 @@ func (i ManagedInstanceScheduledTaskArgs) ToManagedInstanceScheduledTaskOutputWi
 // ManagedInstanceScheduledTaskArrayInput is an input type that accepts ManagedInstanceScheduledTaskArray and ManagedInstanceScheduledTaskArrayOutput values.
 // You can construct a concrete instance of `ManagedInstanceScheduledTaskArrayInput` via:
 //
-//          ManagedInstanceScheduledTaskArray{ ManagedInstanceScheduledTaskArgs{...} }
+//	ManagedInstanceScheduledTaskArray{ ManagedInstanceScheduledTaskArgs{...} }
 type ManagedInstanceScheduledTaskArrayInput interface {
 	pulumi.Input
 
@@ -13375,7 +13375,7 @@ type ManagedInstanceTag struct {
 // ManagedInstanceTagInput is an input type that accepts ManagedInstanceTagArgs and ManagedInstanceTagOutput values.
 // You can construct a concrete instance of `ManagedInstanceTagInput` via:
 //
-//          ManagedInstanceTagArgs{...}
+//	ManagedInstanceTagArgs{...}
 type ManagedInstanceTagInput interface {
 	pulumi.Input
 
@@ -13405,7 +13405,7 @@ func (i ManagedInstanceTagArgs) ToManagedInstanceTagOutputWithContext(ctx contex
 // ManagedInstanceTagArrayInput is an input type that accepts ManagedInstanceTagArray and ManagedInstanceTagArrayOutput values.
 // You can construct a concrete instance of `ManagedInstanceTagArrayInput` via:
 //
-//          ManagedInstanceTagArray{ ManagedInstanceTagArgs{...} }
+//	ManagedInstanceTagArray{ ManagedInstanceTagArgs{...} }
 type ManagedInstanceTagArrayInput interface {
 	pulumi.Input
 
@@ -13483,7 +13483,7 @@ type MrScalarApplication struct {
 // MrScalarApplicationInput is an input type that accepts MrScalarApplicationArgs and MrScalarApplicationOutput values.
 // You can construct a concrete instance of `MrScalarApplicationInput` via:
 //
-//          MrScalarApplicationArgs{...}
+//	MrScalarApplicationArgs{...}
 type MrScalarApplicationInput interface {
 	pulumi.Input
 
@@ -13515,7 +13515,7 @@ func (i MrScalarApplicationArgs) ToMrScalarApplicationOutputWithContext(ctx cont
 // MrScalarApplicationArrayInput is an input type that accepts MrScalarApplicationArray and MrScalarApplicationArrayOutput values.
 // You can construct a concrete instance of `MrScalarApplicationArrayInput` via:
 //
-//          MrScalarApplicationArray{ MrScalarApplicationArgs{...} }
+//	MrScalarApplicationArray{ MrScalarApplicationArgs{...} }
 type MrScalarApplicationArrayInput interface {
 	pulumi.Input
 
@@ -13596,7 +13596,7 @@ type MrScalarBootstrapActionsFile struct {
 // MrScalarBootstrapActionsFileInput is an input type that accepts MrScalarBootstrapActionsFileArgs and MrScalarBootstrapActionsFileOutput values.
 // You can construct a concrete instance of `MrScalarBootstrapActionsFileInput` via:
 //
-//          MrScalarBootstrapActionsFileArgs{...}
+//	MrScalarBootstrapActionsFileArgs{...}
 type MrScalarBootstrapActionsFileInput interface {
 	pulumi.Input
 
@@ -13626,7 +13626,7 @@ func (i MrScalarBootstrapActionsFileArgs) ToMrScalarBootstrapActionsFileOutputWi
 // MrScalarBootstrapActionsFileArrayInput is an input type that accepts MrScalarBootstrapActionsFileArray and MrScalarBootstrapActionsFileArrayOutput values.
 // You can construct a concrete instance of `MrScalarBootstrapActionsFileArrayInput` via:
 //
-//          MrScalarBootstrapActionsFileArray{ MrScalarBootstrapActionsFileArgs{...} }
+//	MrScalarBootstrapActionsFileArray{ MrScalarBootstrapActionsFileArgs{...} }
 type MrScalarBootstrapActionsFileArrayInput interface {
 	pulumi.Input
 
@@ -13702,7 +13702,7 @@ type MrScalarConfigurationsFile struct {
 // MrScalarConfigurationsFileInput is an input type that accepts MrScalarConfigurationsFileArgs and MrScalarConfigurationsFileOutput values.
 // You can construct a concrete instance of `MrScalarConfigurationsFileInput` via:
 //
-//          MrScalarConfigurationsFileArgs{...}
+//	MrScalarConfigurationsFileArgs{...}
 type MrScalarConfigurationsFileInput interface {
 	pulumi.Input
 
@@ -13732,7 +13732,7 @@ func (i MrScalarConfigurationsFileArgs) ToMrScalarConfigurationsFileOutputWithCo
 // MrScalarConfigurationsFileArrayInput is an input type that accepts MrScalarConfigurationsFileArray and MrScalarConfigurationsFileArrayOutput values.
 // You can construct a concrete instance of `MrScalarConfigurationsFileArrayInput` via:
 //
-//          MrScalarConfigurationsFileArray{ MrScalarConfigurationsFileArgs{...} }
+//	MrScalarConfigurationsFileArray{ MrScalarConfigurationsFileArgs{...} }
 type MrScalarConfigurationsFileArrayInput interface {
 	pulumi.Input
 
@@ -13812,7 +13812,7 @@ type MrScalarCoreEbsBlockDevice struct {
 // MrScalarCoreEbsBlockDeviceInput is an input type that accepts MrScalarCoreEbsBlockDeviceArgs and MrScalarCoreEbsBlockDeviceOutput values.
 // You can construct a concrete instance of `MrScalarCoreEbsBlockDeviceInput` via:
 //
-//          MrScalarCoreEbsBlockDeviceArgs{...}
+//	MrScalarCoreEbsBlockDeviceArgs{...}
 type MrScalarCoreEbsBlockDeviceInput interface {
 	pulumi.Input
 
@@ -13846,7 +13846,7 @@ func (i MrScalarCoreEbsBlockDeviceArgs) ToMrScalarCoreEbsBlockDeviceOutputWithCo
 // MrScalarCoreEbsBlockDeviceArrayInput is an input type that accepts MrScalarCoreEbsBlockDeviceArray and MrScalarCoreEbsBlockDeviceArrayOutput values.
 // You can construct a concrete instance of `MrScalarCoreEbsBlockDeviceArrayInput` via:
 //
-//          MrScalarCoreEbsBlockDeviceArray{ MrScalarCoreEbsBlockDeviceArgs{...} }
+//	MrScalarCoreEbsBlockDeviceArray{ MrScalarCoreEbsBlockDeviceArgs{...} }
 type MrScalarCoreEbsBlockDeviceArrayInput interface {
 	pulumi.Input
 
@@ -13964,7 +13964,7 @@ type MrScalarCoreScalingDownPolicy struct {
 // MrScalarCoreScalingDownPolicyInput is an input type that accepts MrScalarCoreScalingDownPolicyArgs and MrScalarCoreScalingDownPolicyOutput values.
 // You can construct a concrete instance of `MrScalarCoreScalingDownPolicyInput` via:
 //
-//          MrScalarCoreScalingDownPolicyArgs{...}
+//	MrScalarCoreScalingDownPolicyArgs{...}
 type MrScalarCoreScalingDownPolicyInput interface {
 	pulumi.Input
 
@@ -14026,7 +14026,7 @@ func (i MrScalarCoreScalingDownPolicyArgs) ToMrScalarCoreScalingDownPolicyOutput
 // MrScalarCoreScalingDownPolicyArrayInput is an input type that accepts MrScalarCoreScalingDownPolicyArray and MrScalarCoreScalingDownPolicyArrayOutput values.
 // You can construct a concrete instance of `MrScalarCoreScalingDownPolicyArrayInput` via:
 //
-//          MrScalarCoreScalingDownPolicyArray{ MrScalarCoreScalingDownPolicyArgs{...} }
+//	MrScalarCoreScalingDownPolicyArray{ MrScalarCoreScalingDownPolicyArgs{...} }
 type MrScalarCoreScalingDownPolicyArrayInput interface {
 	pulumi.Input
 
@@ -14214,7 +14214,7 @@ type MrScalarCoreScalingUpPolicy struct {
 // MrScalarCoreScalingUpPolicyInput is an input type that accepts MrScalarCoreScalingUpPolicyArgs and MrScalarCoreScalingUpPolicyOutput values.
 // You can construct a concrete instance of `MrScalarCoreScalingUpPolicyInput` via:
 //
-//          MrScalarCoreScalingUpPolicyArgs{...}
+//	MrScalarCoreScalingUpPolicyArgs{...}
 type MrScalarCoreScalingUpPolicyInput interface {
 	pulumi.Input
 
@@ -14276,7 +14276,7 @@ func (i MrScalarCoreScalingUpPolicyArgs) ToMrScalarCoreScalingUpPolicyOutputWith
 // MrScalarCoreScalingUpPolicyArrayInput is an input type that accepts MrScalarCoreScalingUpPolicyArray and MrScalarCoreScalingUpPolicyArrayOutput values.
 // You can construct a concrete instance of `MrScalarCoreScalingUpPolicyArrayInput` via:
 //
-//          MrScalarCoreScalingUpPolicyArray{ MrScalarCoreScalingUpPolicyArgs{...} }
+//	MrScalarCoreScalingUpPolicyArray{ MrScalarCoreScalingUpPolicyArgs{...} }
 type MrScalarCoreScalingUpPolicyArrayInput interface {
 	pulumi.Input
 
@@ -14432,7 +14432,7 @@ type MrScalarInstanceWeight struct {
 // MrScalarInstanceWeightInput is an input type that accepts MrScalarInstanceWeightArgs and MrScalarInstanceWeightOutput values.
 // You can construct a concrete instance of `MrScalarInstanceWeightInput` via:
 //
-//          MrScalarInstanceWeightArgs{...}
+//	MrScalarInstanceWeightArgs{...}
 type MrScalarInstanceWeightInput interface {
 	pulumi.Input
 
@@ -14462,7 +14462,7 @@ func (i MrScalarInstanceWeightArgs) ToMrScalarInstanceWeightOutputWithContext(ct
 // MrScalarInstanceWeightArrayInput is an input type that accepts MrScalarInstanceWeightArray and MrScalarInstanceWeightArrayOutput values.
 // You can construct a concrete instance of `MrScalarInstanceWeightArrayInput` via:
 //
-//          MrScalarInstanceWeightArray{ MrScalarInstanceWeightArgs{...} }
+//	MrScalarInstanceWeightArray{ MrScalarInstanceWeightArgs{...} }
 type MrScalarInstanceWeightArrayInput interface {
 	pulumi.Input
 
@@ -14542,7 +14542,7 @@ type MrScalarMasterEbsBlockDevice struct {
 // MrScalarMasterEbsBlockDeviceInput is an input type that accepts MrScalarMasterEbsBlockDeviceArgs and MrScalarMasterEbsBlockDeviceOutput values.
 // You can construct a concrete instance of `MrScalarMasterEbsBlockDeviceInput` via:
 //
-//          MrScalarMasterEbsBlockDeviceArgs{...}
+//	MrScalarMasterEbsBlockDeviceArgs{...}
 type MrScalarMasterEbsBlockDeviceInput interface {
 	pulumi.Input
 
@@ -14576,7 +14576,7 @@ func (i MrScalarMasterEbsBlockDeviceArgs) ToMrScalarMasterEbsBlockDeviceOutputWi
 // MrScalarMasterEbsBlockDeviceArrayInput is an input type that accepts MrScalarMasterEbsBlockDeviceArray and MrScalarMasterEbsBlockDeviceArrayOutput values.
 // You can construct a concrete instance of `MrScalarMasterEbsBlockDeviceArrayInput` via:
 //
-//          MrScalarMasterEbsBlockDeviceArray{ MrScalarMasterEbsBlockDeviceArgs{...} }
+//	MrScalarMasterEbsBlockDeviceArray{ MrScalarMasterEbsBlockDeviceArgs{...} }
 type MrScalarMasterEbsBlockDeviceArrayInput interface {
 	pulumi.Input
 
@@ -14662,7 +14662,7 @@ type MrScalarProvisioningTimeout struct {
 // MrScalarProvisioningTimeoutInput is an input type that accepts MrScalarProvisioningTimeoutArgs and MrScalarProvisioningTimeoutOutput values.
 // You can construct a concrete instance of `MrScalarProvisioningTimeoutInput` via:
 //
-//          MrScalarProvisioningTimeoutArgs{...}
+//	MrScalarProvisioningTimeoutArgs{...}
 type MrScalarProvisioningTimeoutInput interface {
 	pulumi.Input
 
@@ -14700,11 +14700,11 @@ func (i MrScalarProvisioningTimeoutArgs) ToMrScalarProvisioningTimeoutPtrOutputW
 // MrScalarProvisioningTimeoutPtrInput is an input type that accepts MrScalarProvisioningTimeoutArgs, MrScalarProvisioningTimeoutPtr and MrScalarProvisioningTimeoutPtrOutput values.
 // You can construct a concrete instance of `MrScalarProvisioningTimeoutPtrInput` via:
 //
-//          MrScalarProvisioningTimeoutArgs{...}
+//	        MrScalarProvisioningTimeoutArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MrScalarProvisioningTimeoutPtrInput interface {
 	pulumi.Input
 
@@ -14828,7 +14828,7 @@ type MrScalarScheduledTask struct {
 // MrScalarScheduledTaskInput is an input type that accepts MrScalarScheduledTaskArgs and MrScalarScheduledTaskOutput values.
 // You can construct a concrete instance of `MrScalarScheduledTaskInput` via:
 //
-//          MrScalarScheduledTaskArgs{...}
+//	MrScalarScheduledTaskArgs{...}
 type MrScalarScheduledTaskInput interface {
 	pulumi.Input
 
@@ -14868,7 +14868,7 @@ func (i MrScalarScheduledTaskArgs) ToMrScalarScheduledTaskOutputWithContext(ctx 
 // MrScalarScheduledTaskArrayInput is an input type that accepts MrScalarScheduledTaskArray and MrScalarScheduledTaskArrayOutput values.
 // You can construct a concrete instance of `MrScalarScheduledTaskArrayInput` via:
 //
-//          MrScalarScheduledTaskArray{ MrScalarScheduledTaskArgs{...} }
+//	MrScalarScheduledTaskArray{ MrScalarScheduledTaskArgs{...} }
 type MrScalarScheduledTaskArrayInput interface {
 	pulumi.Input
 
@@ -14969,7 +14969,7 @@ type MrScalarStepsFile struct {
 // MrScalarStepsFileInput is an input type that accepts MrScalarStepsFileArgs and MrScalarStepsFileOutput values.
 // You can construct a concrete instance of `MrScalarStepsFileInput` via:
 //
-//          MrScalarStepsFileArgs{...}
+//	MrScalarStepsFileArgs{...}
 type MrScalarStepsFileInput interface {
 	pulumi.Input
 
@@ -14999,7 +14999,7 @@ func (i MrScalarStepsFileArgs) ToMrScalarStepsFileOutputWithContext(ctx context.
 // MrScalarStepsFileArrayInput is an input type that accepts MrScalarStepsFileArray and MrScalarStepsFileArrayOutput values.
 // You can construct a concrete instance of `MrScalarStepsFileArrayInput` via:
 //
-//          MrScalarStepsFileArray{ MrScalarStepsFileArgs{...} }
+//	MrScalarStepsFileArray{ MrScalarStepsFileArgs{...} }
 type MrScalarStepsFileArrayInput interface {
 	pulumi.Input
 
@@ -15075,7 +15075,7 @@ type MrScalarTag struct {
 // MrScalarTagInput is an input type that accepts MrScalarTagArgs and MrScalarTagOutput values.
 // You can construct a concrete instance of `MrScalarTagInput` via:
 //
-//          MrScalarTagArgs{...}
+//	MrScalarTagArgs{...}
 type MrScalarTagInput interface {
 	pulumi.Input
 
@@ -15105,7 +15105,7 @@ func (i MrScalarTagArgs) ToMrScalarTagOutputWithContext(ctx context.Context) MrS
 // MrScalarTagArrayInput is an input type that accepts MrScalarTagArray and MrScalarTagArrayOutput values.
 // You can construct a concrete instance of `MrScalarTagArrayInput` via:
 //
-//          MrScalarTagArray{ MrScalarTagArgs{...} }
+//	MrScalarTagArray{ MrScalarTagArgs{...} }
 type MrScalarTagArrayInput interface {
 	pulumi.Input
 
@@ -15185,7 +15185,7 @@ type MrScalarTaskEbsBlockDevice struct {
 // MrScalarTaskEbsBlockDeviceInput is an input type that accepts MrScalarTaskEbsBlockDeviceArgs and MrScalarTaskEbsBlockDeviceOutput values.
 // You can construct a concrete instance of `MrScalarTaskEbsBlockDeviceInput` via:
 //
-//          MrScalarTaskEbsBlockDeviceArgs{...}
+//	MrScalarTaskEbsBlockDeviceArgs{...}
 type MrScalarTaskEbsBlockDeviceInput interface {
 	pulumi.Input
 
@@ -15219,7 +15219,7 @@ func (i MrScalarTaskEbsBlockDeviceArgs) ToMrScalarTaskEbsBlockDeviceOutputWithCo
 // MrScalarTaskEbsBlockDeviceArrayInput is an input type that accepts MrScalarTaskEbsBlockDeviceArray and MrScalarTaskEbsBlockDeviceArrayOutput values.
 // You can construct a concrete instance of `MrScalarTaskEbsBlockDeviceArrayInput` via:
 //
-//          MrScalarTaskEbsBlockDeviceArray{ MrScalarTaskEbsBlockDeviceArgs{...} }
+//	MrScalarTaskEbsBlockDeviceArray{ MrScalarTaskEbsBlockDeviceArgs{...} }
 type MrScalarTaskEbsBlockDeviceArrayInput interface {
 	pulumi.Input
 
@@ -15337,7 +15337,7 @@ type MrScalarTaskScalingDownPolicy struct {
 // MrScalarTaskScalingDownPolicyInput is an input type that accepts MrScalarTaskScalingDownPolicyArgs and MrScalarTaskScalingDownPolicyOutput values.
 // You can construct a concrete instance of `MrScalarTaskScalingDownPolicyInput` via:
 //
-//          MrScalarTaskScalingDownPolicyArgs{...}
+//	MrScalarTaskScalingDownPolicyArgs{...}
 type MrScalarTaskScalingDownPolicyInput interface {
 	pulumi.Input
 
@@ -15399,7 +15399,7 @@ func (i MrScalarTaskScalingDownPolicyArgs) ToMrScalarTaskScalingDownPolicyOutput
 // MrScalarTaskScalingDownPolicyArrayInput is an input type that accepts MrScalarTaskScalingDownPolicyArray and MrScalarTaskScalingDownPolicyArrayOutput values.
 // You can construct a concrete instance of `MrScalarTaskScalingDownPolicyArrayInput` via:
 //
-//          MrScalarTaskScalingDownPolicyArray{ MrScalarTaskScalingDownPolicyArgs{...} }
+//	MrScalarTaskScalingDownPolicyArray{ MrScalarTaskScalingDownPolicyArgs{...} }
 type MrScalarTaskScalingDownPolicyArrayInput interface {
 	pulumi.Input
 
@@ -15587,7 +15587,7 @@ type MrScalarTaskScalingUpPolicy struct {
 // MrScalarTaskScalingUpPolicyInput is an input type that accepts MrScalarTaskScalingUpPolicyArgs and MrScalarTaskScalingUpPolicyOutput values.
 // You can construct a concrete instance of `MrScalarTaskScalingUpPolicyInput` via:
 //
-//          MrScalarTaskScalingUpPolicyArgs{...}
+//	MrScalarTaskScalingUpPolicyArgs{...}
 type MrScalarTaskScalingUpPolicyInput interface {
 	pulumi.Input
 
@@ -15649,7 +15649,7 @@ func (i MrScalarTaskScalingUpPolicyArgs) ToMrScalarTaskScalingUpPolicyOutputWith
 // MrScalarTaskScalingUpPolicyArrayInput is an input type that accepts MrScalarTaskScalingUpPolicyArray and MrScalarTaskScalingUpPolicyArrayOutput values.
 // You can construct a concrete instance of `MrScalarTaskScalingUpPolicyArrayInput` via:
 //
-//          MrScalarTaskScalingUpPolicyArray{ MrScalarTaskScalingUpPolicyArgs{...} }
+//	MrScalarTaskScalingUpPolicyArray{ MrScalarTaskScalingUpPolicyArgs{...} }
 type MrScalarTaskScalingUpPolicyArrayInput interface {
 	pulumi.Input
 
@@ -15802,7 +15802,7 @@ type MrScalarTerminationPolicy struct {
 // MrScalarTerminationPolicyInput is an input type that accepts MrScalarTerminationPolicyArgs and MrScalarTerminationPolicyOutput values.
 // You can construct a concrete instance of `MrScalarTerminationPolicyInput` via:
 //
-//          MrScalarTerminationPolicyArgs{...}
+//	MrScalarTerminationPolicyArgs{...}
 type MrScalarTerminationPolicyInput interface {
 	pulumi.Input
 
@@ -15829,7 +15829,7 @@ func (i MrScalarTerminationPolicyArgs) ToMrScalarTerminationPolicyOutputWithCont
 // MrScalarTerminationPolicyArrayInput is an input type that accepts MrScalarTerminationPolicyArray and MrScalarTerminationPolicyArrayOutput values.
 // You can construct a concrete instance of `MrScalarTerminationPolicyArrayInput` via:
 //
-//          MrScalarTerminationPolicyArray{ MrScalarTerminationPolicyArgs{...} }
+//	MrScalarTerminationPolicyArray{ MrScalarTerminationPolicyArgs{...} }
 type MrScalarTerminationPolicyArrayInput interface {
 	pulumi.Input
 
@@ -15911,7 +15911,7 @@ type MrScalarTerminationPolicyStatement struct {
 // MrScalarTerminationPolicyStatementInput is an input type that accepts MrScalarTerminationPolicyStatementArgs and MrScalarTerminationPolicyStatementOutput values.
 // You can construct a concrete instance of `MrScalarTerminationPolicyStatementInput` via:
 //
-//          MrScalarTerminationPolicyStatementArgs{...}
+//	MrScalarTerminationPolicyStatementArgs{...}
 type MrScalarTerminationPolicyStatementInput interface {
 	pulumi.Input
 
@@ -15953,7 +15953,7 @@ func (i MrScalarTerminationPolicyStatementArgs) ToMrScalarTerminationPolicyState
 // MrScalarTerminationPolicyStatementArrayInput is an input type that accepts MrScalarTerminationPolicyStatementArray and MrScalarTerminationPolicyStatementArrayOutput values.
 // You can construct a concrete instance of `MrScalarTerminationPolicyStatementArrayInput` via:
 //
-//          MrScalarTerminationPolicyStatementArray{ MrScalarTerminationPolicyStatementArgs{...} }
+//	MrScalarTerminationPolicyStatementArray{ MrScalarTerminationPolicyStatementArgs{...} }
 type MrScalarTerminationPolicyStatementArrayInput interface {
 	pulumi.Input
 
@@ -16073,7 +16073,7 @@ type OceanAutoscaler struct {
 // OceanAutoscalerInput is an input type that accepts OceanAutoscalerArgs and OceanAutoscalerOutput values.
 // You can construct a concrete instance of `OceanAutoscalerInput` via:
 //
-//          OceanAutoscalerArgs{...}
+//	OceanAutoscalerArgs{...}
 type OceanAutoscalerInput interface {
 	pulumi.Input
 
@@ -16125,11 +16125,11 @@ func (i OceanAutoscalerArgs) ToOceanAutoscalerPtrOutputWithContext(ctx context.C
 // OceanAutoscalerPtrInput is an input type that accepts OceanAutoscalerArgs, OceanAutoscalerPtr and OceanAutoscalerPtrOutput values.
 // You can construct a concrete instance of `OceanAutoscalerPtrInput` via:
 //
-//          OceanAutoscalerArgs{...}
+//	        OceanAutoscalerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanAutoscalerPtrInput interface {
 	pulumi.Input
 
@@ -16347,7 +16347,7 @@ type OceanAutoscalerAutoscaleDown struct {
 // OceanAutoscalerAutoscaleDownInput is an input type that accepts OceanAutoscalerAutoscaleDownArgs and OceanAutoscalerAutoscaleDownOutput values.
 // You can construct a concrete instance of `OceanAutoscalerAutoscaleDownInput` via:
 //
-//          OceanAutoscalerAutoscaleDownArgs{...}
+//	OceanAutoscalerAutoscaleDownArgs{...}
 type OceanAutoscalerAutoscaleDownInput interface {
 	pulumi.Input
 
@@ -16384,11 +16384,11 @@ func (i OceanAutoscalerAutoscaleDownArgs) ToOceanAutoscalerAutoscaleDownPtrOutpu
 // OceanAutoscalerAutoscaleDownPtrInput is an input type that accepts OceanAutoscalerAutoscaleDownArgs, OceanAutoscalerAutoscaleDownPtr and OceanAutoscalerAutoscaleDownPtrOutput values.
 // You can construct a concrete instance of `OceanAutoscalerAutoscaleDownPtrInput` via:
 //
-//          OceanAutoscalerAutoscaleDownArgs{...}
+//	        OceanAutoscalerAutoscaleDownArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanAutoscalerAutoscaleDownPtrInput interface {
 	pulumi.Input
 
@@ -16504,7 +16504,7 @@ type OceanAutoscalerAutoscaleHeadroom struct {
 // OceanAutoscalerAutoscaleHeadroomInput is an input type that accepts OceanAutoscalerAutoscaleHeadroomArgs and OceanAutoscalerAutoscaleHeadroomOutput values.
 // You can construct a concrete instance of `OceanAutoscalerAutoscaleHeadroomInput` via:
 //
-//          OceanAutoscalerAutoscaleHeadroomArgs{...}
+//	OceanAutoscalerAutoscaleHeadroomArgs{...}
 type OceanAutoscalerAutoscaleHeadroomInput interface {
 	pulumi.Input
 
@@ -16546,11 +16546,11 @@ func (i OceanAutoscalerAutoscaleHeadroomArgs) ToOceanAutoscalerAutoscaleHeadroom
 // OceanAutoscalerAutoscaleHeadroomPtrInput is an input type that accepts OceanAutoscalerAutoscaleHeadroomArgs, OceanAutoscalerAutoscaleHeadroomPtr and OceanAutoscalerAutoscaleHeadroomPtrOutput values.
 // You can construct a concrete instance of `OceanAutoscalerAutoscaleHeadroomPtrInput` via:
 //
-//          OceanAutoscalerAutoscaleHeadroomArgs{...}
+//	        OceanAutoscalerAutoscaleHeadroomArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanAutoscalerAutoscaleHeadroomPtrInput interface {
 	pulumi.Input
 
@@ -16694,7 +16694,7 @@ type OceanAutoscalerResourceLimits struct {
 // OceanAutoscalerResourceLimitsInput is an input type that accepts OceanAutoscalerResourceLimitsArgs and OceanAutoscalerResourceLimitsOutput values.
 // You can construct a concrete instance of `OceanAutoscalerResourceLimitsInput` via:
 //
-//          OceanAutoscalerResourceLimitsArgs{...}
+//	OceanAutoscalerResourceLimitsArgs{...}
 type OceanAutoscalerResourceLimitsInput interface {
 	pulumi.Input
 
@@ -16732,11 +16732,11 @@ func (i OceanAutoscalerResourceLimitsArgs) ToOceanAutoscalerResourceLimitsPtrOut
 // OceanAutoscalerResourceLimitsPtrInput is an input type that accepts OceanAutoscalerResourceLimitsArgs, OceanAutoscalerResourceLimitsPtr and OceanAutoscalerResourceLimitsPtrOutput values.
 // You can construct a concrete instance of `OceanAutoscalerResourceLimitsPtrInput` via:
 //
-//          OceanAutoscalerResourceLimitsArgs{...}
+//	        OceanAutoscalerResourceLimitsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanAutoscalerResourceLimitsPtrInput interface {
 	pulumi.Input
 
@@ -16850,7 +16850,7 @@ type OceanInstanceMetadataOptions struct {
 // OceanInstanceMetadataOptionsInput is an input type that accepts OceanInstanceMetadataOptionsArgs and OceanInstanceMetadataOptionsOutput values.
 // You can construct a concrete instance of `OceanInstanceMetadataOptionsInput` via:
 //
-//          OceanInstanceMetadataOptionsArgs{...}
+//	OceanInstanceMetadataOptionsArgs{...}
 type OceanInstanceMetadataOptionsInput interface {
 	pulumi.Input
 
@@ -16888,11 +16888,11 @@ func (i OceanInstanceMetadataOptionsArgs) ToOceanInstanceMetadataOptionsPtrOutpu
 // OceanInstanceMetadataOptionsPtrInput is an input type that accepts OceanInstanceMetadataOptionsArgs, OceanInstanceMetadataOptionsPtr and OceanInstanceMetadataOptionsPtrOutput values.
 // You can construct a concrete instance of `OceanInstanceMetadataOptionsPtrInput` via:
 //
-//          OceanInstanceMetadataOptionsArgs{...}
+//	        OceanInstanceMetadataOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanInstanceMetadataOptionsPtrInput interface {
 	pulumi.Input
 
@@ -17010,7 +17010,7 @@ type OceanLaunchSpecAutoscaleHeadroom struct {
 // OceanLaunchSpecAutoscaleHeadroomInput is an input type that accepts OceanLaunchSpecAutoscaleHeadroomArgs and OceanLaunchSpecAutoscaleHeadroomOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecAutoscaleHeadroomInput` via:
 //
-//          OceanLaunchSpecAutoscaleHeadroomArgs{...}
+//	OceanLaunchSpecAutoscaleHeadroomArgs{...}
 type OceanLaunchSpecAutoscaleHeadroomInput interface {
 	pulumi.Input
 
@@ -17044,7 +17044,7 @@ func (i OceanLaunchSpecAutoscaleHeadroomArgs) ToOceanLaunchSpecAutoscaleHeadroom
 // OceanLaunchSpecAutoscaleHeadroomArrayInput is an input type that accepts OceanLaunchSpecAutoscaleHeadroomArray and OceanLaunchSpecAutoscaleHeadroomArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecAutoscaleHeadroomArrayInput` via:
 //
-//          OceanLaunchSpecAutoscaleHeadroomArray{ OceanLaunchSpecAutoscaleHeadroomArgs{...} }
+//	OceanLaunchSpecAutoscaleHeadroomArray{ OceanLaunchSpecAutoscaleHeadroomArgs{...} }
 type OceanLaunchSpecAutoscaleHeadroomArrayInput interface {
 	pulumi.Input
 
@@ -17128,7 +17128,7 @@ type OceanLaunchSpecAutoscaleHeadroomsAutomatic struct {
 // OceanLaunchSpecAutoscaleHeadroomsAutomaticInput is an input type that accepts OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs and OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecAutoscaleHeadroomsAutomaticInput` via:
 //
-//          OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{...}
+//	OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{...}
 type OceanLaunchSpecAutoscaleHeadroomsAutomaticInput interface {
 	pulumi.Input
 
@@ -17156,7 +17156,7 @@ func (i OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs) ToOceanLaunchSpecAutosca
 // OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput is an input type that accepts OceanLaunchSpecAutoscaleHeadroomsAutomaticArray and OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput` via:
 //
-//          OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{ OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{...} }
+//	OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{ OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{...} }
 type OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput interface {
 	pulumi.Input
 
@@ -17230,7 +17230,7 @@ type OceanLaunchSpecBlockDeviceMapping struct {
 // OceanLaunchSpecBlockDeviceMappingInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingArgs and OceanLaunchSpecBlockDeviceMappingOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecBlockDeviceMappingInput` via:
 //
-//          OceanLaunchSpecBlockDeviceMappingArgs{...}
+//	OceanLaunchSpecBlockDeviceMappingArgs{...}
 type OceanLaunchSpecBlockDeviceMappingInput interface {
 	pulumi.Input
 
@@ -17263,7 +17263,7 @@ func (i OceanLaunchSpecBlockDeviceMappingArgs) ToOceanLaunchSpecBlockDeviceMappi
 // OceanLaunchSpecBlockDeviceMappingArrayInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingArray and OceanLaunchSpecBlockDeviceMappingArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecBlockDeviceMappingArrayInput` via:
 //
-//          OceanLaunchSpecBlockDeviceMappingArray{ OceanLaunchSpecBlockDeviceMappingArgs{...} }
+//	OceanLaunchSpecBlockDeviceMappingArray{ OceanLaunchSpecBlockDeviceMappingArgs{...} }
 type OceanLaunchSpecBlockDeviceMappingArrayInput interface {
 	pulumi.Input
 
@@ -17362,7 +17362,7 @@ type OceanLaunchSpecBlockDeviceMappingEbs struct {
 // OceanLaunchSpecBlockDeviceMappingEbsInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingEbsArgs and OceanLaunchSpecBlockDeviceMappingEbsOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecBlockDeviceMappingEbsInput` via:
 //
-//          OceanLaunchSpecBlockDeviceMappingEbsArgs{...}
+//	OceanLaunchSpecBlockDeviceMappingEbsArgs{...}
 type OceanLaunchSpecBlockDeviceMappingEbsInput interface {
 	pulumi.Input
 
@@ -17414,11 +17414,11 @@ func (i OceanLaunchSpecBlockDeviceMappingEbsArgs) ToOceanLaunchSpecBlockDeviceMa
 // OceanLaunchSpecBlockDeviceMappingEbsPtrInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingEbsArgs, OceanLaunchSpecBlockDeviceMappingEbsPtr and OceanLaunchSpecBlockDeviceMappingEbsPtrOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecBlockDeviceMappingEbsPtrInput` via:
 //
-//          OceanLaunchSpecBlockDeviceMappingEbsArgs{...}
+//	        OceanLaunchSpecBlockDeviceMappingEbsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanLaunchSpecBlockDeviceMappingEbsPtrInput interface {
 	pulumi.Input
 
@@ -17641,7 +17641,7 @@ type OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize struct {
 // OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs and OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput` via:
 //
-//          OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{...}
+//	OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{...}
 type OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput interface {
 	pulumi.Input
 
@@ -17681,11 +17681,11 @@ func (i OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs) ToOceanLaunch
 // OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput is an input type that accepts OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs, OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtr and OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput` via:
 //
-//          OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{...}
+//	        OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput interface {
 	pulumi.Input
 
@@ -17812,7 +17812,7 @@ type OceanLaunchSpecCreateOptions struct {
 // OceanLaunchSpecCreateOptionsInput is an input type that accepts OceanLaunchSpecCreateOptionsArgs and OceanLaunchSpecCreateOptionsOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecCreateOptionsInput` via:
 //
-//          OceanLaunchSpecCreateOptionsArgs{...}
+//	OceanLaunchSpecCreateOptionsArgs{...}
 type OceanLaunchSpecCreateOptionsInput interface {
 	pulumi.Input
 
@@ -17848,11 +17848,11 @@ func (i OceanLaunchSpecCreateOptionsArgs) ToOceanLaunchSpecCreateOptionsPtrOutpu
 // OceanLaunchSpecCreateOptionsPtrInput is an input type that accepts OceanLaunchSpecCreateOptionsArgs, OceanLaunchSpecCreateOptionsPtr and OceanLaunchSpecCreateOptionsPtrOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecCreateOptionsPtrInput` via:
 //
-//          OceanLaunchSpecCreateOptionsArgs{...}
+//	        OceanLaunchSpecCreateOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanLaunchSpecCreateOptionsPtrInput interface {
 	pulumi.Input
 
@@ -17949,7 +17949,7 @@ type OceanLaunchSpecDeleteOptions struct {
 // OceanLaunchSpecDeleteOptionsInput is an input type that accepts OceanLaunchSpecDeleteOptionsArgs and OceanLaunchSpecDeleteOptionsOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecDeleteOptionsInput` via:
 //
-//          OceanLaunchSpecDeleteOptionsArgs{...}
+//	OceanLaunchSpecDeleteOptionsArgs{...}
 type OceanLaunchSpecDeleteOptionsInput interface {
 	pulumi.Input
 
@@ -17985,11 +17985,11 @@ func (i OceanLaunchSpecDeleteOptionsArgs) ToOceanLaunchSpecDeleteOptionsPtrOutpu
 // OceanLaunchSpecDeleteOptionsPtrInput is an input type that accepts OceanLaunchSpecDeleteOptionsArgs, OceanLaunchSpecDeleteOptionsPtr and OceanLaunchSpecDeleteOptionsPtrOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecDeleteOptionsPtrInput` via:
 //
-//          OceanLaunchSpecDeleteOptionsArgs{...}
+//	        OceanLaunchSpecDeleteOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanLaunchSpecDeleteOptionsPtrInput interface {
 	pulumi.Input
 
@@ -18086,7 +18086,7 @@ type OceanLaunchSpecElasticIpPool struct {
 // OceanLaunchSpecElasticIpPoolInput is an input type that accepts OceanLaunchSpecElasticIpPoolArgs and OceanLaunchSpecElasticIpPoolOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecElasticIpPoolInput` via:
 //
-//          OceanLaunchSpecElasticIpPoolArgs{...}
+//	OceanLaunchSpecElasticIpPoolArgs{...}
 type OceanLaunchSpecElasticIpPoolInput interface {
 	pulumi.Input
 
@@ -18114,7 +18114,7 @@ func (i OceanLaunchSpecElasticIpPoolArgs) ToOceanLaunchSpecElasticIpPoolOutputWi
 // OceanLaunchSpecElasticIpPoolArrayInput is an input type that accepts OceanLaunchSpecElasticIpPoolArray and OceanLaunchSpecElasticIpPoolArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecElasticIpPoolArrayInput` via:
 //
-//          OceanLaunchSpecElasticIpPoolArray{ OceanLaunchSpecElasticIpPoolArgs{...} }
+//	OceanLaunchSpecElasticIpPoolArray{ OceanLaunchSpecElasticIpPoolArgs{...} }
 type OceanLaunchSpecElasticIpPoolArrayInput interface {
 	pulumi.Input
 
@@ -18185,7 +18185,7 @@ type OceanLaunchSpecElasticIpPoolTagSelector struct {
 // OceanLaunchSpecElasticIpPoolTagSelectorInput is an input type that accepts OceanLaunchSpecElasticIpPoolTagSelectorArgs and OceanLaunchSpecElasticIpPoolTagSelectorOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecElasticIpPoolTagSelectorInput` via:
 //
-//          OceanLaunchSpecElasticIpPoolTagSelectorArgs{...}
+//	OceanLaunchSpecElasticIpPoolTagSelectorArgs{...}
 type OceanLaunchSpecElasticIpPoolTagSelectorInput interface {
 	pulumi.Input
 
@@ -18223,11 +18223,11 @@ func (i OceanLaunchSpecElasticIpPoolTagSelectorArgs) ToOceanLaunchSpecElasticIpP
 // OceanLaunchSpecElasticIpPoolTagSelectorPtrInput is an input type that accepts OceanLaunchSpecElasticIpPoolTagSelectorArgs, OceanLaunchSpecElasticIpPoolTagSelectorPtr and OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecElasticIpPoolTagSelectorPtrInput` via:
 //
-//          OceanLaunchSpecElasticIpPoolTagSelectorArgs{...}
+//	        OceanLaunchSpecElasticIpPoolTagSelectorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanLaunchSpecElasticIpPoolTagSelectorPtrInput interface {
 	pulumi.Input
 
@@ -18341,7 +18341,7 @@ type OceanLaunchSpecLabel struct {
 // OceanLaunchSpecLabelInput is an input type that accepts OceanLaunchSpecLabelArgs and OceanLaunchSpecLabelOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecLabelInput` via:
 //
-//          OceanLaunchSpecLabelArgs{...}
+//	OceanLaunchSpecLabelArgs{...}
 type OceanLaunchSpecLabelInput interface {
 	pulumi.Input
 
@@ -18371,7 +18371,7 @@ func (i OceanLaunchSpecLabelArgs) ToOceanLaunchSpecLabelOutputWithContext(ctx co
 // OceanLaunchSpecLabelArrayInput is an input type that accepts OceanLaunchSpecLabelArray and OceanLaunchSpecLabelArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecLabelArrayInput` via:
 //
-//          OceanLaunchSpecLabelArray{ OceanLaunchSpecLabelArgs{...} }
+//	OceanLaunchSpecLabelArray{ OceanLaunchSpecLabelArgs{...} }
 type OceanLaunchSpecLabelArrayInput interface {
 	pulumi.Input
 
@@ -18447,7 +18447,7 @@ type OceanLaunchSpecResourceLimit struct {
 // OceanLaunchSpecResourceLimitInput is an input type that accepts OceanLaunchSpecResourceLimitArgs and OceanLaunchSpecResourceLimitOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecResourceLimitInput` via:
 //
-//          OceanLaunchSpecResourceLimitArgs{...}
+//	OceanLaunchSpecResourceLimitArgs{...}
 type OceanLaunchSpecResourceLimitInput interface {
 	pulumi.Input
 
@@ -18477,7 +18477,7 @@ func (i OceanLaunchSpecResourceLimitArgs) ToOceanLaunchSpecResourceLimitOutputWi
 // OceanLaunchSpecResourceLimitArrayInput is an input type that accepts OceanLaunchSpecResourceLimitArray and OceanLaunchSpecResourceLimitArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecResourceLimitArrayInput` via:
 //
-//          OceanLaunchSpecResourceLimitArray{ OceanLaunchSpecResourceLimitArgs{...} }
+//	OceanLaunchSpecResourceLimitArray{ OceanLaunchSpecResourceLimitArgs{...} }
 type OceanLaunchSpecResourceLimitArrayInput interface {
 	pulumi.Input
 
@@ -18553,7 +18553,7 @@ type OceanLaunchSpecSchedulingShutdownHours struct {
 // OceanLaunchSpecSchedulingShutdownHoursInput is an input type that accepts OceanLaunchSpecSchedulingShutdownHoursArgs and OceanLaunchSpecSchedulingShutdownHoursOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecSchedulingShutdownHoursInput` via:
 //
-//          OceanLaunchSpecSchedulingShutdownHoursArgs{...}
+//	OceanLaunchSpecSchedulingShutdownHoursArgs{...}
 type OceanLaunchSpecSchedulingShutdownHoursInput interface {
 	pulumi.Input
 
@@ -18591,11 +18591,11 @@ func (i OceanLaunchSpecSchedulingShutdownHoursArgs) ToOceanLaunchSpecSchedulingS
 // OceanLaunchSpecSchedulingShutdownHoursPtrInput is an input type that accepts OceanLaunchSpecSchedulingShutdownHoursArgs, OceanLaunchSpecSchedulingShutdownHoursPtr and OceanLaunchSpecSchedulingShutdownHoursPtrOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecSchedulingShutdownHoursPtrInput` via:
 //
-//          OceanLaunchSpecSchedulingShutdownHoursArgs{...}
+//	        OceanLaunchSpecSchedulingShutdownHoursArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanLaunchSpecSchedulingShutdownHoursPtrInput interface {
 	pulumi.Input
 
@@ -18713,7 +18713,7 @@ type OceanLaunchSpecSchedulingTask struct {
 // OceanLaunchSpecSchedulingTaskInput is an input type that accepts OceanLaunchSpecSchedulingTaskArgs and OceanLaunchSpecSchedulingTaskOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecSchedulingTaskInput` via:
 //
-//          OceanLaunchSpecSchedulingTaskArgs{...}
+//	OceanLaunchSpecSchedulingTaskArgs{...}
 type OceanLaunchSpecSchedulingTaskInput interface {
 	pulumi.Input
 
@@ -18747,7 +18747,7 @@ func (i OceanLaunchSpecSchedulingTaskArgs) ToOceanLaunchSpecSchedulingTaskOutput
 // OceanLaunchSpecSchedulingTaskArrayInput is an input type that accepts OceanLaunchSpecSchedulingTaskArray and OceanLaunchSpecSchedulingTaskArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecSchedulingTaskArrayInput` via:
 //
-//          OceanLaunchSpecSchedulingTaskArray{ OceanLaunchSpecSchedulingTaskArgs{...} }
+//	OceanLaunchSpecSchedulingTaskArray{ OceanLaunchSpecSchedulingTaskArgs{...} }
 type OceanLaunchSpecSchedulingTaskArrayInput interface {
 	pulumi.Input
 
@@ -18839,7 +18839,7 @@ type OceanLaunchSpecSchedulingTaskTaskHeadroom struct {
 // OceanLaunchSpecSchedulingTaskTaskHeadroomInput is an input type that accepts OceanLaunchSpecSchedulingTaskTaskHeadroomArgs and OceanLaunchSpecSchedulingTaskTaskHeadroomOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecSchedulingTaskTaskHeadroomInput` via:
 //
-//          OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{...}
+//	OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{...}
 type OceanLaunchSpecSchedulingTaskTaskHeadroomInput interface {
 	pulumi.Input
 
@@ -18873,7 +18873,7 @@ func (i OceanLaunchSpecSchedulingTaskTaskHeadroomArgs) ToOceanLaunchSpecScheduli
 // OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput is an input type that accepts OceanLaunchSpecSchedulingTaskTaskHeadroomArray and OceanLaunchSpecSchedulingTaskTaskHeadroomArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput` via:
 //
-//          OceanLaunchSpecSchedulingTaskTaskHeadroomArray{ OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{...} }
+//	OceanLaunchSpecSchedulingTaskTaskHeadroomArray{ OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{...} }
 type OceanLaunchSpecSchedulingTaskTaskHeadroomArrayInput interface {
 	pulumi.Input
 
@@ -18957,7 +18957,7 @@ type OceanLaunchSpecStrategy struct {
 // OceanLaunchSpecStrategyInput is an input type that accepts OceanLaunchSpecStrategyArgs and OceanLaunchSpecStrategyOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecStrategyInput` via:
 //
-//          OceanLaunchSpecStrategyArgs{...}
+//	OceanLaunchSpecStrategyArgs{...}
 type OceanLaunchSpecStrategyInput interface {
 	pulumi.Input
 
@@ -18985,7 +18985,7 @@ func (i OceanLaunchSpecStrategyArgs) ToOceanLaunchSpecStrategyOutputWithContext(
 // OceanLaunchSpecStrategyArrayInput is an input type that accepts OceanLaunchSpecStrategyArray and OceanLaunchSpecStrategyArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecStrategyArrayInput` via:
 //
-//          OceanLaunchSpecStrategyArray{ OceanLaunchSpecStrategyArgs{...} }
+//	OceanLaunchSpecStrategyArray{ OceanLaunchSpecStrategyArgs{...} }
 type OceanLaunchSpecStrategyArrayInput interface {
 	pulumi.Input
 
@@ -19056,7 +19056,7 @@ type OceanLaunchSpecTag struct {
 // OceanLaunchSpecTagInput is an input type that accepts OceanLaunchSpecTagArgs and OceanLaunchSpecTagOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecTagInput` via:
 //
-//          OceanLaunchSpecTagArgs{...}
+//	OceanLaunchSpecTagArgs{...}
 type OceanLaunchSpecTagInput interface {
 	pulumi.Input
 
@@ -19086,7 +19086,7 @@ func (i OceanLaunchSpecTagArgs) ToOceanLaunchSpecTagOutputWithContext(ctx contex
 // OceanLaunchSpecTagArrayInput is an input type that accepts OceanLaunchSpecTagArray and OceanLaunchSpecTagArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecTagArrayInput` via:
 //
-//          OceanLaunchSpecTagArray{ OceanLaunchSpecTagArgs{...} }
+//	OceanLaunchSpecTagArray{ OceanLaunchSpecTagArgs{...} }
 type OceanLaunchSpecTagArrayInput interface {
 	pulumi.Input
 
@@ -19164,7 +19164,7 @@ type OceanLaunchSpecTaint struct {
 // OceanLaunchSpecTaintInput is an input type that accepts OceanLaunchSpecTaintArgs and OceanLaunchSpecTaintOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecTaintInput` via:
 //
-//          OceanLaunchSpecTaintArgs{...}
+//	OceanLaunchSpecTaintArgs{...}
 type OceanLaunchSpecTaintInput interface {
 	pulumi.Input
 
@@ -19196,7 +19196,7 @@ func (i OceanLaunchSpecTaintArgs) ToOceanLaunchSpecTaintOutputWithContext(ctx co
 // OceanLaunchSpecTaintArrayInput is an input type that accepts OceanLaunchSpecTaintArray and OceanLaunchSpecTaintArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecTaintArrayInput` via:
 //
-//          OceanLaunchSpecTaintArray{ OceanLaunchSpecTaintArgs{...} }
+//	OceanLaunchSpecTaintArray{ OceanLaunchSpecTaintArgs{...} }
 type OceanLaunchSpecTaintArrayInput interface {
 	pulumi.Input
 
@@ -19275,7 +19275,7 @@ type OceanLaunchSpecUpdatePolicy struct {
 // OceanLaunchSpecUpdatePolicyInput is an input type that accepts OceanLaunchSpecUpdatePolicyArgs and OceanLaunchSpecUpdatePolicyOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyInput` via:
 //
-//          OceanLaunchSpecUpdatePolicyArgs{...}
+//	OceanLaunchSpecUpdatePolicyArgs{...}
 type OceanLaunchSpecUpdatePolicyInput interface {
 	pulumi.Input
 
@@ -19311,11 +19311,11 @@ func (i OceanLaunchSpecUpdatePolicyArgs) ToOceanLaunchSpecUpdatePolicyPtrOutputW
 // OceanLaunchSpecUpdatePolicyPtrInput is an input type that accepts OceanLaunchSpecUpdatePolicyArgs, OceanLaunchSpecUpdatePolicyPtr and OceanLaunchSpecUpdatePolicyPtrOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyPtrInput` via:
 //
-//          OceanLaunchSpecUpdatePolicyArgs{...}
+//	        OceanLaunchSpecUpdatePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanLaunchSpecUpdatePolicyPtrInput interface {
 	pulumi.Input
 
@@ -19422,7 +19422,7 @@ type OceanLaunchSpecUpdatePolicyRollConfig struct {
 // OceanLaunchSpecUpdatePolicyRollConfigInput is an input type that accepts OceanLaunchSpecUpdatePolicyRollConfigArgs and OceanLaunchSpecUpdatePolicyRollConfigOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyRollConfigInput` via:
 //
-//          OceanLaunchSpecUpdatePolicyRollConfigArgs{...}
+//	OceanLaunchSpecUpdatePolicyRollConfigArgs{...}
 type OceanLaunchSpecUpdatePolicyRollConfigInput interface {
 	pulumi.Input
 
@@ -19457,11 +19457,11 @@ func (i OceanLaunchSpecUpdatePolicyRollConfigArgs) ToOceanLaunchSpecUpdatePolicy
 // OceanLaunchSpecUpdatePolicyRollConfigPtrInput is an input type that accepts OceanLaunchSpecUpdatePolicyRollConfigArgs, OceanLaunchSpecUpdatePolicyRollConfigPtr and OceanLaunchSpecUpdatePolicyRollConfigPtrOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecUpdatePolicyRollConfigPtrInput` via:
 //
-//          OceanLaunchSpecUpdatePolicyRollConfigArgs{...}
+//	        OceanLaunchSpecUpdatePolicyRollConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanLaunchSpecUpdatePolicyRollConfigPtrInput interface {
 	pulumi.Input
 
@@ -19560,7 +19560,7 @@ type OceanLoadBalancer struct {
 // OceanLoadBalancerInput is an input type that accepts OceanLoadBalancerArgs and OceanLoadBalancerOutput values.
 // You can construct a concrete instance of `OceanLoadBalancerInput` via:
 //
-//          OceanLoadBalancerArgs{...}
+//	OceanLoadBalancerArgs{...}
 type OceanLoadBalancerInput interface {
 	pulumi.Input
 
@@ -19592,7 +19592,7 @@ func (i OceanLoadBalancerArgs) ToOceanLoadBalancerOutputWithContext(ctx context.
 // OceanLoadBalancerArrayInput is an input type that accepts OceanLoadBalancerArray and OceanLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `OceanLoadBalancerArrayInput` via:
 //
-//          OceanLoadBalancerArray{ OceanLoadBalancerArgs{...} }
+//	OceanLoadBalancerArray{ OceanLoadBalancerArgs{...} }
 type OceanLoadBalancerArrayInput interface {
 	pulumi.Input
 
@@ -19671,7 +19671,7 @@ type OceanLogging struct {
 // OceanLoggingInput is an input type that accepts OceanLoggingArgs and OceanLoggingOutput values.
 // You can construct a concrete instance of `OceanLoggingInput` via:
 //
-//          OceanLoggingArgs{...}
+//	OceanLoggingArgs{...}
 type OceanLoggingInput interface {
 	pulumi.Input
 
@@ -19707,11 +19707,11 @@ func (i OceanLoggingArgs) ToOceanLoggingPtrOutputWithContext(ctx context.Context
 // OceanLoggingPtrInput is an input type that accepts OceanLoggingArgs, OceanLoggingPtr and OceanLoggingPtrOutput values.
 // You can construct a concrete instance of `OceanLoggingPtrInput` via:
 //
-//          OceanLoggingArgs{...}
+//	        OceanLoggingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanLoggingPtrInput interface {
 	pulumi.Input
 
@@ -19808,7 +19808,7 @@ type OceanLoggingExport struct {
 // OceanLoggingExportInput is an input type that accepts OceanLoggingExportArgs and OceanLoggingExportOutput values.
 // You can construct a concrete instance of `OceanLoggingExportInput` via:
 //
-//          OceanLoggingExportArgs{...}
+//	OceanLoggingExportArgs{...}
 type OceanLoggingExportInput interface {
 	pulumi.Input
 
@@ -19844,11 +19844,11 @@ func (i OceanLoggingExportArgs) ToOceanLoggingExportPtrOutputWithContext(ctx con
 // OceanLoggingExportPtrInput is an input type that accepts OceanLoggingExportArgs, OceanLoggingExportPtr and OceanLoggingExportPtrOutput values.
 // You can construct a concrete instance of `OceanLoggingExportPtrInput` via:
 //
-//          OceanLoggingExportArgs{...}
+//	        OceanLoggingExportArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanLoggingExportPtrInput interface {
 	pulumi.Input
 
@@ -19945,7 +19945,7 @@ type OceanLoggingExportS3 struct {
 // OceanLoggingExportS3Input is an input type that accepts OceanLoggingExportS3Args and OceanLoggingExportS3Output values.
 // You can construct a concrete instance of `OceanLoggingExportS3Input` via:
 //
-//          OceanLoggingExportS3Args{...}
+//	OceanLoggingExportS3Args{...}
 type OceanLoggingExportS3Input interface {
 	pulumi.Input
 
@@ -19973,7 +19973,7 @@ func (i OceanLoggingExportS3Args) ToOceanLoggingExportS3OutputWithContext(ctx co
 // OceanLoggingExportS3ArrayInput is an input type that accepts OceanLoggingExportS3Array and OceanLoggingExportS3ArrayOutput values.
 // You can construct a concrete instance of `OceanLoggingExportS3ArrayInput` via:
 //
-//          OceanLoggingExportS3Array{ OceanLoggingExportS3Args{...} }
+//	OceanLoggingExportS3Array{ OceanLoggingExportS3Args{...} }
 type OceanLoggingExportS3ArrayInput interface {
 	pulumi.Input
 
@@ -20044,7 +20044,7 @@ type OceanScheduledTask struct {
 // OceanScheduledTaskInput is an input type that accepts OceanScheduledTaskArgs and OceanScheduledTaskOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskInput` via:
 //
-//          OceanScheduledTaskArgs{...}
+//	OceanScheduledTaskArgs{...}
 type OceanScheduledTaskInput interface {
 	pulumi.Input
 
@@ -20074,7 +20074,7 @@ func (i OceanScheduledTaskArgs) ToOceanScheduledTaskOutputWithContext(ctx contex
 // OceanScheduledTaskArrayInput is an input type that accepts OceanScheduledTaskArray and OceanScheduledTaskArrayOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskArrayInput` via:
 //
-//          OceanScheduledTaskArray{ OceanScheduledTaskArgs{...} }
+//	OceanScheduledTaskArray{ OceanScheduledTaskArgs{...} }
 type OceanScheduledTaskArrayInput interface {
 	pulumi.Input
 
@@ -20150,7 +20150,7 @@ type OceanScheduledTaskShutdownHours struct {
 // OceanScheduledTaskShutdownHoursInput is an input type that accepts OceanScheduledTaskShutdownHoursArgs and OceanScheduledTaskShutdownHoursOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskShutdownHoursInput` via:
 //
-//          OceanScheduledTaskShutdownHoursArgs{...}
+//	OceanScheduledTaskShutdownHoursArgs{...}
 type OceanScheduledTaskShutdownHoursInput interface {
 	pulumi.Input
 
@@ -20188,11 +20188,11 @@ func (i OceanScheduledTaskShutdownHoursArgs) ToOceanScheduledTaskShutdownHoursPt
 // OceanScheduledTaskShutdownHoursPtrInput is an input type that accepts OceanScheduledTaskShutdownHoursArgs, OceanScheduledTaskShutdownHoursPtr and OceanScheduledTaskShutdownHoursPtrOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskShutdownHoursPtrInput` via:
 //
-//          OceanScheduledTaskShutdownHoursArgs{...}
+//	        OceanScheduledTaskShutdownHoursArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanScheduledTaskShutdownHoursPtrInput interface {
 	pulumi.Input
 
@@ -20308,7 +20308,7 @@ type OceanScheduledTaskTask struct {
 // OceanScheduledTaskTaskInput is an input type that accepts OceanScheduledTaskTaskArgs and OceanScheduledTaskTaskOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskTaskInput` via:
 //
-//          OceanScheduledTaskTaskArgs{...}
+//	OceanScheduledTaskTaskArgs{...}
 type OceanScheduledTaskTaskInput interface {
 	pulumi.Input
 
@@ -20340,7 +20340,7 @@ func (i OceanScheduledTaskTaskArgs) ToOceanScheduledTaskTaskOutputWithContext(ct
 // OceanScheduledTaskTaskArrayInput is an input type that accepts OceanScheduledTaskTaskArray and OceanScheduledTaskTaskArrayOutput values.
 // You can construct a concrete instance of `OceanScheduledTaskTaskArrayInput` via:
 //
-//          OceanScheduledTaskTaskArray{ OceanScheduledTaskTaskArgs{...} }
+//	OceanScheduledTaskTaskArray{ OceanScheduledTaskTaskArgs{...} }
 type OceanScheduledTaskTaskArrayInput interface {
 	pulumi.Input
 
@@ -20421,7 +20421,7 @@ type OceanTag struct {
 // OceanTagInput is an input type that accepts OceanTagArgs and OceanTagOutput values.
 // You can construct a concrete instance of `OceanTagInput` via:
 //
-//          OceanTagArgs{...}
+//	OceanTagArgs{...}
 type OceanTagInput interface {
 	pulumi.Input
 
@@ -20451,7 +20451,7 @@ func (i OceanTagArgs) ToOceanTagOutputWithContext(ctx context.Context) OceanTagO
 // OceanTagArrayInput is an input type that accepts OceanTagArray and OceanTagArrayOutput values.
 // You can construct a concrete instance of `OceanTagArrayInput` via:
 //
-//          OceanTagArray{ OceanTagArgs{...} }
+//	OceanTagArray{ OceanTagArgs{...} }
 type OceanTagArrayInput interface {
 	pulumi.Input
 
@@ -20531,7 +20531,7 @@ type OceanUpdatePolicy struct {
 // OceanUpdatePolicyInput is an input type that accepts OceanUpdatePolicyArgs and OceanUpdatePolicyOutput values.
 // You can construct a concrete instance of `OceanUpdatePolicyInput` via:
 //
-//          OceanUpdatePolicyArgs{...}
+//	OceanUpdatePolicyArgs{...}
 type OceanUpdatePolicyInput interface {
 	pulumi.Input
 
@@ -20573,11 +20573,11 @@ func (i OceanUpdatePolicyArgs) ToOceanUpdatePolicyPtrOutputWithContext(ctx conte
 // OceanUpdatePolicyPtrInput is an input type that accepts OceanUpdatePolicyArgs, OceanUpdatePolicyPtr and OceanUpdatePolicyPtrOutput values.
 // You can construct a concrete instance of `OceanUpdatePolicyPtrInput` via:
 //
-//          OceanUpdatePolicyArgs{...}
+//	        OceanUpdatePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanUpdatePolicyPtrInput interface {
 	pulumi.Input
 
@@ -20725,7 +20725,7 @@ type OceanUpdatePolicyRollConfig struct {
 // OceanUpdatePolicyRollConfigInput is an input type that accepts OceanUpdatePolicyRollConfigArgs and OceanUpdatePolicyRollConfigOutput values.
 // You can construct a concrete instance of `OceanUpdatePolicyRollConfigInput` via:
 //
-//          OceanUpdatePolicyRollConfigArgs{...}
+//	OceanUpdatePolicyRollConfigArgs{...}
 type OceanUpdatePolicyRollConfigInput interface {
 	pulumi.Input
 
@@ -20767,11 +20767,11 @@ func (i OceanUpdatePolicyRollConfigArgs) ToOceanUpdatePolicyRollConfigPtrOutputW
 // OceanUpdatePolicyRollConfigPtrInput is an input type that accepts OceanUpdatePolicyRollConfigArgs, OceanUpdatePolicyRollConfigPtr and OceanUpdatePolicyRollConfigPtrOutput values.
 // You can construct a concrete instance of `OceanUpdatePolicyRollConfigPtrInput` via:
 //
-//          OceanUpdatePolicyRollConfigArgs{...}
+//	        OceanUpdatePolicyRollConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OceanUpdatePolicyRollConfigPtrInput interface {
 	pulumi.Input
 
@@ -20913,7 +20913,7 @@ type SuspensionSuspension struct {
 // SuspensionSuspensionInput is an input type that accepts SuspensionSuspensionArgs and SuspensionSuspensionOutput values.
 // You can construct a concrete instance of `SuspensionSuspensionInput` via:
 //
-//          SuspensionSuspensionArgs{...}
+//	SuspensionSuspensionArgs{...}
 type SuspensionSuspensionInput interface {
 	pulumi.Input
 
@@ -20941,7 +20941,7 @@ func (i SuspensionSuspensionArgs) ToSuspensionSuspensionOutputWithContext(ctx co
 // SuspensionSuspensionArrayInput is an input type that accepts SuspensionSuspensionArray and SuspensionSuspensionArrayOutput values.
 // You can construct a concrete instance of `SuspensionSuspensionArrayInput` via:
 //
-//          SuspensionSuspensionArray{ SuspensionSuspensionArgs{...} }
+//	SuspensionSuspensionArray{ SuspensionSuspensionArgs{...} }
 type SuspensionSuspensionArrayInput interface {
 	pulumi.Input
 

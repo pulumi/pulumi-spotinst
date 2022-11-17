@@ -19,104 +19,110 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewOcean(ctx, "example", &ecs.OceanArgs{
-// 			AssociatePublicIpAddress: pulumi.Bool(false),
-// 			BlockDeviceMappings: ecs.OceanBlockDeviceMappingArray{
-// 				&ecs.OceanBlockDeviceMappingArgs{
-// 					DeviceName: pulumi.String("/dev/xvda1"),
-// 					Ebs: &ecs.OceanBlockDeviceMappingEbsArgs{
-// 						DeleteOnTermination: pulumi.Bool(true),
-// 						DynamicVolumeSize: &ecs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{
-// 							BaseSize:            pulumi.Int(50),
-// 							Resource:            pulumi.String("CPU"),
-// 							SizePerResourceUnit: pulumi.Int(20),
-// 						},
-// 						Encrypted:  pulumi.Bool(false),
-// 						Throughput: pulumi.Int(500),
-// 						VolumeSize: pulumi.Int(50),
-// 						VolumeType: pulumi.String("gp2"),
-// 					},
-// 				},
-// 			},
-// 			ClusterName:        pulumi.String("sample-ecs-cluster"),
-// 			DesiredCapacity:    pulumi.Int(0),
-// 			DrainingTimeout:    pulumi.Int(120),
-// 			EbsOptimized:       pulumi.Bool(true),
-// 			IamInstanceProfile: pulumi.String("iam-profile"),
-// 			ImageId:            pulumi.String("ami-12345"),
-// 			InstanceMetadataOptions: &ecs.OceanInstanceMetadataOptionsArgs{
-// 				HttpPutResponseHopLimit: pulumi.Int(10),
-// 				HttpTokens:              pulumi.String("required"),
-// 			},
-// 			KeyPair: pulumi.String("KeyPair"),
-// 			Logging: &ecs.OceanLoggingArgs{
-// 				Export: &ecs.OceanLoggingExportArgs{
-// 					S3: []map[string]interface{}{
-// 						map[string]interface{}{
-// 							"id": "di-abcd123",
-// 						},
-// 					},
-// 				},
-// 			},
-// 			MaxSize:    pulumi.Int(1),
-// 			MinSize:    pulumi.Int(0),
-// 			Monitoring: pulumi.Bool(true),
-// 			OptimizeImages: &ecs.OceanOptimizeImagesArgs{
-// 				PerformAt:            pulumi.String("timeWindow"),
-// 				ShouldOptimizeEcsAmi: pulumi.Bool(true),
-// 				TimeWindows: pulumi.StringArray{
-// 					pulumi.String("Sun:02:00-Sun:12:00"),
-// 					pulumi.String("Sun:05:00-Sun:16:00"),
-// 				},
-// 			},
-// 			Region: pulumi.String("us-west-2"),
-// 			SecurityGroupIds: pulumi.StringArray{
-// 				pulumi.String("sg-12345"),
-// 			},
-// 			SpotPercentage: pulumi.Int(100),
-// 			SubnetIds: pulumi.StringArray{
-// 				pulumi.String("subnet-12345"),
-// 			},
-// 			Tags: ecs.OceanTagArray{
-// 				&ecs.OceanTagArgs{
-// 					Key:   pulumi.String("fakeKey"),
-// 					Value: pulumi.String("fakeValue"),
-// 				},
-// 			},
-// 			UseAsTemplateOnly:        pulumi.Bool(true),
-// 			UserData:                 pulumi.String("echo hello world"),
-// 			UtilizeCommitments:       pulumi.Bool(false),
-// 			UtilizeReservedInstances: pulumi.Bool(false),
-// 			Whitelists: pulumi.StringArray{
-// 				pulumi.String("t3.medium"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewOcean(ctx, "example", &ecs.OceanArgs{
+//				AssociatePublicIpAddress: pulumi.Bool(false),
+//				BlockDeviceMappings: ecs.OceanBlockDeviceMappingArray{
+//					&ecs.OceanBlockDeviceMappingArgs{
+//						DeviceName: pulumi.String("/dev/xvda1"),
+//						Ebs: &ecs.OceanBlockDeviceMappingEbsArgs{
+//							DeleteOnTermination: pulumi.Bool(true),
+//							DynamicVolumeSize: &ecs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{
+//								BaseSize:            pulumi.Int(50),
+//								Resource:            pulumi.String("CPU"),
+//								SizePerResourceUnit: pulumi.Int(20),
+//							},
+//							Encrypted:  pulumi.Bool(false),
+//							Throughput: pulumi.Int(500),
+//							VolumeSize: pulumi.Int(50),
+//							VolumeType: pulumi.String("gp2"),
+//						},
+//					},
+//				},
+//				ClusterName:        pulumi.String("sample-ecs-cluster"),
+//				DesiredCapacity:    pulumi.Int(0),
+//				DrainingTimeout:    pulumi.Int(120),
+//				EbsOptimized:       pulumi.Bool(true),
+//				IamInstanceProfile: pulumi.String("iam-profile"),
+//				ImageId:            pulumi.String("ami-12345"),
+//				InstanceMetadataOptions: &ecs.OceanInstanceMetadataOptionsArgs{
+//					HttpPutResponseHopLimit: pulumi.Int(10),
+//					HttpTokens:              pulumi.String("required"),
+//				},
+//				KeyPair: pulumi.String("KeyPair"),
+//				Logging: &ecs.OceanLoggingArgs{
+//					Export: &ecs.OceanLoggingExportArgs{
+//						S3: []map[string]interface{}{
+//							map[string]interface{}{
+//								"id": "di-abcd123",
+//							},
+//						},
+//					},
+//				},
+//				MaxSize:    pulumi.Int(1),
+//				MinSize:    pulumi.Int(0),
+//				Monitoring: pulumi.Bool(true),
+//				OptimizeImages: &ecs.OceanOptimizeImagesArgs{
+//					PerformAt:            pulumi.String("timeWindow"),
+//					ShouldOptimizeEcsAmi: pulumi.Bool(true),
+//					TimeWindows: pulumi.StringArray{
+//						pulumi.String("Sun:02:00-Sun:12:00"),
+//						pulumi.String("Sun:05:00-Sun:16:00"),
+//					},
+//				},
+//				Region: pulumi.String("us-west-2"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					pulumi.String("sg-12345"),
+//				},
+//				SpotPercentage: pulumi.Int(100),
+//				SubnetIds: pulumi.StringArray{
+//					pulumi.String("subnet-12345"),
+//				},
+//				Tags: ecs.OceanTagArray{
+//					&ecs.OceanTagArgs{
+//						Key:   pulumi.String("fakeKey"),
+//						Value: pulumi.String("fakeValue"),
+//					},
+//				},
+//				UseAsTemplateOnly:        pulumi.Bool(true),
+//				UserData:                 pulumi.String("echo hello world"),
+//				UtilizeCommitments:       pulumi.Bool(false),
+//				UtilizeReservedInstances: pulumi.Bool(false),
+//				Whitelists: pulumi.StringArray{
+//					pulumi.String("t3.medium"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ctx.Export("oceanId", spotinst_ocean_ecs.Example.Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ctx.Export("oceanId", spotinst_ocean_ecs.Example.Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 type Ocean struct {
 	pulumi.CustomResourceState
@@ -496,7 +502,7 @@ func (i *Ocean) ToOceanOutputWithContext(ctx context.Context) OceanOutput {
 // OceanArrayInput is an input type that accepts OceanArray and OceanArrayOutput values.
 // You can construct a concrete instance of `OceanArrayInput` via:
 //
-//          OceanArray{ OceanArgs{...} }
+//	OceanArray{ OceanArgs{...} }
 type OceanArrayInput interface {
 	pulumi.Input
 
@@ -521,7 +527,7 @@ func (i OceanArray) ToOceanArrayOutputWithContext(ctx context.Context) OceanArra
 // OceanMapInput is an input type that accepts OceanMap and OceanMapOutput values.
 // You can construct a concrete instance of `OceanMapInput` via:
 //
-//          OceanMap{ "key": OceanArgs{...} }
+//	OceanMap{ "key": OceanArgs{...} }
 type OceanMapInput interface {
 	pulumi.Input
 

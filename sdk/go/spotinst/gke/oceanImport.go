@@ -17,113 +17,130 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/gke"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/gke"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := gke.NewOceanImport(ctx, "example", &gke.OceanImportArgs{
-// 			BackendServices: gke.OceanImportBackendServiceArray{
-// 				&gke.OceanImportBackendServiceArgs{
-// 					LocationType: pulumi.String("regional"),
-// 					NamedPorts: gke.OceanImportBackendServiceNamedPortArray{
-// 						&gke.OceanImportBackendServiceNamedPortArgs{
-// 							Name: pulumi.String("http"),
-// 							Ports: pulumi.StringArray{
-// 								pulumi.String("80"),
-// 								pulumi.String("8080"),
-// 							},
-// 						},
-// 					},
-// 					Scheme:      pulumi.String("INTERNAL"),
-// 					ServiceName: pulumi.String("example-backend-service"),
-// 				},
-// 			},
-// 			ClusterName:         pulumi.String("example-cluster-name"),
-// 			ControllerClusterId: pulumi.String("example-controller-123124"),
-// 			DesiredCapacity:     pulumi.Int(0),
-// 			Location:            pulumi.String("us-central1-a"),
-// 			MaxSize:             pulumi.Int(2),
-// 			MinSize:             pulumi.Int(0),
-// 			RootVolumeType:      pulumi.String("pd-ssd"),
-// 			ShieldedInstanceConfig: &gke.OceanImportShieldedInstanceConfigArgs{
-// 				EnableIntegrityMonitoring: pulumi.Bool(true),
-// 				EnableSecureBoot:          pulumi.Bool(true),
-// 			},
-// 			UseAsTemplateOnly: pulumi.Bool(false),
-// 			Whitelists: pulumi.StringArray{
-// 				pulumi.String("n1-standard-1"),
-// 				pulumi.String("n1-standard-2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gke.NewOceanImport(ctx, "example", &gke.OceanImportArgs{
+//				BackendServices: gke.OceanImportBackendServiceArray{
+//					&gke.OceanImportBackendServiceArgs{
+//						LocationType: pulumi.String("regional"),
+//						NamedPorts: gke.OceanImportBackendServiceNamedPortArray{
+//							&gke.OceanImportBackendServiceNamedPortArgs{
+//								Name: pulumi.String("http"),
+//								Ports: pulumi.StringArray{
+//									pulumi.String("80"),
+//									pulumi.String("8080"),
+//								},
+//							},
+//						},
+//						Scheme:      pulumi.String("INTERNAL"),
+//						ServiceName: pulumi.String("example-backend-service"),
+//					},
+//				},
+//				ClusterName:         pulumi.String("example-cluster-name"),
+//				ControllerClusterId: pulumi.String("example-controller-123124"),
+//				DesiredCapacity:     pulumi.Int(0),
+//				Location:            pulumi.String("us-central1-a"),
+//				MaxSize:             pulumi.Int(2),
+//				MinSize:             pulumi.Int(0),
+//				RootVolumeType:      pulumi.String("pd-ssd"),
+//				ShieldedInstanceConfig: &gke.OceanImportShieldedInstanceConfigArgs{
+//					EnableIntegrityMonitoring: pulumi.Bool(true),
+//					EnableSecureBoot:          pulumi.Bool(true),
+//				},
+//				UseAsTemplateOnly: pulumi.Bool(false),
+//				Whitelists: pulumi.StringArray{
+//					pulumi.String("n1-standard-1"),
+//					pulumi.String("n1-standard-2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ctx.Export("oceanId", spotinst_ocean_gke_import.Example.Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ctx.Export("oceanId", spotinst_ocean_gke_import.Example.Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Strategy
 //
 // * `strategy` - (Optional) Strategy object.
-//     * `drainingTimeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
-//     * `provisioningModel` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
-//     * `preemptiblePercentage`- (Optional) Defines the desired preemptible percentage for the cluster.
+//   - `drainingTimeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+//   - `provisioningModel` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+//   - `preemptiblePercentage`- (Optional) Defines the desired preemptible percentage for the cluster.
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // <a id="update-policy"></a>
 // ## Update Policy
 //
 // * `updatePolicy` - (Optional)
-//     * `shouldRoll` - (Required) Enables the roll.
-//     * `conditionedRoll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 //
-//     * `rollConfig` - (Required) Holds the roll configuration.
-//         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-//         * `launchSpecIds` - (Optional) List of Virtual Node Group identifiers to be rolled.
-//         * `batchMinHealthyPercentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+//   - `shouldRoll` - (Required) Enables the roll.
+//
+//   - `conditionedRoll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+//
+//   - `rollConfig` - (Required) Holds the roll configuration.
+//
+//   - `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+//
+//   - `launchSpecIds` - (Optional) List of Virtual Node Group identifiers to be rolled.
+//
+//   - `batchMinHealthyPercentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 type OceanImport struct {
 	pulumi.CustomResourceState
@@ -350,7 +367,7 @@ func (i *OceanImport) ToOceanImportOutputWithContext(ctx context.Context) OceanI
 // OceanImportArrayInput is an input type that accepts OceanImportArray and OceanImportArrayOutput values.
 // You can construct a concrete instance of `OceanImportArrayInput` via:
 //
-//          OceanImportArray{ OceanImportArgs{...} }
+//	OceanImportArray{ OceanImportArgs{...} }
 type OceanImportArrayInput interface {
 	pulumi.Input
 
@@ -375,7 +392,7 @@ func (i OceanImportArray) ToOceanImportArrayOutputWithContext(ctx context.Contex
 // OceanImportMapInput is an input type that accepts OceanImportMap and OceanImportMapOutput values.
 // You can construct a concrete instance of `OceanImportMapInput` via:
 //
-//          OceanImportMap{ "key": OceanImportArgs{...} }
+//	OceanImportMap{ "key": OceanImportArgs{...} }
 type OceanImportMapInput interface {
 	pulumi.Input
 

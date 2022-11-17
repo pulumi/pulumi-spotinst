@@ -111,7 +111,7 @@ func (i *Balancer) ToBalancerOutputWithContext(ctx context.Context) BalancerOutp
 // BalancerArrayInput is an input type that accepts BalancerArray and BalancerArrayOutput values.
 // You can construct a concrete instance of `BalancerArrayInput` via:
 //
-//          BalancerArray{ BalancerArgs{...} }
+//	BalancerArray{ BalancerArgs{...} }
 type BalancerArrayInput interface {
 	pulumi.Input
 
@@ -136,7 +136,7 @@ func (i BalancerArray) ToBalancerArrayOutputWithContext(ctx context.Context) Bal
 // BalancerMapInput is an input type that accepts BalancerMap and BalancerMapOutput values.
 // You can construct a concrete instance of `BalancerMapInput` via:
 //
-//          BalancerMap{ "key": BalancerArgs{...} }
+//	BalancerMap{ "key": BalancerArgs{...} }
 type BalancerMapInput interface {
 	pulumi.Input
 

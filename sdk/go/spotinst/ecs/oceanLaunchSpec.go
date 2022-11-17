@@ -19,131 +19,137 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewOceanLaunchSpec(ctx, "example", &ecs.OceanLaunchSpecArgs{
-// 			Attributes: ecs.OceanLaunchSpecAttributeArray{
-// 				&ecs.OceanLaunchSpecAttributeArgs{
-// 					Key:   pulumi.String("fakeKey"),
-// 					Value: pulumi.String("fakeValue"),
-// 				},
-// 			},
-// 			AutoscaleHeadrooms: ecs.OceanLaunchSpecAutoscaleHeadroomArray{
-// 				&ecs.OceanLaunchSpecAutoscaleHeadroomArgs{
-// 					CpuPerUnit:    pulumi.Int(1000),
-// 					MemoryPerUnit: pulumi.Int(2048),
-// 					NumOfUnits:    pulumi.Int(5),
-// 				},
-// 			},
-// 			BlockDeviceMappings: ecs.OceanLaunchSpecBlockDeviceMappingArray{
-// 				&ecs.OceanLaunchSpecBlockDeviceMappingArgs{
-// 					DeviceName: pulumi.String("/dev/xvda1"),
-// 					Ebs: &ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs{
-// 						DeleteOnTermination: pulumi.Bool(true),
-// 						DynamicVolumeSize: &ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{
-// 							BaseSize:            pulumi.Int(50),
-// 							Resource:            pulumi.String("CPU"),
-// 							SizePerResourceUnit: pulumi.Int(20),
-// 						},
-// 						Encrypted:  pulumi.Bool(false),
-// 						Throughput: pulumi.Int(500),
-// 						VolumeSize: pulumi.Int(50),
-// 						VolumeType: pulumi.String("gp2"),
-// 					},
-// 				},
-// 			},
-// 			IamInstanceProfile: pulumi.String("iam-profile"),
-// 			ImageId:            pulumi.String("ami-123456"),
-// 			InstanceTypes: pulumi.StringArray{
-// 				pulumi.String("m3.large"),
-// 				pulumi.String("m3.xlarge"),
-// 				pulumi.String("m3.2xlarge"),
-// 				pulumi.String("m4.large"),
-// 				pulumi.String("m4.xlarge"),
-// 				pulumi.String("m4.4xlarge"),
-// 				pulumi.String("m4.2xlarge"),
-// 				pulumi.String("m4.10xlarge"),
-// 				pulumi.String("m4.16xlarge"),
-// 				pulumi.String("m5.large"),
-// 				pulumi.String("m5.xlarge"),
-// 				pulumi.String("m5.2xlarge"),
-// 				pulumi.String("m5.4xlarge"),
-// 				pulumi.String("m5.12xlarge"),
-// 				pulumi.String("m5.24xlarge"),
-// 			},
-// 			OceanId:           pulumi.String("o-123456"),
-// 			RestrictScaleDown: pulumi.Bool(true),
-// 			SchedulingTasks: ecs.OceanLaunchSpecSchedulingTaskArray{
-// 				&ecs.OceanLaunchSpecSchedulingTaskArgs{
-// 					CronExpression: pulumi.String("0 1 * * *"),
-// 					IsEnabled:      pulumi.Bool(true),
-// 					TaskHeadrooms: ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
-// 						&ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
-// 							CpuPerUnit:    pulumi.Int(1000),
-// 							MemoryPerUnit: pulumi.Int(2048),
-// 							NumOfUnits:    pulumi.Int(5),
-// 						},
-// 					},
-// 					TaskType: pulumi.String("manualHeadroomUpdate"),
-// 				},
-// 			},
-// 			SecurityGroupIds: pulumi.StringArray{
-// 				pulumi.String("awseb-12345"),
-// 			},
-// 			SubnetIds: pulumi.StringArray{
-// 				pulumi.String("subnet-12345"),
-// 			},
-// 			Tags: ecs.OceanLaunchSpecTagArray{
-// 				&ecs.OceanLaunchSpecTagArgs{
-// 					Key:   pulumi.String("Env"),
-// 					Value: pulumi.String("production"),
-// 				},
-// 			},
-// 			UserData: pulumi.String("echo hello world"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewOceanLaunchSpec(ctx, "example", &ecs.OceanLaunchSpecArgs{
+//				Attributes: ecs.OceanLaunchSpecAttributeArray{
+//					&ecs.OceanLaunchSpecAttributeArgs{
+//						Key:   pulumi.String("fakeKey"),
+//						Value: pulumi.String("fakeValue"),
+//					},
+//				},
+//				AutoscaleHeadrooms: ecs.OceanLaunchSpecAutoscaleHeadroomArray{
+//					&ecs.OceanLaunchSpecAutoscaleHeadroomArgs{
+//						CpuPerUnit:    pulumi.Int(1000),
+//						MemoryPerUnit: pulumi.Int(2048),
+//						NumOfUnits:    pulumi.Int(5),
+//					},
+//				},
+//				BlockDeviceMappings: ecs.OceanLaunchSpecBlockDeviceMappingArray{
+//					&ecs.OceanLaunchSpecBlockDeviceMappingArgs{
+//						DeviceName: pulumi.String("/dev/xvda1"),
+//						Ebs: &ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs{
+//							DeleteOnTermination: pulumi.Bool(true),
+//							DynamicVolumeSize: &ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{
+//								BaseSize:            pulumi.Int(50),
+//								Resource:            pulumi.String("CPU"),
+//								SizePerResourceUnit: pulumi.Int(20),
+//							},
+//							Encrypted:  pulumi.Bool(false),
+//							Throughput: pulumi.Int(500),
+//							VolumeSize: pulumi.Int(50),
+//							VolumeType: pulumi.String("gp2"),
+//						},
+//					},
+//				},
+//				IamInstanceProfile: pulumi.String("iam-profile"),
+//				ImageId:            pulumi.String("ami-123456"),
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String("m3.large"),
+//					pulumi.String("m3.xlarge"),
+//					pulumi.String("m3.2xlarge"),
+//					pulumi.String("m4.large"),
+//					pulumi.String("m4.xlarge"),
+//					pulumi.String("m4.4xlarge"),
+//					pulumi.String("m4.2xlarge"),
+//					pulumi.String("m4.10xlarge"),
+//					pulumi.String("m4.16xlarge"),
+//					pulumi.String("m5.large"),
+//					pulumi.String("m5.xlarge"),
+//					pulumi.String("m5.2xlarge"),
+//					pulumi.String("m5.4xlarge"),
+//					pulumi.String("m5.12xlarge"),
+//					pulumi.String("m5.24xlarge"),
+//				},
+//				OceanId:           pulumi.String("o-123456"),
+//				RestrictScaleDown: pulumi.Bool(true),
+//				SchedulingTasks: ecs.OceanLaunchSpecSchedulingTaskArray{
+//					&ecs.OceanLaunchSpecSchedulingTaskArgs{
+//						CronExpression: pulumi.String("0 1 * * *"),
+//						IsEnabled:      pulumi.Bool(true),
+//						TaskHeadrooms: ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
+//							&ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
+//								CpuPerUnit:    pulumi.Int(1000),
+//								MemoryPerUnit: pulumi.Int(2048),
+//								NumOfUnits:    pulumi.Int(5),
+//							},
+//						},
+//						TaskType: pulumi.String("manualHeadroomUpdate"),
+//					},
+//				},
+//				SecurityGroupIds: pulumi.StringArray{
+//					pulumi.String("awseb-12345"),
+//				},
+//				SubnetIds: pulumi.StringArray{
+//					pulumi.String("subnet-12345"),
+//				},
+//				Tags: ecs.OceanLaunchSpecTagArray{
+//					&ecs.OceanLaunchSpecTagArgs{
+//						Key:   pulumi.String("Env"),
+//						Value: pulumi.String("production"),
+//					},
+//				},
+//				UserData: pulumi.String("echo hello world"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ctx.Export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec.Example.Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ctx.Export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec.Example.Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Block Devices
 //
 // * `blockDeviceMappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-//     * `deviceName` - (Optional) String. Set device name. (Example: "/dev/xvda1").
-//     * `ebs`- (Optional) Object. Set Elastic Block Store properties .
-//         * `deleteOnTermination`- (Optional) Boolean. Flag to delete the EBS on instance termination.
-//         * `encrypted`- (Optional) Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-//         * `iops`- (Required for requests to create io1 volumes; it is not used in requests to create gp2, st1, sc1, or standard volumes) Int. The number of I/O operations per second (IOPS) that the volume supports.
-//         * `kmsKeyId`- (Optional) String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-//         * `snapshotId`- (Optional) (Optional) String. The Snapshot ID to mount by.
-//         * `volumeType`- (Optional, Default: `"standard"`) String. The type of the volume (example: "gp2").
-//         * `volumeSize`- (Optional) Int. The size, in GB of the volume.
-//         * `throughput`- (Optional) The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
-//         * `dynamicVolumeSize`- (Optional) Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
-//             * `baseSize`- (Required) Int. Initial size for volume. (Example: 50)
-//             * `resource`- (Required) String. Resource type to increase volume size dynamically by. (valid values: "CPU")
-//             * `sizePerResourceUnit`- (Required) Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
-//         * `noDevice`- (Optional) String. suppresses the specified device included in the block device mapping of the AMI.
+//   - `deviceName` - (Optional) String. Set device name. (Example: "/dev/xvda1").
+//   - `ebs`- (Optional) Object. Set Elastic Block Store properties .
+//   - `deleteOnTermination`- (Optional) Boolean. Flag to delete the EBS on instance termination.
+//   - `encrypted`- (Optional) Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+//   - `iops`- (Required for requests to create io1 volumes; it is not used in requests to create gp2, st1, sc1, or standard volumes) Int. The number of I/O operations per second (IOPS) that the volume supports.
+//   - `kmsKeyId`- (Optional) String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+//   - `snapshotId`- (Optional) (Optional) String. The Snapshot ID to mount by.
+//   - `volumeType`- (Optional, Default: `"standard"`) String. The type of the volume (example: "gp2").
+//   - `volumeSize`- (Optional) Int. The size, in GB of the volume.
+//   - `throughput`- (Optional) The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+//   - `dynamicVolumeSize`- (Optional) Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+//   - `baseSize`- (Required) Int. Initial size for volume. (Example: 50)
+//   - `resource`- (Required) String. Resource type to increase volume size dynamically by. (valid values: "CPU")
+//   - `sizePerResourceUnit`- (Required) Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)
+//   - `noDevice`- (Optional) String. suppresses the specified device included in the block device mapping of the AMI.
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
 
@@ -358,7 +364,7 @@ func (i *OceanLaunchSpec) ToOceanLaunchSpecOutputWithContext(ctx context.Context
 // OceanLaunchSpecArrayInput is an input type that accepts OceanLaunchSpecArray and OceanLaunchSpecArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecArrayInput` via:
 //
-//          OceanLaunchSpecArray{ OceanLaunchSpecArgs{...} }
+//	OceanLaunchSpecArray{ OceanLaunchSpecArgs{...} }
 type OceanLaunchSpecArrayInput interface {
 	pulumi.Input
 
@@ -383,7 +389,7 @@ func (i OceanLaunchSpecArray) ToOceanLaunchSpecArrayOutputWithContext(ctx contex
 // OceanLaunchSpecMapInput is an input type that accepts OceanLaunchSpecMap and OceanLaunchSpecMapOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecMapInput` via:
 //
-//          OceanLaunchSpecMap{ "key": OceanLaunchSpecArgs{...} }
+//	OceanLaunchSpecMap{ "key": OceanLaunchSpecArgs{...} }
 type OceanLaunchSpecMapInput interface {
 	pulumi.Input
 

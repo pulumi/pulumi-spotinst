@@ -16,12 +16,12 @@ import (
 // ## Strategy
 //
 // * `strategy` - (Required) Strategy for stateful node.
-//   * `drainingTimeout` - (Optional, Default `120`) Time (in seconds) to allow the VM be drained from incoming TCP connections and detached from MLB before terminating it during a scale down operation.
-//   * `fallbackToOnDemand` - (Required) In case of no spots available, Stateful Node will launch an On-demand instance instead.
-//   * `optimizationWindows` - (Optional) Valid format: "ddd:hh:mm-ddd:hh:mm (day:hour(0-23):minute(0-59))", not empty if revertToSpot.performAt = timeWindow.
-//   * `preferredLifeCycle` - (Optional, Enum `"od", "spot"`, Default `"spot"`) The desired type of VM.
-//   * `revertToSpot` - (Optional) Hold settings for strategy correction - replacing On-Demand for Spot VMs.
-//     * `performAt` - (Required, Enum `"timeWindow", "never", "always"`, Default `"always"`) Settings for maintenance strategy.
+//   - `drainingTimeout` - (Optional, Default `120`) Time (in seconds) to allow the VM be drained from incoming TCP connections and detached from MLB before terminating it during a scale down operation.
+//   - `fallbackToOnDemand` - (Required) In case of no spots available, Stateful Node will launch an On-demand instance instead.
+//   - `optimizationWindows` - (Optional) Valid format: "ddd:hh:mm-ddd:hh:mm (day:hour(0-23):minute(0-59))", not empty if revertToSpot.performAt = timeWindow.
+//   - `preferredLifeCycle` - (Optional, Enum `"od", "spot"`, Default `"spot"`) The desired type of VM.
+//   - `revertToSpot` - (Optional) Hold settings for strategy correction - replacing On-Demand for Spot VMs.
+//   - `performAt` - (Required, Enum `"timeWindow", "never", "always"`, Default `"always"`) Settings for maintenance strategy.
 //
 // <a id="compute"></a>
 // ## Compute
@@ -39,137 +39,137 @@ import (
 // ## Boot Diagnostics
 //
 // * `bootDiagnostics`
-//   * `isEnabled` - (Optional) Allows you to enable and disable the configuration of boot diagnostics at launch.
-//   * `storageUrl` - (Optional) The storage URI that is used if a type is unmanaged. The storage URI must follow the blob storage URI format ("https://.blob.core.windows.net/"). StorageUri is required if the type is unmanaged. StorageUri must be ‘null’ in case the boot diagnostics type is managed.
-//   * `type` - (Optional, Enum `"managed", "unmanaged"`) Defines the storage type on VM launch in Azure.
+//   - `isEnabled` - (Optional) Allows you to enable and disable the configuration of boot diagnostics at launch.
+//   - `storageUrl` - (Optional) The storage URI that is used if a type is unmanaged. The storage URI must follow the blob storage URI format ("https://.blob.core.windows.net/"). StorageUri is required if the type is unmanaged. StorageUri must be ‘null’ in case the boot diagnostics type is managed.
+//   - `type` - (Optional, Enum `"managed", "unmanaged"`) Defines the storage type on VM launch in Azure.
 //
 // <a id="dataDisks"></a>
 // ## Data Disks
 //
 // * `dataDisk` - (Optional) The definitions of data disks that will be created and attached to the stateful node's VM.
-//   * `sizeGb` - (Required) The size of the data disk in GB, required if dataDisks is specified.
-//   * `lun` - (Required) The LUN of the data disk.
-//   * `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS"`) The type of the data disk.
+//   - `sizeGb` - (Required) The size of the data disk in GB, required if dataDisks is specified.
+//   - `lun` - (Required) The LUN of the data disk.
+//   - `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS"`) The type of the data disk.
 //
 // <a id="extensions"></a>
 // ## Extensions
 //
 // * `extension` - (Optional) An object for an azure extension.
-//   * `name` - (Required) Required on compute.launchSpecification.extensions object.
-//   * `type` - (Required) Required on compute.launchSpecification.extensions object.
-//   * `publisher` - (Required) Required on compute.launchSpecification.extensions object.
-//   * `apiVersion` - (Required) The API version of the extension. Required if extension specified.
-//   * `minorVersionAutoUpgrade` - (Required) Required on compute.launchSpecification.extensions object.
-//   * `protectedSettings` - (Optional) Object for protected settings.
-//   * `publicSettings` - (Optional) Object for public settings.
+//   - `name` - (Required) Required on compute.launchSpecification.extensions object.
+//   - `type` - (Required) Required on compute.launchSpecification.extensions object.
+//   - `publisher` - (Required) Required on compute.launchSpecification.extensions object.
+//   - `apiVersion` - (Required) The API version of the extension. Required if extension specified.
+//   - `minorVersionAutoUpgrade` - (Required) Required on compute.launchSpecification.extensions object.
+//   - `protectedSettings` - (Optional) Object for protected settings.
+//   - `publicSettings` - (Optional) Object for public settings.
 //
 // <a id="image"></a>
 // ## Image
 //
 // * `image`
-//   * `marketplaceImage` - (Optional) Select an image from Azure's Marketplace image catalogue. Required if the custom image or gallery image are not specified.
-//     * `publisher` - (Required) Image publisher.
-//     * `offer` - (Required) Image offer.
-//     * `sku` - (Required) Image Stock Keeping Unit, which is the specific version of the image.
-//     * `version` - (Required, Default `"latest"`) Image's version. if version not provided we use "latest".
-//   * `galleryImage` - (Optional) Gallery image definitions. Required if custom image or marketplace image are not specified.
-//     * `galleryResourceGroupName` - (Required) The resource group name for gallery image.
-//     * `galleryName` - (Required) Name of the gallery.
-//     * `imageName` - (Required) Name of the gallery image.
-//     * `versionName` - (Required) Image's version. Can be in the format x.x.x or 'latest'.
-//   * `customImage` - (Optional) Custom image definitions. Required if marketplace image or gallery image are not specified.
-//     * `customImageResourceGroupName` - (Required) The resource group name for custom image.
-//     * `name` - (Required) The name of the custom image.
+//   - `marketplaceImage` - (Optional) Select an image from Azure's Marketplace image catalogue. Required if the custom image or gallery image are not specified.
+//   - `publisher` - (Required) Image publisher.
+//   - `offer` - (Required) Image offer.
+//   - `sku` - (Required) Image Stock Keeping Unit, which is the specific version of the image.
+//   - `version` - (Required, Default `"latest"`) Image's version. if version not provided we use "latest".
+//   - `galleryImage` - (Optional) Gallery image definitions. Required if custom image or marketplace image are not specified.
+//   - `galleryResourceGroupName` - (Required) The resource group name for gallery image.
+//   - `galleryName` - (Required) Name of the gallery.
+//   - `imageName` - (Required) Name of the gallery image.
+//   - `versionName` - (Required) Image's version. Can be in the format x.x.x or 'latest'.
+//   - `customImage` - (Optional) Custom image definitions. Required if marketplace image or gallery image are not specified.
+//   - `customImageResourceGroupName` - (Required) The resource group name for custom image.
+//   - `name` - (Required) The name of the custom image.
 //
 // <a id="load balancer"></a>
 // ## Load Balancer
 //
 // * `loadBalancer` - (Optional) Add a load balancer. For Azure Gateway, each Backend Pool is a separate load balancer.
-//   * `type` - (Required, Enum `"loadBalancer", "applicationGateway"`) The type of load balancer.
-//   * `resourceGroupName` - (Required) The Resource Group name of the Load Balancer.
-//   * `name` - (Required) Name of the Application Gateway/Load Balancer.
-//   * `sku` - (Optional)
-//     * if type is `"LoadBalancer"` then possible values are `“Standard", "Basic”`.
-//     * If ApplicationGateway then possible values are
-//       `“Standard_Large”, “Standard_Medium”, “Standard_Small”, “Standard_v2", “WAF_Large”, “WAF_Medium", “WAF_v2"`.
-//   * `backendPoolNames` - (Optional) Name of the Backend Pool to register the Stateful Node VMs to. Each Backend Pool is a separate load balancer. Required if Type is APPLICATION_GATEWAY.
+//   - `type` - (Required, Enum `"loadBalancer", "applicationGateway"`) The type of load balancer.
+//   - `resourceGroupName` - (Required) The Resource Group name of the Load Balancer.
+//   - `name` - (Required) Name of the Application Gateway/Load Balancer.
+//   - `sku` - (Optional)
+//   - if type is `"LoadBalancer"` then possible values are `“Standard", "Basic”`.
+//   - If ApplicationGateway then possible values are
+//     `“Standard_Large”, “Standard_Medium”, “Standard_Small”, “Standard_v2", “WAF_Large”, “WAF_Medium", “WAF_v2"`.
+//   - `backendPoolNames` - (Optional) Name of the Backend Pool to register the Stateful Node VMs to. Each Backend Pool is a separate load balancer. Required if Type is APPLICATION_GATEWAY.
 //
 // <a id="login"></a>
 // ## Login
 //
 // * `login` - (Required) Set admin access for accessing your VMs. Password/SSH is required for Linux.
-//   * `userName` - (Required) username for admin access to VMs.
-//   * `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Optional for Linux.
-//   * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows.
+//   - `userName` - (Required) username for admin access to VMs.
+//   - `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Optional for Linux.
+//   - `password` - (Optional) Password for admin access to Windows VMs. Required for Windows.
 //
 // <a id="managedServiceIdentities"></a>
 // ## Managed Service Identities
 //
 // * `managedServiceIdentities` - (Optional) Add a user-assigned managed identity to the Stateful Node's VM.
-//   * `name` - (Required) name of the managed identity.
-//   * `resourceGroupName` - (Required) The Resource Group that the user-assigned managed identity resides in.
+//   - `name` - (Required) name of the managed identity.
+//   - `resourceGroupName` - (Required) The Resource Group that the user-assigned managed identity resides in.
 //
 // <a id="network"></a>
 // ## Network
 //
 // * `network` - (Required) Define the Virtual Network and Subnet for your Stateful Node.
-//   * `networkResourceGroupName` - (Required) Vnet Resource Group Name.
-//   * `virtualNetworkName` - (Required) Virtual Network.
-//   * `networkInterface` - (Required) Define a network interface
-//     * `isPrimary` - (Required) Defines whether the network interface is primary or not.
-//     * `subnetName` - (Required) Subnet name.
-//     * `assignPublicIp` - (Optional) Assign public IP.
-//     * `publicIpSku` - (Optional) Required if assignPublicIp=true values=[STANDARD/BASIC].
-//     * `networkSecurityGroup` - (Optional) Network Security Group.
-//       * `networkResourceGroupName` - (Required) Requires valid security group name.
-//       * `name` - (Required) Requires valid resource group name.
-//     * `enableIpForwarding` - (Optional) Enable IP Forwarding.
-//     * `privateIpAddresses` - (Optional) A list with unique items that every item is a valid IP.
-//     * `additionalIpConfigurations` - (Optional) Additional configuration of network interface.
-//       * `name` - (Required) Configuration name.
-//       * `privateIpAddressVersion` - (Required, Enum `"IPv4", "IPv6"` Default `"IPv4"`) Version of the private IP address.
-//     * `publicIps` - (Optional) Defined a pool of Public Ips (from Azure), that will be associated to the network interface. We will associate one public ip per instance until the pool is exhausted, in which case, we will create a new one.
-//       * `resourceGroupName` - (Required) The resource group of the public ip.
-//       * `name` - (Required) - The name of the public ip.
-//     * `applicationSecurityGroups` - (Optional) Network Security Group.
-//       * `resourceGroupName` - (Required) Requires valid security group name.
-//       * `name` - (Required) Requires valid resource group name.
+//   - `networkResourceGroupName` - (Required) Vnet Resource Group Name.
+//   - `virtualNetworkName` - (Required) Virtual Network.
+//   - `networkInterface` - (Required) Define a network interface
+//   - `isPrimary` - (Required) Defines whether the network interface is primary or not.
+//   - `subnetName` - (Required) Subnet name.
+//   - `assignPublicIp` - (Optional) Assign public IP.
+//   - `publicIpSku` - (Optional) Required if assignPublicIp=true values=[STANDARD/BASIC].
+//   - `networkSecurityGroup` - (Optional) Network Security Group.
+//   - `networkResourceGroupName` - (Required) Requires valid security group name.
+//   - `name` - (Required) Requires valid resource group name.
+//   - `enableIpForwarding` - (Optional) Enable IP Forwarding.
+//   - `privateIpAddresses` - (Optional) A list with unique items that every item is a valid IP.
+//   - `additionalIpConfigurations` - (Optional) Additional configuration of network interface.
+//   - `name` - (Required) Configuration name.
+//   - `privateIpAddressVersion` - (Required, Enum `"IPv4", "IPv6"` Default `"IPv4"`) Version of the private IP address.
+//   - `publicIps` - (Optional) Defined a pool of Public Ips (from Azure), that will be associated to the network interface. We will associate one public ip per instance until the pool is exhausted, in which case, we will create a new one.
+//   - `resourceGroupName` - (Required) The resource group of the public ip.
+//   - `name` - (Required) - The name of the public ip.
+//   - `applicationSecurityGroups` - (Optional) Network Security Group.
+//   - `resourceGroupName` - (Required) Requires valid security group name.
+//   - `name` - (Required) Requires valid resource group name.
 //
 // <a id="osDisk"></a>
 // ## OS Disk
 //
 // * `osDisk` - (Optional) Specify OS disk specification other than default.
-//   * `sizeGb` - (Optional, Default `"30"`) The size of the data disk in GB.
-//   * `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS"`) The type of the OS disk.
+//   - `sizeGb` - (Optional, Default `"30"`) The size of the data disk in GB.
+//   - `type` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS"`) The type of the OS disk.
 //
 // <a id="secret"></a>
 // ## Secret
 //
 // * `secret` - (Optional) Set of certificates that should be installed on the VM.
-//   * `sourceVault` - (Required) The key vault reference, contains the required certificates.
-//     * `name` - (Required) The name of the key vault.
-//     * `resourceGroupName` - (Required) The resource group name of the key vault.
-//   * `vaultCertificates` - (Required) The required certificate references.
-//     * `certificateUrl` - (Optional) The URL of the certificate under the key vault.
-//     * `certificateStore` - (Required) The certificate store directory the VM. The directory is created in the LocalMachine account.
-//       * This field is required only when using Windows OS type
-//       * This field must be ‘null’ when the OS type is Linux
+//   - `sourceVault` - (Required) The key vault reference, contains the required certificates.
+//   - `name` - (Required) The name of the key vault.
+//   - `resourceGroupName` - (Required) The resource group name of the key vault.
+//   - `vaultCertificates` - (Required) The required certificate references.
+//   - `certificateUrl` - (Optional) The URL of the certificate under the key vault.
+//   - `certificateStore` - (Required) The certificate store directory the VM. The directory is created in the LocalMachine account.
+//   - This field is required only when using Windows OS type
+//   - This field must be ‘null’ when the OS type is Linux
 //
 // <a id="tag"></a>
 // ## Tag
 //
 // * `tag` - (Optional) Unique Key-Value pair for all Stateful Node Resources.
-//   * `tagKey` - (Optional) Tag Key for Stateful Node Resources.
-//   * `tagValue` - (Optional) Tag Value for Stateful Node Resources.
+//   - `tagKey` - (Optional) Tag Key for Stateful Node Resources.
+//   - `tagValue` - (Optional) Tag Value for Stateful Node Resources.
 //
 // <a id="health"></a>
 // ## Health
 //
 // * `health` - (Optional) Set the auto healing preferences for unhealthy VMs.
-//   * `healthCheckTypes` - (Optional, Enum `"vmState", "applicationGateway"`) Healthcheck to use to validate VM health.
-//   * `unhealthyDuration` - (Optional) Amount of time to be unhealthy before a replacement is triggered.
-//   * `autoHealing` - (Required) Enable Autohealing of unhealthy VMs.
-//   * `gracePeriod` - (Optional) Period of time to wait for VM to reach healthiness before monitoring for unhealthiness.
+//   - `healthCheckTypes` - (Optional, Enum `"vmState", "applicationGateway"`) Healthcheck to use to validate VM health.
+//   - `unhealthyDuration` - (Optional) Amount of time to be unhealthy before a replacement is triggered.
+//   - `autoHealing` - (Required) Enable Autohealing of unhealthy VMs.
+//   - `gracePeriod` - (Optional) Period of time to wait for VM to reach healthiness before monitoring for unhealthiness.
 //
 // <a id="persistence"></a>
 // ## Persistence
@@ -184,16 +184,16 @@ import (
 // ## Scheduling Tasks
 //
 // * `schedulingTask` - (Optional) Scheduling settings object for stateful node.
-//   * `isEnabled` - (Required) Is scheduled task enabled for stateful node.
-//   * `type` - (Required, Enum `"pause", "resume", "recycle") The type of the scheduled task
-//   * `cronExpression` (Required) A expression which describes when to execute the scheduled task (UTC).
+//   - `isEnabled` - (Required) Is scheduled task enabled for stateful node.
+//   - `type` - (Required, Enum `"pause", "resume", "recycle") The type of the scheduled task
+//   - `cronExpression` (Required) A expression which describes when to execute the scheduled task (UTC).
 //
 // <a id="signals"></a>
 // ## Signals
 //
 // * `signal` - (Optional) A signal object defined for the stateful node.
-//   * `type` - (Required, Enum `"vmReady", "vmReadyToShutdown"`) The type of the signal defined for the stateful node.
-//   * `timeout` - (Required, Default `"1800"`) The timeout in seconds to hold the vm until a signal is sent. If no signal is sent the vm will be replaced (vmReady) or we will terminate the vm (vmReadyToShutdown) after the timeout.
+//   - `type` - (Required, Enum `"vmReady", "vmReadyToShutdown"`) The type of the signal defined for the stateful node.
+//   - `timeout` - (Required, Default `"1800"`) The timeout in seconds to hold the vm until a signal is sent. If no signal is sent the vm will be replaced (vmReady) or we will terminate the vm (vmReadyToShutdown) after the timeout.
 //
 // ***
 //
@@ -201,36 +201,36 @@ import (
 // ## Attach Data Disk
 //
 // * `attachDataDisk` - (Optional) Create a new data disk and attach it to the stateful node.
-//   * `dataDiskName` - (Required) The name of the created data disk.
-//   * `dataDiskResourceGroupName` - (Required) The resource group name in which the data disk will be created.
-//   * `storageAccountType` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS"`) The type of the data disk.
-//   * `sizeGb` - (Required) The size of the data disk in GB, Required if dataDisks is specified.
-//   * `zone` - (Optional, Enum `"1", "2", "3"`) The Availability Zone in which the data disk will be created. If not defined, the data disk will be created regionally.
-//   * `lun` - (Optional, Default `"orginal"`) The LUN of the data disk. If not defined, the LUN will be set in order.
+//   - `dataDiskName` - (Required) The name of the created data disk.
+//   - `dataDiskResourceGroupName` - (Required) The resource group name in which the data disk will be created.
+//   - `storageAccountType` - (Required, Enum `"Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS"`) The type of the data disk.
+//   - `sizeGb` - (Required) The size of the data disk in GB, Required if dataDisks is specified.
+//   - `zone` - (Optional, Enum `"1", "2", "3"`) The Availability Zone in which the data disk will be created. If not defined, the data disk will be created regionally.
+//   - `lun` - (Optional, Default `"orginal"`) The LUN of the data disk. If not defined, the LUN will be set in order.
 //
 // <a id="detachDataDisk"></a>
 // ## Detach Data Disk
 //
 // * `detachDataDisk` - (Optional) Detach a data disk from a stateful node.
-//   * `dataDiskName` - (Required) The name of the detached data disk.
-//   * `dataDiskResourceGroupName` - (Required) The resource group name in which the data disk exists.
-//   * `shouldDeallocate` - (Required) Indicates whether to delete the data disk in addition to detach.
-//   * `ttlInHours` - (Required, Default `"0"`) Hours to keep the disk alive before deletion.
+//   - `dataDiskName` - (Required) The name of the detached data disk.
+//   - `dataDiskResourceGroupName` - (Required) The resource group name in which the data disk exists.
+//   - `shouldDeallocate` - (Required) Indicates whether to delete the data disk in addition to detach.
+//   - `ttlInHours` - (Required, Default `"0"`) Hours to keep the disk alive before deletion.
 //
 // <a id="updateState"></a>
 // ## Update State
 //
 // * `updateState` - (Optional) Update the stateful node state.
-//   * `state` - (Required, Enum `"pause", "resume", "recycle"`) New state for the stateful node.
+//   - `state` - (Required, Enum `"pause", "resume", "recycle"`) New state for the stateful node.
 //
 // <a id="importVm"></a>
 // ## Import VM
 //
 // * `importVm` - (Optional) Import an Azure VM and create a stateful node by providing a node configuration.
-//   * `resourceGroupName` - (Required) Name of the Resource Group for Stateful Node.
-//   * `originalVmName` - (Required) Azure Import Stateful Node Name.
-//   * `drainingTimeout` - (Optional) Hours to keep resources alive.
-//   * `resourcesRetentionTime` - (Optional) Hours to keep resources alive.
+//   - `resourceGroupName` - (Required) Name of the Resource Group for Stateful Node.
+//   - `originalVmName` - (Required) Azure Import Stateful Node Name.
+//   - `drainingTimeout` - (Optional) Hours to keep resources alive.
+//   - `resourcesRetentionTime` - (Optional) Hours to keep resources alive.
 type StatefulNodeAzure struct {
 	pulumi.CustomResourceState
 
@@ -533,7 +533,7 @@ func (i *StatefulNodeAzure) ToStatefulNodeAzureOutputWithContext(ctx context.Con
 // StatefulNodeAzureArrayInput is an input type that accepts StatefulNodeAzureArray and StatefulNodeAzureArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureArrayInput` via:
 //
-//          StatefulNodeAzureArray{ StatefulNodeAzureArgs{...} }
+//	StatefulNodeAzureArray{ StatefulNodeAzureArgs{...} }
 type StatefulNodeAzureArrayInput interface {
 	pulumi.Input
 
@@ -558,7 +558,7 @@ func (i StatefulNodeAzureArray) ToStatefulNodeAzureArrayOutputWithContext(ctx co
 // StatefulNodeAzureMapInput is an input type that accepts StatefulNodeAzureMap and StatefulNodeAzureMapOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureMapInput` via:
 //
-//          StatefulNodeAzureMap{ "key": StatefulNodeAzureArgs{...} }
+//	StatefulNodeAzureMap{ "key": StatefulNodeAzureArgs{...} }
 type StatefulNodeAzureMapInput interface {
 	pulumi.Input
 
