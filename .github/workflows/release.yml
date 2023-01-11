@@ -20,6 +20,7 @@ env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   SPOTINST_ACCOUNT: ${{ secrets.SPOTINST_ACCOUNT }}
   SPOTINST_TOKEN: ${{ secrets.SPOTINST_TOKEN }}
+  TF_APPEND_USER_AGENT: pulumi
   TRAVIS_OS_NAME: linux
 jobs:
   build_sdk:
@@ -105,7 +106,9 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-        - 3.1.301
+        - |
+          6.0.x
+          3.1.301
         goversion:
         - 1.19.x
         javaversion:
@@ -276,7 +279,9 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-        - 3.1.301
+        - |
+          6.0.x
+          3.1.301
         goversion:
         - 1.19.x
         nodeversion:
@@ -331,7 +336,9 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-        - 3.1.301
+        - |
+          6.0.x
+          3.1.301
         goversion:
         - 1.19.x
         nodeversion:
@@ -470,7 +477,9 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-        - 3.1.301
+        - |
+          6.0.x
+          3.1.301
         goversion:
         - 1.19.x
         nodeversion:
@@ -593,7 +602,9 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-        - 3.1.301
+        - |
+          6.0.x
+          3.1.301
         goversion:
         - 1.19.x
         javaversion:
