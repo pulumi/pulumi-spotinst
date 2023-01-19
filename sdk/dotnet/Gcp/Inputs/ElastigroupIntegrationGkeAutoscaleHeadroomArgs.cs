@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupIntegrationGkeAutoscaleHeadroomArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationGkeAutoscaleHeadroomArgs : global::Pulumi.ResourceArgs
     {
         [Input("cpuPerUnit")]
         public Input<int>? CpuPerUnit { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupIntegrationGkeAutoscaleHeadroomArgs()
         {
         }
+        public static new ElastigroupIntegrationGkeAutoscaleHeadroomArgs Empty => new ElastigroupIntegrationGkeAutoscaleHeadroomArgs();
     }
 }

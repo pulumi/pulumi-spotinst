@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecUpdatePolicyRollConfigArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecUpdatePolicyRollConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecUpdatePolicyRollConfigArgs()
         {
         }
+        public static new OceanLaunchSpecUpdatePolicyRollConfigArgs Empty => new OceanLaunchSpecUpdatePolicyRollConfigArgs();
     }
 }

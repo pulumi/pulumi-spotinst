@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupTagArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupTagArgs : global::Pulumi.ResourceArgs
     {
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupTagArgs()
         {
         }
+        public static new ElastigroupTagArgs Empty => new ElastigroupTagArgs();
     }
 }

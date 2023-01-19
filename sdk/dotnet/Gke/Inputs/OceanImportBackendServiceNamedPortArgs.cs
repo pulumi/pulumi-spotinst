@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportBackendServiceNamedPortArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportBackendServiceNamedPortArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -30,5 +30,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportBackendServiceNamedPortArgs()
         {
         }
+        public static new OceanImportBackendServiceNamedPortArgs Empty => new OceanImportBackendServiceNamedPortArgs();
     }
 }

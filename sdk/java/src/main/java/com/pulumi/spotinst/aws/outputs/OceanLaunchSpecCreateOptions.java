@@ -6,6 +6,8 @@ package com.pulumi.spotinst.aws.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanLaunchSpecCreateOptions {
@@ -13,15 +15,15 @@ public final class OceanLaunchSpecCreateOptions {
      * @return When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
      * 
      */
-    private Integer initialNodes;
+    private @Nullable Integer initialNodes;
 
     private OceanLaunchSpecCreateOptions() {}
     /**
      * @return When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
      * 
      */
-    public Integer initialNodes() {
-        return this.initialNodes;
+    public Optional<Integer> initialNodes() {
+        return Optional.ofNullable(this.initialNodes);
     }
 
     public static Builder builder() {
@@ -33,7 +35,7 @@ public final class OceanLaunchSpecCreateOptions {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer initialNodes;
+        private @Nullable Integer initialNodes;
         public Builder() {}
         public Builder(OceanLaunchSpecCreateOptions defaults) {
     	      Objects.requireNonNull(defaults);
@@ -41,8 +43,8 @@ public final class OceanLaunchSpecCreateOptions {
         }
 
         @CustomType.Setter
-        public Builder initialNodes(Integer initialNodes) {
-            this.initialNodes = Objects.requireNonNull(initialNodes);
+        public Builder initialNodes(@Nullable Integer initialNodes) {
+            this.initialNodes = initialNodes;
             return this;
         }
         public OceanLaunchSpecCreateOptions build() {

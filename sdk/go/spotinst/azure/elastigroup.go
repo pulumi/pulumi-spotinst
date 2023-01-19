@@ -164,19 +164,15 @@ type Elastigroup struct {
 
 	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
-	// Describes the health check configuration.
-	HealthCheck ElastigroupHealthCheckPtrOutput `pulumi:"healthCheck"`
-	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-	Images ElastigroupImageArrayOutput `pulumi:"images"`
+	DesiredCapacity pulumi.IntPtrOutput             `pulumi:"desiredCapacity"`
+	HealthCheck     ElastigroupHealthCheckPtrOutput `pulumi:"healthCheck"`
+	Images          ElastigroupImageArrayOutput     `pulumi:"images"`
 	// Describes the [Kubernetes](https://kubernetes.io/) integration.
 	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrOutput `pulumi:"integrationKubernetes"`
 	// Describes the [Multai Runtime](https://spotinst.com/) integration.
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrOutput `pulumi:"integrationMultaiRuntime"`
-	// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-	LoadBalancers ElastigroupLoadBalancerArrayOutput `pulumi:"loadBalancers"`
-	// Describes the login configuration.
-	Login ElastigroupLoginPtrOutput `pulumi:"login"`
+	LoadBalancers            ElastigroupLoadBalancerArrayOutput           `pulumi:"loadBalancers"`
+	Login                    ElastigroupLoginPtrOutput                    `pulumi:"login"`
 	// Available Low-Priority sizes.
 	LowPrioritySizes         pulumi.StringArrayOutput                     `pulumi:"lowPrioritySizes"`
 	ManagedServiceIdentities ElastigroupManagedServiceIdentityArrayOutput `pulumi:"managedServiceIdentities"`
@@ -184,9 +180,8 @@ type Elastigroup struct {
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// The dimension name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Defines the Virtual Network and Subnet for your Elastigroup.
+	// The name of the managed identity.
+	Name    pulumi.StringOutput      `pulumi:"name"`
 	Network ElastigroupNetworkOutput `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayOutput `pulumi:"odSizes"`
@@ -194,7 +189,7 @@ type Elastigroup struct {
 	Product pulumi.StringOutput `pulumi:"product"`
 	// The region your Azure group will be created in.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Vnet Resource Group Name.
+	// The Resource Group that the user-assigned managed identity resides in.
 	ResourceGroupName   pulumi.StringOutput                     `pulumi:"resourceGroupName"`
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayOutput   `pulumi:"scalingUpPolicies"`
@@ -261,19 +256,15 @@ func GetElastigroup(ctx *pulumi.Context,
 type elastigroupState struct {
 	CustomData *string `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// Describes the health check configuration.
-	HealthCheck *ElastigroupHealthCheck `pulumi:"healthCheck"`
-	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-	Images []ElastigroupImage `pulumi:"images"`
+	DesiredCapacity *int                    `pulumi:"desiredCapacity"`
+	HealthCheck     *ElastigroupHealthCheck `pulumi:"healthCheck"`
+	Images          []ElastigroupImage      `pulumi:"images"`
 	// Describes the [Kubernetes](https://kubernetes.io/) integration.
 	IntegrationKubernetes *ElastigroupIntegrationKubernetes `pulumi:"integrationKubernetes"`
 	// Describes the [Multai Runtime](https://spotinst.com/) integration.
 	IntegrationMultaiRuntime *ElastigroupIntegrationMultaiRuntime `pulumi:"integrationMultaiRuntime"`
-	// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-	LoadBalancers []ElastigroupLoadBalancer `pulumi:"loadBalancers"`
-	// Describes the login configuration.
-	Login *ElastigroupLogin `pulumi:"login"`
+	LoadBalancers            []ElastigroupLoadBalancer            `pulumi:"loadBalancers"`
+	Login                    *ElastigroupLogin                    `pulumi:"login"`
 	// Available Low-Priority sizes.
 	LowPrioritySizes         []string                            `pulumi:"lowPrioritySizes"`
 	ManagedServiceIdentities []ElastigroupManagedServiceIdentity `pulumi:"managedServiceIdentities"`
@@ -281,9 +272,8 @@ type elastigroupState struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// The dimension name.
-	Name *string `pulumi:"name"`
-	// Defines the Virtual Network and Subnet for your Elastigroup.
+	// The name of the managed identity.
+	Name    *string             `pulumi:"name"`
 	Network *ElastigroupNetwork `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes []string `pulumi:"odSizes"`
@@ -291,7 +281,7 @@ type elastigroupState struct {
 	Product *string `pulumi:"product"`
 	// The region your Azure group will be created in.
 	Region *string `pulumi:"region"`
-	// Vnet Resource Group Name.
+	// The Resource Group that the user-assigned managed identity resides in.
 	ResourceGroupName   *string                        `pulumi:"resourceGroupName"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies   []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
@@ -310,18 +300,14 @@ type ElastigroupState struct {
 	CustomData pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrInput
-	// Describes the health check configuration.
-	HealthCheck ElastigroupHealthCheckPtrInput
-	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-	Images ElastigroupImageArrayInput
+	HealthCheck     ElastigroupHealthCheckPtrInput
+	Images          ElastigroupImageArrayInput
 	// Describes the [Kubernetes](https://kubernetes.io/) integration.
 	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrInput
 	// Describes the [Multai Runtime](https://spotinst.com/) integration.
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrInput
-	// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-	LoadBalancers ElastigroupLoadBalancerArrayInput
-	// Describes the login configuration.
-	Login ElastigroupLoginPtrInput
+	LoadBalancers            ElastigroupLoadBalancerArrayInput
+	Login                    ElastigroupLoginPtrInput
 	// Available Low-Priority sizes.
 	LowPrioritySizes         pulumi.StringArrayInput
 	ManagedServiceIdentities ElastigroupManagedServiceIdentityArrayInput
@@ -329,9 +315,8 @@ type ElastigroupState struct {
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// The dimension name.
-	Name pulumi.StringPtrInput
-	// Defines the Virtual Network and Subnet for your Elastigroup.
+	// The name of the managed identity.
+	Name    pulumi.StringPtrInput
 	Network ElastigroupNetworkPtrInput
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayInput
@@ -339,7 +324,7 @@ type ElastigroupState struct {
 	Product pulumi.StringPtrInput
 	// The region your Azure group will be created in.
 	Region pulumi.StringPtrInput
-	// Vnet Resource Group Name.
+	// The Resource Group that the user-assigned managed identity resides in.
 	ResourceGroupName   pulumi.StringPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayInput
@@ -361,19 +346,15 @@ func (ElastigroupState) ElementType() reflect.Type {
 type elastigroupArgs struct {
 	CustomData *string `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// Describes the health check configuration.
-	HealthCheck *ElastigroupHealthCheck `pulumi:"healthCheck"`
-	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-	Images []ElastigroupImage `pulumi:"images"`
+	DesiredCapacity *int                    `pulumi:"desiredCapacity"`
+	HealthCheck     *ElastigroupHealthCheck `pulumi:"healthCheck"`
+	Images          []ElastigroupImage      `pulumi:"images"`
 	// Describes the [Kubernetes](https://kubernetes.io/) integration.
 	IntegrationKubernetes *ElastigroupIntegrationKubernetes `pulumi:"integrationKubernetes"`
 	// Describes the [Multai Runtime](https://spotinst.com/) integration.
 	IntegrationMultaiRuntime *ElastigroupIntegrationMultaiRuntime `pulumi:"integrationMultaiRuntime"`
-	// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-	LoadBalancers []ElastigroupLoadBalancer `pulumi:"loadBalancers"`
-	// Describes the login configuration.
-	Login *ElastigroupLogin `pulumi:"login"`
+	LoadBalancers            []ElastigroupLoadBalancer            `pulumi:"loadBalancers"`
+	Login                    *ElastigroupLogin                    `pulumi:"login"`
 	// Available Low-Priority sizes.
 	LowPrioritySizes         []string                            `pulumi:"lowPrioritySizes"`
 	ManagedServiceIdentities []ElastigroupManagedServiceIdentity `pulumi:"managedServiceIdentities"`
@@ -381,9 +362,8 @@ type elastigroupArgs struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// The dimension name.
-	Name *string `pulumi:"name"`
-	// Defines the Virtual Network and Subnet for your Elastigroup.
+	// The name of the managed identity.
+	Name    *string            `pulumi:"name"`
 	Network ElastigroupNetwork `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes []string `pulumi:"odSizes"`
@@ -391,7 +371,7 @@ type elastigroupArgs struct {
 	Product string `pulumi:"product"`
 	// The region your Azure group will be created in.
 	Region string `pulumi:"region"`
-	// Vnet Resource Group Name.
+	// The Resource Group that the user-assigned managed identity resides in.
 	ResourceGroupName   string                         `pulumi:"resourceGroupName"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies   []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
@@ -411,18 +391,14 @@ type ElastigroupArgs struct {
 	CustomData pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrInput
-	// Describes the health check configuration.
-	HealthCheck ElastigroupHealthCheckPtrInput
-	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-	Images ElastigroupImageArrayInput
+	HealthCheck     ElastigroupHealthCheckPtrInput
+	Images          ElastigroupImageArrayInput
 	// Describes the [Kubernetes](https://kubernetes.io/) integration.
 	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrInput
 	// Describes the [Multai Runtime](https://spotinst.com/) integration.
 	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrInput
-	// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-	LoadBalancers ElastigroupLoadBalancerArrayInput
-	// Describes the login configuration.
-	Login ElastigroupLoginPtrInput
+	LoadBalancers            ElastigroupLoadBalancerArrayInput
+	Login                    ElastigroupLoginPtrInput
 	// Available Low-Priority sizes.
 	LowPrioritySizes         pulumi.StringArrayInput
 	ManagedServiceIdentities ElastigroupManagedServiceIdentityArrayInput
@@ -430,9 +406,8 @@ type ElastigroupArgs struct {
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// The dimension name.
-	Name pulumi.StringPtrInput
-	// Defines the Virtual Network and Subnet for your Elastigroup.
+	// The name of the managed identity.
+	Name    pulumi.StringPtrInput
 	Network ElastigroupNetworkInput
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayInput
@@ -440,7 +415,7 @@ type ElastigroupArgs struct {
 	Product pulumi.StringInput
 	// The region your Azure group will be created in.
 	Region pulumi.StringInput
-	// Vnet Resource Group Name.
+	// The Resource Group that the user-assigned managed identity resides in.
 	ResourceGroupName   pulumi.StringInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayInput
@@ -551,12 +526,10 @@ func (o ElastigroupOutput) DesiredCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
 }
 
-// Describes the health check configuration.
 func (o ElastigroupOutput) HealthCheck() ElastigroupHealthCheckPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupHealthCheckPtrOutput { return v.HealthCheck }).(ElastigroupHealthCheckPtrOutput)
 }
 
-// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
 func (o ElastigroupOutput) Images() ElastigroupImageArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupImageArrayOutput { return v.Images }).(ElastigroupImageArrayOutput)
 }
@@ -571,12 +544,10 @@ func (o ElastigroupOutput) IntegrationMultaiRuntime() ElastigroupIntegrationMult
 	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationMultaiRuntimePtrOutput { return v.IntegrationMultaiRuntime }).(ElastigroupIntegrationMultaiRuntimePtrOutput)
 }
 
-// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
 func (o ElastigroupOutput) LoadBalancers() ElastigroupLoadBalancerArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupLoadBalancerArrayOutput { return v.LoadBalancers }).(ElastigroupLoadBalancerArrayOutput)
 }
 
-// Describes the login configuration.
 func (o ElastigroupOutput) Login() ElastigroupLoginPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupLoginPtrOutput { return v.Login }).(ElastigroupLoginPtrOutput)
 }
@@ -600,12 +571,11 @@ func (o ElastigroupOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
 }
 
-// The dimension name.
+// The name of the managed identity.
 func (o ElastigroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Defines the Virtual Network and Subnet for your Elastigroup.
 func (o ElastigroupOutput) Network() ElastigroupNetworkOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupNetworkOutput { return v.Network }).(ElastigroupNetworkOutput)
 }
@@ -625,7 +595,7 @@ func (o ElastigroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Vnet Resource Group Name.
+// The Resource Group that the user-assigned managed identity resides in.
 func (o ElastigroupOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
 }

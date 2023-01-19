@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureExtensionArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureExtensionArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiVersion", required: true)]
         public Input<string> ApiVersion { get; set; } = null!;
@@ -46,5 +46,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureExtensionArgs()
         {
         }
+        public static new StatefulNodeAzureExtensionArgs Empty => new StatefulNodeAzureExtensionArgs();
     }
 }

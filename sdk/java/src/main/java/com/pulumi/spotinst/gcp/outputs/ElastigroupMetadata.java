@@ -15,7 +15,7 @@ public final class ElastigroupMetadata {
      */
     private String key;
     /**
-     * @return The dimension value.
+     * @return Labels value.
      * 
      */
     private String value;
@@ -29,7 +29,7 @@ public final class ElastigroupMetadata {
         return this.key;
     }
     /**
-     * @return The dimension value.
+     * @return Labels value.
      * 
      */
     public String value() {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanHealthArgs : Pulumi.ResourceArgs
+    public sealed class OceanHealthArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The amount of time to wait, in seconds, from the moment the instance has launched before monitoring its health checks.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanHealthArgs()
         {
         }
+        public static new OceanHealthArgs Empty => new OceanHealthArgs();
     }
 }

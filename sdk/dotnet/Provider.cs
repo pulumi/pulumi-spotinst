@@ -16,7 +16,7 @@ namespace Pulumi.SpotInst
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [SpotInstResourceType("pulumi:providers:spotinst")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// Spotinst Account ID
@@ -62,7 +62,7 @@ namespace Pulumi.SpotInst
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Spotinst Account ID
@@ -85,5 +85,6 @@ namespace Pulumi.SpotInst
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

@@ -35,14 +35,14 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
     }
 
     /**
-     * - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+     * List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
      * 
      */
     @Import(name="applicationSecurityGroups")
     private @Nullable Output<List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs>> applicationSecurityGroups;
 
     /**
-     * @return - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+     * @return List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
      * 
      */
     public Optional<Output<List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs>>> applicationSecurityGroups() {
@@ -56,17 +56,9 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
         return this.assignPublicIp;
     }
 
-    /**
-     * - 
-     * 
-     */
     @Import(name="isPrimary", required=true)
     private Output<Boolean> isPrimary;
 
-    /**
-     * @return -
-     * 
-     */
     public Output<Boolean> isPrimary() {
         return this.isPrimary;
     }
@@ -146,7 +138,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
         }
 
         /**
-         * @param applicationSecurityGroups - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+         * @param applicationSecurityGroups List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
          * 
          * @return builder
          * 
@@ -157,7 +149,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
         }
 
         /**
-         * @param applicationSecurityGroups - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+         * @param applicationSecurityGroups List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
          * 
          * @return builder
          * 
@@ -167,7 +159,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
         }
 
         /**
-         * @param applicationSecurityGroups - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+         * @param applicationSecurityGroups List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
          * 
          * @return builder
          * 
@@ -185,23 +177,11 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
             return assignPublicIp(Output.of(assignPublicIp));
         }
 
-        /**
-         * @param isPrimary -
-         * 
-         * @return builder
-         * 
-         */
         public Builder isPrimary(Output<Boolean> isPrimary) {
             $.isPrimary = isPrimary;
             return this;
         }
 
-        /**
-         * @param isPrimary -
-         * 
-         * @return builder
-         * 
-         */
         public Builder isPrimary(Boolean isPrimary) {
             return isPrimary(Output.of(isPrimary));
         }

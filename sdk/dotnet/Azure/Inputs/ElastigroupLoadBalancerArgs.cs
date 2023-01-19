@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupLoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupLoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoWeight")]
         public Input<bool>? AutoWeight { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupLoadBalancerArgs()
         {
         }
+        public static new ElastigroupLoadBalancerArgs Empty => new ElastigroupLoadBalancerArgs();
     }
 }

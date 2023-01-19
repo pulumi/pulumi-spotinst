@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureLoadBalancerGetArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureLoadBalancerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("backendPoolNames", required: true)]
         private InputList<string>? _backendPoolNames;
@@ -35,5 +35,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureLoadBalancerGetArgs()
         {
         }
+        public static new StatefulNodeAzureLoadBalancerGetArgs Empty => new StatefulNodeAzureLoadBalancerGetArgs();
     }
 }

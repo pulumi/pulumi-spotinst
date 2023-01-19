@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupImageMarketplaceArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupImageMarketplaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the image to use. Required if publisher is specified.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupImageMarketplaceArgs()
         {
         }
+        public static new ElastigroupImageMarketplaceArgs Empty => new ElastigroupImageMarketplaceArgs();
     }
 }

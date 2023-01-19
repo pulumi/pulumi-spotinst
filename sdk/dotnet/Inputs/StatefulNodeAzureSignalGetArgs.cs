@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureSignalGetArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureSignalGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("timeout", required: true)]
         public Input<int> Timeout { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureSignalGetArgs()
         {
         }
+        public static new StatefulNodeAzureSignalGetArgs Empty => new StatefulNodeAzureSignalGetArgs();
     }
 }

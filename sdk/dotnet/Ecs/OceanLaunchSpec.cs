@@ -15,128 +15,139 @@ namespace Pulumi.SpotInst.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new SpotInst.Ecs.OceanLaunchSpec("example", new()
     ///     {
-    ///         var example = new SpotInst.Ecs.OceanLaunchSpec("example", new SpotInst.Ecs.OceanLaunchSpecArgs
+    ///         Attributes = new[]
     ///         {
-    ///             Attributes = 
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecAttributeArgs
     ///             {
-    ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecAttributeArgs
-    ///                 {
-    ///                     Key = "fakeKey",
-    ///                     Value = "fakeValue",
-    ///                 },
+    ///                 Key = "fakeKey",
+    ///                 Value = "fakeValue",
     ///             },
-    ///             AutoscaleHeadrooms = 
+    ///         },
+    ///         AutoscaleHeadrooms = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
     ///             {
-    ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
-    ///                 {
-    ///                     CpuPerUnit = 1000,
-    ///                     MemoryPerUnit = 2048,
-    ///                     NumOfUnits = 5,
-    ///                 },
+    ///                 CpuPerUnit = 1000,
+    ///                 MemoryPerUnit = 2048,
+    ///                 NumOfUnits = 5,
     ///             },
-    ///             BlockDeviceMappings = 
+    ///         },
+    ///         BlockDeviceMappings = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
     ///             {
-    ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
+    ///                 DeviceName = "/dev/xvda1",
+    ///                 Ebs = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
     ///                 {
-    ///                     DeviceName = "/dev/xvda1",
-    ///                     Ebs = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
+    ///                     DeleteOnTermination = true,
+    ///                     DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs
     ///                     {
-    ///                         DeleteOnTermination = true,
-    ///                         DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs
-    ///                         {
-    ///                             BaseSize = 50,
-    ///                             Resource = "CPU",
-    ///                             SizePerResourceUnit = 20,
-    ///                         },
-    ///                         Encrypted = false,
-    ///                         Throughput = 500,
-    ///                         VolumeSize = 50,
-    ///                         VolumeType = "gp2",
+    ///                         BaseSize = 50,
+    ///                         Resource = "CPU",
+    ///                         SizePerResourceUnit = 20,
+    ///                     },
+    ///                     Encrypted = false,
+    ///                     Throughput = 500,
+    ///                     VolumeSize = 50,
+    ///                     VolumeType = "gp2",
+    ///                 },
+    ///             },
+    ///         },
+    ///         IamInstanceProfile = "iam-profile",
+    ///         ImageId = "ami-123456",
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             "m3.large",
+    ///             "m3.xlarge",
+    ///             "m3.2xlarge",
+    ///             "m4.large",
+    ///             "m4.xlarge",
+    ///             "m4.4xlarge",
+    ///             "m4.2xlarge",
+    ///             "m4.10xlarge",
+    ///             "m4.16xlarge",
+    ///             "m5.large",
+    ///             "m5.xlarge",
+    ///             "m5.2xlarge",
+    ///             "m5.4xlarge",
+    ///             "m5.12xlarge",
+    ///             "m5.24xlarge",
+    ///         },
+    ///         OceanId = "o-123456",
+    ///         PreferredSpotTypes = new[]
+    ///         {
+    ///             "m3.large",
+    ///             "m3.xlarge",
+    ///             "m3.2xlarge",
+    ///             "m4.large",
+    ///             "m4.xlarge",
+    ///         },
+    ///         RestrictScaleDown = true,
+    ///         SchedulingTasks = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskArgs
+    ///             {
+    ///                 CronExpression = "0 1 * * *",
+    ///                 IsEnabled = true,
+    ///                 TaskHeadrooms = new[]
+    ///                 {
+    ///                     new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs
+    ///                     {
+    ///                         CpuPerUnit = 1000,
+    ///                         MemoryPerUnit = 2048,
+    ///                         NumOfUnits = 5,
     ///                     },
     ///                 },
+    ///                 TaskType = "manualHeadroomUpdate",
     ///             },
-    ///             IamInstanceProfile = "iam-profile",
-    ///             ImageId = "ami-123456",
-    ///             InstanceTypes = 
+    ///         },
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             "awseb-12345",
+    ///         },
+    ///         Strategies = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecStrategyArgs
     ///             {
-    ///                 "m3.large",
-    ///                 "m3.xlarge",
-    ///                 "m3.2xlarge",
-    ///                 "m4.large",
-    ///                 "m4.xlarge",
-    ///                 "m4.4xlarge",
-    ///                 "m4.2xlarge",
-    ///                 "m4.10xlarge",
-    ///                 "m4.16xlarge",
-    ///                 "m5.large",
-    ///                 "m5.xlarge",
-    ///                 "m5.2xlarge",
-    ///                 "m5.4xlarge",
-    ///                 "m5.12xlarge",
-    ///                 "m5.24xlarge",
+    ///                 SpotPercentage = 50,
     ///             },
-    ///             OceanId = "o-123456",
-    ///             RestrictScaleDown = true,
-    ///             SchedulingTasks = 
+    ///         },
+    ///         SubnetIds = new[]
+    ///         {
+    ///             "subnet-12345",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecTagArgs
     ///             {
-    ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskArgs
-    ///                 {
-    ///                     CronExpression = "0 1 * * *",
-    ///                     IsEnabled = true,
-    ///                     TaskHeadrooms = 
-    ///                     {
-    ///                         new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs
-    ///                         {
-    ///                             CpuPerUnit = 1000,
-    ///                             MemoryPerUnit = 2048,
-    ///                             NumOfUnits = 5,
-    ///                         },
-    ///                     },
-    ///                     TaskType = "manualHeadroomUpdate",
-    ///                 },
+    ///                 Key = "Env",
+    ///                 Value = "production",
     ///             },
-    ///             SecurityGroupIds = 
-    ///             {
-    ///                 "awseb-12345",
-    ///             },
-    ///             SubnetIds = 
-    ///             {
-    ///                 "subnet-12345",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 new SpotInst.Ecs.Inputs.OceanLaunchSpecTagArgs
-    ///                 {
-    ///                     Key = "Env",
-    ///                     Value = "production",
-    ///                 },
-    ///             },
-    ///             UserData = "echo hello world",
-    ///         });
-    ///     }
+    ///         },
+    ///         UserData = "echo hello world",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         this.OceanLaunchspecId = spotinst_ocean_ecs_launch_spec.Example.Id;
-    ///     }
-    /// 
-    ///     [Output("oceanLaunchspecId")]
-    ///     public Output&lt;string&gt; OceanLaunchspecId { get; set; }
-    /// }
+    ///         ["oceanLaunchspecId"] = spotinst_ocean_ecs_launch_spec.Example.Id,
+    ///     };
+    /// });
     /// ```
     /// ## Block Devices
     /// 
@@ -158,7 +169,7 @@ namespace Pulumi.SpotInst.Ecs
     ///         * `no_device`- (Optional) String. suppresses the specified device included in the block device mapping of the AMI.
     /// </summary>
     [SpotInstResourceType("spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec")]
-    public partial class OceanLaunchSpec : Pulumi.CustomResource
+    public partial class OceanLaunchSpec : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optionally adds labels to instances launched in an Ocean cluster.
@@ -206,6 +217,12 @@ namespace Pulumi.SpotInst.Ecs
         public Output<string> OceanId { get; private set; } = null!;
 
         /// <summary>
+        /// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        /// </summary>
+        [Output("preferredSpotTypes")]
+        public Output<ImmutableArray<string>> PreferredSpotTypes { get; private set; } = null!;
+
+        /// <summary>
         /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
         [Output("restrictScaleDown")]
@@ -222,6 +239,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+        /// </summary>
+        [Output("strategies")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecStrategy>> Strategies { get; private set; } = null!;
 
         /// <summary>
         /// Set subnets in launchSpec. Each element in the array should be a subnet ID.
@@ -285,7 +308,7 @@ namespace Pulumi.SpotInst.Ecs
         }
     }
 
-    public sealed class OceanLaunchSpecArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
         private InputList<Inputs.OceanLaunchSpecAttributeArgs>? _attributes;
@@ -355,6 +378,18 @@ namespace Pulumi.SpotInst.Ecs
         [Input("oceanId", required: true)]
         public Input<string> OceanId { get; set; } = null!;
 
+        [Input("preferredSpotTypes")]
+        private InputList<string>? _preferredSpotTypes;
+
+        /// <summary>
+        /// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        /// </summary>
+        public InputList<string> PreferredSpotTypes
+        {
+            get => _preferredSpotTypes ?? (_preferredSpotTypes = new InputList<string>());
+            set => _preferredSpotTypes = value;
+        }
+
         /// <summary>
         /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
@@ -383,6 +418,18 @@ namespace Pulumi.SpotInst.Ecs
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
+        }
+
+        [Input("strategies")]
+        private InputList<Inputs.OceanLaunchSpecStrategyArgs>? _strategies;
+
+        /// <summary>
+        /// Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecStrategyArgs> Strategies
+        {
+            get => _strategies ?? (_strategies = new InputList<Inputs.OceanLaunchSpecStrategyArgs>());
+            set => _strategies = value;
         }
 
         [Input("subnetIds")]
@@ -418,9 +465,10 @@ namespace Pulumi.SpotInst.Ecs
         public OceanLaunchSpecArgs()
         {
         }
+        public static new OceanLaunchSpecArgs Empty => new OceanLaunchSpecArgs();
     }
 
-    public sealed class OceanLaunchSpecState : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecState : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
         private InputList<Inputs.OceanLaunchSpecAttributeGetArgs>? _attributes;
@@ -490,6 +538,18 @@ namespace Pulumi.SpotInst.Ecs
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
 
+        [Input("preferredSpotTypes")]
+        private InputList<string>? _preferredSpotTypes;
+
+        /// <summary>
+        /// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+        /// </summary>
+        public InputList<string> PreferredSpotTypes
+        {
+            get => _preferredSpotTypes ?? (_preferredSpotTypes = new InputList<string>());
+            set => _preferredSpotTypes = value;
+        }
+
         /// <summary>
         /// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         /// </summary>
@@ -518,6 +578,18 @@ namespace Pulumi.SpotInst.Ecs
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
+        }
+
+        [Input("strategies")]
+        private InputList<Inputs.OceanLaunchSpecStrategyGetArgs>? _strategies;
+
+        /// <summary>
+        /// Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecStrategyGetArgs> Strategies
+        {
+            get => _strategies ?? (_strategies = new InputList<Inputs.OceanLaunchSpecStrategyGetArgs>());
+            set => _strategies = value;
         }
 
         [Input("subnetIds")]
@@ -553,5 +625,6 @@ namespace Pulumi.SpotInst.Ecs
         public OceanLaunchSpecState()
         {
         }
+        public static new OceanLaunchSpecState Empty => new OceanLaunchSpecState();
     }
 }

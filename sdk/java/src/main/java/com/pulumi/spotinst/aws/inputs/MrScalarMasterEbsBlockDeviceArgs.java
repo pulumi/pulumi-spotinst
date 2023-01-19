@@ -62,14 +62,14 @@ public final class MrScalarMasterEbsBlockDeviceArgs extends com.pulumi.resources
     }
 
     /**
-     * Amount of volumes per instance in the master group.
+     * Amount of volumes per instance in the task group.
      * 
      */
     @Import(name="volumesPerInstance")
     private @Nullable Output<Integer> volumesPerInstance;
 
     /**
-     * @return Amount of volumes per instance in the master group.
+     * @return Amount of volumes per instance in the task group.
      * 
      */
     public Optional<Output<Integer>> volumesPerInstance() {
@@ -167,7 +167,7 @@ public final class MrScalarMasterEbsBlockDeviceArgs extends com.pulumi.resources
         }
 
         /**
-         * @param volumesPerInstance Amount of volumes per instance in the master group.
+         * @param volumesPerInstance Amount of volumes per instance in the task group.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class MrScalarMasterEbsBlockDeviceArgs extends com.pulumi.resources
         }
 
         /**
-         * @param volumesPerInstance Amount of volumes per instance in the master group.
+         * @param volumesPerInstance Amount of volumes per instance in the task group.
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly string ImageName;
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// The Resource Group that the user-assigned managed identity resides in.
         /// </summary>
         public readonly string ResourceGroupName;
 

@@ -15,170 +15,168 @@ namespace Pulumi.SpotInst.Azure
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var testAzureGroup = new SpotInst.Azure.Elastigroup("testAzureGroup", new()
     ///     {
-    ///         var testAzureGroup = new SpotInst.Azure.Elastigroup("testAzureGroup", new SpotInst.Azure.ElastigroupArgs
+    ///         DesiredCapacity = 1,
+    ///         HealthCheck = new SpotInst.Azure.Inputs.ElastigroupHealthCheckArgs
     ///         {
-    ///             DesiredCapacity = 1,
-    ///             HealthCheck = new SpotInst.Azure.Inputs.ElastigroupHealthCheckArgs
+    ///             AutoHealing = true,
+    ///             GracePeriod = 120,
+    ///             HealthCheckType = "INSTANCE_STATE",
+    ///         },
+    ///         Images = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.ElastigroupImageArgs
     ///             {
-    ///                 AutoHealing = true,
-    ///                 GracePeriod = 120,
-    ///                 HealthCheckType = "INSTANCE_STATE",
-    ///             },
-    ///             Images = 
-    ///             {
-    ///                 new SpotInst.Azure.Inputs.ElastigroupImageArgs
+    ///                 Marketplaces = new[]
     ///                 {
-    ///                     Marketplaces = 
+    ///                     new SpotInst.Azure.Inputs.ElastigroupImageMarketplaceArgs
     ///                     {
-    ///                         new SpotInst.Azure.Inputs.ElastigroupImageMarketplaceArgs
-    ///                         {
-    ///                             Offer = "UbuntuServer",
-    ///                             Publisher = "Canonical",
-    ///                             Sku = "16.04-LTS",
-    ///                         },
+    ///                         Offer = "UbuntuServer",
+    ///                         Publisher = "Canonical",
+    ///                         Sku = "16.04-LTS",
     ///                     },
     ///                 },
     ///             },
-    ///             LoadBalancers = 
+    ///         },
+    ///         LoadBalancers = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.ElastigroupLoadBalancerArgs
     ///             {
-    ///                 new SpotInst.Azure.Inputs.ElastigroupLoadBalancerArgs
+    ///                 AutoWeight = true,
+    ///                 BalancerId = "lb-1ee2e3q",
+    ///                 TargetSetId = "ts-3eq",
+    ///                 Type = "MULTAI_TARGET_SET",
+    ///             },
+    ///         },
+    ///         Login = new SpotInst.Azure.Inputs.ElastigroupLoginArgs
+    ///         {
+    ///             SshPublicKey = "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+    ///             UserName = "admin",
+    ///         },
+    ///         LowPrioritySizes = new[]
+    ///         {
+    ///             "standard_a1_v1",
+    ///             "standard_a1_v2",
+    ///         },
+    ///         ManagedServiceIdentities = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.ElastigroupManagedServiceIdentityArgs
+    ///             {
+    ///                 Name = "example-identity",
+    ///                 ResourceGroupName = "spotinst-azure",
+    ///             },
+    ///         },
+    ///         MaxSize = 1,
+    ///         MinSize = 0,
+    ///         Network = new SpotInst.Azure.Inputs.ElastigroupNetworkArgs
+    ///         {
+    ///             AssignPublicIp = true,
+    ///             ResourceGroupName = "subnetResourceGroup",
+    ///             SubnetName = "my-subnet-name",
+    ///             VirtualNetworkName = "vname",
+    ///         },
+    ///         OdSizes = new[]
+    ///         {
+    ///             "standard_a1_v1",
+    ///             "standard_a1_v2",
+    ///         },
+    ///         Product = "Linux",
+    ///         Region = "eastus",
+    ///         ResourceGroupName = "spotinst-azure",
+    ///         ScalingDownPolicies = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.ElastigroupScalingDownPolicyArgs
+    ///             {
+    ///                 ActionType = "adjustment",
+    ///                 Adjustment = "MIN(5,10)",
+    ///                 Cooldown = 60,
+    ///                 Dimensions = new[]
     ///                 {
-    ///                     AutoWeight = true,
-    ///                     BalancerId = "lb-1ee2e3q",
-    ///                     TargetSetId = "ts-3eq",
-    ///                     Type = "MULTAI_TARGET_SET",
-    ///                 },
-    ///             },
-    ///             Login = new SpotInst.Azure.Inputs.ElastigroupLoginArgs
-    ///             {
-    ///                 SshPublicKey = "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
-    ///                 UserName = "admin",
-    ///             },
-    ///             LowPrioritySizes = 
-    ///             {
-    ///                 "standard_a1_v1",
-    ///                 "standard_a1_v2",
-    ///             },
-    ///             ManagedServiceIdentities = 
-    ///             {
-    ///                 new SpotInst.Azure.Inputs.ElastigroupManagedServiceIdentityArgs
-    ///                 {
-    ///                     Name = "example-identity",
-    ///                     ResourceGroupName = "spotinst-azure",
-    ///                 },
-    ///             },
-    ///             MaxSize = 1,
-    ///             MinSize = 0,
-    ///             Network = new SpotInst.Azure.Inputs.ElastigroupNetworkArgs
-    ///             {
-    ///                 AssignPublicIp = true,
-    ///                 ResourceGroupName = "subnetResourceGroup",
-    ///                 SubnetName = "my-subnet-name",
-    ///                 VirtualNetworkName = "vname",
-    ///             },
-    ///             OdSizes = 
-    ///             {
-    ///                 "standard_a1_v1",
-    ///                 "standard_a1_v2",
-    ///             },
-    ///             Product = "Linux",
-    ///             Region = "eastus",
-    ///             ResourceGroupName = "spotinst-azure",
-    ///             ScalingDownPolicies = 
-    ///             {
-    ///                 new SpotInst.Azure.Inputs.ElastigroupScalingDownPolicyArgs
-    ///                 {
-    ///                     ActionType = "adjustment",
-    ///                     Adjustment = "MIN(5,10)",
-    ///                     Cooldown = 60,
-    ///                     Dimensions = 
+    ///                     new SpotInst.Azure.Inputs.ElastigroupScalingDownPolicyDimensionArgs
     ///                     {
-    ///                         new SpotInst.Azure.Inputs.ElastigroupScalingDownPolicyDimensionArgs
-    ///                         {
-    ///                             Name = "name-1",
-    ///                             Value = "value-1",
-    ///                         },
+    ///                         Name = "name-1",
+    ///                         Value = "value-1",
     ///                     },
-    ///                     EvaluationPeriods = 10,
-    ///                     MetricName = "CPUUtilization",
-    ///                     Namespace = "Microsoft.Compute",
-    ///                     Operator = "gt",
-    ///                     Period = 60,
-    ///                     PolicyName = "policy-name",
-    ///                     Statistic = "average",
-    ///                     Threshold = 10,
-    ///                     Unit = "percent",
     ///                 },
+    ///                 EvaluationPeriods = 10,
+    ///                 MetricName = "CPUUtilization",
+    ///                 Namespace = "Microsoft.Compute",
+    ///                 Operator = "gt",
+    ///                 Period = 60,
+    ///                 PolicyName = "policy-name",
+    ///                 Statistic = "average",
+    ///                 Threshold = 10,
+    ///                 Unit = "percent",
     ///             },
-    ///             ScalingUpPolicies = 
+    ///         },
+    ///         ScalingUpPolicies = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.ElastigroupScalingUpPolicyArgs
     ///             {
-    ///                 new SpotInst.Azure.Inputs.ElastigroupScalingUpPolicyArgs
+    ///                 ActionType = "setMinTarget",
+    ///                 Cooldown = 60,
+    ///                 Dimensions = new[]
     ///                 {
-    ///                     ActionType = "setMinTarget",
-    ///                     Cooldown = 60,
-    ///                     Dimensions = 
+    ///                     new SpotInst.Azure.Inputs.ElastigroupScalingUpPolicyDimensionArgs
     ///                     {
-    ///                         new SpotInst.Azure.Inputs.ElastigroupScalingUpPolicyDimensionArgs
-    ///                         {
-    ///                             Name = "resourceName",
-    ///                             Value = "resource-name",
-    ///                         },
-    ///                         new SpotInst.Azure.Inputs.ElastigroupScalingUpPolicyDimensionArgs
-    ///                         {
-    ///                             Name = "resourceGroupName",
-    ///                             Value = "resource-group-name",
-    ///                         },
+    ///                         Name = "resourceName",
+    ///                         Value = "resource-name",
     ///                     },
-    ///                     EvaluationPeriods = 10,
-    ///                     MetricName = "CPUUtilization",
-    ///                     MinTargetCapacity = "1",
-    ///                     Namespace = "Microsoft.Compute",
-    ///                     Operator = "gt",
-    ///                     Period = 60,
-    ///                     PolicyName = "policy-name",
-    ///                     Statistic = "average",
-    ///                     Threshold = 10,
-    ///                     Unit = "percent",
+    ///                     new SpotInst.Azure.Inputs.ElastigroupScalingUpPolicyDimensionArgs
+    ///                     {
+    ///                         Name = "resourceGroupName",
+    ///                         Value = "resource-group-name",
+    ///                     },
     ///                 },
+    ///                 EvaluationPeriods = 10,
+    ///                 MetricName = "CPUUtilization",
+    ///                 MinTargetCapacity = "1",
+    ///                 Namespace = "Microsoft.Compute",
+    ///                 Operator = "gt",
+    ///                 Period = 60,
+    ///                 PolicyName = "policy-name",
+    ///                 Statistic = "average",
+    ///                 Threshold = 10,
+    ///                 Unit = "percent",
     ///             },
-    ///             ScheduledTasks = 
+    ///         },
+    ///         ScheduledTasks = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.ElastigroupScheduledTaskArgs
     ///             {
-    ///                 new SpotInst.Azure.Inputs.ElastigroupScheduledTaskArgs
-    ///                 {
-    ///                     Adjustment = "2",
-    ///                     AdjustmentPercentage = "50",
-    ///                     BatchSizePercentage = "33",
-    ///                     CronExpression = "* * * * *",
-    ///                     GracePeriod = "300",
-    ///                     IsEnabled = true,
-    ///                     ScaleMaxCapacity = "8",
-    ///                     ScaleMinCapacity = "5",
-    ///                     ScaleTargetCapacity = "6",
-    ///                     TaskType = "scale",
-    ///                 },
+    ///                 Adjustment = "2",
+    ///                 AdjustmentPercentage = "50",
+    ///                 BatchSizePercentage = "33",
+    ///                 CronExpression = "* * * * *",
+    ///                 GracePeriod = "300",
+    ///                 IsEnabled = true,
+    ///                 ScaleMaxCapacity = "8",
+    ///                 ScaleMinCapacity = "5",
+    ///                 ScaleTargetCapacity = "6",
+    ///                 TaskType = "scale",
     ///             },
-    ///             ShutdownScript = "",
-    ///             Strategy = new SpotInst.Azure.Inputs.ElastigroupStrategyArgs
-    ///             {
-    ///                 DrainingTimeout = 300,
-    ///                 OdCount = 1,
-    ///             },
-    ///             UserData = "",
-    ///         });
-    ///     }
+    ///         },
+    ///         ShutdownScript = "",
+    ///         Strategy = new SpotInst.Azure.Inputs.ElastigroupStrategyArgs
+    ///         {
+    ///             DrainingTimeout = 300,
+    ///             OdCount = 1,
+    ///         },
+    ///         UserData = "",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:azure/elastigroup:Elastigroup")]
-    public partial class Elastigroup : Pulumi.CustomResource
+    public partial class Elastigroup : global::Pulumi.CustomResource
     {
         [Output("customData")]
         public Output<string?> CustomData { get; private set; } = null!;
@@ -189,15 +187,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("desiredCapacity")]
         public Output<int?> DesiredCapacity { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the health check configuration.
-        /// </summary>
         [Output("healthCheck")]
         public Output<Outputs.ElastigroupHealthCheck?> HealthCheck { get; private set; } = null!;
 
-        /// <summary>
-        /// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-        /// </summary>
         [Output("images")]
         public Output<ImmutableArray<Outputs.ElastigroupImage>> Images { get; private set; } = null!;
 
@@ -213,15 +205,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("integrationMultaiRuntime")]
         public Output<Outputs.ElastigroupIntegrationMultaiRuntime?> IntegrationMultaiRuntime { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-        /// </summary>
         [Output("loadBalancers")]
         public Output<ImmutableArray<Outputs.ElastigroupLoadBalancer>> LoadBalancers { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the login configuration.
-        /// </summary>
         [Output("login")]
         public Output<Outputs.ElastigroupLogin?> Login { get; private set; } = null!;
 
@@ -247,14 +233,11 @@ namespace Pulumi.SpotInst.Azure
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// The dimension name.
+        /// The name of the managed identity.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Defines the Virtual Network and Subnet for your Elastigroup.
-        /// </summary>
         [Output("network")]
         public Output<Outputs.ElastigroupNetwork> Network { get; private set; } = null!;
 
@@ -277,7 +260,7 @@ namespace Pulumi.SpotInst.Azure
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// The Resource Group that the user-assigned managed identity resides in.
         /// </summary>
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
@@ -359,7 +342,7 @@ namespace Pulumi.SpotInst.Azure
         }
     }
 
-    public sealed class ElastigroupArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("customData")]
         public Input<string>? CustomData { get; set; }
@@ -370,18 +353,11 @@ namespace Pulumi.SpotInst.Azure
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
-        /// <summary>
-        /// Describes the health check configuration.
-        /// </summary>
         [Input("healthCheck")]
         public Input<Inputs.ElastigroupHealthCheckArgs>? HealthCheck { get; set; }
 
         [Input("images")]
         private InputList<Inputs.ElastigroupImageArgs>? _images;
-
-        /// <summary>
-        /// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-        /// </summary>
         public InputList<Inputs.ElastigroupImageArgs> Images
         {
             get => _images ?? (_images = new InputList<Inputs.ElastigroupImageArgs>());
@@ -402,19 +378,12 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("loadBalancers")]
         private InputList<Inputs.ElastigroupLoadBalancerArgs>? _loadBalancers;
-
-        /// <summary>
-        /// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-        /// </summary>
         public InputList<Inputs.ElastigroupLoadBalancerArgs> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.ElastigroupLoadBalancerArgs>());
             set => _loadBalancers = value;
         }
 
-        /// <summary>
-        /// Describes the login configuration.
-        /// </summary>
         [Input("login")]
         public Input<Inputs.ElastigroupLoginArgs>? Login { get; set; }
 
@@ -451,14 +420,11 @@ namespace Pulumi.SpotInst.Azure
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The dimension name.
+        /// The name of the managed identity.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Defines the Virtual Network and Subnet for your Elastigroup.
-        /// </summary>
         [Input("network", required: true)]
         public Input<Inputs.ElastigroupNetworkArgs> Network { get; set; } = null!;
 
@@ -487,7 +453,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// The Resource Group that the user-assigned managed identity resides in.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
@@ -544,9 +510,10 @@ namespace Pulumi.SpotInst.Azure
         public ElastigroupArgs()
         {
         }
+        public static new ElastigroupArgs Empty => new ElastigroupArgs();
     }
 
-    public sealed class ElastigroupState : Pulumi.ResourceArgs
+    public sealed class ElastigroupState : global::Pulumi.ResourceArgs
     {
         [Input("customData")]
         public Input<string>? CustomData { get; set; }
@@ -557,18 +524,11 @@ namespace Pulumi.SpotInst.Azure
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
-        /// <summary>
-        /// Describes the health check configuration.
-        /// </summary>
         [Input("healthCheck")]
         public Input<Inputs.ElastigroupHealthCheckGetArgs>? HealthCheck { get; set; }
 
         [Input("images")]
         private InputList<Inputs.ElastigroupImageGetArgs>? _images;
-
-        /// <summary>
-        /// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-        /// </summary>
         public InputList<Inputs.ElastigroupImageGetArgs> Images
         {
             get => _images ?? (_images = new InputList<Inputs.ElastigroupImageGetArgs>());
@@ -589,19 +549,12 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("loadBalancers")]
         private InputList<Inputs.ElastigroupLoadBalancerGetArgs>? _loadBalancers;
-
-        /// <summary>
-        /// Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-        /// </summary>
         public InputList<Inputs.ElastigroupLoadBalancerGetArgs> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.ElastigroupLoadBalancerGetArgs>());
             set => _loadBalancers = value;
         }
 
-        /// <summary>
-        /// Describes the login configuration.
-        /// </summary>
         [Input("login")]
         public Input<Inputs.ElastigroupLoginGetArgs>? Login { get; set; }
 
@@ -638,14 +591,11 @@ namespace Pulumi.SpotInst.Azure
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The dimension name.
+        /// The name of the managed identity.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Defines the Virtual Network and Subnet for your Elastigroup.
-        /// </summary>
         [Input("network")]
         public Input<Inputs.ElastigroupNetworkGetArgs>? Network { get; set; }
 
@@ -674,7 +624,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// The Resource Group that the user-assigned managed identity resides in.
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
@@ -731,5 +681,6 @@ namespace Pulumi.SpotInst.Azure
         public ElastigroupState()
         {
         }
+        public static new ElastigroupState Empty => new ElastigroupState();
     }
 }

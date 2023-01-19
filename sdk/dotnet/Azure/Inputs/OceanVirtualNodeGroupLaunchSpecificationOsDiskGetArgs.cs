@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanVirtualNodeGroupLaunchSpecificationOsDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanVirtualNodeGroupLaunchSpecificationOsDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The size of the OS disk in GB, Required if dataDisks is specified.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanVirtualNodeGroupLaunchSpecificationOsDiskGetArgs()
         {
         }
+        public static new OceanVirtualNodeGroupLaunchSpecificationOsDiskGetArgs Empty => new OceanVirtualNodeGroupLaunchSpecificationOsDiskGetArgs();
     }
 }

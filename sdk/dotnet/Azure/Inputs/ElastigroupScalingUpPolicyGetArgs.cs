@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupScalingUpPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingUpPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<string>? ActionType { get; set; }
 
         /// <summary>
-        /// The number of instances to add/remove to/from the target capacity when scale is needed.
+        /// Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
         /// </summary>
         [Input("adjustment")]
         public Input<string>? Adjustment { get; set; }
@@ -129,5 +129,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupScalingUpPolicyGetArgs()
         {
         }
+        public static new ElastigroupScalingUpPolicyGetArgs Empty => new ElastigroupScalingUpPolicyGetArgs();
     }
 }

@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupNetworkAdditionalIpConfigArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupNetworkAdditionalIpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dimension name.
+        /// The name of the managed identity.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupNetworkAdditionalIpConfigArgs()
         {
         }
+        public static new ElastigroupNetworkAdditionalIpConfigArgs Empty => new ElastigroupNetworkAdditionalIpConfigArgs();
     }
 }

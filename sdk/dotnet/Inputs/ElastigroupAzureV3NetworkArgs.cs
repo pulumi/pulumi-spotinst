@@ -10,14 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class ElastigroupAzureV3NetworkArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupAzureV3NetworkArgs : global::Pulumi.ResourceArgs
     {
         [Input("networkInterfaces", required: true)]
         private InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceArgs>? _networkInterfaces;
-
-        /// <summary>
-        /// -
-        /// </summary>
         public InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceArgs> NetworkInterfaces
         {
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceArgs>());
@@ -25,7 +21,7 @@ namespace Pulumi.SpotInst.Inputs
         }
 
         /// <summary>
-        /// - The resource group of the Application Security Group.
+        /// The resource group of the Application Security Group.
         /// }
         /// </summary>
         [Input("resourceGroupName", required: true)]
@@ -40,5 +36,6 @@ namespace Pulumi.SpotInst.Inputs
         public ElastigroupAzureV3NetworkArgs()
         {
         }
+        public static new ElastigroupAzureV3NetworkArgs Empty => new ElastigroupAzureV3NetworkArgs();
     }
 }

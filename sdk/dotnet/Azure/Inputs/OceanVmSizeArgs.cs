@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanVmSizeArgs : Pulumi.ResourceArgs
+    public sealed class OceanVmSizeArgs : global::Pulumi.ResourceArgs
     {
         [Input("whitelists")]
         private InputList<string>? _whitelists;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanVmSizeArgs()
         {
         }
+        public static new OceanVmSizeArgs Empty => new OceanVmSizeArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportScheduledTaskTaskGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportScheduledTaskTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Value in % to set size of batch in roll. Valid values are 0-100
@@ -27,7 +27,8 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public Input<string> CronExpression { get; set; } = null!;
 
         /// <summary>
-        /// Enable the Ocean Kubernetes Autoscaler.
+        /// Flag to enable / disable the shutdown hours.
+        /// Example: True
         /// </summary>
         [Input("isEnabled", required: true)]
         public Input<bool> IsEnabled { get; set; } = null!;
@@ -41,5 +42,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportScheduledTaskTaskGetArgs()
         {
         }
+        public static new OceanImportScheduledTaskTaskGetArgs Empty => new OceanImportScheduledTaskTaskGetArgs();
     }
 }

@@ -11,9 +11,154 @@ namespace Pulumi.SpotInst.Gcp
 {
     /// <summary>
     /// Provides a Spotinst elastigroup GCP resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.Gcp.Elastigroup("example", new()
+    ///     {
+    ///         AvailabilityZones = new[]
+    ///         {
+    ///             "asia-east1-c",
+    ///             "us-central1-a",
+    ///         },
+    ///         BackendServices = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupBackendServiceArgs
+    ///             {
+    ///                 LocationType = "regional",
+    ///                 NamedPorts = new[]
+    ///                 {
+    ///                     new SpotInst.Gcp.Inputs.ElastigroupBackendServiceNamedPortArgs
+    ///                     {
+    ///                         Name = "port-name",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             "8000",
+    ///                             "6000",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Scheme = "INTERNAL",
+    ///                 ServiceName = "spotinst-elb-backend-service",
+    ///             },
+    ///         },
+    ///         Description = "spotinst gcp group",
+    ///         DesiredCapacity = 1,
+    ///         Disks = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupDiskArgs
+    ///             {
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///                 DeviceName = "device",
+    ///                 InitializeParams = new[]
+    ///                 {
+    ///                     new SpotInst.Gcp.Inputs.ElastigroupDiskInitializeParamArgs
+    ///                     {
+    ///                         DiskSizeGb = "10",
+    ///                         DiskType = "pd-standard",
+    ///                         SourceImage = "",
+    ///                     },
+    ///                 },
+    ///                 Interface = "SCSI",
+    ///                 Mode = "READ_WRITE",
+    ///                 Type = "PERSISTENT",
+    ///             },
+    ///         },
+    ///         DrainingTimeout = 180,
+    ///         FallbackToOndemand = true,
+    ///         InstanceTypesCustoms = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupInstanceTypesCustomArgs
+    ///             {
+    ///                 MemoryGib = 7,
+    ///                 Vcpu = 2,
+    ///             },
+    ///         },
+    ///         InstanceTypesOndemand = "n1-standard-1",
+    ///         InstanceTypesPreemptibles = new[]
+    ///         {
+    ///             "n1-standard-1",
+    ///             "n1-standard-2",
+    ///         },
+    ///         Labels = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupLabelArgs
+    ///             {
+    ///                 Key = "test_key",
+    ///                 Value = "test_value",
+    ///             },
+    ///         },
+    ///         MaxSize = 1,
+    ///         MinSize = 0,
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "spot-network",
+    ///             },
+    ///         },
+    ///         PreemptiblePercentage = 50,
+    ///         ProvisioningModel = "SPOT",
+    ///         ScalingUpPolicies = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupScalingUpPolicyArgs
+    ///             {
+    ///                 ActionType = "adjustment",
+    ///                 Adjustment = 1,
+    ///                 Cooldown = 300,
+    ///                 Dimensions = new[]
+    ///                 {
+    ///                     new SpotInst.Gcp.Inputs.ElastigroupScalingUpPolicyDimensionArgs
+    ///                     {
+    ///                         Name = "storage_type",
+    ///                         Value = "pd-ssd",
+    ///                     },
+    ///                 },
+    ///                 EvaluationPeriods = 1,
+    ///                 MetricName = "instance/disk/read_ops_count",
+    ///                 Namespace = "compute",
+    ///                 Operator = "gte",
+    ///                 Period = 300,
+    ///                 PolicyName = "scale_up_1",
+    ///                 Source = "stackdriver",
+    ///                 Statistic = "average",
+    ///                 Threshold = 10000,
+    ///                 Unit = "percent",
+    ///             },
+    ///         },
+    ///         ServiceAccount = "example@myProject.iam.gservicecct.com",
+    ///         StartupScript = "",
+    ///         Subnets = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupSubnetArgs
+    ///             {
+    ///                 Region = "asia-east1",
+    ///                 SubnetNames = new[]
+    ///                 {
+    ///                     "default",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "http",
+    ///             "https",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:gcp/elastigroup:Elastigroup")]
-    public partial class Elastigroup : Pulumi.CustomResource
+    public partial class Elastigroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Enable auto-replacement of unhealthy instances.
@@ -27,9 +172,6 @@ namespace Pulumi.SpotInst.Gcp
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the backend service configurations.
-        /// </summary>
         [Output("backendServices")]
         public Output<ImmutableArray<Outputs.ElastigroupBackendService>> BackendServices { get; private set; } = null!;
 
@@ -60,9 +202,6 @@ namespace Pulumi.SpotInst.Gcp
         [Output("fallbackToOndemand")]
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
-        /// <summary>
-        /// Defines the GPU configuration.
-        /// </summary>
         [Output("gpu")]
         public Output<ImmutableArray<Outputs.ElastigroupGpu>> Gpu { get; private set; } = null!;
 
@@ -133,7 +272,7 @@ namespace Pulumi.SpotInst.Gcp
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// The dimension name.
+        /// The group name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -254,7 +393,7 @@ namespace Pulumi.SpotInst.Gcp
         }
     }
 
-    public sealed class ElastigroupArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable auto-replacement of unhealthy instances.
@@ -277,10 +416,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("backendServices")]
         private InputList<Inputs.ElastigroupBackendServiceArgs>? _backendServices;
-
-        /// <summary>
-        /// Describes the backend service configurations.
-        /// </summary>
         public InputList<Inputs.ElastigroupBackendServiceArgs> BackendServices
         {
             get => _backendServices ?? (_backendServices = new InputList<Inputs.ElastigroupBackendServiceArgs>());
@@ -321,10 +456,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("gpu")]
         private InputList<Inputs.ElastigroupGpuArgs>? _gpu;
-
-        /// <summary>
-        /// Defines the GPU configuration.
-        /// </summary>
         public InputList<Inputs.ElastigroupGpuArgs> Gpu
         {
             get => _gpu ?? (_gpu = new InputList<Inputs.ElastigroupGpuArgs>());
@@ -422,7 +553,7 @@ namespace Pulumi.SpotInst.Gcp
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The dimension name.
+        /// The group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -537,9 +668,10 @@ namespace Pulumi.SpotInst.Gcp
         public ElastigroupArgs()
         {
         }
+        public static new ElastigroupArgs Empty => new ElastigroupArgs();
     }
 
-    public sealed class ElastigroupState : Pulumi.ResourceArgs
+    public sealed class ElastigroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable auto-replacement of unhealthy instances.
@@ -562,10 +694,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("backendServices")]
         private InputList<Inputs.ElastigroupBackendServiceGetArgs>? _backendServices;
-
-        /// <summary>
-        /// Describes the backend service configurations.
-        /// </summary>
         public InputList<Inputs.ElastigroupBackendServiceGetArgs> BackendServices
         {
             get => _backendServices ?? (_backendServices = new InputList<Inputs.ElastigroupBackendServiceGetArgs>());
@@ -606,10 +734,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("gpu")]
         private InputList<Inputs.ElastigroupGpuGetArgs>? _gpu;
-
-        /// <summary>
-        /// Defines the GPU configuration.
-        /// </summary>
         public InputList<Inputs.ElastigroupGpuGetArgs> Gpu
         {
             get => _gpu ?? (_gpu = new InputList<Inputs.ElastigroupGpuGetArgs>());
@@ -707,7 +831,7 @@ namespace Pulumi.SpotInst.Gcp
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// The dimension name.
+        /// The group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -822,5 +946,6 @@ namespace Pulumi.SpotInst.Gcp
         public ElastigroupState()
         {
         }
+        public static new ElastigroupState Empty => new ElastigroupState();
     }
 }

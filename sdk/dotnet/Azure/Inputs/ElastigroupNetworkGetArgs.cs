@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalIpConfigs")]
         private InputList<Inputs.ElastigroupNetworkAdditionalIpConfigGetArgs>? _additionalIpConfigs;
@@ -48,5 +48,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupNetworkGetArgs()
         {
         }
+        public static new ElastigroupNetworkGetArgs Empty => new ElastigroupNetworkGetArgs();
     }
 }

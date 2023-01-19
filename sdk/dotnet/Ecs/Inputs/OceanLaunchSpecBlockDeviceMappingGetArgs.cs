@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanLaunchSpecBlockDeviceMappingGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecBlockDeviceMappingGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("deviceName", required: true)]
         public Input<string> DeviceName { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanLaunchSpecBlockDeviceMappingGetArgs()
         {
         }
+        public static new OceanLaunchSpecBlockDeviceMappingGetArgs Empty => new OceanLaunchSpecBlockDeviceMappingGetArgs();
     }
 }

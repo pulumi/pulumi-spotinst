@@ -18,8 +18,7 @@ namespace Pulumi.SpotInst.Outputs
         /// </summary>
         public readonly string ImageName;
         /// <summary>
-        /// - The resource group of the Application Security Group.
-        /// }
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         public readonly string ResourceGroupName;
 

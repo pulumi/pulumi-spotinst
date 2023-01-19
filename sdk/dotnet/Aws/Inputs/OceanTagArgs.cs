@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanTagArgs : Pulumi.ResourceArgs
+    public sealed class OceanTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The tag key.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanTagArgs()
         {
         }
+        public static new OceanTagArgs Empty => new OceanTagArgs();
     }
 }

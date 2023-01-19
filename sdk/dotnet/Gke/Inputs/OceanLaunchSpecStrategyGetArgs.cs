@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanLaunchSpecStrategyGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines the desired preemptible percentage for this launch specification.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanLaunchSpecStrategyGetArgs()
         {
         }
+        public static new OceanLaunchSpecStrategyGetArgs Empty => new OceanLaunchSpecStrategyGetArgs();
     }
 }

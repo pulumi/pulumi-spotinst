@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationRoute53DomainGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationRoute53DomainGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id associated with a hosted zone.
@@ -45,5 +45,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationRoute53DomainGetArgs()
         {
         }
+        public static new ElastigroupIntegrationRoute53DomainGetArgs Empty => new ElastigroupIntegrationRoute53DomainGetArgs();
     }
 }

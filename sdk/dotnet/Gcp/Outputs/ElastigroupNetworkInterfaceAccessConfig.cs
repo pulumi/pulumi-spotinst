@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     public sealed class ElastigroupNetworkInterfaceAccessConfig
     {
         /// <summary>
-        /// The dimension name.
+        /// The group name.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        /// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         /// </summary>
         public readonly string? Type;
 

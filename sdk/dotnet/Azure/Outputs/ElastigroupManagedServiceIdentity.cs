@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class ElastigroupManagedServiceIdentity
     {
         /// <summary>
-        /// The dimension name.
+        /// The name of the managed identity.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// The Resource Group that the user-assigned managed identity resides in.
         /// </summary>
         public readonly string ResourceGroupName;
 

@@ -46,14 +46,14 @@ public final class BeanstalkManagedActionsPlatformUpdateArgs extends com.pulumi.
     }
 
     /**
-     * - Level to update
+     * Level to update
      * 
      */
     @Import(name="updateLevel")
     private @Nullable Output<String> updateLevel;
 
     /**
-     * @return - Level to update
+     * @return Level to update
      * 
      */
     public Optional<Output<String>> updateLevel() {
@@ -129,7 +129,7 @@ public final class BeanstalkManagedActionsPlatformUpdateArgs extends com.pulumi.
         }
 
         /**
-         * @param updateLevel - Level to update
+         * @param updateLevel Level to update
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class BeanstalkManagedActionsPlatformUpdateArgs extends com.pulumi.
         }
 
         /**
-         * @param updateLevel - Level to update
+         * @param updateLevel Level to update
          * 
          * @return builder
          * 

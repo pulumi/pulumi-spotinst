@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupStrategyGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupStrategyGetArgs()
         {
         }
+        public static new ElastigroupStrategyGetArgs Empty => new ElastigroupStrategyGetArgs();
     }
 }

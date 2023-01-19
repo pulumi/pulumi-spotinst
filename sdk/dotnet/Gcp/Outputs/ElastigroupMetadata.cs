@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The dimension value.
+        /// Labels value.
         /// </summary>
         public readonly string Value;
 

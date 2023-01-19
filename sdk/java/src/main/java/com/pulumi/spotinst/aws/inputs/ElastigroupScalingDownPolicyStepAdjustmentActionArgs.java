@@ -106,14 +106,14 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
     }
 
     /**
-     * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+     * The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMinTarget&#34;`, `&#34;percentageAdjustment&#34;`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMinTarget&#34;`, `&#34;percentageAdjustment&#34;`.
      * 
      */
     public Output<String> type() {
@@ -277,7 +277,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param type String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         * @param type The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMinTarget&#34;`, `&#34;percentageAdjustment&#34;`.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param type String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         * @param type The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMinTarget&#34;`, `&#34;percentageAdjustment&#34;`.
          * 
          * @return builder
          * 

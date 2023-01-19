@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupScalingUpPolicyDimensionArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingUpPolicyDimensionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dimension name.
+        /// The group name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The dimension value.
+        /// Labels value.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupScalingUpPolicyDimensionArgs()
         {
         }
+        public static new ElastigroupScalingUpPolicyDimensionArgs Empty => new ElastigroupScalingUpPolicyDimensionArgs();
     }
 }

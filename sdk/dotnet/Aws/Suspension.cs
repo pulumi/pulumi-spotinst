@@ -17,40 +17,38 @@ namespace Pulumi.SpotInst.Aws
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a suspension for Elastigroup
+    ///     var resourceName = new SpotInst.Aws.Suspension("resourceName", new()
     ///     {
-    ///         // Create a suspension for Elastigroup
-    ///         var resourceName = new SpotInst.Aws.Suspension("resourceName", new SpotInst.Aws.SuspensionArgs
+    ///         GroupId = "sig-12345678",
+    ///         Suspensions = new[]
     ///         {
-    ///             GroupId = "sig-12345678",
-    ///             Suspensions = 
+    ///             new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
     ///             {
-    ///                 new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
-    ///                 {
-    ///                     Name = "OUT_OF_STRATEGY",
-    ///                 },
-    ///                 new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
-    ///                 {
-    ///                     Name = "REVERT_PREFERRED",
-    ///                 },
-    ///                 new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
-    ///                 {
-    ///                     Name = "PREVENTIVE_REPLACEMENT",
-    ///                 },
+    ///                 Name = "OUT_OF_STRATEGY",
     ///             },
-    ///         });
-    ///     }
+    ///             new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
+    ///             {
+    ///                 Name = "REVERT_PREFERRED",
+    ///             },
+    ///             new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
+    ///             {
+    ///                 Name = "PREVENTIVE_REPLACEMENT",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/suspension:Suspension")]
-    public partial class Suspension : Pulumi.CustomResource
+    public partial class Suspension : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Elastigroup ID to apply the suspensions on.
@@ -108,7 +106,7 @@ namespace Pulumi.SpotInst.Aws
         }
     }
 
-    public sealed class SuspensionArgs : Pulumi.ResourceArgs
+    public sealed class SuspensionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Elastigroup ID to apply the suspensions on.
@@ -131,9 +129,10 @@ namespace Pulumi.SpotInst.Aws
         public SuspensionArgs()
         {
         }
+        public static new SuspensionArgs Empty => new SuspensionArgs();
     }
 
-    public sealed class SuspensionState : Pulumi.ResourceArgs
+    public sealed class SuspensionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Elastigroup ID to apply the suspensions on.
@@ -156,5 +155,6 @@ namespace Pulumi.SpotInst.Aws
         public SuspensionState()
         {
         }
+        public static new SuspensionState Empty => new SuspensionState();
     }
 }

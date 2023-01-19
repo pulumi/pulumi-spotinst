@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupSubnetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupSubnetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The region for the group of subnets.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupSubnetArgs()
         {
         }
+        public static new ElastigroupSubnetArgs Empty => new ElastigroupSubnetArgs();
     }
 }

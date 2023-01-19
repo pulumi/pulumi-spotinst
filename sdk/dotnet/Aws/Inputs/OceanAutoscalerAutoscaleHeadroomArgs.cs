@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanAutoscalerAutoscaleHeadroomArgs : Pulumi.ResourceArgs
+    public sealed class OceanAutoscalerAutoscaleHeadroomArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanAutoscalerAutoscaleHeadroomArgs()
         {
         }
+        public static new OceanAutoscalerAutoscaleHeadroomArgs Empty => new OceanAutoscalerAutoscaleHeadroomArgs();
     }
 }

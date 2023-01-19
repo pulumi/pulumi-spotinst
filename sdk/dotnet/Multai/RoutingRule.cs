@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Multai
 {
     [SpotInstResourceType("spotinst:multai/routingRule:RoutingRule")]
-    public partial class RoutingRule : Pulumi.CustomResource
+    public partial class RoutingRule : global::Pulumi.CustomResource
     {
         [Output("balancerId")]
         public Output<string> BalancerId { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.SpotInst.Multai
         }
     }
 
-    public sealed class RoutingRuleArgs : Pulumi.ResourceArgs
+    public sealed class RoutingRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("balancerId", required: true)]
         public Input<string> BalancerId { get; set; } = null!;
@@ -124,9 +124,10 @@ namespace Pulumi.SpotInst.Multai
         public RoutingRuleArgs()
         {
         }
+        public static new RoutingRuleArgs Empty => new RoutingRuleArgs();
     }
 
-    public sealed class RoutingRuleState : Pulumi.ResourceArgs
+    public sealed class RoutingRuleState : global::Pulumi.ResourceArgs
     {
         [Input("balancerId")]
         public Input<string>? BalancerId { get; set; }
@@ -170,5 +171,6 @@ namespace Pulumi.SpotInst.Multai
         public RoutingRuleState()
         {
         }
+        public static new RoutingRuleState Empty => new RoutingRuleState();
     }
 }

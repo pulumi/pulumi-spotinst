@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupNetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
@@ -31,7 +31,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? DeleteOnTermination { get; set; }
 
         /// <summary>
-        /// The description of the network interface.
+        /// The group description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -63,5 +63,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupNetworkInterfaceArgs()
         {
         }
+        public static new ElastigroupNetworkInterfaceArgs Empty => new ElastigroupNetworkInterfaceArgs();
     }
 }

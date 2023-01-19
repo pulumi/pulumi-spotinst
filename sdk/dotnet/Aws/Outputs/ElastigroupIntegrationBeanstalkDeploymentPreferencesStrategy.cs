@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy
     {
         /// <summary>
-        /// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        /// The action to take when scale up according to step's threshold is needed.
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// Specify whether to drain incoming TCP connections before terminating a server.
+        /// Bool value if to wait to drain instance
         /// </summary>
         public readonly bool? ShouldDrainInstances;
 

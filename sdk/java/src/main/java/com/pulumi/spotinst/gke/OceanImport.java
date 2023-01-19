@@ -28,10 +28,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.gke.OceanImport;
+ * import com.pulumi.spotinst.gke.OceanImportArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanImportShieldedInstanceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -74,10 +83,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -98,10 +112,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -127,10 +146,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -145,17 +169,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:gke/oceanImport:OceanImport")
 public class OceanImport extends com.pulumi.resources.CustomResource {
-    /**
-     * The Ocean Kubernetes Autoscaler object.
-     * 
-     */
     @Export(name="autoscaler", type=OceanImportAutoscaler.class, parameters={})
     private Output<OceanImportAutoscaler> autoscaler;
 
-    /**
-     * @return The Ocean Kubernetes Autoscaler object.
-     * 
-     */
     public Output<OceanImportAutoscaler> autoscaler() {
         return this.autoscaler;
     }
@@ -172,6 +188,20 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<OceanImportBackendService>>> backendServices() {
         return Codegen.optional(this.backendServices);
+    }
+    /**
+     * Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+     * 
+     */
+    @Export(name="blacklists", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> blacklists;
+
+    /**
+     * @return Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+     * 
+     */
+    public Output<Optional<List<String>>> blacklists() {
+        return Codegen.optional(this.blacklists);
     }
     @Export(name="clusterControllerId", type=String.class, parameters={})
     private Output<String> clusterControllerId;
@@ -277,17 +307,9 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> rootVolumeType() {
         return Codegen.optional(this.rootVolumeType);
     }
-    /**
-     * Set scheduling object.
-     * 
-     */
     @Export(name="scheduledTasks", type=List.class, parameters={OceanImportScheduledTask.class})
     private Output</* @Nullable */ List<OceanImportScheduledTask>> scheduledTasks;
 
-    /**
-     * @return Set scheduling object.
-     * 
-     */
     public Output<Optional<List<OceanImportScheduledTask>>> scheduledTasks() {
         return Codegen.optional(this.scheduledTasks);
     }
@@ -332,14 +354,14 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.useAsTemplateOnly);
     }
     /**
-     * Instance types allowed in the Ocean cluster.
+     * Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      * 
      */
     @Export(name="whitelists", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> whitelists;
 
     /**
-     * @return Instance types allowed in the Ocean cluster.
+     * @return Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      * 
      */
     public Output<Optional<List<String>>> whitelists() {

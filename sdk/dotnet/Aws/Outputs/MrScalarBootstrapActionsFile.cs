@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class MrScalarBootstrapActionsFile
     {
         /// <summary>
-        /// S3 Bucket name for bootstrap actions.
+        /// S3 Bucket name for configurations.
         /// </summary>
         public readonly string Bucket;
         /// <summary>
-        /// S3 key for bootstrap actions.
+        /// Tag key.
         /// </summary>
         public readonly string Key;
 

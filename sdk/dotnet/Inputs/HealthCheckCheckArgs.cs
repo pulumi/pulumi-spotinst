@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class HealthCheckCheckArgs : Pulumi.ResourceArgs
+    public sealed class HealthCheckCheckArgs : global::Pulumi.ResourceArgs
     {
         [Input("endPoint")]
         public Input<string>? EndPoint { get; set; }
@@ -63,5 +63,6 @@ namespace Pulumi.SpotInst.Inputs
         public HealthCheckCheckArgs()
         {
         }
+        public static new HealthCheckCheckArgs Empty => new HealthCheckCheckArgs();
     }
 }

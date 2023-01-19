@@ -293,17 +293,9 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.lifeCycle);
     }
 
-    /**
-     * List of load balancers configs.
-     * 
-     */
     @Import(name="loadBalancers")
     private @Nullable Output<List<ManagedInstanceLoadBalancerArgs>> loadBalancers;
 
-    /**
-     * @return List of load balancers configs.
-     * 
-     */
     public Optional<Output<List<ManagedInstanceLoadBalancerArgs>>> loadBalancers() {
         return Optional.ofNullable(this.loadBalancers);
     }
@@ -323,14 +315,14 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The record set name.
+     * The ManagedInstance name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The record set name.
+     * @return The ManagedInstance name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -496,17 +488,9 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.region);
     }
 
-    /**
-     * User will specify which resources should be tagged with group tags.
-     * 
-     */
     @Import(name="resourceTagSpecifications")
     private @Nullable Output<List<ManagedInstanceResourceTagSpecificationArgs>> resourceTagSpecifications;
 
-    /**
-     * @return User will specify which resources should be tagged with group tags.
-     * 
-     */
     public Optional<Output<List<ManagedInstanceResourceTagSpecificationArgs>>> resourceTagSpecifications() {
         return Optional.ofNullable(this.resourceTagSpecifications);
     }
@@ -1094,33 +1078,15 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
             return lifeCycle(Output.of(lifeCycle));
         }
 
-        /**
-         * @param loadBalancers List of load balancers configs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder loadBalancers(@Nullable Output<List<ManagedInstanceLoadBalancerArgs>> loadBalancers) {
             $.loadBalancers = loadBalancers;
             return this;
         }
 
-        /**
-         * @param loadBalancers List of load balancers configs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder loadBalancers(List<ManagedInstanceLoadBalancerArgs> loadBalancers) {
             return loadBalancers(Output.of(loadBalancers));
         }
 
-        /**
-         * @param loadBalancers List of load balancers configs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder loadBalancers(ManagedInstanceLoadBalancerArgs... loadBalancers) {
             return loadBalancers(List.of(loadBalancers));
         }
@@ -1144,7 +1110,7 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The record set name.
+         * @param name The ManagedInstance name.
          * 
          * @return builder
          * 
@@ -1155,7 +1121,7 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The record set name.
+         * @param name The ManagedInstance name.
          * 
          * @return builder
          * 
@@ -1399,33 +1365,15 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
             return region(Output.of(region));
         }
 
-        /**
-         * @param resourceTagSpecifications User will specify which resources should be tagged with group tags.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTagSpecifications(@Nullable Output<List<ManagedInstanceResourceTagSpecificationArgs>> resourceTagSpecifications) {
             $.resourceTagSpecifications = resourceTagSpecifications;
             return this;
         }
 
-        /**
-         * @param resourceTagSpecifications User will specify which resources should be tagged with group tags.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTagSpecifications(List<ManagedInstanceResourceTagSpecificationArgs> resourceTagSpecifications) {
             return resourceTagSpecifications(Output.of(resourceTagSpecifications));
         }
 
-        /**
-         * @param resourceTagSpecifications User will specify which resources should be tagged with group tags.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTagSpecifications(ManagedInstanceResourceTagSpecificationArgs... resourceTagSpecifications) {
             return resourceTagSpecifications(List.of(resourceTagSpecifications));
         }

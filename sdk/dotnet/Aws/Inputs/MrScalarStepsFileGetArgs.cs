@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class MrScalarStepsFileGetArgs : Pulumi.ResourceArgs
+    public sealed class MrScalarStepsFileGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// S3 Bucket name for bootstrap actions.
+        /// S3 Bucket name for configurations.
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// S3 key for bootstrap actions.
+        /// Tag key.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public MrScalarStepsFileGetArgs()
         {
         }
+        public static new MrScalarStepsFileGetArgs Empty => new MrScalarStepsFileGetArgs();
     }
 }

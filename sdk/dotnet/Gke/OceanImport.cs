@@ -13,73 +13,69 @@ namespace Pulumi.SpotInst.Gke
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new SpotInst.Gke.OceanImport("example", new()
     ///     {
-    ///         var example = new SpotInst.Gke.OceanImport("example", new SpotInst.Gke.OceanImportArgs
+    ///         BackendServices = new[]
     ///         {
-    ///             BackendServices = 
+    ///             new SpotInst.Gke.Inputs.OceanImportBackendServiceArgs
     ///             {
-    ///                 new SpotInst.Gke.Inputs.OceanImportBackendServiceArgs
+    ///                 LocationType = "regional",
+    ///                 NamedPorts = new[]
     ///                 {
-    ///                     LocationType = "regional",
-    ///                     NamedPorts = 
+    ///                     new SpotInst.Gke.Inputs.OceanImportBackendServiceNamedPortArgs
     ///                     {
-    ///                         new SpotInst.Gke.Inputs.OceanImportBackendServiceNamedPortArgs
+    ///                         Name = "http",
+    ///                         Ports = new[]
     ///                         {
-    ///                             Name = "http",
-    ///                             Ports = 
-    ///                             {
-    ///                                 "80",
-    ///                                 "8080",
-    ///                             },
+    ///                             "80",
+    ///                             "8080",
     ///                         },
     ///                     },
-    ///                     Scheme = "INTERNAL",
-    ///                     ServiceName = "example-backend-service",
     ///                 },
+    ///                 Scheme = "INTERNAL",
+    ///                 ServiceName = "example-backend-service",
     ///             },
-    ///             ClusterName = "example-cluster-name",
-    ///             ControllerClusterId = "example-controller-123124",
-    ///             DesiredCapacity = 0,
-    ///             Location = "us-central1-a",
-    ///             MaxSize = 2,
-    ///             MinSize = 0,
-    ///             RootVolumeType = "pd-ssd",
-    ///             ShieldedInstanceConfig = new SpotInst.Gke.Inputs.OceanImportShieldedInstanceConfigArgs
-    ///             {
-    ///                 EnableIntegrityMonitoring = true,
-    ///                 EnableSecureBoot = true,
-    ///             },
-    ///             UseAsTemplateOnly = false,
-    ///             Whitelists = 
-    ///             {
-    ///                 "n1-standard-1",
-    ///                 "n1-standard-2",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         ClusterName = "example-cluster-name",
+    ///         ControllerClusterId = "example-controller-123124",
+    ///         DesiredCapacity = 0,
+    ///         Location = "us-central1-a",
+    ///         MaxSize = 2,
+    ///         MinSize = 0,
+    ///         RootVolumeType = "pd-ssd",
+    ///         ShieldedInstanceConfig = new SpotInst.Gke.Inputs.OceanImportShieldedInstanceConfigArgs
+    ///         {
+    ///             EnableIntegrityMonitoring = true,
+    ///             EnableSecureBoot = true,
+    ///         },
+    ///         UseAsTemplateOnly = false,
+    ///         Whitelists = new[]
+    ///         {
+    ///             "n1-standard-1",
+    ///             "n1-standard-2",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         this.OceanId = spotinst_ocean_gke_import.Example.Id;
-    ///     }
-    /// 
-    ///     [Output("oceanId")]
-    ///     public Output&lt;string&gt; OceanId { get; set; }
-    /// }
+    ///         ["oceanId"] = spotinst_ocean_gke_import.Example.Id,
+    ///     };
+    /// });
     /// ```
     /// ## Strategy
     /// 
@@ -89,15 +85,12 @@ namespace Pulumi.SpotInst.Gke
     ///     * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// &lt;a id="update-policy"&gt;&lt;/a&gt;
@@ -113,23 +106,17 @@ namespace Pulumi.SpotInst.Gke
     ///         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanImport:OceanImport")]
-    public partial class OceanImport : Pulumi.CustomResource
+    public partial class OceanImport : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Ocean Kubernetes Autoscaler object.
-        /// </summary>
         [Output("autoscaler")]
         public Output<Outputs.OceanImportAutoscaler> Autoscaler { get; private set; } = null!;
 
@@ -138,6 +125,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Output("backendServices")]
         public Output<ImmutableArray<Outputs.OceanImportBackendService>> BackendServices { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+        /// </summary>
+        [Output("blacklists")]
+        public Output<ImmutableArray<string>> Blacklists { get; private set; } = null!;
 
         [Output("clusterControllerId")]
         public Output<string> ClusterControllerId { get; private set; } = null!;
@@ -184,9 +177,6 @@ namespace Pulumi.SpotInst.Gke
         [Output("rootVolumeType")]
         public Output<string?> RootVolumeType { get; private set; } = null!;
 
-        /// <summary>
-        /// Set scheduling object.
-        /// </summary>
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.OceanImportScheduledTask>> ScheduledTasks { get; private set; } = null!;
 
@@ -209,7 +199,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<bool?> UseAsTemplateOnly { get; private set; } = null!;
 
         /// <summary>
-        /// Instance types allowed in the Ocean cluster.
+        /// Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
         /// </summary>
         [Output("whitelists")]
         public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
@@ -258,11 +248,8 @@ namespace Pulumi.SpotInst.Gke
         }
     }
 
-    public sealed class OceanImportArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Ocean Kubernetes Autoscaler object.
-        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanImportAutoscalerArgs>? Autoscaler { get; set; }
 
@@ -276,6 +263,18 @@ namespace Pulumi.SpotInst.Gke
         {
             get => _backendServices ?? (_backendServices = new InputList<Inputs.OceanImportBackendServiceArgs>());
             set => _backendServices = value;
+        }
+
+        [Input("blacklists")]
+        private InputList<string>? _blacklists;
+
+        /// <summary>
+        /// Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+        /// </summary>
+        public InputList<string> Blacklists
+        {
+            get => _blacklists ?? (_blacklists = new InputList<string>());
+            set => _blacklists = value;
         }
 
         /// <summary>
@@ -322,10 +321,6 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanImportScheduledTaskArgs>? _scheduledTasks;
-
-        /// <summary>
-        /// Set scheduling object.
-        /// </summary>
         public InputList<Inputs.OceanImportScheduledTaskArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanImportScheduledTaskArgs>());
@@ -359,7 +354,7 @@ namespace Pulumi.SpotInst.Gke
         private InputList<string>? _whitelists;
 
         /// <summary>
-        /// Instance types allowed in the Ocean cluster.
+        /// Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
         /// </summary>
         public InputList<string> Whitelists
         {
@@ -370,13 +365,11 @@ namespace Pulumi.SpotInst.Gke
         public OceanImportArgs()
         {
         }
+        public static new OceanImportArgs Empty => new OceanImportArgs();
     }
 
-    public sealed class OceanImportState : Pulumi.ResourceArgs
+    public sealed class OceanImportState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Ocean Kubernetes Autoscaler object.
-        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanImportAutoscalerGetArgs>? Autoscaler { get; set; }
 
@@ -390,6 +383,18 @@ namespace Pulumi.SpotInst.Gke
         {
             get => _backendServices ?? (_backendServices = new InputList<Inputs.OceanImportBackendServiceGetArgs>());
             set => _backendServices = value;
+        }
+
+        [Input("blacklists")]
+        private InputList<string>? _blacklists;
+
+        /// <summary>
+        /// Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+        /// </summary>
+        public InputList<string> Blacklists
+        {
+            get => _blacklists ?? (_blacklists = new InputList<string>());
+            set => _blacklists = value;
         }
 
         [Input("clusterControllerId")]
@@ -439,10 +444,6 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanImportScheduledTaskGetArgs>? _scheduledTasks;
-
-        /// <summary>
-        /// Set scheduling object.
-        /// </summary>
         public InputList<Inputs.OceanImportScheduledTaskGetArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanImportScheduledTaskGetArgs>());
@@ -476,7 +477,7 @@ namespace Pulumi.SpotInst.Gke
         private InputList<string>? _whitelists;
 
         /// <summary>
-        /// Instance types allowed in the Ocean cluster.
+        /// Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
         /// </summary>
         public InputList<string> Whitelists
         {
@@ -487,5 +488,6 @@ namespace Pulumi.SpotInst.Gke
         public OceanImportState()
         {
         }
+        public static new OceanImportState Empty => new OceanImportState();
     }
 }

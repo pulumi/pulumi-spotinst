@@ -27,10 +27,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.azure.OceanVirtualNodeGroup;
+ * import com.pulumi.spotinst.azure.OceanVirtualNodeGroupArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupAutoscaleArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLabelArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLaunchSpecificationArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupResourceLimitArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupTaintArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -53,6 +66,7 @@ import javax.annotation.Nullable;
  *                 .value(&#34;label_value&#34;)
  *                 .build())
  *             .launchSpecifications(OceanVirtualNodeGroupLaunchSpecificationArgs.builder()
+ *                 .maxPods(30)
  *                 .osDisk(OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs.builder()
  *                     .sizeGb(100)
  *                     .type(&#34;Standard_LRS&#34;)
@@ -84,10 +98,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

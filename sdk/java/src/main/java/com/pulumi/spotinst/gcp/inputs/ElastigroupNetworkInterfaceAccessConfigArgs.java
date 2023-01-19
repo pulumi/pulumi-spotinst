@@ -16,14 +16,14 @@ public final class ElastigroupNetworkInterfaceAccessConfigArgs extends com.pulum
     public static final ElastigroupNetworkInterfaceAccessConfigArgs Empty = new ElastigroupNetworkInterfaceAccessConfigArgs();
 
     /**
-     * The dimension name.
+     * The group name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The dimension name.
+     * @return The group name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -31,14 +31,14 @@ public final class ElastigroupNetworkInterfaceAccessConfigArgs extends com.pulum
     }
 
     /**
-     * Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+     * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+     * @return The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -71,7 +71,7 @@ public final class ElastigroupNetworkInterfaceAccessConfigArgs extends com.pulum
         }
 
         /**
-         * @param name The dimension name.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ElastigroupNetworkInterfaceAccessConfigArgs extends com.pulum
         }
 
         /**
-         * @param name The dimension name.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ElastigroupNetworkInterfaceAccessConfigArgs extends com.pulum
         }
 
         /**
-         * @param type Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+         * @param type The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ElastigroupNetworkInterfaceAccessConfigArgs extends com.pulum
         }
 
         /**
-         * @param type Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+         * @param type The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
          * 
          * @return builder
          * 

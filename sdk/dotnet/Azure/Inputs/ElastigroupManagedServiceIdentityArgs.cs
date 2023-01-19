@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupManagedServiceIdentityArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupManagedServiceIdentityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dimension name.
+        /// The name of the managed identity.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// The Resource Group that the user-assigned managed identity resides in.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupManagedServiceIdentityArgs()
         {
         }
+        public static new ElastigroupManagedServiceIdentityArgs Empty => new ElastigroupManagedServiceIdentityArgs();
     }
 }

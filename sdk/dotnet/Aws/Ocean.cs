@@ -10,112 +10,38 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
-    /// ## Example Usage
+    /// ## Scheduled Task
+    /// 
+    /// * `scheduled_task` - (Optional) Set scheduling object.
+    ///     * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
+    ///         * `is_enabled` - (Optional) Toggle the shutdown hours task. (Example: `true`).
+    ///         * `time_windows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+    ///     * `tasks` - (Optional) The scheduling tasks for the cluster.
+    ///         * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+    ///         * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+    ///         * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new SpotInst.Aws.Ocean("example", new SpotInst.Aws.OceanArgs
-    ///         {
-    ///             AssociatePublicIpAddress = true,
-    ///             ControllerId = "ocean-dev",
-    ///             DesiredCapacity = 2,
-    ///             DrainingTimeout = 120,
-    ///             EbsOptimized = true,
-    ///             FallbackToOndemand = true,
-    ///             GracePeriod = 600,
-    ///             IamInstanceProfile = "iam-profile",
-    ///             ImageId = "ami-123456",
-    ///             InstanceMetadataOptions = new SpotInst.Aws.Inputs.OceanInstanceMetadataOptionsArgs
-    ///             {
-    ///                 HttpPutResponseHopLimit = 10,
-    ///                 HttpTokens = "required",
-    ///             },
-    ///             KeyName = "fake key",
-    ///             LoadBalancers = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanLoadBalancerArgs
-    ///                 {
-    ///                     Arn = "arn:aws:elasticloadbalancing:us-west-2:fake-arn",
-    ///                     Type = "TARGET_GROUP",
-    ///                 },
-    ///                 new SpotInst.Aws.Inputs.OceanLoadBalancerArgs
-    ///                 {
-    ///                     Name = "example",
-    ///                     Type = "CLASSIC",
-    ///                 },
-    ///             },
-    ///             Logging = new SpotInst.Aws.Inputs.OceanLoggingArgs
-    ///             {
-    ///                 Export = new SpotInst.Aws.Inputs.OceanLoggingExportArgs
-    ///                 {
-    ///                     S3 = 
-    ///                     {
-    ///                         
-    ///                         {
-    ///                             { "id", "di-abcd123" },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             MaxSize = 2,
-    ///             MinSize = 1,
-    ///             Monitoring = true,
-    ///             Region = "us-west-2",
-    ///             RootVolumeSize = 20,
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "sg-987654321",
-    ///             },
-    ///             SpotPercentage = 100,
-    ///             SubnetIds = 
-    ///             {
-    ///                 "subnet-123456789",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 new SpotInst.Aws.Inputs.OceanTagArgs
-    ///                 {
-    ///                     Key = "fakeKey",
-    ///                     Value = "fakeValue",
-    ///                 },
-    ///             },
-    ///             UseAsTemplateOnly = true,
-    ///             UserData = "echo hello world",
-    ///             UtilizeCommitments = false,
-    ///             UtilizeReservedInstances = false,
-    ///             Whitelists = 
-    ///             {
-    ///                 "t1.micro",
-    ///                 "m1.small",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
-    /// ```csharp
-    /// using Pulumi;
     /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         this.OceanId = spotinst_ocean_aws.Example.Id;
-    ///     }
+    /// &lt;a id="attributes-reference"&gt;&lt;/a&gt;
     /// 
-    ///     [Output("oceanId")]
-    ///     public Output&lt;string&gt; OceanId { get; set; }
-    /// }
+    /// ## Import
+    /// 
+    /// Clusters can be imported using the Ocean `id`, e.g., hcl
+    /// 
+    /// ```sh
+    ///  $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/ocean:Ocean")]
-    public partial class Ocean : Pulumi.CustomResource
+    public partial class Ocean : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configure public IP address allocation.
@@ -134,6 +60,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("blacklists")]
         public Output<ImmutableArray<string>> Blacklists { get; private set; } = null!;
+
+        [Output("clusterOrientations")]
+        public Output<ImmutableArray<Outputs.OceanClusterOrientation>> ClusterOrientations { get; private set; } = null!;
 
         /// <summary>
         /// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -166,6 +95,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
         /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+        /// </summary>
+        [Output("filters")]
+        public Output<Outputs.OceanFilters?> Filters { get; private set; } = null!;
+
+        /// <summary>
         /// The amount of time, in seconds, after the instance has launched to start checking its health.
         /// </summary>
         [Output("gracePeriod")]
@@ -196,7 +131,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> KeyName { get; private set; } = null!;
 
         /// <summary>
-        /// - Array of load balancer objects to add to ocean cluster
+        /// Array of load balancer objects to add to ocean cluster
         /// </summary>
         [Output("loadBalancers")]
         public Output<ImmutableArray<Outputs.OceanLoadBalancer>> LoadBalancers { get; private set; } = null!;
@@ -243,9 +178,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("rootVolumeSize")]
         public Output<int?> RootVolumeSize { get; private set; } = null!;
 
-        /// <summary>
-        /// Set scheduling object.
-        /// </summary>
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.OceanScheduledTask>> ScheduledTasks { get; private set; } = null!;
 
@@ -351,7 +283,7 @@ namespace Pulumi.SpotInst.Aws
         }
     }
 
-    public sealed class OceanArgs : Pulumi.ResourceArgs
+    public sealed class OceanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure public IP address allocation.
@@ -375,6 +307,14 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _blacklists ?? (_blacklists = new InputList<string>());
             set => _blacklists = value;
+        }
+
+        [Input("clusterOrientations")]
+        private InputList<Inputs.OceanClusterOrientationArgs>? _clusterOrientations;
+        public InputList<Inputs.OceanClusterOrientationArgs> ClusterOrientations
+        {
+            get => _clusterOrientations ?? (_clusterOrientations = new InputList<Inputs.OceanClusterOrientationArgs>());
+            set => _clusterOrientations = value;
         }
 
         /// <summary>
@@ -406,6 +346,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
+
+        /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+        /// </summary>
+        [Input("filters")]
+        public Input<Inputs.OceanFiltersArgs>? Filters { get; set; }
 
         /// <summary>
         /// The amount of time, in seconds, after the instance has launched to start checking its health.
@@ -441,7 +387,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.OceanLoadBalancerArgs>? _loadBalancers;
 
         /// <summary>
-        /// - Array of load balancer objects to add to ocean cluster
+        /// Array of load balancer objects to add to ocean cluster
         /// </summary>
         public InputList<Inputs.OceanLoadBalancerArgs> LoadBalancers
         {
@@ -493,10 +439,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanScheduledTaskArgs>? _scheduledTasks;
-
-        /// <summary>
-        /// Set scheduling object.
-        /// </summary>
         public InputList<Inputs.OceanScheduledTaskArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTaskArgs>());
@@ -588,9 +530,10 @@ namespace Pulumi.SpotInst.Aws
         public OceanArgs()
         {
         }
+        public static new OceanArgs Empty => new OceanArgs();
     }
 
-    public sealed class OceanState : Pulumi.ResourceArgs
+    public sealed class OceanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure public IP address allocation.
@@ -614,6 +557,14 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _blacklists ?? (_blacklists = new InputList<string>());
             set => _blacklists = value;
+        }
+
+        [Input("clusterOrientations")]
+        private InputList<Inputs.OceanClusterOrientationGetArgs>? _clusterOrientations;
+        public InputList<Inputs.OceanClusterOrientationGetArgs> ClusterOrientations
+        {
+            get => _clusterOrientations ?? (_clusterOrientations = new InputList<Inputs.OceanClusterOrientationGetArgs>());
+            set => _clusterOrientations = value;
         }
 
         /// <summary>
@@ -645,6 +596,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
+
+        /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+        /// </summary>
+        [Input("filters")]
+        public Input<Inputs.OceanFiltersGetArgs>? Filters { get; set; }
 
         /// <summary>
         /// The amount of time, in seconds, after the instance has launched to start checking its health.
@@ -680,7 +637,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<Inputs.OceanLoadBalancerGetArgs>? _loadBalancers;
 
         /// <summary>
-        /// - Array of load balancer objects to add to ocean cluster
+        /// Array of load balancer objects to add to ocean cluster
         /// </summary>
         public InputList<Inputs.OceanLoadBalancerGetArgs> LoadBalancers
         {
@@ -732,10 +689,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanScheduledTaskGetArgs>? _scheduledTasks;
-
-        /// <summary>
-        /// Set scheduling object.
-        /// </summary>
         public InputList<Inputs.OceanScheduledTaskGetArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTaskGetArgs>());
@@ -827,5 +780,6 @@ namespace Pulumi.SpotInst.Aws
         public OceanState()
         {
         }
+        public static new OceanState Empty => new OceanState();
     }
 }

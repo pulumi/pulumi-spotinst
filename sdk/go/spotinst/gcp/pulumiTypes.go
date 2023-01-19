@@ -12,8 +12,9 @@ import (
 
 type ElastigroupBackendService struct {
 	// Sets which location the backend services will be active. Valid values: `regional`, `global`.
-	LocationType *string                              `pulumi:"locationType"`
-	NamedPorts   []ElastigroupBackendServiceNamedPort `pulumi:"namedPorts"`
+	LocationType *string `pulumi:"locationType"`
+	// Describes a named port and a list of ports.
+	NamedPorts []ElastigroupBackendServiceNamedPort `pulumi:"namedPorts"`
 	// Use when `locationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
 	Scheme *string `pulumi:"scheme"`
 	// The name of the backend service.
@@ -33,8 +34,9 @@ type ElastigroupBackendServiceInput interface {
 
 type ElastigroupBackendServiceArgs struct {
 	// Sets which location the backend services will be active. Valid values: `regional`, `global`.
-	LocationType pulumi.StringPtrInput                        `pulumi:"locationType"`
-	NamedPorts   ElastigroupBackendServiceNamedPortArrayInput `pulumi:"namedPorts"`
+	LocationType pulumi.StringPtrInput `pulumi:"locationType"`
+	// Describes a named port and a list of ports.
+	NamedPorts ElastigroupBackendServiceNamedPortArrayInput `pulumi:"namedPorts"`
 	// Use when `locationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
 	// The name of the backend service.
@@ -97,6 +99,7 @@ func (o ElastigroupBackendServiceOutput) LocationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupBackendService) *string { return v.LocationType }).(pulumi.StringPtrOutput)
 }
 
+// Describes a named port and a list of ports.
 func (o ElastigroupBackendServiceOutput) NamedPorts() ElastigroupBackendServiceNamedPortArrayOutput {
 	return o.ApplyT(func(v ElastigroupBackendService) []ElastigroupBackendServiceNamedPort { return v.NamedPorts }).(ElastigroupBackendServiceNamedPortArrayOutput)
 }
@@ -132,7 +135,7 @@ func (o ElastigroupBackendServiceArrayOutput) Index(i pulumi.IntInput) Elastigro
 }
 
 type ElastigroupBackendServiceNamedPort struct {
-	// The dimension name.
+	// The group name.
 	Name string `pulumi:"name"`
 	// A list of ports.
 	Ports []string `pulumi:"ports"`
@@ -150,7 +153,7 @@ type ElastigroupBackendServiceNamedPortInput interface {
 }
 
 type ElastigroupBackendServiceNamedPortArgs struct {
-	// The dimension name.
+	// The group name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A list of ports.
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
@@ -207,7 +210,7 @@ func (o ElastigroupBackendServiceNamedPortOutput) ToElastigroupBackendServiceNam
 	return o
 }
 
-// The dimension name.
+// The group name.
 func (o ElastigroupBackendServiceNamedPortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupBackendServiceNamedPort) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -252,7 +255,7 @@ type ElastigroupDisk struct {
 	Mode *string `pulumi:"mode"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
 	Source *string `pulumi:"source"`
-	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 	Type *string `pulumi:"type"`
 }
 
@@ -282,7 +285,7 @@ type ElastigroupDiskArgs struct {
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
 	Source pulumi.StringPtrInput `pulumi:"source"`
-	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -372,7 +375,7 @@ func (o ElastigroupDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 func (o ElastigroupDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -515,7 +518,7 @@ func (o ElastigroupDiskInitializeParamArrayOutput) Index(i pulumi.IntInput) Elas
 type ElastigroupGpu struct {
 	// The number of GPUs. Must be 0, 2, 4, 6, 8.
 	Count int `pulumi:"count"`
-	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
 }
 
@@ -533,7 +536,7 @@ type ElastigroupGpuInput interface {
 type ElastigroupGpuArgs struct {
 	// The number of GPUs. Must be 0, 2, 4, 6, 8.
 	Count pulumi.IntInput `pulumi:"count"`
-	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -593,7 +596,7 @@ func (o ElastigroupGpuOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ElastigroupGpu) int { return v.Count }).(pulumi.IntOutput)
 }
 
-// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 func (o ElastigroupGpuOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupGpu) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1435,7 +1438,7 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi
 type ElastigroupIntegrationGkeAutoscaleLabel struct {
 	// Labels key.
 	Key string `pulumi:"key"`
-	// The dimension value.
+	// Labels value.
 	Value string `pulumi:"value"`
 }
 
@@ -1453,7 +1456,7 @@ type ElastigroupIntegrationGkeAutoscaleLabelInput interface {
 type ElastigroupIntegrationGkeAutoscaleLabelArgs struct {
 	// Labels key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The dimension value.
+	// Labels value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1513,7 +1516,7 @@ func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) Key() pulumi.StringOutput
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The dimension value.
+// Labels value.
 func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1541,7 +1544,7 @@ func (o ElastigroupIntegrationGkeAutoscaleLabelArrayOutput) Index(i pulumi.IntIn
 type ElastigroupLabel struct {
 	// Labels key.
 	Key string `pulumi:"key"`
-	// The dimension value.
+	// Labels value.
 	Value string `pulumi:"value"`
 }
 
@@ -1559,7 +1562,7 @@ type ElastigroupLabelInput interface {
 type ElastigroupLabelArgs struct {
 	// Labels key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The dimension value.
+	// Labels value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1619,7 +1622,7 @@ func (o ElastigroupLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The dimension value.
+// Labels value.
 func (o ElastigroupLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1647,7 +1650,7 @@ func (o ElastigroupLabelArrayOutput) Index(i pulumi.IntInput) ElastigroupLabelOu
 type ElastigroupMetadata struct {
 	// Labels key.
 	Key string `pulumi:"key"`
-	// The dimension value.
+	// Labels value.
 	Value string `pulumi:"value"`
 }
 
@@ -1665,7 +1668,7 @@ type ElastigroupMetadataInput interface {
 type ElastigroupMetadataArgs struct {
 	// Labels key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The dimension value.
+	// Labels value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1725,7 +1728,7 @@ func (o ElastigroupMetadataOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupMetadata) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The dimension value.
+// Labels value.
 func (o ElastigroupMetadataOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupMetadata) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1863,9 +1866,9 @@ func (o ElastigroupNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Elastig
 }
 
 type ElastigroupNetworkInterfaceAccessConfig struct {
-	// The dimension name.
+	// The group name.
 	Name *string `pulumi:"name"`
-	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 	Type *string `pulumi:"type"`
 }
 
@@ -1881,9 +1884,9 @@ type ElastigroupNetworkInterfaceAccessConfigInput interface {
 }
 
 type ElastigroupNetworkInterfaceAccessConfigArgs struct {
-	// The dimension name.
+	// The group name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1938,12 +1941,12 @@ func (o ElastigroupNetworkInterfaceAccessConfigOutput) ToElastigroupNetworkInter
 	return o
 }
 
-// The dimension name.
+// The group name.
 func (o ElastigroupNetworkInterfaceAccessConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterfaceAccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 func (o ElastigroupNetworkInterfaceAccessConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterfaceAccessConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2069,6 +2072,7 @@ func (o ElastigroupNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntIn
 }
 
 type ElastigroupScalingDownPolicy struct {
+	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
 	ActionType *string `pulumi:"actionType"`
 	// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
 	Adjustment *int `pulumi:"adjustment"`
@@ -2108,6 +2112,7 @@ type ElastigroupScalingDownPolicyInput interface {
 }
 
 type ElastigroupScalingDownPolicyArgs struct {
+	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
 	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
 	// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
 	Adjustment pulumi.IntPtrInput `pulumi:"adjustment"`
@@ -2186,6 +2191,7 @@ func (o ElastigroupScalingDownPolicyOutput) ToElastigroupScalingDownPolicyOutput
 	return o
 }
 
+// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
 func (o ElastigroupScalingDownPolicyOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
@@ -2274,9 +2280,9 @@ func (o ElastigroupScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) Elasti
 }
 
 type ElastigroupScalingDownPolicyDimension struct {
-	// The dimension name.
+	// The group name.
 	Name string `pulumi:"name"`
-	// The dimension value.
+	// Labels value.
 	Value *string `pulumi:"value"`
 }
 
@@ -2292,9 +2298,9 @@ type ElastigroupScalingDownPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingDownPolicyDimensionArgs struct {
-	// The dimension name.
+	// The group name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The dimension value.
+	// Labels value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2349,12 +2355,12 @@ func (o ElastigroupScalingDownPolicyDimensionOutput) ToElastigroupScalingDownPol
 	return o
 }
 
-// The dimension name.
+// The group name.
 func (o ElastigroupScalingDownPolicyDimensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The dimension value.
+// Labels value.
 func (o ElastigroupScalingDownPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2380,6 +2386,7 @@ func (o ElastigroupScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ElastigroupScalingUpPolicy struct {
+	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
 	ActionType *string `pulumi:"actionType"`
 	// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
 	Adjustment *int `pulumi:"adjustment"`
@@ -2419,6 +2426,7 @@ type ElastigroupScalingUpPolicyInput interface {
 }
 
 type ElastigroupScalingUpPolicyArgs struct {
+	// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
 	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
 	// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
 	Adjustment pulumi.IntPtrInput `pulumi:"adjustment"`
@@ -2497,6 +2505,7 @@ func (o ElastigroupScalingUpPolicyOutput) ToElastigroupScalingUpPolicyOutputWith
 	return o
 }
 
+// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
 func (o ElastigroupScalingUpPolicyOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
@@ -2585,9 +2594,9 @@ func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) Elastigr
 }
 
 type ElastigroupScalingUpPolicyDimension struct {
-	// The dimension name.
+	// The group name.
 	Name string `pulumi:"name"`
-	// The dimension value.
+	// Labels value.
 	Value *string `pulumi:"value"`
 }
 
@@ -2603,9 +2612,9 @@ type ElastigroupScalingUpPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingUpPolicyDimensionArgs struct {
-	// The dimension name.
+	// The group name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The dimension value.
+	// Labels value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2660,12 +2669,12 @@ func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyD
 	return o
 }
 
-// The dimension name.
+// The group name.
 func (o ElastigroupScalingUpPolicyDimensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The dimension value.
+// Labels value.
 func (o ElastigroupScalingUpPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

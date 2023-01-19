@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanImageMarketplaceArgs : Pulumi.ResourceArgs
+    public sealed class OceanImageMarketplaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Image name.
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanImageMarketplaceArgs()
         {
         }
+        public static new OceanImageMarketplaceArgs Empty => new OceanImageMarketplaceArgs();
     }
 }

@@ -15,29 +15,27 @@ namespace Pulumi.SpotInst
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new SpotInst.DataIntegration("example", new()
     ///     {
-    ///         var example = new SpotInst.DataIntegration("example", new SpotInst.DataIntegrationArgs
+    ///         S3 = new SpotInst.Inputs.DataIntegrationS3Args
     ///         {
-    ///             S3 = new SpotInst.Inputs.DataIntegrationS3Args
-    ///             {
-    ///                 BucketName = "terraform-test-do-not-delete",
-    ///                 Subdir = "terraform-test-data-integration",
-    ///             },
-    ///             Status = "enabled",
-    ///         });
-    ///     }
+    ///             BucketName = "terraform-test-do-not-delete",
+    ///             Subdir = "terraform-test-data-integration",
+    ///         },
+    ///         Status = "enabled",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:index/dataIntegration:DataIntegration")]
-    public partial class DataIntegration : Pulumi.CustomResource
+    public partial class DataIntegration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the data integration.
@@ -101,7 +99,7 @@ namespace Pulumi.SpotInst
         }
     }
 
-    public sealed class DataIntegrationArgs : Pulumi.ResourceArgs
+    public sealed class DataIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the data integration.
@@ -124,9 +122,10 @@ namespace Pulumi.SpotInst
         public DataIntegrationArgs()
         {
         }
+        public static new DataIntegrationArgs Empty => new DataIntegrationArgs();
     }
 
-    public sealed class DataIntegrationState : Pulumi.ResourceArgs
+    public sealed class DataIntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the data integration.
@@ -149,5 +148,6 @@ namespace Pulumi.SpotInst
         public DataIntegrationState()
         {
         }
+        public static new DataIntegrationState Empty => new DataIntegrationState();
     }
 }

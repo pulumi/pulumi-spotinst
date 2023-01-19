@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupIntegrationMultaiRuntimeArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationMultaiRuntimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The deployment id you want to get
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupIntegrationMultaiRuntimeArgs()
         {
         }
+        public static new ElastigroupIntegrationMultaiRuntimeArgs Empty => new ElastigroupIntegrationMultaiRuntimeArgs();
     }
 }

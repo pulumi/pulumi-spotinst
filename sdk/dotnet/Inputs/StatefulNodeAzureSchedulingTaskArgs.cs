@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureSchedulingTaskArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureSchedulingTaskArgs : global::Pulumi.ResourceArgs
     {
         [Input("cronExpression", required: true)]
         public Input<string> CronExpression { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureSchedulingTaskArgs()
         {
         }
+        public static new StatefulNodeAzureSchedulingTaskArgs Empty => new StatefulNodeAzureSchedulingTaskArgs();
     }
 }

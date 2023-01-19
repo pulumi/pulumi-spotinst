@@ -29,14 +29,14 @@ public final class ElastigroupLabelArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The dimension value.
+     * Labels value.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The dimension value.
+     * @return Labels value.
      * 
      */
     public Output<String> value() {
@@ -90,7 +90,7 @@ public final class ElastigroupLabelArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param value The dimension value.
+         * @param value Labels value.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ElastigroupLabelArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param value The dimension value.
+         * @param value Labels value.
          * 
          * @return builder
          * 

@@ -10,28 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
     /**
-     * @return - The name of the Application Security group.
+     * @return Name of the Managed Service Identity.
      * 
      */
     private String name;
     /**
-     * @return - The resource group of the Application Security Group.
-     * }
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     private String resourceGroupName;
 
     private ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup() {}
     /**
-     * @return - The name of the Application Security group.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return - The resource group of the Application Security Group.
-     * }
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public String resourceGroupName() {

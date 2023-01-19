@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupNetworkInterfaceAliasIpRangeArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupNetworkInterfaceAliasIpRangeArgs : global::Pulumi.ResourceArgs
     {
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupNetworkInterfaceAliasIpRangeArgs()
         {
         }
+        public static new ElastigroupNetworkInterfaceAliasIpRangeArgs Empty => new ElastigroupNetworkInterfaceAliasIpRangeArgs();
     }
 }

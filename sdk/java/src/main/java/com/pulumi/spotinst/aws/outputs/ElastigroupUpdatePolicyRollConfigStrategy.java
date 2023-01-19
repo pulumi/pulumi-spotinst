@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfigStrategy {
     /**
-     * @return Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * @return The action to take when scale up according to step&#39;s threshold is needed.
      * 
      */
     private String action;
@@ -30,14 +30,14 @@ public final class ElastigroupUpdatePolicyRollConfigStrategy {
      */
     private @Nullable ElastigroupUpdatePolicyRollConfigStrategyOnFailure onFailure;
     /**
-     * @return Specify whether to drain incoming TCP connections before terminating a server.
+     * @return Bool value if to wait to drain instance
      * 
      */
     private @Nullable Boolean shouldDrainInstances;
 
     private ElastigroupUpdatePolicyRollConfigStrategy() {}
     /**
-     * @return Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * @return The action to take when scale up according to step&#39;s threshold is needed.
      * 
      */
     public String action() {
@@ -58,7 +58,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategy {
         return Optional.ofNullable(this.onFailure);
     }
     /**
-     * @return Specify whether to drain incoming TCP connections before terminating a server.
+     * @return Bool value if to wait to drain instance
      * 
      */
     public Optional<Boolean> shouldDrainInstances() {

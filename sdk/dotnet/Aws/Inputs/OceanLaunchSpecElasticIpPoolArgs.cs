@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecElasticIpPoolArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecElasticIpPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecElasticIpPoolArgs()
         {
         }
+        public static new OceanLaunchSpecElasticIpPoolArgs Empty => new OceanLaunchSpecElasticIpPoolArgs();
     }
 }

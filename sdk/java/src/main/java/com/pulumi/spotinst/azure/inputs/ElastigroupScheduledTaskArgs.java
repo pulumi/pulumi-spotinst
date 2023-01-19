@@ -17,14 +17,14 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
     public static final ElastigroupScheduledTaskArgs Empty = new ElastigroupScheduledTaskArgs();
 
     /**
-     * The number of instances to add/remove to/from the target capacity when scale is needed.
+     * Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
      * 
      */
     @Import(name="adjustment")
     private @Nullable Output<String> adjustment;
 
     /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
+     * @return Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
      * 
      */
     public Optional<Output<String>> adjustment() {
@@ -47,14 +47,14 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Sets the percentage of the instances to deploy in each batch.
+     * The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
      * 
      */
     @Import(name="batchSizePercentage")
     private @Nullable Output<String> batchSizePercentage;
 
     /**
-     * @return Sets the percentage of the instances to deploy in each batch.
+     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
      * 
      */
     public Optional<Output<String>> batchSizePercentage() {
@@ -77,14 +77,14 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Sets the grace period for new instances to become healthy.
+     * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     @Import(name="gracePeriod")
     private @Nullable Output<String> gracePeriod;
 
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     public Optional<Output<String>> gracePeriod() {
@@ -200,7 +200,7 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param adjustment The number of instances to add/remove to/from the target capacity when scale is needed.
+         * @param adjustment Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param adjustment The number of instances to add/remove to/from the target capacity when scale is needed.
+         * @param adjustment Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
+         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
+         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param gracePeriod Sets the grace period for new instances to become healthy.
+         * @param gracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param gracePeriod Sets the grace period for new instances to become healthy.
+         * @param gracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
          * 
          * @return builder
          * 

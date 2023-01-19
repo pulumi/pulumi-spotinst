@@ -33,6 +33,125 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.gke.OceanLaunchSpec;
+ * import com.pulumi.spotinst.gke.OceanLaunchSpecArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecLabelArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecMetadataArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecResourceLimitsArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingTaskArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecShieldedInstanceConfigArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecStorageArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecStrategyArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecTaintArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new OceanLaunchSpec(&#34;example&#34;, OceanLaunchSpecArgs.builder()        
+ *             .autoscaleHeadrooms(OceanLaunchSpecAutoscaleHeadroomArgs.builder()
+ *                 .cpuPerUnit(1000)
+ *                 .gpuPerUnit(0)
+ *                 .memoryPerUnit(2048)
+ *                 .numOfUnits(5)
+ *                 .build())
+ *             .autoscaleHeadroomsAutomatics(OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs.builder()
+ *                 .autoHeadroomPercentage(5)
+ *                 .build())
+ *             .instanceTypes(&#34;n1-standard-1, n1-standard-2&#34;)
+ *             .labels(OceanLaunchSpecLabelArgs.builder()
+ *                 .key(&#34;labelKey&#34;)
+ *                 .value(&#34;labelVal&#34;)
+ *                 .build())
+ *             .metadatas(OceanLaunchSpecMetadataArgs.builder()
+ *                 .key(&#34;gci-update-strategy&#34;)
+ *                 .value(&#34;update_disabled&#34;)
+ *                 .build())
+ *             .nodePoolName(&#34;default-pool&#34;)
+ *             .oceanId(&#34;o-123456&#34;)
+ *             .resourceLimits(OceanLaunchSpecResourceLimitsArgs.builder()
+ *                 .maxInstanceCount(3)
+ *                 .minInstanceCount(0)
+ *                 .build())
+ *             .restrictScaleDown(true)
+ *             .rootVolumeSize(10)
+ *             .rootVolumeType(&#34;pd-standard&#34;)
+ *             .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()
+ *                 .cronExpression(&#34;0 1 * * *&#34;)
+ *                 .isEnabled(true)
+ *                 .taskHeadrooms(OceanLaunchSpecSchedulingTaskTaskHeadroomArgs.builder()
+ *                     .cpuPerUnit(1000)
+ *                     .gpuPerUnit(0)
+ *                     .memoryPerUnit(2048)
+ *                     .numOfUnits(5)
+ *                     .build())
+ *                 .taskType(&#34;manualHeadroomUpdate&#34;)
+ *                 .build())
+ *             .serviceAccount(&#34;default&#34;)
+ *             .shieldedInstanceConfig(OceanLaunchSpecShieldedInstanceConfigArgs.builder()
+ *                 .enableIntegrityMonitoring(true)
+ *                 .enableSecureBoot(false)
+ *                 .build())
+ *             .sourceImage(&#34;image&#34;)
+ *             .storage(OceanLaunchSpecStorageArgs.builder()
+ *                 .localSsdCount(5)
+ *                 .build())
+ *             .strategies(OceanLaunchSpecStrategyArgs.builder()
+ *                 .preemptiblePercentage(30)
+ *                 .build())
+ *             .tags(            
+ *                 &#34;tag1&#34;,
+ *                 &#34;tag2&#34;)
+ *             .taints(OceanLaunchSpecTaintArgs.builder()
+ *                 .effect(&#34;taintEffect&#34;)
+ *                 .key(&#34;taintKey&#34;)
+ *                 .value(&#34;taintVal&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         ctx.export(&#34;oceanLaunchspecId&#34;, spotinst_ocean_gke_launch_spec.example().id());
+ *     }
+ * }
+ * ```
  * ## Update Policy
  * 
  * * `update_policy` - (Optional)
@@ -42,10 +161,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -311,6 +435,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<OceanLaunchSpecStrategy>>> strategies() {
         return Codegen.optional(this.strategies);
+    }
+    /**
+     * Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+     * 
+     */
+    @Export(name="tags", type=List.class, parameters={String.class})
+    private Output<List<String>> tags;
+
+    /**
+     * @return Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+     * 
+     */
+    public Output<List<String>> tags() {
+        return this.tags;
     }
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.

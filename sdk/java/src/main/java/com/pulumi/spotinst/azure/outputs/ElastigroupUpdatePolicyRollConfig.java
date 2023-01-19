@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfig {
     /**
-     * @return Sets the percentage of the instances to deploy in each batch.
+     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
      * 
      */
     private Integer batchSizePercentage;
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     private @Nullable Integer gracePeriod;
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
      * 
      */
     private @Nullable String healthCheckType;
 
     private ElastigroupUpdatePolicyRollConfig() {}
     /**
-     * @return Sets the percentage of the instances to deploy in each batch.
+     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
      * 
      */
     public Integer batchSizePercentage() {
         return this.batchSizePercentage;
     }
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     public Optional<Integer> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
      * 
      */
     public Optional<String> healthCheckType() {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanVirtualNodeGroupAutoscaleGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanVirtualNodeGroupAutoscaleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
@@ -29,5 +29,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanVirtualNodeGroupAutoscaleGetArgs()
         {
         }
+        public static new OceanVirtualNodeGroupAutoscaleGetArgs Empty => new OceanVirtualNodeGroupAutoscaleGetArgs();
     }
 }

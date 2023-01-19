@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecResourceLimitArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecResourceLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecResourceLimitArgs()
         {
         }
+        public static new OceanLaunchSpecResourceLimitArgs Empty => new OceanLaunchSpecResourceLimitArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanLaunchSpecSchedulingTaskArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecSchedulingTaskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
@@ -45,5 +45,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanLaunchSpecSchedulingTaskArgs()
         {
         }
+        public static new OceanLaunchSpecSchedulingTaskArgs Empty => new OceanLaunchSpecSchedulingTaskArgs();
     }
 }

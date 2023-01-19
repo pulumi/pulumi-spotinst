@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class MrScalarTerminationPolicyStatementGetArgs : Pulumi.ResourceArgs
+    public sealed class MrScalarTerminationPolicyStatementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of periods over which data is compared to the specified threshold.
@@ -63,5 +63,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public MrScalarTerminationPolicyStatementGetArgs()
         {
         }
+        public static new MrScalarTerminationPolicyStatementGetArgs Empty => new MrScalarTerminationPolicyStatementGetArgs();
     }
 }

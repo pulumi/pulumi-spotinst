@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanExtensionArgs : Pulumi.ResourceArgs
+    public sealed class OceanExtensionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// API version of the extension.
@@ -45,5 +45,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanExtensionArgs()
         {
         }
+        public static new OceanExtensionArgs Empty => new OceanExtensionArgs();
     }
 }

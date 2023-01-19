@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureImageArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureImageArgs : global::Pulumi.ResourceArgs
     {
         [Input("customImages")]
         private InputList<Inputs.StatefulNodeAzureImageCustomImageArgs>? _customImages;
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureImageArgs()
         {
         }
+        public static new StatefulNodeAzureImageArgs Empty => new StatefulNodeAzureImageArgs();
     }
 }

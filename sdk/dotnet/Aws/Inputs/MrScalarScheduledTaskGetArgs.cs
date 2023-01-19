@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class MrScalarScheduledTaskGetArgs : Pulumi.ResourceArgs
+    public sealed class MrScalarScheduledTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A cron expression representing the schedule for the task.
@@ -57,5 +57,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public MrScalarScheduledTaskGetArgs()
         {
         }
+        public static new MrScalarScheduledTaskGetArgs Empty => new MrScalarScheduledTaskGetArgs();
     }
 }

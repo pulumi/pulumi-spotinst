@@ -9,17 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupIntegrationMesosphere {
-    /**
-     * @return The public IP of the DC/OS Master.
-     * 
-     */
     private String apiServer;
 
     private ElastigroupIntegrationMesosphere() {}
-    /**
-     * @return The public IP of the DC/OS Master.
-     * 
-     */
     public String apiServer() {
         return this.apiServer;
     }

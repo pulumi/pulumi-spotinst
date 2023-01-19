@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupItfTargetGroupConfigTagGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupItfTargetGroupConfigTagGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupItfTargetGroupConfigTagGetArgs()
         {
         }
+        public static new ElastigroupItfTargetGroupConfigTagGetArgs Empty => new ElastigroupItfTargetGroupConfigTagGetArgs();
     }
 }

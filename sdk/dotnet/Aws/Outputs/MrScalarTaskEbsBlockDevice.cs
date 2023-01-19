@@ -26,7 +26,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string VolumeType;
         /// <summary>
-        /// Amount of volumes per instance in the master group.
+        /// Amount of volumes per instance in the task group.
         /// </summary>
         public readonly int? VolumesPerInstance;
 

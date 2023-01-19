@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanAutoscalerArgs : Pulumi.ResourceArgs
+    public sealed class OceanAutoscalerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto Scaling scale down operations.
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanAutoscalerArgs()
         {
         }
+        public static new OceanAutoscalerArgs Empty => new OceanAutoscalerArgs();
     }
 }

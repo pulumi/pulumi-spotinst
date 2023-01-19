@@ -15,7 +15,7 @@ public final class ElastigroupMultipleMetricsExpression {
      */
     private String expression;
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     private String name;
@@ -29,7 +29,7 @@ public final class ElastigroupMultipleMetricsExpression {
         return this.expression;
     }
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     public String name() {

@@ -15,14 +15,14 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
     public static final ElastigroupBackendServiceNamedPortArgs Empty = new ElastigroupBackendServiceNamedPortArgs();
 
     /**
-     * The dimension name.
+     * The group name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The dimension name.
+     * @return The group name.
      * 
      */
     public Output<String> name() {
@@ -70,7 +70,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The dimension name.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The dimension name.
+         * @param name The group name.
          * 
          * @return builder
          * 

@@ -7,11 +7,28 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class OceanLaunchSpecDeleteOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OceanLaunchSpecDeleteOptionsArgs Empty = new OceanLaunchSpecDeleteOptionsArgs();
+
+    /**
+     * When set to &#34;true&#34;, all instances belonging to the deleted launch specification will be drained, detached, and terminated.
+     * 
+     */
+    @Import(name="deleteNodes")
+    private @Nullable Output<Boolean> deleteNodes;
+
+    /**
+     * @return When set to &#34;true&#34;, all instances belonging to the deleted launch specification will be drained, detached, and terminated.
+     * 
+     */
+    public Optional<Output<Boolean>> deleteNodes() {
+        return Optional.ofNullable(this.deleteNodes);
+    }
 
     /**
      * When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
@@ -31,6 +48,7 @@ public final class OceanLaunchSpecDeleteOptionsArgs extends com.pulumi.resources
     private OceanLaunchSpecDeleteOptionsArgs() {}
 
     private OceanLaunchSpecDeleteOptionsArgs(OceanLaunchSpecDeleteOptionsArgs $) {
+        this.deleteNodes = $.deleteNodes;
         this.forceDelete = $.forceDelete;
     }
 
@@ -50,6 +68,27 @@ public final class OceanLaunchSpecDeleteOptionsArgs extends com.pulumi.resources
 
         public Builder(OceanLaunchSpecDeleteOptionsArgs defaults) {
             $ = new OceanLaunchSpecDeleteOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deleteNodes When set to &#34;true&#34;, all instances belonging to the deleted launch specification will be drained, detached, and terminated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteNodes(@Nullable Output<Boolean> deleteNodes) {
+            $.deleteNodes = deleteNodes;
+            return this;
+        }
+
+        /**
+         * @param deleteNodes When set to &#34;true&#34;, all instances belonging to the deleted launch specification will be drained, detached, and terminated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteNodes(Boolean deleteNodes) {
+            return deleteNodes(Output.of(deleteNodes));
         }
 
         /**

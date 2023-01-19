@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationGitlabArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationGitlabArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Settings for Gitlab runner.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationGitlabArgs()
         {
         }
+        public static new ElastigroupIntegrationGitlabArgs Empty => new ElastigroupIntegrationGitlabArgs();
     }
 }

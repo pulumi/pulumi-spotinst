@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanManagedServiceIdentityArgs : Pulumi.ResourceArgs
+    public sealed class OceanManagedServiceIdentityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the Load Balancer.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanManagedServiceIdentityArgs()
         {
         }
+        public static new OceanManagedServiceIdentityArgs Empty => new OceanManagedServiceIdentityArgs();
     }
 }

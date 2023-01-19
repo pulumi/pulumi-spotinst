@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupIntegrationGkeArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationGkeArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoUpdate")]
         public Input<bool>? AutoUpdate { get; set; }
@@ -47,5 +47,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupIntegrationGkeArgs()
         {
         }
+        public static new ElastigroupIntegrationGkeArgs Empty => new ElastigroupIntegrationGkeArgs();
     }
 }

@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupIntegrationKubernetesAutoscaleHeadroom {
     /**
-     * @return How much CPU (MHz) to allocate for headroom unit.
+     * @return Cpu units for compute.
      * 
      */
     private @Nullable Integer cpuPerUnit;
     /**
-     * @return How much Memory allocate for headroom unit.
+     * @return RAM units for compute.
      * 
      */
     private @Nullable Integer memoryPerUnit;
     /**
-     * @return How many units of headroom to allocate.
+     * @return Amount of units for compute.
      * 
      */
     private @Nullable Integer numOfUnits;
 
     private ElastigroupIntegrationKubernetesAutoscaleHeadroom() {}
     /**
-     * @return How much CPU (MHz) to allocate for headroom unit.
+     * @return Cpu units for compute.
      * 
      */
     public Optional<Integer> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
     /**
-     * @return How much Memory allocate for headroom unit.
+     * @return RAM units for compute.
      * 
      */
     public Optional<Integer> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
     /**
-     * @return How many units of headroom to allocate.
+     * @return Amount of units for compute.
      * 
      */
     public Optional<Integer> numOfUnits() {

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -104,14 +105,15 @@ export class OceanImport extends pulumi.CustomResource {
         return obj['__pulumiType'] === OceanImport.__pulumiType;
     }
 
-    /**
-     * The Ocean Kubernetes Autoscaler object.
-     */
     public readonly autoscaler!: pulumi.Output<outputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
      */
     public readonly backendServices!: pulumi.Output<outputs.gke.OceanImportBackendService[] | undefined>;
+    /**
+     * Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+     */
+    public readonly blacklists!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly clusterControllerId!: pulumi.Output<string>;
     /**
      * The GKE cluster name.
@@ -141,9 +143,6 @@ export class OceanImport extends pulumi.CustomResource {
      * The root volume disk type.
      */
     public readonly rootVolumeType!: pulumi.Output<string | undefined>;
-    /**
-     * Set scheduling object.
-     */
     public readonly scheduledTasks!: pulumi.Output<outputs.gke.OceanImportScheduledTask[] | undefined>;
     /**
      * The Ocean shielded instance configuration object.
@@ -156,7 +155,7 @@ export class OceanImport extends pulumi.CustomResource {
      */
     public readonly useAsTemplateOnly!: pulumi.Output<boolean | undefined>;
     /**
-     * Instance types allowed in the Ocean cluster.
+     * Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      */
     public readonly whitelists!: pulumi.Output<string[] | undefined>;
 
@@ -175,6 +174,7 @@ export class OceanImport extends pulumi.CustomResource {
             const state = argsOrState as OceanImportState | undefined;
             resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
             resourceInputs["backendServices"] = state ? state.backendServices : undefined;
+            resourceInputs["blacklists"] = state ? state.blacklists : undefined;
             resourceInputs["clusterControllerId"] = state ? state.clusterControllerId : undefined;
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
             resourceInputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
@@ -199,6 +199,7 @@ export class OceanImport extends pulumi.CustomResource {
             }
             resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
             resourceInputs["backendServices"] = args ? args.backendServices : undefined;
+            resourceInputs["blacklists"] = args ? args.blacklists : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
@@ -223,14 +224,15 @@ export class OceanImport extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OceanImport resources.
  */
 export interface OceanImportState {
-    /**
-     * The Ocean Kubernetes Autoscaler object.
-     */
     autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
      */
     backendServices?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendService>[]>;
+    /**
+     * Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+     */
+    blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     clusterControllerId?: pulumi.Input<string>;
     /**
      * The GKE cluster name.
@@ -260,9 +262,6 @@ export interface OceanImportState {
      * The root volume disk type.
      */
     rootVolumeType?: pulumi.Input<string>;
-    /**
-     * Set scheduling object.
-     */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
     /**
      * The Ocean shielded instance configuration object.
@@ -275,7 +274,7 @@ export interface OceanImportState {
      */
     useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
-     * Instance types allowed in the Ocean cluster.
+     * Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -284,14 +283,15 @@ export interface OceanImportState {
  * The set of arguments for constructing a OceanImport resource.
  */
 export interface OceanImportArgs {
-    /**
-     * The Ocean Kubernetes Autoscaler object.
-     */
     autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
      */
     backendServices?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendService>[]>;
+    /**
+     * Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+     */
+    blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The GKE cluster name.
      */
@@ -320,9 +320,6 @@ export interface OceanImportArgs {
      * The root volume disk type.
      */
     rootVolumeType?: pulumi.Input<string>;
-    /**
-     * Set scheduling object.
-     */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
     /**
      * The Ocean shielded instance configuration object.
@@ -335,7 +332,7 @@ export interface OceanImportArgs {
      */
     useAsTemplateOnly?: pulumi.Input<boolean>;
     /**
-     * Instance types allowed in the Ocean cluster.
+     * Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

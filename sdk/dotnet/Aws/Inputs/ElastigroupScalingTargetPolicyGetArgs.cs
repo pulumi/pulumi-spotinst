@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupScalingTargetPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingTargetPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Integer the amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
@@ -31,7 +31,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         }
 
         /// <summary>
-        /// How many evaluation periods should accumulate before a scale down action takes place.
+        /// The number of periods over which data is compared to the specified threshold.
         /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
@@ -99,5 +99,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupScalingTargetPolicyGetArgs()
         {
         }
+        public static new ElastigroupScalingTargetPolicyGetArgs Empty => new ElastigroupScalingTargetPolicyGetArgs();
     }
 }

@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationDockerSwarmAutoscaleDownArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationDockerSwarmAutoscaleDownArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How many evaluation periods should accumulate before a scale down action takes place.
+        /// The number of periods over which data is compared to the specified threshold.
         /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 
         /// <summary>
-        /// Would represent the maximum % to scale-down. Number between 1-100.  
+        /// Represents the maximum percent to scale-down. Number between 1-100.
         /// Usage:
         /// </summary>
         [Input("maxScaleDownPercentage")]
@@ -28,5 +28,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationDockerSwarmAutoscaleDownArgs()
         {
         }
+        public static new ElastigroupIntegrationDockerSwarmAutoscaleDownArgs Empty => new ElastigroupIntegrationDockerSwarmAutoscaleDownArgs();
     }
 }

@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupNetworkInterfaceAccessConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupNetworkInterfaceAccessConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dimension name.
+        /// The group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        /// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupNetworkInterfaceAccessConfigGetArgs()
         {
         }
+        public static new ElastigroupNetworkInterfaceAccessConfigGetArgs Empty => new ElastigroupNetworkInterfaceAccessConfigGetArgs();
     }
 }

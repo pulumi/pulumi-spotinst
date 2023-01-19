@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupUpdatePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enables updates to tags without rolling the group when set to `true`.
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupUpdatePolicyGetArgs()
         {
         }
+        public static new ElastigroupUpdatePolicyGetArgs Empty => new ElastigroupUpdatePolicyGetArgs();
     }
 }

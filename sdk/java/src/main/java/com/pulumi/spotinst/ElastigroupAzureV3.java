@@ -25,13 +25,26 @@ import javax.annotation.Nullable;
  * Provides a Spotinst elastigroup Azure resource.
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.ElastigroupAzureV3;
+ * import com.pulumi.spotinst.ElastigroupAzureV3Args;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3StrategyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -126,31 +139,15 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> desiredCapacity() {
         return Codegen.optional(this.desiredCapacity);
     }
-    /**
-     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     * 
-     */
     @Export(name="images", type=List.class, parameters={ElastigroupAzureV3Image.class})
     private Output</* @Nullable */ List<ElastigroupAzureV3Image>> images;
 
-    /**
-     * @return Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     * 
-     */
     public Output<Optional<List<ElastigroupAzureV3Image>>> images() {
         return Codegen.optional(this.images);
     }
-    /**
-     * Describes the login configuration.
-     * 
-     */
     @Export(name="login", type=ElastigroupAzureV3Login.class, parameters={})
     private Output</* @Nullable */ ElastigroupAzureV3Login> login;
 
-    /**
-     * @return Describes the login configuration.
-     * 
-     */
     public Output<Optional<ElastigroupAzureV3Login>> login() {
         return Codegen.optional(this.login);
     }
@@ -197,30 +194,22 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
         return this.minSize;
     }
     /**
-     * - The name of the Application Security group.
+     * Name of the Managed Service Identity.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return - The name of the Application Security group.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Defines the Virtual Network and Subnet for your Elastigroup.
-     * 
-     */
     @Export(name="network", type=ElastigroupAzureV3Network.class, parameters={})
     private Output<ElastigroupAzureV3Network> network;
 
-    /**
-     * @return Defines the Virtual Network and Subnet for your Elastigroup.
-     * 
-     */
     public Output<ElastigroupAzureV3Network> network() {
         return this.network;
     }
@@ -267,16 +256,14 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * - The resource group of the Application Security Group.
-     *   }
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     @Export(name="resourceGroupName", type=String.class, parameters={})
     private Output<String> resourceGroupName;
 
     /**
-     * @return - The resource group of the Application Security Group.
-     * }
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -296,17 +283,9 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<List<String>> spotSizes() {
         return this.spotSizes;
     }
-    /**
-     * Describes the deployment strategy.
-     * 
-     */
     @Export(name="strategy", type=ElastigroupAzureV3Strategy.class, parameters={})
     private Output<ElastigroupAzureV3Strategy> strategy;
 
-    /**
-     * @return Describes the deployment strategy.
-     * 
-     */
     public Output<ElastigroupAzureV3Strategy> strategy() {
         return this.strategy;
     }

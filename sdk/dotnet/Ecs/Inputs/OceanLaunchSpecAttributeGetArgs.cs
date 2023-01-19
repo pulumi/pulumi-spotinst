@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanLaunchSpecAttributeGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecAttributeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The label key.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanLaunchSpecAttributeGetArgs()
         {
         }
+        public static new OceanLaunchSpecAttributeGetArgs Empty => new OceanLaunchSpecAttributeGetArgs();
     }
 }

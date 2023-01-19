@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ManagedInstanceBlockDeviceMappingEbsGetArgs : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceBlockDeviceMappingEbsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the volume should be destroyed on instance termination.
@@ -45,5 +45,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ManagedInstanceBlockDeviceMappingEbsGetArgs()
         {
         }
+        public static new ManagedInstanceBlockDeviceMappingEbsGetArgs Empty => new ManagedInstanceBlockDeviceMappingEbsGetArgs();
     }
 }

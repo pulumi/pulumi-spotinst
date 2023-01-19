@@ -12,126 +12,16 @@ namespace Pulumi.SpotInst.Ecs
     /// <summary>
     /// Manages a Spotinst Ocean ECS resource.
     /// 
-    /// ## Example Usage
+    /// ## Import
     /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
+    /// Clusters can be imported using the Ocean `id`, e.g., hcl
     /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var example = new SpotInst.Ecs.Ocean("example", new SpotInst.Ecs.OceanArgs
-    ///         {
-    ///             AssociatePublicIpAddress = false,
-    ///             BlockDeviceMappings = 
-    ///             {
-    ///                 new SpotInst.Ecs.Inputs.OceanBlockDeviceMappingArgs
-    ///                 {
-    ///                     DeviceName = "/dev/xvda1",
-    ///                     Ebs = new SpotInst.Ecs.Inputs.OceanBlockDeviceMappingEbsArgs
-    ///                     {
-    ///                         DeleteOnTermination = true,
-    ///                         DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs
-    ///                         {
-    ///                             BaseSize = 50,
-    ///                             Resource = "CPU",
-    ///                             SizePerResourceUnit = 20,
-    ///                         },
-    ///                         Encrypted = false,
-    ///                         Throughput = 500,
-    ///                         VolumeSize = 50,
-    ///                         VolumeType = "gp2",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             ClusterName = "sample-ecs-cluster",
-    ///             DesiredCapacity = 0,
-    ///             DrainingTimeout = 120,
-    ///             EbsOptimized = true,
-    ///             IamInstanceProfile = "iam-profile",
-    ///             ImageId = "ami-12345",
-    ///             InstanceMetadataOptions = new SpotInst.Ecs.Inputs.OceanInstanceMetadataOptionsArgs
-    ///             {
-    ///                 HttpPutResponseHopLimit = 10,
-    ///                 HttpTokens = "required",
-    ///             },
-    ///             KeyPair = "KeyPair",
-    ///             Logging = new SpotInst.Ecs.Inputs.OceanLoggingArgs
-    ///             {
-    ///                 Export = new SpotInst.Ecs.Inputs.OceanLoggingExportArgs
-    ///                 {
-    ///                     S3 = 
-    ///                     {
-    ///                         
-    ///                         {
-    ///                             { "id", "di-abcd123" },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             MaxSize = 1,
-    ///             MinSize = 0,
-    ///             Monitoring = true,
-    ///             OptimizeImages = new SpotInst.Ecs.Inputs.OceanOptimizeImagesArgs
-    ///             {
-    ///                 PerformAt = "timeWindow",
-    ///                 ShouldOptimizeEcsAmi = true,
-    ///                 TimeWindows = 
-    ///                 {
-    ///                     "Sun:02:00-Sun:12:00",
-    ///                     "Sun:05:00-Sun:16:00",
-    ///                 },
-    ///             },
-    ///             Region = "us-west-2",
-    ///             SecurityGroupIds = 
-    ///             {
-    ///                 "sg-12345",
-    ///             },
-    ///             SpotPercentage = 100,
-    ///             SubnetIds = 
-    ///             {
-    ///                 "subnet-12345",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 new SpotInst.Ecs.Inputs.OceanTagArgs
-    ///                 {
-    ///                     Key = "fakeKey",
-    ///                     Value = "fakeValue",
-    ///                 },
-    ///             },
-    ///             UseAsTemplateOnly = true,
-    ///             UserData = "echo hello world",
-    ///             UtilizeCommitments = false,
-    ///             UtilizeReservedInstances = false,
-    ///             Whitelists = 
-    ///             {
-    ///                 "t3.medium",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ```csharp
-    /// using Pulumi;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         this.OceanId = spotinst_ocean_ecs.Example.Id;
-    ///     }
-    /// 
-    ///     [Output("oceanId")]
-    ///     public Output&lt;string&gt; OceanId { get; set; }
-    /// }
+    /// ```sh
+    ///  $ pulumi import spotinst:ecs/ocean:Ocean this o-12345678
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:ecs/ocean:Ocean")]
-    public partial class Ocean : Pulumi.CustomResource
+    public partial class Ocean : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configure public IP address allocation.
@@ -146,13 +36,19 @@ namespace Pulumi.SpotInst.Ecs
         public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
 
         /// <summary>
+        /// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+        /// </summary>
+        [Output("blacklists")]
+        public Output<ImmutableArray<string>> Blacklists { get; private set; } = null!;
+
+        /// <summary>
         /// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         /// </summary>
         [Output("blockDeviceMappings")]
         public Output<ImmutableArray<Outputs.OceanBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
         /// <summary>
-        /// The ocean cluster name.
+        /// The name of the ECS cluster.
         /// </summary>
         [Output("clusterName")]
         public Output<string> ClusterName { get; private set; } = null!;
@@ -174,6 +70,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("ebsOptimized")]
         public Output<bool?> EbsOptimized { get; private set; } = null!;
+
+        /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+        /// </summary>
+        [Output("filters")]
+        public Output<Outputs.OceanFilters?> Filters { get; private set; } = null!;
 
         /// <summary>
         /// The instance profile iam role.
@@ -271,9 +173,6 @@ namespace Pulumi.SpotInst.Ecs
         [Output("tags")]
         public Output<ImmutableArray<Outputs.OceanTag>> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         [Output("updatePolicy")]
         public Output<Outputs.OceanUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
 
@@ -302,7 +201,7 @@ namespace Pulumi.SpotInst.Ecs
         public Output<bool?> UtilizeReservedInstances { get; private set; } = null!;
 
         /// <summary>
-        /// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+        /// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
         /// </summary>
         [Output("whitelists")]
         public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
@@ -351,7 +250,7 @@ namespace Pulumi.SpotInst.Ecs
         }
     }
 
-    public sealed class OceanArgs : Pulumi.ResourceArgs
+    public sealed class OceanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure public IP address allocation.
@@ -364,6 +263,18 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerArgs>? Autoscaler { get; set; }
+
+        [Input("blacklists")]
+        private InputList<string>? _blacklists;
+
+        /// <summary>
+        /// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+        /// </summary>
+        public InputList<string> Blacklists
+        {
+            get => _blacklists ?? (_blacklists = new InputList<string>());
+            set => _blacklists = value;
+        }
 
         [Input("blockDeviceMappings")]
         private InputList<Inputs.OceanBlockDeviceMappingArgs>? _blockDeviceMappings;
@@ -378,7 +289,7 @@ namespace Pulumi.SpotInst.Ecs
         }
 
         /// <summary>
-        /// The ocean cluster name.
+        /// The name of the ECS cluster.
         /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
@@ -400,6 +311,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
+
+        /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+        /// </summary>
+        [Input("filters")]
+        public Input<Inputs.OceanFiltersArgs>? Filters { get; set; }
 
         /// <summary>
         /// The instance profile iam role.
@@ -521,9 +438,6 @@ namespace Pulumi.SpotInst.Ecs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyArgs>? UpdatePolicy { get; set; }
 
@@ -555,7 +469,7 @@ namespace Pulumi.SpotInst.Ecs
         private InputList<string>? _whitelists;
 
         /// <summary>
-        /// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+        /// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
         /// </summary>
         public InputList<string> Whitelists
         {
@@ -566,9 +480,10 @@ namespace Pulumi.SpotInst.Ecs
         public OceanArgs()
         {
         }
+        public static new OceanArgs Empty => new OceanArgs();
     }
 
-    public sealed class OceanState : Pulumi.ResourceArgs
+    public sealed class OceanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure public IP address allocation.
@@ -581,6 +496,18 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerGetArgs>? Autoscaler { get; set; }
+
+        [Input("blacklists")]
+        private InputList<string>? _blacklists;
+
+        /// <summary>
+        /// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+        /// </summary>
+        public InputList<string> Blacklists
+        {
+            get => _blacklists ?? (_blacklists = new InputList<string>());
+            set => _blacklists = value;
+        }
 
         [Input("blockDeviceMappings")]
         private InputList<Inputs.OceanBlockDeviceMappingGetArgs>? _blockDeviceMappings;
@@ -595,7 +522,7 @@ namespace Pulumi.SpotInst.Ecs
         }
 
         /// <summary>
-        /// The ocean cluster name.
+        /// The name of the ECS cluster.
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
@@ -617,6 +544,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
+
+        /// <summary>
+        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+        /// </summary>
+        [Input("filters")]
+        public Input<Inputs.OceanFiltersGetArgs>? Filters { get; set; }
 
         /// <summary>
         /// The instance profile iam role.
@@ -738,9 +671,6 @@ namespace Pulumi.SpotInst.Ecs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
 
@@ -772,7 +702,7 @@ namespace Pulumi.SpotInst.Ecs
         private InputList<string>? _whitelists;
 
         /// <summary>
-        /// Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+        /// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
         /// </summary>
         public InputList<string> Whitelists
         {
@@ -783,5 +713,6 @@ namespace Pulumi.SpotInst.Ecs
         public OceanState()
         {
         }
+        public static new OceanState Empty => new OceanState();
     }
 }

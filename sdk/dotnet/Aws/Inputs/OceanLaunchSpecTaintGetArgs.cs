@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecTaintGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecTaintGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecTaintGetArgs()
         {
         }
+        public static new OceanLaunchSpecTaintGetArgs Empty => new OceanLaunchSpecTaintGetArgs();
     }
 }

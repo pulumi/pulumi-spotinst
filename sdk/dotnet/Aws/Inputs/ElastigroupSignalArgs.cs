@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupSignalArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupSignalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the signal defined for the group. Valid Values: `"INSTANCE_READY"`, `"INSTANCE_READY_TO_SHUTDOWN"`
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupSignalArgs()
         {
         }
+        public static new ElastigroupSignalArgs Empty => new ElastigroupSignalArgs();
     }
 }

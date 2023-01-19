@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class ElastigroupAzureV3LoginGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupAzureV3LoginGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Password for admin access to Windows VMs. Required for Windows OS types.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Inputs
         public ElastigroupAzureV3LoginGetArgs()
         {
         }
+        public static new ElastigroupAzureV3LoginGetArgs Empty => new ElastigroupAzureV3LoginGetArgs();
     }
 }

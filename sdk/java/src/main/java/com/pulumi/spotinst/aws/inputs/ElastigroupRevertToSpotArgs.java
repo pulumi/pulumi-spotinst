@@ -17,14 +17,14 @@ public final class ElastigroupRevertToSpotArgs extends com.pulumi.resources.Reso
     public static final ElastigroupRevertToSpotArgs Empty = new ElastigroupRevertToSpotArgs();
 
     /**
-     * Actions to perform (options: timeWindow, never)
+     * In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
      * 
      */
     @Import(name="performAt", required=true)
     private Output<String> performAt;
 
     /**
-     * @return Actions to perform (options: timeWindow, never)
+     * @return In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
      * 
      */
     public Output<String> performAt() {
@@ -72,7 +72,7 @@ public final class ElastigroupRevertToSpotArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param performAt Actions to perform (options: timeWindow, never)
+         * @param performAt In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ElastigroupRevertToSpotArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param performAt Actions to perform (options: timeWindow, never)
+         * @param performAt In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
          * 
          * @return builder
          * 

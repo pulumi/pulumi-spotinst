@@ -15,8 +15,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
     {
         /// <summary>
         /// A list of dimensions describing qualities of the metric.
-        /// *`name` - (Required) the dimension name.
-        /// *`value` - (Optional) the dimension value.
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupMultipleMetricsMetricDimension> Dimensions;
         /// <summary>
@@ -28,7 +26,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string MetricName;
         /// <summary>
-        /// The record set name.
+        /// The group name.
         /// </summary>
         public readonly string Name;
         /// <summary>

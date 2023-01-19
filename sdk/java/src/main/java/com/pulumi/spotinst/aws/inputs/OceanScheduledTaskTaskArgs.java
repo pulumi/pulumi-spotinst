@@ -14,47 +14,23 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
 
     public static final OceanScheduledTaskTaskArgs Empty = new OceanScheduledTaskTaskArgs();
 
-    /**
-     * A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
-     * 
-     */
     @Import(name="cronExpression", required=true)
     private Output<String> cronExpression;
 
-    /**
-     * @return A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
-     * 
-     */
     public Output<String> cronExpression() {
         return this.cronExpression;
     }
 
-    /**
-     * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-     * 
-     */
     @Import(name="isEnabled", required=true)
     private Output<Boolean> isEnabled;
 
-    /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-     * 
-     */
     public Output<Boolean> isEnabled() {
         return this.isEnabled;
     }
 
-    /**
-     * Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
-     * 
-     */
     @Import(name="taskType", required=true)
     private Output<String> taskType;
 
-    /**
-     * @return Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
-     * 
-     */
     public Output<String> taskType() {
         return this.taskType;
     }
@@ -85,65 +61,29 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
             $ = new OceanScheduledTaskTaskArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param cronExpression A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder cronExpression(Output<String> cronExpression) {
             $.cronExpression = cronExpression;
             return this;
         }
 
-        /**
-         * @param cronExpression A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder cronExpression(String cronExpression) {
             return cronExpression(Output.of(cronExpression));
         }
 
-        /**
-         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
-        /**
-         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }
 
-        /**
-         * @param taskType Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskType(Output<String> taskType) {
             $.taskType = taskType;
             return this;
         }
 
-        /**
-         * @param taskType Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskType(String taskType) {
             return taskType(Output.of(taskType));
         }

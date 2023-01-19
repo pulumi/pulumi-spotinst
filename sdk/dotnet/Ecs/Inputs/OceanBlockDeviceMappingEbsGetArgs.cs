@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanBlockDeviceMappingEbsGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanBlockDeviceMappingEbsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Toggles EBS deletion upon instance termination.
@@ -69,5 +69,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanBlockDeviceMappingEbsGetArgs()
         {
         }
+        public static new OceanBlockDeviceMappingEbsGetArgs Empty => new OceanBlockDeviceMappingEbsGetArgs();
     }
 }

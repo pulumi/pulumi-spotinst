@@ -49,6 +49,7 @@ import (
 //				},
 //				LaunchSpecifications: azure.OceanVirtualNodeGroupLaunchSpecificationArray{
 //					&azure.OceanVirtualNodeGroupLaunchSpecificationArgs{
+//						MaxPods: pulumi.Int(30),
 //						OsDisk: &azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs{
 //							SizeGb:                  pulumi.Int(100),
 //							Type:                    pulumi.String("Standard_LRS"),

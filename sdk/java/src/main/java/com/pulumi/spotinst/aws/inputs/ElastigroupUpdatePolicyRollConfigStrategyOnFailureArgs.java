@@ -18,14 +18,14 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
     public static final ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs Empty = new ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs();
 
     /**
-     * Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+     * The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
      * 
      */
     @Import(name="actionType", required=true)
     private Output<String> actionType;
 
     /**
-     * @return Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
      * 
      */
     public Output<String> actionType() {
@@ -40,14 +40,14 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
     }
 
     /**
-     * Indicates (in seconds) the timeout to wait until instance are detached.
+     * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      * 
      */
     @Import(name="drainingTimeout")
     private @Nullable Output<Integer> drainingTimeout;
 
     /**
-     * @return Indicates (in seconds) the timeout to wait until instance are detached.
+     * @return The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      * 
      */
     public Optional<Output<Integer>> drainingTimeout() {
@@ -113,7 +113,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
         }
 
         /**
-         * @param actionType Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+         * @param actionType The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
         }
 
         /**
-         * @param actionType Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+         * @param actionType The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
         }
 
         /**
-         * @param drainingTimeout Indicates (in seconds) the timeout to wait until instance are detached.
+         * @param drainingTimeout The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
         }
 
         /**
-         * @param drainingTimeout Indicates (in seconds) the timeout to wait until instance are detached.
+         * @param drainingTimeout The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
          * 
          * @return builder
          * 

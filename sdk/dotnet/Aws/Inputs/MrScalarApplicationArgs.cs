@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class MrScalarApplicationArgs : Pulumi.ResourceArgs
+    public sealed class MrScalarApplicationArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         }
 
         /// <summary>
-        /// The application name.
+        /// The MrScaler name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public MrScalarApplicationArgs()
         {
         }
+        public static new MrScalarApplicationArgs Empty => new MrScalarApplicationArgs();
     }
 }

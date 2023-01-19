@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ManagedInstanceIntegrationRoute53GetArgs : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceIntegrationRoute53GetArgs : global::Pulumi.ResourceArgs
     {
         [Input("domains", required: true)]
         private InputList<Inputs.ManagedInstanceIntegrationRoute53DomainGetArgs>? _domains;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ManagedInstanceIntegrationRoute53GetArgs()
         {
         }
+        public static new ManagedInstanceIntegrationRoute53GetArgs Empty => new ManagedInstanceIntegrationRoute53GetArgs();
     }
 }

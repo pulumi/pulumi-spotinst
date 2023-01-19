@@ -14,14 +14,14 @@ public final class MrScalarStepsFileArgs extends com.pulumi.resources.ResourceAr
     public static final MrScalarStepsFileArgs Empty = new MrScalarStepsFileArgs();
 
     /**
-     * S3 Bucket name for bootstrap actions.
+     * S3 Bucket name for configurations.
      * 
      */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
     /**
-     * @return S3 Bucket name for bootstrap actions.
+     * @return S3 Bucket name for configurations.
      * 
      */
     public Output<String> bucket() {
@@ -29,14 +29,14 @@ public final class MrScalarStepsFileArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * S3 key for bootstrap actions.
+     * Tag key.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return S3 key for bootstrap actions.
+     * @return Tag key.
      * 
      */
     public Output<String> key() {
@@ -69,7 +69,7 @@ public final class MrScalarStepsFileArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bucket S3 Bucket name for bootstrap actions.
+         * @param bucket S3 Bucket name for configurations.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class MrScalarStepsFileArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bucket S3 Bucket name for bootstrap actions.
+         * @param bucket S3 Bucket name for configurations.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class MrScalarStepsFileArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param key S3 key for bootstrap actions.
+         * @param key Tag key.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class MrScalarStepsFileArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param key S3 key for bootstrap actions.
+         * @param key Tag key.
          * 
          * @return builder
          * 

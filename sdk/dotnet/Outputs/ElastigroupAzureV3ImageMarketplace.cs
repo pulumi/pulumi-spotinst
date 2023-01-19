@@ -25,9 +25,6 @@ namespace Pulumi.SpotInst.Outputs
         /// Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
         /// </summary>
         public readonly string Sku;
-        /// <summary>
-        /// -
-        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

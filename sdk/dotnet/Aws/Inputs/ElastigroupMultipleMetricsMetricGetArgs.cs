@@ -10,15 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupMultipleMetricsMetricGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupMultipleMetricsMetricGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("dimensions")]
         private InputList<Inputs.ElastigroupMultipleMetricsMetricDimensionGetArgs>? _dimensions;
 
         /// <summary>
         /// A list of dimensions describing qualities of the metric.
-        /// *`name` - (Required) the dimension name.
-        /// *`value` - (Optional) the dimension value.
         /// </summary>
         public InputList<Inputs.ElastigroupMultipleMetricsMetricDimensionGetArgs> Dimensions
         {
@@ -39,7 +37,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> MetricName { get; set; } = null!;
 
         /// <summary>
-        /// The record set name.
+        /// The group name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -65,5 +63,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupMultipleMetricsMetricGetArgs()
         {
         }
+        public static new ElastigroupMultipleMetricsMetricGetArgs Empty => new ElastigroupMultipleMetricsMetricGetArgs();
     }
 }

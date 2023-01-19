@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Multai.Inputs
 {
 
-    public sealed class TargetSetHealthCheckGetArgs : Pulumi.ResourceArgs
+    public sealed class TargetSetHealthCheckGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("healthyThreshold", required: true)]
         public Input<int> HealthyThreshold { get; set; } = null!;
@@ -36,5 +36,6 @@ namespace Pulumi.SpotInst.Multai.Inputs
         public TargetSetHealthCheckGetArgs()
         {
         }
+        public static new TargetSetHealthCheckGetArgs Empty => new TargetSetHealthCheckGetArgs();
     }
 }

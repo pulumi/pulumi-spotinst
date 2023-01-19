@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class BeanstalkDeploymentPreferencesGetArgs : Pulumi.ResourceArgs
+    public sealed class BeanstalkDeploymentPreferencesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Should roll perform automatically
@@ -45,5 +45,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public BeanstalkDeploymentPreferencesGetArgs()
         {
         }
+        public static new BeanstalkDeploymentPreferencesGetArgs Empty => new BeanstalkDeploymentPreferencesGetArgs();
     }
 }

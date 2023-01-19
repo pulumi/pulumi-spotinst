@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanTagGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanTagGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Tag key.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanTagGetArgs()
         {
         }
+        public static new OceanTagGetArgs Empty => new OceanTagGetArgs();
     }
 }

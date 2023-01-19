@@ -14,13 +14,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
     /**
-     * @return Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
      * 
      */
     private String actionType;
     private @Nullable Integer batchNum;
     /**
-     * @return Indicates (in seconds) the timeout to wait until instance are detached.
+     * @return The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      * 
      */
     private @Nullable Integer drainingTimeout;
@@ -37,7 +37,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
 
     private ElastigroupUpdatePolicyRollConfigStrategyOnFailure() {}
     /**
-     * @return Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
      * 
      */
     public String actionType() {
@@ -47,7 +47,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
         return Optional.ofNullable(this.batchNum);
     }
     /**
-     * @return Indicates (in seconds) the timeout to wait until instance are detached.
+     * @return The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      * 
      */
     public Optional<Integer> drainingTimeout() {

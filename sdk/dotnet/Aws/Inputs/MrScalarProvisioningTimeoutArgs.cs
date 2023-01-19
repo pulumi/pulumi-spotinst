@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class MrScalarProvisioningTimeoutArgs : Pulumi.ResourceArgs
+    public sealed class MrScalarProvisioningTimeoutArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public MrScalarProvisioningTimeoutArgs()
         {
         }
+        public static new MrScalarProvisioningTimeoutArgs Empty => new MrScalarProvisioningTimeoutArgs();
     }
 }

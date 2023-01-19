@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanOptimizeImagesArgs : Pulumi.ResourceArgs
+    public sealed class OceanOptimizeImagesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Valid values: "always" "never" "timeWindow".
@@ -28,7 +28,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         private InputList<string>? _timeWindows;
 
         /// <summary>
-        /// Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
+        /// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
         /// </summary>
         public InputList<string> TimeWindows
         {
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanOptimizeImagesArgs()
         {
         }
+        public static new OceanOptimizeImagesArgs Empty => new OceanOptimizeImagesArgs();
     }
 }

@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spotinst.NewDataIntegration(ctx, "example", &spotinst.DataIntegrationArgs{
-//				S3: &DataIntegrationS3Args{
+//				S3: &spotinst.DataIntegrationS3Args{
 //					BucketName: pulumi.String("terraform-test-do-not-delete"),
 //					Subdir:     pulumi.String("terraform-test-data-integration"),
 //				},

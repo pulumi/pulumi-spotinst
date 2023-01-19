@@ -18,7 +18,7 @@ public final class ElastigroupScalingStrategy {
      */
     private @Nullable Boolean terminateAtEndOfBillingHour;
     /**
-     * @return - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
+     * @return Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
      * 
      */
     private @Nullable String terminationPolicy;
@@ -32,7 +32,7 @@ public final class ElastigroupScalingStrategy {
         return Optional.ofNullable(this.terminateAtEndOfBillingHour);
     }
     /**
-     * @return - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
+     * @return Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
      * 
      */
     public Optional<String> terminationPolicy() {

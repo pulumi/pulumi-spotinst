@@ -11,104 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// ## Scheduled Task
+//
+// * `scheduledTask` - (Optional) Set scheduling object.
+//   - `shutdownHours` - (Optional) Set shutdown hours for cluster object.
+//   - `isEnabled` - (Optional) Toggle the shutdown hours task. (Example: `true`).
+//   - `timeWindows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+//   - `tasks` - (Optional) The scheduling tasks for the cluster.
+//   - `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+//   - `cronExpression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+//   - `taskType` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aws.NewOcean(ctx, "example", &aws.OceanArgs{
-//				AssociatePublicIpAddress: pulumi.Bool(true),
-//				ControllerId:             pulumi.String("ocean-dev"),
-//				DesiredCapacity:          pulumi.Int(2),
-//				DrainingTimeout:          pulumi.Int(120),
-//				EbsOptimized:             pulumi.Bool(true),
-//				FallbackToOndemand:       pulumi.Bool(true),
-//				GracePeriod:              pulumi.Int(600),
-//				IamInstanceProfile:       pulumi.String("iam-profile"),
-//				ImageId:                  pulumi.String("ami-123456"),
-//				InstanceMetadataOptions: &aws.OceanInstanceMetadataOptionsArgs{
-//					HttpPutResponseHopLimit: pulumi.Int(10),
-//					HttpTokens:              pulumi.String("required"),
-//				},
-//				KeyName: pulumi.String("fake key"),
-//				LoadBalancers: aws.OceanLoadBalancerArray{
-//					&aws.OceanLoadBalancerArgs{
-//						Arn:  pulumi.String("arn:aws:elasticloadbalancing:us-west-2:fake-arn"),
-//						Type: pulumi.String("TARGET_GROUP"),
-//					},
-//					&aws.OceanLoadBalancerArgs{
-//						Name: pulumi.String("example"),
-//						Type: pulumi.String("CLASSIC"),
-//					},
-//				},
-//				Logging: &aws.OceanLoggingArgs{
-//					Export: &aws.OceanLoggingExportArgs{
-//						S3: []map[string]interface{}{
-//							map[string]interface{}{
-//								"id": "di-abcd123",
-//							},
-//						},
-//					},
-//				},
-//				MaxSize:        pulumi.Int(2),
-//				MinSize:        pulumi.Int(1),
-//				Monitoring:     pulumi.Bool(true),
-//				Region:         pulumi.String("us-west-2"),
-//				RootVolumeSize: pulumi.Int(20),
-//				SecurityGroups: pulumi.StringArray{
-//					pulumi.String("sg-987654321"),
-//				},
-//				SpotPercentage: pulumi.Int(100),
-//				SubnetIds: pulumi.StringArray{
-//					pulumi.String("subnet-123456789"),
-//				},
-//				Tags: aws.OceanTagArray{
-//					&aws.OceanTagArgs{
-//						Key:   pulumi.String("fakeKey"),
-//						Value: pulumi.String("fakeValue"),
-//					},
-//				},
-//				UseAsTemplateOnly:        pulumi.Bool(true),
-//				UserData:                 pulumi.String("echo hello world"),
-//				UtilizeCommitments:       pulumi.Bool(false),
-//				UtilizeReservedInstances: pulumi.Bool(false),
-//				Whitelists: pulumi.StringArray{
-//					pulumi.String("t1.micro"),
-//					pulumi.String("m1.small"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			return nil
 //		})
 //	}
 //
 // ```
-// ```go
-// package main
 //
-// import (
+// <a id="attributes-reference"></a>
 //
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// ## Import
 //
-// )
+// # Clusters can be imported using the Ocean `id`, e.g., hcl
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ctx.Export("oceanId", spotinst_ocean_aws.Example.Id)
-//			return nil
-//		})
-//	}
+// ```sh
+//
+//	$ pulumi import spotinst:aws/ocean:Ocean this o-12345678
 //
 // ```
 type Ocean struct {
@@ -119,7 +58,8 @@ type Ocean struct {
 	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists pulumi.StringArrayOutput `pulumi:"blacklists"`
+	Blacklists          pulumi.StringArrayOutput           `pulumi:"blacklists"`
+	ClusterOrientations OceanClusterOrientationArrayOutput `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrOutput `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
@@ -130,6 +70,8 @@ type Ocean struct {
 	EbsOptimized pulumi.BoolPtrOutput `pulumi:"ebsOptimized"`
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrOutput `pulumi:"fallbackToOndemand"`
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+	Filters OceanFiltersPtrOutput `pulumi:"filters"`
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod pulumi.IntPtrOutput `pulumi:"gracePeriod"`
 	// The instance profile iam role.
@@ -140,7 +82,7 @@ type Ocean struct {
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrOutput `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
-	// - Array of load balancer objects to add to ocean cluster
+	// Array of load balancer objects to add to ocean cluster
 	LoadBalancers OceanLoadBalancerArrayOutput `pulumi:"loadBalancers"`
 	// Logging configuration.
 	Logging OceanLoggingPtrOutput `pulumi:"logging"`
@@ -155,8 +97,7 @@ type Ocean struct {
 	// The region the cluster will run in.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize pulumi.IntPtrOutput `pulumi:"rootVolumeSize"`
-	// Set scheduling object.
+	RootVolumeSize pulumi.IntPtrOutput           `pulumi:"rootVolumeSize"`
 	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
@@ -220,7 +161,8 @@ type oceanState struct {
 	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists []string `pulumi:"blacklists"`
+	Blacklists          []string                  `pulumi:"blacklists"`
+	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId *string `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
@@ -231,6 +173,8 @@ type oceanState struct {
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+	Filters *OceanFilters `pulumi:"filters"`
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod *int `pulumi:"gracePeriod"`
 	// The instance profile iam role.
@@ -241,7 +185,7 @@ type oceanState struct {
 	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyName *string `pulumi:"keyName"`
-	// - Array of load balancer objects to add to ocean cluster
+	// Array of load balancer objects to add to ocean cluster
 	LoadBalancers []OceanLoadBalancer `pulumi:"loadBalancers"`
 	// Logging configuration.
 	Logging *OceanLogging `pulumi:"logging"`
@@ -256,8 +200,7 @@ type oceanState struct {
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize *int `pulumi:"rootVolumeSize"`
-	// Set scheduling object.
+	RootVolumeSize *int                 `pulumi:"rootVolumeSize"`
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -287,7 +230,8 @@ type OceanState struct {
 	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists pulumi.StringArrayInput
+	Blacklists          pulumi.StringArrayInput
+	ClusterOrientations OceanClusterOrientationArrayInput
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
@@ -298,6 +242,8 @@ type OceanState struct {
 	EbsOptimized pulumi.BoolPtrInput
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+	Filters OceanFiltersPtrInput
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod pulumi.IntPtrInput
 	// The instance profile iam role.
@@ -308,7 +254,7 @@ type OceanState struct {
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
 	// The key pair to attach the instances.
 	KeyName pulumi.StringPtrInput
-	// - Array of load balancer objects to add to ocean cluster
+	// Array of load balancer objects to add to ocean cluster
 	LoadBalancers OceanLoadBalancerArrayInput
 	// Logging configuration.
 	Logging OceanLoggingPtrInput
@@ -324,7 +270,6 @@ type OceanState struct {
 	Region pulumi.StringPtrInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrInput
-	// Set scheduling object.
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
@@ -358,7 +303,8 @@ type oceanArgs struct {
 	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists []string `pulumi:"blacklists"`
+	Blacklists          []string                  `pulumi:"blacklists"`
+	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId *string `pulumi:"controllerId"`
 	// The number of instances to launch and maintain in the cluster.
@@ -369,6 +315,8 @@ type oceanArgs struct {
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+	Filters *OceanFilters `pulumi:"filters"`
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod *int `pulumi:"gracePeriod"`
 	// The instance profile iam role.
@@ -379,7 +327,7 @@ type oceanArgs struct {
 	InstanceMetadataOptions *OceanInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// The key pair to attach the instances.
 	KeyName *string `pulumi:"keyName"`
-	// - Array of load balancer objects to add to ocean cluster
+	// Array of load balancer objects to add to ocean cluster
 	LoadBalancers []OceanLoadBalancer `pulumi:"loadBalancers"`
 	// Logging configuration.
 	Logging *OceanLogging `pulumi:"logging"`
@@ -394,8 +342,7 @@ type oceanArgs struct {
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
-	RootVolumeSize *int `pulumi:"rootVolumeSize"`
-	// Set scheduling object.
+	RootVolumeSize *int                 `pulumi:"rootVolumeSize"`
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -426,7 +373,8 @@ type OceanArgs struct {
 	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists pulumi.StringArrayInput
+	Blacklists          pulumi.StringArrayInput
+	ClusterOrientations OceanClusterOrientationArrayInput
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
@@ -437,6 +385,8 @@ type OceanArgs struct {
 	EbsOptimized pulumi.BoolPtrInput
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
+	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+	Filters OceanFiltersPtrInput
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod pulumi.IntPtrInput
 	// The instance profile iam role.
@@ -447,7 +397,7 @@ type OceanArgs struct {
 	InstanceMetadataOptions OceanInstanceMetadataOptionsPtrInput
 	// The key pair to attach the instances.
 	KeyName pulumi.StringPtrInput
-	// - Array of load balancer objects to add to ocean cluster
+	// Array of load balancer objects to add to ocean cluster
 	LoadBalancers OceanLoadBalancerArrayInput
 	// Logging configuration.
 	Logging OceanLoggingPtrInput
@@ -463,7 +413,6 @@ type OceanArgs struct {
 	Region pulumi.StringPtrInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrInput
-	// Set scheduling object.
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
@@ -589,6 +538,10 @@ func (o OceanOutput) Blacklists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringArrayOutput { return v.Blacklists }).(pulumi.StringArrayOutput)
 }
 
+func (o OceanOutput) ClusterOrientations() OceanClusterOrientationArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanClusterOrientationArrayOutput { return v.ClusterOrientations }).(OceanClusterOrientationArrayOutput)
+}
+
 // A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 func (o OceanOutput) ControllerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.ControllerId }).(pulumi.StringPtrOutput)
@@ -612,6 +565,11 @@ func (o OceanOutput) EbsOptimized() pulumi.BoolPtrOutput {
 // If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 func (o OceanOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
+}
+
+// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
+func (o OceanOutput) Filters() OceanFiltersPtrOutput {
+	return o.ApplyT(func(v *Ocean) OceanFiltersPtrOutput { return v.Filters }).(OceanFiltersPtrOutput)
 }
 
 // The amount of time, in seconds, after the instance has launched to start checking its health.
@@ -639,7 +597,7 @@ func (o OceanOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
-// - Array of load balancer objects to add to ocean cluster
+// Array of load balancer objects to add to ocean cluster
 func (o OceanOutput) LoadBalancers() OceanLoadBalancerArrayOutput {
 	return o.ApplyT(func(v *Ocean) OceanLoadBalancerArrayOutput { return v.LoadBalancers }).(OceanLoadBalancerArrayOutput)
 }
@@ -679,7 +637,6 @@ func (o OceanOutput) RootVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.RootVolumeSize }).(pulumi.IntPtrOutput)
 }
 
-// Set scheduling object.
 func (o OceanOutput) ScheduledTasks() OceanScheduledTaskArrayOutput {
 	return o.ApplyT(func(v *Ocean) OceanScheduledTaskArrayOutput { return v.ScheduledTasks }).(OceanScheduledTaskArrayOutput)
 }

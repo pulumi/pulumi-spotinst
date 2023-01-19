@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanLaunchSpecSchedulingTaskTaskHeadroomGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecSchedulingTaskTaskHeadroomGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanLaunchSpecSchedulingTaskTaskHeadroomGetArgs()
         {
         }
+        public static new OceanLaunchSpecSchedulingTaskTaskHeadroomGetArgs Empty => new OceanLaunchSpecSchedulingTaskTaskHeadroomGetArgs();
     }
 }

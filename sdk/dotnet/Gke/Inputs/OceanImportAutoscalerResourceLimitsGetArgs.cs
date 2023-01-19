@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportAutoscalerResourceLimitsGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportAutoscalerResourceLimitsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum memory in GiB units that can be allocated to the cluster.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportAutoscalerResourceLimitsGetArgs()
         {
         }
+        public static new OceanImportAutoscalerResourceLimitsGetArgs Empty => new OceanImportAutoscalerResourceLimitsGetArgs();
     }
 }

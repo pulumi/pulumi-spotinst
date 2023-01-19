@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupScalingDownPolicyStepAdjustmentActionArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingDownPolicyStepAdjustmentActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of instances to add or remove.
@@ -49,7 +49,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+        /// The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMinTarget"`, `"percentageAdjustment"`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -57,5 +57,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupScalingDownPolicyStepAdjustmentActionArgs()
         {
         }
+        public static new ElastigroupScalingDownPolicyStepAdjustmentActionArgs Empty => new ElastigroupScalingDownPolicyStepAdjustmentActionArgs();
     }
 }

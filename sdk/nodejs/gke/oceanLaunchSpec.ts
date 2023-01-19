@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -10,6 +11,79 @@ import * as utilities from "../utilities";
  *
  * > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `nodePoolName`.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.gke.OceanLaunchSpec("example", {
+ *     autoscaleHeadrooms: [{
+ *         cpuPerUnit: 1000,
+ *         gpuPerUnit: 0,
+ *         memoryPerUnit: 2048,
+ *         numOfUnits: 5,
+ *     }],
+ *     autoscaleHeadroomsAutomatics: [{
+ *         autoHeadroomPercentage: 5,
+ *     }],
+ *     instanceTypes: ["n1-standard-1, n1-standard-2"],
+ *     labels: [{
+ *         key: "labelKey",
+ *         value: "labelVal",
+ *     }],
+ *     metadatas: [{
+ *         key: "gci-update-strategy",
+ *         value: "update_disabled",
+ *     }],
+ *     nodePoolName: "default-pool",
+ *     oceanId: "o-123456",
+ *     resourceLimits: {
+ *         maxInstanceCount: 3,
+ *         minInstanceCount: 0,
+ *     },
+ *     restrictScaleDown: true,
+ *     rootVolumeSize: 10,
+ *     rootVolumeType: "pd-standard",
+ *     schedulingTasks: [{
+ *         cronExpression: "0 1 * * *",
+ *         isEnabled: true,
+ *         taskHeadrooms: [{
+ *             cpuPerUnit: 1000,
+ *             gpuPerUnit: 0,
+ *             memoryPerUnit: 2048,
+ *             numOfUnits: 5,
+ *         }],
+ *         taskType: "manualHeadroomUpdate",
+ *     }],
+ *     serviceAccount: "default",
+ *     shieldedInstanceConfig: {
+ *         enableIntegrityMonitoring: true,
+ *         enableSecureBoot: false,
+ *     },
+ *     sourceImage: "image",
+ *     storage: {
+ *         localSsdCount: 5,
+ *     },
+ *     strategies: [{
+ *         preemptiblePercentage: 30,
+ *     }],
+ *     tags: [
+ *         "tag1",
+ *         "tag2",
+ *     ],
+ *     taints: [{
+ *         effect: "taintEffect",
+ *         key: "taintKey",
+ *         value: "taintVal",
+ *     }],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanLaunchspecId = spotinst_ocean_gke_launch_spec.example.id;
+ * ```
  * ## Update Policy
  *
  * * `updatePolicy` - (Optional)
@@ -122,6 +196,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly strategies!: pulumi.Output<outputs.gke.OceanLaunchSpecStrategy[] | undefined>;
     /**
+     * Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+     */
+    public readonly tags!: pulumi.Output<string[]>;
+    /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
     public readonly taints!: pulumi.Output<outputs.gke.OceanLaunchSpecTaint[]>;
@@ -158,6 +236,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["sourceImage"] = state ? state.sourceImage : undefined;
             resourceInputs["storage"] = state ? state.storage : undefined;
             resourceInputs["strategies"] = state ? state.strategies : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["taints"] = state ? state.taints : undefined;
             resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
         } else {
@@ -183,6 +262,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["sourceImage"] = args ? args.sourceImage : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
             resourceInputs["strategies"] = args ? args.strategies : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
         }
@@ -268,6 +348,10 @@ export interface OceanLaunchSpecState {
      */
     strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecStrategy>[]>;
     /**
+     * Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecTaint>[]>;
@@ -350,6 +434,10 @@ export interface OceanLaunchSpecArgs {
      * The Ocean Launch Spec Strategy object.
      */
     strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecStrategy>[]>;
+    /**
+     * Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optionally adds labels to instances launched in an Ocean cluster.
      */

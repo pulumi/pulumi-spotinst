@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class SuspensionSuspensionGetArgs : Pulumi.ResourceArgs
+    public sealed class SuspensionSuspensionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public SuspensionSuspensionGetArgs()
         {
         }
+        public static new SuspensionSuspensionGetArgs Empty => new SuspensionSuspensionGetArgs();
     }
 }

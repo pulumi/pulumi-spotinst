@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureDeleteArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureDeleteArgs : global::Pulumi.ResourceArgs
     {
         [Input("diskShouldDeallocate", required: true)]
         public Input<bool> DiskShouldDeallocate { get; set; } = null!;
@@ -42,5 +42,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureDeleteArgs()
         {
         }
+        public static new StatefulNodeAzureDeleteArgs Empty => new StatefulNodeAzureDeleteArgs();
     }
 }

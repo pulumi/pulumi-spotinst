@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether the disk will be auto-deleted when the instance is deleted.
@@ -61,7 +61,7 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public Input<string>? Source { get; set; }
 
         /// <summary>
-        /// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        /// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -69,5 +69,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupDiskGetArgs()
         {
         }
+        public static new ElastigroupDiskGetArgs Empty => new ElastigroupDiskGetArgs();
     }
 }

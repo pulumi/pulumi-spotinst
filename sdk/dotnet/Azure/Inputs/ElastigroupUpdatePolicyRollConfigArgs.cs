@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupUpdatePolicyRollConfigArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupUpdatePolicyRollConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets the percentage of the instances to deploy in each batch.
+        /// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
         /// </summary>
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
 
         /// <summary>
-        /// Sets the grace period for new instances to become healthy.
+        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
         /// <summary>
-        /// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+        /// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupUpdatePolicyRollConfigArgs()
         {
         }
+        public static new ElastigroupUpdatePolicyRollConfigArgs Empty => new ElastigroupUpdatePolicyRollConfigArgs();
     }
 }

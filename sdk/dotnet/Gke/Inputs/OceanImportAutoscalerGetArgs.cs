@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportAutoscalerGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportAutoscalerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
@@ -63,5 +63,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportAutoscalerGetArgs()
         {
         }
+        public static new OceanImportAutoscalerGetArgs Empty => new OceanImportAutoscalerGetArgs();
     }
 }

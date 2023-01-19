@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationRancherGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationRancherGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access key of the Rancher API.
@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> AccessKey { get; set; } = null!;
 
         /// <summary>
-        /// The URL for the Nomad master host.
+        /// The URL of the Rancher Master host.
         /// </summary>
         [Input("masterHost", required: true)]
         public Input<string> MasterHost { get; set; } = null!;
@@ -40,5 +40,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationRancherGetArgs()
         {
         }
+        public static new ElastigroupIntegrationRancherGetArgs Empty => new ElastigroupIntegrationRancherGetArgs();
     }
 }

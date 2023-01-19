@@ -18,11 +18,11 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly bool? AutoHealing;
         /// <summary>
-        /// Sets the grace period for new instances to become healthy.
+        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         /// </summary>
         public readonly int? GracePeriod;
         /// <summary>
-        /// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+        /// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
         /// </summary>
         public readonly string HealthCheckType;
 

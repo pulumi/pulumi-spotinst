@@ -15,28 +15,26 @@ namespace Pulumi.SpotInst.Aws
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new SpotInst.Aws.OceanExtendedResourceDefinition("example", new()
     ///     {
-    ///         var example = new SpotInst.Aws.OceanExtendedResourceDefinition("example", new SpotInst.Aws.OceanExtendedResourceDefinitionArgs
+    ///         ResourceMapping = 
     ///         {
-    ///             ResourceMapping = 
-    ///             {
-    ///                 { "c3.large", "2Ki" },
-    ///                 { "c3.xlarge", "4Ki" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "c3.large", "2Ki" },
+    ///             { "c3.xlarge", "4Ki" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/oceanExtendedResourceDefinition:OceanExtendedResourceDefinition")]
-    public partial class OceanExtendedResourceDefinition : Pulumi.CustomResource
+    public partial class OceanExtendedResourceDefinition : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
@@ -95,7 +93,7 @@ namespace Pulumi.SpotInst.Aws
         }
     }
 
-    public sealed class OceanExtendedResourceDefinitionArgs : Pulumi.ResourceArgs
+    public sealed class OceanExtendedResourceDefinitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
@@ -119,9 +117,10 @@ namespace Pulumi.SpotInst.Aws
         public OceanExtendedResourceDefinitionArgs()
         {
         }
+        public static new OceanExtendedResourceDefinitionArgs Empty => new OceanExtendedResourceDefinitionArgs();
     }
 
-    public sealed class OceanExtendedResourceDefinitionState : Pulumi.ResourceArgs
+    public sealed class OceanExtendedResourceDefinitionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
@@ -145,5 +144,6 @@ namespace Pulumi.SpotInst.Aws
         public OceanExtendedResourceDefinitionState()
         {
         }
+        public static new OceanExtendedResourceDefinitionState Empty => new OceanExtendedResourceDefinitionState();
     }
 }

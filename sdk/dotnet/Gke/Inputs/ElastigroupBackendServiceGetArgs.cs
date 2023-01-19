@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupBackendServiceGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupBackendServiceGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("locationType")]
         public Input<string>? LocationType { get; set; }
@@ -32,5 +32,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupBackendServiceGetArgs()
         {
         }
+        public static new ElastigroupBackendServiceGetArgs Empty => new ElastigroupBackendServiceGetArgs();
     }
 }

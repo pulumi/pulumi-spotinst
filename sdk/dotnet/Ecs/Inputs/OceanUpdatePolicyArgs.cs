@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanUpdatePolicyArgs : Pulumi.ResourceArgs
+    public sealed class OceanUpdatePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// will update instance tags on the fly without rolling the cluster.
@@ -36,5 +36,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanUpdatePolicyArgs()
         {
         }
+        public static new OceanUpdatePolicyArgs Empty => new OceanUpdatePolicyArgs();
     }
 }

@@ -33,7 +33,7 @@ public final class ManagedInstanceLoadBalancer {
      */
     private @Nullable String balancerId;
     /**
-     * @return The record set name.
+     * @return The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
      * 
      */
     private @Nullable String name;
@@ -43,7 +43,7 @@ public final class ManagedInstanceLoadBalancer {
      */
     private @Nullable String targetSetId;
     /**
-     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+     * @return The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
      * 
      */
     private String type;
@@ -78,7 +78,7 @@ public final class ManagedInstanceLoadBalancer {
         return Optional.ofNullable(this.balancerId);
     }
     /**
-     * @return The record set name.
+     * @return The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
      * 
      */
     public Optional<String> name() {
@@ -92,7 +92,7 @@ public final class ManagedInstanceLoadBalancer {
         return Optional.ofNullable(this.targetSetId);
     }
     /**
-     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+     * @return The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
      * 
      */
     public String type() {

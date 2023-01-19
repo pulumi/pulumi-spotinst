@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanStrategyGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanStrategyGetArgs()
         {
         }
+        public static new OceanStrategyGetArgs Empty => new OceanStrategyGetArgs();
     }
 }

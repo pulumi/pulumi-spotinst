@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecTagGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecTagGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The taint key.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecTagGetArgs()
         {
         }
+        public static new OceanLaunchSpecTagGetArgs Empty => new OceanLaunchSpecTagGetArgs();
     }
 }

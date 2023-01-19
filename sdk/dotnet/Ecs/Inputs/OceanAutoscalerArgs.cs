@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanAutoscalerArgs : Pulumi.ResourceArgs
+    public sealed class OceanAutoscalerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
@@ -43,7 +43,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public Input<bool>? IsAutoConfig { get; set; }
 
         /// <summary>
-        /// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        /// Enable the Ocean ECS autoscaler.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
@@ -57,5 +57,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanAutoscalerArgs()
         {
         }
+        public static new OceanAutoscalerArgs Empty => new OceanAutoscalerArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ManagedInstanceIntegrationRoute53DomainArgs : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceIntegrationRoute53DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Route 53 Hosted Zone Id for the registered Domain.
@@ -45,5 +45,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ManagedInstanceIntegrationRoute53DomainArgs()
         {
         }
+        public static new ManagedInstanceIntegrationRoute53DomainArgs Empty => new ManagedInstanceIntegrationRoute53DomainArgs();
     }
 }

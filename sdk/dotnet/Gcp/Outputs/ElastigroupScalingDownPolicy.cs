@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     [OutputType]
     public sealed class ElastigroupScalingDownPolicy
     {
+        /// <summary>
+        /// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        /// </summary>
         public readonly string? ActionType;
         /// <summary>
         /// Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.

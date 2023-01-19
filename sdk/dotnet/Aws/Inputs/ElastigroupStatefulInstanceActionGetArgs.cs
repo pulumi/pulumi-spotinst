@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupStatefulInstanceActionGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupStatefulInstanceActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String, Stateful Instance ID on which the action should be performed.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupStatefulInstanceActionGetArgs()
         {
         }
+        public static new ElastigroupStatefulInstanceActionGetArgs Empty => new ElastigroupStatefulInstanceActionGetArgs();
     }
 }

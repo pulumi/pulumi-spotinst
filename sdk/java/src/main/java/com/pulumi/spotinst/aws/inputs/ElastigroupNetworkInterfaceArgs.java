@@ -62,14 +62,14 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
     }
 
     /**
-     * The description of the network interface.
+     * The group description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the network interface.
+     * @return The group description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -231,7 +231,7 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description The description of the network interface.
+         * @param description The group description.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description The description of the network interface.
+         * @param description The group description.
          * 
          * @return builder
          * 

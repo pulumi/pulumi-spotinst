@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationGitlabRunnerGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationGitlabRunnerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether the integration is enabled.
+        /// Setting the task to being enabled or disabled.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationGitlabRunnerGetArgs()
         {
         }
+        public static new ElastigroupIntegrationGitlabRunnerGetArgs Empty => new ElastigroupIntegrationGitlabRunnerGetArgs();
     }
 }

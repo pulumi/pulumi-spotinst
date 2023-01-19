@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupEbsBlockDeviceArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupEbsBlockDeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the volume should be destroyed on instance termination.
@@ -69,5 +69,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupEbsBlockDeviceArgs()
         {
         }
+        public static new ElastigroupEbsBlockDeviceArgs Empty => new ElastigroupEbsBlockDeviceArgs();
     }
 }

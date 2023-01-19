@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,15 +15,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const testAzureGroup = new spotinst.azure.Elastigroup("test_azure_group", {
+ * const testAzureGroup = new spotinst.azure.Elastigroup("testAzureGroup", {
  *     desiredCapacity: 1,
- *     // --- HEALTH-CHECKS -------------------------------------------------
  *     healthCheck: {
  *         autoHealing: true,
  *         gracePeriod: 120,
  *         healthCheckType: "INSTANCE_STATE",
  *     },
- *     // --- IMAGE ---------------------------------------------------------
  *     images: [{
  *         marketplaces: [{
  *             offer: "UbuntuServer",
@@ -30,14 +29,12 @@ import * as utilities from "../utilities";
  *             sku: "16.04-LTS",
  *         }],
  *     }],
- *     // --- LOAD BALANCERS ------------------------------------------------
  *     loadBalancers: [{
  *         autoWeight: true,
  *         balancerId: "lb-1ee2e3q",
  *         targetSetId: "ts-3eq",
  *         type: "MULTAI_TARGET_SET",
  *     }],
- *     // --- LOGIN ---------------------------------------------------------
  *     login: {
  *         sshPublicKey: "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
  *         userName: "admin",
@@ -51,16 +48,13 @@ import * as utilities from "../utilities";
  *         resourceGroupName: "spotinst-azure",
  *     }],
  *     maxSize: 1,
- *     // --- CAPACITY ------------------------------------------------------
  *     minSize: 0,
- *     // --- NETWORK -------------------------------------------------------
  *     network: {
  *         assignPublicIp: true,
  *         resourceGroupName: "subnetResourceGroup",
  *         subnetName: "my-subnet-name",
  *         virtualNetworkName: "vname",
  *     },
- *     // --- INSTANCE TYPES ------------------------------------------------
  *     odSizes: [
  *         "standard_a1_v1",
  *         "standard_a1_v2",
@@ -86,7 +80,6 @@ import * as utilities from "../utilities";
  *         threshold: 10,
  *         unit: "percent",
  *     }],
- *     // --- SCALING POLICIES ----------------------------------------------
  *     scalingUpPolicies: [{
  *         actionType: "setMinTarget",
  *         cooldown: 60,
@@ -111,7 +104,6 @@ import * as utilities from "../utilities";
  *         threshold: 10,
  *         unit: "percent",
  *     }],
- *     // --- SCHEDULED TASK ------------------------------------------------
  *     scheduledTasks: [{
  *         adjustment: "2",
  *         adjustmentPercentage: "50",
@@ -125,7 +117,6 @@ import * as utilities from "../utilities";
  *         taskType: "scale",
  *     }],
  *     shutdownScript: "",
- *     // --- STRATEGY ------------------------------------------------------
  *     strategy: {
  *         drainingTimeout: 300,
  *         odCount: 1,
@@ -167,13 +158,7 @@ export class Elastigroup extends pulumi.CustomResource {
      * The desired number of instances the group should have at any time.
      */
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
-    /**
-     * Describes the health check configuration.
-     */
     public readonly healthCheck!: pulumi.Output<outputs.azure.ElastigroupHealthCheck | undefined>;
-    /**
-     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     */
     public readonly images!: pulumi.Output<outputs.azure.ElastigroupImage[] | undefined>;
     /**
      * Describes the [Kubernetes](https://kubernetes.io/) integration.
@@ -183,13 +168,7 @@ export class Elastigroup extends pulumi.CustomResource {
      * Describes the [Multai Runtime](https://spotinst.com/) integration.
      */
     public readonly integrationMultaiRuntime!: pulumi.Output<outputs.azure.ElastigroupIntegrationMultaiRuntime | undefined>;
-    /**
-     * Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-     */
     public readonly loadBalancers!: pulumi.Output<outputs.azure.ElastigroupLoadBalancer[] | undefined>;
-    /**
-     * Describes the login configuration.
-     */
     public readonly login!: pulumi.Output<outputs.azure.ElastigroupLogin | undefined>;
     /**
      * Available Low-Priority sizes.
@@ -205,12 +184,9 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * The dimension name.
+     * The name of the managed identity.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Defines the Virtual Network and Subnet for your Elastigroup.
-     */
     public readonly network!: pulumi.Output<outputs.azure.ElastigroupNetwork>;
     /**
      * Available On-Demand sizes
@@ -225,7 +201,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Vnet Resource Group Name.
+     * The Resource Group that the user-assigned managed identity resides in.
      */
     public readonly resourceGroupName!: pulumi.Output<string>;
     public readonly scalingDownPolicies!: pulumi.Output<outputs.azure.ElastigroupScalingDownPolicy[] | undefined>;
@@ -349,13 +325,7 @@ export interface ElastigroupState {
      * The desired number of instances the group should have at any time.
      */
     desiredCapacity?: pulumi.Input<number>;
-    /**
-     * Describes the health check configuration.
-     */
     healthCheck?: pulumi.Input<inputs.azure.ElastigroupHealthCheck>;
-    /**
-     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     */
     images?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImage>[]>;
     /**
      * Describes the [Kubernetes](https://kubernetes.io/) integration.
@@ -365,13 +335,7 @@ export interface ElastigroupState {
      * Describes the [Multai Runtime](https://spotinst.com/) integration.
      */
     integrationMultaiRuntime?: pulumi.Input<inputs.azure.ElastigroupIntegrationMultaiRuntime>;
-    /**
-     * Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-     */
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupLoadBalancer>[]>;
-    /**
-     * Describes the login configuration.
-     */
     login?: pulumi.Input<inputs.azure.ElastigroupLogin>;
     /**
      * Available Low-Priority sizes.
@@ -387,12 +351,9 @@ export interface ElastigroupState {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * The dimension name.
+     * The name of the managed identity.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Defines the Virtual Network and Subnet for your Elastigroup.
-     */
     network?: pulumi.Input<inputs.azure.ElastigroupNetwork>;
     /**
      * Available On-Demand sizes
@@ -407,7 +368,7 @@ export interface ElastigroupState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Vnet Resource Group Name.
+     * The Resource Group that the user-assigned managed identity resides in.
      */
     resourceGroupName?: pulumi.Input<string>;
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;
@@ -440,13 +401,7 @@ export interface ElastigroupArgs {
      * The desired number of instances the group should have at any time.
      */
     desiredCapacity?: pulumi.Input<number>;
-    /**
-     * Describes the health check configuration.
-     */
     healthCheck?: pulumi.Input<inputs.azure.ElastigroupHealthCheck>;
-    /**
-     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     */
     images?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImage>[]>;
     /**
      * Describes the [Kubernetes](https://kubernetes.io/) integration.
@@ -456,13 +411,7 @@ export interface ElastigroupArgs {
      * Describes the [Multai Runtime](https://spotinst.com/) integration.
      */
     integrationMultaiRuntime?: pulumi.Input<inputs.azure.ElastigroupIntegrationMultaiRuntime>;
-    /**
-     * Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-     */
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupLoadBalancer>[]>;
-    /**
-     * Describes the login configuration.
-     */
     login?: pulumi.Input<inputs.azure.ElastigroupLogin>;
     /**
      * Available Low-Priority sizes.
@@ -478,12 +427,9 @@ export interface ElastigroupArgs {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * The dimension name.
+     * The name of the managed identity.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Defines the Virtual Network and Subnet for your Elastigroup.
-     */
     network: pulumi.Input<inputs.azure.ElastigroupNetwork>;
     /**
      * Available On-Demand sizes
@@ -498,7 +444,7 @@ export interface ElastigroupArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * Vnet Resource Group Name.
+     * The Resource Group that the user-assigned managed identity resides in.
      */
     resourceGroupName: pulumi.Input<string>;
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;

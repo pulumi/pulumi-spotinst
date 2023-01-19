@@ -232,7 +232,7 @@ namespace Pulumi.SpotInst
     ///   * `resources_retention_time` - (Optional) Hours to keep resources alive.
     /// </summary>
     [SpotInstResourceType("spotinst:index/statefulNodeAzure:StatefulNodeAzure")]
-    public partial class StatefulNodeAzure : Pulumi.CustomResource
+    public partial class StatefulNodeAzure : global::Pulumi.CustomResource
     {
         [Output("attachDataDisks")]
         public Output<ImmutableArray<Outputs.StatefulNodeAzureAttachDataDisk>> AttachDataDisks { get; private set; } = null!;
@@ -392,7 +392,7 @@ namespace Pulumi.SpotInst
         }
     }
 
-    public sealed class StatefulNodeAzureArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureArgs : global::Pulumi.ResourceArgs
     {
         [Input("attachDataDisks")]
         private InputList<Inputs.StatefulNodeAzureAttachDataDiskArgs>? _attachDataDisks;
@@ -601,9 +601,10 @@ namespace Pulumi.SpotInst
         public StatefulNodeAzureArgs()
         {
         }
+        public static new StatefulNodeAzureArgs Empty => new StatefulNodeAzureArgs();
     }
 
-    public sealed class StatefulNodeAzureState : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureState : global::Pulumi.ResourceArgs
     {
         [Input("attachDataDisks")]
         private InputList<Inputs.StatefulNodeAzureAttachDataDiskGetArgs>? _attachDataDisks;
@@ -812,5 +813,6 @@ namespace Pulumi.SpotInst
         public StatefulNodeAzureState()
         {
         }
+        public static new StatefulNodeAzureState Empty => new StatefulNodeAzureState();
     }
 }

@@ -41,10 +41,27 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.aws.MrScalar;
+ * import com.pulumi.spotinst.aws.MrScalarArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarApplicationArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarBootstrapActionsFileArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarConfigurationsFileArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarCoreEbsBlockDeviceArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarInstanceWeightArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarMasterEbsBlockDeviceArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarProvisioningTimeoutArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarStepsFileArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarTagArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarTaskEbsBlockDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -163,10 +180,22 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.aws.MrScalar;
+ * import com.pulumi.spotinst.aws.MrScalarArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarCoreEbsBlockDeviceArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarMasterEbsBlockDeviceArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarTagArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarTaskEbsBlockDeviceArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarTaskScalingDownPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -255,10 +284,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.aws.MrScalar;
+ * import com.pulumi.spotinst.aws.MrScalarArgs;
+ * import com.pulumi.spotinst.aws.inputs.MrScalarTaskEbsBlockDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -746,14 +783,14 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.masterTarget);
     }
     /**
-     * The application name.
+     * The MrScaler name.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The application name.
+     * @return The MrScaler name.
      * 
      */
     public Output<String> name() {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanAutoscalerAutoscaleHeadroomGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanAutoscalerAutoscaleHeadroomGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Automatic headroom configuration.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanAutoscalerAutoscaleHeadroomGetArgs()
         {
         }
+        public static new OceanAutoscalerAutoscaleHeadroomGetArgs Empty => new OceanAutoscalerAutoscaleHeadroomGetArgs();
     }
 }

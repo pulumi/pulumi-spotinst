@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationMesosphere
     {
-        /// <summary>
-        /// The public IP of the DC/OS Master.
-        /// </summary>
         public readonly string ApiServer;
 
         [OutputConstructor]

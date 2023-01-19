@@ -13,12 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const example = new spotinst.aws.OceanExtendedResourceDefinition("example", {
- *     resourceMapping: {
- *         "c3.large": "2Ki",
- *         "c3.xlarge": "4Ki",
- *     },
- * });
+ * const example = new spotinst.aws.OceanExtendedResourceDefinition("example", {resourceMapping: {
+ *     "c3.large": "2Ki",
+ *     "c3.xlarge": "4Ki",
+ * }});
  * ```
  */
 export class OceanExtendedResourceDefinition extends pulumi.CustomResource {

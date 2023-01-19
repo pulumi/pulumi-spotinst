@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecElasticIpPoolTagSelectorGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecElasticIpPoolTagSelectorGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecElasticIpPoolTagSelectorGetArgs()
         {
         }
+        public static new OceanLaunchSpecElasticIpPoolTagSelectorGetArgs Empty => new OceanLaunchSpecElasticIpPoolTagSelectorGetArgs();
     }
 }

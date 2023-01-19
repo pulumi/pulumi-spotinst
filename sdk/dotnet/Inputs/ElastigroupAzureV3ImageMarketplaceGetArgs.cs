@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class ElastigroupAzureV3ImageMarketplaceGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupAzureV3ImageMarketplaceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the image to use. Required if publisher is specified.
@@ -30,14 +30,12 @@ namespace Pulumi.SpotInst.Inputs
         [Input("sku", required: true)]
         public Input<string> Sku { get; set; } = null!;
 
-        /// <summary>
-        /// -
-        /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
 
         public ElastigroupAzureV3ImageMarketplaceGetArgs()
         {
         }
+        public static new ElastigroupAzureV3ImageMarketplaceGetArgs Empty => new ElastigroupAzureV3ImageMarketplaceGetArgs();
     }
 }

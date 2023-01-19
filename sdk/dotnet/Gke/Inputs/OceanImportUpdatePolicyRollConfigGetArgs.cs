@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportUpdatePolicyRollConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportUpdatePolicyRollConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("batchMinHealthyPercentage")]
         public Input<int>? BatchMinHealthyPercentage { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportUpdatePolicyRollConfigGetArgs()
         {
         }
+        public static new OceanImportUpdatePolicyRollConfigGetArgs Empty => new OceanImportUpdatePolicyRollConfigGetArgs();
     }
 }

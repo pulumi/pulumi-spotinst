@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanLaunchSpecAutoscaleHeadroomGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecAutoscaleHeadroomGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanLaunchSpecAutoscaleHeadroomGetArgs()
         {
         }
+        public static new OceanLaunchSpecAutoscaleHeadroomGetArgs Empty => new OceanLaunchSpecAutoscaleHeadroomGetArgs();
     }
 }

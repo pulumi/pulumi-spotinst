@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanLaunchSpecResourceLimitsGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecResourceLimitsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanLaunchSpecResourceLimitsGetArgs()
         {
         }
+        public static new OceanLaunchSpecResourceLimitsGetArgs Empty => new OceanLaunchSpecResourceLimitsGetArgs();
     }
 }

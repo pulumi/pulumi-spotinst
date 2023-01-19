@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationEcsBatchArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationEcsBatchArgs : global::Pulumi.ResourceArgs
     {
         [Input("jobQueueNames", required: true)]
         private InputList<string>? _jobQueueNames;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationEcsBatchArgs()
         {
         }
+        public static new ElastigroupIntegrationEcsBatchArgs Empty => new ElastigroupIntegrationEcsBatchArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportBackendServiceGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportBackendServiceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sets which location the backend services will be active. Valid values: `regional`, `global`.
@@ -41,5 +41,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportBackendServiceGetArgs()
         {
         }
+        public static new OceanImportBackendServiceGetArgs Empty => new OceanImportBackendServiceGetArgs();
     }
 }

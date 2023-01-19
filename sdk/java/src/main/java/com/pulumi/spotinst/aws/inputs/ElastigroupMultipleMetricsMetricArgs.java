@@ -19,8 +19,6 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
 
     /**
      * A list of dimensions describing qualities of the metric.
-     * *`name` - (Required) the dimension name.
-     * *`value` - (Optional) the dimension value.
      * 
      */
     @Import(name="dimensions")
@@ -28,8 +26,6 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
 
     /**
      * @return A list of dimensions describing qualities of the metric.
-     * *`name` - (Required) the dimension name.
-     * *`value` - (Optional) the dimension value.
      * 
      */
     public Optional<Output<List<ElastigroupMultipleMetricsMetricDimensionArgs>>> dimensions() {
@@ -67,14 +63,14 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
     }
 
     /**
-     * The record set name.
+     * The group name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     public Output<String> name() {
@@ -158,8 +154,6 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
 
         /**
          * @param dimensions A list of dimensions describing qualities of the metric.
-         * *`name` - (Required) the dimension name.
-         * *`value` - (Optional) the dimension value.
          * 
          * @return builder
          * 
@@ -171,8 +165,6 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
 
         /**
          * @param dimensions A list of dimensions describing qualities of the metric.
-         * *`name` - (Required) the dimension name.
-         * *`value` - (Optional) the dimension value.
          * 
          * @return builder
          * 
@@ -183,8 +175,6 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
 
         /**
          * @param dimensions A list of dimensions describing qualities of the metric.
-         * *`name` - (Required) the dimension name.
-         * *`value` - (Optional) the dimension value.
          * 
          * @return builder
          * 
@@ -236,7 +226,7 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name The record set name.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -247,7 +237,7 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name The record set name.
+         * @param name The group name.
          * 
          * @return builder
          * 

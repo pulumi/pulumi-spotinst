@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.ecs.inputs.OceanAutoscalerArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingArgs;
+import com.pulumi.spotinst.ecs.inputs.OceanFiltersArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLoggingArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanOptimizeImagesArgs;
@@ -57,6 +58,21 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+     * 
+     */
+    @Import(name="blacklists")
+    private @Nullable Output<List<String>> blacklists;
+
+    /**
+     * @return Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+     * 
+     */
+    public Optional<Output<List<String>>> blacklists() {
+        return Optional.ofNullable(this.blacklists);
+    }
+
+    /**
      * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      * 
      */
@@ -72,14 +88,14 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ocean cluster name.
+     * The name of the ECS cluster.
      * 
      */
     @Import(name="clusterName", required=true)
     private Output<String> clusterName;
 
     /**
-     * @return The ocean cluster name.
+     * @return The name of the ECS cluster.
      * 
      */
     public Output<String> clusterName() {
@@ -129,6 +145,21 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> ebsOptimized() {
         return Optional.ofNullable(this.ebsOptimized);
+    }
+
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable Output<OceanFiltersArgs> filters;
+
+    /**
+     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+     * 
+     */
+    public Optional<Output<OceanFiltersArgs>> filters() {
+        return Optional.ofNullable(this.filters);
     }
 
     /**
@@ -371,17 +402,9 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     @Import(name="updatePolicy")
     private @Nullable Output<OceanUpdatePolicyArgs> updatePolicy;
 
-    /**
-     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     public Optional<Output<OceanUpdatePolicyArgs>> updatePolicy() {
         return Optional.ofNullable(this.updatePolicy);
     }
@@ -447,14 +470,14 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
      * 
      */
     @Import(name="whitelists")
     private @Nullable Output<List<String>> whitelists;
 
     /**
-     * @return Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+     * @return Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
      * 
      */
     public Optional<Output<List<String>>> whitelists() {
@@ -466,11 +489,13 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     private OceanArgs(OceanArgs $) {
         this.associatePublicIpAddress = $.associatePublicIpAddress;
         this.autoscaler = $.autoscaler;
+        this.blacklists = $.blacklists;
         this.blockDeviceMappings = $.blockDeviceMappings;
         this.clusterName = $.clusterName;
         this.desiredCapacity = $.desiredCapacity;
         this.drainingTimeout = $.drainingTimeout;
         this.ebsOptimized = $.ebsOptimized;
+        this.filters = $.filters;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageId = $.imageId;
         this.instanceMetadataOptions = $.instanceMetadataOptions;
@@ -556,6 +581,37 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param blacklists Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blacklists(@Nullable Output<List<String>> blacklists) {
+            $.blacklists = blacklists;
+            return this;
+        }
+
+        /**
+         * @param blacklists Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blacklists(List<String> blacklists) {
+            return blacklists(Output.of(blacklists));
+        }
+
+        /**
+         * @param blacklists Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blacklists(String... blacklists) {
+            return blacklists(List.of(blacklists));
+        }
+
+        /**
          * @param blockDeviceMappings Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
          * 
          * @return builder
@@ -587,7 +643,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterName The ocean cluster name.
+         * @param clusterName The name of the ECS cluster.
          * 
          * @return builder
          * 
@@ -598,7 +654,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterName The ocean cluster name.
+         * @param clusterName The name of the ECS cluster.
          * 
          * @return builder
          * 
@@ -668,6 +724,27 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ebsOptimized(Boolean ebsOptimized) {
             return ebsOptimized(Output.of(ebsOptimized));
+        }
+
+        /**
+         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable Output<OceanFiltersArgs> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(OceanFiltersArgs filters) {
+            return filters(Output.of(filters));
         }
 
         /**
@@ -1046,23 +1123,11 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
             return tags(List.of(tags));
         }
 
-        /**
-         * @param updatePolicy While used, you can control whether the group should perform a deployment after an update to the configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder updatePolicy(@Nullable Output<OceanUpdatePolicyArgs> updatePolicy) {
             $.updatePolicy = updatePolicy;
             return this;
         }
 
-        /**
-         * @param updatePolicy While used, you can control whether the group should perform a deployment after an update to the configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder updatePolicy(OceanUpdatePolicyArgs updatePolicy) {
             return updatePolicy(Output.of(updatePolicy));
         }
@@ -1152,7 +1217,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelists Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+         * @param whitelists Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
          * 
          * @return builder
          * 
@@ -1163,7 +1228,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelists Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+         * @param whitelists Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
          * 
          * @return builder
          * 
@@ -1173,7 +1238,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelists Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+         * @param whitelists Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
          * 
          * @return builder
          * 

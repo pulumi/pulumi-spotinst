@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class BeanstalkManagedActionsPlatformUpdateGetArgs : Pulumi.ResourceArgs
+    public sealed class BeanstalkManagedActionsPlatformUpdateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Actions to perform (options: timeWindow, never)
@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? TimeWindow { get; set; }
 
         /// <summary>
-        /// - Level to update
+        /// Level to update
         /// </summary>
         [Input("updateLevel")]
         public Input<string>? UpdateLevel { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public BeanstalkManagedActionsPlatformUpdateGetArgs()
         {
         }
+        public static new BeanstalkManagedActionsPlatformUpdateGetArgs Empty => new BeanstalkManagedActionsPlatformUpdateGetArgs();
     }
 }

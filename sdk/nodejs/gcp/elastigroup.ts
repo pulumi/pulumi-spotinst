@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,14 +20,16 @@ import * as utilities from "../utilities";
  *         "asia-east1-c",
  *         "us-central1-a",
  *     ],
- *     backendServicesConfig: [{
- *         ports: [{
- *             portName: "port-name",
+ *     backendServices: [{
+ *         locationType: "regional",
+ *         namedPorts: [{
+ *             name: "port-name",
  *             ports: [
- *                 8000,
- *                 6000,
+ *                 "8000",
+ *                 "6000",
  *             ],
  *         }],
+ *         scheme: "INTERNAL",
  *         serviceName: "spotinst-elb-backend-service",
  *     }],
  *     description: "spotinst gcp group",
@@ -36,22 +39,21 @@ import * as utilities from "../utilities";
  *         boot: true,
  *         deviceName: "device",
  *         initializeParams: [{
- *             diskSizeGb: 10,
+ *             diskSizeGb: "10",
  *             diskType: "pd-standard",
  *             sourceImage: "",
  *         }],
- *         interface: "SCSI",
+ *         "interface": "SCSI",
  *         mode: "READ_WRITE",
  *         type: "PERSISTENT",
  *     }],
  *     drainingTimeout: 180,
- *     // on_demand_count      = 2
  *     fallbackToOndemand: true,
  *     instanceTypesCustoms: [{
- *         memoryGiB: 7.5,
- *         vCPU: 2,
+ *         memoryGib: 7,
+ *         vcpu: 2,
  *     }],
- *     instanceTypesOndemand: ["n1-standard-1"],
+ *     instanceTypesOndemand: "n1-standard-1",
  *     instanceTypesPreemptibles: [
  *         "n1-standard-1",
  *         "n1-standard-2",
@@ -67,34 +69,30 @@ import * as utilities from "../utilities";
  *     }],
  *     preemptiblePercentage: 50,
  *     provisioningModel: "SPOT",
- *     scaling: [{
- *         up: [{
- *             action: [{
- *                 adjustment: 1,
- *                 type: "adjustment",
- *             }],
- *             cooldown: 300,
- *             dimensions: [{
- *                 name: "storage_type",
- *                 value: "pd-ssd",
- *             }],
- *             evaluationPeriods: 1,
- *             metricName: "instance/disk/read_ops_count",
- *             namespace: "compute",
- *             operator: "gte",
- *             period: 300,
- *             policyName: "scale_up_1",
- *             source: "stackdriver",
- *             statistic: "average",
- *             threshold: 10000,
- *             unit: "percent",
+ *     scalingUpPolicies: [{
+ *         actionType: "adjustment",
+ *         adjustment: 1,
+ *         cooldown: 300,
+ *         dimensions: [{
+ *             name: "storage_type",
+ *             value: "pd-ssd",
  *         }],
+ *         evaluationPeriods: 1,
+ *         metricName: "instance/disk/read_ops_count",
+ *         namespace: "compute",
+ *         operator: "gte",
+ *         period: 300,
+ *         policyName: "scale_up_1",
+ *         source: "stackdriver",
+ *         statistic: "average",
+ *         threshold: 10000,
+ *         unit: "percent",
  *     }],
  *     serviceAccount: "example@myProject.iam.gservicecct.com",
  *     startupScript: "",
  *     subnets: [{
  *         region: "asia-east1",
- *         subnetNames: "",
+ *         subnetNames: ["default"],
  *     }],
  *     tags: [
  *         "http",
@@ -141,9 +139,6 @@ export class Elastigroup extends pulumi.CustomResource {
      * @deprecated This field will soon be handled by Region in Subnets
      */
     public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
-    /**
-     * Describes the backend service configurations.
-     */
     public readonly backendServices!: pulumi.Output<outputs.gcp.ElastigroupBackendService[] | undefined>;
     /**
      * The region your GCP group will be created in.
@@ -162,9 +157,6 @@ export class Elastigroup extends pulumi.CustomResource {
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
-    /**
-     * Defines the GPU configuration.
-     */
     public readonly gpu!: pulumi.Output<outputs.gcp.ElastigroupGpu[] | undefined>;
     /**
      * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
@@ -209,7 +201,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * The dimension name.
+     * The group name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -367,9 +359,6 @@ export interface ElastigroupState {
      * @deprecated This field will soon be handled by Region in Subnets
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Describes the backend service configurations.
-     */
     backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[]>;
     /**
      * The region your GCP group will be created in.
@@ -388,9 +377,6 @@ export interface ElastigroupState {
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
     fallbackToOndemand?: pulumi.Input<boolean>;
-    /**
-     * Defines the GPU configuration.
-     */
     gpu?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupGpu>[]>;
     /**
      * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
@@ -435,7 +421,7 @@ export interface ElastigroupState {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * The dimension name.
+     * The group name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -500,9 +486,6 @@ export interface ElastigroupArgs {
      * @deprecated This field will soon be handled by Region in Subnets
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Describes the backend service configurations.
-     */
     backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[]>;
     /**
      * The region your GCP group will be created in.
@@ -521,9 +504,6 @@ export interface ElastigroupArgs {
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
     fallbackToOndemand?: pulumi.Input<boolean>;
-    /**
-     * Defines the GPU configuration.
-     */
     gpu?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupGpu>[]>;
     /**
      * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
@@ -568,7 +548,7 @@ export interface ElastigroupArgs {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * The dimension name.
+     * The group name.
      */
     name?: pulumi.Input<string>;
     /**

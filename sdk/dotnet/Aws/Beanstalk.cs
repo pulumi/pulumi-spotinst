@@ -15,59 +15,57 @@ namespace Pulumi.SpotInst.Aws
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var elastigoup_aws_beanstalk = new SpotInst.Aws.Beanstalk("elastigoup-aws-beanstalk", new()
     ///     {
-    ///         var elastigoup_aws_beanstalk = new SpotInst.Aws.Beanstalk("elastigoup-aws-beanstalk", new SpotInst.Aws.BeanstalkArgs
+    ///         BeanstalkEnvironmentId = "e-example",
+    ///         BeanstalkEnvironmentName = "example-env",
+    ///         DeploymentPreferences = new SpotInst.Aws.Inputs.BeanstalkDeploymentPreferencesArgs
     ///         {
-    ///             BeanstalkEnvironmentId = "e-example",
-    ///             BeanstalkEnvironmentName = "example-env",
-    ///             DeploymentPreferences = new SpotInst.Aws.Inputs.BeanstalkDeploymentPreferencesArgs
+    ///             AutomaticRoll = true,
+    ///             BatchSizePercentage = 100,
+    ///             GracePeriod = 90,
+    ///             Strategies = new[]
     ///             {
-    ///                 AutomaticRoll = true,
-    ///                 BatchSizePercentage = 100,
-    ///                 GracePeriod = 90,
-    ///                 Strategies = 
+    ///                 new SpotInst.Aws.Inputs.BeanstalkDeploymentPreferencesStrategyArgs
     ///                 {
-    ///                     new SpotInst.Aws.Inputs.BeanstalkDeploymentPreferencesStrategyArgs
-    ///                     {
-    ///                         Action = "REPLACE_SERVER",
-    ///                         ShouldDrainInstances = true,
-    ///                     },
+    ///                     Action = "REPLACE_SERVER",
+    ///                     ShouldDrainInstances = true,
     ///                 },
     ///             },
-    ///             DesiredCapacity = 0,
-    ///             InstanceTypesSpots = 
+    ///         },
+    ///         DesiredCapacity = 0,
+    ///         InstanceTypesSpots = new[]
+    ///         {
+    ///             "t2.micro",
+    ///             "t2.medium",
+    ///             "t2.large",
+    ///         },
+    ///         ManagedActions = new SpotInst.Aws.Inputs.BeanstalkManagedActionsArgs
+    ///         {
+    ///             PlatformUpdate = new SpotInst.Aws.Inputs.BeanstalkManagedActionsPlatformUpdateArgs
     ///             {
-    ///                 "t2.micro",
-    ///                 "t2.medium",
-    ///                 "t2.large",
+    ///                 PerformAt = "timeWindow",
+    ///                 TimeWindow = "Mon:23:50-Tue:00:20",
+    ///                 UpdateLevel = "minorAndPatch",
     ///             },
-    ///             ManagedActions = new SpotInst.Aws.Inputs.BeanstalkManagedActionsArgs
-    ///             {
-    ///                 PlatformUpdate = new SpotInst.Aws.Inputs.BeanstalkManagedActionsPlatformUpdateArgs
-    ///                 {
-    ///                     PerformAt = "timeWindow",
-    ///                     TimeWindow = "Mon:23:50-Tue:00:20",
-    ///                     UpdateLevel = "minorAndPatch",
-    ///                 },
-    ///             },
-    ///             MaxSize = 1,
-    ///             MinSize = 0,
-    ///             Product = "Linux/UNIX",
-    ///             Region = "us-west-2",
-    ///         });
-    ///     }
+    ///         },
+    ///         MaxSize = 1,
+    ///         MinSize = 0,
+    ///         Product = "Linux/UNIX",
+    ///         Region = "us-west-2",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/beanstalk:Beanstalk")]
-    public partial class Beanstalk : Pulumi.CustomResource
+    public partial class Beanstalk : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of an existing Beanstalk environment.
@@ -186,7 +184,7 @@ namespace Pulumi.SpotInst.Aws
         }
     }
 
-    public sealed class BeanstalkArgs : Pulumi.ResourceArgs
+    public sealed class BeanstalkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of an existing Beanstalk environment.
@@ -275,9 +273,10 @@ namespace Pulumi.SpotInst.Aws
         public BeanstalkArgs()
         {
         }
+        public static new BeanstalkArgs Empty => new BeanstalkArgs();
     }
 
-    public sealed class BeanstalkState : Pulumi.ResourceArgs
+    public sealed class BeanstalkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of an existing Beanstalk environment.
@@ -366,5 +365,6 @@ namespace Pulumi.SpotInst.Aws
         public BeanstalkState()
         {
         }
+        public static new BeanstalkState Empty => new BeanstalkState();
     }
 }

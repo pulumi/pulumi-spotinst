@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupResourceTagSpecificationArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupResourceTagSpecificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Tag specification for AMI resources.
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupResourceTagSpecificationArgs()
         {
         }
+        public static new ElastigroupResourceTagSpecificationArgs Empty => new ElastigroupResourceTagSpecificationArgs();
     }
 }

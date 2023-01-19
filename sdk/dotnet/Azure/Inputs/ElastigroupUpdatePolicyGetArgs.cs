@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupUpdatePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// While used, you can control whether the group should perform a deployment after an update to the configuration.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupUpdatePolicyGetArgs()
         {
         }
+        public static new ElastigroupUpdatePolicyGetArgs Empty => new ElastigroupUpdatePolicyGetArgs();
     }
 }

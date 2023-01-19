@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class OceanLaunchSpecCreateOptionsArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,15 +19,15 @@ public final class OceanLaunchSpecCreateOptionsArgs extends com.pulumi.resources
      * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
      * 
      */
-    @Import(name="initialNodes", required=true)
-    private Output<Integer> initialNodes;
+    @Import(name="initialNodes")
+    private @Nullable Output<Integer> initialNodes;
 
     /**
      * @return When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
      * 
      */
-    public Output<Integer> initialNodes() {
-        return this.initialNodes;
+    public Optional<Output<Integer>> initialNodes() {
+        return Optional.ofNullable(this.initialNodes);
     }
 
     private OceanLaunchSpecCreateOptionsArgs() {}
@@ -58,7 +60,7 @@ public final class OceanLaunchSpecCreateOptionsArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder initialNodes(Output<Integer> initialNodes) {
+        public Builder initialNodes(@Nullable Output<Integer> initialNodes) {
             $.initialNodes = initialNodes;
             return this;
         }
@@ -74,7 +76,6 @@ public final class OceanLaunchSpecCreateOptionsArgs extends com.pulumi.resources
         }
 
         public OceanLaunchSpecCreateOptionsArgs build() {
-            $.initialNodes = Objects.requireNonNull($.initialNodes, "expected parameter 'initialNodes' to be non-null");
             return $;
         }
     }

@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupScalingDownPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingDownPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        /// </summary>
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
 
@@ -96,5 +99,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupScalingDownPolicyArgs()
         {
         }
+        public static new ElastigroupScalingDownPolicyArgs Empty => new ElastigroupScalingDownPolicyArgs();
     }
 }

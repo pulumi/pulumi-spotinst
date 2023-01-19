@@ -42,7 +42,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// </summary>
         public readonly string? Source;
         /// <summary>
-        /// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        /// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         /// </summary>
         public readonly string? Type;
 

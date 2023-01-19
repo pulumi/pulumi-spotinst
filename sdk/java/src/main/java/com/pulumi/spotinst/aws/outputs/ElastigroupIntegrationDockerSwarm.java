@@ -21,12 +21,12 @@ public final class ElastigroupIntegrationDockerSwarm {
      */
     private @Nullable Integer autoscaleCooldown;
     /**
-     * @return Settings for scale down actions.
+     * @return Enabling scale down.
      * 
      */
     private @Nullable ElastigroupIntegrationDockerSwarmAutoscaleDown autoscaleDown;
     /**
-     * @return An option to set compute reserve for the cluster.
+     * @return Headroom for the cluster.
      * 
      */
     private @Nullable ElastigroupIntegrationDockerSwarmAutoscaleHeadroom autoscaleHeadroom;
@@ -36,12 +36,12 @@ public final class ElastigroupIntegrationDockerSwarm {
      */
     private @Nullable Boolean autoscaleIsEnabled;
     /**
-     * @return The URL for the Nomad master host.
+     * @return The URL of the Rancher Master host.
      * 
      */
     private String masterHost;
     /**
-     * @return The network port for the master host.
+     * @return Network port used by your swarm.
      * 
      */
     private Integer masterPort;
@@ -55,14 +55,14 @@ public final class ElastigroupIntegrationDockerSwarm {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
     /**
-     * @return Settings for scale down actions.
+     * @return Enabling scale down.
      * 
      */
     public Optional<ElastigroupIntegrationDockerSwarmAutoscaleDown> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
     /**
-     * @return An option to set compute reserve for the cluster.
+     * @return Headroom for the cluster.
      * 
      */
     public Optional<ElastigroupIntegrationDockerSwarmAutoscaleHeadroom> autoscaleHeadroom() {
@@ -76,14 +76,14 @@ public final class ElastigroupIntegrationDockerSwarm {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
     /**
-     * @return The URL for the Nomad master host.
+     * @return The URL of the Rancher Master host.
      * 
      */
     public String masterHost() {
         return this.masterHost;
     }
     /**
-     * @return The network port for the master host.
+     * @return Network port used by your swarm.
      * 
      */
     public Integer masterPort() {

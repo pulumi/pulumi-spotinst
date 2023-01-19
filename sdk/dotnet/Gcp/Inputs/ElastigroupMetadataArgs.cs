@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupMetadataArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Labels key.
@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The dimension value.
+        /// Labels value.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupMetadataArgs()
         {
         }
+        public static new ElastigroupMetadataArgs Empty => new ElastigroupMetadataArgs();
     }
 }

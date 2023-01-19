@@ -14,13 +14,21 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanLaunchSpecDeleteOptions
     {
         /// <summary>
+        /// When set to "true", all instances belonging to the deleted launch specification will be drained, detached, and terminated.
+        /// </summary>
+        public readonly bool? DeleteNodes;
+        /// <summary>
         /// When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
         /// </summary>
         public readonly bool ForceDelete;
 
         [OutputConstructor]
-        private OceanLaunchSpecDeleteOptions(bool forceDelete)
+        private OceanLaunchSpecDeleteOptions(
+            bool? deleteNodes,
+
+            bool forceDelete)
         {
+            DeleteNodes = deleteNodes;
             ForceDelete = forceDelete;
         }
     }

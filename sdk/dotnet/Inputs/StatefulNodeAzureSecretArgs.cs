@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureSecretArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureSecretArgs : global::Pulumi.ResourceArgs
     {
         [Input("sourceVaults", required: true)]
         private InputList<Inputs.StatefulNodeAzureSecretSourceVaultArgs>? _sourceVaults;
@@ -31,5 +31,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureSecretArgs()
         {
         }
+        public static new StatefulNodeAzureSecretArgs Empty => new StatefulNodeAzureSecretArgs();
     }
 }

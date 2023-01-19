@@ -15,39 +15,35 @@ namespace Pulumi.SpotInst.Gke
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new SpotInst.Gke.OceanLaunchSpecImport("example", new()
     ///     {
-    ///         var example = new SpotInst.Gke.OceanLaunchSpecImport("example", new SpotInst.Gke.OceanLaunchSpecImportArgs
-    ///         {
-    ///             NodePoolName = "default-pool",
-    ///             OceanId = "o-123456",
-    ///         });
-    ///     }
+    ///         NodePoolName = "default-pool",
+    ///         OceanId = "o-123456",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         this.OceanLaunchspecId = spotinst_ocean_gke_launch_spec_import.Example.Id;
-    ///     }
-    /// 
-    ///     [Output("oceanLaunchspecId")]
-    ///     public Output&lt;string&gt; OceanLaunchspecId { get; set; }
-    /// }
+    ///         ["oceanLaunchspecId"] = spotinst_ocean_gke_launch_spec_import.Example.Id,
+    ///     };
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport")]
-    public partial class OceanLaunchSpecImport : Pulumi.CustomResource
+    public partial class OceanLaunchSpecImport : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The node pool you wish to use in your launchSpec.
@@ -105,7 +101,7 @@ namespace Pulumi.SpotInst.Gke
         }
     }
 
-    public sealed class OceanLaunchSpecImportArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecImportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The node pool you wish to use in your launchSpec.
@@ -122,9 +118,10 @@ namespace Pulumi.SpotInst.Gke
         public OceanLaunchSpecImportArgs()
         {
         }
+        public static new OceanLaunchSpecImportArgs Empty => new OceanLaunchSpecImportArgs();
     }
 
-    public sealed class OceanLaunchSpecImportState : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecImportState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The node pool you wish to use in your launchSpec.
@@ -141,5 +138,6 @@ namespace Pulumi.SpotInst.Gke
         public OceanLaunchSpecImportState()
         {
         }
+        public static new OceanLaunchSpecImportState Empty => new OceanLaunchSpecImportState();
     }
 }

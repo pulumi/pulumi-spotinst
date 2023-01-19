@@ -2,83 +2,19 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Manages a Spotinst Ocean ECS resource.
  *
- * ## Example Usage
+ * ## Import
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
+ * Clusters can be imported using the Ocean `id`, e.g., hcl
  *
- * const example = new spotinst.ecs.Ocean("example", {
- *     associatePublicIpAddress: false,
- *     blockDeviceMappings: [{
- *         deviceName: "/dev/xvda1",
- *         ebs: {
- *             deleteOnTermination: true,
- *             dynamicVolumeSize: {
- *                 baseSize: 50,
- *                 resource: "CPU",
- *                 sizePerResourceUnit: 20,
- *             },
- *             encrypted: false,
- *             throughput: 500,
- *             volumeSize: 50,
- *             volumeType: "gp2",
- *         },
- *     }],
- *     clusterName: "sample-ecs-cluster",
- *     desiredCapacity: 0,
- *     drainingTimeout: 120,
- *     ebsOptimized: true,
- *     iamInstanceProfile: "iam-profile",
- *     imageId: "ami-12345",
- *     instanceMetadataOptions: {
- *         httpPutResponseHopLimit: 10,
- *         httpTokens: "required",
- *     },
- *     keyPair: "KeyPair",
- *     logging: {
- *         export: {
- *             s3s: [{
- *                 id: "di-abcd123",
- *             }],
- *         },
- *     },
- *     maxSize: 1,
- *     minSize: 0,
- *     monitoring: true,
- *     optimizeImages: {
- *         performAt: "timeWindow",
- *         shouldOptimizeEcsAmi: true,
- *         timeWindows: [
- *             "Sun:02:00-Sun:12:00",
- *             "Sun:05:00-Sun:16:00",
- *         ],
- *     },
- *     region: "us-west-2",
- *     securityGroupIds: ["sg-12345"],
- *     spotPercentage: 100,
- *     subnetIds: ["subnet-12345"],
- *     tags: [{
- *         key: "fakeKey",
- *         value: "fakeValue",
- *     }],
- *     useAsTemplateOnly: true,
- *     userData: "echo hello world",
- *     utilizeCommitments: false,
- *     utilizeReservedInstances: false,
- *     whitelists: ["t3.medium"],
- * });
- * ```
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanId = spotinst_ocean_ecs.example.id;
+ * ```sh
+ *  $ pulumi import spotinst:ecs/ocean:Ocean this o-12345678
  * ```
  */
 export class Ocean extends pulumi.CustomResource {
@@ -118,11 +54,15 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly autoscaler!: pulumi.Output<outputs.ecs.OceanAutoscaler | undefined>;
     /**
+     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+     */
+    public readonly blacklists!: pulumi.Output<string[] | undefined>;
+    /**
      * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
     public readonly blockDeviceMappings!: pulumi.Output<outputs.ecs.OceanBlockDeviceMapping[] | undefined>;
     /**
-     * The ocean cluster name.
+     * The name of the ECS cluster.
      */
     public readonly clusterName!: pulumi.Output<string>;
     /**
@@ -137,6 +77,10 @@ export class Ocean extends pulumi.CustomResource {
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
     public readonly ebsOptimized!: pulumi.Output<boolean | undefined>;
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+     */
+    public readonly filters!: pulumi.Output<outputs.ecs.OceanFilters | undefined>;
     /**
      * The instance profile iam role.
      */
@@ -201,9 +145,6 @@ export class Ocean extends pulumi.CustomResource {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     public readonly tags!: pulumi.Output<outputs.ecs.OceanTag[] | undefined>;
-    /**
-     * While used, you can control whether the group should perform a deployment after an update to the configuration.
-     */
     public readonly updatePolicy!: pulumi.Output<outputs.ecs.OceanUpdatePolicy | undefined>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -222,7 +163,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly utilizeReservedInstances!: pulumi.Output<boolean | undefined>;
     /**
-     * Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
      */
     public readonly whitelists!: pulumi.Output<string[] | undefined>;
 
@@ -241,11 +182,13 @@ export class Ocean extends pulumi.CustomResource {
             const state = argsOrState as OceanState | undefined;
             resourceInputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
             resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
+            resourceInputs["blacklists"] = state ? state.blacklists : undefined;
             resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
             resourceInputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
+            resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
@@ -284,11 +227,13 @@ export class Ocean extends pulumi.CustomResource {
             }
             resourceInputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
             resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
+            resourceInputs["blacklists"] = args ? args.blacklists : undefined;
             resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
             resourceInputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
+            resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
@@ -330,11 +275,15 @@ export interface OceanState {
      */
     autoscaler?: pulumi.Input<inputs.ecs.OceanAutoscaler>;
     /**
+     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+     */
+    blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.OceanBlockDeviceMapping>[]>;
     /**
-     * The ocean cluster name.
+     * The name of the ECS cluster.
      */
     clusterName?: pulumi.Input<string>;
     /**
@@ -349,6 +298,10 @@ export interface OceanState {
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
     ebsOptimized?: pulumi.Input<boolean>;
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+     */
+    filters?: pulumi.Input<inputs.ecs.OceanFilters>;
     /**
      * The instance profile iam role.
      */
@@ -413,9 +366,6 @@ export interface OceanState {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanTag>[]>;
-    /**
-     * While used, you can control whether the group should perform a deployment after an update to the configuration.
-     */
     updatePolicy?: pulumi.Input<inputs.ecs.OceanUpdatePolicy>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -434,7 +384,7 @@ export interface OceanState {
      */
     utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
-     * Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
      */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -452,11 +402,15 @@ export interface OceanArgs {
      */
     autoscaler?: pulumi.Input<inputs.ecs.OceanAutoscaler>;
     /**
+     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+     */
+    blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.OceanBlockDeviceMapping>[]>;
     /**
-     * The ocean cluster name.
+     * The name of the ECS cluster.
      */
     clusterName: pulumi.Input<string>;
     /**
@@ -471,6 +425,10 @@ export interface OceanArgs {
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
     ebsOptimized?: pulumi.Input<boolean>;
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+     */
+    filters?: pulumi.Input<inputs.ecs.OceanFilters>;
     /**
      * The instance profile iam role.
      */
@@ -535,9 +493,6 @@ export interface OceanArgs {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanTag>[]>;
-    /**
-     * While used, you can control whether the group should perform a deployment after an update to the configuration.
-     */
     updatePolicy?: pulumi.Input<inputs.ecs.OceanUpdatePolicy>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -556,7 +511,7 @@ export interface OceanArgs {
      */
     utilizeReservedInstances?: pulumi.Input<boolean>;
     /**
-     * Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
      */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

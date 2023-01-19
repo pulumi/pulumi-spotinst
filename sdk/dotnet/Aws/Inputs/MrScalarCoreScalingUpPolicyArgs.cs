@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class MrScalarCoreScalingUpPolicyArgs : Pulumi.ResourceArgs
+    public sealed class MrScalarCoreScalingUpPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
@@ -129,5 +129,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public MrScalarCoreScalingUpPolicyArgs()
         {
         }
+        public static new MrScalarCoreScalingUpPolicyArgs Empty => new MrScalarCoreScalingUpPolicyArgs();
     }
 }

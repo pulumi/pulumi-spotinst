@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class MrScalarTagGetArgs : Pulumi.ResourceArgs
+    public sealed class MrScalarTagGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// S3 key for bootstrap actions.
+        /// Tag key.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public MrScalarTagGetArgs()
         {
         }
+        public static new MrScalarTagGetArgs Empty => new MrScalarTagGetArgs();
     }
 }

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupScalingUpPolicyStepAdjustment {
     /**
-     * @return Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * @return The action to take when scale up according to step&#39;s threshold is needed.
      * 
      */
     private ElastigroupScalingUpPolicyStepAdjustmentAction action;
@@ -23,7 +23,7 @@ public final class ElastigroupScalingUpPolicyStepAdjustment {
 
     private ElastigroupScalingUpPolicyStepAdjustment() {}
     /**
-     * @return Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * @return The action to take when scale up according to step&#39;s threshold is needed.
      * 
      */
     public ElastigroupScalingUpPolicyStepAdjustmentAction action() {

@@ -5,20 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./balancer";
-export * from "./deployment";
-export * from "./listener";
-export * from "./routingRule";
-export * from "./target";
-export * from "./targetSet";
+export { BalancerArgs, BalancerState } from "./balancer";
+export type Balancer = import("./balancer").Balancer;
+export const Balancer: typeof import("./balancer").Balancer = null as any;
+utilities.lazyLoad(exports, ["Balancer"], () => require("./balancer"));
 
-// Import resources to register:
-import { Balancer } from "./balancer";
-import { Deployment } from "./deployment";
-import { Listener } from "./listener";
-import { RoutingRule } from "./routingRule";
-import { Target } from "./target";
-import { TargetSet } from "./targetSet";
+export { DeploymentArgs, DeploymentState } from "./deployment";
+export type Deployment = import("./deployment").Deployment;
+export const Deployment: typeof import("./deployment").Deployment = null as any;
+utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
+
+export { ListenerArgs, ListenerState } from "./listener";
+export type Listener = import("./listener").Listener;
+export const Listener: typeof import("./listener").Listener = null as any;
+utilities.lazyLoad(exports, ["Listener"], () => require("./listener"));
+
+export { RoutingRuleArgs, RoutingRuleState } from "./routingRule";
+export type RoutingRule = import("./routingRule").RoutingRule;
+export const RoutingRule: typeof import("./routingRule").RoutingRule = null as any;
+utilities.lazyLoad(exports, ["RoutingRule"], () => require("./routingRule"));
+
+export { TargetArgs, TargetState } from "./target";
+export type Target = import("./target").Target;
+export const Target: typeof import("./target").Target = null as any;
+utilities.lazyLoad(exports, ["Target"], () => require("./target"));
+
+export { TargetSetArgs, TargetSetState } from "./targetSet";
+export type TargetSet = import("./targetSet").TargetSet;
+export const TargetSet: typeof import("./targetSet").TargetSet = null as any;
+utilities.lazyLoad(exports, ["TargetSet"], () => require("./targetSet"));
+
 
 const _module = {
     version: utilities.getVersion(),

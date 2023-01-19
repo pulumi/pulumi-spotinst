@@ -19,12 +19,12 @@ public final class ElastigroupHealthCheck {
      */
     private @Nullable Boolean autoHealing;
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     private @Nullable Integer gracePeriod;
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
      * 
      */
     private String healthCheckType;
@@ -38,14 +38,14 @@ public final class ElastigroupHealthCheck {
         return Optional.ofNullable(this.autoHealing);
     }
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     public Optional<Integer> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
      * 
      */
     public String healthCheckType() {

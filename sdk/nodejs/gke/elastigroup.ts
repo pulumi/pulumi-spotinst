@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -33,10 +34,8 @@ import * as utilities from "../utilities";
  *         }],
  *         serviceName: "backend-service",
  *     }],
- *     // cluster_id        = "sample-acc-test-cluster" // deprecated
  *     clusterZoneName: "us-central1-a",
  *     desiredCapacity: 3,
- *     // --- INSTANCE TYPES --------------------------------
  *     instanceTypesOndemand: "n1-standard-1",
  *     instanceTypesPreemptibles: [
  *         "n1-standard-1",
@@ -61,11 +60,9 @@ import * as utilities from "../utilities";
  *         clusterId: "example-cluster-id",
  *         location: "us-central1-a",
  *     },
- *     // --- CAPACITY ------------
  *     maxSize: 5,
  *     minSize: 1,
  *     nodeImage: "COS",
- *     // --- STRATEGY --------------------
  *     preemptiblePercentage: 100,
  * });
  * ```
@@ -100,7 +97,7 @@ export class Elastigroup extends pulumi.CustomResource {
 
     public readonly backendServices!: pulumi.Output<outputs.gke.ElastigroupBackendService[] | undefined>;
     /**
-     * The GKE cluster ID you wish to import.
+     * The name of the GKE cluster you wish to import.
      *
      * @deprecated Please define cluster_id under integration_gke
      */
@@ -236,7 +233,7 @@ export class Elastigroup extends pulumi.CustomResource {
 export interface ElastigroupState {
     backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
-     * The GKE cluster ID you wish to import.
+     * The name of the GKE cluster you wish to import.
      *
      * @deprecated Please define cluster_id under integration_gke
      */
@@ -286,7 +283,7 @@ export interface ElastigroupState {
 export interface ElastigroupArgs {
     backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
-     * The GKE cluster ID you wish to import.
+     * The name of the GKE cluster you wish to import.
      *
      * @deprecated Please define cluster_id under integration_gke
      */

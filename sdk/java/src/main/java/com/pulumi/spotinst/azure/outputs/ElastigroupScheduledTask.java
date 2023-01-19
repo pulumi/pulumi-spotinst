@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupScheduledTask {
     /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
+     * @return Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
      * 
      */
     private @Nullable String adjustment;
@@ -23,7 +23,7 @@ public final class ElastigroupScheduledTask {
      */
     private @Nullable String adjustmentPercentage;
     /**
-     * @return Sets the percentage of the instances to deploy in each batch.
+     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
      * 
      */
     private @Nullable String batchSizePercentage;
@@ -33,7 +33,7 @@ public final class ElastigroupScheduledTask {
      */
     private String cronExpression;
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     private @Nullable String gracePeriod;
@@ -65,7 +65,7 @@ public final class ElastigroupScheduledTask {
 
     private ElastigroupScheduledTask() {}
     /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
+     * @return Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
      * 
      */
     public Optional<String> adjustment() {
@@ -79,7 +79,7 @@ public final class ElastigroupScheduledTask {
         return Optional.ofNullable(this.adjustmentPercentage);
     }
     /**
-     * @return Sets the percentage of the instances to deploy in each batch.
+     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
      * 
      */
     public Optional<String> batchSizePercentage() {
@@ -93,7 +93,7 @@ public final class ElastigroupScheduledTask {
         return this.cronExpression;
     }
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     public Optional<String> gracePeriod() {

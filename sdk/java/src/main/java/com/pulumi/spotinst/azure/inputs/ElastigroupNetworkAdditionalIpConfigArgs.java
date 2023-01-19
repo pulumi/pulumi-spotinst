@@ -16,14 +16,14 @@ public final class ElastigroupNetworkAdditionalIpConfigArgs extends com.pulumi.r
     public static final ElastigroupNetworkAdditionalIpConfigArgs Empty = new ElastigroupNetworkAdditionalIpConfigArgs();
 
     /**
-     * The dimension name.
+     * The name of the managed identity.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The dimension name.
+     * @return The name of the managed identity.
      * 
      */
     public Output<String> name() {
@@ -71,7 +71,7 @@ public final class ElastigroupNetworkAdditionalIpConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param name The dimension name.
+         * @param name The name of the managed identity.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ElastigroupNetworkAdditionalIpConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param name The dimension name.
+         * @param name The name of the managed identity.
          * 
          * @return builder
          * 

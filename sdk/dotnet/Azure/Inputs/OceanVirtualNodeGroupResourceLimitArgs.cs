@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanVirtualNodeGroupResourceLimitArgs : Pulumi.ResourceArgs
+    public sealed class OceanVirtualNodeGroupResourceLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanVirtualNodeGroupResourceLimitArgs()
         {
         }
+        public static new OceanVirtualNodeGroupResourceLimitArgs Empty => new OceanVirtualNodeGroupResourceLimitArgs();
     }
 }

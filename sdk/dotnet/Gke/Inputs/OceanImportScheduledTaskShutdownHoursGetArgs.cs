@@ -10,10 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportScheduledTaskShutdownHoursGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportScheduledTaskShutdownHoursGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the Ocean Kubernetes Autoscaler.
+        /// Flag to enable / disable the shutdown hours.
+        /// Example: True
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
@@ -34,5 +35,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportScheduledTaskShutdownHoursGetArgs()
         {
         }
+        public static new OceanImportScheduledTaskShutdownHoursGetArgs Empty => new OceanImportScheduledTaskShutdownHoursGetArgs();
     }
 }

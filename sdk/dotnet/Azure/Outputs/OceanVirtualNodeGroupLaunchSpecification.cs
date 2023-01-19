@@ -14,6 +14,10 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanVirtualNodeGroupLaunchSpecification
     {
         /// <summary>
+        /// The maximum number of pods per node in an AKS cluster.
+        /// </summary>
+        public readonly int? MaxPods;
+        /// <summary>
         /// Specify OS disk specification other than default.
         /// </summary>
         public readonly Outputs.OceanVirtualNodeGroupLaunchSpecificationOsDisk? OsDisk;
@@ -24,10 +28,13 @@ namespace Pulumi.SpotInst.Azure.Outputs
 
         [OutputConstructor]
         private OceanVirtualNodeGroupLaunchSpecification(
+            int? maxPods,
+
             Outputs.OceanVirtualNodeGroupLaunchSpecificationOsDisk? osDisk,
 
             ImmutableArray<Outputs.OceanVirtualNodeGroupLaunchSpecificationTag> tags)
         {
+            MaxPods = maxPods;
             OsDisk = osDisk;
             Tags = tags;
         }

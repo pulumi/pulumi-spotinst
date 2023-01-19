@@ -2,118 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst AWS group resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * // Create an Elastigroup
- * const default_elastigroup = new spotinst.aws.Elastigroup("default-elastigroup", {
- *     capacityUnit: "weight",
- *     cpuCredits: "unlimited",
- *     cpuOptions: {
- *         threadsPerCore: 1,
- *     },
- *     description: "created by Pulumi",
- *     desiredCapacity: 0,
- *     ebsOptimized: false,
- *     enableMonitoring: false,
- *     fallbackToOndemand: false,
- *     iamInstanceProfile: "iam-profile",
- *     imageId: "ami-a27d8fda",
- *     instanceTypesOndemand: "m3.2xlarge",
- *     instanceTypesPreferredSpots: ["m3.xlarge"],
- *     instanceTypesSpots: [
- *         "m3.xlarge",
- *         "m3.2xlarge",
- *     ],
- *     instanceTypesWeights: [
- *         {
- *             instanceType: "m3.xlarge",
- *             weight: 10,
- *         },
- *         {
- *             instanceType: "m3.2xlarge",
- *             weight: 16,
- *         },
- *     ],
- *     keyName: "my-key.ssh",
- *     maxSize: 0,
- *     metadataOptions: {
- *         httpPutResponseHopLimit: 10,
- *         httpTokens: "optional",
- *     },
- *     minSize: 0,
- *     minimumInstanceLifetime: 12,
- *     orientation: "balanced",
- *     placementTenancy: "default",
- *     product: "Linux/UNIX",
- *     region: "us-west-2",
- *     resourceTagSpecifications: [{
- *         shouldTagAmis: true,
- *         shouldTagEnis: true,
- *         shouldTagSnapshots: true,
- *         shouldTagVolumes: true,
- *     }],
- *     scalingDownPolicies: [{
- *         adjustment: "1",
- *         cooldown: 300,
- *         evaluationPeriods: 10,
- *         metricName: "DefaultQueuesDepth",
- *         namespace: "custom",
- *         period: 60,
- *         policyName: "Default Scaling Down Policy",
- *         statistic: "average",
- *         threshold: 10,
- *         unit: "none",
- *     }],
- *     scalingStrategies: [{
- *         terminateAtEndOfBillingHour: true,
- *         terminationPolicy: "default",
- *     }],
- *     scalingUpPolicies: [{
- *         adjustment: "1",
- *         cooldown: 300,
- *         evaluationPeriods: 5,
- *         metricName: "DefaultQueuesDepth",
- *         namespace: "custom",
- *         period: 60,
- *         policyName: "Default Scaling Up Policy",
- *         statistic: "average",
- *         threshold: 100,
- *         unit: "none",
- *     }],
- *     securityGroups: ["sg-123456"],
- *     subnetIds: [
- *         "sb-123456",
- *         "sb-456789",
- *     ],
- *     tags: [
- *         {
- *             key: "Env",
- *             value: "production",
- *         },
- *         {
- *             key: "Name",
- *             value: "default-production",
- *         },
- *         {
- *             key: "Project",
- *             value: "app_v2",
- *         },
- *     ],
- *     userData: "echo hello world",
- *     waitForCapacity: 5,
- *     waitForCapacityTimeout: 300,
- * }, { ignoreChanges: ["desiredCapacity"] });
- * ```
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**
@@ -157,6 +51,7 @@ export class Elastigroup extends pulumi.CustomResource {
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
     public readonly capacityUnit!: pulumi.Output<string>;
+    public readonly considerOdPricing!: pulumi.Output<boolean | undefined>;
     /**
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
@@ -166,7 +61,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly cpuOptions!: pulumi.Output<outputs.aws.ElastigroupCpuOptions | undefined>;
     /**
-     * The description of the network interface.
+     * The group description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -174,7 +69,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
     /**
-     * Indicates (in seconds) the timeout to wait until instance are detached.
+     * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
     public readonly drainingTimeout!: pulumi.Output<number>;
     public readonly ebsBlockDevices!: pulumi.Output<outputs.aws.ElastigroupEbsBlockDevice[] | undefined>;
@@ -200,15 +95,15 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly fallbackToOndemand!: pulumi.Output<boolean>;
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health
+     * The amount of time, in seconds, after the instance has launched to starts and check its health.
      */
     public readonly healthCheckGracePeriod!: pulumi.Output<number | undefined>;
     /**
-     * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
      */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
-     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
      */
     public readonly healthCheckUnhealthyDurationBeforeReplacement!: pulumi.Output<number | undefined>;
     /**
@@ -219,6 +114,12 @@ export class Elastigroup extends pulumi.CustomResource {
      * The ID of the AMI used to launch the instance.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
+    /**
+     * An array of image objects. 
+     * Note: Elastigroup can be configured with either imageId or images, but not both.
+     */
+    public readonly images!: pulumi.Output<outputs.aws.ElastigroupImage[] | undefined>;
+    public readonly immediateOdRecoverThreshold!: pulumi.Output<number | undefined>;
     /**
      * The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      */
@@ -304,7 +205,7 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly multaiTargetSets!: pulumi.Output<outputs.aws.ElastigroupMultaiTargetSet[] | undefined>;
     public readonly multipleMetrics!: pulumi.Output<outputs.aws.ElastigroupMultipleMetrics | undefined>;
     /**
-     * The record set name.
+     * The group name.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaces!: pulumi.Output<outputs.aws.ElastigroupNetworkInterface[] | undefined>;
@@ -430,6 +331,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
             resourceInputs["blockDevicesMode"] = state ? state.blockDevicesMode : undefined;
             resourceInputs["capacityUnit"] = state ? state.capacityUnit : undefined;
+            resourceInputs["considerOdPricing"] = state ? state.considerOdPricing : undefined;
             resourceInputs["cpuCredits"] = state ? state.cpuCredits : undefined;
             resourceInputs["cpuOptions"] = state ? state.cpuOptions : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -447,6 +349,8 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = state ? state.healthCheckUnhealthyDurationBeforeReplacement : undefined;
             resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["images"] = state ? state.images : undefined;
+            resourceInputs["immediateOdRecoverThreshold"] = state ? state.immediateOdRecoverThreshold : undefined;
             resourceInputs["instanceTypesOndemand"] = state ? state.instanceTypesOndemand : undefined;
             resourceInputs["instanceTypesPreferredSpots"] = state ? state.instanceTypesPreferredSpots : undefined;
             resourceInputs["instanceTypesSpots"] = state ? state.instanceTypesSpots : undefined;
@@ -528,6 +432,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
             resourceInputs["blockDevicesMode"] = args ? args.blockDevicesMode : undefined;
             resourceInputs["capacityUnit"] = args ? args.capacityUnit : undefined;
+            resourceInputs["considerOdPricing"] = args ? args.considerOdPricing : undefined;
             resourceInputs["cpuCredits"] = args ? args.cpuCredits : undefined;
             resourceInputs["cpuOptions"] = args ? args.cpuOptions : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -545,6 +450,8 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = args ? args.healthCheckUnhealthyDurationBeforeReplacement : undefined;
             resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["images"] = args ? args.images : undefined;
+            resourceInputs["immediateOdRecoverThreshold"] = args ? args.immediateOdRecoverThreshold : undefined;
             resourceInputs["instanceTypesOndemand"] = args ? args.instanceTypesOndemand : undefined;
             resourceInputs["instanceTypesPreferredSpots"] = args ? args.instanceTypesPreferredSpots : undefined;
             resourceInputs["instanceTypesSpots"] = args ? args.instanceTypesSpots : undefined;
@@ -627,6 +534,7 @@ export interface ElastigroupState {
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
     capacityUnit?: pulumi.Input<string>;
+    considerOdPricing?: pulumi.Input<boolean>;
     /**
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
@@ -636,7 +544,7 @@ export interface ElastigroupState {
      */
     cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions>;
     /**
-     * The description of the network interface.
+     * The group description.
      */
     description?: pulumi.Input<string>;
     /**
@@ -644,7 +552,7 @@ export interface ElastigroupState {
      */
     desiredCapacity?: pulumi.Input<number>;
     /**
-     * Indicates (in seconds) the timeout to wait until instance are detached.
+     * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
     drainingTimeout?: pulumi.Input<number>;
     ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[]>;
@@ -670,15 +578,15 @@ export interface ElastigroupState {
      */
     fallbackToOndemand?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health
+     * The amount of time, in seconds, after the instance has launched to starts and check its health.
      */
     healthCheckGracePeriod?: pulumi.Input<number>;
     /**
-     * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
      */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
      */
     healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
     /**
@@ -689,6 +597,12 @@ export interface ElastigroupState {
      * The ID of the AMI used to launch the instance.
      */
     imageId?: pulumi.Input<string>;
+    /**
+     * An array of image objects. 
+     * Note: Elastigroup can be configured with either imageId or images, but not both.
+     */
+    images?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupImage>[]>;
+    immediateOdRecoverThreshold?: pulumi.Input<number>;
     /**
      * The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      */
@@ -774,7 +688,7 @@ export interface ElastigroupState {
     multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
     multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
     /**
-     * The record set name.
+     * The group name.
      */
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
@@ -903,6 +817,7 @@ export interface ElastigroupArgs {
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
     capacityUnit?: pulumi.Input<string>;
+    considerOdPricing?: pulumi.Input<boolean>;
     /**
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
@@ -912,7 +827,7 @@ export interface ElastigroupArgs {
      */
     cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions>;
     /**
-     * The description of the network interface.
+     * The group description.
      */
     description?: pulumi.Input<string>;
     /**
@@ -920,7 +835,7 @@ export interface ElastigroupArgs {
      */
     desiredCapacity?: pulumi.Input<number>;
     /**
-     * Indicates (in seconds) the timeout to wait until instance are detached.
+     * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
     drainingTimeout?: pulumi.Input<number>;
     ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[]>;
@@ -946,15 +861,15 @@ export interface ElastigroupArgs {
      */
     fallbackToOndemand: pulumi.Input<boolean>;
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health
+     * The amount of time, in seconds, after the instance has launched to starts and check its health.
      */
     healthCheckGracePeriod?: pulumi.Input<number>;
     /**
-     * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
      */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
      */
     healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
     /**
@@ -965,6 +880,12 @@ export interface ElastigroupArgs {
      * The ID of the AMI used to launch the instance.
      */
     imageId?: pulumi.Input<string>;
+    /**
+     * An array of image objects. 
+     * Note: Elastigroup can be configured with either imageId or images, but not both.
+     */
+    images?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupImage>[]>;
+    immediateOdRecoverThreshold?: pulumi.Input<number>;
     /**
      * The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      */
@@ -1050,7 +971,7 @@ export interface ElastigroupArgs {
     multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
     multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
     /**
-     * The record set name.
+     * The group name.
      */
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;

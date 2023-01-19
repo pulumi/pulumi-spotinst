@@ -6,9 +6,16 @@ package com.pulumi.spotinst.aws.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanLaunchSpecDeleteOptions {
+    /**
+     * @return When set to &#34;true&#34;, all instances belonging to the deleted launch specification will be drained, detached, and terminated.
+     * 
+     */
+    private @Nullable Boolean deleteNodes;
     /**
      * @return When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
      * 
@@ -16,6 +23,13 @@ public final class OceanLaunchSpecDeleteOptions {
     private Boolean forceDelete;
 
     private OceanLaunchSpecDeleteOptions() {}
+    /**
+     * @return When set to &#34;true&#34;, all instances belonging to the deleted launch specification will be drained, detached, and terminated.
+     * 
+     */
+    public Optional<Boolean> deleteNodes() {
+        return Optional.ofNullable(this.deleteNodes);
+    }
     /**
      * @return When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
      * 
@@ -33,13 +47,20 @@ public final class OceanLaunchSpecDeleteOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean deleteNodes;
         private Boolean forceDelete;
         public Builder() {}
         public Builder(OceanLaunchSpecDeleteOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deleteNodes = defaults.deleteNodes;
     	      this.forceDelete = defaults.forceDelete;
         }
 
+        @CustomType.Setter
+        public Builder deleteNodes(@Nullable Boolean deleteNodes) {
+            this.deleteNodes = deleteNodes;
+            return this;
+        }
         @CustomType.Setter
         public Builder forceDelete(Boolean forceDelete) {
             this.forceDelete = Objects.requireNonNull(forceDelete);
@@ -47,6 +68,7 @@ public final class OceanLaunchSpecDeleteOptions {
         }
         public OceanLaunchSpecDeleteOptions build() {
             final var o = new OceanLaunchSpecDeleteOptions();
+            o.deleteNodes = deleteNodes;
             o.forceDelete = forceDelete;
             return o;
         }

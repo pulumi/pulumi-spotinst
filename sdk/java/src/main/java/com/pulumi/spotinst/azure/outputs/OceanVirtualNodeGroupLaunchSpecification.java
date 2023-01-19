@@ -6,6 +6,7 @@ package com.pulumi.spotinst.azure.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.spotinst.azure.outputs.OceanVirtualNodeGroupLaunchSpecificationOsDisk;
 import com.pulumi.spotinst.azure.outputs.OceanVirtualNodeGroupLaunchSpecificationTag;
+import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanVirtualNodeGroupLaunchSpecification {
+    /**
+     * @return The maximum number of pods per node in an AKS cluster.
+     * 
+     */
+    private @Nullable Integer maxPods;
     /**
      * @return Specify OS disk specification other than default.
      * 
@@ -25,6 +31,13 @@ public final class OceanVirtualNodeGroupLaunchSpecification {
     private @Nullable List<OceanVirtualNodeGroupLaunchSpecificationTag> tags;
 
     private OceanVirtualNodeGroupLaunchSpecification() {}
+    /**
+     * @return The maximum number of pods per node in an AKS cluster.
+     * 
+     */
+    public Optional<Integer> maxPods() {
+        return Optional.ofNullable(this.maxPods);
+    }
     /**
      * @return Specify OS disk specification other than default.
      * 
@@ -49,15 +62,22 @@ public final class OceanVirtualNodeGroupLaunchSpecification {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer maxPods;
         private @Nullable OceanVirtualNodeGroupLaunchSpecificationOsDisk osDisk;
         private @Nullable List<OceanVirtualNodeGroupLaunchSpecificationTag> tags;
         public Builder() {}
         public Builder(OceanVirtualNodeGroupLaunchSpecification defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.maxPods = defaults.maxPods;
     	      this.osDisk = defaults.osDisk;
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
+        public Builder maxPods(@Nullable Integer maxPods) {
+            this.maxPods = maxPods;
+            return this;
+        }
         @CustomType.Setter
         public Builder osDisk(@Nullable OceanVirtualNodeGroupLaunchSpecificationOsDisk osDisk) {
             this.osDisk = osDisk;
@@ -73,6 +93,7 @@ public final class OceanVirtualNodeGroupLaunchSpecification {
         }
         public OceanVirtualNodeGroupLaunchSpecification build() {
             final var o = new OceanVirtualNodeGroupLaunchSpecification();
+            o.maxPods = maxPods;
             o.osDisk = osDisk;
             o.tags = tags;
             return o;

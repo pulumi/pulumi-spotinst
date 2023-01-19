@@ -14,15 +14,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ManagedInstanceIntegrationRoute53DomainRecordSet
     {
         /// <summary>
-        /// The record set name.
+        /// The ManagedInstance name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// - Designates whether the DNS address should be exposed to connections outside the VPC.
+        /// Designates whether the DNS address should be exposed to connections outside the VPC.
         /// </summary>
         public readonly bool? UsePublicDns;
         /// <summary>
-        /// - Designates whether the IP address should be exposed to connections outside the VPC.
+        /// Designates whether the IP address should be exposed to connections outside the VPC.
         /// </summary>
         public readonly bool? UsePublicIp;
 

@@ -51,12 +51,11 @@ type ManagedInstance struct {
 	// Specify a Key Pair to attach to the instances.
 	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
 	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
-	LifeCycle pulumi.StringPtrOutput `pulumi:"lifeCycle"`
-	// List of load balancers configs.
+	LifeCycle               pulumi.StringPtrOutput                        `pulumi:"lifeCycle"`
 	LoadBalancers           ManagedInstanceLoadBalancerArrayOutput        `pulumi:"loadBalancers"`
 	ManagedInstanceAction   ManagedInstanceManagedInstanceActionPtrOutput `pulumi:"managedInstanceAction"`
 	MinimumInstanceLifetime pulumi.IntPtrOutput                           `pulumi:"minimumInstanceLifetime"`
-	// The record set name.
+	// The ManagedInstance name.
 	Name              pulumi.StringOutput                        `pulumi:"name"`
 	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
@@ -79,8 +78,7 @@ type ManagedInstance struct {
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 	Product pulumi.StringOutput `pulumi:"product"`
 	// The AWS region your group will be created in.
-	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// User will specify which resources should be tagged with group tags.
+	Region                    pulumi.StringPtrOutput                             `pulumi:"region"`
 	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayOutput `pulumi:"resourceTagSpecifications"`
 	RevertToSpot              ManagedInstanceRevertToSpotPtrOutput               `pulumi:"revertToSpot"`
 	ScheduledTasks            ManagedInstanceScheduledTaskArrayOutput            `pulumi:"scheduledTasks"`
@@ -184,12 +182,11 @@ type managedInstanceState struct {
 	// Specify a Key Pair to attach to the instances.
 	KeyPair *string `pulumi:"keyPair"`
 	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
-	LifeCycle *string `pulumi:"lifeCycle"`
-	// List of load balancers configs.
+	LifeCycle               *string                               `pulumi:"lifeCycle"`
 	LoadBalancers           []ManagedInstanceLoadBalancer         `pulumi:"loadBalancers"`
 	ManagedInstanceAction   *ManagedInstanceManagedInstanceAction `pulumi:"managedInstanceAction"`
 	MinimumInstanceLifetime *int                                  `pulumi:"minimumInstanceLifetime"`
-	// The record set name.
+	// The ManagedInstance name.
 	Name              *string                           `pulumi:"name"`
 	NetworkInterfaces []ManagedInstanceNetworkInterface `pulumi:"networkInterfaces"`
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
@@ -212,8 +209,7 @@ type managedInstanceState struct {
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 	Product *string `pulumi:"product"`
 	// The AWS region your group will be created in.
-	Region *string `pulumi:"region"`
-	// User will specify which resources should be tagged with group tags.
+	Region                    *string                                   `pulumi:"region"`
 	ResourceTagSpecifications []ManagedInstanceResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	RevertToSpot              *ManagedInstanceRevertToSpot              `pulumi:"revertToSpot"`
 	ScheduledTasks            []ManagedInstanceScheduledTask            `pulumi:"scheduledTasks"`
@@ -271,12 +267,11 @@ type ManagedInstanceState struct {
 	// Specify a Key Pair to attach to the instances.
 	KeyPair pulumi.StringPtrInput
 	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
-	LifeCycle pulumi.StringPtrInput
-	// List of load balancers configs.
+	LifeCycle               pulumi.StringPtrInput
 	LoadBalancers           ManagedInstanceLoadBalancerArrayInput
 	ManagedInstanceAction   ManagedInstanceManagedInstanceActionPtrInput
 	MinimumInstanceLifetime pulumi.IntPtrInput
-	// The record set name.
+	// The ManagedInstance name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayInput
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
@@ -299,8 +294,7 @@ type ManagedInstanceState struct {
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 	Product pulumi.StringPtrInput
 	// The AWS region your group will be created in.
-	Region pulumi.StringPtrInput
-	// User will specify which resources should be tagged with group tags.
+	Region                    pulumi.StringPtrInput
 	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayInput
 	RevertToSpot              ManagedInstanceRevertToSpotPtrInput
 	ScheduledTasks            ManagedInstanceScheduledTaskArrayInput
@@ -362,12 +356,11 @@ type managedInstanceArgs struct {
 	// Specify a Key Pair to attach to the instances.
 	KeyPair *string `pulumi:"keyPair"`
 	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
-	LifeCycle *string `pulumi:"lifeCycle"`
-	// List of load balancers configs.
+	LifeCycle               *string                               `pulumi:"lifeCycle"`
 	LoadBalancers           []ManagedInstanceLoadBalancer         `pulumi:"loadBalancers"`
 	ManagedInstanceAction   *ManagedInstanceManagedInstanceAction `pulumi:"managedInstanceAction"`
 	MinimumInstanceLifetime *int                                  `pulumi:"minimumInstanceLifetime"`
-	// The record set name.
+	// The ManagedInstance name.
 	Name              *string                           `pulumi:"name"`
 	NetworkInterfaces []ManagedInstanceNetworkInterface `pulumi:"networkInterfaces"`
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
@@ -390,8 +383,7 @@ type managedInstanceArgs struct {
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 	Product string `pulumi:"product"`
 	// The AWS region your group will be created in.
-	Region *string `pulumi:"region"`
-	// User will specify which resources should be tagged with group tags.
+	Region                    *string                                   `pulumi:"region"`
 	ResourceTagSpecifications []ManagedInstanceResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	RevertToSpot              *ManagedInstanceRevertToSpot              `pulumi:"revertToSpot"`
 	ScheduledTasks            []ManagedInstanceScheduledTask            `pulumi:"scheduledTasks"`
@@ -450,12 +442,11 @@ type ManagedInstanceArgs struct {
 	// Specify a Key Pair to attach to the instances.
 	KeyPair pulumi.StringPtrInput
 	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
-	LifeCycle pulumi.StringPtrInput
-	// List of load balancers configs.
+	LifeCycle               pulumi.StringPtrInput
 	LoadBalancers           ManagedInstanceLoadBalancerArrayInput
 	ManagedInstanceAction   ManagedInstanceManagedInstanceActionPtrInput
 	MinimumInstanceLifetime pulumi.IntPtrInput
-	// The record set name.
+	// The ManagedInstance name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayInput
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
@@ -478,8 +469,7 @@ type ManagedInstanceArgs struct {
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 	Product pulumi.StringInput
 	// The AWS region your group will be created in.
-	Region pulumi.StringPtrInput
-	// User will specify which resources should be tagged with group tags.
+	Region                    pulumi.StringPtrInput
 	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayInput
 	RevertToSpot              ManagedInstanceRevertToSpotPtrInput
 	ScheduledTasks            ManagedInstanceScheduledTaskArrayInput
@@ -678,7 +668,6 @@ func (o ManagedInstanceOutput) LifeCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.LifeCycle }).(pulumi.StringPtrOutput)
 }
 
-// List of load balancers configs.
 func (o ManagedInstanceOutput) LoadBalancers() ManagedInstanceLoadBalancerArrayOutput {
 	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceLoadBalancerArrayOutput { return v.LoadBalancers }).(ManagedInstanceLoadBalancerArrayOutput)
 }
@@ -691,7 +680,7 @@ func (o ManagedInstanceOutput) MinimumInstanceLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.MinimumInstanceLifetime }).(pulumi.IntPtrOutput)
 }
 
-// The record set name.
+// The ManagedInstance name.
 func (o ManagedInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -751,7 +740,6 @@ func (o ManagedInstanceOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// User will specify which resources should be tagged with group tags.
 func (o ManagedInstanceOutput) ResourceTagSpecifications() ManagedInstanceResourceTagSpecificationArrayOutput {
 	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceResourceTagSpecificationArrayOutput {
 		return v.ResourceTagSpecifications

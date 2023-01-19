@@ -18,14 +18,14 @@ import * as utilities from "./utilities";
  *     endpoint: "http://endpoint.com",
  *     eventType: "AWS_EC2_INSTANCE_LAUNCH",
  *     format: {
- *         event: "%event%",
- *         instance_id: "%instance-id%",
- *         resource_id: "%resource-id%",
- *         resource_name: "%resource-name%",
+ *         event: `%event%`,
+ *         instance_id: `%instance-id%`,
+ *         resource_id: `%resource-id%`,
+ *         resource_name: `%resource-name%`,
  *         tags: "foo,baz,baz",
  *     },
  *     protocol: "http",
- *     resourceId: spotinst_elastigroup_aws_my_eg.id,
+ *     resourceId: spotinst_elastigroup_aws["my-eg"].id,
  * });
  * ```
  */

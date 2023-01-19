@@ -5,16 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./elastigroup";
-export * from "./oceanImport";
-export * from "./oceanLaunchSpec";
-export * from "./oceanLaunchSpecImport";
+export { ElastigroupArgs, ElastigroupState } from "./elastigroup";
+export type Elastigroup = import("./elastigroup").Elastigroup;
+export const Elastigroup: typeof import("./elastigroup").Elastigroup = null as any;
+utilities.lazyLoad(exports, ["Elastigroup"], () => require("./elastigroup"));
 
-// Import resources to register:
-import { Elastigroup } from "./elastigroup";
-import { OceanImport } from "./oceanImport";
-import { OceanLaunchSpec } from "./oceanLaunchSpec";
-import { OceanLaunchSpecImport } from "./oceanLaunchSpecImport";
+export { OceanImportArgs, OceanImportState } from "./oceanImport";
+export type OceanImport = import("./oceanImport").OceanImport;
+export const OceanImport: typeof import("./oceanImport").OceanImport = null as any;
+utilities.lazyLoad(exports, ["OceanImport"], () => require("./oceanImport"));
+
+export { OceanLaunchSpecArgs, OceanLaunchSpecState } from "./oceanLaunchSpec";
+export type OceanLaunchSpec = import("./oceanLaunchSpec").OceanLaunchSpec;
+export const OceanLaunchSpec: typeof import("./oceanLaunchSpec").OceanLaunchSpec = null as any;
+utilities.lazyLoad(exports, ["OceanLaunchSpec"], () => require("./oceanLaunchSpec"));
+
+export { OceanLaunchSpecImportArgs, OceanLaunchSpecImportState } from "./oceanLaunchSpecImport";
+export type OceanLaunchSpecImport = import("./oceanLaunchSpecImport").OceanLaunchSpecImport;
+export const OceanLaunchSpecImport: typeof import("./oceanLaunchSpecImport").OceanLaunchSpecImport = null as any;
+utilities.lazyLoad(exports, ["OceanLaunchSpecImport"], () => require("./oceanLaunchSpecImport"));
+
 
 const _module = {
     version: utilities.getVersion(),

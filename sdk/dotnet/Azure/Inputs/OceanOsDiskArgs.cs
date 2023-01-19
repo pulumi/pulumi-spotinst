@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanOsDiskArgs : Pulumi.ResourceArgs
+    public sealed class OceanOsDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The size of the OS disk in GB.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanOsDiskArgs()
         {
         }
+        public static new OceanOsDiskArgs Empty => new OceanOsDiskArgs();
     }
 }

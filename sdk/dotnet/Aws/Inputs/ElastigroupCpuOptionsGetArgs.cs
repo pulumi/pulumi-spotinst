@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupCpuOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupCpuOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ability to define the number of threads per core in instances that allow this.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupCpuOptionsGetArgs()
         {
         }
+        public static new ElastigroupCpuOptionsGetArgs Empty => new ElastigroupCpuOptionsGetArgs();
     }
 }

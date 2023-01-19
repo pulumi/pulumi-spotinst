@@ -14,6 +14,7 @@ import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecAttribute;
 import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecAutoscaleHeadroom;
 import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecBlockDeviceMapping;
 import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecSchedulingTask;
+import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecStrategy;
 import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecTag;
 import java.lang.Boolean;
 import java.lang.String;
@@ -28,10 +29,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.ecs.OceanLaunchSpec;
+ * import com.pulumi.spotinst.ecs.OceanLaunchSpecArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAttributeArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecSchedulingTaskArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecStrategyArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecTagArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -83,6 +99,12 @@ import javax.annotation.Nullable;
  *                 &#34;m5.12xlarge&#34;,
  *                 &#34;m5.24xlarge&#34;)
  *             .oceanId(&#34;o-123456&#34;)
+ *             .preferredSpotTypes(            
+ *                 &#34;m3.large&#34;,
+ *                 &#34;m3.xlarge&#34;,
+ *                 &#34;m3.2xlarge&#34;,
+ *                 &#34;m4.large&#34;,
+ *                 &#34;m4.xlarge&#34;)
  *             .restrictScaleDown(true)
  *             .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()
  *                 .cronExpression(&#34;0 1 * * *&#34;)
@@ -95,6 +117,9 @@ import javax.annotation.Nullable;
  *                 .taskType(&#34;manualHeadroomUpdate&#34;)
  *                 .build())
  *             .securityGroupIds(&#34;awseb-12345&#34;)
+ *             .strategies(OceanLaunchSpecStrategyArgs.builder()
+ *                 .spotPercentage(50)
+ *                 .build())
  *             .subnetIds(&#34;subnet-12345&#34;)
  *             .tags(OceanLaunchSpecTagArgs.builder()
  *                 .key(&#34;Env&#34;)
@@ -109,10 +134,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -251,6 +281,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return this.oceanId;
     }
     /**
+     * When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     * 
+     */
+    @Export(name="preferredSpotTypes", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> preferredSpotTypes;
+
+    /**
+     * @return When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     * 
+     */
+    public Output<Optional<List<String>>> preferredSpotTypes() {
+        return Codegen.optional(this.preferredSpotTypes);
+    }
+    /**
      * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      * 
      */
@@ -291,6 +335,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> securityGroupIds() {
         return Codegen.optional(this.securityGroupIds);
+    }
+    /**
+     * Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+     * 
+     */
+    @Export(name="strategies", type=List.class, parameters={OceanLaunchSpecStrategy.class})
+    private Output</* @Nullable */ List<OceanLaunchSpecStrategy>> strategies;
+
+    /**
+     * @return Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+     * 
+     */
+    public Output<Optional<List<OceanLaunchSpecStrategy>>> strategies() {
+        return Codegen.optional(this.strategies);
     }
     /**
      * Set subnets in launchSpec. Each element in the array should be a subnet ID.

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureImageMarketplaceImageGetArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureImageMarketplaceImageGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("offer", required: true)]
         public Input<string> Offer { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureImageMarketplaceImageGetArgs()
         {
         }
+        public static new StatefulNodeAzureImageMarketplaceImageGetArgs Empty => new StatefulNodeAzureImageMarketplaceImageGetArgs();
     }
 }

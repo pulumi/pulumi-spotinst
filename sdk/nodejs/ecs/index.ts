@@ -5,12 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./ocean";
-export * from "./oceanLaunchSpec";
+export { OceanArgs, OceanState } from "./ocean";
+export type Ocean = import("./ocean").Ocean;
+export const Ocean: typeof import("./ocean").Ocean = null as any;
+utilities.lazyLoad(exports, ["Ocean"], () => require("./ocean"));
 
-// Import resources to register:
-import { Ocean } from "./ocean";
-import { OceanLaunchSpec } from "./oceanLaunchSpec";
+export { OceanLaunchSpecArgs, OceanLaunchSpecState } from "./oceanLaunchSpec";
+export type OceanLaunchSpec = import("./oceanLaunchSpec").OceanLaunchSpec;
+export const OceanLaunchSpec: typeof import("./oceanLaunchSpec").OceanLaunchSpec = null as any;
+utilities.lazyLoad(exports, ["OceanLaunchSpec"], () => require("./oceanLaunchSpec"));
+
 
 const _module = {
     version: utilities.getVersion(),

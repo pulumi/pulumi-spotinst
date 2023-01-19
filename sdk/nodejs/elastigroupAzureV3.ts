@@ -2,82 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Provides a Spotinst elastigroup Azure resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const testAzureGroup = new spotinst.ElastigroupAzureV3("test_azure_group", {
- *     // --- LAUNCH SPEC ---------------------------------------------------
- *     customData: "IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=",
- *     desiredCapacity: 1,
- *     // --- IMAGE ---------------------------------------------------------
- *     images: [{
- *         marketplaces: [{
- *             offer: "UbuntuServer",
- *             publisher: "Canonical",
- *             sku: "18.04-LTS",
- *             version: "latest",
- *         }],
- *     }],
- *     // --- LOGIN ---------------------------------------------------------
- *     login: {
- *         sshPublicKey: "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
- *         userName: "admin",
- *     },
- *     managedServiceIdentities: [{
- *         name: "ocean-westus-dev-aks-agentpool",
- *         resourceGroupName: "MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
- *     }],
- *     maxSize: 1,
- *     // --- CAPACITY ------------------------------------------------------
- *     minSize: 0,
- *     // --- NETWORK -------------------------------------------------------
- *     network: {
- *         networkInterfaces: [{
- *             additionalIpConfigs: [{
- *                 PrivateIPVersion: "IPv4",
- *                 name: "SecondaryIPConfig",
- *             }],
- *             applicationSecurityGroups: [{
- *                 name: "ApplicationSecurityGroupName",
- *                 resourceGroupName: "ResourceGroup",
- *             }],
- *             assignPublicIp: false,
- *             isPrimary: true,
- *             subnetName: "default",
- *         }],
- *         resourceGroupName: "ResourceGroup",
- *         virtualNetworkName: "VirtualNetworkName",
- *     },
- *     // --- INSTANCE TYPES ------------------------------------------------
- *     odSizes: [
- *         "standard_a1_v1",
- *         "standard_a1_v2",
- *     ],
- *     os: "Linux",
- *     region: "eastus",
- *     resourceGroupName: "spotinst-azure",
- *     spotSizes: [
- *         "standard_a1_v1",
- *         "standard_a1_v2",
- *     ],
- *     // --- STRATEGY ------------------------------------------------------
- *     strategy: {
- *         drainingTimeout: 300,
- *         fallbackToOnDemand: true,
- *         odCount: 1,
- *         spotPercentage: 65,
- *     },
- * });
- * ```
  */
 export class ElastigroupAzureV3 extends pulumi.CustomResource {
     /**
@@ -115,13 +45,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      * The desired number of instances the group should have at any time.
      */
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
-    /**
-     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     */
     public readonly images!: pulumi.Output<outputs.ElastigroupAzureV3Image[] | undefined>;
-    /**
-     * Describes the login configuration.
-     */
     public readonly login!: pulumi.Output<outputs.ElastigroupAzureV3Login | undefined>;
     /**
      * List of Managed Service Identity objects.
@@ -136,12 +60,9 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * - The name of the Application Security group.
+     * Name of the Managed Service Identity.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Defines the Virtual Network and Subnet for your Elastigroup.
-     */
     public readonly network!: pulumi.Output<outputs.ElastigroupAzureV3Network>;
     /**
      * Available On-Demand sizes
@@ -156,17 +77,13 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * - The resource group of the Application Security Group.
-     * }
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      */
     public readonly resourceGroupName!: pulumi.Output<string>;
     /**
      * Available Low-Priority sizes.
      */
     public readonly spotSizes!: pulumi.Output<string[]>;
-    /**
-     * Describes the deployment strategy.
-     */
     public readonly strategy!: pulumi.Output<outputs.ElastigroupAzureV3Strategy>;
 
     /**
@@ -253,13 +170,7 @@ export interface ElastigroupAzureV3State {
      * The desired number of instances the group should have at any time.
      */
     desiredCapacity?: pulumi.Input<number>;
-    /**
-     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     */
     images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[]>;
-    /**
-     * Describes the login configuration.
-     */
     login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
     /**
      * List of Managed Service Identity objects.
@@ -274,12 +185,9 @@ export interface ElastigroupAzureV3State {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * - The name of the Application Security group.
+     * Name of the Managed Service Identity.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Defines the Virtual Network and Subnet for your Elastigroup.
-     */
     network?: pulumi.Input<inputs.ElastigroupAzureV3Network>;
     /**
      * Available On-Demand sizes
@@ -294,17 +202,13 @@ export interface ElastigroupAzureV3State {
      */
     region?: pulumi.Input<string>;
     /**
-     * - The resource group of the Application Security Group.
-     * }
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      */
     resourceGroupName?: pulumi.Input<string>;
     /**
      * Available Low-Priority sizes.
      */
     spotSizes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Describes the deployment strategy.
-     */
     strategy?: pulumi.Input<inputs.ElastigroupAzureV3Strategy>;
 }
 
@@ -320,13 +224,7 @@ export interface ElastigroupAzureV3Args {
      * The desired number of instances the group should have at any time.
      */
     desiredCapacity?: pulumi.Input<number>;
-    /**
-     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     */
     images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[]>;
-    /**
-     * Describes the login configuration.
-     */
     login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
     /**
      * List of Managed Service Identity objects.
@@ -341,12 +239,9 @@ export interface ElastigroupAzureV3Args {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * - The name of the Application Security group.
+     * Name of the Managed Service Identity.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Defines the Virtual Network and Subnet for your Elastigroup.
-     */
     network: pulumi.Input<inputs.ElastigroupAzureV3Network>;
     /**
      * Available On-Demand sizes
@@ -361,16 +256,12 @@ export interface ElastigroupAzureV3Args {
      */
     region: pulumi.Input<string>;
     /**
-     * - The resource group of the Application Security Group.
-     * }
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Available Low-Priority sizes.
      */
     spotSizes: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Describes the deployment strategy.
-     */
     strategy: pulumi.Input<inputs.ElastigroupAzureV3Strategy>;
 }

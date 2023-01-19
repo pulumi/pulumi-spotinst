@@ -15,31 +15,23 @@ public final class ElastigroupAzureV3NetworkArgs extends com.pulumi.resources.Re
 
     public static final ElastigroupAzureV3NetworkArgs Empty = new ElastigroupAzureV3NetworkArgs();
 
-    /**
-     * - 
-     * 
-     */
     @Import(name="networkInterfaces", required=true)
     private Output<List<ElastigroupAzureV3NetworkNetworkInterfaceArgs>> networkInterfaces;
 
-    /**
-     * @return -
-     * 
-     */
     public Output<List<ElastigroupAzureV3NetworkNetworkInterfaceArgs>> networkInterfaces() {
         return this.networkInterfaces;
     }
 
     /**
-     * - The resource group of the Application Security Group.
-     *   }
+     * The resource group of the Application Security Group.
+     * }
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return - The resource group of the Application Security Group.
+     * @return The resource group of the Application Security Group.
      * }
      * 
      */
@@ -88,39 +80,21 @@ public final class ElastigroupAzureV3NetworkArgs extends com.pulumi.resources.Re
             $ = new ElastigroupAzureV3NetworkArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param networkInterfaces -
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkInterfaces(Output<List<ElastigroupAzureV3NetworkNetworkInterfaceArgs>> networkInterfaces) {
             $.networkInterfaces = networkInterfaces;
             return this;
         }
 
-        /**
-         * @param networkInterfaces -
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkInterfaces(List<ElastigroupAzureV3NetworkNetworkInterfaceArgs> networkInterfaces) {
             return networkInterfaces(Output.of(networkInterfaces));
         }
 
-        /**
-         * @param networkInterfaces -
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkInterfaces(ElastigroupAzureV3NetworkNetworkInterfaceArgs... networkInterfaces) {
             return networkInterfaces(List.of(networkInterfaces));
         }
 
         /**
-         * @param resourceGroupName - The resource group of the Application Security Group.
+         * @param resourceGroupName The resource group of the Application Security Group.
          * }
          * 
          * @return builder
@@ -132,7 +106,7 @@ public final class ElastigroupAzureV3NetworkArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param resourceGroupName - The resource group of the Application Security Group.
+         * @param resourceGroupName The resource group of the Application Security Group.
          * }
          * 
          * @return builder

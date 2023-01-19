@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureDataDiskArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureDataDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("lun", required: true)]
         public Input<int> Lun { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureDataDiskArgs()
         {
         }
+        public static new StatefulNodeAzureDataDiskArgs Empty => new StatefulNodeAzureDataDiskArgs();
     }
 }

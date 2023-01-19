@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     public sealed class ElastigroupScalingDownPolicyDimension
     {
         /// <summary>
-        /// The dimension name.
+        /// The group name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The dimension value.
+        /// Labels value.
         /// </summary>
         public readonly string? Value;
 

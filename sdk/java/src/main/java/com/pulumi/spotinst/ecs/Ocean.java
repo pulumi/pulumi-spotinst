@@ -12,6 +12,7 @@ import com.pulumi.spotinst.ecs.OceanArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanState;
 import com.pulumi.spotinst.ecs.outputs.OceanAutoscaler;
 import com.pulumi.spotinst.ecs.outputs.OceanBlockDeviceMapping;
+import com.pulumi.spotinst.ecs.outputs.OceanFilters;
 import com.pulumi.spotinst.ecs.outputs.OceanInstanceMetadataOptions;
 import com.pulumi.spotinst.ecs.outputs.OceanLogging;
 import com.pulumi.spotinst.ecs.outputs.OceanOptimizeImages;
@@ -29,13 +30,29 @@ import javax.annotation.Nullable;
  * Manages a Spotinst Ocean ECS resource.
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.ecs.Ocean;
+ * import com.pulumi.spotinst.ecs.OceanArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingEbsArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanInstanceMetadataOptionsArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLoggingArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLoggingExportArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanOptimizeImagesArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanTagArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -66,6 +83,7 @@ import javax.annotation.Nullable;
  *             .ebsOptimized(true)
  *             .iamInstanceProfile(&#34;iam-profile&#34;)
  *             .imageId(&#34;ami-12345&#34;)
+ *             .instanceTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .instanceMetadataOptions(OceanInstanceMetadataOptionsArgs.builder()
  *                 .httpPutResponseHopLimit(10)
  *                 .httpTokens(&#34;required&#34;)
@@ -98,7 +116,6 @@ import javax.annotation.Nullable;
  *             .userData(&#34;echo hello world&#34;)
  *             .utilizeCommitments(false)
  *             .utilizeReservedInstances(false)
- *             .whitelists(&#34;t3.medium&#34;)
  *             .build());
  * 
  *     }
@@ -107,10 +124,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -121,6 +143,14 @@ import javax.annotation.Nullable;
  *         ctx.export(&#34;oceanId&#34;, spotinst_ocean_ecs.example().id());
  *     }
  * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Clusters can be imported using the Ocean `id`, e.g., hcl
+ * 
+ * ```sh
+ *  $ pulumi import spotinst:ecs/ocean:Ocean this o-12345678
  * ```
  * 
  */
@@ -155,6 +185,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoscaler);
     }
     /**
+     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+     * 
+     */
+    @Export(name="blacklists", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> blacklists;
+
+    /**
+     * @return Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
+     * 
+     */
+    public Output<Optional<List<String>>> blacklists() {
+        return Codegen.optional(this.blacklists);
+    }
+    /**
      * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      * 
      */
@@ -169,14 +213,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.blockDeviceMappings);
     }
     /**
-     * The ocean cluster name.
+     * The name of the ECS cluster.
      * 
      */
     @Export(name="clusterName", type=String.class, parameters={})
     private Output<String> clusterName;
 
     /**
-     * @return The ocean cluster name.
+     * @return The name of the ECS cluster.
      * 
      */
     public Output<String> clusterName() {
@@ -223,6 +267,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> ebsOptimized() {
         return Codegen.optional(this.ebsOptimized);
+    }
+    /**
+     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+     * 
+     */
+    @Export(name="filters", type=OceanFilters.class, parameters={})
+    private Output</* @Nullable */ OceanFilters> filters;
+
+    /**
+     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
+     * 
+     */
+    public Output<Optional<OceanFilters>> filters() {
+        return Codegen.optional(this.filters);
     }
     /**
      * The instance profile iam role.
@@ -448,17 +506,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<OceanTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     @Export(name="updatePolicy", type=OceanUpdatePolicy.class, parameters={})
     private Output</* @Nullable */ OceanUpdatePolicy> updatePolicy;
 
-    /**
-     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     public Output<Optional<OceanUpdatePolicy>> updatePolicy() {
         return Codegen.optional(this.updatePolicy);
     }
@@ -519,14 +569,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.utilizeReservedInstances);
     }
     /**
-     * Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
      * 
      */
     @Export(name="whitelists", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> whitelists;
 
     /**
-     * @return Instance types allowed in the Ocean cluster, Cannot be configured if blacklist is configured.
+     * @return Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
      * 
      */
     public Output<Optional<List<String>>> whitelists() {

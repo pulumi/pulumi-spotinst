@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupMultaiTargetSetGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupMultaiTargetSetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of Multai Load Balancer.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupMultaiTargetSetGetArgs()
         {
         }
+        public static new ElastigroupMultaiTargetSetGetArgs Empty => new ElastigroupMultaiTargetSetGetArgs();
     }
 }

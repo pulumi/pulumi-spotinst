@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationGitlabRunner
     {
         /// <summary>
-        /// Specifies whether the integration is enabled.
+        /// Setting the task to being enabled or disabled.
         /// </summary>
         public readonly bool? IsEnabled;
 

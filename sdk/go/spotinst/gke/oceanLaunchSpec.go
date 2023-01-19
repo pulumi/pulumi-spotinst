@@ -15,6 +15,124 @@ import (
 //
 // > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `nodePoolName`.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/gke"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gke.NewOceanLaunchSpec(ctx, "example", &gke.OceanLaunchSpecArgs{
+//				AutoscaleHeadrooms: gke.OceanLaunchSpecAutoscaleHeadroomArray{
+//					&gke.OceanLaunchSpecAutoscaleHeadroomArgs{
+//						CpuPerUnit:    pulumi.Int(1000),
+//						GpuPerUnit:    pulumi.Int(0),
+//						MemoryPerUnit: pulumi.Int(2048),
+//						NumOfUnits:    pulumi.Int(5),
+//					},
+//				},
+//				AutoscaleHeadroomsAutomatics: gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{
+//					&gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{
+//						AutoHeadroomPercentage: pulumi.Int(5),
+//					},
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String("n1-standard-1, n1-standard-2"),
+//				},
+//				Labels: gke.OceanLaunchSpecLabelArray{
+//					&gke.OceanLaunchSpecLabelArgs{
+//						Key:   pulumi.String("labelKey"),
+//						Value: pulumi.String("labelVal"),
+//					},
+//				},
+//				Metadatas: gke.OceanLaunchSpecMetadataArray{
+//					&gke.OceanLaunchSpecMetadataArgs{
+//						Key:   pulumi.String("gci-update-strategy"),
+//						Value: pulumi.String("update_disabled"),
+//					},
+//				},
+//				NodePoolName: pulumi.String("default-pool"),
+//				OceanId:      pulumi.String("o-123456"),
+//				ResourceLimits: &gke.OceanLaunchSpecResourceLimitsArgs{
+//					MaxInstanceCount: pulumi.Int(3),
+//					MinInstanceCount: pulumi.Int(0),
+//				},
+//				RestrictScaleDown: pulumi.Bool(true),
+//				RootVolumeSize:    pulumi.Int(10),
+//				RootVolumeType:    pulumi.String("pd-standard"),
+//				SchedulingTasks: gke.OceanLaunchSpecSchedulingTaskArray{
+//					&gke.OceanLaunchSpecSchedulingTaskArgs{
+//						CronExpression: pulumi.String("0 1 * * *"),
+//						IsEnabled:      pulumi.Bool(true),
+//						TaskHeadrooms: gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
+//							&gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
+//								CpuPerUnit:    pulumi.Int(1000),
+//								GpuPerUnit:    pulumi.Int(0),
+//								MemoryPerUnit: pulumi.Int(2048),
+//								NumOfUnits:    pulumi.Int(5),
+//							},
+//						},
+//						TaskType: pulumi.String("manualHeadroomUpdate"),
+//					},
+//				},
+//				ServiceAccount: pulumi.String("default"),
+//				ShieldedInstanceConfig: &gke.OceanLaunchSpecShieldedInstanceConfigArgs{
+//					EnableIntegrityMonitoring: pulumi.Bool(true),
+//					EnableSecureBoot:          pulumi.Bool(false),
+//				},
+//				SourceImage: pulumi.String("image"),
+//				Storage: &gke.OceanLaunchSpecStorageArgs{
+//					LocalSsdCount: pulumi.Int(5),
+//				},
+//				Strategies: gke.OceanLaunchSpecStrategyArray{
+//					&gke.OceanLaunchSpecStrategyArgs{
+//						PreemptiblePercentage: pulumi.Int(30),
+//					},
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("tag1"),
+//					pulumi.String("tag2"),
+//				},
+//				Taints: gke.OceanLaunchSpecTaintArray{
+//					&gke.OceanLaunchSpecTaintArgs{
+//						Effect: pulumi.String("taintEffect"),
+//						Key:    pulumi.String("taintKey"),
+//						Value:  pulumi.String("taintVal"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ctx.Export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec.Example.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Update Policy
 //
 // * `updatePolicy` - (Optional)
@@ -77,6 +195,8 @@ type OceanLaunchSpec struct {
 	Storage OceanLaunchSpecStorageOutput `pulumi:"storage"`
 	// The Ocean Launch Spec Strategy object.
 	Strategies OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
+	// Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints       OceanLaunchSpecTaintArrayOutput      `pulumi:"taints"`
 	UpdatePolicy OceanLaunchSpecUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
@@ -150,6 +270,8 @@ type oceanLaunchSpecState struct {
 	Storage *OceanLaunchSpecStorage `pulumi:"storage"`
 	// The Ocean Launch Spec Strategy object.
 	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
+	// Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+	Tags []string `pulumi:"tags"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints       []OceanLaunchSpecTaint       `pulumi:"taints"`
 	UpdatePolicy *OceanLaunchSpecUpdatePolicy `pulumi:"updatePolicy"`
@@ -192,6 +314,8 @@ type OceanLaunchSpecState struct {
 	Storage OceanLaunchSpecStoragePtrInput
 	// The Ocean Launch Spec Strategy object.
 	Strategies OceanLaunchSpecStrategyArrayInput
+	// Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+	Tags pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints       OceanLaunchSpecTaintArrayInput
 	UpdatePolicy OceanLaunchSpecUpdatePolicyPtrInput
@@ -238,6 +362,8 @@ type oceanLaunchSpecArgs struct {
 	Storage *OceanLaunchSpecStorage `pulumi:"storage"`
 	// The Ocean Launch Spec Strategy object.
 	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
+	// Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+	Tags []string `pulumi:"tags"`
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints       []OceanLaunchSpecTaint       `pulumi:"taints"`
 	UpdatePolicy *OceanLaunchSpecUpdatePolicy `pulumi:"updatePolicy"`
@@ -281,6 +407,8 @@ type OceanLaunchSpecArgs struct {
 	Storage OceanLaunchSpecStoragePtrInput
 	// The Ocean Launch Spec Strategy object.
 	Strategies OceanLaunchSpecStrategyArrayInput
+	// Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+	Tags pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in an Ocean cluster.
 	Taints       OceanLaunchSpecTaintArrayInput
 	UpdatePolicy OceanLaunchSpecUpdatePolicyPtrInput
@@ -463,6 +591,11 @@ func (o OceanLaunchSpecOutput) Storage() OceanLaunchSpecStorageOutput {
 // The Ocean Launch Spec Strategy object.
 func (o OceanLaunchSpecOutput) Strategies() OceanLaunchSpecStrategyArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecStrategyArrayOutput { return v.Strategies }).(OceanLaunchSpecStrategyArrayOutput)
+}
+
+// Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+func (o OceanLaunchSpecOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Optionally adds labels to instances launched in an Ocean cluster.

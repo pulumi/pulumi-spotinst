@@ -11,110 +11,9 @@ namespace Pulumi.SpotInst
 {
     /// <summary>
     /// Provides a Spotinst elastigroup Azure resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var testAzureGroup = new SpotInst.ElastigroupAzureV3("testAzureGroup", new SpotInst.ElastigroupAzureV3Args
-    ///         {
-    ///             CustomData = "IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=",
-    ///             DesiredCapacity = 1,
-    ///             Images = 
-    ///             {
-    ///                 new SpotInst.Inputs.ElastigroupAzureV3ImageArgs
-    ///                 {
-    ///                     Marketplaces = 
-    ///                     {
-    ///                         new SpotInst.Inputs.ElastigroupAzureV3ImageMarketplaceArgs
-    ///                         {
-    ///                             Offer = "UbuntuServer",
-    ///                             Publisher = "Canonical",
-    ///                             Sku = "18.04-LTS",
-    ///                             Version = "latest",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Login = new SpotInst.Inputs.ElastigroupAzureV3LoginArgs
-    ///             {
-    ///                 SshPublicKey = "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
-    ///                 UserName = "admin",
-    ///             },
-    ///             ManagedServiceIdentities = 
-    ///             {
-    ///                 new SpotInst.Inputs.ElastigroupAzureV3ManagedServiceIdentityArgs
-    ///                 {
-    ///                     Name = "ocean-westus-dev-aks-agentpool",
-    ///                     ResourceGroupName = "MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
-    ///                 },
-    ///             },
-    ///             MaxSize = 1,
-    ///             MinSize = 0,
-    ///             Network = new SpotInst.Inputs.ElastigroupAzureV3NetworkArgs
-    ///             {
-    ///                 NetworkInterfaces = 
-    ///                 {
-    ///                     new SpotInst.Inputs.ElastigroupAzureV3NetworkNetworkInterfaceArgs
-    ///                     {
-    ///                         AdditionalIpConfigs = 
-    ///                         {
-    ///                             new SpotInst.Inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs
-    ///                             {
-    ///                                 PrivateIPVersion = "IPv4",
-    ///                                 Name = "SecondaryIPConfig",
-    ///                             },
-    ///                         },
-    ///                         ApplicationSecurityGroup = 
-    ///                         {
-    ///                             
-    ///                             {
-    ///                                 { "name", "ApplicationSecurityGroupName" },
-    ///                                 { "resourceGroupName", "ResourceGroup" },
-    ///                             },
-    ///                         },
-    ///                         AssignPublicIp = false,
-    ///                         IsPrimary = true,
-    ///                         SubnetName = "default",
-    ///                     },
-    ///                 },
-    ///                 ResourceGroupName = "ResourceGroup",
-    ///                 VirtualNetworkName = "VirtualNetworkName",
-    ///             },
-    ///             OdSizes = 
-    ///             {
-    ///                 "standard_a1_v1",
-    ///                 "standard_a1_v2",
-    ///             },
-    ///             Os = "Linux",
-    ///             Region = "eastus",
-    ///             ResourceGroupName = "spotinst-azure",
-    ///             SpotSizes = 
-    ///             {
-    ///                 "standard_a1_v1",
-    ///                 "standard_a1_v2",
-    ///             },
-    ///             Strategy = new SpotInst.Inputs.ElastigroupAzureV3StrategyArgs
-    ///             {
-    ///                 DrainingTimeout = 300,
-    ///                 FallbackToOnDemand = true,
-    ///                 OdCount = 1,
-    ///                 SpotPercentage = 65,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:index/elastigroupAzureV3:ElastigroupAzureV3")]
-    public partial class ElastigroupAzureV3 : Pulumi.CustomResource
+    public partial class ElastigroupAzureV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Custom init script file or text in Base64 encoded format.
@@ -128,15 +27,9 @@ namespace Pulumi.SpotInst
         [Output("desiredCapacity")]
         public Output<int?> DesiredCapacity { get; private set; } = null!;
 
-        /// <summary>
-        /// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-        /// </summary>
         [Output("images")]
         public Output<ImmutableArray<Outputs.ElastigroupAzureV3Image>> Images { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the login configuration.
-        /// </summary>
         [Output("login")]
         public Output<Outputs.ElastigroupAzureV3Login?> Login { get; private set; } = null!;
 
@@ -159,14 +52,11 @@ namespace Pulumi.SpotInst
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// - The name of the Application Security group.
+        /// Name of the Managed Service Identity.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Defines the Virtual Network and Subnet for your Elastigroup.
-        /// </summary>
         [Output("network")]
         public Output<Outputs.ElastigroupAzureV3Network> Network { get; private set; } = null!;
 
@@ -189,8 +79,7 @@ namespace Pulumi.SpotInst
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// - The resource group of the Application Security Group.
-        /// }
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
@@ -201,9 +90,6 @@ namespace Pulumi.SpotInst
         [Output("spotSizes")]
         public Output<ImmutableArray<string>> SpotSizes { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the deployment strategy.
-        /// </summary>
         [Output("strategy")]
         public Output<Outputs.ElastigroupAzureV3Strategy> Strategy { get; private set; } = null!;
 
@@ -251,7 +137,7 @@ namespace Pulumi.SpotInst
         }
     }
 
-    public sealed class ElastigroupAzureV3Args : Pulumi.ResourceArgs
+    public sealed class ElastigroupAzureV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Custom init script file or text in Base64 encoded format.
@@ -267,19 +153,12 @@ namespace Pulumi.SpotInst
 
         [Input("images")]
         private InputList<Inputs.ElastigroupAzureV3ImageArgs>? _images;
-
-        /// <summary>
-        /// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-        /// </summary>
         public InputList<Inputs.ElastigroupAzureV3ImageArgs> Images
         {
             get => _images ?? (_images = new InputList<Inputs.ElastigroupAzureV3ImageArgs>());
             set => _images = value;
         }
 
-        /// <summary>
-        /// Describes the login configuration.
-        /// </summary>
         [Input("login")]
         public Input<Inputs.ElastigroupAzureV3LoginArgs>? Login { get; set; }
 
@@ -308,14 +187,11 @@ namespace Pulumi.SpotInst
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// - The name of the Application Security group.
+        /// Name of the Managed Service Identity.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Defines the Virtual Network and Subnet for your Elastigroup.
-        /// </summary>
         [Input("network", required: true)]
         public Input<Inputs.ElastigroupAzureV3NetworkArgs> Network { get; set; } = null!;
 
@@ -344,8 +220,7 @@ namespace Pulumi.SpotInst
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// - The resource group of the Application Security Group.
-        /// }
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
@@ -362,18 +237,16 @@ namespace Pulumi.SpotInst
             set => _spotSizes = value;
         }
 
-        /// <summary>
-        /// Describes the deployment strategy.
-        /// </summary>
         [Input("strategy", required: true)]
         public Input<Inputs.ElastigroupAzureV3StrategyArgs> Strategy { get; set; } = null!;
 
         public ElastigroupAzureV3Args()
         {
         }
+        public static new ElastigroupAzureV3Args Empty => new ElastigroupAzureV3Args();
     }
 
-    public sealed class ElastigroupAzureV3State : Pulumi.ResourceArgs
+    public sealed class ElastigroupAzureV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Custom init script file or text in Base64 encoded format.
@@ -389,19 +262,12 @@ namespace Pulumi.SpotInst
 
         [Input("images")]
         private InputList<Inputs.ElastigroupAzureV3ImageGetArgs>? _images;
-
-        /// <summary>
-        /// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-        /// </summary>
         public InputList<Inputs.ElastigroupAzureV3ImageGetArgs> Images
         {
             get => _images ?? (_images = new InputList<Inputs.ElastigroupAzureV3ImageGetArgs>());
             set => _images = value;
         }
 
-        /// <summary>
-        /// Describes the login configuration.
-        /// </summary>
         [Input("login")]
         public Input<Inputs.ElastigroupAzureV3LoginGetArgs>? Login { get; set; }
 
@@ -430,14 +296,11 @@ namespace Pulumi.SpotInst
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// - The name of the Application Security group.
+        /// Name of the Managed Service Identity.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Defines the Virtual Network and Subnet for your Elastigroup.
-        /// </summary>
         [Input("network")]
         public Input<Inputs.ElastigroupAzureV3NetworkGetArgs>? Network { get; set; }
 
@@ -466,8 +329,7 @@ namespace Pulumi.SpotInst
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// - The resource group of the Application Security Group.
-        /// }
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
@@ -484,14 +346,12 @@ namespace Pulumi.SpotInst
             set => _spotSizes = value;
         }
 
-        /// <summary>
-        /// Describes the deployment strategy.
-        /// </summary>
         [Input("strategy")]
         public Input<Inputs.ElastigroupAzureV3StrategyGetArgs>? Strategy { get; set; }
 
         public ElastigroupAzureV3State()
         {
         }
+        public static new ElastigroupAzureV3State Empty => new ElastigroupAzureV3State();
     }
 }

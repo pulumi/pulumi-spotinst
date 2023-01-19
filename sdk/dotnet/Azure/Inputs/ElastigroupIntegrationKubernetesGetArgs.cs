@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupIntegrationKubernetesGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationKubernetesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cluster ID.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupIntegrationKubernetesGetArgs()
         {
         }
+        public static new ElastigroupIntegrationKubernetesGetArgs Empty => new ElastigroupIntegrationKubernetesGetArgs();
     }
 }

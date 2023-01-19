@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanAutoscalerArgs : Pulumi.ResourceArgs
+    public sealed class OceanAutoscalerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
@@ -75,5 +75,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanAutoscalerArgs()
         {
         }
+        public static new OceanAutoscalerArgs Empty => new OceanAutoscalerArgs();
     }
 }

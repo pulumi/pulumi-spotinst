@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupScalingUpPolicyStepAdjustmentArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingUpPolicyStepAdjustmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        /// The action to take when scale up according to step's threshold is needed.
         /// </summary>
         [Input("action", required: true)]
         public Input<Inputs.ElastigroupScalingUpPolicyStepAdjustmentActionArgs> Action { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupScalingUpPolicyStepAdjustmentArgs()
         {
         }
+        public static new ElastigroupScalingUpPolicyStepAdjustmentArgs Empty => new ElastigroupScalingUpPolicyStepAdjustmentArgs();
     }
 }

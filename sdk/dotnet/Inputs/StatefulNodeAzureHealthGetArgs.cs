@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureHealthGetArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureHealthGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoHealing", required: true)]
         public Input<bool> AutoHealing { get; set; } = null!;
@@ -32,5 +32,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureHealthGetArgs()
         {
         }
+        public static new StatefulNodeAzureHealthGetArgs Empty => new StatefulNodeAzureHealthGetArgs();
     }
 }

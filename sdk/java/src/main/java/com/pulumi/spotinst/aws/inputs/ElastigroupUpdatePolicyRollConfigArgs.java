@@ -19,14 +19,14 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
     public static final ElastigroupUpdatePolicyRollConfigArgs Empty = new ElastigroupUpdatePolicyRollConfigArgs();
 
     /**
-     * Sets the percentage of the instances to deploy in each batch.
+     * The percentage size of each batch in the scheduled deployment roll.
      * 
      */
     @Import(name="batchSizePercentage", required=true)
     private Output<Integer> batchSizePercentage;
 
     /**
-     * @return Sets the percentage of the instances to deploy in each batch.
+     * @return The percentage size of each batch in the scheduled deployment roll.
      * 
      */
     public Output<Integer> batchSizePercentage() {
@@ -34,14 +34,14 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Sets the grace period for new instances to become healthy.
+     * The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
      * 
      */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
      * 
      */
     public Optional<Output<Integer>> gracePeriod() {
@@ -49,14 +49,14 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+     * The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     public Optional<Output<String>> healthCheckType() {
@@ -138,7 +138,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
+         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
+         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param gracePeriod Sets the grace period for new instances to become healthy.
+         * @param gracePeriod The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param gracePeriod Sets the grace period for new instances to become healthy.
+         * @param gracePeriod The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param healthCheckType Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+         * @param healthCheckType The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param healthCheckType Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+         * @param healthCheckType The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
          * 
          * @return builder
          * 
