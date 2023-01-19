@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class BeanstalkManagedActionsGetArgs : Pulumi.ResourceArgs
+    public sealed class BeanstalkManagedActionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Platform Update parameters
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public BeanstalkManagedActionsGetArgs()
         {
         }
+        public static new BeanstalkManagedActionsGetArgs Empty => new BeanstalkManagedActionsGetArgs();
     }
 }

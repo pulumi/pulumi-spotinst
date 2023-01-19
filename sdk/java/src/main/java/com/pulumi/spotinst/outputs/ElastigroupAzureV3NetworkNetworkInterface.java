@@ -20,15 +20,11 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
      */
     private @Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig> additionalIpConfigs;
     /**
-     * @return - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+     * @return List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
      * 
      */
     private @Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> applicationSecurityGroups;
     private Boolean assignPublicIp;
-    /**
-     * @return -
-     * 
-     */
     private Boolean isPrimary;
     /**
      * @return ID of subnet.
@@ -45,7 +41,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
         return this.additionalIpConfigs == null ? List.of() : this.additionalIpConfigs;
     }
     /**
-     * @return - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+     * @return List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
      * 
      */
     public List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> applicationSecurityGroups() {
@@ -54,10 +50,6 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
     public Boolean assignPublicIp() {
         return this.assignPublicIp;
     }
-    /**
-     * @return -
-     * 
-     */
     public Boolean isPrimary() {
         return this.isPrimary;
     }

@@ -10,20 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanScheduledTaskArgs : Pulumi.ResourceArgs
+    public sealed class OceanScheduledTaskArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Set shutdown hours for cluster object.
-        /// </summary>
         [Input("shutdownHours")]
         public Input<Inputs.OceanScheduledTaskShutdownHoursArgs>? ShutdownHours { get; set; }
 
         [Input("tasks")]
         private InputList<Inputs.OceanScheduledTaskTaskArgs>? _tasks;
-
-        /// <summary>
-        /// The scheduling tasks for the cluster.
-        /// </summary>
         public InputList<Inputs.OceanScheduledTaskTaskArgs> Tasks
         {
             get => _tasks ?? (_tasks = new InputList<Inputs.OceanScheduledTaskTaskArgs>());
@@ -33,5 +26,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanScheduledTaskArgs()
         {
         }
+        public static new OceanScheduledTaskArgs Empty => new OceanScheduledTaskArgs();
     }
 }

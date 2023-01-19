@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupUpdatePolicyRollConfigStrategyGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupUpdatePolicyRollConfigStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        /// The action to take when scale up according to step's threshold is needed.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -31,7 +31,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<Inputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailureGetArgs>? OnFailure { get; set; }
 
         /// <summary>
-        /// Specify whether to drain incoming TCP connections before terminating a server.
+        /// Bool value if to wait to drain instance
         /// </summary>
         [Input("shouldDrainInstances")]
         public Input<bool>? ShouldDrainInstances { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupUpdatePolicyRollConfigStrategyGetArgs()
         {
         }
+        public static new ElastigroupUpdatePolicyRollConfigStrategyGetArgs Empty => new ElastigroupUpdatePolicyRollConfigStrategyGetArgs();
     }
 }

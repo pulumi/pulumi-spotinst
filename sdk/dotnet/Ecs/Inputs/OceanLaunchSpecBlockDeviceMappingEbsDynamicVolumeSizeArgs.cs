@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs : global::Pulumi.ResourceArgs
     {
         [Input("baseSize", required: true)]
         public Input<int> BaseSize { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs()
         {
         }
+        public static new OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs Empty => new OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs();
     }
 }

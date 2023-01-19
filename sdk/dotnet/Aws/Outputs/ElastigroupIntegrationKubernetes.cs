@@ -13,24 +13,21 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationKubernetes
     {
-        /// <summary>
-        /// The public IP of the DC/OS Master.
-        /// </summary>
         public readonly string? ApiServer;
         /// <summary>
         /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
         /// </summary>
         public readonly int? AutoscaleCooldown;
         /// <summary>
-        /// Settings for scale down actions.
+        /// Enabling scale down.
         /// </summary>
         public readonly Outputs.ElastigroupIntegrationKubernetesAutoscaleDown? AutoscaleDown;
         /// <summary>
-        /// An option to set compute reserve for the cluster.
+        /// Headroom for the cluster.
         /// </summary>
         public readonly Outputs.ElastigroupIntegrationKubernetesAutoscaleHeadroom? AutoscaleHeadroom;
         /// <summary>
-        /// Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
+        /// Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
         /// </summary>
         public readonly bool? AutoscaleIsAutoConfig;
         /// <summary>

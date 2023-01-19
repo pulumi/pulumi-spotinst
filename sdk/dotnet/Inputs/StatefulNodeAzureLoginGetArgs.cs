@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureLoginGetArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureLoginGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureLoginGetArgs()
         {
         }
+        public static new StatefulNodeAzureLoginGetArgs Empty => new StatefulNodeAzureLoginGetArgs();
     }
 }

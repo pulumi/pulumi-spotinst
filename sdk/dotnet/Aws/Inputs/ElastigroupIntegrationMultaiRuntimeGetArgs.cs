@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationMultaiRuntimeGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationMultaiRuntimeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The deployment id you want to get
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationMultaiRuntimeGetArgs()
         {
         }
+        public static new ElastigroupIntegrationMultaiRuntimeGetArgs Empty => new ElastigroupIntegrationMultaiRuntimeGetArgs();
     }
 }

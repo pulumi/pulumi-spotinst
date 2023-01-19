@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanAutoscalerResourceLimitsGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanAutoscalerResourceLimitsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum memory in GiB units that can be allocated to the cluster.
+        /// Maximum amount of Memory (GiB).
         /// </summary>
         [Input("maxMemoryGib")]
         public Input<int>? MaxMemoryGib { get; set; }
 
         /// <summary>
-        /// The maximum cpu in vCPU units that can be allocated to the cluster.
+        /// Maximum number of vcpus available.
         /// </summary>
         [Input("maxVcpu")]
         public Input<int>? MaxVcpu { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanAutoscalerResourceLimitsGetArgs()
         {
         }
+        public static new OceanAutoscalerResourceLimitsGetArgs Empty => new OceanAutoscalerResourceLimitsGetArgs();
     }
 }

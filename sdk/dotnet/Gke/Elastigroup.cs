@@ -22,87 +22,85 @@ namespace Pulumi.SpotInst.Gke
     /// * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example_gke_elastigroup = new SpotInst.Gke.Elastigroup("example-gke-elastigroup", new()
     ///     {
-    ///         var example_gke_elastigroup = new SpotInst.Gke.Elastigroup("example-gke-elastigroup", new SpotInst.Gke.ElastigroupArgs
+    ///         BackendServices = new[]
     ///         {
-    ///             BackendServices = 
+    ///             new SpotInst.Gke.Inputs.ElastigroupBackendServiceArgs
     ///             {
-    ///                 new SpotInst.Gke.Inputs.ElastigroupBackendServiceArgs
+    ///                 LocationType = "global",
+    ///                 NamedPorts = new[]
     ///                 {
-    ///                     LocationType = "global",
-    ///                     NamedPorts = 
+    ///                     new SpotInst.Gke.Inputs.ElastigroupBackendServiceNamedPortArgs
     ///                     {
-    ///                         new SpotInst.Gke.Inputs.ElastigroupBackendServiceNamedPortArgs
+    ///                         Name = "http",
+    ///                         Ports = new[]
     ///                         {
-    ///                             Name = "http",
-    ///                             Ports = 
-    ///                             {
-    ///                                 "80",
-    ///                                 "8080",
-    ///                             },
+    ///                             "80",
+    ///                             "8080",
     ///                         },
     ///                     },
-    ///                     ServiceName = "backend-service",
     ///                 },
+    ///                 ServiceName = "backend-service",
     ///             },
-    ///             ClusterZoneName = "us-central1-a",
-    ///             DesiredCapacity = 3,
-    ///             InstanceTypesOndemand = "n1-standard-1",
-    ///             InstanceTypesPreemptibles = 
+    ///         },
+    ///         ClusterZoneName = "us-central1-a",
+    ///         DesiredCapacity = 3,
+    ///         InstanceTypesOndemand = "n1-standard-1",
+    ///         InstanceTypesPreemptibles = new[]
+    ///         {
+    ///             "n1-standard-1",
+    ///             "n1-standard-2",
+    ///         },
+    ///         IntegrationGke = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeArgs
+    ///         {
+    ///             AutoscaleCooldown = 300,
+    ///             AutoscaleDown = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleDownArgs
     ///             {
-    ///                 "n1-standard-1",
-    ///                 "n1-standard-2",
+    ///                 EvaluationPeriods = 300,
     ///             },
-    ///             IntegrationGke = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeArgs
+    ///             AutoscaleHeadroom = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleHeadroomArgs
     ///             {
-    ///                 AutoscaleCooldown = 300,
-    ///                 AutoscaleDown = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleDownArgs
-    ///                 {
-    ///                     EvaluationPeriods = 300,
-    ///                 },
-    ///                 AutoscaleHeadroom = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleHeadroomArgs
-    ///                 {
-    ///                     CpuPerUnit = 1024,
-    ///                     MemoryPerUnit = 512,
-    ///                     NumOfUnits = 2,
-    ///                 },
-    ///                 AutoscaleIsAutoConfig = false,
-    ///                 AutoscaleIsEnabled = true,
-    ///                 AutoscaleLabels = 
-    ///                 {
-    ///                     new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleLabelArgs
-    ///                     {
-    ///                         Key = "label_key",
-    ///                         Value = "label_value",
-    ///                     },
-    ///                 },
-    ///                 ClusterId = "example-cluster-id",
-    ///                 Location = "us-central1-a",
+    ///                 CpuPerUnit = 1024,
+    ///                 MemoryPerUnit = 512,
+    ///                 NumOfUnits = 2,
     ///             },
-    ///             MaxSize = 5,
-    ///             MinSize = 1,
-    ///             NodeImage = "COS",
-    ///             PreemptiblePercentage = 100,
-    ///         });
-    ///     }
+    ///             AutoscaleIsAutoConfig = false,
+    ///             AutoscaleIsEnabled = true,
+    ///             AutoscaleLabels = new[]
+    ///             {
+    ///                 new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleLabelArgs
+    ///                 {
+    ///                     Key = "label_key",
+    ///                     Value = "label_value",
+    ///                 },
+    ///             },
+    ///             ClusterId = "example-cluster-id",
+    ///             Location = "us-central1-a",
+    ///         },
+    ///         MaxSize = 5,
+    ///         MinSize = 1,
+    ///         NodeImage = "COS",
+    ///         PreemptiblePercentage = 100,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:gke/elastigroup:Elastigroup")]
-    public partial class Elastigroup : Pulumi.CustomResource
+    public partial class Elastigroup : global::Pulumi.CustomResource
     {
         [Output("backendServices")]
         public Output<ImmutableArray<Outputs.ElastigroupBackendService>> BackendServices { get; private set; } = null!;
 
         /// <summary>
-        /// The GKE cluster ID you wish to import.
+        /// The name of the GKE cluster you wish to import.
         /// </summary>
         [Output("clusterId")]
         public Output<string?> ClusterId { get; private set; } = null!;
@@ -244,7 +242,7 @@ namespace Pulumi.SpotInst.Gke
         }
     }
 
-    public sealed class ElastigroupArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("backendServices")]
         private InputList<Inputs.ElastigroupBackendServiceArgs>? _backendServices;
@@ -255,7 +253,7 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The GKE cluster ID you wish to import.
+        /// The name of the GKE cluster you wish to import.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -406,9 +404,10 @@ namespace Pulumi.SpotInst.Gke
         public ElastigroupArgs()
         {
         }
+        public static new ElastigroupArgs Empty => new ElastigroupArgs();
     }
 
-    public sealed class ElastigroupState : Pulumi.ResourceArgs
+    public sealed class ElastigroupState : global::Pulumi.ResourceArgs
     {
         [Input("backendServices")]
         private InputList<Inputs.ElastigroupBackendServiceGetArgs>? _backendServices;
@@ -419,7 +418,7 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The GKE cluster ID you wish to import.
+        /// The name of the GKE cluster you wish to import.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -570,5 +569,6 @@ namespace Pulumi.SpotInst.Gke
         public ElastigroupState()
         {
         }
+        public static new ElastigroupState Empty => new ElastigroupState();
     }
 }

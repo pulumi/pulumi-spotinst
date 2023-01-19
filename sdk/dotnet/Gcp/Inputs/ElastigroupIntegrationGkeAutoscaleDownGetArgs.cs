@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupIntegrationGkeAutoscaleDownGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationGkeAutoscaleDownGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupIntegrationGkeAutoscaleDownGetArgs()
         {
         }
+        public static new ElastigroupIntegrationGkeAutoscaleDownGetArgs Empty => new ElastigroupIntegrationGkeAutoscaleDownGetArgs();
     }
 }

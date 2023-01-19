@@ -32,9 +32,17 @@ public final class ElastigroupBackendServiceArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.locationType);
     }
 
+    /**
+     * Describes a named port and a list of ports.
+     * 
+     */
     @Import(name="namedPorts")
     private @Nullable Output<List<ElastigroupBackendServiceNamedPortArgs>> namedPorts;
 
+    /**
+     * @return Describes a named port and a list of ports.
+     * 
+     */
     public Optional<Output<List<ElastigroupBackendServiceNamedPortArgs>>> namedPorts() {
         return Optional.ofNullable(this.namedPorts);
     }
@@ -117,15 +125,33 @@ public final class ElastigroupBackendServiceArgs extends com.pulumi.resources.Re
             return locationType(Output.of(locationType));
         }
 
+        /**
+         * @param namedPorts Describes a named port and a list of ports.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namedPorts(@Nullable Output<List<ElastigroupBackendServiceNamedPortArgs>> namedPorts) {
             $.namedPorts = namedPorts;
             return this;
         }
 
+        /**
+         * @param namedPorts Describes a named port and a list of ports.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namedPorts(List<ElastigroupBackendServiceNamedPortArgs> namedPorts) {
             return namedPorts(Output.of(namedPorts));
         }
 
+        /**
+         * @param namedPorts Describes a named port and a list of ports.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namedPorts(ElastigroupBackendServiceNamedPortArgs... namedPorts) {
             return namedPorts(List.of(namedPorts));
         }

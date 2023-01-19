@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("networkInterfaces", required: true)]
         private InputList<Inputs.StatefulNodeAzureNetworkNetworkInterfaceGetArgs>? _networkInterfaces;
@@ -29,5 +29,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureNetworkGetArgs()
         {
         }
+        public static new StatefulNodeAzureNetworkGetArgs Empty => new StatefulNodeAzureNetworkGetArgs();
     }
 }

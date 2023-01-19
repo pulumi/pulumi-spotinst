@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanInstanceMetadataOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanInstanceMetadataOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanInstanceMetadataOptionsGetArgs()
         {
         }
+        public static new OceanInstanceMetadataOptionsGetArgs Empty => new OceanInstanceMetadataOptionsGetArgs();
     }
 }

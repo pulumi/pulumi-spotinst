@@ -265,8 +265,7 @@ func (o ElastigroupAzureV3ImageArrayOutput) Index(i pulumi.IntInput) Elastigroup
 type ElastigroupAzureV3ImageCustom struct {
 	// Name of the custom image. Required if resourceGroupName is specified.
 	ImageName string `pulumi:"imageName"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -284,8 +283,7 @@ type ElastigroupAzureV3ImageCustomInput interface {
 type ElastigroupAzureV3ImageCustomArgs struct {
 	// Name of the custom image. Required if resourceGroupName is specified.
 	ImageName pulumi.StringInput `pulumi:"imageName"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -345,8 +343,7 @@ func (o ElastigroupAzureV3ImageCustomOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ImageCustom) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
-//   - The resource group of the Application Security Group.
-//     }
+// Name of the Azure Resource Group where the Managed Service Identity is located.
 func (o ElastigroupAzureV3ImageCustomOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ImageCustom) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -377,8 +374,7 @@ type ElastigroupAzureV3ImageMarketplace struct {
 	// Image publisher. Required if resourceGroupName is not specified.
 	Publisher string `pulumi:"publisher"`
 	// Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-	Sku string `pulumi:"sku"`
-	// -
+	Sku     string `pulumi:"sku"`
 	Version string `pulumi:"version"`
 }
 
@@ -399,8 +395,7 @@ type ElastigroupAzureV3ImageMarketplaceArgs struct {
 	// Image publisher. Required if resourceGroupName is not specified.
 	Publisher pulumi.StringInput `pulumi:"publisher"`
 	// Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-	Sku pulumi.StringInput `pulumi:"sku"`
-	// -
+	Sku     pulumi.StringInput `pulumi:"sku"`
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -470,7 +465,6 @@ func (o ElastigroupAzureV3ImageMarketplaceOutput) Sku() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ImageMarketplace) string { return v.Sku }).(pulumi.StringOutput)
 }
 
-// -
 func (o ElastigroupAzureV3ImageMarketplaceOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ImageMarketplace) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -671,10 +665,9 @@ func (o ElastigroupAzureV3LoginPtrOutput) UserName() pulumi.StringPtrOutput {
 }
 
 type ElastigroupAzureV3ManagedServiceIdentity struct {
-	// - The name of the Application Security group.
+	// Name of the Managed Service Identity.
 	Name string `pulumi:"name"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -690,10 +683,9 @@ type ElastigroupAzureV3ManagedServiceIdentityInput interface {
 }
 
 type ElastigroupAzureV3ManagedServiceIdentityArgs struct {
-	// - The name of the Application Security group.
+	// Name of the Managed Service Identity.
 	Name pulumi.StringInput `pulumi:"name"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -748,13 +740,12 @@ func (o ElastigroupAzureV3ManagedServiceIdentityOutput) ToElastigroupAzureV3Mana
 	return o
 }
 
-// - The name of the Application Security group.
+// Name of the Managed Service Identity.
 func (o ElastigroupAzureV3ManagedServiceIdentityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ManagedServiceIdentity) string { return v.Name }).(pulumi.StringOutput)
 }
 
-//   - The resource group of the Application Security Group.
-//     }
+// Name of the Azure Resource Group where the Managed Service Identity is located.
 func (o ElastigroupAzureV3ManagedServiceIdentityOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3ManagedServiceIdentity) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -780,10 +771,9 @@ func (o ElastigroupAzureV3ManagedServiceIdentityArrayOutput) Index(i pulumi.IntI
 }
 
 type ElastigroupAzureV3Network struct {
-	// -
 	NetworkInterfaces []ElastigroupAzureV3NetworkNetworkInterface `pulumi:"networkInterfaces"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// The resource group of the Application Security Group.
+	// }
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Vnet.
 	VirtualNetworkName string `pulumi:"virtualNetworkName"`
@@ -801,10 +791,9 @@ type ElastigroupAzureV3NetworkInput interface {
 }
 
 type ElastigroupAzureV3NetworkArgs struct {
-	// -
 	NetworkInterfaces ElastigroupAzureV3NetworkNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// The resource group of the Application Security Group.
+	// }
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of Vnet.
 	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
@@ -887,15 +876,14 @@ func (o ElastigroupAzureV3NetworkOutput) ToElastigroupAzureV3NetworkPtrOutputWit
 	}).(ElastigroupAzureV3NetworkPtrOutput)
 }
 
-// -
 func (o ElastigroupAzureV3NetworkOutput) NetworkInterfaces() ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3Network) []ElastigroupAzureV3NetworkNetworkInterface {
 		return v.NetworkInterfaces
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput)
 }
 
-//   - The resource group of the Application Security Group.
-//     }
+// The resource group of the Application Security Group.
+// }
 func (o ElastigroupAzureV3NetworkOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3Network) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -929,7 +917,6 @@ func (o ElastigroupAzureV3NetworkPtrOutput) Elem() ElastigroupAzureV3NetworkOutp
 	}).(ElastigroupAzureV3NetworkOutput)
 }
 
-// -
 func (o ElastigroupAzureV3NetworkPtrOutput) NetworkInterfaces() ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3Network) []ElastigroupAzureV3NetworkNetworkInterface {
 		if v == nil {
@@ -939,8 +926,8 @@ func (o ElastigroupAzureV3NetworkPtrOutput) NetworkInterfaces() ElastigroupAzure
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput)
 }
 
-//   - The resource group of the Application Security Group.
-//     }
+// The resource group of the Application Security Group.
+// }
 func (o ElastigroupAzureV3NetworkPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3Network) *string {
 		if v == nil {
@@ -963,11 +950,10 @@ func (o ElastigroupAzureV3NetworkPtrOutput) VirtualNetworkName() pulumi.StringPt
 type ElastigroupAzureV3NetworkNetworkInterface struct {
 	// Array of additional IP configuration objects.
 	AdditionalIpConfigs []ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig `pulumi:"additionalIpConfigs"`
-	// - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+	// List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
 	ApplicationSecurityGroups []ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup `pulumi:"applicationSecurityGroups"`
 	AssignPublicIp            bool                                                                `pulumi:"assignPublicIp"`
-	// -
-	IsPrimary bool `pulumi:"isPrimary"`
+	IsPrimary                 bool                                                                `pulumi:"isPrimary"`
 	// ID of subnet.
 	SubnetName string `pulumi:"subnetName"`
 }
@@ -986,11 +972,10 @@ type ElastigroupAzureV3NetworkNetworkInterfaceInput interface {
 type ElastigroupAzureV3NetworkNetworkInterfaceArgs struct {
 	// Array of additional IP configuration objects.
 	AdditionalIpConfigs ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput `pulumi:"additionalIpConfigs"`
-	// - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+	// List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
 	ApplicationSecurityGroups ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput `pulumi:"applicationSecurityGroups"`
 	AssignPublicIp            pulumi.BoolInput                                                            `pulumi:"assignPublicIp"`
-	// -
-	IsPrimary pulumi.BoolInput `pulumi:"isPrimary"`
+	IsPrimary                 pulumi.BoolInput                                                            `pulumi:"isPrimary"`
 	// ID of subnet.
 	SubnetName pulumi.StringInput `pulumi:"subnetName"`
 }
@@ -1053,7 +1038,7 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) AdditionalIpConfigs() E
 	}).(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput)
 }
 
-// - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+// List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
 func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) ApplicationSecurityGroups() ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) []ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
 		return v.ApplicationSecurityGroups
@@ -1064,7 +1049,6 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) AssignPublicIp() pulumi
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) bool { return v.AssignPublicIp }).(pulumi.BoolOutput)
 }
 
-// -
 func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) IsPrimary() pulumi.BoolOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterface) bool { return v.IsPrimary }).(pulumi.BoolOutput)
 }
@@ -1095,7 +1079,7 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput) Index(i pulumi.Int
 }
 
 type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig struct {
-	// - The name of the Application Security group.
+	// Name of the Managed Service Identity.
 	Name string `pulumi:"name"`
 	// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
 	PrivateIpVersion *string `pulumi:"privateIpVersion"`
@@ -1113,7 +1097,7 @@ type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigInput interface 
 }
 
 type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs struct {
-	// - The name of the Application Security group.
+	// Name of the Managed Service Identity.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
 	PrivateIpVersion pulumi.StringPtrInput `pulumi:"privateIpVersion"`
@@ -1170,7 +1154,7 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) ToEla
 	return o
 }
 
-// - The name of the Application Security group.
+// Name of the Managed Service Identity.
 func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1201,10 +1185,9 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput) 
 }
 
 type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup struct {
-	// - The name of the Application Security group.
+	// Name of the Managed Service Identity.
 	Name string `pulumi:"name"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -1220,10 +1203,9 @@ type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupInput inte
 }
 
 type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs struct {
-	// - The name of the Application Security group.
+	// Name of the Managed Service Identity.
 	Name pulumi.StringInput `pulumi:"name"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -1278,13 +1260,12 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput)
 	return o
 }
 
-// - The name of the Application Security group.
+// Name of the Managed Service Identity.
 func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-//   - The resource group of the Application Security Group.
-//     }
+// Name of the Azure Resource Group where the Managed Service Identity is located.
 func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup) string {
 		return v.ResourceGroupName
@@ -1313,8 +1294,7 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOu
 
 type ElastigroupAzureV3Strategy struct {
 	// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-	DrainingTimeout *int `pulumi:"drainingTimeout"`
-	// -
+	DrainingTimeout    *int  `pulumi:"drainingTimeout"`
 	FallbackToOnDemand *bool `pulumi:"fallbackToOnDemand"`
 	// Number of On-Demand instances to maintain. Required if `lowPriorityPercentage` is not specified.
 	OdCount *int `pulumi:"odCount"`
@@ -1335,8 +1315,7 @@ type ElastigroupAzureV3StrategyInput interface {
 
 type ElastigroupAzureV3StrategyArgs struct {
 	// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-	DrainingTimeout pulumi.IntPtrInput `pulumi:"drainingTimeout"`
-	// -
+	DrainingTimeout    pulumi.IntPtrInput  `pulumi:"drainingTimeout"`
 	FallbackToOnDemand pulumi.BoolPtrInput `pulumi:"fallbackToOnDemand"`
 	// Number of On-Demand instances to maintain. Required if `lowPriorityPercentage` is not specified.
 	OdCount pulumi.IntPtrInput `pulumi:"odCount"`
@@ -1426,7 +1405,6 @@ func (o ElastigroupAzureV3StrategyOutput) DrainingTimeout() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v ElastigroupAzureV3Strategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
 }
 
-// -
 func (o ElastigroupAzureV3StrategyOutput) FallbackToOnDemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupAzureV3Strategy) *bool { return v.FallbackToOnDemand }).(pulumi.BoolPtrOutput)
 }
@@ -1475,7 +1453,6 @@ func (o ElastigroupAzureV3StrategyPtrOutput) DrainingTimeout() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// -
 func (o ElastigroupAzureV3StrategyPtrOutput) FallbackToOnDemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3Strategy) *bool {
 		if v == nil {

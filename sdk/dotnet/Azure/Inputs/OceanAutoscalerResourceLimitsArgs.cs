@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanAutoscalerResourceLimitsArgs : Pulumi.ResourceArgs
+    public sealed class OceanAutoscalerResourceLimitsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum memory in GiB units that can be allocated to the cluster.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanAutoscalerResourceLimitsArgs()
         {
         }
+        public static new OceanAutoscalerResourceLimitsArgs Empty => new OceanAutoscalerResourceLimitsArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupItfGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupItfGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultStaticTargetGroup")]
         public Input<Inputs.ElastigroupItfDefaultStaticTargetGroupGetArgs>? DefaultStaticTargetGroup { get; set; }
@@ -43,5 +43,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupItfGetArgs()
         {
         }
+        public static new ElastigroupItfGetArgs Empty => new ElastigroupItfGetArgs();
     }
 }

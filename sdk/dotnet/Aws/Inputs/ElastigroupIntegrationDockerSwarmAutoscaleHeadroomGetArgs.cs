@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationDockerSwarmAutoscaleHeadroomGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationDockerSwarmAutoscaleHeadroomGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How much CPU (MHz) to allocate for headroom unit.
+        /// Cpu units for compute.
         /// </summary>
         [Input("cpuPerUnit")]
         public Input<int>? CpuPerUnit { get; set; }
 
         /// <summary>
-        /// How much Memory allocate for headroom unit.
+        /// RAM units for compute.
         /// </summary>
         [Input("memoryPerUnit")]
         public Input<int>? MemoryPerUnit { get; set; }
 
         /// <summary>
-        /// How many units of headroom to allocate.
+        /// Amount of units for compute.
         /// </summary>
         [Input("numOfUnits")]
         public Input<int>? NumOfUnits { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationDockerSwarmAutoscaleHeadroomGetArgs()
         {
         }
+        public static new ElastigroupIntegrationDockerSwarmAutoscaleHeadroomGetArgs Empty => new ElastigroupIntegrationDockerSwarmAutoscaleHeadroomGetArgs();
     }
 }

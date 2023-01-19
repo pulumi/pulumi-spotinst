@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationNomadArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationNomadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Nomad ACL Token
@@ -37,13 +37,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? AutoscaleCooldown { get; set; }
 
         /// <summary>
-        /// Settings for scale down actions.
+        /// Enabling scale down.
         /// </summary>
         [Input("autoscaleDown")]
         public Input<Inputs.ElastigroupIntegrationNomadAutoscaleDownArgs>? AutoscaleDown { get; set; }
 
         /// <summary>
-        /// An option to set compute reserve for the cluster.
+        /// Headroom for the cluster.
         /// </summary>
         [Input("autoscaleHeadroom")]
         public Input<Inputs.ElastigroupIntegrationNomadAutoscaleHeadroomArgs>? AutoscaleHeadroom { get; set; }
@@ -55,13 +55,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? AutoscaleIsEnabled { get; set; }
 
         /// <summary>
-        /// The URL for the Nomad master host.
+        /// The URL of the Rancher Master host.
         /// </summary>
         [Input("masterHost", required: true)]
         public Input<string> MasterHost { get; set; } = null!;
 
         /// <summary>
-        /// The network port for the master host.
+        /// Network port used by your swarm.
         /// </summary>
         [Input("masterPort", required: true)]
         public Input<int> MasterPort { get; set; } = null!;
@@ -69,5 +69,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationNomadArgs()
         {
         }
+        public static new ElastigroupIntegrationNomadArgs Empty => new ElastigroupIntegrationNomadArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomGetArgs()
         {
         }
+        public static new OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomGetArgs Empty => new OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomGetArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws
     /// Provides a Spotinst AWS group resource.
     /// </summary>
     [SpotInstResourceType("spotinst:aws/elastigroup:Elastigroup")]
-    public partial class Elastigroup : Pulumi.CustomResource
+    public partial class Elastigroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
@@ -35,6 +35,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("capacityUnit")]
         public Output<string> CapacityUnit { get; private set; } = null!;
 
+        [Output("considerOdPricing")]
+        public Output<bool?> ConsiderOdPricing { get; private set; } = null!;
+
         /// <summary>
         /// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         /// </summary>
@@ -48,7 +51,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<Outputs.ElastigroupCpuOptions?> CpuOptions { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the network interface.
+        /// The group description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -60,7 +63,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> DesiredCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates (in seconds) the timeout to wait until instance are detached.
+        /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         /// </summary>
         [Output("drainingTimeout")]
         public Output<int> DrainingTimeout { get; private set; } = null!;
@@ -102,19 +105,19 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool> FallbackToOndemand { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time, in seconds, after the instance has launched to starts and check its health
+        /// The amount of time, in seconds, after the instance has launched to starts and check its health.
         /// </summary>
         [Output("healthCheckGracePeriod")]
         public Output<int?> HealthCheckGracePeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         /// </summary>
         [Output("healthCheckUnhealthyDurationBeforeReplacement")]
         public Output<int?> HealthCheckUnhealthyDurationBeforeReplacement { get; private set; } = null!;
@@ -130,6 +133,16 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
+
+        /// <summary>
+        /// An array of image objects. 
+        /// Note: Elastigroup can be configured with either imageId or images, but not both.
+        /// </summary>
+        [Output("images")]
+        public Output<ImmutableArray<Outputs.ElastigroupImage>> Images { get; private set; } = null!;
+
+        [Output("immediateOdRecoverThreshold")]
+        public Output<int?> ImmediateOdRecoverThreshold { get; private set; } = null!;
 
         /// <summary>
         /// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
@@ -264,7 +277,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<Outputs.ElastigroupMultipleMetrics?> MultipleMetrics { get; private set; } = null!;
 
         /// <summary>
-        /// The record set name.
+        /// The group name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -485,7 +498,7 @@ namespace Pulumi.SpotInst.Aws
         }
     }
 
-    public sealed class ElastigroupArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
@@ -513,6 +526,9 @@ namespace Pulumi.SpotInst.Aws
         [Input("capacityUnit")]
         public Input<string>? CapacityUnit { get; set; }
 
+        [Input("considerOdPricing")]
+        public Input<bool>? ConsiderOdPricing { get; set; }
+
         /// <summary>
         /// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         /// </summary>
@@ -526,7 +542,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<Inputs.ElastigroupCpuOptionsArgs>? CpuOptions { get; set; }
 
         /// <summary>
-        /// The description of the network interface.
+        /// The group description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -538,7 +554,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// Indicates (in seconds) the timeout to wait until instance are detached.
+        /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         /// </summary>
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
@@ -602,19 +618,19 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool> FallbackToOndemand { get; set; } = null!;
 
         /// <summary>
-        /// The amount of time, in seconds, after the instance has launched to starts and check its health
+        /// The amount of time, in seconds, after the instance has launched to starts and check its health.
         /// </summary>
         [Input("healthCheckGracePeriod")]
         public Input<int>? HealthCheckGracePeriod { get; set; }
 
         /// <summary>
-        /// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         /// </summary>
         [Input("healthCheckUnhealthyDurationBeforeReplacement")]
         public Input<int>? HealthCheckUnhealthyDurationBeforeReplacement { get; set; }
@@ -630,6 +646,22 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        [Input("images")]
+        private InputList<Inputs.ElastigroupImageArgs>? _images;
+
+        /// <summary>
+        /// An array of image objects. 
+        /// Note: Elastigroup can be configured with either imageId or images, but not both.
+        /// </summary>
+        public InputList<Inputs.ElastigroupImageArgs> Images
+        {
+            get => _images ?? (_images = new InputList<Inputs.ElastigroupImageArgs>());
+            set => _images = value;
+        }
+
+        [Input("immediateOdRecoverThreshold")]
+        public Input<int>? ImmediateOdRecoverThreshold { get; set; }
 
         /// <summary>
         /// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
@@ -793,7 +825,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<Inputs.ElastigroupMultipleMetricsArgs>? MultipleMetrics { get; set; }
 
         /// <summary>
-        /// The record set name.
+        /// The group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1056,9 +1088,10 @@ namespace Pulumi.SpotInst.Aws
         public ElastigroupArgs()
         {
         }
+        public static new ElastigroupArgs Empty => new ElastigroupArgs();
     }
 
-    public sealed class ElastigroupState : Pulumi.ResourceArgs
+    public sealed class ElastigroupState : global::Pulumi.ResourceArgs
     {
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
@@ -1086,6 +1119,9 @@ namespace Pulumi.SpotInst.Aws
         [Input("capacityUnit")]
         public Input<string>? CapacityUnit { get; set; }
 
+        [Input("considerOdPricing")]
+        public Input<bool>? ConsiderOdPricing { get; set; }
+
         /// <summary>
         /// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         /// </summary>
@@ -1099,7 +1135,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<Inputs.ElastigroupCpuOptionsGetArgs>? CpuOptions { get; set; }
 
         /// <summary>
-        /// The description of the network interface.
+        /// The group description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -1111,7 +1147,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
-        /// Indicates (in seconds) the timeout to wait until instance are detached.
+        /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         /// </summary>
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
@@ -1175,19 +1211,19 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? FallbackToOndemand { get; set; }
 
         /// <summary>
-        /// The amount of time, in seconds, after the instance has launched to starts and check its health
+        /// The amount of time, in seconds, after the instance has launched to starts and check its health.
         /// </summary>
         [Input("healthCheckGracePeriod")]
         public Input<int>? HealthCheckGracePeriod { get; set; }
 
         /// <summary>
-        /// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+        /// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         /// </summary>
         [Input("healthCheckUnhealthyDurationBeforeReplacement")]
         public Input<int>? HealthCheckUnhealthyDurationBeforeReplacement { get; set; }
@@ -1203,6 +1239,22 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        [Input("images")]
+        private InputList<Inputs.ElastigroupImageGetArgs>? _images;
+
+        /// <summary>
+        /// An array of image objects. 
+        /// Note: Elastigroup can be configured with either imageId or images, but not both.
+        /// </summary>
+        public InputList<Inputs.ElastigroupImageGetArgs> Images
+        {
+            get => _images ?? (_images = new InputList<Inputs.ElastigroupImageGetArgs>());
+            set => _images = value;
+        }
+
+        [Input("immediateOdRecoverThreshold")]
+        public Input<int>? ImmediateOdRecoverThreshold { get; set; }
 
         /// <summary>
         /// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
@@ -1366,7 +1418,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<Inputs.ElastigroupMultipleMetricsGetArgs>? MultipleMetrics { get; set; }
 
         /// <summary>
-        /// The record set name.
+        /// The group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1629,5 +1681,6 @@ namespace Pulumi.SpotInst.Aws
         public ElastigroupState()
         {
         }
+        public static new ElastigroupState Empty => new ElastigroupState();
     }
 }

@@ -16,14 +16,14 @@ public final class ElastigroupIntegrationGitlabRunnerArgs extends com.pulumi.res
     public static final ElastigroupIntegrationGitlabRunnerArgs Empty = new ElastigroupIntegrationGitlabRunnerArgs();
 
     /**
-     * Specifies whether the integration is enabled.
+     * Setting the task to being enabled or disabled.
      * 
      */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
     /**
-     * @return Specifies whether the integration is enabled.
+     * @return Setting the task to being enabled or disabled.
      * 
      */
     public Optional<Output<Boolean>> isEnabled() {
@@ -55,7 +55,7 @@ public final class ElastigroupIntegrationGitlabRunnerArgs extends com.pulumi.res
         }
 
         /**
-         * @param isEnabled Specifies whether the integration is enabled.
+         * @param isEnabled Setting the task to being enabled or disabled.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ElastigroupIntegrationGitlabRunnerArgs extends com.pulumi.res
         }
 
         /**
-         * @param isEnabled Specifies whether the integration is enabled.
+         * @param isEnabled Setting the task to being enabled or disabled.
          * 
          * @return builder
          * 

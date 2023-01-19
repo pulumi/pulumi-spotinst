@@ -145,11 +145,12 @@ import (
 type OceanImport struct {
 	pulumi.CustomResourceState
 
-	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanImportAutoscalerOutput `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
-	BackendServices     OceanImportBackendServiceArrayOutput `pulumi:"backendServices"`
-	ClusterControllerId pulumi.StringOutput                  `pulumi:"clusterControllerId"`
+	BackendServices OceanImportBackendServiceArrayOutput `pulumi:"backendServices"`
+	// Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+	Blacklists          pulumi.StringArrayOutput `pulumi:"blacklists"`
+	ClusterControllerId pulumi.StringOutput      `pulumi:"clusterControllerId"`
 	// The GKE cluster name.
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -163,8 +164,7 @@ type OceanImport struct {
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// The root volume disk type.
-	RootVolumeType pulumi.StringPtrOutput `pulumi:"rootVolumeType"`
-	// Set scheduling object.
+	RootVolumeType pulumi.StringPtrOutput              `pulumi:"rootVolumeType"`
 	ScheduledTasks OceanImportScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// The Ocean shielded instance configuration object.
 	ShieldedInstanceConfig OceanImportShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
@@ -172,7 +172,7 @@ type OceanImport struct {
 	UpdatePolicy           OceanImportUpdatePolicyPtrOutput        `pulumi:"updatePolicy"`
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly pulumi.BoolPtrOutput `pulumi:"useAsTemplateOnly"`
-	// Instance types allowed in the Ocean cluster.
+	// Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
 	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
 
@@ -211,11 +211,12 @@ func GetOceanImport(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OceanImport resources.
 type oceanImportState struct {
-	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler *OceanImportAutoscaler `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
-	BackendServices     []OceanImportBackendService `pulumi:"backendServices"`
-	ClusterControllerId *string                     `pulumi:"clusterControllerId"`
+	BackendServices []OceanImportBackendService `pulumi:"backendServices"`
+	// Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+	Blacklists          []string `pulumi:"blacklists"`
+	ClusterControllerId *string  `pulumi:"clusterControllerId"`
 	// The GKE cluster name.
 	ClusterName *string `pulumi:"clusterName"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -229,8 +230,7 @@ type oceanImportState struct {
 	// The lower limit of instances the cluster can scale down to.
 	MinSize *int `pulumi:"minSize"`
 	// The root volume disk type.
-	RootVolumeType *string `pulumi:"rootVolumeType"`
-	// Set scheduling object.
+	RootVolumeType *string                    `pulumi:"rootVolumeType"`
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
 	// The Ocean shielded instance configuration object.
 	ShieldedInstanceConfig *OceanImportShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -238,15 +238,16 @@ type oceanImportState struct {
 	UpdatePolicy           *OceanImportUpdatePolicy           `pulumi:"updatePolicy"`
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
-	// Instance types allowed in the Ocean cluster.
+	// Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
 	Whitelists []string `pulumi:"whitelists"`
 }
 
 type OceanImportState struct {
-	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanImportAutoscalerPtrInput
 	// Describes the backend service configurations.
-	BackendServices     OceanImportBackendServiceArrayInput
+	BackendServices OceanImportBackendServiceArrayInput
+	// Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+	Blacklists          pulumi.StringArrayInput
 	ClusterControllerId pulumi.StringPtrInput
 	// The GKE cluster name.
 	ClusterName pulumi.StringPtrInput
@@ -262,7 +263,6 @@ type OceanImportState struct {
 	MinSize pulumi.IntPtrInput
 	// The root volume disk type.
 	RootVolumeType pulumi.StringPtrInput
-	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
 	// The Ocean shielded instance configuration object.
 	ShieldedInstanceConfig OceanImportShieldedInstanceConfigPtrInput
@@ -270,7 +270,7 @@ type OceanImportState struct {
 	UpdatePolicy           OceanImportUpdatePolicyPtrInput
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly pulumi.BoolPtrInput
-	// Instance types allowed in the Ocean cluster.
+	// Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
 	Whitelists pulumi.StringArrayInput
 }
 
@@ -279,10 +279,11 @@ func (OceanImportState) ElementType() reflect.Type {
 }
 
 type oceanImportArgs struct {
-	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler *OceanImportAutoscaler `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
 	BackendServices []OceanImportBackendService `pulumi:"backendServices"`
+	// Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+	Blacklists []string `pulumi:"blacklists"`
 	// The GKE cluster name.
 	ClusterName string `pulumi:"clusterName"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -296,8 +297,7 @@ type oceanImportArgs struct {
 	// The lower limit of instances the cluster can scale down to.
 	MinSize *int `pulumi:"minSize"`
 	// The root volume disk type.
-	RootVolumeType *string `pulumi:"rootVolumeType"`
-	// Set scheduling object.
+	RootVolumeType *string                    `pulumi:"rootVolumeType"`
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
 	// The Ocean shielded instance configuration object.
 	ShieldedInstanceConfig *OceanImportShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -305,16 +305,17 @@ type oceanImportArgs struct {
 	UpdatePolicy           *OceanImportUpdatePolicy           `pulumi:"updatePolicy"`
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
-	// Instance types allowed in the Ocean cluster.
+	// Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
 	Whitelists []string `pulumi:"whitelists"`
 }
 
 // The set of arguments for constructing a OceanImport resource.
 type OceanImportArgs struct {
-	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanImportAutoscalerPtrInput
 	// Describes the backend service configurations.
 	BackendServices OceanImportBackendServiceArrayInput
+	// Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+	Blacklists pulumi.StringArrayInput
 	// The GKE cluster name.
 	ClusterName pulumi.StringInput
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -329,7 +330,6 @@ type OceanImportArgs struct {
 	MinSize pulumi.IntPtrInput
 	// The root volume disk type.
 	RootVolumeType pulumi.StringPtrInput
-	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
 	// The Ocean shielded instance configuration object.
 	ShieldedInstanceConfig OceanImportShieldedInstanceConfigPtrInput
@@ -337,7 +337,7 @@ type OceanImportArgs struct {
 	UpdatePolicy           OceanImportUpdatePolicyPtrInput
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly pulumi.BoolPtrInput
-	// Instance types allowed in the Ocean cluster.
+	// Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
 	Whitelists pulumi.StringArrayInput
 }
 
@@ -428,7 +428,6 @@ func (o OceanImportOutput) ToOceanImportOutputWithContext(ctx context.Context) O
 	return o
 }
 
-// The Ocean Kubernetes Autoscaler object.
 func (o OceanImportOutput) Autoscaler() OceanImportAutoscalerOutput {
 	return o.ApplyT(func(v *OceanImport) OceanImportAutoscalerOutput { return v.Autoscaler }).(OceanImportAutoscalerOutput)
 }
@@ -436,6 +435,11 @@ func (o OceanImportOutput) Autoscaler() OceanImportAutoscalerOutput {
 // Describes the backend service configurations.
 func (o OceanImportOutput) BackendServices() OceanImportBackendServiceArrayOutput {
 	return o.ApplyT(func(v *OceanImport) OceanImportBackendServiceArrayOutput { return v.BackendServices }).(OceanImportBackendServiceArrayOutput)
+}
+
+// Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+func (o OceanImportOutput) Blacklists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanImport) pulumi.StringArrayOutput { return v.Blacklists }).(pulumi.StringArrayOutput)
 }
 
 func (o OceanImportOutput) ClusterControllerId() pulumi.StringOutput {
@@ -477,7 +481,6 @@ func (o OceanImportOutput) RootVolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanImport) pulumi.StringPtrOutput { return v.RootVolumeType }).(pulumi.StringPtrOutput)
 }
 
-// Set scheduling object.
 func (o OceanImportOutput) ScheduledTasks() OceanImportScheduledTaskArrayOutput {
 	return o.ApplyT(func(v *OceanImport) OceanImportScheduledTaskArrayOutput { return v.ScheduledTasks }).(OceanImportScheduledTaskArrayOutput)
 }
@@ -500,7 +503,7 @@ func (o OceanImportOutput) UseAsTemplateOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImport) pulumi.BoolPtrOutput { return v.UseAsTemplateOnly }).(pulumi.BoolPtrOutput)
 }
 
-// Instance types allowed in the Ocean cluster.
+// Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
 func (o OceanImportOutput) Whitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanImport) pulumi.StringArrayOutput { return v.Whitelists }).(pulumi.StringArrayOutput)
 }

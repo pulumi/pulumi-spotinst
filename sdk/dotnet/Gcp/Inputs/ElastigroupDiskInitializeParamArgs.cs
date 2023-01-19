@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupDiskInitializeParamArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupDiskInitializeParamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies disk size in gigabytes. Must be in increments of 2.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupDiskInitializeParamArgs()
         {
         }
+        public static new ElastigroupDiskInitializeParamArgs Empty => new ElastigroupDiskInitializeParamArgs();
     }
 }

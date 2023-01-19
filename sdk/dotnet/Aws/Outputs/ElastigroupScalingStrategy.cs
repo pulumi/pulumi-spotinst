@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? TerminateAtEndOfBillingHour;
         /// <summary>
-        /// - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `"default"`, `"newestInstance"`.
+        /// Determines whether to terminate the newest instances when performing a scaling action. Valid values: `"default"`, `"newestInstance"`.
         /// </summary>
         public readonly string? TerminationPolicy;
 

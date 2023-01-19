@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupScalingUpPolicyStepAdjustment
     {
         /// <summary>
-        /// Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+        /// The action to take when scale up according to step's threshold is needed.
         /// </summary>
         public readonly Outputs.ElastigroupScalingUpPolicyStepAdjustmentAction Action;
         /// <summary>

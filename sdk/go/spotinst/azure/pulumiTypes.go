@@ -13,9 +13,9 @@ import (
 type ElastigroupHealthCheck struct {
 	// Enable auto-healing of unhealthy VMs.
 	AutoHealing *bool `pulumi:"autoHealing"`
-	// Sets the grace period for new instances to become healthy.
+	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	GracePeriod *int `pulumi:"gracePeriod"`
-	// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+	// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
 	HealthCheckType string `pulumi:"healthCheckType"`
 }
 
@@ -33,9 +33,9 @@ type ElastigroupHealthCheckInput interface {
 type ElastigroupHealthCheckArgs struct {
 	// Enable auto-healing of unhealthy VMs.
 	AutoHealing pulumi.BoolPtrInput `pulumi:"autoHealing"`
-	// Sets the grace period for new instances to become healthy.
+	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
-	// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+	// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
 	HealthCheckType pulumi.StringInput `pulumi:"healthCheckType"`
 }
 
@@ -121,12 +121,12 @@ func (o ElastigroupHealthCheckOutput) AutoHealing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupHealthCheck) *bool { return v.AutoHealing }).(pulumi.BoolPtrOutput)
 }
 
-// Sets the grace period for new instances to become healthy.
+// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 func (o ElastigroupHealthCheckOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupHealthCheck) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
-// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
 func (o ElastigroupHealthCheckOutput) HealthCheckType() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupHealthCheck) string { return v.HealthCheckType }).(pulumi.StringOutput)
 }
@@ -165,7 +165,7 @@ func (o ElastigroupHealthCheckPtrOutput) AutoHealing() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Sets the grace period for new instances to become healthy.
+// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 func (o ElastigroupHealthCheckPtrOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupHealthCheck) *int {
 		if v == nil {
@@ -175,7 +175,7 @@ func (o ElastigroupHealthCheckPtrOutput) GracePeriod() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
 func (o ElastigroupHealthCheckPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupHealthCheck) *string {
 		if v == nil {
@@ -288,7 +288,7 @@ func (o ElastigroupImageArrayOutput) Index(i pulumi.IntInput) ElastigroupImageOu
 type ElastigroupImageCustom struct {
 	// Name of the custom image. Required if resourceGroupName is specified.
 	ImageName string `pulumi:"imageName"`
-	// Vnet Resource Group Name.
+	// The Resource Group that the user-assigned managed identity resides in.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -306,7 +306,7 @@ type ElastigroupImageCustomInput interface {
 type ElastigroupImageCustomArgs struct {
 	// Name of the custom image. Required if resourceGroupName is specified.
 	ImageName pulumi.StringInput `pulumi:"imageName"`
-	// Vnet Resource Group Name.
+	// The Resource Group that the user-assigned managed identity resides in.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -366,7 +366,7 @@ func (o ElastigroupImageCustomOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupImageCustom) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
-// Vnet Resource Group Name.
+// The Resource Group that the user-assigned managed identity resides in.
 func (o ElastigroupImageCustomOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupImageCustom) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -1077,9 +1077,9 @@ func (o ElastigroupLoginPtrOutput) UserName() pulumi.StringPtrOutput {
 }
 
 type ElastigroupManagedServiceIdentity struct {
-	// The dimension name.
+	// The name of the managed identity.
 	Name string `pulumi:"name"`
-	// Vnet Resource Group Name.
+	// The Resource Group that the user-assigned managed identity resides in.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -1095,9 +1095,9 @@ type ElastigroupManagedServiceIdentityInput interface {
 }
 
 type ElastigroupManagedServiceIdentityArgs struct {
-	// The dimension name.
+	// The name of the managed identity.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Vnet Resource Group Name.
+	// The Resource Group that the user-assigned managed identity resides in.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -1152,12 +1152,12 @@ func (o ElastigroupManagedServiceIdentityOutput) ToElastigroupManagedServiceIden
 	return o
 }
 
-// The dimension name.
+// The name of the managed identity.
 func (o ElastigroupManagedServiceIdentityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupManagedServiceIdentity) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Vnet Resource Group Name.
+// The Resource Group that the user-assigned managed identity resides in.
 func (o ElastigroupManagedServiceIdentityOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupManagedServiceIdentity) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -1392,7 +1392,7 @@ func (o ElastigroupNetworkPtrOutput) VirtualNetworkName() pulumi.StringPtrOutput
 }
 
 type ElastigroupNetworkAdditionalIpConfig struct {
-	// The dimension name.
+	// The name of the managed identity.
 	Name string `pulumi:"name"`
 	// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
 	PrivateIpVersion *string `pulumi:"privateIpVersion"`
@@ -1410,7 +1410,7 @@ type ElastigroupNetworkAdditionalIpConfigInput interface {
 }
 
 type ElastigroupNetworkAdditionalIpConfigArgs struct {
-	// The dimension name.
+	// The name of the managed identity.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
 	PrivateIpVersion pulumi.StringPtrInput `pulumi:"privateIpVersion"`
@@ -1467,7 +1467,7 @@ func (o ElastigroupNetworkAdditionalIpConfigOutput) ToElastigroupNetworkAddition
 	return o
 }
 
-// The dimension name.
+// The name of the managed identity.
 func (o ElastigroupNetworkAdditionalIpConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupNetworkAdditionalIpConfig) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1500,7 +1500,7 @@ func (o ElastigroupNetworkAdditionalIpConfigArrayOutput) Index(i pulumi.IntInput
 type ElastigroupScalingDownPolicy struct {
 	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
 	ActionType *string `pulumi:"actionType"`
-	// The number of instances to add/remove to/from the target capacity when scale is needed.
+	// Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
 	Adjustment *string `pulumi:"adjustment"`
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
 	Cooldown *int `pulumi:"cooldown"`
@@ -1550,7 +1550,7 @@ type ElastigroupScalingDownPolicyInput interface {
 type ElastigroupScalingDownPolicyArgs struct {
 	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
 	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	// The number of instances to add/remove to/from the target capacity when scale is needed.
+	// Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
 	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
@@ -1642,7 +1642,7 @@ func (o ElastigroupScalingDownPolicyOutput) ActionType() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
-// The number of instances to add/remove to/from the target capacity when scale is needed.
+// Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
 func (o ElastigroupScalingDownPolicyOutput) Adjustment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
@@ -1748,7 +1748,7 @@ func (o ElastigroupScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) Elasti
 }
 
 type ElastigroupScalingDownPolicyDimension struct {
-	// The dimension name.
+	// The name of the managed identity.
 	Name string `pulumi:"name"`
 	// The dimension value.
 	Value *string `pulumi:"value"`
@@ -1766,7 +1766,7 @@ type ElastigroupScalingDownPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingDownPolicyDimensionArgs struct {
-	// The dimension name.
+	// The name of the managed identity.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The dimension value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -1823,7 +1823,7 @@ func (o ElastigroupScalingDownPolicyDimensionOutput) ToElastigroupScalingDownPol
 	return o
 }
 
-// The dimension name.
+// The name of the managed identity.
 func (o ElastigroupScalingDownPolicyDimensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1856,7 +1856,7 @@ func (o ElastigroupScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInpu
 type ElastigroupScalingUpPolicy struct {
 	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
 	ActionType *string `pulumi:"actionType"`
-	// The number of instances to add/remove to/from the target capacity when scale is needed.
+	// Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
 	Adjustment *string `pulumi:"adjustment"`
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
 	Cooldown *int `pulumi:"cooldown"`
@@ -1906,7 +1906,7 @@ type ElastigroupScalingUpPolicyInput interface {
 type ElastigroupScalingUpPolicyArgs struct {
 	// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
 	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
-	// The number of instances to add/remove to/from the target capacity when scale is needed.
+	// Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
 	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
 	// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
@@ -1998,7 +1998,7 @@ func (o ElastigroupScalingUpPolicyOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
 
-// The number of instances to add/remove to/from the target capacity when scale is needed.
+// Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
 func (o ElastigroupScalingUpPolicyOutput) Adjustment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
@@ -2104,7 +2104,7 @@ func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) Elastigr
 }
 
 type ElastigroupScalingUpPolicyDimension struct {
-	// The dimension name.
+	// The name of the managed identity.
 	Name string `pulumi:"name"`
 	// The dimension value.
 	Value *string `pulumi:"value"`
@@ -2122,7 +2122,7 @@ type ElastigroupScalingUpPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingUpPolicyDimensionArgs struct {
-	// The dimension name.
+	// The name of the managed identity.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The dimension value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -2179,7 +2179,7 @@ func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyD
 	return o
 }
 
-// The dimension name.
+// The name of the managed identity.
 func (o ElastigroupScalingUpPolicyDimensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2210,15 +2210,15 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ElastigroupScheduledTask struct {
-	// The number of instances to add/remove to/from the target capacity when scale is needed.
+	// Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
 	Adjustment *string `pulumi:"adjustment"`
 	// The percent of instances to add/remove to/from the target capacity when scale is needed.
 	AdjustmentPercentage *string `pulumi:"adjustmentPercentage"`
-	// Sets the percentage of the instances to deploy in each batch.
+	// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
 	BatchSizePercentage *string `pulumi:"batchSizePercentage"`
 	// A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
 	CronExpression string `pulumi:"cronExpression"`
-	// Sets the grace period for new instances to become healthy.
+	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	GracePeriod *string `pulumi:"gracePeriod"`
 	// Describes whether the task is enabled. When true the task should run when false it should not run.
 	IsEnabled *bool `pulumi:"isEnabled"`
@@ -2244,15 +2244,15 @@ type ElastigroupScheduledTaskInput interface {
 }
 
 type ElastigroupScheduledTaskArgs struct {
-	// The number of instances to add/remove to/from the target capacity when scale is needed.
+	// Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
 	Adjustment pulumi.StringPtrInput `pulumi:"adjustment"`
 	// The percent of instances to add/remove to/from the target capacity when scale is needed.
 	AdjustmentPercentage pulumi.StringPtrInput `pulumi:"adjustmentPercentage"`
-	// Sets the percentage of the instances to deploy in each batch.
+	// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
 	BatchSizePercentage pulumi.StringPtrInput `pulumi:"batchSizePercentage"`
 	// A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Sets the grace period for new instances to become healthy.
+	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	GracePeriod pulumi.StringPtrInput `pulumi:"gracePeriod"`
 	// Describes whether the task is enabled. When true the task should run when false it should not run.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
@@ -2317,7 +2317,7 @@ func (o ElastigroupScheduledTaskOutput) ToElastigroupScheduledTaskOutputWithCont
 	return o
 }
 
-// The number of instances to add/remove to/from the target capacity when scale is needed.
+// Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
 func (o ElastigroupScheduledTaskOutput) Adjustment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.Adjustment }).(pulumi.StringPtrOutput)
 }
@@ -2327,7 +2327,7 @@ func (o ElastigroupScheduledTaskOutput) AdjustmentPercentage() pulumi.StringPtrO
 	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.AdjustmentPercentage }).(pulumi.StringPtrOutput)
 }
 
-// Sets the percentage of the instances to deploy in each batch.
+// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
 func (o ElastigroupScheduledTaskOutput) BatchSizePercentage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.BatchSizePercentage }).(pulumi.StringPtrOutput)
 }
@@ -2337,7 +2337,7 @@ func (o ElastigroupScheduledTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScheduledTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Sets the grace period for new instances to become healthy.
+// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 func (o ElastigroupScheduledTaskOutput) GracePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.GracePeriod }).(pulumi.StringPtrOutput)
 }
@@ -2719,11 +2719,11 @@ func (o ElastigroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 }
 
 type ElastigroupUpdatePolicyRollConfig struct {
-	// Sets the percentage of the instances to deploy in each batch.
+	// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
 	BatchSizePercentage int `pulumi:"batchSizePercentage"`
-	// Sets the grace period for new instances to become healthy.
+	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	GracePeriod *int `pulumi:"gracePeriod"`
-	// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+	// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 }
 
@@ -2739,11 +2739,11 @@ type ElastigroupUpdatePolicyRollConfigInput interface {
 }
 
 type ElastigroupUpdatePolicyRollConfigArgs struct {
-	// Sets the percentage of the instances to deploy in each batch.
+	// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
 	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
-	// Sets the grace period for new instances to become healthy.
+	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
-	// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+	// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
 	HealthCheckType pulumi.StringPtrInput `pulumi:"healthCheckType"`
 }
 
@@ -2824,17 +2824,17 @@ func (o ElastigroupUpdatePolicyRollConfigOutput) ToElastigroupUpdatePolicyRollCo
 	}).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 
-// Sets the percentage of the instances to deploy in each batch.
+// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
 func (o ElastigroupUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
-// Sets the grace period for new instances to become healthy.
+// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 func (o ElastigroupUpdatePolicyRollConfigOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
-// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
 func (o ElastigroupUpdatePolicyRollConfigOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
@@ -2863,7 +2863,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Elem() ElastigroupUpdatePoli
 	}).(ElastigroupUpdatePolicyRollConfigOutput)
 }
 
-// Sets the percentage of the instances to deploy in each batch.
+// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -2873,7 +2873,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// Sets the grace period for new instances to become healthy.
+// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -2883,7 +2883,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) GracePeriod() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *string {
 		if v == nil {
@@ -5680,6 +5680,8 @@ func (o OceanVirtualNodeGroupLabelArrayOutput) Index(i pulumi.IntInput) OceanVir
 }
 
 type OceanVirtualNodeGroupLaunchSpecification struct {
+	// The maximum number of pods per node in an AKS cluster.
+	MaxPods *int `pulumi:"maxPods"`
 	// Specify OS disk specification other than default.
 	OsDisk *OceanVirtualNodeGroupLaunchSpecificationOsDisk `pulumi:"osDisk"`
 	// Additional key-value pairs to be used to tag the VMs in the virtual node group.
@@ -5698,6 +5700,8 @@ type OceanVirtualNodeGroupLaunchSpecificationInput interface {
 }
 
 type OceanVirtualNodeGroupLaunchSpecificationArgs struct {
+	// The maximum number of pods per node in an AKS cluster.
+	MaxPods pulumi.IntPtrInput `pulumi:"maxPods"`
 	// Specify OS disk specification other than default.
 	OsDisk OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrInput `pulumi:"osDisk"`
 	// Additional key-value pairs to be used to tag the VMs in the virtual node group.
@@ -5753,6 +5757,11 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOutput) ToOceanVirtualNodeGroupL
 
 func (o OceanVirtualNodeGroupLaunchSpecificationOutput) ToOceanVirtualNodeGroupLaunchSpecificationOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOutput {
 	return o
+}
+
+// The maximum number of pods per node in an AKS cluster.
+func (o OceanVirtualNodeGroupLaunchSpecificationOutput) MaxPods() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanVirtualNodeGroupLaunchSpecification) *int { return v.MaxPods }).(pulumi.IntPtrOutput)
 }
 
 // Specify OS disk specification other than default.

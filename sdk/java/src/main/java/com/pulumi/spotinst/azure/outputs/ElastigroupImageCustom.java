@@ -15,7 +15,7 @@ public final class ElastigroupImageCustom {
      */
     private String imageName;
     /**
-     * @return Vnet Resource Group Name.
+     * @return The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     private String resourceGroupName;
@@ -29,7 +29,7 @@ public final class ElastigroupImageCustom {
         return this.imageName;
     }
     /**
-     * @return Vnet Resource Group Name.
+     * @return The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     public String resourceGroupName() {

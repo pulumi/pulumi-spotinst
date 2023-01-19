@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupScalingUpPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingUpPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
@@ -65,5 +65,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupScalingUpPolicyArgs()
         {
         }
+        public static new ElastigroupScalingUpPolicyArgs Empty => new ElastigroupScalingUpPolicyArgs();
     }
 }

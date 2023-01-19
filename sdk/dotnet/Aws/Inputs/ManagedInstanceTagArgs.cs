@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ManagedInstanceTagArgs : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Tag's key.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ManagedInstanceTagArgs()
         {
         }
+        public static new ManagedInstanceTagArgs Empty => new ManagedInstanceTagArgs();
     }
 }

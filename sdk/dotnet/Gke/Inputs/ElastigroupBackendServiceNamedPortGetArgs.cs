@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupBackendServiceNamedPortGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupBackendServiceNamedPortGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -26,5 +26,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupBackendServiceNamedPortGetArgs()
         {
         }
+        public static new ElastigroupBackendServiceNamedPortGetArgs Empty => new ElastigroupBackendServiceNamedPortGetArgs();
     }
 }

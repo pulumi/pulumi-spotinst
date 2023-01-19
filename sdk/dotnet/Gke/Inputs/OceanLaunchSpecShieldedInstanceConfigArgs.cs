@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanLaunchSpecShieldedInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecShieldedInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Enable the integrity monitoring parameter on the GCP instances.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanLaunchSpecShieldedInstanceConfigArgs()
         {
         }
+        public static new OceanLaunchSpecShieldedInstanceConfigArgs Empty => new OceanLaunchSpecShieldedInstanceConfigArgs();
     }
 }

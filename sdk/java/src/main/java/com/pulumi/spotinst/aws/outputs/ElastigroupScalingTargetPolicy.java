@@ -26,7 +26,7 @@ public final class ElastigroupScalingTargetPolicy {
      */
     private @Nullable List<ElastigroupScalingTargetPolicyDimension> dimensions;
     /**
-     * @return How many evaluation periods should accumulate before a scale down action takes place.
+     * @return The number of periods over which data is compared to the specified threshold.
      * 
      */
     private @Nullable Integer evaluationPeriods;
@@ -97,7 +97,7 @@ public final class ElastigroupScalingTargetPolicy {
         return this.dimensions == null ? List.of() : this.dimensions;
     }
     /**
-     * @return How many evaluation periods should accumulate before a scale down action takes place.
+     * @return The number of periods over which data is compared to the specified threshold.
      * 
      */
     public Optional<Integer> evaluationPeriods() {

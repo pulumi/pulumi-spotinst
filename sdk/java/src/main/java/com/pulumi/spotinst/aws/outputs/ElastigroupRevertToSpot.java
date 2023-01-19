@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupRevertToSpot {
     /**
-     * @return Actions to perform (options: timeWindow, never)
+     * @return In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
      * 
      */
     private String performAt;
@@ -24,7 +24,7 @@ public final class ElastigroupRevertToSpot {
 
     private ElastigroupRevertToSpot() {}
     /**
-     * @return Actions to perform (options: timeWindow, never)
+     * @return In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
      * 
      */
     public String performAt() {

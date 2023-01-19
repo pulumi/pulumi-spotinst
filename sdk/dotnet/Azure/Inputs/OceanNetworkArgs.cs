@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanNetworkArgs : Pulumi.ResourceArgs
+    public sealed class OceanNetworkArgs : global::Pulumi.ResourceArgs
     {
         [Input("networkInterfaces")]
         private InputList<Inputs.OceanNetworkNetworkInterfaceArgs>? _networkInterfaces;
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanNetworkArgs()
         {
         }
+        public static new OceanNetworkArgs Empty => new OceanNetworkArgs();
     }
 }

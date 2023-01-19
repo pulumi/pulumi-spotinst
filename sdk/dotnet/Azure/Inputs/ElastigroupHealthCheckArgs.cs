@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable auto-healing of unhealthy VMs.
@@ -19,13 +19,13 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<bool>? AutoHealing { get; set; }
 
         /// <summary>
-        /// Sets the grace period for new instances to become healthy.
+        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
         /// <summary>
-        /// Sets the health check type to use. Valid values: `"INSTANCE_STATE"`, `"NONE"`.
+        /// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
         /// </summary>
         [Input("healthCheckType", required: true)]
         public Input<string> HealthCheckType { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupHealthCheckArgs()
         {
         }
+        public static new ElastigroupHealthCheckArgs Empty => new ElastigroupHealthCheckArgs();
     }
 }

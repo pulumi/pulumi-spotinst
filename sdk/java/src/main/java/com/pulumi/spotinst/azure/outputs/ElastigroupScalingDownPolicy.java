@@ -21,7 +21,7 @@ public final class ElastigroupScalingDownPolicy {
      */
     private @Nullable String actionType;
     /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
+     * @return Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
      * 
      */
     private @Nullable String adjustment;
@@ -115,7 +115,7 @@ public final class ElastigroupScalingDownPolicy {
         return Optional.ofNullable(this.actionType);
     }
     /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
+     * @return Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
      * 
      */
     public Optional<String> adjustment() {

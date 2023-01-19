@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupManagedServiceIdentity {
     /**
-     * @return The dimension name.
+     * @return The name of the managed identity.
      * 
      */
     private String name;
     /**
-     * @return Vnet Resource Group Name.
+     * @return The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     private String resourceGroupName;
 
     private ElastigroupManagedServiceIdentity() {}
     /**
-     * @return The dimension name.
+     * @return The name of the managed identity.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Vnet Resource Group Name.
+     * @return The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     public String resourceGroupName() {

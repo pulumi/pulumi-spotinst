@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs()
         {
         }
+        public static new StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs Empty => new StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs();
     }
 }

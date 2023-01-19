@@ -52,32 +52,16 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.desiredCapacity);
     }
 
-    /**
-     * Describes the health check configuration.
-     * 
-     */
     @Import(name="healthCheck")
     private @Nullable Output<ElastigroupHealthCheckArgs> healthCheck;
 
-    /**
-     * @return Describes the health check configuration.
-     * 
-     */
     public Optional<Output<ElastigroupHealthCheckArgs>> healthCheck() {
         return Optional.ofNullable(this.healthCheck);
     }
 
-    /**
-     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     * 
-     */
     @Import(name="images")
     private @Nullable Output<List<ElastigroupImageArgs>> images;
 
-    /**
-     * @return Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     * 
-     */
     public Optional<Output<List<ElastigroupImageArgs>>> images() {
         return Optional.ofNullable(this.images);
     }
@@ -112,32 +96,16 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.integrationMultaiRuntime);
     }
 
-    /**
-     * Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-     * 
-     */
     @Import(name="loadBalancers")
     private @Nullable Output<List<ElastigroupLoadBalancerArgs>> loadBalancers;
 
-    /**
-     * @return Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-     * 
-     */
     public Optional<Output<List<ElastigroupLoadBalancerArgs>>> loadBalancers() {
         return Optional.ofNullable(this.loadBalancers);
     }
 
-    /**
-     * Describes the login configuration.
-     * 
-     */
     @Import(name="login")
     private @Nullable Output<ElastigroupLoginArgs> login;
 
-    /**
-     * @return Describes the login configuration.
-     * 
-     */
     public Optional<Output<ElastigroupLoginArgs>> login() {
         return Optional.ofNullable(this.login);
     }
@@ -195,31 +163,23 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dimension name.
+     * The name of the managed identity.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The dimension name.
+     * @return The name of the managed identity.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Defines the Virtual Network and Subnet for your Elastigroup.
-     * 
-     */
     @Import(name="network", required=true)
     private Output<ElastigroupNetworkArgs> network;
 
-    /**
-     * @return Defines the Virtual Network and Subnet for your Elastigroup.
-     * 
-     */
     public Output<ElastigroupNetworkArgs> network() {
         return this.network;
     }
@@ -270,14 +230,14 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Vnet Resource Group Name.
+     * The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return Vnet Resource Group Name.
+     * @return The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -443,54 +403,24 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return desiredCapacity(Output.of(desiredCapacity));
         }
 
-        /**
-         * @param healthCheck Describes the health check configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheck(@Nullable Output<ElastigroupHealthCheckArgs> healthCheck) {
             $.healthCheck = healthCheck;
             return this;
         }
 
-        /**
-         * @param healthCheck Describes the health check configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheck(ElastigroupHealthCheckArgs healthCheck) {
             return healthCheck(Output.of(healthCheck));
         }
 
-        /**
-         * @param images Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-         * 
-         * @return builder
-         * 
-         */
         public Builder images(@Nullable Output<List<ElastigroupImageArgs>> images) {
             $.images = images;
             return this;
         }
 
-        /**
-         * @param images Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-         * 
-         * @return builder
-         * 
-         */
         public Builder images(List<ElastigroupImageArgs> images) {
             return images(Output.of(images));
         }
 
-        /**
-         * @param images Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-         * 
-         * @return builder
-         * 
-         */
         public Builder images(ElastigroupImageArgs... images) {
             return images(List.of(images));
         }
@@ -537,54 +467,24 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return integrationMultaiRuntime(Output.of(integrationMultaiRuntime));
         }
 
-        /**
-         * @param loadBalancers Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-         * 
-         * @return builder
-         * 
-         */
         public Builder loadBalancers(@Nullable Output<List<ElastigroupLoadBalancerArgs>> loadBalancers) {
             $.loadBalancers = loadBalancers;
             return this;
         }
 
-        /**
-         * @param loadBalancers Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-         * 
-         * @return builder
-         * 
-         */
         public Builder loadBalancers(List<ElastigroupLoadBalancerArgs> loadBalancers) {
             return loadBalancers(Output.of(loadBalancers));
         }
 
-        /**
-         * @param loadBalancers Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-         * 
-         * @return builder
-         * 
-         */
         public Builder loadBalancers(ElastigroupLoadBalancerArgs... loadBalancers) {
             return loadBalancers(List.of(loadBalancers));
         }
 
-        /**
-         * @param login Describes the login configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder login(@Nullable Output<ElastigroupLoginArgs> login) {
             $.login = login;
             return this;
         }
 
-        /**
-         * @param login Describes the login configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder login(ElastigroupLoginArgs login) {
             return login(Output.of(login));
         }
@@ -676,7 +576,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The dimension name.
+         * @param name The name of the managed identity.
          * 
          * @return builder
          * 
@@ -687,7 +587,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The dimension name.
+         * @param name The name of the managed identity.
          * 
          * @return builder
          * 
@@ -696,23 +596,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param network Defines the Virtual Network and Subnet for your Elastigroup.
-         * 
-         * @return builder
-         * 
-         */
         public Builder network(Output<ElastigroupNetworkArgs> network) {
             $.network = network;
             return this;
         }
 
-        /**
-         * @param network Defines the Virtual Network and Subnet for your Elastigroup.
-         * 
-         * @return builder
-         * 
-         */
         public Builder network(ElastigroupNetworkArgs network) {
             return network(Output.of(network));
         }
@@ -791,7 +679,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName Vnet Resource Group Name.
+         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
          * 
          * @return builder
          * 
@@ -802,7 +690,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName Vnet Resource Group Name.
+         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
          * 
          * @return builder
          * 

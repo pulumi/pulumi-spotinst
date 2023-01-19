@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureOsDiskArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureOsDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("sizeGb")]
         public Input<int>? SizeGb { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureOsDiskArgs()
         {
         }
+        public static new StatefulNodeAzureOsDiskArgs Empty => new StatefulNodeAzureOsDiskArgs();
     }
 }

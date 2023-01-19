@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupInstanceTypesWeightArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupInstanceTypesWeightArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of instance type (String).
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupInstanceTypesWeightArgs()
         {
         }
+        public static new ElastigroupInstanceTypesWeightArgs Empty => new ElastigroupInstanceTypesWeightArgs();
     }
 }

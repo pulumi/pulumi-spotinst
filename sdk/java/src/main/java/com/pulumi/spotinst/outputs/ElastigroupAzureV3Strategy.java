@@ -17,10 +17,6 @@ public final class ElastigroupAzureV3Strategy {
      * 
      */
     private @Nullable Integer drainingTimeout;
-    /**
-     * @return -
-     * 
-     */
     private @Nullable Boolean fallbackToOnDemand;
     /**
      * @return Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
@@ -41,10 +37,6 @@ public final class ElastigroupAzureV3Strategy {
     public Optional<Integer> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
     }
-    /**
-     * @return -
-     * 
-     */
     public Optional<Boolean> fallbackToOnDemand() {
         return Optional.ofNullable(this.fallbackToOnDemand);
     }

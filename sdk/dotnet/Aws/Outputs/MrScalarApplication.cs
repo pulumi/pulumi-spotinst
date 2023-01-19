@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// The application name.
+        /// The MrScaler name.
         /// </summary>
         public readonly string Name;
         /// <summary>

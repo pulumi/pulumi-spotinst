@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ManagedInstanceManagedInstanceActionArgs : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceManagedInstanceActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ManagedInstanceManagedInstanceActionArgs()
         {
         }
+        public static new ManagedInstanceManagedInstanceActionArgs Empty => new ManagedInstanceManagedInstanceActionArgs();
     }
 }

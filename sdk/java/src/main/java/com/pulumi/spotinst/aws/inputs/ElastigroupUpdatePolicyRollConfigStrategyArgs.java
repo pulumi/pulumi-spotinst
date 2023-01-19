@@ -19,14 +19,14 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
     public static final ElastigroupUpdatePolicyRollConfigStrategyArgs Empty = new ElastigroupUpdatePolicyRollConfigStrategyArgs();
 
     /**
-     * Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * The action to take when scale up according to step&#39;s threshold is needed.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * @return The action to take when scale up according to step&#39;s threshold is needed.
      * 
      */
     public Output<String> action() {
@@ -64,14 +64,14 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
     }
 
     /**
-     * Specify whether to drain incoming TCP connections before terminating a server.
+     * Bool value if to wait to drain instance
      * 
      */
     @Import(name="shouldDrainInstances")
     private @Nullable Output<Boolean> shouldDrainInstances;
 
     /**
-     * @return Specify whether to drain incoming TCP connections before terminating a server.
+     * @return Bool value if to wait to drain instance
      * 
      */
     public Optional<Output<Boolean>> shouldDrainInstances() {
@@ -106,7 +106,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
         }
 
         /**
-         * @param action Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+         * @param action The action to take when scale up according to step&#39;s threshold is needed.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
         }
 
         /**
-         * @param action Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+         * @param action The action to take when scale up according to step&#39;s threshold is needed.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
         }
 
         /**
-         * @param shouldDrainInstances Specify whether to drain incoming TCP connections before terminating a server.
+         * @param shouldDrainInstances Bool value if to wait to drain instance
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
         }
 
         /**
-         * @param shouldDrainInstances Specify whether to drain incoming TCP connections before terminating a server.
+         * @param shouldDrainInstances Bool value if to wait to drain instance
          * 
          * @return builder
          * 

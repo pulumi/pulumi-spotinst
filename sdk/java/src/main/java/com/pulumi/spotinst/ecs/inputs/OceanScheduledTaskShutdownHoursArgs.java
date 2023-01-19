@@ -18,14 +18,14 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
     public static final OceanScheduledTaskShutdownHoursArgs Empty = new OceanScheduledTaskShutdownHoursArgs();
 
     /**
-     * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+     * Enable the Ocean ECS autoscaler.
      * 
      */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
     /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+     * @return Enable the Ocean ECS autoscaler.
      * 
      */
     public Optional<Output<Boolean>> isEnabled() {
@@ -33,14 +33,14 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
     }
 
     /**
-     * Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
+     * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
      * 
      */
     @Import(name="timeWindows", required=true)
     private Output<List<String>> timeWindows;
 
     /**
-     * @return Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
+     * @return Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
      * 
      */
     public Output<List<String>> timeWindows() {
@@ -73,7 +73,7 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
         }
 
         /**
-         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+         * @param isEnabled Enable the Ocean ECS autoscaler.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
         }
 
         /**
-         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+         * @param isEnabled Enable the Ocean ECS autoscaler.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
         }
 
         /**
-         * @param timeWindows Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
+         * @param timeWindows Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
         }
 
         /**
-         * @param timeWindows Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
+         * @param timeWindows Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
         }
 
         /**
-         * @param timeWindows Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
+         * @param timeWindows Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
          * 
          * @return builder
          * 

@@ -389,7 +389,7 @@ type MrScalar struct {
 	MasterLifecycle pulumi.StringPtrOutput `pulumi:"masterLifecycle"`
 	// Number of instances in the master group.
 	MasterTarget pulumi.IntPtrOutput `pulumi:"masterTarget"`
-	// The application name.
+	// The MrScaler name.
 	Name                pulumi.StringOutput                  `pulumi:"name"`
 	OutputClusterId     pulumi.StringOutput                  `pulumi:"outputClusterId"`
 	ProvisioningTimeout MrScalarProvisioningTimeoutPtrOutput `pulumi:"provisioningTimeout"`
@@ -537,7 +537,7 @@ type mrScalarState struct {
 	MasterLifecycle *string `pulumi:"masterLifecycle"`
 	// Number of instances in the master group.
 	MasterTarget *int `pulumi:"masterTarget"`
-	// The application name.
+	// The MrScaler name.
 	Name                *string                      `pulumi:"name"`
 	OutputClusterId     *string                      `pulumi:"outputClusterId"`
 	ProvisioningTimeout *MrScalarProvisioningTimeout `pulumi:"provisioningTimeout"`
@@ -654,7 +654,7 @@ type MrScalarState struct {
 	MasterLifecycle pulumi.StringPtrInput
 	// Number of instances in the master group.
 	MasterTarget pulumi.IntPtrInput
-	// The application name.
+	// The MrScaler name.
 	Name                pulumi.StringPtrInput
 	OutputClusterId     pulumi.StringPtrInput
 	ProvisioningTimeout MrScalarProvisioningTimeoutPtrInput
@@ -775,7 +775,7 @@ type mrScalarArgs struct {
 	MasterLifecycle *string `pulumi:"masterLifecycle"`
 	// Number of instances in the master group.
 	MasterTarget *int `pulumi:"masterTarget"`
-	// The application name.
+	// The MrScaler name.
 	Name                *string                      `pulumi:"name"`
 	ProvisioningTimeout *MrScalarProvisioningTimeout `pulumi:"provisioningTimeout"`
 	// The MrScaler region.
@@ -892,7 +892,7 @@ type MrScalarArgs struct {
 	MasterLifecycle pulumi.StringPtrInput
 	// Number of instances in the master group.
 	MasterTarget pulumi.IntPtrInput
-	// The application name.
+	// The MrScaler name.
 	Name                pulumi.StringPtrInput
 	ProvisioningTimeout MrScalarProvisioningTimeoutPtrInput
 	// The MrScaler region.
@@ -1196,7 +1196,7 @@ func (o MrScalarOutput) MasterTarget() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MrScalar) pulumi.IntPtrOutput { return v.MasterTarget }).(pulumi.IntPtrOutput)
 }
 
-// The application name.
+// The MrScaler name.
 func (o MrScalarOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MrScalar) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

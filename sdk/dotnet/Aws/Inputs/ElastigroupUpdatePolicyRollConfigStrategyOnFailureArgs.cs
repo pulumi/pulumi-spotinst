@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
         /// </summary>
         [Input("actionType", required: true)]
         public Input<string> ActionType { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? BatchNum { get; set; }
 
         /// <summary>
-        /// Indicates (in seconds) the timeout to wait until instance are detached.
+        /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         /// </summary>
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
@@ -42,5 +42,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs()
         {
         }
+        public static new ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs Empty => new ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs();
     }
 }

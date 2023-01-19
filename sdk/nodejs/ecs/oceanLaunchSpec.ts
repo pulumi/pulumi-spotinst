@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -59,6 +60,13 @@ import * as utilities from "../utilities";
  *         "m5.24xlarge",
  *     ],
  *     oceanId: "o-123456",
+ *     preferredSpotTypes: [
+ *         "m3.large",
+ *         "m3.xlarge",
+ *         "m3.2xlarge",
+ *         "m4.large",
+ *         "m4.xlarge",
+ *     ],
  *     restrictScaleDown: true,
  *     schedulingTasks: [{
  *         cronExpression: "0 1 * * *",
@@ -71,6 +79,9 @@ import * as utilities from "../utilities";
  *         taskType: "manualHeadroomUpdate",
  *     }],
  *     securityGroupIds: ["awseb-12345"],
+ *     strategies: [{
+ *         spotPercentage: 50,
+ *     }],
  *     subnetIds: ["subnet-12345"],
  *     tags: [{
  *         key: "Env",
@@ -161,6 +172,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly oceanId!: pulumi.Output<string>;
     /**
+     * When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     */
+    public readonly preferredSpotTypes!: pulumi.Output<string[] | undefined>;
+    /**
      * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     public readonly restrictScaleDown!: pulumi.Output<boolean | undefined>;
@@ -172,6 +187,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * One or more security group ids.
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+     */
+    public readonly strategies!: pulumi.Output<outputs.ecs.OceanLaunchSpecStrategy[] | undefined>;
     /**
      * Set subnets in launchSpec. Each element in the array should be a subnet ID.
      */
@@ -206,9 +225,11 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["oceanId"] = state ? state.oceanId : undefined;
+            resourceInputs["preferredSpotTypes"] = state ? state.preferredSpotTypes : undefined;
             resourceInputs["restrictScaleDown"] = state ? state.restrictScaleDown : undefined;
             resourceInputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["strategies"] = state ? state.strategies : undefined;
             resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
@@ -225,9 +246,11 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["oceanId"] = args ? args.oceanId : undefined;
+            resourceInputs["preferredSpotTypes"] = args ? args.preferredSpotTypes : undefined;
             resourceInputs["restrictScaleDown"] = args ? args.restrictScaleDown : undefined;
             resourceInputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["strategies"] = args ? args.strategies : undefined;
             resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
@@ -271,6 +294,10 @@ export interface OceanLaunchSpecState {
      */
     oceanId?: pulumi.Input<string>;
     /**
+     * When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     */
+    preferredSpotTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     restrictScaleDown?: pulumi.Input<boolean>;
@@ -282,6 +309,10 @@ export interface OceanLaunchSpecState {
      * One or more security group ids.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+     */
+    strategies?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecStrategy>[]>;
     /**
      * Set subnets in launchSpec. Each element in the array should be a subnet ID.
      */
@@ -330,6 +361,10 @@ export interface OceanLaunchSpecArgs {
      */
     oceanId: pulumi.Input<string>;
     /**
+     * When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     */
+    preferredSpotTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      */
     restrictScaleDown?: pulumi.Input<boolean>;
@@ -341,6 +376,10 @@ export interface OceanLaunchSpecArgs {
      * One or more security group ids.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+     */
+    strategies?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecStrategy>[]>;
     /**
      * Set subnets in launchSpec. Each element in the array should be a subnet ID.
      */

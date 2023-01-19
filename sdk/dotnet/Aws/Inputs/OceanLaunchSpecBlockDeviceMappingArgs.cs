@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecBlockDeviceMappingArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecBlockDeviceMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Set device name. (Example: `/dev/xvda`).
@@ -36,5 +36,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecBlockDeviceMappingArgs()
         {
         }
+        public static new OceanLaunchSpecBlockDeviceMappingArgs Empty => new OceanLaunchSpecBlockDeviceMappingArgs();
     }
 }

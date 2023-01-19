@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationDockerSwarmGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationDockerSwarmGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
@@ -19,13 +19,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? AutoscaleCooldown { get; set; }
 
         /// <summary>
-        /// Settings for scale down actions.
+        /// Enabling scale down.
         /// </summary>
         [Input("autoscaleDown")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmAutoscaleDownGetArgs>? AutoscaleDown { get; set; }
 
         /// <summary>
-        /// An option to set compute reserve for the cluster.
+        /// Headroom for the cluster.
         /// </summary>
         [Input("autoscaleHeadroom")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmAutoscaleHeadroomGetArgs>? AutoscaleHeadroom { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? AutoscaleIsEnabled { get; set; }
 
         /// <summary>
-        /// The URL for the Nomad master host.
+        /// The URL of the Rancher Master host.
         /// </summary>
         [Input("masterHost", required: true)]
         public Input<string> MasterHost { get; set; } = null!;
 
         /// <summary>
-        /// The network port for the master host.
+        /// Network port used by your swarm.
         /// </summary>
         [Input("masterPort", required: true)]
         public Input<int> MasterPort { get; set; } = null!;
@@ -51,5 +51,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationDockerSwarmGetArgs()
         {
         }
+        public static new ElastigroupIntegrationDockerSwarmGetArgs Empty => new ElastigroupIntegrationDockerSwarmGetArgs();
     }
 }

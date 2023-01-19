@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spotinst.NewHealthCheck(ctx, "httpCheck", &spotinst.HealthCheckArgs{
-//				Check: &HealthCheckCheckArgs{
+//				Check: &spotinst.HealthCheckCheckArgs{
 //					Endpoint:  pulumi.String("http://endpoint.com"),
 //					Healthy:   pulumi.Int(1),
 //					Interval:  pulumi.Int(10),

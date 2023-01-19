@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanLaunchSpecStorageArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecStorageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines the number of local SSDs to be attached per node for this VNG.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanLaunchSpecStorageArgs()
         {
         }
+        public static new OceanLaunchSpecStorageArgs Empty => new OceanLaunchSpecStorageArgs();
     }
 }

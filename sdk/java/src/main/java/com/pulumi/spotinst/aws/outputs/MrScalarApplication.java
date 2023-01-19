@@ -18,7 +18,7 @@ public final class MrScalarApplication {
      */
     private @Nullable List<String> args;
     /**
-     * @return The application name.
+     * @return The MrScaler name.
      * 
      */
     private String name;
@@ -37,7 +37,7 @@ public final class MrScalarApplication {
         return this.args == null ? List.of() : this.args;
     }
     /**
-     * @return The application name.
+     * @return The MrScaler name.
      * 
      */
     public String name() {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupBackendServiceGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupBackendServiceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sets which location the backend services will be active. Valid values: `regional`, `global`.
@@ -20,6 +20,10 @@ namespace Pulumi.SpotInst.Gcp.Inputs
 
         [Input("namedPorts")]
         private InputList<Inputs.ElastigroupBackendServiceNamedPortGetArgs>? _namedPorts;
+
+        /// <summary>
+        /// Describes a named port and a list of ports.
+        /// </summary>
         public InputList<Inputs.ElastigroupBackendServiceNamedPortGetArgs> NamedPorts
         {
             get => _namedPorts ?? (_namedPorts = new InputList<Inputs.ElastigroupBackendServiceNamedPortGetArgs>());
@@ -41,5 +45,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupBackendServiceGetArgs()
         {
         }
+        public static new ElastigroupBackendServiceGetArgs Empty => new ElastigroupBackendServiceGetArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class ElastigroupNetworkAdditionalIpConfig
     {
         /// <summary>
-        /// The dimension name.
+        /// The name of the managed identity.
         /// </summary>
         public readonly string Name;
         /// <summary>

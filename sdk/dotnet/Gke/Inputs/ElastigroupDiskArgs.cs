@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupDiskArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoDelete")]
         public Input<bool>? AutoDelete { get; set; }
@@ -44,5 +44,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupDiskArgs()
         {
         }
+        public static new ElastigroupDiskArgs Empty => new ElastigroupDiskArgs();
     }
 }

@@ -24,10 +24,6 @@ public final class ElastigroupAzureV3ImageMarketplace {
      * 
      */
     private String sku;
-    /**
-     * @return -
-     * 
-     */
     private String version;
 
     private ElastigroupAzureV3ImageMarketplace() {}
@@ -52,10 +48,6 @@ public final class ElastigroupAzureV3ImageMarketplace {
     public String sku() {
         return this.sku;
     }
-    /**
-     * @return -
-     * 
-     */
     public String version() {
         return this.version;
     }

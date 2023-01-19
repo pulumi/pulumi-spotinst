@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureNetworkNetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureNetworkNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalIpConfigurations")]
         private InputList<Inputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs>? _additionalIpConfigurations;
@@ -70,5 +70,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureNetworkNetworkInterfaceArgs()
         {
         }
+        public static new StatefulNodeAzureNetworkNetworkInterfaceArgs Empty => new StatefulNodeAzureNetworkNetworkInterfaceArgs();
     }
 }

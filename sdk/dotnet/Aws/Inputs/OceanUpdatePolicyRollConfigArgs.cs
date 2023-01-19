@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanUpdatePolicyRollConfigArgs : Pulumi.ResourceArgs
+    public sealed class OceanUpdatePolicyRollConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
@@ -45,5 +45,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanUpdatePolicyRollConfigArgs()
         {
         }
+        public static new OceanUpdatePolicyRollConfigArgs Empty => new OceanUpdatePolicyRollConfigArgs();
     }
 }

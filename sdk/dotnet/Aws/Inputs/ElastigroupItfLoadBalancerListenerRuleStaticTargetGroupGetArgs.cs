@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("arn", required: true)]
         public Input<string> Arn { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupGetArgs()
         {
         }
+        public static new ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupGetArgs Empty => new ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupGetArgs();
     }
 }

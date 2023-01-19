@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationNomadAutoscaleConstraintGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationNomadAutoscaleConstraintGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationNomadAutoscaleConstraintGetArgs()
         {
         }
+        public static new ElastigroupIntegrationNomadAutoscaleConstraintGetArgs Empty => new ElastigroupIntegrationNomadAutoscaleConstraintGetArgs();
     }
 }

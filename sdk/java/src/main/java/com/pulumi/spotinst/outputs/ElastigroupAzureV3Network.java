@@ -11,13 +11,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupAzureV3Network {
-    /**
-     * @return -
-     * 
-     */
     private List<ElastigroupAzureV3NetworkNetworkInterface> networkInterfaces;
     /**
-     * @return - The resource group of the Application Security Group.
+     * @return The resource group of the Application Security Group.
      * }
      * 
      */
@@ -29,15 +25,11 @@ public final class ElastigroupAzureV3Network {
     private String virtualNetworkName;
 
     private ElastigroupAzureV3Network() {}
-    /**
-     * @return -
-     * 
-     */
     public List<ElastigroupAzureV3NetworkNetworkInterface> networkInterfaces() {
         return this.networkInterfaces;
     }
     /**
-     * @return - The resource group of the Application Security Group.
+     * @return The resource group of the Application Security Group.
      * }
      * 
      */

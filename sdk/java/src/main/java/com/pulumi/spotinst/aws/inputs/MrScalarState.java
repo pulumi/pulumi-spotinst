@@ -521,14 +521,14 @@ public final class MrScalarState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The application name.
+     * The MrScaler name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The application name.
+     * @return The MrScaler name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -1770,7 +1770,7 @@ public final class MrScalarState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The application name.
+         * @param name The MrScaler name.
          * 
          * @return builder
          * 
@@ -1781,7 +1781,7 @@ public final class MrScalarState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The application name.
+         * @param name The MrScaler name.
          * 
          * @return builder
          * 

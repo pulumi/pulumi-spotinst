@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ManagedInstanceRevertToSpotArgs : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceRevertToSpotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ManagedInstanceRevertToSpotArgs()
         {
         }
+        public static new ManagedInstanceRevertToSpotArgs Empty => new ManagedInstanceRevertToSpotArgs();
     }
 }

@@ -30,6 +30,8 @@ if typing.TYPE_CHECKING:
     gke = __gke
     import pulumi_spotinst.multai as __multai
     multai = __multai
+    import pulumi_spotinst.spark as __spark
+    spark = __spark
 else:
     aws = _utilities.lazy_import('pulumi_spotinst.aws')
     azure = _utilities.lazy_import('pulumi_spotinst.azure')
@@ -38,6 +40,7 @@ else:
     gcp = _utilities.lazy_import('pulumi_spotinst.gcp')
     gke = _utilities.lazy_import('pulumi_spotinst.gke')
     multai = _utilities.lazy_import('pulumi_spotinst.multai')
+    spark = _utilities.lazy_import('pulumi_spotinst.spark')
 
 _utilities.register(
     resource_modules="""
@@ -272,6 +275,14 @@ _utilities.register(
   "fqn": "pulumi_spotinst.multai",
   "classes": {
    "spotinst:multai/targetSet:TargetSet": "TargetSet"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "spark/ocean",
+  "fqn": "pulumi_spotinst.spark",
+  "classes": {
+   "spotinst:spark/ocean:Ocean": "Ocean"
   }
  }
 ]

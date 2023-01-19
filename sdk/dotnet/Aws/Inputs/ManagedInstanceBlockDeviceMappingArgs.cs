@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ManagedInstanceBlockDeviceMappingArgs : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceBlockDeviceMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the device to mount.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ManagedInstanceBlockDeviceMappingArgs()
         {
         }
+        public static new ManagedInstanceBlockDeviceMappingArgs Empty => new ManagedInstanceBlockDeviceMappingArgs();
     }
 }

@@ -21,6 +21,7 @@ import com.pulumi.spotinst.azure.outputs.OceanOsDisk;
 import com.pulumi.spotinst.azure.outputs.OceanStrategy;
 import com.pulumi.spotinst.azure.outputs.OceanTag;
 import com.pulumi.spotinst.azure.outputs.OceanVmSize;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -28,13 +29,36 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.azure.Ocean;
+ * import com.pulumi.spotinst.azure.OceanArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleDownArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleHeadroomArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleHeadroomAutomaticArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerResourceLimitsArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanExtensionArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanHealthArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanImageArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanLoadBalancerArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanManagedServiceIdentityArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNetworkArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanOsDiskArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanStrategyArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanTagArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanVmSizeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -93,6 +117,7 @@ import javax.annotation.Nullable;
  *                 .name(&#34;ocean-westus-dev-aks-agentpool&#34;)
  *                 .resourceGroupName(&#34;MC_ocean-westus-dev_ocean-westus-dev-aks_westus&#34;)
  *                 .build())
+ *             .maxPods(30)
  *             .network(OceanNetworkArgs.builder()
  *                 .networkInterfaces(OceanNetworkNetworkInterfaceArgs.builder()
  *                     .additionalIpConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
@@ -133,10 +158,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -305,6 +335,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<OceanManagedServiceIdentity>>> managedServiceIdentities() {
         return Codegen.optional(this.managedServiceIdentities);
+    }
+    /**
+     * The maximum number of pods per node in an AKS cluster.
+     * 
+     */
+    @Export(name="maxPods", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> maxPods;
+
+    /**
+     * @return The maximum number of pods per node in an AKS cluster.
+     * 
+     */
+    public Output<Optional<Integer>> maxPods() {
+        return Codegen.optional(this.maxPods);
     }
     /**
      * Name of the Load Balancer.

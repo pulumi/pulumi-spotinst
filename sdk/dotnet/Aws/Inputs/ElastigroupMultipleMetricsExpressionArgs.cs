@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupMultipleMetricsExpressionArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupMultipleMetricsExpressionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An expression consisting of the metric names listed in the 'metrics' array.
@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> Expression { get; set; } = null!;
 
         /// <summary>
-        /// The record set name.
+        /// The group name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupMultipleMetricsExpressionArgs()
         {
         }
+        public static new ElastigroupMultipleMetricsExpressionArgs Empty => new ElastigroupMultipleMetricsExpressionArgs();
     }
 }

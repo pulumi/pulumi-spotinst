@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportStrategyArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The draining timeout (in seconds) before terminating the instance.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportStrategyArgs()
         {
         }
+        public static new OceanImportStrategyArgs Empty => new OceanImportStrategyArgs();
     }
 }

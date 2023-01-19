@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanNetworkNetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class OceanNetworkNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalIpConfigs")]
         private InputList<Inputs.OceanNetworkNetworkInterfaceAdditionalIpConfigArgs>? _additionalIpConfigs;
@@ -48,5 +48,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanNetworkNetworkInterfaceArgs()
         {
         }
+        public static new OceanNetworkNetworkInterfaceArgs Empty => new OceanNetworkNetworkInterfaceArgs();
     }
 }

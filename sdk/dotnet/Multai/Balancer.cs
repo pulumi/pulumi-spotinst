@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Multai
 {
     [SpotInstResourceType("spotinst:multai/balancer:Balancer")]
-    public partial class Balancer : Pulumi.CustomResource
+    public partial class Balancer : global::Pulumi.CustomResource
     {
         [Output("connectionTimeouts")]
         public Output<Outputs.BalancerConnectionTimeouts?> ConnectionTimeouts { get; private set; } = null!;
@@ -71,7 +71,7 @@ namespace Pulumi.SpotInst.Multai
         }
     }
 
-    public sealed class BalancerArgs : Pulumi.ResourceArgs
+    public sealed class BalancerArgs : global::Pulumi.ResourceArgs
     {
         [Input("connectionTimeouts")]
         public Input<Inputs.BalancerConnectionTimeoutsArgs>? ConnectionTimeouts { get; set; }
@@ -101,9 +101,10 @@ namespace Pulumi.SpotInst.Multai
         public BalancerArgs()
         {
         }
+        public static new BalancerArgs Empty => new BalancerArgs();
     }
 
-    public sealed class BalancerState : Pulumi.ResourceArgs
+    public sealed class BalancerState : global::Pulumi.ResourceArgs
     {
         [Input("connectionTimeouts")]
         public Input<Inputs.BalancerConnectionTimeoutsGetArgs>? ConnectionTimeouts { get; set; }
@@ -133,5 +134,6 @@ namespace Pulumi.SpotInst.Multai
         public BalancerState()
         {
         }
+        public static new BalancerState Empty => new BalancerState();
     }
 }

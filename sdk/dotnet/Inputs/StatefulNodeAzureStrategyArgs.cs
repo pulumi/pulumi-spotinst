@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureStrategyArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureStrategyArgs : global::Pulumi.ResourceArgs
     {
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
@@ -35,5 +35,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureStrategyArgs()
         {
         }
+        public static new StatefulNodeAzureStrategyArgs Empty => new StatefulNodeAzureStrategyArgs();
     }
 }

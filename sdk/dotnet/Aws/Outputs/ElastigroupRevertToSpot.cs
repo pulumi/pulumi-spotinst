@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupRevertToSpot
     {
         /// <summary>
-        /// Actions to perform (options: timeWindow, never)
+        /// In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
         /// </summary>
         public readonly string PerformAt;
         /// <summary>

@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class ElastigroupScheduledTask
     {
         /// <summary>
-        /// The number of instances to add/remove to/from the target capacity when scale is needed.
+        /// Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
         /// </summary>
         public readonly string? Adjustment;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly string? AdjustmentPercentage;
         /// <summary>
-        /// Sets the percentage of the instances to deploy in each batch.
+        /// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
         /// </summary>
         public readonly string? BatchSizePercentage;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly string CronExpression;
         /// <summary>
-        /// Sets the grace period for new instances to become healthy.
+        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         /// </summary>
         public readonly string? GracePeriod;
         /// <summary>

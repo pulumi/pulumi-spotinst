@@ -16,14 +16,14 @@ public final class ElastigroupScalingUpPolicyDimensionArgs extends com.pulumi.re
     public static final ElastigroupScalingUpPolicyDimensionArgs Empty = new ElastigroupScalingUpPolicyDimensionArgs();
 
     /**
-     * The record set name.
+     * The group name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     public Output<String> name() {
@@ -71,7 +71,7 @@ public final class ElastigroupScalingUpPolicyDimensionArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The record set name.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ElastigroupScalingUpPolicyDimensionArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The record set name.
+         * @param name The group name.
          * 
          * @return builder
          * 

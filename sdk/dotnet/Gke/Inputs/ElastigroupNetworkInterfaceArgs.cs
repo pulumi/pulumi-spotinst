@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupNetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessConfigs")]
         private InputList<Inputs.ElastigroupNetworkInterfaceAccessConfigArgs>? _accessConfigs;
@@ -34,5 +34,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupNetworkInterfaceArgs()
         {
         }
+        public static new ElastigroupNetworkInterfaceArgs Empty => new ElastigroupNetworkInterfaceArgs();
     }
 }

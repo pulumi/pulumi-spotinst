@@ -30,7 +30,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? BalancerId;
         /// <summary>
-        /// The record set name.
+        /// The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? TargetSetId;
         /// <summary>
-        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+        /// The resource type. Valid Values: `"CLASSIC"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
         /// </summary>
         public readonly string Type;
 

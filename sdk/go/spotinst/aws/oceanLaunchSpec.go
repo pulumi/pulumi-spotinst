@@ -63,6 +63,7 @@ import (
 //					InitialNodes: pulumi.Int(1),
 //				},
 //				DeleteOptions: &aws.OceanLaunchSpecDeleteOptionsArgs{
+//					DeleteNodes: pulumi.Bool(true),
 //					ForceDelete: pulumi.Bool(true),
 //				},
 //				ElasticIpPools: aws.OceanLaunchSpecElasticIpPoolArray{

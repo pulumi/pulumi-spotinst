@@ -17,32 +17,16 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
 
     public static final OceanScheduledTaskShutdownHoursArgs Empty = new OceanScheduledTaskShutdownHoursArgs();
 
-    /**
-     * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-     * 
-     */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
-    /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-     * 
-     */
     public Optional<Output<Boolean>> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
 
-    /**
-     * Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
-     * 
-     */
     @Import(name="timeWindows", required=true)
     private Output<List<String>> timeWindows;
 
-    /**
-     * @return Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
-     * 
-     */
     public Output<List<String>> timeWindows() {
         return this.timeWindows;
     }
@@ -72,54 +56,24 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
             $ = new OceanScheduledTaskShutdownHoursArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
-        /**
-         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }
 
-        /**
-         * @param timeWindows Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindows(Output<List<String>> timeWindows) {
             $.timeWindows = timeWindows;
             return this;
         }
 
-        /**
-         * @param timeWindows Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindows(List<String> timeWindows) {
             return timeWindows(Output.of(timeWindows));
         }
 
-        /**
-         * @param timeWindows Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindows(String... timeWindows) {
             return timeWindows(List.of(timeWindows));
         }

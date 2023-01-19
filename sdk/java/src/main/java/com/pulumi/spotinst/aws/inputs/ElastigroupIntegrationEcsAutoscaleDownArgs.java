@@ -17,14 +17,14 @@ public final class ElastigroupIntegrationEcsAutoscaleDownArgs extends com.pulumi
     public static final ElastigroupIntegrationEcsAutoscaleDownArgs Empty = new ElastigroupIntegrationEcsAutoscaleDownArgs();
 
     /**
-     * How many evaluation periods should accumulate before a scale down action takes place.
+     * The number of periods over which data is compared to the specified threshold.
      * 
      */
     @Import(name="evaluationPeriods")
     private @Nullable Output<Integer> evaluationPeriods;
 
     /**
-     * @return How many evaluation periods should accumulate before a scale down action takes place.
+     * @return The number of periods over which data is compared to the specified threshold.
      * 
      */
     public Optional<Output<Integer>> evaluationPeriods() {
@@ -32,7 +32,7 @@ public final class ElastigroupIntegrationEcsAutoscaleDownArgs extends com.pulumi
     }
 
     /**
-     * Would represent the maximum % to scale-down. Number between 1-100.\
+     * Represents the maximum percent to scale-down. Number between 1-100.
      * Usage:
      * 
      */
@@ -40,7 +40,7 @@ public final class ElastigroupIntegrationEcsAutoscaleDownArgs extends com.pulumi
     private @Nullable Output<Double> maxScaleDownPercentage;
 
     /**
-     * @return Would represent the maximum % to scale-down. Number between 1-100.\
+     * @return Represents the maximum percent to scale-down. Number between 1-100.
      * Usage:
      * 
      */
@@ -74,7 +74,7 @@ public final class ElastigroupIntegrationEcsAutoscaleDownArgs extends com.pulumi
         }
 
         /**
-         * @param evaluationPeriods How many evaluation periods should accumulate before a scale down action takes place.
+         * @param evaluationPeriods The number of periods over which data is compared to the specified threshold.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ElastigroupIntegrationEcsAutoscaleDownArgs extends com.pulumi
         }
 
         /**
-         * @param evaluationPeriods How many evaluation periods should accumulate before a scale down action takes place.
+         * @param evaluationPeriods The number of periods over which data is compared to the specified threshold.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class ElastigroupIntegrationEcsAutoscaleDownArgs extends com.pulumi
         }
 
         /**
-         * @param maxScaleDownPercentage Would represent the maximum % to scale-down. Number between 1-100.\
+         * @param maxScaleDownPercentage Represents the maximum percent to scale-down. Number between 1-100.
          * Usage:
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class ElastigroupIntegrationEcsAutoscaleDownArgs extends com.pulumi
         }
 
         /**
-         * @param maxScaleDownPercentage Would represent the maximum % to scale-down. Number between 1-100.\
+         * @param maxScaleDownPercentage Represents the maximum percent to scale-down. Number between 1-100.
          * Usage:
          * 
          * @return builder

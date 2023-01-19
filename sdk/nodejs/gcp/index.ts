@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./elastigroup";
+export { ElastigroupArgs, ElastigroupState } from "./elastigroup";
+export type Elastigroup = import("./elastigroup").Elastigroup;
+export const Elastigroup: typeof import("./elastigroup").Elastigroup = null as any;
+utilities.lazyLoad(exports, ["Elastigroup"], () => require("./elastigroup"));
 
-// Import resources to register:
-import { Elastigroup } from "./elastigroup";
 
 const _module = {
     version: utilities.getVersion(),

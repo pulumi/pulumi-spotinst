@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanBlockDeviceMappingGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanBlockDeviceMappingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Set device name. Example: `/dev/xvda1`.
@@ -36,5 +36,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanBlockDeviceMappingGetArgs()
         {
         }
+        public static new OceanBlockDeviceMappingGetArgs Empty => new OceanBlockDeviceMappingGetArgs();
     }
 }

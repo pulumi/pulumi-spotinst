@@ -32,14 +32,14 @@ public final class MrScalarApplicationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The application name.
+     * The MrScaler name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The application name.
+     * @return The MrScaler name.
      * 
      */
     public Output<String> name() {
@@ -119,7 +119,7 @@ public final class MrScalarApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The application name.
+         * @param name The MrScaler name.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class MrScalarApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The application name.
+         * @param name The MrScaler name.
          * 
          * @return builder
          * 

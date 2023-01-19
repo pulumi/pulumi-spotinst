@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecBlockDeviceMappingEbsArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecBlockDeviceMappingEbsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Flag to delete the EBS on instance termination.
@@ -69,5 +69,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecBlockDeviceMappingEbsArgs()
         {
         }
+        public static new OceanLaunchSpecBlockDeviceMappingEbsArgs Empty => new OceanLaunchSpecBlockDeviceMappingEbsArgs();
     }
 }

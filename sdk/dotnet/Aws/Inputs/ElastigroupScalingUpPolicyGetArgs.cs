@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupScalingUpPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingUpPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
@@ -149,5 +149,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupScalingUpPolicyGetArgs()
         {
         }
+        public static new ElastigroupScalingUpPolicyGetArgs Empty => new ElastigroupScalingUpPolicyGetArgs();
     }
 }

@@ -36,7 +36,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationGkeAutoscaleLabel> AutoscaleLabels;
         /// <summary>
-        /// The GKE cluster ID you wish to import.
+        /// The name of the GKE cluster you wish to import.
         /// </summary>
         public readonly string? ClusterId;
         /// <summary>

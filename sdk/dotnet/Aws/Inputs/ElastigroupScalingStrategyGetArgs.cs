@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupScalingStrategyGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify whether to terminate instances at the end of each billing hour.
@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? TerminateAtEndOfBillingHour { get; set; }
 
         /// <summary>
-        /// - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `"default"`, `"newestInstance"`.
+        /// Determines whether to terminate the newest instances when performing a scaling action. Valid values: `"default"`, `"newestInstance"`.
         /// </summary>
         [Input("terminationPolicy")]
         public Input<string>? TerminationPolicy { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupScalingStrategyGetArgs()
         {
         }
+        public static new ElastigroupScalingStrategyGetArgs Empty => new ElastigroupScalingStrategyGetArgs();
     }
 }

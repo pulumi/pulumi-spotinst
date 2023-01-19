@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanScheduledTaskTaskGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanScheduledTaskTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public Input<string> CronExpression { get; set; } = null!;
 
         /// <summary>
-        /// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+        /// Enable the Ocean ECS autoscaler.
         /// </summary>
         [Input("isEnabled", required: true)]
         public Input<bool> IsEnabled { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanScheduledTaskTaskGetArgs()
         {
         }
+        public static new OceanScheduledTaskTaskGetArgs Empty => new OceanScheduledTaskTaskGetArgs();
     }
 }

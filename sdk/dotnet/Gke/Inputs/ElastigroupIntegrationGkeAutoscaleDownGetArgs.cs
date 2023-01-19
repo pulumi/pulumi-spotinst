@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupIntegrationGkeAutoscaleDownGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationGkeAutoscaleDownGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Amount of cooldown evaluation periods for scale down.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupIntegrationGkeAutoscaleDownGetArgs()
         {
         }
+        public static new ElastigroupIntegrationGkeAutoscaleDownGetArgs Empty => new ElastigroupIntegrationGkeAutoscaleDownGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupDiskInitializeParamArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupDiskInitializeParamArgs : global::Pulumi.ResourceArgs
     {
         [Input("diskSizeGb")]
         public Input<string>? DiskSizeGb { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupDiskInitializeParamArgs()
         {
         }
+        public static new ElastigroupDiskInitializeParamArgs Empty => new ElastigroupDiskInitializeParamArgs();
     }
 }

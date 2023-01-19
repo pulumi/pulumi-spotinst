@@ -38,10 +38,33 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.aws.OceanLaunchSpec;
+ * import com.pulumi.spotinst.aws.OceanLaunchSpecArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecCreateOptionsArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecDeleteOptionsArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLabelArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecResourceLimitArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingShutdownHoursArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingTaskArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecStrategyArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecTagArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecTaintArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -79,6 +102,7 @@ import javax.annotation.Nullable;
  *                 .initialNodes(1)
  *                 .build())
  *             .deleteOptions(OceanLaunchSpecDeleteOptionsArgs.builder()
+ *                 .deleteNodes(true)
  *                 .forceDelete(true)
  *                 .build())
  *             .elasticIpPools(OceanLaunchSpecElasticIpPoolArgs.builder()
@@ -148,10 +172,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -172,10 +201,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {

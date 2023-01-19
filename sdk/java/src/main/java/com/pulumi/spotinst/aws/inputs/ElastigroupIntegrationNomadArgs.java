@@ -67,14 +67,14 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
     }
 
     /**
-     * Settings for scale down actions.
+     * Enabling scale down.
      * 
      */
     @Import(name="autoscaleDown")
     private @Nullable Output<ElastigroupIntegrationNomadAutoscaleDownArgs> autoscaleDown;
 
     /**
-     * @return Settings for scale down actions.
+     * @return Enabling scale down.
      * 
      */
     public Optional<Output<ElastigroupIntegrationNomadAutoscaleDownArgs>> autoscaleDown() {
@@ -82,14 +82,14 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
     }
 
     /**
-     * An option to set compute reserve for the cluster.
+     * Headroom for the cluster.
      * 
      */
     @Import(name="autoscaleHeadroom")
     private @Nullable Output<ElastigroupIntegrationNomadAutoscaleHeadroomArgs> autoscaleHeadroom;
 
     /**
-     * @return An option to set compute reserve for the cluster.
+     * @return Headroom for the cluster.
      * 
      */
     public Optional<Output<ElastigroupIntegrationNomadAutoscaleHeadroomArgs>> autoscaleHeadroom() {
@@ -112,14 +112,14 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
     }
 
     /**
-     * The URL for the Nomad master host.
+     * The URL of the Rancher Master host.
      * 
      */
     @Import(name="masterHost", required=true)
     private Output<String> masterHost;
 
     /**
-     * @return The URL for the Nomad master host.
+     * @return The URL of the Rancher Master host.
      * 
      */
     public Output<String> masterHost() {
@@ -127,14 +127,14 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
     }
 
     /**
-     * The network port for the master host.
+     * Network port used by your swarm.
      * 
      */
     @Import(name="masterPort", required=true)
     private Output<Integer> masterPort;
 
     /**
-     * @return The network port for the master host.
+     * @return Network port used by your swarm.
      * 
      */
     public Output<Integer> masterPort() {
@@ -246,7 +246,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param autoscaleDown Settings for scale down actions.
+         * @param autoscaleDown Enabling scale down.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param autoscaleDown Settings for scale down actions.
+         * @param autoscaleDown Enabling scale down.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param autoscaleHeadroom An option to set compute reserve for the cluster.
+         * @param autoscaleHeadroom Headroom for the cluster.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param autoscaleHeadroom An option to set compute reserve for the cluster.
+         * @param autoscaleHeadroom Headroom for the cluster.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param masterHost The URL for the Nomad master host.
+         * @param masterHost The URL of the Rancher Master host.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param masterHost The URL for the Nomad master host.
+         * @param masterHost The URL of the Rancher Master host.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param masterPort The network port for the master host.
+         * @param masterPort Network port used by your swarm.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param masterPort The network port for the master host.
+         * @param masterPort Network port used by your swarm.
          * 
          * @return builder
          * 

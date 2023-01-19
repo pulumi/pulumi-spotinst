@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationBeanstalkGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationBeanstalkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Preferences when performing a roll
@@ -30,5 +30,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationBeanstalkGetArgs()
         {
         }
+        public static new ElastigroupIntegrationBeanstalkGetArgs Empty => new ElastigroupIntegrationBeanstalkGetArgs();
     }
 }

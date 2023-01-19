@@ -9,6 +9,7 @@ import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAttributeArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecSchedulingTaskArgs;
+import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecStrategyArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecTagArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -135,6 +136,21 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     * 
+     */
+    @Import(name="preferredSpotTypes")
+    private @Nullable Output<List<String>> preferredSpotTypes;
+
+    /**
+     * @return When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+     * 
+     */
+    public Optional<Output<List<String>>> preferredSpotTypes() {
+        return Optional.ofNullable(this.preferredSpotTypes);
+    }
+
+    /**
      * Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      * 
      */
@@ -177,6 +193,21 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<List<String>>> securityGroupIds() {
         return Optional.ofNullable(this.securityGroupIds);
+    }
+
+    /**
+     * Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+     * 
+     */
+    @Import(name="strategies")
+    private @Nullable Output<List<OceanLaunchSpecStrategyArgs>> strategies;
+
+    /**
+     * @return Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+     * 
+     */
+    public Optional<Output<List<OceanLaunchSpecStrategyArgs>>> strategies() {
+        return Optional.ofNullable(this.strategies);
     }
 
     /**
@@ -235,9 +266,11 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         this.instanceTypes = $.instanceTypes;
         this.name = $.name;
         this.oceanId = $.oceanId;
+        this.preferredSpotTypes = $.preferredSpotTypes;
         this.restrictScaleDown = $.restrictScaleDown;
         this.schedulingTasks = $.schedulingTasks;
         this.securityGroupIds = $.securityGroupIds;
+        this.strategies = $.strategies;
         this.subnetIds = $.subnetIds;
         this.tags = $.tags;
         this.userData = $.userData;
@@ -452,6 +485,37 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param preferredSpotTypes When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredSpotTypes(@Nullable Output<List<String>> preferredSpotTypes) {
+            $.preferredSpotTypes = preferredSpotTypes;
+            return this;
+        }
+
+        /**
+         * @param preferredSpotTypes When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredSpotTypes(List<String> preferredSpotTypes) {
+            return preferredSpotTypes(Output.of(preferredSpotTypes));
+        }
+
+        /**
+         * @param preferredSpotTypes When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredSpotTypes(String... preferredSpotTypes) {
+            return preferredSpotTypes(List.of(preferredSpotTypes));
+        }
+
+        /**
          * @param restrictScaleDown Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
          * 
          * @return builder
@@ -532,6 +596,37 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
          */
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
+        }
+
+        /**
+         * @param strategies Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strategies(@Nullable Output<List<OceanLaunchSpecStrategyArgs>> strategies) {
+            $.strategies = strategies;
+            return this;
+        }
+
+        /**
+         * @param strategies Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strategies(List<OceanLaunchSpecStrategyArgs> strategies) {
+            return strategies(Output.of(strategies));
+        }
+
+        /**
+         * @param strategies Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strategies(OceanLaunchSpecStrategyArgs... strategies) {
+            return strategies(List.of(strategies));
         }
 
         /**

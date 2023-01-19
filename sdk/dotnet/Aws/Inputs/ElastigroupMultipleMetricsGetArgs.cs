@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupMultipleMetricsGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupMultipleMetricsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("expressions")]
         private InputList<Inputs.ElastigroupMultipleMetricsExpressionGetArgs>? _expressions;
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupMultipleMetricsGetArgs()
         {
         }
+        public static new ElastigroupMultipleMetricsGetArgs Empty => new ElastigroupMultipleMetricsGetArgs();
     }
 }

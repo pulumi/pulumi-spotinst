@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportAutoscalerDownArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportAutoscalerDownArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of evaluation periods that should accumulate before a scale down action takes place.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportAutoscalerDownArgs()
         {
         }
+        public static new OceanImportAutoscalerDownArgs Empty => new OceanImportAutoscalerDownArgs();
     }
 }

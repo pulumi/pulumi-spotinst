@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class DataIntegrationS3GetArgs : Pulumi.ResourceArgs
+    public sealed class DataIntegrationS3GetArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Inputs
         public DataIntegrationS3GetArgs()
         {
         }
+        public static new DataIntegrationS3GetArgs Empty => new DataIntegrationS3GetArgs();
     }
 }

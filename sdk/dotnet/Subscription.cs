@@ -15,36 +15,34 @@ namespace Pulumi.SpotInst
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a Subscription
+    ///     var default_subscription = new SpotInst.Subscription("default-subscription", new()
     ///     {
-    ///         // Create a Subscription
-    ///         var default_subscription = new SpotInst.Subscription("default-subscription", new SpotInst.SubscriptionArgs
+    ///         Endpoint = "http://endpoint.com",
+    ///         EventType = "AWS_EC2_INSTANCE_LAUNCH",
+    ///         Format = 
     ///         {
-    ///             Endpoint = "http://endpoint.com",
-    ///             EventType = "AWS_EC2_INSTANCE_LAUNCH",
-    ///             Format = 
-    ///             {
-    ///                 { "event", "%event%" },
-    ///                 { "instance_id", "%instance-id%" },
-    ///                 { "resource_id", "%resource-id%" },
-    ///                 { "resource_name", "%resource-name%" },
-    ///                 { "tags", "foo,baz,baz" },
-    ///             },
-    ///             Protocol = "http",
-    ///             ResourceId = spotinst_elastigroup_aws.My_eg.Id,
-    ///         });
-    ///     }
+    ///             { "event", "%event%" },
+    ///             { "instance_id", "%instance-id%" },
+    ///             { "resource_id", "%resource-id%" },
+    ///             { "resource_name", "%resource-name%" },
+    ///             { "tags", "foo,baz,baz" },
+    ///         },
+    ///         Protocol = "http",
+    ///         ResourceId = spotinst_elastigroup_aws.My_eg.Id,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:index/subscription:Subscription")]
-    public partial class Subscription : Pulumi.CustomResource
+    public partial class Subscription : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
@@ -135,7 +133,7 @@ namespace Pulumi.SpotInst
         }
     }
 
-    public sealed class SubscriptionArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
@@ -191,9 +189,10 @@ namespace Pulumi.SpotInst
         public SubscriptionArgs()
         {
         }
+        public static new SubscriptionArgs Empty => new SubscriptionArgs();
     }
 
-    public sealed class SubscriptionState : Pulumi.ResourceArgs
+    public sealed class SubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
@@ -249,5 +248,6 @@ namespace Pulumi.SpotInst
         public SubscriptionState()
         {
         }
+        public static new SubscriptionState Empty => new SubscriptionState();
     }
 }

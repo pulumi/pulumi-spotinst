@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ManagedInstanceScheduledTaskGetArgs : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceScheduledTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
@@ -47,5 +47,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ManagedInstanceScheduledTaskGetArgs()
         {
         }
+        public static new ManagedInstanceScheduledTaskGetArgs Empty => new ManagedInstanceScheduledTaskGetArgs();
     }
 }

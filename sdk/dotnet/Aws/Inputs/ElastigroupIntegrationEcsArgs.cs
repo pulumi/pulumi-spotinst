@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationEcsArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationEcsArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoscaleAttributes")]
         private InputList<Inputs.ElastigroupIntegrationEcsAutoscaleAttributeArgs>? _autoscaleAttributes;
@@ -31,19 +31,19 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? AutoscaleCooldown { get; set; }
 
         /// <summary>
-        /// Settings for scale down actions.
+        /// Enabling scale down.
         /// </summary>
         [Input("autoscaleDown")]
         public Input<Inputs.ElastigroupIntegrationEcsAutoscaleDownArgs>? AutoscaleDown { get; set; }
 
         /// <summary>
-        /// An option to set compute reserve for the cluster.
+        /// Headroom for the cluster.
         /// </summary>
         [Input("autoscaleHeadroom")]
         public Input<Inputs.ElastigroupIntegrationEcsAutoscaleHeadroomArgs>? AutoscaleHeadroom { get; set; }
 
         /// <summary>
-        /// Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
+        /// Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
         /// </summary>
         [Input("autoscaleIsAutoConfig")]
         public Input<bool>? AutoscaleIsAutoConfig { get; set; }
@@ -75,5 +75,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationEcsArgs()
         {
         }
+        public static new ElastigroupIntegrationEcsArgs Empty => new ElastigroupIntegrationEcsArgs();
     }
 }

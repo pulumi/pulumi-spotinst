@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupIntegrationGitlabRunner {
     /**
-     * @return Specifies whether the integration is enabled.
+     * @return Setting the task to being enabled or disabled.
      * 
      */
     private @Nullable Boolean isEnabled;
 
     private ElastigroupIntegrationGitlabRunner() {}
     /**
-     * @return Specifies whether the integration is enabled.
+     * @return Setting the task to being enabled or disabled.
      * 
      */
     public Optional<Boolean> isEnabled() {

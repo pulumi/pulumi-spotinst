@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecStrategyArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecStrategyArgs()
         {
         }
+        public static new OceanLaunchSpecStrategyArgs Empty => new OceanLaunchSpecStrategyArgs();
     }
 }

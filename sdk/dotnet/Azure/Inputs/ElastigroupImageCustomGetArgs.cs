@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupImageCustomGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupImageCustomGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the custom image. Required if resource_group_name is specified.
@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<string> ImageName { get; set; } = null!;
 
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// The Resource Group that the user-assigned managed identity resides in.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupImageCustomGetArgs()
         {
         }
+        public static new ElastigroupImageCustomGetArgs Empty => new ElastigroupImageCustomGetArgs();
     }
 }

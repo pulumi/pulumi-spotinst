@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Multai.Inputs
 {
 
-    public sealed class BalancerTagArgs : Pulumi.ResourceArgs
+    public sealed class BalancerTagArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Multai.Inputs
         public BalancerTagArgs()
         {
         }
+        public static new BalancerTagArgs Empty => new BalancerTagArgs();
     }
 }

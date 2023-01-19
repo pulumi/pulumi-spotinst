@@ -33,12 +33,12 @@ public final class ElastigroupIntegrationNomad {
      */
     private @Nullable Integer autoscaleCooldown;
     /**
-     * @return Settings for scale down actions.
+     * @return Enabling scale down.
      * 
      */
     private @Nullable ElastigroupIntegrationNomadAutoscaleDown autoscaleDown;
     /**
-     * @return An option to set compute reserve for the cluster.
+     * @return Headroom for the cluster.
      * 
      */
     private @Nullable ElastigroupIntegrationNomadAutoscaleHeadroom autoscaleHeadroom;
@@ -48,12 +48,12 @@ public final class ElastigroupIntegrationNomad {
      */
     private @Nullable Boolean autoscaleIsEnabled;
     /**
-     * @return The URL for the Nomad master host.
+     * @return The URL of the Rancher Master host.
      * 
      */
     private String masterHost;
     /**
-     * @return The network port for the master host.
+     * @return Network port used by your swarm.
      * 
      */
     private Integer masterPort;
@@ -81,14 +81,14 @@ public final class ElastigroupIntegrationNomad {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
     /**
-     * @return Settings for scale down actions.
+     * @return Enabling scale down.
      * 
      */
     public Optional<ElastigroupIntegrationNomadAutoscaleDown> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
     /**
-     * @return An option to set compute reserve for the cluster.
+     * @return Headroom for the cluster.
      * 
      */
     public Optional<ElastigroupIntegrationNomadAutoscaleHeadroom> autoscaleHeadroom() {
@@ -102,14 +102,14 @@ public final class ElastigroupIntegrationNomad {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
     /**
-     * @return The URL for the Nomad master host.
+     * @return The URL of the Rancher Master host.
      * 
      */
     public String masterHost() {
         return this.masterHost;
     }
     /**
-     * @return The network port for the master host.
+     * @return Network port used by your swarm.
      * 
      */
     public Integer masterPort() {

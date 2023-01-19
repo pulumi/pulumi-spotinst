@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class MrScalarInstanceWeightGetArgs : Pulumi.ResourceArgs
+    public sealed class MrScalarInstanceWeightGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the instance.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public MrScalarInstanceWeightGetArgs()
         {
         }
+        public static new MrScalarInstanceWeightGetArgs Empty => new MrScalarInstanceWeightGetArgs();
     }
 }

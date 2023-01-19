@@ -18,6 +18,10 @@ public final class ElastigroupBackendService {
      * 
      */
     private @Nullable String locationType;
+    /**
+     * @return Describes a named port and a list of ports.
+     * 
+     */
     private @Nullable List<ElastigroupBackendServiceNamedPort> namedPorts;
     /**
      * @return Use when `location_type` is &#34;regional&#34;. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
@@ -38,6 +42,10 @@ public final class ElastigroupBackendService {
     public Optional<String> locationType() {
         return Optional.ofNullable(this.locationType);
     }
+    /**
+     * @return Describes a named port and a list of ports.
+     * 
+     */
     public List<ElastigroupBackendServiceNamedPort> namedPorts() {
         return this.namedPorts == null ? List.of() : this.namedPorts;
     }

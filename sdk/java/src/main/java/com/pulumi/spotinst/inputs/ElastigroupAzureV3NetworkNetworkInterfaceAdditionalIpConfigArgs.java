@@ -16,14 +16,14 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigAr
     public static final ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs Empty = new ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs();
 
     /**
-     * - The name of the Application Security group.
+     * Name of the Managed Service Identity.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return - The name of the Application Security group.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public Output<String> name() {
@@ -71,7 +71,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigAr
         }
 
         /**
-         * @param name - The name of the Application Security group.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigAr
         }
 
         /**
-         * @param name - The name of the Application Security group.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 

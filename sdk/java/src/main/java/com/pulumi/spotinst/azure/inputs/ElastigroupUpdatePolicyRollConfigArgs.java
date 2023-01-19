@@ -17,14 +17,14 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
     public static final ElastigroupUpdatePolicyRollConfigArgs Empty = new ElastigroupUpdatePolicyRollConfigArgs();
 
     /**
-     * Sets the percentage of the instances to deploy in each batch.
+     * The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
      * 
      */
     @Import(name="batchSizePercentage", required=true)
     private Output<Integer> batchSizePercentage;
 
     /**
-     * @return Sets the percentage of the instances to deploy in each batch.
+     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
      * 
      */
     public Output<Integer> batchSizePercentage() {
@@ -32,14 +32,14 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Sets the grace period for new instances to become healthy.
+     * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     public Optional<Output<Integer>> gracePeriod() {
@@ -47,14 +47,14 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+     * Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
      * 
      */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
      * 
      */
     public Optional<Output<String>> healthCheckType() {
@@ -88,7 +88,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
+         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
+         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param gracePeriod Sets the grace period for new instances to become healthy.
+         * @param gracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param gracePeriod Sets the grace period for new instances to become healthy.
+         * @param gracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param healthCheckType Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+         * @param healthCheckType Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param healthCheckType Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+         * @param healthCheckType Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
          * 
          * @return builder
          * 

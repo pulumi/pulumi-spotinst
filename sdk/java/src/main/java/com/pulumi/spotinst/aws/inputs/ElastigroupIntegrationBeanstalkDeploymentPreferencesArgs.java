@@ -33,14 +33,14 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
     }
 
     /**
-     * Sets the percentage of the instances to deploy in each batch.
+     * The percentage size of each batch in the scheduled deployment roll.
      * 
      */
     @Import(name="batchSizePercentage")
     private @Nullable Output<Integer> batchSizePercentage;
 
     /**
-     * @return Sets the percentage of the instances to deploy in each batch.
+     * @return The percentage size of each batch in the scheduled deployment roll.
      * 
      */
     public Optional<Output<Integer>> batchSizePercentage() {
@@ -48,14 +48,14 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
     }
 
     /**
-     * Sets the grace period for new instances to become healthy.
+     * The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
      * 
      */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
      * 
      */
     public Optional<Output<Integer>> gracePeriod() {
@@ -126,7 +126,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
         }
 
         /**
-         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
+         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
         }
 
         /**
-         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
+         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
         }
 
         /**
-         * @param gracePeriod Sets the grace period for new instances to become healthy.
+         * @param gracePeriod The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
         }
 
         /**
-         * @param gracePeriod Sets the grace period for new instances to become healthy.
+         * @param gracePeriod The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
          * 
          * @return builder
          * 

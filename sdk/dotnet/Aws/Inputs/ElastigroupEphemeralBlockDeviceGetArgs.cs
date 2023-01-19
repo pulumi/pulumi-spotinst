@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupEphemeralBlockDeviceGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupEphemeralBlockDeviceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the block device to mount on the instance.
@@ -28,5 +28,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupEphemeralBlockDeviceGetArgs()
         {
         }
+        public static new ElastigroupEphemeralBlockDeviceGetArgs Empty => new ElastigroupEphemeralBlockDeviceGetArgs();
     }
 }

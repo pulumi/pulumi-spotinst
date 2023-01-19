@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureUpdateStateGetArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureUpdateStateGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureUpdateStateGetArgs()
         {
         }
+        public static new StatefulNodeAzureUpdateStateGetArgs Empty => new StatefulNodeAzureUpdateStateGetArgs();
     }
 }

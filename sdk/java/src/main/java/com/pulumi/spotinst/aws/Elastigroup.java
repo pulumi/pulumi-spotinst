@@ -13,6 +13,7 @@ import com.pulumi.spotinst.aws.inputs.ElastigroupState;
 import com.pulumi.spotinst.aws.outputs.ElastigroupCpuOptions;
 import com.pulumi.spotinst.aws.outputs.ElastigroupEbsBlockDevice;
 import com.pulumi.spotinst.aws.outputs.ElastigroupEphemeralBlockDevice;
+import com.pulumi.spotinst.aws.outputs.ElastigroupImage;
 import com.pulumi.spotinst.aws.outputs.ElastigroupInstanceTypesWeight;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationBeanstalk;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationCodedeploy;
@@ -53,13 +54,29 @@ import javax.annotation.Nullable;
  * Provides a Spotinst AWS group resource.
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.aws.Elastigroup;
+ * import com.pulumi.spotinst.aws.ElastigroupArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupCpuOptionsArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupInstanceTypesWeightArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupMetadataOptionsArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupResourceTagSpecificationArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupScalingDownPolicyArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupScalingStrategyArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupScalingUpPolicyArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupTagArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -216,6 +233,12 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<String> capacityUnit() {
         return this.capacityUnit;
     }
+    @Export(name="considerOdPricing", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> considerOdPricing;
+
+    public Output<Optional<Boolean>> considerOdPricing() {
+        return Codegen.optional(this.considerOdPricing);
+    }
     /**
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      * 
@@ -245,14 +268,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cpuOptions);
     }
     /**
-     * The description of the network interface.
+     * The group description.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the network interface.
+     * @return The group description.
      * 
      */
     public Output<Optional<String>> description() {
@@ -273,14 +296,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.desiredCapacity);
     }
     /**
-     * Indicates (in seconds) the timeout to wait until instance are detached.
+     * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      * 
      */
     @Export(name="drainingTimeout", type=Integer.class, parameters={})
     private Output<Integer> drainingTimeout;
 
     /**
-     * @return Indicates (in seconds) the timeout to wait until instance are detached.
+     * @return The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      * 
      */
     public Output<Integer> drainingTimeout() {
@@ -369,42 +392,42 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return this.fallbackToOndemand;
     }
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health
+     * The amount of time, in seconds, after the instance has launched to starts and check its health.
      * 
      */
     @Export(name="healthCheckGracePeriod", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> healthCheckGracePeriod;
 
     /**
-     * @return The amount of time, in seconds, after the instance has launched to starts and check its health
+     * @return The amount of time, in seconds, after the instance has launched to starts and check its health.
      * 
      */
     public Output<Optional<Integer>> healthCheckGracePeriod() {
         return Codegen.optional(this.healthCheckGracePeriod);
     }
     /**
-     * Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+     * The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     @Export(name="healthCheckType", type=String.class, parameters={})
     private Output</* @Nullable */ String> healthCheckType;
 
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     public Output<Optional<String>> healthCheckType() {
         return Codegen.optional(this.healthCheckType);
     }
     /**
-     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
      * 
      */
     @Export(name="healthCheckUnhealthyDurationBeforeReplacement", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> healthCheckUnhealthyDurationBeforeReplacement;
 
     /**
-     * @return The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+     * @return The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
      * 
      */
     public Output<Optional<Integer>> healthCheckUnhealthyDurationBeforeReplacement() {
@@ -437,6 +460,28 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
+    }
+    /**
+     * An array of image objects.
+     * Note: Elastigroup can be configured with either imageId or images, but not both.
+     * 
+     */
+    @Export(name="images", type=List.class, parameters={ElastigroupImage.class})
+    private Output</* @Nullable */ List<ElastigroupImage>> images;
+
+    /**
+     * @return An array of image objects.
+     * Note: Elastigroup can be configured with either imageId or images, but not both.
+     * 
+     */
+    public Output<Optional<List<ElastigroupImage>>> images() {
+        return Codegen.optional(this.images);
+    }
+    @Export(name="immediateOdRecoverThreshold", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> immediateOdRecoverThreshold;
+
+    public Output<Optional<Integer>> immediateOdRecoverThreshold() {
+        return Codegen.optional(this.immediateOdRecoverThreshold);
     }
     /**
      * The type of instance determines your instance&#39;s CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
@@ -743,14 +788,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.multipleMetrics);
     }
     /**
-     * The record set name.
+     * The group name.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     public Output<String> name() {

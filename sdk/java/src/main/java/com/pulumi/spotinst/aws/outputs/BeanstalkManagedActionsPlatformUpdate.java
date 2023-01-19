@@ -22,7 +22,7 @@ public final class BeanstalkManagedActionsPlatformUpdate {
      */
     private @Nullable String timeWindow;
     /**
-     * @return - Level to update
+     * @return Level to update
      * 
      */
     private @Nullable String updateLevel;
@@ -43,7 +43,7 @@ public final class BeanstalkManagedActionsPlatformUpdate {
         return Optional.ofNullable(this.timeWindow);
     }
     /**
-     * @return - Level to update
+     * @return Level to update
      * 
      */
     public Optional<String> updateLevel() {

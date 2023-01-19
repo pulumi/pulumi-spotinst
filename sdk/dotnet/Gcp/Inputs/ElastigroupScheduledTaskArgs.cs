@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupScheduledTaskArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScheduledTaskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
@@ -51,5 +51,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupScheduledTaskArgs()
         {
         }
+        public static new ElastigroupScheduledTaskArgs Empty => new ElastigroupScheduledTaskArgs();
     }
 }

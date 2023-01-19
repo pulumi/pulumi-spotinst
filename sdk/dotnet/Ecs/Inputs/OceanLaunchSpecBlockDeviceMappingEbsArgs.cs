@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanLaunchSpecBlockDeviceMappingEbsArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecBlockDeviceMappingEbsArgs : global::Pulumi.ResourceArgs
     {
         [Input("deleteOnTermination")]
         public Input<bool>? DeleteOnTermination { get; set; }
@@ -42,5 +42,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanLaunchSpecBlockDeviceMappingEbsArgs()
         {
         }
+        public static new OceanLaunchSpecBlockDeviceMappingEbsArgs Empty => new OceanLaunchSpecBlockDeviceMappingEbsArgs();
     }
 }

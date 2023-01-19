@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanVirtualNodeGroupTaintGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanVirtualNodeGroupTaintGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanVirtualNodeGroupTaintGetArgs()
         {
         }
+        public static new OceanVirtualNodeGroupTaintGetArgs Empty => new OceanVirtualNodeGroupTaintGetArgs();
     }
 }

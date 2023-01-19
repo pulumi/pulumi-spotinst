@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupIntegrationDockerSwarmAutoscaleDown {
     /**
-     * @return How many evaluation periods should accumulate before a scale down action takes place.
+     * @return The number of periods over which data is compared to the specified threshold.
      * 
      */
     private @Nullable Integer evaluationPeriods;
     /**
-     * @return Would represent the maximum % to scale-down. Number between 1-100.\
+     * @return Represents the maximum percent to scale-down. Number between 1-100.
      * Usage:
      * 
      */
@@ -26,14 +26,14 @@ public final class ElastigroupIntegrationDockerSwarmAutoscaleDown {
 
     private ElastigroupIntegrationDockerSwarmAutoscaleDown() {}
     /**
-     * @return How many evaluation periods should accumulate before a scale down action takes place.
+     * @return The number of periods over which data is compared to the specified threshold.
      * 
      */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
     /**
-     * @return Would represent the maximum % to scale-down. Number between 1-100.\
+     * @return Represents the maximum percent to scale-down. Number between 1-100.
      * Usage:
      * 
      */

@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationNomadAutoscaleDown
     {
         /// <summary>
-        /// How many evaluation periods should accumulate before a scale down action takes place.
+        /// The number of periods over which data is compared to the specified threshold.
         /// </summary>
         public readonly int? EvaluationPeriods;
 

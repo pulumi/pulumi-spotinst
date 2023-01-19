@@ -30,13 +30,26 @@ import javax.annotation.Nullable;
  * Provides a Spotinst AWS ManagedInstance resource.
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.aws.ManagedInstance;
+ * import com.pulumi.spotinst.aws.ManagedInstanceArgs;
+ * import com.pulumi.spotinst.aws.inputs.ManagedInstanceBlockDeviceMappingArgs;
+ * import com.pulumi.spotinst.aws.inputs.ManagedInstanceBlockDeviceMappingEbsArgs;
+ * import com.pulumi.spotinst.aws.inputs.ManagedInstanceResourceTagSpecificationArgs;
+ * import com.pulumi.spotinst.aws.inputs.ManagedInstanceRevertToSpotArgs;
+ * import com.pulumi.spotinst.aws.inputs.ManagedInstanceTagArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -370,17 +383,9 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> lifeCycle() {
         return Codegen.optional(this.lifeCycle);
     }
-    /**
-     * List of load balancers configs.
-     * 
-     */
     @Export(name="loadBalancers", type=List.class, parameters={ManagedInstanceLoadBalancer.class})
     private Output</* @Nullable */ List<ManagedInstanceLoadBalancer>> loadBalancers;
 
-    /**
-     * @return List of load balancers configs.
-     * 
-     */
     public Output<Optional<List<ManagedInstanceLoadBalancer>>> loadBalancers() {
         return Codegen.optional(this.loadBalancers);
     }
@@ -397,14 +402,14 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.minimumInstanceLifetime);
     }
     /**
-     * The record set name.
+     * The ManagedInstance name.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The record set name.
+     * @return The ManagedInstance name.
      * 
      */
     public Output<String> name() {
@@ -558,17 +563,9 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
     }
-    /**
-     * User will specify which resources should be tagged with group tags.
-     * 
-     */
     @Export(name="resourceTagSpecifications", type=List.class, parameters={ManagedInstanceResourceTagSpecification.class})
     private Output</* @Nullable */ List<ManagedInstanceResourceTagSpecification>> resourceTagSpecifications;
 
-    /**
-     * @return User will specify which resources should be tagged with group tags.
-     * 
-     */
     public Output<Optional<List<ManagedInstanceResourceTagSpecification>>> resourceTagSpecifications() {
         return Codegen.optional(this.resourceTagSpecifications);
     }

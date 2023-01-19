@@ -12,6 +12,135 @@ import (
 )
 
 // Provides a Spotinst elastigroup GCP resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/gcp"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gcp.NewElastigroup(ctx, "example", &gcp.ElastigroupArgs{
+//				AvailabilityZones: pulumi.StringArray{
+//					pulumi.String("asia-east1-c"),
+//					pulumi.String("us-central1-a"),
+//				},
+//				BackendServices: gcp.ElastigroupBackendServiceArray{
+//					&gcp.ElastigroupBackendServiceArgs{
+//						LocationType: pulumi.String("regional"),
+//						NamedPorts: gcp.ElastigroupBackendServiceNamedPortArray{
+//							&gcp.ElastigroupBackendServiceNamedPortArgs{
+//								Name: pulumi.String("port-name"),
+//								Ports: pulumi.StringArray{
+//									pulumi.String("8000"),
+//									pulumi.String("6000"),
+//								},
+//							},
+//						},
+//						Scheme:      pulumi.String("INTERNAL"),
+//						ServiceName: pulumi.String("spotinst-elb-backend-service"),
+//					},
+//				},
+//				Description:     pulumi.String("spotinst gcp group"),
+//				DesiredCapacity: pulumi.Int(1),
+//				Disks: gcp.ElastigroupDiskArray{
+//					&gcp.ElastigroupDiskArgs{
+//						AutoDelete: pulumi.Bool(true),
+//						Boot:       pulumi.Bool(true),
+//						DeviceName: pulumi.String("device"),
+//						InitializeParams: gcp.ElastigroupDiskInitializeParamArray{
+//							&gcp.ElastigroupDiskInitializeParamArgs{
+//								DiskSizeGb:  pulumi.String("10"),
+//								DiskType:    pulumi.String("pd-standard"),
+//								SourceImage: pulumi.String(""),
+//							},
+//						},
+//						Interface: pulumi.String("SCSI"),
+//						Mode:      pulumi.String("READ_WRITE"),
+//						Type:      pulumi.String("PERSISTENT"),
+//					},
+//				},
+//				DrainingTimeout:    pulumi.Int(180),
+//				FallbackToOndemand: pulumi.Bool(true),
+//				InstanceTypesCustoms: gcp.ElastigroupInstanceTypesCustomArray{
+//					&gcp.ElastigroupInstanceTypesCustomArgs{
+//						MemoryGib: pulumi.Int(7),
+//						Vcpu:      pulumi.Int(2),
+//					},
+//				},
+//				InstanceTypesOndemand: pulumi.String("n1-standard-1"),
+//				InstanceTypesPreemptibles: pulumi.StringArray{
+//					pulumi.String("n1-standard-1"),
+//					pulumi.String("n1-standard-2"),
+//				},
+//				Labels: gcp.ElastigroupLabelArray{
+//					&gcp.ElastigroupLabelArgs{
+//						Key:   pulumi.String("test_key"),
+//						Value: pulumi.String("test_value"),
+//					},
+//				},
+//				MaxSize: pulumi.Int(1),
+//				MinSize: pulumi.Int(0),
+//				NetworkInterfaces: gcp.ElastigroupNetworkInterfaceArray{
+//					&gcp.ElastigroupNetworkInterfaceArgs{
+//						Network: pulumi.String("spot-network"),
+//					},
+//				},
+//				PreemptiblePercentage: pulumi.Int(50),
+//				ProvisioningModel:     pulumi.String("SPOT"),
+//				ScalingUpPolicies: gcp.ElastigroupScalingUpPolicyArray{
+//					&gcp.ElastigroupScalingUpPolicyArgs{
+//						ActionType: pulumi.String("adjustment"),
+//						Adjustment: pulumi.Int(1),
+//						Cooldown:   pulumi.Int(300),
+//						Dimensions: gcp.ElastigroupScalingUpPolicyDimensionArray{
+//							&gcp.ElastigroupScalingUpPolicyDimensionArgs{
+//								Name:  pulumi.String("storage_type"),
+//								Value: pulumi.String("pd-ssd"),
+//							},
+//						},
+//						EvaluationPeriods: pulumi.Int(1),
+//						MetricName:        pulumi.String("instance/disk/read_ops_count"),
+//						Namespace:         pulumi.String("compute"),
+//						Operator:          pulumi.String("gte"),
+//						Period:            pulumi.Int(300),
+//						PolicyName:        pulumi.String("scale_up_1"),
+//						Source:            pulumi.String("stackdriver"),
+//						Statistic:         pulumi.String("average"),
+//						Threshold:         pulumi.Float64(10000),
+//						Unit:              pulumi.String("percent"),
+//					},
+//				},
+//				ServiceAccount: pulumi.String("example@myProject.iam.gservicecct.com"),
+//				StartupScript:  pulumi.String(""),
+//				Subnets: gcp.ElastigroupSubnetArray{
+//					&gcp.ElastigroupSubnetArgs{
+//						Region: pulumi.String("asia-east1"),
+//						SubnetNames: pulumi.StringArray{
+//							pulumi.String("default"),
+//						},
+//					},
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("http"),
+//					pulumi.String("https"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Elastigroup struct {
 	pulumi.CustomResourceState
 
@@ -20,9 +149,8 @@ type Elastigroup struct {
 	// List of availability zones for the group.
 	//
 	// Deprecated: This field will soon be handled by Region in Subnets
-	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
-	// Describes the backend service configurations.
-	BackendServices ElastigroupBackendServiceArrayOutput `pulumi:"backendServices"`
+	AvailabilityZones pulumi.StringArrayOutput             `pulumi:"availabilityZones"`
+	BackendServices   ElastigroupBackendServiceArrayOutput `pulumi:"backendServices"`
 	// The region your GCP group will be created in.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
@@ -31,9 +159,8 @@ type Elastigroup struct {
 	// Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
 	DrainingTimeout pulumi.IntPtrOutput `pulumi:"drainingTimeout"`
 	// Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-	FallbackToOndemand pulumi.BoolPtrOutput `pulumi:"fallbackToOndemand"`
-	// Defines the GPU configuration.
-	Gpu ElastigroupGpuArrayOutput `pulumi:"gpu"`
+	FallbackToOndemand pulumi.BoolPtrOutput      `pulumi:"fallbackToOndemand"`
+	Gpu                ElastigroupGpuArrayOutput `pulumi:"gpu"`
 	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	HealthCheckGracePeriod pulumi.IntPtrOutput `pulumi:"healthCheckGracePeriod"`
 	// The kind of health check to perform when monitoring for unhealthiness.
@@ -56,7 +183,7 @@ type Elastigroup struct {
 	Metadatas ElastigroupMetadataArrayOutput `pulumi:"metadatas"`
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// The dimension name.
+	// The group name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Array of objects representing the network configuration for the elastigroup.
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
@@ -121,9 +248,8 @@ type elastigroupState struct {
 	// List of availability zones for the group.
 	//
 	// Deprecated: This field will soon be handled by Region in Subnets
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// Describes the backend service configurations.
-	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
+	AvailabilityZones []string                    `pulumi:"availabilityZones"`
+	BackendServices   []ElastigroupBackendService `pulumi:"backendServices"`
 	// The region your GCP group will be created in.
 	Description *string `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
@@ -132,9 +258,8 @@ type elastigroupState struct {
 	// Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
-	// Defines the GPU configuration.
-	Gpu []ElastigroupGpu `pulumi:"gpu"`
+	FallbackToOndemand *bool            `pulumi:"fallbackToOndemand"`
+	Gpu                []ElastigroupGpu `pulumi:"gpu"`
 	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
 	// The kind of health check to perform when monitoring for unhealthiness.
@@ -157,7 +282,7 @@ type elastigroupState struct {
 	Metadatas []ElastigroupMetadata `pulumi:"metadatas"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// The dimension name.
+	// The group name.
 	Name *string `pulumi:"name"`
 	// Array of objects representing the network configuration for the elastigroup.
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
@@ -192,8 +317,7 @@ type ElastigroupState struct {
 	//
 	// Deprecated: This field will soon be handled by Region in Subnets
 	AvailabilityZones pulumi.StringArrayInput
-	// Describes the backend service configurations.
-	BackendServices ElastigroupBackendServiceArrayInput
+	BackendServices   ElastigroupBackendServiceArrayInput
 	// The region your GCP group will be created in.
 	Description pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
@@ -203,8 +327,7 @@ type ElastigroupState struct {
 	DrainingTimeout pulumi.IntPtrInput
 	// Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
 	FallbackToOndemand pulumi.BoolPtrInput
-	// Defines the GPU configuration.
-	Gpu ElastigroupGpuArrayInput
+	Gpu                ElastigroupGpuArrayInput
 	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	HealthCheckGracePeriod pulumi.IntPtrInput
 	// The kind of health check to perform when monitoring for unhealthiness.
@@ -227,7 +350,7 @@ type ElastigroupState struct {
 	Metadatas ElastigroupMetadataArrayInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// The dimension name.
+	// The group name.
 	Name pulumi.StringPtrInput
 	// Array of objects representing the network configuration for the elastigroup.
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
@@ -265,9 +388,8 @@ type elastigroupArgs struct {
 	// List of availability zones for the group.
 	//
 	// Deprecated: This field will soon be handled by Region in Subnets
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// Describes the backend service configurations.
-	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
+	AvailabilityZones []string                    `pulumi:"availabilityZones"`
+	BackendServices   []ElastigroupBackendService `pulumi:"backendServices"`
 	// The region your GCP group will be created in.
 	Description *string `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
@@ -276,9 +398,8 @@ type elastigroupArgs struct {
 	// Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
-	// Defines the GPU configuration.
-	Gpu []ElastigroupGpu `pulumi:"gpu"`
+	FallbackToOndemand *bool            `pulumi:"fallbackToOndemand"`
+	Gpu                []ElastigroupGpu `pulumi:"gpu"`
 	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
 	// The kind of health check to perform when monitoring for unhealthiness.
@@ -301,7 +422,7 @@ type elastigroupArgs struct {
 	Metadatas []ElastigroupMetadata `pulumi:"metadatas"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// The dimension name.
+	// The group name.
 	Name *string `pulumi:"name"`
 	// Array of objects representing the network configuration for the elastigroup.
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
@@ -337,8 +458,7 @@ type ElastigroupArgs struct {
 	//
 	// Deprecated: This field will soon be handled by Region in Subnets
 	AvailabilityZones pulumi.StringArrayInput
-	// Describes the backend service configurations.
-	BackendServices ElastigroupBackendServiceArrayInput
+	BackendServices   ElastigroupBackendServiceArrayInput
 	// The region your GCP group will be created in.
 	Description pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
@@ -348,8 +468,7 @@ type ElastigroupArgs struct {
 	DrainingTimeout pulumi.IntPtrInput
 	// Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
 	FallbackToOndemand pulumi.BoolPtrInput
-	// Defines the GPU configuration.
-	Gpu ElastigroupGpuArrayInput
+	Gpu                ElastigroupGpuArrayInput
 	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 	HealthCheckGracePeriod pulumi.IntPtrInput
 	// The kind of health check to perform when monitoring for unhealthiness.
@@ -372,7 +491,7 @@ type ElastigroupArgs struct {
 	Metadatas ElastigroupMetadataArrayInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// The dimension name.
+	// The group name.
 	Name pulumi.StringPtrInput
 	// Array of objects representing the network configuration for the elastigroup.
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
@@ -499,7 +618,6 @@ func (o ElastigroupOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// Describes the backend service configurations.
 func (o ElastigroupOutput) BackendServices() ElastigroupBackendServiceArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupBackendServiceArrayOutput { return v.BackendServices }).(ElastigroupBackendServiceArrayOutput)
 }
@@ -528,7 +646,6 @@ func (o ElastigroupOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
 }
 
-// Defines the GPU configuration.
 func (o ElastigroupOutput) Gpu() ElastigroupGpuArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupGpuArrayOutput { return v.Gpu }).(ElastigroupGpuArrayOutput)
 }
@@ -591,7 +708,7 @@ func (o ElastigroupOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
 }
 
-// The dimension name.
+// The group name.
 func (o ElastigroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

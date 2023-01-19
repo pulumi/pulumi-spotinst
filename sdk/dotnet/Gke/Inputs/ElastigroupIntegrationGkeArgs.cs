@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupIntegrationGkeArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationGkeArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoUpdate")]
         public Input<bool>? AutoUpdate { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.SpotInst.Gke.Inputs
         }
 
         /// <summary>
-        /// The GKE cluster ID you wish to import.
+        /// The name of the GKE cluster you wish to import.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -69,5 +69,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupIntegrationGkeArgs()
         {
         }
+        public static new ElastigroupIntegrationGkeArgs Empty => new ElastigroupIntegrationGkeArgs();
     }
 }

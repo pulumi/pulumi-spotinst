@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Int. Initial size for volume. (Example: 50)
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeGetArgs()
         {
         }
+        public static new OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeGetArgs Empty => new OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeGetArgs();
     }
 }

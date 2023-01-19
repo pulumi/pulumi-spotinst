@@ -17,6 +17,9 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// Sets which location the backend services will be active. Valid values: `regional`, `global`.
         /// </summary>
         public readonly string? LocationType;
+        /// <summary>
+        /// Describes a named port and a list of ports.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupBackendServiceNamedPort> NamedPorts;
         /// <summary>
         /// Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.

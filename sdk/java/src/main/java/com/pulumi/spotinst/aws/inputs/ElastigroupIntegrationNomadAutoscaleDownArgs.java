@@ -16,14 +16,14 @@ public final class ElastigroupIntegrationNomadAutoscaleDownArgs extends com.pulu
     public static final ElastigroupIntegrationNomadAutoscaleDownArgs Empty = new ElastigroupIntegrationNomadAutoscaleDownArgs();
 
     /**
-     * How many evaluation periods should accumulate before a scale down action takes place.
+     * The number of periods over which data is compared to the specified threshold.
      * 
      */
     @Import(name="evaluationPeriods")
     private @Nullable Output<Integer> evaluationPeriods;
 
     /**
-     * @return How many evaluation periods should accumulate before a scale down action takes place.
+     * @return The number of periods over which data is compared to the specified threshold.
      * 
      */
     public Optional<Output<Integer>> evaluationPeriods() {
@@ -55,7 +55,7 @@ public final class ElastigroupIntegrationNomadAutoscaleDownArgs extends com.pulu
         }
 
         /**
-         * @param evaluationPeriods How many evaluation periods should accumulate before a scale down action takes place.
+         * @param evaluationPeriods The number of periods over which data is compared to the specified threshold.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ElastigroupIntegrationNomadAutoscaleDownArgs extends com.pulu
         }
 
         /**
-         * @param evaluationPeriods How many evaluation periods should accumulate before a scale down action takes place.
+         * @param evaluationPeriods The number of periods over which data is compared to the specified threshold.
          * 
          * @return builder
          * 

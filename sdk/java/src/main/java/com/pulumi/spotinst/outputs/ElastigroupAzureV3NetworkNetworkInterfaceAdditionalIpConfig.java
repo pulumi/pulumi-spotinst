@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
     /**
-     * @return - The name of the Application Security group.
+     * @return Name of the Managed Service Identity.
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
 
     private ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig() {}
     /**
-     * @return - The name of the Application Security group.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public String name() {

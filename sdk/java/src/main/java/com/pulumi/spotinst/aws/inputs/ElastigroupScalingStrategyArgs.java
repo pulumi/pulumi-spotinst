@@ -32,14 +32,14 @@ public final class ElastigroupScalingStrategyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
+     * Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
      * 
      */
     @Import(name="terminationPolicy")
     private @Nullable Output<String> terminationPolicy;
 
     /**
-     * @return - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
+     * @return Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
      * 
      */
     public Optional<Output<String>> terminationPolicy() {
@@ -93,7 +93,7 @@ public final class ElastigroupScalingStrategyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param terminationPolicy - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
+         * @param terminationPolicy Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ElastigroupScalingStrategyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param terminationPolicy - Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
+         * @param terminationPolicy Determines whether to terminate the newest instances when performing a scaling action. Valid values: `&#34;default&#34;`, `&#34;newestInstance&#34;`.
          * 
          * @return builder
          * 

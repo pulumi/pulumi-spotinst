@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationCodedeployDeploymentGroupGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationCodedeployDeploymentGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The application name.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationCodedeployDeploymentGroupGetArgs()
         {
         }
+        public static new ElastigroupIntegrationCodedeployDeploymentGroupGetArgs Empty => new ElastigroupIntegrationCodedeployDeploymentGroupGetArgs();
     }
 }

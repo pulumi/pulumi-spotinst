@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanLoggingArgs : Pulumi.ResourceArgs
+    public sealed class OceanLoggingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Logging Export configuration.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanLoggingArgs()
         {
         }
+        public static new OceanLoggingArgs Empty => new OceanLoggingArgs();
     }
 }

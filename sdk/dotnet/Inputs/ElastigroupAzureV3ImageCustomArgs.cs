@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class ElastigroupAzureV3ImageCustomArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupAzureV3ImageCustomArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the custom image. Required if resource_group_name is specified.
@@ -19,8 +19,7 @@ namespace Pulumi.SpotInst.Inputs
         public Input<string> ImageName { get; set; } = null!;
 
         /// <summary>
-        /// - The resource group of the Application Security Group.
-        /// }
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
@@ -28,5 +27,6 @@ namespace Pulumi.SpotInst.Inputs
         public ElastigroupAzureV3ImageCustomArgs()
         {
         }
+        public static new ElastigroupAzureV3ImageCustomArgs Empty => new ElastigroupAzureV3ImageCustomArgs();
     }
 }

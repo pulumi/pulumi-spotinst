@@ -28,7 +28,7 @@ public final class ElastigroupNetworkInterface {
      */
     private @Nullable Boolean deleteOnTermination;
     /**
-     * @return The description of the network interface.
+     * @return The group description.
      * 
      */
     private @Nullable String description;
@@ -76,7 +76,7 @@ public final class ElastigroupNetworkInterface {
         return Optional.ofNullable(this.deleteOnTermination);
     }
     /**
-     * @return The description of the network interface.
+     * @return The group description.
      * 
      */
     public Optional<String> description() {

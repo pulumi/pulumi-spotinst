@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupScheduledTaskGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScheduledTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of instances to add or remove.
@@ -105,5 +105,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupScheduledTaskGetArgs()
         {
         }
+        public static new ElastigroupScheduledTaskGetArgs Empty => new ElastigroupScheduledTaskGetArgs();
     }
 }

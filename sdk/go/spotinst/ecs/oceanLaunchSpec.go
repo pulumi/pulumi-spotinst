@@ -77,7 +77,14 @@ import (
 //					pulumi.String("m5.12xlarge"),
 //					pulumi.String("m5.24xlarge"),
 //				},
-//				OceanId:           pulumi.String("o-123456"),
+//				OceanId: pulumi.String("o-123456"),
+//				PreferredSpotTypes: pulumi.StringArray{
+//					pulumi.String("m3.large"),
+//					pulumi.String("m3.xlarge"),
+//					pulumi.String("m3.2xlarge"),
+//					pulumi.String("m4.large"),
+//					pulumi.String("m4.xlarge"),
+//				},
 //				RestrictScaleDown: pulumi.Bool(true),
 //				SchedulingTasks: ecs.OceanLaunchSpecSchedulingTaskArray{
 //					&ecs.OceanLaunchSpecSchedulingTaskArgs{
@@ -95,6 +102,11 @@ import (
 //				},
 //				SecurityGroupIds: pulumi.StringArray{
 //					pulumi.String("awseb-12345"),
+//				},
+//				Strategies: ecs.OceanLaunchSpecStrategyArray{
+//					&ecs.OceanLaunchSpecStrategyArgs{
+//						SpotPercentage: pulumi.Int(50),
+//					},
 //				},
 //				SubnetIds: pulumi.StringArray{
 //					pulumi.String("subnet-12345"),
@@ -168,12 +180,16 @@ type OceanLaunchSpec struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Ocean cluster ID .
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
+	// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredSpotTypes pulumi.StringArrayOutput `pulumi:"preferredSpotTypes"`
 	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayOutput `pulumi:"schedulingTasks"`
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+	Strategies OceanLaunchSpecStrategyArrayOutput `pulumi:"strategies"`
 	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -229,12 +245,16 @@ type oceanLaunchSpecState struct {
 	Name *string `pulumi:"name"`
 	// The Ocean cluster ID .
 	OceanId *string `pulumi:"oceanId"`
+	// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredSpotTypes []string `pulumi:"preferredSpotTypes"`
 	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -259,12 +279,16 @@ type OceanLaunchSpecState struct {
 	Name pulumi.StringPtrInput
 	// The Ocean cluster ID .
 	OceanId pulumi.StringPtrInput
+	// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredSpotTypes pulumi.StringArrayInput
 	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
+	// Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+	Strategies OceanLaunchSpecStrategyArrayInput
 	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
@@ -293,12 +317,16 @@ type oceanLaunchSpecArgs struct {
 	Name *string `pulumi:"name"`
 	// The Ocean cluster ID .
 	OceanId string `pulumi:"oceanId"`
+	// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredSpotTypes []string `pulumi:"preferredSpotTypes"`
 	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// One or more security group ids.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+	Strategies []OceanLaunchSpecStrategy `pulumi:"strategies"`
 	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A key/value mapping of tags to assign to the resource.
@@ -324,12 +352,16 @@ type OceanLaunchSpecArgs struct {
 	Name pulumi.StringPtrInput
 	// The Ocean cluster ID .
 	OceanId pulumi.StringInput
+	// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+	PreferredSpotTypes pulumi.StringArrayInput
 	// Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// One or more security group ids.
 	SecurityGroupIds pulumi.StringArrayInput
+	// Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+	Strategies OceanLaunchSpecStrategyArrayInput
 	// Set subnets in launchSpec. Each element in the array should be a subnet ID.
 	SubnetIds pulumi.StringArrayInput
 	// A key/value mapping of tags to assign to the resource.
@@ -464,6 +496,11 @@ func (o OceanLaunchSpecOutput) OceanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.OceanId }).(pulumi.StringOutput)
 }
 
+// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
+func (o OceanLaunchSpecOutput) PreferredSpotTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.PreferredSpotTypes }).(pulumi.StringArrayOutput)
+}
+
 // Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 func (o OceanLaunchSpecOutput) RestrictScaleDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.BoolPtrOutput { return v.RestrictScaleDown }).(pulumi.BoolPtrOutput)
@@ -477,6 +514,11 @@ func (o OceanLaunchSpecOutput) SchedulingTasks() OceanLaunchSpecSchedulingTaskAr
 // One or more security group ids.
 func (o OceanLaunchSpecOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Similar to a strategy for an Ocean cluster, but applying only to a virtual node group.
+func (o OceanLaunchSpecOutput) Strategies() OceanLaunchSpecStrategyArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecStrategyArrayOutput { return v.Strategies }).(OceanLaunchSpecStrategyArrayOutput)
 }
 
 // Set subnets in launchSpec. Each element in the array should be a subnet ID.

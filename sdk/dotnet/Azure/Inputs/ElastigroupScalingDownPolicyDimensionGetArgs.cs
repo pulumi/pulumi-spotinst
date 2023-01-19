@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupScalingDownPolicyDimensionGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingDownPolicyDimensionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dimension name.
+        /// The name of the managed identity.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupScalingDownPolicyDimensionGetArgs()
         {
         }
+        public static new ElastigroupScalingDownPolicyDimensionGetArgs Empty => new ElastigroupScalingDownPolicyDimensionGetArgs();
     }
 }

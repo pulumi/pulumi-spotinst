@@ -16,6 +16,7 @@ import com.pulumi.spotinst.azure.inputs.OceanOsDiskArgs;
 import com.pulumi.spotinst.azure.inputs.OceanStrategyArgs;
 import com.pulumi.spotinst.azure.inputs.OceanTagArgs;
 import com.pulumi.spotinst.azure.inputs.OceanVmSizeArgs;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -193,6 +194,21 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum number of pods per node in an AKS cluster.
+     * 
+     */
+    @Import(name="maxPods")
+    private @Nullable Output<Integer> maxPods;
+
+    /**
+     * @return The maximum number of pods per node in an AKS cluster.
+     * 
+     */
+    public Optional<Output<Integer>> maxPods() {
+        return Optional.ofNullable(this.maxPods);
+    }
+
+    /**
      * Name of the Load Balancer.
      * 
      */
@@ -356,6 +372,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         this.images = $.images;
         this.loadBalancers = $.loadBalancers;
         this.managedServiceIdentities = $.managedServiceIdentities;
+        this.maxPods = $.maxPods;
         this.name = $.name;
         this.network = $.network;
         this.osDisk = $.osDisk;
@@ -655,6 +672,27 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder managedServiceIdentities(OceanManagedServiceIdentityArgs... managedServiceIdentities) {
             return managedServiceIdentities(List.of(managedServiceIdentities));
+        }
+
+        /**
+         * @param maxPods The maximum number of pods per node in an AKS cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxPods(@Nullable Output<Integer> maxPods) {
+            $.maxPods = maxPods;
+            return this;
+        }
+
+        /**
+         * @param maxPods The maximum number of pods per node in an AKS cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxPods(Integer maxPods) {
+            return maxPods(Output.of(maxPods));
         }
 
         /**

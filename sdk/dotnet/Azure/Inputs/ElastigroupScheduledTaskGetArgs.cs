@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class ElastigroupScheduledTaskGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScheduledTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of instances to add/remove to/from the target capacity when scale is needed.
+        /// Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
         /// </summary>
         [Input("adjustment")]
         public Input<string>? Adjustment { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<string>? AdjustmentPercentage { get; set; }
 
         /// <summary>
-        /// Sets the percentage of the instances to deploy in each batch.
+        /// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
         /// </summary>
         [Input("batchSizePercentage")]
         public Input<string>? BatchSizePercentage { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<string> CronExpression { get; set; } = null!;
 
         /// <summary>
-        /// Sets the grace period for new instances to become healthy.
+        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         /// </summary>
         [Input("gracePeriod")]
         public Input<string>? GracePeriod { get; set; }
@@ -75,5 +75,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public ElastigroupScheduledTaskGetArgs()
         {
         }
+        public static new ElastigroupScheduledTaskGetArgs Empty => new ElastigroupScheduledTaskGetArgs();
     }
 }

@@ -52,32 +52,16 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.desiredCapacity);
     }
 
-    /**
-     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     * 
-     */
     @Import(name="images")
     private @Nullable Output<List<ElastigroupAzureV3ImageArgs>> images;
 
-    /**
-     * @return Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     * 
-     */
     public Optional<Output<List<ElastigroupAzureV3ImageArgs>>> images() {
         return Optional.ofNullable(this.images);
     }
 
-    /**
-     * Describes the login configuration.
-     * 
-     */
     @Import(name="login")
     private @Nullable Output<ElastigroupAzureV3LoginArgs> login;
 
-    /**
-     * @return Describes the login configuration.
-     * 
-     */
     public Optional<Output<ElastigroupAzureV3LoginArgs>> login() {
         return Optional.ofNullable(this.login);
     }
@@ -128,31 +112,23 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * - The name of the Application Security group.
+     * Name of the Managed Service Identity.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return - The name of the Application Security group.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Defines the Virtual Network and Subnet for your Elastigroup.
-     * 
-     */
     @Import(name="network", required=true)
     private Output<ElastigroupAzureV3NetworkArgs> network;
 
-    /**
-     * @return Defines the Virtual Network and Subnet for your Elastigroup.
-     * 
-     */
     public Output<ElastigroupAzureV3NetworkArgs> network() {
         return this.network;
     }
@@ -203,16 +179,14 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * - The resource group of the Application Security Group.
-     *   }
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return - The resource group of the Application Security Group.
-     * }
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -234,17 +208,9 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         return this.spotSizes;
     }
 
-    /**
-     * Describes the deployment strategy.
-     * 
-     */
     @Import(name="strategy", required=true)
     private Output<ElastigroupAzureV3StrategyArgs> strategy;
 
-    /**
-     * @return Describes the deployment strategy.
-     * 
-     */
     public Output<ElastigroupAzureV3StrategyArgs> strategy() {
         return this.strategy;
     }
@@ -329,54 +295,24 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
             return desiredCapacity(Output.of(desiredCapacity));
         }
 
-        /**
-         * @param images Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-         * 
-         * @return builder
-         * 
-         */
         public Builder images(@Nullable Output<List<ElastigroupAzureV3ImageArgs>> images) {
             $.images = images;
             return this;
         }
 
-        /**
-         * @param images Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-         * 
-         * @return builder
-         * 
-         */
         public Builder images(List<ElastigroupAzureV3ImageArgs> images) {
             return images(Output.of(images));
         }
 
-        /**
-         * @param images Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-         * 
-         * @return builder
-         * 
-         */
         public Builder images(ElastigroupAzureV3ImageArgs... images) {
             return images(List.of(images));
         }
 
-        /**
-         * @param login Describes the login configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder login(@Nullable Output<ElastigroupAzureV3LoginArgs> login) {
             $.login = login;
             return this;
         }
 
-        /**
-         * @param login Describes the login configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder login(ElastigroupAzureV3LoginArgs login) {
             return login(Output.of(login));
         }
@@ -455,7 +391,7 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name - The name of the Application Security group.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -466,7 +402,7 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name - The name of the Application Security group.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -475,23 +411,11 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
             return name(Output.of(name));
         }
 
-        /**
-         * @param network Defines the Virtual Network and Subnet for your Elastigroup.
-         * 
-         * @return builder
-         * 
-         */
         public Builder network(Output<ElastigroupAzureV3NetworkArgs> network) {
             $.network = network;
             return this;
         }
 
-        /**
-         * @param network Defines the Virtual Network and Subnet for your Elastigroup.
-         * 
-         * @return builder
-         * 
-         */
         public Builder network(ElastigroupAzureV3NetworkArgs network) {
             return network(Output.of(network));
         }
@@ -570,8 +494,7 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceGroupName - The resource group of the Application Security Group.
-         * }
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 
@@ -582,8 +505,7 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceGroupName - The resource group of the Application Security Group.
-         * }
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 
@@ -623,23 +545,11 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
             return spotSizes(List.of(spotSizes));
         }
 
-        /**
-         * @param strategy Describes the deployment strategy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategy(Output<ElastigroupAzureV3StrategyArgs> strategy) {
             $.strategy = strategy;
             return this;
         }
 
-        /**
-         * @param strategy Describes the deployment strategy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategy(ElastigroupAzureV3StrategyArgs strategy) {
             return strategy(Output.of(strategy));
         }

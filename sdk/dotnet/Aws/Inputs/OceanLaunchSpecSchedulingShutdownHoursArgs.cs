@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecSchedulingShutdownHoursArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecSchedulingShutdownHoursArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecSchedulingShutdownHoursArgs()
         {
         }
+        public static new OceanLaunchSpecSchedulingShutdownHoursArgs Empty => new OceanLaunchSpecSchedulingShutdownHoursArgs();
     }
 }

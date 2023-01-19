@@ -33,14 +33,14 @@ public final class ElastigroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Sets the grace period for new instances to become healthy.
+     * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
     public Optional<Output<Integer>> gracePeriod() {
@@ -48,14 +48,14 @@ public final class ElastigroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+     * Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
      * 
      */
     @Import(name="healthCheckType", required=true)
     private Output<String> healthCheckType;
 
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
      * 
      */
     public Output<String> healthCheckType() {
@@ -110,7 +110,7 @@ public final class ElastigroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gracePeriod Sets the grace period for new instances to become healthy.
+         * @param gracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ElastigroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gracePeriod Sets the grace period for new instances to become healthy.
+         * @param gracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ElastigroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckType Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+         * @param healthCheckType Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ElastigroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckType Sets the health check type to use. Valid values: `&#34;INSTANCE_STATE&#34;`, `&#34;NONE&#34;`.
+         * @param healthCheckType Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
          * 
          * @return builder
          * 

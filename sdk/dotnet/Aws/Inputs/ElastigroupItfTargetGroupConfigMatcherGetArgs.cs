@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupItfTargetGroupConfigMatcherGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupItfTargetGroupConfigMatcherGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("grpcCode")]
         public Input<string>? GrpcCode { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupItfTargetGroupConfigMatcherGetArgs()
         {
         }
+        public static new ElastigroupItfTargetGroupConfigMatcherGetArgs Empty => new ElastigroupItfTargetGroupConfigMatcherGetArgs();
     }
 }

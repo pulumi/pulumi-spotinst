@@ -6,6 +6,8 @@ package com.pulumi.spotinst.aws;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.aws.inputs.OceanAutoscalerArgs;
+import com.pulumi.spotinst.aws.inputs.OceanClusterOrientationArgs;
+import com.pulumi.spotinst.aws.inputs.OceanFiltersArgs;
 import com.pulumi.spotinst.aws.inputs.OceanInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLoggingArgs;
@@ -68,6 +70,13 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> blacklists() {
         return Optional.ofNullable(this.blacklists);
+    }
+
+    @Import(name="clusterOrientations")
+    private @Nullable Output<List<OceanClusterOrientationArgs>> clusterOrientations;
+
+    public Optional<Output<List<OceanClusterOrientationArgs>>> clusterOrientations() {
+        return Optional.ofNullable(this.clusterOrientations);
     }
 
     /**
@@ -146,6 +155,21 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable Output<OceanFiltersArgs> filters;
+
+    /**
+     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     * 
+     */
+    public Optional<Output<OceanFiltersArgs>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
+    /**
      * The amount of time, in seconds, after the instance has launched to start checking its health.
      * 
      */
@@ -221,14 +245,14 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - Array of load balancer objects to add to ocean cluster
+     * Array of load balancer objects to add to ocean cluster
      * 
      */
     @Import(name="loadBalancers")
     private @Nullable Output<List<OceanLoadBalancerArgs>> loadBalancers;
 
     /**
-     * @return - Array of load balancer objects to add to ocean cluster
+     * @return Array of load balancer objects to add to ocean cluster
      * 
      */
     public Optional<Output<List<OceanLoadBalancerArgs>>> loadBalancers() {
@@ -340,17 +364,9 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rootVolumeSize);
     }
 
-    /**
-     * Set scheduling object.
-     * 
-     */
     @Import(name="scheduledTasks")
     private @Nullable Output<List<OceanScheduledTaskArgs>> scheduledTasks;
 
-    /**
-     * @return Set scheduling object.
-     * 
-     */
     public Optional<Output<List<OceanScheduledTaskArgs>>> scheduledTasks() {
         return Optional.ofNullable(this.scheduledTasks);
     }
@@ -505,11 +521,13 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         this.associatePublicIpAddress = $.associatePublicIpAddress;
         this.autoscaler = $.autoscaler;
         this.blacklists = $.blacklists;
+        this.clusterOrientations = $.clusterOrientations;
         this.controllerId = $.controllerId;
         this.desiredCapacity = $.desiredCapacity;
         this.drainingTimeout = $.drainingTimeout;
         this.ebsOptimized = $.ebsOptimized;
         this.fallbackToOndemand = $.fallbackToOndemand;
+        this.filters = $.filters;
         this.gracePeriod = $.gracePeriod;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageId = $.imageId;
@@ -627,6 +645,19 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
             return blacklists(List.of(blacklists));
         }
 
+        public Builder clusterOrientations(@Nullable Output<List<OceanClusterOrientationArgs>> clusterOrientations) {
+            $.clusterOrientations = clusterOrientations;
+            return this;
+        }
+
+        public Builder clusterOrientations(List<OceanClusterOrientationArgs> clusterOrientations) {
+            return clusterOrientations(Output.of(clusterOrientations));
+        }
+
+        public Builder clusterOrientations(OceanClusterOrientationArgs... clusterOrientations) {
+            return clusterOrientations(List.of(clusterOrientations));
+        }
+
         /**
          * @param controllerId A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
          * 
@@ -730,6 +761,27 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fallbackToOndemand(Boolean fallbackToOndemand) {
             return fallbackToOndemand(Output.of(fallbackToOndemand));
+        }
+
+        /**
+         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable Output<OceanFiltersArgs> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(OceanFiltersArgs filters) {
+            return filters(Output.of(filters));
         }
 
         /**
@@ -838,7 +890,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancers - Array of load balancer objects to add to ocean cluster
+         * @param loadBalancers Array of load balancer objects to add to ocean cluster
          * 
          * @return builder
          * 
@@ -849,7 +901,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancers - Array of load balancer objects to add to ocean cluster
+         * @param loadBalancers Array of load balancer objects to add to ocean cluster
          * 
          * @return builder
          * 
@@ -859,7 +911,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancers - Array of load balancer objects to add to ocean cluster
+         * @param loadBalancers Array of load balancer objects to add to ocean cluster
          * 
          * @return builder
          * 
@@ -1015,33 +1067,15 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
             return rootVolumeSize(Output.of(rootVolumeSize));
         }
 
-        /**
-         * @param scheduledTasks Set scheduling object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(@Nullable Output<List<OceanScheduledTaskArgs>> scheduledTasks) {
             $.scheduledTasks = scheduledTasks;
             return this;
         }
 
-        /**
-         * @param scheduledTasks Set scheduling object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(List<OceanScheduledTaskArgs> scheduledTasks) {
             return scheduledTasks(Output.of(scheduledTasks));
         }
 
-        /**
-         * @param scheduledTasks Set scheduling object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(OceanScheduledTaskArgs... scheduledTasks) {
             return scheduledTasks(List.of(scheduledTasks));
         }

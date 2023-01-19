@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs()
         {
         }
+        public static new OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs Empty => new OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs();
     }
 }

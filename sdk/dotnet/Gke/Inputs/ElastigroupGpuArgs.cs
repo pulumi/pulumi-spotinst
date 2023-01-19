@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupGpuArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupGpuArgs : global::Pulumi.ResourceArgs
     {
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupGpuArgs()
         {
         }
+        public static new ElastigroupGpuArgs Empty => new ElastigroupGpuArgs();
     }
 }

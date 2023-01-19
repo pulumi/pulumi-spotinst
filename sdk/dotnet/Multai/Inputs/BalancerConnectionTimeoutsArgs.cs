@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Multai.Inputs
 {
 
-    public sealed class BalancerConnectionTimeoutsArgs : Pulumi.ResourceArgs
+    public sealed class BalancerConnectionTimeoutsArgs : global::Pulumi.ResourceArgs
     {
         [Input("draining")]
         public Input<int>? Draining { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Multai.Inputs
         public BalancerConnectionTimeoutsArgs()
         {
         }
+        public static new BalancerConnectionTimeoutsArgs Empty => new BalancerConnectionTimeoutsArgs();
     }
 }

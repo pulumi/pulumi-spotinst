@@ -45,7 +45,7 @@ public final class ElastigroupIntegrationGke {
      */
     private @Nullable List<ElastigroupIntegrationGkeAutoscaleLabel> autoscaleLabels;
     /**
-     * @return The GKE cluster ID you wish to import.
+     * @return The name of the GKE cluster you wish to import.
      * 
      */
     private @Nullable String clusterId;
@@ -98,7 +98,7 @@ public final class ElastigroupIntegrationGke {
         return this.autoscaleLabels == null ? List.of() : this.autoscaleLabels;
     }
     /**
-     * @return The GKE cluster ID you wish to import.
+     * @return The name of the GKE cluster you wish to import.
      * 
      */
     public Optional<String> clusterId() {

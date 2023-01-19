@@ -74,7 +74,7 @@ namespace Pulumi.SpotInst
         }
     }
 
-    internal sealed class SpotInstResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class SpotInstResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public SpotInstResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

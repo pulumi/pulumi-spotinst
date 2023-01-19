@@ -42,10 +42,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.gke.Elastigroup;
+ * import com.pulumi.spotinst.gke.ElastigroupArgs;
+ * import com.pulumi.spotinst.gke.inputs.ElastigroupBackendServiceArgs;
+ * import com.pulumi.spotinst.gke.inputs.ElastigroupIntegrationGkeArgs;
+ * import com.pulumi.spotinst.gke.inputs.ElastigroupIntegrationGkeAutoscaleDownArgs;
+ * import com.pulumi.spotinst.gke.inputs.ElastigroupIntegrationGkeAutoscaleHeadroomArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -109,7 +120,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.backendServices);
     }
     /**
-     * The GKE cluster ID you wish to import.
+     * The name of the GKE cluster you wish to import.
      * 
      * @deprecated
      * Please define cluster_id under integration_gke
@@ -120,7 +131,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> clusterId;
 
     /**
-     * @return The GKE cluster ID you wish to import.
+     * @return The name of the GKE cluster you wish to import.
      * 
      */
     public Output<Optional<String>> clusterId() {

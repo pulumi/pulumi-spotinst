@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Should roll perform automatically
@@ -19,13 +19,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? AutomaticRoll { get; set; }
 
         /// <summary>
-        /// Sets the percentage of the instances to deploy in each batch.
+        /// The percentage size of each batch in the scheduled deployment roll.
         /// </summary>
         [Input("batchSizePercentage")]
         public Input<int>? BatchSizePercentage { get; set; }
 
         /// <summary>
-        /// Sets the grace period for new instances to become healthy.
+        /// The period of time (seconds) to wait before checking a batch's health after it's deployment.
         /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs()
         {
         }
+        public static new ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs Empty => new ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs();
     }
 }

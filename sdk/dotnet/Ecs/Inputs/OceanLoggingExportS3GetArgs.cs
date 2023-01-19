@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Ecs.Inputs
 {
 
-    public sealed class OceanLoggingExportS3GetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLoggingExportS3GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The identifier of The S3 data integration to export the logs to.
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public OceanLoggingExportS3GetArgs()
         {
         }
+        public static new OceanLoggingExportS3GetArgs Empty => new OceanLoggingExportS3GetArgs();
     }
 }

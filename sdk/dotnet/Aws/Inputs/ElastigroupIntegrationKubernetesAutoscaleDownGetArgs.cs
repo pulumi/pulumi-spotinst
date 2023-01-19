@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationKubernetesAutoscaleDownGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationKubernetesAutoscaleDownGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How many evaluation periods should accumulate before a scale down action takes place.
+        /// The number of periods over which data is compared to the specified threshold.
         /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationKubernetesAutoscaleDownGetArgs()
         {
         }
+        public static new ElastigroupIntegrationKubernetesAutoscaleDownGetArgs Empty => new ElastigroupIntegrationKubernetesAutoscaleDownGetArgs();
     }
 }

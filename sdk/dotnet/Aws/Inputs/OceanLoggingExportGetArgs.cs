@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLoggingExportGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLoggingExportGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("s3s")]
         private InputList<Inputs.OceanLoggingExportS3GetArgs>? _s3s;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLoggingExportGetArgs()
         {
         }
+        public static new OceanLoggingExportGetArgs Empty => new OceanLoggingExportGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureStrategyRevertToSpotGetArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureStrategyRevertToSpotGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("performAt", required: true)]
         public Input<string> PerformAt { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureStrategyRevertToSpotGetArgs()
         {
         }
+        public static new StatefulNodeAzureStrategyRevertToSpotGetArgs Empty => new StatefulNodeAzureStrategyRevertToSpotGetArgs();
     }
 }

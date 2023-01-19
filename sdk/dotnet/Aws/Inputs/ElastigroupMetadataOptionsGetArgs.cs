@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupMetadataOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupMetadataOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupMetadataOptionsGetArgs()
         {
         }
+        public static new ElastigroupMetadataOptionsGetArgs Empty => new ElastigroupMetadataOptionsGetArgs();
     }
 }

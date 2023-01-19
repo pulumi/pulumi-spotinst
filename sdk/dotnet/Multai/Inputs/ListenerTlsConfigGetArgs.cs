@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Multai.Inputs
 {
 
-    public sealed class ListenerTlsConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ListenerTlsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("certificateIds", required: true)]
         private InputList<string>? _certificateIds;
@@ -43,5 +43,6 @@ namespace Pulumi.SpotInst.Multai.Inputs
         public ListenerTlsConfigGetArgs()
         {
         }
+        public static new ListenerTlsConfigGetArgs Empty => new ListenerTlsConfigGetArgs();
     }
 }

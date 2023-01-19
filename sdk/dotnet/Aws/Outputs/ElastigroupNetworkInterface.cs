@@ -26,7 +26,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? DeleteOnTermination;
         /// <summary>
-        /// The description of the network interface.
+        /// The group description.
         /// </summary>
         public readonly string? Description;
         /// <summary>

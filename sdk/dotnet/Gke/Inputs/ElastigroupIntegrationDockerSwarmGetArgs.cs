@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupIntegrationDockerSwarmGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationDockerSwarmGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("masterHost", required: true)]
         public Input<string> MasterHost { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupIntegrationDockerSwarmGetArgs()
         {
         }
+        public static new ElastigroupIntegrationDockerSwarmGetArgs Empty => new ElastigroupIntegrationDockerSwarmGetArgs();
     }
 }

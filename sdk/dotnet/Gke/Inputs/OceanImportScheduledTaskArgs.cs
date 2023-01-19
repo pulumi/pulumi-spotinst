@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportScheduledTaskArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportScheduledTaskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set shutdown hours for cluster object.
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportScheduledTaskArgs()
         {
         }
+        public static new OceanImportScheduledTaskArgs Empty => new OceanImportScheduledTaskArgs();
     }
 }

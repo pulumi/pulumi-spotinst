@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupMetadataArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The label name.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupMetadataArgs()
         {
         }
+        public static new ElastigroupMetadataArgs Empty => new ElastigroupMetadataArgs();
     }
 }

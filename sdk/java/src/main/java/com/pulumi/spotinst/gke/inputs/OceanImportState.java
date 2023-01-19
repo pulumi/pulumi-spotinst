@@ -24,17 +24,9 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
 
     public static final OceanImportState Empty = new OceanImportState();
 
-    /**
-     * The Ocean Kubernetes Autoscaler object.
-     * 
-     */
     @Import(name="autoscaler")
     private @Nullable Output<OceanImportAutoscalerArgs> autoscaler;
 
-    /**
-     * @return The Ocean Kubernetes Autoscaler object.
-     * 
-     */
     public Optional<Output<OceanImportAutoscalerArgs>> autoscaler() {
         return Optional.ofNullable(this.autoscaler);
     }
@@ -52,6 +44,21 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<OceanImportBackendServiceArgs>>> backendServices() {
         return Optional.ofNullable(this.backendServices);
+    }
+
+    /**
+     * Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+     * 
+     */
+    @Import(name="blacklists")
+    private @Nullable Output<List<String>> blacklists;
+
+    /**
+     * @return Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+     * 
+     */
+    public Optional<Output<List<String>>> blacklists() {
+        return Optional.ofNullable(this.blacklists);
     }
 
     @Import(name="clusterControllerId")
@@ -166,17 +173,9 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rootVolumeType);
     }
 
-    /**
-     * Set scheduling object.
-     * 
-     */
     @Import(name="scheduledTasks")
     private @Nullable Output<List<OceanImportScheduledTaskArgs>> scheduledTasks;
 
-    /**
-     * @return Set scheduling object.
-     * 
-     */
     public Optional<Output<List<OceanImportScheduledTaskArgs>>> scheduledTasks() {
         return Optional.ofNullable(this.scheduledTasks);
     }
@@ -226,14 +225,14 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance types allowed in the Ocean cluster.
+     * Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      * 
      */
     @Import(name="whitelists")
     private @Nullable Output<List<String>> whitelists;
 
     /**
-     * @return Instance types allowed in the Ocean cluster.
+     * @return Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      * 
      */
     public Optional<Output<List<String>>> whitelists() {
@@ -245,6 +244,7 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
     private OceanImportState(OceanImportState $) {
         this.autoscaler = $.autoscaler;
         this.backendServices = $.backendServices;
+        this.blacklists = $.blacklists;
         this.clusterControllerId = $.clusterControllerId;
         this.clusterName = $.clusterName;
         this.controllerClusterId = $.controllerClusterId;
@@ -279,23 +279,11 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
             $ = new OceanImportState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoscaler The Ocean Kubernetes Autoscaler object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaler(@Nullable Output<OceanImportAutoscalerArgs> autoscaler) {
             $.autoscaler = autoscaler;
             return this;
         }
 
-        /**
-         * @param autoscaler The Ocean Kubernetes Autoscaler object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaler(OceanImportAutoscalerArgs autoscaler) {
             return autoscaler(Output.of(autoscaler));
         }
@@ -329,6 +317,37 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backendServices(OceanImportBackendServiceArgs... backendServices) {
             return backendServices(List.of(backendServices));
+        }
+
+        /**
+         * @param blacklists Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blacklists(@Nullable Output<List<String>> blacklists) {
+            $.blacklists = blacklists;
+            return this;
+        }
+
+        /**
+         * @param blacklists Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blacklists(List<String> blacklists) {
+            return blacklists(Output.of(blacklists));
+        }
+
+        /**
+         * @param blacklists Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blacklists(String... blacklists) {
+            return blacklists(List.of(blacklists));
         }
 
         public Builder clusterControllerId(@Nullable Output<String> clusterControllerId) {
@@ -487,33 +506,15 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
             return rootVolumeType(Output.of(rootVolumeType));
         }
 
-        /**
-         * @param scheduledTasks Set scheduling object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(@Nullable Output<List<OceanImportScheduledTaskArgs>> scheduledTasks) {
             $.scheduledTasks = scheduledTasks;
             return this;
         }
 
-        /**
-         * @param scheduledTasks Set scheduling object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(List<OceanImportScheduledTaskArgs> scheduledTasks) {
             return scheduledTasks(Output.of(scheduledTasks));
         }
 
-        /**
-         * @param scheduledTasks Set scheduling object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(OceanImportScheduledTaskArgs... scheduledTasks) {
             return scheduledTasks(List.of(scheduledTasks));
         }
@@ -583,7 +584,7 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelists Instance types allowed in the Ocean cluster.
+         * @param whitelists Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
          * 
          * @return builder
          * 
@@ -594,7 +595,7 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelists Instance types allowed in the Ocean cluster.
+         * @param whitelists Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
          * 
          * @return builder
          * 
@@ -604,7 +605,7 @@ public final class OceanImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param whitelists Instance types allowed in the Ocean cluster.
+         * @param whitelists Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
          * 
          * @return builder
          * 

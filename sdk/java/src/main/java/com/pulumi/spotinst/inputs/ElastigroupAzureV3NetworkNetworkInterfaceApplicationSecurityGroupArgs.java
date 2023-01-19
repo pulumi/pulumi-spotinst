@@ -14,14 +14,14 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityG
     public static final ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs Empty = new ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs();
 
     /**
-     * - The name of the Application Security group.
+     * Name of the Managed Service Identity.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return - The name of the Application Security group.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public Output<String> name() {
@@ -29,16 +29,14 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityG
     }
 
     /**
-     * - The resource group of the Application Security Group.
-     *   }
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return - The resource group of the Application Security Group.
-     * }
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -71,7 +69,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityG
         }
 
         /**
-         * @param name - The name of the Application Security group.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -82,7 +80,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityG
         }
 
         /**
-         * @param name - The name of the Application Security group.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -92,8 +90,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityG
         }
 
         /**
-         * @param resourceGroupName - The resource group of the Application Security Group.
-         * }
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 
@@ -104,8 +101,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityG
         }
 
         /**
-         * @param resourceGroupName - The resource group of the Application Security Group.
-         * }
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 

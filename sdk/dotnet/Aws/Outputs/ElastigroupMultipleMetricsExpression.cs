@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string Expression;
         /// <summary>
-        /// The record set name.
+        /// The group name.
         /// </summary>
         public readonly string Name;
 

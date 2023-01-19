@@ -18,11 +18,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? AutomaticRoll;
         /// <summary>
-        /// Sets the percentage of the instances to deploy in each batch.
+        /// The percentage size of each batch in the scheduled deployment roll.
         /// </summary>
         public readonly int? BatchSizePercentage;
         /// <summary>
-        /// Sets the grace period for new instances to become healthy.
+        /// The period of time (seconds) to wait before checking a batch's health after it's deployment.
         /// </summary>
         public readonly int? GracePeriod;
         /// <summary>

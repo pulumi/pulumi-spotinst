@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupScalingTargetPolicyDimension {
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class ElastigroupScalingTargetPolicyDimension {
 
     private ElastigroupScalingTargetPolicyDimension() {}
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     public String name() {

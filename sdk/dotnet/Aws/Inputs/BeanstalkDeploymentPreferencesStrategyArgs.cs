@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class BeanstalkDeploymentPreferencesStrategyArgs : Pulumi.ResourceArgs
+    public sealed class BeanstalkDeploymentPreferencesStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to take
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public BeanstalkDeploymentPreferencesStrategyArgs()
         {
         }
+        public static new BeanstalkDeploymentPreferencesStrategyArgs Empty => new BeanstalkDeploymentPreferencesStrategyArgs();
     }
 }

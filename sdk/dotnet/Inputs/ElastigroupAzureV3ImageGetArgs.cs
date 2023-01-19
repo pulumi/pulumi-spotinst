@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class ElastigroupAzureV3ImageGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupAzureV3ImageGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("customs")]
         private InputList<Inputs.ElastigroupAzureV3ImageCustomGetArgs>? _customs;
@@ -31,5 +31,6 @@ namespace Pulumi.SpotInst.Inputs
         public ElastigroupAzureV3ImageGetArgs()
         {
         }
+        public static new ElastigroupAzureV3ImageGetArgs Empty => new ElastigroupAzureV3ImageGetArgs();
     }
 }

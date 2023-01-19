@@ -22,16 +22,17 @@ type Elastigroup struct {
 	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
 	BlockDevicesMode pulumi.StringPtrOutput `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
-	CapacityUnit pulumi.StringOutput `pulumi:"capacityUnit"`
+	CapacityUnit      pulumi.StringOutput  `pulumi:"capacityUnit"`
+	ConsiderOdPricing pulumi.BoolPtrOutput `pulumi:"considerOdPricing"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrOutput `pulumi:"cpuCredits"`
 	// The CPU options for the instances that are launched within the group:
 	CpuOptions ElastigroupCpuOptionsPtrOutput `pulumi:"cpuOptions"`
-	// The description of the network interface.
+	// The group description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
-	// Indicates (in seconds) the timeout to wait until instance are detached.
+	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntOutput                     `pulumi:"drainingTimeout"`
 	EbsBlockDevices ElastigroupEbsBlockDeviceArrayOutput `pulumi:"ebsBlockDevices"`
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
@@ -45,16 +46,20 @@ type Elastigroup struct {
 	EphemeralBlockDevices ElastigroupEphemeralBlockDeviceArrayOutput `pulumi:"ephemeralBlockDevices"`
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolOutput `pulumi:"fallbackToOndemand"`
-	// The amount of time, in seconds, after the instance has launched to starts and check its health
+	// The amount of time, in seconds, after the instance has launched to starts and check its health.
 	HealthCheckGracePeriod pulumi.IntPtrOutput `pulumi:"healthCheckGracePeriod"`
-	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
-	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrOutput `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// The ID of the AMI used to launch the instance.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	// An array of image objects.
+	// Note: Elastigroup can be configured with either imageId or images, but not both.
+	Images                      ElastigroupImageArrayOutput `pulumi:"images"`
+	ImmediateOdRecoverThreshold pulumi.IntPtrOutput         `pulumi:"immediateOdRecoverThreshold"`
 	// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
 	InstanceTypesOndemand pulumi.StringOutput `pulumi:"instanceTypesOndemand"`
 	// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -99,7 +104,7 @@ type Elastigroup struct {
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayOutput `pulumi:"multaiTargetSets"`
 	MultipleMetrics  ElastigroupMultipleMetricsPtrOutput   `pulumi:"multipleMetrics"`
-	// The record set name.
+	// The group name.
 	Name              pulumi.StringOutput                    `pulumi:"name"`
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
@@ -217,16 +222,17 @@ type elastigroupState struct {
 	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
 	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
-	CapacityUnit *string `pulumi:"capacityUnit"`
+	CapacityUnit      *string `pulumi:"capacityUnit"`
+	ConsiderOdPricing *bool   `pulumi:"considerOdPricing"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits *string `pulumi:"cpuCredits"`
 	// The CPU options for the instances that are launched within the group:
 	CpuOptions *ElastigroupCpuOptions `pulumi:"cpuOptions"`
-	// The description of the network interface.
+	// The group description.
 	Description *string `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// Indicates (in seconds) the timeout to wait until instance are detached.
+	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout *int                        `pulumi:"drainingTimeout"`
 	EbsBlockDevices []ElastigroupEbsBlockDevice `pulumi:"ebsBlockDevices"`
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
@@ -240,16 +246,20 @@ type elastigroupState struct {
 	EphemeralBlockDevices []ElastigroupEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
-	// The amount of time, in seconds, after the instance has launched to starts and check its health
+	// The amount of time, in seconds, after the instance has launched to starts and check its health.
 	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
-	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 	HealthCheckUnhealthyDurationBeforeReplacement *int `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// The ID of the AMI used to launch the instance.
 	ImageId *string `pulumi:"imageId"`
+	// An array of image objects.
+	// Note: Elastigroup can be configured with either imageId or images, but not both.
+	Images                      []ElastigroupImage `pulumi:"images"`
+	ImmediateOdRecoverThreshold *int               `pulumi:"immediateOdRecoverThreshold"`
 	// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
 	InstanceTypesOndemand *string `pulumi:"instanceTypesOndemand"`
 	// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -294,7 +304,7 @@ type elastigroupState struct {
 	// Set of targets to register.
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
 	MultipleMetrics  *ElastigroupMultipleMetrics  `pulumi:"multipleMetrics"`
-	// The record set name.
+	// The group name.
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
@@ -366,16 +376,17 @@ type ElastigroupState struct {
 	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
 	BlockDevicesMode pulumi.StringPtrInput
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
-	CapacityUnit pulumi.StringPtrInput
+	CapacityUnit      pulumi.StringPtrInput
+	ConsiderOdPricing pulumi.BoolPtrInput
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrInput
 	// The CPU options for the instances that are launched within the group:
 	CpuOptions ElastigroupCpuOptionsPtrInput
-	// The description of the network interface.
+	// The group description.
 	Description pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrInput
-	// Indicates (in seconds) the timeout to wait until instance are detached.
+	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntPtrInput
 	EbsBlockDevices ElastigroupEbsBlockDeviceArrayInput
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
@@ -389,16 +400,20 @@ type ElastigroupState struct {
 	EphemeralBlockDevices ElastigroupEphemeralBlockDeviceArrayInput
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
-	// The amount of time, in seconds, after the instance has launched to starts and check its health
+	// The amount of time, in seconds, after the instance has launched to starts and check its health.
 	HealthCheckGracePeriod pulumi.IntPtrInput
-	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType pulumi.StringPtrInput
-	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// The ID of the AMI used to launch the instance.
 	ImageId pulumi.StringPtrInput
+	// An array of image objects.
+	// Note: Elastigroup can be configured with either imageId or images, but not both.
+	Images                      ElastigroupImageArrayInput
+	ImmediateOdRecoverThreshold pulumi.IntPtrInput
 	// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
 	InstanceTypesOndemand pulumi.StringPtrInput
 	// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -443,7 +458,7 @@ type ElastigroupState struct {
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
 	MultipleMetrics  ElastigroupMultipleMetricsPtrInput
-	// The record set name.
+	// The group name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
@@ -519,16 +534,17 @@ type elastigroupArgs struct {
 	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
 	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
-	CapacityUnit *string `pulumi:"capacityUnit"`
+	CapacityUnit      *string `pulumi:"capacityUnit"`
+	ConsiderOdPricing *bool   `pulumi:"considerOdPricing"`
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits *string `pulumi:"cpuCredits"`
 	// The CPU options for the instances that are launched within the group:
 	CpuOptions *ElastigroupCpuOptions `pulumi:"cpuOptions"`
-	// The description of the network interface.
+	// The group description.
 	Description *string `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// Indicates (in seconds) the timeout to wait until instance are detached.
+	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout *int                        `pulumi:"drainingTimeout"`
 	EbsBlockDevices []ElastigroupEbsBlockDevice `pulumi:"ebsBlockDevices"`
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
@@ -542,16 +558,20 @@ type elastigroupArgs struct {
 	EphemeralBlockDevices []ElastigroupEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand bool `pulumi:"fallbackToOndemand"`
-	// The amount of time, in seconds, after the instance has launched to starts and check its health
+	// The amount of time, in seconds, after the instance has launched to starts and check its health.
 	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
-	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 	HealthCheckUnhealthyDurationBeforeReplacement *int `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// The ID of the AMI used to launch the instance.
 	ImageId *string `pulumi:"imageId"`
+	// An array of image objects.
+	// Note: Elastigroup can be configured with either imageId or images, but not both.
+	Images                      []ElastigroupImage `pulumi:"images"`
+	ImmediateOdRecoverThreshold *int               `pulumi:"immediateOdRecoverThreshold"`
 	// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
 	InstanceTypesOndemand string `pulumi:"instanceTypesOndemand"`
 	// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -596,7 +616,7 @@ type elastigroupArgs struct {
 	// Set of targets to register.
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
 	MultipleMetrics  *ElastigroupMultipleMetrics  `pulumi:"multipleMetrics"`
-	// The record set name.
+	// The group name.
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
@@ -669,16 +689,17 @@ type ElastigroupArgs struct {
 	// String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
 	BlockDevicesMode pulumi.StringPtrInput
 	// The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
-	CapacityUnit pulumi.StringPtrInput
+	CapacityUnit      pulumi.StringPtrInput
+	ConsiderOdPricing pulumi.BoolPtrInput
 	// Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 	CpuCredits pulumi.StringPtrInput
 	// The CPU options for the instances that are launched within the group:
 	CpuOptions ElastigroupCpuOptionsPtrInput
-	// The description of the network interface.
+	// The group description.
 	Description pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrInput
-	// Indicates (in seconds) the timeout to wait until instance are detached.
+	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntPtrInput
 	EbsBlockDevices ElastigroupEbsBlockDeviceArrayInput
 	// Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
@@ -692,16 +713,20 @@ type ElastigroupArgs struct {
 	EphemeralBlockDevices ElastigroupEphemeralBlockDeviceArrayInput
 	// In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolInput
-	// The amount of time, in seconds, after the instance has launched to starts and check its health
+	// The amount of time, in seconds, after the instance has launched to starts and check its health.
 	HealthCheckGracePeriod pulumi.IntPtrInput
-	// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType pulumi.StringPtrInput
-	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// The ID of the AMI used to launch the instance.
 	ImageId pulumi.StringPtrInput
+	// An array of image objects.
+	// Note: Elastigroup can be configured with either imageId or images, but not both.
+	Images                      ElastigroupImageArrayInput
+	ImmediateOdRecoverThreshold pulumi.IntPtrInput
 	// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
 	InstanceTypesOndemand pulumi.StringInput
 	// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -746,7 +771,7 @@ type ElastigroupArgs struct {
 	// Set of targets to register.
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
 	MultipleMetrics  ElastigroupMultipleMetricsPtrInput
-	// The record set name.
+	// The group name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
@@ -914,6 +939,10 @@ func (o ElastigroupOutput) CapacityUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.CapacityUnit }).(pulumi.StringOutput)
 }
 
+func (o ElastigroupOutput) ConsiderOdPricing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.ConsiderOdPricing }).(pulumi.BoolPtrOutput)
+}
+
 // Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
 func (o ElastigroupOutput) CpuCredits() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.CpuCredits }).(pulumi.StringPtrOutput)
@@ -924,7 +953,7 @@ func (o ElastigroupOutput) CpuOptions() ElastigroupCpuOptionsPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupCpuOptionsPtrOutput { return v.CpuOptions }).(ElastigroupCpuOptionsPtrOutput)
 }
 
-// The description of the network interface.
+// The group description.
 func (o ElastigroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -934,7 +963,7 @@ func (o ElastigroupOutput) DesiredCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
 }
 
-// Indicates (in seconds) the timeout to wait until instance are detached.
+// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 func (o ElastigroupOutput) DrainingTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.DrainingTimeout }).(pulumi.IntOutput)
 }
@@ -972,17 +1001,17 @@ func (o ElastigroupOutput) FallbackToOndemand() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.BoolOutput { return v.FallbackToOndemand }).(pulumi.BoolOutput)
 }
 
-// The amount of time, in seconds, after the instance has launched to starts and check its health
+// The amount of time, in seconds, after the instance has launched to starts and check its health.
 func (o ElastigroupOutput) HealthCheckGracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.HealthCheckGracePeriod }).(pulumi.IntPtrOutput)
 }
 
-// Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"MLB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`, `"NONE"`.
+// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 func (o ElastigroupOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
 
-// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 func (o ElastigroupOutput) HealthCheckUnhealthyDurationBeforeReplacement() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.HealthCheckUnhealthyDurationBeforeReplacement }).(pulumi.IntPtrOutput)
 }
@@ -995,6 +1024,16 @@ func (o ElastigroupOutput) IamInstanceProfile() pulumi.StringPtrOutput {
 // The ID of the AMI used to launch the instance.
 func (o ElastigroupOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// An array of image objects.
+// Note: Elastigroup can be configured with either imageId or images, but not both.
+func (o ElastigroupOutput) Images() ElastigroupImageArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupImageArrayOutput { return v.Images }).(ElastigroupImageArrayOutput)
+}
+
+func (o ElastigroupOutput) ImmediateOdRecoverThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.ImmediateOdRecoverThreshold }).(pulumi.IntPtrOutput)
 }
 
 // The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
@@ -1113,7 +1152,7 @@ func (o ElastigroupOutput) MultipleMetrics() ElastigroupMultipleMetricsPtrOutput
 	return o.ApplyT(func(v *Elastigroup) ElastigroupMultipleMetricsPtrOutput { return v.MultipleMetrics }).(ElastigroupMultipleMetricsPtrOutput)
 }
 
-// The record set name.
+// The group name.
 func (o ElastigroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

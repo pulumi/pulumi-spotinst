@@ -15,17 +15,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfig {
     /**
-     * @return Sets the percentage of the instances to deploy in each batch.
+     * @return The percentage size of each batch in the scheduled deployment roll.
      * 
      */
     private Integer batchSizePercentage;
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
      * 
      */
     private @Nullable Integer gracePeriod;
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     private @Nullable String healthCheckType;
@@ -47,21 +47,21 @@ public final class ElastigroupUpdatePolicyRollConfig {
 
     private ElastigroupUpdatePolicyRollConfig() {}
     /**
-     * @return Sets the percentage of the instances to deploy in each batch.
+     * @return The percentage size of each batch in the scheduled deployment roll.
      * 
      */
     public Integer batchSizePercentage() {
         return this.batchSizePercentage;
     }
     /**
-     * @return Sets the grace period for new instances to become healthy.
+     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
      * 
      */
     public Optional<Integer> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     public Optional<String> healthCheckType() {

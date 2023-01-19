@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ManagedInstanceIntegrationRoute53DomainRecordSet {
     /**
-     * @return The record set name.
+     * @return The ManagedInstance name.
      * 
      */
     private String name;
     /**
-     * @return - Designates whether the DNS address should be exposed to connections outside the VPC.
+     * @return Designates whether the DNS address should be exposed to connections outside the VPC.
      * 
      */
     private @Nullable Boolean usePublicDns;
     /**
-     * @return - Designates whether the IP address should be exposed to connections outside the VPC.
+     * @return Designates whether the IP address should be exposed to connections outside the VPC.
      * 
      */
     private @Nullable Boolean usePublicIp;
 
     private ManagedInstanceIntegrationRoute53DomainRecordSet() {}
     /**
-     * @return The record set name.
+     * @return The ManagedInstance name.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return - Designates whether the DNS address should be exposed to connections outside the VPC.
+     * @return Designates whether the DNS address should be exposed to connections outside the VPC.
      * 
      */
     public Optional<Boolean> usePublicDns() {
         return Optional.ofNullable(this.usePublicDns);
     }
     /**
-     * @return - Designates whether the IP address should be exposed to connections outside the VPC.
+     * @return Designates whether the IP address should be exposed to connections outside the VPC.
      * 
      */
     public Optional<Boolean> usePublicIp() {

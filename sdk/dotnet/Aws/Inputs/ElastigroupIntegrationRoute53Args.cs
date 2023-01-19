@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationRoute53Args : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationRoute53Args : global::Pulumi.ResourceArgs
     {
         [Input("domains", required: true)]
         private InputList<Inputs.ElastigroupIntegrationRoute53DomainArgs>? _domains;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationRoute53Args()
         {
         }
+        public static new ElastigroupIntegrationRoute53Args Empty => new ElastigroupIntegrationRoute53Args();
     }
 }

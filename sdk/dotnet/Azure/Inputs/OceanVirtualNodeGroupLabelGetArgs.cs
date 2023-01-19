@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanVirtualNodeGroupLabelGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanVirtualNodeGroupLabelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Tag Key for Vms in the cluster.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanVirtualNodeGroupLabelGetArgs()
         {
         }
+        public static new OceanVirtualNodeGroupLabelGetArgs Empty => new OceanVirtualNodeGroupLabelGetArgs();
     }
 }

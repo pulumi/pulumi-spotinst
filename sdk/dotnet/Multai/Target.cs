@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Multai
 {
     [SpotInstResourceType("spotinst:multai/target:Target")]
-    public partial class Target : Pulumi.CustomResource
+    public partial class Target : global::Pulumi.CustomResource
     {
         [Output("balancerId")]
         public Output<string> BalancerId { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumi.SpotInst.Multai
         }
     }
 
-    public sealed class TargetArgs : Pulumi.ResourceArgs
+    public sealed class TargetArgs : global::Pulumi.ResourceArgs
     {
         [Input("balancerId", required: true)]
         public Input<string> BalancerId { get; set; } = null!;
@@ -108,9 +108,10 @@ namespace Pulumi.SpotInst.Multai
         public TargetArgs()
         {
         }
+        public static new TargetArgs Empty => new TargetArgs();
     }
 
-    public sealed class TargetState : Pulumi.ResourceArgs
+    public sealed class TargetState : global::Pulumi.ResourceArgs
     {
         [Input("balancerId")]
         public Input<string>? BalancerId { get; set; }
@@ -141,5 +142,6 @@ namespace Pulumi.SpotInst.Multai
         public TargetState()
         {
         }
+        public static new TargetState Empty => new TargetState();
     }
 }

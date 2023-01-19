@@ -77,14 +77,14 @@ public final class ManagedInstanceLoadBalancerArgs extends com.pulumi.resources.
     }
 
     /**
-     * The record set name.
+     * The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The record set name.
+     * @return The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
      * 
      */
     public Optional<Output<String>> name() {
@@ -107,14 +107,14 @@ public final class ManagedInstanceLoadBalancerArgs extends com.pulumi.resources.
     }
 
     /**
-     * String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+     * The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+     * @return The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
      * 
      */
     public Output<String> type() {
@@ -236,7 +236,7 @@ public final class ManagedInstanceLoadBalancerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The record set name.
+         * @param name The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class ManagedInstanceLoadBalancerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The record set name.
+         * @param name The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class ManagedInstanceLoadBalancerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+         * @param type The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ManagedInstanceLoadBalancerArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+         * @param type The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
          * 
          * @return builder
          * 

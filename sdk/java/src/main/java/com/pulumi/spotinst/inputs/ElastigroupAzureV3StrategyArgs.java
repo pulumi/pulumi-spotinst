@@ -31,17 +31,9 @@ public final class ElastigroupAzureV3StrategyArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.drainingTimeout);
     }
 
-    /**
-     * - 
-     * 
-     */
     @Import(name="fallbackToOnDemand")
     private @Nullable Output<Boolean> fallbackToOnDemand;
 
-    /**
-     * @return -
-     * 
-     */
     public Optional<Output<Boolean>> fallbackToOnDemand() {
         return Optional.ofNullable(this.fallbackToOnDemand);
     }
@@ -124,23 +116,11 @@ public final class ElastigroupAzureV3StrategyArgs extends com.pulumi.resources.R
             return drainingTimeout(Output.of(drainingTimeout));
         }
 
-        /**
-         * @param fallbackToOnDemand -
-         * 
-         * @return builder
-         * 
-         */
         public Builder fallbackToOnDemand(@Nullable Output<Boolean> fallbackToOnDemand) {
             $.fallbackToOnDemand = fallbackToOnDemand;
             return this;
         }
 
-        /**
-         * @param fallbackToOnDemand -
-         * 
-         * @return builder
-         * 
-         */
         public Builder fallbackToOnDemand(Boolean fallbackToOnDemand) {
             return fallbackToOnDemand(Output.of(fallbackToOnDemand));
         }

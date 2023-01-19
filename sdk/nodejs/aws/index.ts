@@ -5,24 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./beanstalk";
-export * from "./elastigroup";
-export * from "./managedInstance";
-export * from "./mrScalar";
-export * from "./ocean";
-export * from "./oceanExtendedResourceDefinition";
-export * from "./oceanLaunchSpec";
-export * from "./suspension";
+export { BeanstalkArgs, BeanstalkState } from "./beanstalk";
+export type Beanstalk = import("./beanstalk").Beanstalk;
+export const Beanstalk: typeof import("./beanstalk").Beanstalk = null as any;
+utilities.lazyLoad(exports, ["Beanstalk"], () => require("./beanstalk"));
 
-// Import resources to register:
-import { Beanstalk } from "./beanstalk";
-import { Elastigroup } from "./elastigroup";
-import { ManagedInstance } from "./managedInstance";
-import { MrScalar } from "./mrScalar";
-import { Ocean } from "./ocean";
-import { OceanExtendedResourceDefinition } from "./oceanExtendedResourceDefinition";
-import { OceanLaunchSpec } from "./oceanLaunchSpec";
-import { Suspension } from "./suspension";
+export { ElastigroupArgs, ElastigroupState } from "./elastigroup";
+export type Elastigroup = import("./elastigroup").Elastigroup;
+export const Elastigroup: typeof import("./elastigroup").Elastigroup = null as any;
+utilities.lazyLoad(exports, ["Elastigroup"], () => require("./elastigroup"));
+
+export { ManagedInstanceArgs, ManagedInstanceState } from "./managedInstance";
+export type ManagedInstance = import("./managedInstance").ManagedInstance;
+export const ManagedInstance: typeof import("./managedInstance").ManagedInstance = null as any;
+utilities.lazyLoad(exports, ["ManagedInstance"], () => require("./managedInstance"));
+
+export { MrScalarArgs, MrScalarState } from "./mrScalar";
+export type MrScalar = import("./mrScalar").MrScalar;
+export const MrScalar: typeof import("./mrScalar").MrScalar = null as any;
+utilities.lazyLoad(exports, ["MrScalar"], () => require("./mrScalar"));
+
+export { OceanArgs, OceanState } from "./ocean";
+export type Ocean = import("./ocean").Ocean;
+export const Ocean: typeof import("./ocean").Ocean = null as any;
+utilities.lazyLoad(exports, ["Ocean"], () => require("./ocean"));
+
+export { OceanExtendedResourceDefinitionArgs, OceanExtendedResourceDefinitionState } from "./oceanExtendedResourceDefinition";
+export type OceanExtendedResourceDefinition = import("./oceanExtendedResourceDefinition").OceanExtendedResourceDefinition;
+export const OceanExtendedResourceDefinition: typeof import("./oceanExtendedResourceDefinition").OceanExtendedResourceDefinition = null as any;
+utilities.lazyLoad(exports, ["OceanExtendedResourceDefinition"], () => require("./oceanExtendedResourceDefinition"));
+
+export { OceanLaunchSpecArgs, OceanLaunchSpecState } from "./oceanLaunchSpec";
+export type OceanLaunchSpec = import("./oceanLaunchSpec").OceanLaunchSpec;
+export const OceanLaunchSpec: typeof import("./oceanLaunchSpec").OceanLaunchSpec = null as any;
+utilities.lazyLoad(exports, ["OceanLaunchSpec"], () => require("./oceanLaunchSpec"));
+
+export { SuspensionArgs, SuspensionState } from "./suspension";
+export type Suspension = import("./suspension").Suspension;
+export const Suspension: typeof import("./suspension").Suspension = null as any;
+utilities.lazyLoad(exports, ["Suspension"], () => require("./suspension"));
+
 
 const _module = {
     version: utilities.getVersion(),

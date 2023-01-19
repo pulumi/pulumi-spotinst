@@ -41,7 +41,7 @@ public final class OceanAutoscaler {
      */
     private @Nullable Boolean isAutoConfig;
     /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+     * @return Enable the Ocean ECS autoscaler.
      * 
      */
     private @Nullable Boolean isEnabled;
@@ -88,7 +88,7 @@ public final class OceanAutoscaler {
         return Optional.ofNullable(this.isAutoConfig);
     }
     /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+     * @return Enable the Ocean ECS autoscaler.
      * 
      */
     public Optional<Boolean> isEnabled() {

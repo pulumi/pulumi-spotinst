@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.aws.inputs.ElastigroupCpuOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupEbsBlockDeviceArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupEphemeralBlockDeviceArgs;
+import com.pulumi.spotinst.aws.inputs.ElastigroupImageArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupInstanceTypesWeightArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationBeanstalkArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationCodedeployArgs;
@@ -99,6 +100,13 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.capacityUnit);
     }
 
+    @Import(name="considerOdPricing")
+    private @Nullable Output<Boolean> considerOdPricing;
+
+    public Optional<Output<Boolean>> considerOdPricing() {
+        return Optional.ofNullable(this.considerOdPricing);
+    }
+
     /**
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      * 
@@ -130,14 +138,14 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the network interface.
+     * The group description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the network interface.
+     * @return The group description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -160,14 +168,14 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates (in seconds) the timeout to wait until instance are detached.
+     * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      * 
      */
     @Import(name="drainingTimeout")
     private @Nullable Output<Integer> drainingTimeout;
 
     /**
-     * @return Indicates (in seconds) the timeout to wait until instance are detached.
+     * @return The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      * 
      */
     public Optional<Output<Integer>> drainingTimeout() {
@@ -264,14 +272,14 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health
+     * The amount of time, in seconds, after the instance has launched to starts and check its health.
      * 
      */
     @Import(name="healthCheckGracePeriod")
     private @Nullable Output<Integer> healthCheckGracePeriod;
 
     /**
-     * @return The amount of time, in seconds, after the instance has launched to starts and check its health
+     * @return The amount of time, in seconds, after the instance has launched to starts and check its health.
      * 
      */
     public Optional<Output<Integer>> healthCheckGracePeriod() {
@@ -279,14 +287,14 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+     * The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
     /**
-     * @return Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     public Optional<Output<String>> healthCheckType() {
@@ -294,14 +302,14 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+     * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
      * 
      */
     @Import(name="healthCheckUnhealthyDurationBeforeReplacement")
     private @Nullable Output<Integer> healthCheckUnhealthyDurationBeforeReplacement;
 
     /**
-     * @return The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+     * @return The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
      * 
      */
     public Optional<Output<Integer>> healthCheckUnhealthyDurationBeforeReplacement() {
@@ -336,6 +344,30 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
+    }
+
+    /**
+     * An array of image objects.
+     * Note: Elastigroup can be configured with either imageId or images, but not both.
+     * 
+     */
+    @Import(name="images")
+    private @Nullable Output<List<ElastigroupImageArgs>> images;
+
+    /**
+     * @return An array of image objects.
+     * Note: Elastigroup can be configured with either imageId or images, but not both.
+     * 
+     */
+    public Optional<Output<List<ElastigroupImageArgs>>> images() {
+        return Optional.ofNullable(this.images);
+    }
+
+    @Import(name="immediateOdRecoverThreshold")
+    private @Nullable Output<Integer> immediateOdRecoverThreshold;
+
+    public Optional<Output<Integer>> immediateOdRecoverThreshold() {
+        return Optional.ofNullable(this.immediateOdRecoverThreshold);
     }
 
     /**
@@ -667,14 +699,14 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The record set name.
+     * The group name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -1110,6 +1142,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         this.availabilityZones = $.availabilityZones;
         this.blockDevicesMode = $.blockDevicesMode;
         this.capacityUnit = $.capacityUnit;
+        this.considerOdPricing = $.considerOdPricing;
         this.cpuCredits = $.cpuCredits;
         this.cpuOptions = $.cpuOptions;
         this.description = $.description;
@@ -1127,6 +1160,8 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         this.healthCheckUnhealthyDurationBeforeReplacement = $.healthCheckUnhealthyDurationBeforeReplacement;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageId = $.imageId;
+        this.images = $.images;
+        this.immediateOdRecoverThreshold = $.immediateOdRecoverThreshold;
         this.instanceTypesOndemand = $.instanceTypesOndemand;
         this.instanceTypesPreferredSpots = $.instanceTypesPreferredSpots;
         this.instanceTypesSpots = $.instanceTypesSpots;
@@ -1284,6 +1319,15 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
             return capacityUnit(Output.of(capacityUnit));
         }
 
+        public Builder considerOdPricing(@Nullable Output<Boolean> considerOdPricing) {
+            $.considerOdPricing = considerOdPricing;
+            return this;
+        }
+
+        public Builder considerOdPricing(Boolean considerOdPricing) {
+            return considerOdPricing(Output.of(considerOdPricing));
+        }
+
         /**
          * @param cpuCredits Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
          * 
@@ -1327,7 +1371,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the network interface.
+         * @param description The group description.
          * 
          * @return builder
          * 
@@ -1338,7 +1382,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the network interface.
+         * @param description The group description.
          * 
          * @return builder
          * 
@@ -1369,7 +1413,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param drainingTimeout Indicates (in seconds) the timeout to wait until instance are detached.
+         * @param drainingTimeout The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
          * 
          * @return builder
          * 
@@ -1380,7 +1424,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param drainingTimeout Indicates (in seconds) the timeout to wait until instance are detached.
+         * @param drainingTimeout The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
          * 
          * @return builder
          * 
@@ -1541,7 +1585,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckGracePeriod The amount of time, in seconds, after the instance has launched to starts and check its health
+         * @param healthCheckGracePeriod The amount of time, in seconds, after the instance has launched to starts and check its health.
          * 
          * @return builder
          * 
@@ -1552,7 +1596,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckGracePeriod The amount of time, in seconds, after the instance has launched to starts and check its health
+         * @param healthCheckGracePeriod The amount of time, in seconds, after the instance has launched to starts and check its health.
          * 
          * @return builder
          * 
@@ -1562,7 +1606,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+         * @param healthCheckType The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
          * 
          * @return builder
          * 
@@ -1573,7 +1617,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType Sets the health check type to use. Valid values: `&#34;EC2&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`, `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;MLB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;NONE&#34;`.
+         * @param healthCheckType The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
          * 
          * @return builder
          * 
@@ -1583,7 +1627,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckUnhealthyDurationBeforeReplacement The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+         * @param healthCheckUnhealthyDurationBeforeReplacement The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
          * 
          * @return builder
          * 
@@ -1594,7 +1638,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckUnhealthyDurationBeforeReplacement The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy)
+         * @param healthCheckUnhealthyDurationBeforeReplacement The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
          * 
          * @return builder
          * 
@@ -1643,6 +1687,49 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder imageId(String imageId) {
             return imageId(Output.of(imageId));
+        }
+
+        /**
+         * @param images An array of image objects.
+         * Note: Elastigroup can be configured with either imageId or images, but not both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder images(@Nullable Output<List<ElastigroupImageArgs>> images) {
+            $.images = images;
+            return this;
+        }
+
+        /**
+         * @param images An array of image objects.
+         * Note: Elastigroup can be configured with either imageId or images, but not both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder images(List<ElastigroupImageArgs> images) {
+            return images(Output.of(images));
+        }
+
+        /**
+         * @param images An array of image objects.
+         * Note: Elastigroup can be configured with either imageId or images, but not both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder images(ElastigroupImageArgs... images) {
+            return images(List.of(images));
+        }
+
+        public Builder immediateOdRecoverThreshold(@Nullable Output<Integer> immediateOdRecoverThreshold) {
+            $.immediateOdRecoverThreshold = immediateOdRecoverThreshold;
+            return this;
+        }
+
+        public Builder immediateOdRecoverThreshold(Integer immediateOdRecoverThreshold) {
+            return immediateOdRecoverThreshold(Output.of(immediateOdRecoverThreshold));
         }
 
         /**
@@ -2146,7 +2233,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The record set name.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -2157,7 +2244,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The record set name.
+         * @param name The group name.
          * 
          * @return builder
          * 

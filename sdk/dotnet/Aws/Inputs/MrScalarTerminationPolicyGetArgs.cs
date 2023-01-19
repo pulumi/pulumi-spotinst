@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class MrScalarTerminationPolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class MrScalarTerminationPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("statements", required: true)]
         private InputList<Inputs.MrScalarTerminationPolicyStatementGetArgs>? _statements;
@@ -23,5 +23,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public MrScalarTerminationPolicyGetArgs()
         {
         }
+        public static new MrScalarTerminationPolicyGetArgs Empty => new MrScalarTerminationPolicyGetArgs();
     }
 }

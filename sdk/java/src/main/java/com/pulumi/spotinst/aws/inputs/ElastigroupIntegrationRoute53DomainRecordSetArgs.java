@@ -17,14 +17,14 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
     public static final ElastigroupIntegrationRoute53DomainRecordSetArgs Empty = new ElastigroupIntegrationRoute53DomainRecordSetArgs();
 
     /**
-     * The record set name.
+     * The group name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     public Output<String> name() {
@@ -32,14 +32,14 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
     }
 
     /**
-     * - Designates whether the DNS address should be exposed to connections outside the VPC.
+     * Designates whether the DNS address should be exposed to connections outside the VPC.
      * 
      */
     @Import(name="usePublicDns")
     private @Nullable Output<Boolean> usePublicDns;
 
     /**
-     * @return - Designates whether the DNS address should be exposed to connections outside the VPC.
+     * @return Designates whether the DNS address should be exposed to connections outside the VPC.
      * 
      */
     public Optional<Output<Boolean>> usePublicDns() {
@@ -47,14 +47,14 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
     }
 
     /**
-     * - Designates whether the IP address should be exposed to connections outside the VPC.
+     * Designates whether the IP address should be exposed to connections outside the VPC.
      * 
      */
     @Import(name="usePublicIp")
     private @Nullable Output<Boolean> usePublicIp;
 
     /**
-     * @return - Designates whether the IP address should be exposed to connections outside the VPC.
+     * @return Designates whether the IP address should be exposed to connections outside the VPC.
      * 
      */
     public Optional<Output<Boolean>> usePublicIp() {
@@ -88,7 +88,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
         }
 
         /**
-         * @param name The record set name.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
         }
 
         /**
-         * @param name The record set name.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
         }
 
         /**
-         * @param usePublicDns - Designates whether the DNS address should be exposed to connections outside the VPC.
+         * @param usePublicDns Designates whether the DNS address should be exposed to connections outside the VPC.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
         }
 
         /**
-         * @param usePublicDns - Designates whether the DNS address should be exposed to connections outside the VPC.
+         * @param usePublicDns Designates whether the DNS address should be exposed to connections outside the VPC.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
         }
 
         /**
-         * @param usePublicIp - Designates whether the IP address should be exposed to connections outside the VPC.
+         * @param usePublicIp Designates whether the IP address should be exposed to connections outside the VPC.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
         }
 
         /**
-         * @param usePublicIp - Designates whether the IP address should be exposed to connections outside the VPC.
+         * @param usePublicIp Designates whether the IP address should be exposed to connections outside the VPC.
          * 
          * @return builder
          * 

@@ -12,117 +12,23 @@ import (
 )
 
 // Provides a Spotinst elastigroup Azure resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spotinst.NewElastigroupAzureV3(ctx, "testAzureGroup", &spotinst.ElastigroupAzureV3Args{
-//				CustomData:      pulumi.String("IyEvYmluL2Jhc2gKZWNobyAidGVzdCI="),
-//				DesiredCapacity: pulumi.Int(1),
-//				Images: ElastigroupAzureV3ImageArray{
-//					&ElastigroupAzureV3ImageArgs{
-//						Marketplaces: ElastigroupAzureV3ImageMarketplaceArray{
-//							&ElastigroupAzureV3ImageMarketplaceArgs{
-//								Offer:     pulumi.String("UbuntuServer"),
-//								Publisher: pulumi.String("Canonical"),
-//								Sku:       pulumi.String("18.04-LTS"),
-//								Version:   pulumi.String("latest"),
-//							},
-//						},
-//					},
-//				},
-//				Login: &ElastigroupAzureV3LoginArgs{
-//					SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
-//					UserName:     pulumi.String("admin"),
-//				},
-//				ManagedServiceIdentities: ElastigroupAzureV3ManagedServiceIdentityArray{
-//					&ElastigroupAzureV3ManagedServiceIdentityArgs{
-//						Name:              pulumi.String("ocean-westus-dev-aks-agentpool"),
-//						ResourceGroupName: pulumi.String("MC_ocean-westus-dev_ocean-westus-dev-aks_westus"),
-//					},
-//				},
-//				MaxSize: pulumi.Int(1),
-//				MinSize: pulumi.Int(0),
-//				Network: &ElastigroupAzureV3NetworkArgs{
-//					NetworkInterfaces: ElastigroupAzureV3NetworkNetworkInterfaceArray{
-//						&ElastigroupAzureV3NetworkNetworkInterfaceArgs{
-//							AdditionalIpConfigs: ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{
-//								&ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{
-//									PrivateIPVersion: "IPv4",
-//									Name:             pulumi.String("SecondaryIPConfig"),
-//								},
-//							},
-//							ApplicationSecurityGroup: []map[string]interface{}{
-//								map[string]interface{}{
-//									"name":              "ApplicationSecurityGroupName",
-//									"resourceGroupName": "ResourceGroup",
-//								},
-//							},
-//							AssignPublicIp: pulumi.Bool(false),
-//							IsPrimary:      pulumi.Bool(true),
-//							SubnetName:     pulumi.String("default"),
-//						},
-//					},
-//					ResourceGroupName:  pulumi.String("ResourceGroup"),
-//					VirtualNetworkName: pulumi.String("VirtualNetworkName"),
-//				},
-//				OdSizes: pulumi.StringArray{
-//					pulumi.String("standard_a1_v1"),
-//					pulumi.String("standard_a1_v2"),
-//				},
-//				Os:                pulumi.String("Linux"),
-//				Region:            pulumi.String("eastus"),
-//				ResourceGroupName: pulumi.String("spotinst-azure"),
-//				SpotSizes: pulumi.StringArray{
-//					pulumi.String("standard_a1_v1"),
-//					pulumi.String("standard_a1_v2"),
-//				},
-//				Strategy: &ElastigroupAzureV3StrategyArgs{
-//					DrainingTimeout:    pulumi.Int(300),
-//					FallbackToOnDemand: pulumi.Bool(true),
-//					OdCount:            pulumi.Int(1),
-//					SpotPercentage:     pulumi.Int(65),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ElastigroupAzureV3 struct {
 	pulumi.CustomResourceState
 
 	// Custom init script file or text in Base64 encoded format.
 	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
-	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-	Images ElastigroupAzureV3ImageArrayOutput `pulumi:"images"`
-	// Describes the login configuration.
-	Login ElastigroupAzureV3LoginPtrOutput `pulumi:"login"`
+	DesiredCapacity pulumi.IntPtrOutput                `pulumi:"desiredCapacity"`
+	Images          ElastigroupAzureV3ImageArrayOutput `pulumi:"images"`
+	Login           ElastigroupAzureV3LoginPtrOutput   `pulumi:"login"`
 	// List of Managed Service Identity objects.
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayOutput `pulumi:"managedServiceIdentities"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// - The name of the Application Security group.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Defines the Virtual Network and Subnet for your Elastigroup.
+	// Name of the Managed Service Identity.
+	Name    pulumi.StringOutput             `pulumi:"name"`
 	Network ElastigroupAzureV3NetworkOutput `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayOutput `pulumi:"odSizes"`
@@ -130,13 +36,11 @@ type ElastigroupAzureV3 struct {
 	Os pulumi.StringOutput `pulumi:"os"`
 	// The region your Azure group will be created in.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
 	// Available Low-Priority sizes.
-	SpotSizes pulumi.StringArrayOutput `pulumi:"spotSizes"`
-	// Describes the deployment strategy.
-	Strategy ElastigroupAzureV3StrategyOutput `pulumi:"strategy"`
+	SpotSizes pulumi.StringArrayOutput         `pulumi:"spotSizes"`
+	Strategy  ElastigroupAzureV3StrategyOutput `pulumi:"strategy"`
 }
 
 // NewElastigroupAzureV3 registers a new resource with the given unique name, arguments, and options.
@@ -192,20 +96,17 @@ type elastigroupAzureV3State struct {
 	// Custom init script file or text in Base64 encoded format.
 	CustomData *string `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-	Images []ElastigroupAzureV3Image `pulumi:"images"`
-	// Describes the login configuration.
-	Login *ElastigroupAzureV3Login `pulumi:"login"`
+	DesiredCapacity *int                      `pulumi:"desiredCapacity"`
+	Images          []ElastigroupAzureV3Image `pulumi:"images"`
+	Login           *ElastigroupAzureV3Login  `pulumi:"login"`
 	// List of Managed Service Identity objects.
 	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// - The name of the Application Security group.
-	Name *string `pulumi:"name"`
-	// Defines the Virtual Network and Subnet for your Elastigroup.
+	// Name of the Managed Service Identity.
+	Name    *string                    `pulumi:"name"`
 	Network *ElastigroupAzureV3Network `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes []string `pulumi:"odSizes"`
@@ -213,13 +114,11 @@ type elastigroupAzureV3State struct {
 	Os *string `pulumi:"os"`
 	// The region your Azure group will be created in.
 	Region *string `pulumi:"region"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
 	// Available Low-Priority sizes.
-	SpotSizes []string `pulumi:"spotSizes"`
-	// Describes the deployment strategy.
-	Strategy *ElastigroupAzureV3Strategy `pulumi:"strategy"`
+	SpotSizes []string                    `pulumi:"spotSizes"`
+	Strategy  *ElastigroupAzureV3Strategy `pulumi:"strategy"`
 }
 
 type ElastigroupAzureV3State struct {
@@ -227,19 +126,16 @@ type ElastigroupAzureV3State struct {
 	CustomData pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrInput
-	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-	Images ElastigroupAzureV3ImageArrayInput
-	// Describes the login configuration.
-	Login ElastigroupAzureV3LoginPtrInput
+	Images          ElastigroupAzureV3ImageArrayInput
+	Login           ElastigroupAzureV3LoginPtrInput
 	// List of Managed Service Identity objects.
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// - The name of the Application Security group.
-	Name pulumi.StringPtrInput
-	// Defines the Virtual Network and Subnet for your Elastigroup.
+	// Name of the Managed Service Identity.
+	Name    pulumi.StringPtrInput
 	Network ElastigroupAzureV3NetworkPtrInput
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayInput
@@ -247,13 +143,11 @@ type ElastigroupAzureV3State struct {
 	Os pulumi.StringPtrInput
 	// The region your Azure group will be created in.
 	Region pulumi.StringPtrInput
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName pulumi.StringPtrInput
 	// Available Low-Priority sizes.
 	SpotSizes pulumi.StringArrayInput
-	// Describes the deployment strategy.
-	Strategy ElastigroupAzureV3StrategyPtrInput
+	Strategy  ElastigroupAzureV3StrategyPtrInput
 }
 
 func (ElastigroupAzureV3State) ElementType() reflect.Type {
@@ -264,20 +158,17 @@ type elastigroupAzureV3Args struct {
 	// Custom init script file or text in Base64 encoded format.
 	CustomData *string `pulumi:"customData"`
 	// The desired number of instances the group should have at any time.
-	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-	Images []ElastigroupAzureV3Image `pulumi:"images"`
-	// Describes the login configuration.
-	Login *ElastigroupAzureV3Login `pulumi:"login"`
+	DesiredCapacity *int                      `pulumi:"desiredCapacity"`
+	Images          []ElastigroupAzureV3Image `pulumi:"images"`
+	Login           *ElastigroupAzureV3Login  `pulumi:"login"`
 	// List of Managed Service Identity objects.
 	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// - The name of the Application Security group.
-	Name *string `pulumi:"name"`
-	// Defines the Virtual Network and Subnet for your Elastigroup.
+	// Name of the Managed Service Identity.
+	Name    *string                   `pulumi:"name"`
 	Network ElastigroupAzureV3Network `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes []string `pulumi:"odSizes"`
@@ -285,13 +176,11 @@ type elastigroupAzureV3Args struct {
 	Os string `pulumi:"os"`
 	// The region your Azure group will be created in.
 	Region string `pulumi:"region"`
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Available Low-Priority sizes.
-	SpotSizes []string `pulumi:"spotSizes"`
-	// Describes the deployment strategy.
-	Strategy ElastigroupAzureV3Strategy `pulumi:"strategy"`
+	SpotSizes []string                   `pulumi:"spotSizes"`
+	Strategy  ElastigroupAzureV3Strategy `pulumi:"strategy"`
 }
 
 // The set of arguments for constructing a ElastigroupAzureV3 resource.
@@ -300,19 +189,16 @@ type ElastigroupAzureV3Args struct {
 	CustomData pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
 	DesiredCapacity pulumi.IntPtrInput
-	// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-	Images ElastigroupAzureV3ImageArrayInput
-	// Describes the login configuration.
-	Login ElastigroupAzureV3LoginPtrInput
+	Images          ElastigroupAzureV3ImageArrayInput
+	Login           ElastigroupAzureV3LoginPtrInput
 	// List of Managed Service Identity objects.
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// - The name of the Application Security group.
-	Name pulumi.StringPtrInput
-	// Defines the Virtual Network and Subnet for your Elastigroup.
+	// Name of the Managed Service Identity.
+	Name    pulumi.StringPtrInput
 	Network ElastigroupAzureV3NetworkInput
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayInput
@@ -320,13 +206,11 @@ type ElastigroupAzureV3Args struct {
 	Os pulumi.StringInput
 	// The region your Azure group will be created in.
 	Region pulumi.StringInput
-	// - The resource group of the Application Security Group.
-	//   }
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName pulumi.StringInput
 	// Available Low-Priority sizes.
 	SpotSizes pulumi.StringArrayInput
-	// Describes the deployment strategy.
-	Strategy ElastigroupAzureV3StrategyInput
+	Strategy  ElastigroupAzureV3StrategyInput
 }
 
 func (ElastigroupAzureV3Args) ElementType() reflect.Type {
@@ -426,12 +310,10 @@ func (o ElastigroupAzureV3Output) DesiredCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
 }
 
-// Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
 func (o ElastigroupAzureV3Output) Images() ElastigroupAzureV3ImageArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ImageArrayOutput { return v.Images }).(ElastigroupAzureV3ImageArrayOutput)
 }
 
-// Describes the login configuration.
 func (o ElastigroupAzureV3Output) Login() ElastigroupAzureV3LoginPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3LoginPtrOutput { return v.Login }).(ElastigroupAzureV3LoginPtrOutput)
 }
@@ -453,12 +335,11 @@ func (o ElastigroupAzureV3Output) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
 }
 
-// - The name of the Application Security group.
+// Name of the Managed Service Identity.
 func (o ElastigroupAzureV3Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Defines the Virtual Network and Subnet for your Elastigroup.
 func (o ElastigroupAzureV3Output) Network() ElastigroupAzureV3NetworkOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3NetworkOutput { return v.Network }).(ElastigroupAzureV3NetworkOutput)
 }
@@ -478,8 +359,7 @@ func (o ElastigroupAzureV3Output) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-//   - The resource group of the Application Security Group.
-//     }
+// Name of the Azure Resource Group where the Managed Service Identity is located.
 func (o ElastigroupAzureV3Output) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -489,7 +369,6 @@ func (o ElastigroupAzureV3Output) SpotSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringArrayOutput { return v.SpotSizes }).(pulumi.StringArrayOutput)
 }
 
-// Describes the deployment strategy.
 func (o ElastigroupAzureV3Output) Strategy() ElastigroupAzureV3StrategyOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3StrategyOutput { return v.Strategy }).(ElastigroupAzureV3StrategyOutput)
 }

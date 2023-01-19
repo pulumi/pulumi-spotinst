@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupStatefulDeallocationGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupStatefulDeallocationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For stateful groups: remove persistent images.
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupStatefulDeallocationGetArgs()
         {
         }
+        public static new ElastigroupStatefulDeallocationGetArgs Empty => new ElastigroupStatefulDeallocationGetArgs();
     }
 }

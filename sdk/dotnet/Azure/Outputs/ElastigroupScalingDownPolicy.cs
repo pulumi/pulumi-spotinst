@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly string? ActionType;
         /// <summary>
-        /// The number of instances to add/remove to/from the target capacity when scale is needed.
+        /// Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
         /// </summary>
         public readonly string? Adjustment;
         /// <summary>

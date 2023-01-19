@@ -37,10 +37,24 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.gcp.Elastigroup;
+ * import com.pulumi.spotinst.gcp.ElastigroupArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupBackendServiceArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupDiskArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupInstanceTypesCustomArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupLabelArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupNetworkInterfaceArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupScalingUpPolicyArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupSubnetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -52,7 +66,17 @@ import javax.annotation.Nullable;
  *             .availabilityZones(            
  *                 &#34;asia-east1-c&#34;,
  *                 &#34;us-central1-a&#34;)
- *             .backendServicesConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .backendServices(ElastigroupBackendServiceArgs.builder()
+ *                 .locationType(&#34;regional&#34;)
+ *                 .namedPorts(ElastigroupBackendServiceNamedPortArgs.builder()
+ *                     .name(&#34;port-name&#34;)
+ *                     .ports(                    
+ *                         8000,
+ *                         6000)
+ *                     .build())
+ *                 .scheme(&#34;INTERNAL&#34;)
+ *                 .serviceName(&#34;spotinst-elb-backend-service&#34;)
+ *                 .build())
  *             .description(&#34;spotinst gcp group&#34;)
  *             .desiredCapacity(1)
  *             .disks(ElastigroupDiskArgs.builder()
@@ -71,8 +95,8 @@ import javax.annotation.Nullable;
  *             .drainingTimeout(180)
  *             .fallbackToOndemand(true)
  *             .instanceTypesCustoms(ElastigroupInstanceTypesCustomArgs.builder()
- *                 .memoryGiB(7.5)
- *                 .vCPU(2)
+ *                 .memoryGib(7)
+ *                 .vcpu(2)
  *                 .build())
  *             .instanceTypesOndemand(&#34;n1-standard-1&#34;)
  *             .instanceTypesPreemptibles(            
@@ -89,12 +113,30 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .preemptiblePercentage(50)
  *             .provisioningModel(&#34;SPOT&#34;)
- *             .scaling(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .scalingUpPolicies(ElastigroupScalingUpPolicyArgs.builder()
+ *                 .actionType(&#34;adjustment&#34;)
+ *                 .adjustment(1)
+ *                 .cooldown(300)
+ *                 .dimensions(ElastigroupScalingUpPolicyDimensionArgs.builder()
+ *                     .name(&#34;storage_type&#34;)
+ *                     .value(&#34;pd-ssd&#34;)
+ *                     .build())
+ *                 .evaluationPeriods(1)
+ *                 .metricName(&#34;instance/disk/read_ops_count&#34;)
+ *                 .namespace(&#34;compute&#34;)
+ *                 .operator(&#34;gte&#34;)
+ *                 .period(300)
+ *                 .policyName(&#34;scale_up_1&#34;)
+ *                 .source(&#34;stackdriver&#34;)
+ *                 .statistic(&#34;average&#34;)
+ *                 .threshold(10000)
+ *                 .unit(&#34;percent&#34;)
+ *                 .build())
  *             .serviceAccount(&#34;example@myProject.iam.gservicecct.com&#34;)
  *             .startupScript(&#34;&#34;)
  *             .subnets(ElastigroupSubnetArgs.builder()
  *                 .region(&#34;asia-east1&#34;)
- *                 .subnetNames(&#34;&#34;)
+ *                 .subnetNames(&#34;default&#34;)
  *                 .build())
  *             .tags(            
  *                 &#34;http&#34;,
@@ -140,17 +182,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> availabilityZones() {
         return Codegen.optional(this.availabilityZones);
     }
-    /**
-     * Describes the backend service configurations.
-     * 
-     */
     @Export(name="backendServices", type=List.class, parameters={ElastigroupBackendService.class})
     private Output</* @Nullable */ List<ElastigroupBackendService>> backendServices;
 
-    /**
-     * @return Describes the backend service configurations.
-     * 
-     */
     public Output<Optional<List<ElastigroupBackendService>>> backendServices() {
         return Codegen.optional(this.backendServices);
     }
@@ -216,17 +250,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> fallbackToOndemand() {
         return Codegen.optional(this.fallbackToOndemand);
     }
-    /**
-     * Defines the GPU configuration.
-     * 
-     */
     @Export(name="gpu", type=List.class, parameters={ElastigroupGpu.class})
     private Output</* @Nullable */ List<ElastigroupGpu>> gpu;
 
-    /**
-     * @return Defines the GPU configuration.
-     * 
-     */
     public Output<Optional<List<ElastigroupGpu>>> gpu() {
         return Codegen.optional(this.gpu);
     }
@@ -383,14 +409,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return this.minSize;
     }
     /**
-     * The dimension name.
+     * The group name.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The dimension name.
+     * @return The group name.
      * 
      */
     public Output<String> name() {

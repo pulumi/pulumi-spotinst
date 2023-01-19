@@ -19,9 +19,17 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
 
     public static final ElastigroupScalingUpPolicyArgs Empty = new ElastigroupScalingUpPolicyArgs();
 
+    /**
+     * Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+     * 
+     */
     @Import(name="actionType")
     private @Nullable Output<String> actionType;
 
+    /**
+     * @return Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+     * 
+     */
     public Optional<Output<String>> actionType() {
         return Optional.ofNullable(this.actionType);
     }
@@ -242,11 +250,23 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
             $ = new ElastigroupScalingUpPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actionType Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionType(@Nullable Output<String> actionType) {
             $.actionType = actionType;
             return this;
         }
 
+        /**
+         * @param actionType Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionType(String actionType) {
             return actionType(Output.of(actionType));
         }

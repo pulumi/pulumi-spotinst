@@ -35,14 +35,14 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The number of instances to add/remove to/from the target capacity when scale is needed.
+     * Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
      * 
      */
     @Import(name="adjustment")
     private @Nullable Output<String> adjustment;
 
     /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
+     * @return Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
      * 
      */
     public Optional<Output<String>> adjustment() {
@@ -352,7 +352,7 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param adjustment The number of instances to add/remove to/from the target capacity when scale is needed.
+         * @param adjustment Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param adjustment The number of instances to add/remove to/from the target capacity when scale is needed.
+         * @param adjustment Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
          * 
          * @return builder
          * 

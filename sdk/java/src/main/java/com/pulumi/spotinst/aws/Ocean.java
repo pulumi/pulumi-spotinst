@@ -11,6 +11,8 @@ import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.aws.OceanArgs;
 import com.pulumi.spotinst.aws.inputs.OceanState;
 import com.pulumi.spotinst.aws.outputs.OceanAutoscaler;
+import com.pulumi.spotinst.aws.outputs.OceanClusterOrientation;
+import com.pulumi.spotinst.aws.outputs.OceanFilters;
 import com.pulumi.spotinst.aws.outputs.OceanInstanceMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.OceanLogging;
@@ -26,13 +28,27 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.aws.Ocean;
+ * import com.pulumi.spotinst.aws.OceanArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanClusterOrientationArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanInstanceMetadataOptionsArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLoadBalancerArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLoggingArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLoggingExportArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanTagArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -42,6 +58,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Ocean(&#34;example&#34;, OceanArgs.builder()        
  *             .associatePublicIpAddress(true)
+ *             .clusterOrientations(OceanClusterOrientationArgs.builder()
+ *                 .availabilityVsCost(&#34;balanced&#34;)
+ *                 .build())
  *             .controllerId(&#34;ocean-dev&#34;)
  *             .desiredCapacity(2)
  *             .drainingTimeout(120)
@@ -50,6 +69,7 @@ import javax.annotation.Nullable;
  *             .gracePeriod(600)
  *             .iamInstanceProfile(&#34;iam-profile&#34;)
  *             .imageId(&#34;ami-123456&#34;)
+ *             .instanceTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .instanceMetadataOptions(OceanInstanceMetadataOptionsArgs.builder()
  *                 .httpPutResponseHopLimit(10)
  *                 .httpTokens(&#34;required&#34;)
@@ -85,9 +105,6 @@ import javax.annotation.Nullable;
  *             .userData(&#34;echo hello world&#34;)
  *             .utilizeCommitments(false)
  *             .utilizeReservedInstances(false)
- *             .whitelists(            
- *                 &#34;t1.micro&#34;,
- *                 &#34;m1.small&#34;)
  *             .build());
  * 
  *     }
@@ -96,10 +113,15 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -110,6 +132,48 @@ import javax.annotation.Nullable;
  *         ctx.export(&#34;oceanId&#34;, spotinst_ocean_aws.example().id());
  *     }
  * }
+ * ```
+ * ## Scheduled Task
+ * 
+ * * `scheduled_task` - (Optional) Set scheduling object.
+ *     * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
+ *         * `is_enabled` - (Optional) Toggle the shutdown hours task. (Example: `true`).
+ *         * `time_windows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+ *     * `tasks` - (Optional) The scheduling tasks for the cluster.
+ *         * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+ *         * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+ *         * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * ```
+ * 
+ * &lt;a id=&#34;attributes-reference&#34;&gt;&lt;/a&gt;
+ * 
+ * ## Import
+ * 
+ * Clusters can be imported using the Ocean `id`, e.g., hcl
+ * 
+ * ```sh
+ *  $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
  * ```
  * 
  */
@@ -156,6 +220,12 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> blacklists() {
         return Codegen.optional(this.blacklists);
+    }
+    @Export(name="clusterOrientations", type=List.class, parameters={OceanClusterOrientation.class})
+    private Output</* @Nullable */ List<OceanClusterOrientation>> clusterOrientations;
+
+    public Output<Optional<List<OceanClusterOrientation>>> clusterOrientations() {
+        return Codegen.optional(this.clusterOrientations);
     }
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -228,6 +298,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.fallbackToOndemand);
     }
     /**
+     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     * 
+     */
+    @Export(name="filters", type=OceanFilters.class, parameters={})
+    private Output</* @Nullable */ OceanFilters> filters;
+
+    /**
+     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
+     * 
+     */
+    public Output<Optional<OceanFilters>> filters() {
+        return Codegen.optional(this.filters);
+    }
+    /**
      * The amount of time, in seconds, after the instance has launched to start checking its health.
      * 
      */
@@ -298,14 +382,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.keyName);
     }
     /**
-     * - Array of load balancer objects to add to ocean cluster
+     * Array of load balancer objects to add to ocean cluster
      * 
      */
     @Export(name="loadBalancers", type=List.class, parameters={OceanLoadBalancer.class})
     private Output</* @Nullable */ List<OceanLoadBalancer>> loadBalancers;
 
     /**
-     * @return - Array of load balancer objects to add to ocean cluster
+     * @return Array of load balancer objects to add to ocean cluster
      * 
      */
     public Output<Optional<List<OceanLoadBalancer>>> loadBalancers() {
@@ -409,17 +493,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> rootVolumeSize() {
         return Codegen.optional(this.rootVolumeSize);
     }
-    /**
-     * Set scheduling object.
-     * 
-     */
     @Export(name="scheduledTasks", type=List.class, parameters={OceanScheduledTask.class})
     private Output</* @Nullable */ List<OceanScheduledTask>> scheduledTasks;
 
-    /**
-     * @return Set scheduling object.
-     * 
-     */
     public Output<Optional<List<OceanScheduledTask>>> scheduledTasks() {
         return Codegen.optional(this.scheduledTasks);
     }

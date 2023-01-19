@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ManagedInstanceLoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceLoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AWS resource ARN (Required only for ALB target groups).
@@ -37,7 +37,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? BalancerId { get; set; }
 
         /// <summary>
-        /// The record set name.
+        /// The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? TargetSetId { get; set; }
 
         /// <summary>
-        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+        /// The resource type. Valid Values: `"CLASSIC"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -57,5 +57,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ManagedInstanceLoadBalancerArgs()
         {
         }
+        public static new ManagedInstanceLoadBalancerArgs Empty => new ManagedInstanceLoadBalancerArgs();
     }
 }

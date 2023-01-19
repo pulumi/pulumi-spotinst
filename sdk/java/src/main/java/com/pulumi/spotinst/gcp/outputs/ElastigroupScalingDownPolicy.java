@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupScalingDownPolicy {
+    /**
+     * @return Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+     * 
+     */
     private @Nullable String actionType;
     /**
      * @return Value to which the action type will be adjusted. Required if using &#34;numeric&#34; or &#34;percentageAdjustment&#34; action types.
@@ -75,6 +79,10 @@ public final class ElastigroupScalingDownPolicy {
     private String unit;
 
     private ElastigroupScalingDownPolicy() {}
+    /**
+     * @return Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+     * 
+     */
     public Optional<String> actionType() {
         return Optional.ofNullable(this.actionType);
     }

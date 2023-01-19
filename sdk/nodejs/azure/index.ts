@@ -5,14 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./elastigroup";
-export * from "./ocean";
-export * from "./oceanVirtualNodeGroup";
+export { ElastigroupArgs, ElastigroupState } from "./elastigroup";
+export type Elastigroup = import("./elastigroup").Elastigroup;
+export const Elastigroup: typeof import("./elastigroup").Elastigroup = null as any;
+utilities.lazyLoad(exports, ["Elastigroup"], () => require("./elastigroup"));
 
-// Import resources to register:
-import { Elastigroup } from "./elastigroup";
-import { Ocean } from "./ocean";
-import { OceanVirtualNodeGroup } from "./oceanVirtualNodeGroup";
+export { OceanArgs, OceanState } from "./ocean";
+export type Ocean = import("./ocean").Ocean;
+export const Ocean: typeof import("./ocean").Ocean = null as any;
+utilities.lazyLoad(exports, ["Ocean"], () => require("./ocean"));
+
+export { OceanVirtualNodeGroupArgs, OceanVirtualNodeGroupState } from "./oceanVirtualNodeGroup";
+export type OceanVirtualNodeGroup = import("./oceanVirtualNodeGroup").OceanVirtualNodeGroup;
+export const OceanVirtualNodeGroup: typeof import("./oceanVirtualNodeGroup").OceanVirtualNodeGroup = null as any;
+utilities.lazyLoad(exports, ["OceanVirtualNodeGroup"], () => require("./oceanVirtualNodeGroup"));
+
 
 const _module = {
     version: utilities.getVersion(),

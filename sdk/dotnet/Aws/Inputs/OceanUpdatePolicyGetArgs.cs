@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanUpdatePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// will update instance tags on the fly without rolling the cluster.
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanUpdatePolicyGetArgs()
         {
         }
+        public static new OceanUpdatePolicyGetArgs Empty => new OceanUpdatePolicyGetArgs();
     }
 }

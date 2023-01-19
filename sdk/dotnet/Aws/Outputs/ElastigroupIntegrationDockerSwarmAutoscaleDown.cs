@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationDockerSwarmAutoscaleDown
     {
         /// <summary>
-        /// How many evaluation periods should accumulate before a scale down action takes place.
+        /// The number of periods over which data is compared to the specified threshold.
         /// </summary>
         public readonly int? EvaluationPeriods;
         /// <summary>
-        /// Would represent the maximum % to scale-down. Number between 1-100.  
+        /// Represents the maximum percent to scale-down. Number between 1-100.
         /// Usage:
         /// </summary>
         public readonly double? MaxScaleDownPercentage;

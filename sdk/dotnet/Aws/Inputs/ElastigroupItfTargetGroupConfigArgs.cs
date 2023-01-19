@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupItfTargetGroupConfigArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupItfTargetGroupConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("healthCheckIntervalSeconds")]
         public Input<int>? HealthCheckIntervalSeconds { get; set; }
@@ -68,5 +68,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupItfTargetGroupConfigArgs()
         {
         }
+        public static new ElastigroupItfTargetGroupConfigArgs Empty => new ElastigroupItfTargetGroupConfigArgs();
     }
 }

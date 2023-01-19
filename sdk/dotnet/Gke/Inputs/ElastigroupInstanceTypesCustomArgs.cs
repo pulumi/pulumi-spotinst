@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class ElastigroupInstanceTypesCustomArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupInstanceTypesCustomArgs : global::Pulumi.ResourceArgs
     {
         [Input("memoryGib", required: true)]
         public Input<int> MemoryGib { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public ElastigroupInstanceTypesCustomArgs()
         {
         }
+        public static new ElastigroupInstanceTypesCustomArgs Empty => new ElastigroupInstanceTypesCustomArgs();
     }
 }

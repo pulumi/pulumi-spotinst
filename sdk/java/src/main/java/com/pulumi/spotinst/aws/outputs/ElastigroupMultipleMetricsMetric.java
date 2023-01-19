@@ -15,8 +15,6 @@ import javax.annotation.Nullable;
 public final class ElastigroupMultipleMetricsMetric {
     /**
      * @return A list of dimensions describing qualities of the metric.
-     * *`name` - (Required) the dimension name.
-     * *`value` - (Optional) the dimension value.
      * 
      */
     private @Nullable List<ElastigroupMultipleMetricsMetricDimension> dimensions;
@@ -31,7 +29,7 @@ public final class ElastigroupMultipleMetricsMetric {
      */
     private String metricName;
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     private String name;
@@ -54,8 +52,6 @@ public final class ElastigroupMultipleMetricsMetric {
     private ElastigroupMultipleMetricsMetric() {}
     /**
      * @return A list of dimensions describing qualities of the metric.
-     * *`name` - (Required) the dimension name.
-     * *`value` - (Optional) the dimension value.
      * 
      */
     public List<ElastigroupMultipleMetricsMetricDimension> dimensions() {
@@ -76,7 +72,7 @@ public final class ElastigroupMultipleMetricsMetric {
         return this.metricName;
     }
     /**
-     * @return The record set name.
+     * @return The group name.
      * 
      */
     public String name() {

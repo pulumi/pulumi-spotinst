@@ -37,7 +37,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The GKE cluster ID you wish to import.
+     * The name of the GKE cluster you wish to import.
      * 
      * @deprecated
      * Please define cluster_id under integration_gke
@@ -48,7 +48,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return The GKE cluster ID you wish to import.
+     * @return The name of the GKE cluster you wish to import.
      * 
      * @deprecated
      * Please define cluster_id under integration_gke
@@ -346,7 +346,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId The GKE cluster ID you wish to import.
+         * @param clusterId The name of the GKE cluster you wish to import.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId The GKE cluster ID you wish to import.
+         * @param clusterId The name of the GKE cluster you wish to import.
          * 
          * @return builder
          * 

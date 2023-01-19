@@ -14,6 +14,131 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// &gt; This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.Gke.OceanLaunchSpec("example", new()
+    ///     {
+    ///         AutoscaleHeadrooms = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
+    ///             {
+    ///                 CpuPerUnit = 1000,
+    ///                 GpuPerUnit = 0,
+    ///                 MemoryPerUnit = 2048,
+    ///                 NumOfUnits = 5,
+    ///             },
+    ///         },
+    ///         AutoscaleHeadroomsAutomatics = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs
+    ///             {
+    ///                 AutoHeadroomPercentage = 5,
+    ///             },
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             "n1-standard-1, n1-standard-2",
+    ///         },
+    ///         Labels = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecLabelArgs
+    ///             {
+    ///                 Key = "labelKey",
+    ///                 Value = "labelVal",
+    ///             },
+    ///         },
+    ///         Metadatas = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecMetadataArgs
+    ///             {
+    ///                 Key = "gci-update-strategy",
+    ///                 Value = "update_disabled",
+    ///             },
+    ///         },
+    ///         NodePoolName = "default-pool",
+    ///         OceanId = "o-123456",
+    ///         ResourceLimits = new SpotInst.Gke.Inputs.OceanLaunchSpecResourceLimitsArgs
+    ///         {
+    ///             MaxInstanceCount = 3,
+    ///             MinInstanceCount = 0,
+    ///         },
+    ///         RestrictScaleDown = true,
+    ///         RootVolumeSize = 10,
+    ///         RootVolumeType = "pd-standard",
+    ///         SchedulingTasks = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecSchedulingTaskArgs
+    ///             {
+    ///                 CronExpression = "0 1 * * *",
+    ///                 IsEnabled = true,
+    ///                 TaskHeadrooms = new[]
+    ///                 {
+    ///                     new SpotInst.Gke.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs
+    ///                     {
+    ///                         CpuPerUnit = 1000,
+    ///                         GpuPerUnit = 0,
+    ///                         MemoryPerUnit = 2048,
+    ///                         NumOfUnits = 5,
+    ///                     },
+    ///                 },
+    ///                 TaskType = "manualHeadroomUpdate",
+    ///             },
+    ///         },
+    ///         ServiceAccount = "default",
+    ///         ShieldedInstanceConfig = new SpotInst.Gke.Inputs.OceanLaunchSpecShieldedInstanceConfigArgs
+    ///         {
+    ///             EnableIntegrityMonitoring = true,
+    ///             EnableSecureBoot = false,
+    ///         },
+    ///         SourceImage = "image",
+    ///         Storage = new SpotInst.Gke.Inputs.OceanLaunchSpecStorageArgs
+    ///         {
+    ///             LocalSsdCount = 5,
+    ///         },
+    ///         Strategies = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecStrategyArgs
+    ///             {
+    ///                 PreemptiblePercentage = 30,
+    ///             },
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "tag1",
+    ///             "tag2",
+    ///         },
+    ///         Taints = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecTaintArgs
+    ///             {
+    ///                 Effect = "taintEffect",
+    ///                 Key = "taintKey",
+    ///                 Value = "taintVal",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["oceanLaunchspecId"] = spotinst_ocean_gke_launch_spec.Example.Id,
+    ///     };
+    /// });
+    /// ```
     /// ## Update Policy
     /// 
     /// * `update_policy` - (Optional)
@@ -22,19 +147,16 @@ namespace Pulumi.SpotInst.Gke
     ///     * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec")]
-    public partial class OceanLaunchSpec : Pulumi.CustomResource
+    public partial class OceanLaunchSpec : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Set custom headroom per launch spec. provide list of headrooms object.
@@ -145,6 +267,12 @@ namespace Pulumi.SpotInst.Gke
         public Output<ImmutableArray<Outputs.OceanLaunchSpecStrategy>> Strategies { get; private set; } = null!;
 
         /// <summary>
+        /// Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Optionally adds labels to instances launched in an Ocean cluster.
         /// </summary>
         [Output("taints")]
@@ -197,7 +325,7 @@ namespace Pulumi.SpotInst.Gke
         }
     }
 
-    public sealed class OceanLaunchSpecArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoscaleHeadrooms")]
         private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomArgs>? _autoscaleHeadrooms;
@@ -349,6 +477,18 @@ namespace Pulumi.SpotInst.Gke
             set => _strategies = value;
         }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         [Input("taints")]
         private InputList<Inputs.OceanLaunchSpecTaintArgs>? _taints;
 
@@ -367,9 +507,10 @@ namespace Pulumi.SpotInst.Gke
         public OceanLaunchSpecArgs()
         {
         }
+        public static new OceanLaunchSpecArgs Empty => new OceanLaunchSpecArgs();
     }
 
-    public sealed class OceanLaunchSpecState : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecState : global::Pulumi.ResourceArgs
     {
         [Input("autoscaleHeadrooms")]
         private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomGetArgs>? _autoscaleHeadrooms;
@@ -521,6 +662,18 @@ namespace Pulumi.SpotInst.Gke
             set => _strategies = value;
         }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         [Input("taints")]
         private InputList<Inputs.OceanLaunchSpecTaintGetArgs>? _taints;
 
@@ -539,5 +692,6 @@ namespace Pulumi.SpotInst.Gke
         public OceanLaunchSpecState()
         {
         }
+        public static new OceanLaunchSpecState Empty => new OceanLaunchSpecState();
     }
 }

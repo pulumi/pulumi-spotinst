@@ -15,106 +15,103 @@ namespace Pulumi.SpotInst.Azure
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new SpotInst.Azure.OceanVirtualNodeGroup("example", new()
     ///     {
-    ///         var example = new SpotInst.Azure.OceanVirtualNodeGroup("example", new SpotInst.Azure.OceanVirtualNodeGroupArgs
+    ///         Autoscales = new[]
     ///         {
-    ///             Autoscales = 
+    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleArgs
     ///             {
-    ///                 new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleArgs
+    ///                 AutoHeadroomPercentage = 5,
+    ///                 AutoscaleHeadrooms = new[]
     ///                 {
-    ///                     AutoHeadroomPercentage = 5,
-    ///                     AutoscaleHeadrooms = 
+    ///                     new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs
     ///                     {
-    ///                         new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs
-    ///                         {
-    ///                             CpuPerUnit = 4,
-    ///                             GpuPerUnit = 8,
-    ///                             MemoryPerUnit = 100,
-    ///                             NumOfUnits = 16,
-    ///                         },
+    ///                         CpuPerUnit = 4,
+    ///                         GpuPerUnit = 8,
+    ///                         MemoryPerUnit = 100,
+    ///                         NumOfUnits = 16,
     ///                     },
     ///                 },
     ///             },
-    ///             Labels = 
+    ///         },
+    ///         Labels = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLabelArgs
     ///             {
-    ///                 new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLabelArgs
-    ///                 {
-    ///                     Key = "label_key",
-    ///                     Value = "label_value",
-    ///                 },
+    ///                 Key = "label_key",
+    ///                 Value = "label_value",
     ///             },
-    ///             LaunchSpecifications = 
+    ///         },
+    ///         LaunchSpecifications = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationArgs
     ///             {
-    ///                 new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationArgs
+    ///                 MaxPods = 30,
+    ///                 OsDisk = new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs
     ///                 {
-    ///                     OsDisk = new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs
+    ///                     SizeGb = 100,
+    ///                     Type = "Standard_LRS",
+    ///                     UtilizeEphemeralStorage = false,
+    ///                 },
+    ///                 Tags = new[]
+    ///                 {
+    ///                     new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationTagArgs
     ///                     {
-    ///                         SizeGb = 100,
-    ///                         Type = "Standard_LRS",
-    ///                         UtilizeEphemeralStorage = false,
-    ///                     },
-    ///                     Tags = 
-    ///                     {
-    ///                         new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationTagArgs
-    ///                         {
-    ///                             Key = "label_key",
-    ///                             Value = "label_value",
-    ///                         },
+    ///                         Key = "label_key",
+    ///                         Value = "label_value",
     ///                     },
     ///                 },
     ///             },
-    ///             OceanId = "o-12345",
-    ///             ResourceLimits = 
+    ///         },
+    ///         OceanId = "o-12345",
+    ///         ResourceLimits = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupResourceLimitArgs
     ///             {
-    ///                 new SpotInst.Azure.Inputs.OceanVirtualNodeGroupResourceLimitArgs
-    ///                 {
-    ///                     MaxInstanceCount = 4,
-    ///                 },
+    ///                 MaxInstanceCount = 4,
     ///             },
-    ///             Taints = 
+    ///         },
+    ///         Taints = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupTaintArgs
     ///             {
-    ///                 new SpotInst.Azure.Inputs.OceanVirtualNodeGroupTaintArgs
-    ///                 {
-    ///                     Effect = "NoSchedule",
-    ///                     Key = "taint_key",
-    ///                     Value = "taint_value",
-    ///                 },
+    ///                 Effect = "NoSchedule",
+    ///                 Key = "taint_key",
+    ///                 Value = "taint_value",
     ///             },
-    ///             Zones = 
-    ///             {
-    ///                 "1",
-    ///                 "2",
-    ///                 "3",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Zones = new[]
+    ///         {
+    ///             "1",
+    ///             "2",
+    ///             "3",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         this.OceanId = spotinst_ocean_aks_.Example.Id;
-    ///     }
-    /// 
-    ///     [Output("oceanId")]
-    ///     public Output&lt;string&gt; OceanId { get; set; }
-    /// }
+    ///         ["oceanId"] = spotinst_ocean_aks_.Example.Id,
+    ///     };
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup")]
-    public partial class OceanVirtualNodeGroup : Pulumi.CustomResource
+    public partial class OceanVirtualNodeGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// .
@@ -208,7 +205,7 @@ namespace Pulumi.SpotInst.Azure
         }
     }
 
-    public sealed class OceanVirtualNodeGroupArgs : Pulumi.ResourceArgs
+    public sealed class OceanVirtualNodeGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoscales")]
         private InputList<Inputs.OceanVirtualNodeGroupAutoscaleArgs>? _autoscales;
@@ -297,9 +294,10 @@ namespace Pulumi.SpotInst.Azure
         public OceanVirtualNodeGroupArgs()
         {
         }
+        public static new OceanVirtualNodeGroupArgs Empty => new OceanVirtualNodeGroupArgs();
     }
 
-    public sealed class OceanVirtualNodeGroupState : Pulumi.ResourceArgs
+    public sealed class OceanVirtualNodeGroupState : global::Pulumi.ResourceArgs
     {
         [Input("autoscales")]
         private InputList<Inputs.OceanVirtualNodeGroupAutoscaleGetArgs>? _autoscales;
@@ -388,5 +386,6 @@ namespace Pulumi.SpotInst.Azure
         public OceanVirtualNodeGroupState()
         {
         }
+        public static new OceanVirtualNodeGroupState Empty => new OceanVirtualNodeGroupState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupGpuArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupGpuArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of GPUs. Must be 0, 2, 4, 6, 8.
@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public Input<int> Count { get; set; } = null!;
 
         /// <summary>
-        /// Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
+        /// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupGpuArgs()
         {
         }
+        public static new ElastigroupGpuArgs Empty => new ElastigroupGpuArgs();
     }
 }

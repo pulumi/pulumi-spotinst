@@ -14,14 +14,14 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
     public static final ElastigroupManagedServiceIdentityArgs Empty = new ElastigroupManagedServiceIdentityArgs();
 
     /**
-     * The dimension name.
+     * The name of the managed identity.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The dimension name.
+     * @return The name of the managed identity.
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
     }
 
     /**
-     * Vnet Resource Group Name.
+     * The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return Vnet Resource Group Name.
+     * @return The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -69,7 +69,7 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name The dimension name.
+         * @param name The name of the managed identity.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name The dimension name.
+         * @param name The name of the managed identity.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
         }
 
         /**
-         * @param resourceGroupName Vnet Resource Group Name.
+         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
         }
 
         /**
-         * @param resourceGroupName Vnet Resource Group Name.
+         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
          * 
          * @return builder
          * 

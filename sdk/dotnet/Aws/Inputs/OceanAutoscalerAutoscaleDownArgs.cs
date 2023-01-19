@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanAutoscalerAutoscaleDownArgs : Pulumi.ResourceArgs
+    public sealed class OceanAutoscalerAutoscaleDownArgs : global::Pulumi.ResourceArgs
     {
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanAutoscalerAutoscaleDownArgs()
         {
         }
+        public static new OceanAutoscalerAutoscaleDownArgs Empty => new OceanAutoscalerAutoscaleDownArgs();
     }
 }

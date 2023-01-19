@@ -29,14 +29,14 @@ public final class ElastigroupImageCustomArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Vnet Resource Group Name.
+     * The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return Vnet Resource Group Name.
+     * @return The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -90,7 +90,7 @@ public final class ElastigroupImageCustomArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceGroupName Vnet Resource Group Name.
+         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ElastigroupImageCustomArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceGroupName Vnet Resource Group Name.
+         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
          * 
          * @return builder
          * 

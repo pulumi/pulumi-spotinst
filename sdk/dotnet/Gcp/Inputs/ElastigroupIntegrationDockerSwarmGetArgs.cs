@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupIntegrationDockerSwarmGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationDockerSwarmGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP or FQDN of one of your swarm managers.
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupIntegrationDockerSwarmGetArgs()
         {
         }
+        public static new ElastigroupIntegrationDockerSwarmGetArgs Empty => new ElastigroupIntegrationDockerSwarmGetArgs();
     }
 }

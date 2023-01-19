@@ -50,6 +50,8 @@
         "multai/target.ts",
         "multai/targetSet.ts",
         "provider.ts",
+        "spark/index.ts",
+        "spark/ocean.ts",
         "statefulNodeAzure.ts",
         "subscription.ts",
         "types/index.ts",

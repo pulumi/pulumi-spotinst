@@ -15,8 +15,7 @@ public final class ElastigroupAzureV3ImageCustom {
      */
     private String imageName;
     /**
-     * @return - The resource group of the Application Security Group.
-     * }
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     private String resourceGroupName;
@@ -30,8 +29,7 @@ public final class ElastigroupAzureV3ImageCustom {
         return this.imageName;
     }
     /**
-     * @return - The resource group of the Application Security Group.
-     * }
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public String resourceGroupName() {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanLoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class OceanLoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         [Input("backendPoolNames")]
         private InputList<string>? _backendPoolNames;
@@ -51,5 +51,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanLoadBalancerArgs()
         {
         }
+        public static new OceanLoadBalancerArgs Empty => new OceanLoadBalancerArgs();
     }
 }

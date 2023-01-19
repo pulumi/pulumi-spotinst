@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws
     /// Provides a Spotinst AWS ManagedInstance resource.
     /// </summary>
     [SpotInstResourceType("spotinst:aws/managedInstance:ManagedInstance")]
-    public partial class ManagedInstance : Pulumi.CustomResource
+    public partial class ManagedInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
@@ -122,9 +122,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("lifeCycle")]
         public Output<string?> LifeCycle { get; private set; } = null!;
 
-        /// <summary>
-        /// List of load balancers configs.
-        /// </summary>
         [Output("loadBalancers")]
         public Output<ImmutableArray<Outputs.ManagedInstanceLoadBalancer>> LoadBalancers { get; private set; } = null!;
 
@@ -135,7 +132,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> MinimumInstanceLifetime { get; private set; } = null!;
 
         /// <summary>
-        /// The record set name.
+        /// The ManagedInstance name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -204,9 +201,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
 
-        /// <summary>
-        /// User will specify which resources should be tagged with group tags.
-        /// </summary>
         [Output("resourceTagSpecifications")]
         public Output<ImmutableArray<Outputs.ManagedInstanceResourceTagSpecification>> ResourceTagSpecifications { get; private set; } = null!;
 
@@ -305,7 +299,7 @@ namespace Pulumi.SpotInst.Aws
         }
     }
 
-    public sealed class ManagedInstanceArgs : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
@@ -428,10 +422,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("loadBalancers")]
         private InputList<Inputs.ManagedInstanceLoadBalancerArgs>? _loadBalancers;
-
-        /// <summary>
-        /// List of load balancers configs.
-        /// </summary>
         public InputList<Inputs.ManagedInstanceLoadBalancerArgs> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.ManagedInstanceLoadBalancerArgs>());
@@ -445,7 +435,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? MinimumInstanceLifetime { get; set; }
 
         /// <summary>
-        /// The record set name.
+        /// The ManagedInstance name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -527,10 +517,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("resourceTagSpecifications")]
         private InputList<Inputs.ManagedInstanceResourceTagSpecificationArgs>? _resourceTagSpecifications;
-
-        /// <summary>
-        /// User will specify which resources should be tagged with group tags.
-        /// </summary>
         public InputList<Inputs.ManagedInstanceResourceTagSpecificationArgs> ResourceTagSpecifications
         {
             get => _resourceTagSpecifications ?? (_resourceTagSpecifications = new InputList<Inputs.ManagedInstanceResourceTagSpecificationArgs>());
@@ -614,9 +600,10 @@ namespace Pulumi.SpotInst.Aws
         public ManagedInstanceArgs()
         {
         }
+        public static new ManagedInstanceArgs Empty => new ManagedInstanceArgs();
     }
 
-    public sealed class ManagedInstanceState : Pulumi.ResourceArgs
+    public sealed class ManagedInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
@@ -739,10 +726,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("loadBalancers")]
         private InputList<Inputs.ManagedInstanceLoadBalancerGetArgs>? _loadBalancers;
-
-        /// <summary>
-        /// List of load balancers configs.
-        /// </summary>
         public InputList<Inputs.ManagedInstanceLoadBalancerGetArgs> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.ManagedInstanceLoadBalancerGetArgs>());
@@ -756,7 +739,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? MinimumInstanceLifetime { get; set; }
 
         /// <summary>
-        /// The record set name.
+        /// The ManagedInstance name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -838,10 +821,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("resourceTagSpecifications")]
         private InputList<Inputs.ManagedInstanceResourceTagSpecificationGetArgs>? _resourceTagSpecifications;
-
-        /// <summary>
-        /// User will specify which resources should be tagged with group tags.
-        /// </summary>
         public InputList<Inputs.ManagedInstanceResourceTagSpecificationGetArgs> ResourceTagSpecifications
         {
             get => _resourceTagSpecifications ?? (_resourceTagSpecifications = new InputList<Inputs.ManagedInstanceResourceTagSpecificationGetArgs>());
@@ -925,5 +904,6 @@ namespace Pulumi.SpotInst.Aws
         public ManagedInstanceState()
         {
         }
+        public static new ManagedInstanceState Empty => new ManagedInstanceState();
     }
 }

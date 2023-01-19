@@ -2,124 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const example = new spotinst.azure.Ocean("example", {
- *     // --- AKS -----------------------------------------------------------
- *     acdIdentifier: "acd-12345678",
- *     aksName: "ocean-westus-dev-aks",
- *     aksResourceGroupName: "ocean-westus-dev",
- *     // --- Auto Scaler ------------------------------------------------------
- *     autoscaler: {
- *         autoscaleDown: {
- *             maxScaleDownPercentage: 10,
- *         },
- *         autoscaleHeadroom: {
- *             automatic: {
- *                 isEnabled: true,
- *                 percentage: 10,
- *             },
- *         },
- *         autoscaleIsEnabled: true,
- *         resourceLimits: {
- *             maxMemoryGib: 40,
- *             maxVcpu: 1024,
- *         },
- *     },
- *     controllerClusterId: "ocean-westus-dev-aks",
- *     customData: "[... redacted ...]",
- *     // --- Extensions -------------------------------------------------------
- *     extensions: [{
- *         apiVersion: "1.0",
- *         minorVersionAutoUpgrade: true,
- *         name: "extension-name",
- *         publisher: "Microsoft.Azure.Extensions",
- *         type: "Linux",
- *     }],
- *     // --- Health ----------------------------------------------------------
- *     health: {
- *         gracePeriod: 10,
- *     },
- *     // --- Image ---------------------------------------------------------
- *     images: [{
- *         marketplaces: [{
- *             offer: "UbuntuServer",
- *             publisher: "Canonical",
- *             sku: "18.04-LTS",
- *             version: "latest",
- *         }],
- *     }],
- *     // --- Load Balancers ---------------------------------------------------
- *     loadBalancers: [{
- *         backendPoolNames: ["terraform-backend-pool"],
- *         loadBalancerSku: "Standard",
- *         name: "load-balancer-name",
- *         resourceGroupName: "resource-group-name",
- *         type: "loadBalancer",
- *     }],
- *     managedServiceIdentities: [{
- *         name: "ocean-westus-dev-aks-agentpool",
- *         resourceGroupName: "MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
- *     }],
- *     // --- NETWORK ---------------------------------------------------------
- *     network: {
- *         networkInterfaces: [{
- *             additionalIpConfigs: [{
- *                 name: "ip-config-name",
- *                 privateIpVersion: "ipv4",
- *             }],
- *             assignPublicIp: false,
- *             isPrimary: false,
- *             subnetName: "subnet-name",
- *         }],
- *         resourceGroupName: "ocean-westus-dev",
- *         virtualNetworkName: "vn-name",
- *     },
- *     // --- OSDisk --------------------------------------------------------
- *     osDisk: {
- *         sizeGb: 130,
- *         type: "Standard_LRS",
- *     },
- *     // --- Launch Specification ------------------------------------------
- *     resourceGroupName: "some-resource-group-name",
- *     // --- Login ---------------------------------------------------------
- *     sshPublicKey: "ssh-rsa [... redacted ...] generated-by-azure",
- *     // --- Strategy --------------------------------------------------------
- *     strategies: [{
- *         fallbackToOndemand: true,
- *         spotPercentage: 40,
- *     }],
- *     tags: [{
- *         key: "Environment",
- *         value: "Dev",
- *     }],
- *     userName: "some-name",
- *     // --- VMSizes --------------------------------------------------------
- *     vmSizes: [{
- *         whitelists: ["standard_ds2_v2"],
- *     }],
- *     zones: [
- *         "1",
- *         "2",
- *         "3",
- *     ],
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanId = spotinst_ocean_aks.example.id;
- * ```
- */
 export class Ocean extends pulumi.CustomResource {
     /**
      * Get an existing Ocean resource's state with the given name, ID, and optional extra
@@ -193,6 +79,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly managedServiceIdentities!: pulumi.Output<outputs.azure.OceanManagedServiceIdentity[] | undefined>;
     /**
+     * The maximum number of pods per node in an AKS cluster.
+     */
+    public readonly maxPods!: pulumi.Output<number | undefined>;
+    /**
      * Name of the Load Balancer.
      */
     public readonly name!: pulumi.Output<string>;
@@ -257,6 +147,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["images"] = state ? state.images : undefined;
             resourceInputs["loadBalancers"] = state ? state.loadBalancers : undefined;
             resourceInputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
+            resourceInputs["maxPods"] = state ? state.maxPods : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["osDisk"] = state ? state.osDisk : undefined;
@@ -292,6 +183,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["images"] = args ? args.images : undefined;
             resourceInputs["loadBalancers"] = args ? args.loadBalancers : undefined;
             resourceInputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
+            resourceInputs["maxPods"] = args ? args.maxPods : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["osDisk"] = args ? args.osDisk : undefined;
@@ -356,6 +248,10 @@ export interface OceanState {
      * List of Managed Service Identity objects.
      */
     managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.OceanManagedServiceIdentity>[]>;
+    /**
+     * The maximum number of pods per node in an AKS cluster.
+     */
+    maxPods?: pulumi.Input<number>;
     /**
      * Name of the Load Balancer.
      */
@@ -446,6 +342,10 @@ export interface OceanArgs {
      * List of Managed Service Identity objects.
      */
     managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.OceanManagedServiceIdentity>[]>;
+    /**
+     * The maximum number of pods per node in an AKS cluster.
+     */
+    maxPods?: pulumi.Input<number>;
     /**
      * Name of the Load Balancer.
      */

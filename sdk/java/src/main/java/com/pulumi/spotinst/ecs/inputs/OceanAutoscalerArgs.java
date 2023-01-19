@@ -95,14 +95,14 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+     * Enable the Ocean ECS autoscaler.
      * 
      */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
     /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+     * @return Enable the Ocean ECS autoscaler.
      * 
      */
     public Optional<Output<Boolean>> isEnabled() {
@@ -260,7 +260,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+         * @param isEnabled Enable the Ocean ECS autoscaler.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+         * @param isEnabled Enable the Ocean ECS autoscaler.
          * 
          * @return builder
          * 

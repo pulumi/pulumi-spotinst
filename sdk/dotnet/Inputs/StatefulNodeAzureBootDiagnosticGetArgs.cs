@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureBootDiagnosticGetArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureBootDiagnosticGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureBootDiagnosticGetArgs()
         {
         }
+        public static new StatefulNodeAzureBootDiagnosticGetArgs Empty => new StatefulNodeAzureBootDiagnosticGetArgs();
     }
 }

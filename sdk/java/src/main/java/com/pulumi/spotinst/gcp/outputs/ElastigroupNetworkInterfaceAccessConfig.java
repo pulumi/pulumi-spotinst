@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupNetworkInterfaceAccessConfig {
     /**
-     * @return The dimension name.
+     * @return The group name.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+     * @return The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
      * 
      */
     private @Nullable String type;
 
     private ElastigroupNetworkInterfaceAccessConfig() {}
     /**
-     * @return The dimension name.
+     * @return The group name.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
+     * @return The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
      * 
      */
     public Optional<String> type() {

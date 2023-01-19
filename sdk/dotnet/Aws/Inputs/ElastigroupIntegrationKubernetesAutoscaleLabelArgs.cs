@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationKubernetesAutoscaleLabelArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationKubernetesAutoscaleLabelArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationKubernetesAutoscaleLabelArgs()
         {
         }
+        public static new ElastigroupIntegrationKubernetesAutoscaleLabelArgs Empty => new ElastigroupIntegrationKubernetesAutoscaleLabelArgs();
     }
 }

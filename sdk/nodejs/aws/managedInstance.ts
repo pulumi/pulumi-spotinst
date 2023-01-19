@@ -2,92 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst AWS ManagedInstance resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * // Create a Manged Instance
- * const default_managed_instance = new spotinst.aws.ManagedInstance("default-managed-instance", {
- *     autoHealing: true,
- *     blockDeviceMappings: [{
- *         deviceName: "/dev/xvdcz",
- *         ebs: {
- *             deleteOnTermination: true,
- *             iops: 100,
- *             throughput: 125,
- *             volumeSize: 50,
- *             volumeType: "gp3",
- *         },
- *     }],
- *     blockDevicesMode: "reattach",
- *     cpuCredits: "standard",
- *     description: "created by Pulumi",
- *     drainingTimeout: 120,
- *     ebsOptimized: true,
- *     elasticIp: "ip",
- *     enableMonitoring: true,
- *     fallbackToOndemand: false,
- *     gracePeriod: 180,
- *     healthCheckType: "EC2",
- *     iamInstanceProfile: "iam-profile",
- *     imageId: "ami-1234",
- *     instanceTypes: [
- *         "t1.micro",
- *         "t3.medium",
- *         "t3.large",
- *         "t2.medium",
- *         "t2.large",
- *         "z1d.large",
- *     ],
- *     keyPair: "labs-oregon",
- *     lifeCycle: "on_demand",
- *     minimumInstanceLifetime: 1,
- *     optimizationWindows: ["Mon:03:00-Wed:02:20"],
- *     orientation: "balanced",
- *     persistBlockDevices: true,
- *     persistPrivateIp: false,
- *     persistRootDevice: true,
- *     placementTenancy: "default",
- *     preferredType: "t1.micro",
- *     privateIp: "ip",
- *     product: "Linux/UNIX",
- *     region: "us-west-2",
- *     resourceTagSpecifications: [{
- *         shouldTagAmis: true,
- *         shouldTagEnis: true,
- *         shouldTagSnapshots: true,
- *         shouldTagVolumes: true,
- *     }],
- *     revertToSpot: {
- *         performAt: "always",
- *     },
- *     securityGroupIds: ["sg-234"],
- *     shutdownScript: "managed instance bye world",
- *     subnetIds: ["subnet-123"],
- *     tags: [
- *         {
- *             key: "explicit1",
- *             value: "value1",
- *         },
- *         {
- *             key: "explicit2",
- *             value: "value2",
- *         },
- *     ],
- *     unhealthyDuration: 60,
- *     userData: "managed instance hello world",
- *     utilizeReservedInstances: true,
- *     vpcId: "vpc-123",
- * });
- * ```
  */
 export class ManagedInstance extends pulumi.CustomResource {
     /**
@@ -188,14 +108,11 @@ export class ManagedInstance extends pulumi.CustomResource {
      * Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
      */
     public readonly lifeCycle!: pulumi.Output<string | undefined>;
-    /**
-     * List of load balancers configs.
-     */
     public readonly loadBalancers!: pulumi.Output<outputs.aws.ManagedInstanceLoadBalancer[] | undefined>;
     public readonly managedInstanceAction!: pulumi.Output<outputs.aws.ManagedInstanceManagedInstanceAction | undefined>;
     public readonly minimumInstanceLifetime!: pulumi.Output<number | undefined>;
     /**
-     * The record set name.
+     * The ManagedInstance name.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaces!: pulumi.Output<outputs.aws.ManagedInstanceNetworkInterface[] | undefined>;
@@ -240,9 +157,6 @@ export class ManagedInstance extends pulumi.CustomResource {
      * The AWS region your group will be created in.
      */
     public readonly region!: pulumi.Output<string | undefined>;
-    /**
-     * User will specify which resources should be tagged with group tags.
-     */
     public readonly resourceTagSpecifications!: pulumi.Output<outputs.aws.ManagedInstanceResourceTagSpecification[] | undefined>;
     public readonly revertToSpot!: pulumi.Output<outputs.aws.ManagedInstanceRevertToSpot | undefined>;
     public readonly scheduledTasks!: pulumi.Output<outputs.aws.ManagedInstanceScheduledTask[] | undefined>;
@@ -478,14 +392,11 @@ export interface ManagedInstanceState {
      * Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
      */
     lifeCycle?: pulumi.Input<string>;
-    /**
-     * List of load balancers configs.
-     */
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceLoadBalancer>[]>;
     managedInstanceAction?: pulumi.Input<inputs.aws.ManagedInstanceManagedInstanceAction>;
     minimumInstanceLifetime?: pulumi.Input<number>;
     /**
-     * The record set name.
+     * The ManagedInstance name.
      */
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceNetworkInterface>[]>;
@@ -530,9 +441,6 @@ export interface ManagedInstanceState {
      * The AWS region your group will be created in.
      */
     region?: pulumi.Input<string>;
-    /**
-     * User will specify which resources should be tagged with group tags.
-     */
     resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceResourceTagSpecification>[]>;
     revertToSpot?: pulumi.Input<inputs.aws.ManagedInstanceRevertToSpot>;
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceScheduledTask>[]>;
@@ -642,14 +550,11 @@ export interface ManagedInstanceArgs {
      * Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
      */
     lifeCycle?: pulumi.Input<string>;
-    /**
-     * List of load balancers configs.
-     */
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceLoadBalancer>[]>;
     managedInstanceAction?: pulumi.Input<inputs.aws.ManagedInstanceManagedInstanceAction>;
     minimumInstanceLifetime?: pulumi.Input<number>;
     /**
-     * The record set name.
+     * The ManagedInstance name.
      */
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceNetworkInterface>[]>;
@@ -694,9 +599,6 @@ export interface ManagedInstanceArgs {
      * The AWS region your group will be created in.
      */
     region?: pulumi.Input<string>;
-    /**
-     * User will specify which resources should be tagged with group tags.
-     */
     resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceResourceTagSpecification>[]>;
     revertToSpot?: pulumi.Input<inputs.aws.ManagedInstanceRevertToSpot>;
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceScheduledTask>[]>;

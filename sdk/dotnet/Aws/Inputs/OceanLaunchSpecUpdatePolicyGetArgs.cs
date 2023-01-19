@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLaunchSpecUpdatePolicyGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("rollConfig")]
         public Input<Inputs.OceanLaunchSpecUpdatePolicyRollConfigGetArgs>? RollConfig { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLaunchSpecUpdatePolicyGetArgs()
         {
         }
+        public static new OceanLaunchSpecUpdatePolicyGetArgs Empty => new OceanLaunchSpecUpdatePolicyGetArgs();
     }
 }

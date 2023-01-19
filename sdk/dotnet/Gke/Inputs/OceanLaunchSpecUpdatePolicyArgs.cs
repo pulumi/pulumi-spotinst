@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanLaunchSpecUpdatePolicyArgs : Pulumi.ResourceArgs
+    public sealed class OceanLaunchSpecUpdatePolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("rollConfig")]
         public Input<Inputs.OceanLaunchSpecUpdatePolicyRollConfigArgs>? RollConfig { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanLaunchSpecUpdatePolicyArgs()
         {
         }
+        public static new OceanLaunchSpecUpdatePolicyArgs Empty => new OceanLaunchSpecUpdatePolicyArgs();
     }
 }

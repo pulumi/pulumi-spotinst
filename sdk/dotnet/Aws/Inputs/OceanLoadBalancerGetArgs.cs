@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanLoadBalancerGetArgs : Pulumi.ResourceArgs
+    public sealed class OceanLoadBalancerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required if type is set to `TARGET_GROUP`
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public OceanLoadBalancerGetArgs()
         {
         }
+        public static new OceanLoadBalancerGetArgs Empty => new OceanLoadBalancerGetArgs();
     }
 }

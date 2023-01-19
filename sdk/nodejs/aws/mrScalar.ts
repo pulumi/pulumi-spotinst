@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -51,7 +52,6 @@ import * as utilities from "../utilities";
  *         volumesPerInstance: 2,
  *     }],
  *     coreEbsOptimized: false,
- *     // --- CORE GROUP -------------
  *     coreInstanceTypes: [
  *         "c3.xlarge",
  *         "c4.xlarge",
@@ -60,7 +60,6 @@ import * as utilities from "../utilities";
  *     coreMaxSize: 1,
  *     coreMinSize: 1,
  *     coreUnit: "instance",
- *     // --- OPTONAL COMPUTE -----
  *     customAmiId: "ami-123456",
  *     description: "Testing MrScaler creation",
  *     ec2KeyName: "test-key",
@@ -76,7 +75,6 @@ import * as utilities from "../utilities";
  *     ],
  *     jobFlowRole: "EMR_EC2_ExampleRole",
  *     keepJobFlowAlive: true,
- *     // --- CLUSTER ------------
  *     logUri: "s3://example-logs",
  *     managedPrimarySecurityGroup: "sg-123456",
  *     managedReplicaSecurityGroup: "sg-987654",
@@ -86,7 +84,6 @@ import * as utilities from "../utilities";
  *         volumesPerInstance: 1,
  *     }],
  *     masterEbsOptimized: true,
- *     // --- MASTER GROUP -------------
  *     masterInstanceTypes: ["c3.xlarge"],
  *     masterLifecycle: "SPOT",
  *     masterTarget: 1,
@@ -106,7 +103,6 @@ import * as utilities from "../utilities";
  *         key: "steps.json",
  *     }],
  *     strategy: "new",
- *     // --- TAGS -------------------
  *     tags: [{
  *         key: "Creator",
  *         value: "Pulumi",
@@ -118,7 +114,6 @@ import * as utilities from "../utilities";
  *         volumesPerInstance: 2,
  *     }],
  *     taskEbsOptimized: false,
- *     // --- TASK GROUP -------------
  *     taskInstanceTypes: [
  *         "c3.xlarge",
  *         "c4.xlarge",
@@ -136,87 +131,87 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const sample_MrScaler_01 = new spotinst.aws.MrScalar("sample-MrScaler-01", {
- *     availabilityZones: ["us-west-2a:subnet-12345678"],
- *     clusterId: "j-123456789",
- *     coreDesiredCapacity: 1,
- *     coreEbsBlockDevices: [{
- *         sizeInGb: 40,
- *         volumeType: "gp2",
- *         volumesPerInstance: 2,
- *     }],
- *     coreEbsOptimized: false,
- *     // --- CORE GROUP -------------
- *     coreInstanceTypes: [
- *         "c3.xlarge",
- *         "c4.xlarge",
- *     ],
- *     coreLifecycle: "ON_DEMAND",
- *     coreMaxSize: 1,
- *     coreMinSize: 1,
- *     coreUnit: "instance",
- *     description: "Testing MrScaler creation",
- *     exposeClusterId: true,
- *     masterEbsBlockDevices: [{
- *         sizeInGb: 30,
- *         volumeType: "gp2",
- *         volumesPerInstance: 1,
- *     }],
- *     masterEbsOptimized: true,
- *     // --- MASTER GROUP -------------
- *     masterInstanceTypes: ["c3.xlarge"],
- *     masterLifecycle: "SPOT",
- *     masterTarget: 1,
- *     region: "us-west-2",
- *     strategy: "clone",
- *     // --- TAGS -------------------
- *     tags: [{
- *         key: "Creator",
- *         value: "Pulumi",
- *     }],
- *     taskDesiredCapacity: 1,
- *     taskEbsBlockDevices: [{
- *         sizeInGb: 40,
- *         volumeType: "gp2",
- *         volumesPerInstance: 2,
- *     }],
- *     taskEbsOptimized: false,
- *     // --- TASK GROUP -------------
- *     taskInstanceTypes: [
- *         "c3.xlarge",
- *         "c4.xlarge",
- *     ],
- *     taskLifecycle: "SPOT",
- *     taskMaxSize: 30,
- *     taskMinSize: 0,
- *     // --- TASK SCALING POLICY ------
- *     taskScalingDownPolicies: [{
- *         actionType: "",
- *         adjustment: "1",
- *         cooldown: 60,
- *         dimensions: {
- *             name: "name-1",
- *             value: "value-1",
- *         },
- *         evaluationPeriods: 10,
- *         maxTargetCapacity: "1",
- *         maximum: "10",
- *         metricName: "CPUUtilization",
- *         minimum: "0",
- *         namespace: "AWS/EC2",
- *         operator: "gt",
- *         period: 60,
- *         policyName: "policy-name",
- *         statistic: "average",
- *         target: "5",
- *         threshold: 10,
- *         unit: "",
- *     }],
- *     taskUnit: "instance",
- * });
- *
- * export const mrscaler_name = sample_MrScaler_01.name;
- * export const mrscaler_created_cluster_id = sample_MrScaler_01.outputClusterId;
+ * export = async () => {
+ *     const sample_MrScaler_01 = new spotinst.aws.MrScalar("sample-MrScaler-01", {
+ *         availabilityZones: ["us-west-2a:subnet-12345678"],
+ *         clusterId: "j-123456789",
+ *         coreDesiredCapacity: 1,
+ *         coreEbsBlockDevices: [{
+ *             sizeInGb: 40,
+ *             volumeType: "gp2",
+ *             volumesPerInstance: 2,
+ *         }],
+ *         coreEbsOptimized: false,
+ *         coreInstanceTypes: [
+ *             "c3.xlarge",
+ *             "c4.xlarge",
+ *         ],
+ *         coreLifecycle: "ON_DEMAND",
+ *         coreMaxSize: 1,
+ *         coreMinSize: 1,
+ *         coreUnit: "instance",
+ *         description: "Testing MrScaler creation",
+ *         exposeClusterId: true,
+ *         masterEbsBlockDevices: [{
+ *             sizeInGb: 30,
+ *             volumeType: "gp2",
+ *             volumesPerInstance: 1,
+ *         }],
+ *         masterEbsOptimized: true,
+ *         masterInstanceTypes: ["c3.xlarge"],
+ *         masterLifecycle: "SPOT",
+ *         masterTarget: 1,
+ *         region: "us-west-2",
+ *         strategy: "clone",
+ *         tags: [{
+ *             key: "Creator",
+ *             value: "Pulumi",
+ *         }],
+ *         taskDesiredCapacity: 1,
+ *         taskEbsBlockDevices: [{
+ *             sizeInGb: 40,
+ *             volumeType: "gp2",
+ *             volumesPerInstance: 2,
+ *         }],
+ *         taskEbsOptimized: false,
+ *         taskInstanceTypes: [
+ *             "c3.xlarge",
+ *             "c4.xlarge",
+ *         ],
+ *         taskLifecycle: "SPOT",
+ *         taskMaxSize: 30,
+ *         taskMinSize: 0,
+ *         taskScalingDownPolicies: [{
+ *             actionType: "",
+ *             adjustment: "1",
+ *             cooldown: 60,
+ *             dimensions: {
+ *                 name: "name-1",
+ *                 value: "value-1",
+ *             },
+ *             evaluationPeriods: 10,
+ *             maxTargetCapacity: "1",
+ *             maximum: "10",
+ *             metricName: "CPUUtilization",
+ *             minimum: "0",
+ *             namespace: "AWS/EC2",
+ *             operator: "gt",
+ *             period: 60,
+ *             policyName: "policy-name",
+ *             statistic: "average",
+ *             target: "5",
+ *             threshold: 10,
+ *             unit: "",
+ *         }],
+ *         taskUnit: "instance",
+ *     });
+ *     const mrscaler_name = sample_MrScaler_01.name;
+ *     const mrscaler_created_cluster_id = sample_MrScaler_01.outputClusterId;
+ *     return {
+ *         "mrscaler-name": mrscaler_name,
+ *         "mrscaler-created-cluster-id": mrscaler_created_cluster_id,
+ *     };
+ * }
  * ```
  * ### Wrap Strategy
  *
@@ -235,7 +230,6 @@ import * as utilities from "../utilities";
  *         volumeType: "gp2",
  *         volumesPerInstance: 1,
  *     }],
- *     // --- TASK GROUP -------------
  *     taskInstanceTypes: [
  *         "c3.xlarge",
  *         "c4.xlarge",
@@ -403,7 +397,7 @@ export class MrScalar extends pulumi.CustomResource {
      */
     public readonly masterTarget!: pulumi.Output<number | undefined>;
     /**
-     * The application name.
+     * The MrScaler name.
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly outputClusterId!: pulumi.Output<string>;
@@ -774,7 +768,7 @@ export interface MrScalarState {
      */
     masterTarget?: pulumi.Input<number>;
     /**
-     * The application name.
+     * The MrScaler name.
      */
     name?: pulumi.Input<string>;
     outputClusterId?: pulumi.Input<string>;
@@ -1000,7 +994,7 @@ export interface MrScalarArgs {
      */
     masterTarget?: pulumi.Input<number>;
     /**
-     * The application name.
+     * The MrScaler name.
      */
     name?: pulumi.Input<string>;
     provisioningTimeout?: pulumi.Input<inputs.aws.MrScalarProvisioningTimeout>;

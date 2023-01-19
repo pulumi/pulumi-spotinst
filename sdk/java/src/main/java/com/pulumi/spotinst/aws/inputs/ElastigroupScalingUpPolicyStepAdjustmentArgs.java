@@ -15,14 +15,14 @@ public final class ElastigroupScalingUpPolicyStepAdjustmentArgs extends com.pulu
     public static final ElastigroupScalingUpPolicyStepAdjustmentArgs Empty = new ElastigroupScalingUpPolicyStepAdjustmentArgs();
 
     /**
-     * Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * The action to take when scale up according to step&#39;s threshold is needed.
      * 
      */
     @Import(name="action", required=true)
     private Output<ElastigroupScalingUpPolicyStepAdjustmentActionArgs> action;
 
     /**
-     * @return Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+     * @return The action to take when scale up according to step&#39;s threshold is needed.
      * 
      */
     public Output<ElastigroupScalingUpPolicyStepAdjustmentActionArgs> action() {
@@ -70,7 +70,7 @@ public final class ElastigroupScalingUpPolicyStepAdjustmentArgs extends com.pulu
         }
 
         /**
-         * @param action Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+         * @param action The action to take when scale up according to step&#39;s threshold is needed.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ElastigroupScalingUpPolicyStepAdjustmentArgs extends com.pulu
         }
 
         /**
-         * @param action Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+         * @param action The action to take when scale up according to step&#39;s threshold is needed.
          * 
          * @return builder
          * 

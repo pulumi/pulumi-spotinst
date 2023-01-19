@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate
     {
         /// <summary>
-        /// Actions to perform (options: timeWindow, never)
+        /// In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
         /// </summary>
         public readonly string? PerformAt;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? TimeWindow;
         /// <summary>
-        /// - Level to update
+        /// Level to update
         /// </summary>
         public readonly string? UpdateLevel;
 

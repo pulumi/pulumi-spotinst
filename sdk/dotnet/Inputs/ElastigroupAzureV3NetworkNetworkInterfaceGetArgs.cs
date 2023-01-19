@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class ElastigroupAzureV3NetworkNetworkInterfaceGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupAzureV3NetworkNetworkInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalIpConfigs")]
         private InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigGetArgs>? _additionalIpConfigs;
@@ -28,7 +28,7 @@ namespace Pulumi.SpotInst.Inputs
         private InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupGetArgs>? _applicationSecurityGroups;
 
         /// <summary>
-        /// - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+        /// List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
         /// </summary>
         public InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupGetArgs> ApplicationSecurityGroups
         {
@@ -39,9 +39,6 @@ namespace Pulumi.SpotInst.Inputs
         [Input("assignPublicIp", required: true)]
         public Input<bool> AssignPublicIp { get; set; } = null!;
 
-        /// <summary>
-        /// -
-        /// </summary>
         [Input("isPrimary", required: true)]
         public Input<bool> IsPrimary { get; set; } = null!;
 
@@ -54,5 +51,6 @@ namespace Pulumi.SpotInst.Inputs
         public ElastigroupAzureV3NetworkNetworkInterfaceGetArgs()
         {
         }
+        public static new ElastigroupAzureV3NetworkNetworkInterfaceGetArgs Empty => new ElastigroupAzureV3NetworkNetworkInterfaceGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class MrScalarMasterEbsBlockDeviceGetArgs : Pulumi.ResourceArgs
+    public sealed class MrScalarMasterEbsBlockDeviceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IOPS for the volume. Required in some volume types, such as io1.
@@ -31,7 +31,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> VolumeType { get; set; } = null!;
 
         /// <summary>
-        /// Amount of volumes per instance in the master group.
+        /// Amount of volumes per instance in the task group.
         /// </summary>
         [Input("volumesPerInstance")]
         public Input<int>? VolumesPerInstance { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public MrScalarMasterEbsBlockDeviceGetArgs()
         {
         }
+        public static new MrScalarMasterEbsBlockDeviceGetArgs Empty => new MrScalarMasterEbsBlockDeviceGetArgs();
     }
 }

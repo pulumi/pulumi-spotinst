@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupInstanceTypesCustomArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupInstanceTypesCustomArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupInstanceTypesCustomArgs()
         {
         }
+        public static new ElastigroupInstanceTypesCustomArgs Empty => new ElastigroupInstanceTypesCustomArgs();
     }
 }

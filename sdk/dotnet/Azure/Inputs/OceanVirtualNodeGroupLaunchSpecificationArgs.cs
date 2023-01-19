@@ -10,8 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanVirtualNodeGroupLaunchSpecificationArgs : Pulumi.ResourceArgs
+    public sealed class OceanVirtualNodeGroupLaunchSpecificationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The maximum number of pods per node in an AKS cluster.
+        /// </summary>
+        [Input("maxPods")]
+        public Input<int>? MaxPods { get; set; }
+
         /// <summary>
         /// Specify OS disk specification other than default.
         /// </summary>
@@ -33,5 +39,6 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public OceanVirtualNodeGroupLaunchSpecificationArgs()
         {
         }
+        public static new OceanVirtualNodeGroupLaunchSpecificationArgs Empty => new OceanVirtualNodeGroupLaunchSpecificationArgs();
     }
 }

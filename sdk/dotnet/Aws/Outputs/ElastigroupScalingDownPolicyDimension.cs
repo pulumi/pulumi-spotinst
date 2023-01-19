@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupScalingDownPolicyDimension
     {
         /// <summary>
-        /// The record set name.
+        /// The group name.
         /// </summary>
         public readonly string Name;
         /// <summary>

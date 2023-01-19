@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportUpdatePolicyArgs : Pulumi.ResourceArgs
+    public sealed class OceanImportUpdatePolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditionedRoll")]
         public Input<bool>? ConditionedRoll { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public OceanImportUpdatePolicyArgs()
         {
         }
+        public static new OceanImportUpdatePolicyArgs Empty => new OceanImportUpdatePolicyArgs();
     }
 }

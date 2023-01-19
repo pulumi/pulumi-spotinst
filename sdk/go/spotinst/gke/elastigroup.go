@@ -95,7 +95,7 @@ type Elastigroup struct {
 	pulumi.CustomResourceState
 
 	BackendServices ElastigroupBackendServiceArrayOutput `pulumi:"backendServices"`
-	// The GKE cluster ID you wish to import.
+	// The name of the GKE cluster you wish to import.
 	//
 	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
@@ -168,7 +168,7 @@ func GetElastigroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Elastigroup resources.
 type elastigroupState struct {
 	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
-	// The GKE cluster ID you wish to import.
+	// The name of the GKE cluster you wish to import.
 	//
 	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId *string `pulumi:"clusterId"`
@@ -207,7 +207,7 @@ type elastigroupState struct {
 
 type ElastigroupState struct {
 	BackendServices ElastigroupBackendServiceArrayInput
-	// The GKE cluster ID you wish to import.
+	// The name of the GKE cluster you wish to import.
 	//
 	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId pulumi.StringPtrInput
@@ -250,7 +250,7 @@ func (ElastigroupState) ElementType() reflect.Type {
 
 type elastigroupArgs struct {
 	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
-	// The GKE cluster ID you wish to import.
+	// The name of the GKE cluster you wish to import.
 	//
 	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId *string `pulumi:"clusterId"`
@@ -290,7 +290,7 @@ type elastigroupArgs struct {
 // The set of arguments for constructing a Elastigroup resource.
 type ElastigroupArgs struct {
 	BackendServices ElastigroupBackendServiceArrayInput
-	// The GKE cluster ID you wish to import.
+	// The name of the GKE cluster you wish to import.
 	//
 	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId pulumi.StringPtrInput
@@ -418,7 +418,7 @@ func (o ElastigroupOutput) BackendServices() ElastigroupBackendServiceArrayOutpu
 	return o.ApplyT(func(v *Elastigroup) ElastigroupBackendServiceArrayOutput { return v.BackendServices }).(ElastigroupBackendServiceArrayOutput)
 }
 
-// The GKE cluster ID you wish to import.
+// The name of the GKE cluster you wish to import.
 //
 // Deprecated: Please define cluster_id under integration_gke
 func (o ElastigroupOutput) ClusterId() pulumi.StringPtrOutput {

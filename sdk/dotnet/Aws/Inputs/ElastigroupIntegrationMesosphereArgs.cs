@@ -10,16 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationMesosphereArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationMesosphereArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The public IP of the DC/OS Master.
-        /// </summary>
         [Input("apiServer", required: true)]
         public Input<string> ApiServer { get; set; } = null!;
 
         public ElastigroupIntegrationMesosphereArgs()
         {
         }
+        public static new ElastigroupIntegrationMesosphereArgs Empty => new ElastigroupIntegrationMesosphereArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Inputs
 {
 
-    public sealed class StatefulNodeAzureTagGetArgs : Pulumi.ResourceArgs
+    public sealed class StatefulNodeAzureTagGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Inputs
         public StatefulNodeAzureTagGetArgs()
         {
         }
+        public static new StatefulNodeAzureTagGetArgs Empty => new StatefulNodeAzureTagGetArgs();
     }
 }

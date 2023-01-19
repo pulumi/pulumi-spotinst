@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs;
 import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLaunchSpecificationTagArgs;
+import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class OceanVirtualNodeGroupLaunchSpecificationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OceanVirtualNodeGroupLaunchSpecificationArgs Empty = new OceanVirtualNodeGroupLaunchSpecificationArgs();
+
+    /**
+     * The maximum number of pods per node in an AKS cluster.
+     * 
+     */
+    @Import(name="maxPods")
+    private @Nullable Output<Integer> maxPods;
+
+    /**
+     * @return The maximum number of pods per node in an AKS cluster.
+     * 
+     */
+    public Optional<Output<Integer>> maxPods() {
+        return Optional.ofNullable(this.maxPods);
+    }
 
     /**
      * Specify OS disk specification other than default.
@@ -50,6 +66,7 @@ public final class OceanVirtualNodeGroupLaunchSpecificationArgs extends com.pulu
     private OceanVirtualNodeGroupLaunchSpecificationArgs() {}
 
     private OceanVirtualNodeGroupLaunchSpecificationArgs(OceanVirtualNodeGroupLaunchSpecificationArgs $) {
+        this.maxPods = $.maxPods;
         this.osDisk = $.osDisk;
         this.tags = $.tags;
     }
@@ -70,6 +87,27 @@ public final class OceanVirtualNodeGroupLaunchSpecificationArgs extends com.pulu
 
         public Builder(OceanVirtualNodeGroupLaunchSpecificationArgs defaults) {
             $ = new OceanVirtualNodeGroupLaunchSpecificationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param maxPods The maximum number of pods per node in an AKS cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxPods(@Nullable Output<Integer> maxPods) {
+            $.maxPods = maxPods;
+            return this;
+        }
+
+        /**
+         * @param maxPods The maximum number of pods per node in an AKS cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxPods(Integer maxPods) {
+            return maxPods(Output.of(maxPods));
         }
 
         /**

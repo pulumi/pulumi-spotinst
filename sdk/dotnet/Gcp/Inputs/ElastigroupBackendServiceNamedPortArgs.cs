@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gcp.Inputs
 {
 
-    public sealed class ElastigroupBackendServiceNamedPortArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupBackendServiceNamedPortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dimension name.
+        /// The group name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public ElastigroupBackendServiceNamedPortArgs()
         {
         }
+        public static new ElastigroupBackendServiceNamedPortArgs Empty => new ElastigroupBackendServiceNamedPortArgs();
     }
 }

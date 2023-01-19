@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupScalingUpPolicyDimensionGetArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupScalingUpPolicyDimensionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The record set name.
+        /// The group name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupScalingUpPolicyDimensionGetArgs()
         {
         }
+        public static new ElastigroupScalingUpPolicyDimensionGetArgs Empty => new ElastigroupScalingUpPolicyDimensionGetArgs();
     }
 }

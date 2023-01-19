@@ -16,14 +16,14 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
     public static final ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs Empty = new ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs();
 
     /**
-     * Actions to perform (options: timeWindow, never)
+     * In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
      * 
      */
     @Import(name="performAt")
     private @Nullable Output<String> performAt;
 
     /**
-     * @return Actions to perform (options: timeWindow, never)
+     * @return In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
      * 
      */
     public Optional<Output<String>> performAt() {
@@ -46,14 +46,14 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
     }
 
     /**
-     * - Level to update
+     * Level to update
      * 
      */
     @Import(name="updateLevel")
     private @Nullable Output<String> updateLevel;
 
     /**
-     * @return - Level to update
+     * @return Level to update
      * 
      */
     public Optional<Output<String>> updateLevel() {
@@ -87,7 +87,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
         }
 
         /**
-         * @param performAt Actions to perform (options: timeWindow, never)
+         * @param performAt In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
         }
 
         /**
-         * @param performAt Actions to perform (options: timeWindow, never)
+         * @param performAt In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
         }
 
         /**
-         * @param updateLevel - Level to update
+         * @param updateLevel Level to update
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
         }
 
         /**
-         * @param updateLevel - Level to update
+         * @param updateLevel Level to update
          * 
          * @return builder
          * 

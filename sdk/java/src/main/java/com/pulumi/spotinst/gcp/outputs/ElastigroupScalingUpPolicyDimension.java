@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupScalingUpPolicyDimension {
     /**
-     * @return The dimension name.
+     * @return The group name.
      * 
      */
     private String name;
     /**
-     * @return The dimension value.
+     * @return Labels value.
      * 
      */
     private @Nullable String value;
 
     private ElastigroupScalingUpPolicyDimension() {}
     /**
-     * @return The dimension name.
+     * @return The group name.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The dimension value.
+     * @return Labels value.
      * 
      */
     public Optional<String> value() {

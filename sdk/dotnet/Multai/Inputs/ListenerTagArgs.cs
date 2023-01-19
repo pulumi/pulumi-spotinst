@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Multai.Inputs
 {
 
-    public sealed class ListenerTagArgs : Pulumi.ResourceArgs
+    public sealed class ListenerTagArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SpotInst.Multai.Inputs
         public ListenerTagArgs()
         {
         }
+        public static new ListenerTagArgs Empty => new ListenerTagArgs();
     }
 }

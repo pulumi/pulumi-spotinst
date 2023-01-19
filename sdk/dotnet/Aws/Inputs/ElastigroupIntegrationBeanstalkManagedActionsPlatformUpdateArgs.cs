@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs : Pulumi.ResourceArgs
+    public sealed class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Actions to perform (options: timeWindow, never)
+        /// In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
         /// </summary>
         [Input("performAt")]
         public Input<string>? PerformAt { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? TimeWindow { get; set; }
 
         /// <summary>
-        /// - Level to update
+        /// Level to update
         /// </summary>
         [Input("updateLevel")]
         public Input<string>? UpdateLevel { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs()
         {
         }
+        public static new ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs Empty => new ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs();
     }
 }

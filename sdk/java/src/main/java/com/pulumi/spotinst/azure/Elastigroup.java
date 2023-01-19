@@ -36,10 +36,27 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.azure.Elastigroup;
+ * import com.pulumi.spotinst.azure.ElastigroupArgs;
+ * import com.pulumi.spotinst.azure.inputs.ElastigroupHealthCheckArgs;
+ * import com.pulumi.spotinst.azure.inputs.ElastigroupImageArgs;
+ * import com.pulumi.spotinst.azure.inputs.ElastigroupLoadBalancerArgs;
+ * import com.pulumi.spotinst.azure.inputs.ElastigroupLoginArgs;
+ * import com.pulumi.spotinst.azure.inputs.ElastigroupManagedServiceIdentityArgs;
+ * import com.pulumi.spotinst.azure.inputs.ElastigroupNetworkArgs;
+ * import com.pulumi.spotinst.azure.inputs.ElastigroupScalingDownPolicyArgs;
+ * import com.pulumi.spotinst.azure.inputs.ElastigroupScalingUpPolicyArgs;
+ * import com.pulumi.spotinst.azure.inputs.ElastigroupScheduledTaskArgs;
+ * import com.pulumi.spotinst.azure.inputs.ElastigroupStrategyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -180,31 +197,15 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> desiredCapacity() {
         return Codegen.optional(this.desiredCapacity);
     }
-    /**
-     * Describes the health check configuration.
-     * 
-     */
     @Export(name="healthCheck", type=ElastigroupHealthCheck.class, parameters={})
     private Output</* @Nullable */ ElastigroupHealthCheck> healthCheck;
 
-    /**
-     * @return Describes the health check configuration.
-     * 
-     */
     public Output<Optional<ElastigroupHealthCheck>> healthCheck() {
         return Codegen.optional(this.healthCheck);
     }
-    /**
-     * Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     * 
-     */
     @Export(name="images", type=List.class, parameters={ElastigroupImage.class})
     private Output</* @Nullable */ List<ElastigroupImage>> images;
 
-    /**
-     * @return Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-     * 
-     */
     public Output<Optional<List<ElastigroupImage>>> images() {
         return Codegen.optional(this.images);
     }
@@ -236,31 +237,15 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<ElastigroupIntegrationMultaiRuntime>> integrationMultaiRuntime() {
         return Codegen.optional(this.integrationMultaiRuntime);
     }
-    /**
-     * Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-     * 
-     */
     @Export(name="loadBalancers", type=List.class, parameters={ElastigroupLoadBalancer.class})
     private Output</* @Nullable */ List<ElastigroupLoadBalancer>> loadBalancers;
 
-    /**
-     * @return Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
-     * 
-     */
     public Output<Optional<List<ElastigroupLoadBalancer>>> loadBalancers() {
         return Codegen.optional(this.loadBalancers);
     }
-    /**
-     * Describes the login configuration.
-     * 
-     */
     @Export(name="login", type=ElastigroupLogin.class, parameters={})
     private Output</* @Nullable */ ElastigroupLogin> login;
 
-    /**
-     * @return Describes the login configuration.
-     * 
-     */
     public Output<Optional<ElastigroupLogin>> login() {
         return Codegen.optional(this.login);
     }
@@ -313,30 +298,22 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return this.minSize;
     }
     /**
-     * The dimension name.
+     * The name of the managed identity.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The dimension name.
+     * @return The name of the managed identity.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Defines the Virtual Network and Subnet for your Elastigroup.
-     * 
-     */
     @Export(name="network", type=ElastigroupNetwork.class, parameters={})
     private Output<ElastigroupNetwork> network;
 
-    /**
-     * @return Defines the Virtual Network and Subnet for your Elastigroup.
-     * 
-     */
     public Output<ElastigroupNetwork> network() {
         return this.network;
     }
@@ -383,14 +360,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Vnet Resource Group Name.
+     * The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     @Export(name="resourceGroupName", type=String.class, parameters={})
     private Output<String> resourceGroupName;
 
     /**
-     * @return Vnet Resource Group Name.
+     * @return The Resource Group that the user-assigned managed identity resides in.
      * 
      */
     public Output<String> resourceGroupName() {

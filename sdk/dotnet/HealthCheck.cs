@@ -15,36 +15,34 @@ namespace Pulumi.SpotInst
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var httpCheck = new SpotInst.HealthCheck("httpCheck", new()
     ///     {
-    ///         var httpCheck = new SpotInst.HealthCheck("httpCheck", new SpotInst.HealthCheckArgs
+    ///         Check = new SpotInst.Inputs.HealthCheckCheckArgs
     ///         {
-    ///             Check = new SpotInst.Inputs.HealthCheckCheckArgs
-    ///             {
-    ///                 Endpoint = "http://endpoint.com",
-    ///                 Healthy = 1,
-    ///                 Interval = 10,
-    ///                 Port = 1337,
-    ///                 Protocol = "http",
-    ///                 Timeout = 10,
-    ///                 Unhealthy = 1,
-    ///             },
-    ///             ProxyAddress = "http://proxy.com",
-    ///             ProxyPort = 80,
-    ///             ResourceId = "sig-123",
-    ///         });
-    ///     }
+    ///             Endpoint = "http://endpoint.com",
+    ///             Healthy = 1,
+    ///             Interval = 10,
+    ///             Port = 1337,
+    ///             Protocol = "http",
+    ///             Timeout = 10,
+    ///             Unhealthy = 1,
+    ///         },
+    ///         ProxyAddress = "http://proxy.com",
+    ///         ProxyPort = 80,
+    ///         ResourceId = "sig-123",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:index/healthCheck:HealthCheck")]
-    public partial class HealthCheck : Pulumi.CustomResource
+    public partial class HealthCheck : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Describes the check to execute.
@@ -114,7 +112,7 @@ namespace Pulumi.SpotInst
         }
     }
 
-    public sealed class HealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class HealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes the check to execute.
@@ -143,9 +141,10 @@ namespace Pulumi.SpotInst
         public HealthCheckArgs()
         {
         }
+        public static new HealthCheckArgs Empty => new HealthCheckArgs();
     }
 
-    public sealed class HealthCheckState : Pulumi.ResourceArgs
+    public sealed class HealthCheckState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes the check to execute.
@@ -174,5 +173,6 @@ namespace Pulumi.SpotInst
         public HealthCheckState()
         {
         }
+        public static new HealthCheckState Empty => new HealthCheckState();
     }
 }

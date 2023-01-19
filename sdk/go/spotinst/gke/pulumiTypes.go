@@ -825,7 +825,7 @@ type ElastigroupIntegrationGke struct {
 	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
 	// Labels to assign to the resource.
 	AutoscaleLabels []ElastigroupIntegrationGkeAutoscaleLabel `pulumi:"autoscaleLabels"`
-	// The GKE cluster ID you wish to import.
+	// The name of the GKE cluster you wish to import.
 	ClusterId *string `pulumi:"clusterId"`
 	// The location of your GKE cluster.
 	Location *string `pulumi:"location"`
@@ -855,7 +855,7 @@ type ElastigroupIntegrationGkeArgs struct {
 	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
 	// Labels to assign to the resource.
 	AutoscaleLabels ElastigroupIntegrationGkeAutoscaleLabelArrayInput `pulumi:"autoscaleLabels"`
-	// The GKE cluster ID you wish to import.
+	// The name of the GKE cluster you wish to import.
 	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
 	// The location of your GKE cluster.
 	Location pulumi.StringPtrInput `pulumi:"location"`
@@ -973,7 +973,7 @@ func (o ElastigroupIntegrationGkeOutput) AutoscaleLabels() ElastigroupIntegratio
 	return o.ApplyT(func(v ElastigroupIntegrationGke) []ElastigroupIntegrationGkeAutoscaleLabel { return v.AutoscaleLabels }).(ElastigroupIntegrationGkeAutoscaleLabelArrayOutput)
 }
 
-// The GKE cluster ID you wish to import.
+// The name of the GKE cluster you wish to import.
 func (o ElastigroupIntegrationGkeOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
@@ -1075,7 +1075,7 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoscaleLabels() ElastigroupIntegra
 	}).(ElastigroupIntegrationGkeAutoscaleLabelArrayOutput)
 }
 
-// The GKE cluster ID you wish to import.
+// The name of the GKE cluster you wish to import.
 func (o ElastigroupIntegrationGkePtrOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *string {
 		if v == nil {
@@ -3694,7 +3694,8 @@ func (o OceanImportScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanImpor
 }
 
 type OceanImportScheduledTaskShutdownHours struct {
-	// Enable the Ocean Kubernetes Autoscaler.
+	// Flag to enable / disable the shutdown hours.
+	// Example: True
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
 	// Example: Fri:15:30-Wed:14:30
@@ -3713,7 +3714,8 @@ type OceanImportScheduledTaskShutdownHoursInput interface {
 }
 
 type OceanImportScheduledTaskShutdownHoursArgs struct {
-	// Enable the Ocean Kubernetes Autoscaler.
+	// Flag to enable / disable the shutdown hours.
+	// Example: True
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
 	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
 	// Example: Fri:15:30-Wed:14:30
@@ -3797,7 +3799,8 @@ func (o OceanImportScheduledTaskShutdownHoursOutput) ToOceanImportScheduledTaskS
 	}).(OceanImportScheduledTaskShutdownHoursPtrOutput)
 }
 
-// Enable the Ocean Kubernetes Autoscaler.
+// Flag to enable / disable the shutdown hours.
+// Example: True
 func (o OceanImportScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -3832,7 +3835,8 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) Elem() OceanImportSchedu
 	}).(OceanImportScheduledTaskShutdownHoursOutput)
 }
 
-// Enable the Ocean Kubernetes Autoscaler.
+// Flag to enable / disable the shutdown hours.
+// Example: True
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) *bool {
 		if v == nil {
@@ -3860,7 +3864,8 @@ type OceanImportScheduledTaskTask struct {
 	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
 	// Example: 0 1 * * *
 	CronExpression string `pulumi:"cronExpression"`
-	// Enable the Ocean Kubernetes Autoscaler.
+	// Flag to enable / disable the shutdown hours.
+	// Example: True
 	IsEnabled bool `pulumi:"isEnabled"`
 	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
 	TaskType string `pulumi:"taskType"`
@@ -3884,7 +3889,8 @@ type OceanImportScheduledTaskTaskArgs struct {
 	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
 	// Example: 0 1 * * *
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Enable the Ocean Kubernetes Autoscaler.
+	// Flag to enable / disable the shutdown hours.
+	// Example: True
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
 	TaskType pulumi.StringInput `pulumi:"taskType"`
@@ -3953,7 +3959,8 @@ func (o OceanImportScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Enable the Ocean Kubernetes Autoscaler.
+// Flag to enable / disable the shutdown hours.
+// Example: True
 func (o OceanImportScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }

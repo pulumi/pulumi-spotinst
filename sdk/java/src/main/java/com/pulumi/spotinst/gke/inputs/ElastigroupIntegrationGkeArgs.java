@@ -111,14 +111,14 @@ public final class ElastigroupIntegrationGkeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The GKE cluster ID you wish to import.
+     * The name of the GKE cluster you wish to import.
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return The GKE cluster ID you wish to import.
+     * @return The name of the GKE cluster you wish to import.
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -306,7 +306,7 @@ public final class ElastigroupIntegrationGkeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clusterId The GKE cluster ID you wish to import.
+         * @param clusterId The name of the GKE cluster you wish to import.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class ElastigroupIntegrationGkeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clusterId The GKE cluster ID you wish to import.
+         * @param clusterId The name of the GKE cluster you wish to import.
          * 
          * @return builder
          * 
