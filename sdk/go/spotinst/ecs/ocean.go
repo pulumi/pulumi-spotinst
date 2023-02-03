@@ -34,7 +34,8 @@ type Ocean struct {
 	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	// The name of the ECS cluster.
-	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
+	ClusterName         pulumi.StringOutput                `pulumi:"clusterName"`
+	ClusterOrientations OceanClusterOrientationArrayOutput `pulumi:"clusterOrientations"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntOutput `pulumi:"desiredCapacity"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -138,7 +139,8 @@ type oceanState struct {
 	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The name of the ECS cluster.
-	ClusterName *string `pulumi:"clusterName"`
+	ClusterName         *string                   `pulumi:"clusterName"`
+	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -202,7 +204,8 @@ type OceanState struct {
 	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	// The name of the ECS cluster.
-	ClusterName pulumi.StringPtrInput
+	ClusterName         pulumi.StringPtrInput
+	ClusterOrientations OceanClusterOrientationArrayInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -270,7 +273,8 @@ type oceanArgs struct {
 	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The name of the ECS cluster.
-	ClusterName string `pulumi:"clusterName"`
+	ClusterName         string                    `pulumi:"clusterName"`
+	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -335,7 +339,8 @@ type OceanArgs struct {
 	// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	// The name of the ECS cluster.
-	ClusterName pulumi.StringInput
+	ClusterName         pulumi.StringInput
+	ClusterOrientations OceanClusterOrientationArrayInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -499,6 +504,10 @@ func (o OceanOutput) BlockDeviceMappings() OceanBlockDeviceMappingArrayOutput {
 // The name of the ECS cluster.
 func (o OceanOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+func (o OceanOutput) ClusterOrientations() OceanClusterOrientationArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanClusterOrientationArrayOutput { return v.ClusterOrientations }).(OceanClusterOrientationArrayOutput)
 }
 
 // The number of instances to launch and maintain in the cluster.

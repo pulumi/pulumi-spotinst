@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.aws.OceanLaunchSpecArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecState;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecAutoscaleDown;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecAutoscaleHeadroom;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecBlockDeviceMapping;
@@ -43,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.aws.OceanLaunchSpec;
  * import com.pulumi.spotinst.aws.OceanLaunchSpecArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleDownArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
@@ -74,6 +76,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new OceanLaunchSpec(&#34;example&#34;, OceanLaunchSpecArgs.builder()        
  *             .associatePublicIpAddress(true)
+ *             .autoscaleDowns(OceanLaunchSpecAutoscaleDownArgs.builder()
+ *                 .maxScaleDownPercentage(20)
+ *                 .build())
  *             .autoscaleHeadrooms(OceanLaunchSpecAutoscaleHeadroomArgs.builder()
  *                 .cpuPerUnit(1000)
  *                 .gpuPerUnit(0)
@@ -237,6 +242,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> associatePublicIpAddress() {
         return Codegen.optional(this.associatePublicIpAddress);
+    }
+    /**
+     * Auto Scaling scale down operations.
+     * 
+     */
+    @Export(name="autoscaleDowns", type=List.class, parameters={OceanLaunchSpecAutoscaleDown.class})
+    private Output</* @Nullable */ List<OceanLaunchSpecAutoscaleDown>> autoscaleDowns;
+
+    /**
+     * @return Auto Scaling scale down operations.
+     * 
+     */
+    public Output<Optional<List<OceanLaunchSpecAutoscaleDown>>> autoscaleDowns() {
+        return Codegen.optional(this.autoscaleDowns);
     }
     /**
      * Set custom headroom per Virtual Node Group. Provide a list of headrooms object.

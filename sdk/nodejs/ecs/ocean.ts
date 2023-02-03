@@ -65,6 +65,7 @@ export class Ocean extends pulumi.CustomResource {
      * The name of the ECS cluster.
      */
     public readonly clusterName!: pulumi.Output<string>;
+    public readonly clusterOrientations!: pulumi.Output<outputs.ecs.OceanClusterOrientation[] | undefined>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
@@ -185,6 +186,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["blacklists"] = state ? state.blacklists : undefined;
             resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
+            resourceInputs["clusterOrientations"] = state ? state.clusterOrientations : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
             resourceInputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
@@ -230,6 +232,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["blacklists"] = args ? args.blacklists : undefined;
             resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
+            resourceInputs["clusterOrientations"] = args ? args.clusterOrientations : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
             resourceInputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
@@ -286,6 +289,7 @@ export interface OceanState {
      * The name of the ECS cluster.
      */
     clusterName?: pulumi.Input<string>;
+    clusterOrientations?: pulumi.Input<pulumi.Input<inputs.ecs.OceanClusterOrientation>[]>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
@@ -413,6 +417,7 @@ export interface OceanArgs {
      * The name of the ECS cluster.
      */
     clusterName: pulumi.Input<string>;
+    clusterOrientations?: pulumi.Input<pulumi.Input<inputs.ecs.OceanClusterOrientation>[]>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */

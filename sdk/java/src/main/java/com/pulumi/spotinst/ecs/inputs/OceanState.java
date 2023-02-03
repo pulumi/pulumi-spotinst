@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.ecs.inputs.OceanAutoscalerArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingArgs;
+import com.pulumi.spotinst.ecs.inputs.OceanClusterOrientationArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanFiltersArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLoggingArgs;
@@ -100,6 +101,13 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> clusterName() {
         return Optional.ofNullable(this.clusterName);
+    }
+
+    @Import(name="clusterOrientations")
+    private @Nullable Output<List<OceanClusterOrientationArgs>> clusterOrientations;
+
+    public Optional<Output<List<OceanClusterOrientationArgs>>> clusterOrientations() {
+        return Optional.ofNullable(this.clusterOrientations);
     }
 
     /**
@@ -492,6 +500,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         this.blacklists = $.blacklists;
         this.blockDeviceMappings = $.blockDeviceMappings;
         this.clusterName = $.clusterName;
+        this.clusterOrientations = $.clusterOrientations;
         this.desiredCapacity = $.desiredCapacity;
         this.drainingTimeout = $.drainingTimeout;
         this.ebsOptimized = $.ebsOptimized;
@@ -661,6 +670,19 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterName(String clusterName) {
             return clusterName(Output.of(clusterName));
+        }
+
+        public Builder clusterOrientations(@Nullable Output<List<OceanClusterOrientationArgs>> clusterOrientations) {
+            $.clusterOrientations = clusterOrientations;
+            return this;
+        }
+
+        public Builder clusterOrientations(List<OceanClusterOrientationArgs> clusterOrientations) {
+            return clusterOrientations(Output.of(clusterOrientations));
+        }
+
+        public Builder clusterOrientations(OceanClusterOrientationArgs... clusterOrientations) {
+            return clusterOrientations(List.of(clusterOrientations));
         }
 
         /**

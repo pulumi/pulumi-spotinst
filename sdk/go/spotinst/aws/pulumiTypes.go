@@ -17749,6 +17749,103 @@ func (o OceanInstanceMetadataOptionsPtrOutput) HttpTokens() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type OceanLaunchSpecAutoscaleDown struct {
+	// The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
+	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
+}
+
+// OceanLaunchSpecAutoscaleDownInput is an input type that accepts OceanLaunchSpecAutoscaleDownArgs and OceanLaunchSpecAutoscaleDownOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecAutoscaleDownInput` via:
+//
+//	OceanLaunchSpecAutoscaleDownArgs{...}
+type OceanLaunchSpecAutoscaleDownInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecAutoscaleDownOutput() OceanLaunchSpecAutoscaleDownOutput
+	ToOceanLaunchSpecAutoscaleDownOutputWithContext(context.Context) OceanLaunchSpecAutoscaleDownOutput
+}
+
+type OceanLaunchSpecAutoscaleDownArgs struct {
+	// The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
+	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
+}
+
+func (OceanLaunchSpecAutoscaleDownArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecAutoscaleDown)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecAutoscaleDownArgs) ToOceanLaunchSpecAutoscaleDownOutput() OceanLaunchSpecAutoscaleDownOutput {
+	return i.ToOceanLaunchSpecAutoscaleDownOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecAutoscaleDownArgs) ToOceanLaunchSpecAutoscaleDownOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleDownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecAutoscaleDownOutput)
+}
+
+// OceanLaunchSpecAutoscaleDownArrayInput is an input type that accepts OceanLaunchSpecAutoscaleDownArray and OceanLaunchSpecAutoscaleDownArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecAutoscaleDownArrayInput` via:
+//
+//	OceanLaunchSpecAutoscaleDownArray{ OceanLaunchSpecAutoscaleDownArgs{...} }
+type OceanLaunchSpecAutoscaleDownArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecAutoscaleDownArrayOutput() OceanLaunchSpecAutoscaleDownArrayOutput
+	ToOceanLaunchSpecAutoscaleDownArrayOutputWithContext(context.Context) OceanLaunchSpecAutoscaleDownArrayOutput
+}
+
+type OceanLaunchSpecAutoscaleDownArray []OceanLaunchSpecAutoscaleDownInput
+
+func (OceanLaunchSpecAutoscaleDownArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecAutoscaleDown)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecAutoscaleDownArray) ToOceanLaunchSpecAutoscaleDownArrayOutput() OceanLaunchSpecAutoscaleDownArrayOutput {
+	return i.ToOceanLaunchSpecAutoscaleDownArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecAutoscaleDownArray) ToOceanLaunchSpecAutoscaleDownArrayOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleDownArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecAutoscaleDownArrayOutput)
+}
+
+type OceanLaunchSpecAutoscaleDownOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecAutoscaleDownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecAutoscaleDown)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecAutoscaleDownOutput) ToOceanLaunchSpecAutoscaleDownOutput() OceanLaunchSpecAutoscaleDownOutput {
+	return o
+}
+
+func (o OceanLaunchSpecAutoscaleDownOutput) ToOceanLaunchSpecAutoscaleDownOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleDownOutput {
+	return o
+}
+
+// The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
+func (o OceanLaunchSpecAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
+}
+
+type OceanLaunchSpecAutoscaleDownArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecAutoscaleDownArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecAutoscaleDown)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecAutoscaleDownArrayOutput) ToOceanLaunchSpecAutoscaleDownArrayOutput() OceanLaunchSpecAutoscaleDownArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecAutoscaleDownArrayOutput) ToOceanLaunchSpecAutoscaleDownArrayOutputWithContext(ctx context.Context) OceanLaunchSpecAutoscaleDownArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecAutoscaleDownArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecAutoscaleDownOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecAutoscaleDown {
+		return vs[0].([]OceanLaunchSpecAutoscaleDown)[vs[1].(int)]
+	}).(OceanLaunchSpecAutoscaleDownOutput)
+}
+
 type OceanLaunchSpecAutoscaleHeadroom struct {
 	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 	CpuPerUnit *int `pulumi:"cpuPerUnit"`
@@ -21980,6 +22077,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanFiltersPtrInput)(nil)).Elem(), OceanFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsPtrInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleDownInput)(nil)).Elem(), OceanLaunchSpecAutoscaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleDownArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleDownArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomaticInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{})
@@ -22268,6 +22367,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanInstanceMetadataOptionsOutput{})
 	pulumi.RegisterOutputType(OceanInstanceMetadataOptionsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleDownOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleDownArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput{})

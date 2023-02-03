@@ -1316,6 +1316,103 @@ func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerResourceUni
 	}).(pulumi.IntPtrOutput)
 }
 
+type OceanClusterOrientation struct {
+	// You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+	AvailabilityVsCost *string `pulumi:"availabilityVsCost"`
+}
+
+// OceanClusterOrientationInput is an input type that accepts OceanClusterOrientationArgs and OceanClusterOrientationOutput values.
+// You can construct a concrete instance of `OceanClusterOrientationInput` via:
+//
+//	OceanClusterOrientationArgs{...}
+type OceanClusterOrientationInput interface {
+	pulumi.Input
+
+	ToOceanClusterOrientationOutput() OceanClusterOrientationOutput
+	ToOceanClusterOrientationOutputWithContext(context.Context) OceanClusterOrientationOutput
+}
+
+type OceanClusterOrientationArgs struct {
+	// You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+	AvailabilityVsCost pulumi.StringPtrInput `pulumi:"availabilityVsCost"`
+}
+
+func (OceanClusterOrientationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanClusterOrientation)(nil)).Elem()
+}
+
+func (i OceanClusterOrientationArgs) ToOceanClusterOrientationOutput() OceanClusterOrientationOutput {
+	return i.ToOceanClusterOrientationOutputWithContext(context.Background())
+}
+
+func (i OceanClusterOrientationArgs) ToOceanClusterOrientationOutputWithContext(ctx context.Context) OceanClusterOrientationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanClusterOrientationOutput)
+}
+
+// OceanClusterOrientationArrayInput is an input type that accepts OceanClusterOrientationArray and OceanClusterOrientationArrayOutput values.
+// You can construct a concrete instance of `OceanClusterOrientationArrayInput` via:
+//
+//	OceanClusterOrientationArray{ OceanClusterOrientationArgs{...} }
+type OceanClusterOrientationArrayInput interface {
+	pulumi.Input
+
+	ToOceanClusterOrientationArrayOutput() OceanClusterOrientationArrayOutput
+	ToOceanClusterOrientationArrayOutputWithContext(context.Context) OceanClusterOrientationArrayOutput
+}
+
+type OceanClusterOrientationArray []OceanClusterOrientationInput
+
+func (OceanClusterOrientationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanClusterOrientation)(nil)).Elem()
+}
+
+func (i OceanClusterOrientationArray) ToOceanClusterOrientationArrayOutput() OceanClusterOrientationArrayOutput {
+	return i.ToOceanClusterOrientationArrayOutputWithContext(context.Background())
+}
+
+func (i OceanClusterOrientationArray) ToOceanClusterOrientationArrayOutputWithContext(ctx context.Context) OceanClusterOrientationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanClusterOrientationArrayOutput)
+}
+
+type OceanClusterOrientationOutput struct{ *pulumi.OutputState }
+
+func (OceanClusterOrientationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanClusterOrientation)(nil)).Elem()
+}
+
+func (o OceanClusterOrientationOutput) ToOceanClusterOrientationOutput() OceanClusterOrientationOutput {
+	return o
+}
+
+func (o OceanClusterOrientationOutput) ToOceanClusterOrientationOutputWithContext(ctx context.Context) OceanClusterOrientationOutput {
+	return o
+}
+
+// You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+func (o OceanClusterOrientationOutput) AvailabilityVsCost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanClusterOrientation) *string { return v.AvailabilityVsCost }).(pulumi.StringPtrOutput)
+}
+
+type OceanClusterOrientationArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanClusterOrientationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanClusterOrientation)(nil)).Elem()
+}
+
+func (o OceanClusterOrientationArrayOutput) ToOceanClusterOrientationArrayOutput() OceanClusterOrientationArrayOutput {
+	return o
+}
+
+func (o OceanClusterOrientationArrayOutput) ToOceanClusterOrientationArrayOutputWithContext(ctx context.Context) OceanClusterOrientationArrayOutput {
+	return o
+}
+
+func (o OceanClusterOrientationArrayOutput) Index(i pulumi.IntInput) OceanClusterOrientationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanClusterOrientation {
+		return vs[0].([]OceanClusterOrientation)[vs[1].(int)]
+	}).(OceanClusterOrientationOutput)
+}
+
 type OceanFilters struct {
 	// The filtered instance types will support at least one of the architectures from this list.
 	Architectures []string `pulumi:"architectures"`
@@ -4536,6 +4633,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsPtrInput)(nil)).Elem(), OceanBlockDeviceMappingEbsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsDynamicVolumeSizeInput)(nil)).Elem(), OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput)(nil)).Elem(), OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanClusterOrientationInput)(nil)).Elem(), OceanClusterOrientationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanClusterOrientationArrayInput)(nil)).Elem(), OceanClusterOrientationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanFiltersInput)(nil)).Elem(), OceanFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanFiltersPtrInput)(nil)).Elem(), OceanFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanInstanceMetadataOptionsInput)(nil)).Elem(), OceanInstanceMetadataOptionsArgs{})
@@ -4592,6 +4691,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsPtrOutput{})
 	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput{})
 	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput{})
+	pulumi.RegisterOutputType(OceanClusterOrientationOutput{})
+	pulumi.RegisterOutputType(OceanClusterOrientationArrayOutput{})
 	pulumi.RegisterOutputType(OceanFiltersOutput{})
 	pulumi.RegisterOutputType(OceanFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanInstanceMetadataOptionsOutput{})

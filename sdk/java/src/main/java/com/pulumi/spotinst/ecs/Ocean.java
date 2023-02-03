@@ -12,6 +12,7 @@ import com.pulumi.spotinst.ecs.OceanArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanState;
 import com.pulumi.spotinst.ecs.outputs.OceanAutoscaler;
 import com.pulumi.spotinst.ecs.outputs.OceanBlockDeviceMapping;
+import com.pulumi.spotinst.ecs.outputs.OceanClusterOrientation;
 import com.pulumi.spotinst.ecs.outputs.OceanFilters;
 import com.pulumi.spotinst.ecs.outputs.OceanInstanceMetadataOptions;
 import com.pulumi.spotinst.ecs.outputs.OceanLogging;
@@ -42,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingEbsArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanClusterOrientationArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanInstanceMetadataOptionsArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLoggingArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLoggingExportArgs;
@@ -78,6 +80,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .clusterName(&#34;sample-ecs-cluster&#34;)
+ *             .clusterOrientations(OceanClusterOrientationArgs.builder()
+ *                 .availabilityVsCost(&#34;balanced&#34;)
+ *                 .build())
  *             .desiredCapacity(&#34;0&#34;)
  *             .drainingTimeout(120)
  *             .ebsOptimized(true)
@@ -225,6 +230,12 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<String> clusterName() {
         return this.clusterName;
+    }
+    @Export(name="clusterOrientations", type=List.class, parameters={OceanClusterOrientation.class})
+    private Output</* @Nullable */ List<OceanClusterOrientation>> clusterOrientations;
+
+    public Output<Optional<List<OceanClusterOrientation>>> clusterOrientations() {
+        return Codegen.optional(this.clusterOrientations);
     }
     /**
      * The number of instances to launch and maintain in the cluster.

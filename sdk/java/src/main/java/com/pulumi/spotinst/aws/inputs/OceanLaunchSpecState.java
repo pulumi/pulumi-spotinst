@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleDownArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
@@ -45,6 +46,21 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Boolean>> associatePublicIpAddress() {
         return Optional.ofNullable(this.associatePublicIpAddress);
+    }
+
+    /**
+     * Auto Scaling scale down operations.
+     * 
+     */
+    @Import(name="autoscaleDowns")
+    private @Nullable Output<List<OceanLaunchSpecAutoscaleDownArgs>> autoscaleDowns;
+
+    /**
+     * @return Auto Scaling scale down operations.
+     * 
+     */
+    public Optional<Output<List<OceanLaunchSpecAutoscaleDownArgs>>> autoscaleDowns() {
+        return Optional.ofNullable(this.autoscaleDowns);
     }
 
     /**
@@ -386,6 +402,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
 
     private OceanLaunchSpecState(OceanLaunchSpecState $) {
         this.associatePublicIpAddress = $.associatePublicIpAddress;
+        this.autoscaleDowns = $.autoscaleDowns;
         this.autoscaleHeadrooms = $.autoscaleHeadrooms;
         this.autoscaleHeadroomsAutomatics = $.autoscaleHeadroomsAutomatics;
         this.blockDeviceMappings = $.blockDeviceMappings;
@@ -450,6 +467,37 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
          */
         public Builder associatePublicIpAddress(Boolean associatePublicIpAddress) {
             return associatePublicIpAddress(Output.of(associatePublicIpAddress));
+        }
+
+        /**
+         * @param autoscaleDowns Auto Scaling scale down operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaleDowns(@Nullable Output<List<OceanLaunchSpecAutoscaleDownArgs>> autoscaleDowns) {
+            $.autoscaleDowns = autoscaleDowns;
+            return this;
+        }
+
+        /**
+         * @param autoscaleDowns Auto Scaling scale down operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaleDowns(List<OceanLaunchSpecAutoscaleDownArgs> autoscaleDowns) {
+            return autoscaleDowns(Output.of(autoscaleDowns));
+        }
+
+        /**
+         * @param autoscaleDowns Auto Scaling scale down operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaleDowns(OceanLaunchSpecAutoscaleDownArgs... autoscaleDowns) {
+            return autoscaleDowns(List.of(autoscaleDowns));
         }
 
         /**

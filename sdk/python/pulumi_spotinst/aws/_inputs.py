@@ -125,6 +125,7 @@ __all__ = [
     'OceanClusterOrientationArgs',
     'OceanFiltersArgs',
     'OceanInstanceMetadataOptionsArgs',
+    'OceanLaunchSpecAutoscaleDownArgs',
     'OceanLaunchSpecAutoscaleHeadroomArgs',
     'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs',
     'OceanLaunchSpecBlockDeviceMappingArgs',
@@ -8821,6 +8822,29 @@ class OceanInstanceMetadataOptionsArgs:
     @http_put_response_hop_limit.setter
     def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "http_put_response_hop_limit", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecAutoscaleDownArgs:
+    def __init__(__self__, *,
+                 max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[float] max_scale_down_percentage: The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
+        """
+        if max_scale_down_percentage is not None:
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
+
+    @property
+    @pulumi.getter(name="maxScaleDownPercentage")
+    def max_scale_down_percentage(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
+        """
+        return pulumi.get(self, "max_scale_down_percentage")
+
+    @max_scale_down_percentage.setter
+    def max_scale_down_percentage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_scale_down_percentage", value)
 
 
 @pulumi.input_type

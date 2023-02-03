@@ -17,6 +17,7 @@ __all__ = [
     'OceanBlockDeviceMappingArgs',
     'OceanBlockDeviceMappingEbsArgs',
     'OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs',
+    'OceanClusterOrientationArgs',
     'OceanFiltersArgs',
     'OceanInstanceMetadataOptionsArgs',
     'OceanLaunchSpecAttributeArgs',
@@ -543,6 +544,29 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @size_per_resource_unit.setter
     def size_per_resource_unit(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_per_resource_unit", value)
+
+
+@pulumi.input_type
+class OceanClusterOrientationArgs:
+    def __init__(__self__, *,
+                 availability_vs_cost: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] availability_vs_cost: You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+        """
+        if availability_vs_cost is not None:
+            pulumi.set(__self__, "availability_vs_cost", availability_vs_cost)
+
+    @property
+    @pulumi.getter(name="availabilityVsCost")
+    def availability_vs_cost(self) -> Optional[pulumi.Input[str]]:
+        """
+        You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+        """
+        return pulumi.get(self, "availability_vs_cost")
+
+    @availability_vs_cost.setter
+    def availability_vs_cost(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "availability_vs_cost", value)
 
 
 @pulumi.input_type
