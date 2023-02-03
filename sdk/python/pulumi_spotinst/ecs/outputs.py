@@ -18,6 +18,7 @@ __all__ = [
     'OceanBlockDeviceMapping',
     'OceanBlockDeviceMappingEbs',
     'OceanBlockDeviceMappingEbsDynamicVolumeSize',
+    'OceanClusterOrientation',
     'OceanFilters',
     'OceanInstanceMetadataOptions',
     'OceanLaunchSpecAttribute',
@@ -575,6 +576,42 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSize(dict):
         Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
         """
         return pulumi.get(self, "size_per_resource_unit")
+
+
+@pulumi.output_type
+class OceanClusterOrientation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityVsCost":
+            suggest = "availability_vs_cost"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanClusterOrientation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanClusterOrientation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanClusterOrientation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_vs_cost: Optional[str] = None):
+        """
+        :param str availability_vs_cost: You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+        """
+        if availability_vs_cost is not None:
+            pulumi.set(__self__, "availability_vs_cost", availability_vs_cost)
+
+    @property
+    @pulumi.getter(name="availabilityVsCost")
+    def availability_vs_cost(self) -> Optional[str]:
+        """
+        You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+        """
+        return pulumi.get(self, "availability_vs_cost")
 
 
 @pulumi.output_type

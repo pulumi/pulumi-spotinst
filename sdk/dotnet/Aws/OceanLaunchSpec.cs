@@ -24,6 +24,13 @@ namespace Pulumi.SpotInst.Aws
     ///     var example = new SpotInst.Aws.OceanLaunchSpec("example", new()
     ///     {
     ///         AssociatePublicIpAddress = true,
+    ///         AutoscaleDowns = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleDownArgs
+    ///             {
+    ///                 MaxScaleDownPercentage = 20,
+    ///             },
+    ///         },
     ///         AutoscaleHeadrooms = new[]
     ///         {
     ///             new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
@@ -218,6 +225,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> AssociatePublicIpAddress { get; private set; } = null!;
 
         /// <summary>
+        /// Auto Scaling scale down operations.
+        /// </summary>
+        [Output("autoscaleDowns")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecAutoscaleDown>> AutoscaleDowns { get; private set; } = null!;
+
+        /// <summary>
         /// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         /// </summary>
         [Output("autoscaleHeadrooms")]
@@ -403,6 +416,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
+
+        [Input("autoscaleDowns")]
+        private InputList<Inputs.OceanLaunchSpecAutoscaleDownArgs>? _autoscaleDowns;
+
+        /// <summary>
+        /// Auto Scaling scale down operations.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecAutoscaleDownArgs> AutoscaleDowns
+        {
+            get => _autoscaleDowns ?? (_autoscaleDowns = new InputList<Inputs.OceanLaunchSpecAutoscaleDownArgs>());
+            set => _autoscaleDowns = value;
+        }
 
         [Input("autoscaleHeadrooms")]
         private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomArgs>? _autoscaleHeadrooms;
@@ -634,6 +659,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
+
+        [Input("autoscaleDowns")]
+        private InputList<Inputs.OceanLaunchSpecAutoscaleDownGetArgs>? _autoscaleDowns;
+
+        /// <summary>
+        /// Auto Scaling scale down operations.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecAutoscaleDownGetArgs> AutoscaleDowns
+        {
+            get => _autoscaleDowns ?? (_autoscaleDowns = new InputList<Inputs.OceanLaunchSpecAutoscaleDownGetArgs>());
+            set => _autoscaleDowns = value;
+        }
 
         [Input("autoscaleHeadrooms")]
         private InputList<Inputs.OceanLaunchSpecAutoscaleHeadroomGetArgs>? _autoscaleHeadrooms;

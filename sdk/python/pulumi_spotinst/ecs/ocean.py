@@ -24,6 +24,7 @@ class OceanArgs:
                  autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]] = None,
+                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
@@ -92,6 +93,8 @@ class OceanArgs:
             pulumi.set(__self__, "blacklists", blacklists)
         if block_device_mappings is not None:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        if cluster_orientations is not None:
+            pulumi.set(__self__, "cluster_orientations", cluster_orientations)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
         if draining_timeout is not None:
@@ -234,6 +237,15 @@ class OceanArgs:
     @block_device_mappings.setter
     def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
+
+    @property
+    @pulumi.getter(name="clusterOrientations")
+    def cluster_orientations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]:
+        return pulumi.get(self, "cluster_orientations")
+
+    @cluster_orientations.setter
+    def cluster_orientations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]):
+        pulumi.set(self, "cluster_orientations", value)
 
     @property
     @pulumi.getter(name="desiredCapacity")
@@ -517,6 +529,7 @@ class _OceanState:
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
+                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
@@ -586,6 +599,8 @@ class _OceanState:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
+        if cluster_orientations is not None:
+            pulumi.set(__self__, "cluster_orientations", cluster_orientations)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
         if draining_timeout is not None:
@@ -698,6 +713,15 @@ class _OceanState:
     @cluster_name.setter
     def cluster_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="clusterOrientations")
+    def cluster_orientations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]:
+        return pulumi.get(self, "cluster_orientations")
+
+    @cluster_orientations.setter
+    def cluster_orientations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]]):
+        pulumi.set(self, "cluster_orientations", value)
 
     @property
     @pulumi.getter(name="desiredCapacity")
@@ -1019,6 +1043,7 @@ class Ocean(pulumi.CustomResource):
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
+                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
@@ -1127,6 +1152,7 @@ class Ocean(pulumi.CustomResource):
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
+                 cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
@@ -1169,6 +1195,7 @@ class Ocean(pulumi.CustomResource):
             if cluster_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_name'")
             __props__.__dict__["cluster_name"] = cluster_name
+            __props__.__dict__["cluster_orientations"] = cluster_orientations
             __props__.__dict__["desired_capacity"] = desired_capacity
             __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["ebs_optimized"] = ebs_optimized
@@ -1216,6 +1243,7 @@ class Ocean(pulumi.CustomResource):
             blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
+            cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
             draining_timeout: Optional[pulumi.Input[int]] = None,
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
@@ -1289,6 +1317,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["blacklists"] = blacklists
         __props__.__dict__["block_device_mappings"] = block_device_mappings
         __props__.__dict__["cluster_name"] = cluster_name
+        __props__.__dict__["cluster_orientations"] = cluster_orientations
         __props__.__dict__["desired_capacity"] = desired_capacity
         __props__.__dict__["draining_timeout"] = draining_timeout
         __props__.__dict__["ebs_optimized"] = ebs_optimized
@@ -1356,6 +1385,11 @@ class Ocean(pulumi.CustomResource):
         The name of the ECS cluster.
         """
         return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="clusterOrientations")
+    def cluster_orientations(self) -> pulumi.Output[Optional[Sequence['outputs.OceanClusterOrientation']]]:
+        return pulumi.get(self, "cluster_orientations")
 
     @property
     @pulumi.getter(name="desiredCapacity")

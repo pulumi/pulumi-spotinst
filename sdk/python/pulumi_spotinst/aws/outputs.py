@@ -126,6 +126,7 @@ __all__ = [
     'OceanClusterOrientation',
     'OceanFilters',
     'OceanInstanceMetadataOptions',
+    'OceanLaunchSpecAutoscaleDown',
     'OceanLaunchSpecAutoscaleHeadroom',
     'OceanLaunchSpecAutoscaleHeadroomsAutomatic',
     'OceanLaunchSpecBlockDeviceMapping',
@@ -8717,6 +8718,42 @@ class OceanInstanceMetadataOptions(dict):
         An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
         """
         return pulumi.get(self, "http_put_response_hop_limit")
+
+
+@pulumi.output_type
+class OceanLaunchSpecAutoscaleDown(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxScaleDownPercentage":
+            suggest = "max_scale_down_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecAutoscaleDown. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecAutoscaleDown.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecAutoscaleDown.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_scale_down_percentage: Optional[float] = None):
+        """
+        :param float max_scale_down_percentage: The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
+        """
+        if max_scale_down_percentage is not None:
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
+
+    @property
+    @pulumi.getter(name="maxScaleDownPercentage")
+    def max_scale_down_percentage(self) -> Optional[float]:
+        """
+        The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
+        """
+        return pulumi.get(self, "max_scale_down_percentage")
 
 
 @pulumi.output_type

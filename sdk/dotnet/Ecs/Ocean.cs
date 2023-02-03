@@ -53,6 +53,9 @@ namespace Pulumi.SpotInst.Ecs
         [Output("clusterName")]
         public Output<string> ClusterName { get; private set; } = null!;
 
+        [Output("clusterOrientations")]
+        public Output<ImmutableArray<Outputs.OceanClusterOrientation>> ClusterOrientations { get; private set; } = null!;
+
         /// <summary>
         /// The number of instances to launch and maintain in the cluster.
         /// </summary>
@@ -294,6 +297,14 @@ namespace Pulumi.SpotInst.Ecs
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 
+        [Input("clusterOrientations")]
+        private InputList<Inputs.OceanClusterOrientationArgs>? _clusterOrientations;
+        public InputList<Inputs.OceanClusterOrientationArgs> ClusterOrientations
+        {
+            get => _clusterOrientations ?? (_clusterOrientations = new InputList<Inputs.OceanClusterOrientationArgs>());
+            set => _clusterOrientations = value;
+        }
+
         /// <summary>
         /// The number of instances to launch and maintain in the cluster.
         /// </summary>
@@ -526,6 +537,14 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
+
+        [Input("clusterOrientations")]
+        private InputList<Inputs.OceanClusterOrientationGetArgs>? _clusterOrientations;
+        public InputList<Inputs.OceanClusterOrientationGetArgs> ClusterOrientations
+        {
+            get => _clusterOrientations ?? (_clusterOrientations = new InputList<Inputs.OceanClusterOrientationGetArgs>());
+            set => _clusterOrientations = value;
+        }
 
         /// <summary>
         /// The number of instances to launch and maintain in the cluster.

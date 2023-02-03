@@ -7,10 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Suspend AWS Elastigroup processes. This resource provide the capavility of
- * suspending elastigroup processes using this provider.
- *
- * For supported processes please visit: [Suspend Processes API reference](https://help.spot.io/spotinst-api/elastigroup/amazon-web-services/suspend-processes/)
  * ## Example Usage
  *
  * ```typescript

@@ -29,6 +29,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aws.NewOceanLaunchSpec(ctx, "example", &aws.OceanLaunchSpecArgs{
 //				AssociatePublicIpAddress: pulumi.Bool(true),
+//				AutoscaleDowns: aws.OceanLaunchSpecAutoscaleDownArray{
+//					&aws.OceanLaunchSpecAutoscaleDownArgs{
+//						MaxScaleDownPercentage: pulumi.Float64(20),
+//					},
+//				},
 //				AutoscaleHeadrooms: aws.OceanLaunchSpecAutoscaleHeadroomArray{
 //					&aws.OceanLaunchSpecAutoscaleHeadroomArgs{
 //						CpuPerUnit:    pulumi.Int(1000),
@@ -202,6 +207,8 @@ type OceanLaunchSpec struct {
 
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
+	// Auto Scaling scale down operations.
+	AutoscaleDowns OceanLaunchSpecAutoscaleDownArrayOutput `pulumi:"autoscaleDowns"`
 	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayOutput `pulumi:"autoscaleHeadrooms"`
 	// Set automatic headroom per launch spec.
@@ -283,6 +290,8 @@ func GetOceanLaunchSpec(ctx *pulumi.Context,
 type oceanLaunchSpecState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
+	// Auto Scaling scale down operations.
+	AutoscaleDowns []OceanLaunchSpecAutoscaleDown `pulumi:"autoscaleDowns"`
 	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 	// Set automatic headroom per launch spec.
@@ -333,6 +342,8 @@ type oceanLaunchSpecState struct {
 type OceanLaunchSpecState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
+	// Auto Scaling scale down operations.
+	AutoscaleDowns OceanLaunchSpecAutoscaleDownArrayInput
 	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
 	// Set automatic headroom per launch spec.
@@ -387,6 +398,8 @@ func (OceanLaunchSpecState) ElementType() reflect.Type {
 type oceanLaunchSpecArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
+	// Auto Scaling scale down operations.
+	AutoscaleDowns []OceanLaunchSpecAutoscaleDown `pulumi:"autoscaleDowns"`
 	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 	// Set automatic headroom per launch spec.
@@ -438,6 +451,8 @@ type oceanLaunchSpecArgs struct {
 type OceanLaunchSpecArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
+	// Auto Scaling scale down operations.
+	AutoscaleDowns OceanLaunchSpecAutoscaleDownArrayInput
 	// Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
 	AutoscaleHeadrooms OceanLaunchSpecAutoscaleHeadroomArrayInput
 	// Set automatic headroom per launch spec.
@@ -575,6 +590,11 @@ func (o OceanLaunchSpecOutput) ToOceanLaunchSpecOutputWithContext(ctx context.Co
 // Configure public IP address allocation.
 func (o OceanLaunchSpecOutput) AssociatePublicIpAddress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.BoolPtrOutput { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
+}
+
+// Auto Scaling scale down operations.
+func (o OceanLaunchSpecOutput) AutoscaleDowns() OceanLaunchSpecAutoscaleDownArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecAutoscaleDownArrayOutput { return v.AutoscaleDowns }).(OceanLaunchSpecAutoscaleDownArrayOutput)
 }
 
 // Set custom headroom per Virtual Node Group. Provide a list of headrooms object.

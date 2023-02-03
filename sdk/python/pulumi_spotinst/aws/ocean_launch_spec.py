@@ -18,6 +18,7 @@ class OceanLaunchSpecArgs:
     def __init__(__self__, *,
                  ocean_id: pulumi.Input[str],
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 autoscale_downs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
@@ -46,6 +47,7 @@ class OceanLaunchSpecArgs:
         The set of arguments for constructing a OceanLaunchSpec resource.
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]] autoscale_downs: Auto Scaling scale down operations.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -69,6 +71,8 @@ class OceanLaunchSpecArgs:
         pulumi.set(__self__, "ocean_id", ocean_id)
         if associate_public_ip_address is not None:
             pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
+        if autoscale_downs is not None:
+            pulumi.set(__self__, "autoscale_downs", autoscale_downs)
         if autoscale_headrooms is not None:
             pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
         if autoscale_headrooms_automatics is not None:
@@ -141,6 +145,18 @@ class OceanLaunchSpecArgs:
     @associate_public_ip_address.setter
     def associate_public_ip_address(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "associate_public_ip_address", value)
+
+    @property
+    @pulumi.getter(name="autoscaleDowns")
+    def autoscale_downs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]]]:
+        """
+        Auto Scaling scale down operations.
+        """
+        return pulumi.get(self, "autoscale_downs")
+
+    @autoscale_downs.setter
+    def autoscale_downs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]]]):
+        pulumi.set(self, "autoscale_downs", value)
 
     @property
     @pulumi.getter(name="autoscaleHeadrooms")
@@ -420,6 +436,7 @@ class OceanLaunchSpecArgs:
 class _OceanLaunchSpecState:
     def __init__(__self__, *,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 autoscale_downs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
@@ -448,6 +465,7 @@ class _OceanLaunchSpecState:
         """
         Input properties used for looking up and filtering OceanLaunchSpec resources.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]] autoscale_downs: Auto Scaling scale down operations.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -471,6 +489,8 @@ class _OceanLaunchSpecState:
         """
         if associate_public_ip_address is not None:
             pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
+        if autoscale_downs is not None:
+            pulumi.set(__self__, "autoscale_downs", autoscale_downs)
         if autoscale_headrooms is not None:
             pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
         if autoscale_headrooms_automatics is not None:
@@ -533,6 +553,18 @@ class _OceanLaunchSpecState:
     @associate_public_ip_address.setter
     def associate_public_ip_address(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "associate_public_ip_address", value)
+
+    @property
+    @pulumi.getter(name="autoscaleDowns")
+    def autoscale_downs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]]]:
+        """
+        Auto Scaling scale down operations.
+        """
+        return pulumi.get(self, "autoscale_downs")
+
+    @autoscale_downs.setter
+    def autoscale_downs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]]]):
+        pulumi.set(self, "autoscale_downs", value)
 
     @property
     @pulumi.getter(name="autoscaleHeadrooms")
@@ -826,6 +858,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 autoscale_downs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleDownArgs']]]]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
                  autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
@@ -863,6 +896,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         example = spotinst.aws.OceanLaunchSpec("example",
             associate_public_ip_address=True,
+            autoscale_downs=[spotinst.aws.OceanLaunchSpecAutoscaleDownArgs(
+                max_scale_down_percentage=20,
+            )],
             autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(
                 cpu_per_unit=1000,
                 gpu_per_unit=0,
@@ -976,6 +1012,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleDownArgs']]]] autoscale_downs: Auto Scaling scale down operations.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -1014,6 +1051,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         example = spotinst.aws.OceanLaunchSpec("example",
             associate_public_ip_address=True,
+            autoscale_downs=[spotinst.aws.OceanLaunchSpecAutoscaleDownArgs(
+                max_scale_down_percentage=20,
+            )],
             autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(
                 cpu_per_unit=1000,
                 gpu_per_unit=0,
@@ -1140,6 +1180,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+                 autoscale_downs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleDownArgs']]]]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
                  autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
@@ -1175,6 +1216,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__ = OceanLaunchSpecArgs.__new__(OceanLaunchSpecArgs)
 
             __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
+            __props__.__dict__["autoscale_downs"] = autoscale_downs
             __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
             __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
             __props__.__dict__["block_device_mappings"] = block_device_mappings
@@ -1213,6 +1255,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
+            autoscale_downs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleDownArgs']]]]] = None,
             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]]] = None,
             autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]]] = None,
             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
@@ -1246,6 +1289,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleDownArgs']]]] autoscale_downs: Auto Scaling scale down operations.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -1272,6 +1316,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__ = _OceanLaunchSpecState.__new__(_OceanLaunchSpecState)
 
         __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
+        __props__.__dict__["autoscale_downs"] = autoscale_downs
         __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
         __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
         __props__.__dict__["block_device_mappings"] = block_device_mappings
@@ -1306,6 +1351,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Configure public IP address allocation.
         """
         return pulumi.get(self, "associate_public_ip_address")
+
+    @property
+    @pulumi.getter(name="autoscaleDowns")
+    def autoscale_downs(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecAutoscaleDown']]]:
+        """
+        Auto Scaling scale down operations.
+        """
+        return pulumi.get(self, "autoscale_downs")
 
     @property
     @pulumi.getter(name="autoscaleHeadrooms")

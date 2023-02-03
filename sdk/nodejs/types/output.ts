@@ -2639,6 +2639,13 @@ export namespace aws {
         httpTokens: string;
     }
 
+    export interface OceanLaunchSpecAutoscaleDown {
+        /**
+         * The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
+         */
+        maxScaleDownPercentage?: number;
+    }
+
     export interface OceanLaunchSpecAutoscaleHeadroom {
         /**
          * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -3862,6 +3869,13 @@ export namespace ecs {
          * Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
          */
         sizePerResourceUnit: number;
+    }
+
+    export interface OceanClusterOrientation {
+        /**
+         * You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
+         */
+        availabilityVsCost?: string;
     }
 
     export interface OceanFilters {

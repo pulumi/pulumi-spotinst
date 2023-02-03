@@ -17,6 +17,9 @@ import * as utilities from "../utilities";
  *
  * const example = new spotinst.aws.OceanLaunchSpec("example", {
  *     associatePublicIpAddress: true,
+ *     autoscaleDowns: [{
+ *         maxScaleDownPercentage: 20,
+ *     }],
  *     autoscaleHeadrooms: [{
  *         cpuPerUnit: 1000,
  *         gpuPerUnit: 0,
@@ -161,6 +164,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
     /**
+     * Auto Scaling scale down operations.
+     */
+    public readonly autoscaleDowns!: pulumi.Output<outputs.aws.OceanLaunchSpecAutoscaleDown[] | undefined>;
+    /**
      * Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
      */
     public readonly autoscaleHeadrooms!: pulumi.Output<outputs.aws.OceanLaunchSpecAutoscaleHeadroom[] | undefined>;
@@ -260,6 +267,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OceanLaunchSpecState | undefined;
             resourceInputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
+            resourceInputs["autoscaleDowns"] = state ? state.autoscaleDowns : undefined;
             resourceInputs["autoscaleHeadrooms"] = state ? state.autoscaleHeadrooms : undefined;
             resourceInputs["autoscaleHeadroomsAutomatics"] = state ? state.autoscaleHeadroomsAutomatics : undefined;
             resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
@@ -291,6 +299,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
                 throw new Error("Missing required property 'oceanId'");
             }
             resourceInputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
+            resourceInputs["autoscaleDowns"] = args ? args.autoscaleDowns : undefined;
             resourceInputs["autoscaleHeadrooms"] = args ? args.autoscaleHeadrooms : undefined;
             resourceInputs["autoscaleHeadroomsAutomatics"] = args ? args.autoscaleHeadroomsAutomatics : undefined;
             resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
@@ -330,6 +339,10 @@ export interface OceanLaunchSpecState {
      * Configure public IP address allocation.
      */
     associatePublicIpAddress?: pulumi.Input<boolean>;
+    /**
+     * Auto Scaling scale down operations.
+     */
+    autoscaleDowns?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleDown>[]>;
     /**
      * Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
      */
@@ -425,6 +438,10 @@ export interface OceanLaunchSpecArgs {
      * Configure public IP address allocation.
      */
     associatePublicIpAddress?: pulumi.Input<boolean>;
+    /**
+     * Auto Scaling scale down operations.
+     */
+    autoscaleDowns?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecAutoscaleDown>[]>;
     /**
      * Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
      */
