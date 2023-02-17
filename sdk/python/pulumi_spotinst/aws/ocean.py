@@ -43,6 +43,7 @@ class OceanArgs:
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
+                 spread_nodes_by: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
                  use_as_template_only: Optional[pulumi.Input[bool]] = None,
@@ -77,6 +78,7 @@ class OceanArgs:
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
                When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
@@ -137,6 +139,8 @@ class OceanArgs:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
+        if spread_nodes_by is not None:
+            pulumi.set(__self__, "spread_nodes_by", spread_nodes_by)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if update_policy is not None:
@@ -471,6 +475,18 @@ class OceanArgs:
         pulumi.set(self, "spot_percentage", value)
 
     @property
+    @pulumi.getter(name="spreadNodesBy")
+    def spread_nodes_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        """
+        return pulumi.get(self, "spread_nodes_by")
+
+    @spread_nodes_by.setter
+    def spread_nodes_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spread_nodes_by", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]]:
         """
@@ -582,6 +598,7 @@ class _OceanState:
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
+                 spread_nodes_by: Optional[pulumi.Input[str]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
                  update_policy: Optional[pulumi.Input['OceanUpdatePolicyArgs']] = None,
@@ -616,6 +633,7 @@ class _OceanState:
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -677,6 +695,8 @@ class _OceanState:
             pulumi.set(__self__, "security_groups", security_groups)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
+        if spread_nodes_by is not None:
+            pulumi.set(__self__, "spread_nodes_by", spread_nodes_by)
         if subnet_ids is not None:
             pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
@@ -1001,6 +1021,18 @@ class _OceanState:
         pulumi.set(self, "spot_percentage", value)
 
     @property
+    @pulumi.getter(name="spreadNodesBy")
+    def spread_nodes_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        """
+        return pulumi.get(self, "spread_nodes_by")
+
+    @spread_nodes_by.setter
+    def spread_nodes_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spread_nodes_by", value)
+
+    @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1126,6 +1158,7 @@ class Ocean(pulumi.CustomResource):
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
+                 spread_nodes_by: Optional[pulumi.Input[str]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
@@ -1187,6 +1220,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -1269,6 +1303,7 @@ class Ocean(pulumi.CustomResource):
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
+                 spread_nodes_by: Optional[pulumi.Input[str]] = None,
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
@@ -1314,6 +1349,7 @@ class Ocean(pulumi.CustomResource):
                 raise TypeError("Missing required property 'security_groups'")
             __props__.__dict__["security_groups"] = security_groups
             __props__.__dict__["spot_percentage"] = spot_percentage
+            __props__.__dict__["spread_nodes_by"] = spread_nodes_by
             if subnet_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_ids'")
             __props__.__dict__["subnet_ids"] = subnet_ids
@@ -1360,6 +1396,7 @@ class Ocean(pulumi.CustomResource):
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
+            spread_nodes_by: Optional[pulumi.Input[str]] = None,
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]]] = None,
             update_policy: Optional[pulumi.Input[pulumi.InputType['OceanUpdatePolicyArgs']]] = None,
@@ -1399,6 +1436,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -1438,6 +1476,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
         __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["spot_percentage"] = spot_percentage
+        __props__.__dict__["spread_nodes_by"] = spread_nodes_by
         __props__.__dict__["subnet_ids"] = subnet_ids
         __props__.__dict__["tags"] = tags
         __props__.__dict__["update_policy"] = update_policy
@@ -1649,6 +1688,14 @@ class Ocean(pulumi.CustomResource):
         The percentage of Spot instances that would spin up from the `desired_capacity` number.
         """
         return pulumi.get(self, "spot_percentage")
+
+    @property
+    @pulumi.getter(name="spreadNodesBy")
+    def spread_nodes_by(self) -> pulumi.Output[Optional[str]]:
+        """
+        Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        """
+        return pulumi.get(self, "spread_nodes_by")
 
     @property
     @pulumi.getter(name="subnetIds")

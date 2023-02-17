@@ -194,6 +194,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> SpotPercentage { get; private set; } = null!;
 
         /// <summary>
+        /// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        /// </summary>
+        [Output("spreadNodesBy")]
+        public Output<string?> SpreadNodesBy { get; private set; } = null!;
+
+        /// <summary>
         /// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         /// </summary>
         [Output("subnetIds")]
@@ -463,6 +469,12 @@ namespace Pulumi.SpotInst.Aws
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
+        /// <summary>
+        /// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        /// </summary>
+        [Input("spreadNodesBy")]
+        public Input<string>? SpreadNodesBy { get; set; }
+
         [Input("subnetIds", required: true)]
         private InputList<string>? _subnetIds;
 
@@ -712,6 +724,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
+
+        /// <summary>
+        /// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+        /// </summary>
+        [Input("spreadNodesBy")]
+        public Input<string>? SpreadNodesBy { get; set; }
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;

@@ -63,6 +63,11 @@ namespace Pulumi.SpotInst.Ecs
     ///         },
     ///         IamInstanceProfile = "iam-profile",
     ///         ImageId = "ami-123456",
+    ///         InstanceMetadataOptions = new SpotInst.Ecs.Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs
+    ///         {
+    ///             HttpPutResponseHopLimit = 10,
+    ///             HttpTokens = "required",
+    ///         },
     ///         InstanceTypes = new[]
     ///         {
     ///             "m3.large",
@@ -197,6 +202,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
+
+        /// <summary>
+        /// Ocean instance metadata options object for IMDSv2.
+        /// </summary>
+        [Output("instanceMetadataOptions")]
+        public Output<Outputs.OceanLaunchSpecInstanceMetadataOptions?> InstanceMetadataOptions { get; private set; } = null!;
 
         /// <summary>
         /// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
@@ -353,6 +364,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// Ocean instance metadata options object for IMDSv2.
+        /// </summary>
+        [Input("instanceMetadataOptions")]
+        public Input<Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs>? InstanceMetadataOptions { get; set; }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
@@ -513,6 +530,12 @@ namespace Pulumi.SpotInst.Ecs
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// Ocean instance metadata options object for IMDSv2.
+        /// </summary>
+        [Input("instanceMetadataOptions")]
+        public Input<Inputs.OceanLaunchSpecInstanceMetadataOptionsGetArgs>? InstanceMetadataOptions { get; set; }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;

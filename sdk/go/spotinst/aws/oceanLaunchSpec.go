@@ -81,6 +81,10 @@ import (
 //				},
 //				IamInstanceProfile: pulumi.String("iam-profile"),
 //				ImageId:            pulumi.String("ami-123456"),
+//				InstanceMetadataOptions: &aws.OceanLaunchSpecInstanceMetadataOptionsArgs{
+//					HttpPutResponseHopLimit: pulumi.Int(10),
+//					HttpTokens:              pulumi.String("required"),
+//				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String("m4.large"),
 //					pulumi.String("m4.xlarge"),
@@ -223,6 +227,8 @@ type OceanLaunchSpec struct {
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrOutput `pulumi:"instanceMetadataOptions"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in the cluster.
@@ -306,6 +312,8 @@ type oceanLaunchSpecState struct {
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions *OceanLaunchSpecInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in the cluster.
@@ -358,6 +366,8 @@ type OceanLaunchSpecState struct {
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrInput
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in the cluster.
@@ -414,6 +424,8 @@ type oceanLaunchSpecArgs struct {
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions *OceanLaunchSpecInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Optionally adds labels to instances launched in the cluster.
@@ -467,6 +479,8 @@ type OceanLaunchSpecArgs struct {
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
+	// Ocean instance metadata options object for IMDSv2.
+	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrInput
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayInput
 	// Optionally adds labels to instances launched in the cluster.
@@ -635,6 +649,13 @@ func (o OceanLaunchSpecOutput) IamInstanceProfile() pulumi.StringPtrOutput {
 // ID of the image used to launch the instances.
 func (o OceanLaunchSpecOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// Ocean instance metadata options object for IMDSv2.
+func (o OceanLaunchSpecOutput) InstanceMetadataOptions() OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
+		return v.InstanceMetadataOptions
+	}).(OceanLaunchSpecInstanceMetadataOptionsPtrOutput)
 }
 
 // A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.

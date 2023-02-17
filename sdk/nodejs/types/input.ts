@@ -2777,6 +2777,17 @@ export namespace aws {
         tagValue?: pulumi.Input<string>;
     }
 
+    export interface OceanLaunchSpecInstanceMetadataOptions {
+        /**
+         * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+         */
+        httpPutResponseHopLimit?: pulumi.Input<number>;
+        /**
+         * Determines if a signed token is required or not. Valid values: `optional` or `required`.
+         */
+        httpTokens: pulumi.Input<string>;
+    }
+
     export interface OceanLaunchSpecLabel {
         /**
          * The taint key.
@@ -3763,6 +3774,10 @@ export namespace ecs {
          * Optionally set upper and lower bounds on the resource usage of the cluster.
          */
         resourceLimits?: pulumi.Input<inputs.ecs.OceanAutoscalerResourceLimits>;
+        /**
+         * Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+         */
+        shouldScaleDownNonServiceTasks?: pulumi.Input<boolean>;
     }
 
     export interface OceanAutoscalerDown {
@@ -4014,6 +4029,17 @@ export namespace ecs {
         baseSize: pulumi.Input<number>;
         resource: pulumi.Input<string>;
         sizePerResourceUnit: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecInstanceMetadataOptions {
+        /**
+         * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+         */
+        httpPutResponseHopLimit?: pulumi.Input<number>;
+        /**
+         * Determines if a signed token is required or not. Valid values: `optional` or `required`.
+         */
+        httpTokens: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecSchedulingTask {

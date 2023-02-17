@@ -103,6 +103,8 @@ type Ocean struct {
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
+	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+	SpreadNodesBy pulumi.StringPtrOutput `pulumi:"spreadNodesBy"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
@@ -206,6 +208,8 @@ type oceanState struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 	SpotPercentage *int `pulumi:"spotPercentage"`
+	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+	SpreadNodesBy *string `pulumi:"spreadNodesBy"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
@@ -275,6 +279,8 @@ type OceanState struct {
 	SecurityGroups pulumi.StringArrayInput
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 	SpotPercentage pulumi.IntPtrInput
+	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+	SpreadNodesBy pulumi.StringPtrInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
@@ -348,6 +354,8 @@ type oceanArgs struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 	SpotPercentage *int `pulumi:"spotPercentage"`
+	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+	SpreadNodesBy *string `pulumi:"spreadNodesBy"`
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
@@ -418,6 +426,8 @@ type OceanArgs struct {
 	SecurityGroups pulumi.StringArrayInput
 	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 	SpotPercentage pulumi.IntPtrInput
+	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+	SpreadNodesBy pulumi.StringPtrInput
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
@@ -649,6 +659,11 @@ func (o OceanOutput) SecurityGroups() pulumi.StringArrayOutput {
 // The percentage of Spot instances that would spin up from the `desiredCapacity` number.
 func (o OceanOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.SpotPercentage }).(pulumi.IntPtrOutput)
+}
+
+// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+func (o OceanOutput) SpreadNodesBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.SpreadNodesBy }).(pulumi.StringPtrOutput)
 }
 
 // A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.

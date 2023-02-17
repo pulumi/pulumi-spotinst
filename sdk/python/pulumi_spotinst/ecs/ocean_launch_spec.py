@@ -22,6 +22,7 @@ class OceanLaunchSpecArgs:
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -39,6 +40,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -61,6 +63,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if instance_metadata_options is not None:
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if name is not None:
@@ -150,6 +154,18 @@ class OceanLaunchSpecArgs:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @instance_metadata_options.setter
+    def instance_metadata_options(self, value: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']]):
+        pulumi.set(self, "instance_metadata_options", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -280,6 +296,7 @@ class _OceanLaunchSpecState:
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
@@ -297,6 +314,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
@@ -319,6 +337,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if instance_metadata_options is not None:
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if name is not None:
@@ -398,6 +418,18 @@ class _OceanLaunchSpecState:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @instance_metadata_options.setter
+    def instance_metadata_options(self, value: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']]):
+        pulumi.set(self, "instance_metadata_options", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -542,6 +574,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
@@ -590,6 +623,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
+            instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(
+                http_put_response_hop_limit=10,
+                http_tokens="required",
+            ),
             instance_types=[
                 "m3.large",
                 "m3.xlarge",
@@ -667,6 +704,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
@@ -721,6 +759,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
+            instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(
+                http_put_response_hop_limit=10,
+                http_tokens="required",
+            ),
             instance_types=[
                 "m3.large",
                 "m3.xlarge",
@@ -812,6 +854,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
@@ -837,6 +880,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["block_device_mappings"] = block_device_mappings
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["name"] = name
             if ocean_id is None and not opts.urn:
@@ -865,6 +909,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
+            instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
@@ -887,6 +932,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
         :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
@@ -908,6 +954,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["block_device_mappings"] = block_device_mappings
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["instance_metadata_options"] = instance_metadata_options
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["name"] = name
         __props__.__dict__["ocean_id"] = ocean_id
@@ -957,6 +1004,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         ID of the image used to launch the instances.
         """
         return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecInstanceMetadataOptions']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
 
     @property
     @pulumi.getter(name="instanceTypes")

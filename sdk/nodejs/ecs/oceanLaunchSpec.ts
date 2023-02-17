@@ -42,6 +42,10 @@ import * as utilities from "../utilities";
  *     }],
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-123456",
+ *     instanceMetadataOptions: {
+ *         httpPutResponseHopLimit: 10,
+ *         httpTokens: "required",
+ *     },
  *     instanceTypes: [
  *         "m3.large",
  *         "m3.xlarge",
@@ -160,6 +164,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
+     * Ocean instance metadata options object for IMDSv2.
+     */
+    public readonly instanceMetadataOptions!: pulumi.Output<outputs.ecs.OceanLaunchSpecInstanceMetadataOptions | undefined>;
+    /**
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
      */
     public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
@@ -222,6 +230,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
             resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["oceanId"] = state ? state.oceanId : undefined;
@@ -243,6 +252,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
             resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["oceanId"] = args ? args.oceanId : undefined;
@@ -281,6 +291,10 @@ export interface OceanLaunchSpecState {
      * ID of the image used to launch the instances.
      */
     imageId?: pulumi.Input<string>;
+    /**
+     * Ocean instance metadata options object for IMDSv2.
+     */
+    instanceMetadataOptions?: pulumi.Input<inputs.ecs.OceanLaunchSpecInstanceMetadataOptions>;
     /**
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
      */
@@ -348,6 +362,10 @@ export interface OceanLaunchSpecArgs {
      * ID of the image used to launch the instances.
      */
     imageId?: pulumi.Input<string>;
+    /**
+     * Ocean instance metadata options object for IMDSv2.
+     */
+    instanceMetadataOptions?: pulumi.Input<inputs.ecs.OceanLaunchSpecInstanceMetadataOptions>;
     /**
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
      */

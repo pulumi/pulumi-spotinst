@@ -17,6 +17,7 @@ import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecBlockDeviceMapping;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecCreateOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecDeleteOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecElasticIpPool;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecResourceLimit;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecSchedulingShutdownHours;
@@ -54,6 +55,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecDeleteOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLabelArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecResourceLimitArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingShutdownHoursArgs;
@@ -118,6 +120,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .iamInstanceProfile(&#34;iam-profile&#34;)
  *             .imageId(&#34;ami-123456&#34;)
+ *             .instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs.builder()
+ *                 .httpPutResponseHopLimit(10)
+ *                 .httpTokens(&#34;required&#34;)
+ *                 .build())
  *             .instanceTypes(            
  *                 &#34;m4.large&#34;,
  *                 &#34;m4.xlarge&#34;,
@@ -352,6 +358,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
+    }
+    /**
+     * Ocean instance metadata options object for IMDSv2.
+     * 
+     */
+    @Export(name="instanceMetadataOptions", type=OceanLaunchSpecInstanceMetadataOptions.class, parameters={})
+    private Output</* @Nullable */ OceanLaunchSpecInstanceMetadataOptions> instanceMetadataOptions;
+
+    /**
+     * @return Ocean instance metadata options object for IMDSv2.
+     * 
+     */
+    public Output<Optional<OceanLaunchSpecInstanceMetadataOptions>> instanceMetadataOptions() {
+        return Codegen.optional(this.instanceMetadataOptions);
     }
     /**
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.

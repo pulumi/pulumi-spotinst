@@ -25,6 +25,8 @@ type OceanAutoscaler struct {
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits *OceanAutoscalerResourceLimits `pulumi:"resourceLimits"`
+	// Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+	ShouldScaleDownNonServiceTasks *bool `pulumi:"shouldScaleDownNonServiceTasks"`
 }
 
 // OceanAutoscalerInput is an input type that accepts OceanAutoscalerArgs and OceanAutoscalerOutput values.
@@ -53,6 +55,8 @@ type OceanAutoscalerArgs struct {
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
 	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits OceanAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
+	// Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+	ShouldScaleDownNonServiceTasks pulumi.BoolPtrInput `pulumi:"shouldScaleDownNonServiceTasks"`
 }
 
 func (OceanAutoscalerArgs) ElementType() reflect.Type {
@@ -167,6 +171,11 @@ func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtr
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
+// Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+func (o OceanAutoscalerOutput) ShouldScaleDownNonServiceTasks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.ShouldScaleDownNonServiceTasks }).(pulumi.BoolPtrOutput)
+}
+
 type OceanAutoscalerPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerPtrOutput) ElementType() reflect.Type {
@@ -259,6 +268,16 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 		}
 		return v.ResourceLimits
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
+}
+
+// Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+func (o OceanAutoscalerPtrOutput) ShouldScaleDownNonServiceTasks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldScaleDownNonServiceTasks
+	}).(pulumi.BoolPtrOutput)
 }
 
 type OceanAutoscalerDown struct {
@@ -2799,6 +2818,162 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerR
 	}).(pulumi.IntPtrOutput)
 }
 
+type OceanLaunchSpecInstanceMetadataOptions struct {
+	// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
+	// Determines if a signed token is required or not. Valid values: `optional` or `required`.
+	HttpTokens string `pulumi:"httpTokens"`
+}
+
+// OceanLaunchSpecInstanceMetadataOptionsInput is an input type that accepts OceanLaunchSpecInstanceMetadataOptionsArgs and OceanLaunchSpecInstanceMetadataOptionsOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecInstanceMetadataOptionsInput` via:
+//
+//	OceanLaunchSpecInstanceMetadataOptionsArgs{...}
+type OceanLaunchSpecInstanceMetadataOptionsInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecInstanceMetadataOptionsOutput() OceanLaunchSpecInstanceMetadataOptionsOutput
+	ToOceanLaunchSpecInstanceMetadataOptionsOutputWithContext(context.Context) OceanLaunchSpecInstanceMetadataOptionsOutput
+}
+
+type OceanLaunchSpecInstanceMetadataOptionsArgs struct {
+	// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+	HttpPutResponseHopLimit pulumi.IntPtrInput `pulumi:"httpPutResponseHopLimit"`
+	// Determines if a signed token is required or not. Valid values: `optional` or `required`.
+	HttpTokens pulumi.StringInput `pulumi:"httpTokens"`
+}
+
+func (OceanLaunchSpecInstanceMetadataOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecInstanceMetadataOptionsArgs) ToOceanLaunchSpecInstanceMetadataOptionsOutput() OceanLaunchSpecInstanceMetadataOptionsOutput {
+	return i.ToOceanLaunchSpecInstanceMetadataOptionsOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecInstanceMetadataOptionsArgs) ToOceanLaunchSpecInstanceMetadataOptionsOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceMetadataOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecInstanceMetadataOptionsOutput)
+}
+
+func (i OceanLaunchSpecInstanceMetadataOptionsArgs) ToOceanLaunchSpecInstanceMetadataOptionsPtrOutput() OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
+	return i.ToOceanLaunchSpecInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecInstanceMetadataOptionsArgs) ToOceanLaunchSpecInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecInstanceMetadataOptionsOutput).ToOceanLaunchSpecInstanceMetadataOptionsPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecInstanceMetadataOptionsPtrInput is an input type that accepts OceanLaunchSpecInstanceMetadataOptionsArgs, OceanLaunchSpecInstanceMetadataOptionsPtr and OceanLaunchSpecInstanceMetadataOptionsPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecInstanceMetadataOptionsPtrInput` via:
+//
+//	        OceanLaunchSpecInstanceMetadataOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecInstanceMetadataOptionsPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecInstanceMetadataOptionsPtrOutput() OceanLaunchSpecInstanceMetadataOptionsPtrOutput
+	ToOceanLaunchSpecInstanceMetadataOptionsPtrOutputWithContext(context.Context) OceanLaunchSpecInstanceMetadataOptionsPtrOutput
+}
+
+type oceanLaunchSpecInstanceMetadataOptionsPtrType OceanLaunchSpecInstanceMetadataOptionsArgs
+
+func OceanLaunchSpecInstanceMetadataOptionsPtr(v *OceanLaunchSpecInstanceMetadataOptionsArgs) OceanLaunchSpecInstanceMetadataOptionsPtrInput {
+	return (*oceanLaunchSpecInstanceMetadataOptionsPtrType)(v)
+}
+
+func (*oceanLaunchSpecInstanceMetadataOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecInstanceMetadataOptionsPtrType) ToOceanLaunchSpecInstanceMetadataOptionsPtrOutput() OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
+	return i.ToOceanLaunchSpecInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecInstanceMetadataOptionsPtrType) ToOceanLaunchSpecInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecInstanceMetadataOptionsPtrOutput)
+}
+
+type OceanLaunchSpecInstanceMetadataOptionsOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecInstanceMetadataOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecInstanceMetadataOptionsOutput) ToOceanLaunchSpecInstanceMetadataOptionsOutput() OceanLaunchSpecInstanceMetadataOptionsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceMetadataOptionsOutput) ToOceanLaunchSpecInstanceMetadataOptionsOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceMetadataOptionsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceMetadataOptionsOutput) ToOceanLaunchSpecInstanceMetadataOptionsPtrOutput() OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
+	return o.ToOceanLaunchSpecInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecInstanceMetadataOptionsOutput) ToOceanLaunchSpecInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecInstanceMetadataOptions) *OceanLaunchSpecInstanceMetadataOptions {
+		return &v
+	}).(OceanLaunchSpecInstanceMetadataOptionsPtrOutput)
+}
+
+// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+func (o OceanLaunchSpecInstanceMetadataOptionsOutput) HttpPutResponseHopLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceMetadataOptions) *int { return v.HttpPutResponseHopLimit }).(pulumi.IntPtrOutput)
+}
+
+// Determines if a signed token is required or not. Valid values: `optional` or `required`.
+func (o OceanLaunchSpecInstanceMetadataOptionsOutput) HttpTokens() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceMetadataOptions) string { return v.HttpTokens }).(pulumi.StringOutput)
+}
+
+type OceanLaunchSpecInstanceMetadataOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecInstanceMetadataOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecInstanceMetadataOptionsPtrOutput) ToOceanLaunchSpecInstanceMetadataOptionsPtrOutput() OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceMetadataOptionsPtrOutput) ToOceanLaunchSpecInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceMetadataOptionsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceMetadataOptionsPtrOutput) Elem() OceanLaunchSpecInstanceMetadataOptionsOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceMetadataOptions) OceanLaunchSpecInstanceMetadataOptions {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecInstanceMetadataOptions
+		return ret
+	}).(OceanLaunchSpecInstanceMetadataOptionsOutput)
+}
+
+// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+func (o OceanLaunchSpecInstanceMetadataOptionsPtrOutput) HttpPutResponseHopLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceMetadataOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPutResponseHopLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Determines if a signed token is required or not. Valid values: `optional` or `required`.
+func (o OceanLaunchSpecInstanceMetadataOptionsPtrOutput) HttpTokens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceMetadataOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpTokens
+	}).(pulumi.StringPtrOutput)
+}
+
 type OceanLaunchSpecSchedulingTask struct {
 	// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
 	CronExpression string `pulumi:"cronExpression"`
@@ -4649,6 +4824,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsPtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptionsInput)(nil)).Elem(), OceanLaunchSpecInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptionsPtrInput)(nil)).Elem(), OceanLaunchSpecInstanceMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskArrayInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskTaskHeadroomInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{})
@@ -4707,6 +4884,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecInstanceMetadataOptionsOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecInstanceMetadataOptionsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskTaskHeadroomOutput{})

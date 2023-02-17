@@ -12,6 +12,7 @@ import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecCreateOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecDeleteOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolArgs;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLabelArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecResourceLimitArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingShutdownHoursArgs;
@@ -165,6 +166,21 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
+    }
+
+    /**
+     * Ocean instance metadata options object for IMDSv2.
+     * 
+     */
+    @Import(name="instanceMetadataOptions")
+    private @Nullable Output<OceanLaunchSpecInstanceMetadataOptionsArgs> instanceMetadataOptions;
+
+    /**
+     * @return Ocean instance metadata options object for IMDSv2.
+     * 
+     */
+    public Optional<Output<OceanLaunchSpecInstanceMetadataOptionsArgs>> instanceMetadataOptions() {
+        return Optional.ofNullable(this.instanceMetadataOptions);
     }
 
     /**
@@ -411,6 +427,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         this.elasticIpPools = $.elasticIpPools;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageId = $.imageId;
+        this.instanceMetadataOptions = $.instanceMetadataOptions;
         this.instanceTypes = $.instanceTypes;
         this.labels = $.labels;
         this.name = $.name;
@@ -682,6 +699,27 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
          */
         public Builder imageId(String imageId) {
             return imageId(Output.of(imageId));
+        }
+
+        /**
+         * @param instanceMetadataOptions Ocean instance metadata options object for IMDSv2.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceMetadataOptions(@Nullable Output<OceanLaunchSpecInstanceMetadataOptionsArgs> instanceMetadataOptions) {
+            $.instanceMetadataOptions = instanceMetadataOptions;
+            return this;
+        }
+
+        /**
+         * @param instanceMetadataOptions Ocean instance metadata options object for IMDSv2.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs instanceMetadataOptions) {
+            return instanceMetadataOptions(Output.of(instanceMetadataOptions));
         }
 
         /**
