@@ -2778,6 +2778,17 @@ export namespace aws {
         tagValue?: string;
     }
 
+    export interface OceanLaunchSpecInstanceMetadataOptions {
+        /**
+         * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+         */
+        httpPutResponseHopLimit?: number;
+        /**
+         * Determines if a signed token is required or not. Valid values: `optional` or `required`.
+         */
+        httpTokens: string;
+    }
+
     export interface OceanLaunchSpecLabel {
         /**
          * The taint key.
@@ -3766,6 +3777,10 @@ export namespace ecs {
          * Optionally set upper and lower bounds on the resource usage of the cluster.
          */
         resourceLimits?: outputs.ecs.OceanAutoscalerResourceLimits;
+        /**
+         * Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+         */
+        shouldScaleDownNonServiceTasks?: boolean;
     }
 
     export interface OceanAutoscalerDown {
@@ -4017,6 +4032,17 @@ export namespace ecs {
         baseSize: number;
         resource: string;
         sizePerResourceUnit: number;
+    }
+
+    export interface OceanLaunchSpecInstanceMetadataOptions {
+        /**
+         * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+         */
+        httpPutResponseHopLimit?: number;
+        /**
+         * Determines if a signed token is required or not. Valid values: `optional` or `required`.
+         */
+        httpTokens: string;
     }
 
     export interface OceanLaunchSpecSchedulingTask {

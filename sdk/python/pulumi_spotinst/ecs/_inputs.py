@@ -25,6 +25,7 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMappingArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
+    'OceanLaunchSpecInstanceMetadataOptionsArgs',
     'OceanLaunchSpecSchedulingTaskArgs',
     'OceanLaunchSpecSchedulingTaskTaskHeadroomArgs',
     'OceanLaunchSpecStrategyArgs',
@@ -50,7 +51,8 @@ class OceanAutoscalerArgs:
                  headroom: Optional[pulumi.Input['OceanAutoscalerHeadroomArgs']] = None,
                  is_auto_config: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
-                 resource_limits: Optional[pulumi.Input['OceanAutoscalerResourceLimitsArgs']] = None):
+                 resource_limits: Optional[pulumi.Input['OceanAutoscalerResourceLimitsArgs']] = None,
+                 should_scale_down_non_service_tasks: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] auto_headroom_percentage: The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
         :param pulumi.Input[int] cooldown: Cooldown period between scaling actions.
@@ -59,6 +61,7 @@ class OceanAutoscalerArgs:
         :param pulumi.Input[bool] is_auto_config: Automatically configure and optimize headroom resources.
         :param pulumi.Input[bool] is_enabled: Enable the Ocean ECS autoscaler.
         :param pulumi.Input['OceanAutoscalerResourceLimitsArgs'] resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
+        :param pulumi.Input[bool] should_scale_down_non_service_tasks: Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
         """
         if auto_headroom_percentage is not None:
             pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
@@ -74,6 +77,8 @@ class OceanAutoscalerArgs:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
+        if should_scale_down_non_service_tasks is not None:
+            pulumi.set(__self__, "should_scale_down_non_service_tasks", should_scale_down_non_service_tasks)
 
     @property
     @pulumi.getter(name="autoHeadroomPercentage")
@@ -158,6 +163,18 @@ class OceanAutoscalerArgs:
     @resource_limits.setter
     def resource_limits(self, value: Optional[pulumi.Input['OceanAutoscalerResourceLimitsArgs']]):
         pulumi.set(self, "resource_limits", value)
+
+    @property
+    @pulumi.getter(name="shouldScaleDownNonServiceTasks")
+    def should_scale_down_non_service_tasks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+        """
+        return pulumi.get(self, "should_scale_down_non_service_tasks")
+
+    @should_scale_down_non_service_tasks.setter
+    def should_scale_down_non_service_tasks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "should_scale_down_non_service_tasks", value)
 
 
 @pulumi.input_type
@@ -1210,6 +1227,44 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @size_per_resource_unit.setter
     def size_per_resource_unit(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_per_resource_unit", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecInstanceMetadataOptionsArgs:
+    def __init__(__self__, *,
+                 http_tokens: pulumi.Input[str],
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] http_tokens: Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        :param pulumi.Input[int] http_put_response_hop_limit: An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        """
+        pulumi.set(__self__, "http_tokens", http_tokens)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> pulumi.Input[str]:
+        """
+        Determines if a signed token is required or not. Valid values: `optional` or `required`.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: pulumi.Input[str]):
+        pulumi.set(self, "http_tokens", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
 
 
 @pulumi.input_type

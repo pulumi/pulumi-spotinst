@@ -50,6 +50,11 @@ public final class OceanAutoscaler {
      * 
      */
     private @Nullable OceanAutoscalerResourceLimits resourceLimits;
+    /**
+     * @return Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+     * 
+     */
+    private @Nullable Boolean shouldScaleDownNonServiceTasks;
 
     private OceanAutoscaler() {}
     /**
@@ -101,6 +106,13 @@ public final class OceanAutoscaler {
     public Optional<OceanAutoscalerResourceLimits> resourceLimits() {
         return Optional.ofNullable(this.resourceLimits);
     }
+    /**
+     * @return Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+     * 
+     */
+    public Optional<Boolean> shouldScaleDownNonServiceTasks() {
+        return Optional.ofNullable(this.shouldScaleDownNonServiceTasks);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -118,6 +130,7 @@ public final class OceanAutoscaler {
         private @Nullable Boolean isAutoConfig;
         private @Nullable Boolean isEnabled;
         private @Nullable OceanAutoscalerResourceLimits resourceLimits;
+        private @Nullable Boolean shouldScaleDownNonServiceTasks;
         public Builder() {}
         public Builder(OceanAutoscaler defaults) {
     	      Objects.requireNonNull(defaults);
@@ -128,6 +141,7 @@ public final class OceanAutoscaler {
     	      this.isAutoConfig = defaults.isAutoConfig;
     	      this.isEnabled = defaults.isEnabled;
     	      this.resourceLimits = defaults.resourceLimits;
+    	      this.shouldScaleDownNonServiceTasks = defaults.shouldScaleDownNonServiceTasks;
         }
 
         @CustomType.Setter
@@ -165,6 +179,11 @@ public final class OceanAutoscaler {
             this.resourceLimits = resourceLimits;
             return this;
         }
+        @CustomType.Setter
+        public Builder shouldScaleDownNonServiceTasks(@Nullable Boolean shouldScaleDownNonServiceTasks) {
+            this.shouldScaleDownNonServiceTasks = shouldScaleDownNonServiceTasks;
+            return this;
+        }
         public OceanAutoscaler build() {
             final var o = new OceanAutoscaler();
             o.autoHeadroomPercentage = autoHeadroomPercentage;
@@ -174,6 +193,7 @@ public final class OceanAutoscaler {
             o.isAutoConfig = isAutoConfig;
             o.isEnabled = isEnabled;
             o.resourceLimits = resourceLimits;
+            o.shouldScaleDownNonServiceTasks = shouldScaleDownNonServiceTasks;
             return o;
         }
     }

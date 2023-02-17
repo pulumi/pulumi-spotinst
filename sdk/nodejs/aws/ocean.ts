@@ -159,6 +159,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     /**
+     * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+     */
+    public readonly spreadNodesBy!: pulumi.Output<string | undefined>;
+    /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      */
     public readonly subnetIds!: pulumi.Output<string[]>;
@@ -228,6 +232,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["scheduledTasks"] = state ? state.scheduledTasks : undefined;
             resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
+            resourceInputs["spreadNodesBy"] = state ? state.spreadNodesBy : undefined;
             resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
@@ -270,6 +275,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["scheduledTasks"] = args ? args.scheduledTasks : undefined;
             resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
+            resourceInputs["spreadNodesBy"] = args ? args.spreadNodesBy : undefined;
             resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
@@ -386,6 +392,10 @@ export interface OceanState {
      * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      */
     spotPercentage?: pulumi.Input<number>;
+    /**
+     * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+     */
+    spreadNodesBy?: pulumi.Input<string>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      */
@@ -520,6 +530,10 @@ export interface OceanArgs {
      * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      */
     spotPercentage?: pulumi.Input<number>;
+    /**
+     * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+     */
+    spreadNodesBy?: pulumi.Input<string>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      */

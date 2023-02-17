@@ -41,6 +41,10 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         /// Optionally set upper and lower bounds on the resource usage of the cluster.
         /// </summary>
         public readonly Outputs.OceanAutoscalerResourceLimits? ResourceLimits;
+        /// <summary>
+        /// Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+        /// </summary>
+        public readonly bool? ShouldScaleDownNonServiceTasks;
 
         [OutputConstructor]
         private OceanAutoscaler(
@@ -56,7 +60,9 @@ namespace Pulumi.SpotInst.Ecs.Outputs
 
             bool? isEnabled,
 
-            Outputs.OceanAutoscalerResourceLimits? resourceLimits)
+            Outputs.OceanAutoscalerResourceLimits? resourceLimits,
+
+            bool? shouldScaleDownNonServiceTasks)
         {
             AutoHeadroomPercentage = autoHeadroomPercentage;
             Cooldown = cooldown;
@@ -65,6 +71,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
             IsAutoConfig = isAutoConfig;
             IsEnabled = isEnabled;
             ResourceLimits = resourceLimits;
+            ShouldScaleDownNonServiceTasks = shouldScaleDownNonServiceTasks;
         }
     }
 }

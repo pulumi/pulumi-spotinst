@@ -27,6 +27,7 @@ class OceanLaunchSpecArgs:
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -54,6 +55,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
@@ -89,6 +91,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if instance_metadata_options is not None:
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if labels is not None:
@@ -247,6 +251,18 @@ class OceanLaunchSpecArgs:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @instance_metadata_options.setter
+    def instance_metadata_options(self, value: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']]):
+        pulumi.set(self, "instance_metadata_options", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -445,6 +461,7 @@ class _OceanLaunchSpecState:
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -472,6 +489,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
@@ -507,6 +525,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if instance_metadata_options is not None:
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if labels is not None:
@@ -655,6 +675,18 @@ class _OceanLaunchSpecState:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @instance_metadata_options.setter
+    def instance_metadata_options(self, value: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']]):
+        pulumi.set(self, "instance_metadata_options", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -867,6 +899,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -938,6 +971,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
+            instance_metadata_options=spotinst.aws.OceanLaunchSpecInstanceMetadataOptionsArgs(
+                http_put_response_hop_limit=10,
+                http_tokens="required",
+            ),
             instance_types=[
                 "m4.large",
                 "m4.xlarge",
@@ -1019,6 +1056,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
@@ -1093,6 +1131,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
+            instance_metadata_options=spotinst.aws.OceanLaunchSpecInstanceMetadataOptionsArgs(
+                http_put_response_hop_limit=10,
+                http_tokens="required",
+            ),
             instance_types=[
                 "m4.large",
                 "m4.xlarge",
@@ -1189,6 +1231,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1225,6 +1268,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -1264,6 +1308,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
+            instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1296,6 +1341,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
@@ -1325,6 +1371,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["instance_metadata_options"] = instance_metadata_options
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -1417,6 +1464,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         ID of the image used to launch the instances.
         """
         return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecInstanceMetadataOptions']]:
+        """
+        Ocean instance metadata options object for IMDSv2.
+        """
+        return pulumi.get(self, "instance_metadata_options")
 
     @property
     @pulumi.getter(name="instanceTypes")

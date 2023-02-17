@@ -96,6 +96,7 @@ import javax.annotation.Nullable;
  *             .rootVolumeSize(20)
  *             .securityGroups(&#34;sg-987654321&#34;)
  *             .spotPercentage(100)
+ *             .spreadNodesBy(&#34;count&#34;)
  *             .subnetIds(&#34;subnet-123456789&#34;)
  *             .tags(OceanTagArgs.builder()
  *                 .key(&#34;fakeKey&#34;)
@@ -526,6 +527,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> spotPercentage() {
         return Codegen.optional(this.spotPercentage);
+    }
+    /**
+     * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+     * 
+     */
+    @Export(name="spreadNodesBy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> spreadNodesBy;
+
+    /**
+     * @return Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+     * 
+     */
+    public Output<Optional<String>> spreadNodesBy() {
+        return Codegen.optional(this.spreadNodesBy);
     }
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.

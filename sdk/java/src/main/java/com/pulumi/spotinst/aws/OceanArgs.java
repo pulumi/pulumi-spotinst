@@ -402,6 +402,21 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+     * 
+     */
+    @Import(name="spreadNodesBy")
+    private @Nullable Output<String> spreadNodesBy;
+
+    /**
+     * @return Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+     * 
+     */
+    public Optional<Output<String>> spreadNodesBy() {
+        return Optional.ofNullable(this.spreadNodesBy);
+    }
+
+    /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      * 
      */
@@ -544,6 +559,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         this.scheduledTasks = $.scheduledTasks;
         this.securityGroups = $.securityGroups;
         this.spotPercentage = $.spotPercentage;
+        this.spreadNodesBy = $.spreadNodesBy;
         this.subnetIds = $.subnetIds;
         this.tags = $.tags;
         this.updatePolicy = $.updatePolicy;
@@ -1130,6 +1146,27 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder spotPercentage(Integer spotPercentage) {
             return spotPercentage(Output.of(spotPercentage));
+        }
+
+        /**
+         * @param spreadNodesBy Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spreadNodesBy(@Nullable Output<String> spreadNodesBy) {
+            $.spreadNodesBy = spreadNodesBy;
+            return this;
+        }
+
+        /**
+         * @param spreadNodesBy Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spreadNodesBy(String spreadNodesBy) {
+            return spreadNodesBy(Output.of(spreadNodesBy));
         }
 
         /**

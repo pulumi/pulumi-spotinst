@@ -124,6 +124,21 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.resourceLimits);
     }
 
+    /**
+     * Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+     * 
+     */
+    @Import(name="shouldScaleDownNonServiceTasks")
+    private @Nullable Output<Boolean> shouldScaleDownNonServiceTasks;
+
+    /**
+     * @return Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+     * 
+     */
+    public Optional<Output<Boolean>> shouldScaleDownNonServiceTasks() {
+        return Optional.ofNullable(this.shouldScaleDownNonServiceTasks);
+    }
+
     private OceanAutoscalerArgs() {}
 
     private OceanAutoscalerArgs(OceanAutoscalerArgs $) {
@@ -134,6 +149,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         this.isAutoConfig = $.isAutoConfig;
         this.isEnabled = $.isEnabled;
         this.resourceLimits = $.resourceLimits;
+        this.shouldScaleDownNonServiceTasks = $.shouldScaleDownNonServiceTasks;
     }
 
     public static Builder builder() {
@@ -299,6 +315,27 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder resourceLimits(OceanAutoscalerResourceLimitsArgs resourceLimits) {
             return resourceLimits(Output.of(resourceLimits));
+        }
+
+        /**
+         * @param shouldScaleDownNonServiceTasks Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldScaleDownNonServiceTasks(@Nullable Output<Boolean> shouldScaleDownNonServiceTasks) {
+            $.shouldScaleDownNonServiceTasks = shouldScaleDownNonServiceTasks;
+            return this;
+        }
+
+        /**
+         * @param shouldScaleDownNonServiceTasks Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shouldScaleDownNonServiceTasks(Boolean shouldScaleDownNonServiceTasks) {
+            return shouldScaleDownNonServiceTasks(Output.of(shouldScaleDownNonServiceTasks));
         }
 
         public OceanAutoscalerArgs build() {

@@ -54,6 +54,12 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         [Input("resourceLimits")]
         public Input<Inputs.OceanAutoscalerResourceLimitsGetArgs>? ResourceLimits { get; set; }
 
+        /// <summary>
+        /// Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
+        /// </summary>
+        [Input("shouldScaleDownNonServiceTasks")]
+        public Input<bool>? ShouldScaleDownNonServiceTasks { get; set; }
+
         public OceanAutoscalerGetArgs()
         {
         }
