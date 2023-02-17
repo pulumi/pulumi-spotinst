@@ -3,9 +3,9 @@ module github.com/pulumi/pulumi-spotinst/provider/v3
 go 1.19
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.38.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.40.0
 	github.com/pulumi/pulumi/sdk/v3 v3.53.1
-	github.com/spotinst/terraform-provider-spotinst v1.32.0
+	github.com/spotinst/terraform-provider-spotinst v1.100.0
 )
 
 replace (
@@ -13,7 +13,7 @@ replace (
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.17.3
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20221122203342-430f685de305
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	github.com/spotinst/terraform-provider-spotinst => github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20230203004344-d71d4ee5853e
+	github.com/spotinst/terraform-provider-spotinst => github.com/pulumi/terraform-provider-spotinst v1.33.1-0.20230217122259-79ae46744f66
 )
 
 require (
@@ -198,7 +198,7 @@ require (
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.6.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spotinst/spotinst-sdk-go v1.141.0 // indirect
+	github.com/spotinst/spotinst-sdk-go v1.146.0 // indirect
 	github.com/stretchr/testify v1.8.1 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect
